@@ -19,8 +19,8 @@ MonoBehaviour:
   size: 1
   player: 1
   playable: 1
-  Sprites:
-  - {fileID: 0}
+  variableSprites:
+  - {fileID: 2008618111378349020, guid: 3540d5ef60ed3b0418712411b2a40186, type: 3}
   spriteForUI: {fileID: 21300000, guid: c026c50f0c7bde245a5a0b95fd48fb72, type: 3}
   actionMods: []
   maxHP: 50

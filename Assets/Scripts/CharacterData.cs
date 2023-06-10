@@ -15,7 +15,8 @@ public class CharacterData : ScriptableObject
 
     public bool player;
     public bool playable;
-    public GameObject[] Sprites; //0:idle 1:
+    [Header("0:idle 1:damaged")]
+    public GameObject[] variableSprites; 
     public Sprite spriteForUI;
     //public GameObject[] abilities;
     public List<GameObject> actionMods;

@@ -9,7 +9,7 @@ public class DebugFunction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { FindObjectOfType<CharactersManager>().GeneratePlayer(characterData, 0); }
+        if (Input.GetKeyDown(KeyCode.Alpha1)) { FindObjectOfType<CharactersManager>().SpawnPlayer(characterData, 7); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
     }

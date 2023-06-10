@@ -43,7 +43,7 @@ public class ExpeditionManager : MonoBehaviour
         currentRoom = GetRoom(currentPos);
 
         GetRoomButton(currentPos).SetState_currentPos();
-        SelectNextRoom();
+        //SelectNextRoom();
     }
     
 

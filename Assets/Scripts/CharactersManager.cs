@@ -22,8 +22,9 @@ public class CharactersManager : MonoBehaviour
         generatedCharactersStatus=new List<Character.CharacterStatus>();
     }
 
-    public void GeneratePlayer(CharacterData characterData,int pos)
+    public void SpawnPlayer(CharacterData characterData,int pos)
     {
+        if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
         generatedCharaStatus.Init(characterData, generatedCharactersStatus.Count);

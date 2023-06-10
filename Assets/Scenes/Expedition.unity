@@ -10209,7 +10209,7 @@ MonoBehaviour:
     background: {fileID: 0}
     minLength: 10
     maxLength: 10
-    branchChance: 50
+    branchChance: 33
     blindChance: 20
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}

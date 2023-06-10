@@ -14,7 +14,8 @@ public class Character : MonoBehaviour
 
         public bool player;
         public bool playable;
-        public GameObject[] Sprites; //0:idle 1:
+        /// <summary>0:idle 1:damaged </summary>
+        public GameObject[] variableSprites; 
         public Sprite spriteForUI;
         //public GameObject[] abilities;
         public List<GameObject> actionMods;
@@ -96,7 +97,7 @@ public class Character : MonoBehaviour
 
             player = data.player;
             playable = data.playable;
-            Sprites = data.Sprites;
+            variableSprites = data.variableSprites;
             spriteForUI = data.spriteForUI;
 
             actionMods = data.actionMods;
@@ -142,12 +143,24 @@ public class Character : MonoBehaviour
         public Vector2Int posIntToVector() { return new Vector2Int(positon % 3, Mathf.FloorToInt(positon / 3)); }
     }
     [SerializeField]
-    CharacterStatus characterStatus;
-    public CharacterStatus GetCharacterStatus() { return characterStatus; }
+    CharacterStatus charaStatus;
+    public CharacterStatus GetCharacterStatus() { return charaStatus; }
 
-    public void Init(CharacterStatus status)
+    Character_Object charaObj;
+
+    public void Init(CharacterStatus status,Character_Object obj)
     {
-        characterStatus = status;
+        charaStatus = status;
+        charaObj = obj;
+
+        charaStatus.HP = charaStatus.maxHP;
+        charaStatus.SAN = charaStatus.maxSAN;
+
+        charaObj.SetCharaSprite(charaStatus.variableSprites[0]);
+        if (!charaStatus.player) { charaObj.DisableSANBar(); }
+        charaObj.SetHPandShieldBar(charaStatus);
+        charaObj.SetSANBar(charaStatus);
+        //TurnIconはラウンド開始時にセット
     }
     //ActionQueue actionQueue;
     //BattleManager battleManager;
