@@ -88,6 +88,32 @@ public class Character : MonoBehaviour
         public bool dead;
         //ここに状態異常入れれるといいね 
 
+        public string GetInfo()
+        {
+            string s = "";
+            if (player && !playable) { s += "操作不可\n"; }
+            //種族
+            s += string.Format("HP/maxHP：{0}/{1}\n", HP, maxHP);
+            if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
+            if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
+            else { s += "\n"; }
+
+            s += string.Format("STR：{0}\n", STR);
+            s += string.Format("DEX：{0}\n", DEX);
+            s += string.Format("INT：{0}\n", INT);
+            s += string.Format("CRIT：{0}％の確率で{1}倍ダメージ\n\n", CRITC, CRITD);
+
+            s += string.Format("EVD：{0}\n", EVD);
+            s += string.Format("ACC：{0}\n\n", ACC);
+
+            s += string.Format("ACT：{0}\n", ACT);
+            s += string.Format("ラウンド毎ターン数：{0}\n\n", turnPerRound);
+
+            if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
+            if (RHeal != 100) { s += string.Format("受ける回復量：{0}％\n", RHeal); }
+            return s;
+        }
+
         public void Init(CharacterData data,int ID)
         {
             fileName = data.fileName;
@@ -160,6 +186,8 @@ public class Character : MonoBehaviour
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
         charaObj.SetHPandShieldBar(charaStatus);
         charaObj.SetSANBar(charaStatus);
+
+        print(charaStatus.GetInfo());//test
         //TurnIconはラウンド開始時にセット
     }
     //ActionQueue actionQueue;
