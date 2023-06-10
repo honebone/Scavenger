@@ -300,8 +300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.43341064, y: -0.0027770996}
-  m_SizeDelta: {x: 750.7877, y: 765.0045}
+  m_AnchoredPosition: {x: -0.15710449, y: -0.0027770996}
+  m_SizeDelta: {x: 754.4725, y: 765.0045}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159053562
 MonoBehaviour:
@@ -894,6 +894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: targetButton 4-3
       objectReference: {fileID: 0}
+    - target: {fileID: 3951952995839493974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3951952995839493976, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -990,6 +994,10 @@ PrefabInstance:
     - target: {fileID: 3951952995839493972, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Name
       value: targetButton 5-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951952995839493974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3951952995839493976, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Pivot.x
@@ -1244,6 +1252,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3138639626691566268, guid: da62efa5d9d76124b9dababa3360a051, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3138639626691566270, guid: da62efa5d9d76124b9dababa3360a051, type: 3}
       propertyPath: m_Name
       value: targetButton_Size2 2-2
@@ -1260,6 +1272,10 @@ PrefabInstance:
     - target: {fileID: 3951952995839493972, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Name
       value: targetButton 5-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951952995839493974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3951952995839493976, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Pivot.x
@@ -5512,6 +5528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: targetButton 6-1
       objectReference: {fileID: 0}
+    - target: {fileID: 3951952995839493974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3951952995839493976, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6428,6 +6448,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: targetButton 5-2
       objectReference: {fileID: 0}
+    - target: {fileID: 3951952995839493974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3951952995839493976, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6627,8 +6651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.89979553, y: 0}
-  m_SizeDelta: {x: 2529.765, y: 765}
+  m_AnchoredPosition: {x: 2.211, y: 0}
+  m_SizeDelta: {x: 2512.3, y: 765}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &826656738
 MonoBehaviour:
@@ -10652,6 +10676,10 @@ PrefabInstance:
     - target: {fileID: 3951952995839493972, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Name
       value: targetButton 3-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3951952995839493974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3951952995839493976, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_Pivot.x
