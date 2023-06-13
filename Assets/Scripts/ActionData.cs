@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+[CreateAssetMenu(fileName = "Act_", menuName = "ScriptableObjects/ActionData")]
+
+public class ActionData : ScriptableObject
+{
+    public string actionName;
+    [TextArea(3,10)]
+    public string actionInfo;
+
+    //public bool useGeneralInfo;
+    [TextArea(3, 10)]
+    public string targetInfo;
+
+    public GameObject actionObject;
+
+    public int decreaseHP_min;
+    public int decreaseHP_max;
+
+    public bool cantCounter;
+    [Header("0:STR 1:DEX 2:INT")]
+    public int refStatus;
+    public float ATKMod_min;
+    public float ATKMod_max;
+    public float ACCMod;
+    public float CRITCMod;
+    public float CRITDMod;
+    public int attackRound = 1;
+    public bool sureHit;
+    public bool unevadable;
+
+    public int healValue_min;
+    public int healValue_max;
+    public float healPercent_min;
+    public float healPercent_max;
+
+    public int SANHeal_min;
+    public int SANHeal_max;
+    public int shieldAdd_min;
+    public int shieldAdd_max;
+    public int shieldRemove_min;
+    public int shieldRemove_max;
+    //StE
+
+    public float moveChance;
+    public int moveUpper;
+    public int moveLower;
+    public int moveForword;
+    public int moveBackword;
+}

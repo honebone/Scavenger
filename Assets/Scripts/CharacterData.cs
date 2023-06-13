@@ -18,7 +18,9 @@ public class CharacterData : ScriptableObject
     [Header("0:idle 1:damaged")]
     public GameObject[] variableSprites; 
     public Sprite spriteForUI;
-    //public GameObject[] abilities;
+
+    public AbilityData[] abilities;
+
     public List<GameObject> actionMods;
 
     //public EquipmentType[] equipableTypes;
@@ -49,8 +51,15 @@ public class CharacterData : ScriptableObject
     //public DropItem[] dropItems;
     public string leftBehind;//死亡時に変身するキャラクター名
 
+    public float debuffRes;
+
     public float stunRes;
     public float bleedRes;
     public float poisonRes;
     public float burnRes;
+
+    public float moveRes;
+    
+
+
 }

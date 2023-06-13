@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4375515343414860991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517219070907830223}
+  - component: {fileID: 5469354595881060001}
+  m_Layer: 0
+  m_Name: p1m
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517219070907830223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375515343414860991}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5469354595881060001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4375515343414860991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84044dd348dd80a4fa514161d0cb7c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaStatus:
+    fileName: 
+    characterTags: 
+    charaName: 
+    size: 0
+    player: 0
+    playable: 0
+    variableSprites: []
+    spriteForUI: {fileID: 0}
+    actionMods: []
+    maxHP: 0
+    maxHP_base: 0
+    maxHP_mul: 0
+    maxSAN: 0
+    maxSAN_base: 0
+    maxSAN_mul: 0
+    STR: 0
+    STR_base: 0
+    STR_mul: 0
+    DEX: 0
+    DEX_base: 0
+    DEX_mul: 0
+    INT: 0
+    INT_base: 0
+    INT_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    leftBehind: 
+    stunRes: 0
+    bleedRes: 0
+    poisonRes: 0
+    burnRes: 0
+    moveRes: 0
+    debuffRes: 0
+    instanceID: 0
+    positon: 0
+    protectedBy: 0
+    HP: 0
+    shield: 0
+    SAN: 0
+    exATK: 0
+    hide: 0
+    focused: 0
+    stun: 0
+    bleed: 0
+    poison: 0
+    burn: 0
+    dead: 0
+  actionDataTest: {fileID: 11400000, guid: 496e5baacfe1f9d458ac3cc8dfc02a97, type: 2}

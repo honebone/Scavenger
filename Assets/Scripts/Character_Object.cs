@@ -31,13 +31,19 @@ public class Character_Object : MonoBehaviour
     [SerializeField]
     Sprite endedTurn;
 
-    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager)
+    Character character;
+    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb,CharactersManager cm)
     {
         HPBar = HPBarObj.GetComponent<Slider>();
         ShieldBar = ShieldBarObj.GetComponent<Slider>();
         SANBar = SANBarObj.GetComponent<Slider>();
+
+        if (characterStatus.positon >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
+
         var c = Instantiate(charaManager, characterManagerParent);
-        c.GetComponent<Character>().Init(characterStatus, this);
+        character=c.GetComponent<Character>();
+        character.Init(characterStatus, this,tb);
+        cm.AddCharacter(character);
     }
 
     public void SetCharaSprite(GameObject sprite)
@@ -60,5 +66,6 @@ public class Character_Object : MonoBehaviour
         SANBar.maxValue = status.maxSAN;
         SANBar.value = status.SAN;
     }
-   
+    
+
 }

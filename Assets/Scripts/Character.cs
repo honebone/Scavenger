@@ -17,7 +17,7 @@ public class Character : MonoBehaviour
         /// <summary>0:idle 1:damaged </summary>
         public GameObject[] variableSprites; 
         public Sprite spriteForUI;
-        //public GameObject[] abilities;
+        public Ability.AbilityStatus[] abilitiesStatus;
         public List<GameObject> actionMods;
 
         //public EquipmentType[] equipableTypes;
@@ -60,6 +60,9 @@ public class Character : MonoBehaviour
         public float bleedRes;
         public float poisonRes;
         public float burnRes;
+
+        public float moveRes;
+        public float debuffRes;
 
 
         public int instanceID;
@@ -126,6 +129,9 @@ public class Character : MonoBehaviour
             variableSprites = data.variableSprites;
             spriteForUI = data.spriteForUI;
 
+            abilitiesStatus = new Ability.AbilityStatus[data.abilities.Length];
+            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i].Init(data.abilities[i]); }
+
             actionMods = data.actionMods;
 
             maxHP_base = data.maxHP;
@@ -159,10 +165,15 @@ public class Character : MonoBehaviour
 
             leftBehind = data.leftBehind;
 
+            debuffRes = data.debuffRes;
+
             stunRes = data.stunRes;
             bleedRes = data.bleedRes;
             poisonRes = data.poisonRes;
             burnRes = data.burnRes;
+
+            moveRes = data.moveRes;
+           
 
             instanceID = ID;
         }
@@ -173,11 +184,13 @@ public class Character : MonoBehaviour
     public CharacterStatus GetCharacterStatus() { return charaStatus; }
 
     Character_Object charaObj;
+    Character_TargetButton targetButton;
 
-    public void Init(CharacterStatus status,Character_Object obj)
+    public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
     {
         charaStatus = status;
         charaObj = obj;
+        targetButton = tb;
 
         charaStatus.HP = charaStatus.maxHP;
         charaStatus.SAN = charaStatus.maxSAN;
@@ -187,39 +200,49 @@ public class Character : MonoBehaviour
         charaObj.SetHPandShieldBar(charaStatus);
         charaObj.SetSANBar(charaStatus);
 
-        print(charaStatus.GetInfo());//test
+        targetButton.SetCharacter(this);
+
+        actionQueue = FindObjectOfType<ActionQueueManager>();
+        battleManager = FindObjectOfType<BattleManager>();
+
         //TurnIconはラウンド開始時にセット
     }
-    //ActionQueue actionQueue;
-    //BattleManager battleManager;
-    //private void Start()
-    //{
-    //    actionQueue = FindObjectOfType<ActionQueue>();
-    //    battleManager = FindObjectOfType<BattleManager>();
-    //}
-    //public void Enqueue(GameObject action) { actionQueue.Enqueue(action); }
 
-    //public void MyTurnStart()
-    //{
-    //    OnTurnStart();
-    //    actionQueue.StartResolve(2);
-    //}
-    //public virtual void MainPhase()
-    //{
-    //    //行動可能か～
-    //    OnActivateAbility();
-    //    actionQueue.StartResolve(3);
-    //}
-    //public void EndPhase()
-    //{
-    //    OnTurnEnd();
-    //    //Resolve開始
-    //    EndMyTurn();
-    //}
-    //public void EndMyTurn()
-    //{
-    //    battleManager.TurnEnd();
-    //}
+    public void DisplayInfo()
+    {
+        FindObjectOfType<InfoText>().SetText(charaStatus.charaName, charaStatus.GetInfo());
+        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus);
+    }
+    ActionQueueManager actionQueue;
+    BattleManager battleManager;
+    private void Start()
+    {
+        actionQueue = FindObjectOfType<ActionQueueManager>();
+        battleManager = FindObjectOfType<BattleManager>();
+    }
+    public void Enqueue(GameObject action,Action.ActionStatus actionStatus) { actionQueue.Enqueue(action,actionStatus); }
+
+    public void MyTurnStart()
+    {
+        OnTurnStart();
+        actionQueue.StartResolve(2);
+    }
+    public virtual void MainPhase()
+    {
+        //行動可能か～
+        OnActivateAbility();
+        actionQueue.StartResolve(3);
+    }
+    public void EndPhase()
+    {
+        OnTurnEnd();
+        //Resolve開始
+        EndMyTurn();
+    }
+    public void EndMyTurn()
+    {
+        battleManager.TurnEnd();
+    }
 
     public virtual void OnBattleStart() { }
     public virtual void OnRoundStart() { }
@@ -231,8 +254,19 @@ public class Character : MonoBehaviour
 
     public virtual void OnActivateAbility() { }
     /// <summary>攻撃命中時</summary>
-    public virtual void OnDamage(int DMG) { }
-    public virtual void OnCRIT() { }
-    public virtual void OnMiss() { }
+    public virtual void OnDamage(int DMG, int ID) { }
+    public virtual void OnCRIT(int ID) { }
+    public virtual void OnKill(int ID) { }
+    public virtual void OnMiss(int ID) { }
+    public virtual void OnHeal(int healValue, int ID) { }
+    //public virtual void OnApplyStE() { }
+    //public virtual void OnRemoveStE() { }
+
+    public virtual void OnDamaged(int DMG, int ID) { }
+    public virtual void OnCRITed(int ID) { }
+    public virtual void OnEvade( int ID) { }
+    public virtual void OnHealed(int healedValue, int ID) { }
+    //public virtual void OnApplyedStE() { }
+    //public virtual void OnRemoveedStE() { }
 }
 

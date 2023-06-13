@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
+  m_Name: A_P1_3Firstaid
+  m_EditorClassIdentifier: 
+  abilityName: "\u5FDC\u6025\u51E6\u7F6E"
+  dontChangeSprite: 0
+  activateSprite: {fileID: 0}
+  spriteIndex: 0
+  abilityType: 2
+  cooldownOnUse: 3
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  actions:
+  - {fileID: 11400000, guid: b4dff7dac20f4f84780c60d595e1ba3d, type: 2}

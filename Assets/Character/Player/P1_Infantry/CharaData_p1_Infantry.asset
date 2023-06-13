@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
   m_Name: CharaData_p1_Infantry
   m_EditorClassIdentifier: 
-  fileName: Infantry
-  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  fileName: P_Infantry
+  manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
   charaName: "\u5175\u58EB"
   characterTags: 02000000
   size: 1
@@ -22,6 +22,10 @@ MonoBehaviour:
   variableSprites:
   - {fileID: 2008618111378349020, guid: 3540d5ef60ed3b0418712411b2a40186, type: 3}
   spriteForUI: {fileID: 21300000, guid: c026c50f0c7bde245a5a0b95fd48fb72, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 12b51d6805e97e245b0d88ad7c24b42f, type: 2}
+  - {fileID: 11400000, guid: b6de6de4c6a89344cab3f6f920f70002, type: 2}
+  - {fileID: 11400000, guid: b06e47a8081dd654e97e76ff915a5daf, type: 2}
   actionMods: []
   maxHP: 50
   maxSAN: 50
@@ -37,7 +41,9 @@ MonoBehaviour:
   GHeal: 100
   RHeal: 100
   leftBehind: 
+  debuffRes: 0
   stunRes: 0
   bleedRes: 0
   poisonRes: 0
   burnRes: 0
+  moveRes: 0

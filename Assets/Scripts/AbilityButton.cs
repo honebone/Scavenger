@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+
+public class AbilityButton : MonoBehaviour
+{
+    [SerializeField]
+    Sprite[] frames;
+
+    [SerializeField]
+    Image frame;
+    [SerializeField]
+    Text nameText;
+    [SerializeField]
+    Text remainText;
+    [SerializeField]
+    Text cooldownText;
+
+    Ability.AbilityStatus abilityStatus;
+
+    public void Init(Ability.AbilityStatus status)
+    {
+        abilityStatus = status;
+        nameText.text = abilityStatus.abilityName;
+        if (abilityStatus.cooldown > 0) { cooldownText.text = abilityStatus.cooldown.ToString(); }
+        if (abilityStatus.hasRemain)
+        {
+            remainText.text = abilityStatus.remain.ToString();
+            if (abilityStatus.remain == 0) { remainText.color = Color.red; }
+        }
+        frame.sprite = frames[(int)abilityStatus.abilityType];
+        frame.color = Definer.colorRef.abilityColors[(int)abilityStatus.abilityType];
+    }
+}

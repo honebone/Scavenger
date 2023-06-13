@@ -54,4 +54,6 @@ public class Utility : MonoBehaviour
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
     }
+
+ 
 }
