@@ -12,11 +12,24 @@ public class Definer : MonoBehaviour
     }
 
     public static ColorRef colorRef;
+    public static GameObject abilityManager_General;
+    public static GameObject actionManager_General;
     [SerializeField]
     ColorRef colorRef_Inspector;
+    [SerializeField]
+    GameObject abilityManager_General_Inspector;
+    [SerializeField]
+    GameObject actionManager_General_Inspector;
+
+    public static Dictionary< AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
+    {AbilityData.AbilityType.other,"“Áê"}, {AbilityData.AbilityType.attack,"UŒ‚"},{AbilityData.AbilityType.heal,"‰ñ•œ"},
+    {AbilityData.AbilityType.buff,"‹­‰»"},{AbilityData.AbilityType.debuff,"ã‘Ì‰»"},{AbilityData.AbilityType.summon,"¢Š«"}
+};
 
     private void Awake()
     {
         colorRef = colorRef_Inspector;
+        abilityManager_General = abilityManager_General_Inspector;
+        actionManager_General=actionManager_General_Inspector;
     }
 }

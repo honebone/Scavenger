@@ -25,7 +25,7 @@ public class Character_Object : MonoBehaviour
     [SerializeField]
     Transform TurnIconParent;
     [SerializeField]
-    Image TurnIcon;
+    GameObject TurnIcon;
     [SerializeField]
     Sprite currentTurn;
     [SerializeField]
@@ -66,6 +66,23 @@ public class Character_Object : MonoBehaviour
         SANBar.maxValue = status.maxSAN;
         SANBar.value = status.SAN;
     }
-    
+
+    int turnCounter;
+    public void SetTurnIcons(int turns)
+    {
+        turnCounter = 0;
+        for (int i = 0; i < TurnIconParent.childCount; i++) { Destroy(TurnIconParent.GetChild(i).gameObject); }
+        for (int i=0;i<turns; i++)
+        {
+            Instantiate(TurnIcon, TurnIconParent);
+        }
+        print(character.GetCharacterStatus().charaName + "のアイコンをセット");
+    }
+    public void SetTurnIcon_End()
+    {
+        TurnIconParent.GetChild(turnCounter).GetComponent<Image>().sprite = endedTurn;
+        turnCounter++;
+        print(character.GetCharacterStatus().charaName + "の終了アイコンをセット");
+    }
 
 }

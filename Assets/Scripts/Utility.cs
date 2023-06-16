@@ -32,12 +32,12 @@ public class Utility : MonoBehaviour
             sum += c;
         }
         float dice = Random.Range(0, sum);
-        Debug.Log(dice.ToString());
+        //Debug.Log(dice.ToString());
         for (int i = 0; i < weight.Length; i++)
         {
             if (dice < weight[i])
             {
-                Debug.Log(i.ToString());
+                //Debug.Log(i.ToString());
                 return i;
             }
             dice -= weight[i];
@@ -54,6 +54,6 @@ public class Utility : MonoBehaviour
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
     }
+    //for (int i = 0; i < Parent.childCount; i++) { Destroy(Parent.GetChild(i).gameObject); }
 
- 
 }

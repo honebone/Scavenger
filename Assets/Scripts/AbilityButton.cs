@@ -19,10 +19,15 @@ public class AbilityButton : MonoBehaviour
     Text cooldownText;
 
     Ability.AbilityStatus abilityStatus;
+    BattleManager battleManager;
+    Character character;
 
-    public void Init(Ability.AbilityStatus status)
+    public void Init(Ability.AbilityStatus status,BattleManager bm,Character chara)
     {
         abilityStatus = status;
+        battleManager = bm;
+        character = chara;
+
         nameText.text = abilityStatus.abilityName;
         if (abilityStatus.cooldown > 0) { cooldownText.text = abilityStatus.cooldown.ToString(); }
         if (abilityStatus.hasRemain)
@@ -32,5 +37,12 @@ public class AbilityButton : MonoBehaviour
         }
         frame.sprite = frames[(int)abilityStatus.abilityType];
         frame.color = Definer.colorRef.abilityColors[(int)abilityStatus.abilityType];
+    }
+
+    public void OnMouseDown()
+    {
+        battleManager.SetSelectedAbility(abilityStatus, character);
+        FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName, BattleManager.selectedAbility.GetInfo());
+        
     }
 }

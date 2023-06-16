@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6914952400909962658}
   - component: {fileID: 4253977479266998867}
   m_Layer: 0
-  m_Name: aobj_gen
+  m_Name: actm_gen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

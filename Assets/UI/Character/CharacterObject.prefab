@@ -921,7 +921,7 @@ MonoBehaviour:
   ShieldBarObj: {fileID: 1800693861671672961}
   SANBarObj: {fileID: 5593853823460346585}
   TurnIconParent: {fileID: 5593853824483837415}
-  TurnIcon: {fileID: 3261402175330581990, guid: a6d0cbc9e0ea7324aaf5d18f170b709a, type: 3}
+  TurnIcon: {fileID: 3261402175330581988, guid: a6d0cbc9e0ea7324aaf5d18f170b709a, type: 3}
   currentTurn: {fileID: 21300000, guid: e37e6d3c1fc066442bc905df63b28923, type: 3}
   endedTurn: {fileID: 21300000, guid: 2c14166eb38f96c44b790fbabb6600a6, type: 3}
 --- !u!1 &5593853824483837416

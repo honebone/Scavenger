@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: CharaData_p1_Infantry
+  m_Name: P1_Infantry
   m_EditorClassIdentifier: 
   fileName: P_Infantry
   manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
@@ -29,9 +29,7 @@ MonoBehaviour:
   actionMods: []
   maxHP: 50
   maxSAN: 50
-  STR: 10
-  DEX: 8
-  INT: 5
+  ATK: 10
   CRITC: 5
   CRITD: 1.5
   EVD: 3

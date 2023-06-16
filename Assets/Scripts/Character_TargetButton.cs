@@ -6,19 +6,45 @@ public class Character_TargetButton : MonoBehaviour
 {
     [SerializeField]
     Image targetIcon;
+    [SerializeField]
+    GameObject button;
+    [SerializeField]
     Character character;
-   public void SetCharacter(Character chara) { character = chara;}
-    public void ResetCharacter() { character = null; }
+
+    List<int> targetGroup = new List<int>();
+    public void SetCharacter(Character chara)
+    {
+        button.SetActive(true);
+        character = chara;
+    }
+    public void ResetCharacter()
+    {
+        button.SetActive(false);
+        character = null;
+    }
+
+    public void SetTargetIcon(List<int> tg)
+    {
+        button.SetActive(true);
+        targetGroup = tg;
+        targetIcon.enabled = true;
+    }
+    public void ResetTargetIcon()
+    {
+        if (character == null) { button.SetActive(true); }
+        targetGroup.Clear();
+        targetIcon.enabled = false;
+    }
 
     public void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (character != null) { character.DisplayInfo(); }
+            if (character != null) {character.DisplayInfo(); }
         }
         if (Input.GetMouseButtonDown(0))
         {
-            
+            if(BattleManager.selectingTarget) { }
         }
     }
 }

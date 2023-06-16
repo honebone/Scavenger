@@ -31,15 +31,9 @@ public class Character : MonoBehaviour
         public int maxSAN_base;
         public float maxSAN_mul;
 
-        public int STR;
-        public int STR_base;
-        public float STR_mul;
-        public int DEX;
-        public int DEX_base;
-        public float DEX_mul;
-        public int INT;
-        public float INT_base;
-        public float INT_mul;
+        public int ATK;
+        public int ATK_base;
+        public float ATK_mul;
 
         public float CRITC;
         public float CRITD;
@@ -101,10 +95,8 @@ public class Character : MonoBehaviour
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
 
-            s += string.Format("STR：{0}\n", STR);
-            s += string.Format("DEX：{0}\n", DEX);
-            s += string.Format("INT：{0}\n", INT);
-            s += string.Format("CRIT：{0}％の確率で{1}倍ダメージ\n\n", CRITC, CRITD);
+            s += string.Format("ATK：{0}\n", ATK);
+            s += string.Format("CRIT：{0}％で{1}倍ダメージ\n\n", CRITC, CRITD);
 
             s += string.Format("EVD：{0}\n", EVD);
             s += string.Format("ACC：{0}\n\n", ACC);
@@ -141,15 +133,9 @@ public class Character : MonoBehaviour
             maxSAN_mul = 100f;
             maxSAN = data.maxSAN;
 
-            STR_base = data.STR;
-            STR_mul = 100f;
-            STR = data.STR;
-            DEX_base = data.DEX;
-            DEX_mul = 100f;
-            DEX = data.DEX;
-            INT_base = data.INT;
-            INT_mul = 100f;
-            INT = data.INT;
+            ATK_base = data.ATK;
+            ATK_mul = 100f;
+            ATK = data.ATK;
 
             CRITC = data.CRITC;
             CRITD = data.CRITD;
@@ -211,8 +197,9 @@ public class Character : MonoBehaviour
     public void DisplayInfo()
     {
         FindObjectOfType<InfoText>().SetText(charaStatus.charaName, charaStatus.GetInfo());
-        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus);
+        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
     }
+
     ActionQueueManager actionQueue;
     BattleManager battleManager;
     private void Start()
@@ -220,10 +207,13 @@ public class Character : MonoBehaviour
         actionQueue = FindObjectOfType<ActionQueueManager>();
         battleManager = FindObjectOfType<BattleManager>();
     }
-    public void Enqueue(GameObject action,Action.ActionStatus actionStatus) { actionQueue.Enqueue(action,actionStatus); }
+    public void Enqueue(Action.ActionStatus actionStatus) { actionQueue.Enqueue(actionStatus); }
+
+    public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
 
     public void MyTurnStart()
     {
+        print(charaStatus.charaName);
         OnTurnStart();
         actionQueue.StartResolve(2);
     }
@@ -236,6 +226,7 @@ public class Character : MonoBehaviour
     public void EndPhase()
     {
         OnTurnEnd();
+        charaObj.SetTurnIcon_End();
         //Resolve開始
         EndMyTurn();
     }

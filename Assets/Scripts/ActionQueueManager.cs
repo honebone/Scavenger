@@ -36,10 +36,13 @@ public class ActionQueueManager : MonoBehaviour
     {
         if (actionQueuePanel.activeSelf) { actionQueuePanel.SetActive(false); }
     }
-    public void Enqueue(GameObject action,Action.ActionStatus status)
+    public void Enqueue(Action.ActionStatus status)
     {
+        GameObject obj;
+        if (status.actionObject != null) { obj = status.actionObject; }
+        else { obj = Definer.actionManager_General; }
         var p = Instantiate(actionInfoPanel, content);
-        var a = Instantiate(action, p.transform);
+        var a = Instantiate(obj, p.transform);
         a.GetComponent<Action>().Init(this, status,p.GetComponent<ActionInfoPanel>());
         inQueueActions.Add(a.GetComponent<Action>());
 

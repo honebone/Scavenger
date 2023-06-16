@@ -18,17 +18,39 @@ public class CharactersManager : MonoBehaviour
     [SerializeField]
     GameObject characterObject;
 
-    [SerializeField]
-    /// <summary>ä±è¬Ç∑ÇÈÇ»ÇÁÇ±Ç¡Çø</summary>
+    [SerializeField]//test
     List<Character> generatedCharacters;
-    /// <summary>ä±è¬Ç∑ÇÈÇ»ÇÁÇ±Ç¡Çø</summary>
     List<Character> existingCharacters;
     public void AddCharacter(Character character)
     {
         generatedCharacters.Add(character);
         existingCharacters.Add(character);
+        existingCharacters.Sort((a, b) => a.GetCharacterStatus().positon - b.GetCharacterStatus().positon);
+        //if (existingCharacters.Count == 0) { existingCharacters.Add(character); }
+        //else
+        //{
+        //    for (int i = 0; i < existingCharacters.Count; i++)
+        //    {
+        //        if (existingCharacters[i].GetCharacterStatus().positon > character.GetCharacterStatus().positon)
+        //        {
+        //            existingCharacters.Insert(i, character);
+        //            break;
+        //        }
+        //    }
+        //}         
     }
     public List<Character> GetExistingCharacters() { return existingCharacters; }
+    public Character GetExistingCharacter(int index) { return existingCharacters[index]; }
+    public List<Character.CharacterStatus> GetExistingCharactersStatus()
+    {
+        List<Character.CharacterStatus> charactersStatus = new List<Character.CharacterStatus>();
+        foreach (Character existingCharacter in existingCharacters) { charactersStatus.Add(existingCharacter.GetCharacterStatus()); }
+        return charactersStatus;
+    }
+    public Character.CharacterStatus GetExistingCharacterStatus(int index)
+    {
+        return existingCharacters[index].GetCharacterStatus();
+    }
 
     private void Start()
     {

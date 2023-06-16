@@ -30,9 +30,7 @@ public class CharacterData : ScriptableObject
     public int maxHP;
     public int maxSAN;
 
-    public int STR;
-    public int DEX;
-    public int INT;
+    public int ATK;
 
     public float CRITC;
     public float CRITD;

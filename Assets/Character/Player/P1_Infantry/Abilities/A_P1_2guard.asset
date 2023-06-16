@@ -13,10 +13,19 @@ MonoBehaviour:
   m_Name: A_P1_2guard
   m_EditorClassIdentifier: 
   abilityName: "\u9632\u5FA1"
+  abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
   spriteIndex: 0
   abilityType: 3
+  targetType: 0
+  targetPlayerSide: 0
+  targetEnemySide: 0
+  targetEmpty: 0
+  selectableFront: 0
+  selectableMid: 0
+  selectableBack: 0
+  ignoreHide: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -24,5 +33,70 @@ MonoBehaviour:
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  actions:
-  - {fileID: 11400000, guid: af835ebb143316046a64d37887138822, type: 2}
+  actionsStaus:
+  - actionName: 
+    actionInfo: 
+    targetInfo: "\u81EA\u8EAB"
+    actionObject: {fileID: 0}
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    attackRound: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    shieldAdd_min: 9
+    shieldAdd_max: 11
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    moveChance: 0
+    moveUpper: 0
+    moveLower: 0
+    moveForword: 0
+    moveBackword: 0
+    actionOwner: 0
+    actionTargets: 
+  - actionName: 
+    actionInfo: 
+    targetInfo: "\u5473\u65B91\u4F53"
+    actionObject: {fileID: 0}
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    attackRound: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    shieldAdd_min: 9
+    shieldAdd_max: 11
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    moveChance: 0
+    moveUpper: 0
+    moveLower: 0
+    moveForword: 0
+    moveBackword: 0
+    actionOwner: 0
+    actionTargets: 

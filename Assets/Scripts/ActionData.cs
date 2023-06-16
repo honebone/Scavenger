@@ -19,8 +19,8 @@ public class ActionData : ScriptableObject
     public int decreaseHP_max;
 
     public bool cantCounter;
-    [Header("0:STR 1:DEX 2:INT")]
-    public int refStatus;
+    [Header("0:melee 1:ranged 2:magic")]
+    public int AttackType;
     public float ATKMod_min;
     public float ATKMod_max;
     public float ACCMod;

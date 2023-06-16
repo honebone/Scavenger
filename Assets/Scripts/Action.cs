@@ -11,9 +11,10 @@ public class Action : MonoBehaviour
     public class ActionStatus
     {
         public string actionName;
+        [TextArea(3, 10)]
         public string actionInfo;
         //public bool useGeneralInfo;
-
+        [TextArea(3, 10)]
         public string targetInfo;
 
         public GameObject actionObject;
@@ -22,8 +23,9 @@ public class Action : MonoBehaviour
         public int decreaseHP_max;
 
         public bool cantCounter;
-        /// <summary>0:STR 1:DEX 2:INT </summary>
-        public int refStatus;
+        [Header("0:melee 1:ranged 2:magic")]
+        /// <summary>0:melee 1:ranged 2:magic</summary>
+        public int attackType;
         public float ATKMod_min;
         public float ATKMod_max;
         public float ACCMod;
@@ -52,12 +54,14 @@ public class Action : MonoBehaviour
         public int moveForword;
         public int moveBackword;
 
+        [Header("以下には手を出すな")]
         public int actionOwner;
         public int[] actionTargets;
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
-            string s = actionInfo + "\n";
+            string s = "";
+            if (actionInfo != "") { s += actionInfo + "\n"; }
 
             s += string.Format("対象：{0}\n", targetInfo);
             if(decreaseHP_max > 0)
@@ -69,35 +73,22 @@ public class Action : MonoBehaviour
             if (ATKMod_max > 0)//攻撃
             {
                 if (cantCounter) { s += "カウンター不可\n"; }
-                switch (refStatus)
+                switch (attackType)
                 {
                     case 0:
-                        s += "STRの";
+                        s += "近接攻撃を行う\n";
                         break;
                     case 1:
-                        s += "DEXの";
+                        s += "遠距離攻撃を行う\n";
                         break;
                     case 2:
-                        s += "INTの";
+                        s += "魔術攻撃を行う\n";
                         break;
                 }
-                s += string.Format("％ダメージ\n", GetValueRange(ATKMod_min, ATKMod_max));
+                s += string.Format("ATKの{0}％ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
                 if (refCharaStatus)
                 {
-                    s += "(";
-                    switch (refStatus)
-                    {
-                        case 0:
-                            s += Mathf.RoundToInt(characterStatus.STR * ATKMod_min / 100).ToString() + "-" + Mathf.RoundToInt(characterStatus.STR * ATKMod_max / 100).ToString();
-                            break;
-                        case 1:
-                            s += Mathf.RoundToInt(characterStatus.DEX * ATKMod_min / 100).ToString() + "-" + Mathf.RoundToInt(characterStatus.DEX * ATKMod_max / 100).ToString();
-                            break;
-                        case 2:
-                            s += Mathf.RoundToInt(characterStatus.INT * ATKMod_min / 100).ToString() + "-" + Mathf.RoundToInt(characterStatus.INT * ATKMod_max / 100).ToString();
-                            break;
-                    }
-                    s += ")";
+                    s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));                   
                 }
                 if (attackRound > 1) { s += "x" + attackRound.ToString() + "回攻撃"; }
                 s += "\n";
@@ -147,7 +138,7 @@ public class Action : MonoBehaviour
             decreaseHP_max = actionData.decreaseHP_max;
 
             cantCounter = actionData.cantCounter;
-            refStatus = actionData.refStatus;
+            attackType = actionData.AttackType;
             ATKMod_min = actionData.ATKMod_min;
             ATKMod_max = actionData.ATKMod_max;
             ACCMod = actionData.ACCMod;

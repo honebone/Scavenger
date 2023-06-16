@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: CharaData_E_Minotauros
+  m_Name: E2_Bat
   m_EditorClassIdentifier: 
-  fileName: E_Minotauros
+  fileName: E_Bat
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
-  charaName: "\u30DF\u30CE\u30BF\u30A6\u30ED\u30B9"
-  characterTags: 0300000002000000
-  size: 2
+  charaName: "\u30B3\u30A6\u30E2\u30EA"
+  characterTags: 03000000
+  size: 1
   player: 0
   playable: 0
   variableSprites:
-  - {fileID: 2041221117895377942, guid: 822436b9bb6723d46bc5314e96d3134f, type: 3}
-  spriteForUI: {fileID: 21300000, guid: 6728d24a6568d3747b5ca60b61ab006e, type: 3}
+  - {fileID: 237718141240429234, guid: d2060a6dd67d44c42aa0587aa28f1088, type: 3}
+  spriteForUI: {fileID: 21300000, guid: a08bf536087b0704590f27bd02a1ff2e, type: 3}
   abilities: []
   actionMods: []
-  maxHP: 120
+  maxHP: 18
   maxSAN: 0
-  ATK: 15
+  ATK: 7
   CRITC: 5
   CRITD: 2
-  EVD: 0
+  EVD: 15
   ACC: 90
-  ACT: 4
+  ACT: 7
   turnPerRound: 1
   GHeal: 100
   RHeal: 100

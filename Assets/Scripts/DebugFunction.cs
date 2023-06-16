@@ -12,7 +12,9 @@ public class DebugFunction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);
+
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);   
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);      
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
