@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Battle_TurnOrderIcon : MonoBehaviour
+{
+    [SerializeField]
+    Image charaSprite;
+    [SerializeField]
+    Image sign;
+    [SerializeField]
+    Image frame;
+
+    [SerializeField]
+    Sprite unrevealedIcon;
+    [SerializeField]
+    Sprite[] signIcons;
+
+    Character character;
+    bool revealed;
+    public void Init(Character chara,bool reveal) {
+        character = chara;
+        revealed = reveal;
+        if (revealed) { charaSprite.sprite = character.GetCharacterStatus().spriteForUI; }
+        else
+        {
+            charaSprite.sprite = unrevealedIcon;
+            frame.color = Color.grey;
+        }
+    }
+    public void SetAbiliySign()
+    {
+        //chrachterのアビリティの予兆を得てhyぷ時
+    }
+    public void Reveal()
+    {
+        if (!revealed)
+        {
+            revealed = true;
+            charaSprite.sprite = character.GetCharacterStatus().spriteForUI;
+            frame.color = Color.white;
+        }
+    }
+    public void OnMouseDown()
+    {
+        if (revealed) { character.DisplayInfo(); }
+        else { FindObjectOfType<InfoText>().SetText("不明", ""); }
+    }
+}

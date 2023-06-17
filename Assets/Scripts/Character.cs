@@ -171,6 +171,7 @@ public class Character : MonoBehaviour
 
     Character_Object charaObj;
     Character_TargetButton targetButton;
+    public Character_Object GetCharacter_Object() { return charaObj; }
 
     public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
     {
@@ -196,8 +197,9 @@ public class Character : MonoBehaviour
 
     public void DisplayInfo()
     {
-        FindObjectOfType<InfoText>().SetText(charaStatus.charaName, charaStatus.GetInfo());
+        FindObjectOfType<InfoText>().SetCharaInfo(charaStatus.charaName, charaStatus.GetInfo(), this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
+        charaObj.SetSelectedIcon(true);
     }
 
     ActionQueueManager actionQueue;
@@ -214,6 +216,7 @@ public class Character : MonoBehaviour
     public void MyTurnStart()
     {
         print(charaStatus.charaName);
+        charaObj.SetTurnIcon_CurentTurn();
         OnTurnStart();
         actionQueue.StartResolve(2);
     }
@@ -221,6 +224,12 @@ public class Character : MonoBehaviour
     {
         //行動可能か～
         OnActivateAbility();
+        StartCoroutine(Test());
+    }
+    IEnumerator Test()
+    {
+        print(charaStatus.charaName + "のターン");
+        yield return new WaitForSeconds(0.5f);
         actionQueue.StartResolve(3);
     }
     public void EndPhase()

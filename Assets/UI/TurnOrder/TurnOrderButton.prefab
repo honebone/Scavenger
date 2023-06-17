@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 2739891163595929064}
   - component: {fileID: 2739891163595929069}
   - component: {fileID: 2739891163595929070}
+  - component: {fileID: 353983878476983547}
   - component: {fileID: 2739891163595929071}
   m_Layer: 5
   m_Name: TurnOrderButton
@@ -145,7 +146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 327a92cc83957644e9578de0f8aeb7c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ba3020a0b7598742918de7e40d04fdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -155,6 +156,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &353983878476983547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739891163595929065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8330caa4aa21045885d4e837ea3890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaSprite: {fileID: 2739891163595929070}
+  sign: {fileID: 2739891163910865290}
+  frame: {fileID: 2739891163297414313}
+  unrevealedIcon: {fileID: 21300000, guid: 1ba3020a0b7598742918de7e40d04fdd, type: 3}
+  signIcons:
+  - {fileID: 21300000, guid: 4ad4251e77d2cae4ebf805067df211fd, type: 3}
+  - {fileID: 21300000, guid: 804518cda511f634b8e0bc1d802719ae, type: 3}
+  - {fileID: 21300000, guid: c7183dfec2c733b41ba72a8029f5e6cd, type: 3}
+  - {fileID: 21300000, guid: 28375ae31ecc8c14c80b1fd740385ac1, type: 3}
+  - {fileID: 21300000, guid: a5550fabca15e4f4c9f110663afb9ace, type: 3}
+  - {fileID: 21300000, guid: c16f685066748964da81f1b893adf6e2, type: 3}
 --- !u!114 &2739891163595929071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +222,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2739891163297414313}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 353983878476983547}
+        m_TargetAssemblyTypeName: Battle_TurnOrderIcon, Assembly-CSharp
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2739891163910865300
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +301,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c16f685066748964da81f1b893adf6e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ad4251e77d2cae4ebf805067df211fd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

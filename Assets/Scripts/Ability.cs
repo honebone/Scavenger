@@ -126,6 +126,13 @@ public class Ability : MonoBehaviour
                 print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                 break;
             case AbilityData.TargetType.single:
+                if (abilityStatus.targetPlayerSide)
+                {
+                    if (abilityStatus.selectableBack)
+                    {
+
+                    }
+                }
                 break;
         }
     }

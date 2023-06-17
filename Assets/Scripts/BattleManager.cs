@@ -1,16 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
     [SerializeField]
     Transform selectedAbilityParent;
+    [SerializeField]
+    Transform turnOrderIconParent;
+    [SerializeField]
+    Text roundText;
+
+    [SerializeField]
+    GameObject turnOrderIcon;
 
     CharactersManager charactersManager;
     Utility utility;
 
+    int roundCount;
+
     List<Character> CharacterInTurnOrder;
+    List<Battle_TurnOrderIcon> TurnOrderIcons=new List<Battle_TurnOrderIcon>();
     int currentTurn;
     bool roundEnd;
 
@@ -27,13 +38,15 @@ public class BattleManager : MonoBehaviour
     public void BattleStart()
     {
         //trigger
+        roundCount=0;
         RoundStart();
     }
 
     void RoundStart()
     {
+        roundCount++;
+        roundText.text=roundCount.ToString();
         //trigger
-
         DicideTurnOrder();
     }
     void DicideTurnOrder()
@@ -50,10 +63,13 @@ public class BattleManager : MonoBehaviour
             ACT.Add(chara.GetCharacterStatus().ACT);
             chara.SetTurnIcon();
         }
-        while(turns.Count > 0)
+        for (int i = 0; turns.Count > 0; i++)
         {
             int a = utility.ChoiceWithWeight(ACT.ToArray());
             CharacterInTurnOrder.Add(charas[a]);
+            var t = Instantiate(turnOrderIcon, turnOrderIconParent);
+            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < 3);
+            TurnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
             turns[a]--;
             if (turns[a] == 0)
             {
@@ -74,6 +90,9 @@ public class BattleManager : MonoBehaviour
     public void TurnEnd()
     {
         currentTurn++;
+        Destroy(turnOrderIconParent.GetChild(0).gameObject);
+        TurnOrderIcons.RemoveAt(0);
+        for(int i = 0; i < Mathf.Min(TurnOrderIcons.Count, 3); i++) { TurnOrderIcons[i].Reveal(); }
         if (currentTurn == CharacterInTurnOrder.Count) { RoundEnd(); }
         else { CharacterInTurnOrder[currentTurn].MyTurnStart(); }
     }

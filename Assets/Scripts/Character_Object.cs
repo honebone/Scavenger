@@ -31,6 +31,9 @@ public class Character_Object : MonoBehaviour
     [SerializeField]
     Sprite endedTurn;
 
+    [SerializeField]
+    Image selectedIcon;
+
     Character character;
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb,CharactersManager cm)
     {
@@ -78,6 +81,10 @@ public class Character_Object : MonoBehaviour
         }
         print(character.GetCharacterStatus().charaName + "のアイコンをセット");
     }
+    public void SetTurnIcon_CurentTurn()
+    {
+        TurnIconParent.GetChild(turnCounter).GetComponent<Image>().sprite = currentTurn;
+    }
     public void SetTurnIcon_End()
     {
         TurnIconParent.GetChild(turnCounter).GetComponent<Image>().sprite = endedTurn;
@@ -85,4 +92,8 @@ public class Character_Object : MonoBehaviour
         print(character.GetCharacterStatus().charaName + "の終了アイコンをセット");
     }
 
+    public void SetSelectedIcon(bool set)
+    {
+        selectedIcon.enabled = set;
+    }
 }

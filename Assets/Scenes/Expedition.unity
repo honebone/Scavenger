@@ -8016,6 +8016,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedAbilityParent: {fileID: 753643253}
+  turnOrderIconParent: {fileID: 704241286}
+  roundText: {fileID: 1659065778}
+  turnOrderIcon: {fileID: 2739891163595929065, guid: 96f7c424c4176724a8ca60ecba4f54e3, type: 3}
 --- !u!114 &914944173
 MonoBehaviour:
   m_ObjectHideFlags: 0
