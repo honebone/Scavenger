@@ -53,6 +53,18 @@ public class Action : MonoBehaviour
         public int moveLower;
         public int moveForword;
         public int moveBackword;
+        
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf,allWoSelf, random }
+        [Header("以下アビリティのみ関係")]
+        public TargetType targetType;
+        public bool targetPlayerSide;
+        public bool targetEnemySide;
+        public bool targetEmpty;
+        public bool selectableFront;
+        public bool selectableMid;
+        public bool selectableBack;
+        [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
+        public bool ignoreHide;
 
         [Header("以下には手を出すな")]
         public int actionOwner;

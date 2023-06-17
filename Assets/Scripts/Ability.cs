@@ -17,14 +17,14 @@ public class Ability : MonoBehaviour
 
         public AbilityData.AbilityType abilityType;
 
-        public AbilityData.TargetType targetType;
-        public bool targetPlayerSide;
-        public bool targetEnemySide;
-        public bool targetEmpty;
-        public bool selectableFront;
-        public bool selectableMid;
-        public bool selectableBack;
-        public bool ignoreHide;
+        //public AbilityData.TargetType targetType;
+        //public bool targetPlayerSide;
+        //public bool targetEnemySide;
+        //public bool targetEmpty;
+        //public bool selectableFront;
+        //public bool selectableMid;
+        //public bool selectableBack;
+        //public bool ignoreHide;
 
         public int cooldownOnUse;
         public bool hasRemain;
@@ -79,14 +79,14 @@ public class Ability : MonoBehaviour
 
             abilityType = data.abilityType;
 
-            targetType = data.targetType;
-            targetPlayerSide = data.targetPlayerSide;
-            targetEnemySide = data.targetEnemySide;
-            targetEmpty = data.targetEmpty;
-            selectableFront = data.selectableFront;
-            selectableMid = data.selectableMid;
-            selectableBack = data.selectableBack;
-            ignoreHide = data.ignoreHide;
+            //targetType = data.targetType;
+            //targetPlayerSide = data.targetPlayerSide;
+            //targetEnemySide = data.targetEnemySide;
+            //targetEmpty = data.targetEmpty;
+            //selectableFront = data.selectableFront;
+            //selectableMid = data.selectableMid;
+            //selectableBack = data.selectableBack;
+            //ignoreHide = data.ignoreHide;
 
             cooldownOnUse = data.cooldownOnUse;
             hasRemain = data.hasRemain;
@@ -110,37 +110,82 @@ public class Ability : MonoBehaviour
     }
 
     Character character;
+    CharactersManager charactersManager;
+    BattleManager battleManager;
     AbilityStatus abilityStatus;
+
+    List<List<int>> targetGroups = new List<List<int>>();
+    int counter;
+
     public void Init(Character chara, AbilityStatus status)
     {
         character = chara;
         abilityStatus= status;
+
+        charactersManager = FindObjectOfType<CharactersManager>();
+        battleManager = FindObjectOfType<BattleManager>();
     }
 
     public virtual string GetInfo() { return abilityStatus.GetInfo(true, character.GetCharacterStatus()); }
     public virtual void StartSelectTarget()
     {
-        switch (abilityStatus.targetType)
+        charactersManager.ResetAllTargetIcons();
+        switch (abilityStatus.actionsStatus[counter].targetType)
         {
-            case AbilityData.TargetType.other:
+            case Action.ActionStatus.TargetType.other:
                 print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                 break;
-            case AbilityData.TargetType.single:
-                if (abilityStatus.targetPlayerSide)
+            case Action.ActionStatus.TargetType.single:
+                for(int i = 0; i < 18; i++)
                 {
-                    if (abilityStatus.selectableBack)
+                    if (i < 9 && abilityStatus.actionsStatus[counter].targetPlayerSide)
                     {
-
+                        if (i < 3 && abilityStatus.actionsStatus[counter].selectableBack)
+                        {
+                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                        }
+                        if (i >= 3 && i < 6 && abilityStatus.actionsStatus[counter].selectableMid)
+                        {
+                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                        }
+                        if (i >= 6 && abilityStatus.actionsStatus[counter].selectableFront)
+                        {
+                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                        }
+                    }
+                    if (i >= 9 && abilityStatus.actionsStatus[counter].targetEnemySide)
+                    {
+                        if (i < 12 && abilityStatus.actionsStatus[counter].selectableFront)
+                        {
+                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                        }
+                        if (i >= 12 && i < 15 && abilityStatus.actionsStatus[counter].selectableMid)
+                        {
+                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                        }
+                        if (i >= 15 && abilityStatus.actionsStatus[counter].selectableBack)
+                        {
+                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                        }
                     }
                 }
                 break;
+            default:
+                print("そのtargetTypeの処理は未実装");
+                break;
         }
     }
-    public virtual void SelectTarget(List<int> targetGroup) { }
-    public void Cancel()
-    {
-
+    public virtual void SelectTarget(List<int> targetGroup) {
+        counter++;
+        targetGroups.Add(targetGroup);     
+        if (counter == abilityStatus.actionsStatus.Length) {
+            charactersManager.ResetAllTargetIcons();
+            print("対象選択完了");
+            battleManager.ResetSelectedAbility();
+        }
+        else { StartSelectTarget(); }
     }
+    
     public void Activate()
     {
 

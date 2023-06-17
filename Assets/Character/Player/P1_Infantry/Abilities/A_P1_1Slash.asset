@@ -33,7 +33,7 @@ MonoBehaviour:
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
-    refStatus: 0
+    attackType: 0
     ATKMod_min: 80
     ATKMod_max: 120
     ACCMod: 0
@@ -57,5 +57,13 @@ MonoBehaviour:
     moveLower: 0
     moveForword: 0
     moveBackword: 0
+    targetType: 1
+    targetPlayerSide: 0
+    targetEnemySide: 1
+    targetEmpty: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 0
+    ignoreHide: 0
     actionOwner: 0
     actionTargets: 

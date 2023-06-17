@@ -8,8 +8,9 @@ public class Character_TargetButton : MonoBehaviour
     Image targetIcon;
     [SerializeField]
     GameObject button;
-    [SerializeField]
     Character character;
+
+    bool selectableAsTarget;
 
     List<int> targetGroup = new List<int>();
     public void SetCharacter(Character chara)
@@ -25,13 +26,15 @@ public class Character_TargetButton : MonoBehaviour
 
     public void SetTargetIcon(List<int> tg)
     {
+        selectableAsTarget = true;
         button.SetActive(true);
         targetGroup = tg;
         targetIcon.enabled = true;
     }
     public void ResetTargetIcon()
     {
-        if (character == null) { button.SetActive(true); }
+        selectableAsTarget = false;
+        if (character == null) { button.SetActive(false); }
         targetGroup.Clear();
         targetIcon.enabled = false;
     }
@@ -44,7 +47,7 @@ public class Character_TargetButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            if(BattleManager.selectingTarget) { }
+            if (selectableAsTarget) { BattleManager.selectedAbility.SelectTarget(targetGroup); }
         }
     }
 }

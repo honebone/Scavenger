@@ -25,6 +25,8 @@ public class BattleManager : MonoBehaviour
     int currentTurn;
     bool roundEnd;
 
+    public static bool inBattle;
+    public static bool selectingAbility;
     public static bool selectingTarget;
     public static Ability selectedAbility;
     private void Start()
@@ -37,7 +39,9 @@ public class BattleManager : MonoBehaviour
 
     public void BattleStart()
     {
+        inBattle = true;
         //trigger
+        
         roundCount=0;
         RoundStart();
     }
@@ -127,6 +131,11 @@ public class BattleManager : MonoBehaviour
         selectingTarget = false;
         for (int i = 0; i < selectedAbilityParent.childCount; i++) { Destroy(selectedAbilityParent.GetChild(i).gameObject); }
         selectedAbility=null;
+    }
+    public bool checkIfMyTurn(Character character)
+    {
+        if (inBattle && CharacterInTurnOrder[currentTurn] == character) { return true; }
+        return false;
     }
 
     public Character GetCurrntTurnChara() { return CharacterInTurnOrder[currentTurn]; }

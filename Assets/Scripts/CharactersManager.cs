@@ -13,6 +13,8 @@ public class CharactersManager : MonoBehaviour
     Character_TargetButton[] targetButtons_size1;
     [SerializeField]
     Character_TargetButton[] targetButtons_size2;
+    [SerializeField]
+    Character_TargetButton[] targetButtons_size3;
 
 
     [SerializeField]
@@ -52,6 +54,58 @@ public class CharactersManager : MonoBehaviour
         return existingCharacters[index].GetCharacterStatus();
     }
 
+    public bool CheckCharaExist(int checkPos)
+    {
+        foreach (Character.CharacterStatus characterStatus in GetExistingCharactersStatus())
+        {
+            switch (characterStatus.size)
+            {
+                case 1:
+                    if (characterStatus.positon == checkPos) { return true; }
+                    break;
+                case 2:
+                    if (characterStatus.positon == checkPos) { return true; }
+                    if (characterStatus.positon + 1 == checkPos) { return true; }
+                    if (characterStatus.positon + 3 == checkPos) { return true; }
+                    if (characterStatus.positon + 4 == checkPos) { return true; }
+                    break;
+                case 3:
+                    if (characterStatus.positon < 9 == checkPos < 9) { return true; }
+                    break;
+            }
+        }
+        return false;
+    }
+    public Character GetCharacterWithPos(int pos)
+    {
+        foreach (Character character in GetExistingCharacters())
+        {
+            Character.CharacterStatus characterStatus = character.GetCharacterStatus();
+            switch (characterStatus.size)
+            {
+                case 1:
+                    if (characterStatus.positon == pos) { return character; }
+                    break;
+                case 2:
+                    if (characterStatus.positon == pos) { return character; }
+                    if (characterStatus.positon + 1 == pos) { return character; }
+                    if (characterStatus.positon + 3 == pos) { return character; }
+                    if (characterStatus.positon + 4 == pos) { return character; }
+                    break;
+                case 3:
+                    if (characterStatus.positon < 9 == pos < 9) { return character; }
+                    break;
+            }
+        }
+        return null;
+    }
+    public void ResetAllTargetIcons()
+    {
+        foreach(Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetTargetIcon(); }
+        foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
+        foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
+
+    }
     private void Start()
     {
         generatedCharacters=new List<Character>();

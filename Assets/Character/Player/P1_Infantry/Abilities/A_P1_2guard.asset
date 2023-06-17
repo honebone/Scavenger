@@ -18,14 +18,6 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   spriteIndex: 0
   abilityType: 3
-  targetType: 0
-  targetPlayerSide: 0
-  targetEnemySide: 0
-  targetEmpty: 0
-  selectableFront: 0
-  selectableMid: 0
-  selectableBack: 0
-  ignoreHide: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -34,7 +26,7 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: 
+  - actionName: "\u9632\u5FA1(\u52B9\u679C1)"
     actionInfo: 
     targetInfo: "\u81EA\u8EAB"
     actionObject: {fileID: 0}
@@ -65,9 +57,17 @@ MonoBehaviour:
     moveLower: 0
     moveForword: 0
     moveBackword: 0
+    targetType: 1
+    targetPlayerSide: 1
+    targetEnemySide: 0
+    targetEmpty: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 1
+    ignoreHide: 0
     actionOwner: 0
     actionTargets: 
-  - actionName: 
+  - actionName: "\u9632\u5FA1(\u52B9\u679C2)"
     actionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionObject: {fileID: 0}
@@ -98,5 +98,13 @@ MonoBehaviour:
     moveLower: 0
     moveForword: 0
     moveBackword: 0
+    targetType: 1
+    targetPlayerSide: 0
+    targetEnemySide: 1
+    targetEmpty: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 0
+    ignoreHide: 0
     actionOwner: 0
     actionTargets: 

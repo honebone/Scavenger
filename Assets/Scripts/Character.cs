@@ -212,6 +212,7 @@ public class Character : MonoBehaviour
     public void Enqueue(Action.ActionStatus actionStatus) { actionQueue.Enqueue(actionStatus); }
 
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
+    public void SetTargetIcon(List<int> tg) { targetButton.SetTargetIcon(tg); }
 
     public void MyTurnStart()
     {
@@ -224,7 +225,8 @@ public class Character : MonoBehaviour
     {
         //çsìÆâ¬î\Ç©Å`
         OnActivateAbility();
-        StartCoroutine(Test());
+        if (charaStatus.playable) { DisplayInfo(); }
+        else { StartCoroutine(Test()); }   
     }
     IEnumerator Test()
     {
