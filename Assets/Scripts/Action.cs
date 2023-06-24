@@ -42,6 +42,8 @@ public class Action : MonoBehaviour
 
         public int SANHeal_min;
         public int SANHeal_max;
+        public int SANDamage_min;
+        public int SANDamage_max;
         public int shieldAdd_min;
         public int shieldAdd_max;
         public int shieldRemove_min;
@@ -119,6 +121,8 @@ public class Action : MonoBehaviour
                 s += "\n";
             }
 
+            if (SANHeal_max > 0) { s += string.Format("正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
+            if (SANDamage_max > 0) { s += string.Format("正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
             if (shieldAdd_max > 0) { s += string.Format("シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
             if (shieldRemove_max > 0) { s += string.Format("シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
 
@@ -167,6 +171,8 @@ public class Action : MonoBehaviour
 
             SANHeal_min = actionData.SANHeal_min;
             SANHeal_max = actionData.SANHeal_max;
+            SANDamage_min = actionData.SANDamage_min;
+            SANDamage_max = actionData.SANDamage_max;
             shieldAdd_min = actionData.shieldAdd_min;
             shieldAdd_max = actionData.shieldAdd_max;
             shieldRemove_min = actionData.shieldRemove_min;
@@ -248,6 +254,21 @@ public class Action : MonoBehaviour
                 int heal = Mathf.RoundToInt(fheal);
 
                 actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
+            }
+
+            if (actionStatus.SANHeal_max > 0)
+            {
+                actionStatus.actionTargets[i].SANHeal(Random.Range(actionStatus.SANHeal_min, actionStatus.SANHeal_max + 1));
+            }
+            if (actionStatus.SANDamage_max > 0)
+            {
+                actionStatus.actionTargets[i].SANDamage(Random.Range(actionStatus.SANDamage_min, actionStatus.SANDamage_max + 1));
+            }
+
+
+            if (actionStatus.shieldAdd_max > 0)
+            {
+                actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
             }
         }
         actionQueueManager.Dequeue(actionStatus.actionName);

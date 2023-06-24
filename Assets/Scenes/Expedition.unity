@@ -6542,6 +6542,7 @@ MonoBehaviour:
     CRIT: {r: 1, g: 0.54365426, b: 0, a: 1}
     evade: {r: 0.33459416, g: 0.6886792, b: 0.45733103, a: 1}
     heal: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
+    shield: {r: 0, g: 1, b: 1, a: 1}
     SANHeal: {r: 1, g: 1, b: 1, a: 1}
     SANDecrease: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     failed_unavailable: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}

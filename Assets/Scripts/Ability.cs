@@ -113,6 +113,7 @@ public class Ability : MonoBehaviour
     CharactersManager charactersManager;
     BattleManager battleManager;
     ActionQueueManager actionQueue;
+    Utility util;
     AbilityStatus abilityStatus;
 
     List<List<int>> targetGroups = new List<List<int>>();
@@ -126,6 +127,7 @@ public class Ability : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         battleManager = FindObjectOfType<BattleManager>();
         actionQueue=FindObjectOfType<ActionQueueManager>();
+        util = FindObjectOfType<Utility>();
     }
 
     public virtual string GetInfo() { return abilityStatus.GetInfo(true, character.GetCharacterStatus()); }
@@ -186,11 +188,14 @@ public class Ability : MonoBehaviour
             battleManager.SetSelectingTarget(false);
             charactersManager.ResetAllTargetIcons();
 
-            for(int i = 0; i < abilityStatus.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
+            string abilityName = util.GetColoredText(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType], abilityStatus.abilityName);
+            FindObjectOfType<InfoText>().AddLogText(string.Format("{0}の{1}", character.GetCharacterStatus().charaName, abilityName));
+
+            for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
             {
                 abilityStatus.actionsStatus[i].actionOwner = character;
                 abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i]));
-
+                
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
                 actionQueue.StartResolve(3);
             }

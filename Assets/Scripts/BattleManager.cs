@@ -54,7 +54,7 @@ public class BattleManager : MonoBehaviour
     {
         roundCount++;
         roundText.text=roundCount.ToString();
-        infoText.AddLogText(string.Format("◇◇ラウンド{0}◇◇", roundCount));
+        infoText.AddLogText(string.Format("\n◇◇ラウンド{0}◇◇", roundCount));
         //trigger
         DicideTurnOrder();
     }

@@ -37,6 +37,8 @@ public class ActionData : ScriptableObject
 
     public int SANHeal_min;
     public int SANHeal_max;
+    public int SANDamage_min;
+    public int SANDamage_max;
     public int shieldAdd_min;
     public int shieldAdd_max;
     public int shieldRemove_min;

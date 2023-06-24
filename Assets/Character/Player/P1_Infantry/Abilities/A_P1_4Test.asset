@@ -22,9 +22,9 @@ MonoBehaviour:
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 0
-  availableMid: 0
-  availableBack: 0
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
   actionsStaus:
   - actionName: 
     actionInfo: 
@@ -48,6 +48,8 @@ MonoBehaviour:
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
+    SANDamage_min: 10
+    SANDamage_max: 20
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0
@@ -57,13 +59,14 @@ MonoBehaviour:
     moveLower: 0
     moveForword: 0
     moveBackword: 0
-    targetType: 0
-    targetPlayerSide: 0
+    targetType: 1
+    targetPlayerSide: 1
     targetEnemySide: 0
     targetEmpty: 0
-    selectableFront: 0
-    selectableMid: 0
-    selectableBack: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 1
     ignoreHide: 0
     actionOwner: {fileID: 0}
-    actionTargets: []
+    actionTargets:
+    - {fileID: 0}

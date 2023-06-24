@@ -15,6 +15,7 @@ public class Definer : MonoBehaviour
         public Color CRIT;
         public Color evade;
         public Color heal;
+        public Color shield;
         public Color SANHeal;
         public Color SANDecrease;
 

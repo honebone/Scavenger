@@ -43,11 +43,13 @@ MonoBehaviour:
     sureHit: 0
     unevadable: 0
     healValue_min: 5
-    healValue_max: 15
+    healValue_max: 10
     healPercent_min: 0
     healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
+    SANHeal_min: 5
+    SANHeal_max: 8
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0

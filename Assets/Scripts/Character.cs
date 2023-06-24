@@ -218,6 +218,7 @@ public class Character : MonoBehaviour
     public void MyTurnStart()
     {
         charaObj.SetTurnIcon_CurentTurn();
+        infoText.AddLogText(string.Format("<{0}のターン>", charaStatus.charaName));
         OnTurnStart();
         actionQueue.StartResolve(2);
     }
@@ -334,6 +335,30 @@ public class Character : MonoBehaviour
         infoText.AddLogText(string.Format("{0}はHPを{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.heal, value.ToString())));
         charaObj.SetHPandShieldBar();
     }
+    public void SANHeal(int value)
+    {
+        charaStatus.SAN = Mathf.Min(charaStatus.SAN + value, charaStatus.maxSAN);
+        charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANHeal);
+        infoText.AddLogText(string.Format("{0}は正気度を{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANHeal, value.ToString())));
+        charaObj.SetSANBar();
+    }
+    public void SANDamage(int value)
+    {
+        charaStatus.SAN -= value;
+        charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANDecrease);
+        infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
+        charaObj.SetSANBar();
+        if (charaStatus.SAN <= 0) { Die(1); }
+    }
+
+    public void AddShield(int value)
+    {
+        charaStatus.shield += value;
+        charaObj.SetDamageText(value.ToString(), Definer.colorRef.shield);
+        infoText.AddLogText(string.Format("{0}はシールドを{1}得た", charaStatus.charaName, util.GetColoredText(Definer.colorRef.shield, value.ToString())));
+        charaObj.SetHPandShieldBar();
+    }
+
     /// <summary>0:HP0 1:SAN0</summary>
     void Die(int cause)
     {
