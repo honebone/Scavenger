@@ -47,7 +47,7 @@ public class Character_Object : MonoBehaviour
         ShieldBar = ShieldBarObj.GetComponent<Slider>();
         SANBar = SANBarObj.GetComponent<Slider>();
 
-        if (characterStatus.positon >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
+        if (characterStatus.position >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
 
         var c = Instantiate(charaManager, characterManagerParent);
         character=c.GetComponent<Character>();

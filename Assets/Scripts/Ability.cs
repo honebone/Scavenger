@@ -100,11 +100,12 @@ public class Ability : MonoBehaviour
             actionsStatus = data.actionsStaus;
 
             //actionsStatus = new Action.ActionStatus[data.actions.Length];
-            //for (int i = 0; i < actionsStatus.Length; i++)
-            //{
-            //    actionsStatus[i] = new Action.ActionStatus();
-            //    actionsStatus[i].Init(data.actions[i]);
-            //}
+            for (int i = 0; i < actionsStatus.Length; i++)
+            {
+                actionsStatus[i].actionName = abilityName;
+                actionsStatus[i].abilityEffect = true;
+                actionsStatus[i].abilityType = abilityType;
+            }
 
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ActionQueueManager : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class ActionQueueManager : MonoBehaviour
     GameObject actionQueuePanel;
     [SerializeField]
     Transform content;
+
+    [SerializeField]
+    float abilityPause;
+    [SerializeField]
+    Text abilityNameText_player;
+    [SerializeField]
+    Text abilityNameText_enemy;
+
     List<Action> inQueueActions;
 
     BattleManager battleManager;
@@ -48,7 +57,7 @@ public class ActionQueueManager : MonoBehaviour
         a.GetComponent<Action>().Init(this, status,p.GetComponent<ActionInfoPanel>(),util);
         inQueueActions.Add(a.GetComponent<Action>());
 
-        OpenQueuePanel();
+        if (!status.abilityEffect) { OpenQueuePanel(); } 
     }
 
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
@@ -58,13 +67,38 @@ public class ActionQueueManager : MonoBehaviour
         resolveMode = mode;
         if (inQueueActions.Count > 0)
         {
-            Debug.Log("resolve開始");
-            resolving = true;
+            if (inQueueActions[0].GetActionStatus().abilityEffect)//アビリティ効果はプレイヤーの入力待たずに解決する
+            {
+                StartCoroutine(ResolveAbility());
+            }
+            else//アビリティ以外なら解決ボタンが押されるのを待つ
+            {
+                Debug.Log("resolve開始");
+                resolving = true;
+            }          
         }
         else
         {
             EndResolve();
         }
+    }
+    IEnumerator ResolveAbility()
+    {
+        Action.ActionStatus actionStatus = inQueueActions[0].GetActionStatus();
+
+        Text abilityNameText;
+        if (actionStatus.actionOwner.GetCharacterStatus().position < 9) { abilityNameText = abilityNameText_player; }
+        else { abilityNameText = abilityNameText_enemy; }
+
+        abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
+        abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
+
+        yield return new WaitForSeconds(abilityPause);
+
+        abilityNameText.text = "";
+        abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Color.clear;
+
+        ResolveAbilityEffect();
     }
 
     public void Dequeue(string actionName)
@@ -72,12 +106,24 @@ public class ActionQueueManager : MonoBehaviour
         Debug.Log(string.Format("{0}を解決", actionName));
         inQueueActions.RemoveAt(0);
         Destroy(content.transform.GetChild(0).gameObject);
-        if (inQueueActions.Count == 0)
+
+        if (inQueueActions.Count == 0)//キューにアクションが残ってなければ解決終了
         {
             resolving = false;
             Debug.Log("resolve終了");
             EndResolve();
             CloseQueuePanel();
+        }
+        else
+        {
+            if (inQueueActions[0].GetActionStatus().abilityEffect)//アビリティ効果はプレイヤーの入力待たずに解決する
+            {
+                ResolveAbilityEffect();
+            }
+            else//アビリティ以外なら解決ボタンが押されるのを待つ
+            {
+                resolving = true;
+            }
         }
 
     }
@@ -111,5 +157,9 @@ public class ActionQueueManager : MonoBehaviour
         {
             inQueueActions[0].Resolve();
         }
+    }
+    void ResolveAbilityEffect()
+    {
+        inQueueActions[0].Resolve();
     }
 }

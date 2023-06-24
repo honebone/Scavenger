@@ -27,7 +27,7 @@ public class CharactersManager : MonoBehaviour
     {
         generatedCharacters.Add(character);
         existingCharacters.Add(character);
-        existingCharacters.Sort((a, b) => a.GetCharacterStatus().positon - b.GetCharacterStatus().positon);
+        existingCharacters.Sort((a, b) => a.GetCharacterStatus().position - b.GetCharacterStatus().position);
         //if (existingCharacters.Count == 0) { existingCharacters.Add(character); }
         //else
         //{
@@ -67,16 +67,16 @@ public class CharactersManager : MonoBehaviour
             switch (characterStatus.size)
             {
                 case 1:
-                    if (characterStatus.positon == checkPos) { return true; }
+                    if (characterStatus.position == checkPos) { return true; }
                     break;
                 case 2:
-                    if (characterStatus.positon == checkPos) { return true; }
-                    if (characterStatus.positon + 1 == checkPos) { return true; }
-                    if (characterStatus.positon + 3 == checkPos) { return true; }
-                    if (characterStatus.positon + 4 == checkPos) { return true; }
+                    if (characterStatus.position == checkPos) { return true; }
+                    if (characterStatus.position + 1 == checkPos) { return true; }
+                    if (characterStatus.position + 3 == checkPos) { return true; }
+                    if (characterStatus.position + 4 == checkPos) { return true; }
                     break;
                 case 3:
-                    if (characterStatus.positon < 9 == checkPos < 9) { return true; }
+                    if (characterStatus.position < 9 == checkPos < 9) { return true; }
                     break;
             }
         }
@@ -90,16 +90,16 @@ public class CharactersManager : MonoBehaviour
             switch (characterStatus.size)
             {
                 case 1:
-                    if (characterStatus.positon == pos) { return character; }
+                    if (characterStatus.position == pos) { return character; }
                     break;
                 case 2:
-                    if (characterStatus.positon == pos) { return character; }
-                    if (characterStatus.positon + 1 == pos) { return character; }
-                    if (characterStatus.positon + 3 == pos) { return character; }
-                    if (characterStatus.positon + 4 == pos) { return character; }
+                    if (characterStatus.position == pos) { return character; }
+                    if (characterStatus.position + 1 == pos) { return character; }
+                    if (characterStatus.position + 3 == pos) { return character; }
+                    if (characterStatus.position + 4 == pos) { return character; }
                     break;
                 case 3:
-                    if (characterStatus.positon < 9 == pos < 9) { return character; }
+                    if (characterStatus.position < 9 == pos < 9) { return character; }
                     break;
             }
         }
@@ -125,7 +125,7 @@ public class CharactersManager : MonoBehaviour
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
         generatedCharaStatus.Init(characterData, generatedCharacters.Count);
-        generatedCharaStatus.positon = pos;
+        generatedCharaStatus.position = pos;
 
         Vector2 worldPos = new Vector2Int();
         Character_TargetButton tb=GetComponent<Character_TargetButton>();
@@ -153,7 +153,7 @@ public class CharactersManager : MonoBehaviour
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
         generatedCharaStatus.Init(characterData, generatedCharacters.Count);
-        generatedCharaStatus.positon = pos;
+        generatedCharaStatus.position = pos;
 
         Vector2 worldPos = new Vector2Int();
         Character_TargetButton tb = GetComponent<Character_TargetButton>();

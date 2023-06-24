@@ -61,7 +61,7 @@ public class Character : MonoBehaviour
 
 
         public int instanceID;
-        public int positon;
+        public int position;
 
         /// <summary>©g‚ğ‚©‚Î‚Á‚Ä‚¢‚éƒLƒƒƒ‰‚ÌinstanceID</summary>
         public int protectedBy;
@@ -165,7 +165,7 @@ public class Character : MonoBehaviour
 
             instanceID = ID;
         }
-        public Vector2Int posIntToVector() { return new Vector2Int(positon % 3, Mathf.FloorToInt(positon / 3)); }
+        public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
     }
     [SerializeField]
     CharacterStatus charaStatus;

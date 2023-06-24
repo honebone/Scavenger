@@ -7,6 +7,7 @@ public class AbilityData : ScriptableObject
 {
     public string abilityName;
 
+    [Header("設定しなければ汎用的なオブジェクトになる")]
     public GameObject abilityManager;
 
     public bool dontChangeSprite;

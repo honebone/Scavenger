@@ -10,6 +10,7 @@ public class Action : MonoBehaviour
     [System.Serializable]
     public class ActionStatus
     {
+        [Header("アビリティのactionの場合は設定不要")]
         public string actionName;
         [TextArea(3, 10)]
         public string actionInfo;
@@ -17,6 +18,7 @@ public class Action : MonoBehaviour
         [TextArea(3, 10)]
         public string targetInfo;
 
+        [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
 
         public int decreaseHP_min;
@@ -69,6 +71,9 @@ public class Action : MonoBehaviour
         public bool ignoreHide;
 
         [Header("以下には手を出すな")]
+        public bool abilityEffect;
+        public AbilityData.AbilityType abilityType;
+
         public Character actionOwner;
         public List<Character> actionTargets;
 
@@ -194,6 +199,7 @@ public class Action : MonoBehaviour
         util = u;
         infoPanel.Init(actionStatus.actionName, actionStatus.GetInfo(false, new Character.CharacterStatus()));
     }
+    public ActionStatus GetActionStatus() { return actionStatus; }
 
     public virtual void Resolve()
     {
