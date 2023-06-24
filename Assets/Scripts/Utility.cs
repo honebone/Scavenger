@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Utility : MonoBehaviour
 {
+    [SerializeField]
+    bool debug;
     public bool Probability(float fPercent)
     {
         bool result;
@@ -21,7 +23,7 @@ public class Utility : MonoBehaviour
         {
             result = false;
         }
-        // Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result);
+        if (debug) { Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); }
         return result;
     }
     public int ChoiceWithWeight(float[] weight)

@@ -112,6 +112,7 @@ public class Ability : MonoBehaviour
     Character character;
     CharactersManager charactersManager;
     BattleManager battleManager;
+    ActionQueueManager actionQueue;
     AbilityStatus abilityStatus;
 
     List<List<int>> targetGroups = new List<List<int>>();
@@ -124,6 +125,7 @@ public class Ability : MonoBehaviour
 
         charactersManager = FindObjectOfType<CharactersManager>();
         battleManager = FindObjectOfType<BattleManager>();
+        actionQueue=FindObjectOfType<ActionQueueManager>();
     }
 
     public virtual string GetInfo() { return abilityStatus.GetInfo(true, character.GetCharacterStatus()); }
@@ -177,17 +179,24 @@ public class Ability : MonoBehaviour
     }
     public virtual void SelectTarget(List<int> targetGroup) {
         counter++;
-        targetGroups.Add(targetGroup);     
-        if (counter == abilityStatus.actionsStatus.Length) {
+        targetGroups.Add(new List<int>(targetGroup));
+
+        if (counter == abilityStatus.actionsStatus.Length) {//action数分対象の選択をしたら
+            battleManager.SetSelectingAbility(false);
+            battleManager.SetSelectingTarget(false);
             charactersManager.ResetAllTargetIcons();
-            print("対象選択完了");
+
+            for(int i = 0; i < abilityStatus.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
+            {
+                abilityStatus.actionsStatus[i].actionOwner = character;
+                abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i]));
+
+                actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
+                actionQueue.StartResolve(3);
+            }
+
             battleManager.ResetSelectedAbility();
         }
-        else { StartSelectTarget(); }
-    }
-    
-    public void Activate()
-    {
-
+        else { StartSelectTarget(); }//まだ選択が残ってるなら
     }
 }

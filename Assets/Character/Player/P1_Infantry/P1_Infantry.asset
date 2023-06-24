@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9fa74365ae8a8b047b2f2b4af4f8c067, type: 2}
   - {fileID: 11400000, guid: a0c2140d072d9d549bfbf5c93b08f8ef, type: 2}
   actionMods: []
+  surviveFatalWounds: 1
   maxHP: 50
   maxSAN: 50
   ATK: 10

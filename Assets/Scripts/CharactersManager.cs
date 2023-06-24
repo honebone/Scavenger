@@ -41,7 +41,13 @@ public class CharactersManager : MonoBehaviour
         //    }
         //}         
     }
-    public List<Character> GetExistingCharacters() { return existingCharacters; }
+    public List<Character> GetExistingCharacters_All() { return existingCharacters; }
+    public List<Character> GetExistingCharacters(List<int> positions)
+    {
+        List<Character> characters = new List<Character>();
+        foreach (int pos in positions) { characters.Add(GetCharacterWithPos(pos)); }
+        return characters;
+    }
     public Character GetExistingCharacter(int index) { return existingCharacters[index]; }
     public List<Character.CharacterStatus> GetExistingCharactersStatus()
     {
@@ -78,7 +84,7 @@ public class CharactersManager : MonoBehaviour
     }
     public Character GetCharacterWithPos(int pos)
     {
-        foreach (Character character in GetExistingCharacters())
+        foreach (Character character in GetExistingCharacters_All())
         {
             Character.CharacterStatus characterStatus = character.GetCharacterStatus();
             switch (characterStatus.size)

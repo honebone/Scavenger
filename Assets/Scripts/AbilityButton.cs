@@ -43,6 +43,6 @@ public class AbilityButton : MonoBehaviour
     {
         battleManager.SetSelectedAbility(abilityStatus, character);
         FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName, BattleManager.selectedAbility.GetInfo());
-        if (battleManager.checkIfMyTurn(character)) { BattleManager.selectedAbility.StartSelectTarget(); }       
+        if (battleManager.checkIfMyTurn(character)&&BattleManager.selectingAbility) { BattleManager.selectedAbility.StartSelectTarget(); } //自分のターン中かつアビリティ選択中なら、対象選択開始      
     }
 }

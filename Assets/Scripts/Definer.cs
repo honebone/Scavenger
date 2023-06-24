@@ -9,6 +9,19 @@ public class Definer : MonoBehaviour
     {
         /// <summary>0:other 1:attack 2:heal 3:buff 4:debuff 5:summon</summary>
         public Color[] abilityColors;
+
+        public Color decreaseHP;
+        public Color damage;
+        public Color CRIT;
+        public Color evade;
+        public Color heal;
+        public Color SANHeal;
+        public Color SANDecrease;
+
+
+        public Color failed_unavailable;
+
+
     }
 
     public static ColorRef colorRef;

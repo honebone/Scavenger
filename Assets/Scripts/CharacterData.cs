@@ -27,6 +27,8 @@ public class CharacterData : ScriptableObject
     //[Header("equipableTypes‚Æ—v‘f”‚ğ‡‚í‚¹‚é")]
     //public Equipment[] equipments;
 
+    [Header("HP‚ª0‚Ì‚ÉUŒ‚‚ğó‚¯‚é‚Æ€–S‚·‚é")]
+    public bool surviveFatalWounds;
     public int maxHP;
     public int maxSAN;
 

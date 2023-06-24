@@ -24,6 +24,7 @@ MonoBehaviour:
   spriteForUI: {fileID: 21300000, guid: 327a92cc83957644e9578de0f8aeb7c3, type: 3}
   abilities: []
   actionMods: []
+  surviveFatalWounds: 0
   maxHP: 18
   maxSAN: 0
   ATK: 7

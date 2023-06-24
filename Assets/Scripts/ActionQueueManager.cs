@@ -14,6 +14,7 @@ public class ActionQueueManager : MonoBehaviour
     List<Action> inQueueActions;
 
     BattleManager battleManager;
+    Utility util;
 
     bool resolving;
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
@@ -23,6 +24,7 @@ public class ActionQueueManager : MonoBehaviour
     {
         inQueueActions = new List<Action>();
         battleManager = FindObjectOfType<BattleManager>();
+        util = FindObjectOfType<Utility>();
     }
     public void ToggleQueuePanel()
     {
@@ -43,7 +45,7 @@ public class ActionQueueManager : MonoBehaviour
         else { obj = Definer.actionManager_General; }
         var p = Instantiate(actionInfoPanel, content);
         var a = Instantiate(obj, p.transform);
-        a.GetComponent<Action>().Init(this, status,p.GetComponent<ActionInfoPanel>());
+        a.GetComponent<Action>().Init(this, status,p.GetComponent<ActionInfoPanel>(),util);
         inQueueActions.Add(a.GetComponent<Action>());
 
         OpenQueuePanel();

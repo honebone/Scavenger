@@ -9,6 +9,8 @@ public class Chara_P_Infantry : Character
    
     public override void OnTurnStart()
     {
+        actionStatusTest.actionOwner = this;
+        actionStatusTest.actionTargets = new List<Character>() { this };
         //Enqueue(actionStatusTest);
         base.OnTurnStart();
     }

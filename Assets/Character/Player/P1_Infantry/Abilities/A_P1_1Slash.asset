@@ -65,5 +65,6 @@ MonoBehaviour:
     selectableMid: 1
     selectableBack: 0
     ignoreHide: 0
-    actionOwner: 0
-    actionTargets: 
+    actionOwner: {fileID: 0}
+    actionTargets:
+    - {fileID: 0}

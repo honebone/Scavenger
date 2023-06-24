@@ -17,15 +17,18 @@ public class BattleManager : MonoBehaviour
 
     CharactersManager charactersManager;
     Utility utility;
+    InfoText infoText;
 
     int roundCount;
 
     List<Character> CharacterInTurnOrder;
     List<Battle_TurnOrderIcon> TurnOrderIcons=new List<Battle_TurnOrderIcon>();
     int currentTurn;
+    /// <summary>nextRoundButtonを押せるかどうか</summary>
     bool roundEnd;
 
     public static bool inBattle;
+    public static bool inRound;
     public static bool selectingAbility;
     public static bool selectingTarget;
     public static Ability selectedAbility;
@@ -33,6 +36,7 @@ public class BattleManager : MonoBehaviour
     {
         charactersManager = FindObjectOfType<CharactersManager>();
         utility =FindObjectOfType<Utility>();
+        infoText = FindObjectOfType<InfoText>();
 
         CharacterInTurnOrder=new List<Character>();
     }
@@ -50,6 +54,7 @@ public class BattleManager : MonoBehaviour
     {
         roundCount++;
         roundText.text=roundCount.ToString();
+        infoText.AddLogText(string.Format("◇◇ラウンド{0}◇◇", roundCount));
         //trigger
         DicideTurnOrder();
     }
@@ -57,7 +62,7 @@ public class BattleManager : MonoBehaviour
     {
         currentTurn = 0;
         CharacterInTurnOrder.Clear();
-        List<Character> charas = new List<Character>(charactersManager.GetExistingCharacters());
+        List<Character> charas = new List<Character>(charactersManager.GetExistingCharacters_All());
         List<int> turns = new List<int>();
         List<float> ACT = new List<float>();
 
@@ -89,6 +94,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("ラウンド開始");
         yield return new WaitForSeconds(1f);
+        inRound = true;
         CharacterInTurnOrder[currentTurn].MyTurnStart();
     }
     public void TurnEnd()
@@ -104,6 +110,7 @@ public class BattleManager : MonoBehaviour
     public void RoundEnd()
     {
         //trigger
+        inRound = false;
         roundEnd = true;
         Debug.Log("ラウンド終了");
     }
@@ -120,21 +127,25 @@ public class BattleManager : MonoBehaviour
     public void SetSelectedAbility(Ability.AbilityStatus abilityStatus,Character character)
     {
         for (int i = 0; i < selectedAbilityParent.childCount; i++) { Destroy(selectedAbilityParent.GetChild(i).gameObject); }
-        var a = Instantiate(abilityStatus.abilityManager, selectedAbilityParent);
+        GameObject abilityManager;
+        if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }
+        else { abilityManager=Definer.abilityManager_General; }
+        var a = Instantiate(abilityManager, selectedAbilityParent);
         a.GetComponent<Ability>().Init(character, abilityStatus);
         selectedAbility = a.GetComponent<Ability>();
-        selectingTarget=true;
+        if (selectingAbility) { SetSelectingTarget(true); }
     }
     /// <summary>アビリティの対象選択が終了したときに呼ぶ </summary>
     public void ResetSelectedAbility()
     {
-        selectingTarget = false;
         for (int i = 0; i < selectedAbilityParent.childCount; i++) { Destroy(selectedAbilityParent.GetChild(i).gameObject); }
         selectedAbility=null;
     }
+    public void SetSelectingAbility(bool f) { selectingAbility = f; }
+    public void SetSelectingTarget(bool f) { selectingTarget = f; }
     public bool checkIfMyTurn(Character character)
     {
-        if (inBattle && CharacterInTurnOrder[currentTurn] == character) { return true; }
+        if (inBattle && inRound && CharacterInTurnOrder[currentTurn] == character) { return true; }
         return false;
     }
 

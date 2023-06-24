@@ -18,14 +18,6 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   spriteIndex: 0
   abilityType: 5
-  targetType: 0
-  targetPlayerSide: 0
-  targetEnemySide: 0
-  targetEmpty: 0
-  selectableFront: 0
-  selectableMid: 0
-  selectableBack: 0
-  ignoreHide: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -33,4 +25,45 @@ MonoBehaviour:
   availableFront: 0
   availableMid: 0
   availableBack: 0
-  actionsStaus: []
+  actionsStaus:
+  - actionName: 
+    actionInfo: 
+    targetInfo: 
+    actionObject: {fileID: 0}
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    attackRound: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    moveChance: 0
+    moveUpper: 0
+    moveLower: 0
+    moveForword: 0
+    moveBackword: 0
+    targetType: 0
+    targetPlayerSide: 0
+    targetEnemySide: 0
+    targetEmpty: 0
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
+    ignoreHide: 0
+    actionOwner: {fileID: 0}
+    actionTargets: []

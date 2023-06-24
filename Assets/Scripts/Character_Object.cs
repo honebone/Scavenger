@@ -34,6 +34,12 @@ public class Character_Object : MonoBehaviour
     [SerializeField]
     Image selectedIcon;
 
+    [SerializeField]
+    Transform damageTextParent;
+    [SerializeField]
+    GameObject damagText;
+    
+
     Character character;
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb,CharactersManager cm)
     {
@@ -56,16 +62,18 @@ public class Character_Object : MonoBehaviour
     }
 
     public void DisableSANBar() { SANBarObj.SetActive(false); }
-    public void SetHPandShieldBar(Character.CharacterStatus status)
+    public void SetHPandShieldBar()
     {
+        Character.CharacterStatus status = character.GetCharacterStatus();
         ShieldBar.maxValue = status.maxHP + status.shield;
         ShieldBar.value = status.HP + status.shield;
 
         HPBar.maxValue = status.maxHP + status.shield;
         HPBar.value = status.HP;
     }
-    public void SetSANBar(Character.CharacterStatus status)
+    public void SetSANBar()
     {
+        Character.CharacterStatus status = character.GetCharacterStatus();
         SANBar.maxValue = status.maxSAN;
         SANBar.value = status.SAN;
     }
@@ -79,7 +87,6 @@ public class Character_Object : MonoBehaviour
         {
             Instantiate(TurnIcon, TurnIconParent);
         }
-        print(character.GetCharacterStatus().charaName + "のアイコンをセット");
     }
     public void SetTurnIcon_CurentTurn()
     {
@@ -89,11 +96,16 @@ public class Character_Object : MonoBehaviour
     {
         TurnIconParent.GetChild(turnCounter).GetComponent<Image>().sprite = endedTurn;
         turnCounter++;
-        print(character.GetCharacterStatus().charaName + "の終了アイコンをセット");
     }
 
     public void SetSelectedIcon(bool set)
     {
         selectedIcon.enabled = set;
+    }
+
+    public void SetDamageText(string text,Color color)
+    {
+        var d = Instantiate(damagText, damageTextParent);
+        d.GetComponent<DamageText>().Init(text, color);
     }
 }

@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
         //[Header("equipableTypesと要素数を合わせる")]
         //public Equipment[] equipments;
 
+        public bool surviveFatalWounds;
         public int maxHP;
         public int maxHP_base;
         public float maxHP_mul;
@@ -126,6 +127,7 @@ public class Character : MonoBehaviour
 
             actionMods = data.actionMods;
 
+            surviveFatalWounds = data.surviveFatalWounds;
             maxHP_base = data.maxHP;
             maxHP_mul = 100f;
             maxHP = data.maxHP;
@@ -173,6 +175,11 @@ public class Character : MonoBehaviour
     Character_TargetButton targetButton;
     public Character_Object GetCharacter_Object() { return charaObj; }
 
+    ActionQueueManager actionQueue;
+    BattleManager battleManager;
+    Utility util;
+    InfoText infoText;
+
     public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
     {
         charaStatus = status;
@@ -184,30 +191,24 @@ public class Character : MonoBehaviour
 
         charaObj.SetCharaSprite(charaStatus.variableSprites[0]);
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
-        charaObj.SetHPandShieldBar(charaStatus);
-        charaObj.SetSANBar(charaStatus);
+        charaObj.SetHPandShieldBar();
+        charaObj.SetSANBar();
 
         targetButton.SetCharacter(this);
 
         actionQueue = FindObjectOfType<ActionQueueManager>();
         battleManager = FindObjectOfType<BattleManager>();
+        util = FindObjectOfType<Utility>();
+        infoText = FindObjectOfType<InfoText>();
 
         //TurnIconはラウンド開始時にセット
     }
 
     public void DisplayInfo()
     {
-        FindObjectOfType<InfoText>().SetCharaInfo(charaStatus.charaName, charaStatus.GetInfo(), this);
+        infoText.SetCharaInfo(charaStatus.charaName, charaStatus.GetInfo(), this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
         charaObj.SetSelectedIcon(true);
-    }
-
-    ActionQueueManager actionQueue;
-    BattleManager battleManager;
-    private void Start()
-    {
-        actionQueue = FindObjectOfType<ActionQueueManager>();
-        battleManager = FindObjectOfType<BattleManager>();
     }
     public void Enqueue(Action.ActionStatus actionStatus) { actionQueue.Enqueue(actionStatus); }
 
@@ -216,7 +217,6 @@ public class Character : MonoBehaviour
 
     public void MyTurnStart()
     {
-        print(charaStatus.charaName);
         charaObj.SetTurnIcon_CurentTurn();
         OnTurnStart();
         actionQueue.StartResolve(2);
@@ -225,7 +225,10 @@ public class Character : MonoBehaviour
     {
         //行動可能か～
         OnActivateAbility();
-        if (charaStatus.playable) { DisplayInfo(); }
+        if (charaStatus.playable) { 
+            DisplayInfo();
+            battleManager.SetSelectingAbility(true);
+        }
         else { StartCoroutine(Test()); }   
     }
     IEnumerator Test()
@@ -244,6 +247,99 @@ public class Character : MonoBehaviour
     public void EndMyTurn()
     {
         battleManager.TurnEnd();
+    }
+
+
+
+    public void DecreaseHP(int value)
+    {
+        charaStatus.HP -= value;
+        charaObj.SetHPandShieldBar();
+        charaObj.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
+        infoText.AddLogText(string.Format("{0}はHPを{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.decreaseHP, value.ToString())));
+        if (charaStatus.HP <= 0)
+        {
+            if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、HP減少によって死なない
+            {
+                charaStatus.HP = 0;
+                charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
+                infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
+                charaObj.SetHPandShieldBar();
+            }
+            else
+            {
+                Die(0);
+            }
+        }
+    }
+    public void Damage(int DMG,bool CRIT,bool canCounter,Character attacker)
+    {
+        charaStatus.shield = 0;//シールドを0に
+
+        if (CRIT)//テキストの表示
+        {
+            charaObj.SetDamageText("Critical!!", Definer.colorRef.CRIT);
+            charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.CRIT);
+            infoText.AddLogText(string.Format("{0}\n{1}は{2}ダメージを受けた", util.GetColoredText(Definer.colorRef.CRIT, "Critical!!"), charaStatus.charaName, util.GetColoredText(Definer.colorRef.CRIT, DMG.ToString())));
+        }
+        else { 
+            charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.damage);
+            infoText.AddLogText(string.Format("{0}は{1}ダメージを受けた",  charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, DMG.ToString())));
+        }
+
+        if (charaStatus.HP == 0)//瀕死の状態で1以上のダメージを受けたら死亡する
+        {
+            if (DMG > 0)
+            {
+                if (charaStatus.surviveFatalWounds)
+                {
+                    Die(0);
+                }
+                else { print("瀕死で耐えるキャラ出ないのにHP0で生き続けています"); }
+            }
+            else//0ダメージの時
+            {
+                charaStatus.HP = 0;
+                charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
+                infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
+            }
+        }
+        else//瀕死でないなら
+        {
+            charaStatus.HP -= DMG;
+            if (charaStatus.HP <= 0)
+            {
+                if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、瀕死でない状態で致命傷を受けても死なない
+                {
+                    charaStatus.HP = 0;
+                    charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
+                    infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
+                }
+                else
+                {
+                    Die(0);
+                }
+            }
+        }
+
+        if (!charaStatus.dead)//HPバーに反映
+        {
+            charaObj.SetHPandShieldBar();
+        }
+    }
+    public void Heal(int value,Character healer)
+    {
+        charaStatus.HP = Mathf.Min(charaStatus.HP + value, charaStatus.maxHP);
+        charaObj.SetDamageText(value.ToString(), Definer.colorRef.heal);
+        infoText.AddLogText(string.Format("{0}はHPを{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.heal, value.ToString())));
+        charaObj.SetHPandShieldBar();
+    }
+    /// <summary>0:HP0 1:SAN0</summary>
+    void Die(int cause)
+    {
+        charaStatus.dead = true;
+        if (cause == 0) { print("死亡"); }
+        else if (cause == 1) { print("発狂"); }
     }
 
     public virtual void OnBattleStart() { }
