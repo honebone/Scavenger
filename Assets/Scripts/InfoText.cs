@@ -21,6 +21,11 @@ public class InfoText : MonoBehaviour
     Text logText;
 
     Character displayingChara;
+    Utility util;
+    private void Start()
+    {
+        util=FindObjectOfType<Utility>();
+    }
 
     public　void SetText(string name,string info)
     {
@@ -65,5 +70,12 @@ public class InfoText : MonoBehaviour
         SwitchToLog();
         //nameText.text = "ログ";
         logText.text += "\n" + log;
+    }
+    public void AddDebugText(string debugLog)
+    {
+        SwitchToLog();
+        //nameText.text = "ログ";
+        logText.text += util.GetColoredText(Definer.colorRef.debug, string.Format("\n##デバッグ：{0}##", debugLog));
+        print(debugLog);
     }
 }

@@ -73,6 +73,11 @@ public class Action : MonoBehaviour
         [Header("以下には手を出すな")]
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
+        public bool dontChangeSprite;
+        [Header("スプライトの直接指定")]
+        public GameObject activateSprite;
+        [Header("汎用スプライトの番号")]
+        public int spriteIndex;
 
         public Character actionOwner;
         public List<Character> actionTargets;
@@ -234,7 +239,9 @@ public class Action : MonoBehaviour
                         fDMG -= targetStatus.shield;
 
                         DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
-                        actionStatus.actionTargets[i].Damage(DMG, CRIT, actionStatus.cantCounter, actionStatus.actionOwner);
+
+                        actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//与ダメ時誘発
+                        actionStatus.actionTargets[i].Damage(DMG, CRIT, actionStatus.cantCounter, actionStatus.actionOwner);//ダメージ処理開始
                     }
                     else
                     {

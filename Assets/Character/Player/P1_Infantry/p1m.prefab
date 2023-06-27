@@ -81,7 +81,7 @@ MonoBehaviour:
     moveRes: 0
     debuffRes: 0
     instanceID: 0
-    positon: 0
+    position: 0
     protectedBy: 0
     HP: 0
     shield: 0
@@ -94,13 +94,13 @@ MonoBehaviour:
     poison: 0
     burn: 0
     dead: 0
-  actionStatusTest:
-    actionName: "\u706B\u50B7"
-    actionInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\uFF1A"
+  actionsStatusTest:
+  - actionName: "\u30B5\u30C7\u30A3\u30B9\u30C8"
+    actionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u305F\u6642\u3001"
     targetInfo: "\u81EA\u8EAB"
-    actionObject: {fileID: 8184936748879840390, guid: 866abcc9298a0f441a95f95265c3f968, type: 3}
-    decreaseHP_min: 100
-    decreaseHP_max: 110
+    actionObject: {fileID: 0}
+    decreaseHP_min: 0
+    decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
     ATKMod_min: 0
@@ -108,15 +108,17 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    attackRound: 1
+    attackRound: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
+    SANHeal_min: 1
+    SANHeal_max: 2
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0
@@ -134,5 +136,97 @@ MonoBehaviour:
     selectableMid: 0
     selectableBack: 0
     ignoreHide: 0
+    abilityEffect: 0
+    abilityType: 0
+    actionOwner: {fileID: 0}
+    actionTargets: []
+  - actionName: "\u51FA\u8840"
+    actionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
+    targetInfo: "\u81EA\u8EAB"
+    actionObject: {fileID: 0}
+    decreaseHP_min: 10
+    decreaseHP_max: 10
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    attackRound: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    moveChance: 0
+    moveUpper: 0
+    moveLower: 0
+    moveForword: 0
+    moveBackword: 0
+    targetType: 0
+    targetPlayerSide: 0
+    targetEnemySide: 0
+    targetEmpty: 0
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
+    ignoreHide: 0
+    abilityEffect: 0
+    abilityType: 0
+    actionOwner: {fileID: 0}
+    actionTargets: []
+  - actionName: "\u706B\u50B7"
+    actionInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\uFF1A"
+    targetInfo: "\u81EA\u8EAB"
+    actionObject: {fileID: 0}
+    decreaseHP_min: 10
+    decreaseHP_max: 10
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    attackRound: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    moveChance: 0
+    moveUpper: 0
+    moveLower: 0
+    moveForword: 0
+    moveBackword: 0
+    targetType: 0
+    targetPlayerSide: 0
+    targetEnemySide: 0
+    targetEmpty: 0
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
+    ignoreHide: 0
+    abilityEffect: 0
+    abilityType: 0
     actionOwner: {fileID: 0}
     actionTargets: []

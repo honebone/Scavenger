@@ -169,6 +169,9 @@ public class Character : MonoBehaviour
     }
     [SerializeField]
     CharacterStatus charaStatus;
+
+    [SerializeField]
+    protected Action.ActionStatus[] actionsStatusTest;
     public CharacterStatus GetCharacterStatus() { return charaStatus; }
 
     Character_Object charaObj;
@@ -210,10 +213,30 @@ public class Character : MonoBehaviour
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
         charaObj.SetSelectedIcon(true);
     }
-    public void Enqueue(Action.ActionStatus actionStatus) { actionQueue.Enqueue(actionStatus); }
+    public void ResetCharaSprite()
+    {
+        charaObj.SetCharaSprite(charaStatus.variableSprites[0]);
+    }
+    public void SetCharaSprite(GameObject sprite)
+    {
+        charaObj.SetCharaSprite(sprite);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="actionStatus"></param>
+    /// <param name="setTargets">actionTargetに第3引数を代入するか</param>
+    /// <param name="actionTargets">setTargetsがtrueの時、これを対象群として改めてactionstatusに代入する</param>
+    public void Enqueue(Action.ActionStatus actionStatus,bool setTargets,List<Character> actionTargets)
+    {
+        actionStatus.actionOwner = this;
+        if (setTargets) { actionStatus.actionTargets = actionTargets; }    
+        actionQueue.Enqueue(actionStatus);
+    }
 
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
     public void SetTargetIcon(List<int> tg) { targetButton.SetTargetIcon(tg); }
+    public void SetActionInvolvedIcon(bool owner) { targetButton.SetActionInvolvedIcon(owner); }
 
     public void MyTurnStart()
     {
@@ -283,9 +306,10 @@ public class Character : MonoBehaviour
             charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.CRIT);
             infoText.AddLogText(string.Format("{0}\n{1}は{2}ダメージを受けた", util.GetColoredText(Definer.colorRef.CRIT, "Critical!!"), charaStatus.charaName, util.GetColoredText(Definer.colorRef.CRIT, DMG.ToString())));
         }
-        else { 
+        else
+        {
             charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.damage);
-            infoText.AddLogText(string.Format("{0}は{1}ダメージを受けた",  charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, DMG.ToString())));
+            infoText.AddLogText(string.Format("{0}は{1}ダメージを受けた", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, DMG.ToString())));
         }
 
         if (charaStatus.HP == 0)//瀕死の状態で1以上のダメージを受けたら死亡する
@@ -323,9 +347,11 @@ public class Character : MonoBehaviour
             }
         }
 
-        if (!charaStatus.dead)//HPバーに反映
+        charaObj.SetHPandShieldBar();//HPバーに反映
+        if (!charaStatus.dead)
         {
-            charaObj.SetHPandShieldBar();
+            OnDamaged(DMG, attacker);
+            //カウンター
         }
     }
     public void Heal(int value,Character healer)
@@ -363,8 +389,16 @@ public class Character : MonoBehaviour
     void Die(int cause)
     {
         charaStatus.dead = true;
-        if (cause == 0) { print("死亡"); }
-        else if (cause == 1) { print("発狂"); }
+        if (cause == 0)
+        {
+            charaObj.SetDamageText("死亡", Definer.colorRef.damage);
+            infoText.AddLogText(util.GetColoredText(Definer.colorRef.damage, string.Format("{0}は死亡した", charaStatus.charaName)));
+        }
+        else if (cause == 1)
+        {
+            charaObj.SetDamageText("発狂", Definer.colorRef.damage);
+            infoText.AddLogText(util.GetColoredText(Definer.colorRef.damage, string.Format("{0}は発狂して死亡した", charaStatus.charaName)));
+        }
     }
 
     public virtual void OnBattleStart() { }
@@ -377,7 +411,7 @@ public class Character : MonoBehaviour
 
     public virtual void OnActivateAbility() { }
     /// <summary>攻撃命中時</summary>
-    public virtual void OnDamage(int DMG, int ID) { }
+    public virtual void OnDamage(int DMG, Character target) { Enqueue(actionsStatusTest[0], true, new List<Character>() { this }); }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(int ID) { }
     public virtual void OnMiss(int ID) { }
@@ -385,7 +419,9 @@ public class Character : MonoBehaviour
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 
-    public virtual void OnDamaged(int DMG, int ID) { }
+    public virtual void OnDamaged(int DMG, Character attacker) { Enqueue(actionsStatusTest[0], true, new List<Character>() { this });
+        Enqueue(actionsStatusTest[1], true, new List<Character>() { this });
+    }
     public virtual void OnCRITed(int ID) { }
     public virtual void OnEvade( int ID) { }
     public virtual void OnHealed(int healedValue, int ID) { }

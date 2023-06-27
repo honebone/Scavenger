@@ -105,6 +105,10 @@ public class Ability : MonoBehaviour
                 actionsStatus[i].actionName = abilityName;
                 actionsStatus[i].abilityEffect = true;
                 actionsStatus[i].abilityType = abilityType;
+                actionsStatus[i].dontChangeSprite = dontChangeSprite;
+                actionsStatus[i].activateSprite=activateSprite;
+                actionsStatus[i].spriteIndex = spriteIndex;
+                        
             }
 
         }
@@ -198,8 +202,8 @@ public class Ability : MonoBehaviour
                 abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i]));
                 
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
-                actionQueue.StartResolve(3);
             }
+            actionQueue.StartResolve(3);
 
             battleManager.ResetSelectedAbility();
         }

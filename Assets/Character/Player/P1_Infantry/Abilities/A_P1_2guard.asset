@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u9632\u5FA1"
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
-  activateSprite: {fileID: 0}
+  activateSprite: {fileID: 4119418044249080708, guid: 35e1157458bea854da69bea9f122877f, type: 3}
   spriteIndex: 0
   abilityType: 3
   cooldownOnUse: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u9632\u5FA1(\u52B9\u679C1)"
+  - actionName: "\u9632\u5FA1"
     actionInfo: 
     targetInfo: "\u81EA\u8EAB"
     actionObject: {fileID: 0}
@@ -48,6 +48,8 @@ MonoBehaviour:
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 9
     shieldAdd_max: 11
     shieldRemove_min: 0
@@ -65,9 +67,15 @@ MonoBehaviour:
     selectableMid: 1
     selectableBack: 1
     ignoreHide: 0
-    actionOwner: 0
-    actionTargets: 
-  - actionName: "\u9632\u5FA1(\u52B9\u679C2)"
+    abilityEffect: 1
+    abilityType: 3
+    dontChangeSprite: 0
+    activateSprite: {fileID: 4119418044249080708, guid: 35e1157458bea854da69bea9f122877f, type: 3}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargets:
+    - {fileID: 0}
+  - actionName: "\u9632\u5FA1"
     actionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionObject: {fileID: 0}
@@ -89,6 +97,8 @@ MonoBehaviour:
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 9
     shieldAdd_max: 11
     shieldRemove_min: 0
@@ -106,5 +116,11 @@ MonoBehaviour:
     selectableMid: 1
     selectableBack: 0
     ignoreHide: 0
-    actionOwner: 0
-    actionTargets: 
+    abilityEffect: 1
+    abilityType: 3
+    dontChangeSprite: 0
+    activateSprite: {fileID: 4119418044249080708, guid: 35e1157458bea854da69bea9f122877f, type: 3}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargets:
+    - {fileID: 0}

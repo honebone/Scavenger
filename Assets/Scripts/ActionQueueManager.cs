@@ -16,13 +16,19 @@ public class ActionQueueManager : MonoBehaviour
     [SerializeField]
     float abilityPause;
     [SerializeField]
+    float abilityPause_followthrough;
+    [SerializeField]
     Text abilityNameText_player;
     [SerializeField]
     Text abilityNameText_enemy;
 
-    List<Action> inQueueActions;
+    List<Action.ActionStatus> actionsBuffer=new List<Action.ActionStatus>();
+    List<Action> inQueueActions = new List<Action>();
+    List<Action> inQueueAbilityEffects = new List<Action>();
 
     BattleManager battleManager;
+    CharactersManager charactersManager;
+    InfoText infoText;
     Utility util;
 
     bool resolving;
@@ -31,8 +37,9 @@ public class ActionQueueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inQueueActions = new List<Action>();
         battleManager = FindObjectOfType<BattleManager>();
+        charactersManager = FindObjectOfType<CharactersManager>();
+        infoText=FindObjectOfType<InfoText>();
         util = FindObjectOfType<Utility>();
     }
     public void ToggleQueuePanel()
@@ -47,44 +54,93 @@ public class ActionQueueManager : MonoBehaviour
     {
         if (actionQueuePanel.activeSelf) { actionQueuePanel.SetActive(false); }
     }
+
+
+
     public void Enqueue(Action.ActionStatus status)
     {
-        GameObject obj;
-        if (status.actionObject != null) { obj = status.actionObject; }
-        else { obj = Definer.actionManager_General; }
-        var p = Instantiate(actionInfoPanel, content);
-        var a = Instantiate(obj, p.transform);
-        a.GetComponent<Action>().Init(this, status,p.GetComponent<ActionInfoPanel>(),util);
-        inQueueActions.Add(a.GetComponent<Action>());
+        if (status.abilityEffect)//アビリティ効果の場合はマネージャーを即時作成
+        {
+            GameObject obj;
+            if (status.actionObject != null) { obj = status.actionObject; }
+            else { obj = Definer.actionManager_General; }
+            var p = Instantiate(actionInfoPanel, content);
+            var a = Instantiate(obj, p.transform);
+            a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util);
 
-        if (!status.abilityEffect) { OpenQueuePanel(); } 
-    }
+            inQueueAbilityEffects.Add(a.GetComponent<Action>());
+        }
+        else//そうでなければ一旦バッファに預ける
+        {
+            actionsBuffer.Add(status);
+            //inQueueActions.Add(a.GetComponent<Action>());
+            //OpenQueuePanel();
+        }
+        
 
-    /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
+    }  
+    bool CheckIfActionsRemain() { return inQueueAbilityEffects.Count > 0 || inQueueActions.Count > 0 || actionsBuffer.Count > 0; }
 
+    /// <summary>
+    /// 誘発が発生しうるタイミングの後に呼ばれる
+    /// </summary>
+    /// <param name="mode">0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</param>
     public void StartResolve(int mode)
     {
         resolveMode = mode;
-        if (inQueueActions.Count > 0)
+
+        if (CheckIfActionsRemain())//今回の誘発タイミングでアクションが発生したなら
         {
-            if (inQueueActions[0].GetActionStatus().abilityEffect)//アビリティ効果はプレイヤーの入力待たずに解決する
+            if (inQueueAbilityEffects.Count>0)//アビリティ効果はプレイヤーの入力待たずに解決する
             {
+                infoText.AddDebugText("アビリティ効果の解決");
                 StartCoroutine(ResolveAbility());
             }
-            else//アビリティ以外なら解決ボタンが押されるのを待つ
+            else//アビリティの発動効果を含まない(=ActivateAbility以外の誘発タイミングである)場合は即座に表示アニメーション
             {
-                Debug.Log("resolve開始");
-                resolving = true;
-            }          
+                StartCoroutine(DisplayActionInqueueAnim());
+            }
         }
         else
         {
             EndResolve();
         }
     }
+
+
+
+    IEnumerator DisplayActionInqueueAnim()
+    {
+        OpenQueuePanel();
+        var wait = new WaitForSeconds(0.2f);
+        while (actionsBuffer.Count > 0)
+        {
+            DisplayActionInQueue(actionsBuffer[0]);
+            actionsBuffer.RemoveAt(0);
+            yield return wait;
+        }
+
+        resolving = true;//表示アニメーション終わったので、解決ボタン押せるようにする
+    }
+    void DisplayActionInQueue(Action.ActionStatus status)
+    {
+        GameObject obj;
+        if (status.actionObject != null) { obj = status.actionObject; }
+        else { obj = Definer.actionManager_General; }
+        var p = Instantiate(actionInfoPanel, content);
+        var a = Instantiate(obj, p.transform);
+        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util);
+        inQueueActions.Add(a.GetComponent<Action>());
+
+    }
+
+    /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
+
+   
+   
     IEnumerator ResolveAbility()
     {
-        Action.ActionStatus actionStatus = inQueueActions[0].GetActionStatus();
+        Action.ActionStatus actionStatus = inQueueAbilityEffects[0].GetActionStatus();
 
         Text abilityNameText;
         if (actionStatus.actionOwner.GetCharacterStatus().position < 9) { abilityNameText = abilityNameText_player; }
@@ -93,37 +149,69 @@ public class ActionQueueManager : MonoBehaviour
         abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
 
+        actionStatus.actionOwner.SetActionInvolvedIcon(true);
+        foreach(Action action in inQueueAbilityEffects)
+        {
+            foreach(Character target in action.GetActionStatus().actionTargets) { target.SetActionInvolvedIcon(false); }
+        }
+
         yield return new WaitForSeconds(abilityPause);
 
         abilityNameText.text = "";
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Color.clear;
 
-        ResolveAbilityEffect();
+        if (!actionStatus.dontChangeSprite) { actionStatus.actionOwner.SetCharaSprite(actionStatus.activateSprite); }
+        charactersManager.ResetAllActionInvolvedIcons();
+
+        inQueueAbilityEffects[0].Resolve();
+
+        yield return new WaitForSeconds(abilityPause_followthrough);
+        actionStatus.actionOwner.ResetCharaSprite();
+
+
+        if (CheckIfActionsRemain()) { StartCoroutine(DisplayActionInqueueAnim()); }//アビリティ処理終えてもアクションがある=誘発がある ==>　それらを表示
+
+
+    }
+    IEnumerator ResolveNextAbilityEffect()
+    {
+        yield return new WaitForSeconds(0.2f);
+        inQueueAbilityEffects[0].Resolve();
+    }
+    public void ResolveOne()
+    {
+        if (resolving)
+        {
+            inQueueActions[0].Resolve();
+        }
     }
 
+    /// <summary>アクションの処理が終わったらアクション内で呼ばれる </summary>
     public void Dequeue(string actionName)
     {
-        Debug.Log(string.Format("{0}を解決", actionName));
-        inQueueActions.RemoveAt(0);
+        infoText.AddDebugText(string.Format("{0}を解決", actionName));
+        if(inQueueAbilityEffects.Count > 0) { inQueueAbilityEffects.RemoveAt(0); }
+        else { inQueueActions.RemoveAt(0); }       
         Destroy(content.transform.GetChild(0).gameObject);
 
-        if (inQueueActions.Count == 0)//キューにアクションが残ってなければ解決終了
+        if (!CheckIfActionsRemain())//キューにアクションが残ってなければ解決終了
         {
             resolving = false;
-            Debug.Log("resolve終了");
+            infoText.AddDebugText("resolving=false");
+
             EndResolve();
             CloseQueuePanel();
         }
         else
         {
-            if (inQueueActions[0].GetActionStatus().abilityEffect)//アビリティ効果はプレイヤーの入力待たずに解決する
+            if (inQueueAbilityEffects.Count>0)//アビリティ効果はプレイヤーの入力待たずに解決する
             {
-                ResolveAbilityEffect();
+                StartCoroutine(ResolveNextAbilityEffect());
             }
-            else//アビリティ以外なら解決ボタンが押されるのを待つ
-            {
-                resolving = true;
-            }
+            //else//アビリティ以外なら解決ボタンが押されるのを待つ
+            //{
+            //    resolving = true;
+            //}
         }
 
     }
@@ -135,31 +223,18 @@ public class ActionQueueManager : MonoBehaviour
             case 0:
                 break;
             case 2:
+                resolveMode = -1;
                 battleManager.GetCurrntTurnChara().MainPhase();
                 break;
             case 3:
+                resolveMode = -1;
                 battleManager.GetCurrntTurnChara().EndPhase();
                 break;
         }
-
+        
     }
 
-    //void Update()
-    //{
-    //    if (resolving && Input.GetKeyDown(KeyCode.Return))
-    //    {
-    //        inQueueActions[0].Resolve();
-    //    }
-    //}
-    public void ResolveOne()
-    {
-        if (resolving)
-        {
-            inQueueActions[0].Resolve();
-        }
-    }
-    void ResolveAbilityEffect()
-    {
-        inQueueActions[0].Resolve();
-    }
+ 
+    
+   
 }

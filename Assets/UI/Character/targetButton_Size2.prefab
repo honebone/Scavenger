@@ -345,6 +345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetIcon: {fileID: 3138639625800166272}
+  actionOwnerIcon: {fileID: 7908296780179294947}
+  actionTargetIcon: {fileID: 5751530269308456878}
   button: {fileID: 3138639626024939141}
 --- !u!1 &3347162793536044424
 GameObject:

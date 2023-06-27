@@ -6606,6 +6606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorRef_Inspector:
+    debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     abilityColors:
     - {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
     - {r: 0.7529412, g: 0.02745098, b: 0, a: 1}
@@ -8402,7 +8403,8 @@ MonoBehaviour:
   actionInfoPanel: {fileID: 7323951588740922541, guid: 837b70f2626ef8547b7025f85c24c52e, type: 3}
   actionQueuePanel: {fileID: 427624773}
   content: {fileID: 660411532}
-  abilityPause: 1.25
+  abilityPause: 1.5
+  abilityPause_followthrough: 1.25
   abilityNameText_player: {fileID: 1846992750}
   abilityNameText_enemy: {fileID: 1408254314}
 --- !u!1 &949512867

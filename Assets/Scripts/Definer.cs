@@ -7,6 +7,7 @@ public class Definer : MonoBehaviour
     [System.Serializable]
    public class ColorRef
     {
+        public Color debug;
         /// <summary>0:other 1:attack 2:heal 3:buff 4:debuff 5:summon</summary>
         public Color[] abilityColors;
 

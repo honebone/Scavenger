@@ -7,6 +7,10 @@ public class Character_TargetButton : MonoBehaviour
     [SerializeField]
     Image targetIcon;
     [SerializeField]
+    Image actionOwnerIcon;
+    [SerializeField]
+    Image actionTargetIcon;
+    [SerializeField]
     GameObject button;
     Character character;
 
@@ -37,6 +41,19 @@ public class Character_TargetButton : MonoBehaviour
         if (character == null) { button.SetActive(false); }
         targetGroup.Clear();
         targetIcon.enabled = false;
+    }
+
+    /// <summary> </summary>
+    /// <param name="owner">falseÇ»ÇÁëŒè€Ç∆îªíf</param>
+    public void SetActionInvolvedIcon(bool owner)
+    {
+        if (owner) { actionOwnerIcon.enabled = true; }
+        else { actionTargetIcon.enabled = true; }
+    }
+    public void ResetActionInvolvedIcon()
+    {
+        actionOwnerIcon.enabled = false; 
+        actionTargetIcon.enabled = false; 
     }
 
     public void OnMouseDown()

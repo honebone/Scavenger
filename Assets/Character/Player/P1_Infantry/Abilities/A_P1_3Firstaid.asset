@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u5FDC\u6025\u51E6\u7F6E"
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
-  activateSprite: {fileID: 0}
+  activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}
   spriteIndex: 0
   abilityType: 2
   cooldownOnUse: 3
@@ -67,6 +67,11 @@ MonoBehaviour:
     selectableMid: 0
     selectableBack: 0
     ignoreHide: 0
+    abilityEffect: 1
+    abilityType: 2
+    dontChangeSprite: 0
+    activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}
+    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
