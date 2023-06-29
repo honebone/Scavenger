@@ -93,7 +93,6 @@ public class ActionQueueManager : MonoBehaviour
         {
             if (inQueueAbilityEffects.Count>0)//アビリティ効果はプレイヤーの入力待たずに解決する
             {
-                infoText.AddDebugText("アビリティ効果の解決");
                 StartCoroutine(ResolveAbility());
             }
             else//アビリティの発動効果を含まない(=ActivateAbility以外の誘発タイミングである)場合は即座に表示アニメーション
@@ -189,7 +188,6 @@ public class ActionQueueManager : MonoBehaviour
     /// <summary>アクションの処理が終わったらアクション内で呼ばれる </summary>
     public void Dequeue(string actionName)
     {
-        infoText.AddDebugText(string.Format("{0}を解決", actionName));
         if(inQueueAbilityEffects.Count > 0) { inQueueAbilityEffects.RemoveAt(0); }
         else { inQueueActions.RemoveAt(0); }       
         Destroy(content.transform.GetChild(0).gameObject);
@@ -197,7 +195,6 @@ public class ActionQueueManager : MonoBehaviour
         if (!CheckIfActionsRemain())//キューにアクションが残ってなければ解決終了
         {
             resolving = false;
-            infoText.AddDebugText("resolving=false");
 
             EndResolve();
             CloseQueuePanel();
@@ -217,20 +214,24 @@ public class ActionQueueManager : MonoBehaviour
     }
     public void EndResolve()
     {
-
-        switch (resolveMode)
+        if (charactersManager.CheckVictory()) { infoText.AddDebugText("勝利"); }
+        else
         {
-            case 0:
-                break;
-            case 2:
-                resolveMode = -1;
-                battleManager.GetCurrntTurnChara().MainPhase();
-                break;
-            case 3:
-                resolveMode = -1;
-                battleManager.GetCurrntTurnChara().EndPhase();
-                break;
+            switch (resolveMode)
+            {
+                case 0:
+                    break;
+                case 2:
+                    resolveMode = -1;
+                    battleManager.GetCurrntTurnChara().MainPhase();
+                    break;
+                case 3:
+                    resolveMode = -1;
+                    battleManager.GetCurrntTurnChara().EndPhase();
+                    break;
+            }
         }
+        
         
     }
 

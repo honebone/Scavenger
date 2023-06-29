@@ -182,6 +182,7 @@ public class Character : MonoBehaviour
     BattleManager battleManager;
     Utility util;
     InfoText infoText;
+    CharactersManager charactersManager;
 
     public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
     {
@@ -203,6 +204,7 @@ public class Character : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         util = FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
+        charactersManager=FindObjectOfType<CharactersManager>();
 
         //TurnIconはラウンド開始時にセット
     }
@@ -247,13 +249,23 @@ public class Character : MonoBehaviour
     }
     public virtual void MainPhase()
     {
-        //行動可能か～
-        OnActivateAbility();
-        if (charaStatus.playable) { 
-            DisplayInfo();
-            battleManager.SetSelectingAbility(true);
+        if (CheckAlive())
+        {
+            //行動可能か～
+            OnActivateAbility();
+            if (charaStatus.playable)
+            {
+                DisplayInfo();
+                battleManager.SetSelectingAbility(true);
+            }
+            else { StartCoroutine(Test()); }
         }
-        else { StartCoroutine(Test()); }   
+        else
+        {
+            infoText.AddDebugText("死亡につきターンスキップ");
+            EndMyTurn();
+        }
+         
     }
     IEnumerator Test()
     {
@@ -263,9 +275,13 @@ public class Character : MonoBehaviour
     }
     public void EndPhase()
     {
-        OnTurnEnd();
-        charaObj.SetTurnIcon_End();
-        //Resolve開始
+        if (CheckAlive())
+        {
+            OnTurnEnd();
+            charaObj.SetTurnIcon_End();
+            //Resolve開始
+        }
+
         EndMyTurn();
     }
     public void EndMyTurn()
@@ -348,7 +364,7 @@ public class Character : MonoBehaviour
         }
 
         charaObj.SetHPandShieldBar();//HPバーに反映
-        if (!charaStatus.dead)
+        if (CheckAlive())
         {
             OnDamaged(DMG, attacker);
             //カウンター
@@ -385,6 +401,7 @@ public class Character : MonoBehaviour
         charaObj.SetHPandShieldBar();
     }
 
+    public bool CheckAlive() { return !charaStatus.dead; }
     /// <summary>0:HP0 1:SAN0</summary>
     void Die(int cause)
     {
@@ -399,6 +416,16 @@ public class Character : MonoBehaviour
             charaObj.SetDamageText("発狂", Definer.colorRef.damage);
             infoText.AddLogText(util.GetColoredText(Definer.colorRef.damage, string.Format("{0}は発狂して死亡した", charaStatus.charaName)));
         }
+
+        charactersManager.RemoveExistingCharacter(this);
+        battleManager.RemoveTurn(this);
+
+        targetButton.ResetCharacter();
+        charaObj.HideCharacterObj();
+    }
+    public void Retreat()
+    {
+
     }
 
     public virtual void OnBattleStart() { }

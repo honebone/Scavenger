@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u30C7\u30D0\u30C3\u30B0\u30A2\u30D3\u30EA\u30C6\u30A3"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
+  dontChangeSprite: 1
   activateSprite: {fileID: 0}
   spriteIndex: 0
   abilityType: 0
@@ -22,11 +22,11 @@ MonoBehaviour:
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 0
-  availableMid: 0
-  availableBack: 0
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
   actionsStaus:
-  - actionName: 
+  - actionName: "\u30C7\u30D0\u30C3\u30B0\u30A2\u30D3\u30EA\u30C6\u30A3"
     actionInfo: 
     targetInfo: 
     actionObject: {fileID: 0}
@@ -34,20 +34,22 @@ MonoBehaviour:
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 2000
+    ATKMod_max: 2000
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     attackRound: 0
-    sureHit: 0
-    unevadable: 0
+    sureHit: 1
+    unevadable: 1
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0
@@ -57,13 +59,19 @@ MonoBehaviour:
     moveLower: 0
     moveForword: 0
     moveBackword: 0
-    targetType: 0
+    targetType: 1
     targetPlayerSide: 0
-    targetEnemySide: 0
+    targetEnemySide: 1
     targetEmpty: 0
-    selectableFront: 0
-    selectableMid: 0
-    selectableBack: 0
-    ignoreHide: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 1
+    ignoreHide: 1
+    abilityEffect: 1
+    abilityType: 0
+    dontChangeSprite: 1
+    activateSprite: {fileID: 0}
+    spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets: []
+    actionTargets:
+    - {fileID: 0}

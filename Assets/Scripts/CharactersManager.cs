@@ -23,6 +23,8 @@ public class CharactersManager : MonoBehaviour
     [SerializeField]//test
     List<Character> generatedCharacters;
     List<Character> existingCharacters;
+
+    InfoText infoText;
     public void AddCharacter(Character character)
     {
         generatedCharacters.Add(character);
@@ -55,9 +57,12 @@ public class CharactersManager : MonoBehaviour
         foreach (Character existingCharacter in existingCharacters) { charactersStatus.Add(existingCharacter.GetCharacterStatus()); }
         return charactersStatus;
     }
-    public Character.CharacterStatus GetExistingCharacterStatus(int index)
+    public Character.CharacterStatus GetExistingCharacterStatus(int index) { return existingCharacters[index].GetCharacterStatus(); }
+
+    public void RemoveExistingCharacter(Character chara)
     {
-        return existingCharacters[index].GetCharacterStatus();
+        if (existingCharacters.Contains(chara)) { existingCharacters.Remove(chara); }
+        else { infoText.AddDebugText("error:¡€–S‚µ‚½ƒLƒƒƒ‰‚ÍA‚»‚à‚»‚à‘¶İ‚µ‚Ä‚¢‚Ü‚¹‚ñ"); }
     }
 
     public bool CheckCharaExist(int checkPos)
@@ -105,6 +110,18 @@ public class CharactersManager : MonoBehaviour
         }
         return null;
     }
+
+    public bool CheckVictory()
+    {
+        foreach (Character chara in existingCharacters)
+        {
+            if(chara.GetCharacterStatus().position >= 9) { return false; }//“G‘¤‚ÉƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
+        }
+        return true;
+    }
+
+
+
     public void ResetAllTargetIcons()
     {
         foreach(Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetTargetIcon(); }
@@ -122,6 +139,8 @@ public class CharactersManager : MonoBehaviour
         generatedCharacters=new List<Character>();
 
         existingCharacters = new List<Character>();
+
+        infoText = FindObjectOfType<InfoText>();
     }
 
     public void SpawnPlayer(CharacterData characterData,int pos)

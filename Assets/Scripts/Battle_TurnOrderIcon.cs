@@ -35,7 +35,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
     }
     public void Reveal()
     {
-        if (!revealed)
+        if (!revealed&&character.CheckAlive())
         {
             revealed = true;
             charaSprite.sprite = character.GetCharacterStatus().spriteForUI;
@@ -47,4 +47,10 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         if (revealed) { character.DisplayInfo(); }
         else { FindObjectOfType<InfoText>().SetText("•s–¾", ""); }
     }
+
+    public void RemoveTurnOrderIcon(Character chara) { if (character == chara) {
+            FindObjectOfType<InfoText>().AddDebugText(string.Format("”j‰ó:{0}at{1}", character.GetCharacterStatus().charaName, character.GetCharacterStatus().position));
+            Destroy(gameObject); } }
+
+    public  Character GetCharacter() { return character; }
 }

@@ -54,6 +54,16 @@ public class Character_Object : MonoBehaviour
         character.Init(characterStatus, this,tb);
         cm.AddCharacter(character);
     }
+    /// <summary>Ž€–SŽž‚ÉŒÄ‚Î‚ê‚é </summary>
+    public void HideCharacterObj()
+    {
+        if (charaSpriteParent.childCount > 0) { for (int i = 0; i < charaSpriteParent.childCount; i++) { Destroy(charaSpriteParent.GetChild(i).gameObject); } }
+        HPBarObj.SetActive(false);
+        ShieldBarObj.SetActive(false);
+        SANBarObj.SetActive(false);
+        for (int i = 0; i < TurnIconParent.childCount; i++) { Destroy(TurnIconParent.GetChild(i).gameObject); }
+        selectedIcon.enabled = false;
+    }
 
     public void SetCharaSprite(GameObject sprite)
     {

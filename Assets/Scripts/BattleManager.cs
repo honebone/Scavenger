@@ -21,8 +21,8 @@ public class BattleManager : MonoBehaviour
 
     int roundCount;
 
-    List<Character> CharacterInTurnOrder;
-    List<Battle_TurnOrderIcon> TurnOrderIcons=new List<Battle_TurnOrderIcon>();
+    List<Character> characterInTurnOrder;
+    List<Battle_TurnOrderIcon> turnOrderIcons=new List<Battle_TurnOrderIcon>();
     int currentTurn;
     /// <summary>nextRoundButtonを押せるかどうか</summary>
     bool roundEnd;
@@ -38,7 +38,7 @@ public class BattleManager : MonoBehaviour
         utility =FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
 
-        CharacterInTurnOrder=new List<Character>();
+        characterInTurnOrder=new List<Character>();
     }
 
     public void BattleStart()
@@ -61,7 +61,7 @@ public class BattleManager : MonoBehaviour
     void DicideTurnOrder()
     {
         currentTurn = 0;
-        CharacterInTurnOrder.Clear();
+        characterInTurnOrder.Clear();
         List<Character> charas = new List<Character>(charactersManager.GetExistingCharacters_All());
         List<int> turns = new List<int>();
         List<float> ACT = new List<float>();
@@ -75,10 +75,10 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; turns.Count > 0; i++)
         {
             int a = utility.ChoiceWithWeight(ACT.ToArray());
-            CharacterInTurnOrder.Add(charas[a]);
+            characterInTurnOrder.Add(charas[a]);
             var t = Instantiate(turnOrderIcon, turnOrderIconParent);
             t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < 3);
-            TurnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
+            turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
             turns[a]--;
             if (turns[a] == 0)
             {
@@ -90,21 +90,61 @@ public class BattleManager : MonoBehaviour
 
         StartCoroutine(RoundStartEffect());
     }
+
+    public void RemoveTurn(Character chara)
+    {
+        for (int i = 0; i < turnOrderIcons.Count; i++)
+        {
+            if (turnOrderIcons[i].GetCharacter() == chara)
+            {
+                //characterInTurnOrder.RemoveAt(i);
+                turnOrderIcons.RemoveAt(i);
+                Destroy(turnOrderIconParent.GetChild(i).gameObject);
+                //if (i <= currentTurn) { currentTurn--; }
+            }
+        }
+        //foreach(Battle_TurnOrderIcon turnOrderIcon in turnOrderIcons) { turnOrderIcon.RemoveTurnOrderIcon(chara); }
+    }
+
+
+
     IEnumerator RoundStartEffect()
     {
         Debug.Log("ラウンド開始");
         yield return new WaitForSeconds(1f);
         inRound = true;
-        CharacterInTurnOrder[currentTurn].MyTurnStart();
+        characterInTurnOrder[currentTurn].MyTurnStart();
     }
     public void TurnEnd()
     {
-        currentTurn++;
+        infoText.AddDebugText("ターン終了");
         Destroy(turnOrderIconParent.GetChild(0).gameObject);
-        TurnOrderIcons.RemoveAt(0);
-        for(int i = 0; i < Mathf.Min(TurnOrderIcons.Count, 3); i++) { TurnOrderIcons[i].Reveal(); }
-        if (currentTurn == CharacterInTurnOrder.Count) { RoundEnd(); }
-        else { CharacterInTurnOrder[currentTurn].MyTurnStart(); }
+        infoText.AddDebugText("破壊");
+        turnOrderIcons.RemoveAt(0);
+        for (int i = 0; i < Mathf.Min(turnOrderIcons.Count, 3); i++) { turnOrderIcons[i].Reveal(); }
+
+        for (int i = currentTurn+1; i < characterInTurnOrder.Count; i++)//次の生きているキャラのターンを開始
+        {
+            if (characterInTurnOrder[i].CheckAlive())
+            {
+                currentTurn = i;
+                characterInTurnOrder[i].MyTurnStart();
+                return;
+            }
+        }
+        RoundEnd();//ターンが回ってきていない生きているキャラがもういないならラウンド終了
+        //if (currentTurn == characterInTurnOrder.Count) { RoundEnd(); }
+        //else
+        //{
+        //    for (int i = currentTurn; i < characterInTurnOrder.Count; i++)
+        //    {
+        //        if (characterInTurnOrder[i].CheckAlive())
+        //        {
+        //            currentTurn = i;
+        //            characterInTurnOrder[i].MyTurnStart();
+        //        }
+        //    }
+        //}
     }
 
     public void RoundEnd()
@@ -145,9 +185,9 @@ public class BattleManager : MonoBehaviour
     public void SetSelectingTarget(bool f) { selectingTarget = f; }
     public bool checkIfMyTurn(Character character)
     {
-        if (inBattle && inRound && CharacterInTurnOrder[currentTurn] == character) { return true; }
+        if (inBattle && inRound && characterInTurnOrder[currentTurn] == character) { return true; }
         return false;
     }
 
-    public Character GetCurrntTurnChara() { return CharacterInTurnOrder[currentTurn]; }
+    public Character GetCurrntTurnChara() { return characterInTurnOrder[currentTurn]; }
 }

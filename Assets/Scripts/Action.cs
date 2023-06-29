@@ -213,77 +213,81 @@ public class Action : MonoBehaviour
         for(int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
-            if (actionStatus.decreaseHP_max > 0)//HPå∏è≠
+            if (!targetStatus.dead)
             {
-                actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionStatus.decreaseHP_min, actionStatus.decreaseHP_max + 1));
-            }
-
-
-            if (actionStatus.ATKMod_max > 0)//çUåÇ
-            {
-                bool CRIT = false;
-                int DMG = 0;
-
-                if (actionStatus.sureHit || util.Probability(ownerStatus.ACC + actionStatus.ACCMod))
+                if (actionStatus.decreaseHP_max > 0)//HPå∏è≠
                 {
-                    if (actionStatus.unevadable || util.Probability(100f - targetStatus.EVD))//çUåÇñΩíÜ
+                    actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionStatus.decreaseHP_min, actionStatus.decreaseHP_max + 1));
+                }
+
+
+                if (actionStatus.ATKMod_max > 0)//çUåÇ
+                {
+                    bool CRIT = false;
+                    int DMG = 0;
+
+                    if (actionStatus.sureHit || util.Probability(ownerStatus.ACC + actionStatus.ACCMod))
                     {
-                        float fDMG = ownerStatus.exATK;
-                        float ATKMod = Random.Range(actionStatus.ATKMod_min, actionStatus.ATKMod_max) / 100;
-                        fDMG += ownerStatus.ATK * ATKMod;
-                        if (util.Probability(ownerStatus.CRITC + actionStatus.CRITCMod))
+                        if (actionStatus.unevadable || util.Probability(100f - targetStatus.EVD))//çUåÇñΩíÜ
                         {
-                            CRIT = true;
-                            fDMG *= ownerStatus.CRITD + actionStatus.CRITDMod;                            
+                            float fDMG = ownerStatus.exATK;
+                            float ATKMod = Random.Range(actionStatus.ATKMod_min, actionStatus.ATKMod_max) / 100;
+                            fDMG += ownerStatus.ATK * ATKMod;
+                            if (util.Probability(ownerStatus.CRITC + actionStatus.CRITCMod))
+                            {
+                                CRIT = true;
+                                fDMG *= ownerStatus.CRITD + actionStatus.CRITDMod;
+                            }
+                            fDMG -= targetStatus.shield;
+
+                            DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
+
+                            actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//ó^É_ÉÅéûóUî≠
+                            actionStatus.actionTargets[i].Damage(DMG, CRIT, actionStatus.cantCounter, actionStatus.actionOwner);//É_ÉÅÅ[ÉWèàóùäJén
                         }
-                        fDMG -= targetStatus.shield;
-
-                        DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
-
-                        actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//ó^É_ÉÅéûóUî≠
-                        actionStatus.actionTargets[i].Damage(DMG, CRIT, actionStatus.cantCounter, actionStatus.actionOwner);//É_ÉÅÅ[ÉWèàóùäJén
+                        else
+                        {
+                            actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
+                            FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}ÇÕçUåÇÇâÒîÇµÇΩ", targetStatus.charaName)));
+                        }
                     }
                     else
                     {
-                        actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
-                        FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}ÇÕçUåÇÇâÒîÇµÇΩ", targetStatus.charaName)));
+                        actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
+                        FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.failed_unavailable, string.Format("{0}ÇÕçUåÇÇäOÇµÇΩ", ownerStatus.charaName)));
                     }
                 }
-                else
+
+
+                if (actionStatus.healPercent_max > 0 || actionStatus.healValue_max > 0)
                 {
-                    actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
-                    FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.failed_unavailable, string.Format("{0}ÇÕçUåÇÇäOÇµÇΩ", ownerStatus.charaName)));
+                    float fheal;
+                    fheal = Random.Range(actionStatus.healValue_min, actionStatus.healValue_max + 1);
+                    fheal += targetStatus.maxHP * Random.Range(actionStatus.healPercent_min, actionStatus.healPercent_max) / 100;
+                    fheal *= ownerStatus.GHeal / 100;
+                    fheal *= targetStatus.RHeal / 100;
+                    int heal = Mathf.RoundToInt(fheal);
+
+                    actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
+                }
+
+                if (actionStatus.SANHeal_max > 0)
+                {
+                    actionStatus.actionTargets[i].SANHeal(Random.Range(actionStatus.SANHeal_min, actionStatus.SANHeal_max + 1));
+                }
+                if (actionStatus.SANDamage_max > 0)
+                {
+                    actionStatus.actionTargets[i].SANDamage(Random.Range(actionStatus.SANDamage_min, actionStatus.SANDamage_max + 1));
+                }
+
+
+                if (actionStatus.shieldAdd_max > 0)
+                {
+                    actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
                 }
             }
-
-
-            if (actionStatus.healPercent_max > 0 || actionStatus.healValue_max > 0)
-            {
-                float fheal;
-                fheal = Random.Range(actionStatus.healValue_min, actionStatus.healValue_max + 1);
-                fheal += targetStatus.maxHP * Random.Range(actionStatus.healPercent_min, actionStatus.healPercent_max) / 100;
-                fheal *= ownerStatus.GHeal / 100;
-                fheal *= targetStatus.RHeal / 100;
-                int heal = Mathf.RoundToInt(fheal);
-
-                actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
-            }
-
-            if (actionStatus.SANHeal_max > 0)
-            {
-                actionStatus.actionTargets[i].SANHeal(Random.Range(actionStatus.SANHeal_min, actionStatus.SANHeal_max + 1));
-            }
-            if (actionStatus.SANDamage_max > 0)
-            {
-                actionStatus.actionTargets[i].SANDamage(Random.Range(actionStatus.SANDamage_min, actionStatus.SANDamage_max + 1));
-            }
-
-
-            if (actionStatus.shieldAdd_max > 0)
-            {
-                actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
-            }
         }
+            
         actionQueueManager.Dequeue(actionStatus.actionName);
     }
 }
