@@ -66,6 +66,8 @@ public class Character : MonoBehaviour
         /// <summary>©g‚ğ‚©‚Î‚Á‚Ä‚¢‚éƒLƒƒƒ‰‚ÌinstanceID</summary>
         public int protectedBy;
 
+        public Ability.AbilityStatus omen;
+
         public int HP;
         public int shield;
 
@@ -428,8 +430,18 @@ public class Character : MonoBehaviour
 
     }
 
+    public virtual void SetOmen()
+    {
+
+    }
     public virtual void OnBattleStart() { }
-    public virtual void OnRoundStart() { }
+    public virtual void OnRoundStart()
+    {
+        if (!charaStatus.playable)
+        { 
+           //—\’›İ’è
+        }
+    }
     public virtual void OnTurnStart() { }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }

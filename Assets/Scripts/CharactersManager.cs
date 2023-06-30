@@ -65,6 +65,24 @@ public class CharactersManager : MonoBehaviour
         else { infoText.AddDebugText("error:今死亡したキャラは、そもそも存在していません"); }
     }
 
+    public Character_TargetButton GetTargetButton(int size,int pos)
+    {
+        switch (size)
+        {
+            case 1:
+                return targetButtons_size1[pos];
+            case 2:
+                if (targetButtons_size2[pos] == null) { infoText.AddDebugText(string.Format("error:{0}",pos)); }
+                return targetButtons_size2[pos];
+            case 3:
+                if (targetButtons_size3[pos] == null) { infoText.AddDebugText(string.Format("error:{0}", pos)); }
+                return targetButtons_size3[pos];
+            default:
+                infoText.AddDebugText(string.Format("error:{0}", size));
+                return null;
+        }
+    }
+
     public bool CheckCharaExist(int checkPos)
     {
         foreach (Character.CharacterStatus characterStatus in GetExistingCharactersStatus())
@@ -109,6 +127,75 @@ public class CharactersManager : MonoBehaviour
             }
         }
         return null;
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="moveValue">0:forword 1:upper 2:lower 3:backword</param>
+    /// <returns></returns>
+    public List<int> GetMoveTargets(int pos,int size,List<int> moveValue)
+    {
+        int minPos = 0;
+        int maxPos = 8;
+        List<int> targets = new List<int>();
+
+        switch (size)
+        {
+            case 1:
+                if (pos >= 9)
+                {
+                    minPos = 9;
+                    maxPos = 17;
+                }
+                if (moveValue[0] > 0)
+                {
+                    for (int i = 1; i <= moveValue[0]; i++)
+                    {
+                        if (pos + (3 * i) <= maxPos) { targets.Add(pos + (i * 3)); }
+                        else { break; }
+                    }
+                }
+                if (moveValue[1] > 0)
+                {
+                    for (int i = 1; i <= moveValue[1]; i++)
+                    {
+                        if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos + i) / 3f)) { targets.Add(pos + i); }
+                        else { break; }
+                    }
+                }
+                if (moveValue[2] > 0)
+                {
+                    for (int i = 1; i <= moveValue[2]; i++)
+                    {
+                        if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos - i) / 3f))
+                        {
+                            targets.Add(pos - i);
+                            print((pos - i) / 3);
+                        }
+                        else { break; }
+                    }
+                }
+                if (moveValue[3] > 0)
+                {
+                    for (int i = 1; i <= moveValue[3]; i++)
+                    {
+                        if (pos - (3 * i) >= minPos) { targets.Add(pos - (i * 3)); }
+                        else { break; }
+                    }
+                }
+                break;
+            case 2:
+                infoText.AddDebugText("size2の移動先取得処理は未実装です");
+                break;
+            case 3:
+                infoText.AddDebugText("size3のお前が動けるわけねえだろうが!!!");
+                break;
+            default:
+                infoText.AddDebugText("error:sizeの値がおかしいです");
+                break;
+        }
+       
+        return targets;
     }
 
     public bool CheckVictory()

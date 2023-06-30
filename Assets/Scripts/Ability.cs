@@ -139,6 +139,7 @@ public class Ability : MonoBehaviour
     public virtual void StartSelectTarget()
     {
         charactersManager.ResetAllTargetIcons();
+        Character.CharacterStatus charaStatus = character.GetCharacterStatus();
         switch (abilityStatus.actionsStatus[counter].targetType)
         {
             case Action.ActionStatus.TargetType.other:
@@ -177,6 +178,12 @@ public class Ability : MonoBehaviour
                             if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
                         }
                     }
+                }
+                break;
+            case Action.ActionStatus.TargetType.move:
+                foreach(int target in charactersManager.GetMoveTargets(charaStatus.position, charaStatus.size, abilityStatus.actionsStatus[counter].moveValue))
+                {
+                    charactersManager.GetTargetButton(charaStatus.size, target).SetTargetIcon(new List<int>() { target });
                 }
                 break;
             default:

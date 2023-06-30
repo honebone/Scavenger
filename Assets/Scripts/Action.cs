@@ -53,12 +53,12 @@ public class Action : MonoBehaviour
         //StE
 
         public float moveChance;
+        public int moveForword;
         public int moveUpper;
         public int moveLower;
-        public int moveForword;
         public int moveBackword;
         
-        public enum TargetType { other, single, all, self, row, column, singleWoSelf,allWoSelf, random }
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf,allWoSelf, random ,move}
         [Header("以下アビリティのみ関係")]
         public TargetType targetType;
         public bool targetPlayerSide;
@@ -69,6 +69,8 @@ public class Action : MonoBehaviour
         public bool selectableBack;
         [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
         public bool ignoreHide;
+        [Header("0:forword 1:upper 2:lower 3:backword(targetypeがmoveのときに使用)")]
+        public List<int> moveValue;
 
         [Header("以下には手を出すな")]
         public bool abilityEffect;

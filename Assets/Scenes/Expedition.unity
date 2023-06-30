@@ -6593,6 +6593,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
   - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+  pos: 1
+  moveValue: 02000000020000000200000002000000
 --- !u!114 &613893884
 MonoBehaviour:
   m_ObjectHideFlags: 0
