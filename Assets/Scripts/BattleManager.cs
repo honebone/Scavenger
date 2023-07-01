@@ -117,9 +117,7 @@ public class BattleManager : MonoBehaviour
     }
     public void TurnEnd()
     {
-        infoText.AddDebugText("ƒ^[ƒ“I—¹");
         Destroy(turnOrderIconParent.GetChild(0).gameObject);
-        infoText.AddDebugText("”j‰ó");
         turnOrderIcons.RemoveAt(0);
         for (int i = 0; i < Mathf.Min(turnOrderIcons.Count, 3); i++) { turnOrderIcons[i].Reveal(); }
 

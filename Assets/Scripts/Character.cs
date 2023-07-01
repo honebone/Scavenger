@@ -239,13 +239,12 @@ public class Character : MonoBehaviour
     }
 
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
-    public void SetTargetIcon(List<int> tg) { targetButton.SetTargetIcon(tg); }
     public void SetActionInvolvedIcon(bool owner) { targetButton.SetActionInvolvedIcon(owner); }
 
     public void MyTurnStart()
     {
         charaObj.SetTurnIcon_CurentTurn();
-        infoText.AddLogText(string.Format("<{0}のターン>", charaStatus.charaName));
+        infoText.AddLogText(string.Format("=={0}のターン==", charaStatus.charaName));
         OnTurnStart();
         actionQueue.StartResolve(2);
     }
@@ -292,7 +291,7 @@ public class Character : MonoBehaviour
     }
 
 
-
+    //ここからアクションによって呼ばれる関数
     public void DecreaseHP(int value)
     {
         charaStatus.HP -= value;
@@ -402,6 +401,16 @@ public class Character : MonoBehaviour
         infoText.AddLogText(string.Format("{0}はシールドを{1}得た", charaStatus.charaName, util.GetColoredText(Definer.colorRef.shield, value.ToString())));
         charaObj.SetHPandShieldBar();
     }
+
+    public void ChangePos(int moveTo)
+    {
+        charaStatus.position = moveTo;
+        charactersManager.SortExistingCharacters();
+        
+        //移動アニメーション
+    }
+    //ここまでアクションによって呼ばれる関数
+
 
     public bool CheckAlive() { return !charaStatus.dead; }
     /// <summary>0:HP0 1:SAN0</summary>

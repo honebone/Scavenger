@@ -21,6 +21,21 @@ public class Action : MonoBehaviour
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
 
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move }
+        [Header("ここからアビリティのみ関係")]
+        public TargetType targetType;
+        public bool targetPlayerSide;
+        public bool targetEnemySide;
+        public bool targetEmpty;
+        public bool selectableFront;
+        public bool selectableMid;
+        public bool selectableBack;
+        [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
+        public bool ignoreHide;
+        [Header("0:forword 1:upper 2:lower 3:backword(targetypeがmoveのときに使用)")]
+        public List<int> moveValue;
+        [Header("ここまでアビリティのみ関係")]
+
         public int decreaseHP_min;
         public int decreaseHP_max;
 
@@ -57,20 +72,6 @@ public class Action : MonoBehaviour
         public int moveUpper;
         public int moveLower;
         public int moveBackword;
-        
-        public enum TargetType { other, single, all, self, row, column, singleWoSelf,allWoSelf, random ,move}
-        [Header("以下アビリティのみ関係")]
-        public TargetType targetType;
-        public bool targetPlayerSide;
-        public bool targetEnemySide;
-        public bool targetEmpty;
-        public bool selectableFront;
-        public bool selectableMid;
-        public bool selectableBack;
-        [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
-        public bool ignoreHide;
-        [Header("0:forword 1:upper 2:lower 3:backword(targetypeがmoveのときに使用)")]
-        public List<int> moveValue;
 
         [Header("以下には手を出すな")]
         public bool abilityEffect;
@@ -87,10 +88,11 @@ public class Action : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = "";
-            if (actionInfo != "") { s += actionInfo + "\n"; }
+           
 
             s += string.Format("対象：{0}\n", targetInfo);
-            if(decreaseHP_max > 0)
+            if (actionInfo != "") { s += actionInfo + "\n"; }
+            if (decreaseHP_max > 0)
             {
                 if(decreaseHP_min == decreaseHP_max) { s += string.Format("HPが{0}減少\n", decreaseHP_max); }
                 else { s += string.Format("HPが{0}-{1}減少\n", decreaseHP_min, decreaseHP_max); }
@@ -286,6 +288,12 @@ public class Action : MonoBehaviour
                 if (actionStatus.shieldAdd_max > 0)
                 {
                     actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
+                }
+
+
+                if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
+                {
+
                 }
             }
         }

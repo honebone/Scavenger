@@ -152,30 +152,31 @@ public class Ability : MonoBehaviour
                     {
                         if (i < 3 && abilityStatus.actionsStatus[counter].selectableBack)
                         {
-                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
+                            //if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
                         }
                         if (i >= 3 && i < 6 && abilityStatus.actionsStatus[counter].selectableMid)
                         {
-                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
                         }
                         if (i >= 6 && abilityStatus.actionsStatus[counter].selectableFront)
                         {
-                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
                         }
                     }
                     if (i >= 9 && abilityStatus.actionsStatus[counter].targetEnemySide)
                     {
                         if (i < 12 && abilityStatus.actionsStatus[counter].selectableFront)
                         {
-                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
                         }
                         if (i >= 12 && i < 15 && abilityStatus.actionsStatus[counter].selectableMid)
                         {
-                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
                         }
                         if (i >= 15 && abilityStatus.actionsStatus[counter].selectableBack)
                         {
-                            if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
                         }
                     }
                 }
@@ -183,7 +184,7 @@ public class Ability : MonoBehaviour
             case Action.ActionStatus.TargetType.move:
                 foreach(int target in charactersManager.GetMoveTargets(charaStatus.position, charaStatus.size, abilityStatus.actionsStatus[counter].moveValue))
                 {
-                    charactersManager.GetTargetButton(charaStatus.size, target).SetTargetIcon(new List<int>() { target });
+                    charactersManager.SetTargetIcon(target, true, charaStatus.size, new List<int>() { target });
                 }
                 break;
             default:
@@ -201,12 +202,12 @@ public class Ability : MonoBehaviour
             charactersManager.ResetAllTargetIcons();
 
             string abilityName = util.GetColoredText(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType], abilityStatus.abilityName);
-            FindObjectOfType<InfoText>().AddLogText(string.Format("{0}‚Ì{1}", character.GetCharacterStatus().charaName, abilityName));
+            FindObjectOfType<InfoText>().AddLogText(string.Format("{0}‚Ì<{1}>", character.GetCharacterStatus().charaName, abilityName));
 
             for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//s“®Žå‚â‘ÎÛ‚ð‘ã“ü‚µAEnqueue
             {
                 abilityStatus.actionsStatus[i].actionOwner = character;
-                abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i]));
+                abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i],true));
                 
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
             }

@@ -30,6 +30,15 @@ MonoBehaviour:
     actionInfo: 
     targetInfo: 
     actionObject: {fileID: 0}
+    targetType: 1
+    targetPlayerSide: 0
+    targetEnemySide: 1
+    targetEmpty: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 1
+    ignoreHide: 1
+    moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
@@ -55,18 +64,10 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     moveChance: 0
+    moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveForword: 0
     moveBackword: 0
-    targetType: 1
-    targetPlayerSide: 0
-    targetEnemySide: 1
-    targetEmpty: 0
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 1
-    ignoreHide: 1
     abilityEffect: 1
     abilityType: 0
     dontChangeSprite: 1

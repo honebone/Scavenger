@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class CharactersManager : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class CharactersManager : MonoBehaviour
     {
         generatedCharacters.Add(character);
         existingCharacters.Add(character);
-        existingCharacters.Sort((a, b) => a.GetCharacterStatus().position - b.GetCharacterStatus().position);
+        SortExistingCharacters();
         //if (existingCharacters.Count == 0) { existingCharacters.Add(character); }
         //else
         //{
@@ -43,11 +44,15 @@ public class CharactersManager : MonoBehaviour
         //    }
         //}         
     }
+    public void SortExistingCharacters()
+    {
+        existingCharacters.Sort((a, b) => a.GetCharacterStatus().position - b.GetCharacterStatus().position);
+    }
     public List<Character> GetExistingCharacters_All() { return existingCharacters; }
-    public List<Character> GetExistingCharacters(List<int> positions)
+    public List<Character> GetExistingCharacters(List<int> positions,bool includeEmpty)
     {
         List<Character> characters = new List<Character>();
-        foreach (int pos in positions) { characters.Add(GetCharacterWithPos(pos)); }
+        foreach (int pos in positions) { if (CheckCharaExist(pos)||includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
     public Character GetExistingCharacter(int index) { return existingCharacters[index]; }
@@ -58,6 +63,18 @@ public class CharactersManager : MonoBehaviour
         return charactersStatus;
     }
     public Character.CharacterStatus GetExistingCharacterStatus(int index) { return existingCharacters[index].GetCharacterStatus(); }
+    /// <summary></summary>
+    /// <param name="ranges">0:forword 1:upper 2:lower 3:backword</param>
+    /// <returns></returns>
+    public List<Character> GetNearCharas(int pos,int size,List<int> ranges)
+    {
+        HashSet<Character> characters = new HashSet<Character>();
+        foreach(Character character in GetExistingCharacters(GetMoveTargets(pos, size, ranges), false))
+        {
+            characters.Add(character);
+        }
+        return characters.ToList();
+    }
 
     public void RemoveExistingCharacter(Character chara)
     {
@@ -82,7 +99,36 @@ public class CharactersManager : MonoBehaviour
                 return null;
         }
     }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="targetEmpty">空きスペースを対象とするか</param>
+    /// <param name="checkOnlyCore">サイズ2以上のとき、左下のみチェック</param>
+    /// <param name="size">空きスペースを対象とする場合、そのサイズ</param>
+    /// <param name="targetGroup"></param>
+    public void SetTargetIcon(int pos,bool targetEmpty,int size,List<int> targetGroup)
+    {
+        if (targetEmpty)
+        {
+            GetTargetButton(size, pos).SetTargetIcon(targetGroup);
+        }
+        else
+        {
+            if (CheckCharaExist(pos))
+            {
+                GetTargetButton(GetCharacterWithPos(pos).GetCharacterStatus().size, GetCharacterWithPos(pos).GetCharacterStatus().position).SetTargetIcon(targetGroup);
+            }
+        }
+        
+    }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="checkPos"></param>
+    /// <param name="checkOnlyCore">サイズ2以上のとき、左下のみチェック</param>
+    /// <returns></returns>
     public bool CheckCharaExist(int checkPos)
     {
         foreach (Character.CharacterStatus characterStatus in GetExistingCharactersStatus())
@@ -95,11 +141,11 @@ public class CharactersManager : MonoBehaviour
                 case 2:
                     if (characterStatus.position == checkPos) { return true; }
                     if (characterStatus.position + 1 == checkPos) { return true; }
-                    if (characterStatus.position + 3 == checkPos) { return true; }
+                    if (characterStatus.position + 3 == checkPos ) { return true; }
                     if (characterStatus.position + 4 == checkPos) { return true; }
                     break;
                 case 3:
-                    if (characterStatus.position < 9 == checkPos < 9) { return true; }
+                    if (characterStatus.position < 9 == checkPos < 9 ) { return true; }
                     break;
             }
         }
@@ -126,6 +172,7 @@ public class CharactersManager : MonoBehaviour
                     break;
             }
         }
+        infoText.AddDebugText(string.Format("error:ポジション{0}にキャラクターは存在していません", pos));
         return null;
     }
     /// <summary>

@@ -19,7 +19,7 @@ public class DebugFunction : MonoBehaviour
 
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);   
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 14);
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 13);
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 15);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
