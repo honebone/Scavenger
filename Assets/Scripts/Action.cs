@@ -7,6 +7,10 @@ public class Action : MonoBehaviour
     [SerializeField]//tst
     ActionStatus actionStatus;
     ActionQueueManager actionQueueManager;
+    CharactersManager characterManager;
+    InfoText infoText;
+
+
     [System.Serializable]
     public class ActionStatus
     {
@@ -32,7 +36,7 @@ public class Action : MonoBehaviour
         public bool selectableBack;
         [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
         public bool ignoreHide;
-        [Header("0:forword 1:upper 2:lower 3:backword(targetypeがmoveのときに使用)")]
+        [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係")]
 
@@ -297,10 +301,39 @@ public class Action : MonoBehaviour
 
         if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
         {
-            //移動経路にいるキャラのターゲットボタン解除
-            actionStatus.actionOwner.GetCharacter_TargetButton().ResetCharacter();
-            actionStatus.actionOwner.ChangePos(actionStatus.actionTargetsInt[0]);//iは0の時しかないはず
-            //移動経路にいるキャラを反対方向に1移動
+            int ownerMoveDir = -1;
+            int moveToPos = actionStatus.actionTargetsInt[0];//iは0の時しかないはず
+            bool movable = true;
+            ownerMoveDir = util.GetMoveDir(ownerStatus.position, moveToPos); 
+            
+            List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, 1));//test
+            foreach(Character c in charasOnTravelingDir)
+            {
+                if (c.GetCharacterStatus().size >= 2||c.GetCharacterStatus().immovable)
+                {
+                    movable = false;
+                }
+            }
+
+            if (movable)
+            {
+                actionStatus.actionOwner.GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの解除
+                foreach (Character c in charasOnTravelingDir)
+                {
+                    c.GetCharacter_TargetButton().ResetCharacter();
+                }
+
+                actionStatus.actionOwner.ChangePos(moveToPos);//移動処理
+                foreach (Character c in charasOnTravelingDir)
+                {
+                    c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - ownerMoveDir, 1));
+                }
+            }
+            else
+            {
+                infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
+            }
+
         }
 
         actionQueueManager.Dequeue(actionStatus.actionName);

@@ -26,6 +26,7 @@ public class CharactersManager : MonoBehaviour
     List<Character> existingCharacters;
 
     InfoText infoText;
+    Utility util;
     public void AddCharacter(Character character)
     {
         generatedCharacters.Add(character);
@@ -63,24 +64,18 @@ public class CharactersManager : MonoBehaviour
         return charactersStatus;
     }
     public Character.CharacterStatus GetExistingCharacterStatus(int index) { return existingCharacters[index].GetCharacterStatus(); }
+
+
     /// <summary>移動処理に使用　進行方向にいるキャラを取得</summary>
-    /// <param name="ranges">0:forword 1:upper 2:lower 3:backword</param>
+    /// <param name="ranges">0:right 1:upper 2:lower 3:left</param>
     /// <returns></returns>
-    public List<Character> GetTravelingDirCharas(int pos,int size,List<int> ranges)
+    public List<Character> GetTravelingDirCharas(int pos,int dir,int range)
     {
         HashSet<Character> characters = new HashSet<Character>();
         List<Character> c = new List<Character>();
-        switch (size)
+        for(int i = 1; i <= range; i++)
         {
-            case 1:
-                c = new List<Character>(GetExistingCharacters(GetMoveTargets(pos, size, ranges), false));
-                break;
-            case 2:
-                infoText.AddDebugText("未実装");
-                break;
-            default:
-                infoText.AddDebugText("エラー");
-                break;
+            c.Add(GetCharacterWithPos(util.GetMoveToPos(pos,dir,i)));
         }
         foreach(Character character in c)
         {
@@ -88,6 +83,7 @@ public class CharactersManager : MonoBehaviour
         }
         return characters.ToList();
     }
+    
 
     public void RemoveExistingCharacter(Character chara)
     {
@@ -191,7 +187,7 @@ public class CharactersManager : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="moveValue">0:forword 1:upper 2:lower 3:backword</param>
+    /// <param name="moveValue">0:right 1:upper 2:lower 3:left</param>
     /// <returns></returns>
     public List<int> GetMoveTargets(int pos,int size,List<int> moveValue)
     {
@@ -308,6 +304,7 @@ public class CharactersManager : MonoBehaviour
         existingCharacters = new List<Character>();
 
         infoText = FindObjectOfType<InfoText>();
+        util = FindObjectOfType<Utility>();
     }
 
     public void SpawnPlayer(CharacterData characterData,int pos)
