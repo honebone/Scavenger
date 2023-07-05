@@ -94,7 +94,7 @@ public class Character : MonoBehaviour
             string s = "";
             if (player && !playable) { s += "操作不可\n"; }
             //種族
-            if (immovable) { s += "移動不可"; }
+            if (immovable || size >= 2) { s += "移動不可"; }
             s += string.Format("HP/maxHP：{0}/{1}\n", HP, maxHP);
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }

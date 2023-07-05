@@ -97,5 +97,6 @@ public class Utility : MonoBehaviour
         print("error");
         return -1;
     }
+    public Vector2Int posIntToVector(int pos) { return new Vector2Int(Mathf.FloorToInt(pos / 3), pos % 3); }
 
 }

@@ -71,17 +71,16 @@ public class CharactersManager : MonoBehaviour
     /// <returns></returns>
     public List<Character> GetTravelingDirCharas(int pos,int dir,int range)
     {
-        HashSet<Character> characters = new HashSet<Character>();
         List<Character> c = new List<Character>();
         for(int i = 1; i <= range; i++)
         {
-            c.Add(GetCharacterWithPos(util.GetMoveToPos(pos,dir,i)));
+            if(CheckCharaExist(util.GetMoveToPos(pos, dir, i))&&!c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
+            {
+                c.Add(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i)));
+            }
         }
-        foreach(Character character in c)
-        {
-            characters.Add(character);
-        }
-        return characters.ToList();
+
+        return c;
     }
     
 

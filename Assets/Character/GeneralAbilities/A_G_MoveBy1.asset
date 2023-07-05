@@ -38,7 +38,7 @@ MonoBehaviour:
     selectableMid: 0
     selectableBack: 0
     ignoreHide: 0
-    moveValue: 01000000010000000100000001000000
+    moveValue: 02000000020000000200000002000000
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
@@ -75,4 +75,4 @@ MonoBehaviour:
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets: []
-    actionTargetsInt: 05000000
+    actionTargetsInt: 03000000

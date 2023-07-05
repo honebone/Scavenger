@@ -302,11 +302,21 @@ public class Action : MonoBehaviour
         if (actionStatus.targetType == ActionStatus.TargetType.move)//à⁄ìÆ
         {
             int ownerMoveDir = -1;
+            int ownerMoveRange = -1;
             int moveToPos = actionStatus.actionTargetsInt[0];//iÇÕ0ÇÃéûÇµÇ©Ç»Ç¢ÇÕÇ∏
             bool movable = true;
             ownerMoveDir = util.GetMoveDir(ownerStatus.position, moveToPos); 
-            
-            List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, 1));//test
+            if(ownerMoveDir == 0 || ownerMoveDir == 3)//ç∂âEà⁄ìÆÇ»ÇÁ
+            {
+                ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).x - util.posIntToVector(moveToPos).x);
+            }
+            else if (ownerMoveDir == 1 || ownerMoveDir == 2)//è„â∫à⁄ìÆÇ»ÇÁ
+            {
+                ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).y - util.posIntToVector(moveToPos).y);
+            }
+            print(ownerMoveRange);
+
+            List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
             foreach(Character c in charasOnTravelingDir)
             {
                 if (c.GetCharacterStatus().size >= 2||c.GetCharacterStatus().immovable)
