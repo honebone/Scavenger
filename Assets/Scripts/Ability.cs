@@ -207,7 +207,16 @@ public class Ability : MonoBehaviour
             for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//s“®Žå‚â‘ÎÛ‚ð‘ã“ü‚µAEnqueue
             {
                 abilityStatus.actionsStatus[i].actionOwner = character;
-                abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i],true));
+                abilityStatus.actionsStatus[i].actionTargetsInt = new List<int>(targetGroups[i]);
+                if (!abilityStatus.actionsStatus[i].targetEmpty && abilityStatus.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)
+                {
+                    abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i], true));
+                }
+                else
+                {
+                    abilityStatus.actionsStatus[i].actionTargets = new List<Character>();
+                }
+                
                 
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
             }

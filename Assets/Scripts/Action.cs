@@ -84,6 +84,8 @@ public class Action : MonoBehaviour
 
         public Character actionOwner;
         public List<Character> actionTargets;
+        /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
+        public List<int> actionTargetsInt;
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
@@ -289,15 +291,18 @@ public class Action : MonoBehaviour
                 {
                     actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
                 }
-
-
-                if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
-                {
-
-                }
             }
         }
-            
+
+
+        if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
+        {
+            //移動経路にいるキャラのターゲットボタン解除
+            actionStatus.actionOwner.GetCharacter_TargetButton().ResetCharacter();
+            actionStatus.actionOwner.ChangePos(actionStatus.actionTargetsInt[0]);//iは0の時しかないはず
+            //移動経路にいるキャラを反対方向に1移動
+        }
+
         actionQueueManager.Dequeue(actionStatus.actionName);
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_G_MoveBy1
+  m_Name: A_G_Pass
   m_EditorClassIdentifier: 
-  abilityName: "\u79FB\u52D5"
+  abilityName: "\u30D1\u30B9"
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
   activateSprite: {fileID: 0}
@@ -26,11 +26,11 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u79FB\u52D5"
-    actionInfo: "\u4E0A\u4E0B\u5DE6\u53F3\u306B1\u79FB\u52D5"
+  - actionName: 
+    actionInfo: "\u30BF\u30FC\u30F3\u3092\u30D1\u30B9\u3059\u308B"
     targetInfo: "\u81EA\u8EAB"
     actionObject: {fileID: 0}
-    targetType: 9
+    targetType: 3
     targetPlayerSide: 0
     targetEnemySide: 0
     targetEmpty: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     selectableMid: 0
     selectableBack: 0
     ignoreHide: 0
-    moveValue: 01000000010000000100000001000000
+    moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
@@ -68,11 +68,11 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
-    abilityEffect: 1
+    abilityEffect: 0
     abilityType: 0
-    dontChangeSprite: 1
+    dontChangeSprite: 0
     activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets: []
-    actionTargetsInt: 05000000
+    actionTargetsInt: 

@@ -63,13 +63,26 @@ public class CharactersManager : MonoBehaviour
         return charactersStatus;
     }
     public Character.CharacterStatus GetExistingCharacterStatus(int index) { return existingCharacters[index].GetCharacterStatus(); }
-    /// <summary></summary>
+    /// <summary>移動処理に使用　進行方向にいるキャラを取得</summary>
     /// <param name="ranges">0:forword 1:upper 2:lower 3:backword</param>
     /// <returns></returns>
-    public List<Character> GetNearCharas(int pos,int size,List<int> ranges)
+    public List<Character> GetTravelingDirCharas(int pos,int size,List<int> ranges)
     {
         HashSet<Character> characters = new HashSet<Character>();
-        foreach(Character character in GetExistingCharacters(GetMoveTargets(pos, size, ranges), false))
+        List<Character> c = new List<Character>();
+        switch (size)
+        {
+            case 1:
+                c = new List<Character>(GetExistingCharacters(GetMoveTargets(pos, size, ranges), false));
+                break;
+            case 2:
+                infoText.AddDebugText("未実装");
+                break;
+            default:
+                infoText.AddDebugText("エラー");
+                break;
+        }
+        foreach(Character character in c)
         {
             characters.Add(character);
         }
@@ -217,7 +230,6 @@ public class CharactersManager : MonoBehaviour
                         if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos - i) / 3f))
                         {
                             targets.Add(pos - i);
-                            print((pos - i) / 3);
                         }
                         else { break; }
                     }
@@ -232,7 +244,7 @@ public class CharactersManager : MonoBehaviour
                 }
                 break;
             case 2:
-                infoText.AddDebugText("size2の移動先取得処理は未実装です");
+                infoText.AddDebugText("size2の移動アビリティは実装しないはずでは");
                 break;
             case 3:
                 infoText.AddDebugText("size3のお前が動けるわけねえだろうが!!!");
@@ -243,6 +255,27 @@ public class CharactersManager : MonoBehaviour
         }
        
         return targets;
+    }
+    public Vector2 GetCharacterWorldPos(int size, int pos)
+    {
+        Vector2 worldPos=new Vector2();
+        switch (size)
+        {
+            case 1:
+                worldPos = charactersWorldPos_Size1[pos];
+                break; 
+            case 2:
+                worldPos = charactersWorldPos_Size2[pos];
+                break;
+            case 3:
+                infoText.AddDebugText("size3の処理未実装");
+                break;
+            default:
+                infoText.AddDebugText("error:sizeの値がおかしいです");
+                break;
+        }
+        if (worldPos.x == -1) { infoText.AddDebugText(string.Format("存在しないworldPos:サイズ{0}の位置{1}", size, pos)); }
+        return worldPos;
     }
 
     public bool CheckVictory()

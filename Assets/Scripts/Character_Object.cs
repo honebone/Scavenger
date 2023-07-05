@@ -41,11 +41,14 @@ public class Character_Object : MonoBehaviour
     
 
     Character character;
+    CharactersManager charactersManager;
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb,CharactersManager cm)
     {
         HPBar = HPBarObj.GetComponent<Slider>();
         ShieldBar = ShieldBarObj.GetComponent<Slider>();
         SANBar = SANBarObj.GetComponent<Slider>();
+
+        charactersManager = FindObjectOfType<CharactersManager>();
 
         if (characterStatus.position >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
 
@@ -117,5 +120,30 @@ public class Character_Object : MonoBehaviour
     {
         var d = Instantiate(damagText, damageTextParent);
         d.GetComponent<DamageText>().Init(text, color);
+    }
+
+    public void MoveStart(int size,int pos)
+    {
+        StartCoroutine(Move(size, pos));
+    }
+    public void StopMove(int size, int pos)
+    {
+        StopCoroutine(Move(0,0));
+        transform.position = charactersManager.GetCharacterWorldPos(size, pos);
+    }
+    IEnumerator Move(int size, int pos)
+    {
+        int moveTime = 15;
+
+        Vector3 moveToPos = charactersManager.GetCharacterWorldPos(size, pos);//–Ú“I’n
+        Transform tf = this.transform;
+        Vector3 delta = new Vector3(moveToPos.x - tf.position.x, moveToPos.y - tf.position.y, 0) / moveTime;
+        var wait = new WaitForSeconds(0.02f);
+
+        for (int i = 0; i < moveTime; i++)
+        {
+            tf.position += delta;
+            yield return wait;
+        }
     }
 }

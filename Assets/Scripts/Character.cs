@@ -179,6 +179,7 @@ public class Character : MonoBehaviour
     Character_Object charaObj;
     Character_TargetButton targetButton;
     public Character_Object GetCharacter_Object() { return charaObj; }
+    public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }  
 
     ActionQueueManager actionQueue;
     BattleManager battleManager;
@@ -404,11 +405,16 @@ public class Character : MonoBehaviour
 
     public void ChangePos(int moveTo)
     {
+        charaObj.StopMove(charaStatus.size, charaStatus.position);
         charaStatus.position = moveTo;
+        targetButton = charactersManager.GetTargetButton(charaStatus.size, charaStatus.position);
+        targetButton.SetCharacter(this);
         charactersManager.SortExistingCharacters();
-        
-        //移動アニメーション
+
+        charaObj.MoveStart(charaStatus.size, charaStatus.position);
     }
+    
+    
     //ここまでアクションによって呼ばれる関数
 
 
