@@ -17,6 +17,7 @@ MonoBehaviour:
   dontChangeSprite: 1
   activateSprite: {fileID: 0}
   spriteIndex: 0
+  SE: {fileID: 8300000, guid: d561ba97ef404e246b980d8e012ff34f, type: 3}
   abilityType: 0
   cooldownOnUse: 0
   hasRemain: 0
@@ -48,7 +49,6 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    attackRound: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -70,9 +70,10 @@ MonoBehaviour:
     moveBackword: 0
     abilityEffect: 1
     abilityType: 0
+    SE: {fileID: 8300000, guid: d561ba97ef404e246b980d8e012ff34f, type: 3}
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets: []
-    actionTargetsInt: 03000000
+    actionTargetsInt: 07000000

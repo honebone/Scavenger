@@ -17,13 +17,17 @@ MonoBehaviour:
   charaName: "\u30B9\u30E9\u30A4\u30E0"
   characterTags: 08000000
   size: 1
+  immovable: 0
   player: 0
   playable: 0
   variableSprites:
   - {fileID: 9151243408299108219, guid: b5e6c4d61d0e1324181d820b43c7baab, type: 3}
   spriteForUI: {fileID: 21300000, guid: f559c9e6e80cfa644a1afac9b2d6ce92, type: 3}
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
+  - {fileID: 11400000, guid: c46ff81e9861e674b9ba791dc32f584c, type: 2}
   actionMods: []
+  surviveFatalWounds: 0
   maxHP: 25
   maxSAN: 0
   ATK: 9

@@ -16,6 +16,8 @@ public class AbilityData : ScriptableObject
     [Header("汎用スプライトの番号")]
     public int spriteIndex;
 
+    public AudioClip SE;
+
     public enum AbilityType { other, attack, heal, buff, debuff, summon }
     public AbilityType abilityType;
     //public enum TargetType { other, single, all, self, row, column, withoutSelf, random }

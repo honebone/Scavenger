@@ -30,6 +30,15 @@ MonoBehaviour:
     actionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionObject: {fileID: 0}
+    targetType: 1
+    targetPlayerSide: 1
+    targetEnemySide: 0
+    targetEmpty: 0
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 1
+    ignoreHide: 1
+    moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
@@ -39,7 +48,6 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    attackRound: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 5
@@ -55,18 +63,10 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     moveChance: 0
+    moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveForword: 0
     moveBackword: 0
-    targetType: 1
-    targetPlayerSide: 1
-    targetEnemySide: 0
-    targetEmpty: 0
-    selectableFront: 1
-    selectableMid: 0
-    selectableBack: 0
-    ignoreHide: 0
     abilityEffect: 1
     abilityType: 2
     dontChangeSprite: 0
@@ -75,3 +75,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
+    actionTargetsInt: 07000000

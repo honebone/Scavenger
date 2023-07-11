@@ -9,6 +9,7 @@ public class Action : MonoBehaviour
     ActionQueueManager actionQueueManager;
     CharactersManager characterManager;
     InfoText infoText;
+    SoundManager soundManager;
 
 
     [System.Serializable]
@@ -25,7 +26,7 @@ public class Action : MonoBehaviour
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
 
-        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move }
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move ,summon}
         [Header("ここからアビリティのみ関係")]
         public TargetType targetType;
         public bool targetPlayerSide;
@@ -52,7 +53,6 @@ public class Action : MonoBehaviour
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
-        public int attackRound = 1;
         public bool sureHit;
         public bool unevadable;
 
@@ -80,6 +80,7 @@ public class Action : MonoBehaviour
         [Header("以下には手を出すな")]
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
+        public AudioClip SE;
         public bool dontChangeSprite;
         [Header("スプライトの直接指定")]
         public GameObject activateSprite;
@@ -124,7 +125,6 @@ public class Action : MonoBehaviour
                 {
                     s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));                   
                 }
-                if (attackRound > 1) { s += "x" + attackRound.ToString() + "回攻撃"; }
                 s += "\n";
                 if (ACCMod != 0) { s += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
                 if (CRITCMod != 0) { s += string.Format("CRIT率補正：{0}％(加算)\n", GetValueWithSign(CRITCMod)); }
@@ -180,7 +180,6 @@ public class Action : MonoBehaviour
             ACCMod = actionData.ACCMod;
             CRITCMod = actionData.CRITCMod;
             CRITDMod = actionData.CRITDMod;
-            attackRound = actionData.attackRound;
             sureHit = actionData.sureHit;
             unevadable = actionData.unevadable;
 
@@ -207,20 +206,23 @@ public class Action : MonoBehaviour
     }
     Utility util;
 
-    public void Init(ActionQueueManager qm,ActionStatus status,ActionInfoPanel infoPanel,Utility u)
+    public void Init(ActionQueueManager qm,ActionStatus status,ActionInfoPanel infoPanel,Utility u,SoundManager sm)
     {
         actionQueueManager = qm;
         actionStatus = status;
         util = u;
         infoPanel.Init(actionStatus.actionName, actionStatus.GetInfo(false, new Character.CharacterStatus()));
+        soundManager = sm;
     }
     public ActionStatus GetActionStatus() { return actionStatus; }
 
     public virtual void Resolve()
     {
         Character.CharacterStatus ownerStatus = actionStatus.actionOwner.GetCharacterStatus();
-       
-        for(int i = 0; i < actionStatus.actionTargets.Count; i++)
+        if (actionStatus.SE != null) { soundManager.PlaySE(actionStatus.SE); }
+
+
+        for (int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
             if (!targetStatus.dead)
@@ -259,12 +261,14 @@ public class Action : MonoBehaviour
                         {
                             actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
                             FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}は攻撃を回避した", targetStatus.charaName)));
+                            soundManager.PlaySE(Definer.soundRef.evade);
                         }
                     }
                     else
                     {
                         actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
                         FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.failed_unavailable, string.Format("{0}は攻撃を外した", ownerStatus.charaName)));
+                        soundManager.PlaySE(Definer.soundRef.miss);
                     }
                 }
 

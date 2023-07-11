@@ -15,6 +15,8 @@ public class Ability : MonoBehaviour
         public GameObject activateSprite;
         public int spriteIndex;
 
+        public AudioClip SE;
+
         public AbilityData.AbilityType abilityType;
 
         //public AbilityData.TargetType targetType;
@@ -77,6 +79,8 @@ public class Ability : MonoBehaviour
             activateSprite = data.activateSprite;
             spriteIndex = data.spriteIndex;
 
+            SE=data.SE;
+
             abilityType = data.abilityType;
 
             //targetType = data.targetType;
@@ -100,6 +104,7 @@ public class Ability : MonoBehaviour
             actionsStatus = data.actionsStaus;
 
             //actionsStatus = new Action.ActionStatus[data.actions.Length];
+            actionsStatus[0].SE = SE;
             for (int i = 0; i < actionsStatus.Length; i++)
             {
                 actionsStatus[i].actionName = abilityName;
@@ -119,10 +124,18 @@ public class Ability : MonoBehaviour
     BattleManager battleManager;
     ActionQueueManager actionQueue;
     Utility util;
+    SoundManager soundManager;
     AbilityStatus abilityStatus;
 
     List<List<int>> targetGroups = new List<List<int>>();
     int counter;
+
+    /// <summary>x.pos y:markedが含まれているか </summary>
+    List<Vector2Int> targetIconPos=new List<Vector2Int>();
+    List<List<int>> targetPool = new List<List<int>>();//対象の自動決定の際に呼ばれる
+    int size;
+    bool targetEmpty;
+
 
     public void Init(Character chara, AbilityStatus status)
     {
@@ -133,6 +146,7 @@ public class Ability : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         actionQueue=FindObjectOfType<ActionQueueManager>();
         util = FindObjectOfType<Utility>();
+        soundManager=FindObjectOfType<SoundManager>(); 
     }
 
     public virtual string GetInfo() { return abilityStatus.GetInfo(true, character.GetCharacterStatus()); }
@@ -140,57 +154,110 @@ public class Ability : MonoBehaviour
     {
         charactersManager.ResetAllTargetIcons();
         Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        bool playable = charaStatus.playable;
+
+        targetIconPos = new List<Vector2Int>();
+        targetPool = new List<List<int>>();
+
         switch (abilityStatus.actionsStatus[counter].targetType)
         {
             case Action.ActionStatus.TargetType.other:
                 print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                 break;
             case Action.ActionStatus.TargetType.single:
+                size = 0;
+                targetEmpty = false;
                 for(int i = 0; i < 18; i++)
                 {
                     if (i < 9 && abilityStatus.actionsStatus[counter].targetPlayerSide)
                     {
-                        if (i < 3 && abilityStatus.actionsStatus[counter].selectableBack)
+                        if (i < 3 && abilityStatus.actionsStatus[counter].selectableBack)//潜伏やマークも後々加味すること
                         {
-                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
-                            //if (charactersManager.CheckCharaExist(i)) { charactersManager.GetCharacterWithPos(i).SetTargetIcon(new List<int>() { i }); }
+                            //if (playable) { charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i }); }
+                            //else { targetPool.Add(new List<int>() { i }); }
+                            if (charactersManager.CheckCharaExist(i))
+                            {
+                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1));  }//マークが付与されているのなら、yを１に
+                                else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                                targetPool.Add(new List<int>() { i });
+                            }
                         }
                         if (i >= 3 && i < 6 && abilityStatus.actionsStatus[counter].selectableMid)
                         {
-                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
+                            if (charactersManager.CheckCharaExist(i))
+                            {
+                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                                targetPool.Add(new List<int>() { i });
+                            }
                         }
                         if (i >= 6 && abilityStatus.actionsStatus[counter].selectableFront)
                         {
-                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
+                            if (charactersManager.CheckCharaExist(i))
+                            {
+                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                                targetPool.Add(new List<int>() { i });
+                            }
                         }
                     }
                     if (i >= 9 && abilityStatus.actionsStatus[counter].targetEnemySide)
                     {
                         if (i < 12 && abilityStatus.actionsStatus[counter].selectableFront)
                         {
-                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
+                            if (charactersManager.CheckCharaExist(i))
+                            {
+                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                                targetPool.Add(new List<int>() { i });
+                            }
                         }
                         if (i >= 12 && i < 15 && abilityStatus.actionsStatus[counter].selectableMid)
                         {
-                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
+                            if (charactersManager.CheckCharaExist(i))
+                            {
+                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                                targetPool.Add(new List<int>() { i });
+                            }
                         }
                         if (i >= 15 && abilityStatus.actionsStatus[counter].selectableBack)
                         {
-                            charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i });
+                            if (charactersManager.CheckCharaExist(i))
+                            {
+                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                                targetPool.Add(new List<int>() { i });
+                            }
                         }
                     }
                 }
                 break;
-            case Action.ActionStatus.TargetType.move:
+            case Action.ActionStatus.TargetType.move://操作可能キャラのみ
+                size = charaStatus.size;
+                targetEmpty = true;
+                if (!playable) { FindObjectOfType<InfoText>().AddDebugText("error:操作不可のキャラが移動アビリティ使おうとしてるぞ"); }
                 foreach(int target in charactersManager.GetMoveTargets(charaStatus.position, charaStatus.size, abilityStatus.actionsStatus[counter].moveValue))
                 {
-                    charactersManager.SetTargetIcon(target, true, charaStatus.size, new List<int>() { target });
+                    //charactersManager.SetTargetIcon(target, true, charaStatus.size, new List<int>() { target });
+                    targetIconPos.Add(new Vector2Int(target, 0));
+                    targetPool.Add(new List<int>() { target });
                 }
                 break;
             default:
                 print("そのtargetTypeの処理は未実装");
                 break;
         }
+
+        //マークの処理
+        if (playable)
+        {
+            for (int i = 0; i < targetPool.Count; i++)//test
+            {
+                charactersManager.SetTargetIcon(targetIconPos[i].x, targetEmpty, size, targetPool[i]); 
+            }
+        }
+        else { SelectTarget(targetPool[Random.Range(0, targetPool.Count)]); }
     }
     public virtual void SelectTarget(List<int> targetGroup) {
         counter++;
@@ -201,7 +268,7 @@ public class Ability : MonoBehaviour
             battleManager.SetSelectingTarget(false);
             charactersManager.ResetAllTargetIcons();
 
-            string abilityName = util.GetColoredText(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType], abilityStatus.abilityName);
+            string abilityName = abilityStatus.abilityName.ColorStr(abilityStatus.abilityType.ATToColor());
             FindObjectOfType<InfoText>().AddLogText(string.Format("{0}の<{1}>", character.GetCharacterStatus().charaName, abilityName));
 
             for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue

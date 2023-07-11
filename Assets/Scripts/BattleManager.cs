@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
 
     public void BattleStart()
     {
+        infoText.AddLogText("\n◇◇◇◇戦闘開始◇◇◇◇");
         inBattle = true;
         //trigger
         
@@ -87,6 +88,10 @@ public class BattleManager : MonoBehaviour
                 ACT.RemoveAt(a);
             }
         }
+        foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        {
+            chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
+        }
 
         StartCoroutine(RoundStartEffect());
     }
@@ -126,6 +131,12 @@ public class BattleManager : MonoBehaviour
             if (characterInTurnOrder[i].CheckAlive())
             {
                 currentTurn = i;
+
+                foreach (Character chara in charactersManager.GetExistingCharacters_All())
+                {
+                    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
+                }
+
                 characterInTurnOrder[i].MyTurnStart();
                 return;
             }
@@ -151,6 +162,24 @@ public class BattleManager : MonoBehaviour
         inRound = false;
         roundEnd = true;
         Debug.Log("ラウンド終了");
+    }
+
+    public void BattleEnd()
+    {
+        infoText.AddLogText("\n◇◇◇◇戦闘終了◇◇◇◇");
+        currentTurn = 0;
+        inRound = false;
+        inBattle = false;
+        if (selectedAbility) { infoText.AddDebugText("アビリティ選択中に戦闘が終了しました"); }
+        if (selectingTarget) { infoText.AddDebugText("対象選択中に戦闘が終了しました"); }
+
+        characterInTurnOrder = new List<Character>();
+        turnOrderIcons = new List<Battle_TurnOrderIcon>();
+        for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }
+
+        //各キャラクターにも知らせる
+        //generatedCharaから死亡しているキャラを消去
+
     }
     private void Update()
     {
@@ -179,11 +208,32 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < selectedAbilityParent.childCount; i++) { Destroy(selectedAbilityParent.GetChild(i).gameObject); }
         selectedAbility=null;
     }
+
+    public void SetOmenIcon(Character chara,Ability.AbilityStatus abilityStatus)
+    {
+        foreach (Battle_TurnOrderIcon turnOrderIcon in turnOrderIcons)
+        {
+            if (turnOrderIcon.GetCharacter() == chara)
+            {
+                turnOrderIcon.SetOmenIcon(abilityStatus);
+                return;
+            }
+        }
+        infoText.AddDebugText("error");
+    }
     public void SetSelectingAbility(bool f) { selectingAbility = f; }
     public void SetSelectingTarget(bool f) { selectingTarget = f; }
     public bool checkIfMyTurn(Character character)
     {
         if (inBattle && inRound && characterInTurnOrder[currentTurn] == character) { return true; }
+        return false;
+    }
+    public bool CheckIfTurnRemain(Character character)
+    {
+        for (int i = currentTurn; i < characterInTurnOrder.Count; i++)
+        {
+            if (characterInTurnOrder[i] == character) { return true; }
+        }
         return false;
     }
 

@@ -26,7 +26,6 @@ public class ActionData : ScriptableObject
     public float ACCMod;
     public float CRITCMod;
     public float CRITDMod;
-    public int attackRound = 1;
     public bool sureHit;
     public bool unevadable;
 

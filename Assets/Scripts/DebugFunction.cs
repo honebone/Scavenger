@@ -15,15 +15,12 @@ public class DebugFunction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 1);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 4);
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 5);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 8);
 
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);   
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 13);
+            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 13);
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 15);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }

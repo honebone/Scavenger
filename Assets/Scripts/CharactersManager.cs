@@ -159,6 +159,15 @@ public class CharactersManager : MonoBehaviour
         }
         return false;
     }
+    public bool CheckCharaExistAtLeastOne(List<int> checkRange)
+    {
+        foreach (int checkPos in checkRange)
+        {
+            if (CheckCharaExist(checkPos)) { return true; }
+        }
+        return false;
+    }
+
     public Character GetCharacterWithPos(int pos)
     {
         foreach (Character character in GetExistingCharacters_All())

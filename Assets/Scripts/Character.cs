@@ -67,6 +67,7 @@ public class Character : MonoBehaviour
         /// <summary>自身をかばっているキャラのinstanceID</summary>
         public int protectedBy;
 
+        public bool omenSet;
         public Ability.AbilityStatus omen;
 
         public int HP;
@@ -80,6 +81,7 @@ public class Character : MonoBehaviour
         public int hide;
 
         //以下デバフ
+        public int marked;
         public int focused;
         public int stun;
         public int bleed;//被ダメージ時この値分HP減少
@@ -111,6 +113,8 @@ public class Character : MonoBehaviour
 
             if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
             if (RHeal != 100) { s += string.Format("受ける回復量：{0}％\n", RHeal); }
+
+            if (omenSet) {s += string.Format("<{0}>を準備中\n", omen.abilityName.ColorStr(omen.abilityType.ATToColor())); }
             return s;
         }
 
@@ -189,6 +193,7 @@ public class Character : MonoBehaviour
     Utility util;
     InfoText infoText;
     CharactersManager charactersManager;
+    SoundManager soundManager;
 
     public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
     {
@@ -211,6 +216,7 @@ public class Character : MonoBehaviour
         util = FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
         charactersManager=FindObjectOfType<CharactersManager>();
+         soundManager=FindObjectOfType<SoundManager>();
 
         //TurnIconはラウンド開始時にセット
     }
@@ -276,12 +282,16 @@ public class Character : MonoBehaviour
     {
         print(charaStatus.charaName + "のターン");
         yield return new WaitForSeconds(0.5f);
-        actionQueue.StartResolve(3);
+        battleManager.SetSelectedAbility(charaStatus.omen, this);//test　本来はラウンド開始時に決定する
+        charaStatus.omenSet = false;
+        charaStatus.omen = new Ability.AbilityStatus();
+        BattleManager.selectedAbility.StartSelectTarget();
     }
     public void EndPhase()
     {
         if (CheckAlive())
         {
+
             OnTurnEnd();
             charaObj.SetTurnIcon_End();
             //Resolve開始
@@ -302,6 +312,7 @@ public class Character : MonoBehaviour
         charaObj.SetHPandShieldBar();
         charaObj.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
         infoText.AddLogText(string.Format("{0}はHPを{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.decreaseHP, value.ToString())));
+        soundManager.PlaySE(Definer.soundRef.damage);
         if (charaStatus.HP <= 0)
         {
             if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、HP減少によって死なない
@@ -309,6 +320,7 @@ public class Character : MonoBehaviour
                 charaStatus.HP = 0;
                 charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
                 infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
+                soundManager.PlaySE(Definer.soundRef.dying);
                 charaObj.SetHPandShieldBar();
             }
             else
@@ -320,17 +332,20 @@ public class Character : MonoBehaviour
     public void Damage(int DMG,bool CRIT,bool canCounter,Character attacker)
     {
         charaStatus.shield = 0;//シールドを0に
+       
 
         if (CRIT)//テキストの表示
         {
             charaObj.SetDamageText("Critical!!", Definer.colorRef.CRIT);
             charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.CRIT);
             infoText.AddLogText(string.Format("{0}\n{1}は{2}ダメージを受けた", util.GetColoredText(Definer.colorRef.CRIT, "Critical!!"), charaStatus.charaName, util.GetColoredText(Definer.colorRef.CRIT, DMG.ToString())));
+            soundManager.PlaySE(Definer.soundRef.CRIT);
         }
         else
         {
             charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.damage);
             infoText.AddLogText(string.Format("{0}は{1}ダメージを受けた", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, DMG.ToString())));
+            soundManager.PlaySE(Definer.soundRef.damage);
         }
 
         if (charaStatus.HP == 0)//瀕死の状態で1以上のダメージを受けたら死亡する
@@ -348,6 +363,8 @@ public class Character : MonoBehaviour
                 charaStatus.HP = 0;
                 charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
                 infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
+                soundManager.PlaySE(Definer.soundRef.dying);
+
             }
         }
         else//瀕死でないなら
@@ -360,6 +377,7 @@ public class Character : MonoBehaviour
                     charaStatus.HP = 0;
                     charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
                     infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
+                    soundManager.PlaySE(Definer.soundRef.dying);
                 }
                 else
                 {
@@ -380,6 +398,7 @@ public class Character : MonoBehaviour
         charaStatus.HP = Mathf.Min(charaStatus.HP + value, charaStatus.maxHP);
         charaObj.SetDamageText(value.ToString(), Definer.colorRef.heal);
         infoText.AddLogText(string.Format("{0}はHPを{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.heal, value.ToString())));
+        soundManager.PlaySE(Definer.soundRef.heal);
         charaObj.SetHPandShieldBar();
     }
     public void SANHeal(int value)
@@ -387,6 +406,7 @@ public class Character : MonoBehaviour
         charaStatus.SAN = Mathf.Min(charaStatus.SAN + value, charaStatus.maxSAN);
         charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANHeal);
         infoText.AddLogText(string.Format("{0}は正気度を{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANHeal, value.ToString())));
+        soundManager.PlaySE(Definer.soundRef.SANHeal);
         charaObj.SetSANBar();
     }
     public void SANDamage(int value)
@@ -394,6 +414,7 @@ public class Character : MonoBehaviour
         charaStatus.SAN -= value;
         charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANDecrease);
         infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
+        soundManager.PlaySE(Definer.soundRef.SANDecrease);
         charaObj.SetSANBar();
         if (charaStatus.SAN <= 0) { Die(1); }
     }
@@ -403,6 +424,7 @@ public class Character : MonoBehaviour
         charaStatus.shield += value;
         charaObj.SetDamageText(value.ToString(), Definer.colorRef.shield);
         infoText.AddLogText(string.Format("{0}はシールドを{1}得た", charaStatus.charaName, util.GetColoredText(Definer.colorRef.shield, value.ToString())));
+        soundManager.PlaySE(Definer.soundRef.shield);
         charaObj.SetHPandShieldBar();
     }
 
@@ -450,7 +472,12 @@ public class Character : MonoBehaviour
 
     public virtual void SetOmen()
     {
-
+        if (!charaStatus.playable && CheckAlive() && battleManager.CheckIfTurnRemain(this)&&!charaStatus.omenSet)
+        {
+            charaStatus.omen = charaStatus.abilitiesStatus[Random.Range(0, charaStatus.abilitiesStatus.Length)];
+            charaStatus.omenSet = true;
+            battleManager.SetOmenIcon(this, charaStatus.omen);
+        }
     }
     public virtual void OnBattleStart() { }
     public virtual void OnRoundStart()
@@ -468,7 +495,7 @@ public class Character : MonoBehaviour
 
     public virtual void OnActivateAbility() { }
     /// <summary>攻撃命中時</summary>
-    public virtual void OnDamage(int DMG, Character target) { Enqueue(actionsStatusTest[0], true, new List<Character>() { this }); }
+    public virtual void OnDamage(int DMG, Character target) { /*Enqueue(actionsStatusTest[0], true, new List<Character>() { this });*/ }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(int ID) { }
     public virtual void OnMiss(int ID) { }
@@ -476,8 +503,8 @@ public class Character : MonoBehaviour
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 
-    public virtual void OnDamaged(int DMG, Character attacker) { Enqueue(actionsStatusTest[0], true, new List<Character>() { this });
-        Enqueue(actionsStatusTest[1], true, new List<Character>() { this });
+    public virtual void OnDamaged(int DMG, Character attacker) {// Enqueue(actionsStatusTest[0], true, new List<Character>() { this });
+        //Enqueue(actionsStatusTest[1], true, new List<Character>() { this });
     }
     public virtual void OnCRITed(int ID) { }
     public virtual void OnEvade( int ID) { }

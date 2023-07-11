@@ -14,6 +14,9 @@ public class ActionQueueManager : MonoBehaviour
     Transform content;
 
     [SerializeField]
+    AudioClip SE_ability;
+
+    [SerializeField]
     float abilityPause;
     [SerializeField]
     float abilityPause_followthrough;
@@ -30,6 +33,7 @@ public class ActionQueueManager : MonoBehaviour
     CharactersManager charactersManager;
     InfoText infoText;
     Utility util;
+    SoundManager soundManager;
 
     bool resolving;
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
@@ -41,6 +45,7 @@ public class ActionQueueManager : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         infoText=FindObjectOfType<InfoText>();
         util = FindObjectOfType<Utility>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
     public void ToggleQueuePanel()
     {
@@ -66,7 +71,7 @@ public class ActionQueueManager : MonoBehaviour
             else { obj = Definer.actionManager_General; }
             var p = Instantiate(actionInfoPanel, content);
             var a = Instantiate(obj, p.transform);
-            a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util);
+            a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util, soundManager);
 
             inQueueAbilityEffects.Add(a.GetComponent<Action>());
         }
@@ -102,7 +107,7 @@ public class ActionQueueManager : MonoBehaviour
         }
         else
         {
-            EndResolve();
+            StartCoroutine(EndResolve());
         }
     }
 
@@ -128,15 +133,12 @@ public class ActionQueueManager : MonoBehaviour
         else { obj = Definer.actionManager_General; }
         var p = Instantiate(actionInfoPanel, content);
         var a = Instantiate(obj, p.transform);
-        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util);
+        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util, soundManager);
         inQueueActions.Add(a.GetComponent<Action>());
 
     }
 
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
-
-   
-   
     IEnumerator ResolveAbility()
     {
         Action.ActionStatus actionStatus = inQueueAbilityEffects[0].GetActionStatus();
@@ -147,6 +149,7 @@ public class ActionQueueManager : MonoBehaviour
 
         abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
+        soundManager.PlaySE(SE_ability);
 
         actionStatus.actionOwner.SetActionInvolvedIcon(true);
         foreach(Action action in inQueueAbilityEffects)
@@ -204,7 +207,7 @@ public class ActionQueueManager : MonoBehaviour
         {
             resolving = false;
 
-            EndResolve();
+            StartCoroutine(EndResolve());
             CloseQueuePanel();
         }
         else
@@ -220,9 +223,9 @@ public class ActionQueueManager : MonoBehaviour
         }
 
     }
-    public void EndResolve()
+    IEnumerator EndResolve()
     {
-        if (charactersManager.CheckVictory()) { infoText.AddDebugText("èüóò"); }
+        if (charactersManager.CheckVictory()) { battleManager.BattleEnd(); }
         else
         {
             switch (resolveMode)
@@ -235,6 +238,7 @@ public class ActionQueueManager : MonoBehaviour
                     break;
                 case 3:
                     resolveMode = -1;
+                    yield return new WaitForSeconds(abilityPause_followthrough);
                     battleManager.GetCurrntTurnChara().EndPhase();
                     break;
             }

@@ -25,12 +25,29 @@ public class Definer : MonoBehaviour
 
 
     }
+    [System.Serializable]
+    public class SoundRef
+    {
+        public AudioClip miss;
+        public AudioClip evade;
+        public AudioClip damage;
+        public AudioClip CRIT;
+        public AudioClip dying;
+        public AudioClip heal;
+        public AudioClip shield;
+        public AudioClip SANHeal;
+        public AudioClip SANDecrease;
+
+    }
 
     public static ColorRef colorRef;
+    public static SoundRef soundRef;    
     public static GameObject abilityManager_General;
     public static GameObject actionManager_General;
     [SerializeField]
     ColorRef colorRef_Inspector;
+    [SerializeField]
+    SoundRef soundRef_Inspector;
     [SerializeField]
     GameObject abilityManager_General_Inspector;
     [SerializeField]
@@ -44,6 +61,7 @@ public class Definer : MonoBehaviour
     private void Awake()
     {
         colorRef = colorRef_Inspector;
+        soundRef = soundRef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
         actionManager_General=actionManager_General_Inspector;
     }
