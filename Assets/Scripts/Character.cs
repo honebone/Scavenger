@@ -186,7 +186,9 @@ public class Character : MonoBehaviour
     Character_Object charaObj;
     Character_TargetButton targetButton;
     public Character_Object GetCharacter_Object() { return charaObj; }
-    public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }  
+    public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }
+
+    protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
 
     ActionQueueManager actionQueue;
     BattleManager battleManager;
@@ -280,7 +282,6 @@ public class Character : MonoBehaviour
     }
     IEnumerator Test()
     {
-        print(charaStatus.charaName + "のターン");
         yield return new WaitForSeconds(0.5f);
         battleManager.SetSelectedAbility(charaStatus.omen, this);//test　本来はラウンド開始時に決定する
         charaStatus.omenSet = false;
@@ -487,15 +488,24 @@ public class Character : MonoBehaviour
            //予兆設定
         }
     }
-    public virtual void OnTurnStart() { }
+    public virtual void OnTurnStart()
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnStart(); }
+    }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }
     public virtual void OnBattleEnd() { }
 
 
-    public virtual void OnActivateAbility() { }
+    public virtual void OnActivateAbility()
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnActivateAbility(); }
+    }
     /// <summary>攻撃命中時</summary>
-    public virtual void OnDamage(int DMG, Character target) { /*Enqueue(actionsStatusTest[0], true, new List<Character>() { this });*/ }
+    public virtual void OnDamage(int DMG, Character target)
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamage(DMG, target); }
+    }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(int ID) { }
     public virtual void OnMiss(int ID) { }
@@ -503,8 +513,9 @@ public class Character : MonoBehaviour
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 
-    public virtual void OnDamaged(int DMG, Character attacker) {// Enqueue(actionsStatusTest[0], true, new List<Character>() { this });
-        //Enqueue(actionsStatusTest[1], true, new List<Character>() { this });
+    public virtual void OnDamaged(int DMG, Character attacker)
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamaged(DMG, attacker); }
     }
     public virtual void OnCRITed(int ID) { }
     public virtual void OnEvade( int ID) { }
