@@ -48,9 +48,10 @@ MonoBehaviour:
     personalityName: "\u98DB\u3073\u6563\u308B\u7C98\u6DB2"
     personalityType: 1
   actionStatus:
-    actionName: "\u7C98\u6DB2"
-    actionInfo: "\u653B\u6483\u3092\u53D7\u3051\u305F\u6642(50%)\uFF1A"
+    actionName: "\u98DB\u3073\u6563\u308B\u7C98\u6DB2"
+    conditionInfo: "\u653B\u6483\u3092\u53D7\u3051\u305F\u6642(50%)"
     targetInfo: "\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B"
+    actionInfo: 
     actionObject: {fileID: 0}
     targetType: 0
     targetPlayerSide: 0
@@ -65,8 +66,8 @@ MonoBehaviour:
     decreaseHP_max: 0
     cantCounter: 1
     attackType: 1
-    ATKMod_min: 20
-    ATKMod_max: 40
+    ATKMod_min: 50
+    ATKMod_max: 80
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

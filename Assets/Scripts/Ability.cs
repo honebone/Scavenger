@@ -268,7 +268,7 @@ public class Ability : MonoBehaviour
             battleManager.SetSelectingTarget(false);
             charactersManager.ResetAllTargetIcons();
 
-            string abilityName = abilityStatus.abilityName.ColorStr(abilityStatus.abilityType.ATToColor());
+            string abilityName = abilityStatus.abilityName.ColorStr(abilityStatus.abilityType.ToColor());
             FindObjectOfType<InfoText>().AddLogText(string.Format("{0}‚Ì<{1}>", character.GetCharacterStatus().charaName, abilityName));
 
             for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//s“®Žå‚â‘ÎÛ‚ð‘ã“ü‚µAEnqueue

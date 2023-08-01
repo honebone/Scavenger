@@ -10,6 +10,7 @@ public class Definer : MonoBehaviour
         public Color debug;
         /// <summary>0:other 1:attack 2:heal 3:buff 4:debuff 5:summon</summary>
         public Color[] abilityColors;
+        public Color[] personalityColors;
 
         public Color decreaseHP;
         public Color damage;

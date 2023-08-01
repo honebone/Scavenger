@@ -19,6 +19,8 @@ public class Character : MonoBehaviour
         public GameObject[] variableSprites; 
         public Sprite spriteForUI;
         public Ability.AbilityStatus[] abilitiesStatus;
+
+        public List<GameObject> passiveAbilities;
         public List<GameObject> actionMods;
 
         //public EquipmentType[] equipableTypes;
@@ -114,7 +116,7 @@ public class Character : MonoBehaviour
             if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
             if (RHeal != 100) { s += string.Format("受ける回復量：{0}％\n", RHeal); }
 
-            if (omenSet) {s += string.Format("<{0}>を準備中\n", omen.abilityName.ColorStr(omen.abilityType.ATToColor())); }
+            if (omenSet) {s += string.Format("<{0}>を準備中\n", omen.abilityName.ColorStr(omen.abilityType.ToColor())); }
             return s;
         }
 
@@ -133,6 +135,7 @@ public class Character : MonoBehaviour
 
             abilitiesStatus = new Ability.AbilityStatus[data.abilities.Length];
             for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i].Init(data.abilities[i]); }
+            passiveAbilities = new List<GameObject>(data.passiveAbilities);
 
             actionMods = data.actionMods;
 
@@ -210,6 +213,7 @@ public class Character : MonoBehaviour
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
         charaObj.SetHPandShieldBar();
         charaObj.SetSANBar();
+        foreach(GameObject pa in charaStatus.passiveAbilities) { AddPA(pa); }
 
         targetButton.SetCharacter(this);
 
@@ -222,10 +226,23 @@ public class Character : MonoBehaviour
 
         //TurnIconはラウンド開始時にセット
     }
+    public void AddPA(GameObject paObj)
+    {
+        var p = Instantiate(paObj, transform);
+        passiveAbilities.Add(p.GetComponent<PassiveAbility>());
+        p.GetComponent<PassiveAbility>().Init(this);
+    }
 
     public void DisplayInfo()
     {
-        infoText.SetCharaInfo(charaStatus.charaName, charaStatus.GetInfo(), this);
+        string info = charaStatus.GetInfo();
+        info += "◇◇特性◇◇\n";
+        foreach(PassiveAbility pa in passiveAbilities)
+        {
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo());
+            
+        }
+        infoText.SetCharaInfo(charaStatus.charaName, info, this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
         charaObj.SetSelectedIcon(true);
     }

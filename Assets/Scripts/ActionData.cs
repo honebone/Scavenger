@@ -6,12 +6,14 @@ using UnityEngine;
 public class ActionData : ScriptableObject
 {
     public string actionName;
-    [TextArea(3,10)]
-    public string actionInfo;
+    [TextArea(3, 10)]
+    public string conditionInfo;
 
     //public bool useGeneralInfo;
     [TextArea(3, 10)]
     public string targetInfo;
+    [TextArea(3,10)]
+    public string actionInfo;
 
     public GameObject actionObject;
 

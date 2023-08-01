@@ -5,7 +5,8 @@ using UnityEngine;
 public class PassiveAbility : MonoBehaviour
 {
    protected Character character;
-    public virtual string GetInfo() { return ""; }
+    public virtual string GetPAName() { return ""; }
+    public virtual string GetPAInfo() { return ""; }
     public void Init(Character c)
     {
         character = c;

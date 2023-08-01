@@ -13,16 +13,17 @@ public class Action : MonoBehaviour
 
 
     [System.Serializable]
-    public class ActionStatus
+    public struct ActionStatus
     {
         [Header("アビリティのactionの場合は設定不要")]
         public string actionName;
         [TextArea(3, 10)]
-        public string actionInfo;
+        public string conditionInfo;
         //public bool useGeneralInfo;
         [TextArea(3, 10)]
         public string targetInfo;
-
+[TextArea(3, 10)]
+        public string actionInfo;
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
 
@@ -95,8 +96,8 @@ public class Action : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = "";
-           
 
+            if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             s += string.Format("対象：{0}\n", targetInfo);
             if (actionInfo != "") { s += actionInfo + "\n"; }
             if (decreaseHP_max > 0)
@@ -163,6 +164,7 @@ public class Action : MonoBehaviour
         public void Init(ActionData actionData)
         {
             actionName = actionData.actionName;
+            conditionInfo = actionData.conditionInfo;
             actionInfo = actionData.actionInfo;
             //useGeneralInfo = actionData.useGeneralInfo;
 

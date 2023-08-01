@@ -22,6 +22,7 @@ public class CharacterData : ScriptableObject
 
     public AbilityData[] abilities;
 
+    public List<GameObject> passiveAbilities;
     public List<GameObject> actionMods;
 
     //public EquipmentType[] equipableTypes;
