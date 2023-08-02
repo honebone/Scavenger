@@ -16,6 +16,10 @@ public static class Extentions
     {
         return Definer.colorRef.personalityColors[(int)type];
     }
+    public static Color ToColor(this PA_StatusEffect.StatusEffectStatus.StatusEffectType type)
+    {
+        return Definer.colorRef.statusEffectColors[(int)type];
+    }
     public static bool Probability(this float fPercent)
     {
         bool result;

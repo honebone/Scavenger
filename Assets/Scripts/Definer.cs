@@ -11,6 +11,8 @@ public class Definer : MonoBehaviour
         /// <summary>0:other 1:attack 2:heal 3:buff 4:debuff 5:summon</summary>
         public Color[] abilityColors;
         public Color[] personalityColors;
+        /// <summary>0:other 1:buff 2:debuff 3:focus</summary>
+        public Color[] statusEffectColors;
 
         public Color decreaseHP;
         public Color damage;
