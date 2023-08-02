@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8492015112257644605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6095776070082524036}
+  - component: {fileID: 554112192011071175}
+  m_Layer: 0
+  m_Name: PA_StE_Bleed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6095776070082524036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492015112257644605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554112192011071175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492015112257644605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f480bfb5ee9ec91478e5d0398688b1a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StEStatus:
+    StEName: "\u51FA\u8840"
+    StEInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304C\u30B9\u30BF\u30C3\u30AF\u5206\u6E1B\u5C11\u3059\u308B\u3002\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u304C2\u6E1B\u5C11\u3059\u308B\u3002"
+    StEType: 2
+    maxStack: 0
+    merge: 0
+    refValue: 0
+    stack: 0
+    value: 0
+  actionStatus:
+    actionName: "\u51FA\u8840"
+    conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
+    targetInfo: "\u81EA\u8EAB"
+    actionInfo: 
+    actionObject: {fileID: 0}
+    targetType: 0
+    targetPlayerSide: 0
+    targetEnemySide: 0
+    targetEmpty: 0
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
+    ignoreHide: 0
+    moveValue: 
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    moveChance: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityEffect: 0
+    abilityType: 0
+    SE: {fileID: 0}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 0}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargets: []
+    actionTargetsInt: 

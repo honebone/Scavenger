@@ -192,6 +192,7 @@ public class Character : MonoBehaviour
     public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }
 
     protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
+    List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
     ActionQueueManager actionQueue;
     BattleManager battleManager;
@@ -231,6 +232,25 @@ public class Character : MonoBehaviour
         var p = Instantiate(paObj, transform);
         passiveAbilities.Add(p.GetComponent<PassiveAbility>());
         p.GetComponent<PassiveAbility>().Init(this);
+    }
+    public void RemovePA(PassiveAbility passiveAbility)
+    {
+        deletePAs.Add(passiveAbility);
+    }
+    void RemovePA_Execute()
+    {
+        foreach (PassiveAbility deletePA in deletePAs) { passiveAbilities.Remove(deletePA); }
+        deletePAs.Clear();
+    }
+    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams)
+    {
+        var s= Instantiate(Definer.StERef[(int)StEParams.applyStE], transform);
+        passiveAbilities.Add(s.GetComponent<PassiveAbility>());
+        //sort
+        s.GetComponent<PA_StatusEffect>().Init(StEParams);
+        s.GetComponent<PassiveAbility>().Init(this);
+        charaObj.SetDamageText(string.Format("ïtó^ÅF{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
+        infoText.AddLogText(string.Format("{0}ÇÕ{1}Çïtó^Ç≥ÇÍÇΩ", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
     }
 
     public void DisplayInfo()
@@ -508,6 +528,7 @@ public class Character : MonoBehaviour
     public virtual void OnTurnStart()
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnStart(); }
+        RemovePA_Execute();
     }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }
@@ -517,11 +538,13 @@ public class Character : MonoBehaviour
     public virtual void OnActivateAbility()
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnActivateAbility(); }
+        RemovePA_Execute();
     }
     /// <summary>çUåÇñΩíÜéû</summary>
     public virtual void OnDamage(int DMG, Character target)
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamage(DMG, target); }
+        RemovePA_Execute();
     }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(int ID) { }
@@ -533,6 +556,7 @@ public class Character : MonoBehaviour
     public virtual void OnDamaged(int DMG, Character attacker)
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamaged(DMG, attacker); }
+        RemovePA_Execute();
     }
     public virtual void OnCRITed(int ID) { }
     public virtual void OnEvade( int ID) { }

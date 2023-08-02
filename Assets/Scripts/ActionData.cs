@@ -44,7 +44,8 @@ public class ActionData : ScriptableObject
     public int shieldAdd_max;
     public int shieldRemove_min;
     public int shieldRemove_max;
-    //StE
+    [Header("ApplyStE")]
+    public PA_StatusEffect.StatusEffectParams[] applyStEParams;
 
     public float moveChance;
     public int moveUpper;

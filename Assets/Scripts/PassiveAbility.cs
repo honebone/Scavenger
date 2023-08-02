@@ -6,12 +6,20 @@ public class PassiveAbility : MonoBehaviour
 {
    protected Character character;
     public virtual string GetPAName() { return ""; }
-    public virtual string GetPAInfo() { return ""; }
+    public virtual string GetPAInfo() {
+        print("error:GetPAInfo‚Ìoverride‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+        return ""; }
     public void Init(Character c)
     {
         character = c;
     }
-    public void Disable() { Destroy(gameObject); }
+    public void Disable()
+    {
+        AtTheEnd();
+        character.RemovePA(this);
+        Destroy(gameObject);
+    }
+    public virtual void AtTheEnd() { }
 
     public virtual void OnBattleStart() { }
     public virtual void OnRoundStart() { }

@@ -6651,6 +6651,9 @@ MonoBehaviour:
     SANDecrease: {fileID: 8300000, guid: 90b9cc90a01a47c4b8d6dbe460f21ebb, type: 3}
   abilityManager_General_Inspector: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   actionManager_General_Inspector: {fileID: 7602238575876192368, guid: ae70b75fecb0b4249ad13f9a0047c65e, type: 3}
+  StERef_Inspector:
+  - {fileID: 0}
+  - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
 --- !u!114 &630398175 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 670865512060243974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}

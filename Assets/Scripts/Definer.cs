@@ -47,6 +47,7 @@ public class Definer : MonoBehaviour
     public static SoundRef soundRef;    
     public static GameObject abilityManager_General;
     public static GameObject actionManager_General;
+    public static GameObject[] StERef;
     [SerializeField]
     ColorRef colorRef_Inspector;
     [SerializeField]
@@ -55,6 +56,8 @@ public class Definer : MonoBehaviour
     GameObject abilityManager_General_Inspector;
     [SerializeField]
     GameObject actionManager_General_Inspector;
+    [SerializeField]
+    GameObject[] StERef_Inspector;
 
     public static Dictionary< AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"ì¡éÍ"}, {AbilityData.AbilityType.attack,"çUåÇ"},{AbilityData.AbilityType.heal,"âÒïú"},
@@ -67,5 +70,6 @@ public class Definer : MonoBehaviour
         soundRef = soundRef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
         actionManager_General=actionManager_General_Inspector;
+        StERef = StERef_Inspector;
     }
 }

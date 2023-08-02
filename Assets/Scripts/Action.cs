@@ -70,7 +70,8 @@ public class Action : MonoBehaviour
         public int shieldAdd_max;
         public int shieldRemove_min;
         public int shieldRemove_max;
-        //StE
+        [Header("ApplyStE")]
+        public PA_StatusEffect.StatusEffectParams[] applySteParams;
 
         public float moveChance;
         public int moveForword;
@@ -147,6 +148,14 @@ public class Action : MonoBehaviour
             if (shieldAdd_max > 0) { s += string.Format("シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
             if (shieldRemove_max > 0) { s += string.Format("シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
 
+            foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
+            {
+                PA_StatusEffect.StatusEffectStatus status = Definer.StERef[(int)StEParams.applyStE].GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                s += string.Format("{0}％の確率で", StEParams.applyChance);
+                if (status.refValue) { s += string.Format("{0} {1}を{2}スタック付与\n", status.StEName, StEParams.value, StEParams.stack); }
+                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName, StEParams.stack); }
+                s += status.GetStEInfo_forRef();
+            }
 
             return s;
         }
@@ -198,6 +207,7 @@ public class Action : MonoBehaviour
             shieldAdd_max = actionData.shieldAdd_max;
             shieldRemove_min = actionData.shieldRemove_min;
             shieldRemove_max = actionData.shieldRemove_max;
+            applySteParams = actionData.applyStEParams;
 
             moveChance = actionData.moveChance;
             moveUpper = actionData.moveUpper;
@@ -206,6 +216,8 @@ public class Action : MonoBehaviour
             moveBackword = actionData.moveBackword;
         }
     }
+
+    
     Utility util;
 
     public void Init(ActionQueueManager qm,ActionStatus status,ActionInfoPanel infoPanel,Utility u,SoundManager sm)
@@ -275,7 +287,7 @@ public class Action : MonoBehaviour
                 }
 
 
-                if (actionStatus.healPercent_max > 0 || actionStatus.healValue_max > 0)
+                if (actionStatus.healPercent_max > 0 || actionStatus.healValue_max > 0)//回復
                 {
                     float fheal;
                     fheal = Random.Range(actionStatus.healValue_min, actionStatus.healValue_max + 1);
@@ -287,7 +299,7 @@ public class Action : MonoBehaviour
                     actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
                 }
 
-                if (actionStatus.SANHeal_max > 0)
+                if (actionStatus.SANHeal_max > 0)//SAN
                 {
                     actionStatus.actionTargets[i].SANHeal(Random.Range(actionStatus.SANHeal_min, actionStatus.SANHeal_max + 1));
                 }
@@ -297,9 +309,14 @@ public class Action : MonoBehaviour
                 }
 
 
-                if (actionStatus.shieldAdd_max > 0)
+                if (actionStatus.shieldAdd_max > 0)//シールド
                 {
                     actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
+                }
+
+                foreach(PA_StatusEffect.StatusEffectParams StEParams in actionStatus.applySteParams)//StE付与
+                {
+                    actionStatus.actionTargets[i].ApplyStE(StEParams);//test
                 }
             }
         }
