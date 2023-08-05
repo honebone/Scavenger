@@ -247,7 +247,7 @@ public class Character : MonoBehaviour
         var s= Instantiate(Definer.StERef[(int)StEParams.applyStE], transform);
         passiveAbilities.Add(s.GetComponent<PassiveAbility>());
         //sort
-        s.GetComponent<PA_StatusEffect>().Init(StEParams);
+        s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>());
         s.GetComponent<PassiveAbility>().Init(this);
         charaObj.SetDamageText(string.Format("ïtó^ÅF{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
         infoText.AddLogText(string.Format("{0}ÇÕ{1}Çïtó^Ç≥ÇÍÇΩ", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));

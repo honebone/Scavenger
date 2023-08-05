@@ -47,6 +47,7 @@ public class Definer : MonoBehaviour
     public static SoundRef soundRef;    
     public static GameObject abilityManager_General;
     public static GameObject actionManager_General;
+    public static GameObject statusEffectIcon;
     public static GameObject[] StERef;
     [SerializeField]
     ColorRef colorRef_Inspector;
@@ -56,6 +57,8 @@ public class Definer : MonoBehaviour
     GameObject abilityManager_General_Inspector;
     [SerializeField]
     GameObject actionManager_General_Inspector;
+    [SerializeField]
+    GameObject statusEffectIcon_Inspector;
     [SerializeField]
     GameObject[] StERef_Inspector;
 
@@ -70,6 +73,7 @@ public class Definer : MonoBehaviour
         soundRef = soundRef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
         actionManager_General=actionManager_General_Inspector;
+        statusEffectIcon = statusEffectIcon_Inspector;
         StERef = StERef_Inspector;
     }
 }

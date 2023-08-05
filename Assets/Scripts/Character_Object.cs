@@ -38,6 +38,9 @@ public class Character_Object : MonoBehaviour
     Transform damageTextParent;
     [SerializeField]
     GameObject damagText;
+
+    [SerializeField]
+    Transform StEIconParent;
     
 
     Character character;
@@ -120,6 +123,12 @@ public class Character_Object : MonoBehaviour
     {
         var d = Instantiate(damagText, damageTextParent);
         d.GetComponent<DamageText>().Init(text, color);
+    }
+
+    public GameObject SetStEIcon()
+    {
+        var s=Instantiate(Definer.statusEffectIcon,StEIconParent);
+        return s;
     }
 
     public void MoveStart(int size,int pos)

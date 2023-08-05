@@ -10,6 +10,7 @@ public class PA_StatusEffect : PassiveAbility
         public string StEName;
         [TextArea(3,10)]
         public string StEInfo;
+        public Sprite StEIcon;
         public enum StatusEffectType { neutral, buff, debuff, focus }
         public StatusEffectType StEType;
         [Header("0ならスタック制限なし")]
@@ -49,10 +50,12 @@ public class PA_StatusEffect : PassiveAbility
         public int stack;
         public int value;
     }
-    public void Init(StatusEffectParams StEParams)
+    public void Init(StatusEffectParams StEParams,StEIcon icon)
     {
         StEStatus.stack = StEParams.stack;
         StEStatus.value = StEParams.value;
+        StEIcon = icon;
+        StEIcon.Init(StEStatus);
     }
 
 
@@ -72,10 +75,13 @@ public class PA_StatusEffect : PassiveAbility
         if (StEStatus.stack <= 0)
         {
             StEStatus.stack = 0;
+            Destroy(StEIcon.gameObject);
             Disable();
         }
+        else { StEIcon.SetStackText(StEStatus.stack); }
     }
 
     [SerializeField]
     protected StatusEffectStatus StEStatus;
+    StEIcon StEIcon;
 }

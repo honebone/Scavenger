@@ -57,7 +57,7 @@ public static class Extentions
         {
             result = false;
         }
-        Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); 
+        //Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); 
         return result;
     }
 

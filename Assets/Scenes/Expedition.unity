@@ -6621,14 +6621,14 @@ MonoBehaviour:
     personalityColors:
     - {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - {r: 1, g: 1, b: 1, a: 1}
-    - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
     - {r: 0, g: 0.73154783, b: 1, a: 1}
-    - {r: 1, g: 0, b: 0, a: 1}
+    - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
     - {r: 0.7868676, g: 0, b: 1, a: 1}
+    - {r: 1, g: 0, b: 0, a: 1}
     statusEffectColors:
     - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-    - {r: 0, g: 0.73333335, b: 1, a: 1}
-    - {r: 1, g: 0, b: 0, a: 1}
+    - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
+    - {r: 0.7882353, g: 0, b: 1, a: 1}
     - {r: 0.8679245, g: 0.38930756, b: 0, a: 1}
     decreaseHP: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
     damage: {r: 0.764151, g: 0, b: 0, a: 1}
@@ -6651,6 +6651,7 @@ MonoBehaviour:
     SANDecrease: {fileID: 8300000, guid: 90b9cc90a01a47c4b8d6dbe460f21ebb, type: 3}
   abilityManager_General_Inspector: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   actionManager_General_Inspector: {fileID: 7602238575876192368, guid: ae70b75fecb0b4249ad13f9a0047c65e, type: 3}
+  statusEffectIcon_Inspector: {fileID: 754321851861881814, guid: c77862d553d38ac40b6141b60954efa3, type: 3}
   StERef_Inspector:
   - {fileID: 0}
   - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
