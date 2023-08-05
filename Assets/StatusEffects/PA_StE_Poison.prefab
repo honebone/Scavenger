@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8492015112257644605
+--- !u!1 &7270025996679623257
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6095776070082524036}
-  - component: {fileID: 554112192011071175}
+  - component: {fileID: 5018537109254072800}
+  - component: {fileID: 7233084155206883640}
   m_Layer: 0
-  m_Name: PA_StE_Bleed
+  m_Name: PA_StE_Poison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6095776070082524036
+--- !u!4 &5018537109254072800
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8492015112257644605}
+  m_GameObject: {fileID: 7270025996679623257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,31 +32,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &554112192011071175
+--- !u!114 &7233084155206883640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8492015112257644605}
+  m_GameObject: {fileID: 7270025996679623257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f480bfb5ee9ec91478e5d0398688b1a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2df1c11123b42b045b9d8ba8341b1ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StEStatus:
-    StEName: "\u51FA\u8840"
-    StEInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304C\u30B9\u30BF\u30C3\u30AF\u5206\u6E1B\u5C11\u3059\u308B\u3002\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30922\u6E1B\u3089\u3059\u3002"
-    StEIcon: {fileID: 21300000, guid: b16e3040966b7de42b2c351482467367, type: 3}
+    StEName: "\u6BD2"
+    StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304CX\u6E1B\u5C11\u3059\u308B\u3002\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30921\u6E1B\u3089\u3059\u3002"
+    StEIcon: {fileID: 21300000, guid: 82aedb2141579644b92878ad50372ce2, type: 3}
     StEType: 2
     maxStack: 0
     merge: 0
-    refValue: 0
+    refValue: 1
     stack: 0
     value: 0
   actionStatus:
-    actionName: "\u51FA\u8840"
-    conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
+    actionName: "\u6BD2"
+    conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
     actionObject: {fileID: 0}

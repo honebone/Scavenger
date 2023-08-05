@@ -26,13 +26,13 @@ public class PA_StatusEffect : PassiveAbility
         public string GetName()
         {
             string s = StEName;
-            if (refValue) { s += " " + value.ToString(); }
+            if (refValue) { s += value.ToString(); }
             return s.ColorStr(StEType.ToColor());
         }
         public string GetStEInfo_forRef()
         {
             string s = StEName;
-            if (refValue) { s += " X"; }
+            if (refValue) { s += "X"; }
             s += "：";
             s += StEInfo;
             return s.ColorStr(Color.gray);
@@ -40,7 +40,7 @@ public class PA_StatusEffect : PassiveAbility
     }
     public StatusEffectStatus GetStatusEffectStatus() { return StEStatus; }
 
-    public enum StEID { other, 出血, 火傷, 毒 }
+    public enum StEID { other, 出血, 火傷, 毒 ,マーク}
     [System.Serializable]
     public struct StatusEffectParams
     {

@@ -25,6 +25,6 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) { FindObjectOfType<CharactersManager>().GetMoveTargets(pos,1,moveValue); }
+        if (Input.GetKeyDown(KeyCode.Alpha5)) { }
     }
 }

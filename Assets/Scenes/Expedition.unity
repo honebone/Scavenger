@@ -6655,6 +6655,9 @@ MonoBehaviour:
   StERef_Inspector:
   - {fileID: 0}
   - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+  - {fileID: 0}
+  - {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+  - {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
 --- !u!114 &630398175 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 670865512060243974, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}

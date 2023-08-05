@@ -39,6 +39,7 @@ MonoBehaviour:
     selectableFront: 1
     selectableMid: 1
     selectableBack: 0
+    ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
@@ -83,4 +84,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

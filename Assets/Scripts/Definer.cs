@@ -61,6 +61,7 @@ public class Definer : MonoBehaviour
     GameObject statusEffectIcon_Inspector;
     [SerializeField]
     GameObject[] StERef_Inspector;
+   
 
     public static Dictionary< AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"“Áê"}, {AbilityData.AbilityType.attack,"UŒ‚"},{AbilityData.AbilityType.heal,"‰ñ•œ"},

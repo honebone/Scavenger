@@ -60,11 +60,9 @@ public class ActionQueueManager : MonoBehaviour
         if (actionQueuePanel.activeSelf) { actionQueuePanel.SetActive(false); }
     }
 
-
-
     public void Enqueue(Action.ActionStatus status)
     {
-        if (status.abilityEffect)//アビリティ効果の場合はマネージャーを即時作成
+        if (status.abilityEffect||resolving)//アビリティ効果の場合orすでに解決中の場合はマネージャーを即時作成
         {
             GameObject obj;
             if (status.actionObject != null) { obj = status.actionObject; }

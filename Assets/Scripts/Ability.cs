@@ -39,12 +39,13 @@ public class Ability : MonoBehaviour
 
         public Action.ActionStatus[] actionsStatus;
 
+        public int available;//PAなどによって操作
         public int cooldown;
         public int remain;
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
-            string s = string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType]);
+            string s = string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
             if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
             if (refCharaStatus) { }
             if (hasRemain)
@@ -154,6 +155,7 @@ public class Ability : MonoBehaviour
     {
         charactersManager.ResetAllTargetIcons();
         Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        Character.CharacterStatus targetStatus;
         bool playable = charaStatus.playable;
 
         targetIconPos = new List<Vector2Int>();
@@ -177,7 +179,9 @@ public class Ability : MonoBehaviour
                             //else { targetPool.Add(new List<int>() { i }); }
                             if (charactersManager.CheckCharaExist(i))
                             {
-                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1));  }//マークが付与されているのなら、yを１に
+                                targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                                if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                                { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
                                 else { targetIconPos.Add(new Vector2Int(i, 0)); }
                                 targetPool.Add(new List<int>() { i });
                             }
@@ -186,7 +190,9 @@ public class Ability : MonoBehaviour
                         {
                             if (charactersManager.CheckCharaExist(i))
                             {
-                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                                if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                                { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
                                 else { targetIconPos.Add(new Vector2Int(i, 0)); }
                                 targetPool.Add(new List<int>() { i });
                             }
@@ -195,7 +201,9 @@ public class Ability : MonoBehaviour
                         {
                             if (charactersManager.CheckCharaExist(i))
                             {
-                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                                if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                                { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
                                 else { targetIconPos.Add(new Vector2Int(i, 0)); }
                                 targetPool.Add(new List<int>() { i });
                             }
@@ -207,7 +215,9 @@ public class Ability : MonoBehaviour
                         {
                             if (charactersManager.CheckCharaExist(i))
                             {
-                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                                if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                                { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
                                 else { targetIconPos.Add(new Vector2Int(i, 0)); }
                                 targetPool.Add(new List<int>() { i });
                             }
@@ -216,7 +226,9 @@ public class Ability : MonoBehaviour
                         {
                             if (charactersManager.CheckCharaExist(i))
                             {
-                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                                if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                                { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
                                 else { targetIconPos.Add(new Vector2Int(i, 0)); }
                                 targetPool.Add(new List<int>() { i });
                             }
@@ -225,7 +237,9 @@ public class Ability : MonoBehaviour
                         {
                             if (charactersManager.CheckCharaExist(i))
                             {
-                                if (charactersManager.GetCharacterWithPos(i).GetCharacterStatus().marked > 0) { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されているのなら、yを１に
+                                targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                                if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                                { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
                                 else { targetIconPos.Add(new Vector2Int(i, 0)); }
                                 targetPool.Add(new List<int>() { i });
                             }
@@ -250,14 +264,27 @@ public class Ability : MonoBehaviour
         }
 
         //マークの処理
+        List<Vector2Int> targetPos = new List<Vector2Int>();//x:pos y:count
+        for(int i = 0; i < targetIconPos.Count; i++)//y==1(マークが付与されている)対象がいるなら　それらのみを抽出
+        {
+            if (targetIconPos[i].y == 1){ targetPos.Add(new Vector2Int(targetIconPos[i].x, i)); }
+        }
+        if (targetPos.Count == 0|| abilityStatus.actionsStatus[counter].ignoreMark)//マークが付与されている対象がいない or マークを無視する
+        {
+            for (int i = 0; i < targetIconPos.Count; i++)
+            {
+                targetPos.Add(new Vector2Int(targetIconPos[i].x, i));
+            }
+           
+        }
         if (playable)
         {
-            for (int i = 0; i < targetPool.Count; i++)//test
+            for (int i = 0; i < targetPos.Count; i++)//test
             {
-                charactersManager.SetTargetIcon(targetIconPos[i].x, targetEmpty, size, targetPool[i]); 
+                charactersManager.SetTargetIcon(targetPos[i].x, targetEmpty, size, targetPool[targetPos[i].y]); 
             }
         }
-        else { SelectTarget(targetPool[Random.Range(0, targetPool.Count)]); }
+        else { SelectTarget(targetPool[targetPos[Random.Range(0, targetPos.Count)].y]); }
     }
     public virtual void SelectTarget(List<int> targetGroup) {
         counter++;
@@ -269,7 +296,8 @@ public class Ability : MonoBehaviour
             charactersManager.ResetAllTargetIcons();
 
             string abilityName = abilityStatus.abilityName.ColorStr(abilityStatus.abilityType.ToColor());
-            FindObjectOfType<InfoText>().AddLogText(string.Format("{0}の<{1}>", character.GetCharacterStatus().charaName, abilityName));
+            FindObjectOfType<InfoText>().AddLogText(string.Format("○{0}の<{1}>", character.GetCharacterStatus().charaName, abilityName));
+            character.OnActivateAbility();
 
             for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
             {

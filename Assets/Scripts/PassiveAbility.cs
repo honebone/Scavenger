@@ -5,6 +5,7 @@ using UnityEngine;
 public class PassiveAbility : MonoBehaviour
 {
    protected Character character;
+    protected Character.CharacterStatus charaStatus;
     public virtual string GetPAName() { return ""; }
     public virtual string GetPAInfo() {
         print("error:GetPAInfoÇÃoverrideÇ™ê›íËÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ");
@@ -12,6 +13,8 @@ public class PassiveAbility : MonoBehaviour
     public void Init(Character c)
     {
         character = c;
+        charaStatus = character.GetCharacterStatus();
+        OnPAInit();
     }
     public void Disable()
     {
@@ -19,6 +22,7 @@ public class PassiveAbility : MonoBehaviour
         character.RemovePA(this);
         Destroy(gameObject);
     }
+    public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
 
     public virtual void OnBattleStart() { }
@@ -39,9 +43,10 @@ public class PassiveAbility : MonoBehaviour
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 
-    public virtual void OnDamaged(int DMG, Character attacker)
-    {
-    }
+    public virtual void BecomeAbilityTarget(Character actor) { }
+    
+    public virtual void OnDamaged(int DMG, Character attacker) { }
+    
     public virtual void OnCRITed(int ID) { }
     public virtual void OnEvade(int ID) { }
     public virtual void OnHealed(int healedValue, int ID) { }

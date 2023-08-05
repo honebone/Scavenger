@@ -36,6 +36,7 @@ public class Action : MonoBehaviour
         public bool selectableFront;
         public bool selectableMid;
         public bool selectableBack;
+        public bool ignoreMark;
         [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
         public bool ignoreHide;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
@@ -152,9 +153,10 @@ public class Action : MonoBehaviour
             {
                 PA_StatusEffect.StatusEffectStatus status = Definer.StERef[(int)StEParams.applyStE].GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("{0}％の確率で", StEParams.applyChance);
-                if (status.refValue) { s += string.Format("{0} {1}を{2}スタック付与\n", status.StEName, StEParams.value, StEParams.stack); }
+                if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName, StEParams.value, StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName, StEParams.stack); }
                 s += status.GetStEInfo_forRef();
+                s += "\n";
             }
 
             return s;
@@ -239,6 +241,7 @@ public class Action : MonoBehaviour
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
+            actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
             if (!targetStatus.dead)
             {
                 if (actionStatus.decreaseHP_max > 0)//HP減少
@@ -316,7 +319,7 @@ public class Action : MonoBehaviour
 
                 foreach(PA_StatusEffect.StatusEffectParams StEParams in actionStatus.applySteParams)//StE付与
                 {
-                    actionStatus.actionTargets[i].ApplyStE(StEParams);//test
+                    if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
                 }
             }
         }

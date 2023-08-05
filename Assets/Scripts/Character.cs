@@ -225,6 +225,8 @@ public class Character : MonoBehaviour
         charactersManager=FindObjectOfType<CharactersManager>();
          soundManager=FindObjectOfType<SoundManager>();
 
+        charaObj.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
+        infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
         //TurnIconはラウンド開始時にセット
     }
     public void AddPA(GameObject paObj)
@@ -293,7 +295,7 @@ public class Character : MonoBehaviour
     public void MyTurnStart()
     {
         charaObj.SetTurnIcon_CurentTurn();
-        infoText.AddLogText(string.Format("=={0}のターン==", charaStatus.charaName));
+        infoText.AddLogText(string.Format("\n=={0}のターン==", charaStatus.charaName));
         OnTurnStart();
         actionQueue.StartResolve(2);
     }
@@ -302,7 +304,6 @@ public class Character : MonoBehaviour
         if (CheckAlive())
         {
             //行動可能か～
-            OnActivateAbility();
             if (charaStatus.playable)
             {
                 DisplayInfo();
@@ -410,7 +411,7 @@ public class Character : MonoBehaviour
             charaStatus.HP -= DMG;
             if (charaStatus.HP <= 0)
             {
-                if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、瀕死でない状態で致命傷を受けても死なない
+                if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、瀕死でない状態で致命傷を受けても死なな
                 {
                     charaStatus.HP = 0;
                     charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
@@ -466,6 +467,12 @@ public class Character : MonoBehaviour
         charaObj.SetHPandShieldBar();
     }
 
+    public void AddMarked(bool apply)
+    {
+        if (apply) { charaStatus.marked++; }
+        else { charaStatus.marked--; }
+    }
+
     public void ChangePos(int moveTo)
     {
         charaObj.StopMove(charaStatus.size, charaStatus.position);
@@ -517,50 +524,55 @@ public class Character : MonoBehaviour
             battleManager.SetOmenIcon(this, charaStatus.omen);
         }
     }
-    public virtual void OnBattleStart() { }
-    public virtual void OnRoundStart()
+    public void OnBattleStart() { }
+    public void OnRoundStart()
     {
         if (!charaStatus.playable)
         { 
            //予兆設定
         }
     }
-    public virtual void OnTurnStart()
+    public void OnTurnStart()
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnStart(); }
         RemovePA_Execute();
     }
-    public virtual void OnTurnEnd() { }
-    public virtual void OnRoundEnd() { }
-    public virtual void OnBattleEnd() { }
+    public void OnTurnEnd() { }
+    public void OnRoundEnd() { }
+    public void OnBattleEnd() { }
 
 
-    public virtual void OnActivateAbility()
+    public void OnActivateAbility()
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnActivateAbility(); }
         RemovePA_Execute();
     }
     /// <summary>攻撃命中時</summary>
-    public virtual void OnDamage(int DMG, Character target)
+    public void OnDamage(int DMG, Character target)
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamage(DMG, target); }
         RemovePA_Execute();
     }
-    public virtual void OnCRIT(int ID) { }
-    public virtual void OnKill(int ID) { }
-    public virtual void OnMiss(int ID) { }
-    public virtual void OnHeal(int healValue, int ID) { }
+    public void OnCRIT(int ID) { }
+    public void OnKill(int ID) { }
+    public void OnMiss(int ID) { }
+    public void OnHeal(int healValue, int ID) { }
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 
-    public virtual void OnDamaged(int DMG, Character attacker)
+    public void BecomeAbilityTarget(Character actor)
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.BecomeAbilityTarget(actor); }
+        RemovePA_Execute();
+    }
+    public void OnDamaged(int DMG, Character attacker)
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamaged(DMG, attacker); }
         RemovePA_Execute();
     }
-    public virtual void OnCRITed(int ID) { }
-    public virtual void OnEvade( int ID) { }
-    public virtual void OnHealed(int healedValue, int ID) { }
+    public void OnCRITed(int ID) { }
+    public void OnEvade( int ID) { }
+    public void OnHealed(int healedValue, int ID) { }
     //public virtual void OnApplyedStE() { }
     //public virtual void OnRemoveedStE() { }
 }
