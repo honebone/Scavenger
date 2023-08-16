@@ -6,13 +6,18 @@ public class PassiveAbility : MonoBehaviour
 {
    protected Character character;
     protected Character.CharacterStatus charaStatus;
+    /// <summary>0:StE 1:Personality 2:Equipment</summary>
+    int PAType;
+    /// <summary>0:StE 1:Personality 2:Equipment</summary>
+    public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
     public virtual string GetPAInfo() {
         print("error:GetPAInfo‚Ìoverride‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
         return ""; }
-    public void Init(Character c)
+    public void Init(Character c,int type)
     {
         character = c;
+        PAType = type;
         charaStatus = character.GetCharacterStatus();
         OnPAInit();
     }

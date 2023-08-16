@@ -10,76 +10,79 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P1_6Test
+  m_Name: A_E2_2Noise
   m_EditorClassIdentifier: 
-  abilityName: "\u30C7\u30D0\u30C3\u30B0\u30A2\u30D3\u30EA\u30C6\u30A3"
+  abilityName: "\u91D1\u5207\u58F0"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 1
-  activateSprite: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
-  abilityType: 0
+  SE: {fileID: 8300000, guid: 17680db48fb5db846a2c10e5effdd764, type: 3}
+  abilityType: 4
   cooldownOnUse: 0
-  hasRemain: 1
-  remainOnBattleStart: 1
-  maxRemain: 1
-  availableFront: 1
-  availableMid: 1
-  availableBack: 1
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
+  availableFront: 0
+  availableMid: 0
+  availableBack: 0
   actionsStaus:
-  - actionName: "\u30C7\u30D0\u30C3\u30B0\u30A2\u30D3\u30EA\u30C6\u30A3"
+  - actionName: "\u91D1\u5207\u58F0"
     conditionInfo: 
-    targetInfo: 
+    targetInfo: "\u6575\u5168\u4F53"
     actionInfo: 
     actionObject: {fileID: 0}
     targetType: 2
-    targetPlayerSide: 0
-    targetEnemySide: 1
+    targetPlayerSide: 1
+    targetEnemySide: 0
     targetEmpty: 0
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 1
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
     ignoreMark: 0
-    ignoreHide: 1
+    ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 2000
-    ATKMod_max: 2000
+    ATKMod_min: 0
+    ATKMod_max: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    sureHit: 1
-    unevadable: 1
+    sureHit: 0
+    unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
+    SANDamage_min: 1
+    SANDamage_max: 5
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      applyChance: 50
+      stack: 5
+      value: 0
     moveChance: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityEffect: 1
-    abilityType: 0
-    SE: {fileID: 0}
-    dontChangeSprite: 1
-    activateSprite: {fileID: 0}
+    abilityType: 4
+    SE: {fileID: 8300000, guid: 17680db48fb5db846a2c10e5effdd764, type: 3}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0a0000000c0000000f000000
+    actionTargetsInt: 0400000007000000

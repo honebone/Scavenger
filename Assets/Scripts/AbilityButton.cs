@@ -21,7 +21,6 @@ public class AbilityButton : MonoBehaviour
     Ability.AbilityStatus abilityStatus;
     BattleManager battleManager;
     Character character;
-    bool unavailable;
 
     public void Init(Ability.AbilityStatus status,BattleManager bm,Character chara)
     {
@@ -30,6 +29,7 @@ public class AbilityButton : MonoBehaviour
         character = chara;
 
         nameText.text = abilityStatus.abilityName;
+        if (!abilityStatus.CheckAvailable()) { nameText.color = Color.red; }
         if (abilityStatus.cooldown > 0) { 
             cooldownText.text = abilityStatus.cooldown.ToString(); 
         

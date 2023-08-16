@@ -151,7 +151,7 @@ public class Action : MonoBehaviour
 
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
-                PA_StatusEffect.StatusEffectStatus status = Definer.StERef[(int)StEParams.applyStE].GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("{0}％の確率で", StEParams.applyChance);
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName, StEParams.value, StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName, StEParams.stack); }
@@ -235,6 +235,11 @@ public class Action : MonoBehaviour
     public virtual void Resolve()
     {
         Character.CharacterStatus ownerStatus = actionStatus.actionOwner.GetCharacterStatus();
+        ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
+        for (int i = 0; i < actionsStatus.Length; i++)
+        {
+            actionsStatus[i] = actionStatus;
+        }
         if (actionStatus.SE != null) { soundManager.PlaySE(actionStatus.SE); }
 
 
@@ -244,35 +249,35 @@ public class Action : MonoBehaviour
             actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
             if (!targetStatus.dead)
             {
-                if (actionStatus.decreaseHP_max > 0)//HP減少
+                if (actionsStatus[i].decreaseHP_max > 0)//HP減少
                 {
-                    actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionStatus.decreaseHP_min, actionStatus.decreaseHP_max + 1));
+                    actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
                 }
 
 
-                if (actionStatus.ATKMod_max > 0)//攻撃
+                if (actionsStatus[i].ATKMod_max > 0)//攻撃
                 {
                     bool CRIT = false;
                     int DMG = 0;
 
-                    if (actionStatus.sureHit || util.Probability(ownerStatus.ACC + actionStatus.ACCMod))
+                    if (actionsStatus[i].sureHit || util.Probability(ownerStatus.ACC + actionsStatus[i].ACCMod))
                     {
-                        if (actionStatus.unevadable || util.Probability(100f - targetStatus.EVD))//攻撃命中
+                        if (actionsStatus[i].unevadable || util.Probability(100f - targetStatus.EVD))//攻撃命中
                         {
                             float fDMG = ownerStatus.exATK;
-                            float ATKMod = Random.Range(actionStatus.ATKMod_min, actionStatus.ATKMod_max) / 100;
+                            float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             fDMG += ownerStatus.ATK * ATKMod;
-                            if (util.Probability(ownerStatus.CRITC + actionStatus.CRITCMod))
+                            if (util.Probability(ownerStatus.CRITC + actionsStatus[i].CRITCMod))
                             {
                                 CRIT = true;
-                                fDMG *= ownerStatus.CRITD + actionStatus.CRITDMod;
+                                fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
                             }
                             fDMG -= targetStatus.shield;
 
                             DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
 
                             actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//与ダメ時誘発
-                            actionStatus.actionTargets[i].Damage(DMG, CRIT, actionStatus.cantCounter, actionStatus.actionOwner);//ダメージ処理開始
+                            actionStatus.actionTargets[i].Damage(DMG, CRIT, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
                         }
                         else
                         {
@@ -290,11 +295,11 @@ public class Action : MonoBehaviour
                 }
 
 
-                if (actionStatus.healPercent_max > 0 || actionStatus.healValue_max > 0)//回復
+                if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//回復
                 {
                     float fheal;
-                    fheal = Random.Range(actionStatus.healValue_min, actionStatus.healValue_max + 1);
-                    fheal += targetStatus.maxHP * Random.Range(actionStatus.healPercent_min, actionStatus.healPercent_max) / 100;
+                    fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
+                    fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
                     fheal *= ownerStatus.GHeal / 100;
                     fheal *= targetStatus.RHeal / 100;
                     int heal = Mathf.RoundToInt(fheal);
@@ -302,22 +307,22 @@ public class Action : MonoBehaviour
                     actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
                 }
 
-                if (actionStatus.SANHeal_max > 0)//SAN
+                if (actionsStatus[i].SANHeal_max > 0)//SAN
                 {
-                    actionStatus.actionTargets[i].SANHeal(Random.Range(actionStatus.SANHeal_min, actionStatus.SANHeal_max + 1));
+                    actionStatus.actionTargets[i].SANHeal(Random.Range(actionsStatus[i].SANHeal_min, actionsStatus[i].SANHeal_max + 1));
                 }
-                if (actionStatus.SANDamage_max > 0)
+                if (actionsStatus[i].SANDamage_max > 0)
                 {
-                    actionStatus.actionTargets[i].SANDamage(Random.Range(actionStatus.SANDamage_min, actionStatus.SANDamage_max + 1));
-                }
-
-
-                if (actionStatus.shieldAdd_max > 0)//シールド
-                {
-                    actionStatus.actionTargets[i].AddShield(Random.Range(actionStatus.shieldAdd_min, actionStatus.shieldAdd_max + 1));
+                    actionStatus.actionTargets[i].SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
                 }
 
-                foreach(PA_StatusEffect.StatusEffectParams StEParams in actionStatus.applySteParams)//StE付与
+
+                if (actionsStatus[i].shieldAdd_max > 0)//シールド
+                {
+                    actionStatus.actionTargets[i].AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
+                }
+
+                foreach(PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                 {
                     if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
                 }

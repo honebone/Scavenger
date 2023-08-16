@@ -134,7 +134,7 @@ public class Character : MonoBehaviour
             spriteForUI = data.spriteForUI;
 
             abilitiesStatus = new Ability.AbilityStatus[data.abilities.Length];
-            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i].Init(data.abilities[i]); }
+            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i].Init(data.abilities[i],i); }
             passiveAbilities = new List<GameObject>(data.passiveAbilities);
 
             actionMods = data.actionMods;
@@ -214,7 +214,7 @@ public class Character : MonoBehaviour
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
         charaObj.SetHPandShieldBar();
         charaObj.SetSANBar();
-        foreach(GameObject pa in charaStatus.passiveAbilities) { AddPA(pa); }
+        foreach(GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa); }
 
         targetButton.SetCharacter(this);
 
@@ -229,11 +229,11 @@ public class Character : MonoBehaviour
         infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
         //TurnIconはラウンド開始時にセット
     }
-    public void AddPA(GameObject paObj)
+    public void AddPA_Personality(GameObject paObj)
     {
         var p = Instantiate(paObj, transform);
         passiveAbilities.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this);
+        p.GetComponent<PassiveAbility>().Init(this,1);
     }
     public void RemovePA(PassiveAbility passiveAbility)
     {
@@ -246,13 +246,33 @@ public class Character : MonoBehaviour
     }
     public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams)
     {
-        var s= Instantiate(Definer.StERef[(int)StEParams.applyStE], transform);
-        passiveAbilities.Add(s.GetComponent<PassiveAbility>());
-        //sort
-        s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>());
-        s.GetComponent<PassiveAbility>().Init(this);
-        charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
-        infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+        bool f = false;
+        if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
+        {
+            PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
+            foreach (PassiveAbility pa in passiveAbilities)
+            {
+                if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるなら
+                {
+                    pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack);
+                    charaObj.SetDamageText(string.Format("付与：{0}", StE.GetPAName()), Color.white);
+                    infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
+                    f = true;
+                }
+            }
+        }
+        if (!f)
+        {
+            var s = Instantiate(StEParams.applyStE, transform);
+            passiveAbilities.Add(s.GetComponent<PassiveAbility>());
+            //sort
+            s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>());
+            s.GetComponent<PassiveAbility>().Init(this, 0);
+            charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
+            infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+        }
+       
+        
     }
 
     public void DisplayInfo()
@@ -296,6 +316,13 @@ public class Character : MonoBehaviour
     {
         charaObj.SetTurnIcon_CurentTurn();
         infoText.AddLogText(string.Format("\n=={0}のターン==", charaStatus.charaName));
+        for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
+        {
+            if (charaStatus.abilitiesStatus[i].cooldown > 0)
+            {
+                charaStatus.abilitiesStatus[i].AddCoolDown(-1);
+            }
+        }
         OnTurnStart();
         actionQueue.StartResolve(2);
     }
@@ -321,6 +348,7 @@ public class Character : MonoBehaviour
     IEnumerator Test()
     {
         yield return new WaitForSeconds(0.5f);
+
         battleManager.SetSelectedAbility(charaStatus.omen, this);//test　本来はラウンド開始時に決定する
         charaStatus.omenSet = false;
         charaStatus.omen = new Ability.AbilityStatus();
@@ -458,6 +486,8 @@ public class Character : MonoBehaviour
         if (charaStatus.SAN <= 0) { Die(1); }
     }
 
+
+
     public void AddShield(int value)
     {
         charaStatus.shield += value;
@@ -472,6 +502,16 @@ public class Character : MonoBehaviour
         if (apply) { charaStatus.marked++; }
         else { charaStatus.marked--; }
     }
+    public void AddFocused(bool apply)
+    {
+        if (apply) { charaStatus.focused++; }
+        else { charaStatus.focused--; }
+    }
+
+    public void Ability_AddRemain(int value, int index) { charaStatus.abilitiesStatus[index].AddRemain(value); }
+    public void Ability_SetRemain(int value, int index) { charaStatus.abilitiesStatus[index].SetRemain(value); }
+    public void Ability_StartCoolDown(int index) { charaStatus.abilitiesStatus[index].StartCoolDown(); }
+    public void Ability_AddCoolDown(int value, int index) { charaStatus.abilitiesStatus[index].AddCoolDown(value); }
 
     public void ChangePos(int moveTo)
     {
@@ -524,7 +564,16 @@ public class Character : MonoBehaviour
             battleManager.SetOmenIcon(this, charaStatus.omen);
         }
     }
-    public void OnBattleStart() { }
+    public void OnBattleStart()
+    {
+        for(int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
+        {
+            //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
+            charaStatus.abilitiesStatus[i].AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
+        }
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnBattleStart(); }
+        RemovePA_Execute();
+    }
     public void OnRoundStart()
     {
         if (!charaStatus.playable)

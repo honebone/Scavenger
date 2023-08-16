@@ -78,4 +78,11 @@ public class InfoText : MonoBehaviour
         logText.text += util.GetColoredText(Definer.colorRef.debug, string.Format("\n##デバッグ：{0}##", debugLog));
         print(debugLog);
     }
+    public void AddErrorText(string errorLog)
+    {
+        SwitchToLog();
+        //nameText.text = "ログ";
+        logText.text += string.Format("\n##error!!：{0}##", errorLog).ColorStr(Color.red);
+        print(errorLog);
+    }
 }

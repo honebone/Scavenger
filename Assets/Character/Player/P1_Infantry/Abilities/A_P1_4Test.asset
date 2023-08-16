@@ -17,6 +17,7 @@ MonoBehaviour:
   dontChangeSprite: 1
   activateSprite: {fileID: 0}
   spriteIndex: 0
+  SE: {fileID: 0}
   abilityType: 4
   cooldownOnUse: 0
   hasRemain: 0
@@ -27,16 +28,18 @@ MonoBehaviour:
   availableBack: 1
   actionsStaus:
   - actionName: "\u5F31\u4F53\u30C6\u30B9\u30C8"
-    actionInfo: 
+    conditionInfo: 
     targetInfo: 
+    actionInfo: 
     actionObject: {fileID: 0}
     targetType: 1
-    targetPlayerSide: 1
-    targetEnemySide: 0
+    targetPlayerSide: 0
+    targetEnemySide: 1
     targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 1
+    ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
@@ -48,7 +51,6 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    attackRound: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -57,12 +59,17 @@ MonoBehaviour:
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 10
-    SANDamage_max: 20
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
+    applySteParams:
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      applyChance: 100
+      stack: 3
+      value: 0
     moveChance: 0
     moveForword: 0
     moveUpper: 0
@@ -70,9 +77,11 @@ MonoBehaviour:
     moveBackword: 0
     abilityEffect: 1
     abilityType: 4
+    SE: {fileID: 0}
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
+    actionTargetsInt: 0a000000

@@ -17,12 +17,15 @@ MonoBehaviour:
   charaName: "\u30DF\u30CE\u30BF\u30A6\u30ED\u30B9"
   characterTags: 0300000002000000
   size: 2
+  immovable: 0
   player: 0
   playable: 0
   variableSprites:
   - {fileID: 2041221117895377942, guid: 822436b9bb6723d46bc5314e96d3134f, type: 3}
   spriteForUI: {fileID: 21300000, guid: 6728d24a6568d3747b5ca60b61ab006e, type: 3}
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
+  passiveAbilities: []
   actionMods: []
   surviveFatalWounds: 1
   maxHP: 120

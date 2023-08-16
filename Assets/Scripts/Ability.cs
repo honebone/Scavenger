@@ -39,9 +39,10 @@ public class Ability : MonoBehaviour
 
         public Action.ActionStatus[] actionsStatus;
 
-        public int available;//PAなどによって操作
+        public int unavailable;//PAなどによって操作
         public int cooldown;
         public int remain;
+        public int index;
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
@@ -70,7 +71,7 @@ public class Ability : MonoBehaviour
             return s;
         }
 
-        public void Init(AbilityData data)
+        public void Init(AbilityData data,int idx)
         {
             abilityName = data.abilityName;
 
@@ -117,7 +118,14 @@ public class Ability : MonoBehaviour
                         
             }
 
+            index = idx;
+            remain=remainOnBattleStart;
         }
+        public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }
+        public void SetRemain(int value) { remain = Mathf.Clamp(value, 0, maxRemain); }
+        public void StartCoolDown() { cooldown = cooldownOnUse; }
+        public void AddCoolDown(int value) { cooldown = Mathf.Clamp(cooldown + value, 0, cooldownOnUse); }
+        public bool CheckAvailable() { return (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0; }
     }
 
     Character character;
@@ -127,6 +135,7 @@ public class Ability : MonoBehaviour
     Utility util;
     SoundManager soundManager;
     AbilityStatus abilityStatus;
+    /// <summary>キャラの何番目のアビリティか</summary>
 
     List<List<int>> targetGroups = new List<List<int>>();
     int counter;
@@ -177,7 +186,7 @@ public class Ability : MonoBehaviour
                         {
                             //if (playable) { charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i }); }
                             //else { targetPool.Add(new List<int>() { i }); }
-                            if (charactersManager.CheckCharaExist(i))
+                            if (charactersManager.CheckCharaExist(i, false))
                             {
                                 targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
                                 if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
@@ -188,7 +197,7 @@ public class Ability : MonoBehaviour
                         }
                         if (i >= 3 && i < 6 && abilityStatus.actionsStatus[counter].selectableMid)
                         {
-                            if (charactersManager.CheckCharaExist(i))
+                            if (charactersManager.CheckCharaExist(i, false))
                             {
                                 targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
                                 if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
@@ -199,7 +208,7 @@ public class Ability : MonoBehaviour
                         }
                         if (i >= 6 && abilityStatus.actionsStatus[counter].selectableFront)
                         {
-                            if (charactersManager.CheckCharaExist(i))
+                            if (charactersManager.CheckCharaExist(i, false))
                             {
                                 targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
                                 if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
@@ -213,7 +222,7 @@ public class Ability : MonoBehaviour
                     {
                         if (i < 12 && abilityStatus.actionsStatus[counter].selectableFront)
                         {
-                            if (charactersManager.CheckCharaExist(i))
+                            if (charactersManager.CheckCharaExist(i, false))
                             {
                                 targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
                                 if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
@@ -224,7 +233,7 @@ public class Ability : MonoBehaviour
                         }
                         if (i >= 12 && i < 15 && abilityStatus.actionsStatus[counter].selectableMid)
                         {
-                            if (charactersManager.CheckCharaExist(i))
+                            if (charactersManager.CheckCharaExist(i, false))
                             {
                                 targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
                                 if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
@@ -235,7 +244,7 @@ public class Ability : MonoBehaviour
                         }
                         if (i >= 15 && abilityStatus.actionsStatus[counter].selectableBack)
                         {
-                            if (charactersManager.CheckCharaExist(i))
+                            if (charactersManager.CheckCharaExist(i, false))
                             {
                                 targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
                                 if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
@@ -247,6 +256,27 @@ public class Ability : MonoBehaviour
                     }
                 }
                 break;
+            case Action.ActionStatus.TargetType.all:
+                size = 1;
+                targetEmpty = true;
+                List<int> tp = new List<int>();
+                int iconPos= charaStatus.position; ;
+                if (abilityStatus.actionsStatus[counter].targetPlayerSide)
+                {
+                    for(int i = 0; i < 9; i++) { tp.Add(i); }
+                }
+                if (abilityStatus.actionsStatus[counter].targetEnemySide)
+                {
+                    for (int i = 9; i < 18; i++) { tp.Add(i); }
+                }
+                if(abilityStatus.actionsStatus[counter].targetPlayerSide&& abilityStatus.actionsStatus[counter].targetEnemySide) { iconPos = charaStatus.position; }
+                else if (abilityStatus.actionsStatus[counter].targetPlayerSide) { iconPos = 4; }
+                else if (abilityStatus.actionsStatus[counter].targetEnemySide) { iconPos = 10; }
+
+                targetIconPos.Add(new Vector2Int(iconPos, 0));
+                targetPool.Add(charactersManager.GetExistingCharactersPos(tp));
+                break;
+
             case Action.ActionStatus.TargetType.move://操作可能キャラのみ
                 size = charaStatus.size;
                 targetEmpty = true;
@@ -298,6 +328,9 @@ public class Ability : MonoBehaviour
             string abilityName = abilityStatus.abilityName.ColorStr(abilityStatus.abilityType.ToColor());
             FindObjectOfType<InfoText>().AddLogText(string.Format("○{0}の<{1}>", character.GetCharacterStatus().charaName, abilityName));
             character.OnActivateAbility();
+
+            character.Ability_StartCoolDown(abilityStatus.index);
+            if (abilityStatus.hasRemain) { character.Ability_AddRemain(-1, abilityStatus.index); }
 
             for (int i = 0; i < abilityStatus.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
             {

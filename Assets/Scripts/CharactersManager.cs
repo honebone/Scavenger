@@ -49,21 +49,34 @@ public class CharactersManager : MonoBehaviour
     {
         existingCharacters.Sort((a, b) => a.GetCharacterStatus().position - b.GetCharacterStatus().position);
     }
+    /// <summary>生存している全てのキャラを返します </summary>
     public List<Character> GetExistingCharacters_All() { return existingCharacters; }
     public List<Character> GetExistingCharacters(List<int> positions,bool includeEmpty)
     {
         List<Character> characters = new List<Character>();
-        foreach (int pos in positions) { if (CheckCharaExist(pos)||includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
+        foreach (int pos in positions) { if (CheckCharaExist(pos, false)||includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
-    public Character GetExistingCharacter(int index) { return existingCharacters[index]; }
+    public List<int> GetExistingCharactersPos(List<int> targetPool)
+    {
+        List<int> ints = new List<int>();
+        List<Character> characterList = new List<Character>();
+        foreach(int target in targetPool)
+        {
+            if (CheckCharaExist(target, false) && !characterList.Contains(GetCharacterWithPos(target)))
+            {
+                ints.Add(target);
+                characterList.Add(GetCharacterWithPos(target));
+            }
+        }
+        return ints;
+    }
     public List<Character.CharacterStatus> GetExistingCharactersStatus()
     {
         List<Character.CharacterStatus> charactersStatus = new List<Character.CharacterStatus>();
         foreach (Character existingCharacter in existingCharacters) { charactersStatus.Add(existingCharacter.GetCharacterStatus()); }
         return charactersStatus;
     }
-    public Character.CharacterStatus GetExistingCharacterStatus(int index) { return existingCharacters[index].GetCharacterStatus(); }
 
 
     /// <summary>移動処理に使用　進行方向にいるキャラを取得</summary>
@@ -74,7 +87,7 @@ public class CharactersManager : MonoBehaviour
         List<Character> c = new List<Character>();
         for(int i = 1; i <= range; i++)
         {
-            if(CheckCharaExist(util.GetMoveToPos(pos, dir, i))&&!c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
+            if(CheckCharaExist(util.GetMoveToPos(pos, dir, i),false)&&!c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
             {
                 c.Add(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i)));
             }
@@ -123,7 +136,7 @@ public class CharactersManager : MonoBehaviour
         }
         else
         {
-            if (CheckCharaExist(pos))
+            if (CheckCharaExist(pos, false))
             {
                 GetTargetButton(GetCharacterWithPos(pos).GetCharacterStatus().size, GetCharacterWithPos(pos).GetCharacterStatus().position).SetTargetIcon(targetGroup);
             }
@@ -137,25 +150,29 @@ public class CharactersManager : MonoBehaviour
     /// <param name="checkPos"></param>
     /// <param name="checkOnlyCore">サイズ2以上のとき、左下のみチェック</param>
     /// <returns></returns>
-    public bool CheckCharaExist(int checkPos)
+    public bool CheckCharaExist(int checkPos, bool checkOnlyCore )
     {
         foreach (Character.CharacterStatus characterStatus in GetExistingCharactersStatus())
         {
-            switch (characterStatus.size)
+            if (checkOnlyCore) { if (characterStatus.position == checkPos) { return true; } }
+            else
             {
-                case 1:
-                    if (characterStatus.position == checkPos) { return true; }
-                    break;
-                case 2:
-                    if (characterStatus.position == checkPos) { return true; }
-                    if (characterStatus.position + 1 == checkPos) { return true; }
-                    if (characterStatus.position + 3 == checkPos ) { return true; }
-                    if (characterStatus.position + 4 == checkPos) { return true; }
-                    break;
-                case 3:
-                    if (characterStatus.position < 9 == checkPos < 9 ) { return true; }
-                    break;
-            }
+                switch (characterStatus.size)
+                {
+                    case 1:
+                        if (characterStatus.position == checkPos) { return true; }
+                        break;
+                    case 2:
+                        if (characterStatus.position == checkPos) { return true; }
+                        if (characterStatus.position + 1 == checkPos) { return true; }
+                        if (characterStatus.position + 3 == checkPos) { return true; }
+                        if (characterStatus.position + 4 == checkPos) { return true; }
+                        break;
+                    case 3:
+                        if (characterStatus.position < 9 == checkPos < 9) { return true; }
+                        break;
+                }
+            }         
         }
         return false;
     }
@@ -163,11 +180,12 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (int checkPos in checkRange)
         {
-            if (CheckCharaExist(checkPos)) { return true; }
+            if (CheckCharaExist(checkPos,false)) { return true; }
         }
         return false;
     }
 
+    
     public Character GetCharacterWithPos(int pos)
     {
         foreach (Character character in GetExistingCharacters_All())

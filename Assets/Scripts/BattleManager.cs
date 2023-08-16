@@ -45,7 +45,10 @@ public class BattleManager : MonoBehaviour
     {
         infoText.AddLogText("\ní“¬ŠJn");
         inBattle = true;
-        //trigger
+        foreach(Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnBattleStart();
+        }
         
         roundCount=0;
         RoundStart();

@@ -17,10 +17,10 @@ public class AbilityButtonPanel : MonoBehaviour
     public void SetAbilityButtons(Ability.AbilityStatus[] abilitiesStatus,Character character)
     {
         for(int i = 0; i < parent.childCount; i++) { Destroy(parent.GetChild(i).gameObject); }
-        foreach(Ability.AbilityStatus ability in abilitiesStatus)
-        {
+        for (int i = 0; i < abilitiesStatus.Length; i++) {
             var a = Instantiate(abilityButton, parent);
-            a.GetComponent<AbilityButton>().Init(ability,battleManager, character);
+            a.GetComponent<AbilityButton>().Init(abilitiesStatus[i], battleManager, character);
         }
+       
     }
 }

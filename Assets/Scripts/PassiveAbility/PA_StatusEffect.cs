@@ -34,17 +34,18 @@ public class PA_StatusEffect : PassiveAbility
             string s = StEName;
             if (refValue) { s += "X"; }
             s += "：";
-            s += StEInfo;
+            s += StEInfo+"\n";
+            if (merge) { s += string.Format("新たに{0}が付与された時は統合される\n",StEName); }
+           
             return s.ColorStr(Color.gray);
         }
     }
     public StatusEffectStatus GetStatusEffectStatus() { return StEStatus; }
 
-    public enum StEID { other, 出血, 火傷, 毒 ,マーク}
     [System.Serializable]
     public struct StatusEffectParams
     {
-        public StEID applyStE;
+        public GameObject applyStE;
         public float applyChance;
 
         public int stack;
@@ -56,6 +57,7 @@ public class PA_StatusEffect : PassiveAbility
         StEStatus.value = StEParams.value;
         StEIcon = icon;
         StEIcon.Init(StEStatus);
+        if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }
     }
 
 
@@ -66,7 +68,7 @@ public class PA_StatusEffect : PassiveAbility
     public override string GetPAInfo()
     {
         string s = string.Format("({0}スタック)\n", StEStatus.stack);
-        s += StEStatus.StEInfo;
+        s += StEStatus.GetStEInfo_forRef();
         return s;
     }
     public void AddStack(int stack)
