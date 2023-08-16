@@ -35,7 +35,7 @@ public class PA_StatusEffect : PassiveAbility
             if (refValue) { s += "X"; }
             s += "：";
             s += StEInfo+"\n";
-            if (merge) { s += string.Format("新たに{0}が付与された時は統合される\n",StEName); }
+            //if (merge) { s += string.Format("新たに{0}が付与された時は統合される\n",StEName); }
            
             return s.ColorStr(Color.gray);
         }

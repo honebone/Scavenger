@@ -32,8 +32,9 @@ MonoBehaviour:
     targetInfo: 
     actionInfo: 
     actionObject: {fileID: 0}
+    actionMods: []
     targetType: 1
-    targetPlayerSide: 0
+    targetPlayerSide: 1
     targetEnemySide: 1
     targetEmpty: 0
     selectableFront: 1
@@ -84,4 +85,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 07000000

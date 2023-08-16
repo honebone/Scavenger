@@ -10,50 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P1_6Test
+  m_Name: A_E2_3Prey
   m_EditorClassIdentifier: 
-  abilityName: "\u30C7\u30D0\u30C3\u30B0\u30A2\u30D3\u30EA\u30C6\u30A3"
+  abilityName: "\u6355\u98DF"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 1
-  activateSprite: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
-  abilityType: 0
+  SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+  abilityType: 1
   cooldownOnUse: 0
-  hasRemain: 1
-  remainOnBattleStart: 1
-  maxRemain: 1
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
   availableFront: 1
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u30C7\u30D0\u30C3\u30B0\u30A2\u30D3\u30EA\u30C6\u30A3"
+  - actionName: "\u6355\u98DF"
     conditionInfo: 
-    targetInfo: 
-    actionInfo: 
+    targetInfo: "\u65751\u4F53"
+    actionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nCRIT\u7387+50\uFF05"
     actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 2
-    targetPlayerSide: 0
-    targetEnemySide: 1
+    actionMods:
+    - {fileID: 4806407844009289101, guid: 266474ca3f5d442439d5c4d5889f6c26, type: 3}
+    targetType: 1
+    targetPlayerSide: 1
+    targetEnemySide: 0
     targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 1
     ignoreMark: 0
-    ignoreHide: 1
+    ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 2000
-    ATKMod_max: 2000
+    ATKMod_min: 50
+    ATKMod_max: 80
     ACCMod: 0
     CRITCMod: 0
-    CRITDMod: 0
-    sureHit: 1
-    unevadable: 1
+    CRITDMod: 0.5
+    sureHit: 0
+    unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
@@ -73,14 +74,12 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityEffect: 1
-    abilityType: 0
-    SE: {fileID: 0}
-    dontChangeSprite: 1
-    activateSprite: {fileID: 0}
+    abilityType: 1
+    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0a0000000c0000000f000000
+    actionTargetsInt: 07000000

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ActionMod : MonoBehaviour
 {
+    
     [System.Serializable]
     public struct ActionModStatus
     {
@@ -25,18 +26,22 @@ public class ActionMod : MonoBehaviour
         public int SANDamage;
         public int shieldAdd;
         public int shieldRemove;
-        [Header("ApplyStE")]
-        public PA_StatusEffect.StatusEffectParams[] applySteParams;
 
-        public float moveChance;
-        public int moveForword;
-        public int moveUpper;
-        public int moveLower;
-        public int moveBackword;
+        //public PA_StatusEffect.StatusEffectParams[] applySteParams;
+
+        //public float moveChance;
+        //public int moveForword;
+        //public int moveUpper;
+        //public int moveLower;
+        //public int moveBackword;
     }
+    [SerializeField]
+    protected ActionModStatus actionModStatus;
+    
     public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
         if (statusRef.actionTargets.Count != actionsStatus.Length) { FindObjectOfType<InfoText>().AddErrorText("‘ÎÛ‚Ì”‚Æs“®“à—e‚Ì”‚ªˆê’v‚µ‚Ü‚¹‚ñ"); }
+       
         return actionsStatus;
     }
 }

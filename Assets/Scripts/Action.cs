@@ -26,6 +26,7 @@ public class Action : MonoBehaviour
         public string actionInfo;
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
+        public List<GameObject> actionMods;
 
         public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move ,summon}
         [Header("ここからアビリティのみ関係")]
@@ -101,7 +102,6 @@ public class Action : MonoBehaviour
 
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             s += string.Format("対象：{0}\n", targetInfo);
-            if (actionInfo != "") { s += actionInfo + "\n"; }
             if (decreaseHP_max > 0)
             {
                 if(decreaseHP_min == decreaseHP_max) { s += string.Format("HPが{0}減少\n", decreaseHP_max); }
@@ -158,6 +158,7 @@ public class Action : MonoBehaviour
                 s += status.GetStEInfo_forRef();
                 s += "\n";
             }
+            if (actionInfo != "") { s += actionInfo + "\n"; }
 
             return s;
         }
@@ -182,6 +183,7 @@ public class Action : MonoBehaviour
             targetInfo = actionData.targetInfo;
 
             actionObject = actionData.actionObject;
+            actionMods = new List<GameObject>(actionData.actionMods);
 
             decreaseHP_min = actionData.decreaseHP_min;
             decreaseHP_max = actionData.decreaseHP_max;
@@ -217,6 +219,43 @@ public class Action : MonoBehaviour
             moveForword = actionData.moveForword;
             moveBackword = actionData.moveBackword;
         }
+
+        public ActionStatus Modify(ActionMod.ActionModStatus mod)
+        {
+            ActionStatus modifiedStatus = this;
+
+            modifiedStatus.decreaseHP_min += mod.decreaseHP;
+            modifiedStatus.decreaseHP_max += mod.decreaseHP;
+
+            if (mod.cantCounter) { modifiedStatus.cantCounter = true; }
+            modifiedStatus.ATKMod_min += mod.ATKMod;
+            modifiedStatus.ATKMod_max += mod.ATKMod;
+            modifiedStatus.ACCMod += mod.ACCMod;
+            modifiedStatus.CRITCMod += mod.CRITCMod;
+            modifiedStatus.CRITDMod += mod.CRITDMod;
+            if (mod.sureHit) { modifiedStatus.sureHit = true; }
+            if (unevadable) { modifiedStatus.unevadable = true; }
+
+            modifiedStatus.healValue_min += mod.healValue;
+            modifiedStatus.healValue_max += mod.healValue;
+            modifiedStatus.healPercent_min += mod.healPercent;
+            modifiedStatus.healPercent_max += mod.healPercent;
+
+            modifiedStatus.SANHeal_min += mod.SANHeal;
+            modifiedStatus.SANHeal_max += mod.SANHeal;
+            modifiedStatus.SANDamage_min += mod.SANDamage;
+            modifiedStatus.SANDamage_max += mod.SANDamage;
+            modifiedStatus.shieldAdd_min += mod.shieldAdd;
+            modifiedStatus.shieldAdd_max += mod.shieldAdd;
+            modifiedStatus.shieldRemove_min += mod.shieldRemove;
+            modifiedStatus.shieldRemove_max += mod.shieldRemove;
+
+
+            //StE
+            //move
+
+            return modifiedStatus;
+        }
     }
 
     
@@ -241,6 +280,15 @@ public class Action : MonoBehaviour
             actionsStatus[i] = actionStatus;
         }
         if (actionStatus.SE != null) { soundManager.PlaySE(actionStatus.SE); }
+
+        List<GameObject> actionModsObj = new List<GameObject>(actionStatus.actionMods);
+        //ここで色々なactionMdsを追加
+        foreach(GameObject actionModObj in actionModsObj)
+        {
+            var am = Instantiate(actionModObj);
+            actionsStatus = am.GetComponent<ActionMod>().ModifyAction(actionStatus, actionsStatus);
+            Destroy(am);
+        }
 
 
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)

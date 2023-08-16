@@ -16,6 +16,7 @@ public class ActionData : ScriptableObject
     public string actionInfo;
 
     public GameObject actionObject;
+    public List<GameObject> actionMods;
 
     public int decreaseHP_min;
     public int decreaseHP_max;

@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     public struct CharacterStatus
     {
         public string fileName;
-        public CharacterData.CharacterTag[] characterTags;
+        public List<CharacterData.CharacterTag> characterTags;
         public string charaName;
         public int size;
         public bool immovable;
@@ -123,7 +123,7 @@ public class Character : MonoBehaviour
         public void Init(CharacterData data,int ID)
         {
             fileName = data.fileName;
-            characterTags = data.characterTags;
+            characterTags = new List<CharacterData.CharacterTag>(data.characterTags);
             charaName = data.charaName;
             size = data.size;
             immovable = data.immovable;
@@ -271,14 +271,23 @@ public class Character : MonoBehaviour
             charaObj.SetDamageText(string.Format("•t—^F{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
             infoText.AddLogText(string.Format("{0}‚Í{1}‚ğ•t—^‚³‚ê‚½", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
         }
-       
-        
+    }
+
+    public bool CheckHasStE(GameObject StEObj)
+    {
+        PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+        foreach (PassiveAbility pa in passiveAbilities)
+        {
+            if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName) { return true; }
+        }
+        return false;
     }
 
     public void DisplayInfo()
     {
         string info = charaStatus.GetInfo();
-        info += "“Á«\n";
+        //info += "“Á«\n";
+        info += "\n";
         foreach(PassiveAbility pa in passiveAbilities)
         {
             info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo());
