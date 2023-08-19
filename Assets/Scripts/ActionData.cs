@@ -50,7 +50,7 @@ public class ActionData : ScriptableObject
 
     public bool summon;
     public int summonSize;
-    public string[] summonName;
+    public CharacterData[] summonChara;
     public float[] summonChanceWeight;
 
 

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u53EC\u559A\u30C6\u30B9\u30C8"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
+  dontChangeSprite: 1
   activateSprite: {fileID: 0}
   spriteIndex: 0
+  SE: {fileID: 0}
   abilityType: 5
   cooldownOnUse: 0
   hasRemain: 0
@@ -26,10 +27,21 @@ MonoBehaviour:
   availableMid: 0
   availableBack: 0
   actionsStaus:
-  - actionName: 
-    actionInfo: 
+  - actionName: "\u53EC\u559A\u30C6\u30B9\u30C8"
+    conditionInfo: 
     targetInfo: 
+    actionInfo: 
     actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 1
+    targetPlayerSide: 0
+    targetEnemySide: 1
+    selectableFront: 1
+    selectableMid: 1
+    selectableBack: 1
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
     cantCounter: 0
@@ -39,7 +51,6 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    attackRound: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -48,22 +59,29 @@ MonoBehaviour:
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
+    applySteParams: []
+    summon: 1
+    summonSize: 1
+    summonChara:
+    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    summonChanceWeight: []
     moveChance: 0
+    moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveForword: 0
     moveBackword: 0
-    targetType: 0
-    targetPlayerSide: 0
-    targetEnemySide: 0
-    targetEmpty: 0
-    selectableFront: 0
-    selectableMid: 0
-    selectableBack: 0
-    ignoreHide: 0
+    abilityEffect: 1
+    abilityType: 5
+    SE: {fileID: 0}
+    dontChangeSprite: 1
+    activateSprite: {fileID: 0}
+    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets: []
+    actionTargetsInt: 0d000000

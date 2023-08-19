@@ -27,7 +27,7 @@ public class Action : MonoBehaviour
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
         public List<GameObject> actionMods;
-        public bool targetEmpty;
+        //public bool targetEmpty;
         
         public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
         [Header("ここからアビリティのみ関係")]
@@ -78,7 +78,7 @@ public class Action : MonoBehaviour
 
         public bool summon;
         public int summonSize;
-        public string[] summonName;
+        public CharacterData[] summonChara;
         public float[] summonChanceWeight;
 
         public float moveChance;
@@ -221,7 +221,7 @@ public class Action : MonoBehaviour
 
             summon = actionData.summon;
             summonSize = actionData.summonSize;
-            summonName = actionData.summonName;
+            summonChara = actionData.summonChara;
             summonChanceWeight = actionData.summonChanceWeight;
 
         moveChance = actionData.moveChance;

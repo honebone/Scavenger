@@ -152,7 +152,7 @@ public class ActionQueueManager : MonoBehaviour
         actionStatus.actionOwner.SetActionInvolvedIcon(true);
         foreach(Action action in inQueueAbilityEffects)
         {
-            if (!action.GetActionStatus().targetEmpty&&action.GetActionStatus().targetType!=Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
+            if (!action.GetActionStatus().summon&&action.GetActionStatus().targetType!=Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
             {
                 foreach (Character target in action.GetActionStatus().actionTargets) { target.SetActionInvolvedIcon(false); }
             }
