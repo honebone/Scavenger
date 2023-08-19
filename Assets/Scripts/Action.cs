@@ -27,13 +27,14 @@ public class Action : MonoBehaviour
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
         public List<GameObject> actionMods;
-
-        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move ,summon}
+        public bool targetEmpty;
+        
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
         [Header("ここからアビリティのみ関係")]
         public TargetType targetType;
         public bool targetPlayerSide;
         public bool targetEnemySide;
-        public bool targetEmpty;
+       
         public bool selectableFront;
         public bool selectableMid;
         public bool selectableBack;
@@ -74,6 +75,11 @@ public class Action : MonoBehaviour
         public int shieldRemove_max;
         [Header("ApplyStE")]
         public PA_StatusEffect.StatusEffectParams[] applySteParams;
+
+        public bool summon;
+        public int summonSize;
+        public string[] summonName;
+        public float[] summonChanceWeight;
 
         public float moveChance;
         public int moveForword;
@@ -213,7 +219,12 @@ public class Action : MonoBehaviour
             shieldRemove_max = actionData.shieldRemove_max;
             applySteParams = actionData.applyStEParams;
 
-            moveChance = actionData.moveChance;
+            summon = actionData.summon;
+            summonSize = actionData.summonSize;
+            summonName = actionData.summonName;
+            summonChanceWeight = actionData.summonChanceWeight;
+
+        moveChance = actionData.moveChance;
             moveUpper = actionData.moveUpper;
             moveLower = actionData.moveLower;
             moveForword = actionData.moveForword;
@@ -375,17 +386,21 @@ public class Action : MonoBehaviour
                     if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
                 }
             }
+            else { infoText.AddDebugText("対象の消失"); }
         }
 
-
+        //if (actionStatus.targetType == ActionStatus.TargetType.summon)//移動
+        //{ 
+        
+        //}
         if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
         {
             int ownerMoveDir = -1;
             int ownerMoveRange = -1;
             int moveToPos = actionStatus.actionTargetsInt[0];//iは0の時しかないはず
             bool movable = true;
-            ownerMoveDir = util.GetMoveDir(ownerStatus.position, moveToPos); 
-            if(ownerMoveDir == 0 || ownerMoveDir == 3)//左右移動なら
+            ownerMoveDir = util.GetMoveDir(ownerStatus.position, moveToPos);
+            if (ownerMoveDir == 0 || ownerMoveDir == 3)//左右移動なら
             {
                 ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).x - util.posIntToVector(moveToPos).x);
             }
@@ -396,9 +411,9 @@ public class Action : MonoBehaviour
             print(ownerMoveRange);
 
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
-            foreach(Character c in charasOnTravelingDir)
+            foreach (Character c in charasOnTravelingDir)
             {
-                if (c.GetCharacterStatus().size >= 2||c.GetCharacterStatus().immovable)
+                if (c.GetCharacterStatus().size >= 2 || c.GetCharacterStatus().immovable)
                 {
                     movable = false;
                 }

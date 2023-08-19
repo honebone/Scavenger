@@ -48,6 +48,12 @@ public class ActionData : ScriptableObject
     [Header("ApplyStE")]
     public PA_StatusEffect.StatusEffectParams[] applyStEParams;
 
+    public bool summon;
+    public int summonSize;
+    public string[] summonName;
+    public float[] summonChanceWeight;
+
+
     public float moveChance;
     public int moveUpper;
     public int moveLower;
