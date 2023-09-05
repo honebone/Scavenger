@@ -70,7 +70,8 @@ MonoBehaviour:
     summonSize: 1
     summonChara:
     - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    summonChanceWeight: []
+    summonChanceWeight:
+    - 1
     moveChance: 0
     moveForword: 0
     moveUpper: 0
@@ -84,4 +85,4 @@ MonoBehaviour:
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets: []
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 0b000000

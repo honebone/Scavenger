@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
     CharactersManager charactersManager;
     Utility utility;
     InfoText infoText;
+    MessageText messageText;
 
     int roundCount;
 
@@ -37,6 +38,7 @@ public class BattleManager : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         utility =FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
+        messageText = FindObjectOfType<MessageText>();
 
         characterInTurnOrder=new List<Character>();
     }
@@ -118,9 +120,10 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator RoundStartEffect()
     {
-        Debug.Log("ラウンド開始");
+        messageText.SetText(string.Format("ラウンド {0}", roundCount));
         yield return new WaitForSeconds(1f);
         inRound = true;
+        messageText.ResetText();
         characterInTurnOrder[currentTurn].MyTurnStart();
     }
     public void TurnEnd()

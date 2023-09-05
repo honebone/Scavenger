@@ -25,12 +25,14 @@ public class Map_RoomButton : MonoBehaviour
     Sprite emptyIcon;
 
     ExpeditionManager expeditionManager;
+    InfoText InfoText;
     bool selectable;
-    public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em)
+    public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em,InfoText it)
     {
         room = r;
         room.roomPos = rp;
         expeditionManager = em;
+        InfoText = it;
 
         if (room.empty)
         {
@@ -39,6 +41,7 @@ public class Map_RoomButton : MonoBehaviour
         }
         else
         {
+            roomEventIcon.sprite = room.eventIcon;
             if (room.up >= 1) { up.enabled = true; }
             if (room.straight >= 1) { straight.enabled = true; }
             if (room.down >= 1) { down.enabled = true; }
@@ -114,6 +117,20 @@ public class Map_RoomButton : MonoBehaviour
         {
             selectable=false;
             expeditionManager.GoToNextRoom(room.roomPos);
+        }
+    }
+    public void OnMouseEnter()
+    {
+        if (!room.empty)
+        {
+            InfoText.SetText(room.eventName, room.eventInfo);
+        }
+    }
+    public void OnMouseExit()
+    {
+        if (!room.empty)
+        {
+            InfoText.ResetText();
         }
     }
 

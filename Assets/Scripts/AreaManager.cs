@@ -17,11 +17,25 @@ public class AreaManager : MonoBehaviour
 
         public int branchChance;
         public int blindChance;
-        //roomEvent
+        public Area_RoomEvent[] roomEvents;
+        //通常戦闘のプール
         //nextArea
+
+        public List<int> GetREWeights()
+        {
+            List<int> weights = new List<int>();
+            foreach(Area_RoomEvent roomEvent in roomEvents) { weights.Add(roomEvent.weight); }
+            return weights;
+        }
+    }
+    [System.Serializable]
+    public struct Area_RoomEvent
+    {
+        public RoomEventData roomEvent;
+        public int weight;
     }
     [SerializeField]
-    Area area;
+    Area area;//test
     [SerializeField]
     GameObject content;
     [SerializeField]
@@ -31,16 +45,20 @@ public class AreaManager : MonoBehaviour
 
     List<Map_LayerPanel> layers;
     ExpeditionManager expeditionManager;
+    InfoText infoText;
     Utility util;
     private void Start()
     {
         expeditionManager = FindObjectOfType<ExpeditionManager>();
+        infoText = FindObjectOfType<InfoText>();
         util = FindObjectOfType<Utility>();
         layer = new ExpeditionManager.Room[5];
     }
 
     public virtual void GenerateMap()
     {
+        for (int i = 0; i < content.transform.childCount; i++) { Destroy(content.transform.GetChild(i).gameObject); }
+
         int length = Random.Range(area.minLength, area.maxLength + 1);
         int layerCount = 0;
         layers = new List<Map_LayerPanel>();
@@ -107,7 +125,7 @@ public class AreaManager : MonoBehaviour
         layer[2].up = -1;
         layer[2].straight = 1;
         layer[2].down = -1;
-        //layer[2]のroomEventを開始地点の奴に
+        //layer[2]のroomEventをボス戦に
         SetLayerPanel(layer, layerCount);
 
         expeditionManager.SetLayers(layers);
@@ -115,7 +133,7 @@ public class AreaManager : MonoBehaviour
     void SetLayerPanel(ExpeditionManager.Room[] l,int lc)
     {
         var lp = Instantiate(layerPanel, content.transform);
-        lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager);
+        lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText);
         layers.Add(lp.GetComponent<Map_LayerPanel>());
     }
     ExpeditionManager.Room SetRoom()
@@ -125,7 +143,7 @@ public class AreaManager : MonoBehaviour
         room.straight = 1;
         if (util.Probability(area.branchChance)) { room.down = 1; }
         if (util.Probability(area.blindChance)) { room.blind = true; }
-        //roomEvent設定
+        room.SetRoomEvent(area.roomEvents[area.GetREWeights().ChoiceWithWeight()].roomEvent);
 
         return room;
     }

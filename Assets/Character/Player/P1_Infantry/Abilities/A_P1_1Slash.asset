@@ -31,13 +31,13 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u524D\u3001\u4E2D\u5217\u306E\u65751\u4F53"
     actionInfo: 
+    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 3754702445578300767, guid: e4454c3494d89b14795a5762af0023c3, type: 3}
     targetType: 1
     targetPlayerSide: 0
     targetEnemySide: 1
-    targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 0
@@ -68,6 +68,10 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0
@@ -82,4 +86,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 0e000000

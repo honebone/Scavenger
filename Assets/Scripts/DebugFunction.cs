@@ -19,9 +19,8 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
 
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);   
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
-            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 13);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 15);
+            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 14);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }

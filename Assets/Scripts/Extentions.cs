@@ -60,5 +60,80 @@ public static class Extentions
         //Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); 
         return result;
     }
+    public static int ChoiceWithWeight(this float[] weight)
+    {
+        float sum = 0;
+        foreach (float c in weight)
+        {
+            sum += c;
+        }
+        float dice = Random.Range(0, sum);
+        //Debug.Log(dice.ToString());
+        for (int i = 0; i < weight.Length; i++)
+        {
+            if (dice < weight[i])
+            {
+                //Debug.Log(i.ToString());
+                return i;
+            }
+            dice -= weight[i];
+        }
+        if (dice == sum) { return weight.Length - 1; }
+        else
+        {
+            Debug.Log("error");
+            return -1;
+        }
+    }
+    public static int ChoiceWithWeight(this List<float> weight)
+    {
+        float sum = 0;
+        foreach (float c in weight)
+        {
+            sum += c;
+        }
+        float dice = Random.Range(0, sum);
+        //Debug.Log(dice.ToString());
+        for (int i = 0; i < weight.Count; i++)
+        {
+            if (dice < weight[i])
+            {
+                //Debug.Log(i.ToString());
+                return i;
+            }
+            dice -= weight[i];
+        }
+        if (dice == sum) { return weight.Count - 1; }
+        else
+        {
+            Debug.Log("error");
+            return -1;
+        }
+    }
+    public static int ChoiceWithWeight(this List<int> weight)
+    {
+        float sum = 0;
+        foreach (float c in weight)
+        {
+            sum += c;
+        }
+        float dice = Random.Range(0, sum);
+        //Debug.Log(dice.ToString());
+        for (int i = 0; i < weight.Count; i++)
+        {
+            if (dice < weight[i])
+            {
+                //Debug.Log(i.ToString());
+                return i;
+            }
+            dice -= weight[i];
+        }
+        if (dice == sum) { return weight.Count - 1; }
+        else
+        {
+            Debug.Log("error");
+            return -1;
+        }
+    }
 
 }

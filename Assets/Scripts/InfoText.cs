@@ -39,6 +39,18 @@ public class InfoText : MonoBehaviour
         infoText.text = info;
         infoTextScrollBar.value = 1;
     }
+    public void ResetText()
+    {
+        if (displayingChara != null)
+        {
+            displayingChara.GetCharacter_Object().SetSelectedIcon(false);
+            displayingChara = null;
+        }
+        nameText.text = "";
+        infoText.text = "";
+        infoTextScrollBar.value = 1;
+    }
+
     public void SetCharaInfo(string name, string info,Character chara)
     {
         if (displayingChara != null)

@@ -28,16 +28,19 @@ MonoBehaviour:
   availableBack: 1
   actionsStaus:
   - actionName: "\u7C98\u6DB2\u98DB\u3070\u3057"
-    actionInfo: "ACT\u4F4E\u4E0B\u306F\u672A\u5B9F\u88C5"
+    conditionInfo: 
     targetInfo: "\u65751\u4F53"
+    actionInfo: "ACT\u4F4E\u4E0B\u306F\u672A\u5B9F\u88C5"
+    VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
     actionObject: {fileID: 0}
+    actionMods: []
     targetType: 1
     targetPlayerSide: 1
     targetEnemySide: 0
-    targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 1
+    ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
@@ -63,6 +66,11 @@ MonoBehaviour:
     shieldAdd_max: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
+    applySteParams: []
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0

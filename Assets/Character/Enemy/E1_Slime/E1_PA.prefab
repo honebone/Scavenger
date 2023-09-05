@@ -52,14 +52,16 @@ MonoBehaviour:
     conditionInfo: "\u653B\u6483\u3092\u53D7\u3051\u305F\u6642(50%)"
     targetInfo: "\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B"
     actionInfo: 
+    VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
     actionObject: {fileID: 0}
+    actionMods: []
     targetType: 0
     targetPlayerSide: 0
     targetEnemySide: 0
-    targetEmpty: 0
     selectableFront: 0
     selectableMid: 0
     selectableBack: 0
+    ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
@@ -86,6 +88,10 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0

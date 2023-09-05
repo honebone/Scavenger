@@ -17,6 +17,7 @@ MonoBehaviour:
   charaName: "\u5175\u58EB"
   characterTags: 02000000
   size: 1
+  immovable: 0
   player: 1
   playable: 1
   variableSprites:
@@ -30,6 +31,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0c2140d072d9d549bfbf5c93b08f8ef, type: 2}
   - {fileID: 11400000, guid: 06a16afe15764a74885868eea6db2a17, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  passiveAbilities: []
   actionMods: []
   surviveFatalWounds: 1
   maxHP: 50

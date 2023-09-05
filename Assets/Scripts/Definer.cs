@@ -40,7 +40,7 @@ public class Definer : MonoBehaviour
         public AudioClip shield;
         public AudioClip SANHeal;
         public AudioClip SANDecrease;
-
+        public AudioClip summoned;
     }
 
     public static ColorRef colorRef;
@@ -58,12 +58,17 @@ public class Definer : MonoBehaviour
     GameObject actionManager_General_Inspector;
     [SerializeField]
     GameObject statusEffectIcon_Inspector;
-   
 
-    public static Dictionary< AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
+
+    public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"“Áê"}, {AbilityData.AbilityType.attack,"UŒ‚"},{AbilityData.AbilityType.heal,"‰ñ•œ"},
     {AbilityData.AbilityType.buff,"‹­‰»"},{AbilityData.AbilityType.debuff,"ã‘Ì‰»"},{AbilityData.AbilityType.summon,"¢Š«"}
 };
+    public static Dictionary<CharacterData.CharacterTag, string> CharacterTagName = new Dictionary<CharacterData.CharacterTag, string>(){
+        {CharacterData.CharacterTag.other,"“Áê" },{CharacterData.CharacterTag.corpse,"€‘Ì" },{CharacterData.CharacterTag.human,"lŠÔ" },{CharacterData.CharacterTag.beast,"b"  }
+        ,{CharacterData.CharacterTag.insect,"’"  },{CharacterData.CharacterTag.undead,"•s€Ò"  },{CharacterData.CharacterTag.artifact,"lH•¨"  },{CharacterData.CharacterTag.plant,"A•¨"  }
+        ,{CharacterData.CharacterTag.horror,"ˆÙŒ`"  }
+    };
 
     private void Awake()
     {

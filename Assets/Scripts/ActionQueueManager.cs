@@ -25,8 +25,11 @@ public class ActionQueueManager : MonoBehaviour
     [SerializeField]
     Text abilityNameText_enemy;
 
+    [SerializeField]
     List<Action.ActionStatus> actionsBuffer=new List<Action.ActionStatus>();
+    [SerializeField]
     List<Action> inQueueActions = new List<Action>();
+    [SerializeField]
     List<Action> inQueueAbilityEffects = new List<Action>();
 
     BattleManager battleManager;
@@ -69,9 +72,11 @@ public class ActionQueueManager : MonoBehaviour
             else { obj = Definer.actionManager_General; }
             var p = Instantiate(actionInfoPanel, content);
             var a = Instantiate(obj, p.transform);
-            a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util, soundManager);
+            a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(),infoText, util, soundManager);
 
-            inQueueAbilityEffects.Add(a.GetComponent<Action>());
+            if (status.abilityEffect) { inQueueAbilityEffects.Add(a.GetComponent<Action>()); }
+            else { inQueueActions.Add(a.GetComponent<Action>()); }
+            
         }
         else//そうでなければ一旦バッファに預ける
         {
@@ -131,7 +136,7 @@ public class ActionQueueManager : MonoBehaviour
         else { obj = Definer.actionManager_General; }
         var p = Instantiate(actionInfoPanel, content);
         var a = Instantiate(obj, p.transform);
-        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), util, soundManager);
+        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(),infoText, util, soundManager);
         inQueueActions.Add(a.GetComponent<Action>());
 
     }
@@ -195,10 +200,19 @@ public class ActionQueueManager : MonoBehaviour
     }
 
     /// <summary>アクションの処理が終わったらアクション内で呼ばれる </summary>
-    public void Dequeue(string actionName)
+    public void Dequeue()
     {
-        if(inQueueAbilityEffects.Count > 0) { inQueueAbilityEffects.RemoveAt(0); }
-        else { inQueueActions.RemoveAt(0); }       
+        if (inQueueAbilityEffects.Count > 0)
+        {
+            //infoText.AddDebugText(inQueueAbilityEffects[0].GetActionStatus().actionName);
+
+            inQueueAbilityEffects.RemoveAt(0);
+        }
+        else
+        {
+            //infoText.AddDebugText(inQueueActions[0].GetActionStatus().actionName);
+            inQueueActions.RemoveAt(0);
+        }
         Destroy(content.transform.GetChild(0).gameObject);
 
         if (!CheckIfActionsRemain())//キューにアクションが残ってなければ解決終了

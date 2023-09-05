@@ -417,7 +417,7 @@ public class Ability : MonoBehaviour
             {
                 abilityStatus.actionsStatus[i].actionOwner = character;
                 abilityStatus.actionsStatus[i].actionTargetsInt = new List<int>(targetGroups[i]);
-                if (!abilityStatus.actionsStatus[i].summon && abilityStatus.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)
+                if (!abilityStatus.actionsStatus[i].summon && abilityStatus.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)//対象がキャラであるアビリティの場合は、actionTargetsの設定
                 {
                     abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i], true));
                 }

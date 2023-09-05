@@ -36,7 +36,6 @@ MonoBehaviour:
     targetType: 1
     targetPlayerSide: 1
     targetEnemySide: 1
-    targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 1
@@ -67,10 +66,14 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
       applyChance: 100
-      stack: 3
+      stack: 6
       value: 0
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0
@@ -85,4 +88,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

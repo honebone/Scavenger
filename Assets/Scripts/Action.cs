@@ -24,6 +24,9 @@ public class Action : MonoBehaviour
         public string targetInfo;
 [TextArea(3, 10)]
         public string actionInfo;
+
+        public GameObject VE_OnTargets;
+
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
         public List<GameObject> actionMods;
@@ -188,6 +191,8 @@ public class Action : MonoBehaviour
 
             targetInfo = actionData.targetInfo;
 
+            VE_OnTargets = actionData.VE_OnTargets;
+
             actionObject = actionData.actionObject;
             actionMods = new List<GameObject>(actionData.actionMods);
 
@@ -272,12 +277,14 @@ public class Action : MonoBehaviour
     
     Utility util;
 
-    public void Init(ActionQueueManager qm,ActionStatus status,ActionInfoPanel infoPanel,Utility u,SoundManager sm)
+    public void Init(ActionQueueManager qm,ActionStatus status,ActionInfoPanel infoPanel,InfoText it,Utility u,SoundManager sm)
     {
         actionQueueManager = qm;
         actionStatus = status;
+        infoText = it;
         util = u;
         infoPanel.Init(actionStatus.actionName, actionStatus.GetInfo(false, new Character.CharacterStatus()));
+        characterManager = FindObjectOfType<CharactersManager>();
         soundManager = sm;
     }
     public ActionStatus GetActionStatus() { return actionStatus; }
@@ -306,6 +313,7 @@ public class Action : MonoBehaviour
         {
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
             actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
+            if (actionStatus.VE_OnTargets) { Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.size, targetStatus.position), Quaternion.identity); }
             if (!targetStatus.dead)
             {
                 if (actionsStatus[i].decreaseHP_max > 0)//HP減少
@@ -319,14 +327,14 @@ public class Action : MonoBehaviour
                     bool CRIT = false;
                     int DMG = 0;
 
-                    if (actionsStatus[i].sureHit || util.Probability(ownerStatus.ACC + actionsStatus[i].ACCMod))
+                    if (actionsStatus[i].sureHit || (ownerStatus.ACC + actionsStatus[i].ACCMod).Probability())
                     {
-                        if (actionsStatus[i].unevadable || util.Probability(100f - targetStatus.EVD))//攻撃命中
+                        if (actionsStatus[i].unevadable || (100f - targetStatus.EVD).Probability())//攻撃命中
                         {
                             float fDMG = ownerStatus.exATK;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             fDMG += ownerStatus.ATK * ATKMod;
-                            if (util.Probability(ownerStatus.CRITC + actionsStatus[i].CRITCMod))
+                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Probability())
                             {
                                 CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
@@ -389,10 +397,17 @@ public class Action : MonoBehaviour
             else { infoText.AddDebugText("対象の消失"); }
         }
 
-        //if (actionStatus.targetType == ActionStatus.TargetType.summon)//移動
-        //{ 
-        
-        //}
+        if (actionStatus.summon)//召喚
+        {
+            infoText.AddDebugText("召喚処理は未完成です\n召喚しようとしている場所が空欄であるかどうかを確かめる必要があります");
+            soundManager.PlaySE(Definer.soundRef.summoned);
+            for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
+            {
+                if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
+                else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
+            }
+        }
+
         if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
         {
             int ownerMoveDir = -1;
@@ -440,6 +455,6 @@ public class Action : MonoBehaviour
 
         }
 
-        actionQueueManager.Dequeue(actionStatus.actionName);
+        actionQueueManager.Dequeue();
     }
 }

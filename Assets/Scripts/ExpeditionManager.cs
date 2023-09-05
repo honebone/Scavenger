@@ -9,7 +9,13 @@ public class ExpeditionManager : MonoBehaviour
     {
         /// <summary>開始地点の上下2段ずつとかはtrue</summary>
         public bool empty;
-        //roomevent
+
+        //ここからroomEvent関連
+        public string eventName;
+        public string eventInfo;
+        public GameObject roomEventManager;
+        public Sprite eventIcon;
+        //ここまでroomEvent関連
 
         public bool blind;
         /// <summary>-1:false(locked) 0:false 1:true 2:true(locked)</summary>
@@ -20,6 +26,13 @@ public class ExpeditionManager : MonoBehaviour
         public int down;
 
         public Vector2Int roomPos;
+        public void SetRoomEvent(RoomEventData data)
+        {
+            eventName = data.eventName;
+            eventInfo = data.eventInfo;
+            roomEventManager = data.roomEventManager;
+            eventIcon = data.eventIcon;
+        }
     }
 
     /// <summary>x:現在のレイヤー y:上下</summary>
@@ -30,6 +43,8 @@ public class ExpeditionManager : MonoBehaviour
 
 
     Map_MapPanel mapPanel;
+    [SerializeField]
+    Transform REManagerParent;
 
     private void Start()
     {
@@ -62,6 +77,13 @@ public class ExpeditionManager : MonoBehaviour
 
         foreach(Map_LayerPanel layer in layers) { layer.ResetButtonsState(); }
         GetRoomButton(currentPos).SetState_currentPos();
+        var r = Instantiate(currentRoom.roomEventManager, REManagerParent);
+        r.GetComponent<RoomEvent>().Init();
+    }
+    public void EndRoomEvent()
+    {
+        //あーだこーだ
+        SelectNextRoom();
     }
 
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }

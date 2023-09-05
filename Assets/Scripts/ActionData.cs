@@ -15,6 +15,8 @@ public class ActionData : ScriptableObject
     [TextArea(3,10)]
     public string actionInfo;
 
+    public GameObject VE_OnTargets;
+
     public GameObject actionObject;
     public List<GameObject> actionMods;
 
