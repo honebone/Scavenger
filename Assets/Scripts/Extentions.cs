@@ -20,6 +20,10 @@ public static class Extentions
     {
         return Definer.colorRef.statusEffectColors[(int)type];
     }
+    public static Color ToColor(this ItemData.Rarity rarity)
+    {
+        return Definer.colorRef.rarityColors[(int)rarity];
+    }
     public static bool Probability(this float fPercent)
     {
         bool result;

@@ -243,6 +243,8 @@ public class ActionQueueManager : MonoBehaviour
             switch (resolveMode)
             {
                 case 0:
+                    resolveMode = -1;
+                    battleManager.RoundStart();
                     break;
                 case 2:
                     resolveMode = -1;

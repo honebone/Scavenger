@@ -15,10 +15,16 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     GameObject turnOrderIcon;
 
+    [SerializeField]
+    AudioClip SE_battleStart;
+
     CharactersManager charactersManager;
     Utility utility;
     InfoText infoText;
     MessageText messageText;
+    ExpeditionManager expeditionManager;
+    ActionQueueManager actionQueue;
+    SoundManager soundManager;
 
     int roundCount;
 
@@ -39,6 +45,9 @@ public class BattleManager : MonoBehaviour
         utility =FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
         messageText = FindObjectOfType<MessageText>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
+        actionQueue = FindObjectOfType<ActionQueueManager>();
+        soundManager = FindObjectOfType<SoundManager>();
 
         characterInTurnOrder=new List<Character>();
     }
@@ -47,16 +56,22 @@ public class BattleManager : MonoBehaviour
     {
         infoText.AddLogText("\n◇◇◇◇戦闘開始◇◇◇◇");
         inBattle = true;
-        foreach(Character character in charactersManager.GetExistingCharacters_All())
+        soundManager.PlaySE(SE_battleStart);
+        
+        roundCount=0;
+        StartCoroutine(BattleStartAnim());
+    }
+    IEnumerator BattleStartAnim()
+    {
+        yield return new WaitForSeconds(1f);
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnBattleStart();
         }
-        
-        roundCount=0;
-        RoundStart();
+        actionQueue.StartResolve(0);
     }
 
-    void RoundStart()
+   public void RoundStart()
     {
         roundCount++;
         roundText.text=roundCount.ToString();
@@ -64,7 +79,7 @@ public class BattleManager : MonoBehaviour
         //trigger
         DicideTurnOrder();
     }
-    void DicideTurnOrder()
+    public void DicideTurnOrder()
     {
         currentTurn = 0;
         characterInTurnOrder.Clear();
@@ -185,11 +200,10 @@ public class BattleManager : MonoBehaviour
 
         //各キャラクターにも知らせる
         //generatedCharaから死亡しているキャラを消去
-
+        expeditionManager.OnEndBattle();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { BattleStart(); }//test
         if (Input.GetKeyDown(KeyCode.Space) && roundEnd)//test
         {
             roundEnd = false;

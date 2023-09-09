@@ -6,10 +6,22 @@ public class DebugFunction : MonoBehaviour
 {
     [SerializeField]
     CharacterData[] characterData;
+
     [SerializeField]
-    int pos;
+    ItemData[] itemData;
     [SerializeField]
-    List<int> moveValue;
+    int[] amount;
+    Definer.Item[] items;
+
+    private void Start()
+    {
+        items=new Definer.Item[itemData.Length];
+        for(int i = 0; i < itemData.Length; i++)
+        {
+            items[i].Init(itemData[i]);
+            items[i].amount = amount[i];
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -18,15 +30,24 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 4);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
 
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);   
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);
             //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 14);
+            FindObjectOfType<BattleManager>().BattleStart();
         }
+
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 11);
+            foreach(Definer.Item item in items)
+            {
+                FindObjectOfType<Inventory>().AddItem(item);
+            }
+            
         }
     }
 }

@@ -18,7 +18,7 @@ public class AreaManager : MonoBehaviour
         public int branchChance;
         public int blindChance;
         public Area_RoomEvent[] roomEvents;
-        //’Êíí“¬‚Ìƒv[ƒ‹
+        public EnemySet[] normalBattlePool;
         //nextArea
 
         public List<int> GetREWeights()
@@ -27,12 +27,24 @@ public class AreaManager : MonoBehaviour
             foreach(Area_RoomEvent roomEvent in roomEvents) { weights.Add(roomEvent.weight); }
             return weights;
         }
+        public EnemySet GetRandomEnemySet()
+        {
+            List<int> weights = new List<int>();
+            foreach (EnemySet battle in normalBattlePool) { weights.Add(battle.weight); }
+            return normalBattlePool[weights.ChoiceWithWeight()];
+        }
     }
     [System.Serializable]
     public struct Area_RoomEvent
     {
         public RoomEventData roomEvent;
         public int weight;
+    }
+    [System.Serializable]
+    public struct EnemySet
+    {
+        public int weight;
+        public CharacterData[] enemies;
     }
     [SerializeField]
     Area area;//test
@@ -147,4 +159,5 @@ public class AreaManager : MonoBehaviour
 
         return room;
     }
+    public Area GetArea() { return area; }
 }

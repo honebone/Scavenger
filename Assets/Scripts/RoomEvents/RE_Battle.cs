@@ -6,6 +6,11 @@ public class RE_Battle : RoomEvent
 {
     public override void StartRoomEvent()
     {
-        print("battleStart");
+        expeditionManager.Battle(currentArea.GetRandomEnemySet());
+    }
+    public override void OnEndBattle()
+    {
+        //–{—ˆ‚ÍlootŠJŽn
+        EndRoomEvent();
     }
 }

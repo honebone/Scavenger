@@ -41,14 +41,30 @@ public class ExpeditionManager : MonoBehaviour
     Room currentRoom;
     List<Map_LayerPanel> layers;
 
+    [SerializeField]//test
+    AreaManager currentAreaManger;
+    RoomEvent currentRE;
 
     Map_MapPanel mapPanel;
+    InfoText infoText;
+    CharactersManager charactersManager;
+    BattleManager battleManager;
+    FadeOutUI fadeOutUI;
+    SoundManager soundManager;
+
+    [SerializeField]
+    AudioClip SE_nextRoom;
     [SerializeField]
     Transform REManagerParent;
 
     private void Start()
     {
-        mapPanel=FindObjectOfType<Map_MapPanel>();
+        mapPanel = FindObjectOfType<Map_MapPanel>();
+        infoText = FindObjectOfType<InfoText>();
+        charactersManager = FindObjectOfType<CharactersManager>();
+        battleManager = FindObjectOfType<BattleManager>();
+        fadeOutUI = FindObjectOfType<FadeOutUI>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
     public void SetLayers(List<Map_LayerPanel> l)
     {
@@ -74,12 +90,40 @@ public class ExpeditionManager : MonoBehaviour
         mapPanel.CloseMap();
         currentPos = pos;
         currentRoom = GetRoom(currentPos);
+        soundManager.PlaySE(SE_nextRoom);
 
-        foreach(Map_LayerPanel layer in layers) { layer.ResetButtonsState(); }
+        StartCoroutine(AnimationForNextRoom());
+    }
+    IEnumerator AnimationForNextRoom()
+    {
+        fadeOutUI.FadeOut();
+        yield return new WaitForSeconds(0.85f);
+
+        fadeOutUI.FadeIn();
+        yield return new WaitForSeconds(0.5f);
+        foreach (Map_LayerPanel layer in layers) { layer.ResetButtonsState(); }
         GetRoomButton(currentPos).SetState_currentPos();
         var r = Instantiate(currentRoom.roomEventManager, REManagerParent);
-        r.GetComponent<RoomEvent>().Init();
+        r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
+        currentRE = r.GetComponent<RoomEvent>();
     }
+
+    //ここからroom event で呼ばれる関数
+    public void Battle(AreaManager.EnemySet enemySet)
+    {
+        if (enemySet.enemies.Length != 9) { infoText.AddErrorText("敵配置の配列数が間違ています"); }
+        for(int i = 0; i < 9; i++)
+        {
+            if(enemySet.enemies[i] != null) { charactersManager.SpawnEnemy(enemySet.enemies[i], i+9); }         
+        }
+        battleManager.BattleStart();
+
+    }
+
+
+
+    public void OnEndBattle() { currentRE.OnEndBattle(); }
+    //ここまでroom event で呼ばれる関数
     public void EndRoomEvent()
     {
         //あーだこーだ
