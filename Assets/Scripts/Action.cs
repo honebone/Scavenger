@@ -167,6 +167,16 @@ public class Action : MonoBehaviour
                 s += status.GetStEInfo_forRef();
                 s += "\n";
             }
+
+            if (moveChance > 0)
+            {
+                s += string.Format("{0}“‚ÌŠm—¦‚Å", moveChance);
+                if (moveForword > 0) { s += string.Format("{0}‘Oi\n", moveForword); }
+                if (moveUpper > 0) { s += string.Format("{0}ã¸\n", moveUpper); }
+                if (moveLower > 0) { s += string.Format("{0}‰º~\n", moveLower); }
+                if (moveBackword > 0) { s += string.Format("{0}Œã‘Þ\n", moveBackword); }
+            }
+
             if (actionInfo != "") { s += actionInfo + "\n"; }
 
             return s;
