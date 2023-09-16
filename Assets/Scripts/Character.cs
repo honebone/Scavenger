@@ -504,7 +504,26 @@ public class Character : MonoBehaviour
     }
 
 
+    public void AddMaxHP(int value_base, float value_mul, bool heal)
+    {
+        int oldMaxHP = charaStatus.maxHP;
 
+        charaStatus.maxHP_base += value_base;
+        charaStatus.maxHP_mul += value_mul;
+        charaStatus.maxHP = Mathf.Max(1, Mathf.RoundToInt(charaStatus.maxHP_base * charaStatus.maxHP_mul / 100f));
+        if (charaStatus.maxHP > oldMaxHP&&heal)//·•ª‚ð‰ñ•œ
+        {
+            charaStatus.HP += charaStatus.maxHP - oldMaxHP;
+        }
+        if (charaStatus.HP > charaStatus.maxHP) { charaStatus.HP = charaStatus.maxHP; }
+        charaObj.SetHPandShieldBar();
+    }
+    public void AddATK(int value_base, float value_mul)
+    {
+        charaStatus.ATK_base += value_base;
+        charaStatus.ATK_mul += value_mul;
+        charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt(charaStatus.ATK_base * charaStatus.ATK_mul / 100f));
+    }
     public void AddShield(int value)
     {
         charaStatus.shield += value;

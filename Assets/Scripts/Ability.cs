@@ -277,6 +277,13 @@ public class Ability : MonoBehaviour
                     targetIconPos.Add(new Vector2Int(iconPos, 0));
                     targetPool.Add(charactersManager.GetExistingCharactersPos(tp));
                     break;
+                case Action.ActionStatus.TargetType.self:
+                    size = charaStatus.size;
+                    targetEmpty = false;
+
+                    targetIconPos.Add(new Vector2Int(charaStatus.position, 0));
+                    targetPool.Add(new List<int> { charaStatus.position});
+                    break;
 
                 case Action.ActionStatus.TargetType.move://‘€ì‰Â”\ƒLƒƒƒ‰‚Ì‚İ
                     size = charaStatus.size;

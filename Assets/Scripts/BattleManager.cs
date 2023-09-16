@@ -32,7 +32,7 @@ public class BattleManager : MonoBehaviour
     List<Battle_TurnOrderIcon> turnOrderIcons=new List<Battle_TurnOrderIcon>();
     int currentTurn;
     /// <summary>nextRoundButtonを押せるかどうか</summary>
-    bool roundEnd;
+    //bool roundEnd;
 
     public static bool inBattle;
     public static bool inRound;
@@ -181,8 +181,9 @@ public class BattleManager : MonoBehaviour
     {
         //trigger
         inRound = false;
-        roundEnd = true;
+        //roundEnd = true;
         Debug.Log("ラウンド終了");
+        RoundStart();
     }
 
     public void BattleEnd()
@@ -204,11 +205,11 @@ public class BattleManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && roundEnd)//test
-        {
-            roundEnd = false;
-            RoundStart();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) && roundEnd)//test
+        //{
+        //    roundEnd = false;
+        //    RoundStart();
+        //}
     }
     /// <summary>アビリティボタンをクリックしたときに呼ぶ </summary>
     public void SetSelectedAbility(Ability.AbilityStatus abilityStatus,Character character)

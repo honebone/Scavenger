@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P1_4Test
+  m_Name: A_E1_3Gigantic
   m_EditorClassIdentifier: 
-  abilityName: "\u5F31\u4F53\u30C6\u30B9\u30C8"
+  abilityName: "\u5DE8\u5927\u5316"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 1
-  activateSprite: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 683469695067111907, guid: 30808bfac6bad294f9d4a2cc69bd0ad7, type: 3}
   spriteIndex: 0
   SE: {fileID: 0}
-  abilityType: 4
+  abilityType: 3
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -27,19 +27,19 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u5F31\u4F53\u30C6\u30B9\u30C8"
+  - actionName: "\u5DE8\u5927\u5316"
     conditionInfo: 
-    targetInfo: 
+    targetInfo: "\u81EA\u8EAB"
     actionInfo: 
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
-    targetPlayerSide: 1
-    targetEnemySide: 1
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 1
+    targetType: 3
+    targetPlayerSide: 0
+    targetEnemySide: 0
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -67,11 +67,7 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      applyChance: 100
-      stack: 6
-      value: 0
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+    - applyStE: {fileID: 8267598975640588613, guid: 3ea5eb41a7b4c7d4292bb11ef28e8e26, type: 3}
       applyChance: 100
       stack: 1
       value: 0
@@ -85,12 +81,12 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityEffect: 1
-    abilityType: 4
+    abilityType: 3
     SE: {fileID: 0}
-    dontChangeSprite: 1
-    activateSprite: {fileID: 0}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 683469695067111907, guid: 30808bfac6bad294f9d4a2cc69bd0ad7, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 0e000000

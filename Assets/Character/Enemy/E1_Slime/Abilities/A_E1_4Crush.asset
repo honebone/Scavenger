@@ -10,36 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P1_4Test
+  m_Name: A_E1_4Crush
   m_EditorClassIdentifier: 
-  abilityName: "\u5F31\u4F53\u30C6\u30B9\u30C8"
+  abilityName: "\u98DB\u3073\u639B\u304B\u308A"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 1
-  activateSprite: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 258805056437812488, guid: c43b173dd9d499c40ab38da937347b8a, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
-  abilityType: 4
+  SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+  abilityType: 1
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   availableFront: 1
   availableMid: 1
-  availableBack: 1
+  availableBack: 0
   actionsStaus:
-  - actionName: "\u5F31\u4F53\u30C6\u30B9\u30C8"
+  - actionName: "\u98DB\u3073\u639B\u304B\u308A"
     conditionInfo: 
-    targetInfo: 
-    actionInfo: 
-    VE_OnTargets: {fileID: 0}
+    targetInfo: "\u524D\u3001\u4E2D\u5217\u306E\u65751\u4F53"
+    actionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nACC\u88DC\u6B63+60"
+    VE_OnTargets: {fileID: 9026872467518674270, guid: 59e6d3a9232a004489cb89d2000a008d, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
     targetPlayerSide: 1
-    targetEnemySide: 1
+    targetEnemySide: 0
     selectableFront: 1
     selectableMid: 1
-    selectableBack: 1
+    selectableBack: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -47,9 +47,9 @@ MonoBehaviour:
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
-    ACCMod: 0
+    ATKMod_min: 130
+    ATKMod_max: 200
+    ACCMod: -40
     CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
@@ -66,15 +66,7 @@ MonoBehaviour:
     shieldAdd_max: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      applyChance: 100
-      stack: 6
-      value: 0
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      applyChance: 100
-      stack: 1
-      value: 0
+    applySteParams: []
     summon: 0
     summonSize: 0
     summonChara: []
@@ -85,12 +77,12 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityEffect: 1
-    abilityType: 4
-    SE: {fileID: 0}
-    dontChangeSprite: 1
-    activateSprite: {fileID: 0}
+    abilityType: 1
+    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 258805056437812488, guid: c43b173dd9d499c40ab38da937347b8a, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

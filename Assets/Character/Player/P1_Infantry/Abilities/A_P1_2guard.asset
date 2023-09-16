@@ -31,14 +31,15 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    targetType: 1
-    targetPlayerSide: 1
+    actionMods: []
+    targetType: 3
+    targetPlayerSide: 0
     targetEnemySide: 0
-    targetEmpty: 0
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 1
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
     ignoreMark: 0
     ignoreHide: 1
     moveValue: 
@@ -70,6 +71,10 @@ MonoBehaviour:
       applyChance: 100
       stack: 2
       value: 0
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0
@@ -84,16 +89,17 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000
   - actionName: "\u9632\u5FA1"
     conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionInfo: 
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
+    actionMods: []
     targetType: 1
     targetPlayerSide: 0
     targetEnemySide: 1
-    targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 0
@@ -128,6 +134,10 @@ MonoBehaviour:
       applyChance: 100
       stack: 2
       value: 0
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0
