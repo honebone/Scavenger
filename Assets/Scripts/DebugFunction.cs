@@ -45,9 +45,17 @@ public class DebugFunction : MonoBehaviour
         {
             foreach(Definer.Item item in items)
             {
-                FindObjectOfType<Inventory>().AddItem(item);
+                FindObjectOfType<Inventory>().AddItem(item,item.amount);
             }
             
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            foreach (Definer.Item item in items)
+            {
+                FindObjectOfType<LootPanel>().AddItem(item, item.amount);
+            }
+
         }
     }
 }

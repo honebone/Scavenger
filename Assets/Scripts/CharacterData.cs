@@ -25,6 +25,8 @@ public class CharacterData : ScriptableObject
     public List<GameObject> passiveAbilities;
     public List<GameObject> actionMods;
 
+    public DropItem[] dropItems;
+
     //public EquipmentType[] equipableTypes;
     //[Header("equipableTypesと要素数を合わせる")]
     //public Equipment[] equipments;
@@ -50,7 +52,6 @@ public class CharacterData : ScriptableObject
 
     //counterAction
 
-    //public DropItem[] dropItems;
     public string leftBehind;//死亡時に変身するキャラクター名
 
     public float debuffRes;
@@ -64,4 +65,12 @@ public class CharacterData : ScriptableObject
     
 
 
+}
+[System.Serializable]
+public class DropItem
+{
+    public ItemObject dropItemData;
+    public int quantity;
+
+    public ItemData GetItemData() { return dropItemData.GetItemData(); }
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryButton : MonoBehaviour
+
+public class LootButton : MonoBehaviour
 {
     [SerializeField]
     Text amountText;
@@ -16,7 +17,7 @@ public class InventoryButton : MonoBehaviour
     InfoText infoText;
 
     Definer.Item item;
-    public void Init(Definer.Item i,InfoText it)
+    public void Init(Definer.Item i, InfoText it)
     {
         item = i;
         infoText = it;
@@ -34,8 +35,7 @@ public class InventoryButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            FindObjectOfType<Inventory>().CreateOptionUI_Normal(transform.position, item);
+            FindObjectOfType<LootPanel>().CreateOptionUI_Normal(transform.position, item);
         }
     }
-    
 }

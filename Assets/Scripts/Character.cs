@@ -208,6 +208,7 @@ public class Character : MonoBehaviour
     InfoText infoText;
     CharactersManager charactersManager;
     SoundManager soundManager;
+    LootPanel loot;
 
     public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
     {
@@ -232,6 +233,7 @@ public class Character : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         charactersManager=FindObjectOfType<CharactersManager>();
          soundManager=FindObjectOfType<SoundManager>();
+        loot = FindObjectOfType<LootPanel>();
 
         charaObj.SetDamageText("èoåª", Definer.colorRef.abilityColors[5]);
         infoText.AddLogText(string.Format("{0}Ç™åªÇÍÇΩ", charaStatus.charaName));
@@ -582,6 +584,25 @@ public class Character : MonoBehaviour
 
         charactersManager.RemoveExistingCharacter(this);
         battleManager.RemoveTurn(this);
+
+        //foreach (Definer.DropItem dropItem in status.dropItems)
+        //{
+        //    float[] dropRate = FindObjectOfType<PartyManager>().GetPartyStatus().dropMaterialChance;
+        //    int dropAmount = 0;
+        //    for (int i = 0; i < dropItem.amount; i++)
+        //    {
+        //        if (calculator.Probability(dropRate[(int)dropItem.dropItem.GetComponent<MaterialData>().GetMaterial().rarity]))
+        //        {
+        //            dropAmount++;
+        //        }
+        //    }
+
+        //    if (dropAmount > 0)
+        //    {
+        //        LootManager.AddMaterialLoot(dropItem.dropItem.GetComponent<MaterialData>().GetMaterial(), dropAmount);
+        //        LootManager.CreateDropItem(pos, dropItem.dropItem.GetComponent<MaterialData>().GetMaterial());
+        //    }
+        //}
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();

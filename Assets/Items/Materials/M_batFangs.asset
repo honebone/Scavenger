@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
+  m_Name: M_batFangs
+  m_EditorClassIdentifier: 
+  itemType: 0
+  materialTags: 02000000
+  temporaryTag: 0
+  itemName: "\u30B3\u30A6\u30E2\u30EA\u306E\u7259"
+  info: 
+  amountPerStack: 10
+  rarity: 1
+  sprite: {fileID: 21300000, guid: 9d5c5d66a30506746a47b8e598574175, type: 3}
+  price: 20
+  manager: {fileID: 0}

@@ -10,9 +10,15 @@ public class Inventory : MonoBehaviour
     GameObject inventoryPanel;
     [SerializeField]
     Transform content;
+    [SerializeField]
+    Transform optionUIPanel;
 
     [SerializeField]
     GameObject inventoryButton;
+    [SerializeField]
+    GameObject optionPanel_normal;
+
+
 
     InfoText infoText;
     private void Start()
@@ -46,35 +52,73 @@ public class Inventory : MonoBehaviour
         }
         foreach(Definer.Item item in inventory)
         {
-            var i = Instantiate(inventoryButton, content);
-            i.GetComponent<InventoryButton>().Init(item,infoText);
+            int a = item.amount;
+            while(a > 0)
+            {
+                Definer.Item i = new Definer.Item();
+                i.Init(item.itemData);
+                i.amount = Mathf.Min(i.amountPerStack, a);
+
+                var ib = Instantiate(inventoryButton, content);                
+                ib.GetComponent<InventoryButton>().Init(i, infoText);
+
+                a -= item.amountPerStack;
+            }
         }
     }
 
-
-    public void AddItem(Definer.Item item)
+    public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)
     {
-        infoText.AddLogText(string.Format("●{0}x{1}を入手", item.itemName.ColorStr(item.rarity.ToColor()), item.amount.ToString()));
+        CloseOptionUI();
+        pos.x += 135 * (1f * Screen.width / 1600);
+        pos.y -= 70 * (1f * Screen.height / 900);
+        var o = Instantiate(optionPanel_normal, optionUIPanel);
+        o.transform.position = pos;
+        o.GetComponent<ItemOptionButton>().Init(item);
+    }
+
+    public void CloseOptionUI()
+    {
+        if (optionUIPanel.childCount != 0)
+        {
+            for (int i = 0; i < optionUIPanel.childCount; i++)
+            {
+                Destroy(optionUIPanel.GetChild(i).gameObject);
+            }
+        }
+        //lootや納品等のoptionUIも閉じる
+    }
+
+    public void AddItem(Definer.Item item,int amount)
+    {
+        Definer.Item replace = new Definer.Item();
+
+        infoText.AddLogText(string.Format("●{0}x{1}を入手", item.itemName.ColorStr(item.rarity.ToColor()), amount.ToString()));
         for (int i=0;i<inventory.Count;i++)
         {
             if (inventory[i].itemData == item.itemData)
             {
-                Definer.Item replace = inventory[i];
-                replace.amount += item.amount;
+                replace = inventory[i];
+                replace.amount += amount;
                 inventory.RemoveAt(i);
                 inventory.Add(replace);
+
+                SortInventory();
                 return;
             }
         }
-        inventory.Add(item);
+        replace.Init(item.itemData);
+        replace.amount = amount;
+        inventory.Add(replace);
+        SortInventory();
     }
-    public void RemoveItem(Definer.Item remove,bool note)
+    public void RemoveItem(Definer.Item remove,int amount)
     {
         if (inventory.Count == 0)
         {
             infoText.AddErrorText("そもそも何も持ってません");
         }
-        if (remove.amount < 0)
+        if (amount < 0)
         {
             infoText.AddErrorText("減らす数が負の値です");
             return;
@@ -84,26 +128,42 @@ public class Inventory : MonoBehaviour
         {
             if (inventory[i].itemData == remove.itemData)
             {
-                if (note)
-                {
-                    infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.itemName.ColorStr(remove.rarity.ToColor()), remove.amount.ToString()));
-                }
-                if (inventory[i].amount == remove.amount) { inventory.RemoveAt(i); }//減らす量がスロットのamountと同じ
-                else if (inventory[i].amount < remove.amount)//減らす量がamountより多い
+               
+                infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.itemName.ColorStr(remove.rarity.ToColor()), amount.ToString()));
+                
+                if (inventory[i].amount == amount) { inventory.RemoveAt(i); }//減らす量がスロットのamountと同じ
+                else if (inventory[i].amount < amount)//減らす量がamountより多い
                 {
                     infoText.AddErrorText("現在所持している数よりも多くのアイテムを減らそうとしています");
                 }
-                else////減らす量がスロットのamountより小さい
+                else//減らす量がスロットのamountより小さい
                 {
                     Definer.Item replace = inventory[i];
-                    replace.amount -= remove.amount;
+                    replace.amount -= amount;
                     inventory.RemoveAt(i);
                     inventory.Add(replace);
                 }
+
+                SortInventory();
                 return;
             }
         }
 
         infoText.AddErrorText("持っていないアイテムの数を減らそうとしてます");        
+    }
+
+    void SortInventory()
+    {
+        inventory.Sort((a, b) => (int)b.rarity - (int)a.rarity);
+        SetButtons();
+    }
+
+    public int GetItemAmount(ItemData itemData)
+    {
+        foreach (Definer.Item item in inventory)
+        {
+            if (item.itemData == itemData) { return item.amount; }
+        }
+        return 0;
     }
 }
