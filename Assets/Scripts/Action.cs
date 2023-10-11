@@ -239,7 +239,7 @@ public class Action : MonoBehaviour
             summonChara = actionData.summonChara;
             summonChanceWeight = actionData.summonChanceWeight;
 
-        moveChance = actionData.moveChance;
+            moveChance = actionData.moveChance;
             moveUpper = actionData.moveUpper;
             moveLower = actionData.moveLower;
             moveForword = actionData.moveForword;

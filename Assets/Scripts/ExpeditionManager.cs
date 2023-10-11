@@ -123,6 +123,7 @@ public class ExpeditionManager : MonoBehaviour
 
 
     public void OnEndBattle() { currentRE.OnEndBattle(); }
+    public void OnEndLoot() { currentRE.OnEndLoot(); }
     //‚±‚±‚Ü‚Åroom event ‚ÅŒÄ‚Î‚ê‚éŠÖ”
     public void EndRoomEvent()
     {

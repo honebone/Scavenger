@@ -23,6 +23,8 @@ public class Character : MonoBehaviour
         public List<GameObject> passiveAbilities;
         public List<GameObject> actionMods;
 
+        public DropItem[] dropItems;
+
         //public EquipmentType[] equipableTypes;
         //[Header("equipableTypesÇ∆óvëfêîÇçáÇÌÇπÇÈ")]
         //public Equipment[] equipments;
@@ -146,6 +148,8 @@ public class Character : MonoBehaviour
             passiveAbilities = new List<GameObject>(data.passiveAbilities);
 
             actionMods = data.actionMods;
+
+            dropItems = data.dropItems;
 
             surviveFatalWounds = data.surviveFatalWounds;
             maxHP_base = data.maxHP;
@@ -585,24 +589,26 @@ public class Character : MonoBehaviour
         charactersManager.RemoveExistingCharacter(this);
         battleManager.RemoveTurn(this);
 
-        //foreach (Definer.DropItem dropItem in status.dropItems)
-        //{
-        //    float[] dropRate = FindObjectOfType<PartyManager>().GetPartyStatus().dropMaterialChance;
-        //    int dropAmount = 0;
-        //    for (int i = 0; i < dropItem.amount; i++)
-        //    {
-        //        if (calculator.Probability(dropRate[(int)dropItem.dropItem.GetComponent<MaterialData>().GetMaterial().rarity]))
-        //        {
-        //            dropAmount++;
-        //        }
-        //    }
+        foreach (DropItem dropItem in charaStatus.dropItems)
+        {
+            //float[] dropRate = FindObjectOfType<PartyManager>().GetPartyStatus().dropMaterialChance;
+            float[] dropRate = new float[] {60, 30, 10, 5, 1 };
+            int dropQuantity = 0;
+            for (int i = 0; i < dropItem.quantity; i++)
+            {
+                if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
+                {
+                    dropQuantity++;
+                }
+            }
 
-        //    if (dropAmount > 0)
-        //    {
-        //        LootManager.AddMaterialLoot(dropItem.dropItem.GetComponent<MaterialData>().GetMaterial(), dropAmount);
-        //        LootManager.CreateDropItem(pos, dropItem.dropItem.GetComponent<MaterialData>().GetMaterial());
-        //    }
-        //}
+            if (dropQuantity > 0)
+            {
+                Definer.Item item = new Definer.Item();
+                item.Init(dropItem.GetItemData());
+                loot.AddItem(item, dropQuantity);
+            }
+        }
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();

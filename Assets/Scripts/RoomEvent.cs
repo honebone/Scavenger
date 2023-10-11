@@ -15,6 +15,7 @@ public class RoomEvent : MonoBehaviour
     public virtual void StartRoomEvent() { }
 
     public virtual void OnEndBattle() { }
+    public virtual void OnEndLoot() { }
 
     public  void EndRoomEvent()
     {

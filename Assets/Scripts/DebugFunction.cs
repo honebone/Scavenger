@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DebugFunction : MonoBehaviour
 {
+
     [SerializeField]
     CharacterData[] characterData;
 
@@ -29,8 +30,6 @@ public class DebugFunction : MonoBehaviour
         {
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 4);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
-
-            
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);

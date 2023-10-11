@@ -14190,6 +14190,17 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
       - {fileID: 0}
+    - weight: 10
+      enemies:
+      - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+      - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
 --- !u!4 &1715376305
@@ -15399,7 +15410,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1587935847}
   m_HandleRect: {fileID: 1587935846}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -31,6 +31,13 @@ MonoBehaviour:
   passiveAbilities:
   - {fileID: 1808138132528202961, guid: ceec0f6922099884482ed5c5d2a21784, type: 3}
   actionMods: []
+  dropItems:
+  - dropItemData: {fileID: 5253699966916957018, guid: bc841cfa4010b70458a59075644a9e1f, type: 3}
+    quantity: 4
+  - dropItemData: {fileID: 3710760514353248444, guid: c8ca9b51b6d3f574eaec2da01c4c672a, type: 3}
+    quantity: 2
+  - dropItemData: {fileID: 4366460682492641460, guid: 80a3cb055e56453499587d9a9c645cf0, type: 3}
+    quantity: 1
   surviveFatalWounds: 0
   maxHP: 25
   maxSAN: 0

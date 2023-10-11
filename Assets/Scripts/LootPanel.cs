@@ -21,10 +21,12 @@ public class LootPanel : MonoBehaviour
 
     InfoText infoText;
     Inventory inventory;
+    ExpeditionManager expeditionManager;
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();
         inventory = FindObjectOfType<Inventory>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
     }
 
     public void ToggleLootPanel()
@@ -42,6 +44,7 @@ public class LootPanel : MonoBehaviour
     {
         if (lootPanel.activeSelf) { lootPanel.SetActive(false); }
         inventory.CloseInventory();
+        expeditionManager.OnEndLoot();
     }
     public void SetButtons()
     {
