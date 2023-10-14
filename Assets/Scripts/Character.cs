@@ -419,9 +419,9 @@ public class Character : MonoBehaviour
             }
         }
     }
-    public void Damage(int DMG,bool CRIT,bool canCounter,Character attacker)
+    public void Damage(int DMG,bool CRIT,int shieldDMG,bool canCounter,Character attacker)
     {
-        charaStatus.shield = 0;//シールドを0に
+        charaStatus.shield -=shieldDMG;//シールド減少 
        
 
         if (CRIT)//テキストの表示

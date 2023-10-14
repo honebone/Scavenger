@@ -349,12 +349,14 @@ public class Action : MonoBehaviour
                                 CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
                             }
-                            fDMG -= targetStatus.shield;
+                            //fDMG -= targetStatus.shield;
 
                             DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
+                            int shieldDMG = Mathf.Min(DMG, targetStatus.shield);
+                            DMG -= shieldDMG;
 
                             actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//与ダメ時誘発
-                            actionStatus.actionTargets[i].Damage(DMG, CRIT, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
+                            actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
                         }
                         else
                         {
