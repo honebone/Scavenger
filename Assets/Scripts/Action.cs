@@ -74,6 +74,7 @@ public class Action : MonoBehaviour
         public int SANDamage_max;
         public int shieldAdd_min;
         public int shieldAdd_max;
+        public bool shieldRemove_all;
         public int shieldRemove_min;
         public int shieldRemove_max;
         [Header("ApplyStE")]
@@ -156,7 +157,8 @@ public class Action : MonoBehaviour
             if (SANHeal_max > 0) { s += string.Format("正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
             if (SANDamage_max > 0) { s += string.Format("正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
             if (shieldAdd_max > 0) { s += string.Format("シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
-            if (shieldRemove_max > 0) { s += string.Format("シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
+            if (shieldRemove_all) { s += "シールドを0にする\n"; }
+            else if (shieldRemove_max > 0) { s += string.Format("シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
 
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
@@ -230,6 +232,7 @@ public class Action : MonoBehaviour
             SANDamage_max = actionData.SANDamage_max;
             shieldAdd_min = actionData.shieldAdd_min;
             shieldAdd_max = actionData.shieldAdd_max;
+            shieldRemove_all= actionData.shieldRemove_all;
             shieldRemove_min = actionData.shieldRemove_min;
             shieldRemove_max = actionData.shieldRemove_max;
             applySteParams = actionData.applyStEParams;
@@ -399,6 +402,14 @@ public class Action : MonoBehaviour
                 if (actionsStatus[i].shieldAdd_max > 0)//シールド
                 {
                     actionStatus.actionTargets[i].AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
+                }
+                if (actionsStatus[i].shieldRemove_all)//シールド全消去
+                {
+                    actionStatus.actionTargets[i].RemoveShield(true, 0);
+                }
+                else if (actionsStatus[i].shieldRemove_max > 0)//シールド減少
+                {
+                    actionStatus.actionTargets[i].RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
                 }
 
                 foreach(PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与

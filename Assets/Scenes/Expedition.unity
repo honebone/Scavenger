@@ -7053,6 +7053,7 @@ MonoBehaviour:
     evade: {r: 0.33459416, g: 0.6886792, b: 0.45733103, a: 1}
     heal: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
     shield: {r: 0, g: 1, b: 1, a: 1}
+    shieldDecrease: {r: 0, g: 0.4245283, b: 0.4245283, a: 1}
     SANHeal: {r: 1, g: 1, b: 1, a: 1}
     SANDecrease: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     failed_unavailable: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
@@ -7064,6 +7065,7 @@ MonoBehaviour:
     dying: {fileID: 8300000, guid: 61346b13978810c4ebab54573611a9dc, type: 3}
     heal: {fileID: 8300000, guid: aef08a43ca2f3cc4db21ababce929534, type: 3}
     shield: {fileID: 8300000, guid: 6714829bfc6b1aa47824cbbae9ea640c, type: 3}
+    shieldRemove: {fileID: 0}
     SANHeal: {fileID: 0}
     SANDecrease: {fileID: 8300000, guid: 90b9cc90a01a47c4b8d6dbe460f21ebb, type: 3}
     summoned: {fileID: 8300000, guid: a36dd1c4b04501b4c97f4ed893655b70, type: 3}

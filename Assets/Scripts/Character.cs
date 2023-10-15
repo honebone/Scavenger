@@ -538,6 +538,27 @@ public class Character : MonoBehaviour
         soundManager.PlaySE(Definer.soundRef.shield);
         charaObj.SetHPandShieldBar();
     }
+    public void RemoveShield(bool removeAll,int value)
+    {
+        if(charaStatus.shield > 0)
+        {
+            if (removeAll)
+            {
+                charaObj.SetDamageText("シールドブレイク!", Definer.colorRef.shieldDecrease);
+                charaStatus.shield = 0;
+                infoText.AddLogText(string.Format("{0}はシールドを全て失った", charaStatus.charaName).ColorStr(Definer.colorRef.shieldDecrease));
+            }
+            else
+            {
+                int remove = Mathf.Min(value, charaStatus.shield);
+                charaObj.SetDamageText(remove.ToString(), Definer.colorRef.shieldDecrease);
+                charaStatus.shield -= remove;
+                infoText.AddLogText(string.Format("{0}はシールドを{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.shieldDecrease, remove.ToString())));
+
+            }
+            charaObj.SetHPandShieldBar();
+        }
+    }
 
     public void AddMarked(bool apply)
     {

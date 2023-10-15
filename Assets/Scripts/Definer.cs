@@ -22,6 +22,7 @@ public class Definer : MonoBehaviour
         public Color evade;
         public Color heal;
         public Color shield;
+        public Color shieldDecrease;
         public Color SANHeal;
         public Color SANDecrease;
 
@@ -40,6 +41,7 @@ public class Definer : MonoBehaviour
         public AudioClip dying;
         public AudioClip heal;
         public AudioClip shield;
+        public AudioClip shieldRemove;
         public AudioClip SANHeal;
         public AudioClip SANDecrease;
         public AudioClip summoned;

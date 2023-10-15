@@ -45,6 +45,7 @@ public class ActionData : ScriptableObject
     public int SANDamage_max;
     public int shieldAdd_min;
     public int shieldAdd_max;
+    public bool shieldRemove_all;
     public int shieldRemove_min;
     public int shieldRemove_max;
     [Header("ApplyStE")]
