@@ -416,6 +416,10 @@ public class Action : MonoBehaviour
                 {
                     if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
                 }
+                if (actionsStatus[i].moveChance > 0)//ˆÚ“®
+                {
+
+                }
             }
             else { infoText.AddDebugText("‘ÎÛ‚ÌÁ¸"); }
         }
