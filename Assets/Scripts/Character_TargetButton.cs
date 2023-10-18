@@ -13,10 +13,16 @@ public class Character_TargetButton : MonoBehaviour
     [SerializeField]
     GameObject button;
     Character character;
+    CharactersManager charactersManager;
 
     bool selectableAsTarget;
 
     List<int> targetGroup = new List<int>();
+
+    private void Start()
+    {
+        charactersManager = FindObjectOfType<CharactersManager>();
+    }
     public void SetCharacter(Character chara)
     {
         button.SetActive(true);
@@ -66,5 +72,22 @@ public class Character_TargetButton : MonoBehaviour
         {
             if (selectableAsTarget) { BattleManager.selectedAbility.SelectTarget(targetGroup); }
         }
+    }
+    public void OnMouseOver()
+    {
+        //if (selectableAsTarget)
+        //{
+        //    foreach(int pos in targetGroup)
+        //    {
+        //        if (charactersManager.CheckCharaExist(pos,false))
+        //        {
+        //            charactersManager.GetCharacterWithPos(pos).GetCharacter_TargetButton().SetActionInvolvedIcon(false);
+        //        }
+        //    }
+        //}
+    }
+    public void OnMouseExit()
+    {
+        if (selectableAsTarget) { charactersManager.ResetAllActionInvolvedIcons(); }
     }
 }
