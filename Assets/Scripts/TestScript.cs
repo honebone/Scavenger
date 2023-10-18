@@ -9,10 +9,11 @@ public class TestScript : MonoBehaviour
     bool[] spinning =new bool[3];//各リールが回っているか
     [SerializeField]
     Transform[] ReelsTF;
+
+    bool f;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -31,12 +32,15 @@ public class TestScript : MonoBehaviour
                 ReelsTF[i].position = pos;
             }
         }
+        if (f)
+        {
+            f = false;
+            
+        }
     }
     public void SpinReel()
     {
-        spinning[0] = true;
-        spinning[1] = true;
-        spinning[2] = true;
+        f = true;
 
     }
     /// <summary>ボタンを押したときの処理</summary>

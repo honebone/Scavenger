@@ -27,6 +27,7 @@ public class Ability : MonoBehaviour
         //public bool selectableMid;
         //public bool selectableBack;
         //public bool ignoreHide;
+        public string conditionInfo;
 
         public int cooldownOnUse;
         public bool hasRemain;
@@ -44,9 +45,43 @@ public class Ability : MonoBehaviour
         public int remain;
         public int index;
 
+        //public Character character;
+
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
+            if (!(availableFront && availableMid && availableBack))
+            {
+                s += ("発動可能列：");
+                bool f=false;
+                if (availableFront)
+                {
+                    f = true;
+                    s += "前";
+                }
+                if (availableMid)
+                {
+                    if (f)
+                    {
+                        f = true;
+                        s += "、";
+                    }
+                    s += "中";
+                }
+                if (availableBack)
+                {
+                    if (f)
+                    {
+                        f = true;
+                        s += "、";
+                    }
+                    s += "後";
+                }
+                s += "列\n";
+            }
+            {
+
+            }
             if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
             if (refCharaStatus) { }
             if (hasRemain)
@@ -93,6 +128,7 @@ public class Ability : MonoBehaviour
             //selectableMid = data.selectableMid;
             //selectableBack = data.selectableBack;
             //ignoreHide = data.ignoreHide;
+            conditionInfo = data.conditionInfo;
 
             cooldownOnUse = data.cooldownOnUse;
             hasRemain = data.hasRemain;
@@ -120,12 +156,22 @@ public class Ability : MonoBehaviour
 
             index = idx;
             remain=remainOnBattleStart;
+
+            //character = owner;
         }
         public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }
         public void SetRemain(int value) { remain = Mathf.Clamp(value, 0, maxRemain); }
         public void StartCoolDown() { cooldown = cooldownOnUse; }
         public void AddCoolDown(int value) { cooldown = Mathf.Clamp(cooldown + value, 0, cooldownOnUse); }
-        public bool CheckAvailable() { return (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0; }
+        public bool CheckAvailable(Character owner) {
+            bool atProperPos = false;
+            Character.CharacterStatus ownerStatus = owner.GetCharacterStatus();
+            int column = ownerStatus.position.GetCurrentColumn();
+            if (availableFront && column == 0) { atProperPos = true; }
+            if (availableMid && column == 1) { atProperPos = true; }
+            if (availableBack && column == 2) { atProperPos = true; }
+
+            return (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos; }
     }
 
     Character character;

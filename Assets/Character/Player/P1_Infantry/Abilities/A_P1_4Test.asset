@@ -19,6 +19,7 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
   abilityType: 1
+  conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -86,4 +87,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 0e000000

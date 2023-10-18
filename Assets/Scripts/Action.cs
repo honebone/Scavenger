@@ -32,6 +32,9 @@ public class Action : MonoBehaviour
         public List<GameObject> actionMods;
         //public bool targetEmpty;
         
+        /// <summary>
+        /// row:段 column:列
+        /// </summary>
         public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
         [Header("ここからアビリティのみ関係")]
         public TargetType targetType;
@@ -416,9 +419,72 @@ public class Action : MonoBehaviour
                 {
                     if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
                 }
-                if (actionsStatus[i].moveChance > 0)//移動
+                if (actionsStatus[i].moveChance.Probability()&&!targetStatus.immovable&&targetStatus.size==1)//移動
                 {
+                    //string test = "";
+                    int moveRange = -1;
+                    int moveDir = -1;
+                    int moveToPos;
+                    List<int> movableRanges = targetStatus.position.GetMovableRanges();
+                    if (actionsStatus[i].moveBackword > 0)
+                    {
+                        moveRange = actionsStatus[i].moveBackword;
+                        if (targetStatus.position < 9) { moveDir = 3; }
+                        else { moveDir = 0; }
+                    }
+                    else if (actionsStatus[i].moveUpper > 0)
+                    {
+                        moveRange = actionsStatus[i].moveUpper;
+                        moveDir = 1;
+                    }
+                    else if (actionsStatus[i].moveForword > 0)
+                    {
+                        moveRange = actionsStatus[i].moveForword;
+                        if (targetStatus.position < 9) { moveDir = 0; }
+                        else { moveDir = 3; }
+                    }
+                    else if (actionsStatus[i].moveLower > 0)
+                    {
+                        moveRange = actionsStatus[i].moveLower;
+                        moveDir = 2;
+                    }
+                    //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
 
+                    moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);
+                    moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
+                    //test += string.Format("実際の移動距離:{0} 移動後のpos:{1}", moveRange, moveToPos);
+                    //infoText.AddDebugText(test);
+                    if (moveRange > 0)
+                    {
+                        bool movable = true;
+                        List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
+                        foreach (Character c in charasOnTravelingDir)
+                        {
+                            if (c.GetCharacterStatus().size >= 2 || c.GetCharacterStatus().immovable)
+                            {
+                                movable = false;
+                            }
+                        }
+
+                        if (movable)
+                        {
+                            actionStatus.actionTargets[i].GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                            foreach (Character c in charasOnTravelingDir)
+                            {
+                                c.GetCharacter_TargetButton().ResetCharacter();
+                            }
+
+                            actionStatus.actionTargets[i].ChangePos(moveToPos);//移動処理
+                            foreach (Character c in charasOnTravelingDir)
+                            {
+                                c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
+                            }
+                        }
+                        else
+                        {
+                            infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
+                        }
+                    }
                 }
             }
             else { infoText.AddDebugText("対象の消失"); }

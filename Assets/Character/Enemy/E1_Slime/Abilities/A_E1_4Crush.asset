@@ -19,13 +19,14 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
   abilityType: 1
+  conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   actionsStaus:
   - actionName: "\u98DB\u3073\u639B\u304B\u308A"
     conditionInfo: 
@@ -49,7 +50,7 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 130
     ATKMod_max: 200
-    ACCMod: -40
+    ACCMod: -50
     CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
@@ -64,6 +65,7 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
@@ -85,4 +87,64 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 04000000
+    actionTargetsInt: 07000000
+  - actionName: "\u98DB\u3073\u639B\u304B\u308A"
+    conditionInfo: 
+    targetInfo: "\u81EA\u8EAB"
+    actionInfo: 
+    VE_OnTargets: {fileID: 0}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 3
+    targetPlayerSide: 0
+    targetEnemySide: 0
+    selectableFront: 0
+    selectableMid: 0
+    selectableBack: 0
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    summon: 0
+    summonSize: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 100
+    moveForword: 1
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityEffect: 1
+    abilityType: 1
+    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 258805056437812488, guid: c43b173dd9d499c40ab38da937347b8a, type: 3}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 0a000000

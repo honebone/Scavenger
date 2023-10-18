@@ -139,5 +139,84 @@ public static class Extentions
             return -1;
         }
     }
-
+    public static Vector2Int PosIntToVector(this int posInt)
+    {
+         return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);
+    }
+    /// <summary>
+    /// 自身の位置から各方向にどれだけ移動可能かを返す (0:right 1:upper 2:lower 3:left)
+    /// pos:position(0-17)
+    /// </summary>
+    public static List<int> GetMovableRanges(this int pos)
+    {
+        int[] range = new int[4];
+        int p = pos % 9;
+        Vector2Int vector = p.PosIntToVector();
+        switch (vector.x)
+        {
+            case 0:
+                range[0] = 2;
+                range[3] = 0;
+                break;
+            case 1:
+                range[0] = 1;
+                range[3] = 1;
+                break;
+            case 2:
+                range[0] = 0;
+                range[3] = 2;
+                break;
+        }
+        switch (vector.y)
+        {
+            case 0:
+                range[1] = 2;
+                range[2] = 0;
+                break;
+            case 1:
+                range[1] = 1;
+                range[2] = 1;
+                break;
+            case 2:
+                range[1] = 0;
+                range[2] = 2;
+                break;
+        }
+        return new List<int>(range);
+    }
+    /// <summary>
+    /// dir: 0:right 1:upper 2:lower 3:left
+    /// range: 移動距離(1or2)
+    /// </summary>
+    /// <param name="dir">0:right 1:upper 2:lower 3:left</param>
+    /// <param name="range">移動距離(1or2)</param>
+    /// <returns></returns>
+    public static int GetMoveToPos(this int currentPos, int dir, int range)
+    {
+        switch (dir)
+        {
+            case 0:
+                return currentPos + (3 * range);
+            case 1:
+                return currentPos + range;
+            case 2:
+                return currentPos - range;
+            case 3:
+                return currentPos - (3 * range);
+            default:
+                return -1;
+        }
+    }
+    /// <summary>
+    /// 自身がどこの列にいるかを返す
+    /// 0:front 1:mid 2:back
+    /// </summary>
+    public static int GetCurrentColumn(this int currentPos)
+    {
+        int x = currentPos.PosIntToVector().x;
+        if (x == 2 || x == 3) { return 0; }
+        if (x == 1 || x == 4) { return 1; }
+        if (x == 0 || x == 5) { return 2; }
+        return -1;
+    }
 }

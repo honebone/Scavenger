@@ -30,6 +30,8 @@ public class AbilityData : ScriptableObject
     //public bool selectableBack;
     //[Header("味方を対象とするアビリティはignoreHideにチェック!!")]
     //public bool ignoreHide;
+    [TextArea(3,10)]
+    public string conditionInfo;
 
     public int cooldownOnUse;
     public bool hasRemain;

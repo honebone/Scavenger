@@ -22,6 +22,11 @@ public class DebugFunction : MonoBehaviour
             items[i].Init(itemData[i]);
             items[i].amount = amount[i];
         }
+        //for(int i = 0; i < 18; i++)
+        //{
+        //    print(string.Format("{0}:{1}",i,i.GetCurrentColumn()));
+        //}
+        
     }
     // Update is called once per frame
     void Update()
@@ -33,7 +38,7 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);
-            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
             FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 14);
             FindObjectOfType<BattleManager>().BattleStart();
         }
