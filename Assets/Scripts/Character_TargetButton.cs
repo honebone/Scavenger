@@ -75,16 +75,16 @@ public class Character_TargetButton : MonoBehaviour
     }
     public void OnMouseOver()
     {
-        //if (selectableAsTarget)
-        //{
-        //    foreach(int pos in targetGroup)
-        //    {
-        //        if (charactersManager.CheckCharaExist(pos,false))
-        //        {
-        //            charactersManager.GetCharacterWithPos(pos).GetCharacter_TargetButton().SetActionInvolvedIcon(false);
-        //        }
-        //    }
-        //}
+        if (selectableAsTarget)
+        {
+            foreach (int pos in targetGroup)
+            {
+                if (charactersManager.CheckCharaExist(pos, false))
+                {
+                    charactersManager.GetCharacterWithPos(pos).GetCharacter_TargetButton().SetActionInvolvedIcon(false);
+                }
+            }
+        }
     }
     public void OnMouseExit()
     {
