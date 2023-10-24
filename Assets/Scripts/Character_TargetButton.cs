@@ -83,6 +83,10 @@ public class Character_TargetButton : MonoBehaviour
                 {
                     charactersManager.GetCharacterWithPos(pos).GetCharacter_TargetButton().SetActionInvolvedIcon(false);
                 }
+                else
+                {
+                    charactersManager.GetTargetButton(1, pos).SetActionInvolvedIcon(false);
+                }
             }
         }
     }

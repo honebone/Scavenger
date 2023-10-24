@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_Slime
+  m_EditorClassIdentifier: 
+  fileName: E_Slime
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u30B9\u30E9\u30A4\u30E0"
+  characterTags: 08000000
+  size: 1
+  immovable: 0
+  player: 0
+  playable: 0
+  variableSprites:
+  - {fileID: 9151243408299108219, guid: b5e6c4d61d0e1324181d820b43c7baab, type: 3}
+  spriteForUI: {fileID: 21300000, guid: f559c9e6e80cfa644a1afac9b2d6ce92, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
+  - {fileID: 11400000, guid: c46ff81e9861e674b9ba791dc32f584c, type: 2}
+  - {fileID: 11400000, guid: 7f982a83f22d3b64492d734d6e8355fc, type: 2}
+  - {fileID: 11400000, guid: 29aedac60f26f874b829a3bfd7afdb26, type: 2}
+  passiveAbilities:
+  - {fileID: 1808138132528202961, guid: ceec0f6922099884482ed5c5d2a21784, type: 3}
+  actionMods: []
+  dropItems:
+  - dropItemData: {fileID: 5253699966916957018, guid: bc841cfa4010b70458a59075644a9e1f, type: 3}
+    quantity: 4
+  - dropItemData: {fileID: 3710760514353248444, guid: c8ca9b51b6d3f574eaec2da01c4c672a, type: 3}
+    quantity: 2
+  - dropItemData: {fileID: 4366460682492641460, guid: 80a3cb055e56453499587d9a9c645cf0, type: 3}
+    quantity: 1
+  surviveFatalWounds: 0
+  maxHP: 25
+  maxSAN: 0
+  ATK: 9
+  CRITC: 5
+  CRITD: 2
+  EVD: 3
+  ACC: 85
+  ACT: 3
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  leftBehind: 
+  debuffRes: 0
+  stunRes: 0
+  bleedRes: 0
+  poisonRes: 0
+  burnRes: 0
+  moveRes: 0

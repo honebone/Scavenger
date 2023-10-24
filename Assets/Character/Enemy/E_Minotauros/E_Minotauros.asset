@@ -16,7 +16,7 @@ MonoBehaviour:
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30DF\u30CE\u30BF\u30A6\u30ED\u30B9"
   characterTags: 0300000002000000
-  size: 2
+  size: 1
   immovable: 0
   player: 0
   playable: 0
@@ -27,6 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
   passiveAbilities: []
   actionMods: []
+  dropItems: []
   surviveFatalWounds: 1
   maxHP: 120
   maxSAN: 0

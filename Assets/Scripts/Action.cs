@@ -117,8 +117,7 @@ public class Action : MonoBehaviour
             s += string.Format("対象：{0}\n", targetInfo);
             if (decreaseHP_max > 0)
             {
-                if(decreaseHP_min == decreaseHP_max) { s += string.Format("HPが{0}減少\n", decreaseHP_max); }
-                else { s += string.Format("HPが{0}-{1}減少\n", decreaseHP_min, decreaseHP_max); }
+                s += string.Format("HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
             }
 
             if (ATKMod_max > 0)//攻撃
@@ -171,6 +170,24 @@ public class Action : MonoBehaviour
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName, StEParams.stack); }
                 s += status.GetStEInfo_forRef();
                 s += "\n";
+            }
+
+            if (summon)
+            {
+                if (summonChara.Length == 1)
+                {
+                    s += string.Format("{0}を召喚", summonChara[0].charaName);
+                }
+                else
+                {
+                    s += "以下からランダムに召喚\n";
+                    float p = 0;
+                    foreach (int r in summonChanceWeight) { p += r; }
+                    for (int i = 0; i < summonChanceWeight.Length; i++)
+                    {
+                        s += string.Format("{0}({1})\n", summonChara[i].charaName, (summonChanceWeight[i] / p).ToString("#0.0%"));
+                    }
+                }
             }
 
             if (moveChance > 0)
@@ -328,6 +345,7 @@ public class Action : MonoBehaviour
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
+            bool attackHit = true;//攻撃失敗時、その他の効果も発動しないようにする
             actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
             if (actionStatus.VE_OnTargets) { Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.size, targetStatus.position), Quaternion.identity); }
             if (!targetStatus.dead)
@@ -361,131 +379,138 @@ public class Action : MonoBehaviour
                             int shieldDMG = Mathf.Min(DMG, targetStatus.shield);
                             DMG -= shieldDMG;
 
+                            actionStatus.actionOwner.OnAttack(false, false);//攻撃時誘発
                             actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//与ダメ時誘発
                             actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
                         }
-                        else
+                        else//回避
                         {
                             actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
                             FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}は攻撃を回避した", targetStatus.charaName)));
                             soundManager.PlaySE(Definer.soundRef.evade);
+                            attackHit = false;
+                            actionStatus.actionOwner.OnAttack(true, false);//攻撃時誘発
                         }
                     }
-                    else
+                    else//ミス
                     {
                         actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
                         FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.failed_unavailable, string.Format("{0}は攻撃を外した", ownerStatus.charaName)));
                         soundManager.PlaySE(Definer.soundRef.miss);
+                        attackHit = false;
+                        actionStatus.actionOwner.OnAttack(false, true);//攻撃時誘発
                     }
                 }
 
-
-                if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//回復
+                if (attackHit)
                 {
-                    float fheal;
-                    fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
-                    fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
-                    fheal *= ownerStatus.GHeal / 100;
-                    fheal *= targetStatus.RHeal / 100;
-                    int heal = Mathf.RoundToInt(fheal);
-
-                    actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
-                }
-
-                if (actionsStatus[i].SANHeal_max > 0)//SAN
-                {
-                    actionStatus.actionTargets[i].SANHeal(Random.Range(actionsStatus[i].SANHeal_min, actionsStatus[i].SANHeal_max + 1));
-                }
-                if (actionsStatus[i].SANDamage_max > 0)
-                {
-                    actionStatus.actionTargets[i].SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
-                }
-
-
-                if (actionsStatus[i].shieldAdd_max > 0)//シールド
-                {
-                    actionStatus.actionTargets[i].AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
-                }
-                if (actionsStatus[i].shieldRemove_all)//シールド全消去
-                {
-                    actionStatus.actionTargets[i].RemoveShield(true, 0);
-                }
-                else if (actionsStatus[i].shieldRemove_max > 0)//シールド減少
-                {
-                    actionStatus.actionTargets[i].RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
-                }
-
-                foreach(PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
-                {
-                    if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
-                }
-                if (actionsStatus[i].moveChance.Probability()&&!targetStatus.immovable&&targetStatus.size==1)//移動
-                {
-                    //string test = "";
-                    int moveRange = -1;
-                    int moveDir = -1;
-                    int moveToPos;
-                    List<int> movableRanges = targetStatus.position.GetMovableRanges();
-                    if (actionsStatus[i].moveBackword > 0)
+                    if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//回復
                     {
-                        moveRange = actionsStatus[i].moveBackword;
-                        if (targetStatus.position < 9) { moveDir = 3; }
-                        else { moveDir = 0; }
+                        float fheal;
+                        fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
+                        fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
+                        fheal *= ownerStatus.GHeal / 100;
+                        fheal *= targetStatus.RHeal / 100;
+                        int heal = Mathf.RoundToInt(fheal);
+
+                        actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
                     }
-                    else if (actionsStatus[i].moveUpper > 0)
-                    {
-                        moveRange = actionsStatus[i].moveUpper;
-                        moveDir = 1;
-                    }
-                    else if (actionsStatus[i].moveForword > 0)
-                    {
-                        moveRange = actionsStatus[i].moveForword;
-                        if (targetStatus.position < 9) { moveDir = 0; }
-                        else { moveDir = 3; }
-                    }
-                    else if (actionsStatus[i].moveLower > 0)
-                    {
-                        moveRange = actionsStatus[i].moveLower;
-                        moveDir = 2;
-                    }
-                    //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
 
-                    moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);
-                    moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
-                    //test += string.Format("実際の移動距離:{0} 移動後のpos:{1}", moveRange, moveToPos);
-                    //infoText.AddDebugText(test);
-                    if (moveRange > 0)
+                    if (actionsStatus[i].SANHeal_max > 0)//SAN
                     {
-                        bool movable = true;
-                        List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
-                        foreach (Character c in charasOnTravelingDir)
+                        actionStatus.actionTargets[i].SANHeal(Random.Range(actionsStatus[i].SANHeal_min, actionsStatus[i].SANHeal_max + 1));
+                    }
+                    if (actionsStatus[i].SANDamage_max > 0)
+                    {
+                        actionStatus.actionTargets[i].SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
+                    }
+
+
+                    if (actionsStatus[i].shieldAdd_max > 0)//シールド
+                    {
+                        actionStatus.actionTargets[i].AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
+                    }
+                    if (actionsStatus[i].shieldRemove_all)//シールド全消去
+                    {
+                        actionStatus.actionTargets[i].RemoveShield(true, 0);
+                    }
+                    else if (actionsStatus[i].shieldRemove_max > 0)//シールド減少
+                    {
+                        actionStatus.actionTargets[i].RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
+                    }
+
+                    foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
+                    {
+                        if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
+                    }
+                    if (actionsStatus[i].moveChance.Probability() && !targetStatus.immovable && targetStatus.size == 1)//移動
+                    {
+                        //string test = "";
+                        int moveRange = -1;
+                        int moveDir = -1;
+                        int moveToPos;
+                        List<int> movableRanges = targetStatus.position.GetMovableRanges();
+                        if (actionsStatus[i].moveBackword > 0)
                         {
-                            if (c.GetCharacterStatus().size >= 2 || c.GetCharacterStatus().immovable)
-                            {
-                                movable = false;
-                            }
+                            moveRange = actionsStatus[i].moveBackword;
+                            if (targetStatus.position < 9) { moveDir = 3; }
+                            else { moveDir = 0; }
                         }
-
-                        if (movable)
+                        else if (actionsStatus[i].moveUpper > 0)
                         {
-                            actionStatus.actionTargets[i].GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                            moveRange = actionsStatus[i].moveUpper;
+                            moveDir = 1;
+                        }
+                        else if (actionsStatus[i].moveForword > 0)
+                        {
+                            moveRange = actionsStatus[i].moveForword;
+                            if (targetStatus.position < 9) { moveDir = 0; }
+                            else { moveDir = 3; }
+                        }
+                        else if (actionsStatus[i].moveLower > 0)
+                        {
+                            moveRange = actionsStatus[i].moveLower;
+                            moveDir = 2;
+                        }
+                        //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
+
+                        moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);
+                        moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
+                        //test += string.Format("実際の移動距離:{0} 移動後のpos:{1}", moveRange, moveToPos);
+                        //infoText.AddDebugText(test);
+                        if (moveRange > 0)
+                        {
+                            bool movable = true;
+                            List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
                             foreach (Character c in charasOnTravelingDir)
                             {
-                                c.GetCharacter_TargetButton().ResetCharacter();
+                                if (c.GetCharacterStatus().size >= 2 || c.GetCharacterStatus().immovable)
+                                {
+                                    movable = false;
+                                }
                             }
 
-                            actionStatus.actionTargets[i].ChangePos(moveToPos);//移動処理
-                            foreach (Character c in charasOnTravelingDir)
+                            if (movable)
                             {
-                                c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
+                                actionStatus.actionTargets[i].GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                                foreach (Character c in charasOnTravelingDir)
+                                {
+                                    c.GetCharacter_TargetButton().ResetCharacter();
+                                }
+
+                                actionStatus.actionTargets[i].ChangePos(moveToPos);//移動処理
+                                foreach (Character c in charasOnTravelingDir)
+                                {
+                                    c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
+                                }
+                            }
+                            else
+                            {
+                                infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
                             }
                         }
-                        else
-                        {
-                            infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
-                        }
                     }
-                }
+                }               
             }
             else { infoText.AddDebugText("対象の消失"); }
         }
@@ -497,7 +522,7 @@ public class Action : MonoBehaviour
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
                 if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
-                else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
+                else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i],false); }
             }
         }
 

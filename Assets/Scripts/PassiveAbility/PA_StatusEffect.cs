@@ -73,7 +73,12 @@ public class PA_StatusEffect : PassiveAbility
     }
     public void AddStack(int stack)
     {
-        StEStatus.stack += stack;
+        if (StEStatus.maxStack == 0)//最大スタック数が無制限なら
+        {
+            StEStatus.stack += stack;
+        }
+        else { StEStatus.stack = Mathf.Clamp(StEStatus.stack + stack, 0, StEStatus.maxStack); }
+        
         if (StEStatus.stack <= 0)
         {
             StEStatus.stack = 0;

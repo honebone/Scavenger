@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_E3_fetch
+  m_Name: A_Spider_fetch
   m_EditorClassIdentifier: 
   abilityName: "\u624B\u7E70\u308A\u5BC4\u305B"
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
-  activateSprite: {fileID: 0}
+  activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
   spriteIndex: 0
   SE: {fileID: 0}
   abilityType: 1

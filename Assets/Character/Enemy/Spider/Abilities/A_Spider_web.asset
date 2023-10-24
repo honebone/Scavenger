@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_E1_2ThrowMucus
+  m_Name: A_Spider_web
   m_EditorClassIdentifier: 
-  abilityName: "\u7C98\u6DB2\u98DB\u3070\u3057"
+  abilityName: "\u7CF8\u5410\u304D"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 4738970142385312939, guid: 3ff87504580194d44a7b40ac2155ea60, type: 3}
+  activateSprite: {fileID: 6356478406548170535, guid: 41a6f63e60127ba4487fbb879514aabd, type: 3}
   spriteIndex: 0
-  SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
+  SE: {fileID: 0}
   abilityType: 1
+  conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -27,11 +28,11 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u7C98\u6DB2\u98DB\u3070\u3057"
+  - actionName: "\u7CF8\u5410\u304D"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
-    actionInfo: "ACT\u4F4E\u4E0B\u306F\u672A\u5B9F\u88C5"
-    VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
+    actionInfo: 
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -47,9 +48,9 @@ MonoBehaviour:
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 1
-    ATKMod_min: 50
-    ATKMod_max: 80
-    ACCMod: -5
+    ATKMod_min: 30
+    ATKMod_max: 60
+    ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
@@ -64,9 +65,14 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldRemove_all: 1
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
+      applyChance: 100
+      stack: 2
+      value: 0
     summon: 0
     summonSize: 0
     summonChara: []
@@ -78,11 +84,11 @@ MonoBehaviour:
     moveBackword: 0
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
+    SE: {fileID: 0}
     dontChangeSprite: 0
-    activateSprite: {fileID: 4738970142385312939, guid: 3ff87504580194d44a7b40ac2155ea60, type: 3}
+    activateSprite: {fileID: 6356478406548170535, guid: 41a6f63e60127ba4487fbb879514aabd, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 04000000
+    actionTargetsInt: 07000000

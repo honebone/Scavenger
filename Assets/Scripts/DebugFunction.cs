@@ -33,13 +33,13 @@ public class DebugFunction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 4);
+            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 14);
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10,true);
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12,true);
+            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 14, true);
             FindObjectOfType<BattleManager>().BattleStart();
         }
 

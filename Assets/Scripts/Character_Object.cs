@@ -45,7 +45,7 @@ public class Character_Object : MonoBehaviour
 
     Character character;
     CharactersManager charactersManager;
-    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb,CharactersManager cm)
+    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb, bool dropItem)
     {
         HPBar = HPBarObj.GetComponent<Slider>();
         ShieldBar = ShieldBarObj.GetComponent<Slider>();
@@ -57,8 +57,8 @@ public class Character_Object : MonoBehaviour
 
         var c = Instantiate(charaManager, characterManagerParent);
         character=c.GetComponent<Character>();
-        character.Init(characterStatus, this,tb);
-        cm.AddCharacter(character);
+        character.Init(characterStatus, this,tb,dropItem);
+        charactersManager.AddCharacter(character);
     }
     /// <summary>Ž€–SŽž‚ÉŒÄ‚Î‚ê‚é </summary>
     public void HideCharacterObj()

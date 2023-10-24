@@ -6,13 +6,17 @@ public class E_Slime_PA : PA_Personality
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
+    List<int> list= new List<int>() { 9,10,11,12,13,14,15,16,17};
+    List<int> empty=new List<int>();
     public override void OnDamaged(int DMG, Character attacker)
     {
-        if (50.Probability())
+        if (33.Probability())
         {
             Action.ActionStatus action = actionStatus;
             actionStatus.actionOwner = character;
-            character.Enqueue(action, true, new List<Character>() { attacker });
+            empty = charactersManager.GetEmptyPos(list);
+            action.actionTargetsInt = new List<int> { empty[Random.Range(0, empty.Count)] };
+            character.Enqueue(action, false, new List<Character>());
         }
     }
    

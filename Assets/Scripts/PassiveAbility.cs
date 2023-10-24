@@ -6,6 +6,7 @@ public class PassiveAbility : MonoBehaviour
 {
    protected Character character;
     protected Character.CharacterStatus charaStatus;
+    protected CharactersManager charactersManager;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
@@ -19,6 +20,7 @@ public class PassiveAbility : MonoBehaviour
         character = c;
         PAType = type;
         charaStatus = character.GetCharacterStatus();
+        charactersManager=FindObjectOfType<CharactersManager>();
         OnPAInit();
     }
     public void Disable()
@@ -39,6 +41,8 @@ public class PassiveAbility : MonoBehaviour
 
 
     public virtual void OnActivateAbility() { }
+    /// <summary>UŒ‚A–½’†‚µ‚½‚©‚ÉŠÖ‚í‚ç‚¸—U”­</summary>
+    public virtual void OnAttack(bool evadeed, bool missed) { }
     /// <summary>UŒ‚–½’†</summary>
     public virtual void OnDamage(int DMG, Character target) {  }
     public virtual void OnCRIT(int ID) { }

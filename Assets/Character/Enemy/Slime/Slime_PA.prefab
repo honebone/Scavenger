@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5723529154042359159}
   - component: {fileID: -8136700327553333718}
   m_Layer: 0
-  m_Name: E1_PA
+  m_Name: Slime_PA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,14 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personalityStatus:
-    personalityName: "\u98DB\u3073\u6563\u308B\u7C98\u6DB2"
+    personalityName: "\u5206\u88C2\u3059\u308B\u4F53"
     personalityType: 1
   actionStatus:
-    actionName: "\u98DB\u3073\u6563\u308B\u7C98\u6DB2"
-    conditionInfo: "\u653B\u6483\u3092\u53D7\u3051\u305F\u6642(50%)"
-    targetInfo: "\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B"
+    actionName: "\u5206\u88C2\u3059\u308B\u4F53"
+    conditionInfo: "\u653B\u6483\u3092\u53D7\u3051\u305F\u6642(33%)"
+    targetInfo: "\u7A7A\u3044\u3066\u3044\u308B\u5473\u65B9\u5074\u306E\u30B9\u30DA\u30FC\u30B91\u3064"
     actionInfo: 
-    VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -66,10 +66,10 @@ MonoBehaviour:
     moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
-    cantCounter: 1
-    attackType: 1
-    ATKMod_min: 50
-    ATKMod_max: 80
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -85,13 +85,16 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
-    summon: 0
-    summonSize: 0
-    summonChara: []
-    summonChanceWeight: []
+    summon: 1
+    summonSize: 1
+    summonChara:
+    - {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
+    summonChanceWeight:
+    - 1
     moveChance: 0
     moveForword: 0
     moveUpper: 0

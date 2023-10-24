@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PA_StE_ATKDown : PA_StatusEffect
+{ 
+    public override void OnPAInit()
+    {
+        character.AddATK(0, StEStatus.value * -1);
+    }
+    public override void OnAttack(bool evadeed, bool missed)
+    {
+        AddStack(-1);
+    }
+    public override void AtTheEnd()
+    {
+        character.AddATK(0, StEStatus.value);
+    }
+}

@@ -114,7 +114,7 @@ public class ExpeditionManager : MonoBehaviour
         if (enemySet.enemies.Length != 9) { infoText.AddErrorText("“G”z’u‚Ì”z—ñ”‚ªŠÔˆá‚Ä‚¢‚Ü‚·"); }
         for(int i = 0; i < 9; i++)
         {
-            if(enemySet.enemies[i] != null) { charactersManager.SpawnEnemy(enemySet.enemies[i], i+9); }         
+            if(enemySet.enemies[i] != null) { charactersManager.SpawnEnemy(enemySet.enemies[i], i+9,true); }         
         }
         battleManager.BattleStart();
 

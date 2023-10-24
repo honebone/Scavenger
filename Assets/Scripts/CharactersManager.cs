@@ -95,7 +95,8 @@ public class CharactersManager : MonoBehaviour
 
         return c;
     }
-    
+
+   
 
     public void RemoveExistingCharacter(Character chara)
     {
@@ -184,8 +185,36 @@ public class CharactersManager : MonoBehaviour
         }
         return false;
     }
+    [System.Serializable]
+    public struct SearchCharaCondition
+    {
+        [Header("<検索範囲の指定>")]
+        public bool player;
+        public bool enemy;
+        public bool front;
+        public bool mid;
+        public bool back;
 
-    
+        [Header("\n\n\n<検索条件の指定>")]
+        public GameObject[] StE;
+
+    }
+    public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)
+    {
+        List<Character> list = new List<Character>();
+        foreach(Character character in existingCharacters)
+        {
+            Character.CharacterStatus status = character.GetCharacterStatus();
+            if (!condition.player && status.position < 9) { break; }
+            if (!condition.enemy && status.position >= 9) { break; }
+            if(!condition.front && status.position.GetCurrentColumn()==0) { break; }
+            if (!condition.mid && status.position.GetCurrentColumn() == 1) { break; }
+            if (!condition.back && status.position.GetCurrentColumn() == 2) { break; }
+
+        }
+        return list;
+    }
+
     public Character GetCharacterWithPos(int pos)
     {
         foreach (Character character in GetExistingCharacters_All())
@@ -278,6 +307,15 @@ public class CharactersManager : MonoBehaviour
        
         return targets;
     }
+    public List<int> GetEmptyPos(List<int> range)
+    {
+        List<int> empty = new List<int>();
+        foreach(int pos in range)
+        {
+            if (!CheckCharaExist(pos, false)) { empty.Add(pos); }
+        }
+        return empty;
+    }
     public Vector2 GetCharacterWorldPos(int size, int pos)
     {
         Vector2 worldPos=new Vector2();
@@ -358,10 +396,10 @@ public class CharactersManager : MonoBehaviour
         else { print("サイズ3に対する処理が出来てません"); }
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager,tb,this);
+        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager,tb,false);
     }
 
-    public void SpawnEnemy(CharacterData characterData, int pos)
+    public void SpawnEnemy(CharacterData characterData, int pos,bool dropItem)
     {
         if (pos < 9) { print("エネミーを召喚するのに、指定した位置がプレイヤー側です!"); }
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
@@ -386,7 +424,7 @@ public class CharactersManager : MonoBehaviour
         else { print("サイズ3に対する処理が出来てません"); }
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, this);
+        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem);
     }
 
 }

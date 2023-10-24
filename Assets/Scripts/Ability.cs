@@ -419,7 +419,7 @@ public class Ability : MonoBehaviour
                             }
                             break;
                         default:
-                            FindObjectOfType<InfoText>().AddErrorText(string.Format("サイズ{0}の召喚は未実装", actionStatus.summonSize));
+                            FindObjectOfType<InfoText>().AddErrorText(string.Format("サイズ{0}の召喚は実装しません", actionStatus.summonSize));
                             break;
                     }
                     break;

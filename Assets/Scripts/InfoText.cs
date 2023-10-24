@@ -79,7 +79,7 @@ public class InfoText : MonoBehaviour
 
     public void AddLogText(string log)
     {
-        SwitchToLog();
+        //SwitchToLog();
         //nameText.text = "ÉçÉO";
         logText.text += "\n" + log;
     }

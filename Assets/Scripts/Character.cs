@@ -81,6 +81,8 @@ public class Character : MonoBehaviour
 
         public int exATK;
 
+        public bool doesDropItem;
+
         //以下バフ
         public int hide;
 
@@ -191,7 +193,6 @@ public class Character : MonoBehaviour
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
     }
-    [SerializeField]
     CharacterStatus charaStatus;
 
     [SerializeField]
@@ -214,7 +215,7 @@ public class Character : MonoBehaviour
     SoundManager soundManager;
     LootPanel loot;
 
-    public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb)
+    public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb,bool dropItem)
     {
         charaStatus = status;
         charaObj = obj;
@@ -222,6 +223,8 @@ public class Character : MonoBehaviour
 
         charaStatus.HP = charaStatus.maxHP;
         charaStatus.SAN = charaStatus.maxSAN;
+
+        charaStatus.doesDropItem = dropItem;
 
         charaObj.SetCharaSprite(charaStatus.variableSprites[0]);
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
@@ -530,6 +533,14 @@ public class Character : MonoBehaviour
         charaStatus.ATK_mul += value_mul;
         charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt(charaStatus.ATK_base * charaStatus.ATK_mul / 100f));
     }
+    public void AddEVD(float value)
+    {
+        charaStatus.EVD += value;
+    }
+    public void AddACT(int value)
+    {
+        charaStatus.ACT += value;
+    }
     public void AddShield(int value)
     {
         charaStatus.shield += value;
@@ -639,14 +650,19 @@ public class Character : MonoBehaviour
 
     }
 
-    public virtual void SetOmen()
+    public void SetOmen()
     {
-        if (!charaStatus.playable && CheckAlive() && battleManager.CheckIfTurnRemain(this)&&!charaStatus.omenSet)
+        if (!charaStatus.playable && CheckAlive() && battleManager.CheckIfTurnRemain(this) && !charaStatus.omenSet)
         {
-            charaStatus.omen = charaStatus.abilitiesStatus[Random.Range(0, charaStatus.abilitiesStatus.Length)];
+            charaStatus.omen = SelectAbility();
             charaStatus.omenSet = true;
             battleManager.SetOmenIcon(this, charaStatus.omen);
         }
+    }
+    /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる</summary>
+    public virtual Ability.AbilityStatus SelectAbility()
+    {
+        return charaStatus.abilitiesStatus[Random.Range(0, charaStatus.abilitiesStatus.Length)];
     }
     public void OnBattleStart()
     {
@@ -678,6 +694,12 @@ public class Character : MonoBehaviour
     public void OnActivateAbility()
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnActivateAbility(); }
+        RemovePA_Execute();
+    }
+    /// <summary>攻撃時、命中したかに関わらず誘発</summary>
+    public void OnAttack(bool evadeed,bool missed)
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnAttack(evadeed,missed); }
         RemovePA_Execute();
     }
     /// <summary>攻撃命中時</summary>
