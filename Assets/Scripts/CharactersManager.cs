@@ -205,11 +205,22 @@ public class CharactersManager : MonoBehaviour
         foreach(Character character in existingCharacters)
         {
             Character.CharacterStatus status = character.GetCharacterStatus();
-            if (!condition.player && status.position < 9) { break; }
-            if (!condition.enemy && status.position >= 9) { break; }
-            if(!condition.front && status.position.GetCurrentColumn()==0) { break; }
-            if (!condition.mid && status.position.GetCurrentColumn() == 1) { break; }
-            if (!condition.back && status.position.GetCurrentColumn() == 2) { break; }
+            if (!condition.player && status.position < 9) { continue; }
+            if (!condition.enemy && status.position >= 9) { continue; }
+            if(!condition.front && status.position.GetCurrentColumn()==0) { continue; }
+            if (!condition.mid && status.position.GetCurrentColumn() == 1) { continue; }
+            if (!condition.back && status.position.GetCurrentColumn() == 2) { continue; }
+            bool f = false;
+            foreach(GameObject s in condition.StE)
+            {
+                if (!character.CheckHasStE(s))
+                {
+                    f = true;
+                    break;
+                }
+            }
+            if (f) { continue; }
+            list.Add(character);
 
         }
         return list;
