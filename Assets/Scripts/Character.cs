@@ -211,7 +211,7 @@ public class Character : MonoBehaviour
     BattleManager battleManager;
     Utility util;
     InfoText infoText;
-    CharactersManager charactersManager;
+    protected CharactersManager charactersManager;
     SoundManager soundManager;
     LootPanel loot;
 

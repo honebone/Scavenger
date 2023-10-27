@@ -7008,6 +7008,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc4df6f9bfeb00a42a23e14e37be9235, type: 2}
   - {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
+  conditionTest:
+    player: 1
+    enemy: 0
+    front: 1
+    mid: 1
+    back: 1
+    StE:
+    - {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
 --- !u!114 &613893884
 MonoBehaviour:
   m_ObjectHideFlags: 0

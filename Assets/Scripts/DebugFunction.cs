@@ -13,7 +13,8 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     int[] amount;
     Definer.Item[] items;
-
+    [SerializeField]
+    CharactersManager.SearchCharaCondition conditionTest;
     private void Start()
     {
         items=new Definer.Item[itemData.Length];
@@ -58,6 +59,14 @@ public class DebugFunction : MonoBehaviour
             foreach (Definer.Item item in items)
             {
                 FindObjectOfType<LootPanel>().AddItem(item, item.amount);
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            foreach (Character character in FindObjectOfType<CharactersManager>().SearchCharaWithCondition(conditionTest))
+            {
+                FindObjectOfType<InfoText>().AddDebugText(character.GetCharacterStatus().charaName);
             }
 
         }
