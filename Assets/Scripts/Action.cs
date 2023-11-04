@@ -84,7 +84,7 @@ public class Action : MonoBehaviour
         public PA_StatusEffect.StatusEffectParams[] applySteParams;
 
         public bool summon;
-        public int summonSize;
+        //public int summonSize;
         public CharacterData[] summonChara;
         public float[] summonChanceWeight;
 
@@ -258,7 +258,7 @@ public class Action : MonoBehaviour
             applySteParams = actionData.applyStEParams;
 
             summon = actionData.summon;
-            summonSize = actionData.summonSize;
+            //summonSize = actionData.summonSize;
             summonChara = actionData.summonChara;
             summonChanceWeight = actionData.summonChanceWeight;
 
@@ -347,7 +347,7 @@ public class Action : MonoBehaviour
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
             bool attackHit = true;//çUåÇé∏îséûÅAÇªÇÃëºÇÃå¯â Ç‡î≠ìÆÇµÇ»Ç¢ÇÊÇ§Ç…Ç∑ÇÈ
             actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
-            if (actionStatus.VE_OnTargets) { Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.size, targetStatus.position), Quaternion.identity); }
+            if (actionStatus.VE_OnTargets) { Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.position), Quaternion.identity); }
             if (!targetStatus.dead)
             {
                 if (actionsStatus[i].decreaseHP_max > 0)//HPå∏è≠
@@ -443,7 +443,7 @@ public class Action : MonoBehaviour
                     {
                         if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
                     }
-                    if (actionsStatus[i].moveChance.Probability() && !targetStatus.immovable && targetStatus.size == 1)//à⁄ìÆ
+                    if (actionsStatus[i].moveChance.Probability() && !targetStatus.immovable)//à⁄ìÆ
                     {
                         //string test = "";
                         int moveRange = -1;
@@ -484,7 +484,7 @@ public class Action : MonoBehaviour
                             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
                             foreach (Character c in charasOnTravelingDir)
                             {
-                                if (c.GetCharacterStatus().size >= 2 || c.GetCharacterStatus().immovable)
+                                if (c.GetCharacterStatus().immovable)
                                 {
                                     movable = false;
                                 }
@@ -546,7 +546,7 @@ public class Action : MonoBehaviour
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
             foreach (Character c in charasOnTravelingDir)
             {
-                if (c.GetCharacterStatus().size >= 2 || c.GetCharacterStatus().immovable)
+                if (c.GetCharacterStatus().immovable)
                 {
                     movable = false;
                 }

@@ -131,20 +131,20 @@ public class Character_Object : MonoBehaviour
         return s;
     }
 
-    public void MoveStart(int size,int pos)
+    public void MoveStart(int pos)
     {
-        StartCoroutine(Move(size, pos));
+        StartCoroutine(Move( pos));
     }
-    public void StopMove(int size, int pos)
+    public void StopMove(int pos)
     {
-        StopCoroutine(Move(0,0));
-        transform.position = charactersManager.GetCharacterWorldPos(size, pos);
+        StopCoroutine(Move(0));
+        transform.position = charactersManager.GetCharacterWorldPos(pos);
     }
-    IEnumerator Move(int size, int pos)
+    IEnumerator Move(int pos)
     {
         int moveTime = 15;
 
-        Vector3 moveToPos = charactersManager.GetCharacterWorldPos(size, pos);//目的地
+        Vector3 moveToPos = charactersManager.GetCharacterWorldPos(pos);//目的地
         Transform tf = this.transform;
         Vector3 delta = new Vector3(moveToPos.x - tf.position.x, moveToPos.y - tf.position.y, 0) / moveTime;
         var wait = new WaitForSeconds(0.02f);

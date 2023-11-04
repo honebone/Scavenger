@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
         public string fileName;
         public List<CharacterData.CharacterTag> characterTags;
         public string charaName;
-        public int size;
+        //public int size;
         public bool immovable;
 
         public bool player;
@@ -110,7 +110,7 @@ public class Character : MonoBehaviour
                 s += Definer.CharacterTagName[tag];
             }
             s += "]\n";
-            if (immovable || size >= 2) { s += "移動不可"; }
+            if (immovable) { s += "移動不可"; }
             s += string.Format("HP/maxHP：{0}/{1}\n", HP, maxHP);
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
@@ -137,7 +137,7 @@ public class Character : MonoBehaviour
             fileName = data.fileName;
             characterTags = new List<CharacterData.CharacterTag>(data.characterTags);
             charaName = data.charaName;
-            size = data.size;
+            //size = data.size;
             immovable = data.immovable;
 
             player = data.player;
@@ -589,13 +589,13 @@ public class Character : MonoBehaviour
 
     public void ChangePos(int moveTo)
     {
-        charaObj.StopMove(charaStatus.size, charaStatus.position);
+        charaObj.StopMove(charaStatus.position);
         charaStatus.position = moveTo;
-        targetButton = charactersManager.GetTargetButton(charaStatus.size, charaStatus.position);
+        targetButton = charactersManager.GetTargetButton(charaStatus.position);
         targetButton.SetCharacter(this);
         charactersManager.SortExistingCharacters();
 
-        charaObj.MoveStart(charaStatus.size, charaStatus.position);
+        charaObj.MoveStart(charaStatus.position);
     }
     
     

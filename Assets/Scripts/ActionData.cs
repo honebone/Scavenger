@@ -52,7 +52,7 @@ public class ActionData : ScriptableObject
     public PA_StatusEffect.StatusEffectParams[] applyStEParams;
 
     public bool summon;
-    public int summonSize;
+    //public int summonSize;
     public CharacterData[] summonChara;
     public float[] summonChanceWeight;
 

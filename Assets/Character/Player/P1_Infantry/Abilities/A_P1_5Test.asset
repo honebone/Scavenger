@@ -19,18 +19,20 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 0}
   abilityType: 5
+  conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 0
-  availableMid: 0
-  availableBack: 0
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
   actionsStaus:
   - actionName: "\u53EC\u559A\u30C6\u30B9\u30C8"
     conditionInfo: 
     targetInfo: 
     actionInfo: 
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -63,11 +65,11 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
     summon: 1
-    summonSize: 1
     summonChara:
     - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     summonChanceWeight:
@@ -85,4 +87,4 @@ MonoBehaviour:
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets: []
-    actionTargetsInt: 0b000000
+    actionTargetsInt: 10000000

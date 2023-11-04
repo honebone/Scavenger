@@ -11,7 +11,7 @@ public class CharacterData : ScriptableObject
     public string charaName;
     public enum CharacterTag { other, corpse, human, beast, insect, undead, artifact, plant, horror }
     public List<CharacterTag> characterTags;
-    public int size = 1;
+    //public int size = 1;
     public bool immovable;
 
     public bool player;

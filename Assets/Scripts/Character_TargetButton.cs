@@ -79,13 +79,13 @@ public class Character_TargetButton : MonoBehaviour
         {
             foreach (int pos in targetGroup)
             {
-                if (charactersManager.CheckCharaExist(pos, false))
+                if (charactersManager.CheckCharaExist(pos))
                 {
                     charactersManager.GetCharacterWithPos(pos).GetCharacter_TargetButton().SetActionInvolvedIcon(false);
                 }
                 else
                 {
-                    charactersManager.GetTargetButton(1, pos).SetActionInvolvedIcon(false);
+                    charactersManager.GetTargetButton(pos).SetActionInvolvedIcon(false);
                 }
             }
         }

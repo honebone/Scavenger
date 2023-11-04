@@ -166,7 +166,7 @@ public class Ability : MonoBehaviour
         public bool CheckAvailable(Character owner) {
             bool atProperPos = false;
             Character.CharacterStatus ownerStatus = owner.GetCharacterStatus();
-            int column = ownerStatus.position.GetCurrentColumn();
+            int column = ownerStatus.position.GetColumn();
             if (availableFront && column == 0) { atProperPos = true; }
             if (availableMid && column == 1) { atProperPos = true; }
             if (availableBack && column == 2) { atProperPos = true; }
@@ -188,7 +188,6 @@ public class Ability : MonoBehaviour
     /// <summary>x.pos y:markedが含まれているか </summary>
     List<Vector2Int> targetIconPos=new List<Vector2Int>();
     List<List<int>> targetPool = new List<List<int>>();//対象の自動決定の際に呼ばれる
-    int size;
     bool targetEmpty;
 
 
@@ -222,89 +221,25 @@ public class Ability : MonoBehaviour
                 case Action.ActionStatus.TargetType.other:
                     print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                     break;
-                case Action.ActionStatus.TargetType.single:
-                    size = 0;
+                case Action.ActionStatus.TargetType.single://単体対象
                     targetEmpty = false;
                     for (int i = 0; i < 18; i++)
                     {
-                        if (i < 9 && actionStatus.targetPlayerSide)
-                        {
-                            if (i < 3 && actionStatus.selectableBack)//潜伏やマークも後々加味すること
-                            {
-                                //if (playable) { charactersManager.SetTargetIcon(i, false, 0, new List<int>() { i }); }
-                                //else { targetPool.Add(new List<int>() { i }); }
-                                if (charactersManager.CheckCharaExist(i, false))
-                                {
-                                    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                                    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                                    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                                    else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                                    targetPool.Add(new List<int>() { i });
-                                }
-                            }
-                            if (i >= 3 && i < 6 && actionStatus.selectableMid)
-                            {
-                                if (charactersManager.CheckCharaExist(i, false))
-                                {
-                                    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                                    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                                    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                                    else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                                    targetPool.Add(new List<int>() { i });
-                                }
-                            }
-                            if (i >= 6 && actionStatus.selectableFront)
-                            {
-                                if (charactersManager.CheckCharaExist(i, false))
-                                {
-                                    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                                    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                                    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                                    else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                                    targetPool.Add(new List<int>() { i });
-                                }
-                            }
-                        }
-                        if (i >= 9 && actionStatus.targetEnemySide)
-                        {
-                            if (i < 12 && actionStatus.selectableFront)
-                            {
-                                if (charactersManager.CheckCharaExist(i, false))
-                                {
-                                    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                                    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                                    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                                    else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                                    targetPool.Add(new List<int>() { i });
-                                }
-                            }
-                            if (i >= 12 && i < 15 && actionStatus.selectableMid)
-                            {
-                                if (charactersManager.CheckCharaExist(i, false))
-                                {
-                                    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                                    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                                    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                                    else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                                    targetPool.Add(new List<int>() { i });
-                                }
-                            }
-                            if (i >= 15 && actionStatus.selectableBack)
-                            {
-                                if (charactersManager.CheckCharaExist(i, false))
-                                {
-                                    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                                    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                                    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                                    else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                                    targetPool.Add(new List<int>() { i });
-                                }
-                            }
-                        }
+                        if (!charactersManager.CheckCharaExist(i)) { continue; }
+                        if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
+                        if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
+                        if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
+                        if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
+                        if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
+
+                        targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                        if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                        { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
+                        else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                        targetPool.Add(new List<int>() { i });
                     }
                     break;
                 case Action.ActionStatus.TargetType.all:
-                    size = 1;
                     targetEmpty = true;
                     List<int> tp = new List<int>();
                     int iconPos = charaStatus.position; ;
@@ -318,13 +253,12 @@ public class Ability : MonoBehaviour
                     }
                     if (actionStatus.targetPlayerSide && actionStatus.targetEnemySide) { iconPos = charaStatus.position; }
                     else if (actionStatus.targetPlayerSide) { iconPos = 4; }
-                    else if (actionStatus.targetEnemySide) { iconPos = 10; }
+                    else if (actionStatus.targetEnemySide) { iconPos = 13; }
 
                     targetIconPos.Add(new Vector2Int(iconPos, 0));
                     targetPool.Add(charactersManager.GetExistingCharactersPos(tp));
                     break;
                 case Action.ActionStatus.TargetType.self:
-                    size = charaStatus.size;
                     targetEmpty = false;
 
                     targetIconPos.Add(new Vector2Int(charaStatus.position, 0));
@@ -332,10 +266,9 @@ public class Ability : MonoBehaviour
                     break;
 
                 case Action.ActionStatus.TargetType.move://操作可能キャラのみ
-                    size = charaStatus.size;
                     targetEmpty = true;
                     if (!playable) { FindObjectOfType<InfoText>().AddDebugText("error:操作不可のキャラが移動アビリティ使おうとしてるぞ"); }
-                    foreach (int target in charactersManager.GetMoveTargets(charaStatus.position, charaStatus.size, actionStatus.moveValue))
+                    foreach (int target in charactersManager.GetMoveTargets(charaStatus.position, actionStatus.moveValue))
                     {
                         //charactersManager.SetTargetIcon(target, true, charaStatus.size, new List<int>() { target });
                         targetIconPos.Add(new Vector2Int(target, 0));
@@ -349,7 +282,6 @@ public class Ability : MonoBehaviour
         }
         else//召喚アビリティ
         {
-            size = actionStatus.summonSize;
             targetEmpty = true;
             switch (actionStatus.targetType)
             {
@@ -357,70 +289,16 @@ public class Ability : MonoBehaviour
                     print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                     break;
                 case Action.ActionStatus.TargetType.single:
-                    switch (actionStatus.summonSize)
+                    for (int i = 0; i < 18; i++)
                     {
-                        case 1:
-                            for (int i = 0; i < 18; i++)
-                            {
-                                if (i < 9 && actionStatus.targetPlayerSide)
-                                {
-                                    if (i < 3 && actionStatus.selectableBack)
-                                    {
-                                        if (!charactersManager.CheckCharaExist(i, false))
-                                        {
-                                            targetIconPos.Add(new Vector2Int(i, 0));
-                                            targetPool.Add(new List<int>() { i });
-                                        }
-                                    }
-                                    if (i >= 3 && i < 6 && actionStatus.selectableMid)
-                                    {
-                                        if (!charactersManager.CheckCharaExist(i, false))
-                                        {
-                                            targetIconPos.Add(new Vector2Int(i, 0));
-                                            targetPool.Add(new List<int>() { i });
-                                        }
-                                    }
-                                    if (i >= 6 && actionStatus.selectableFront)
-                                    {
-                                        if (!charactersManager.CheckCharaExist(i, false))
-                                        {
-                                            targetIconPos.Add(new Vector2Int(i, 0));
-                                            targetPool.Add(new List<int>() { i });
-                                        }
-                                    }
-                                }
-                                if (i >= 9 && actionStatus.targetEnemySide)
-                                {
-                                    if (i < 12 && actionStatus.selectableFront)
-                                    {
-                                        if (!charactersManager.CheckCharaExist(i, false))
-                                        {
-                                            targetIconPos.Add(new Vector2Int(i, 0));
-                                            targetPool.Add(new List<int>() { i });
-                                        }
-                                    }
-                                    if (i >= 12 && i < 15 && actionStatus.selectableMid)
-                                    {
-                                        if (!charactersManager.CheckCharaExist(i, false))
-                                        {
-                                            targetIconPos.Add(new Vector2Int(i, 0));
-                                            targetPool.Add(new List<int>() { i });
-                                        }
-                                    }
-                                    if (i >= 15 && actionStatus.selectableBack)
-                                    {
-                                        if (!charactersManager.CheckCharaExist(i, false))
-                                        {
-                                            targetIconPos.Add(new Vector2Int(i, 0));
-                                            targetPool.Add(new List<int>() { i });
-                                        }
-                                    }
-                                }
-                            }
-                            break;
-                        default:
-                            FindObjectOfType<InfoText>().AddErrorText(string.Format("サイズ{0}の召喚は実装しません", actionStatus.summonSize));
-                            break;
+                        if (charactersManager.CheckCharaExist(i)) { continue; }
+                        if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
+                        if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
+                        if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
+                        if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
+                        if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
+                        targetIconPos.Add(new Vector2Int(i, 0));
+                        targetPool.Add(new List<int>() { i });
                     }
                     break;
             }
@@ -445,7 +323,7 @@ public class Ability : MonoBehaviour
         {
             for (int i = 0; i < targetPos.Count; i++)//test
             {
-                charactersManager.SetTargetIcon(targetPos[i].x, targetEmpty, size, targetPool[targetPos[i].y]); 
+                charactersManager.SetTargetIcon(targetPos[i].x, targetEmpty, targetPool[targetPos[i].y]); 
             }
         }
         else { SelectTarget(targetPool[targetPos[Random.Range(0, targetPos.Count)].y]); }

@@ -208,10 +208,10 @@ public static class Extentions
         }
     }
     /// <summary>
-    /// ©g‚ª‚Ç‚±‚Ì—ñ‚É‚¢‚é‚©‚ğ•Ô‚·
+    /// ‚Ç‚±‚Ì—ñ‚É‚¢‚é‚©‚ğ•Ô‚·
     /// 0:front 1:mid 2:back
     /// </summary>
-    public static int GetCurrentColumn(this int currentPos)
+    public static int GetColumn(this int currentPos)
     {
         int x = currentPos.PosIntToVector().x;
         if (x == 2 || x == 3) { return 0; }

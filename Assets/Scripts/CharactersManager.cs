@@ -7,15 +7,15 @@ public class CharactersManager : MonoBehaviour
 {
     [SerializeField]
     Vector2Int[] charactersWorldPos_Size1;
-    [SerializeField]
-    Vector2[] charactersWorldPos_Size2;
+    //[SerializeField]
+    //Vector2[] charactersWorldPos_Size2;
 
     [SerializeField]
     Character_TargetButton[] targetButtons_size1;
-    [SerializeField]
-    Character_TargetButton[] targetButtons_size2;
-    [SerializeField]
-    Character_TargetButton[] targetButtons_size3;
+    //[SerializeField]
+    //Character_TargetButton[] targetButtons_size2;
+    //[SerializeField]
+    //Character_TargetButton[] targetButtons_size3;
 
 
     [SerializeField]
@@ -54,7 +54,7 @@ public class CharactersManager : MonoBehaviour
     public List<Character> GetExistingCharacters(List<int> positions,bool includeEmpty)
     {
         List<Character> characters = new List<Character>();
-        foreach (int pos in positions) { if (CheckCharaExist(pos, false)||includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
+        foreach (int pos in positions) { if (CheckCharaExist(pos)||includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
     public List<int> GetExistingCharactersPos(List<int> targetPool)
@@ -63,7 +63,7 @@ public class CharactersManager : MonoBehaviour
         List<Character> characterList = new List<Character>();
         foreach(int target in targetPool)
         {
-            if (CheckCharaExist(target, false) && !characterList.Contains(GetCharacterWithPos(target)))
+            if (CheckCharaExist(target) && !characterList.Contains(GetCharacterWithPos(target)))
             {
                 ints.Add(target);
                 characterList.Add(GetCharacterWithPos(target));
@@ -87,7 +87,7 @@ public class CharactersManager : MonoBehaviour
         List<Character> c = new List<Character>();
         for(int i = 1; i <= range; i++)
         {
-            if(CheckCharaExist(util.GetMoveToPos(pos, dir, i),false)&&!c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
+            if(CheckCharaExist(util.GetMoveToPos(pos, dir, i))&&!c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
             {
                 c.Add(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i)));
             }
@@ -104,42 +104,42 @@ public class CharactersManager : MonoBehaviour
         else { infoText.AddDebugText("error:今死亡したキャラは、そもそも存在していません"); }
     }
 
-    public Character_TargetButton GetTargetButton(int size,int pos)
+    public Character_TargetButton GetTargetButton(int pos)
     {
-        switch (size)
-        {
-            case 1:
-                return targetButtons_size1[pos];
-            case 2:
-                if (targetButtons_size2[pos] == null) { infoText.AddDebugText(string.Format("error:{0}",pos)); }
-                return targetButtons_size2[pos];
-            case 3:
-                if (targetButtons_size3[pos] == null) { infoText.AddDebugText(string.Format("error:{0}", pos)); }
-                return targetButtons_size3[pos];
-            default:
-                infoText.AddDebugText(string.Format("error:{0}", size));
-                return null;
-        }
+        return targetButtons_size1[pos];
+        //switch (size)
+        //{
+        //    case 1:
+        //        return targetButtons_size1[pos];
+        //    case 2:
+        //        if (targetButtons_size2[pos] == null) { infoText.AddDebugText(string.Format("error:{0}",pos)); }
+        //        return targetButtons_size2[pos];
+        //    case 3:
+        //        if (targetButtons_size3[pos] == null) { infoText.AddDebugText(string.Format("error:{0}", pos)); }
+        //        return targetButtons_size3[pos];
+        //    default:
+        //        infoText.AddDebugText(string.Format("error:{0}", size));
+        //        return null;
+        //}
     }
     /// <summary>
     /// 
     /// </summary>
     /// <param name="pos"></param>
     /// <param name="targetEmpty">空きスペースを対象とするか</param>
-    /// <param name="checkOnlyCore">サイズ2以上のとき、左下のみチェック</param>
     /// <param name="size">空きスペースを対象とする場合、そのサイズ</param>
     /// <param name="targetGroup"></param>
-    public void SetTargetIcon(int pos,bool targetEmpty,int size,List<int> targetGroup)
+    public void SetTargetIcon(int pos,bool targetEmpty,List<int> targetGroup)
     {
         if (targetEmpty)
         {
-            GetTargetButton(size, pos).SetTargetIcon(targetGroup);
+            GetTargetButton(pos).SetTargetIcon(targetGroup);
         }
         else
         {
-            if (CheckCharaExist(pos, false))
+            if (CheckCharaExist(pos))
             {
-                GetTargetButton(GetCharacterWithPos(pos).GetCharacterStatus().size, GetCharacterWithPos(pos).GetCharacterStatus().position).SetTargetIcon(targetGroup);
+                GetTargetButton( GetCharacterWithPos(pos).GetCharacterStatus().position).SetTargetIcon(targetGroup);
             }
         }
         
@@ -149,31 +149,31 @@ public class CharactersManager : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="checkPos"></param>
-    /// <param name="checkOnlyCore">サイズ2以上のとき、左下のみチェック</param>
     /// <returns></returns>
-    public bool CheckCharaExist(int checkPos, bool checkOnlyCore )
+    public bool CheckCharaExist(int checkPos)
     {
         foreach (Character.CharacterStatus characterStatus in GetExistingCharactersStatus())
         {
-            if (checkOnlyCore) { if (characterStatus.position == checkPos) { return true; } }
-            else
-            {
-                switch (characterStatus.size)
-                {
-                    case 1:
-                        if (characterStatus.position == checkPos) { return true; }
-                        break;
-                    case 2:
-                        if (characterStatus.position == checkPos) { return true; }
-                        if (characterStatus.position + 1 == checkPos) { return true; }
-                        if (characterStatus.position + 3 == checkPos) { return true; }
-                        if (characterStatus.position + 4 == checkPos) { return true; }
-                        break;
-                    case 3:
-                        if (characterStatus.position < 9 == checkPos < 9) { return true; }
-                        break;
-                }
-            }         
+            if (characterStatus.position == checkPos) { return true; }
+            //if (checkOnlyCore) { if (characterStatus.position == checkPos) { return true; } }
+            //else
+            //{
+            //    switch (characterStatus.size)
+            //    {
+            //        case 1:
+            //            if (characterStatus.position == checkPos) { return true; }
+            //            break;
+            //        case 2:
+            //            if (characterStatus.position == checkPos) { return true; }
+            //            if (characterStatus.position + 1 == checkPos) { return true; }
+            //            if (characterStatus.position + 3 == checkPos) { return true; }
+            //            if (characterStatus.position + 4 == checkPos) { return true; }
+            //            break;
+            //        case 3:
+            //            if (characterStatus.position < 9 == checkPos < 9) { return true; }
+            //            break;
+            //    }
+            //}         
         }
         return false;
     }
@@ -181,7 +181,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (int checkPos in checkRange)
         {
-            if (CheckCharaExist(checkPos,false)) { return true; }
+            if (CheckCharaExist(checkPos)) { return true; }
         }
         return false;
     }
@@ -207,9 +207,9 @@ public class CharactersManager : MonoBehaviour
             Character.CharacterStatus status = character.GetCharacterStatus();
             if (!condition.player && status.position < 9) { continue; }
             if (!condition.enemy && status.position >= 9) { continue; }
-            if(!condition.front && status.position.GetCurrentColumn()==0) { continue; }
-            if (!condition.mid && status.position.GetCurrentColumn() == 1) { continue; }
-            if (!condition.back && status.position.GetCurrentColumn() == 2) { continue; }
+            if(!condition.front && status.position.GetColumn()==0) { continue; }
+            if (!condition.mid && status.position.GetColumn() == 1) { continue; }
+            if (!condition.back && status.position.GetColumn() == 2) { continue; }
             bool f = false;
             foreach(GameObject s in condition.StE)
             {
@@ -231,21 +231,22 @@ public class CharactersManager : MonoBehaviour
         foreach (Character character in GetExistingCharacters_All())
         {
             Character.CharacterStatus characterStatus = character.GetCharacterStatus();
-            switch (characterStatus.size)
-            {
-                case 1:
-                    if (characterStatus.position == pos) { return character; }
-                    break;
-                case 2:
-                    if (characterStatus.position == pos) { return character; }
-                    if (characterStatus.position + 1 == pos) { return character; }
-                    if (characterStatus.position + 3 == pos) { return character; }
-                    if (characterStatus.position + 4 == pos) { return character; }
-                    break;
-                case 3:
-                    if (characterStatus.position < 9 == pos < 9) { return character; }
-                    break;
-            }
+            if (characterStatus.position == pos) { return character; }
+            //switch (characterStatus.size)
+            //{
+            //    case 1:
+            //        if (characterStatus.position == pos) { return character; }
+            //        break;
+            //    case 2:
+            //        if (characterStatus.position == pos) { return character; }
+            //        if (characterStatus.position + 1 == pos) { return character; }
+            //        if (characterStatus.position + 3 == pos) { return character; }
+            //        if (characterStatus.position + 4 == pos) { return character; }
+            //        break;
+            //    case 3:
+            //        if (characterStatus.position < 9 == pos < 9) { return character; }
+            //        break;
+            //}
         }
         infoText.AddDebugText(string.Format("error:ポジション{0}にキャラクターは存在していません", pos));
         return null;
@@ -255,67 +256,53 @@ public class CharactersManager : MonoBehaviour
     /// </summary>
     /// <param name="moveValue">0:right 1:upper 2:lower 3:left</param>
     /// <returns></returns>
-    public List<int> GetMoveTargets(int pos,int size,List<int> moveValue)
+    public List<int> GetMoveTargets(int pos,List<int> moveValue)
     {
         int minPos = 0;
         int maxPos = 8;
         List<int> targets = new List<int>();
 
-        switch (size)
+        if (pos >= 9)
         {
-            case 1:
-                if (pos >= 9)
-                {
-                    minPos = 9;
-                    maxPos = 17;
-                }
-                if (moveValue[0] > 0)
-                {
-                    for (int i = 1; i <= moveValue[0]; i++)
-                    {
-                        if (pos + (3 * i) <= maxPos) { targets.Add(pos + (i * 3)); }
-                        else { break; }
-                    }
-                }
-                if (moveValue[1] > 0)
-                {
-                    for (int i = 1; i <= moveValue[1]; i++)
-                    {
-                        if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos + i) / 3f)) { targets.Add(pos + i); }
-                        else { break; }
-                    }
-                }
-                if (moveValue[2] > 0)
-                {
-                    for (int i = 1; i <= moveValue[2]; i++)
-                    {
-                        if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos - i) / 3f))
-                        {
-                            targets.Add(pos - i);
-                        }
-                        else { break; }
-                    }
-                }
-                if (moveValue[3] > 0)
-                {
-                    for (int i = 1; i <= moveValue[3]; i++)
-                    {
-                        if (pos - (3 * i) >= minPos) { targets.Add(pos - (i * 3)); }
-                        else { break; }
-                    }
-                }
-                break;
-            case 2:
-                infoText.AddDebugText("size2の移動アビリティは実装しないはずでは");
-                break;
-            case 3:
-                infoText.AddDebugText("size3のお前が動けるわけねえだろうが!!!");
-                break;
-            default:
-                infoText.AddDebugText("error:sizeの値がおかしいです");
-                break;
+            minPos = 9;
+            maxPos = 17;
         }
-       
+        if (moveValue[0] > 0)
+        {
+            for (int i = 1; i <= moveValue[0]; i++)
+            {
+                if (pos + (3 * i) <= maxPos) { targets.Add(pos + (i * 3)); }
+                else { break; }
+            }
+        }
+        if (moveValue[1] > 0)
+        {
+            for (int i = 1; i <= moveValue[1]; i++)
+            {
+                if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos + i) / 3f)) { targets.Add(pos + i); }
+                else { break; }
+            }
+        }
+        if (moveValue[2] > 0)
+        {
+            for (int i = 1; i <= moveValue[2]; i++)
+            {
+                if (Mathf.FloorToInt(pos / 3f) == Mathf.FloorToInt((pos - i) / 3f))
+                {
+                    targets.Add(pos - i);
+                }
+                else { break; }
+            }
+        }
+        if (moveValue[3] > 0)
+        {
+            for (int i = 1; i <= moveValue[3]; i++)
+            {
+                if (pos - (3 * i) >= minPos) { targets.Add(pos - (i * 3)); }
+                else { break; }
+            }
+        }
+
         return targets;
     }
     public List<int> GetEmptyPos(List<int> range)
@@ -323,30 +310,30 @@ public class CharactersManager : MonoBehaviour
         List<int> empty = new List<int>();
         foreach(int pos in range)
         {
-            if (!CheckCharaExist(pos, false)) { empty.Add(pos); }
+            if (!CheckCharaExist(pos)) { empty.Add(pos); }
         }
         return empty;
     }
-    public Vector2 GetCharacterWorldPos(int size, int pos)
+    public Vector2 GetCharacterWorldPos(int pos)
     {
-        Vector2 worldPos=new Vector2();
-        switch (size)
-        {
-            case 1:
-                worldPos = charactersWorldPos_Size1[pos];
-                break; 
-            case 2:
-                worldPos = charactersWorldPos_Size2[pos];
-                break;
-            case 3:
-                infoText.AddDebugText("size3の処理未実装");
-                break;
-            default:
-                infoText.AddDebugText("error:sizeの値がおかしいです");
-                break;
-        }
-        if (worldPos.x == -1) { infoText.AddDebugText(string.Format("存在しないworldPos:サイズ{0}の位置{1}", size, pos)); }
-        return worldPos;
+        //Vector2 worldPos=new Vector2();
+        //switch (size)
+        //{
+        //    case 1:
+        //        worldPos = charactersWorldPos_Size1[pos];
+        //        break; 
+        //    case 2:
+        //        worldPos = charactersWorldPos_Size2[pos];
+        //        break;
+        //    case 3:
+        //        infoText.AddDebugText("size3の処理未実装");
+        //        break;
+        //    default:
+        //        infoText.AddDebugText("error:sizeの値がおかしいです");
+        //        break;
+        //}
+        //if (worldPos.x == -1) { infoText.AddDebugText(string.Format("存在しないworldPos:サイズ{0}の位置{1}", size, pos)); }
+        return charactersWorldPos_Size1[pos];
     }
 
     public bool CheckVictory()
@@ -363,14 +350,14 @@ public class CharactersManager : MonoBehaviour
     public void ResetAllTargetIcons()
     {
         foreach(Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetTargetIcon(); }
-        foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
-        foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
+        //foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
+        //foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
     }
     public void ResetAllActionInvolvedIcons()
     {
         foreach (Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetActionInvolvedIcon(); }
-        foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetActionInvolvedIcon(); }; }
-        foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetActionInvolvedIcon(); }; }
+        //foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetActionInvolvedIcon(); }; }
+        //foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetActionInvolvedIcon(); }; }
     }
     private void Start()
     {
@@ -390,21 +377,21 @@ public class CharactersManager : MonoBehaviour
         generatedCharaStatus.Init(characterData, generatedCharacters.Count);
         generatedCharaStatus.position = pos;
 
-        Vector2 worldPos = new Vector2Int();
-        Character_TargetButton tb=GetComponent<Character_TargetButton>();
-        if (generatedCharaStatus.size == 1)
-        {
-            worldPos = charactersWorldPos_Size1[pos];
-            tb = targetButtons_size1[pos];
-            //existCharaに追加
-        }
-        else if (generatedCharaStatus.size == 2)
-        {
-            worldPos = charactersWorldPos_Size2[pos];
-            tb = targetButtons_size2[pos];
-            //existCharaに追加
-        }
-        else { print("サイズ3に対する処理が出来てません"); }
+        Vector2 worldPos = charactersWorldPos_Size1[pos];
+        Character_TargetButton tb = targetButtons_size1[pos];
+        //if (generatedCharaStatus.size == 1)
+        //{
+        //    worldPos = charactersWorldPos_Size1[pos];
+        //    tb = targetButtons_size1[pos];
+        //    //existCharaに追加
+        //}
+        //else if (generatedCharaStatus.size == 2)
+        //{
+        //    worldPos = charactersWorldPos_Size2[pos];
+        //    tb = targetButtons_size2[pos];
+        //    //existCharaに追加
+        //}
+        //else { print("サイズ3に対する処理が出来てません"); }
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager,tb,false);
@@ -418,21 +405,21 @@ public class CharactersManager : MonoBehaviour
         generatedCharaStatus.Init(characterData, generatedCharacters.Count);
         generatedCharaStatus.position = pos;
 
-        Vector2 worldPos = new Vector2Int();
-        Character_TargetButton tb = GetComponent<Character_TargetButton>();
-        if (generatedCharaStatus.size == 1)
-        {
-            worldPos = charactersWorldPos_Size1[pos];
-            tb = targetButtons_size1[pos];
-            //existCharaに追加
-        }
-        else if (generatedCharaStatus.size == 2)
-        {
-            worldPos = charactersWorldPos_Size2[pos];
-            tb = targetButtons_size2[pos];
-            //existCharaに追加
-        }
-        else { print("サイズ3に対する処理が出来てません"); }
+        Vector2 worldPos = charactersWorldPos_Size1[pos];
+        Character_TargetButton tb = targetButtons_size1[pos];
+        //if (generatedCharaStatus.size == 1)
+        //{
+        //    worldPos = charactersWorldPos_Size1[pos];
+        //    tb = targetButtons_size1[pos];
+        //    //existCharaに追加
+        //}
+        //else if (generatedCharaStatus.size == 2)
+        //{
+        //    worldPos = charactersWorldPos_Size2[pos];
+        //    tb = targetButtons_size2[pos];
+        //    //existCharaに追加
+        //}
+        //else { print("サイズ3に対する処理が出来てません"); }
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem);
