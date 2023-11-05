@@ -196,7 +196,7 @@ public class CharactersManager : MonoBehaviour
         public bool back;
 
         [Header("\n\n\n<ŒŸõðŒ‚ÌŽw’è>")]
-        public GameObject[] StE;
+        public List<GameObject> StE;
 
     }
     public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)

@@ -91,8 +91,8 @@ public class ActionQueueManager : MonoBehaviour
 
     /// <summary>
     /// 誘発が発生しうるタイミングの後に呼ばれる
+    /// 0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd
     /// </summary>
-    /// <param name="mode">0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</param>
     public void StartResolve(int mode)
     {
         resolveMode = mode;
@@ -245,6 +245,10 @@ public class ActionQueueManager : MonoBehaviour
                 case 0:
                     resolveMode = -1;
                     battleManager.RoundStart();
+                    break;
+                case 1:
+                    resolveMode = -1;
+                    battleManager.DicideTurnOrder();
                     break;
                 case 2:
                     resolveMode = -1;

@@ -18,6 +18,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     AudioClip SE_battleStart;
 
+    [SerializeField]
+    Action.ActionStatus moveFrontLine;
+    [SerializeField]
+    CharactersManager.SearchCharaCondition moveFrontLineCondition;
+
     CharactersManager charactersManager;
     Utility utility;
     InfoText infoText;
@@ -64,11 +69,9 @@ public class BattleManager : MonoBehaviour
     IEnumerator BattleStartAnim()
     {
         yield return new WaitForSeconds(1f);
-        foreach (Character character in charactersManager.GetExistingCharacters_All())
-        {
-            character.OnBattleStart();
-        }
-        actionQueue.StartResolve(0);
+
+        //戦闘開始時誘発
+        Trigger_BattleStart();
     }
 
    public void RoundStart()
@@ -76,8 +79,7 @@ public class BattleManager : MonoBehaviour
         roundCount++;
         roundText.text=roundCount.ToString();
         infoText.AddLogText(string.Format("\n◇◇ラウンド{0}◇◇", roundCount));
-        //trigger
-        DicideTurnOrder();
+        Trigger_RoundStart();
     }
     public void DicideTurnOrder()
     {
@@ -202,6 +204,88 @@ public class BattleManager : MonoBehaviour
         //各キャラクターにも知らせる
         //generatedCharaから死亡しているキャラを消去
         expeditionManager.OnEndBattle();
+    }
+
+    public void Trigger_BattleStart()
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnBattleStart();
+        }
+        actionQueue.StartResolve(0);
+    }
+    public void Trigger_RoundStart()
+    {
+        MoveFrontLine(true);//前進処理
+        MoveFrontLine(false);
+
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnRoundStart();
+        }
+        actionQueue.StartResolve(1);
+    }
+    void MoveFrontLine(bool player)
+    {
+        bool emptyFront = true;
+        bool emptyMid = true;
+        bool emptyBack = true;
+        int colmun, start, end;
+        string s = "";
+        Action.ActionStatus actionStatus = moveFrontLine;
+        CharactersManager.SearchCharaCondition condition = moveFrontLineCondition;
+        if (player)
+        {
+            condition.player = true;
+            start = 0;
+            end = 9;
+            s = "プレイヤー";
+        }
+        else
+        {
+            condition.enemy = true;
+            start = 9;
+            end = 18;
+            s = "エネミー";
+        }
+        for (int i = start; i < end; i++)
+        {
+            if (charactersManager.CheckCharaExist(i) && !charactersManager.GetCharacterWithPos(i).GetCharacterStatus().immovable)//移動不可でないキャラがポジションiに存在しているなら
+            {
+                colmun = charactersManager.GetCharacterWithPos(i).GetCharacterStatus().position.GetColumn();
+                if (colmun == 0) { emptyFront = false; }
+                else if (colmun == 1) { emptyMid = false; }
+                else if (colmun == 2) { emptyBack = false; }
+            }
+        }
+        if ((emptyFront && emptyMid) && !emptyBack)//後列のみにキャラがいるなら
+        {
+            condition.back = true;
+            actionStatus.moveForword = 2;
+            actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
+            actionStatus.targetInfo = string.Format("後列の{0}全て", s);
+            actionQueue.Enqueue(actionStatus);
+        }
+        else
+        {
+            actionStatus.moveForword = 1;
+            if (emptyFront && !emptyMid)//前列にキャラがいない　かつ　中列にキャラが1体でもいるなら
+            {
+                condition.mid = true;
+                actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
+                actionStatus.targetInfo = string.Format("中列の{0}全て", s);
+                actionQueue.Enqueue(actionStatus);
+            }
+            if (emptyMid && !emptyBack)//中列にキャラがいない　かつ　後列にキャラが1体でもいるなら
+            {
+                condition.mid = false;
+                condition.back = true;
+                actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
+                actionStatus.targetInfo = string.Format("後列の{0}全て", s);
+                actionQueue.Enqueue(actionStatus);
+            }
+
+        }
     }
     private void Update()
     {

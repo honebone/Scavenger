@@ -15,6 +15,9 @@ public class DebugFunction : MonoBehaviour
     Definer.Item[] items;
     [SerializeField]
     CharactersManager.SearchCharaCondition conditionTest;
+    [SerializeField]
+    AreaManager.EnemySet enemySetTest;
+    
     private void Start()
     {
         items=new Definer.Item[itemData.Length];
@@ -38,10 +41,10 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10,true);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12,true);
-            FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 11, true);
-            FindObjectOfType<BattleManager>().BattleStart();
+            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10,true);
+            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12,true);
+            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 11, true);
+            FindObjectOfType<ExpeditionManager>().Battle(enemySetTest);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
