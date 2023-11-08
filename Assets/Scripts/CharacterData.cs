@@ -14,6 +14,8 @@ public class CharacterData : ScriptableObject
     //public int size = 1;
     public bool immovable;
 
+    [Header("フィールド効果などの場合はこれをtrueに")]
+    public bool notChara;
     public bool player;
     public bool playable;
     [Header("0:idle 1:damaged")]

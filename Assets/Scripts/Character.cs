@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
         //public int size;
         public bool immovable;
 
+        public bool notChara;
         public bool player;
         public bool playable;
         /// <summary>0:idle 1:damaged </summary>
@@ -140,6 +141,7 @@ public class Character : MonoBehaviour
             //size = data.size;
             immovable = data.immovable;
 
+            notChara = data.notChara;
             player = data.player;
             playable = data.playable;
             variableSprites = data.variableSprites;

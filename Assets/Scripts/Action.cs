@@ -105,6 +105,8 @@ public class Action : MonoBehaviour
         public int spriteIndex;
 
         public Character actionOwner;
+        [System.NonSerialized]
+        public Character.CharacterStatus ownerStatus_notChara;
         public List<Character> actionTargets;
         /// <summary>ˆÚ“®‚â¢Š«‚ÌÛ‚Ég—p ˆÚ“®‚ÌÛ‚ÍˆÚ“®æ‚Ìpos‚ª“ü‚é</summary>
         public List<int> actionTargetsInt;
@@ -310,7 +312,7 @@ public class Action : MonoBehaviour
     
     Utility util;
 
-    public void Init(ActionQueueManager qm,ActionStatus status,ActionInfoPanel infoPanel,InfoText it,Utility u,SoundManager sm)
+    public void Init(ActionQueueManager qm, ActionStatus status, ActionInfoPanel infoPanel, InfoText it, Utility u, SoundManager sm)
     {
         actionQueueManager = qm;
         actionStatus = status;
@@ -324,7 +326,15 @@ public class Action : MonoBehaviour
 
     public virtual void Resolve()
     {
-        Character.CharacterStatus ownerStatus = actionStatus.actionOwner.GetCharacterStatus();
+        Character.CharacterStatus ownerStatus = new Character.CharacterStatus();
+        bool notChara = false;//ƒtƒB[ƒ‹ƒhŒø‰Ê‚âƒ|ƒWƒVƒ‡ƒ“Œø‰Ê‚È‚Ç‚É‚æ‚éƒAƒNƒVƒ‡ƒ“
+        if (actionStatus.actionOwner != null) { ownerStatus = actionStatus.actionOwner.GetCharacterStatus(); }
+        else
+        {
+            notChara = true;
+            ownerStatus = actionStatus.ownerStatus_notChara;
+        }
+       
         ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
         for (int i = 0; i < actionsStatus.Length; i++)
         {
@@ -379,8 +389,11 @@ public class Action : MonoBehaviour
                             int shieldDMG = Mathf.Min(DMG, targetStatus.shield);
                             DMG -= shieldDMG;
 
-                            actionStatus.actionOwner.OnAttack(false, false);//UŒ‚—U”­
-                            actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//—^ƒ_ƒ—U”­
+                            if (!notChara)
+                            {
+                                actionStatus.actionOwner.OnAttack(false, false);//UŒ‚—U”­
+                                actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//—^ƒ_ƒ—U”­
+                            }
                             actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ƒ_ƒ[ƒWˆ—ŠJn
                         }
                         else//‰ñ”ğ
@@ -389,16 +402,23 @@ public class Action : MonoBehaviour
                             FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}‚ÍUŒ‚‚ğ‰ñ”ğ‚µ‚½", targetStatus.charaName)));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;
-                            actionStatus.actionOwner.OnAttack(true, false);//UŒ‚—U”­
+                            if (!notChara)
+                            {
+                                actionStatus.actionOwner.OnAttack(true, false);//UŒ‚—U”­
+                            }
+
                         }
                     }
                     else//ƒ~ƒX
                     {
-                        actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
-                        FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.failed_unavailable, string.Format("{0}‚ÍUŒ‚‚ğŠO‚µ‚½", ownerStatus.charaName)));
+                        if (!notChara)
+                        {
+                            actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
+                            FindObjectOfType<InfoText>().AddLogText(string.Format("{0}‚ÍUŒ‚‚ğŠO‚µ‚½", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
+                            actionStatus.actionOwner.OnAttack(false, true);//UŒ‚—U”­
+                        }
                         soundManager.PlaySE(Definer.soundRef.miss);
                         attackHit = false;
-                        actionStatus.actionOwner.OnAttack(false, true);//UŒ‚—U”­
                     }
                 }
 

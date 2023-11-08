@@ -276,8 +276,9 @@ public class BattleManager : MonoBehaviour
                 actionStatus.targetInfo = string.Format("中列の{0}全て", s);
                 actionQueue.Enqueue(actionStatus);
             }
-            if (emptyMid && !emptyBack)//中列にキャラがいない　かつ　後列にキャラが1体でもいるなら
+            if ((emptyFront||emptyMid) && !emptyBack)//中、前列のいずれかが開いている　かつ　後列にキャラが1体でもいるなら
             {
+                infoText.AddDebugText("ok");
                 condition.mid = false;
                 condition.back = true;
                 actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
