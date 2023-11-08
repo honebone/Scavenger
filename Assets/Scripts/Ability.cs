@@ -178,7 +178,7 @@ public class Ability : MonoBehaviour
     CharactersManager charactersManager;
     BattleManager battleManager;
     ActionQueueManager actionQueue;
-    Utility util;
+    //Utility util;
     SoundManager soundManager;
     protected AbilityStatus abilityStatus;
 
@@ -199,7 +199,7 @@ public class Ability : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         battleManager = FindObjectOfType<BattleManager>();
         actionQueue=FindObjectOfType<ActionQueueManager>();
-        util = FindObjectOfType<Utility>();
+        //util = FindObjectOfType<Utility>();
         soundManager=FindObjectOfType<SoundManager>(); 
     }
 

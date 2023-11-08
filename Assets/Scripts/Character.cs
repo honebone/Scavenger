@@ -244,8 +244,11 @@ public class Character : MonoBehaviour
          soundManager=FindObjectOfType<SoundManager>();
         loot = FindObjectOfType<LootPanel>();
 
-        charaObj.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
-        infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
+        if (!charaStatus.playable)
+        {
+            charaObj.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
+            infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
+        }   
         //TurnIconはラウンド開始時にセット
     }
     public void AddPA_Personality(GameObject paObj)

@@ -26,8 +26,8 @@ public class ItemOptionButton : MonoBehaviour
     int maxAmount;
     /// <summary>0:abandon 1:loot 2:buy 3:sell</summary>
     int p;
-    bool canBuyAll = true;
-    bool canbuy = true;
+    //bool canBuyAll = true;
+    //bool canbuy = true;
 
     int buyPrice;
     int sellPrice;
