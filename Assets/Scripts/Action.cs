@@ -312,6 +312,9 @@ public class Action : MonoBehaviour
     
     Utility util;
 
+    /// <summary>
+    /// status ‚É‚ÍactionOwner(ƒLƒƒƒ‰) ‚à‚µ‚­‚Í@ownerStatus_notChara(”ñƒLƒƒƒ‰)‚Ì‚¢‚¸‚ê‚©‚ğ‘ã“ü‚µ‚½ó‘Ô‚Å“n‚·‚±‚Æ!!
+    /// </summary>
     public void Init(ActionQueueManager qm, ActionStatus status, ActionInfoPanel infoPanel, InfoText it, Utility u, SoundManager sm)
     {
         actionQueueManager = qm;

@@ -19,15 +19,32 @@ public class PositionManager : MonoBehaviour
         deletePEs.Clear();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetCharacter(Character chara)
     {
-        
+        bool f = false;
+        if (character != chara)
+        {
+            f = true;
+            if (character != null)
+            {
+                foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnCharaLeave(); }
+                RemovePA_Execute();
+            }   
+        }
+        character = chara;
+        if (f)
+        {
+            foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnCharaEnter(); }
+            RemovePA_Execute();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ResetCharacter()
     {
-        
+        if (character != null)
+        {
+            foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnCharaLeave(); }
+            RemovePA_Execute();
+        }
+        character = null;
     }
 }

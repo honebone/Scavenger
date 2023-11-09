@@ -13,6 +13,8 @@ public class Definer : MonoBehaviour
         public Color[] personalityColors;
         /// <summary>0:other 1:buff 2:debuff 3:focus</summary>
         public Color[] statusEffectColors;
+        /// <summary>0:other 1:buff 2:debuff 3:focus</summary>
+        public Color[] positionEffectColors;
         /// <summary>0:common 1:uncommon 2:rare 3:epic 4:legendary</summary>
         public Color[] rarityColors;
 
