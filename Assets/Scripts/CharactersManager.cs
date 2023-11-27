@@ -12,6 +12,8 @@ public class CharactersManager : MonoBehaviour
 
     [SerializeField]
     Character_TargetButton[] targetButtons_size1;
+    [SerializeField]
+    PositionManager[] positionManagers;
     //[SerializeField]
     //Character_TargetButton[] targetButtons_size2;
     //[SerializeField]
@@ -122,6 +124,8 @@ public class CharactersManager : MonoBehaviour
         //        return null;
         //}
     }
+    public PositionManager GetPositionManager(int pos) { return positionManagers[pos]; }
+    public PositionManager[] GetPositionManagers() { return positionManagers; }
     /// <summary>
     /// 
     /// </summary>
@@ -358,6 +362,10 @@ public class CharactersManager : MonoBehaviour
         foreach (Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetActionInvolvedIcon(); }
         //foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetActionInvolvedIcon(); }; }
         //foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetActionInvolvedIcon(); }; }
+    }
+    public void ReseAlltSelectedIcons()
+    {
+        foreach (Character_TargetButton targetButton in targetButtons_size1) { targetButton.SetSelectedIcon(false); }
     }
     private void Start()
     {

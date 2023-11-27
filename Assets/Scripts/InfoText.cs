@@ -20,20 +20,22 @@ public class InfoText : MonoBehaviour
     [SerializeField]
     Text logText;
 
-    Character displayingChara;
-    Utility util;
+   // Character displayingChara;
+
+    CharactersManager charactersManager;
     private void Start()
     {
-        util=FindObjectOfType<Utility>();
+        charactersManager = FindObjectOfType<CharactersManager>();
     }
 
     public　void SetText(string name,string info)
     {
-        if (displayingChara != null)
-        {
-            displayingChara.GetCharacter_Object().SetSelectedIcon(false);
-            displayingChara = null;
-        }
+        //if (displayingChara != null)
+        //{
+        //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
+        //    displayingChara = null;
+        //}
+        charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
         nameText.text = name;
         infoText.text = info;
@@ -41,11 +43,12 @@ public class InfoText : MonoBehaviour
     }
     public void ResetText()
     {
-        if (displayingChara != null)
-        {
-            displayingChara.GetCharacter_Object().SetSelectedIcon(false);
-            displayingChara = null;
-        }
+        //if (displayingChara != null)
+        //{
+        //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
+        //    displayingChara = null;
+        //}
+        charactersManager.ReseAlltSelectedIcons();
         nameText.text = "";
         infoText.text = "";
         infoTextScrollBar.value = 1;
@@ -53,13 +56,14 @@ public class InfoText : MonoBehaviour
 
     public void SetCharaInfo(string name, string info,Character chara)
     {
-        if (displayingChara != null)
-        {
-            displayingChara.GetCharacter_Object().SetSelectedIcon(false);
-            displayingChara = null;
-        }
+        //if (displayingChara != null)
+        //{
+        //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
+        //    displayingChara = null;
+        //}
+        charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
-        displayingChara = chara;
+        //displayingChara = chara;
         nameText.text = name;
         infoText.text = info;
         infoTextScrollBar.value = 1;
@@ -87,7 +91,8 @@ public class InfoText : MonoBehaviour
     {
         SwitchToLog();
         //nameText.text = "ログ";
-        logText.text += util.GetColoredText(Definer.colorRef.debug, string.Format("\n##デバッグ：{0}##", debugLog));
+        logText.text += string.Format("\n##デバッグ：{0}##", debugLog).ColorStr(Definer.colorRef.debug);
+        
         print(debugLog);
     }
     public void AddErrorText(string errorLog)

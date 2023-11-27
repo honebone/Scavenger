@@ -91,9 +91,9 @@ public class Character : MonoBehaviour
         public int marked;
         public int focused;
         public int stun;
-        public int bleed;//被ダメージ時この値分HP減少
-        public int poison;//行動時この値分HP減少
-        public int burn;//ターン終了時にこの値分HPが減少
+        //public int bleed;//被ダメージ時この値分HP減少
+        //public int poison;//行動時この値分HP減少
+        //public int burn;//ターン終了時にこの値分HPが減少
 
         public bool dead;
         //ここに状態異常入れれるといいね 
@@ -312,12 +312,13 @@ public class Character : MonoBehaviour
         info += "\n";
         foreach(PassiveAbility pa in passiveAbilities)
         {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo());
-            
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
         }
+        info+=targetButton.GetPositionManager().GetPEInfo();
         infoText.SetCharaInfo(charaStatus.charaName, info, this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
-        charaObj.SetSelectedIcon(true);
+        //charaObj.SetSelectedIcon(true);
+        targetButton.SetSelectedIcon(true);
     }
     public void ResetCharaSprite()
     {
@@ -361,13 +362,19 @@ public class Character : MonoBehaviour
     {
         if (CheckAlive())
         {
-            //行動可能か～
-            if (charaStatus.playable)
+            if (charaStatus.stun > 0)//行動不能
             {
-                DisplayInfo();
-                battleManager.SetSelectingAbility(true);
+                StartCoroutine(Stun());
             }
-            else { StartCoroutine(Test()); }
+            else
+            {
+                if (charaStatus.playable)
+                {
+                    DisplayInfo();
+                    battleManager.SetSelectingAbility(true);
+                }
+                else { StartCoroutine(Test()); }
+            }  
         }
         else
         {
@@ -375,6 +382,14 @@ public class Character : MonoBehaviour
             EndMyTurn();
         }
          
+    }
+    IEnumerator Stun()
+    {
+        soundManager.PlaySE(Definer.soundRef.stun);
+        charaObj.SetDamageText("行動不能!!", Definer.colorRef.failed_unavailable);
+        infoText.AddLogText(string.Format("{0}は行動できない!", charaStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
+        yield return new WaitForSeconds(1f);
+        EndPhase();
     }
     IEnumerator Test()
     {
@@ -586,6 +601,11 @@ public class Character : MonoBehaviour
         if (apply) { charaStatus.focused++; }
         else { charaStatus.focused--; }
     }
+    public void AddStun(bool apply)
+    {
+        if (apply) { charaStatus.stun++; }
+        else { charaStatus.stun--; }
+    }
 
     public void Ability_AddRemain(int value, int index) { charaStatus.abilitiesStatus[index].AddRemain(value); }
     public void Ability_SetRemain(int value, int index) { charaStatus.abilitiesStatus[index].SetRemain(value); }
@@ -594,6 +614,7 @@ public class Character : MonoBehaviour
 
     public void ChangePos(int moveTo)
     {
+        infoText.AddLogText(string.Format("{0}はポジション{1}から{2}へ移動した", charaStatus.charaName,charaStatus.position.PosIntToStr(),moveTo.PosIntToStr()));
         charaObj.StopMove(charaStatus.position);
         charaStatus.position = moveTo;
         targetButton = charactersManager.GetTargetButton(charaStatus.position);
@@ -692,7 +713,11 @@ public class Character : MonoBehaviour
         RemovePA_Execute();
     }
     public void OnTurnEnd() { }
-    public void OnRoundEnd() { }
+    public void OnRoundEnd()
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnRoundEnd(); }
+        RemovePA_Execute();
+    }
     public void OnBattleEnd() { }
 
 

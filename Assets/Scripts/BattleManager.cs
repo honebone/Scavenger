@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
     ExpeditionManager expeditionManager;
     ActionQueueManager actionQueue;
     SoundManager soundManager;
+    PositionManager[] positionManagers;
 
     int roundCount;
 
@@ -53,6 +54,7 @@ public class BattleManager : MonoBehaviour
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         actionQueue = FindObjectOfType<ActionQueueManager>();
         soundManager = FindObjectOfType<SoundManager>();
+        positionManagers = charactersManager.GetPositionManagers();
 
         characterInTurnOrder=new List<Character>();
     }
@@ -181,11 +183,9 @@ public class BattleManager : MonoBehaviour
 
     public void RoundEnd()
     {
-        //trigger
         inRound = false;
-        //roundEnd = true;
-        Debug.Log("ラウンド終了");
-        RoundStart();
+        infoText.AddLogText(string.Format("\n◇◇ラウンド{0}終了◇◇", roundCount));
+        Trigger_RoundEnd();
     }
 
     public void BattleEnd()
@@ -212,6 +212,10 @@ public class BattleManager : MonoBehaviour
         {
             character.OnBattleStart();
         }
+        foreach(PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnBattleStart();
+        }
         actionQueue.StartResolve(0);
     }
     public void Trigger_RoundStart()
@@ -223,7 +227,23 @@ public class BattleManager : MonoBehaviour
         {
             character.OnRoundStart();
         }
+        foreach (PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnRoundStart();
+        }
         actionQueue.StartResolve(1);
+    }
+    public void Trigger_RoundEnd()
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnRoundEnd();
+        }
+        foreach (PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnRoundEnd();
+        }
+        actionQueue.StartResolve(5);
     }
     void MoveFrontLine(bool player)
     {
@@ -278,7 +298,6 @@ public class BattleManager : MonoBehaviour
             }
             if ((emptyFront||emptyMid) && !emptyBack)//中、前列のいずれかが開いている　かつ　後列にキャラが1体でもいるなら
             {
-                infoText.AddDebugText("ok");
                 condition.mid = false;
                 condition.back = true;
                 actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);

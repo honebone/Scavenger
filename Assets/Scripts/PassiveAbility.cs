@@ -12,9 +12,11 @@ public class PassiveAbility : MonoBehaviour
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
-    public virtual string GetPAInfo() {
+    public virtual string GetPAInfo()
+    {
         print("error:GetPAInfo‚Ìoverride‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
-        return ""; }
+        return "error:GetPAInfo‚Ìoverride‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
+    }
     public void Init(Character c,int type)
     {
         character = c;

@@ -47,6 +47,7 @@ public class Definer : MonoBehaviour
         public AudioClip SANHeal;
         public AudioClip SANDecrease;
         public AudioClip summoned;
+        public AudioClip stun;
     }
 
     public static ColorRef colorRef;
@@ -54,6 +55,7 @@ public class Definer : MonoBehaviour
     public static GameObject abilityManager_General;
     public static GameObject actionManager_General;
     public static GameObject statusEffectIcon;
+    public static GameObject positionEffectIcon;
     [SerializeField]
     ColorRef colorRef_Inspector;
     [SerializeField]
@@ -64,6 +66,8 @@ public class Definer : MonoBehaviour
     GameObject actionManager_General_Inspector;
     [SerializeField]
     GameObject statusEffectIcon_Inspector;
+    [SerializeField]
+    GameObject positionEffectIcon_Inspector;
 
 
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
@@ -154,5 +158,6 @@ public class Definer : MonoBehaviour
         abilityManager_General = abilityManager_General_Inspector;
         actionManager_General=actionManager_General_Inspector;
         statusEffectIcon = statusEffectIcon_Inspector;
+        positionEffectIcon=positionEffectIcon_Inspector;
     }
 }

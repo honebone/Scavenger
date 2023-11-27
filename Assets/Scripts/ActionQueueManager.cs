@@ -259,6 +259,10 @@ public class ActionQueueManager : MonoBehaviour
                     yield return new WaitForSeconds(abilityPause_followthrough);
                     battleManager.GetCurrntTurnChara().EndPhase();
                     break;
+                case 5:
+                    resolveMode = -1;
+                    battleManager.RoundStart();
+                    break ;
             }
         }
         

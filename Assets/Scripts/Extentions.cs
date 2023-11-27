@@ -147,6 +147,11 @@ public static class Extentions
     {
          return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);
     }
+    public static string PosIntToStr(this int posInt)
+    {
+        Vector2Int posVec=posInt.PosIntToVector();
+        return string.Format("({0},{1})", posVec.x + 1, posVec.y + 1);
+    }
     /// <summary>
     /// 自身の位置から各方向にどれだけ移動可能かを返す (0:right 1:upper 2:lower 3:left)
     /// pos:position(0-17)

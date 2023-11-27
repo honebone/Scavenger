@@ -50,6 +50,8 @@ public class ActionData : ScriptableObject
     public int shieldRemove_max;
     [Header("ApplyStE")]
     public PA_StatusEffect.StatusEffectParams[] applyStEParams;
+    [Header("ApplyPE")]
+    public PositionEffect.PositionEffectParams[] applyPEParams;
 
     public bool summon;
     //public int summonSize;

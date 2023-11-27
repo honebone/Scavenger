@@ -82,6 +82,8 @@ public class Action : MonoBehaviour
         public int shieldRemove_max;
         [Header("ApplyStE")]
         public PA_StatusEffect.StatusEffectParams[] applySteParams;
+        [Header("ApplyPE")]
+        public PositionEffect.PositionEffectParams[] applyPEParams;
 
         public bool summon;
         //public int summonSize;
@@ -168,9 +170,18 @@ public class Action : MonoBehaviour
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("{0}％の確率で", StEParams.applyChance);
-                if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName, StEParams.value, StEParams.stack); }
-                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName, StEParams.stack); }
+                if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
+                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 s += status.GetStEInfo_forRef();
+                s += "\n";
+            }
+            foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
+            {
+                PositionEffect.PositionEffectStatus status = PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus();
+                s += string.Format("{0}％の確率で対象の地点に", PEParams.applyChance);
+                if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.value, PEParams.stack); }
+                else { s += string.Format("{0}を{1}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.stack); }
+                s += status.GetPEInfo_forRef();
                 s += "\n";
             }
 
@@ -258,6 +269,7 @@ public class Action : MonoBehaviour
             shieldRemove_min = actionData.shieldRemove_min;
             shieldRemove_max = actionData.shieldRemove_max;
             applySteParams = actionData.applyStEParams;
+            applyPEParams = actionData.applyPEParams;
 
             summon = actionData.summon;
             //summonSize = actionData.summonSize;
@@ -345,6 +357,14 @@ public class Action : MonoBehaviour
         }
         if (actionStatus.SE != null) { soundManager.PlaySE(actionStatus.SE); }
 
+        foreach(Character character in actionStatus.actionTargets)
+        {
+            int pos = character.GetCharacterStatus().position;
+            if (!actionStatus.actionTargetsInt.Contains(pos)) { actionStatus.actionTargetsInt.Add(pos); }
+        }
+
+
+
         List<GameObject> actionModsObj = new List<GameObject>(actionStatus.actionMods);
         //ここで色々なactionMdsを追加
         foreach(GameObject actionModObj in actionModsObj)
@@ -354,7 +374,7 @@ public class Action : MonoBehaviour
             Destroy(am);
         }
 
-
+        //各対象キャラへの処理
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
@@ -533,10 +553,16 @@ public class Action : MonoBehaviour
                             }
                         }
                     }
-                }               
+                }
+                //else
+                //{
+                //    actionStatus.actionTargetsInt.Remove(i);//攻撃失敗時、その地点に対する処理も行わないようにする
+                //}
             }
             else { infoText.AddDebugText("対象の消失"); }
         }
+
+       
 
         if (actionStatus.summon)//召喚
         {
@@ -545,7 +571,21 @@ public class Action : MonoBehaviour
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
                 if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
-                else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i],false); }
+                else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], false); }
+            }
+        }
+        else//召喚以外の対象地点への効果
+        {
+            for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
+            {
+                foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE付与
+                {
+                    if (PEParams.applyChance.Probability())
+                    {
+                        infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName()));
+                        characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams);
+                    }
+                }
             }
         }
 

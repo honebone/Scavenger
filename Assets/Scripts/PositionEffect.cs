@@ -40,6 +40,7 @@ public class PositionEffect : MonoBehaviour
             return s.ColorStr(Color.gray);
         }
     }
+    [SerializeField]
     protected PositionEffectStatus PEStatus;
     public PositionEffectStatus GetPositionEffectStatus() { return PEStatus; }
 
@@ -56,21 +57,69 @@ public class PositionEffect : MonoBehaviour
     protected Character.CharacterStatus charaStatus;
     protected CharactersManager charactersManager;
     protected PositionManager positionManager;
-    public void Init(Character c, PositionManager pm,PositionEffectParams PEParams)
+
+    PEIcon PEIcon;
+    public void Init(Character c, PositionManager pm,PositionEffectParams PEParams,PEIcon icon)
     {
         character = c;
         positionManager = pm;
 
         PEStatus.stack = PEParams.stack;
         PEStatus.value = PEParams.value;
-        //StEIcon = icon;
-        //StEIcon.Init(StEStatus);
+        PEIcon = icon;
+        PEIcon.Init(PEStatus);
         if (PEStatus.merge && PEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるPEは作ってはいけません!!"); }
 
         charaStatus = character.GetCharacterStatus();
         charactersManager = FindObjectOfType<CharactersManager>();
         OnPEInit();
     }
+
+    public virtual string GetPEName()
+    {
+        return PEStatus.GetName();
+    }
+    public virtual string GetPEInfo()
+    {
+        string s = string.Format("({0}スタック)\n", PEStatus.stack);
+        s += PEStatus.GetPEInfo_forRef();
+        return s;
+    }
+
+    public void SetCharacter(Character c)
+    {
+        if (character != c)
+        {
+            if(character != null)
+            {
+                OnCharaLeave();
+            }
+            character = c;
+            if(character != null)
+            {
+                OnCharaEnter();
+            }
+        }
+    }
+
+    public void AddStack(int stack)
+    {
+        if (PEStatus.maxStack == 0)//最大スタック数が無制限なら
+        {
+            PEStatus.stack += stack;
+        }
+        else { PEStatus.stack = Mathf.Clamp(PEStatus.stack + stack, 0, PEStatus.maxStack); }
+
+        if (PEStatus.stack <= 0)
+        {
+            PEStatus.stack = 0;
+            Destroy(PEIcon.gameObject);
+            Disable();
+        }
+        else { PEIcon.SetStackText(PEStatus.stack); }
+    }
+
+
     public void Disable()
     {
         AtTheEnd();

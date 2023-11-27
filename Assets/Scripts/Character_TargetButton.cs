@@ -12,8 +12,16 @@ public class Character_TargetButton : MonoBehaviour
     Image actionTargetIcon;
     [SerializeField]
     GameObject button;
+    [SerializeField]
+    Image selectedIcon;
+    [SerializeField]
+    Image highlightedIcon;
+    [SerializeField]
+    Image emptyIcon;
     Character character;
     CharactersManager charactersManager;
+    InfoText infoText;
+    PositionManager positionManager;
 
     bool selectableAsTarget;
 
@@ -22,29 +30,35 @@ public class Character_TargetButton : MonoBehaviour
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
+        infoText = FindObjectOfType<InfoText>();
+        positionManager = GetComponent<PositionManager>();
     }
     public void SetCharacter(Character chara)
     {
-        button.SetActive(true);
+        //button.SetActive(true);
         character = chara;
+        positionManager.SetCharacter(chara);
+        emptyIcon.enabled = false;
     }
     public void ResetCharacter()
     {
-        button.SetActive(false);
+        //button.SetActive(false);
         character = null;
+        positionManager.ResetCharacter();
+        emptyIcon.enabled = true;
     }
 
     public void SetTargetIcon(List<int> tg)
     {
         selectableAsTarget = true;
-        button.SetActive(true);
+        //button.SetActive(true);
         targetGroup = tg;
         targetIcon.enabled = true;
     }
     public void ResetTargetIcon()
     {
         selectableAsTarget = false;
-        if (character == null) { button.SetActive(false); }
+       // if (character == null) { button.SetActive(false); }
         targetGroup.Clear();
         targetIcon.enabled = false;
     }
@@ -61,12 +75,20 @@ public class Character_TargetButton : MonoBehaviour
         actionOwnerIcon.enabled = false; 
         actionTargetIcon.enabled = false; 
     }
+    public void SetSelectedIcon(bool set)
+    {
+        selectedIcon.enabled = set;
+    }
+
+    public PositionManager GetPositionManager() { return positionManager; }
 
     public void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(1))
         {
             if (character != null) {character.DisplayInfo(); }
+            else { infoText.SetCharaInfo("空きスペース", positionManager.GetPEInfo(), null); }
+            //SetSelectedIcon(true);
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -89,9 +111,14 @@ public class Character_TargetButton : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            highlightedIcon.enabled = true;
+        }
     }
     public void OnMouseExit()
     {
         if (selectableAsTarget) { charactersManager.ResetAllActionInvolvedIcons(); }
+        highlightedIcon.enabled = false;
     }
 }
