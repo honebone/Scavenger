@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Enemy_Spider
   m_EditorClassIdentifier: 
   fileName: E_Spider
-  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  manager: {fileID: 2726620601615263115, guid: 41cefb4d25cfa6c47bb77856fe4ba9e9, type: 3}
   charaName: "\u30AF\u30E2"
   characterTags: 04000000
-  size: 1
   immovable: 0
+  notChara: 0
   player: 0
   playable: 0
   variableSprites:
@@ -25,6 +25,7 @@ MonoBehaviour:
   spriteForUI: {fileID: 21300000, guid: 57035baac961a9f41b77dc4ce4faec8e, type: 3}
   abilities:
   - {fileID: 11400000, guid: 74b6fe64c020a724d9af3c85fa465b54, type: 2}
+  - {fileID: 11400000, guid: 45e64b9424f41be4fac1e992978c6917, type: 2}
   passiveAbilities: []
   actionMods: []
   dropItems:

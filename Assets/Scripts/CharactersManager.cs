@@ -192,6 +192,8 @@ public class CharactersManager : MonoBehaviour
     [System.Serializable]
     public struct SearchCharaCondition
     {
+        [Header("<ポジション(int)を検索する>")]
+        public bool searchAsPos;
         [Header("<検索範囲の指定>")]
         public bool player;
         public bool enemy;
@@ -201,10 +203,16 @@ public class CharactersManager : MonoBehaviour
 
         [Header("\n\n\n<検索条件の指定>")]
         public List<GameObject> StE;
+        public List<GameObject> PE;
 
     }
     public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)
     {
+        if (condition.searchAsPos)
+        {
+            infoText.AddErrorText("ポジションを検索するためにキャラクター検索を行っています!!");
+            return null;
+        }
         List<Character> list = new List<Character>();
         foreach(Character character in existingCharacters)
         {
@@ -218,6 +226,14 @@ public class CharactersManager : MonoBehaviour
             foreach(GameObject s in condition.StE)
             {
                 if (!character.CheckHasStE(s))
+                {
+                    f = true;
+                    break;
+                }
+            }
+            foreach (GameObject s in condition.PE)
+            {
+                if (!character.CheckHasPE(s))
                 {
                     f = true;
                     break;

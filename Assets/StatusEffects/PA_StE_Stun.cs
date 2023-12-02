@@ -8,6 +8,10 @@ public class PA_StE_Stun : PA_StatusEffect
     {
         character.AddStun(true);
     }
+    public override void OnTurnEnd()
+    {
+        AddStack(-1);  
+    }
     public override void AtTheEnd()
     {
         character.AddStun(false);

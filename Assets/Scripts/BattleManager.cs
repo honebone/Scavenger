@@ -112,10 +112,10 @@ public class BattleManager : MonoBehaviour
                 ACT.RemoveAt(a);
             }
         }
-        foreach (Character chara in charactersManager.GetExistingCharacters_All())
-        {
-            chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
-        }
+        //foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        //{
+        //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
+        //}
 
         StartCoroutine(RoundStartEffect());
     }
@@ -157,10 +157,10 @@ public class BattleManager : MonoBehaviour
             {
                 currentTurn = i;
 
-                foreach (Character chara in charactersManager.GetExistingCharacters_All())
-                {
-                    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
-                }
+                //foreach (Character chara in charactersManager.GetExistingCharacters_All())
+                //{
+                //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
+                //}
 
                 characterInTurnOrder[i].MyTurnStart();
                 return;
@@ -334,18 +334,18 @@ public class BattleManager : MonoBehaviour
         selectedAbility=null;
     }
 
-    public void SetOmenIcon(Character chara,Ability.AbilityStatus abilityStatus)
-    {
-        foreach (Battle_TurnOrderIcon turnOrderIcon in turnOrderIcons)
-        {
-            if (turnOrderIcon.GetCharacter() == chara)
-            {
-                turnOrderIcon.SetOmenIcon(abilityStatus);
-                return;
-            }
-        }
-        infoText.AddDebugText("error");
-    }
+    //public void SetOmenIcon(Character chara,Ability.AbilityStatus abilityStatus)
+    //{
+    //    foreach (Battle_TurnOrderIcon turnOrderIcon in turnOrderIcons)
+    //    {
+    //        if (turnOrderIcon.GetCharacter() == chara)
+    //        {
+    //            turnOrderIcon.SetOmenIcon(abilityStatus);
+    //            return;
+    //        }
+    //    }
+    //    infoText.AddDebugText("error");
+    //}
     public void SetSelectingAbility(bool f) { selectingAbility = f; }
     public void SetSelectingTarget(bool f) { selectingTarget = f; }
     public bool checkIfMyTurn(Character character)

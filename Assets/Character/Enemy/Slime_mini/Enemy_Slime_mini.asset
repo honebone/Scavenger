@@ -16,8 +16,8 @@ MonoBehaviour:
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30DF\u30CB\u30B9\u30E9\u30A4\u30E0"
   characterTags: 08000000
-  size: 1
   immovable: 0
+  notChara: 0
   player: 0
   playable: 0
   variableSprites:
@@ -25,8 +25,7 @@ MonoBehaviour:
   spriteForUI: {fileID: 21300000, guid: 8601bfecae5392943915572ed15eaca3, type: 3}
   abilities:
   - {fileID: 11400000, guid: 5140aa6a6678ce6408caeb33c7494c5a, type: 2}
-  passiveAbilities:
-  - {fileID: 1808138132528202961, guid: ceec0f6922099884482ed5c5d2a21784, type: 3}
+  passiveAbilities: []
   actionMods: []
   dropItems: []
   surviveFatalWounds: 0
@@ -37,7 +36,7 @@ MonoBehaviour:
   CRITD: 2
   EVD: 3
   ACC: 85
-  ACT: 3
+  ACT: 1
   turnPerRound: 1
   GHeal: 100
   RHeal: 100

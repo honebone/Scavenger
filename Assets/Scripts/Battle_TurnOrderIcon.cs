@@ -18,8 +18,8 @@ public class Battle_TurnOrderIcon : MonoBehaviour
     Sprite[] signIcons;
 
     Character character;
-    bool omenSet;
-    Ability.AbilityStatus omen;
+    //bool omenSet;
+    //Ability.AbilityStatus omen;
     bool revealed;
     public void Init(Character chara,bool reveal) {
         character = chara;
@@ -31,13 +31,13 @@ public class Battle_TurnOrderIcon : MonoBehaviour
             frame.color = Color.grey;
         }
     }
-    public void SetOmenIcon(Ability.AbilityStatus o)
-    {
-        omen = o;
-        omenSet = true;
-        if (revealed) { sign.sprite = signIcons[(int)omen.abilityType]; }
+    //public void SetOmenIcon(Ability.AbilityStatus o)
+    //{
+    //    omen = o;
+    //    omenSet = true;
+    //    if (revealed) { sign.sprite = signIcons[(int)omen.abilityType]; }
         
-    }
+    //}
     public void Reveal()
     {
         if (!revealed&&character.CheckAlive())
@@ -45,7 +45,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
             revealed = true;
             charaSprite.sprite = character.GetCharacterStatus().spriteForUI;
             frame.color = Color.white;
-            if (omenSet) { sign.sprite = signIcons[(int)omen.abilityType]; }
+            //if (omenSet) { sign.sprite = signIcons[(int)omen.abilityType]; }
         }
     }
     public void OnMouseDown()

@@ -7076,6 +7076,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   conditionTest:
+    searchAsPos: 0
     player: 1
     enemy: 0
     front: 1
@@ -7083,6 +7084,7 @@ MonoBehaviour:
     back: 1
     StE:
     - {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
+    PE: []
   enemySetTest:
     weight: 0
     enemies:
@@ -9796,12 +9798,14 @@ MonoBehaviour:
     actionTargets: []
     actionTargetsInt: 
   moveFrontLineCondition:
+    searchAsPos: 0
     player: 0
     enemy: 0
     front: 0
     mid: 0
     back: 0
     StE: []
+    PE: []
 --- !u!114 &914944173
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,9 +19,13 @@ public class E_Spider : Character
     }
     public override Ability.AbilityStatus SelectAbility()
     {
+        infoText.AddDebugText("ok");
         if (charactersManager.SearchCharaWithCondition(condition).Count > 0)//’wå‚Ì‘ƒ‚ª•t—^‚³‚ê‚Ä‚¢‚é“G‚ª‚¢‚é‚È‚ç
         {
-
+            foreach(Character character in charactersManager.SearchCharaWithCondition(condition))
+            {
+                infoText.AddDebugText(string.Format("{0},{1}", character.GetCharacterStatus().charaName, character.GetCharacterStatus().position.PosIntToStr()));
+            }
         }
         return base.SelectAbility();
     }

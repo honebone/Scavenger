@@ -72,8 +72,8 @@ public class Character : MonoBehaviour
         /// <summary>自身をかばっているキャラのinstanceID</summary>
         public int protectedBy;
 
-        public bool omenSet;
-        public Ability.AbilityStatus omen;
+        //public bool omenSet;
+        //public Ability.AbilityStatus omen;
 
         public int HP;
         public int shield;
@@ -129,7 +129,7 @@ public class Character : MonoBehaviour
             if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
             if (RHeal != 100) { s += string.Format("受ける回復量：{0}％\n", RHeal); }
 
-            if (omenSet) {s += string.Format("<{0}>を準備中\n", omen.abilityName.ColorStr(omen.abilityType.ToColor())); }
+            //if (omenSet) {s += string.Format("<{0}>を準備中\n", omen.abilityName.ColorStr(omen.abilityType.ToColor())); }
             return s;
         }
 
@@ -212,7 +212,7 @@ public class Character : MonoBehaviour
     ActionQueueManager actionQueue;
     BattleManager battleManager;
     Utility util;
-    InfoText infoText;
+    protected InfoText infoText;
     protected CharactersManager charactersManager;
     SoundManager soundManager;
     LootPanel loot;
@@ -304,6 +304,10 @@ public class Character : MonoBehaviour
         }
         return false;
     }
+    public bool CheckHasPE(GameObject PEObj)
+    {
+        return targetButton.GetPositionManager().CheckHasPE(PEObj);
+    }
 
     public void DisplayInfo()
     {
@@ -379,7 +383,7 @@ public class Character : MonoBehaviour
         else
         {
             infoText.AddDebugText("死亡につきターンスキップ");
-            EndMyTurn();
+            battleManager.TurnEnd();
         }
          
     }
@@ -395,9 +399,9 @@ public class Character : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        battleManager.SetSelectedAbility(charaStatus.omen, this);//test　本来はラウンド開始時に決定する
-        charaStatus.omenSet = false;
-        charaStatus.omen = new Ability.AbilityStatus();
+        battleManager.SetSelectedAbility(SelectAbility(), this);//test　本来はラウンド開始時に決定する
+        //charaStatus.omenSet = false;
+        //charaStatus.omen = new Ability.AbilityStatus();
         BattleManager.selectedAbility.StartSelectTarget();
     }
     public void EndPhase()
@@ -407,15 +411,14 @@ public class Character : MonoBehaviour
 
             OnTurnEnd();
             charaObj.SetTurnIcon_End();
-            //Resolve開始
+            actionQueue.StartResolve(4);
         }
-
-        EndMyTurn();
+        else { battleManager.TurnEnd(); }
     }
-    public void EndMyTurn()
-    {
-        battleManager.TurnEnd();
-    }
+    //public void EndMyTurn()
+    //{
+    //    battleManager.TurnEnd();
+    //}
 
 
     //ここからアクションによって呼ばれる関数
@@ -676,15 +679,15 @@ public class Character : MonoBehaviour
 
     }
 
-    public void SetOmen()
-    {
-        if (!charaStatus.playable && CheckAlive() && battleManager.CheckIfTurnRemain(this) && !charaStatus.omenSet)
-        {
-            charaStatus.omen = SelectAbility();
-            charaStatus.omenSet = true;
-            battleManager.SetOmenIcon(this, charaStatus.omen);
-        }
-    }
+    //public void SetOmen()
+    //{
+    //    if (!charaStatus.playable && CheckAlive() && battleManager.CheckIfTurnRemain(this) && !charaStatus.omenSet)
+    //    {
+    //        charaStatus.omen = SelectAbility();
+    //        charaStatus.omenSet = true;
+    //        battleManager.SetOmenIcon(this, charaStatus.omen);
+    //    }
+    //}
     /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる</summary>
     public virtual Ability.AbilityStatus SelectAbility()
     {
@@ -712,7 +715,12 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnStart(); }
         RemovePA_Execute();
     }
-    public void OnTurnEnd() { }
+    public void OnTurnEnd()
+    {
+        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnEnd(); }
+        targetButton.GetPositionManager().OnTurnEnd();
+        RemovePA_Execute();
+    }
     public void OnRoundEnd()
     {
         foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnRoundEnd(); }

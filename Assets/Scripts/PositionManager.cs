@@ -107,6 +107,15 @@ public class PositionManager : MonoBehaviour
         }
         return info;
     }
+    public bool CheckHasPE(GameObject PEObj)
+    {
+        PositionEffect.PositionEffectStatus PE = PEObj.GetComponent<PositionEffect>().GetPositionEffectStatus();
+        foreach (PositionEffect pe in positionEffects)
+        {
+            if (pe.GetComponent<PositionEffect>().GetPositionEffectStatus().PEName == PE.PEName) { return true; }
+        }
+        return false;
+    }
 
     public void OnBattleStart()
     {

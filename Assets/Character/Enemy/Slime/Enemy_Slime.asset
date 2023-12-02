@@ -16,8 +16,8 @@ MonoBehaviour:
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30B9\u30E9\u30A4\u30E0"
   characterTags: 08000000
-  size: 1
   immovable: 0
+  notChara: 0
   player: 0
   playable: 0
   variableSprites:
@@ -46,7 +46,7 @@ MonoBehaviour:
   CRITD: 2
   EVD: 3
   ACC: 85
-  ACT: 3
+  ACT: 1
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
