@@ -36,6 +36,17 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
+    friendly: 0
+    onlyMatched_AoE: 0
+    condition:
+      searchAsPos: 0
+      player: 0
+      enemy: 1
+      front: 1
+      mid: 1
+      back: 1
+      StE: []
+      PE: []
     targetPlayerSide: 0
     targetEnemySide: 1
     selectableFront: 1
@@ -69,6 +80,7 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
+    applyPEParams: []
     summon: 1
     summonChara:
     - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}

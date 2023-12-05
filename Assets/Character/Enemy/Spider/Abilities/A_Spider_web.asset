@@ -36,6 +36,17 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
+    friendly: 0
+    onlyMatched_AoE: 0
+    condition:
+      searchAsPos: 0
+      player: 1
+      enemy: 0
+      front: 1
+      mid: 1
+      back: 1
+      StE: []
+      PE: []
     targetPlayerSide: 1
     targetEnemySide: 0
     selectableFront: 1
@@ -91,4 +102,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargetsInt: 06000000

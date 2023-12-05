@@ -17,7 +17,9 @@ MonoBehaviour:
   dontChangeSprite: 0
   activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}
   spriteIndex: 0
+  SE: {fileID: 0}
   abilityType: 2
+  conditionInfo: 
   cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
@@ -27,16 +29,30 @@ MonoBehaviour:
   availableBack: 1
   actionsStaus:
   - actionName: "\u5FDC\u6025\u51E6\u7F6E"
-    actionInfo: 
+    conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
+    actionInfo: 
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
+    actionMods: []
     targetType: 1
+    friendly: 1
+    onlyMatched_AoE: 0
+    condition:
+      searchAsPos: 0
+      player: 1
+      enemy: 0
+      front: 1
+      mid: 1
+      back: 1
+      StE: []
+      PE: []
     targetPlayerSide: 1
     targetEnemySide: 0
-    targetEmpty: 0
     selectableFront: 1
     selectableMid: 1
     selectableBack: 1
+    ignoreMark: 0
     ignoreHide: 1
     moveValue: 
     decreaseHP_min: 0
@@ -60,8 +76,14 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
+    applySteParams: []
+    applyPEParams: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0
@@ -69,6 +91,7 @@ MonoBehaviour:
     moveBackword: 0
     abilityEffect: 1
     abilityType: 2
+    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}
     spriteIndex: 0

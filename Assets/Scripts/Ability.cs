@@ -223,20 +223,34 @@ public class Ability : MonoBehaviour
                     break;
                 case Action.ActionStatus.TargetType.single://単体対象
                     targetEmpty = false;
-                    for (int i = 0; i < 18; i++)
-                    {
-                        if (!charactersManager.CheckCharaExist(i)) { continue; }
-                        if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
-                        if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
-                        if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
-                        if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
-                        if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
+                    //for (int i = 0; i < 18; i++)
+                    //{
+                    //    if (!charactersManager.CheckCharaExist(i)) { continue; }
+                    //    if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
+                    //    if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
+                    //    if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
+                    //    if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
+                    //    if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
 
-                        targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
-                        if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
-                        { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
-                        else { targetIconPos.Add(new Vector2Int(i, 0)); }
-                        targetPool.Add(new List<int>() { i });
+                    //    targetStatus = charactersManager.GetCharacterWithPos(i).GetCharacterStatus();
+                    //    if (targetStatus.marked > 0 && (charaStatus.position < 9) != (targetStatus.position < 9))
+                    //    { targetIconPos.Add(new Vector2Int(i, 1)); }//マークが付与されている and 対象が敵なら、yを１に
+                    //    else { targetIconPos.Add(new Vector2Int(i, 0)); }
+                    //    targetPool.Add(new List<int>() { i });
+                    //}
+                   
+                    
+                    foreach(Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    {
+                        targetStatus= target.GetCharacterStatus();
+                        int pos = targetStatus.position;
+                        if (targetStatus.hide == 0 || actionStatus.friendly)
+                        {
+                            if (targetStatus.marked > 0 && !actionStatus.friendly) 
+                            { targetIconPos.Add(new Vector2Int(pos, 1)); }//マークが付与されている and 対象が敵なら、yを１に
+                            else { targetIconPos.Add(new Vector2Int(pos, 0)); }
+                            targetPool.Add(new List<int>() { pos });
+                        }
                     }
                     break;
                 case Action.ActionStatus.TargetType.all:

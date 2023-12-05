@@ -197,6 +197,7 @@ public class CharactersManager : MonoBehaviour
         [Header("<ŒŸõ”ÍˆÍ‚ÌŽw’è>")]
         public bool player;
         public bool enemy;
+        [Space]
         public bool front;
         public bool mid;
         public bool back;

@@ -19,6 +19,7 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
   abilityType: 1
+  conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -36,6 +37,17 @@ MonoBehaviour:
     actionMods:
     - {fileID: 3754702445578300767, guid: e4454c3494d89b14795a5762af0023c3, type: 3}
     targetType: 1
+    friendly: 0
+    onlyMatched_AoE: 0
+    condition:
+      searchAsPos: 0
+      player: 0
+      enemy: 1
+      front: 1
+      mid: 1
+      back: 0
+      StE: []
+      PE: []
     targetPlayerSide: 0
     targetEnemySide: 1
     selectableFront: 1
@@ -65,11 +77,12 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
+    applyPEParams: []
     summon: 0
-    summonSize: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
@@ -86,4 +99,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0e000000
+    actionTargetsInt: 0a000000

@@ -38,6 +38,10 @@ public class Action : MonoBehaviour
         public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
         [Header("ここからアビリティのみ関係")]
         public TargetType targetType;
+        public bool friendly;
+       [Header("範囲選択をするとき条件に一致しているキャラのみを巻き込むか")]
+        public bool onlyMatched_AoE;
+        public CharactersManager.SearchCharaCondition condition;
         public bool targetPlayerSide;
         public bool targetEnemySide;
        
