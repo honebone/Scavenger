@@ -39,8 +39,8 @@ public class Action : MonoBehaviour
         [Header("ここからアビリティのみ関係")]
         public TargetType targetType;
         public bool friendly;
-       [Header("範囲選択をするとき条件に一致しているキャラのみを巻き込むか")]
-        public bool onlyMatched_AoE;
+       [Header("column,rowのとき条件に一致していないキャラも巻き込むか")]
+        public bool involveAll;
         public CharactersManager.SearchCharaCondition condition;
         public bool targetPlayerSide;
         public bool targetEnemySide;

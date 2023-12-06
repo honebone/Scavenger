@@ -19,14 +19,9 @@ public class Ability : MonoBehaviour
 
         public AbilityData.AbilityType abilityType;
 
-        //public AbilityData.TargetType targetType;
-        //public bool targetPlayerSide;
-        //public bool targetEnemySide;
-        //public bool targetEmpty;
-        //public bool selectableFront;
-        //public bool selectableMid;
-        //public bool selectableBack;
-        //public bool ignoreHide;
+        public bool excludeRandomPool;
+        public int selectWeight;
+
         public string conditionInfo;
 
         public int cooldownOnUse;
@@ -120,14 +115,9 @@ public class Ability : MonoBehaviour
 
             abilityType = data.abilityType;
 
-            //targetType = data.targetType;
-            //targetPlayerSide = data.targetPlayerSide;
-            //targetEnemySide = data.targetEnemySide;
-            //targetEmpty = data.targetEmpty;
-            //selectableFront = data.selectableFront;
-            //selectableMid = data.selectableMid;
-            //selectableBack = data.selectableBack;
-            //ignoreHide = data.ignoreHide;
+            excludeRandomPool = data.excludeRandomPool;
+            selectWeight = data.selectWeight;
+
             conditionInfo = data.conditionInfo;
 
             cooldownOnUse = data.cooldownOnUse;
@@ -247,7 +237,7 @@ public class Ability : MonoBehaviour
                         if (targetStatus.hide == 0 || actionStatus.friendly)
                         {
                             if (targetStatus.marked > 0 && !actionStatus.friendly) 
-                            { targetIconPos.Add(new Vector2Int(pos, 1)); }//マークが付与されている and 対象が敵なら、yを１に
+                            { targetIconPos.Add(new Vector2Int(pos, 1)); }
                             else { targetIconPos.Add(new Vector2Int(pos, 0)); }
                             targetPool.Add(new List<int>() { pos });
                         }
@@ -256,21 +246,31 @@ public class Ability : MonoBehaviour
                 case Action.ActionStatus.TargetType.all:
                     targetEmpty = true;
                     List<int> tp = new List<int>();
-                    int iconPos = charaStatus.position; ;
-                    if (actionStatus.targetPlayerSide)
+                    //int iconPos = charaStatus.position;
+                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                     {
-                        for (int i = 0; i < 9; i++) { tp.Add(i); }
+                        targetStatus = target.GetCharacterStatus();
+                        int pos = targetStatus.position;
+                        tp.Add(targetStatus.position);
+                        targetIconPos.Add(new Vector2Int(pos, 0));
                     }
-                    if (actionStatus.targetEnemySide)
-                    {
-                        for (int i = 9; i < 18; i++) { tp.Add(i); }
-                    }
-                    if (actionStatus.targetPlayerSide && actionStatus.targetEnemySide) { iconPos = charaStatus.position; }
-                    else if (actionStatus.targetPlayerSide) { iconPos = 4; }
-                    else if (actionStatus.targetEnemySide) { iconPos = 13; }
+                    for(int i = 0; i < tp.Count; i++) { targetPool.Add(tp); }
 
-                    targetIconPos.Add(new Vector2Int(iconPos, 0));
-                    targetPool.Add(charactersManager.GetExistingCharactersPos(tp));
+                    //if (actionStatus.targetPlayerSide)
+                    //{
+                    //    for (int i = 0; i < 9; i++) { tp.Add(i); }
+                    //}
+                    //if (actionStatus.targetEnemySide)
+                    //{
+                    //    for (int i = 9; i < 18; i++) { tp.Add(i); }
+                    //}
+                    //if (actionStatus.targetPlayerSide && actionStatus.targetEnemySide) { iconPos = charaStatus.position; }
+                    //else if (actionStatus.targetPlayerSide) { iconPos = 4; }
+                    //else if (actionStatus.targetEnemySide) { iconPos = 13; }
+
+                    //targetIconPos.Add(new Vector2Int(iconPos, 0));
+                    //targetPool.Add(charactersManager.GetExistingCharactersPos(tp));
+                    //targetPool.Add(charactersManager.SearchCharaWithCondition(actionStatus.condition));
                     break;
                 case Action.ActionStatus.TargetType.self:
                     targetEmpty = false;

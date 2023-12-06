@@ -19,6 +19,8 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 0}
   abilityType: 4
+  excludeRandomPool: 1
+  selectWeight: 1
   conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
@@ -37,7 +39,7 @@ MonoBehaviour:
     actionMods: []
     targetType: 1
     friendly: 0
-    onlyMatched_AoE: 0
+    involveAll: 0
     condition:
       searchAsPos: 0
       player: 1
@@ -46,7 +48,8 @@ MonoBehaviour:
       mid: 1
       back: 1
       StE: []
-      PE: []
+      PE:
+      - {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
     targetPlayerSide: 1
     targetEnemySide: 0
     selectableFront: 1

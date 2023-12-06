@@ -195,7 +195,7 @@ public class Character : MonoBehaviour
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
     }
-    CharacterStatus charaStatus;
+   protected CharacterStatus charaStatus;
 
     [SerializeField]
     protected Action.ActionStatus[] actionsStatusTest;
@@ -399,7 +399,7 @@ public class Character : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        battleManager.SetSelectedAbility(SelectAbility(), this);//test　本来はラウンド開始時に決定する
+        battleManager.SetSelectedAbility(SelectAbility_Random(), this);//test　本来はラウンド開始時に決定する
         //charaStatus.omenSet = false;
         //charaStatus.omen = new Ability.AbilityStatus();
         BattleManager.selectedAbility.StartSelectTarget();
@@ -688,10 +688,22 @@ public class Character : MonoBehaviour
     //        battleManager.SetOmenIcon(this, charaStatus.omen);
     //    }
     //}
-    /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる</summary>
-    public virtual Ability.AbilityStatus SelectAbility()
+    /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる
+    /// ランダムプールから除外するアビリティ以外から重みを考慮して選ぶ</summary>
+    public virtual Ability.AbilityStatus SelectAbility_Random()
     {
-        return charaStatus.abilitiesStatus[Random.Range(0, charaStatus.abilitiesStatus.Length)];
+        List<Ability.AbilityStatus> list = new List<Ability.AbilityStatus>();
+        foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
+        {
+            if (!ability.excludeRandomPool) { list.Add(ability); }
+        }
+        return ChoiceAbilityWithWeight(list);
+    }
+    public Ability.AbilityStatus ChoiceAbilityWithWeight(List<Ability.AbilityStatus> abilitiesStatus)
+    {
+        List<int> weight = new List<int>();
+        foreach (Ability.AbilityStatus ability in abilitiesStatus) { weight.Add(ability.selectWeight); }
+        return abilitiesStatus[weight.ChoiceWithWeight()];
     }
     public void OnBattleStart()
     {

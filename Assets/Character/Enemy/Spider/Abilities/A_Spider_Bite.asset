@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_E2_2Noise
+  m_Name: A_Spider_Bite
   m_EditorClassIdentifier: 
-  abilityName: "\u91D1\u5207\u58F0"
+  abilityName: "\u565B\u307F\u3064\u304D"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
+  activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
   spriteIndex: 0
-  SE: {fileID: 8300000, guid: 17680db48fb5db846a2c10e5effdd764, type: 3}
-  abilityType: 4
+  SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+  abilityType: 1
+  excludeRandomPool: 0
+  selectWeight: 1
   conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
@@ -28,14 +30,14 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u91D1\u5207\u58F0"
+  - actionName: "\u565B\u307F\u3064\u304D"
     conditionInfo: 
-    targetInfo: "\u6575\u5168\u4F53"
+    targetInfo: "\u524D\u3001\u4E2D\u5217\u306E\u65751\u4F53"
     actionInfo: 
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 2
+    targetType: 1
     friendly: 0
     involveAll: 0
     condition:
@@ -44,13 +46,13 @@ MonoBehaviour:
       enemy: 0
       front: 1
       mid: 1
-      back: 1
+      back: 0
       StE: []
       PE: []
     targetPlayerSide: 1
     targetEnemySide: 0
-    selectableFront: 0
-    selectableMid: 0
+    selectableFront: 1
+    selectableMid: 1
     selectableBack: 0
     ignoreMark: 0
     ignoreHide: 0
@@ -59,8 +61,8 @@ MonoBehaviour:
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 80
+    ATKMod_max: 120
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -72,18 +74,14 @@ MonoBehaviour:
     healPercent_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 1
-    SANDamage_max: 5
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      applyChance: 33
-      stack: 1
-      value: 0
+    applySteParams: []
     applyPEParams: []
     summon: 0
     summonChara: []
@@ -94,13 +92,12 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityEffect: 1
-    abilityType: 4
-    SE: {fileID: 8300000, guid: 17680db48fb5db846a2c10e5effdd764, type: 3}
+    abilityType: 1
+    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
     dontChangeSprite: 0
-    activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
+    activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0400000007000000
+    actionTargetsInt: 06000000

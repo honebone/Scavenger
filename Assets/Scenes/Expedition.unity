@@ -7095,7 +7095,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
 --- !u!114 &613893884
 MonoBehaviour:
@@ -9746,6 +9746,17 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
+    friendly: 0
+    involveAll: 0
+    condition:
+      searchAsPos: 0
+      player: 0
+      enemy: 0
+      front: 0
+      mid: 0
+      back: 0
+      StE: []
+      PE: []
     targetPlayerSide: 0
     targetEnemySide: 0
     selectableFront: 0

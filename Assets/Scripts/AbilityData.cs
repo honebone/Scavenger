@@ -20,16 +20,13 @@ public class AbilityData : ScriptableObject
 
     public enum AbilityType { other, attack, heal, buff, debuff, summon }
     public AbilityType abilityType;
-    //public enum TargetType { other, single, all, self, row, column, withoutSelf, random }
-    //public TargetType targetType;
-    //public bool targetPlayerSide;
-    //public bool targetEnemySide;
-    //public bool targetEmpty;
-    //public bool selectableFront;
-    //public bool selectableMid;
-    //public bool selectableBack;
-    //[Header("味方を対象とするアビリティはignoreHideにチェック!!")]
-    //public bool ignoreHide;
+
+    [Header("\n操作不可キャラに関係")]
+    [Header("ランダム選択から除外するか")]
+    public bool excludeRandomPool;
+    [Header("選択される重み")]
+    public int selectWeight = 1;
+
     [TextArea(3,10)]
     public string conditionInfo;
 
