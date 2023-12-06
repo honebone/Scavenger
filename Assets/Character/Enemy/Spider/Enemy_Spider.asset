@@ -20,6 +20,7 @@ MonoBehaviour:
   notChara: 0
   player: 0
   playable: 0
+  obstacle: 0
   variableSprites:
   - {fileID: 3692830595080090428, guid: 771cf30422147c4448f326db8a03fac4, type: 3}
   spriteForUI: {fileID: 21300000, guid: 57035baac961a9f41b77dc4ce4faec8e, type: 3}
@@ -29,6 +30,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 45e64b9424f41be4fac1e992978c6917, type: 2}
   passiveAbilities: []
   actionMods: []
+  corpse: {fileID: 11400000, guid: 2e4468a931c49a54b98a5f29df7e9a30, type: 2}
   dropItems:
   - dropItemData: {fileID: 3778085014196471676, guid: 0055eabb8e458e941b925e77f3065b3e, type: 3}
     quantity: 3
@@ -46,11 +48,10 @@ MonoBehaviour:
   CRITD: 2
   EVD: 7
   ACC: 90
-  ACT: 4
+  ACT: 8
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  leftBehind: 
   debuffRes: 0
   stunRes: 0
   bleedRes: 0

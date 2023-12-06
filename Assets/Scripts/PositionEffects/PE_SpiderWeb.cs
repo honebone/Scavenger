@@ -33,7 +33,7 @@ public class PE_SpiderWeb : PositionEffect
     {
         int i = 1;
         if (!set) { i = -1; }
-        character.AddACT(-3*i);
+        character.AddACT(-6*i);
         character.AddEVD(-10*i);
     }
 }

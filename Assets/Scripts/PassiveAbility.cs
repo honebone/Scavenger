@@ -32,6 +32,7 @@ public class PassiveAbility : MonoBehaviour
         Destroy(gameObject);
     }
     public virtual void OnPAInit() { }
+    /// <summary>0:remove 1:onDie</summary>
     public virtual void AtTheEnd() { }
 
     public virtual void OnBattleStart() { }

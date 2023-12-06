@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Spider_Bite
+  m_Name: A_G_Decay
   m_EditorClassIdentifier: 
-  abilityName: "\u565B\u307F\u3064\u304D"
+  abilityName: "\u8150\u6557"
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
-  activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
+  dontChangeSprite: 1
+  activateSprite: {fileID: 0}
   spriteIndex: 0
-  SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
-  abilityType: 1
+  SE: {fileID: 0}
+  abilityType: 0
   excludeRandomPool: 0
   selectWeight: 1
   conditionInfo: 
@@ -30,42 +30,41 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u565B\u307F\u3064\u304D"
+  - actionName: 
     conditionInfo: 
-    targetInfo: "\u524D\u3001\u4E2D\u5217\u306E\u65751\u4F53"
-    actionInfo: "\u5BFE\u8C61\u306B\u8718\u86DB\u306E\u5DE3\u304C\u3042\u308B\u3068\u304D\uFF1A\n\u5FC5\u4E2D\u3001\u56DE\u907F\u4E0D\u53EF\nCRIT\u7387\u88DC\u6B63+5\uFF05"
+    targetInfo: "\u81EA\u8EAB"
+    actionInfo: 
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 8756076630842707450, guid: 12137a66a6849d84aa3b39a4f7a71347, type: 3}
-    targetType: 1
-    friendly: 0
+    actionMods: []
+    targetType: 3
+    friendly: 1
     involveAll: 0
     condition:
       searchAsPos: 0
-      player: 1
+      player: 0
       enemy: 0
-      front: 1
-      mid: 1
+      front: 0
+      mid: 0
       back: 0
       StE: []
       PE: []
-    targetPlayerSide: 1
+    targetPlayerSide: 0
     targetEnemySide: 0
-    selectableFront: 1
-    selectableMid: 1
+    selectableFront: 0
+    selectableMid: 0
     selectableBack: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
+    decreaseHPPer_min: 33
+    decreaseHPPer_max: 33
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 0
+    ATKMod_max: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -94,13 +93,12 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
-    abilityEffect: 1
-    abilityType: 1
-    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    abilityEffect: 0
+    abilityType: 0
+    SE: {fileID: 0}
     dontChangeSprite: 0
-    activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
+    activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargets: []
+    actionTargetsInt: 

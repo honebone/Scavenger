@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
         public bool notChara;
         public bool player;
         public bool playable;
+        public bool obstacle;
         /// <summary>0:idle 1:damaged </summary>
         public GameObject[] variableSprites; 
         public Sprite spriteForUI;
@@ -24,6 +25,7 @@ public class Character : MonoBehaviour
         public List<GameObject> passiveAbilities;
         public List<GameObject> actionMods;
 
+        public CharacterData corpse;
         public DropItem[] dropItems;
 
         //public EquipmentType[] equipableTypes;
@@ -55,7 +57,6 @@ public class Character : MonoBehaviour
         public float RHeal;
 
         //public DropItem[] dropItems;
-        public string leftBehind;//éÄñSéûÇ…ïœêgÇ∑ÇÈÉLÉÉÉâÉNÉ^Å[ñº
 
         public float stunRes;
         public float bleedRes;
@@ -144,6 +145,8 @@ public class Character : MonoBehaviour
             notChara = data.notChara;
             player = data.player;
             playable = data.playable;
+            obstacle = data.obstacle;
+
             variableSprites = data.variableSprites;
             spriteForUI = data.spriteForUI;
 
@@ -153,6 +156,7 @@ public class Character : MonoBehaviour
 
             actionMods = data.actionMods;
 
+            corpse = data.corpse;
             dropItems = data.dropItems;
 
             surviveFatalWounds = data.surviveFatalWounds;
@@ -179,8 +183,6 @@ public class Character : MonoBehaviour
             GHeal = data.GHeal;
             RHeal = data.RHeal;
 
-            leftBehind = data.leftBehind;
-
             debuffRes = data.debuffRes;
 
             stunRes = data.stunRes;
@@ -206,7 +208,19 @@ public class Character : MonoBehaviour
     public Character_Object GetCharacter_Object() { return charaObj; }
     public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }
 
-    protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
+    //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
+    List<PassiveAbility> PA_Personality = new List<PassiveAbility>();
+    List<PassiveAbility> PA_StE = new List<PassiveAbility>();
+    List<PassiveAbility> PA_Equipment = new List<PassiveAbility>();
+    public List<PassiveAbility> GetPassiveAbilities()
+    {
+        List<PassiveAbility> passiveAbilities = new List<PassiveAbility>(PA_Personality);
+        passiveAbilities.AddRange(PA_StE);
+        passiveAbilities.AddRange(PA_Equipment);
+        return passiveAbilities;
+    }
+
+
     List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
     ActionQueueManager actionQueue;
@@ -254,16 +268,16 @@ public class Character : MonoBehaviour
     public void AddPA_Personality(GameObject paObj)
     {
         var p = Instantiate(paObj, transform);
-        passiveAbilities.Add(p.GetComponent<PassiveAbility>());
+        PA_Personality.Add(p.GetComponent<PassiveAbility>());
         p.GetComponent<PassiveAbility>().Init(this,1);
     }
     public void RemovePA(PassiveAbility passiveAbility)
     {
         deletePAs.Add(passiveAbility);
     }
-    void RemovePA_Execute()
+    void RemovePA_StE_Execute()
     {
-        foreach (PassiveAbility deletePA in deletePAs) { passiveAbilities.Remove(deletePA); }
+        foreach (PassiveAbility deletePA in deletePAs) { PA_StE.Remove(deletePA); }
         deletePAs.Clear();
     }
     public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams)
@@ -272,7 +286,7 @@ public class Character : MonoBehaviour
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
         {
             PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
-            foreach (PassiveAbility pa in passiveAbilities)
+            foreach (PassiveAbility pa in PA_StE)
             {
                 if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//ìØéÌÇÃStEÇ™Ç∑Ç≈Ç…Ç†ÇÈÇ»ÇÁ
                 {
@@ -286,7 +300,7 @@ public class Character : MonoBehaviour
         if (!f)
         {
             var s = Instantiate(StEParams.applyStE, transform);
-            passiveAbilities.Add(s.GetComponent<PassiveAbility>());
+            PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
             s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>());
             s.GetComponent<PassiveAbility>().Init(this, 0);
@@ -298,7 +312,7 @@ public class Character : MonoBehaviour
     public bool CheckHasStE(GameObject StEObj)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-        foreach (PassiveAbility pa in passiveAbilities)
+        foreach (PassiveAbility pa in PA_StE)
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName) { return true; }
         }
@@ -312,13 +326,39 @@ public class Character : MonoBehaviour
     public void DisplayInfo()
     {
         string info = charaStatus.GetInfo();
-        //info += "ÅûÅûì¡ê´ÅûÅû\n";
-        info += "\n";
-        foreach(PassiveAbility pa in passiveAbilities)
+        info += "ÅûÅûì¡ê´ÅûÅû\n";
+        if (PA_Personality.Count == 0) { info += "Ç»Çµ\n"; }
+        else
         {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
+            foreach (PassiveAbility pa in PA_Personality)
+            {
+                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            }
         }
-        info+=targetButton.GetPositionManager().GetPEInfo();
+        info += "\nÅûÅûèÛë‘àŸèÌÅûÅû\n";
+        if (PA_StE.Count == 0) { info += "Ç»Çµ\n"; }
+        else
+        {
+            foreach (PassiveAbility pa in PA_StE)
+            {
+                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            }
+        }
+        if (charaStatus.playable)
+        {
+            info += "\nÅûÅûëïîıïiå¯â ÅûÅû\n";
+            if (PA_Equipment.Count == 0) { info += "Ç»Çµ\n"; }
+            else
+            {
+                foreach (PassiveAbility pa in PA_Equipment)
+                {
+                    info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                }
+            }
+        }
+        
+        
+        info+="\n"+targetButton.GetPositionManager().GetPEInfo();
         infoText.SetCharaInfo(charaStatus.charaName, info, this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
         //charaObj.SetSelectedIcon(true);
@@ -650,6 +690,8 @@ public class Character : MonoBehaviour
         charactersManager.RemoveExistingCharacter(this);
         battleManager.RemoveTurn(this);
 
+        foreach(PA_StatusEffect pa in PA_StE) { pa.RemoveStE(); }
+
         foreach (DropItem dropItem in charaStatus.dropItems)
         {
             //float[] dropRate = FindObjectOfType<PartyManager>().GetPartyStatus().dropMaterialChance;
@@ -673,6 +715,12 @@ public class Character : MonoBehaviour
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
+
+        if (charaStatus.corpse != null)
+        {
+            if (charaStatus.position < 9) { charactersManager.SpawnPlayer(charaStatus.corpse, charaStatus.position); }
+            else { charactersManager.SpawnEnemy(charaStatus.corpse, charaStatus.position, false); }
+        }
     }
     public void Retreat()
     {
@@ -712,8 +760,8 @@ public class Character : MonoBehaviour
             //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
             charaStatus.abilitiesStatus[i].AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
         }
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnBattleStart(); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnBattleStart(); }
+        RemovePA_StE_Execute();
     }
     public void OnRoundStart()
     {
@@ -724,39 +772,39 @@ public class Character : MonoBehaviour
     }
     public void OnTurnStart()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnStart(); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(); }
+        RemovePA_StE_Execute();
     }
     public void OnTurnEnd()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnEnd(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(); }
         targetButton.GetPositionManager().OnTurnEnd();
-        RemovePA_Execute();
+        RemovePA_StE_Execute();
     }
     public void OnRoundEnd()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnRoundEnd(); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundEnd(); }
+        RemovePA_StE_Execute();
     }
     public void OnBattleEnd() { }
 
 
     public void OnActivateAbility()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnActivateAbility(); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(); }
+        RemovePA_StE_Execute();
     }
     /// <summary>çUåÇéûÅAñΩíÜÇµÇΩÇ©Ç…ä÷ÇÌÇÁÇ∏óUî≠</summary>
     public void OnAttack(bool evadeed,bool missed)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnAttack(evadeed,missed); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evadeed,missed); }
+        RemovePA_StE_Execute();
     }
     /// <summary>çUåÇñΩíÜéû</summary>
     public void OnDamage(int DMG, Character target)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamage(DMG, target); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target); }
+        RemovePA_StE_Execute();
     }
     public void OnCRIT(int ID) { }
     public void OnKill(int ID) { }
@@ -767,13 +815,13 @@ public class Character : MonoBehaviour
 
     public void BecomeAbilityTarget(Character actor)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.BecomeAbilityTarget(actor); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.BecomeAbilityTarget(actor); }
+        RemovePA_StE_Execute();
     }
     public void OnDamaged(int DMG, Character attacker)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamaged(DMG, attacker); }
-        RemovePA_Execute();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(DMG, attacker); }
+        RemovePA_StE_Execute();
     }
     public void OnCRITed(int ID) { }
     public void OnEvade( int ID) { }

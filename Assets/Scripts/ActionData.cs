@@ -22,6 +22,8 @@ public class ActionData : ScriptableObject
 
     public int decreaseHP_min;
     public int decreaseHP_max;
+    public int decreaseHPPer_min;
+    public int decreaseHPPer_max;
 
     public bool cantCounter;
     [Header("0:melee 1:ranged 2:magic")]
