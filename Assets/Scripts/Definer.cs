@@ -48,6 +48,8 @@ public class Definer : MonoBehaviour
         public AudioClip SANDecrease;
         public AudioClip summoned;
         public AudioClip stun;
+        public AudioClip die1;
+        public AudioClip die2;
     }
     [System.Serializable]
     public class VisualEffectRef

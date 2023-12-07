@@ -637,6 +637,8 @@ public class Character : MonoBehaviour
     {
         charaStatus.dead = true;
         Instantiate(Definer.VERef.die, charactersManager.GetCharacterWorldPos(charaStatus.position), Quaternion.identity);
+        soundManager.PlaySE(Definer.soundRef.die1);
+        soundManager.PlaySE(Definer.soundRef.die2);
         if (cause == 0)
         {
             charaObj.SetDamageText("Ž€–S", Definer.colorRef.damage);

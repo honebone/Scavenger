@@ -7164,6 +7164,8 @@ MonoBehaviour:
     SANDecrease: {fileID: 8300000, guid: 90b9cc90a01a47c4b8d6dbe460f21ebb, type: 3}
     summoned: {fileID: 8300000, guid: a36dd1c4b04501b4c97f4ed893655b70, type: 3}
     stun: {fileID: 8300000, guid: a41b09d1965a70c4e8f00d9be397f66c, type: 3}
+    die1: {fileID: 8300000, guid: d7a3401f1b36a404d823d172cb89df58, type: 3}
+    die2: {fileID: 8300000, guid: 85b02279f7596db49abaf961a96ccfaf, type: 3}
   VERef_Inspector:
     die: {fileID: 7006933508149500689, guid: 371da761e9acd254792a41a42553ee7d, type: 3}
   abilityManager_General_Inspector: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
