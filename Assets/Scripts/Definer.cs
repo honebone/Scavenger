@@ -49,9 +49,15 @@ public class Definer : MonoBehaviour
         public AudioClip summoned;
         public AudioClip stun;
     }
+    [System.Serializable]
+    public class VisualEffectRef
+    {
+        public GameObject die;
+    }
 
     public static ColorRef colorRef;
-    public static SoundRef soundRef;    
+    public static SoundRef soundRef;
+    public static VisualEffectRef VERef;
     public static GameObject abilityManager_General;
     public static GameObject actionManager_General;
     public static GameObject statusEffectIcon;
@@ -60,6 +66,8 @@ public class Definer : MonoBehaviour
     ColorRef colorRef_Inspector;
     [SerializeField]
     SoundRef soundRef_Inspector;
+    [SerializeField]
+    VisualEffectRef VERef_Inspector;
     [SerializeField]
     GameObject abilityManager_General_Inspector;
     [SerializeField]
@@ -155,6 +163,7 @@ public class Definer : MonoBehaviour
     {
         colorRef = colorRef_Inspector;
         soundRef = soundRef_Inspector;
+        VERef = VERef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
         actionManager_General=actionManager_General_Inspector;
         statusEffectIcon = statusEffectIcon_Inspector;

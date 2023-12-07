@@ -337,7 +337,23 @@ public class CharactersManager : MonoBehaviour
     }
     public Vector2 GetCharacterWorldPos(int pos)
     {
-        
+        //Vector2 worldPos=new Vector2();
+        //switch (size)
+        //{
+        //    case 1:
+        //        worldPos = charactersWorldPos_Size1[pos];
+        //        break; 
+        //    case 2:
+        //        worldPos = charactersWorldPos_Size2[pos];
+        //        break;
+        //    case 3:
+        //        infoText.AddDebugText("size3の処理未実装");
+        //        break;
+        //    default:
+        //        infoText.AddDebugText("error:sizeの値がおかしいです");
+        //        break;
+        //}
+        //if (worldPos.x == -1) { infoText.AddDebugText(string.Format("存在しないworldPos:サイズ{0}の位置{1}", size, pos)); }
         return charactersWorldPos_Size1[pos];
     }
 
@@ -345,8 +361,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            Character.CharacterStatus charaStatus = chara.GetCharacterStatus();
-            if(charaStatus.position >= 9&&!charaStatus.obstacle) { return false; }//敵側にキャラがいるなら勝利してない
+            if(chara.GetCharacterStatus().position >= 9) { return false; }//敵側にキャラがいるなら勝利してない
         }
         return true;
     }

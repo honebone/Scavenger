@@ -53,3 +53,6 @@ TagManager:
   - name: Effect
     uniqueID: 4232999191
     locked: 0
+  - name: Text
+    uniqueID: 3422258203
+    locked: 0

@@ -18,8 +18,6 @@ public class CharacterData : ScriptableObject
     public bool notChara;
     public bool player;
     public bool playable;
-    [Header("Ÿ—˜/”s–k‚ÉŠÖŒW‚È‚¢")]
-    public bool obstacle;
     [Header("0:idle 1:damaged")]
     public GameObject[] variableSprites; 
     public Sprite spriteForUI;
@@ -29,7 +27,6 @@ public class CharacterData : ScriptableObject
     public List<GameObject> passiveAbilities;
     public List<GameObject> actionMods;
 
-    public CharacterData corpse;//€–S‚É¶¬‚·‚é€‘Ì
     public DropItem[] dropItems;
 
     //public EquipmentType[] equipableTypes;
@@ -56,6 +53,8 @@ public class CharacterData : ScriptableObject
     public float RHeal = 100f;
 
     //counterAction
+
+    public string leftBehind;//€–S‚É•Ïg‚·‚éƒLƒƒƒ‰ƒNƒ^[–¼
 
     public float debuffRes;
 

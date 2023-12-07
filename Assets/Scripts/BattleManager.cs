@@ -102,7 +102,7 @@ public class BattleManager : MonoBehaviour
             int a = utility.ChoiceWithWeight(ACT.ToArray());
             characterInTurnOrder.Add(charas[a]);
             var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < 100);//i < 3
+            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < 3);
             turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
             turns[a]--;
             if (turns[a] == 0)
@@ -122,27 +122,32 @@ public class BattleManager : MonoBehaviour
 
     public void RemoveTurn(Character chara)
     {
-        for (int i = 0; i < turnOrderIcons.Count; i++)
+        List<Battle_TurnOrderIcon> removeTurns = new List<Battle_TurnOrderIcon>();
+        foreach (Battle_TurnOrderIcon turn in turnOrderIcons)
         {
-            if (turnOrderIcons[i].GetCharacter() == chara)
-            {
-                //turnOrderIcons.RemoveAt(i);
-                //Destroy(turnOrderIconParent.GetChild(i).gameObject);
-                List<Battle_TurnOrderIcon> removeTurns = new List<Battle_TurnOrderIcon>();
-                foreach(Battle_TurnOrderIcon turn in turnOrderIcons)
-                {
-                    if (turn.GetCharacter() == chara)
-                    {
-                        removeTurns.Add(turn);
-                    }
-                }
-                foreach(Battle_TurnOrderIcon remove in removeTurns)
-                {
-                    turnOrderIcons.Remove(remove);
-                    Destroy(remove.gameObject);
-                }
-            }
+            if (turn.GetCharacter() == chara) { removeTurns.Add(turn); }
         }
+        foreach (Battle_TurnOrderIcon remove in removeTurns)
+        {
+            turnOrderIcons.Remove(remove);
+            Destroy(remove.gameObject);
+        }
+        //for (int i = 0; i < turnOrderIcons.Count; i++)
+        //{
+        //    if (turnOrderIcons[i].GetCharacter() == chara)
+        //    {
+        //       List<Battle_TurnOrderIcon> removeTurns=new List<Battle_TurnOrderIcon>();
+        //        foreach(Battle_TurnOrderIcon turn in turnOrderIcons)
+        //        {
+        //            if (turn.GetCharacter() == chara) { removeTurns.Add(turn); }
+        //        }
+        //        foreach(Battle_TurnOrderIcon remove in removeTurns)
+        //        {
+        //            turnOrderIcons.Remove(remove);
+        //            Destroy(remove.gameObject);
+        //        }
+        //    }
+        //}
         //foreach(Battle_TurnOrderIcon turnOrderIcon in turnOrderIcons) { turnOrderIcon.RemoveTurnOrderIcon(chara); }
     }
 

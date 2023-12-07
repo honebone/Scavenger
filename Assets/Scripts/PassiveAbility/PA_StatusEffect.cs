@@ -82,14 +82,10 @@ public class PA_StatusEffect : PassiveAbility
         if (StEStatus.stack <= 0)
         {
             StEStatus.stack = 0;
-            RemoveStE();
+            Destroy(StEIcon.gameObject);
+            Disable();
         }
         else { StEIcon.SetStackText(StEStatus.stack); }
-    }
-    public void RemoveStE()
-    {
-        Destroy(StEIcon.gameObject);
-        Disable();
     }
 
     [SerializeField]

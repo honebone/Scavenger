@@ -59,8 +59,6 @@ MonoBehaviour:
     moveValue: 
     decreaseHP_min: 0
     decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
     ATKMod_min: 10000
@@ -85,7 +83,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
-      applyChance: 100
+      applyChance: 200
       stack: 1
       value: 0
     applyPEParams: []
@@ -106,4 +104,4 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 09000000
+    actionTargetsInt: 0a000000

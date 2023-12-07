@@ -19,6 +19,8 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 0}
   abilityType: 5
+  excludeRandomPool: 0
+  selectWeight: 1
   conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
@@ -37,7 +39,7 @@ MonoBehaviour:
     actionMods: []
     targetType: 1
     friendly: 0
-    onlyMatched_AoE: 0
+    involveAll: 0
     condition:
       searchAsPos: 0
       player: 0
@@ -59,13 +61,13 @@ MonoBehaviour:
     decreaseHP_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 10000
+    ATKMod_max: 10000
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    sureHit: 0
-    unevadable: 0
+    sureHit: 1
+    unevadable: 1
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0

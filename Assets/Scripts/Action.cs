@@ -57,8 +57,6 @@ public class Action : MonoBehaviour
 
         public int decreaseHP_min;
         public int decreaseHP_max;
-        public int decreaseHPPer_min;
-        public int decreaseHPPer_max;
 
         public bool cantCounter;
         [Header("0:melee 1:ranged 2:magic")]
@@ -128,10 +126,6 @@ public class Action : MonoBehaviour
             if (decreaseHP_max > 0)
             {
                 s += string.Format("HP‚ª{0}Œ¸­\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
-            }
-            if (decreaseHPPer_max > 0)
-            {
-                s += string.Format("HP‚ª{0}“Œ¸­\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max));
             }
 
             if (ATKMod_max > 0)//UŒ‚
@@ -253,8 +247,6 @@ public class Action : MonoBehaviour
 
             decreaseHP_min = actionData.decreaseHP_min;
             decreaseHP_max = actionData.decreaseHP_max;
-            decreaseHPPer_min = actionData.decreaseHPPer_min;
-            decreaseHPPer_max = actionData.decreaseHPPer_max;
 
             cantCounter = actionData.cantCounter;
             attackType = actionData.AttackType;
@@ -399,12 +391,6 @@ public class Action : MonoBehaviour
                 {
                     actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
                 }
-                if (actionsStatus[i].decreaseHPPer_max > 0)//HPŠ„‡Œ¸­
-                {
-                    float percent = Random.Range(actionsStatus[i].decreaseHPPer_min, actionsStatus[i].decreaseHPPer_max + 1) / 100f;
-                    infoText.AddDebugText(percent.ToString());
-                    actionStatus.actionTargets[i].DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
-                }
 
 
                 if (actionsStatus[i].ATKMod_max > 0)//UŒ‚
@@ -463,7 +449,7 @@ public class Action : MonoBehaviour
                     }
                 }
 
-                if (attackHit&&actionStatus.actionTargets[i].CheckAlive())
+                if (attackHit && actionStatus.actionTargets[i].CheckAlive())
                 {
                     if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//‰ñ•œ
                     {
