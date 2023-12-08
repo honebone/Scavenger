@@ -27,6 +27,7 @@ public class CharacterData : ScriptableObject
     public List<GameObject> passiveAbilities;
     public List<GameObject> actionMods;
 
+    public CharacterData corpse;
     public DropItem[] dropItems;
 
     //public EquipmentType[] equipableTypes;
@@ -53,8 +54,6 @@ public class CharacterData : ScriptableObject
     public float RHeal = 100f;
 
     //counterAction
-
-    public string leftBehind;//死亡時に変身するキャラクター名
 
     public float debuffRes;
 

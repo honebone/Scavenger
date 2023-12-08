@@ -57,6 +57,8 @@ public class Action : MonoBehaviour
 
         public int decreaseHP_min;
         public int decreaseHP_max;
+        public float decreaseHPPer_min;
+        public float decreaseHPPer_max;
 
         public bool cantCounter;
         [Header("0:melee 1:ranged 2:magic")]
@@ -126,6 +128,10 @@ public class Action : MonoBehaviour
             if (decreaseHP_max > 0)
             {
                 s += string.Format("HPÇ™{0}å∏è≠\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
+            }
+            if (decreaseHPPer_max > 0)
+            {
+                s += string.Format("HPÇ™{0}Åìå∏è≠\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max)); 
             }
 
             if (ATKMod_max > 0)//çUåÇ
@@ -390,6 +396,11 @@ public class Action : MonoBehaviour
                 if (actionsStatus[i].decreaseHP_max > 0)//HPå∏è≠
                 {
                     actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
+                }
+                if (actionsStatus[i].decreaseHPPer_max > 0)//HPå∏è≠
+                {
+                    float percent = Random.Range(actionsStatus[i].decreaseHPPer_min, actionsStatus[i].decreaseHPPer_max) / 100f;
+                    actionStatus.actionTargets[i].DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
                 }
 
 

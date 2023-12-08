@@ -24,6 +24,7 @@ public class Character : MonoBehaviour
         public List<GameObject> passiveAbilities;
         public List<GameObject> actionMods;
 
+        public CharacterData corpse;
         public DropItem[] dropItems;
 
         //public EquipmentType[] equipableTypes;
@@ -53,9 +54,6 @@ public class Character : MonoBehaviour
 
         public float GHeal;
         public float RHeal;
-
-        //public DropItem[] dropItems;
-        public string leftBehind;//死亡時に変身するキャラクター名
 
         public float stunRes;
         public float bleedRes;
@@ -153,6 +151,7 @@ public class Character : MonoBehaviour
 
             actionMods = data.actionMods;
 
+            corpse = data.corpse;
             dropItems = data.dropItems;
 
             surviveFatalWounds = data.surviveFatalWounds;
@@ -178,8 +177,6 @@ public class Character : MonoBehaviour
 
             GHeal = data.GHeal;
             RHeal = data.RHeal;
-
-            leftBehind = data.leftBehind;
 
             debuffRes = data.debuffRes;
 
@@ -676,6 +673,12 @@ public class Character : MonoBehaviour
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
+
+        if (charaStatus.corpse != null)
+        {
+            if (charaStatus.position < 9) { charactersManager.SpawnPlayer(charaStatus.corpse, charaStatus.position); }
+            else { charactersManager.SpawnEnemy(charaStatus.corpse, charaStatus.position, false); }
+        }
     }
     public void Retreat()
     {
