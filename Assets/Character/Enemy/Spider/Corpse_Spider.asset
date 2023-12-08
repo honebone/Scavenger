@@ -21,7 +21,7 @@ MonoBehaviour:
   player: 0
   playable: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 809527472060186479, guid: aba21315db7415245b8c87268ee58f6f, type: 3}
   spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
   - {fileID: 11400000, guid: b952f83759072aa48a93d24a4def618c, type: 2}

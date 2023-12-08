@@ -33,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   passiveAbilities: []
   actionMods: []
+  corpse: {fileID: 0}
   dropItems: []
   surviveFatalWounds: 1
   maxHP: 50
@@ -42,11 +43,10 @@ MonoBehaviour:
   CRITD: 1.5
   EVD: 3
   ACC: 90
-  ACT: 500
+  ACT: 7
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  leftBehind: 
   debuffRes: 0
   stunRes: 0
   bleedRes: 0
