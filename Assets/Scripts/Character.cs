@@ -16,6 +16,8 @@ public class Character : MonoBehaviour
         public bool notChara;
         public bool player;
         public bool playable;
+        /// <summary>èüîsÇ…ä÷åWÇ»Ç¢Ç©</summary>
+        public bool obstacle;
         /// <summary>0:idle 1:damaged </summary>
         public GameObject[] variableSprites; 
         public Sprite spriteForUI;
@@ -142,6 +144,7 @@ public class Character : MonoBehaviour
             notChara = data.notChara;
             player = data.player;
             playable = data.playable;
+            obstacle = data.obstacle;
             variableSprites = data.variableSprites;
             spriteForUI = data.spriteForUI;
 

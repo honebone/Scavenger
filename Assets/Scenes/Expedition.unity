@@ -7461,12 +7461,12 @@ MonoBehaviour:
     enemies:
     - {fileID: 0}
     - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
     - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     - {fileID: 0}
-    - {fileID: 11400000, guid: 017e3d16f52d56946a8aaf4be5fd0ed0, type: 2}
+    - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     - {fileID: 0}
-    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
 --- !u!114 &613893884
 MonoBehaviour:

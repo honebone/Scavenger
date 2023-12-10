@@ -361,7 +361,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            if(chara.GetCharacterStatus().position >= 9) { return false; }//“G‘¤‚ÉƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
+            if(chara.GetCharacterStatus().position >= 9&&!chara.GetCharacterStatus().obstacle) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
         }
         return true;
     }

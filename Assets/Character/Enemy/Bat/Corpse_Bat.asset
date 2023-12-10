@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: Corpse_Spider
+  m_Name: Corpse_Bat
   m_EditorClassIdentifier: 
-  fileName: C_Spider
+  fileName: C_Bat
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6B7B\u4F53"
   characterTags: 01000000
@@ -22,8 +22,8 @@ MonoBehaviour:
   playable: 0
   obstacle: 1
   variableSprites:
-  - {fileID: 809527472060186479, guid: aba21315db7415245b8c87268ee58f6f, type: 3}
-  spriteForUI: {fileID: 21300000, guid: 861a4c86d5d92734a84ddae36dd1b40b, type: 3}
+  - {fileID: 1005173946872403721, guid: 398f0890000e1054ebd3a50e83f1c7f0, type: 3}
+  spriteForUI: {fileID: 21300000, guid: d0e472dc70d96c741a75bb84efe221e8, type: 3}
   abilities:
   - {fileID: 11400000, guid: b952f83759072aa48a93d24a4def618c, type: 2}
   passiveAbilities: []
@@ -31,7 +31,7 @@ MonoBehaviour:
   corpse: {fileID: 0}
   dropItems: []
   surviveFatalWounds: 0
-  maxHP: 15
+  maxHP: 7
   maxSAN: 0
   ATK: 0
   CRITC: 0
