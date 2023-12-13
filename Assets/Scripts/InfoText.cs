@@ -69,6 +69,19 @@ public class InfoText : MonoBehaviour
         infoTextScrollBar.value = 1;
     }
 
+    public void TogglePanel()
+    {
+        if (infoPanel.activeSelf)
+        {
+            infoPanel.SetActive(false);
+            logPanel.SetActive(true);
+        }
+        else
+        {
+            infoPanel.SetActive(true);
+            logPanel.SetActive(false);
+        }
+    }
     public void SwitchToInfo()
     {
         logPanel.SetActive(false);

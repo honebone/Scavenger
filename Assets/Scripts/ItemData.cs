@@ -6,17 +6,15 @@ using UnityEngine;
 
 public class ItemData : ScriptableObject
 {
-    public enum ItemType { material,  temporary }
+    public enum ItemType { material,  equipment,tool }
     public ItemType itemType;
     public enum MaterialTag { other, valuables, slay, ore, food, plant, processed }
     public MaterialTag[] materialTags=new MaterialTag[1];
-    public enum TemporaryTag { other, tool, equipment }
-    public TemporaryTag temporaryTag;
 
     public string itemName;
     [TextArea(3, 10)]
     public string info;
-    public int amountPerStack;
+    public int amountPerStack = 1;
     public enum Rarity { common, uncommon, rare, epic, legendary }
     public Rarity rarity;
     public Sprite sprite;

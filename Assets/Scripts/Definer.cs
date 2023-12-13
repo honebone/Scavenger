@@ -104,7 +104,6 @@ public class Definer : MonoBehaviour
     {
         public ItemData.ItemType itemType;
         public ItemData.MaterialTag[] materialTags;
-        public ItemData.TemporaryTag temporaryTag;
 
         public string itemName;
         [TextArea(3, 10)]
@@ -123,7 +122,6 @@ public class Definer : MonoBehaviour
         {
             itemType = data.itemType;
             materialTags = data.materialTags;
-            temporaryTag = data.temporaryTag;
             itemName = data.itemName;
             info = data.info;
             amountPerStack = data.amountPerStack;
@@ -143,17 +141,37 @@ public class Definer : MonoBehaviour
             {
                 s += string.Format("{0}\n", Definer.rarityName[rarity].ColorStr(rarity.ToColor()));
                 bool f = false;
-                s += "[";
-                foreach (ItemData.MaterialTag tag in materialTags)
+                
+                switch (itemType)
                 {
-                    if (f) { s += ", "; }
-                    f = true;
-                    s += Definer.materialTagName[tag];
+                    case ItemData.ItemType.material:
+                        s += "<<素材>>\n\n";
+                        s += "[";
+                        foreach (ItemData.MaterialTag tag in materialTags)
+                        {
+                            if (f) { s += ", "; }
+                            f = true;
+                            s += Definer.materialTagName[tag];
+                        }
+                        s += "]\n";
+                        s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
+                        s += string.Format("価値：{0}G\n", price.ToString());
+                        s += string.Format("スロット単価：{0}G\n", (price * amountPerStack).ToString());
+                        break;
+
+
+                    case ItemData.ItemType.equipment:
+                        s += "<<装備品>>\n\n";
+                        s += manager.GetComponent<PassiveAbility>().GetPAInfo();
+                        break;
+
+
+                    case ItemData.ItemType.tool:
+                        s += "<<道具>>\n\n";
+                        s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
+                        s += manager.GetComponent<PassiveAbility>().GetPAInfo();
+                        break;
                 }
-                s += "]\n";
-                s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
-                s += string.Format("価値：{0}G\n", price.ToString());
-                s += string.Format("スロット単価：{0}G\n", (price * amountPerStack).ToString());
                 s += info;
             }
            

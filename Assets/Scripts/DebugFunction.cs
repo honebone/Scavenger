@@ -14,12 +14,17 @@ public class DebugFunction : MonoBehaviour
     int[] amount;
     Definer.Item[] items;
     [SerializeField]
-    CharactersManager.SearchCharaCondition conditionTest;
+    GameObject Eq;
     [SerializeField]
     AreaManager.EnemySet enemySetTest;
+
+    CharactersManager charactersManager;
+    BattleManager battleManager;
     
     private void Start()
     {
+        charactersManager = FindObjectOfType<CharactersManager>();
+        battleManager = FindObjectOfType<BattleManager>();
         items=new Definer.Item[itemData.Length];
         for(int i = 0; i < itemData.Length; i++)
         {
@@ -67,10 +72,7 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            foreach (Character character in FindObjectOfType<CharactersManager>().SearchCharaWithCondition(conditionTest))
-            {
-                FindObjectOfType<InfoText>().AddDebugText(character.GetCharacterStatus().charaName);
-            }
+            charactersManager.GetCharacterWithPos(7).AddPA_Equipment(Eq);
 
         }
     }

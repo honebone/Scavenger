@@ -11,6 +11,8 @@ public class InventoryButton : MonoBehaviour
     Image itemImage;
     [SerializeField]
     Image frame;
+    [SerializeField]
+    Sprite[] frames;
 
 
     InfoText infoText;
@@ -22,8 +24,10 @@ public class InventoryButton : MonoBehaviour
         infoText = it;
 
         itemImage.sprite = item.sprite;
+        frame.sprite = frames[(int)item.itemType];
         frame.color = item.rarity.ToColor();
-        amountText.text = item.amount.ToString();
+        if(item.itemType!= ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
+        else { amountText.text = ""; }
     }
 
     public void OnMouseDown()
@@ -34,6 +38,7 @@ public class InventoryButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            //equipment tool / sell deliverÇÃÇ∆Ç´Ç∆Ç©Ç≈èÍçáï™ÇØ
             FindObjectOfType<Inventory>().CreateOptionUI_Normal(transform.position, item);
         }
     }

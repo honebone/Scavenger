@@ -296,6 +296,10 @@ MonoBehaviour:
   amountText: {fileID: 2307848345754593294}
   itemImage: {fileID: 2307848346367622852}
   frame: {fileID: 2307848346117245984}
+  frames:
+  - {fileID: 21300000, guid: 320190fcb09b4254a8b741607b20b63c, type: 3}
+  - {fileID: 21300000, guid: 6aedae3860461814aaabbfd280d08993, type: 3}
+  - {fileID: 21300000, guid: b9457bbdfd9ecce41b5872b341974db5, type: 3}
 --- !u!114 &5377892419485619753
 MonoBehaviour:
   m_ObjectHideFlags: 0

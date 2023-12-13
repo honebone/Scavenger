@@ -654,7 +654,7 @@ RectTransform:
   - {fileID: 792127544}
   - {fileID: 1730627496}
   m_Father: {fileID: 457785504}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -974,7 +974,7 @@ RectTransform:
   m_Children:
   - {fileID: 1767306640}
   m_Father: {fileID: 1357045792}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 322248162}
   - component: {fileID: 322248161}
   m_Layer: 5
-  m_Name: SwitchToInfo Button
+  m_Name: CharaInfo Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1293,7 +1293,7 @@ RectTransform:
   m_Children:
   - {fileID: 682069418}
   m_Father: {fileID: 1357045792}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1343,19 +1343,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 682069419}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 810066771}
-        m_TargetAssemblyTypeName: InfoText, Assembly-CSharp
-        m_MethodName: SwitchToInfo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &322248162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2998,11 +2986,11 @@ RectTransform:
   m_Children:
   - {fileID: 1001498902}
   - {fileID: 1331468053}
-  - {fileID: 793041417}
   - {fileID: 1224710255}
   - {fileID: 175798971}
   - {fileID: 1957585037}
   - {fileID: 625396638}
+  - {fileID: 793041417}
   m_Father: {fileID: 1060233962}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7445,17 +7433,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d9cffd46cc3268f4692a7af52d3eedd8, type: 2}
   - {fileID: 11400000, guid: fc4df6f9bfeb00a42a23e14e37be9235, type: 2}
   - {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
-  amount: 7e00000005000000010000000200000007000000030000001500000006000000
-  conditionTest:
-    searchAsPos: 0
-    player: 1
-    enemy: 0
-    front: 1
-    mid: 1
-    back: 1
-    StE:
-    - {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
-    PE: []
+  - {fileID: 11400000, guid: 1f5e7e28e1768e64685f1d45d474df80, type: 2}
+  amount: 7e0000000500000001000000020000000700000003000000150000000600000001000000
+  Eq: {fileID: 9185327421234476493, guid: 6621593e1ccf5b742bb867c13f2740a2, type: 3}
   enemySetTest:
     weight: 0
     enemies:
@@ -7577,7 +7557,7 @@ RectTransform:
   - {fileID: 422858630}
   - {fileID: 1784687482}
   m_Father: {fileID: 457785504}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9117,7 +9097,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 457785504}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -11308,7 +11288,7 @@ RectTransform:
   m_Children:
   - {fileID: 1653056968}
   m_Father: {fileID: 1357045792}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11978,7 +11958,7 @@ RectTransform:
   - {fileID: 1343268108}
   - {fileID: 223859066}
   m_Father: {fileID: 457785504}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12726,7 +12706,7 @@ RectTransform:
   m_Children:
   - {fileID: 904601516}
   m_Father: {fileID: 1357045792}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13126,12 +13106,12 @@ RectTransform:
   m_Children:
   - {fileID: 1269382504}
   - {fileID: 100927136}
-  - {fileID: 322248160}
   - {fileID: 2001843994}
   - {fileID: 1095716063}
   - {fileID: 259843525}
   - {fileID: 1323153096}
   - {fileID: 1816220081}
+  - {fileID: 322248160}
   - {fileID: 949512868}
   m_Father: {fileID: 2021522964}
   m_RootOrder: 1
@@ -15616,7 +15596,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -15936,7 +15916,7 @@ RectTransform:
   m_Children:
   - {fileID: 1574915702}
   m_Father: {fileID: 1357045792}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16791,7 +16771,7 @@ RectTransform:
   - {fileID: 1339905686}
   - {fileID: 604867215}
   m_Father: {fileID: 457785504}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16927,7 +16907,7 @@ GameObject:
   - component: {fileID: 2001843996}
   - component: {fileID: 2001843995}
   m_Layer: 5
-  m_Name: SwitchToLog Button
+  m_Name: ToggleInfoLog Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16947,7 +16927,7 @@ RectTransform:
   m_Children:
   - {fileID: 527115254}
   m_Father: {fileID: 1357045792}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17000,7 +16980,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 810066771}
         m_TargetAssemblyTypeName: InfoText, Assembly-CSharp
-        m_MethodName: SwitchToLog
+        m_MethodName: TogglePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

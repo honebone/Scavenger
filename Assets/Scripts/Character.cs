@@ -195,6 +195,51 @@ public class Character : MonoBehaviour
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
     }
+    [System.Serializable]
+    public struct CharaStatusMod
+    {
+        public float maxHP_mul;
+        public float maxSAN_mul;
+
+        public float ATK_mul;
+
+        public float CRITC;
+        public float CRITD;
+
+        public float EVD;
+        public float ACC;
+
+        public int ACT;
+        public int turnPerRound;
+
+        public float GHeal;
+        public float RHeal;
+        public string GetInfo()
+        {
+            string s = "";
+            s += ValueToStr("maxHP", maxHP_mul, "％");
+            s += ValueToStr("maxSAN", maxSAN_mul, "％");
+            s += ValueToStr("ATK", ATK_mul, "％");
+            s += ValueToStr("CRIT率", CRITC, "％(加算)");
+            s += ValueToStr("CRITダメージ", CRITD, "倍(加算)");
+            s += ValueToStr("EVD", EVD, "");
+            s += ValueToStr("ACC", ACC, "");
+            s += ValueToStr("ACT", ACT, "");
+            s += ValueToStr("ラウンド毎ターン数", turnPerRound, "");
+            s += ValueToStr("与える回復量", GHeal, "％");
+            s += ValueToStr("受ける回復量", RHeal, "％");
+            return s;
+        }
+        public string ValueToStr(string start, float value, string end)
+        {
+            if (value == 0) { return ""; }
+            string s = start;
+            if (value < 0) { s += value.ToString(); }
+            else { s += "+" + value.ToString(); }
+            s += end + "\n";
+            return s;
+        }
+    }
    protected CharacterStatus charaStatus;
 
     [SerializeField]
@@ -206,7 +251,10 @@ public class Character : MonoBehaviour
     public Character_Object GetCharacter_Object() { return charaObj; }
     public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }
 
-    protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
+    //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
+    protected List<PassiveAbility> PA_Pa = new List<PassiveAbility>();
+    protected List<PassiveAbility> PA_StE = new List<PassiveAbility>();
+    protected List<PassiveAbility> PA_Eq = new List<PassiveAbility>();
     List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
     ActionQueueManager actionQueue;
@@ -251,10 +299,24 @@ public class Character : MonoBehaviour
         }   
         //TurnIconはラウンド開始時にセット
     }
+    public List<PassiveAbility> GetPassiveAbilities()
+    {
+        List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
+        passiveAbilities.AddRange(PA_Pa);
+        passiveAbilities.AddRange(PA_StE);
+        passiveAbilities.AddRange(PA_Eq);
+        return passiveAbilities;
+    }
     public void AddPA_Personality(GameObject paObj)
     {
         var p = Instantiate(paObj, transform);
-        passiveAbilities.Add(p.GetComponent<PassiveAbility>());
+        PA_Pa.Add(p.GetComponent<PassiveAbility>());
+        p.GetComponent<PassiveAbility>().Init(this,1);
+    }
+    public void AddPA_Equipment(GameObject paObj)
+    {
+        var p = Instantiate(paObj, transform);
+        PA_Eq.Add(p.GetComponent<PassiveAbility>());
         p.GetComponent<PassiveAbility>().Init(this,1);
     }
     public void RemovePA(PassiveAbility passiveAbility)
@@ -263,7 +325,7 @@ public class Character : MonoBehaviour
     }
     void RemovePA_Execute()
     {
-        foreach (PassiveAbility deletePA in deletePAs) { passiveAbilities.Remove(deletePA); }
+        foreach (PassiveAbility deletePA in deletePAs) { PA_StE.Remove(deletePA); }
         deletePAs.Clear();
     }
     public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams)
@@ -272,7 +334,7 @@ public class Character : MonoBehaviour
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
         {
             PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
-            foreach (PassiveAbility pa in passiveAbilities)
+            foreach (PassiveAbility pa in PA_StE)
             {
                 if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるなら
                 {
@@ -286,7 +348,7 @@ public class Character : MonoBehaviour
         if (!f)
         {
             var s = Instantiate(StEParams.applyStE, transform);
-            passiveAbilities.Add(s.GetComponent<PassiveAbility>());
+            PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
             s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>());
             s.GetComponent<PassiveAbility>().Init(this, 0);
@@ -298,7 +360,7 @@ public class Character : MonoBehaviour
     public bool CheckHasStE(GameObject StEObj)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-        foreach (PassiveAbility pa in passiveAbilities)
+        foreach (PassiveAbility pa in PA_StE)
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName) { return true; }
         }
@@ -312,13 +374,28 @@ public class Character : MonoBehaviour
     public void DisplayInfo()
     {
         string info = charaStatus.GetInfo();
-        //info += "◇◇特性◇◇\n";
-        info += "\n";
-        foreach(PassiveAbility pa in passiveAbilities)
+        info += "\n◇◇特性◇◇\n";
+        foreach (PassiveAbility pa in PA_Pa)
+        {
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
+        } 
+        
+        info += "\n◇◇状態異常◇◇\n";
+        foreach (PassiveAbility pa in PA_StE)
         {
             info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
         }
-        info+=targetButton.GetPositionManager().GetPEInfo();
+
+        if (charaStatus.player)
+        {
+            info += "\n◇◇装備品◇◇\n";
+            foreach (PassiveAbility pa in PA_Eq)
+            {
+                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            }
+        }
+        
+        info+="\n"+targetButton.GetPositionManager().GetPEInfo();
         infoText.SetCharaInfo(charaStatus.charaName, info, this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
         //charaObj.SetSelectedIcon(true);
@@ -348,6 +425,7 @@ public class Character : MonoBehaviour
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
     public void SetActionInvolvedIcon(bool owner) { targetButton.SetActionInvolvedIcon(owner); }
 
+    //===================================================<<ターン処理>>========================================================
     public void MyTurnStart()
     {
         charaObj.SetTurnIcon_CurentTurn();
@@ -421,7 +499,7 @@ public class Character : MonoBehaviour
     //}
 
 
-    //ここからアクションによって呼ばれる関数
+    //======================================================<<アクションによって呼ばれる関数>>=================================================
     public void DecreaseHP(int value)
     {
         charaStatus.HP -= value;
@@ -535,7 +613,24 @@ public class Character : MonoBehaviour
         if (charaStatus.SAN <= 0) { Die(1); }
     }
 
-
+    //==================================================<<ステータス変更系>>===========================================================
+    /// <summary>HP、SANの差分回復はしないことに注意 </summary>
+    public void ModifyStatus(CharaStatusMod mod,bool set)
+    {
+        int n = 1;
+        if (!set) { n = -1; }
+        if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, false); }
+        if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, false); }
+        if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
+        if (mod.CRITC != 0) { AddCRITC(mod.CRITC * n); }
+        if (mod.CRITD != 0) { AddCRITD(mod.CRITD * n); }
+        if (mod.EVD != 0) { AddEVD(mod.EVD * n); }
+        if (mod.ACC != 0) { AddACC(mod.ACC * n); }
+        if (mod.ACT != 0) { AddACT(mod.ACT * n); }
+        if (mod.turnPerRound != 0) { AddTurnPerRound(mod.turnPerRound * n); }
+        if (mod.GHeal != 0) { AddGHeal(mod.GHeal * n); }
+        if (mod.RHeal != 0) { AddRHeal(mod.RHeal * n); }
+    }
     public void AddMaxHP(int value_base, float value_mul, bool heal)
     {
         int oldMaxHP = charaStatus.maxHP;
@@ -550,20 +645,34 @@ public class Character : MonoBehaviour
         if (charaStatus.HP > charaStatus.maxHP) { charaStatus.HP = charaStatus.maxHP; }
         charaObj.SetHPandShieldBar();
     }
+    public void AddMaxSAN(int value_base, float value_mul, bool heal)
+    {
+        int oldMaxSAN = charaStatus.maxSAN;
+
+        charaStatus.maxSAN_base += value_base;
+        charaStatus.maxSAN_mul += value_mul;
+        charaStatus.maxSAN = Mathf.Max(1, Mathf.RoundToInt(charaStatus.maxSAN_base * charaStatus.maxSAN_mul / 100f));
+        if (charaStatus.maxSAN > oldMaxSAN&&heal)//差分を回復
+        {
+            charaStatus.SAN += charaStatus.maxSAN - oldMaxSAN;
+        }
+        if (charaStatus.SAN > charaStatus.maxSAN) { charaStatus.SAN = charaStatus.maxSAN; }
+        charaObj.SetSANBar();
+    }
     public void AddATK(int value_base, float value_mul)
     {
         charaStatus.ATK_base += value_base;
         charaStatus.ATK_mul += value_mul;
         charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt(charaStatus.ATK_base * charaStatus.ATK_mul / 100f));
     }
-    public void AddEVD(float value)
-    {
-        charaStatus.EVD += value;
-    }
-    public void AddACT(int value)
-    {
-        charaStatus.ACT += value;
-    }
+    public void AddCRITC(float value) { charaStatus.CRITC += value; }
+    public void AddCRITD(float value) { charaStatus.CRITD += value; }
+    public void AddEVD(float value) { charaStatus.EVD += value; }
+    public void AddACC(float value) { charaStatus.ACC += value; }
+    public void AddACT(int value) { charaStatus.ACT += value; }
+    public void AddTurnPerRound(int value) { charaStatus.turnPerRound += value; }
+    public void AddGHeal(float value) { charaStatus.GHeal += value; }
+    public void AddRHeal(float value) { charaStatus.RHeal += value; }
     public void AddShield(int value)
     {
         charaStatus.shield += value;
@@ -721,7 +830,7 @@ public class Character : MonoBehaviour
             //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
             charaStatus.abilitiesStatus[i].AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
         }
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnBattleStart(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnBattleStart(); }
         RemovePA_Execute();
     }
     public void OnRoundStart()
@@ -733,18 +842,18 @@ public class Character : MonoBehaviour
     }
     public void OnTurnStart()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnStart(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(); }
         RemovePA_Execute();
     }
     public void OnTurnEnd()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnTurnEnd(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(); }
         targetButton.GetPositionManager().OnTurnEnd();
         RemovePA_Execute();
     }
     public void OnRoundEnd()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnRoundEnd(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundEnd(); }
         RemovePA_Execute();
     }
     public void OnBattleEnd() { }
@@ -752,19 +861,19 @@ public class Character : MonoBehaviour
 
     public void OnActivateAbility()
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnActivateAbility(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(); }
         RemovePA_Execute();
     }
     /// <summary>攻撃時、命中したかに関わらず誘発</summary>
     public void OnAttack(bool evadeed,bool missed)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnAttack(evadeed,missed); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evadeed,missed); }
         RemovePA_Execute();
     }
     /// <summary>攻撃命中時</summary>
     public void OnDamage(int DMG, Character target)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamage(DMG, target); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target); }
         RemovePA_Execute();
     }
     public void OnCRIT(int ID) { }
@@ -776,12 +885,12 @@ public class Character : MonoBehaviour
 
     public void BecomeAbilityTarget(Character actor)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.BecomeAbilityTarget(actor); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.BecomeAbilityTarget(actor); }
         RemovePA_Execute();
     }
     public void OnDamaged(int DMG, Character attacker)
     {
-        foreach (PassiveAbility passiveAbility in passiveAbilities) { passiveAbility.OnDamaged(DMG, attacker); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(DMG, attacker); }
         RemovePA_Execute();
     }
     public void OnCRITed(int ID) { }
