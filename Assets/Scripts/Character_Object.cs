@@ -14,6 +14,8 @@ public class Character_Object : MonoBehaviour
     [SerializeField]
     GameObject HPBarObj;
     [SerializeField]
+    Image HPBarColor;
+    [SerializeField]
     GameObject ShieldBarObj;
     [SerializeField]
     GameObject SANBarObj;
@@ -48,6 +50,7 @@ public class Character_Object : MonoBehaviour
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb, bool dropItem)
     {
         HPBar = HPBarObj.GetComponent<Slider>();
+        if (characterStatus.obstacle) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
         ShieldBar = ShieldBarObj.GetComponent<Slider>();
         SANBar = SANBarObj.GetComponent<Slider>();
 
