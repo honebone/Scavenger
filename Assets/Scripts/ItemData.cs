@@ -8,8 +8,7 @@ public class ItemData : ScriptableObject
 {
     public enum ItemType { material,  equipment,tool }
     public ItemType itemType;
-    public enum MaterialTag { other, valuables, slay, ore, food, plant, processed }
-    public MaterialTag[] materialTags=new MaterialTag[1];
+   
 
     public string itemName;
     [TextArea(3, 10)]
@@ -18,7 +17,14 @@ public class ItemData : ScriptableObject
     public enum Rarity { common, uncommon, rare, epic, legendary }
     public Rarity rarity;
     public Sprite sprite;
+
+    //material
+    public enum MaterialTag { other, valuables, slay, ore, food, plant, processed }
+    public MaterialTag[] materialTags=new MaterialTag[1];
     public int price;//Šî–{‚Æ‚È‚é”ƒ’l
+
+    //equipment
+    public bool weapon;
 
     [Header("tool,equipment—p")]
     public GameObject manager;
