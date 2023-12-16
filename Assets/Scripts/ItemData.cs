@@ -24,7 +24,8 @@ public class ItemData : ScriptableObject
     public int price;//Šî–{‚Æ‚È‚é”ƒ’l
 
     //equipment
-    public bool weapon;
+    public enum EquipmentTag { none, weapon, armor }
+    public EquipmentTag equipmentTag;
 
     [Header("tool,equipment—p")]
     public GameObject manager;

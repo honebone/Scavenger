@@ -377,6 +377,7 @@ public class Action : MonoBehaviour
 
         List<GameObject> actionModsObj = new List<GameObject>(actionStatus.actionMods);
         //Ç±Ç±Ç≈êFÅXÇ»actionMdsÇí«â¡
+        if (!notChara) { actionModsObj.AddRange(ownerStatus.actionMods); }
         foreach(GameObject actionModObj in actionModsObj)
         {
             var am = Instantiate(actionModObj);

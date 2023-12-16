@@ -152,7 +152,7 @@ public class Character : MonoBehaviour
             for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i].Init(data.abilities[i],i); }
             passiveAbilities = new List<GameObject>(data.passiveAbilities);
 
-            actionMods = data.actionMods;
+            actionMods = new List<GameObject>(data.actionMods);
 
             corpse = data.corpse;
             dropItems = data.dropItems;
@@ -719,6 +719,12 @@ public class Character : MonoBehaviour
         else { charaStatus.stun--; }
     }
 
+    public void AddActionMod(GameObject mod ,bool set)
+    {
+        if (set) { charaStatus.actionMods.Add(mod); }
+        else { charaStatus.actionMods.Remove(mod); }
+       
+    }
     public void Ability_AddRemain(int value, int index) { charaStatus.abilitiesStatus[index].AddRemain(value); }
     public void Ability_SetRemain(int value, int index) { charaStatus.abilitiesStatus[index].SetRemain(value); }
     public void Ability_StartCoolDown(int index) { charaStatus.abilitiesStatus[index].StartCoolDown(); }

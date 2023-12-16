@@ -20,6 +20,7 @@ MonoBehaviour:
   notChara: 0
   player: 1
   playable: 1
+  obstacle: 0
   variableSprites:
   - {fileID: 2008618111378349020, guid: 3540d5ef60ed3b0418712411b2a40186, type: 3}
   spriteForUI: {fileID: 21300000, guid: ef699dc194a839c46a6bcbf52267aa48, type: 3}
@@ -43,7 +44,7 @@ MonoBehaviour:
   CRITD: 1.5
   EVD: 3
   ACC: 90
-  ACT: 7
+  ACT: 700
   turnPerRound: 1
   GHeal: 100
   RHeal: 100

@@ -98,12 +98,15 @@ public class Definer : MonoBehaviour
         { ItemData.MaterialTag.other,"その他"},{ ItemData.MaterialTag.valuables,"貴重品"},{ ItemData.MaterialTag.slay,"討伐"},{ ItemData.MaterialTag.ore,"採掘"},{ ItemData.MaterialTag.food,"食料"}
         ,{ ItemData.MaterialTag.plant,"植物"},{ ItemData.MaterialTag.processed,"加工品"}
     };
+    public static Dictionary<ItemData.EquipmentTag, string> equipmentTagName = new Dictionary<ItemData.EquipmentTag, string>()
+    {
+        { ItemData.EquipmentTag.none,"その他"},{ ItemData.EquipmentTag.weapon,"武器"},{ ItemData.EquipmentTag.armor,"防具"}
+    };
 
     [System.Serializable]
     public struct Item
     {
         public ItemData.ItemType itemType;
-        public ItemData.MaterialTag[] materialTags;
 
         public string itemName;
         [TextArea(3, 10)]
@@ -111,23 +114,30 @@ public class Definer : MonoBehaviour
         public int amountPerStack;
         public ItemData.Rarity rarity;
         public Sprite sprite;
-        public int price;//基本となる買値
 
         public bool specialInfo;
+
+        public ItemData.MaterialTag[] materialTags;
+        public int price;//基本となる買値
+
         public GameObject manager;
+        public ItemData.EquipmentTag equipmentTag;
 
         public int amount;
         public ItemData itemData;
         public void Init(ItemData data)
         {
             itemType = data.itemType;
-            materialTags = data.materialTags;
             itemName = data.itemName;
             info = data.info;
             amountPerStack = data.amountPerStack;
             rarity = data.rarity;
             sprite = data.sprite;
+
+            materialTags = data.materialTags;
             price = data.price;
+
+            equipmentTag = data.equipmentTag;
             manager = data.manager;
 
 
@@ -161,7 +171,12 @@ public class Definer : MonoBehaviour
 
 
                     case ItemData.ItemType.equipment:
-                        s += "<<装備品>>\n\n";
+                        s += "<<装備品>>\n";
+                        if (equipmentTag != ItemData.EquipmentTag.none)
+                        {
+                            s += string.Format("[{0}]\n", Definer.equipmentTagName[equipmentTag]);
+                        }
+                        s += "\n";
                         s += manager.GetComponent<PassiveAbility>().GetPAInfo();
                         break;
 

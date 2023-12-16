@@ -22,6 +22,7 @@ public class PA_Equipment : PassiveAbility
             string s = "";
             if (info_start != "") { s = info_start + "\n"; }         
             s += statusMod.GetInfo();
+            s += itemData.info;
             return s;
         }
     }
@@ -35,12 +36,16 @@ public class PA_Equipment : PassiveAbility
     }
     [SerializeField]
     protected EquipmentStatus equipmentStatus;
+    [SerializeField]
+    List<GameObject> actionMods;
     public override void OnPAInit()
     {
         character.ModifyStatus(equipmentStatus.statusMod, true);
+        foreach(GameObject mod in actionMods) { character.AddActionMod(mod, true); }
     }
     public override void AtTheEnd()
     {
         character.ModifyStatus(equipmentStatus.statusMod, false);
+        foreach (GameObject mod in actionMods) { character.AddActionMod(mod, false); }
     }
 }
