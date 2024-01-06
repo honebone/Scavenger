@@ -194,6 +194,7 @@ public class CharactersManager : MonoBehaviour
     {
         [Header("<ポジション(int)を検索する>")]
         public bool searchAsPos;
+        public bool onlyEmpty;
         [Header("<検索範囲の指定>")]
         public bool player;
         public bool enemy;
@@ -203,6 +204,7 @@ public class CharactersManager : MonoBehaviour
         public bool back;
 
         [Header("\n\n\n<検索条件の指定>")]
+        public List<CharacterData.CharacterTag> characterTags;
         public List<GameObject> StE;
         public List<GameObject> PE;
 
@@ -223,25 +225,72 @@ public class CharactersManager : MonoBehaviour
             if(!condition.front && status.position.GetColumn()==0) { continue; }
             if (!condition.mid && status.position.GetColumn() == 1) { continue; }
             if (!condition.back && status.position.GetColumn() == 2) { continue; }
-            bool f = false;
-            foreach(GameObject s in condition.StE)
+            bool matched = condition.characterTags.Count == 0;
+            foreach (CharacterData.CharacterTag tag in condition.characterTags)
             {
-                if (!character.CheckHasStE(s))
+                if (status.characterTags.Contains(tag))
                 {
-                    f = true;
+                    matched = true;
                     break;
                 }
             }
+            if (!matched) { continue; }
+            matched = condition.StE.Count == 0;
+
+            foreach (GameObject s in condition.StE)
+            {
+                if (character.CheckHasStE(s))
+                {
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) { continue; }
+            matched = condition.PE.Count == 0; 
+
             foreach (GameObject s in condition.PE)
             {
-                if (!character.CheckHasPE(s))
+                if (character.CheckHasPE(s))
                 {
-                    f = true;
+                    matched = true;
                     break;
                 }
             }
-            if (f) { continue; }
+            if (!matched) { continue; }
             list.Add(character);
+
+        }
+        return list;
+    }
+
+    public List<int> SearchPosWithCondition(SearchCharaCondition condition)
+    {
+        if (!condition.searchAsPos)
+        {
+            infoText.AddErrorText("キャラクターを検索するためにポジション検索を行っています!!");
+            return null;
+        }
+        List<int> list = new List<int>();
+        for (int i =0;i<18;i++)
+        {
+            if (!condition.player && i < 9) { continue; }
+            if (!condition.enemy && i >= 9) { continue; }
+            if (!condition.front && i.GetColumn() == 0) { continue; }
+            if (!condition.mid && i.GetColumn() == 1) { continue; }
+            if (!condition.back && i.GetColumn() == 2) { continue; }
+            if (condition.onlyEmpty && CheckCharaExist(i)) { continue; }
+            bool matched = condition.PE.Count == 0;
+
+            foreach (GameObject s in condition.PE)
+            {
+                if (GetPositionManager(i).CheckHasPE(s))
+                {
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) { continue; }
+            list.Add(i);
 
         }
         return list;

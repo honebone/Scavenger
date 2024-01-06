@@ -228,4 +228,9 @@ public static class Extentions
         if (x == 0 || x == 5) { return 2; }
         return -1;
     }
+
+    public static float GetPercent(this int value,int max)
+    {
+        return value * 100f / max;
+    }
 }

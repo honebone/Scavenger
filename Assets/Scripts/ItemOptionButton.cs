@@ -13,7 +13,7 @@ public class ItemOptionButton : MonoBehaviour
     Slider amountSlider;
     [SerializeField]
     Text amountText;
-    [SerializeField, Header("0:inventory 1:loot")]
+    [SerializeField, Header("0:inventory 1:loot 2:equip_equipment")]
     int mode;
 
     //[SerializeField]
@@ -21,6 +21,9 @@ public class ItemOptionButton : MonoBehaviour
     //[SerializeField]
     //Text priceText;
     Definer.Item item;
+    Character equipChara;
+    bool hasEquipment;
+    Definer.Item currentEquipment;
 
     int amount = 1;
     int maxAmount;
@@ -51,12 +54,20 @@ public class ItemOptionButton : MonoBehaviour
         switch (mode)
         {
             case 0:
-                maxAmount = inventory.GetItemAmount(item.itemData);
+                maxAmount = inventory.GetItemAmount(item.data);
                 break;
             case 1:
-                maxAmount = loot.GetItemAmount(item.itemData);
+                maxAmount = loot.GetItemAmount(item.data);
                 break;
         }
+    }
+    public void Init_Equipment(Definer.Item i,Character c,bool h,Definer.Item current)
+    {
+        item = i;
+        equipChara = c;
+        hasEquipment = h;
+        currentEquipment = current;
+        if (mode != 2) { FindObjectOfType<InfoText>().AddErrorText("modeÇÃê›íËÉ~ÉX"); }
     }
     void StartSelectAmount()
     {
@@ -64,10 +75,10 @@ public class ItemOptionButton : MonoBehaviour
         switch (p)
         {
             case 0:
-                amountSlider.maxValue = inventory.GetItemAmount(item.itemData);
+                amountSlider.maxValue = inventory.GetItemAmount(item.data);
                 break;
             case 1:
-                amountSlider.maxValue = loot.GetItemAmount(item.itemData);
+                amountSlider.maxValue = loot.GetItemAmount(item.data);
                 break;
                 //case 2:
                 //    amountSlider.maxValue = Mathf.Clamp(Mathf.Floor(inventory.GetMaterialAmount(1) / buyPrice * 1f), 0, item.amount);
@@ -114,7 +125,7 @@ public class ItemOptionButton : MonoBehaviour
                 inventory.RemoveItem(item, amount);
                 break;
             case 1:
-                inventory.AddItem(item, amount);
+                inventory.AddItem(item, amount,true);
                 loot.RemoveItem(item, amount);
                 //FindObjectOfType<ExpeditionInventoryUI>().ToggleInventoryToMaterial();
                 break;
@@ -148,7 +159,7 @@ public class ItemOptionButton : MonoBehaviour
     }
     public void ObtainAll()
     {
-        inventory.AddItem(item, item.amount);
+        inventory.AddItem(item, item.amount, true);
         loot.RemoveItem(item, item.amount);
         //FindObjectOfType<ExpeditionInventoryUI>().ToggleInventoryToMaterial();
         CloseOptionnUI();
@@ -157,6 +168,17 @@ public class ItemOptionButton : MonoBehaviour
     {
         p = 1;
         StartSelectAmount();
+    }
+    public void Equip()
+    {
+        if (hasEquipment) { equipChara.UnequipItem(currentEquipment); }
+        inventory.RemoveItem(item, item.amount);
+        equipChara.EquipItem(item);
+
+        FindObjectOfType<CharaDetailUI>().EndSelectEquipment();
+        FindObjectOfType<CharaDetailUI>().Refresh();
+        inventory.CloseInventory();
+        CloseOptionnUI();
     }
     //public void BuyAll()
     //{

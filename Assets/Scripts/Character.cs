@@ -84,6 +84,8 @@ public class Character : MonoBehaviour
 
         public bool doesDropItem;
 
+        public List<Definer.Item> equipments;
+
         //以下バフ
         public int hide;
 
@@ -189,9 +191,9 @@ public class Character : MonoBehaviour
             burnRes = data.burnRes;
 
             moveRes = data.moveRes;
-           
 
             instanceID = ID;
+            equipments = new List<Definer.Item>();
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
     }
@@ -313,13 +315,22 @@ public class Character : MonoBehaviour
         PA_Pa.Add(p.GetComponent<PassiveAbility>());
         p.GetComponent<PassiveAbility>().Init(this,1);
     }
-    public void AddPA_Equipment(GameObject paObj)
+    public void EquipItem(Definer.Item item)
     {
-        var p = Instantiate(paObj, transform);
+        var p = Instantiate(item.data.manager, transform);
         PA_Eq.Add(p.GetComponent<PassiveAbility>());
         p.GetComponent<PassiveAbility>().Init(this,1);
+        item.createdManager = p;
+        charaStatus.equipments.Add(item);
     }
-    public void RemovePA(PassiveAbility passiveAbility)
+    public void UnequipItem(Definer.Item remove)
+    {
+        charaStatus.equipments.Remove(remove);
+        PA_Eq.Remove(remove.createdManager.GetComponent<PassiveAbility>());
+        Destroy(remove.createdManager);
+        FindObjectOfType<Inventory>().AddItem(remove, 1, false);
+    }
+    public void RemovePA_StE(PassiveAbility passiveAbility)
     {
         deletePAs.Add(passiveAbility);
     }
@@ -500,6 +511,10 @@ public class Character : MonoBehaviour
 
 
     //======================================================<<アクションによって呼ばれる関数>>=================================================
+   public void Kill(Character attacker)
+    {
+        Die(0);
+    }
     public void DecreaseHP(int value)
     {
         charaStatus.HP -= value;

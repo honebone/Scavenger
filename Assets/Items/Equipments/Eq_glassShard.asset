@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Eq_glassShard
   m_EditorClassIdentifier: 
   itemType: 1
-  materialTags: 00000000
   itemName: "\u30AC\u30E9\u30B9\u7247"
   info: 
   amountPerStack: 1
-  rarity: 4
+  rarity: 2
   sprite: {fileID: 21300000, guid: 251ad742c6fc9a943b9fcb7dda27246c, type: 3}
+  materialTags: 00000000
   price: 0
+  equipmentTag: 0
   manager: {fileID: 9185327421234476493, guid: 6621593e1ccf5b742bb867c13f2740a2, type: 3}

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   itemName: "\u30ED\u30F3\u30B0\u30BD\u30FC\u30C9"
-  info: "\u8FD1\u63A5\u653B\u6483\u306EATK\u88DC\u6B63+10\uFF05"
+  specialInfo: 0
+  info: 
   amountPerStack: 1
-  rarity: 0
+  rarity: 1
   sprite: {fileID: 21300000, guid: 2c40980b778e9284295a66b4bf592d55, type: 3}
   materialTags: 00000000
   price: 0

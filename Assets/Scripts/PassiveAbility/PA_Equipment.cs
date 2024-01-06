@@ -8,6 +8,8 @@ public class PA_Equipment : PassiveAbility
     public struct EquipmentStatus
     {
         public ItemData itemData;
+        [TextArea(3, 10)]
+        public string equipmentInfo;
         public Character.CharaStatusMod statusMod;
 
         [TextArea(3, 10)]
@@ -22,7 +24,7 @@ public class PA_Equipment : PassiveAbility
             string s = "";
             if (info_start != "") { s = info_start + "\n"; }         
             s += statusMod.GetInfo();
-            s += itemData.info;
+            if (equipmentInfo != "") { s += equipmentInfo + "\n"; }
             return s;
         }
     }

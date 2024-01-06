@@ -22,8 +22,8 @@ public class LootButton : MonoBehaviour
         item = i;
         infoText = it;
 
-        itemImage.sprite = item.sprite;
-        frame.color = item.rarity.ToColor();
+        itemImage.sprite = item.data.sprite;
+        frame.color = item.data.rarity.ToColor();
         amountText.text = item.amount.ToString();
     }
 
@@ -31,7 +31,7 @@ public class LootButton : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText(item.itemName.ColorStr(item.rarity.ToColor()), item.GetInfo());
+            infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
         }
         if (Input.GetMouseButtonDown(0))
         {

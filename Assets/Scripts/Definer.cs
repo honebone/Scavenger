@@ -87,7 +87,7 @@ public class Definer : MonoBehaviour
     public static Dictionary<CharacterData.CharacterTag, string> CharacterTagName = new Dictionary<CharacterData.CharacterTag, string>(){
         {CharacterData.CharacterTag.other,"特殊" },{CharacterData.CharacterTag.corpse,"死体" },{CharacterData.CharacterTag.human,"人間" },{CharacterData.CharacterTag.beast,"獣"  }
         ,{CharacterData.CharacterTag.insect,"虫"  },{CharacterData.CharacterTag.undead,"不死者"  },{CharacterData.CharacterTag.artifact,"人工物"  },{CharacterData.CharacterTag.plant,"植物"  }
-        ,{CharacterData.CharacterTag.horror,"異形"  }
+        ,{CharacterData.CharacterTag.horror,"異形"  },{CharacterData.CharacterTag.obstacle,"障害物"  }
     };
     public static Dictionary<ItemData.Rarity, string> rarityName = new Dictionary<ItemData.Rarity, string>()
     {
@@ -106,88 +106,59 @@ public class Definer : MonoBehaviour
     [System.Serializable]
     public struct Item
     {
-        public ItemData.ItemType itemType;
-
-        public string itemName;
-        [TextArea(3, 10)]
-        public string info;
-        public int amountPerStack;
-        public ItemData.Rarity rarity;
-        public Sprite sprite;
-
-        public bool specialInfo;
-
-        public ItemData.MaterialTag[] materialTags;
-        public int price;//基本となる買値
-
-        public GameObject manager;
-        public ItemData.EquipmentTag equipmentTag;
-
         public int amount;
-        public ItemData itemData;
-        public void Init(ItemData data)
+        /// <summary>[装備品、道具] 生成したPassiveAbilityがアタッチされたオブジェクト</summary>
+        public GameObject createdManager;
+        public ItemData data;
+        public void Init(ItemData d)
         {
-            itemType = data.itemType;
-            itemName = data.itemName;
-            info = data.info;
-            amountPerStack = data.amountPerStack;
-            rarity = data.rarity;
-            sprite = data.sprite;
-
-            materialTags = data.materialTags;
-            price = data.price;
-
-            equipmentTag = data.equipmentTag;
-            manager = data.manager;
-
-
-            itemData=data;
+            data = d;
         }
         public string GetInfo()
         {
             string s = "";
 
-            if (!specialInfo)
+            if (!data.specialInfo)
             {
-                s += string.Format("{0}\n", Definer.rarityName[rarity].ColorStr(rarity.ToColor()));
+                s += string.Format("{0}\n", Definer.rarityName[data.rarity].ColorStr(data.rarity.ToColor()));
                 bool f = false;
                 
-                switch (itemType)
+                switch (data.itemType)
                 {
                     case ItemData.ItemType.material:
                         s += "<<素材>>\n\n";
                         s += "[";
-                        foreach (ItemData.MaterialTag tag in materialTags)
+                        foreach (ItemData.MaterialTag tag in data.materialTags)
                         {
                             if (f) { s += ", "; }
                             f = true;
                             s += Definer.materialTagName[tag];
                         }
                         s += "]\n";
-                        s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
-                        s += string.Format("価値：{0}G\n", price.ToString());
-                        s += string.Format("スロット単価：{0}G\n", (price * amountPerStack).ToString());
+                        s += string.Format("スロットあたりの所持数：{0}\n", data.amountPerStack.ToString());
+                        s += string.Format("価値：{0}G\n", data.price.ToString());
+                        s += string.Format("スロット単価：{0}G\n", (data.price * data.amountPerStack).ToString());
                         break;
 
 
                     case ItemData.ItemType.equipment:
                         s += "<<装備品>>\n";
-                        if (equipmentTag != ItemData.EquipmentTag.none)
+                        if (data.equipmentTag != ItemData.EquipmentTag.none)
                         {
-                            s += string.Format("[{0}]\n", Definer.equipmentTagName[equipmentTag]);
+                            s += string.Format("[{0}]\n", Definer.equipmentTagName[data.equipmentTag]);
                         }
                         s += "\n";
-                        s += manager.GetComponent<PassiveAbility>().GetPAInfo();
+                        s += data.manager.GetComponent<PassiveAbility>().GetPAInfo();
                         break;
 
 
                     case ItemData.ItemType.tool:
                         s += "<<道具>>\n\n";
-                        s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
-                        s += manager.GetComponent<PassiveAbility>().GetPAInfo();
+                        s += string.Format("スロットあたりの所持数：{0}\n", data.amountPerStack.ToString());
+                        s += data.manager.GetComponent<PassiveAbility>().GetPAInfo();
                         break;
                 }
-                s += info;
+                s += data.info;
             }
            
             return s;

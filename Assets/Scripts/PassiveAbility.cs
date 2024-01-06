@@ -5,7 +5,7 @@ using UnityEngine;
 public class PassiveAbility : MonoBehaviour
 {
    protected Character character;
-    protected Character.CharacterStatus charaStatus;
+    //protected Character.CharacterStatus charaStatus;
     protected CharactersManager charactersManager;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
@@ -21,14 +21,14 @@ public class PassiveAbility : MonoBehaviour
     {
         character = c;
         PAType = type;
-        charaStatus = character.GetCharacterStatus();
+        //charaStatus = character.GetCharacterStatus();
         charactersManager=FindObjectOfType<CharactersManager>();
         OnPAInit();
     }
     public void Disable()
     {
         AtTheEnd();
-        character.RemovePA(this);
+        character.RemovePA_StE(this);
         Destroy(gameObject);
     }
     public virtual void OnPAInit() { }

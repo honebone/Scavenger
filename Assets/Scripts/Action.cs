@@ -42,19 +42,19 @@ public class Action : MonoBehaviour
        [Header("column,rowのとき条件に一致していないキャラも巻き込むか")]
         public bool involveAll;
         public CharactersManager.SearchCharaCondition condition;
-        public bool targetPlayerSide;
-        public bool targetEnemySide;
+        //public bool targetPlayerSide;
+        //public bool targetEnemySide;
        
-        public bool selectableFront;
-        public bool selectableMid;
-        public bool selectableBack;
+        //public bool selectableFront;
+        //public bool selectableMid;
+        //public bool selectableBack;
         public bool ignoreMark;
         [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
         public bool ignoreHide;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係")]
-
+        public bool kill;
         public int decreaseHP_min;
         public int decreaseHP_max;
         public float decreaseHPPer_min;
@@ -83,6 +83,8 @@ public class Action : MonoBehaviour
         public int SANDamage_max;
         public int shieldAdd_min;
         public int shieldAdd_max;
+        public int shieldPercent_min;
+        public int shieldPercent_max;
         public bool shieldRemove_all;
         public int shieldRemove_min;
         public int shieldRemove_max;
@@ -123,8 +125,10 @@ public class Action : MonoBehaviour
         {
             string s = "";
 
+            //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             s += string.Format("対象：{0}\n", targetInfo);
+            if (kill) { s += "殺害する\n"; }
             if (decreaseHP_max > 0)
             {
                 s += string.Format("HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
@@ -173,6 +177,7 @@ public class Action : MonoBehaviour
             if (SANHeal_max > 0) { s += string.Format("正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
             if (SANDamage_max > 0) { s += string.Format("正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
             if (shieldAdd_max > 0) { s += string.Format("シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
+            if (shieldPercent_max > 0) { s += string.Format("maxHPの{0}％に等しいシールドを付与\n", GetValueRange(shieldPercent_min, shieldPercent_max)); }
             if (shieldRemove_all) { s += "シールドを0にする\n"; }
             else if (shieldRemove_max > 0) { s += string.Format("シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
 
@@ -251,6 +256,7 @@ public class Action : MonoBehaviour
             actionObject = actionData.actionObject;
             actionMods = new List<GameObject>(actionData.actionMods);
 
+            kill = actionData.kill;
             decreaseHP_min = actionData.decreaseHP_min;
             decreaseHP_max = actionData.decreaseHP_max;
 
@@ -394,18 +400,23 @@ public class Action : MonoBehaviour
             if (actionStatus.VE_OnTargets) { Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.position), Quaternion.identity); }
             if (!targetStatus.dead)
             {
-                if (actionsStatus[i].decreaseHP_max > 0)//HP減少
+                if (actionsStatus[i].kill)
+                {
+                    actionStatus.actionTargets[i].Kill(actionStatus.actionOwner);
+                }
+
+                if (actionsStatus[i].decreaseHP_max > 0&& actionStatus.actionTargets[i].CheckAlive())//HP減少
                 {
                     actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
                 }
-                if (actionsStatus[i].decreaseHPPer_max > 0)//HP減少
+                if (actionsStatus[i].decreaseHPPer_max > 0&& actionStatus.actionTargets[i].CheckAlive())//HP減少
                 {
                     float percent = Random.Range(actionsStatus[i].decreaseHPPer_min, actionsStatus[i].decreaseHPPer_max) / 100f;
                     actionStatus.actionTargets[i].DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
                 }
 
 
-                if (actionsStatus[i].ATKMod_max > 0)//攻撃
+                if (actionsStatus[i].ATKMod_max > 0&& actionStatus.actionTargets[i].CheckAlive())//攻撃
                 {
                     bool CRIT = false;
                     int DMG = 0;
@@ -488,6 +499,11 @@ public class Action : MonoBehaviour
                     if (actionsStatus[i].shieldAdd_max > 0)//シールド
                     {
                         actionStatus.actionTargets[i].AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
+                    }
+                    if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
+                    {
+                        int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
+                        actionStatus.actionTargets[i].AddShield(Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f));
                     }
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去
                     {

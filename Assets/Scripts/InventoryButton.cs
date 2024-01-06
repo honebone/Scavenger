@@ -14,32 +14,44 @@ public class InventoryButton : MonoBehaviour
     [SerializeField]
     Sprite[] frames;
 
+   
 
     InfoText infoText;
+    CharaDetailUI detailUI;
 
     Definer.Item item;
-    public void Init(Definer.Item i,InfoText it)
+    public void Init(Definer.Item i,InfoText it,CharaDetailUI d)
     {
         item = i;
         infoText = it;
+        detailUI = d;
 
-        itemImage.sprite = item.sprite;
-        frame.sprite = frames[(int)item.itemType];
-        frame.color = item.rarity.ToColor();
-        if(item.itemType!= ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
+        itemImage.sprite = item.data.sprite;
+        frame.sprite = frames[(int)item.data.itemType];
+        frame.color = item.data.rarity.ToColor();
+        if(item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
         else { amountText.text = ""; }
     }
+
+   
 
     public void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText(item.itemName.ColorStr(item.rarity.ToColor()), item.GetInfo());
+            infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
         }
         if (Input.GetMouseButtonDown(0))
         {
             //equipment tool / sell deliverÇÃÇ∆Ç´Ç∆Ç©Ç≈èÍçáï™ÇØ
-            FindObjectOfType<Inventory>().CreateOptionUI_Normal(transform.position, item);
+            if (detailUI.CheckSelectingEquipment() && item.data.itemType == ItemData.ItemType.equipment)//ëïîıëIë
+            {
+                FindObjectOfType<Inventory>().CreateOptionUI_Equipment(transform.position, item);
+            }
+            else
+            {
+                FindObjectOfType<Inventory>().CreateOptionUI_Normal(transform.position, item);
+            }
         }
     }
     

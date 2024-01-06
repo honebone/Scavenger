@@ -14,7 +14,7 @@ public class DebugFunction : MonoBehaviour
     int[] amount;
     Definer.Item[] items;
     [SerializeField]
-    GameObject Eq;
+    ItemData Eq;
     [SerializeField]
     AreaManager.EnemySet enemySetTest;
 
@@ -43,7 +43,8 @@ public class DebugFunction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
+            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
+            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10,true);
@@ -58,7 +59,7 @@ public class DebugFunction : MonoBehaviour
         {
             foreach(Definer.Item item in items)
             {
-                FindObjectOfType<Inventory>().AddItem(item,item.amount);
+                FindObjectOfType<Inventory>().AddItem(item,item.amount,true);
             }
             
         }
@@ -72,7 +73,10 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            charactersManager.GetCharacterWithPos(7).AddPA_Equipment(Eq);
+
+            Definer.Item i = new Definer.Item();
+            i.Init(Eq);
+            charactersManager.GetCharacterWithPos(7).EquipItem(i);
 
         }
     }

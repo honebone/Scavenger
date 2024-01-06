@@ -11,7 +11,9 @@ public class ItemData : ScriptableObject
    
 
     public string itemName;
-    [TextArea(3, 10)]
+
+    public bool specialInfo;
+    [TextArea(3, 10),Header("フレーバーテキストとか?")]
     public string info;
     public int amountPerStack = 1;
     public enum Rarity { common, uncommon, rare, epic, legendary }

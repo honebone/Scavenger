@@ -62,13 +62,13 @@ public class LootPanel : MonoBehaviour
             while (a > 0)
             {
                 Definer.Item i = new Definer.Item();
-                i.Init(item.itemData);
-                i.amount = Mathf.Min(i.amountPerStack, a);
+                i.Init(item.data);
+                i.amount = Mathf.Min(i.data.amountPerStack, a);
 
                 var ib = Instantiate(itemButton, content);
                 ib.GetComponent<LootButton>().Init(i, infoText);
 
-                a -= item.amountPerStack;
+                a -= item.data.amountPerStack;
             }
         }
     }
@@ -100,7 +100,7 @@ public class LootPanel : MonoBehaviour
         //infoText.AddLogText(string.Format("Åú{0}x{1}Çì¸éË", item.itemName.ColorStr(item.rarity.ToColor()), amount.ToString()));
         for (int i = 0; i < loots.Count; i++)
         {
-            if (loots[i].itemData == item.itemData)
+            if (loots[i].data == item.data)
             {
                 Definer.Item replace = loots[i];
                 replace.amount += amount;
@@ -128,7 +128,7 @@ public class LootPanel : MonoBehaviour
 
         for (int i = loots.Count - 1; i >= 0; i--)
         {
-            if (loots[i].itemData == remove.itemData)
+            if (loots[i].data == remove.data)
             {
 
                 //infoText.AddLogText(string.Format("Åõ{0}x{1}Çé∏Ç¡ÇΩ", remove.itemName.ColorStr(remove.rarity.ToColor()), amount.ToString()));
@@ -157,7 +157,7 @@ public class LootPanel : MonoBehaviour
     {
         foreach (Definer.Item item in loots)
         {
-            inventory.AddItem(item, item.amount);
+            inventory.AddItem(item, item.amount, true);
         }
         EndLoot();
     }
@@ -176,7 +176,7 @@ public class LootPanel : MonoBehaviour
 
     void Sort()
     {
-        loots.Sort((a, b) => (int)b.rarity - (int)a.rarity);
+        loots.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
         SetButtons();
     }
 
@@ -184,7 +184,7 @@ public class LootPanel : MonoBehaviour
     {
         foreach (Definer.Item item in loots)
         {
-            if (item.itemData == itemData) { return item.amount; }
+            if (item.data == itemData) { return item.amount; }
         }
         return 0;
     }

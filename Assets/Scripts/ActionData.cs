@@ -20,6 +20,8 @@ public class ActionData : ScriptableObject
     public GameObject actionObject;
     public List<GameObject> actionMods;
 
+    public bool kill;
+
     public int decreaseHP_min;
     public int decreaseHP_max;
 
@@ -45,6 +47,8 @@ public class ActionData : ScriptableObject
     public int SANDamage_max;
     public int shieldAdd_min;
     public int shieldAdd_max;
+    public int shieldPercent_min;
+    public int shieldPercent_max;
     public bool shieldRemove_all;
     public int shieldRemove_min;
     public int shieldRemove_max;

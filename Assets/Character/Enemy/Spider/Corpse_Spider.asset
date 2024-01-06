@@ -15,7 +15,7 @@ MonoBehaviour:
   fileName: C_Spider
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6B7B\u4F53"
-  characterTags: 01000000
+  characterTags: 0100000009000000
   immovable: 0
   notChara: 0
   player: 0

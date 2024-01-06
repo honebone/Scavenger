@@ -17,19 +17,29 @@ public class Inventory : MonoBehaviour
     GameObject inventoryButton;
     [SerializeField]
     GameObject optionPanel_normal;
+    [SerializeField]
+    GameObject optionPanel_equipment;
 
-
-
+    /// <summary>0:all 1:material 2:equipment 3:tool</summary>
+    int sort;
     InfoText infoText;
+    CharaDetailUI detailUI;
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();
+        detailUI=FindObjectOfType<CharaDetailUI>();
     }
    
     public void ToggleInventory()
     {
         if (inventoryPanel.activeSelf) { CloseInventory(); }
         else { OpenInventory(); }
+    }
+    /// <summary>0:all 1:material 2:equipment 3:tool</summary>
+    public void ChangeSort(int s)
+    {
+        sort = s;
+        SetButtons();
     }
     public void OpenInventory()
     {
@@ -50,19 +60,32 @@ public class Inventory : MonoBehaviour
                 Destroy(content.GetChild(i).gameObject);
             }
         }
+        ItemData.ItemType sortType=ItemData.ItemType.material;
+        switch (sort)
+        {
+            case 2:
+                sortType = ItemData.ItemType.equipment;
+                break;
+            case 3:
+                sortType = ItemData.ItemType.tool;
+                break;
+        }
         foreach(Definer.Item item in inventory)
         {
-            int a = item.amount;
-            while(a > 0)
+            if (sort==0||item.data.itemType==sortType)
             {
-                Definer.Item i = new Definer.Item();
-                i.Init(item.itemData);
-                i.amount = Mathf.Min(i.amountPerStack, a);
+                int a = item.amount;
+                while (a > 0)
+                {
+                    Definer.Item i = new Definer.Item();
+                    i.Init(item.data);
+                    i.amount = Mathf.Min(i.data.amountPerStack, a);
 
-                var ib = Instantiate(inventoryButton, content);                
-                ib.GetComponent<InventoryButton>().Init(i, infoText);
+                    var ib = Instantiate(inventoryButton, content);
+                    ib.GetComponent<InventoryButton>().Init(i, infoText,detailUI);
 
-                a -= item.amountPerStack;
+                    a -= item.data.amountPerStack;
+                }
             }
         }
     }
@@ -76,7 +99,17 @@ public class Inventory : MonoBehaviour
         o.transform.position = pos;
         o.GetComponent<ItemOptionButton>().Init(item);
     }
+    public void CreateOptionUI_Equipment(Vector3 pos, Definer.Item item)
+    {
+        CloseOptionUI();
+        pos.x += 135 * (1f * Screen.width / 1600);
+        pos.y -= 70 * (1f * Screen.height / 900);
+        var o = Instantiate(optionPanel_equipment, optionUIPanel);
+        o.transform.position = pos;
+        o.GetComponent<ItemOptionButton>().Init_Equipment(item, detailUI.GetDisplayingChara(), !detailUI.CheckEmpty(), detailUI.GetSelectedEquipment());
+    }
 
+    /// <summary>インベントリに限らず、選択肢UIを消去する際はこれを呼ぶ</summary>
     public void CloseOptionUI()
     {
         if (optionUIPanel.childCount != 0)
@@ -86,17 +119,21 @@ public class Inventory : MonoBehaviour
                 Destroy(optionUIPanel.GetChild(i).gameObject);
             }
         }
+        detailUI.Refresh();
         //lootや納品等のoptionUIも閉じる
     }
 
-    public void AddItem(Definer.Item item,int amount)
+    public void AddItem(Definer.Item item,int amount,bool note)
     {
         Definer.Item replace = new Definer.Item();
 
-        infoText.AddLogText(string.Format("●{0}x{1}を入手", item.itemName.ColorStr(item.rarity.ToColor()), amount.ToString()));
+        if (note)
+        {
+            infoText.AddLogText(string.Format("●{0}x{1}を入手", item.data.itemName.ColorStr(item.data.rarity.ToColor()), amount.ToString()));
+        }
         for (int i=0;i<inventory.Count;i++)
         {
-            if (inventory[i].itemData == item.itemData)
+            if (inventory[i].data == item.data)
             {
                 replace = inventory[i];
                 replace.amount += amount;
@@ -107,7 +144,7 @@ public class Inventory : MonoBehaviour
                 return;
             }
         }
-        replace.Init(item.itemData);
+        replace.Init(item.data);
         replace.amount = amount;
         inventory.Add(replace);
         SortInventory();
@@ -126,10 +163,10 @@ public class Inventory : MonoBehaviour
 
         for (int i = inventory.Count - 1; i >= 0; i--)
         {
-            if (inventory[i].itemData == remove.itemData)
+            if (inventory[i].data == remove.data)
             {
                
-                infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.itemName.ColorStr(remove.rarity.ToColor()), amount.ToString()));
+                infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.data.itemName.ColorStr(remove.data.rarity.ToColor()), amount.ToString()));
                 
                 if (inventory[i].amount == amount) { inventory.RemoveAt(i); }//減らす量がスロットのamountと同じ
                 else if (inventory[i].amount < amount)//減らす量がamountより多い
@@ -154,7 +191,7 @@ public class Inventory : MonoBehaviour
 
     void SortInventory()
     {
-        inventory.Sort((a, b) => (int)b.rarity - (int)a.rarity);
+        inventory.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
         SetButtons();
     }
 
@@ -162,7 +199,7 @@ public class Inventory : MonoBehaviour
     {
         foreach (Definer.Item item in inventory)
         {
-            if (item.itemData == itemData) { return item.amount; }
+            if (item.data == itemData) { return item.amount; }
         }
         return 0;
     }

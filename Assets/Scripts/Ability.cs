@@ -303,17 +303,22 @@ public class Ability : MonoBehaviour
                     print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                     break;
                 case Action.ActionStatus.TargetType.single:
-                    for (int i = 0; i < 18; i++)
+                    foreach(int i in charactersManager.SearchPosWithCondition(actionStatus.condition))
                     {
-                        if (charactersManager.CheckCharaExist(i)) { continue; }
-                        if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
-                        if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
-                        if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
-                        if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
-                        if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
                         targetIconPos.Add(new Vector2Int(i, 0));
                         targetPool.Add(new List<int>() { i });
                     }
+                    //for (int i = 0; i < 18; i++)
+                    //{
+                    //    if (charactersManager.CheckCharaExist(i)) { continue; }
+                    //    if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
+                    //    if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
+                    //    if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
+                    //    if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
+                    //    if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
+                    //    targetIconPos.Add(new Vector2Int(i, 0));
+                    //    targetPool.Add(new List<int>() { i });
+                    //}
                     break;
             }
         }
