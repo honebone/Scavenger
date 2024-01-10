@@ -104,6 +104,8 @@ public class Action : MonoBehaviour
         public int moveLower;
         public int moveBackword;
 
+        public List<ActionData.AbilityRemainControll> abilityRemainControlls;
+
         [Header("以下には手を出すな")]
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
@@ -227,6 +229,16 @@ public class Action : MonoBehaviour
                 if (moveBackword > 0) { s += string.Format("{0}後退\n", moveBackword); }
             }
 
+            foreach(ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
+            {
+                s += string.Format("<{0}>の使用回数を", remainControll.abilityData.abilityName);
+                if (remainControll.set) { s += string.Format("{0}にする\n", remainControll.value); }
+                else
+                {
+                    s += string.Format("{0}増加\n", remainControll.value);
+                }
+            }
+
             if (actionInfo != "") { s += actionInfo + "\n"; }
 
             return s;
@@ -297,6 +309,8 @@ public class Action : MonoBehaviour
             moveLower = actionData.moveLower;
             moveForword = actionData.moveForword;
             moveBackword = actionData.moveBackword;
+
+            abilityRemainControlls = new List<ActionData.AbilityRemainControll>(actionData.abilityRemainControlls);
         }
 
         public ActionStatus Modify(ActionMod.ActionModStatus mod)
@@ -313,7 +327,7 @@ public class Action : MonoBehaviour
             modifiedStatus.CRITCMod += mod.CRITCMod;
             modifiedStatus.CRITDMod += mod.CRITDMod;
             if (mod.sureHit) { modifiedStatus.sureHit = true; }
-            if (unevadable) { modifiedStatus.unevadable = true; }
+            if (mod.unevadable) { modifiedStatus.unevadable = true; }
 
             modifiedStatus.healValue_min += mod.healValue;
             modifiedStatus.healValue_max += mod.healValue;
@@ -583,6 +597,11 @@ public class Action : MonoBehaviour
                             {
                                 infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
                             }
+                        }
+
+                        foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
+                        {
+                            actionStatus.actionTargets[i].AbilityRemain(remainControll);
                         }
                     }
                 }

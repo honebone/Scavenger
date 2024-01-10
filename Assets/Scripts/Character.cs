@@ -757,6 +757,21 @@ public class Character : MonoBehaviour
         charaObj.MoveStart(charaStatus.position);
     }
     
+    public void AbilityRemain(ActionData.AbilityRemainControll remainControll)
+    {
+        for(int i=0; i<charaStatus.abilitiesStatus.Length;i++)
+        {
+            if (charaStatus.abilitiesStatus[i].abilityData == remainControll.abilityData)
+            {
+                infoText.AddDebugText("ok");
+                if (remainControll.set) { charaStatus.abilitiesStatus[i].remain = remainControll.value; }
+                else
+                {
+                    charaStatus.abilitiesStatus[i].remain = Mathf.Clamp(charaStatus.abilitiesStatus[i].remain + remainControll.value, 0, charaStatus.abilitiesStatus[i].maxRemain);
+                }
+            }
+        }
+    }
     
     //‚±‚±‚Ü‚ÅƒAƒNƒVƒ‡ƒ“‚É‚æ‚Á‚ÄŒÄ‚Î‚ê‚éŠÖ”
 

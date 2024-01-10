@@ -40,6 +40,8 @@ public class Ability : MonoBehaviour
         public int remain;
         public int index;
 
+        public AbilityData abilityData;
+
         //public Character character;
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
@@ -147,6 +149,7 @@ public class Ability : MonoBehaviour
             index = idx;
             remain=remainOnBattleStart;
 
+            abilityData = data;
             //character = owner;
         }
         public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }

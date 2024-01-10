@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AMod_Tag : ActionMod
+public class AMod_Hunter_Hunt : ActionMod
 {
     [SerializeField]
-    CharacterData.CharacterTag checkTag;
+    float maxATKMod;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
+        Character.CharacterStatus ownerStatus = statusRef.actionOwner.GetCharacterStatus();
+        actionModStatus.ATKMod = Mathf.Clamp(ownerStatus.ACC - 100, 0, maxATKMod);
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if (statusRef.actionTargets[i].GetCharacterStatus().characterTags.Contains(checkTag))
-            {
-                actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
-            }
+            actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
         }
         return actionsStatus;
     }

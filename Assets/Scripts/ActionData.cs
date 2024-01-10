@@ -62,6 +62,16 @@ public class ActionData : ScriptableObject
     public CharacterData[] summonChara;
     public float[] summonChanceWeight;
 
+    [System.Serializable]
+    public struct AbilityRemainControll
+    {
+        public AbilityData abilityData;
+
+        [Header("true:使用回数をvalueにする false:使用回数にvalueを足す")]
+        public bool set;
+        public int value;
+    }
+    public List<AbilityRemainControll> abilityRemainControlls;
 
     public float moveChance;
     public int moveUpper;
