@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ability : MonoBehaviour
 {
     [System.Serializable]
-    public struct AbilityStatus
+    public class AbilityStatus
     {
         public string abilityName;
 
@@ -60,16 +60,15 @@ public class Ability : MonoBehaviour
                 {
                     if (f)
                     {
-                        f = true;
                         s += "ÅA";
                     }
+                    f = true;
                     s += "íÜ";
                 }
                 if (availableBack)
                 {
                     if (f)
                     {
-                        f = true;
                         s += "ÅA";
                     }
                     s += "å„";
@@ -103,7 +102,7 @@ public class Ability : MonoBehaviour
             return s;
         }
 
-        public void Init(AbilityData data,int idx)
+        public AbilityStatus(AbilityData data,int idx)
         {
             abilityName = data.abilityName;
 

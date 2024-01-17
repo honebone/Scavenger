@@ -10,43 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_E2_3Prey
+  m_Name: A_P2_StunArrow
   m_EditorClassIdentifier: 
-  abilityName: "\u6355\u98DF"
+  abilityName: "\u9EBB\u75FA\u77E2"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
+  activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
   spriteIndex: 0
-  SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+  SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
   conditionInfo: 
   cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
-  availableFront: 1
+  hasRemain: 1
+  remainOnBattleStart: 1
+  maxRemain: 1
+  availableFront: 0
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u6355\u98DF"
+  - actionName: "\u9EBB\u75FA\u77E2"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
-    actionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nCRIT\u7387\u88DC\u6B63+50\uFF05"
-    VE_OnTargets: {fileID: 0}
+    targetInfo: "\u4E2D\u3001\u5F8C\u5217\u306E\u65751\u4F53"
+    actionInfo: 
+    VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
     actionObject: {fileID: 0}
     actionMods:
-    - {fileID: 4806407844009289101, guid: 266474ca3f5d442439d5c4d5889f6c26, type: 3}
+    - {fileID: 111478303779076297, guid: 65be4c6435fc65647b263d8b05c38f89, type: 3}
     targetType: 1
     friendly: 0
     involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
-      enemy: 0
-      front: 1
+      player: 0
+      enemy: 1
+      front: 0
       mid: 1
       back: 1
       characterTags: 
@@ -61,12 +61,12 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     cantCounter: 0
-    attackType: 0
-    ATKMod_min: 50
-    ATKMod_max: 80
+    attackType: 1
+    ATKMod_min: 30
+    ATKMod_max: 60
     ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0.5
+    CRITCMod: -5
+    CRITDMod: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -84,7 +84,11 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+      applyChance: 70
+      stack: 1
+      value: 0
     applyPEParams: []
     summon: 0
     summonChara: []
@@ -97,11 +101,11 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
     dontChangeSprite: 0
-    activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
+    activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 0d000000

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: NonCharacter
+  m_EditorClassIdentifier: 
+  fileName: 
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: No Chara
+  characterTags: 
+  immovable: 0
+  notChara: 1
+  player: 0
+  playable: 0
+  obstacle: 0
+  variableSprites: []
+  spriteForUI: {fileID: 0}
+  abilities: []
+  passiveAbilities: []
+  actionMods: []
+  corpse: {fileID: 0}
+  dropItems: []
+  surviveFatalWounds: 0
+  maxHP: 0
+  maxSAN: 0
+  ATK: 100
+  CRITC: 0
+  CRITD: 0
+  EVD: 0
+  ACC: 100
+  ACT: 10
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 0
+  stunRes: 0
+  bleedRes: 0
+  poisonRes: 0
+  burnRes: 0
+  moveRes: 0

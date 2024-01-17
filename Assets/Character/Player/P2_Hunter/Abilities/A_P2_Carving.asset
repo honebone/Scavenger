@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_E2_3Prey
+  m_Name: A_P2_Carving
   m_EditorClassIdentifier: 
-  abilityName: "\u6355\u98DF"
+  abilityName: "\u5265\u304E\u53D6\u308A"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
+  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   spriteIndex: 0
-  SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+  SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
@@ -30,25 +30,25 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u6355\u98DF"
+  - actionName: "\u5265\u304E\u53D6\u308A"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
-    actionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nCRIT\u7387\u88DC\u6B63+50\uFF05"
-    VE_OnTargets: {fileID: 0}
+    targetInfo: "\u524D\u3001\u4E2D\u5217\u306E\u65751\u4F53"
+    actionInfo: "\u5BFE\u8C61\u306B\u30B9\u30BF\u30F3\u304C\u3042\u308B\u3068\u304D\uFF1A\nATK\u88DC\u6B63\uFF0B30\uFF05"
+    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
     actionObject: {fileID: 0}
     actionMods:
-    - {fileID: 4806407844009289101, guid: 266474ca3f5d442439d5c4d5889f6c26, type: 3}
+    - {fileID: 8890461273052653707, guid: 60d7edb06edaad84da49e1540ecc6af8, type: 3}
     targetType: 1
     friendly: 0
     involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
-      enemy: 0
+      player: 0
+      enemy: 1
       front: 1
       mid: 1
-      back: 1
+      back: 0
       characterTags: 
       StE: []
       PE: []
@@ -64,9 +64,9 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 50
     ATKMod_max: 80
-    ACCMod: 0
+    ACCMod: -10
     CRITCMod: 0
-    CRITDMod: 0.5
+    CRITDMod: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     shieldAdd_max: 0
     shieldPercent_min: 0
     shieldPercent_max: 0
-    shieldRemove_all: 0
+    shieldRemove_all: 1
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
@@ -97,11 +97,11 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
     dontChangeSprite: 0
-    activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
+    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 0d000000

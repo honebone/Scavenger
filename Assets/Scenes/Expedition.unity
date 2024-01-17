@@ -7857,6 +7857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: babd3870ecf20f6418635758a34e9e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nonCharacterData: {fileID: 11400000, guid: f6b41042119a04846a72bd720b512159, type: 2}
   colorRef_Inspector:
     debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     abilityColors:
@@ -16636,8 +16637,8 @@ MonoBehaviour:
   area:
     areaName: "\u30C6\u30B9\u30C8"
     background: {fileID: 0}
-    minLength: 8
-    maxLength: 20
+    minLength: 6
+    maxLength: 8
     branchChance: 33
     blindChance: 20
     roomEvents:

@@ -151,7 +151,8 @@ public class Character : MonoBehaviour
             spriteForUI = data.spriteForUI;
 
             abilitiesStatus = new Ability.AbilityStatus[data.abilities.Length];
-            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i].Init(data.abilities[i],i); }
+            //FindObjectOfType<InfoText>().AddDebugText(abilitiesStatus[0].abilityName);
+            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i]=new Ability.AbilityStatus(data.abilities[i],i); }
             passiveAbilities = new List<GameObject>(data.passiveAbilities);
 
             actionMods = new List<GameObject>(data.actionMods);
@@ -267,7 +268,7 @@ public class Character : MonoBehaviour
     SoundManager soundManager;
     LootPanel loot;
 
-    public void Init(CharacterStatus status,Character_Object obj,Character_TargetButton tb,bool dropItem)
+    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem)
     {
         charaStatus = status;
         charaObj = obj;
@@ -282,7 +283,7 @@ public class Character : MonoBehaviour
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
         charaObj.SetHPandShieldBar();
         charaObj.SetSANBar();
-        foreach(GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa); }
+        foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa); }
 
         targetButton.SetCharacter(this);
 
@@ -290,15 +291,15 @@ public class Character : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         util = FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
-        charactersManager=FindObjectOfType<CharactersManager>();
-         soundManager=FindObjectOfType<SoundManager>();
+        charactersManager = FindObjectOfType<CharactersManager>();
+        soundManager = FindObjectOfType<SoundManager>();
         loot = FindObjectOfType<LootPanel>();
 
         if (!charaStatus.playable)
         {
             charaObj.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
             infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
-        }   
+        }
         //TurnIconはラウンド開始時にセット
     }
     public List<PassiveAbility> GetPassiveAbilities()
@@ -759,18 +760,32 @@ public class Character : MonoBehaviour
     
     public void AbilityRemain(ActionData.AbilityRemainControll remainControll)
     {
-        for(int i=0; i<charaStatus.abilitiesStatus.Length;i++)
+        foreach(Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (charaStatus.abilitiesStatus[i].abilityData == remainControll.abilityData)
+            if (ability.abilityData == remainControll.abilityData)
             {
-                infoText.AddDebugText("ok");
-                if (remainControll.set) { charaStatus.abilitiesStatus[i].remain = remainControll.value; }
+                if (remainControll.set) { ability.remain = remainControll.value; }
                 else
                 {
-                    charaStatus.abilitiesStatus[i].remain = Mathf.Clamp(charaStatus.abilitiesStatus[i].remain + remainControll.value, 0, charaStatus.abilitiesStatus[i].maxRemain);
+                    int maxRemain = ability.maxRemain;
+                    if (ability.maxRemain==0) { maxRemain = 999; }
+                    ability.remain = Mathf.Clamp(ability.remain + remainControll.value, 0, maxRemain);
                 }
+                infoText.AddLogText(string.Format("{0}の<{1}>の使用回数が{2}になった", charaStatus.charaName, ability.abilityName.ColorStr(ability.abilityType.ToColor()), ability.remain));
             }
         }
+        //for(int i=0; i<charaStatus.abilitiesStatus.Length;i++)
+        //{
+        //    if (charaStatus.abilitiesStatus[i].abilityData == remainControll.abilityData)
+        //    {
+        //        infoText.AddDebugText("ok");
+        //        if (remainControll.set) { charaStatus.abilitiesStatus[i].remain = remainControll.value; }
+        //        else
+        //        {
+        //            charaStatus.abilitiesStatus[i].remain = Mathf.Clamp(charaStatus.abilitiesStatus[i].remain + remainControll.value, 0, charaStatus.abilitiesStatus[i].maxRemain);
+        //        }
+        //    }
+        //}
     }
     
     //ここまでアクションによって呼ばれる関数

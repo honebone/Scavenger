@@ -97,6 +97,9 @@ MonoBehaviour:
     - abilityData: {fileID: 11400000, guid: 17a60b4c339d5534bba13ba8091e2ee8, type: 2}
       set: 1
       value: 3
+    - abilityData: {fileID: 11400000, guid: 5afb68b07fe5dd443b61279761d3ac52, type: 2}
+      set: 1
+      value: 1
     abilityEffect: 1
     abilityType: 3
     SE: {fileID: 0}

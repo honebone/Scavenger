@@ -57,6 +57,7 @@ public class Definer : MonoBehaviour
         public GameObject die;
     }
 
+    public static Character nonCharacter;
     public static ColorRef colorRef;
     public static SoundRef soundRef;
     public static VisualEffectRef VERef;
@@ -64,6 +65,8 @@ public class Definer : MonoBehaviour
     public static GameObject actionManager_General;
     public static GameObject statusEffectIcon;
     public static GameObject positionEffectIcon;
+    [SerializeField]
+    CharacterData nonCharacterData;
     [SerializeField]
     ColorRef colorRef_Inspector;
     [SerializeField]
@@ -167,6 +170,10 @@ public class Definer : MonoBehaviour
 
     private void Awake()
     {
+        //nonCharacter = new Character();
+        //Character.CharacterStatus s = new Character.CharacterStatus();
+        //s.Init(nonCharacterData, -1);
+        //nonCharacter.Init(s, null,null, false);
         colorRef = colorRef_Inspector;
         soundRef = soundRef_Inspector;
         VERef = VERef_Inspector;

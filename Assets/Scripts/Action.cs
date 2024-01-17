@@ -162,7 +162,7 @@ public class Action : MonoBehaviour
                 }
                 s += "\n";
                 if (ACCMod != 0) { s += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
-                if (CRITCMod != 0) { s += string.Format("CRIT率補正：{0}％(加算)\n", GetValueWithSign(CRITCMod)); }
+                if (CRITCMod != 0) { s += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
                 if (CRITDMod != 0) { s += string.Format("CRITダメージ補正：{0}倍\n", GetValueWithSign(CRITDMod)); }
                 if (sureHit) { s += "必中\n"; }
                 if (unevadable) { s += "回避不可\n"; }
@@ -231,7 +231,7 @@ public class Action : MonoBehaviour
 
             foreach(ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
             {
-                s += string.Format("<{0}>の使用回数を", remainControll.abilityData.abilityName);
+                s += string.Format("<{0}>の使用回数を", remainControll.abilityData.abilityName.ColorStr(remainControll.abilityData.abilityType.ToColor()));
                 if (remainControll.set) { s += string.Format("{0}にする\n", remainControll.value); }
                 else
                 {
@@ -598,11 +598,11 @@ public class Action : MonoBehaviour
                                 infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
                             }
                         }
+                    }
 
-                        foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
-                        {
-                            actionStatus.actionTargets[i].AbilityRemain(remainControll);
-                        }
+                    foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
+                    {
+                        actionStatus.actionTargets[i].AbilityRemain(remainControll);
                     }
                 }
                 //else
