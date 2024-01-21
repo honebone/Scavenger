@@ -93,6 +93,9 @@ public class Action : MonoBehaviour
         [Header("ApplyPE")]
         public PositionEffect.PositionEffectParams[] applyPEParams;
 
+        [Header("RemoveStE")]
+        public List<ActionData.RemoveStE> removeStEs;
+
         public bool summon;
         //public int summonSize;
         public CharacterData[] summonChara;
@@ -201,6 +204,13 @@ public class Action : MonoBehaviour
                 s += status.GetPEInfo_forRef();
                 s += "\n";
             }
+            foreach(ActionData.RemoveStE remove in removeStEs)
+            {
+                PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                s += string.Format("{0}を", status.StEName.ColorStr(status.StEType.ToColor()));
+                if (remove.removeAll) { s += "全て除去\n"; }
+                else { s += string.Format("{0}スタック除去", remove.removeAmount); }
+            }
 
             if (summon)
             {
@@ -298,6 +308,7 @@ public class Action : MonoBehaviour
             shieldRemove_max = actionData.shieldRemove_max;
             applySteParams = actionData.applyStEParams;
             applyPEParams = actionData.applyPEParams;
+            removeStEs = new List<ActionData.RemoveStE>(actionData.removeStEs);
 
             summon = actionData.summon;
             //summonSize = actionData.summonSize;
@@ -531,6 +542,10 @@ public class Action : MonoBehaviour
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
                         if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
+                    }
+                    foreach (ActionData.RemoveStE remove in actionsStatus[i].removeStEs)//StE消去
+                    {
+                        actionStatus.actionTargets[i].RemoveStE(remove);
                     }
                     if (actionsStatus[i].moveChance.Probability() && !targetStatus.immovable)//移動
                     {

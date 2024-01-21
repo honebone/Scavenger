@@ -320,24 +320,50 @@ public class Character : MonoBehaviour
     {
         var p = Instantiate(item.data.manager, transform);
         PA_Eq.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this,1);
+        p.GetComponent<PassiveAbility>().Init(this,2);
         item.createdManager = p;
         charaStatus.equipments.Add(item);
     }
     public void UnequipItem(Definer.Item remove)
     {
         charaStatus.equipments.Remove(remove);
-        PA_Eq.Remove(remove.createdManager.GetComponent<PassiveAbility>());
-        Destroy(remove.createdManager);
+        //PA_Eq.Remove(remove.createdManager.GetComponent<PassiveAbility>());
+        //Destroy(remove.createdManager);
+        remove.createdManager.GetComponent<PassiveAbility>().Disable();
         FindObjectOfType<Inventory>().AddItem(remove, 1, false);
     }
-    public void RemovePA_StE(PassiveAbility passiveAbility)
+    public void RemovePA(PassiveAbility passiveAbility)
     {
-        deletePAs.Add(passiveAbility);
+        switch (passiveAbility.GetPAType())
+        {
+            case 0:
+                PA_StE.Remove(passiveAbility);
+                break;
+            case 1:
+                PA_Pa.Remove(passiveAbility);
+                break;
+            case 2:
+                PA_Eq.Remove(passiveAbility);
+                break;
+        }
+        // deletePAs.Add(passiveAbility);
     }
     void RemovePA_Execute()
     {
-        foreach (PassiveAbility deletePA in deletePAs) { PA_StE.Remove(deletePA); }
+        foreach (PassiveAbility deletePA in deletePAs) {
+            switch (deletePA.GetPAType())
+            {
+                case 0:
+                    PA_StE.Remove(deletePA);
+                    break;
+                case 1:
+                    PA_Pa.Remove(deletePA);
+                    break;
+                case 2:
+                    PA_Eq.Remove(deletePA);
+                    break;
+            }
+        }
         deletePAs.Clear();
     }
     public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams)
@@ -367,6 +393,18 @@ public class Character : MonoBehaviour
             charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
             infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
         }
+    }
+    public void RemoveStE(ActionData.RemoveStE removeStE)
+    {
+        PA_StatusEffect.StatusEffectStatus StE = removeStE.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+        foreach (PassiveAbility pa in GetPassiveAbilities())
+        {
+            if (pa.GetPAType()==0&&pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
+            {
+                if (removeStE.removeAll) { pa.GetComponent<PA_StatusEffect>().Disable(); }
+            }
+        }
+        //メッセージ
     }
 
     public bool CheckHasStE(GameObject StEObj)
@@ -724,6 +762,11 @@ public class Character : MonoBehaviour
         if (apply) { charaStatus.marked++; }
         else { charaStatus.marked--; }
     }
+    public void AddHide(bool apply)
+    {
+        if (apply) { charaStatus.hide++; }
+        else { charaStatus.hide--; }
+    }
     public void AddFocused(bool apply)
     {
         if (apply) { charaStatus.focused++; }
@@ -734,6 +777,7 @@ public class Character : MonoBehaviour
         if (apply) { charaStatus.stun++; }
         else { charaStatus.stun--; }
     }
+    
 
     public void AddActionMod(GameObject mod ,bool set)
     {

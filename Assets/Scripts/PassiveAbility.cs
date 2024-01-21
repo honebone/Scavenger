@@ -28,7 +28,8 @@ public class PassiveAbility : MonoBehaviour
     public void Disable()
     {
         AtTheEnd();
-        character.RemovePA_StE(this);
+        character.RemovePA(this);
+        if (PAType == 0) { GetComponent<PA_StatusEffect>().DestroyIcon(); }
         Destroy(gameObject);
     }
     public virtual void OnPAInit() { }

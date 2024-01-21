@@ -236,7 +236,7 @@ public class Ability : MonoBehaviour
                     {
                         targetStatus= target.GetCharacterStatus();
                         int pos = targetStatus.position;
-                        if (targetStatus.hide == 0 || actionStatus.friendly)
+                        if (targetStatus.hide == 0||actionStatus.ignoreHide || actionStatus.friendly)
                         {
                             if (targetStatus.marked > 0 && !actionStatus.friendly) 
                             { targetIconPos.Add(new Vector2Int(pos, 1)); }

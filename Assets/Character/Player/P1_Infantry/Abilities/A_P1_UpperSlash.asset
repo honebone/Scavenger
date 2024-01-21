@@ -42,21 +42,19 @@ MonoBehaviour:
     involveAll: 0
     condition:
       searchAsPos: 0
+      onlyEmpty: 0
       player: 0
       enemy: 1
       front: 1
       mid: 1
       back: 0
+      characterTags: 
       StE: []
       PE: []
-    targetPlayerSide: 0
-    targetEnemySide: 1
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
@@ -66,7 +64,7 @@ MonoBehaviour:
     ATKMod_min: 50
     ATKMod_max: 110
     ACCMod: 0
-    CRITCMod: 0
+    CRITCMod: -3
     CRITDMod: 0
     sureHit: 0
     unevadable: 0
@@ -80,6 +78,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 1
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -93,6 +93,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 1
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
     SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}

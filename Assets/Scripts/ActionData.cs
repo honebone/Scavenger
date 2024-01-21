@@ -57,6 +57,17 @@ public class ActionData : ScriptableObject
     [Header("ApplyPE")]
     public PositionEffect.PositionEffectParams[] applyPEParams;
 
+    [System.Serializable]
+    public class RemoveStE
+    {
+        public GameObject removeStE;
+
+        public bool removeAll;
+        public int removeAmount;
+    }
+    [Header("RemoveStE")]
+    public List<RemoveStE> removeStEs;
+
     public bool summon;
     //public int summonSize;
     public CharacterData[] summonChara;
