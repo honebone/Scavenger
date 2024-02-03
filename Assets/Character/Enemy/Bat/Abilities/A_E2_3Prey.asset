@@ -33,7 +33,7 @@ MonoBehaviour:
   - actionName: "\u6355\u98DF"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
-    actionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nCRIT\u7387\u88DC\u6B63+50\uFF05"
+    actionInfo: "\u25CB\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nCRIT\u7387\u88DC\u6B63+50\uFF05"
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods:
@@ -86,6 +86,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -102,6 +103,4 @@ MonoBehaviour:
     activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 06000000

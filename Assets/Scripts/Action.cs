@@ -121,7 +121,7 @@ public class Action : MonoBehaviour
 
         public Character actionOwner;
         [System.NonSerialized]
-        public Character.CharacterStatus ownerStatus_notChara;
+        //public Character.CharacterStatus ownerStatus_notChara;
         public List<Character> actionTargets;
         /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
         public List<int> actionTargetsInt;
@@ -133,14 +133,14 @@ public class Action : MonoBehaviour
             //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             s += string.Format("対象：{0}\n", targetInfo);
-            if (kill) { s += "殺害する\n"; }
+            if (kill) { s += "・殺害する\n"; }
             if (decreaseHP_max > 0)
             {
-                s += string.Format("HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
+                s += string.Format("・HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
             }
             if (decreaseHPPer_max > 0)
             {
-                s += string.Format("HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max)); 
+                s += string.Format("・HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max)); 
             }
 
             if (ATKMod_max > 0)//攻撃
@@ -149,13 +149,13 @@ public class Action : MonoBehaviour
                 switch (attackType)
                 {
                     case 0:
-                        s += "近接攻撃を行う\n";
+                        s += "・近接攻撃を行う\n";
                         break;
                     case 1:
-                        s += "遠距離攻撃を行う\n";
+                        s += "・遠距離攻撃を行う\n";
                         break;
                     case 2:
-                        s += "魔術攻撃を行う\n";
+                        s += "・魔術攻撃を行う\n";
                         break;
                 }
                 s += string.Format("ATKの{0}％ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
@@ -174,22 +174,22 @@ public class Action : MonoBehaviour
 
             if (healValue_max > 0 || healPercent_max > 0)//回復
             {
-                if (healValue_max > 0) { s += string.Format("HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
-                if (healPercent_max > 0) { s += string.Format("HPを{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
+                if (healValue_max > 0) { s += string.Format("・HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
+                if (healPercent_max > 0) { s += string.Format("・HPを{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
                 s += "\n";
             }
 
-            if (SANHeal_max > 0) { s += string.Format("正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
-            if (SANDamage_max > 0) { s += string.Format("正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
-            if (shieldAdd_max > 0) { s += string.Format("シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
-            if (shieldPercent_max > 0) { s += string.Format("maxHPの{0}％に等しいシールドを付与\n", GetValueRange(shieldPercent_min, shieldPercent_max)); }
-            if (shieldRemove_all) { s += "シールドを0にする\n"; }
-            else if (shieldRemove_max > 0) { s += string.Format("シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
+            if (SANHeal_max > 0) { s += string.Format("・正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
+            if (SANDamage_max > 0) { s += string.Format("・正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
+            if (shieldAdd_max > 0) { s += string.Format("・シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
+            if (shieldPercent_max > 0) { s += string.Format("・maxHPの{0}％に等しいシールドを付与\n", GetValueRange(shieldPercent_min, shieldPercent_max)); }
+            if (shieldRemove_all) { s += "・シールドを0にする\n"; }
+            else if (shieldRemove_max > 0) { s += string.Format("・シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
 
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("{0}％の確率で", StEParams.applyChance);
+                s += string.Format("・{0}％の確率で", StEParams.applyChance);
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 s += status.GetStEInfo_forRef();
@@ -198,16 +198,16 @@ public class Action : MonoBehaviour
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
                 PositionEffect.PositionEffectStatus status = PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus();
-                s += string.Format("{0}％の確率で対象の地点に", PEParams.applyChance);
+                s += string.Format("・{0}％の確率で対象の地点に", PEParams.applyChance);
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.value, PEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.stack); }
-                s += status.GetPEInfo_forRef();
+                s += PEParams.applyPE.GetComponent<PositionEffect>().GetPEInfo(true);
                 s += "\n";
             }
             foreach(ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("{0}を", status.StEName.ColorStr(status.StEType.ToColor()));
+                s += string.Format("・{0}を", status.StEName.ColorStr(status.StEType.ToColor()));
                 if (remove.removeAll) { s += "全て除去\n"; }
                 else { s += string.Format("{0}スタック除去", remove.removeAmount); }
             }
@@ -216,11 +216,11 @@ public class Action : MonoBehaviour
             {
                 if (summonChara.Length == 1)
                 {
-                    s += string.Format("{0}を召喚", summonChara[0].charaName);
+                    s += string.Format("・{0}を召喚", summonChara[0].charaName);
                 }
                 else
                 {
-                    s += "以下からランダムに召喚\n";
+                    s += "・以下からランダムに召喚\n";
                     float p = 0;
                     foreach (int r in summonChanceWeight) { p += r; }
                     for (int i = 0; i < summonChanceWeight.Length; i++)
@@ -232,7 +232,7 @@ public class Action : MonoBehaviour
 
             if (moveChance > 0)
             {
-                s += string.Format("{0}％の確率で", moveChance);
+                s += string.Format("・{0}％の確率で", moveChance);
                 if (moveForword > 0) { s += string.Format("{0}前進\n", moveForword); }
                 if (moveUpper > 0) { s += string.Format("{0}上昇\n", moveUpper); }
                 if (moveLower > 0) { s += string.Format("{0}下降\n", moveLower); }
@@ -241,7 +241,7 @@ public class Action : MonoBehaviour
 
             foreach(ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
             {
-                s += string.Format("<{0}>の使用回数を", remainControll.abilityData.abilityName.ColorStr(remainControll.abilityData.abilityType.ToColor()));
+                s += string.Format("・<{0}>の使用回数を", remainControll.abilityData.abilityName.ColorStr(remainControll.abilityData.abilityType.ToColor()));
                 if (remainControll.set) { s += string.Format("{0}にする\n", remainControll.value); }
                 else
                 {
@@ -388,7 +388,7 @@ public class Action : MonoBehaviour
         else
         {
             notChara = true;
-            ownerStatus = actionStatus.ownerStatus_notChara;
+            ownerStatus = Definer.nonCharaStatus;
         }
        
         ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
@@ -648,7 +648,7 @@ public class Action : MonoBehaviour
                 {
                     if (PEParams.applyChance.Probability())
                     {
-                        infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName()));
+                        infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName(true)));
                         characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams);
                     }
                 }

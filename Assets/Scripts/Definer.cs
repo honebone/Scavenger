@@ -57,7 +57,7 @@ public class Definer : MonoBehaviour
         public GameObject die;
     }
 
-    public static Character nonCharacter;
+    public static Character.CharacterStatus nonCharaStatus;
     public static ColorRef colorRef;
     public static SoundRef soundRef;
     public static VisualEffectRef VERef;
@@ -170,10 +170,9 @@ public class Definer : MonoBehaviour
 
     private void Awake()
     {
-        //nonCharacter = new Character();
-        //Character.CharacterStatus s = new Character.CharacterStatus();
-        //s.Init(nonCharacterData, -1);
-        //nonCharacter.Init(s, null,null, false);
+        nonCharaStatus  = new Character.CharacterStatus();
+        nonCharaStatus.Init(nonCharacterData, -1);
+
         colorRef = colorRef_Inspector;
         soundRef = soundRef_Inspector;
         VERef = VERef_Inspector;

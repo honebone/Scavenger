@@ -52,7 +52,7 @@ public class PositionManager : MonoBehaviour
     public void RemovePE(PositionEffect positionEffect)
     {
         deletePEs.Add(positionEffect);
-        infoText.AddLogText(string.Format("ポジション{0}から{1}が消去", pos.PosIntToStr(), positionEffect.GetPEName()));
+        infoText.AddLogText(string.Format("ポジション{0}から{1}が消去", pos.PosIntToStr(), positionEffect.GetPEName(true)));
     }
     void RemovePE_Execute()
     {
@@ -102,7 +102,7 @@ public class PositionManager : MonoBehaviour
         {
             foreach (PositionEffect pe in positionEffects)
             {
-                info += string.Format("<{0}>\n{1}\n", pe.GetPEName(), pe.GetPEInfo());
+                info += string.Format("<{0}>[{1}スタック]\n{2}", pe.GetPEName(true),pe.GetPositionEffectStatus().stack,pe.GetPEInfo(false));
             }
         }
         return info;

@@ -22,23 +22,6 @@ public class PositionEffect : MonoBehaviour
         [Header("以下は代入される")]
         public int stack;
         public int value;
-
-        public string GetName()
-        {
-            string s = PEName;
-            if (refValue) { s += value.ToString(); }
-            return s.ColorStr(PEType.ToColor());
-        }
-        public string GetPEInfo_forRef()
-        {
-            string s = PEName;
-            if (refValue) { s += "X"; }
-            s += "：";
-            s += PEInfo + "\n";
-            //if (merge) { s += string.Format("新たに{0}が付与された時は統合される\n",StEName); }
-
-            return s.ColorStr(Color.gray);
-        }
     }
     [SerializeField]
     protected PositionEffectStatus PEStatus;
@@ -75,15 +58,26 @@ public class PositionEffect : MonoBehaviour
         OnPEInit();
     }
 
-    public virtual string GetPEName()
+    public virtual string GetPEName(bool forRef)
     {
-        return PEStatus.GetName();
-    }
-    public virtual string GetPEInfo()
-    {
-        string s = string.Format("({0}スタック)\n", PEStatus.stack);
-        s += PEStatus.GetPEInfo_forRef();
+        string s = PEStatus.PEName;
+        if (PEStatus.refValue)
+        {
+            if (forRef) { s += "X"; }
+            else { s += PEStatus.stack.ToString(); }
+        }
         return s;
+    }
+    public string GetPEInfo(bool forRef)
+    {       
+        string info = string.Format("{0}：\n",GetPEName(forRef));
+        if (PEStatus.PEInfo != "") { info += PEStatus.PEInfo + "\n"; }
+        info += GetAdditionalInfo();
+        return info.ColorStr(Color.gray);
+    }
+    public virtual string GetAdditionalInfo()
+    {
+        return "";
     }
 
     public void SetCharacter(Character c)
