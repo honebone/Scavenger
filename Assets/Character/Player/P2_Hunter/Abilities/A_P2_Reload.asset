@@ -85,6 +85,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -100,6 +101,9 @@ MonoBehaviour:
     - abilityData: {fileID: 11400000, guid: 5afb68b07fe5dd443b61279761d3ac52, type: 2}
       set: 1
       value: 1
+    - abilityData: {fileID: 11400000, guid: ffd4dd574c554114fb04272ed57a6a1f, type: 2}
+      set: 1
+      value: 1
     abilityEffect: 1
     abilityType: 3
     SE: {fileID: 0}
@@ -107,6 +111,4 @@ MonoBehaviour:
     activateSprite: {fileID: 888805494176772457, guid: 1f9bd6e1bdc45474eadf3e2c7d7490e1, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
     actionTargetsInt: 04000000

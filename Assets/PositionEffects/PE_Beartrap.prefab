@@ -48,7 +48,7 @@ MonoBehaviour:
   PEStatus:
     PEName: "\u30C8\u30E9\u30D0\u30B5\u30DF"
     PEInfo: 
-    PEIcon: {fileID: 21300000, guid: f72abd289bc1f4245b372b941b8041a4, type: 3}
+    PEIcon: {fileID: 21300000, guid: 6fed73bfc54002e4181f7b7625721780, type: 3}
     PEType: 2
     maxStack: 1
     merge: 1

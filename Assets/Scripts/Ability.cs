@@ -206,7 +206,7 @@ public class Ability : MonoBehaviour
 
         targetIconPos = new List<Vector2Int>();
         targetPool = new List<List<int>>();
-        if (!actionStatus.summon)//召喚以外のアビリティ
+        if (!actionStatus.condition.searchAsPos)//キャラ選択のアビリティ
         {
             switch (actionStatus.targetType)
             {
@@ -296,7 +296,7 @@ public class Ability : MonoBehaviour
                     break;
             }
         }
-        else//召喚アビリティ
+        else//ポジション選択のアビリティ
         {
             targetEmpty = true;
             switch (actionStatus.targetType)
@@ -310,17 +310,6 @@ public class Ability : MonoBehaviour
                         targetIconPos.Add(new Vector2Int(i, 0));
                         targetPool.Add(new List<int>() { i });
                     }
-                    //for (int i = 0; i < 18; i++)
-                    //{
-                    //    if (charactersManager.CheckCharaExist(i)) { continue; }
-                    //    if (i < 9 && !actionStatus.targetPlayerSide) { continue; }
-                    //    if (i >= 9 && !actionStatus.targetEnemySide) { continue; }
-                    //    if (i.GetColumn() == 0 && !actionStatus.selectableFront) { continue; }
-                    //    if (i.GetColumn() == 1 && !actionStatus.selectableMid) { continue; }
-                    //    if (i.GetColumn() == 2 && !actionStatus.selectableBack) { continue; }
-                    //    targetIconPos.Add(new Vector2Int(i, 0));
-                    //    targetPool.Add(new List<int>() { i });
-                    //}
                     break;
             }
         }
@@ -369,7 +358,7 @@ public class Ability : MonoBehaviour
             {
                 abilityStatus.actionsStatus[i].actionOwner = character;
                 abilityStatus.actionsStatus[i].actionTargetsInt = new List<int>(targetGroups[i]);
-                if (!abilityStatus.actionsStatus[i].summon && abilityStatus.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)//対象がキャラであるアビリティの場合は、actionTargetsの設定
+                if (!abilityStatus.actionsStatus[i].condition.searchAsPos && abilityStatus.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)//対象がキャラであるアビリティの場合は、actionTargetsの設定
                 {
                     abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i], true));
                 }

@@ -37,7 +37,7 @@ public class PositionEffect : MonoBehaviour
         public int value;
     }
     protected Character character;
-    protected Character.CharacterStatus charaStatus;
+    //protected Character.CharacterStatus charaStatus;
     protected CharactersManager charactersManager;
     protected PositionManager positionManager;
 
@@ -53,7 +53,7 @@ public class PositionEffect : MonoBehaviour
         PEIcon.Init(PEStatus);
         if (PEStatus.merge && PEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("merge‚ÆrefValue‚ª“¯‚Étrue‚Æ‚È‚éPE‚Íì‚Á‚Ä‚Í‚¢‚¯‚Ü‚¹‚ñ!!"); }
 
-        charaStatus = character.GetCharacterStatus();
+        //charaStatus = character.GetCharacterStatus();
         charactersManager = FindObjectOfType<CharactersManager>();
         OnPEInit();
     }
