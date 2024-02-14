@@ -37,6 +37,8 @@ public class PassiveAbility : MonoBehaviour
 
     public virtual void OnBattleStart() { }
     public virtual void OnRoundStart() { }
+    public virtual void OnTurnOrderDecide() { }
+
     public virtual void OnTurnStart() { }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }

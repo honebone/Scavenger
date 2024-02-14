@@ -379,6 +379,7 @@ public class Character : MonoBehaviour
                     pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack);
                     charaObj.SetDamageText(string.Format("付与：{0}", StE.GetPAName()), Color.white);
                     infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
+                    soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
                     f = true;
                 }
             }
@@ -392,6 +393,7 @@ public class Character : MonoBehaviour
             s.GetComponent<PassiveAbility>().Init(this, 0);
             charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
             infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+            soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType]);
         }
     }
     public void RemoveStE(ActionData.RemoveStE removeStE)
@@ -889,18 +891,14 @@ public class Character : MonoBehaviour
     }
     public void Retreat()
     {
+        charactersManager.RemoveExistingCharacter(this);
+        battleManager.RemoveTurn(this);
 
+        targetButton.ResetCharacter();
+        charaObj.HideCharacterObj();
     }
 
-    //public void SetOmen()
-    //{
-    //    if (!charaStatus.playable && CheckAlive() && battleManager.CheckIfTurnRemain(this) && !charaStatus.omenSet)
-    //    {
-    //        charaStatus.omen = SelectAbility();
-    //        charaStatus.omenSet = true;
-    //        battleManager.SetOmenIcon(this, charaStatus.omen);
-    //    }
-    //}
+    
     /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる
     /// ランダムプールから除外するアビリティ以外から重みを考慮して選ぶ</summary>
     public virtual Ability.AbilityStatus SelectAbility_Random()
@@ -935,6 +933,11 @@ public class Character : MonoBehaviour
            //予兆設定
         }
     }
+    public void OnTurnOrderDecide()
+    {
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnOrderDecide(); }
+        RemovePA_Execute();
+    }
     public void OnTurnStart()
     {
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(); }
@@ -956,20 +959,29 @@ public class Character : MonoBehaviour
 
     public void OnActivateAbility()
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(); }
-        RemovePA_Execute();
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(); }
+            RemovePA_Execute();
+        }
     }
     /// <summary>攻撃時、命中したかに関わらず誘発</summary>
     public void OnAttack(bool evadeed,bool missed)
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evadeed,missed); }
-        RemovePA_Execute();
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evadeed, missed); }
+            RemovePA_Execute();
+        }
     }
     /// <summary>攻撃命中時</summary>
     public void OnDamage(int DMG, Character target)
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target); }
-        RemovePA_Execute();
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target); }
+            RemovePA_Execute();
+        }
     }
     public void OnCRIT(int ID) { }
     public void OnKill(int ID) { }
@@ -980,13 +992,19 @@ public class Character : MonoBehaviour
 
     public void BecomeAbilityTarget(Character actor)
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.BecomeAbilityTarget(actor); }
-        RemovePA_Execute();
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.BecomeAbilityTarget(actor); }
+            RemovePA_Execute();
+        }
     }
     public void OnDamaged(int DMG, Character attacker)
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(DMG, attacker); }
-        RemovePA_Execute();
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(DMG, attacker); }
+            RemovePA_Execute();
+        }
     }
     public void OnCRITed(int ID) { }
     public void OnEvade( int ID) { }

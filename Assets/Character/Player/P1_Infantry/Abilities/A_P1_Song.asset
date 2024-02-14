@@ -78,11 +78,18 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
+      applyChance: 200
+      stack: 1
+      value: 5
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -91,6 +98,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 3
     SE: {fileID: 0}
@@ -98,7 +106,4 @@ MonoBehaviour:
     activateSprite: {fileID: 4119418044249080708, guid: 35e1157458bea854da69bea9f122877f, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0600000007000000
+    actionTargetsInt: 040000000600000008000000

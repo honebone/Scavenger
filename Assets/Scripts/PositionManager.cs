@@ -127,6 +127,11 @@ public class PositionManager : MonoBehaviour
         foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnRoundStart(); }
         RemovePE_Execute();
     }
+    public void OnTurnOrderDecide()
+    {
+        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnOrderDecide(); }
+        RemovePE_Execute();
+    }
     public void OnTurnStart()
     {
         foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnStart(); }

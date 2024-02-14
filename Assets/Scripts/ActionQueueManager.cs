@@ -39,8 +39,8 @@ public class ActionQueueManager : MonoBehaviour
     SoundManager soundManager;
 
     bool resolving;
-    /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd</summary>
-    int resolveMode;
+    /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide</summary>
+    int resolveMode = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -91,10 +91,11 @@ public class ActionQueueManager : MonoBehaviour
 
     /// <summary>
     /// 誘発が発生しうるタイミングの後に呼ばれる
-    /// 0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd
+    /// 0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide
     /// </summary>
     public void StartResolve(int mode)
     {
+        if (resolveMode != -1) { infoText.AddErrorText(string.Format("resolveModeが予期せぬ値になっています 期待:-1 現在:{0}", resolveMode)); }
         resolveMode = mode;
 
         if (CheckIfActionsRemain())//今回の誘発タイミングでアクションが発生したなら
@@ -266,6 +267,10 @@ public class ActionQueueManager : MonoBehaviour
                 case 5:
                     resolveMode = -1;
                     battleManager.RoundStart();
+                    break ;
+                case 6:
+                    resolveMode = -1;
+                    battleManager.EndTrigger_TurnOrderDecide();
                     break ;
             }
         }

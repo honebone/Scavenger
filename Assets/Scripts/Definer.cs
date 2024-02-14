@@ -46,6 +46,7 @@ public class Definer : MonoBehaviour
         public AudioClip shieldRemove;
         public AudioClip SANHeal;
         public AudioClip SANDecrease;
+        public AudioClip[] ApplyStE;
         public AudioClip summoned;
         public AudioClip stun;
         public AudioClip die1;
@@ -90,7 +91,7 @@ public class Definer : MonoBehaviour
     public static Dictionary<CharacterData.CharacterTag, string> CharacterTagName = new Dictionary<CharacterData.CharacterTag, string>(){
         {CharacterData.CharacterTag.other,"“Áê" },{CharacterData.CharacterTag.corpse,"€‘Ì" },{CharacterData.CharacterTag.human,"lŠÔ" },{CharacterData.CharacterTag.beast,"b"  }
         ,{CharacterData.CharacterTag.insect,"’"  },{CharacterData.CharacterTag.undead,"•s€Ò"  },{CharacterData.CharacterTag.artifact,"lH•¨"  },{CharacterData.CharacterTag.plant,"A•¨"  }
-        ,{CharacterData.CharacterTag.horror,"ˆÙŒ`"  },{CharacterData.CharacterTag.obstacle,"áŠQ•¨"  }
+        ,{CharacterData.CharacterTag.horror,"ˆÙŒ`"  },{CharacterData.CharacterTag.obstacle,"áŠQ•¨"  },{CharacterData.CharacterTag.demihuman,"ˆŸl"  }
     };
     public static Dictionary<ItemData.Rarity, string> rarityName = new Dictionary<ItemData.Rarity, string>()
     {

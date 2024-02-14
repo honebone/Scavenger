@@ -361,13 +361,8 @@ public class Ability : MonoBehaviour
                 if (!abilityStatus.actionsStatus[i].condition.searchAsPos && abilityStatus.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)//対象がキャラであるアビリティの場合は、actionTargetsの設定
                 {
                     abilityStatus.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i], true));
-                }
-                else
-                {
-                    abilityStatus.actionsStatus[i].actionTargets = new List<Character>();
-                }
-                
-                
+                }//そうでない場合actionTargetsがnullとなるが、そのケアはActionのReaolve内で行っている
+
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
             }
             actionQueue.StartResolve(3);

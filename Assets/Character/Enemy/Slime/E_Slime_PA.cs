@@ -10,7 +10,7 @@ public class E_Slime_PA : PA_Personality
     List<int> empty=new List<int>();
     public override void OnDamaged(int DMG, Character attacker)
     {
-        if (33.Probability())
+        if (100.Probability())
         {
             Action.ActionStatus action = actionStatus;
             actionStatus.actionOwner = character;

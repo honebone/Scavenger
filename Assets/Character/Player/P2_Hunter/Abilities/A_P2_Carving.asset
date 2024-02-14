@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u5265\u304E\u53D6\u308A"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  activateSprite: {fileID: 5632338022003734053, guid: e363e940eb7896d4b8b26d55ac3983c8, type: 3}
   spriteIndex: 0
   SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
   abilityType: 1
@@ -62,8 +62,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 50
-    ATKMod_max: 80
+    ATKMod_min: 35
+    ATKMod_max: 70
     ACCMod: -10
     CRITCMod: 0
     CRITDMod: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     abilityType: 1
     SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 5632338022003734053, guid: e363e940eb7896d4b8b26d55ac3983c8, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 0e000000

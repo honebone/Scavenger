@@ -13,6 +13,11 @@ public class BattleManager : MonoBehaviour
     Text roundText;
 
     [SerializeField]
+    Animator anim_battleIcon;
+    [SerializeField]
+    Text battleText;
+
+    [SerializeField]
     GameObject turnOrderIcon;
 
     [SerializeField]
@@ -70,7 +75,10 @@ public class BattleManager : MonoBehaviour
     }
     IEnumerator BattleStartAnim()
     {
-        yield return new WaitForSeconds(1f);
+        anim_battleIcon.SetTrigger("BattleStart");
+        battleText.text = "<color=#890000>Battle!</color>";
+        yield return new WaitForSeconds(1.5f);
+        battleText.text = "";
 
         //戦闘開始時誘発
         Trigger_BattleStart();
@@ -117,7 +125,7 @@ public class BattleManager : MonoBehaviour
         //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
         //}
 
-        StartCoroutine(RoundStartEffect());
+        Trigger_TurnOrderDecide();
     }
 
     public void RemoveTurn(Character chara)
@@ -152,7 +160,7 @@ public class BattleManager : MonoBehaviour
     }
 
 
-
+    public void EndTrigger_TurnOrderDecide() { StartCoroutine(RoundStartEffect()); }
     IEnumerator RoundStartEffect()
     {
         messageText.SetText(string.Format("ラウンド {0}", roundCount));
@@ -210,8 +218,8 @@ public class BattleManager : MonoBehaviour
         currentTurn = 0;
         inRound = false;
         inBattle = false;
-        if (selectedAbility) { infoText.AddDebugText("アビリティ選択中に戦闘が終了しました"); }
-        if (selectingTarget) { infoText.AddDebugText("対象選択中に戦闘が終了しました"); }
+        if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
+        if (selectingTarget) { infoText.AddErrorText("対象選択中に戦闘が終了しました"); }
 
         characterInTurnOrder = new List<Character>();
         turnOrderIcons = new List<Battle_TurnOrderIcon>();
@@ -219,6 +227,28 @@ public class BattleManager : MonoBehaviour
 
         //各キャラクターにも知らせる
         //generatedCharaから死亡しているキャラを消去
+
+        List<Character> test=new List<Character>(charactersManager.GetExistingCharacters_All());
+        foreach(Character chara in test)//プレイヤーでないキャラ全てを消去
+        {
+            if (!chara.GetCharacterStatus().player)
+            {
+                chara.Retreat();
+            }
+        }
+
+        StartCoroutine(BattleEndAnim());
+    }
+
+    IEnumerator BattleEndAnim()
+    {
+        yield return new WaitForSeconds(1f);
+        anim_battleIcon.SetTrigger("BattleEnd");
+        battleText.text = "<color=#FFFF00>Victory!</color>";
+        yield return new WaitForSeconds(1.5f);
+        battleText.text = "";
+
+
         expeditionManager.OnEndBattle();
     }
 
@@ -248,6 +278,18 @@ public class BattleManager : MonoBehaviour
             positionManager.OnRoundStart();
         }
         actionQueue.StartResolve(1);
+    }
+    public void Trigger_TurnOrderDecide()
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnTurnOrderDecide();
+        }
+        foreach (PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnTurnOrderDecide();
+        }
+        actionQueue.StartResolve(6);
     }
     public void Trigger_RoundEnd()
     {

@@ -390,7 +390,8 @@ public class Action : MonoBehaviour
             notChara = true;
             ownerStatus = Definer.nonCharaStatus;
         }
-       
+
+        if (actionStatus.actionTargets == null) { actionStatus.actionTargets = new List<Character>(); }
         ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
         for (int i = 0; i < actionsStatus.Length; i++)
         {
@@ -636,8 +637,12 @@ public class Action : MonoBehaviour
             soundManager.PlaySE(Definer.soundRef.summoned);
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
-                if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
-                else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], false); }
+                if (!characterManager.CheckCharaExist(actionStatus.actionTargetsInt[i]))
+                {
+                    if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
+                    else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], false); }
+                }
+                else { infoText.AddDebugText("召喚能力の打消し"); }
             }
         }
         else//召喚以外の対象地点への効果

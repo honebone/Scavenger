@@ -19,6 +19,8 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
   abilityType: 1
+  excludeRandomPool: 0
+  selectWeight: 1
   conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 0
@@ -31,32 +33,32 @@ MonoBehaviour:
   - actionName: "\u7C98\u6DB2\u98DB\u3070\u3057"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
-    actionInfo: "ACT\u4F4E\u4E0B\u306F\u672A\u5B9F\u88C5"
+    actionInfo: 
     VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
     friendly: 0
-    onlyMatched_AoE: 0
+    involveAll: 0
     condition:
       searchAsPos: 0
+      onlyEmpty: 0
       player: 1
       enemy: 0
       front: 1
       mid: 1
       back: 1
+      characterTags: 
       StE: []
       PE: []
-    targetPlayerSide: 1
-    targetEnemySide: 0
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 1
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 1
     ATKMod_min: 50
@@ -76,6 +78,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -85,6 +89,7 @@ MonoBehaviour:
       stack: 1
       value: 50
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -93,6 +98,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
     SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
@@ -100,6 +106,4 @@ MonoBehaviour:
     activateSprite: {fileID: 4738970142385312939, guid: 3ff87504580194d44a7b40ac2155ea60, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
     actionTargetsInt: 07000000

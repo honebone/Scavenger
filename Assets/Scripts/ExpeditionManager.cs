@@ -45,17 +45,24 @@ public class ExpeditionManager : MonoBehaviour
     AreaManager currentAreaManger;
     RoomEvent currentRE;
 
+    [SerializeField]
+    GameObject REOptionUI;
+    [SerializeField]
+    Transform REOptionButtonsP;
+    [SerializeField]
+    GameObject REOptionButton;
+
+    [SerializeField]
+    AudioClip SE_nextRoom;
+    [SerializeField]
+    Transform REManagerParent;
+
     Map_MapPanel mapPanel;
     InfoText infoText;
     CharactersManager charactersManager;
     BattleManager battleManager;
     FadeOutUI fadeOutUI;
     SoundManager soundManager;
-
-    [SerializeField]
-    AudioClip SE_nextRoom;
-    [SerializeField]
-    Transform REManagerParent;
 
     private void Start()
     {
@@ -103,9 +110,16 @@ public class ExpeditionManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         foreach (Map_LayerPanel layer in layers) { layer.ResetButtonsState(); }
         GetRoomButton(currentPos).SetState_currentPos();
+
+        infoText.AddLogText(string.Format("==============<ëÊ{0}äKëw>==============", currentPos.x));
+
         var r = Instantiate(currentRoom.roomEventManager, REManagerParent);
         r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
         currentRE = r.GetComponent<RoomEvent>();
+    }
+    public void LogREName(string REName)
+    {
+        infoText.AddLogText(string.Format("Å`Å`{0}Å`Å`", REName));
     }
 
     //Ç±Ç±Ç©ÇÁroom event Ç≈åƒÇŒÇÍÇÈä÷êî
@@ -120,6 +134,21 @@ public class ExpeditionManager : MonoBehaviour
 
     }
 
+    public void SetREOptionButtons(List<RoomEvent.REOptionParams> optionParams)
+    {
+        REOptionUI.SetActive(true);
+        for(int i=0; i < optionParams.Count; i++)
+        {
+            var o = Instantiate(REOptionButton, REOptionButtonsP);
+            o.GetComponent<REOptionButton>().Init(optionParams[i], i, infoText,this);
+        }
+    }
+    public void SelectOption(int index)
+    {
+        for(int i = 0; i < REOptionButtonsP.childCount; i++) { Destroy(REOptionButtonsP.GetChild(i).gameObject); }
+        REOptionUI.SetActive(false);
+        currentRE.SelectOption(index);
+    }
 
 
     public void OnEndBattle() { currentRE.OnEndBattle(); }
@@ -133,4 +162,5 @@ public class ExpeditionManager : MonoBehaviour
 
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }
     public Room GetRoom(Vector2Int pos) { return layers[pos.x].GetRoom(pos.y); }
+    public RoomEvent GetCurrentRE() { return currentRE; }
 }

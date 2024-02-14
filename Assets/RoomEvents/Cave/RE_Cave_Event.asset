@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: RE_Cave_Event
   m_EditorClassIdentifier: 
   eventName: "\u30A4\u30D9\u30F3\u30C8"
-  eventInfo: "\u4F55\u304B\u304C\u304A\u3053\u308B\u4E88\u611F"
+  eventInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u51FA\u6765\u4E8B"
   roomEventManager: {fileID: 0}
   eventIcon: {fileID: 21300000, guid: 71d73fded5b631b44a0fa060e31f898d, type: 3}
