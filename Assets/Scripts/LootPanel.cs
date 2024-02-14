@@ -22,6 +22,14 @@ public class LootPanel : MonoBehaviour
     InfoText infoText;
     Inventory inventory;
     ExpeditionManager expeditionManager;
+    [System.Serializable]
+    public class DropItem
+    {
+        public ItemObject dropItemData;
+        public int quantity;
+
+        public ItemData GetItemData() { return dropItemData.GetItemData(); }
+    }
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();
@@ -95,8 +103,28 @@ public class LootPanel : MonoBehaviour
         //inventoryÇ‚î[ïiìôÇÃoptionUIÇ‡ï¬Ç∂ÇÈ
     }
 
+    public void ItemDrop(DropItem dropItem)
+    {
+        float[] dropRate = new float[] { 60, 30, 10, 5, 1 };//test
+        int dropQuantity = 0;
+        for (int i = 0; i < dropItem.quantity; i++)
+        {
+            if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
+            {
+                dropQuantity++;
+            }
+        }
+
+        if (dropQuantity > 0)
+        {
+            Definer.Item item = new Definer.Item();
+            item.Init(dropItem.GetItemData());
+            AddItem(item, dropQuantity);
+        }
+    }
     public void AddItem(Definer.Item item, int amount)
     {
+        item.amount = amount;
         //infoText.AddLogText(string.Format("Åú{0}x{1}Çì¸éË", item.itemName.ColorStr(item.rarity.ToColor()), amount.ToString()));
         for (int i = 0; i < loots.Count; i++)
         {

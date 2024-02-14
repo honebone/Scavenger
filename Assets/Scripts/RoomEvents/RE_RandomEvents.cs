@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class RE_RandomEvents : RoomEvent
 {
+    //[SerializeField]
+    //List<GameObject> events;
     [SerializeField]
-    List<GameObject> events;
+    string eventName;
+    [SerializeField, TextArea(3, 10)]
+    string eventInfo;
 
+    protected int choice = 0;
     //GameObject eventManager;
     public override void StartRoomEvent()
     {
-        var e  =Instantiate(events[Random.Range(0,events.Count)]);
-        //eventManager=e
+        if (eventName != "") { expeditionManager.LogREName(eventName); }
+        if (eventInfo != "") { infoText.AddLogText(eventInfo + "\n"); }
+        infoText.SwitchToLog();
+        StartRandomEvent();
     }
-    public override void SelectOption(int index)
+    public virtual void StartRandomEvent()
     {
-        
+
     }
+
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(1f);

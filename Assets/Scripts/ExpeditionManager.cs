@@ -30,7 +30,7 @@ public class ExpeditionManager : MonoBehaviour
         {
             eventName = data.eventName;
             eventInfo = data.eventInfo;
-            roomEventManager = data.roomEventManager;
+            roomEventManager = data.roomEventManager[Random.Range(0, data.roomEventManager.Count)];
             eventIcon = data.eventIcon;
         }
     }

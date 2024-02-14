@@ -30,7 +30,8 @@ public class CharacterData : ScriptableObject
     public List<GameObject> actionMods;
 
     public CharacterData corpse;
-    public DropItem[] dropItems;
+    //public DropItem[] dropItems;
+    public List<LootPanel.DropItem> dropItems;
 
     //public EquipmentType[] equipableTypes;
     //[Header("equipableTypes‚Æ—v‘f”‚ğ‡‚í‚¹‚é")]

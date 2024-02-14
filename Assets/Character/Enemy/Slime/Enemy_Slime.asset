@@ -20,6 +20,7 @@ MonoBehaviour:
   notChara: 0
   player: 0
   playable: 0
+  obstacle: 0
   variableSprites:
   - {fileID: 9151243408299108219, guid: b5e6c4d61d0e1324181d820b43c7baab, type: 3}
   spriteForUI: {fileID: 21300000, guid: f559c9e6e80cfa644a1afac9b2d6ce92, type: 3}

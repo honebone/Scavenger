@@ -83,6 +83,9 @@ public class Definer : MonoBehaviour
     [SerializeField]
     GameObject positionEffectIcon_Inspector;
 
+    [SerializeField]
+    List<ItemData> equipmentDataBase;
+
 
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"“Áê"}, {AbilityData.AbilityType.attack,"UŒ‚"},{AbilityData.AbilityType.heal,"‰ñ•œ"},

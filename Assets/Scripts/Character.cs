@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
         public List<GameObject> actionMods;
 
         public CharacterData corpse;
-        public DropItem[] dropItems;
+        public List<LootPanel.DropItem> dropItems;
 
         //public EquipmentType[] equipableTypes;
         //[Header("equipableTypesÇ∆óvëfêîÇçáÇÌÇπÇÈ")]
@@ -859,25 +859,26 @@ public class Character : MonoBehaviour
         charactersManager.RemoveExistingCharacter(this);
         battleManager.RemoveTurn(this);
 
-        foreach (DropItem dropItem in charaStatus.dropItems)
+        foreach (LootPanel.DropItem dropItem in charaStatus.dropItems)
         {
             //float[] dropRate = FindObjectOfType<PartyManager>().GetPartyStatus().dropMaterialChance;
-            float[] dropRate = new float[] {60, 30, 10, 5, 1 };
-            int dropQuantity = 0;
-            for (int i = 0; i < dropItem.quantity; i++)
-            {
-                if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
-                {
-                    dropQuantity++;
-                }
-            }
+            //float[] dropRate = new float[] {60, 30, 10, 5, 1 };
+            //int dropQuantity = 0;
+            //for (int i = 0; i < dropItem.quantity; i++)
+            //{
+            //    if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
+            //    {
+            //        dropQuantity++;
+            //    }
+            //}
 
-            if (dropQuantity > 0)
-            {
-                Definer.Item item = new Definer.Item();
-                item.Init(dropItem.GetItemData());
-                loot.AddItem(item, dropQuantity);
-            }
+            //if (dropQuantity > 0)
+            //{
+            //    Definer.Item item = new Definer.Item();
+            //    item.Init(dropItem.GetItemData());
+            //    loot.AddItem(item, dropQuantity);
+            //}
+            loot.ItemDrop(dropItem);
         }
 
         targetButton.ResetCharacter();

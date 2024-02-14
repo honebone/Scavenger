@@ -8,6 +8,6 @@ public class RoomEventData : ScriptableObject
     public string eventName;
     [TextArea(3, 10)]
     public string eventInfo;
-    public GameObject roomEventManager;
+    public List<GameObject> roomEventManager;
     public Sprite eventIcon;
 }
