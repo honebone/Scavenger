@@ -51,6 +51,7 @@ public class Definer : MonoBehaviour
         public AudioClip stun;
         public AudioClip die1;
         public AudioClip die2;
+        public AudioClip[] getItem;
     }
     [System.Serializable]
     public class VisualEffectRef

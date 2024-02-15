@@ -213,7 +213,7 @@ public class ItemOptionButton : MonoBehaviour
 
 
     public void CloseOptionnUI()
-    {
+    {      
         Destroy(gameObject);
     }
 }

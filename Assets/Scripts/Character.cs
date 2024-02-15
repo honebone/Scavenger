@@ -878,7 +878,7 @@ public class Character : MonoBehaviour
             //    item.Init(dropItem.GetItemData());
             //    loot.AddItem(item, dropQuantity);
             //}
-            loot.ItemDrop(dropItem);
+            loot.DropItem_Enemy(dropItem);
         }
 
         targetButton.ResetCharacter();

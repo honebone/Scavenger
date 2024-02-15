@@ -18,23 +18,27 @@ public class LootPanel : MonoBehaviour
     [SerializeField]
     GameObject optionPanel;
 
+    bool revealing;
 
     InfoText infoText;
     Inventory inventory;
     ExpeditionManager expeditionManager;
+    SoundManager soundManager;
     [System.Serializable]
     public class DropItem
     {
-        public ItemObject dropItemData;
+        //public ItemObject dropItemData;
+        public GameObject itemData;
         public int quantity;
 
-        public ItemData GetItemData() { return dropItemData.GetItemData(); }
+        public ItemData GetItemData() { return itemData.GetComponent<ItemObject>().GetItemData(); }
     }
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();
         inventory = FindObjectOfType<Inventory>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     public void ToggleLootPanel()
@@ -45,13 +49,18 @@ public class LootPanel : MonoBehaviour
     public void OpenLootPanel()
     {
         SetButtons();
-        if (!lootPanel.activeSelf) { lootPanel.SetActive(true); }
-        inventory.OpenInventory();
+        if (!lootPanel.activeSelf)
+        {
+            lootPanel.SetActive(true);
+            revealing = true;
+            StartCoroutine(Reveal());
+        }
+        //inventory.OpenInventory();
     }
     public void CloseLootPanel()
     {
         if (lootPanel.activeSelf) { lootPanel.SetActive(false); }
-        inventory.CloseInventory();
+        //inventory.CloseInventory();
         expeditionManager.OnEndLoot();
     }
     public void SetButtons()
@@ -74,11 +83,26 @@ public class LootPanel : MonoBehaviour
                 i.amount = Mathf.Min(i.data.amountPerStack, a);
 
                 var ib = Instantiate(itemButton, content);
-                ib.GetComponent<LootButton>().Init(i, infoText);
+                ib.GetComponent<LootButton>().Init(i, infoText,soundManager);
 
                 a -= item.data.amountPerStack;
             }
         }
+    }
+    IEnumerator Reveal()
+    {
+        yield return new WaitForSeconds(0.5f);
+        foreach (LootButton lootButton in content.GetComponentsInChildren<LootButton>())
+        {
+            yield return new WaitForSeconds(0.25f);
+            lootButton.Reveal();
+
+            Definer.Item item = lootButton.GetItem();
+            soundManager.PlaySE(Definer.soundRef.getItem[(int)item.data.rarity]);
+            if (item.data.rarity == ItemData.Rarity.epic) { yield return new WaitForSeconds(0.5f); }
+            else if (item.data.rarity == ItemData.Rarity.legendary) { yield return new WaitForSeconds(1f); }
+        }
+        revealing = false;
     }
 
     public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)
@@ -103,7 +127,8 @@ public class LootPanel : MonoBehaviour
         //inventoryや納品等のoptionUIも閉じる
     }
 
-    public void ItemDrop(DropItem dropItem)
+    /// <summary>キャラ死亡時のドロップ処理</summary>
+    public void DropItem_Enemy(DropItem dropItem)
     {
         float[] dropRate = new float[] { 60, 30, 10, 5, 1 };//test
         int dropQuantity = 0;
@@ -122,25 +147,42 @@ public class LootPanel : MonoBehaviour
             AddItem(item, dropQuantity);
         }
     }
+    public void DropItem_Loot(int drawAttempts, List<DropItem> dropItems)
+    {
+        float[] dropRate = new float[] { 60, 30, 10, 5, 1 };//test
+        infoText.AddDebugText(drawAttempts.ToString());
+
+        for (int i = 0; i < drawAttempts; i++)
+        {
+            //DropItem dropItem = dropItems[dropItems.Count.RandIndex()];
+            //Definer.Item item = new Definer.Item();
+            //item.Init(dropItem.GetItemData());
+            //if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
+            //{
+            //    AddItem(item, dropItem.quantity);
+            //}
+            DropItem_Enemy(dropItems[dropItems.Count.RandIndex()]);
+        }
+    }
     public void AddItem(Definer.Item item, int amount)
     {
         item.amount = amount;
         //infoText.AddLogText(string.Format("●{0}x{1}を入手", item.itemName.ColorStr(item.rarity.ToColor()), amount.ToString()));
-        for (int i = 0; i < loots.Count; i++)
-        {
-            if (loots[i].data == item.data)
-            {
-                Definer.Item replace = loots[i];
-                replace.amount += amount;
-                loots.RemoveAt(i);
-                loots.Add(replace);
+        //for (int i = 0; i < loots.Count; i++)
+        //{
+        //    if (loots[i].data == item.data)
+        //    {
+        //        Definer.Item replace = loots[i];
+        //        replace.amount += amount;
+        //        loots.RemoveAt(i);
+        //        loots.Add(replace);
 
-                Sort();
-                return;
-            }
-        }
+        //        Sort();
+        //        return;
+        //    }
+        //}
         loots.Add(item);
-        Sort();
+        //Sort();
     }
     public void RemoveItem(Definer.Item remove, int amount)
     {
@@ -156,23 +198,23 @@ public class LootPanel : MonoBehaviour
 
         for (int i = loots.Count - 1; i >= 0; i--)
         {
-            if (loots[i].data == remove.data)
+            if (loots[i].data == remove.data && loots[i].amount == remove.amount)
             {
 
-                //infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.itemName.ColorStr(remove.rarity.ToColor()), amount.ToString()));
+                //if (loots[i].amount == amount) { loots.RemoveAt(i); }//減らす量がスロットのamountと同じ
+                //else if (loots[i].amount < amount)//減らす量がamountより多い
+                //{
+                //    infoText.AddErrorText("現在所持している数よりも多くのアイテムを減らそうとしています");
+                //}
+                //else//減らす量がスロットのamountより小さい
+                //{
+                //    Definer.Item replace = loots[i];
+                //    replace.amount -= amount;
+                //    loots.RemoveAt(i);
+                //    loots.Add(replace);
+                //}
 
-                if (loots[i].amount == amount) { loots.RemoveAt(i); }//減らす量がスロットのamountと同じ
-                else if (loots[i].amount < amount)//減らす量がamountより多い
-                {
-                    infoText.AddErrorText("現在所持している数よりも多くのアイテムを減らそうとしています");
-                }
-                else//減らす量がスロットのamountより小さい
-                {
-                    Definer.Item replace = loots[i];
-                    replace.amount -= amount;
-                    loots.RemoveAt(i);
-                    loots.Add(replace);
-                }
+                loots.RemoveAt(i);
 
                 Sort();
                 return;
@@ -183,18 +225,22 @@ public class LootPanel : MonoBehaviour
     }
     public void ObtainAll()
     {
-        foreach (Definer.Item item in loots)
+        if (!revealing)
         {
-            inventory.AddItem(item, item.amount, true);
+            foreach (Definer.Item item in loots)
+            {
+                inventory.AddItem(item, item.amount, true);
+            }
+            EndLoot();
         }
-        EndLoot();
     }
     public void EndLoot()
     {
-        CloseLootPanel();
-        ResetLoots();
-
-        //expeditionManager.LootEnd();
+        if (!revealing)
+        {
+            CloseLootPanel();
+            ResetLoots();
+        }
     }
     public void ResetLoots()
     {
@@ -204,7 +250,7 @@ public class LootPanel : MonoBehaviour
 
     void Sort()
     {
-        loots.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
+        //loots.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
         SetButtons();
     }
 

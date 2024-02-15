@@ -15,13 +15,19 @@ public class LootButton : MonoBehaviour
 
 
     InfoText infoText;
+    SoundManager soundManager;
 
+    bool revealed = false;
     Definer.Item item;
-    public void Init(Definer.Item i, InfoText it)
+    public void Init(Definer.Item i, InfoText it,SoundManager sm)
     {
         item = i;
         infoText = it;
-
+        soundManager = sm;
+    }
+    public void Reveal()
+    {
+        revealed = true;
         itemImage.sprite = item.data.sprite;
         frame.color = item.data.rarity.ToColor();
         amountText.text = item.amount.ToString();
@@ -29,13 +35,18 @@ public class LootButton : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (revealed)
         {
-            infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            FindObjectOfType<LootPanel>().CreateOptionUI_Normal(transform.position, item);
+            if (Input.GetMouseButtonDown(1))
+            {
+                infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
+            }
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    FindObjectOfType<LootPanel>().CreateOptionUI_Normal(transform.position, item);
+            //}
         }
     }
+
+    public Definer.Item GetItem() { return item; }
 }

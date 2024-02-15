@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: M_flax
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 05000000
-  temporaryTag: 0
   itemName: "\u30A2\u30DE"
+  specialInfo: 0
   info: 
   amountPerStack: 10
   rarity: 0
   sprite: {fileID: 21300000, guid: bd0560ae818d62043a143c3cfdc477ff, type: 3}
+  materialTags: 05000000
   price: 10
+  equipmentTag: 0
   manager: {fileID: 0}

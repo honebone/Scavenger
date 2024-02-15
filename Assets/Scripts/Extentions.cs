@@ -143,6 +143,10 @@ public static class Extentions
             return -1;
         }
     }
+    public static int RandIndex(this int length)
+    {
+        return Random.Range(0,length);
+    }
     public static Vector2Int PosIntToVector(this int posInt)
     {
          return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);

@@ -6598,8 +6598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.22579956, y: 0.012399673}
-  m_SizeDelta: {x: 819.9814, y: 279.0709}
+  m_AnchoredPosition: {x: -0.0018615723, y: -0.0000038146973}
+  m_SizeDelta: {x: 1586.7, y: 279.0709}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &468986810
 MonoBehaviour:
@@ -7996,12 +7996,19 @@ MonoBehaviour:
     stun: {fileID: 8300000, guid: a41b09d1965a70c4e8f00d9be397f66c, type: 3}
     die1: {fileID: 8300000, guid: d7a3401f1b36a404d823d172cb89df58, type: 3}
     die2: {fileID: 8300000, guid: 85b02279f7596db49abaf961a96ccfaf, type: 3}
+    getItem:
+    - {fileID: 8300000, guid: 8fe88afa3764b27479ac737281d14a89, type: 3}
+    - {fileID: 8300000, guid: 7e7a4b946c101e843b182f66250965ad, type: 3}
+    - {fileID: 8300000, guid: c3ab8901045ac3c4bacf36254f6d69a5, type: 3}
+    - {fileID: 8300000, guid: 243e61339f8b69a418a7768338e21241, type: 3}
+    - {fileID: 8300000, guid: bde010e0adeb4da44ad033c4b9e45a7c, type: 3}
   VERef_Inspector:
     die: {fileID: 7006933508149500689, guid: 371da761e9acd254792a41a42553ee7d, type: 3}
   abilityManager_General_Inspector: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   actionManager_General_Inspector: {fileID: 7602238575876192368, guid: ae70b75fecb0b4249ad13f9a0047c65e, type: 3}
   statusEffectIcon_Inspector: {fileID: 754321851861881814, guid: c77862d553d38ac40b6141b60954efa3, type: 3}
   positionEffectIcon_Inspector: {fileID: 4322071049489499627, guid: ded2a124e9e7dc3439492f8f626707fe, type: 3}
+  equipmentDataBase: []
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -9109,8 +9116,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68.62749, y: 134.22035}
-  m_SizeDelta: {x: 128.563, y: 33.3594}
+  m_AnchoredPosition: {x: -0.0010536, y: 134.22}
+  m_SizeDelta: {x: 279.99, y: 33.3594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725393025
 MonoBehaviour:
@@ -9329,7 +9336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &740455618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11629,10 +11636,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0e08435a3cc651e45abb376875952fb2, type: 2}
-    m_FontSize: 10
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -11640,7 +11647,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u3059\u3079\u3066\u53D6\u5F97\u3057\u3066\u7D42\u4E86"
+  m_Text: "\u53D6\u5F97"
 --- !u!222 &960071923
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16810,13 +16817,15 @@ MonoBehaviour:
     blindChance: 20
     roomEvents:
     - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
-      weight: 60
+      weight: 50
     - roomEvent: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
       weight: 30
     - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
       weight: 5
     - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
       weight: 5
+    - roomEvent: {fileID: 11400000, guid: 1b361ac52cb3f5d4aa5e73c64f10fc65, type: 2}
+      weight: 10
     normalBattlePool:
     - weight: 10
       enemies:
