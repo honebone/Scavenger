@@ -967,20 +967,20 @@ public class Character : MonoBehaviour
         }
     }
     /// <summary>UŒ‚A–½’†‚µ‚½‚©‚ÉŠÖ‚í‚ç‚¸—U”­</summary>
-    public void OnAttack(bool evadeed,bool missed)
+    public void OnAttack(bool evaded,bool missed)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evadeed, missed); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evaded, missed); }
             RemovePA_Execute();
         }
     }
     /// <summary>UŒ‚–½’†</summary>
-    public void OnDamage(int DMG, Character target)
+    public void OnDamage(int DMG, Character target,Action.ActionStatus actionStatus)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target,actionStatus); }
             RemovePA_Execute();
         }
     }

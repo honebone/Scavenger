@@ -457,7 +457,7 @@ public class Action : MonoBehaviour
                             float fDMG = ownerStatus.exATK;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             fDMG += ownerStatus.ATK * ATKMod;
-                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Probability())
+                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Probability())//クリティカル判定
                             {
                                 CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
@@ -471,7 +471,7 @@ public class Action : MonoBehaviour
                             if (!notChara)
                             {
                                 actionStatus.actionOwner.OnAttack(false, false);//攻撃時誘発
-                                actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i]);//与ダメ時誘発
+                                actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i], actionsStatus[i]);//与ダメ時誘発
                             }
                             actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
                         }
@@ -636,7 +636,7 @@ public class Action : MonoBehaviour
         //各対象ポジションへの処理
         if (actionStatus.summon)//召喚
         {
-            infoText.AddDebugText("召喚処理は未完成です\n召喚しようとしている場所が空欄であるかどうかを確かめる必要があります");
+            //infoText.AddDebugText("召喚処理は未完成です\n召喚しようとしている場所が空欄であるかどうかを確かめる必要があります");
             soundManager.PlaySE(Definer.soundRef.summoned);
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {

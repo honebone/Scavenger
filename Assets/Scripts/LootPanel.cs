@@ -167,7 +167,6 @@ public class LootPanel : MonoBehaviour
     public void AddItem(Definer.Item item, int amount)
     {
         item.amount = amount;
-        //infoText.AddLogText(string.Format("œ{0}x{1}‚ğ“üè", item.itemName.ColorStr(item.rarity.ToColor()), amount.ToString()));
         //for (int i = 0; i < loots.Count; i++)
         //{
         //    if (loots[i].data == item.data)

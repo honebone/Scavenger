@@ -7907,7 +7907,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f5e7e28e1768e64685f1d45d474df80, type: 2}
   - {fileID: 11400000, guid: 86bab616fa581414191919dffad45417, type: 2}
   - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
-  amount: 7e00000005000000010000000200000007000000030000001500000006000000010000000100000001000000
+  - {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
+  amount: 7e0000000500000001000000020000000700000003000000150000000600000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
     weight: 0
@@ -16863,7 +16864,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     normalBattleFEPool:
     - weight: 10
-      fieldEffect: {fileID: 471706018376148968, guid: 88ecece663c8860408de7e960363f832, type: 3}
+      fieldEffect: {fileID: 0}
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
 --- !u!4 &1715376305
@@ -17165,7 +17166,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -47,9 +47,9 @@ public class PassiveAbility : MonoBehaviour
 
     public virtual void OnActivateAbility() { }
     /// <summary>UŒ‚A–½’†‚µ‚½‚©‚ÉŠÖ‚í‚ç‚¸—U”­</summary>
-    public virtual void OnAttack(bool evadeed, bool missed) { }
+    public virtual void OnAttack(bool evaded, bool missed) { }
     /// <summary>UŒ‚–½’†</summary>
-    public virtual void OnDamage(int DMG, Character target) {  }
+    public virtual void OnDamage(int DMG, Character target,Action.ActionStatus actionStatus) {  }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(int ID) { }
     public virtual void OnMiss(int ID) { }

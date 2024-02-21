@@ -65,6 +65,7 @@ public class ActionQueueManager : MonoBehaviour
 
     public void Enqueue(Action.ActionStatus status)
     {
+        if (status.abilityEffect) { infoText.AddDebugText(status.actionName); }
         if (status.abilityEffect||resolving)//アビリティ効果の場合orすでに解決中の場合はマネージャーを即時作成
         {
             GameObject obj;

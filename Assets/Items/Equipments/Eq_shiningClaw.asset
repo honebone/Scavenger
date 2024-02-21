@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: M_vineBerry
+  m_Name: Eq_shiningClaw
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: "\u30C4\u30BF\u306E\u5B9F"
+  itemType: 1
+  itemName: "\u714C\u5203\u306E\u7C60\u624B"
   specialInfo: 0
   info: 
-  amountPerStack: 20
-  rarity: 1
-  sprite: {fileID: 21300000, guid: 4f8461e700cfc0d4faf577c103c3db82, type: 3}
-  materialTags: 05000000
-  price: 10
-  equipmentTag: 0
-  manager: {fileID: 0}
+  amountPerStack: 1
+  rarity: 3
+  sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}
+  materialTags: 00000000
+  price: 0
+  equipmentTag: 1
+  manager: {fileID: 5667121962493394942, guid: 0b72019c96bbb794799fad4c8dcef599, type: 3}
