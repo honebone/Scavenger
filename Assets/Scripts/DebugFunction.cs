@@ -19,11 +19,13 @@ public class DebugFunction : MonoBehaviour
     AreaManager.EnemySet enemySetTest;
 
     CharactersManager charactersManager;
+    ExpeditionManager expeditionManager;
     BattleManager battleManager;
     
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
         battleManager = FindObjectOfType<BattleManager>();
         items=new Definer.Item[itemData.Length];
         for(int i = 0; i < itemData.Length; i++)
@@ -47,10 +49,7 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[1], 10,true);
-            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[2], 12,true);
-            //FindObjectOfType<CharactersManager>().SpawnEnemy(characterData[3], 11, true);
-            FindObjectOfType<ExpeditionManager>().Battle(enemySetTest);
+            FindObjectOfType<ExpeditionManager>().Battle(enemySetTest,FindObjectOfType<AreaManager>().GetArea().GetRandomFE());
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }

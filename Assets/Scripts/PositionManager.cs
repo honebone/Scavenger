@@ -15,6 +15,8 @@ public class PositionManager : MonoBehaviour
     List<PositionEffect> positionEffects = new List<PositionEffect>();
     List<PositionEffect> deletePEs = new List<PositionEffect>();
 
+    List<GameObject> actionMods = new List<GameObject>();
+
     InfoText infoText;
 
     private void Start()
@@ -116,6 +118,14 @@ public class PositionManager : MonoBehaviour
         }
         return false;
     }
+
+    public void AddActionMod(GameObject mod, bool set)
+    {
+        if (set) { actionMods.Add(mod); }
+        else { actionMods.Remove(mod); }
+
+    }
+    public List<GameObject> GetActionMods() { return actionMods; }
 
     public void OnBattleStart()
     {

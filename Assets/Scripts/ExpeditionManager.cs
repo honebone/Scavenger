@@ -123,14 +123,14 @@ public class ExpeditionManager : MonoBehaviour
     }
 
     //‚±‚±‚©‚çroom event ‚ÅŒÄ‚Î‚ê‚éŠÖ”
-    public void Battle(AreaManager.EnemySet enemySet)
+    public void Battle(AreaManager.EnemySet enemySet,GameObject fieldEffect)
     {
         if (enemySet.enemies.Length != 9) { infoText.AddErrorText("“G”z’u‚Ì”z—ñ”‚ªŠÔˆá‚Ä‚¢‚Ü‚·"); }
         for(int i = 0; i < 9; i++)
         {
             if(enemySet.enemies[i] != null) { charactersManager.SpawnEnemy(enemySet.enemies[i], i+9,true); }         
         }
-        battleManager.BattleStart();
+        battleManager.BattleStart(fieldEffect);
 
     }
 

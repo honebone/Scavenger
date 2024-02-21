@@ -19,6 +19,7 @@ public class AreaManager : MonoBehaviour
         public int blindChance;
         public Area_RoomEvent[] roomEvents;
         public EnemySet[] normalBattlePool;
+        public FieldEffectWeight[] normalBattleFEPool;
         //nextArea
 
         public List<int> GetREWeights()
@@ -33,6 +34,12 @@ public class AreaManager : MonoBehaviour
             foreach (EnemySet battle in normalBattlePool) { weights.Add(battle.weight); }
             return normalBattlePool[weights.ChoiceWithWeight()];
         }
+        public GameObject GetRandomFE()
+        {
+            List<int> weights = new List<int>();
+            foreach (FieldEffectWeight FE in normalBattleFEPool) { weights.Add(FE.weight); }
+            return normalBattleFEPool[weights.ChoiceWithWeight()].fieldEffect;
+        }
     }
     [System.Serializable]
     public struct Area_RoomEvent
@@ -45,6 +52,12 @@ public class AreaManager : MonoBehaviour
     {
         public int weight;
         public CharacterData[] enemies;
+    }
+    [System.Serializable]
+    public struct FieldEffectWeight
+    {
+        public int weight;
+        public GameObject fieldEffect;
     }
     [SerializeField]
     Area area;//test

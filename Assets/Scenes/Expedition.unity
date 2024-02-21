@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 78312538}
   m_Layer: 0
-  m_Name: BattleFieldManagerP
+  m_Name: FieldEffectManagerP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8726,7 +8726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11292,6 +11292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAbilityParent: {fileID: 753643253}
   turnOrderIconParent: {fileID: 704241286}
+  fieldEffectP: {fileID: 0}
   roundText: {fileID: 1659065778}
   anim_battleIcon: {fileID: 1800819840}
   battleText: {fileID: 1068871719}
@@ -16860,6 +16861,9 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    normalBattleFEPool:
+    - weight: 10
+      fieldEffect: {fileID: 471706018376148968, guid: 88ecece663c8860408de7e960363f832, type: 3}
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
 --- !u!4 &1715376305
@@ -20481,7 +20485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

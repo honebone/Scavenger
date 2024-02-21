@@ -6,7 +6,7 @@ public class RE_Battle : RoomEvent
 {
     public override void StartRoomEvent()
     {
-        expeditionManager.Battle(currentArea.GetRandomEnemySet());
+        expeditionManager.Battle(currentArea.GetRandomEnemySet(),currentArea.GetRandomFE());
     }
     public override void OnEndBattle()
     {

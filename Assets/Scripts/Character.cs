@@ -1012,5 +1012,7 @@ public class Character : MonoBehaviour
     public void OnHealed(int healedValue, int ID) { }
     //public virtual void OnApplyedStE() { }
     //public virtual void OnRemoveedStE() { }
+
+    public PositionManager GetPositionManager() { return GetCharacter_TargetButton().GetPositionManager(); }
 }
 

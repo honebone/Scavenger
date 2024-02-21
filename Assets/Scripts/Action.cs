@@ -409,7 +409,10 @@ public class Action : MonoBehaviour
 
         List<GameObject> actionModsObj = new List<GameObject>(actionStatus.actionMods);
         //ここで色々なactionMdsを追加
-        if (!notChara) { actionModsObj.AddRange(ownerStatus.actionMods); }
+        if (!notChara) { 
+            actionModsObj.AddRange(ownerStatus.actionMods);
+            actionModsObj.AddRange(actionStatus.actionOwner.GetPositionManager().GetActionMods());
+        }
         foreach(GameObject actionModObj in actionModsObj)
         {
             var am = Instantiate(actionModObj);
@@ -629,8 +632,8 @@ public class Action : MonoBehaviour
             else { infoText.AddDebugText("対象の消失"); }
         }
 
-       
 
+        //各対象ポジションへの処理
         if (actionStatus.summon)//召喚
         {
             infoText.AddDebugText("召喚処理は未完成です\n召喚しようとしている場所が空欄であるかどうかを確かめる必要があります");

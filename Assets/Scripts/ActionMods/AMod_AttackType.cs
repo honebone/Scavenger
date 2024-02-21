@@ -8,10 +8,12 @@ public class AMod_AttackType : ActionMod
     List<int> checkType;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
+        Debug.Log("ok");
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
             if (statusRef.ATKMod_max > 0 && checkType.Contains(statusRef.attackType))
             {
+                Debug.Log("yes");
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }
         }

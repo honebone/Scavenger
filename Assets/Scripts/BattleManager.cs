@@ -9,6 +9,10 @@ public class BattleManager : MonoBehaviour
     Transform selectedAbilityParent;
     [SerializeField]
     Transform turnOrderIconParent;
+
+    [SerializeField]
+    Transform fieldEffectP;
+
     [SerializeField]
     Text roundText;
 
@@ -37,6 +41,7 @@ public class BattleManager : MonoBehaviour
     SoundManager soundManager;
     PositionManager[] positionManagers;
 
+    FieldEffect fieldEffect;
     int roundCount;
 
     List<Character> characterInTurnOrder;
@@ -64,8 +69,14 @@ public class BattleManager : MonoBehaviour
         characterInTurnOrder=new List<Character>();
     }
 
-    public void BattleStart()
+    public void BattleStart(GameObject fieldEffectObj)
     {
+        if (fieldEffectObj != null)
+        {
+            var f = Instantiate(fieldEffectObj, fieldEffectP);
+            fieldEffect = f.GetComponent<FieldEffect>();
+            fieldEffect.Init(charactersManager, actionQueue, infoText);
+        }
         infoText.AddLogText("\n◇◇◇◇戦闘開始◇◇◇◇");
         inBattle = true;
         soundManager.PlaySE(SE_battleStart);
@@ -221,6 +232,11 @@ public class BattleManager : MonoBehaviour
         if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
         if (selectingTarget) { infoText.AddErrorText("対象選択中に戦闘が終了しました"); }
 
+        if (fieldEffect != null)
+        {
+            Destroy(fieldEffectP.GetChild(0).gameObject);
+            fieldEffect = null;
+        }
         characterInTurnOrder = new List<Character>();
         turnOrderIcons = new List<Battle_TurnOrderIcon>();
         for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }
@@ -254,6 +270,7 @@ public class BattleManager : MonoBehaviour
 
     public void Trigger_BattleStart()
     {
+        if(fieldEffect != null) { fieldEffect.OnBattleStart(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnBattleStart();
@@ -269,6 +286,7 @@ public class BattleManager : MonoBehaviour
         MoveFrontLine(true);//前進処理
         MoveFrontLine(false);
 
+        if (fieldEffect != null) { fieldEffect.OnRoundStart(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnRoundStart();
@@ -281,6 +299,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Trigger_TurnOrderDecide()
     {
+        if (fieldEffect != null) { fieldEffect.OnTurnOrderDecide(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnTurnOrderDecide();
@@ -293,6 +312,7 @@ public class BattleManager : MonoBehaviour
     }
     public void Trigger_RoundEnd()
     {
+        if (fieldEffect != null) { fieldEffect.OnRoundEnd(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnRoundEnd();
