@@ -19,6 +19,8 @@ public class FieldEffect : MonoBehaviour
         infoText = it;
     }
 
+    public string GetFEName() { return FEName; }
+    public string GetSimpleInfo() { return simpleInfo; }    
    public virtual string GetFEInfo() { return ""; }
 
     public virtual void OnBattleStart() { }

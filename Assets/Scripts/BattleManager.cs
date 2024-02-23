@@ -17,9 +17,19 @@ public class BattleManager : MonoBehaviour
     Text roundText;
 
     [SerializeField]
+    AudioClip SE_FE;
+    [SerializeField]
     Animator anim_battleIcon;
     [SerializeField]
     Text battleText;
+    [SerializeField]
+    Animator anim_FEName;
+    [SerializeField]
+    Text FENameText;
+     [SerializeField]
+    Animator anim_FEInfo;
+    [SerializeField]
+    Text FEInfoText;
 
     [SerializeField]
     GameObject turnOrderIcon;
@@ -91,6 +101,19 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         battleText.text = "";
 
+        if (fieldEffect != null)
+        {
+            //soundManager.PlaySE(SE_FE);
+            anim_FEName.SetBool("display",true);
+            FENameText.text = fieldEffect.GetFEName();
+            yield return new WaitForSeconds(1.25f);
+            anim_FEInfo.SetBool("display",true);
+            FEInfoText.text = fieldEffect.GetSimpleInfo();
+            yield return new WaitForSeconds(1.25f);
+            anim_FEName.SetBool("display", false);
+            anim_FEInfo.SetBool("display", false);
+
+        }
         //êÌì¨äJénéûóUî≠
         Trigger_BattleStart();
     }

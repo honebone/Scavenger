@@ -10,45 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: Enemy_Slime
+  m_Name: Enemy_Goblin
   m_EditorClassIdentifier: 
-  fileName: E_Slime
+  fileName: E_Goblin
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
-  charaName: "\u30B9\u30E9\u30A4\u30E0"
-  characterTags: 08000000
+  charaName: "\u30B4\u30D6\u30EA\u30F3"
+  characterTags: 0a000000
   immovable: 0
   notChara: 0
   player: 0
   playable: 0
   obstacle: 0
   variableSprites:
-  - {fileID: 9151243408299108219, guid: b5e6c4d61d0e1324181d820b43c7baab, type: 3}
-  spriteForUI: {fileID: 21300000, guid: f559c9e6e80cfa644a1afac9b2d6ce92, type: 3}
+  - {fileID: 4201827558276250882, guid: 8e40dbc362a228248a6b3ecfcd44214f, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 7b3c4e4243ad8c349bdbe28edf171e68, type: 3}
   abilities:
   - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
   - {fileID: 11400000, guid: c46ff81e9861e674b9ba791dc32f584c, type: 2}
   - {fileID: 11400000, guid: 7f982a83f22d3b64492d734d6e8355fc, type: 2}
   - {fileID: 11400000, guid: 29aedac60f26f874b829a3bfd7afdb26, type: 2}
-  passiveAbilities:
-  - {fileID: 1808138132528202961, guid: ceec0f6922099884482ed5c5d2a21784, type: 3}
+  passiveAbilities: []
   actionMods: []
-  corpse: {fileID: 11400000, guid: 798e32b3d1f702d40a1e5d49e9f44d0d, type: 2}
-  dropItems:
-  - itemData: {fileID: 5050133208341784117, guid: bc841cfa4010b70458a59075644a9e1f, type: 3}
-    quantity: 4
-  - itemData: {fileID: 4432118360827661779, guid: c8ca9b51b6d3f574eaec2da01c4c672a, type: 3}
-    quantity: 2
-  - itemData: {fileID: 3631451570297877979, guid: 80a3cb055e56453499587d9a9c645cf0, type: 3}
-    quantity: 1
+  corpse: {fileID: 0}
+  dropItems: []
   surviveFatalWounds: 0
   maxHP: 25
   maxSAN: 0
-  ATK: 7
-  CRITC: 5
+  ATK: 9
+  CRITC: 6
   CRITD: 2
-  EVD: 3
-  ACC: 85
-  ACT: 3
+  EVD: 5
+  ACC: 90
+  ACT: 5
   turnPerRound: 1
   GHeal: 100
   RHeal: 100

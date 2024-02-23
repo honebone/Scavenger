@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &471706018376148968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471706018376148975}
+  - component: {fileID: -7287341095436947911}
+  m_Layer: 0
+  m_Name: FE_Surprise
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &471706018376148975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471706018376148968}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7287341095436947911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471706018376148968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584dd74248315e548b98043b11622be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FEName: "\u5947\u8972"
+  simpleInfo: "\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u5148\u306B\u884C\u52D5\u3067\u304D\u308B"
+  actionStatus:
+    actionName: "\u5F85\u3061\u4F0F\u305B"
+    conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
+    targetInfo: "\u6575\u5168\u4F53"
+    actionInfo: 
+    VE_OnTargets: {fileID: 0}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 0
+    friendly: 0
+    involveAll: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      front: 0
+      mid: 0
+      back: 0
+      characterTags: 
+      StE: []
+      PE: []
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
+      applyChance: 200
+      stack: 1
+      value: 999
+    applyPEParams: []
+    removeStEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityRemainControlls: []
+    abilityEffect: 0
+    abilityType: 0
+    SE: {fileID: 0}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 0}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargetsInt: 
+  condition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 1
+    enemy: 0
+    front: 1
+    mid: 1
+    back: 1
+    characterTags: 
+    StE: []
+    PE: []
