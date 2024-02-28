@@ -39,8 +39,6 @@ public class Action : MonoBehaviour
         [Header("ここからアビリティのみ関係")]
         public TargetType targetType;
         public bool friendly;
-       [Header("column,rowのとき条件に一致していないキャラも巻き込むか")]
-        public bool involveAll;
         public CharactersManager.SearchCharaCondition condition;
         //public bool targetPlayerSide;
         //public bool targetEnemySide;
@@ -49,7 +47,6 @@ public class Action : MonoBehaviour
         //public bool selectableMid;
         //public bool selectableBack;
         public bool ignoreMark;
-        [Header("味方を対象とするアビリティはignoreHideにチェック!!")]
         public bool ignoreHide;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;

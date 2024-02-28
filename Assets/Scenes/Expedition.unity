@@ -8092,13 +8092,13 @@ MonoBehaviour:
     weight: 0
     enemies:
     - {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    - {fileID: 0}
     - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
     - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     - {fileID: 0}
     - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     - {fileID: 0}
 --- !u!114 &613893884
 MonoBehaviour:
@@ -11492,7 +11492,6 @@ MonoBehaviour:
     actionMods: []
     targetType: 0
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -17047,7 +17046,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     normalBattleFEPool:
     - weight: 10
-      fieldEffect: {fileID: 471706018376148968, guid: 085f1034c3cf5a54483007ec5468437f, type: 3}
+      fieldEffect: {fileID: 0}
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
 --- !u!4 &1715376305

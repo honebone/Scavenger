@@ -19,6 +19,8 @@ MonoBehaviour:
   spriteIndex: 0
   SE: {fileID: 0}
   abilityType: 0
+  excludeRandomPool: 0
+  selectWeight: 1
   conditionInfo: 
   cooldownOnUse: 0
   hasRemain: 1
@@ -37,26 +39,25 @@ MonoBehaviour:
     actionMods: []
     targetType: 2
     friendly: 0
-    onlyMatched_AoE: 0
     condition:
       searchAsPos: 0
+      onlyEmpty: 0
       player: 0
       enemy: 1
       front: 1
       mid: 1
       back: 1
+      characterTags: 
       StE: []
       PE: []
-    targetPlayerSide: 0
-    targetEnemySide: 1
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 1
     ignoreMark: 0
     ignoreHide: 1
     moveValue: 
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
     ATKMod_min: 2000
@@ -76,11 +77,14 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -89,6 +93,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 0
     SE: {fileID: 0}
@@ -96,8 +101,4 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0a0000000c0000000f000000
+    actionTargetsInt: 090000000b0000000d0000000f00000010000000

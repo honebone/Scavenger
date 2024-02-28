@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: Enemy_Goblin
+  m_Name: Enemy_GoblinArcher
   m_EditorClassIdentifier: 
-  fileName: E_Goblin
+  fileName: E_GoblinArcher
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
-  charaName: "\u30B4\u30D6\u30EA\u30F3"
+  charaName: "\u30B4\u30D6\u30EA\u30F3\u30A2\u30FC\u30C1\u30E3\u30FC"
   characterTags: 0a000000
   immovable: 0
   notChara: 0
@@ -22,8 +22,8 @@ MonoBehaviour:
   playable: 0
   obstacle: 0
   variableSprites:
-  - {fileID: 4201827558276250882, guid: 8e40dbc362a228248a6b3ecfcd44214f, type: 3}
-  spriteForUI: {fileID: 21300000, guid: 7b3c4e4243ad8c349bdbe28edf171e68, type: 3}
+  - {fileID: 5294119737633310317, guid: 5cb37b3d82d8856459bae4ed3b2c0fd9, type: 3}
+  spriteForUI: {fileID: 21300000, guid: a1ede005a0de6a6439060613163b0983, type: 3}
   abilities:
   - {fileID: 11400000, guid: 96a26f51e6bb42f4b8c0e76b0bbb6911, type: 2}
   - {fileID: 11400000, guid: ba664fc124a32fa42a8678d85b280fdf, type: 2}
@@ -33,14 +33,14 @@ MonoBehaviour:
   corpse: {fileID: 0}
   dropItems: []
   surviveFatalWounds: 0
-  maxHP: 20
+  maxHP: 12
   maxSAN: 0
-  ATK: 9
-  CRITC: 5
+  ATK: 11
+  CRITC: 6
   CRITD: 2
-  EVD: 5
-  ACC: 90
-  ACT: 5
+  EVD: 6
+  ACC: 96
+  ACT: 7
   turnPerRound: 1
   GHeal: 100
   RHeal: 100

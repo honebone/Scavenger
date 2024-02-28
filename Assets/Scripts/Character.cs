@@ -529,7 +529,7 @@ public class Character : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
-        battleManager.SetSelectedAbility(SelectAbility_Random(), this);//test　本来はラウンド開始時に決定する
+        battleManager.SetSelectedAbility(SelectAbility_Random(), this);
         //charaStatus.omenSet = false;
         //charaStatus.omen = new Ability.AbilityStatus();
         BattleManager.selectedAbility.StartSelectTarget();
@@ -907,12 +907,13 @@ public class Character : MonoBehaviour
         List<Ability.AbilityStatus> list = new List<Ability.AbilityStatus>();
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (!ability.excludeRandomPool) { list.Add(ability); }
+            if (!ability.excludeRandomPool&&ability.CheckAvailable(this,charactersManager)) { list.Add(ability); }
         }
         return ChoiceAbilityWithWeight(list);
     }
     public Ability.AbilityStatus ChoiceAbilityWithWeight(List<Ability.AbilityStatus> abilitiesStatus)
     {
+        if (abilitiesStatus.Count == 0) { infoText.AddErrorText("アビリティの選択肢がありません"); }
         List<int> weight = new List<int>();
         foreach (Ability.AbilityStatus ability in abilitiesStatus) { weight.Add(ability.selectWeight); }
         return abilitiesStatus[weight.ChoiceWithWeight()];

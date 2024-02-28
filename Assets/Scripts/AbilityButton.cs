@@ -33,7 +33,7 @@ public class AbilityButton : MonoBehaviour
         charactersManager = cm;
 
         nameText.text = abilityStatus.abilityName;
-        available = abilityStatus.CheckAvailable(character);
+        available = abilityStatus.CheckAvailable(character,cm);
         if (!available) { nameText.color = Color.red; }
         if (abilityStatus.cooldown > 0) { 
             cooldownText.text = abilityStatus.cooldown.ToString(); 
