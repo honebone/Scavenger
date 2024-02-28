@@ -297,6 +297,21 @@ public class Ability : MonoBehaviour
                         }
                     }
                     break;
+                case Action.ActionStatus.TargetType.column:
+                    targetEmpty = false;
+                    //foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    //{
+                    //    targetStatus = target.GetCharacterStatus();
+                    //    int pos = targetStatus.position;
+                    //    if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                    //    {
+                    //        if (targetStatus.marked > 0 && !actionStatus.friendly)
+                    //        { targetIconPos.Add(new Vector2Int(pos, 1)); }
+                    //        else { targetIconPos.Add(new Vector2Int(pos, 0)); }
+                    //        targetPool.Add(new List<int>() { pos });
+                    //    }
+                    //}
+                    break;
                 case Action.ActionStatus.TargetType.all:
                     targetEmpty = true;
                     List<int> tp = new List<int>();

@@ -17033,17 +17033,17 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 0}
       - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    - weight: 10
+    - weight: 100
       enemies:
-      - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-      - {fileID: 0}
-      - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-      - {fileID: 0}
-      - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-      - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+      - {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+      - {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
       - {fileID: 0}
       - {fileID: 0}
-      - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+      - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     normalBattleFEPool:
     - weight: 10
       fieldEffect: {fileID: 0}
@@ -17348,7 +17348,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
