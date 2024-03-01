@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Spider_web
+  m_Name: A_GoblinArcher_MultiShot
   m_EditorClassIdentifier: 
-  abilityName: "\u7CF8\u5410\u304D"
+  abilityName: "\u9054\u4EBA\u306E\u6280\u30C0\uFF01"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 6356478406548170535, guid: 41a6f63e60127ba4487fbb879514aabd, type: 3}
+  activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
+  SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
@@ -30,14 +30,14 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u7CF8\u5410\u304D"
+  - actionName: "\u9054\u4EBA\u306E\u6280\u30C0\uFF01"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "1\u5217\u306E\u6575\u5168\u3066"
     actionInfo: 
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 5
     friendly: 0
     condition:
       searchAsPos: 0
@@ -60,9 +60,9 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 1
-    ATKMod_min: 30
-    ATKMod_max: 60
-    ACCMod: 0
+    ATKMod_min: 40
+    ATKMod_max: 110
+    ACCMod: -10
     CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
@@ -79,15 +79,11 @@ MonoBehaviour:
     shieldAdd_max: 0
     shieldPercent_min: 0
     shieldPercent_max: 0
-    shieldRemove_all: 1
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
-    applyPEParams:
-    - applyPE: {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
-      applyChance: 100
-      stack: 2
-      value: 0
+    applyPEParams: []
     removeStEs: []
     summon: 0
     summonChara: []
@@ -100,9 +96,9 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
     dontChangeSprite: 0
-    activateSprite: {fileID: 6356478406548170535, guid: 41a6f63e60127ba4487fbb879514aabd, type: 3}
+    activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 06000000
+    actionTargetsInt: 0600000008000000

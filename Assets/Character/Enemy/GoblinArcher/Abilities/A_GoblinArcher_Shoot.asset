@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: A_GoblinArcher_Shoot
   m_EditorClassIdentifier: 
-  abilityName: "\u6BD2\u77E2"
+  abilityName: "\u30E4\u30D0\u3044\u6BD2"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
@@ -30,7 +30,7 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   actionsStaus:
-  - actionName: "\u6BD2\u77E2"
+  - actionName: "\u30E4\u30D0\u3044\u6BD2"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     actionInfo: 
@@ -59,8 +59,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     cantCounter: 0
-    attackType: 0
-    ATKMod_min: 40
+    attackType: 1
+    ATKMod_min: 80
     ATKMod_max: 120
     ACCMod: 0
     CRITCMod: 0

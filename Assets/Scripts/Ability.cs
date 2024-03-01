@@ -47,37 +47,55 @@ public class Ability : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
-            if (!(availableFront && availableMid && availableBack))
+            //if (!(availableFront && availableMid && availableBack))
+            //{
+            //    s += ("発動可能列：");
+            //    bool f=false;
+            //    if (availableFront)
+            //    {
+            //        f = true;
+            //        s += "前";
+            //    }
+            //    if (availableMid)
+            //    {
+            //        if (f)
+            //        {
+            //            s += "、";
+            //        }
+            //        f = true;
+            //        s += "中";
+            //    }
+            //    if (availableBack)
+            //    {
+            //        if (f)
+            //        {
+            //            s += "、";
+            //        }
+            //        s += "後";
+            //    }
+            //    s += "列\n";
+            //}
+            s += ("発動可能列：");
+            if (!refCharaStatus || characterStatus.position < 9)
             {
-                s += ("発動可能列：");
-                bool f=false;
-                if (availableFront)
-                {
-                    f = true;
-                    s += "前";
-                }
-                if (availableMid)
-                {
-                    if (f)
-                    {
-                        s += "、";
-                    }
-                    f = true;
-                    s += "中";
-                }
-                if (availableBack)
-                {
-                    if (f)
-                    {
-                        s += "、";
-                    }
-                    s += "後";
-                }
-                s += "列\n";
+                if (availableBack) { s += "○-"; }
+                else { s += "×-"; }
+                if (availableMid) { s += "○-"; }
+                else { s += "×-"; }
+                if (availableFront) { s += "○\n"; }
+                else { s += "×\n"; }
             }
+            else
             {
+                s += "　　　";
+                if (availableFront) { s += "○-"; }
+                else { s += "×-"; }
+                if (availableMid) { s += "○-"; }
+                else { s += "×-"; }
+                if (availableBack) { s += "○\n"; }
+                else { s += "×\n"; }
+            }
 
-            }
             if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
             if (refCharaStatus) { }
             if (hasRemain)
@@ -181,6 +199,19 @@ public class Ability : MonoBehaviour
                             print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                             break;
                         case Action.ActionStatus.TargetType.single://単体対象
+
+                            foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                            {
+                                targetStatus = target.GetCharacterStatus();
+                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (found) { continue; }
+                            return false;
+                        case Action.ActionStatus.TargetType.column:
 
                             foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                             {
@@ -299,18 +330,48 @@ public class Ability : MonoBehaviour
                     break;
                 case Action.ActionStatus.TargetType.column:
                     targetEmpty = false;
-                    //foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-                    //{
-                    //    targetStatus = target.GetCharacterStatus();
-                    //    int pos = targetStatus.position;
-                    //    if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
-                    //    {
-                    //        if (targetStatus.marked > 0 && !actionStatus.friendly)
-                    //        { targetIconPos.Add(new Vector2Int(pos, 1)); }
-                    //        else { targetIconPos.Add(new Vector2Int(pos, 0)); }
-                    //        targetPool.Add(new List<int>() { pos });
-                    //    }
-                    //}
+                    List<int> tp_column = new List<int>();
+                    int includeMarked_column = 0;
+                    for (int i = 0; i < 3; i++)//各列に対して行う
+                    {
+                        tp_column = new List<int>();
+                        includeMarked_column = 0;
+                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        {
+                            targetStatus = target.GetCharacterStatus();
+                            int pos = targetStatus.position;
+                            if (pos < 9 && pos.GetColumn() == i)//プレイヤー側で列がiと等しい
+                            {
+                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                {
+                                    if (targetStatus.marked > 0 && !actionStatus.friendly) { includeMarked_column = 1; }
+                                    tp_column.Add(pos);
+                                }
+                            }
+                        }
+                        foreach (int p in tp_column) { targetIconPos.Add(new Vector2Int(p, includeMarked_column)); }
+                        for (int j = 0; j < tp_column.Count; j++) { targetPool.Add(tp_column); }
+                    }
+                    for (int i = 0; i < 3; i++)//各列に対して行う
+                    {
+                        tp_column = new List<int>();
+                        includeMarked_column = 0;
+                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        {
+                            targetStatus = target.GetCharacterStatus();
+                            int pos = targetStatus.position;
+                            if (pos >= 9 && pos.GetColumn() == i)//エネミー側で列がiと等しい
+                            {
+                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                {
+                                    if (targetStatus.marked > 0 && !actionStatus.friendly) { includeMarked_column = 1; }
+                                    tp_column.Add(pos);
+                                }
+                            }
+                        }
+                        foreach (int p in tp_column) { targetIconPos.Add(new Vector2Int(p, includeMarked_column)); }
+                        for (int j = 0; j < tp_column.Count; j++) { targetPool.Add(tp_column); }
+                    }
                     break;
                 case Action.ActionStatus.TargetType.all:
                     targetEmpty = true;

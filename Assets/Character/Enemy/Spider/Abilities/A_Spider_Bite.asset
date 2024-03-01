@@ -28,7 +28,7 @@ MonoBehaviour:
   maxRemain: 0
   availableFront: 1
   availableMid: 1
-  availableBack: 1
+  availableBack: 0
   actionsStaus:
   - actionName: "\u565B\u307F\u3064\u304D"
     conditionInfo: 
@@ -39,26 +39,25 @@ MonoBehaviour:
     actionMods: []
     targetType: 1
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
+      onlyEmpty: 0
       player: 1
       enemy: 0
       front: 1
       mid: 1
       back: 0
+      characterTags: 
       StE: []
       PE: []
-    targetPlayerSide: 1
-    targetEnemySide: 0
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
     ATKMod_min: 80
@@ -78,11 +77,14 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -91,6 +93,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
     SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
@@ -98,6 +101,4 @@ MonoBehaviour:
     activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 06000000
+    actionTargetsInt: 08000000

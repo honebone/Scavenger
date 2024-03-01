@@ -26,6 +26,7 @@ MonoBehaviour:
   spriteForUI: {fileID: 21300000, guid: a1ede005a0de6a6439060613163b0983, type: 3}
   abilities:
   - {fileID: 11400000, guid: af938c11dd74671499a48dd2906915a8, type: 2}
+  - {fileID: 11400000, guid: ea2e2710f1ca2d14a8dc5e8402b46ddd, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}
@@ -39,11 +40,11 @@ MonoBehaviour:
   surviveFatalWounds: 0
   maxHP: 12
   maxSAN: 0
-  ATK: 11
+  ATK: 10
   CRITC: 6
   CRITD: 2
   EVD: 6
-  ACC: 96
+  ACC: 94
   ACT: 7
   turnPerRound: 1
   GHeal: 100

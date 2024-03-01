@@ -423,7 +423,11 @@ public class Action : MonoBehaviour
             Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
             bool attackHit = true;//UŒ‚¸”sA‚»‚Ì‘¼‚ÌŒø‰Ê‚à”­“®‚µ‚È‚¢‚æ‚¤‚É‚·‚é
             actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
-            if (actionStatus.VE_OnTargets) { Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.position), Quaternion.identity); }
+            if (actionStatus.VE_OnTargets)
+            {
+                var v = Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.position), Quaternion.identity);
+                if (targetStatus.position < 9) { v.GetComponent<SpriteRenderer>().flipX = true; }//ƒvƒŒƒCƒ„[‘ÎÛ‚Ì¶‰E”½“]
+            }
             if (!targetStatus.dead)
             {
                 if (actionsStatus[i].kill)

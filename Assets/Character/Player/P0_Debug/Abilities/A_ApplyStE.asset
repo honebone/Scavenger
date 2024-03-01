@@ -37,13 +37,12 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 5
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 0
+      player: 1
       enemy: 1
       front: 1
       mid: 1
@@ -89,6 +88,7 @@ MonoBehaviour:
       stack: 1
       value: 0
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -105,6 +105,4 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 0b000000
+    actionTargetsInt: 0600000008000000
