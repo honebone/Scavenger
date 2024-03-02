@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "\u51FA\u8840"
-    StEInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304C\u30B9\u30BF\u30C3\u30AF\u5206\u6E1B\u5C11\u3059\u308B\u3002\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30922\u6E1B\u3089\u3059\u3002"
+    StEInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304C\u30B9\u30BF\u30C3\u30AF\u5206\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30922\u6E1B\u3089\u3059"
     StEIcon: {fileID: 21300000, guid: b16e3040966b7de42b2c351482467367, type: 3}
     StEType: 2
     maxStack: 0
@@ -60,19 +60,30 @@ MonoBehaviour:
     conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
+    actionMods: []
     targetType: 0
-    targetPlayerSide: 0
-    targetEnemySide: 0
-    targetEmpty: 0
-    selectableFront: 0
-    selectableMid: 0
-    selectableBack: 0
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      front: 0
+      mid: 0
+      back: 0
+      characterTags: 
+      StE: []
+      PE: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
     ATKMod_min: 0
@@ -92,14 +103,23 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
+    applyPEParams: []
+    removeStEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 0
     abilityType: 0
     SE: {fileID: 0}
@@ -107,7 +127,6 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets: []
     actionTargetsInt: 
 --- !u!212 &843000856407058644
 SpriteRenderer:

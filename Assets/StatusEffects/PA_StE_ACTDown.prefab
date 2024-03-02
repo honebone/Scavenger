@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3885198277178587470}
-  - component: {fileID: -7557788609615932702}
+  - component: {fileID: -928824366484224485}
   - component: {fileID: 7692293271465632286}
   m_Layer: 0
-  m_Name: PA_StE_ACCUp
+  m_Name: PA_StE_ACTDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7557788609615932702
+--- !u!114 &-928824366484224485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +42,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489497368108049143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db481ef43c41f2a41816851e06ac2064, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b5189c46c6bdf049b04e4ca985741d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StEStatus:
-    StEName: "ACC\u4E0A\u6607"
-    StEInfo: "\u81EA\u8EAB\u306EACC+X\n\u653B\u6483\u6642\u306B\u30B9\u30BF\u30C3\u30AF\u304C1\u6E1B\u5C11"
-    StEIcon: {fileID: 21300000, guid: 5d5d0f76dda06894e92dee62a5664015, type: 3}
-    StEType: 1
+    StEName: "ACT\u4F4E\u4E0B"
+    StEInfo: "\u81EA\u8EAB\u306EACT-X\n\u30BF\u30FC\u30F3\u9806\u6C7A\u5B9A\u6642\u306B\u30B9\u30BF\u30C3\u30AF\u304C1\u6E1B\u5C11"
+    StEIcon: {fileID: 21300000, guid: d088a2e94ac394944ba632bfba0da6f2, type: 3}
+    StEType: 2
     maxStack: 0
     merge: 0
     refValue: 1
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5d5d0f76dda06894e92dee62a5664015, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d088a2e94ac394944ba632bfba0da6f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

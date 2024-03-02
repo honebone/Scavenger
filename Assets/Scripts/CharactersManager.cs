@@ -207,6 +207,9 @@ public class CharactersManager : MonoBehaviour
         public List<CharacterData.CharacterTag> characterTags;
         public List<GameObject> StE;
         public List<GameObject> PE;
+        public float HPPercent;
+        public bool HP_lessThan;
+        public bool HP_excludeEqual;
 
     }
     public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)
@@ -259,7 +262,19 @@ public class CharactersManager : MonoBehaviour
             if (!matched) { continue; }
             list.Add(character);
 
+            float HPPercent = status.HP.GetPercent(status.maxHP);
+            if (condition.HP_lessThan)
+            {
+                if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { continue; }//HP% < 条件値 のみ通す
+                else if(!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
+            }
+            else
+            {
+                if(condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
+                else if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
+            }
         }
+
         return list;
     }
 
