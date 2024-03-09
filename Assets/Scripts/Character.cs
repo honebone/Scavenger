@@ -58,6 +58,7 @@ public class Character : MonoBehaviour
         public float RHeal;
 
         public List<StEResist> StEResists;
+        public List<StEApplyBonus> StEApplyBonus;
 
         public float moveRes;
         public float debuffRes;
@@ -135,6 +136,13 @@ public class Character : MonoBehaviour
                     s += string.Format("{0}耐性{1}％\n", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName, res.value);
                 }
             }
+            foreach(StEApplyBonus bonus in StEApplyBonus)
+            {
+                string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
+                if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
+                if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
+            }
             return s;
         }
 
@@ -190,6 +198,7 @@ public class Character : MonoBehaviour
             debuffRes = data.debuffRes;
 
             StEResists = new List<StEResist>(data.StEResists);
+            StEApplyBonus = new List<StEApplyBonus>(data.StEApplyBonus);
 
             moveRes = data.moveRes;
 
@@ -236,6 +245,7 @@ public class Character : MonoBehaviour
         public float RHeal;
 
         public List<StEResist> StEResists;
+        public List<StEApplyBonus> StEApplyBonus;
         public string GetInfo()
         {
             string s = "";
@@ -254,6 +264,14 @@ public class Character : MonoBehaviour
             {
                 s += ValueToStr(string.Format("{0}耐性", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName), res.value, "％");
             }
+            foreach(StEApplyBonus bonus in StEApplyBonus)
+            {
+                string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
+                if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
+                if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
+            }
+            
             return s;
         }
         public string ValueToStr(string start, float value, string end)
@@ -712,6 +730,10 @@ public class Character : MonoBehaviour
         {
             AddStERes(res, set);
         }
+        foreach (StEApplyBonus bonus in mod.StEApplyBonus)
+        {
+            AddStEBonus(bonus, set);
+        }
     }
     public void AddMaxHP(int value_base, float value_mul, bool heal)
     {
@@ -818,6 +840,23 @@ public class Character : MonoBehaviour
             }
         }
         if (set) { charaStatus.StEResists.Add(resist); }
+        else { infoText.AddErrorText("error"); }
+    }
+    public void AddStEBonus(StEApplyBonus bonus,bool set)
+    {
+        foreach (StEApplyBonus applyBonus in charaStatus.StEApplyBonus)
+        {
+            if (applyBonus.applyStE == bonus.applyStE)
+            {
+                int n = 1;
+                if (!set) { n = -1; }
+                applyBonus.exChance += bonus.exChance * n;
+                applyBonus.exStack += bonus.exStack * n;
+                applyBonus.exValue += bonus.exValue * n;
+                return;
+            }
+        }
+        if (set) { charaStatus.StEApplyBonus.Add(bonus); }
         else { infoText.AddErrorText("error"); }
     }
 
@@ -1040,6 +1079,14 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
+    public void OnAttacked(Character attacker,bool evaded,bool missed)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttacked(attacker, evaded, missed); }
+            RemovePA_Execute();
+        }
+    }
     public void OnDamaged(int DMG, Character attacker)
     {
         if (BattleManager.inBattle)
@@ -1049,7 +1096,6 @@ public class Character : MonoBehaviour
         }
     }
     public void OnCRITed(int ID) { }
-    public void OnEvade( int ID) { }
     public void OnHealed(int healedValue, int ID) { }
     //public virtual void OnApplyedStE() { }
     //public virtual void OnRemoveedStE() { }

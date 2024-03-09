@@ -48,7 +48,7 @@ MonoBehaviour:
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 0
-    exDMG_mul: 15
+    exDMG_mul: 20
     exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0

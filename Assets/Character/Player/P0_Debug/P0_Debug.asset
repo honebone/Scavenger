@@ -57,4 +57,9 @@ MonoBehaviour:
     value: 20
   - ResStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
     value: 20
+  StEApplyBonus:
+  - applyStE: {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
+    exChance: 10
+    exStack: 1
+    exValue: 3
   moveRes: 0

@@ -37,7 +37,18 @@ public class LootPanel : MonoBehaviour
     public class DropItemFromPreset
     {
         public LootPresetData preset;
-        public int attempts;
+        public Vector2Int attemptsRange;
+    }
+    [System.Serializable]
+    public class LootStatus
+    {
+        [Header("x:min y:max")]
+        public Vector2Int drawAttemptsRange;
+
+        public List<DropItem> dropItems;
+        public List<DropItemFromPreset> dropItemFromPresets;
+        [Header("確定で落とす個数の範囲")]
+        public Vector2Int dropEquipmentsRange;
     }
     private void Start()
     {
@@ -153,43 +164,34 @@ public class LootPanel : MonoBehaviour
             AddItem(item, dropQuantity);
         }
     }
-    public void DropItem_Loot(int drawAttempts, List<DropItem> dropItems)
+    public void DropItem_Loot(LootStatus status)
     {
-        float[] dropRate = new float[] { 60, 30, 10, 5, 1 };//test
-        infoText.AddDebugText(drawAttempts.ToString());
+        //Attempts回だけdropItemsからアイテムを1つ選び、そのアイテムのレアリティに応じた確率でルートに追加
+        int attempts = Random.Range(status.drawAttemptsRange.x, status.drawAttemptsRange.y + 1);
+        //float[] materialDropChance = expeditionManager.GetPartyStatus().materialDropChance;
 
-        for (int i = 0; i < drawAttempts; i++)
+        for (int i = 0; i < attempts; i++)
         {
-            //DropItem dropItem = dropItems[dropItems.Count.RandIndex()];
-            //Definer.Item item = new Definer.Item();
-            //item.Init(dropItem.GetItemData());
-            //if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
-            //{
-            //    AddItem(item, dropItem.quantity);
-            //}
-            DropItem_Enemy(dropItems[dropItems.Count.RandIndex()]);
+            DropItem_Enemy(status.dropItems.Choice());
         }
-    }
-    public void DropItem_Preset(DropItemFromPreset preset)
-    {
-        DropItem_Loot(preset.attempts, preset.preset.lootItems);
+
+        foreach(DropItemFromPreset preset in status.dropItemFromPresets)
+        {
+            attempts= Random.Range(preset.attemptsRange.x, preset.attemptsRange.y + 1);
+            for (int i = 0; i < attempts; i++)
+            {
+                DropItem_Enemy(preset.preset.lootItems.Choice());
+            }
+        }
+        attempts = Random.Range(status.dropEquipmentsRange.x, status.dropEquipmentsRange.y + 1);
+        for (int i = 0; i < attempts; i++)
+        {
+            AddItem(expeditionManager.GetRandomEquipment(), 1);
+        }
     }
     public void AddItem(Definer.Item item, int amount)
     {
         item.amount = amount;
-        //for (int i = 0; i < loots.Count; i++)
-        //{
-        //    if (loots[i].data == item.data)
-        //    {
-        //        Definer.Item replace = loots[i];
-        //        replace.amount += amount;
-        //        loots.RemoveAt(i);
-        //        loots.Add(replace);
-
-        //        Sort();
-        //        return;
-        //    }
-        //}
         loots.Add(item);
         //Sort();
     }

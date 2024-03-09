@@ -69,11 +69,15 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            foreach (Definer.Item item in items)
+            List<Definer.Item> equipments = new List<Definer.Item>();
+            int[] rarityCount = new int[5];
+            for(int i = 0; i < 100; i++)
             {
-                FindObjectOfType<LootPanel>().AddItem(item, item.amount);
+                equipments.Add(expeditionManager.GetRandomEquipment());
+                rarityCount[(int)equipments[i].data.rarity]++;
+                print(equipments[i].data.itemName);
             }
-
+            foreach(int j in rarityCount) { print(j); }
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {

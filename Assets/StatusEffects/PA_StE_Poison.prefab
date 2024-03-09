@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "\u6BD2"
-    StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304CX\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30921\u6E1B\u3089\u3059"
+    StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304CX\u6E1B\u5C11\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30921\u6E1B\u3089\u3059"
     StEIcon: {fileID: 21300000, guid: 82aedb2141579644b92878ad50372ce2, type: 3}
     StEType: 2
     maxStack: 0
@@ -76,6 +76,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -88,6 +91,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

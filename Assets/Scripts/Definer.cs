@@ -87,6 +87,9 @@ public class Definer : MonoBehaviour
     [SerializeField]
     List<ItemData> equipmentDataBase;
 
+    public static List<List<ItemData>> equipments=new List<List<ItemData>>();
+
+
 
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"ì¡éÍ"}, {AbilityData.AbilityType.attack,"çUåÇ"},{AbilityData.AbilityType.heal,"âÒïú"},
@@ -185,5 +188,22 @@ public class Definer : MonoBehaviour
         actionManager_General=actionManager_General_Inspector;
         statusEffectIcon = statusEffectIcon_Inspector;
         positionEffectIcon=positionEffectIcon_Inspector;
+
+        for(int i = 0; i < 5; i++)
+        {
+            equipments.Add(new List<ItemData>());
+        }
+        foreach(ItemData equipment in equipmentDataBase)
+        {
+            equipments[(int)equipment.rarity].Add(equipment);
+        }
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    foreach (ItemData equipment in equipments[i])
+        //    {
+        //        print(equipment.itemName);
+        //    }
+        //    print("");
+        //}
     }
 }

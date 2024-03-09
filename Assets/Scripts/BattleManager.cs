@@ -50,6 +50,7 @@ public class BattleManager : MonoBehaviour
     ActionQueueManager actionQueue;
     SoundManager soundManager;
     PositionManager[] positionManagers;
+    ExpeditionManager.PartyStatus partyStatus;
 
     FieldEffect fieldEffect;
     int roundCount;
@@ -72,6 +73,7 @@ public class BattleManager : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         messageText = FindObjectOfType<MessageText>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
+        partyStatus = expeditionManager.GetPartyStatus();
         actionQueue = FindObjectOfType<ActionQueueManager>();
         soundManager = FindObjectOfType<SoundManager>();
         positionManagers = charactersManager.GetPositionManagers();
@@ -144,7 +146,7 @@ public class BattleManager : MonoBehaviour
             int a = utility.ChoiceWithWeight(ACT.ToArray());
             characterInTurnOrder.Add(charas[a]);
             var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < 3);
+            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < partyStatus.turnOrderReveal);
             turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
             turns[a]--;
             if (turns[a] == 0)

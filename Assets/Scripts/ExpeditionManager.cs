@@ -34,7 +34,15 @@ public class ExpeditionManager : MonoBehaviour
             eventIcon = data.eventIcon;
         }
     }
-
+    [System.Serializable]
+    public class PartyStatus
+    {
+        public float[] materialDropChance=new float[] { 60, 30, 10, 5, 1 };
+        public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
+        public int turnOrderReveal = 3;
+    }
+    [SerializeField]
+    PartyStatus partyStatus;
     /// <summary>x:åªç›ÇÃÉåÉCÉÑÅ[ y:è„â∫</summary>
     [SerializeField]
     Vector2Int currentPos;
@@ -153,6 +161,12 @@ public class ExpeditionManager : MonoBehaviour
         currentRE.SelectOption(index);
     }
 
+    public Definer.Item GetRandomEquipment()
+    {
+        Definer.Item equipment = new Definer.Item();
+        equipment.Init(Definer.equipments[partyStatus.equipmentDropWeights.ChoiceWithWeight()].Choice());
+        return equipment;
+    }
 
     public void OnEndBattle() { currentRE.OnEndBattle(); }
     public void OnEndLoot() { currentRE.OnEndLoot(); }
@@ -163,6 +177,7 @@ public class ExpeditionManager : MonoBehaviour
         SelectNextRoom();
     }
 
+    public PartyStatus GetPartyStatus() { return partyStatus; }
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }
     public Room GetRoom(Vector2Int pos) { return layers[pos.x].GetRoom(pos.y); }
     public RoomEvent GetCurrentRE() { return currentRE; }

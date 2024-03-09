@@ -61,6 +61,7 @@ public class CharacterData : ScriptableObject
     public float debuffRes;
 
     public List<StEResist> StEResists;
+    public List<StEApplyBonus> StEApplyBonus;
 
     public float moveRes;
     
@@ -80,4 +81,12 @@ public class StEResist
 {
     public GameObject ResStE;
     public float value;
+}
+[System.Serializable]
+public class StEApplyBonus
+{
+    public GameObject applyStE;
+    public float exChance;
+    public int exStack;
+    public int exValue;
 }

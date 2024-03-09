@@ -8086,10 +8086,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86bab616fa581414191919dffad45417, type: 2}
   - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   - {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
-  - {fileID: 11400000, guid: 4392afa8c6fca0e4caa9b8d029c068b8, type: 2}
+  - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
   - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
   - {fileID: 11400000, guid: e8176889f726c9d41b7aa46ce75b6537, type: 2}
-  amount: 7e0000000500000001000000020000000700000003000000150000000600000001000000010000000100000001000000010000000100000001000000
+  - {fileID: 11400000, guid: ded56d7ee7905e34b9f1e2fa39ceafab, type: 2}
+  amount: 7e000000050000000100000002000000070000000300000015000000060000000100000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
     weight: 0
@@ -8194,6 +8195,18 @@ MonoBehaviour:
   positionEffectIcon_Inspector: {fileID: 4322071049489499627, guid: ded2a124e9e7dc3439492f8f626707fe, type: 3}
   equipmentDataBase:
   - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
+  - {fileID: 11400000, guid: 4392afa8c6fca0e4caa9b8d029c068b8, type: 2}
+  - {fileID: 11400000, guid: 1a15f4f8967430d479589373e59315b4, type: 2}
+  - {fileID: 11400000, guid: e8176889f726c9d41b7aa46ce75b6537, type: 2}
+  - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
+  - {fileID: 11400000, guid: 1f5e7e28e1768e64685f1d45d474df80, type: 2}
+  - {fileID: 11400000, guid: 9854f20269436e6448e8e49b6d2a0466, type: 2}
+  - {fileID: 11400000, guid: 86bab616fa581414191919dffad45417, type: 2}
+  - {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
+  - {fileID: 11400000, guid: 1129d5472cb49c94d9bad07af02c1673, type: 2}
+  - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
+  - {fileID: 11400000, guid: d165bb41fa5abd24d9ed6b264ea717ab, type: 2}
+  - {fileID: 11400000, guid: ded56d7ee7905e34b9f1e2fa39ceafab, type: 2}
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -11385,6 +11398,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e26b179559627a478f92b643c0f978c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  partyStatus:
+    materialDropChance:
+    - 60
+    - 30
+    - 10
+    - 5
+    - 1
+    equipmentDropWeights:
+    - 50
+    - 35
+    - 10
+    - 4
+    - 1
+    turnOrderReveal: 3
   currentPos: {x: 0, y: 0}
   currentAreaManger: {fileID: 1715376304}
   REOptionUI: {fileID: 2066087927}
@@ -17060,7 +17087,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     normalBattleFEPool:
     - weight: 10
-      fieldEffect: {fileID: 471706018376148968, guid: c2dffd2f75e7a2146902e0c4ee5e6926, type: 3}
+      fieldEffect: {fileID: 0}
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
 --- !u!4 &1715376305
@@ -17362,7 +17389,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

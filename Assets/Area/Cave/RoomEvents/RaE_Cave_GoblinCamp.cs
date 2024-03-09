@@ -11,6 +11,8 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
     [SerializeField]
     LootPanel.DropItemFromPreset preset;
     [SerializeField]
+    LootPanel.LootStatus loot;
+    [SerializeField]
     GameObject surprise;
     [SerializeField]
     GameObject siege;
@@ -30,7 +32,7 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
         switch (choice)
         {
             case 0:
-                lootPanel.DropItem_Preset(preset);
+                lootPanel.DropItem_Loot(loot);
                 if (40.Probability()) { expeditionManager.Battle(enemySet, surprise); }
                 else { expeditionManager.Battle(enemySet, null); }
                 break;
@@ -42,7 +44,7 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
                     yield return new WaitForSeconds(0.5f);
                     infoText.AddLogText("");
                 }
-                lootPanel.DropItem_Preset(preset);
+                lootPanel.DropItem_Loot(loot);
                 if (25.Probability())
                 {
                     infoText.AddLogText("ñ⁄ÇäoÇ‹ÇµÇΩÉSÉuÉäÉìÇ∆ñ⁄Ç™çáÇ¡ÇΩ!!");

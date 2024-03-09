@@ -40,12 +40,7 @@ public class Action : MonoBehaviour
         public TargetType targetType;
         public bool friendly;
         public CharactersManager.SearchCharaCondition condition;
-        //public bool targetPlayerSide;
-        //public bool targetEnemySide;
        
-        //public bool selectableFront;
-        //public bool selectableMid;
-        //public bool selectableBack;
         public bool ignoreMark;
         public bool ignoreHide;
         [Header("0:right 1:upper 2:lower 3:left(targetype‚ªmove‚Ì‚Æ‚«‚Ég—p)")]
@@ -482,6 +477,7 @@ public class Action : MonoBehaviour
                                 actionStatus.actionOwner.OnAttack(false, false);//UŒ‚—U”­
                                 actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i], actionsStatus[i]);//—^ƒ_ƒ—U”­
                             }
+                            actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, false);//”íUŒ‚—U”­
                             actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ƒ_ƒ[ƒWˆ—ŠJn
                         }
                         else//‰ñ”ğ
@@ -494,7 +490,7 @@ public class Action : MonoBehaviour
                             {
                                 actionStatus.actionOwner.OnAttack(true, false);//UŒ‚—U”­
                             }
-
+                            actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, true, false);//”íUŒ‚—U”­
                         }
                     }
                     else//ƒ~ƒX
@@ -505,6 +501,7 @@ public class Action : MonoBehaviour
                             FindObjectOfType<InfoText>().AddLogText(string.Format("{0}‚ÍUŒ‚‚ğŠO‚µ‚½", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
                             actionStatus.actionOwner.OnAttack(false, true);//UŒ‚—U”­
                         }
+                        actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, true);//”íUŒ‚—U”­
                         soundManager.PlaySE(Definer.soundRef.miss);
                         attackHit = false;
                     }

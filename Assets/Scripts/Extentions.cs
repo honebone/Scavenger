@@ -253,5 +253,8 @@ public static class Extentions
         }
 
         return sample;
+    }public static T Choice<T>(this List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
     }
 }

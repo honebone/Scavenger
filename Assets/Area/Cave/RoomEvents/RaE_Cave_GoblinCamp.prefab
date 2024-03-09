@@ -67,6 +67,13 @@ MonoBehaviour:
     - {fileID: 0}
   preset:
     preset: {fileID: 11400000, guid: d184fced93d75ec43ae1dca144889d71, type: 2}
-    attempts: 10
+    attemptsRange: {x: 0, y: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    dropItems: []
+    dropItemFromPresets:
+    - preset: {fileID: 11400000, guid: d184fced93d75ec43ae1dca144889d71, type: 2}
+      attemptsRange: {x: 4, y: 10}
+    dropEquipmentsRange: {x: 1, y: 2}
   surprise: {fileID: 471706018376148968, guid: 085f1034c3cf5a54483007ec5468437f, type: 3}
   siege: {fileID: 471706018376148968, guid: c2dffd2f75e7a2146902e0c4ee5e6926, type: 3}

@@ -52,7 +52,7 @@ MonoBehaviour:
       maxHP_mul: 0
       maxSAN_mul: 0
       ATK_mul: 0
-      CRITC: 7
+      CRITC: 5
       CRITD: 0
       EVD: 0
       ACC: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
       turnPerRound: 0
       GHeal: 0
       RHeal: 0
+      StEResists: []
     info_start: 
   actionMods: []
 --- !u!212 &3238141386940741765
