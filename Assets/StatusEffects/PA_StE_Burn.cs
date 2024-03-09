@@ -6,12 +6,15 @@ public class PA_StE_Burn : PA_StatusEffect
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
-    public override void OnTurnStart()
+    public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        Action.ActionStatus action = actionStatus;
-        action.decreaseHP_min = StEStatus.stack;
-        action.decreaseHP_max = StEStatus.stack;
-        character.Enqueue(action, true, new List<Character>() { character });
-        AddStack(-2);
+        if (myTurn)
+        {
+            Action.ActionStatus action = actionStatus;
+            action.decreaseHP_min = StEStatus.stack;
+            action.decreaseHP_max = StEStatus.stack;
+            character.Enqueue(action, true, new List<Character>() { character });
+            AddStack(-2);
+        }
     }
 }

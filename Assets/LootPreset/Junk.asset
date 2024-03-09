@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46d5fd8514f19c4aac4c9afe38b7cf5, type: 3}
+  m_Name: Junk
+  m_EditorClassIdentifier: 
+  lootItems:
+  - dropItem: {fileID: 11400000, guid: 85316edc6d6f2394486e0567baccfe5d, type: 2}
+    quantity: 5
+  - dropItem: {fileID: 11400000, guid: 23ae138d69a0cfc4b87ac7922b8f316a, type: 2}
+    quantity: 3
+  - dropItem: {fileID: 11400000, guid: 14e65b5c6767b2e4d82e9a707f617d8e, type: 2}
+    quantity: 6
+  - dropItem: {fileID: 11400000, guid: d6ebecf1dad64d743bb62f1ec81bf492, type: 2}
+    quantity: 1
+  - dropItem: {fileID: 11400000, guid: d6ebecf1dad64d743bb62f1ec81bf492, type: 2}
+    quantity: 2
+  - dropItem: {fileID: 11400000, guid: 3d8bef40e27b2fe41a100f9cc494b181, type: 2}
+    quantity: 3
+  - dropItem: {fileID: 11400000, guid: fc4df6f9bfeb00a42a23e14e37be9235, type: 2}
+    quantity: 10
+  - dropItem: {fileID: 11400000, guid: a2256f98a4cad364cb9cf9eb2aefe65b, type: 2}
+    quantity: 2
+  - dropItem: {fileID: 11400000, guid: 3884638e1a1c99d4faea34a54480c7a5, type: 2}
+    quantity: 4
+  - dropItem: {fileID: 11400000, guid: 9369b89091e56b94b902015cf05686c0, type: 2}
+    quantity: 4
+  - dropItem: {fileID: 11400000, guid: ae5ee485517f0a7488c2f17a059abd75, type: 2}
+    quantity: 1
+  - dropItem: {fileID: 11400000, guid: 9373aae3111060f49becb56bc3359936, type: 2}
+    quantity: 10
+  - dropItem: {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
+    quantity: 2

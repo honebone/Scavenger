@@ -18,6 +18,11 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     AreaManager.EnemySet enemySetTest;
 
+    [SerializeField]
+    GameObject RE;
+    [SerializeField]
+    Transform REP;
+
     CharactersManager charactersManager;
     ExpeditionManager expeditionManager;
     BattleManager battleManager;
@@ -73,9 +78,8 @@ public class DebugFunction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
 
-            Definer.Item i = new Definer.Item();
-            i.Init(Eq);
-            charactersManager.GetCharacterWithPos(7).EquipItem(i);
+            var r = Instantiate(RE, REP);
+            r.GetComponent<RoomEvent>().Init(new AreaManager.Area());
 
         }
     }

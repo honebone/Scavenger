@@ -237,4 +237,21 @@ public static class Extentions
     {
         return value * 100f / max;
     }
+    /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
+    public static List<T> Sample<T>(this List<T> list, int amount)
+    {
+        if (list.Count <= amount) { return list; }
+
+        List<T> pool = new List<T>(list);
+        List<T> sample = new List<T>();
+        int index;
+        for(int i = 0; i < amount; i++)
+        {
+            index = RandIndex(pool.Count);
+            sample.Add(pool[index]);
+            pool.RemoveAt(index);
+        }
+
+        return sample;
+    }
 }

@@ -320,6 +320,19 @@ public class BattleManager : MonoBehaviour
         }
         actionQueue.StartResolve(1);
     }
+    public void Trigger_TurnStart()
+    {
+        if (fieldEffect != null) { fieldEffect.OnTurnStart(currentTurn + 1); }
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnTurnStart(checkIfMyTurn(character), currentTurn + 1);
+        }
+        foreach (PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnTurnStart();
+        }
+        actionQueue.StartResolve(2);
+    }
     public void Trigger_TurnOrderDecide()
     {
         if (fieldEffect != null) { fieldEffect.OnTurnOrderDecide(); }

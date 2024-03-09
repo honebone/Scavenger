@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: M_gold
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 01000000
-  temporaryTag: 0
   itemName: "\u91D1\u8CA8"
+  specialInfo: 0
   info: 
   amountPerStack: 1000
   rarity: 0
   sprite: {fileID: 21300000, guid: ba2536a39a530264fb75cd6918fc8ce4, type: 3}
+  materialTags: 01000000
   price: 1
+  equipmentTag: 0
   manager: {fileID: 0}

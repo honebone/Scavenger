@@ -52,8 +52,9 @@ MonoBehaviour:
   GHeal: 100
   RHeal: 100
   debuffRes: 0
-  stunRes: 0
-  bleedRes: 0
-  poisonRes: 0
-  burnRes: 0
+  StEResists:
+  - ResStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+    value: 20
+  - ResStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+    value: 20
   moveRes: 0

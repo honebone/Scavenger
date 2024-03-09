@@ -17,7 +17,6 @@ public class RE_Loot : RoomEvent
     [SerializeField]
     List<LootPanel.DropItem> dropItems;
 
-    LootPanel lootPanel;
     public override void StartRoomEvent()
     {
         if (eventName != "") { expeditionManager.LogREName(eventName); }
@@ -33,7 +32,7 @@ public class RE_Loot : RoomEvent
         //drawAttempts回だけdropItemsからアイテムを1つ選び、そのアイテムのレアリティに応じた確率でルートに追加
         int drawAttempts = Random.Range(drawAttemptsRange.x, drawAttemptsRange.y + 1);
         lootPanel.DropItem_Loot(drawAttempts, dropItems);
-        lootPanel.OpenLootPanel();
+        lootPanel.Loot();
     }
     public override void OnEndLoot()
     {

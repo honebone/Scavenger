@@ -63,6 +63,7 @@ public class ExpeditionManager : MonoBehaviour
     BattleManager battleManager;
     FadeOutUI fadeOutUI;
     SoundManager soundManager;
+    LootPanel lootPanel;
 
     private void Start()
     {
@@ -72,6 +73,7 @@ public class ExpeditionManager : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         fadeOutUI = FindObjectOfType<FadeOutUI>();
         soundManager = FindObjectOfType<SoundManager>();
+        lootPanel = FindObjectOfType<LootPanel>();
     }
     public void SetLayers(List<Map_LayerPanel> l)
     {
@@ -133,6 +135,7 @@ public class ExpeditionManager : MonoBehaviour
         battleManager.BattleStart(fieldEffect);
 
     }
+    
 
     public void SetREOptionButtons(List<RoomEvent.REOptionParams> optionParams)
     {

@@ -27,11 +27,17 @@ public class LootPanel : MonoBehaviour
     [System.Serializable]
     public class DropItem
     {
-        //public ItemObject dropItemData;
-        public GameObject itemData;
+        //public GameObject itemData;
+        public ItemData dropItem;
         public int quantity;
 
-        public ItemData GetItemData() { return itemData.GetComponent<ItemObject>().GetItemData(); }
+        //public ItemData GetItemData() { return itemData.GetComponent<ItemObject>().GetItemData(); }
+    }
+    [System.Serializable]
+    public class DropItemFromPreset
+    {
+        public LootPresetData preset;
+        public int attempts;
     }
     private void Start()
     {
@@ -44,9 +50,9 @@ public class LootPanel : MonoBehaviour
     public void ToggleLootPanel()
     {
         if (lootPanel.activeSelf) { CloseLootPanel(); }
-        else { OpenLootPanel(); }
+        else { Loot(); }
     }
-    public void OpenLootPanel()
+    public void Loot()
     {
         SetButtons();
         if (!lootPanel.activeSelf)
@@ -134,7 +140,7 @@ public class LootPanel : MonoBehaviour
         int dropQuantity = 0;
         for (int i = 0; i < dropItem.quantity; i++)
         {
-            if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
+            if (dropRate[(int)dropItem.dropItem.rarity].Probability())
             {
                 dropQuantity++;
             }
@@ -143,7 +149,7 @@ public class LootPanel : MonoBehaviour
         if (dropQuantity > 0)
         {
             Definer.Item item = new Definer.Item();
-            item.Init(dropItem.GetItemData());
+            item.Init(dropItem.dropItem);
             AddItem(item, dropQuantity);
         }
     }
@@ -163,6 +169,10 @@ public class LootPanel : MonoBehaviour
             //}
             DropItem_Enemy(dropItems[dropItems.Count.RandIndex()]);
         }
+    }
+    public void DropItem_Preset(DropItemFromPreset preset)
+    {
+        DropItem_Loot(preset.attempts, preset.preset.lootItems);
     }
     public void AddItem(Definer.Item item, int amount)
     {

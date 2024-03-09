@@ -204,19 +204,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 06990f726fae40749a720ad5ff7a10bf, type: 2}
-    m_FontSize: 40
+    m_Font: {fileID: 12800000, guid: 580b80f1d29946a46a0101a69b7815bc, type: 2}
+    m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30C6\u30B9\u30C8"
+  m_Text: 
 --- !u!222 &3809865
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8086,7 +8086,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86bab616fa581414191919dffad45417, type: 2}
   - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   - {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
-  amount: 7e0000000500000001000000020000000700000003000000150000000600000001000000010000000100000001000000
+  - {fileID: 11400000, guid: 4392afa8c6fca0e4caa9b8d029c068b8, type: 2}
+  - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
+  - {fileID: 11400000, guid: e8176889f726c9d41b7aa46ce75b6537, type: 2}
+  amount: 7e0000000500000001000000020000000700000003000000150000000600000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
     weight: 0
@@ -8100,6 +8103,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     - {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
+  RE: {fileID: 4154373557521219498, guid: c2c66b4ea6134cc49882137f45baf921, type: 3}
+  REP: {fileID: 1877823637}
 --- !u!114 &613893884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8187,7 +8192,8 @@ MonoBehaviour:
   actionManager_General_Inspector: {fileID: 7602238575876192368, guid: ae70b75fecb0b4249ad13f9a0047c65e, type: 3}
   statusEffectIcon_Inspector: {fileID: 754321851861881814, guid: c77862d553d38ac40b6141b60954efa3, type: 3}
   positionEffectIcon_Inspector: {fileID: 4322071049489499627, guid: ded2a124e9e7dc3439492f8f626707fe, type: 3}
-  equipmentDataBase: []
+  equipmentDataBase:
+  - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -11471,7 +11477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAbilityParent: {fileID: 753643253}
   turnOrderIconParent: {fileID: 704241286}
-  fieldEffectP: {fileID: 0}
+  fieldEffectP: {fileID: 78312538}
   roundText: {fileID: 1659065778}
   SE_FE: {fileID: 8300000, guid: 61346b13978810c4ebab54573611a9dc, type: 3}
   anim_battleIcon: {fileID: 1800819840}
@@ -11518,6 +11524,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -17052,7 +17060,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     normalBattleFEPool:
     - weight: 10
-      fieldEffect: {fileID: 0}
+      fieldEffect: {fileID: 471706018376148968, guid: c2dffd2f75e7a2146902e0c4ee5e6926, type: 3}
   content: {fileID: 1232300787}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
 --- !u!4 &1715376305
@@ -17354,7 +17362,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

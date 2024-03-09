@@ -60,10 +60,7 @@ public class CharacterData : ScriptableObject
 
     public float debuffRes;
 
-    public float stunRes;
-    public float bleedRes;
-    public float poisonRes;
-    public float burnRes;
+    public List<StEResist> StEResists;
 
     public float moveRes;
     
@@ -77,4 +74,10 @@ public class DropItem
     public int quantity;
 
     public ItemData GetItemData() { return dropItemData.GetItemData(); }
+}
+[System.Serializable]
+public class StEResist
+{
+    public GameObject ResStE;
+    public float value;
 }

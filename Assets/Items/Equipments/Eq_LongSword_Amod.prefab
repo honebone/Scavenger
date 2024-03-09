@@ -47,7 +47,9 @@ MonoBehaviour:
   actionModStatus:
     decreaseHP: 0
     cantCounter: 0
-    ATKMod: 10
+    ATKMod: 0
+    exDMG_mul: 10
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

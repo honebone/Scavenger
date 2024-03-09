@@ -63,6 +63,8 @@ public class Action : MonoBehaviour
         public int attackType;
         public float ATKMod_min;
         public float ATKMod_max;
+        public float exDMG_mul;
+        public int exDMG_int;
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
@@ -331,6 +333,8 @@ public class Action : MonoBehaviour
             if (mod.cantCounter) { modifiedStatus.cantCounter = true; }
             modifiedStatus.ATKMod_min += mod.ATKMod;
             modifiedStatus.ATKMod_max += mod.ATKMod;
+            modifiedStatus.exDMG_mul += mod.exDMG_mul;
+            modifiedStatus.exDMG_int += mod.exDMG_int;
             modifiedStatus.ACCMod += mod.ACCMod;
             modifiedStatus.CRITCMod += mod.CRITCMod;
             modifiedStatus.CRITDMod += mod.CRITDMod;
@@ -425,8 +429,11 @@ public class Action : MonoBehaviour
             actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
             if (actionStatus.VE_OnTargets)
             {
-                var v = Instantiate(actionStatus.VE_OnTargets, characterManager.GetCharacterWorldPos(targetStatus.position), Quaternion.identity);
-                if (targetStatus.position < 9) { v.GetComponent<SpriteRenderer>().flipX = true; }//プレイヤー対象の時左右反転
+                Vector2 VEPos = characterManager.GetCharacterWorldPos(targetStatus.position);
+                Vector2 VEOffset = actionStatus.VE_OnTargets.GetComponent<VisualEffect>().GetOffset();
+                if (targetStatus.position < 9) { VEOffset.x *= -1; }
+                var v = Instantiate(actionStatus.VE_OnTargets, VEPos + VEOffset, Quaternion.identity);
+                if (targetStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0)); }//プレイヤー対象の時左右反転
             }
             if (!targetStatus.dead)
             {
@@ -463,7 +470,8 @@ public class Action : MonoBehaviour
                                 CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
                             }
-                            //fDMG -= targetStatus.shield;
+                            fDMG *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
+                            fDMG += actionsStatus[i].exDMG_int;
 
                             DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
                             int shieldDMG = Mathf.Min(DMG, targetStatus.shield);
@@ -493,7 +501,7 @@ public class Action : MonoBehaviour
                     {
                         if (!notChara)
                         {
-                            actionStatus.actionOwner.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
+                            actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
                             FindObjectOfType<InfoText>().AddLogText(string.Format("{0}は攻撃を外した", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
                             actionStatus.actionOwner.OnAttack(false, true);//攻撃時誘発
                         }
@@ -546,7 +554,8 @@ public class Action : MonoBehaviour
 
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
-                        if (StEParams.applyChance.Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
+                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
+                        else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable); }
                     }
                     foreach (ActionData.RemoveStE remove in actionsStatus[i].removeStEs)//StE消去
                     {

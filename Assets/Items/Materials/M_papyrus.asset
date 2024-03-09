@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: M_papyrus
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 06000000
-  temporaryTag: 0
   itemName: "\u7D19"
+  specialInfo: 0
   info: 
-  amountPerStack: 30
-  rarity: 1
+  amountPerStack: 60
+  rarity: 2
   sprite: {fileID: 21300000, guid: 20751bacdbde56c4e8afdc46876f7b8f, type: 3}
+  materialTags: 06000000
   price: 4
+  equipmentTag: 0
   manager: {fileID: 0}

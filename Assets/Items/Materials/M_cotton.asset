@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: M_cotton
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 05000000
-  temporaryTag: 0
   itemName: "\u7DBF"
+  specialInfo: 0
   info: 
   amountPerStack: 20
-  rarity: 0
+  rarity: 1
   sprite: {fileID: 21300000, guid: 20bfbae4aa1649e499e9ae1e2aeea247, type: 3}
+  materialTags: 05000000
   price: 5
+  equipmentTag: 0
   manager: {fileID: 0}

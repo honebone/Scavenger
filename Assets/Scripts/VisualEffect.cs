@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class VisualEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    Vector2 offset;
+    
+    public Vector2 GetOffset() { return offset; }
 
     public void EndAnimation() { Destroy(gameObject); }
 }

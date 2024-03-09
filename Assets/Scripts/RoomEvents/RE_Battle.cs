@@ -10,7 +10,7 @@ public class RE_Battle : RoomEvent
     }
     public override void OnEndBattle()
     {
-        FindObjectOfType<LootPanel>().OpenLootPanel();
+        lootPanel.Loot();
     }
     public override void OnEndLoot()
     {

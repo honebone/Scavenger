@@ -17,7 +17,7 @@ MonoBehaviour:
   dontChangeSprite: 0
   activateSprite: {fileID: 3465433911880329508, guid: 55307332cdcc3ac4394017531c25cc5c, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
+  SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 2
@@ -34,7 +34,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     actionInfo: 
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 1964176777324528062, guid: a2a7ca6136e5fa24b80456c47e433912, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -103,9 +103,9 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
     dontChangeSprite: 0
     activateSprite: {fileID: 3465433911880329508, guid: 55307332cdcc3ac4394017531c25cc5c, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 04000000

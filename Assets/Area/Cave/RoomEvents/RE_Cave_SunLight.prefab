@@ -52,14 +52,20 @@ MonoBehaviour:
   drawAttemptsRange: {x: 8, y: 16}
   dropItems:
   - itemData: {fileID: 963232338231001478, guid: 2a7ab7fd08f57014db95f7a7f72aaf66, type: 3}
+    dropItem: {fileID: 11400000, guid: e72ebac2bf256e44f85fefbb65507705, type: 2}
     quantity: 2
   - itemData: {fileID: 2971351176358819010, guid: bd79777bb4564a54abb1fddbd684e08b, type: 3}
+    dropItem: {fileID: 11400000, guid: a3a602687403c6343b151babe6a627f9, type: 2}
     quantity: 1
   - itemData: {fileID: 8389877184191146029, guid: 4bf24ba3aab17fa40a12688689631ef0, type: 3}
+    dropItem: {fileID: 11400000, guid: a9cf4abc81488c14eaac727451f7c534, type: 2}
     quantity: 3
   - itemData: {fileID: 7463922328617364255, guid: 3e1e4d3fb27d08a46a9bc4f6dc98fc3e, type: 3}
+    dropItem: {fileID: 11400000, guid: 12178285defcd41489fcff184bdd9e3a, type: 2}
     quantity: 2
   - itemData: {fileID: 1973002552752321914, guid: b096082405644cf48ba5d0f8c3f83c50, type: 3}
+    dropItem: {fileID: 11400000, guid: a028fdc8f71b2d94ab65a9f69d818a7c, type: 2}
     quantity: 2
   - itemData: {fileID: 5139726785875338827, guid: d09e7a48fcb5e9848a3a2da863fba611, type: 3}
+    dropItem: {fileID: 11400000, guid: d13bf252d00158848802be0d2b2b9bd6, type: 2}
     quantity: 1

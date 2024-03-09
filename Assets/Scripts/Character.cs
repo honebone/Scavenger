@@ -57,10 +57,7 @@ public class Character : MonoBehaviour
         public float GHeal;
         public float RHeal;
 
-        public float stunRes;
-        public float bleedRes;
-        public float poisonRes;
-        public float burnRes;
+        public List<StEResist> StEResists;
 
         public float moveRes;
         public float debuffRes;
@@ -131,7 +128,13 @@ public class Character : MonoBehaviour
             if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
             if (RHeal != 100) { s += string.Format("受ける回復量：{0}％\n", RHeal); }
 
-            //if (omenSet) {s += string.Format("<{0}>を準備中\n", omen.abilityName.ColorStr(omen.abilityType.ToColor())); }
+            foreach (StEResist res in StEResists)
+            {
+                if (res.value != 0)
+                {
+                    s += string.Format("{0}耐性{1}％\n", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName, res.value);
+                }
+            }
             return s;
         }
 
@@ -186,10 +189,7 @@ public class Character : MonoBehaviour
 
             debuffRes = data.debuffRes;
 
-            stunRes = data.stunRes;
-            bleedRes = data.bleedRes;
-            poisonRes = data.poisonRes;
-            burnRes = data.burnRes;
+            StEResists = new List<StEResist>(data.StEResists);
 
             moveRes = data.moveRes;
 
@@ -197,6 +197,23 @@ public class Character : MonoBehaviour
             equipments = new List<Definer.Item>();
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
+        public float GetStERes(GameObject StE)
+        {
+            foreach (StEResist res in StEResists)
+            {
+                if (res.ResStE == StE) { return res.value; }
+            }
+            return 0;
+        }
+        public string ValueToStr(string start, float value, string end)
+        {
+            if (value == 0) { return ""; }
+            string s = start;
+            if (value < 0) { s += value.ToString(); }
+            else { s += "+" + value.ToString(); }
+            s += end + "\n";
+            return s;
+        }
     }
     [System.Serializable]
     public struct CharaStatusMod
@@ -217,6 +234,8 @@ public class Character : MonoBehaviour
 
         public float GHeal;
         public float RHeal;
+
+        public List<StEResist> StEResists;
         public string GetInfo()
         {
             string s = "";
@@ -231,6 +250,10 @@ public class Character : MonoBehaviour
             s += ValueToStr("ラウンド毎ターン数", turnPerRound, "");
             s += ValueToStr("与える回復量", GHeal, "％");
             s += ValueToStr("受ける回復量", RHeal, "％");
+            foreach(StEResist res in StEResists)
+            {
+                s += ValueToStr(string.Format("{0}耐性", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName), res.value, "％");
+            }
             return s;
         }
         public string ValueToStr(string start, float value, string end)
@@ -489,8 +512,7 @@ public class Character : MonoBehaviour
                 charaStatus.abilitiesStatus[i].AddCoolDown(-1);
             }
         }
-        OnTurnStart();
-        actionQueue.StartResolve(2);
+        battleManager.Trigger_TurnStart();
     }
     public virtual void MainPhase()
     {
@@ -686,6 +708,10 @@ public class Character : MonoBehaviour
         if (mod.turnPerRound != 0) { AddTurnPerRound(mod.turnPerRound * n); }
         if (mod.GHeal != 0) { AddGHeal(mod.GHeal * n); }
         if (mod.RHeal != 0) { AddRHeal(mod.RHeal * n); }
+        foreach (StEResist res in mod.StEResists)
+        {
+            AddStERes(res, set);
+        }
     }
     public void AddMaxHP(int value_base, float value_mul, bool heal)
     {
@@ -780,6 +806,20 @@ public class Character : MonoBehaviour
         else { charaStatus.stun--; }
     }
     
+    public void AddStERes(StEResist resist, bool set)
+    {
+        foreach(StEResist res in charaStatus.StEResists)
+        {
+            if (res.ResStE == resist.ResStE)
+            {
+                if (set) { res.value += resist.value; }
+                else { res.value -= resist.value; }
+                return;
+            }
+        }
+        if (set) { charaStatus.StEResists.Add(resist); }
+        else { infoText.AddErrorText("error"); }
+    }
 
     public void AddActionMod(GameObject mod ,bool set)
     {
@@ -940,9 +980,9 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnOrderDecide(); }
         RemovePA_Execute();
     }
-    public void OnTurnStart()
+    public void OnTurnStart(bool myTurn,int turnCount)
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(myTurn, turnCount); }
         RemovePA_Execute();
     }
     public void OnTurnEnd()

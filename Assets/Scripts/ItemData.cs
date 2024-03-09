@@ -1,6 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(ItemData))]
+public class ItemDataEditor : Editor
+{
+    public override Texture2D RenderStaticPreview
+    (
+        string assetPath,
+        Object[] subAssets,
+        int width,
+        int height
+    )
+    {
+        var obj = target as ItemData;
+        var sprite = obj.sprite;
+
+        if (sprite == null)
+        {
+            return base.RenderStaticPreview(assetPath, subAssets, width, height);
+        }
+
+        var preview = AssetPreview.GetAssetPreview(sprite);
+        var final = new Texture2D(width, height);
+        if (preview == null) { return base.RenderStaticPreview(assetPath, subAssets, width, height); }
+        EditorUtility.CopySerialized(preview, final);
+
+        return final;
+    }
+}
+
+#endif
+
 [CreateAssetMenu( menuName = "ScriptableObjects/ItemData")]
 
 

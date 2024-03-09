@@ -13,6 +13,8 @@ public class ActionMod : MonoBehaviour
         public bool cantCounter;
 
         public float ATKMod;
+        public float exDMG_mul;
+        public int exDMG_int;
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;

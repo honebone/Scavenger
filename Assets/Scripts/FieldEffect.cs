@@ -26,7 +26,7 @@ public class FieldEffect : MonoBehaviour
     public virtual void OnBattleStart() { }
     public virtual void OnRoundStart() { }
     public virtual void OnTurnOrderDecide() { }
-    public virtual void OnTurnStart() { }
+    public virtual void OnTurnStart(int turnCount) { }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }
     public virtual void OnBattleEnd() { }

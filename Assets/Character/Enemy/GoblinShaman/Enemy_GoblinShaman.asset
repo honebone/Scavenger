@@ -32,11 +32,11 @@ MonoBehaviour:
   actionMods: []
   corpse: {fileID: 0}
   dropItems:
-  - itemData: {fileID: 963232338231001478, guid: 89930fd9f5b84d847993380dfa559ff7, type: 3}
+  - dropItem: {fileID: 11400000, guid: 9b3ecad76c8787b4cb463a18d479a910, type: 2}
     quantity: 2
-  - itemData: {fileID: 963232338231001478, guid: d65d743e703335c478eb7f1554336bc6, type: 3}
+  - dropItem: {fileID: 11400000, guid: 8f21901abf2b9624e80aa2c612b1cc4c, type: 2}
     quantity: 2
-  - itemData: {fileID: 963232338231001478, guid: 85aa6de1d8b1e554d976ced485dc78a2, type: 3}
+  - dropItem: {fileID: 11400000, guid: 5a19c4384d17b5342836e153c97e472d, type: 2}
     quantity: 2
   surviveFatalWounds: 0
   maxHP: 12
@@ -46,7 +46,7 @@ MonoBehaviour:
   CRITD: 1
   EVD: 3
   ACC: 85
-  ACT: 4000
+  ACT: 4
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
