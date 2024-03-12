@@ -18,6 +18,9 @@ public class LootPanel : MonoBehaviour
     [SerializeField]
     GameObject optionPanel;
 
+    [SerializeField]
+    AudioClip SE_Equipment;
+
     bool revealing;
 
     InfoText infoText;
@@ -116,6 +119,7 @@ public class LootPanel : MonoBehaviour
 
             Definer.Item item = lootButton.GetItem();
             soundManager.PlaySE(Definer.soundRef.getItem[(int)item.data.rarity]);
+            if (item.data.itemType == ItemData.ItemType.equipment) { soundManager.PlaySE(SE_Equipment); }
             if (item.data.rarity == ItemData.Rarity.epic) { yield return new WaitForSeconds(0.5f); }
             else if (item.data.rarity == ItemData.Rarity.legendary) { yield return new WaitForSeconds(1f); }
         }

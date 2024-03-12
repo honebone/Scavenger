@@ -551,7 +551,8 @@ public class Action : MonoBehaviour
 
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StEïtó^
                     {
-                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams); }
+                        StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
+                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams,applyBonus); }
                         else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable); }
                     }
                     foreach (ActionData.RemoveStE remove in actionsStatus[i].removeStEs)//StEè¡ãé

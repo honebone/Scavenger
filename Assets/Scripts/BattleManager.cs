@@ -144,12 +144,15 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; turns.Count > 0; i++)
         {
             int a = utility.ChoiceWithWeight(ACT.ToArray());
-            characterInTurnOrder.Add(charas[a]);
-            var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < partyStatus.turnOrderReveal);
-            turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
-            turns[a]--;
-            if (turns[a] == 0)
+            if(turns[a] > 0)
+            {
+                characterInTurnOrder.Add(charas[a]);
+                var t = Instantiate(turnOrderIcon, turnOrderIconParent);
+                t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < partyStatus.turnOrderReveal);
+                turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
+                turns[a]--;
+            }
+            else
             {
                 charas.RemoveAt(a);
                 turns.RemoveAt(a);

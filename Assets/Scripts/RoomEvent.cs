@@ -6,7 +6,9 @@ public class RoomEvent : MonoBehaviour
 {
     protected AreaManager.Area currentArea;
     protected ExpeditionManager expeditionManager;
+    protected ExpeditionManager.PartyStatus partyStatus;
     protected LootPanel lootPanel;
+    protected SupplyManager supplyManager;
     protected CharactersManager characterManager;
     protected InfoText infoText;
     [System.Serializable]
@@ -20,7 +22,9 @@ public class RoomEvent : MonoBehaviour
     {
         currentArea = area;
         expeditionManager=FindObjectOfType<ExpeditionManager>();
+        partyStatus = expeditionManager.GetPartyStatus();
         lootPanel = FindObjectOfType<LootPanel>();
+        supplyManager = FindObjectOfType<SupplyManager>();
         characterManager=FindObjectOfType<CharactersManager>();
         infoText = FindObjectOfType<InfoText>();
         StartRoomEvent();
@@ -31,6 +35,7 @@ public class RoomEvent : MonoBehaviour
     public virtual void OnEndBattle() { lootPanel.Loot(); }
     /// <summary>デフォルトではイベント終了</summary>
     public virtual void OnEndLoot() { EndRoomEvent(); }
+    public virtual void OnEndSupply() { EndRoomEvent(); }
 
     public  void EndRoomEvent()
     {

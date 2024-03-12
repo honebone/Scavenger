@@ -49,21 +49,6 @@ MonoBehaviour:
     optionInfo: 
   eventName: "\u964D\u308A\u6CE8\u3050\u967D\u5149"
   eventInfo: "\u660E\u308B\u3044\u5834\u6240\u306B\u51FA\u305F\u3002\n\u5929\u4E95\u306B\u7A7A\u3044\u305F\u7A74\u304B\u3089\u3001\u967D\u306E\u5149\u304C\u964D\u308A\u6CE8\u3044\u3067\u3044\u308B\u3088\u3046\u3060\u3002"
-  drawAttemptsRange: {x: 8, y: 16}
-  dropItems:
-  - dropItem: {fileID: 11400000, guid: e72ebac2bf256e44f85fefbb65507705, type: 2}
-    quantity: 2
-  - dropItem: {fileID: 11400000, guid: a3a602687403c6343b151babe6a627f9, type: 2}
-    quantity: 1
-  - dropItem: {fileID: 11400000, guid: a9cf4abc81488c14eaac727451f7c534, type: 2}
-    quantity: 3
-  - dropItem: {fileID: 11400000, guid: 12178285defcd41489fcff184bdd9e3a, type: 2}
-    quantity: 2
-  - dropItem: {fileID: 11400000, guid: a028fdc8f71b2d94ab65a9f69d818a7c, type: 2}
-    quantity: 2
-  - dropItem: {fileID: 11400000, guid: d13bf252d00158848802be0d2b2b9bd6, type: 2}
-    quantity: 1
-  dropEquipmentsRange: {x: 0, y: 0}
   lootStatus:
     drawAttemptsRange: {x: 6, y: 12}
     dropItems:

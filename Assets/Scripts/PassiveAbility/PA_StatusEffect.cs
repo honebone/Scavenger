@@ -11,7 +11,7 @@ public class PA_StatusEffect : PassiveAbility
         [TextArea(3,10)]
         public string StEInfo;
         public Sprite StEIcon;
-        public enum StatusEffectType { neutral, buff, debuff, focus }
+        public enum StatusEffectType { neutral, buff, debuff, focus,unique }
         public StatusEffectType StEType;
         [Header("0ならスタック制限なし")]
         public int maxStack;
@@ -51,10 +51,15 @@ public class PA_StatusEffect : PassiveAbility
         public int stack;
         public int value;
     }
-    public void Init(StatusEffectParams StEParams,StEIcon icon)
+    public void Init(StatusEffectParams StEParams,StEIcon icon,StEApplyBonus applyBonus)
     {
         StEStatus.stack = StEParams.stack;
         StEStatus.value = StEParams.value;
+        if (applyBonus != null)
+        {
+            StEStatus.stack += applyBonus.exStack;
+            StEStatus.value += applyBonus.exValue;
+        }
         StEIcon = icon;
         StEIcon.Init(StEStatus);
         if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }

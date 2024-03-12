@@ -111,7 +111,7 @@ public class Character : MonoBehaviour
                 s += Definer.CharacterTagName[tag];
             }
             s += "]\n";
-            if (immovable) { s += "移動不可"; }
+            if (immovable) { s += "移動不可\n"; }
             s += string.Format("HP/maxHP：{0}/{1}\n", HP, maxHP);
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
@@ -213,6 +213,14 @@ public class Character : MonoBehaviour
                 if (res.ResStE == StE) { return res.value; }
             }
             return 0;
+        }
+        public StEApplyBonus GetStEApplyBonus(GameObject StE)
+        {
+            foreach (StEApplyBonus bonus in StEApplyBonus)
+            {
+                if (bonus.applyStE == StE) { return bonus; }
+            }
+            return null;
         }
         public string ValueToStr(string start, float value, string end)
         {
@@ -407,7 +415,7 @@ public class Character : MonoBehaviour
         }
         deletePAs.Clear();
     }
-    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams)
+    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,StEApplyBonus applyBonus)
     {
         bool f = false;
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
@@ -417,7 +425,8 @@ public class Character : MonoBehaviour
             {
                 if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるなら
                 {
-                    pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack);
+                    if(applyBonus == null) { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack); }
+                    else { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack + applyBonus.exStack); }
                     charaObj.SetDamageText(string.Format("付与：{0}", StE.GetPAName()), Color.white);
                     infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
                     soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
@@ -430,7 +439,7 @@ public class Character : MonoBehaviour
             var s = Instantiate(StEParams.applyStE, transform);
             PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
-            s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>());
+            s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>(),applyBonus);
             s.GetComponent<PassiveAbility>().Init(this, 0);
             charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
             infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));

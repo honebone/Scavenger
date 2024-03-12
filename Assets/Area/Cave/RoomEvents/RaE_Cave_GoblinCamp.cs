@@ -9,8 +9,6 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
     [SerializeField]
     AreaManager.EnemySet enemySet;
     [SerializeField]
-    LootPanel.DropItemFromPreset preset;
-    [SerializeField]
     LootPanel.LootStatus loot;
     [SerializeField]
     GameObject surprise;

@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Obstacle_Stalactite
+  m_EditorClassIdentifier: 
+  fileName: O_Stalactite
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u937E\u4E73\u77F3"
+  characterTags: 09000000
+  immovable: 1
+  notChara: 0
+  player: 0
+  playable: 0
+  obstacle: 1
+  variableSprites:
+  - {fileID: 4077295475819443234, guid: 5d74ce756922c9c41b75f0715068709b, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 8e5416d95f8dd27449597b40767bc13b, type: 3}
+  abilities: []
+  passiveAbilities: []
+  actionMods: []
+  corpse: {fileID: 0}
+  dropItems: []
+  surviveFatalWounds: 0
+  maxHP: 50
+  maxSAN: 0
+  ATK: 0
+  CRITC: 0
+  CRITD: 0
+  EVD: 0
+  ACC: 0
+  ACT: 10
+  turnPerRound: 0
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 200
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

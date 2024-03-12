@@ -40,6 +40,9 @@ public class ExpeditionManager : MonoBehaviour
         public float[] materialDropChance=new float[] { 60, 30, 10, 5, 1 };
         public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
+
+        /// <summary>x‹‹•i‚Ì‘I‘ğˆ‚Ì”</summary>
+        public int supplyOptions = 3;
     }
     [SerializeField]
     PartyStatus partyStatus;
@@ -130,6 +133,7 @@ public class ExpeditionManager : MonoBehaviour
     public void LogREName(string REName)
     {
         infoText.AddLogText(string.Format("``{0}``", REName));
+        infoText.SwitchToLog();
     }
 
     //‚±‚±‚©‚çroom event ‚ÅŒÄ‚Î‚ê‚éŠÖ”
@@ -170,6 +174,8 @@ public class ExpeditionManager : MonoBehaviour
 
     public void OnEndBattle() { currentRE.OnEndBattle(); }
     public void OnEndLoot() { currentRE.OnEndLoot(); }
+    public void OnEndSupply() { currentRE.OnEndSupply(); }
+
     //‚±‚±‚Ü‚Åroom event ‚ÅŒÄ‚Î‚ê‚éŠÖ”
     public void EndRoomEvent()
     {

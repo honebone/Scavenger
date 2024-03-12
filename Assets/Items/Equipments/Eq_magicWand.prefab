@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7103827285565412532}
   - component: {fileID: 2102424110011888310}
   m_Layer: 0
-  m_Name: Eq_furyAndAshes
+  m_Name: Eq_magicWand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
-    equipmentInfo: 
+    itemData: {fileID: 11400000, guid: 14171668da9edf44e8d3d171e3632b42, type: 2}
+    equipmentInfo: "\u9B54\u8853\u653B\u6483\u306E\u4E0E\u30C0\u30E1\u30FC\u30B8+10\uFF05"
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
-      ATK_mul: 25
+      ATK_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
       StEApplyBonus: []
     info_start: 
   actionMods:
-  - {fileID: 5987685990520771950, guid: 876307fffbd55c743971b1314a859bcd, type: 3}
+  - {fileID: 5987685990520771950, guid: 682c0fb2549084848a5c7bf44e2e15fe, type: 3}
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7ff14b87601a17f4ba2bcbb4bb70e910, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 339d33e80c5ec004d844c7b777580a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

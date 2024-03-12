@@ -27,12 +27,13 @@ public class Map_RoomButton : MonoBehaviour
     ExpeditionManager expeditionManager;
     InfoText InfoText;
     bool selectable;
-    public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em,InfoText it)
+    public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em,InfoText it,ScrollRect s)
     {
         room = r;
         room.roomPos = rp;
         expeditionManager = em;
         InfoText = it;
+        scroll = s;
 
         if (room.empty)
         {
@@ -113,26 +114,42 @@ public class Map_RoomButton : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (selectable)
+        if (Input.GetMouseButtonDown(1) && !room.empty)
         {
-            selectable=false;
+            InfoText.SetText(room.eventName, room.eventInfo);
+        }
+        if (Input.GetMouseButtonDown(0) && selectable)
+        {
+            selectable = false;
             expeditionManager.GoToNextRoom(room.roomPos);
+        }
+    }
+    [SerializeField]
+    float scrollSpeed = 0.1f;
+    ScrollRect scroll;
+    float wheel;
+    bool p;
+    private void Update()
+    {
+        if (p)
+        {
+            wheel += Input.mouseScrollDelta.y;
+            if (wheel != 0)
+            {
+                scroll.horizontalNormalizedPosition += wheel * scrollSpeed;
+                wheel = 0;
+            }
         }
     }
     public void OnMouseEnter()
     {
-        if (!room.empty)
-        {
-            InfoText.SetText(room.eventName, room.eventInfo);
-        }
+        p = true;
     }
     public void OnMouseExit()
     {
-        if (!room.empty)
-        {
-            InfoText.ResetText();
-        }
+        p = false;
     }
+    
 
     public ExpeditionManager.Room GetRoom() { return room; }
 }

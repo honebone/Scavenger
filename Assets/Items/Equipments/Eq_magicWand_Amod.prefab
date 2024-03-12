@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4191570886291093358}
   - component: {fileID: 8607881056121635859}
   m_Layer: 0
-  m_Name: Eq_furyAndAshes_Amod
+  m_Name: Eq_magicWand_Amod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,9 +48,9 @@ MonoBehaviour:
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 0
-    exDMG_mul: 25
+    exDMG_mul: 10
     exDMG_int: 0
-    ACCMod: 5
+    ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
@@ -61,4 +61,4 @@ MonoBehaviour:
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
-  checkType: 00000000
+  checkType: 02000000

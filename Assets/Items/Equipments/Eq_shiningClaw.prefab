@@ -60,6 +60,8 @@ MonoBehaviour:
       turnPerRound: 0
       GHeal: 0
       RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
     info_start: 
   actionMods: []
   claw:
@@ -72,7 +74,6 @@ MonoBehaviour:
     actionMods: []
     targetType: 0
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -84,6 +85,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -94,8 +98,10 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 10
-    ATKMod_max: 20
+    ATKMod_min: 30
+    ATKMod_max: 45
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: -100
     CRITDMod: 0

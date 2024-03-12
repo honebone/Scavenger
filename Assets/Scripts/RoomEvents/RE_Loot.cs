@@ -12,13 +12,6 @@ public class RE_Loot : RoomEvent
     [SerializeField, TextArea(3, 10)]
     string eventInfo;
 
-    [SerializeField, Header("x:min y:max")]
-    Vector2Int drawAttemptsRange;
-    [SerializeField]
-    List<LootPanel.DropItem> dropItems;
-
-    [SerializeField,Header("Šm’è‚Å—‚Æ‚·ŒÂ”‚Ì”ÍˆÍ")]
-    Vector2Int dropEquipmentsRange;
     [SerializeField]
     LootPanel.LootStatus lootStatus;
 

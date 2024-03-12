@@ -32,7 +32,7 @@ MonoBehaviour:
   corpse: {fileID: 0}
   dropItems:
   - dropItem: {fileID: 11400000, guid: 9b3ecad76c8787b4cb463a18d479a910, type: 2}
-    quantity: 2
+    quantity: 1
   - dropItem: {fileID: 11400000, guid: 8f21901abf2b9624e80aa2c612b1cc4c, type: 2}
     quantity: 2
   - dropItem: {fileID: 11400000, guid: 5a19c4384d17b5342836e153c97e472d, type: 2}
@@ -50,8 +50,6 @@ MonoBehaviour:
   GHeal: 100
   RHeal: 100
   debuffRes: 0
-  stunRes: 0
-  bleedRes: 0
-  poisonRes: 0
-  burnRes: 0
+  StEResists: []
+  StEApplyBonus: []
   moveRes: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
-  m_Name: RE_Trade
+  m_Name: RE_RatsGift
   m_EditorClassIdentifier: 
-  eventName: "\u5546\u4EBA"
+  eventName: "\u30CD\u30BA\u30DF\u306E\u8D08\u308A\u7269"
   eventInfo: "\u88C5\u5099\u54C1\u306E\u5165\u624B"
   roomEventManager:
-  - {fileID: 0}
-  eventIcon: {fileID: 21300000, guid: 10cae4c3a77c4b6458ec62e60fc2b2c7, type: 3}
+  - {fileID: 4154373557521219498, guid: faadddc12d9dc0c46b56e7b568788636, type: 3}
+  eventIcon: {fileID: 21300000, guid: 10e07d68076223f4c91b933580a12ff5, type: 3}

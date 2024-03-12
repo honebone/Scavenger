@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class LootButton : MonoBehaviour
+public class SupplyButton : MonoBehaviour
 {
     [SerializeField]
     Text amountText;
@@ -15,15 +14,15 @@ public class LootButton : MonoBehaviour
 
 
     InfoText infoText;
-    SoundManager soundManager;
+    SupplyManager supplyManager;
 
     bool revealed = false;
     Definer.Item item;
-    public void Init(Definer.Item i, InfoText it,SoundManager sm)
+    public void Init(Definer.Item i, InfoText it, SupplyManager sm)
     {
         item = i;
         infoText = it;
-        soundManager = sm;
+        supplyManager = sm;
     }
     public void Reveal()
     {
@@ -41,10 +40,10 @@ public class LootButton : MonoBehaviour
             {
                 infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
             }
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    FindObjectOfType<LootPanel>().CreateOptionUI_Normal(transform.position, item);
-            //}
+            if (Input.GetMouseButtonDown(0))
+            {
+                supplyManager.SelectItem(item);
+            }
         }
     }
 

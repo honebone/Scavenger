@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AreaManager : MonoBehaviour
 {
@@ -63,6 +64,8 @@ public class AreaManager : MonoBehaviour
     Area area;//test
     [SerializeField]
     GameObject content;
+    [SerializeField]
+    ScrollRect mapScroll;
     [SerializeField]
     GameObject layerPanel;
 
@@ -158,7 +161,7 @@ public class AreaManager : MonoBehaviour
     void SetLayerPanel(ExpeditionManager.Room[] l,int lc)
     {
         var lp = Instantiate(layerPanel, content.transform);
-        lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText);
+        lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
         layers.Add(lp.GetComponent<Map_LayerPanel>());
     }
     ExpeditionManager.Room SetRoom()
