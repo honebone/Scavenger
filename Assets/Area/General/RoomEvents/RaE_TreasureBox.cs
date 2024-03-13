@@ -36,7 +36,7 @@ public class RaE_TreasureBox : RE_RandomEvents
                     infoText.AddLogText("");
                 }
                 lootPanel.DropItem_Loot(lootStatus);
-                if (105.Probability())
+                if (15.Probability())
                 {
                     infoText.AddLogText("ミミックだ!!");
                     infoText.SwitchToLog();
