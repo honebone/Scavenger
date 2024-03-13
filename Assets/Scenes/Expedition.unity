@@ -8323,16 +8323,16 @@ MonoBehaviour:
   enemySetTest:
     weight: 0
     enemies:
+    - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
-    - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    - {fileID: 11400000, guid: f7f336972783cfe4986453cc621846a6, type: 2}
+    - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
     - {fileID: 0}
-    - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-    - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    - {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
-  RE: {fileID: 4154373557521219498, guid: c2c66b4ea6134cc49882137f45baf921, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+  RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   REP: {fileID: 1877823637}
 --- !u!114 &613893884
 MonoBehaviour:
@@ -18233,7 +18233,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     normalBattleFEPool:
     - weight: 10
-      fieldEffect: {fileID: 471706018376148968, guid: b053e9dde507f7e46859e12c17193e2f, type: 3}
+      fieldEffect: {fileID: 0}
   content: {fileID: 1232300787}
   mapScroll: {fileID: 2056143813}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
@@ -18536,7 +18536,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

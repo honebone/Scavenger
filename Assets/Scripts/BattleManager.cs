@@ -388,8 +388,8 @@ public class BattleManager : MonoBehaviour
             s = "エネミー";
         }
         for (int i = start; i < end; i++)
-        {
-            if (charactersManager.CheckCharaExist(i) && !charactersManager.GetCharacterWithPos(i).GetCharacterStatus().immovable)//移動不可でないキャラがポジションiに存在しているなら
+        {// && !charactersManager.GetCharacterWithPos(i).GetCharacterStatus().immovable
+            if (charactersManager.CheckCharaExist(i))//移動不可でないキャラがポジションiに存在しているなら
             {
                 colmun = charactersManager.GetCharacterWithPos(i).GetCharacterStatus().position.GetColumn();
                 if (colmun == 0) { emptyFront = false; }

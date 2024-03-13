@@ -143,6 +143,7 @@ public class Character : MonoBehaviour
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
             }
+            if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
             return s;
         }
 

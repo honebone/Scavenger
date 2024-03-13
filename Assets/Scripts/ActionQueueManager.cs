@@ -221,8 +221,8 @@ public class ActionQueueManager : MonoBehaviour
         {
             resolving = false;
 
-            StartCoroutine(EndResolve());
             CloseQueuePanel();
+            StartCoroutine(EndResolve());
         }
         else
         {

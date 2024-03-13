@@ -559,73 +559,78 @@ public class Action : MonoBehaviour
                     {
                         actionStatus.actionTargets[i].RemoveStE(remove);
                     }
-                    if (actionsStatus[i].moveChance.Probability() && !targetStatus.immovable)//移動
+                    if (actionsStatus[i].moveChance > 0)//移動
                     {
-                        //string test = "";
-                        int moveRange = -1;
-                        int moveDir = -1;
-                        int moveToPos;
-                        List<int> movableRanges = targetStatus.position.GetMovableRanges();
-                        if (actionsStatus[i].moveBackword > 0)
+                        if ((actionsStatus[i].moveChance-targetStatus.moveRes).Probability() && !targetStatus.immovable)
                         {
-                            moveRange = actionsStatus[i].moveBackword;
-                            if (targetStatus.position < 9) { moveDir = 3; }
-                            else { moveDir = 0; }
-                        }
-                        else if (actionsStatus[i].moveUpper > 0)
-                        {
-                            moveRange = actionsStatus[i].moveUpper;
-                            moveDir = 1;
-                        }
-                        else if (actionsStatus[i].moveForword > 0)
-                        {
-                            moveRange = actionsStatus[i].moveForword;
-                            if (targetStatus.position < 9) { moveDir = 0; }
-                            else { moveDir = 3; }
-                        }
-                        else if (actionsStatus[i].moveLower > 0)
-                        {
-                            moveRange = actionsStatus[i].moveLower;
-                            moveDir = 2;
-                        }
-                        //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
-
-                        moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);
-                        moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
-                        //test += string.Format("実際の移動距離:{0} 移動後のpos:{1}", moveRange, moveToPos);
-                        //infoText.AddDebugText(test);
-                        if (moveRange > 0)
-                        {
-                            bool movable = true;
-                            List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
-                            foreach (Character c in charasOnTravelingDir)
+                            //string test = "";
+                            int moveRange = -1;
+                            int moveDir = -1;
+                            int moveToPos;
+                            List<int> movableRanges = targetStatus.position.GetMovableRanges();
+                            if (actionsStatus[i].moveBackword > 0)
                             {
-                                if (c.GetCharacterStatus().immovable)
-                                {
-                                    movable = false;
-                                }
+                                moveRange = actionsStatus[i].moveBackword;
+                                if (targetStatus.position < 9) { moveDir = 3; }
+                                else { moveDir = 0; }
                             }
-
-                            if (movable)
+                            else if (actionsStatus[i].moveUpper > 0)
                             {
-                                actionStatus.actionTargets[i].GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                                moveRange = actionsStatus[i].moveUpper;
+                                moveDir = 1;
+                            }
+                            else if (actionsStatus[i].moveForword > 0)
+                            {
+                                moveRange = actionsStatus[i].moveForword;
+                                if (targetStatus.position < 9) { moveDir = 0; }
+                                else { moveDir = 3; }
+                            }
+                            else if (actionsStatus[i].moveLower > 0)
+                            {
+                                moveRange = actionsStatus[i].moveLower;
+                                moveDir = 2;
+                            }
+                            //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
+
+                            moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);
+                            moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
+                            //test += string.Format("実際の移動距離:{0} 移動後のpos:{1}", moveRange, moveToPos);
+                            //infoText.AddDebugText(test);
+                            if (moveRange > 0)
+                            {
+                                bool movable = true;
+                                List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
                                 foreach (Character c in charasOnTravelingDir)
                                 {
-                                    c.GetCharacter_TargetButton().ResetCharacter();
+                                    if (c.GetCharacterStatus().immovable)
+                                    {
+                                        movable = false;
+                                    }
                                 }
 
-                                actionStatus.actionTargets[i].ChangePos(moveToPos);//移動処理
-                                foreach (Character c in charasOnTravelingDir)
+                                if (movable)
                                 {
-                                    c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
+                                    actionStatus.actionTargets[i].GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                                    foreach (Character c in charasOnTravelingDir)
+                                    {
+                                        c.GetCharacter_TargetButton().ResetCharacter();
+                                    }
+
+                                    actionStatus.actionTargets[i].ChangePos(moveToPos);//移動処理
+                                    foreach (Character c in charasOnTravelingDir)
+                                    {
+                                        c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
+                                    }
+                                }
+                                else
+                                {
+                                    infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
                                 }
                             }
-                            else
-                            {
-                                infoText.AddLogText(string.Format("{0}の移動は阻まれた", ownerStatus.charaName));
-                            }
                         }
+                        else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("MoveResist", Definer.colorRef.failed_unavailable); }
                     }
+                   
 
                     foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
                     {
