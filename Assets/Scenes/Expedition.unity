@@ -8437,6 +8437,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ded56d7ee7905e34b9f1e2fa39ceafab, type: 2}
   - {fileID: 11400000, guid: ba83b00efb6be054ca0e864de77421b6, type: 2}
   - {fileID: 11400000, guid: 14171668da9edf44e8d3d171e3632b42, type: 2}
+  - {fileID: 11400000, guid: d5afa2c8ed9f3eb4a874fefe286601cb, type: 2}
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -12134,7 +12135,7 @@ MonoBehaviour:
   actionQueuePanel: {fileID: 427624773}
   content: {fileID: 660411532}
   SE_ability: {fileID: 8300000, guid: 3c0399b3ffa1ab646904e1f06a8d9640, type: 3}
-  abilityPause: 1.5
+  abilityPause: 0.75
   abilityPause_followthrough: 1.25
   abilityNameText_player: {fileID: 1846992750}
   abilityNameText_enemy: {fileID: 1408254314}

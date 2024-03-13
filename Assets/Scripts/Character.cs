@@ -710,12 +710,15 @@ public class Character : MonoBehaviour
     }
     public void SANDamage(int value)
     {
-        charaStatus.SAN -= value;
-        charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANDecrease);
-        infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
-        soundManager.PlaySE(Definer.soundRef.SANDecrease);
-        charaObj.SetSANBar();
-        if (charaStatus.SAN <= 0) { Die(1); }
+        if (charaStatus.player)
+        {
+            charaStatus.SAN -= value;
+            charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANDecrease);
+            infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
+            soundManager.PlaySE(Definer.soundRef.SANDecrease);
+            charaObj.SetSANBar();
+            if (charaStatus.SAN <= 0) { Die(1); }
+        }
     }
 
     //==================================================<<ステータス変更系>>===========================================================

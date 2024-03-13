@@ -51,3 +51,4 @@ MonoBehaviour:
     optionInfo: "\u5168\u54E1\u306ESAN\u309230\u56DE\u5FA9"
   - optionName: "\u5168\u54E1\u3067\u7720\u308A\u306B\u3064\u304F"
     optionInfo: "\u5168\u54E1\u306EHP\u309250\uFF05\u56DE\u5FA9\n\u5168\u54E1\u306ESAN\u309215\u56DE\u5FA9\n???"
+  umbushed: {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

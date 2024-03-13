@@ -29,7 +29,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea2e2710f1ca2d14a8dc5e8402b46ddd, type: 2}
   passiveAbilities: []
   actionMods: []
-  corpse: {fileID: 0}
+  corpse: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}
   dropItems:
   - dropItem: {fileID: 11400000, guid: 9b3ecad76c8787b4cb463a18d479a910, type: 2}
     quantity: 1

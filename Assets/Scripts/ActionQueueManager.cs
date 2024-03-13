@@ -171,15 +171,16 @@ public class ActionQueueManager : MonoBehaviour
 
         yield return new WaitForSeconds(abilityPause);
 
-        abilityNameText.text = "";
-        abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Color.clear;
-
         if (!actionStatus.dontChangeSprite) { actionStatus.actionOwner.SetCharaSprite(actionStatus.activateSprite); }
         charactersManager.ResetAllActionInvolvedIcons();
 
         inQueueAbilityEffects[0].Resolve();
 
         yield return new WaitForSeconds(abilityPause_followthrough);
+
+        abilityNameText.text = "";
+        abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Color.clear;
+
         actionStatus.actionOwner.ResetCharaSprite();
 
 
