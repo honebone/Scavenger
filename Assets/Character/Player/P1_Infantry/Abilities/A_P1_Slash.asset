@@ -40,24 +40,24 @@ MonoBehaviour:
     - {fileID: 3754702445578300767, guid: e4454c3494d89b14795a5762af0023c3, type: 3}
     targetType: 1
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
+      onlyEmpty: 0
       player: 0
       enemy: 1
       front: 1
       mid: 1
       back: 0
+      characterTags: 
       StE: []
       PE: []
-    targetPlayerSide: 0
-    targetEnemySide: 1
-    selectableFront: 1
-    selectableMid: 1
-    selectableBack: 0
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
@@ -66,6 +66,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 80
     ATKMod_max: 120
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -81,11 +83,14 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -94,6 +99,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
     SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
@@ -101,6 +107,4 @@ MonoBehaviour:
     activateSprite: {fileID: 2401220359373207913, guid: b6b87453919615542ab3880a5fdc03b8, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
     actionTargetsInt: 0a000000

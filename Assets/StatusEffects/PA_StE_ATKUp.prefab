@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5667121962493394942
+--- !u!1 &1489497368108049143
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,70 +8,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1455896857616258923}
-  - component: {fileID: 7103827285565412532}
-  - component: {fileID: 2102424110011888310}
+  - component: {fileID: 3885198277178587470}
+  - component: {fileID: 1843923196609332837}
+  - component: {fileID: 7692293271465632286}
   m_Layer: 0
-  m_Name: Eq_longBow
+  m_Name: PA_StE_ATKUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1455896857616258923
+--- !u!4 &3885198277178587470
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 1489497368108049143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.43982, y: 44.00264, z: 0}
+  m_LocalPosition: {x: -25.654316, y: -1.8275402, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7103827285565412532
+--- !u!114 &1843923196609332837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 1489497368108049143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
+  m_Script: {fileID: 11500000, guid: dd607c61913e6a14bb572ccebfbfebc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  equipmentStatus:
-    itemData: {fileID: 11400000, guid: 1a15f4f8967430d479589373e59315b4, type: 2}
-    equipmentInfo: 
-    statusMod:
-      maxHP_mul: 0
-      maxSAN_mul: 0
-      ATK_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-    actionMods:
-    - {fileID: 5987685990520771950, guid: 43a2db0bb314a424d990e10a168a63a3, type: 3}
-    info_start: 
---- !u!212 &2102424110011888310
+  StEStatus:
+    StEName: "ATK\u4E0A\u6607"
+    StEInfo: "\u81EA\u8EAB\u306EATK+X\uFF05\n\u653B\u6483\u6642\u306B\u30B9\u30BF\u30C3\u30AF\u304C1\u6E1B\u5C11"
+    StEIcon: {fileID: 21300000, guid: 29d13719d7e6a2f49b06240d347d96c0, type: 3}
+    StEType: 1
+    maxStack: 0
+    merge: 0
+    refValue: 1
+    stack: 0
+    value: 0
+--- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 1489497368108049143}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -106,12 +96,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 083201c3fb66e7442a1dd5b8431c57f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29d13719d7e6a2f49b06240d347d96c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.8, y: 4.8}
+  m_Size: {x: 4.75, y: 4.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

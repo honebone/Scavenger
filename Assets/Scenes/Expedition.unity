@@ -8316,16 +8316,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
   - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
   - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
-  - {fileID: 11400000, guid: 4392afa8c6fca0e4caa9b8d029c068b8, type: 2}
-  - {fileID: 11400000, guid: ded56d7ee7905e34b9f1e2fa39ceafab, type: 2}
+  - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
+  - {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
   amount: 7e000000050000000100000002000000070000000300000015000000060000000100000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
     weight: 0
     enemies:
-    - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
     - {fileID: 11400000, guid: f7f336972783cfe4986453cc621846a6, type: 2}
     - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
@@ -8438,6 +8438,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba83b00efb6be054ca0e864de77421b6, type: 2}
   - {fileID: 11400000, guid: 14171668da9edf44e8d3d171e3632b42, type: 2}
   - {fileID: 11400000, guid: d5afa2c8ed9f3eb4a874fefe286601cb, type: 2}
+  - {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
+  - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -18536,7 +18538,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

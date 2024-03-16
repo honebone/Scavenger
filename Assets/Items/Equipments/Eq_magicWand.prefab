@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 14171668da9edf44e8d3d171e3632b42, type: 2}
-    equipmentInfo: "\u9B54\u8853\u653B\u6483\u306E\u4E0E\u30C0\u30E1\u30FC\u30B8+10\uFF05"
+    equipmentInfo: 
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
@@ -62,9 +62,9 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+    actionMods:
+    - {fileID: 5987685990520771950, guid: 682c0fb2549084848a5c7bf44e2e15fe, type: 3}
     info_start: 
-  actionMods:
-  - {fileID: 5987685990520771950, guid: 682c0fb2549084848a5c7bf44e2e15fe, type: 3}
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

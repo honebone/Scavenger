@@ -11,6 +11,7 @@ public class PA_Equipment : PassiveAbility
         [TextArea(3, 10)]
         public string equipmentInfo;
         public Character.CharaStatusMod statusMod;
+        public List<GameObject> actionMods;
 
         [TextArea(3, 10)]
         public string info_start;
@@ -24,6 +25,10 @@ public class PA_Equipment : PassiveAbility
             string s = "";
             if (info_start != "") { s = info_start + "\n"; }         
             s += statusMod.GetInfo();
+            foreach(GameObject actionMod in actionMods)
+            {
+                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+            }
             if (equipmentInfo != "") { s += equipmentInfo + "\n"; }
             return s;
         }
@@ -38,16 +43,15 @@ public class PA_Equipment : PassiveAbility
     }
     [SerializeField]
     protected EquipmentStatus equipmentStatus;
-    [SerializeField]
-    List<GameObject> actionMods;
+  
     public override void OnPAInit()
     {
         character.ModifyStatus(equipmentStatus.statusMod, true);
-        foreach(GameObject mod in actionMods) { character.AddActionMod(mod, true); }
+        foreach(GameObject mod in equipmentStatus.actionMods) { character.AddActionMod(mod, true); }
     }
     public override void AtTheEnd()
     {
         character.ModifyStatus(equipmentStatus.statusMod, false);
-        foreach (GameObject mod in actionMods) { character.AddActionMod(mod, false); }
+        foreach (GameObject mod in equipmentStatus.actionMods) { character.AddActionMod(mod, false); }
     }
 }

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
+    conditionInfo: "\u8FD1\u63A5\u653B\u6483"
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 0
@@ -61,4 +62,5 @@ MonoBehaviour:
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
+    applySteParams: []
   checkType: 00000000

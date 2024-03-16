@@ -62,9 +62,9 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+    actionMods: []
     info_start: 
-  actionMods:
-  - {fileID: 5987685990520771950, guid: 876307fffbd55c743971b1314a859bcd, type: 3}
+  actionMods: []
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -53,9 +53,9 @@ public class ActionData : ScriptableObject
     public int shieldRemove_min;
     public int shieldRemove_max;
     [Header("ApplyStE")]
-    public PA_StatusEffect.StatusEffectParams[] applyStEParams;
+    public List<PA_StatusEffect.StatusEffectParams> applyStEParams;
     [Header("ApplyPE")]
-    public PositionEffect.PositionEffectParams[] applyPEParams;
+    public List<PositionEffect.PositionEffectParams> applyPEParams;
 
     [System.Serializable]
     public class RemoveStE

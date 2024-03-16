@@ -80,8 +80,8 @@ MonoBehaviour:
     SANHeal_max: 0
     SANDamage_min: 0
     SANDamage_max: 0
-    shieldAdd_min: 17
-    shieldAdd_max: 25
+    shieldAdd_min: 25
+    shieldAdd_max: 40
     shieldPercent_min: 0
     shieldPercent_max: 0
     shieldRemove_all: 0
@@ -106,4 +106,4 @@ MonoBehaviour:
     activateSprite: {fileID: 5664260229861032740, guid: 0ed89c4254cbd284b83c08f5539b663b, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 0d000000

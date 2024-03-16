@@ -36,7 +36,7 @@ public class Action : MonoBehaviour
         /// row:段 column:列
         /// </summary>
         public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
-        [Header("ここからアビリティのみ関係")]
+        [Header("\n\n\nここからアビリティのみ関係")]
         public TargetType targetType;
         public bool friendly;
         public CharactersManager.SearchCharaCondition condition;
@@ -45,13 +45,14 @@ public class Action : MonoBehaviour
         public bool ignoreHide;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
-        [Header("ここまでアビリティのみ関係")]
+        [Header("ここまでアビリティのみ関係\n\n\n")]
         public bool kill;
         public int decreaseHP_min;
         public int decreaseHP_max;
         public float decreaseHPPer_min;
         public float decreaseHPPer_max;
 
+        [Header("\n\n攻撃")]
         public bool cantCounter;
         [Header("0:melee 1:ranged 2:magic")]
         /// <summary>0:melee 1:ranged 2:magic</summary>
@@ -66,15 +67,18 @@ public class Action : MonoBehaviour
         public bool sureHit;
         public bool unevadable;
 
+        [Header("\n\n回復")]
         public int healValue_min;
         public int healValue_max;
         public float healPercent_min;
         public float healPercent_max;
 
+        [Header("\n\nSAN")]
         public int SANHeal_min;
         public int SANHeal_max;
         public int SANDamage_min;
         public int SANDamage_max;
+        [Header("\n\nShield")]
         public int shieldAdd_min;
         public int shieldAdd_max;
         public int shieldPercent_min;
@@ -82,28 +86,31 @@ public class Action : MonoBehaviour
         public bool shieldRemove_all;
         public int shieldRemove_min;
         public int shieldRemove_max;
-        [Header("ApplyStE")]
-        public PA_StatusEffect.StatusEffectParams[] applySteParams;
+        [Header("\n\nApplyStE")]
+        public List<PA_StatusEffect.StatusEffectParams> applySteParams;
         [Header("ApplyPE")]
-        public PositionEffect.PositionEffectParams[] applyPEParams;
+        public List<PositionEffect.PositionEffectParams> applyPEParams;
 
         [Header("RemoveStE")]
         public List<ActionData.RemoveStE> removeStEs;
 
+        [Header("\n\n召喚")]
         public bool summon;
         //public int summonSize;
         public CharacterData[] summonChara;
         public float[] summonChanceWeight;
 
+        [Header("\n\n移動")]
         public float moveChance;
         public int moveForword;
         public int moveUpper;
         public int moveLower;
         public int moveBackword;
 
+        [Header("\n\nアビリティ使用回数/クールダウン")]
         public List<ActionData.AbilityRemainControll> abilityRemainControlls;
 
-        [Header("以下には手を出すな")]
+        [Header("\n\n\n\n以下には手を出すな")]
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
         public AudioClip SE;
@@ -169,7 +176,7 @@ public class Action : MonoBehaviour
             if (healValue_max > 0 || healPercent_max > 0)//回復
             {
                 if (healValue_max > 0) { s += string.Format("・HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
-                if (healPercent_max > 0) { s += string.Format("・HPを{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
+                if (healPercent_max > 0) { s += string.Format("・HPを最大値の{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
                 s += "\n";
             }
 
@@ -243,6 +250,10 @@ public class Action : MonoBehaviour
                 }
             }
 
+            foreach (GameObject actionMod in actionMods)
+            {
+                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+            }
             if (actionInfo != "") { s += actionInfo + "\n"; }
 
             return s;
@@ -300,8 +311,8 @@ public class Action : MonoBehaviour
             shieldRemove_all= actionData.shieldRemove_all;
             shieldRemove_min = actionData.shieldRemove_min;
             shieldRemove_max = actionData.shieldRemove_max;
-            applySteParams = actionData.applyStEParams;
-            applyPEParams = actionData.applyPEParams;
+            applySteParams = new List<PA_StatusEffect.StatusEffectParams>(actionData.applyStEParams);
+            applyPEParams =new List<PositionEffect.PositionEffectParams>(actionData.applyPEParams);
             removeStEs = new List<ActionData.RemoveStE>(actionData.removeStEs);
 
             summon = actionData.summon;
@@ -350,8 +361,11 @@ public class Action : MonoBehaviour
             modifiedStatus.shieldRemove_min += mod.shieldRemove;
             modifiedStatus.shieldRemove_max += mod.shieldRemove;
 
-
-            //StE
+            modifiedStatus.applySteParams = new List<PA_StatusEffect.StatusEffectParams>(modifiedStatus.applySteParams);
+            foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in mod.applySteParams)
+            {
+                modifiedStatus.applySteParams.Add(statusEffectParams);
+            }
             //move
 
             return modifiedStatus;

@@ -33,14 +33,13 @@ MonoBehaviour:
   - actionName: "\u5265\u304E\u53D6\u308A"
     conditionInfo: 
     targetInfo: "\u524D\u3001\u4E2D\u5217\u306E\u65751\u4F53"
-    actionInfo: "\u25CB\u5BFE\u8C61\u306B\u30B9\u30BF\u30F3\u304C\u3042\u308B\u3068\u304D\uFF1A\nATK\u88DC\u6B63\uFF0B30\uFF05"
+    actionInfo: 
     VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 8890461273052653707, guid: 60d7edb06edaad84da49e1540ecc6af8, type: 3}
     targetType: 1
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -52,6 +51,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -64,6 +66,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 35
     ATKMod_max: 70
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: -10
     CRITCMod: 0
     CRITDMod: 0
