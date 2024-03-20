@@ -22,6 +22,7 @@ MonoBehaviour:
   excludeRandomPool: 0
   selectWeight: 2
   conditionInfo: 
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -32,7 +33,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u30D6\u30C3\u523A\u3057"
     conditionInfo: 
-    targetInfo: "\u4E2D\u3001\u5F8C\u5217\u306E\u65751\u4F53"
+    targetInfo: "\u4E2D\u30FB\u5F8C\u5217\u306E\u65751\u4F53"
     actionInfo: 
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -50,6 +51,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -62,6 +66,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 50
     ATKMod_max: 70
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: -5
     CRITCMod: 0
     CRITDMod: 0
@@ -122,6 +128,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -134,6 +143,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

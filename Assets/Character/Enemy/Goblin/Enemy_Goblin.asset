@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96a26f51e6bb42f4b8c0e76b0bbb6911, type: 2}
   - {fileID: 11400000, guid: ba664fc124a32fa42a8678d85b280fdf, type: 2}
   - {fileID: 11400000, guid: f82571e8c43523f428c33e1a1a4dee4c, type: 2}
+  - {fileID: 11400000, guid: 82a1ee069686c7d4c9814c6e462dfa17, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}

@@ -604,7 +604,7 @@ public class Character : MonoBehaviour
     //======================================================<<アクションによって呼ばれる関数>>=================================================
    public void Kill(Character attacker)
     {
-        Die(0);
+        Die(0,attacker);
     }
     public void DecreaseHP(int value)
     {
@@ -625,7 +625,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                Die(0);
+                Die(0,null);
             }
         }
     }
@@ -654,7 +654,7 @@ public class Character : MonoBehaviour
             {
                 if (charaStatus.surviveFatalWounds)
                 {
-                    Die(0);
+                    Die(0,attacker);
                 }
                 else { print("瀕死で耐えるキャラ出ないのにHP0で生き続けています"); }
             }
@@ -681,7 +681,7 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
-                    Die(0);
+                    Die(0, attacker);
                 }
             }
         }
@@ -718,7 +718,7 @@ public class Character : MonoBehaviour
             infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
             soundManager.PlaySE(Definer.soundRef.SANDecrease);
             charaObj.SetSANBar();
-            if (charaStatus.SAN <= 0) { Die(1); }
+            if (charaStatus.SAN <= 0) { Die(1,null); }
         }
     }
 
@@ -931,7 +931,7 @@ public class Character : MonoBehaviour
 
     public bool CheckAlive() { return !charaStatus.dead; }
     /// <summary>0:HP0 1:SAN0</summary>
-    void Die(int cause)
+    void Die(int cause,Character killer)
     {
         charaStatus.dead = true;
         Instantiate(Definer.VERef.die, charactersManager.GetCharacterWorldPos(charaStatus.position), Quaternion.identity);
@@ -973,6 +973,8 @@ public class Character : MonoBehaviour
             loot.DropItem_Enemy(dropItem);
         }
 
+        OnDie(killer);
+
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
 
@@ -1009,6 +1011,15 @@ public class Character : MonoBehaviour
         List<int> weight = new List<int>();
         foreach (Ability.AbilityStatus ability in abilitiesStatus) { weight.Add(ability.selectWeight); }
         return abilitiesStatus[weight.ChoiceWithWeight()];
+    }
+    public List<Ability.AbilityStatus> GetAvailableAbilitiesStatus(bool onlyIncludeRandamPool)
+    {
+        List<Ability.AbilityStatus> availables = new List<Ability.AbilityStatus>();
+        foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
+        {
+            if (!(ability.excludeRandomPool && onlyIncludeRandamPool) && ability.CheckAvailable(this, charactersManager)) { availables.Add(ability); }
+        }
+        return availables;
     }
     public void OnBattleStart()
     {
@@ -1109,6 +1120,14 @@ public class Character : MonoBehaviour
         }
     }
     public void OnCRITed(int ID) { }
+    public void OnDie(Character killer)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDie(killer); }
+            RemovePA_Execute();
+        }
+    }
     public void OnHealed(int healedValue, int ID) { }
     //public virtual void OnApplyedStE() { }
     //public virtual void OnRemoveedStE() { }

@@ -29,16 +29,6 @@ public class PA_StatusEffect : PassiveAbility
             if (refValue) { s += value.ToString(); }
             return s.ColorStr(StEType.ToColor());
         }
-        public string GetStEInfo_forRef()
-        {
-            string s = StEName;
-            if (refValue) { s += "X"; }
-            s += "：";
-            s += StEInfo+"\n";
-            //if (merge) { s += string.Format("新たに{0}が付与された時は統合される\n",StEName); }
-           
-            return s.ColorStr(Color.gray);
-        }
     }
     public StatusEffectStatus GetStatusEffectStatus() { return StEStatus; }
 
@@ -73,8 +63,22 @@ public class PA_StatusEffect : PassiveAbility
     public override string GetPAInfo()
     {
         string s = string.Format("({0}スタック)\n", StEStatus.stack);
-        s += StEStatus.GetStEInfo_forRef();
+        s += GetStEInfo_forRef();
         return s;
+    }
+    public string GetStEInfo_forRef()
+    {
+        string s = StEStatus.StEName;
+        if (StEStatus.refValue) { s += "X"; }
+        s += "：";
+        s += StEStatus.StEInfo + "\n";
+        s += GetAdditionalInfo();
+        return s.ColorStr(Color.gray);
+    }
+  
+    public virtual string GetAdditionalInfo()
+    {
+        return "";
     }
     public void AddStack(int stack)
     {

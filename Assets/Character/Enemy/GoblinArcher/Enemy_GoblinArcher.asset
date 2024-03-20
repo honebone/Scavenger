@@ -25,8 +25,10 @@ MonoBehaviour:
   - {fileID: 5294119737633310317, guid: 5cb37b3d82d8856459bae4ed3b2c0fd9, type: 3}
   spriteForUI: {fileID: 21300000, guid: a1ede005a0de6a6439060613163b0983, type: 3}
   abilities:
-  - {fileID: 11400000, guid: af938c11dd74671499a48dd2906915a8, type: 2}
+  - {fileID: 11400000, guid: 41969b9736ec8ea4597ea8b85460cc24, type: 2}
   - {fileID: 11400000, guid: ea2e2710f1ca2d14a8dc5e8402b46ddd, type: 2}
+  - {fileID: 11400000, guid: af938c11dd74671499a48dd2906915a8, type: 2}
+  - {fileID: 11400000, guid: 17c74a47b2163514cbb0d6d0ec2a71ff, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}
@@ -38,7 +40,7 @@ MonoBehaviour:
   - dropItem: {fileID: 11400000, guid: 5a19c4384d17b5342836e153c97e472d, type: 2}
     quantity: 2
   surviveFatalWounds: 0
-  maxHP: 12
+  maxHP: 22
   maxSAN: 0
   ATK: 10
   CRITC: 6

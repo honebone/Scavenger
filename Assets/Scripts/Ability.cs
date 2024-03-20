@@ -15,15 +15,18 @@ public class Ability : MonoBehaviour
         public GameObject activateSprite;
         public int spriteIndex;
 
-        public AudioClip SE;
+        //public AudioClip SE;
 
         public AbilityData.AbilityType abilityType;
 
         public bool excludeRandomPool;
         public int selectWeight;
 
+        public bool hasSelfCondition;
         public string conditionInfo;
+        public CharactersManager.SearchCharaCondition selfCondition;
 
+        public int cooldownOnBattleStart;
         public int cooldownOnUse;
         public bool hasRemain;
         public int remainOnBattleStart;
@@ -95,7 +98,9 @@ public class Ability : MonoBehaviour
                 if (availableBack) { s += "○\n"; }
                 else { s += "×\n"; }
             }
+            if (conditionInfo != "") { s += string.Format("発動条件：{0}\n",conditionInfo); }
 
+            if (cooldownOnBattleStart > 0) { s += string.Format("初期クールダウン：{0}ターン\n", cooldownOnBattleStart); }
             if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
             if (refCharaStatus) { }
             if (hasRemain)
@@ -130,15 +135,18 @@ public class Ability : MonoBehaviour
             activateSprite = data.activateSprite;
             spriteIndex = data.spriteIndex;
 
-            SE=data.SE;
+            //SE=data.SE;
 
             abilityType = data.abilityType;
 
             excludeRandomPool = data.excludeRandomPool;
             selectWeight = data.selectWeight;
 
+            hasSelfCondition = data.hasSelfCondition;
             conditionInfo = data.conditionInfo;
+            selfCondition = data.selfCondition;
 
+            cooldownOnBattleStart = data.cooldownOnBattleStart;
             cooldownOnUse = data.cooldownOnUse;
             hasRemain = data.hasRemain;
             remainOnBattleStart = data.remainOnBattleStart;
@@ -151,7 +159,7 @@ public class Ability : MonoBehaviour
             actionsStatus = data.actionsStaus;
 
             //actionsStatus = new Action.ActionStatus[data.actions.Length];
-            actionsStatus[0].SE = SE;
+            //actionsStatus[0].SE = SE;
             for (int i = 0; i < actionsStatus.Length; i++)
             {
                 actionsStatus[i].actionName = abilityName;
@@ -164,6 +172,7 @@ public class Ability : MonoBehaviour
             }
 
             index = idx;
+            cooldown = cooldownOnBattleStart;
             remain=remainOnBattleStart;
 
             abilityData = data;
@@ -172,19 +181,21 @@ public class Ability : MonoBehaviour
         public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }
         public void SetRemain(int value) { remain = Mathf.Clamp(value, 0, maxRemain); }
         public void StartCoolDown() { cooldown = cooldownOnUse; }
-        public void AddCoolDown(int value) { cooldown = Mathf.Clamp(cooldown + value, 0, cooldownOnUse); }
+        public void AddCoolDown(int value) { cooldown += value; }
         public bool CheckAvailable(Character owner,CharactersManager cm) {
             bool atProperPos = false;
             bool hasProperTarget = false;
+            bool properCondition = false; ;
             Character.CharacterStatus ownerStatus = owner.GetCharacterStatus();
             int column = ownerStatus.position.GetColumn();
             if (availableFront && column == 0) { atProperPos = true; }
             if (availableMid && column == 1) { atProperPos = true; }
             if (availableBack && column == 2) { atProperPos = true; }
-            hasProperTarget = !BattleManager.inBattle || HasProperTarget(cm);
-            return (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos && hasProperTarget; 
+            hasProperTarget = !BattleManager.inBattle || HasProperTarget(cm,owner);
+            properCondition = !hasSelfCondition || cm.CheckIfMatchCondition(owner, selfCondition);
+            return (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos && hasProperTarget && properCondition;
         }
-        public bool HasProperTarget(CharactersManager charactersManager)//Initせずに使う
+        public bool HasProperTarget(CharactersManager charactersManager,Character actionOwner)//Initせずに使う
         {
             Character.CharacterStatus targetStatus;
             bool found = false;
@@ -232,6 +243,21 @@ public class Ability : MonoBehaviour
                                 {
                                     found = true;
                                     break;
+                                }
+                            }
+                            if (found) { continue; }
+                            return false;
+                        case Action.ActionStatus.TargetType.allWoSelf:
+                            foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                            {
+                                if (target != actionOwner)
+                                {
+                                    targetStatus = target.GetCharacterStatus();
+                                    if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
+                                    {
+                                        found = true;
+                                        break;
+                                    }
                                 }
                             }
                             if (found) { continue; }
@@ -389,6 +415,25 @@ public class Ability : MonoBehaviour
                     }
                     for(int i = 0; i < tp.Count; i++) { targetPool.Add(tp); }
 
+                    break;
+                case Action.ActionStatus.TargetType.allWoSelf:
+                    targetEmpty = true;
+                    List<int> tp_allWoself = new List<int>();
+                    //int iconPos = charaStatus.position;
+                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    {
+                        if (target != character)//自分自身を除く
+                        {
+                            targetStatus = target.GetCharacterStatus();
+                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
+                            {
+                                int pos = targetStatus.position;
+                                tp_allWoself.Add(targetStatus.position);
+                                targetIconPos.Add(new Vector2Int(pos, 0));
+                            }
+                        }
+                    }
+                    for (int i = 0; i < tp_allWoself.Count; i++) { targetPool.Add(tp_allWoself); }
                     break;
                 case Action.ActionStatus.TargetType.self:
                     targetEmpty = false;

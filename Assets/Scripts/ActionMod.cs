@@ -66,7 +66,7 @@ public class ActionMod : MonoBehaviour
                 s += string.Format("・{0}％の確率で", StEParams.applyChance);
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                s += status.GetStEInfo_forRef();
+                s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
                 s += "\n";
             }
             return s;

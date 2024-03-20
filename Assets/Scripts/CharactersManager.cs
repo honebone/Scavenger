@@ -103,7 +103,7 @@ public class CharactersManager : MonoBehaviour
     public void RemoveExistingCharacter(Character chara)
     {
         if (existingCharacters.Contains(chara)) { existingCharacters.Remove(chara); }
-        else { infoText.AddDebugText("error:今死亡したキャラは、そもそも存在していません"); }
+        else { infoText.AddErrorText("今死亡したキャラは、そもそも存在していません"); }
     }
 
     public Character_TargetButton GetTargetButton(int pos)
@@ -276,6 +276,10 @@ public class CharactersManager : MonoBehaviour
         }
 
         return list;
+    }
+    public bool CheckIfMatchCondition(Character character, SearchCharaCondition condition)
+    {
+        return SearchCharaWithCondition(condition).Contains(character);
     }
 
     public List<int> SearchPosWithCondition(SearchCharaCondition condition)

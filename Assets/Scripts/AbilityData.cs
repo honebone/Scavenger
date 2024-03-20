@@ -16,28 +16,35 @@ public class AbilityData : ScriptableObject
     [Header("汎用スプライトの番号")]
     public int spriteIndex;
 
-    public AudioClip SE;
+    //public AudioClip SE;
 
     public enum AbilityType { other, attack, heal, buff, debuff, summon }
     public AbilityType abilityType;
 
-    [Header("\n操作不可キャラに関係")]
+    [Header("\n\n\n操作不可キャラに関係")]
     [Header("ランダム選択から除外するか")]
     public bool excludeRandomPool;
     [Header("選択される重み")]
     public int selectWeight = 1;
 
+    [Header("\n\n使用条件")]
+    public bool availableFront;
+    public bool availableMid;
+    public bool availableBack;
+    [Header("\n")]
+    public bool hasSelfCondition;
     [TextArea(3,10)]
     public string conditionInfo;
+    public CharactersManager.SearchCharaCondition selfCondition;
 
+    [Header("\n\n\nクールダウン/使用回数制限")]
+    public int cooldownOnBattleStart;
     public int cooldownOnUse;
     public bool hasRemain;
     public int remainOnBattleStart;
     public int maxRemain;
 
-    public bool availableFront;
-    public bool availableMid;
-    public bool availableBack;
+   
 
     //public ActionData[] actions;
     public Action.ActionStatus[] actionsStaus;

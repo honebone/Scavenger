@@ -22,6 +22,7 @@ MonoBehaviour:
   excludeRandomPool: 0
   selectWeight: 1
   conditionInfo: 
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 1
@@ -32,7 +33,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u9EBB\u75FA\u77E2"
     conditionInfo: 
-    targetInfo: "\u4E2D\u3001\u5F8C\u5217\u306E\u65751\u4F53"
+    targetInfo: "\u4E2D\u30FB\u5F8C\u5217\u306E\u65751\u4F53"
     actionInfo: 
     VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
     actionObject: {fileID: 0}
@@ -40,7 +41,6 @@ MonoBehaviour:
     - {fileID: 111478303779076297, guid: 65be4c6435fc65647b263d8b05c38f89, type: 3}
     targetType: 1
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -52,6 +52,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -64,6 +67,8 @@ MonoBehaviour:
     attackType: 1
     ATKMod_min: 30
     ATKMod_max: 60
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: -5
     CRITDMod: 0
@@ -90,6 +95,7 @@ MonoBehaviour:
       stack: 1
       value: 0
     applyPEParams: []
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -106,6 +112,4 @@ MonoBehaviour:
     activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
     actionTargetsInt: 0d000000

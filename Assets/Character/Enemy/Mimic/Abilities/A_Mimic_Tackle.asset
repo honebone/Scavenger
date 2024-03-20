@@ -34,7 +34,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     actionInfo: 
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 9026872467518674270, guid: 59e6d3a9232a004489cb89d2000a008d, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -106,7 +106,7 @@ MonoBehaviour:
     activateSprite: {fileID: 3361710016604790159, guid: 8a05e450c7b1873408d0a7e4491547db, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 06000000
+    actionTargetsInt: 08000000
   - actionName: "\u4F53\u5F53\u305F\u308A"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -183,4 +183,4 @@ MonoBehaviour:
     activateSprite: {fileID: 3361710016604790159, guid: 8a05e450c7b1873408d0a7e4491547db, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 10000000
+    actionTargetsInt: 0d000000

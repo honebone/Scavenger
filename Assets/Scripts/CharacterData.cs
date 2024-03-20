@@ -1,6 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(CharacterData))]
+public class CharacterDataEditor : Editor
+{
+    public override Texture2D RenderStaticPreview
+    (
+        string assetPath,
+        Object[] subAssets,
+        int width,
+        int height
+    )
+    {
+        var obj = target as CharacterData;
+        var sprite = obj.spriteForUI;
+
+        if (sprite == null)
+        {
+            return base.RenderStaticPreview(assetPath, subAssets, width, height);
+        }
+
+        var preview = AssetPreview.GetAssetPreview(sprite);
+        var final = new Texture2D(width, height);
+        if (preview == null) { return base.RenderStaticPreview(assetPath, subAssets, width, height); }
+        EditorUtility.CopySerialized(preview, final);
+
+        return final;
+    }
+}
+
+#endif
+
+
 [CreateAssetMenu(fileName = "CharaData_", menuName = "ScriptableObjects/CharacterData")]
 public class CharacterData : ScriptableObject
 {

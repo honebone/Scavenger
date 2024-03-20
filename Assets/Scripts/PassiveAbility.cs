@@ -63,6 +63,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDamaged(int DMG, Character attacker) { }
     
     public virtual void OnCRITed(int ID) { }
+    /// <summary>killer:ƒLƒƒƒ‰‚ÌUŒ‚‚âEŠQŒø‰Ê‚É‚æ‚é‘ã“ü</summary>
+    public virtual void OnDie(Character killer) { }
     public virtual void OnEvade(int ID) { }
     public virtual void OnHealed(int healedValue, int ID) { }
 }

@@ -8323,11 +8323,11 @@ MonoBehaviour:
   enemySetTest:
     weight: 0
     enemies:
-    - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    - {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    - {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     - {fileID: 0}
-    - {fileID: 11400000, guid: f7f336972783cfe4986453cc621846a6, type: 2}
+    - {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
     - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
     - {fileID: 0}
     - {fileID: 0}
@@ -8368,6 +8368,7 @@ MonoBehaviour:
     - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
     - {r: 0.7882353, g: 0, b: 1, a: 1}
     - {r: 0.8679245, g: 0.38930756, b: 0, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
     positionEffectColors:
     - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
@@ -8405,6 +8406,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4ad9c8f718210264a8b749b7abe1f95b, type: 3}
     - {fileID: 8300000, guid: 0e4fcd34453c6c74ca20ac8646803829, type: 3}
     - {fileID: 8300000, guid: 08ba9b994502792439f604795147b8ea, type: 3}
+    - {fileID: 8300000, guid: d7557527a7848b049850e7422c80c12d, type: 3}
     summoned: {fileID: 8300000, guid: a36dd1c4b04501b4c97f4ed893655b70, type: 3}
     stun: {fileID: 8300000, guid: a41b09d1965a70c4e8f00d9be397f66c, type: 3}
     die1: {fileID: 8300000, guid: d7a3401f1b36a404d823d172cb89df58, type: 3}
@@ -18184,9 +18186,9 @@ MonoBehaviour:
   area:
     areaName: "\u30C6\u30B9\u30C8"
     background: {fileID: 0}
-    minLength: 6
+    minLength: 8
     maxLength: 8
-    branchChance: 33
+    branchChance: 20
     blindChance: 20
     roomEvents:
     - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
@@ -18199,6 +18201,8 @@ MonoBehaviour:
       weight: 5
     - roomEvent: {fileID: 11400000, guid: 1b361ac52cb3f5d4aa5e73c64f10fc65, type: 2}
       weight: 10
+    - roomEvent: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
+      weight: 100
     normalBattlePool:
     - weight: 10
       enemies:

@@ -22,6 +22,7 @@ MonoBehaviour:
   excludeRandomPool: 0
   selectWeight: 1
   conditionInfo: 
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 3
@@ -32,7 +33,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u72E9\u731F"
     conditionInfo: 
-    targetInfo: "\u4E2D\u3001\u5F8C\u5217\u306E\u65751\u4F53"
+    targetInfo: "\u4E2D\u30FB\u5F8C\u5217\u306E\u65751\u4F53"
     actionInfo: "\u25CB\u81EA\u8EAB\u306EACC\u304C100\u4EE5\u4E0A\u306E\u3068\u304D\uFF1A\n\u30FBATK\u88DC\u6B63\u304C\u4E0A\u6607\n(ACC100-175\u306E\u9593\u30670\uFF05-75\uFF05\u4E0A\u6607)"
     VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
     actionObject: {fileID: 0}
@@ -107,4 +108,4 @@ MonoBehaviour:
     activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
     spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 10000000

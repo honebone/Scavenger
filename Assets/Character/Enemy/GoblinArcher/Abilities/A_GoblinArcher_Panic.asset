@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
+  m_Name: A_GoblinArcher_Panic
+  m_EditorClassIdentifier: 
+  abilityName: "\u30D1\u30CB\u30C3\u30AF\uFF01"
+  abilityManager: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
+  spriteIndex: 0
+  abilityType: 1
+  excludeRandomPool: 0
+  selectWeight: 2
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  hasSelfCondition: 1
+  conditionInfo: "\u81EA\u8EAB\u306B<\u6307\u63EE\u7CFB\u7D71\u306E\u5D29\u58CA>\u304C\u3042\u308B"
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    front: 1
+    mid: 1
+    back: 1
+    characterTags: 
+    StE:
+    - {fileID: 5164891664867224302, guid: eca13a4155cf122448029217a45a6d85, type: 3}
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  cooldownOnBattleStart: 0
+  cooldownOnUse: 0
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
+  actionsStaus:
+  - actionName: "\u30D1\u30CB\u30C3\u30AF\uFF01"
+    conditionInfo: 
+    targetInfo: "\u30AD\u30E3\u30E91\u4F53(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
+    actionInfo: 
+    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
+    VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 1
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 1
+      enemy: 1
+      front: 1
+      mid: 1
+      back: 1
+      characterTags: 
+      StE: []
+      PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+    ignoreMark: 1
+    ignoreHide: 1
+    moveValue: 
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    cantCounter: 0
+    attackType: 1
+    ATKMod_min: 40
+    ATKMod_max: 60
+    exDMG_mul: 0
+    exDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    applyPEParams: []
+    removeStEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityRemainControlls: []
+    abilityEffect: 1
+    abilityType: 1
+    dontChangeSprite: 0
+    activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargetsInt: 08000000

@@ -19,12 +19,12 @@ public class Action : MonoBehaviour
         public string actionName;
         [TextArea(3, 10)]
         public string conditionInfo;
-        //public bool useGeneralInfo;
         [TextArea(3, 10)]
         public string targetInfo;
 [TextArea(3, 10)]
         public string actionInfo;
 
+        public AudioClip SE;
         public GameObject VE_OnTargets;
 
         [Header("設定しなければ汎用的なオブジェクトになる")]
@@ -113,7 +113,6 @@ public class Action : MonoBehaviour
         [Header("\n\n\n\n以下には手を出すな")]
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
-        public AudioClip SE;
         public bool dontChangeSprite;
         [Header("スプライトの直接指定")]
         public GameObject activateSprite;
@@ -193,7 +192,7 @@ public class Action : MonoBehaviour
                 s += string.Format("・{0}％の確率で", StEParams.applyChance);
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                s += status.GetStEInfo_forRef();
+                s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
                 s += "\n";
             }
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
@@ -269,65 +268,6 @@ public class Action : MonoBehaviour
             else { return string.Format("{0}-{1}", min, max); }
         }
 
-        public void Init(ActionData actionData)
-        {
-            actionName = actionData.actionName;
-            conditionInfo = actionData.conditionInfo;
-            actionInfo = actionData.actionInfo;
-            //useGeneralInfo = actionData.useGeneralInfo;
-
-            targetInfo = actionData.targetInfo;
-
-            VE_OnTargets = actionData.VE_OnTargets;
-
-            actionObject = actionData.actionObject;
-            actionMods = new List<GameObject>(actionData.actionMods);
-
-            kill = actionData.kill;
-            decreaseHP_min = actionData.decreaseHP_min;
-            decreaseHP_max = actionData.decreaseHP_max;
-
-            cantCounter = actionData.cantCounter;
-            attackType = actionData.AttackType;
-            ATKMod_min = actionData.ATKMod_min;
-            ATKMod_max = actionData.ATKMod_max;
-            ACCMod = actionData.ACCMod;
-            CRITCMod = actionData.CRITCMod;
-            CRITDMod = actionData.CRITDMod;
-            sureHit = actionData.sureHit;
-            unevadable = actionData.unevadable;
-
-            healValue_min = actionData.healValue_min;
-            healValue_max = actionData.healValue_max;
-            healPercent_min = actionData.healPercent_min;
-            healPercent_max = actionData.healPercent_max;
-
-            SANHeal_min = actionData.SANHeal_min;
-            SANHeal_max = actionData.SANHeal_max;
-            SANDamage_min = actionData.SANDamage_min;
-            SANDamage_max = actionData.SANDamage_max;
-            shieldAdd_min = actionData.shieldAdd_min;
-            shieldAdd_max = actionData.shieldAdd_max;
-            shieldRemove_all= actionData.shieldRemove_all;
-            shieldRemove_min = actionData.shieldRemove_min;
-            shieldRemove_max = actionData.shieldRemove_max;
-            applySteParams = new List<PA_StatusEffect.StatusEffectParams>(actionData.applyStEParams);
-            applyPEParams =new List<PositionEffect.PositionEffectParams>(actionData.applyPEParams);
-            removeStEs = new List<ActionData.RemoveStE>(actionData.removeStEs);
-
-            summon = actionData.summon;
-            //summonSize = actionData.summonSize;
-            summonChara = actionData.summonChara;
-            summonChanceWeight = actionData.summonChanceWeight;
-
-            moveChance = actionData.moveChance;
-            moveUpper = actionData.moveUpper;
-            moveLower = actionData.moveLower;
-            moveForword = actionData.moveForword;
-            moveBackword = actionData.moveBackword;
-
-            abilityRemainControlls = new List<ActionData.AbilityRemainControll>(actionData.abilityRemainControlls);
-        }
 
         public ActionStatus Modify(ActionMod.ActionModStatus mod)
         {

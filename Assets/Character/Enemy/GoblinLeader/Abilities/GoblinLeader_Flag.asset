@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
+  m_Name: GoblinLeader_Flag
+  m_EditorClassIdentifier: 
+  abilityName: "\u9F13\u821E"
+  abilityManager: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
+  spriteIndex: 0
+  SE: {fileID: 0}
+  abilityType: 3
+  excludeRandomPool: 0
+  selectWeight: 1
+  conditionInfo: 
+  cooldownOnUse: 3
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  actionsStaus:
+  - actionName: "\u9F13\u821E"
+    conditionInfo: 
+    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B9\u5168\u4F53"
+    actionInfo: 
+    VE_OnTargets: {fileID: 0}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 7
+    friendly: 1
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 1
+      front: 1
+      mid: 1
+      back: 1
+      characterTags: 
+      StE: []
+      PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
+      applyChance: 100
+      stack: 1
+      value: 4
+    - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
+      applyChance: 100
+      stack: 1
+      value: 25
+    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+      applyChance: 100
+      stack: 2
+      value: 15
+    applyPEParams: []
+    removeStEs:
+    - removeStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
+      removeAll: 1
+      removeAmount: 0
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityRemainControlls: []
+    abilityEffect: 1
+    abilityType: 3
+    SE: {fileID: 0}
+    dontChangeSprite: 0
+    activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
+    spriteIndex: 0
+    actionOwner: {fileID: 0}
+    actionTargetsInt: 090000000b0000000c0000000e00000010000000

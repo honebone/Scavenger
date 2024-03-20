@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_GoblinLeader
+  m_EditorClassIdentifier: 
+  fileName: E_GoblinLeader
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u30B4\u30D6\u30EA\u30F3\u30EA\u30FC\u30C0\u30FC"
+  characterTags: 0a000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  playable: 0
+  obstacle: 0
+  variableSprites:
+  - {fileID: 6904753650737102835, guid: 8e8751653fab1284fa81b5ae6502739c, type: 3}
+  spriteForUI: {fileID: 21300000, guid: e3a426fccdbb43f498dc2b7e49cdf9fd, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 9c5de2d4b6afd334c96cf548ed49557b, type: 2}
+  - {fileID: 11400000, guid: b6c1f61bcc1df2545bb854d312cd0c41, type: 2}
+  - {fileID: 11400000, guid: 73b6afc261c909647ba6a750f4e82a12, type: 2}
+  passiveAbilities:
+  - {fileID: 5551348220021876505, guid: 7f4fef350d9ca274ca62b4266df45283, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  dropItems: []
+  surviveFatalWounds: 0
+  maxHP: 250
+  maxSAN: 0
+  ATK: 10
+  CRITC: 5
+  CRITD: 2
+  EVD: 5
+  ACC: 90
+  ACT: 6
+  turnPerRound: 3
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 0
+  StEResists:
+  - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+    value: 50
+  StEApplyBonus: []
+  moveRes: 30

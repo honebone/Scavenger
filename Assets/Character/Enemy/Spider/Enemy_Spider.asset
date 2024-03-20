@@ -41,7 +41,7 @@ MonoBehaviour:
   - dropItem: {fileID: 11400000, guid: 183d70ffa83e927438dc513055ae9ae8, type: 2}
     quantity: 1
   surviveFatalWounds: 0
-  maxHP: 15
+  maxHP: 20
   maxSAN: 0
   ATK: 8
   CRITC: 8
@@ -54,4 +54,5 @@ MonoBehaviour:
   RHeal: 100
   debuffRes: 0
   StEResists: []
+  StEApplyBonus: []
   moveRes: 0
