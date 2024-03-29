@@ -17,29 +17,44 @@ MonoBehaviour:
   dontChangeSprite: 0
   activateSprite: {fileID: 4738970142385312939, guid: 3ff87504580194d44a7b40ac2155ea60, type: 3}
   spriteIndex: 0
-  SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 1
-  availableMid: 1
-  availableBack: 1
   actionsStaus:
   - actionName: "\u7C98\u6DB2\u98DB\u3070\u3057"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     actionInfo: 
+    SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
     VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -51,6 +66,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -63,6 +81,8 @@ MonoBehaviour:
     attackType: 1
     ATKMod_min: 50
     ATKMod_max: 80
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: -5
     CRITCMod: 0
     CRITDMod: 0
@@ -86,8 +106,8 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       applyChance: 60
-      stack: 1
-      value: 50
+      stack: 50
+      value: 0
     applyPEParams: []
     removeStEs: []
     summon: 0
@@ -101,7 +121,6 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
     dontChangeSprite: 0
     activateSprite: {fileID: 4738970142385312939, guid: 3ff87504580194d44a7b40ac2155ea60, type: 3}
     spriteIndex: 0

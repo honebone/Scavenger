@@ -9,10 +9,10 @@ public class PA_StE_Poison : PA_StatusEffect
     public override void OnActivateAbility()
     {
         Action.ActionStatus action = actionStatus;
-        action.decreaseHP_min = StEStatus.value;
-        action.decreaseHP_max = StEStatus.value;
+        action.decreaseHP_min = StEStatus.stack;
+        action.decreaseHP_max = StEStatus.stack;
         character.Enqueue(action, true, new List<Character>() { character });
-        AddStack(-1);
+        Enqueue_AddStack(-2);
     }
     
 }

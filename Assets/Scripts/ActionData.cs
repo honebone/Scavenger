@@ -60,10 +60,11 @@ public class ActionData : ScriptableObject
     [System.Serializable]
     public class RemoveStE
     {
+        /// <summary>消去能力の時はプレハブ StE内から呼ばれるときは自身</summary>
         public GameObject removeStE;
 
         public bool removeAll;
-        public int removeAmount;
+        public int addAmount;
     }
     [Header("RemoveStE")]
     public List<RemoveStE> removeStEs;

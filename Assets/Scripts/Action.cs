@@ -111,6 +111,9 @@ public class Action : MonoBehaviour
         public List<ActionData.AbilityRemainControll> abilityRemainControlls;
 
         [Header("\n\n\n\n以下には手を出すな")]
+        [Header("\nStE自身によるスタック増減や消去")]
+        public bool removeStE_asStE;
+        public ActionData.RemoveStE removeStE_bySelf;
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
         public bool dontChangeSprite;
@@ -190,8 +193,9 @@ public class Action : MonoBehaviour
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("・{0}％の確率で", StEParams.applyChance);
-                if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
-                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                //if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
+                //else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
                 s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
                 s += "\n";
             }
@@ -207,9 +211,9 @@ public class Action : MonoBehaviour
             foreach(ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}を", status.StEName.ColorStr(status.StEType.ToColor()));
-                if (remove.removeAll) { s += "全て除去\n"; }
-                else { s += string.Format("{0}スタック除去", remove.removeAmount); }
+                s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
+                if (remove.removeAll) { s += "を全て除去\n"; }
+                else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
             }
 
             if (summon)
@@ -247,6 +251,14 @@ public class Action : MonoBehaviour
                 {
                     s += string.Format("{0}増加\n", remainControll.value);
                 }
+            }
+
+            if (removeStE_asStE)
+            {
+                PA_StatusEffect.StatusEffectStatus status = removeStE_bySelf.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
+                if (removeStE_bySelf.removeAll) { s += "を全て除去\n"; }
+                else { s += string.Format("のスタック{0}\n", GetValueWithSign(removeStE_bySelf.addAmount)); }
             }
 
             foreach (GameObject actionMod in actionMods)
@@ -589,6 +601,11 @@ public class Action : MonoBehaviour
                     foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
                     {
                         actionStatus.actionTargets[i].AbilityRemain(remainControll);
+                    }
+
+                    if (actionsStatus[i].removeStE_asStE)//StE自身によるスタック増減
+                    {
+                        actionStatus.actionTargets[i].RemoveStE_BySelf(actionsStatus[i].removeStE_bySelf);
                     }
                 }
                 //else

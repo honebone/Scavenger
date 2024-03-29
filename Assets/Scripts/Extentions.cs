@@ -147,6 +147,17 @@ public static class Extentions
     {
         return Random.Range(0,length);
     }
+
+    public static string GetValueWithSign(this float value)
+    {
+        if (value > 0) { return "+" + value.ToString(); }
+        else { return value.ToString(); }
+    }
+    public static string GetValueWithSign(this int value)
+    {
+        if (value > 0) { return "+" + value.ToString(); }
+        else { return value.ToString(); }
+    }
     public static Vector2Int PosIntToVector(this int posInt)
     {
          return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);

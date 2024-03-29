@@ -305,8 +305,8 @@ public class Character : MonoBehaviour
     public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }
 
     //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
-    protected List<PassiveAbility> PA_Pa = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_StE = new List<PassiveAbility>();
+    protected List<PassiveAbility> PA_Pa = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_Eq = new List<PassiveAbility>();
     List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
@@ -355,8 +355,8 @@ public class Character : MonoBehaviour
     public List<PassiveAbility> GetPassiveAbilities()
     {
         List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
-        passiveAbilities.AddRange(PA_Pa);
         passiveAbilities.AddRange(PA_StE);
+        passiveAbilities.AddRange(PA_Pa);
         passiveAbilities.AddRange(PA_Eq);
         return passiveAbilities;
     }
@@ -419,16 +419,17 @@ public class Character : MonoBehaviour
     public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,StEApplyBonus applyBonus)
     {
         bool f = false;
+        PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
+        PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
         {
-            PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
             foreach (PassiveAbility pa in PA_StE)
             {
                 if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるなら
                 {
                     if(applyBonus == null) { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack); }
                     else { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack + applyBonus.exStack); }
-                    charaObj.SetDamageText(string.Format("付与：{0}", StE.GetPAName()), Color.white);
+                    charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
                     infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
                     soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
                     f = true;
@@ -442,7 +443,7 @@ public class Character : MonoBehaviour
             //sort
             s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>(),applyBonus);
             s.GetComponent<PassiveAbility>().Init(this, 0);
-            charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
+            charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
             infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
             soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType]);
         }
@@ -452,9 +453,33 @@ public class Character : MonoBehaviour
         PA_StatusEffect.StatusEffectStatus StE = removeStE.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
         foreach (PassiveAbility pa in GetPassiveAbilities())
         {
-            if (pa.GetPAType()==0&&pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
+            if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
             {
                 if (removeStE.removeAll) { pa.GetComponent<PA_StatusEffect>().Disable(); }
+            }
+        }
+        //メッセージ
+    }
+    /// <summary>StE自身がこれを呼んでスタック消費or消去する</summary>
+    public void RemoveStE_BySelf(ActionData.RemoveStE removeStE)
+    {
+        foreach (PassiveAbility pa in GetPassiveAbilities())
+        {
+            if (pa.gameObject == removeStE.removeStE)
+            {
+                PA_StatusEffect.StatusEffectStatus StEStatus = pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                if (removeStE.removeAll)
+                {
+                    pa.GetComponent<PA_StatusEffect>().Disable();
+                    charaObj.SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+                    infoText.AddLogText(string.Format("{0}の{1}が消去された", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName()));
+                }
+                else
+                {
+                    pa.GetComponent<PA_StatusEffect>().AddStack(removeStE.addAmount);
+                    charaObj.SetDamageText(string.Format("{0}{1}", StEStatus.StEName, removeStE.addAmount.GetValueWithSign()), Definer.colorRef.failed_unavailable);
+                    infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName(), removeStE.addAmount.GetValueWithSign()));
+                }
             }
         }
         //メッセージ
@@ -477,17 +502,17 @@ public class Character : MonoBehaviour
     public void DisplayInfo()
     {
         string info = charaStatus.GetInfo();
+        info += "\n◇◇状態異常◇◇\n";
+        foreach (PassiveAbility pa in PA_StE)
+        {
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+        }
+
         info += "\n◇◇特性◇◇\n";
         foreach (PassiveAbility pa in PA_Pa)
         {
             info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
         } 
-        
-        info += "\n◇◇状態異常◇◇\n";
-        foreach (PassiveAbility pa in PA_StE)
-        {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
-        }
 
         if (charaStatus.player)
         {

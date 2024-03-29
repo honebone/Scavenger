@@ -47,19 +47,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "\u51FA\u8840"
-    StEInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D\u3001HP\u304C\u30B9\u30BF\u30C3\u30AF\u5206\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30922\u6E1B\u3089\u3059"
+    StEInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D\u3001HP\u304CX\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30922\u6E1B\u3089\u3059"
     StEIcon: {fileID: 21300000, guid: b16e3040966b7de42b2c351482467367, type: 3}
     StEType: 2
     maxStack: 0
     merge: 0
-    refValue: 0
     stack: 0
-    value: 0
   actionStatus:
     actionName: "\u51FA\u8840"
     conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -127,7 +126,6 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 0
     abilityType: 0
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     spriteIndex: 0

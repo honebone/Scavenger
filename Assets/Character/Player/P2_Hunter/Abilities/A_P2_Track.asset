@@ -17,23 +17,39 @@ MonoBehaviour:
   dontChangeSprite: 0
   activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
   abilityType: 3
   excludeRandomPool: 0
   selectWeight: 1
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  cooldownOnBattleStart: 0
   cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 1
-  availableMid: 1
-  availableBack: 1
   actionsStaus:
   - actionName: "\u7372\u7269\u306E\u8FFD\u8DE1"
     conditionInfo: 
     targetInfo: "\u65751\u4F53(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     actionInfo: 
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -108,7 +124,6 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 3
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
     spriteIndex: 0
@@ -118,6 +133,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -174,8 +190,8 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
       applyChance: 200
-      stack: 1
-      value: 20
+      stack: 20
+      value: 0
     applyPEParams: []
     removeStEs: []
     summon: 0
@@ -189,7 +205,6 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 3
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
     spriteIndex: 0

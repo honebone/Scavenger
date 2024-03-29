@@ -12,7 +12,7 @@ public class PA_StE_SpiderWeb : PA_StatusEffect
     }
     public override void OnActivateAbility()
     {
-        AddStack(-1);
+        Enqueue_AddStack(-1);
     }
     public override void AtTheEnd()
     {

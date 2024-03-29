@@ -17,16 +17,16 @@ public class PA_StatusEffect : PassiveAbility
         public int maxStack;
         [Tooltip("同種の状態異常がすでにある場合、そのスタックを増加させるか")]
         public bool merge;
-        public bool refValue;
+        //public bool refValue;
 
         [Header("以下は代入される")]
         public int stack;
-        public int value;
+        //public int value;
 
         public string GetName()
         {
             string s = StEName;
-            if (refValue) { s += value.ToString(); }
+            //if (refValue) { s += value.ToString(); }
             return s.ColorStr(StEType.ToColor());
         }
     }
@@ -39,20 +39,24 @@ public class PA_StatusEffect : PassiveAbility
         public float applyChance;
 
         public int stack;
-        public int value;
+        //public int value;
     }
+
+    [SerializeField]
+    Action.ActionStatus remove;
+
     public void Init(StatusEffectParams StEParams,StEIcon icon,StEApplyBonus applyBonus)
     {
         StEStatus.stack = StEParams.stack;
-        StEStatus.value = StEParams.value;
+        //StEStatus.value = StEParams.value;
         if (applyBonus != null)
         {
             StEStatus.stack += applyBonus.exStack;
-            StEStatus.value += applyBonus.exValue;
+            //StEStatus.value += applyBonus.exValue;
         }
         StEIcon = icon;
         StEIcon.Init(StEStatus);
-        if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }
+        //if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }
     }
 
 
@@ -69,7 +73,7 @@ public class PA_StatusEffect : PassiveAbility
     public string GetStEInfo_forRef()
     {
         string s = StEStatus.StEName;
-        if (StEStatus.refValue) { s += "X"; }
+        //if (StEStatus.refValue) { s += "X"; }
         s += "：";
         s += StEStatus.StEInfo + "\n";
         s += GetAdditionalInfo();
@@ -80,14 +84,44 @@ public class PA_StatusEffect : PassiveAbility
     {
         return "";
     }
+    public void Enqueue_AddStack(int add)
+    {
+        ActionData.RemoveStE removeStE= new ActionData.RemoveStE();
+        removeStE.removeStE = gameObject;
+        removeStE.addAmount = add;
+
+        Action.ActionStatus action = remove;
+        if (add > 0) { action.actionName = "スタック増加"; }
+        else { action.actionName = "スタック減少"; }
+        action.targetInfo = "自身";
+        action.removeStE_asStE = true;
+        action.removeStE_bySelf = removeStE;
+
+        character.Enqueue(action, true, new List<Character>() { character });
+    }
+    public void Enqueue_Disable()
+    {
+        ActionData.RemoveStE removeStE = new ActionData.RemoveStE();
+        removeStE.removeStE = gameObject;
+        removeStE.removeAll = true;
+
+        Action.ActionStatus action = remove;
+        action.actionName = "消去";
+        action.targetInfo = "自身";
+        action.removeStE_asStE = true;
+        action.removeStE_bySelf = removeStE;
+
+        character.Enqueue(action, true, new List<Character>() { character });
+    }
     public void AddStack(int stack)
     {
+        int prevStack = StEStatus.stack;
         if (StEStatus.maxStack == 0)//最大スタック数が無制限なら
         {
             StEStatus.stack += stack;
         }
         else { StEStatus.stack = Mathf.Clamp(StEStatus.stack + stack, 0, StEStatus.maxStack); }
-        
+        OnAddStack(StEStatus.stack - prevStack);
         if (StEStatus.stack <= 0)
         {
             StEStatus.stack = 0;
@@ -95,6 +129,9 @@ public class PA_StatusEffect : PassiveAbility
         }
         else { StEIcon.SetStackText(StEStatus.stack); }
     }
+
+    public virtual void OnAddStack(int add) { }
+
     public void DestroyIcon()
     {
         Destroy(StEIcon.gameObject);
