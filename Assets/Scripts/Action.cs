@@ -54,8 +54,8 @@ public class Action : MonoBehaviour
 
         [Header("\n\n攻撃")]
         public bool cantCounter;
-        [Header("0:melee 1:ranged 2:magic")]
-        /// <summary>0:melee 1:ranged 2:magic</summary>
+        [Header("0:melee 1:ranged 2:magic 3:counter")]
+        /// <summary>0:melee 1:ranged 2:magic 3:counter</summary>
         public int attackType;
         public float ATKMod_min;
         public float ATKMod_max;
@@ -159,6 +159,9 @@ public class Action : MonoBehaviour
                         break;
                     case 2:
                         s += "・魔術攻撃を行う\n";
+                        break;
+                    case 3:
+                        s += "・カウンター攻撃を行う\n";
                         break;
                 }
                 s += string.Format("ATKの{0}％ダメージ", GetValueRange(ATKMod_min, ATKMod_max));

@@ -38,6 +38,8 @@ public class ActionQueueManager : MonoBehaviour
     Utility util;
     SoundManager soundManager;
 
+    bool autoResolve=true;
+    bool resolving_auto;
     bool resolving;
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide</summary>
     int resolveMode = -1;
@@ -184,7 +186,22 @@ public class ActionQueueManager : MonoBehaviour
         actionStatus.actionOwner.ResetCharaSprite();
 
 
-        if (CheckIfActionsRemain()) { StartCoroutine(DisplayActionInqueueAnim()); }//アビリティ処理終えてもアクションがある=誘発がある ==>　それらを表示
+        if (CheckIfActionsRemain()) //アビリティ処理終えてもアクションがある=誘発がある
+        { 
+            if (autoResolve)//自動解決なら表示をせずにActionの作成のみを行う
+            {
+                foreach(Action.ActionStatus action in actionsBuffer) { DisplayActionInQueue(action); }
+                actionsBuffer.Clear();
+
+                resolving = true;
+                //StartCoroutine(ResolveNextActionEffect());
+                inQueueActions[0].Resolve();
+            }
+            else//手動解決ならそれらを表示
+            {
+                StartCoroutine(DisplayActionInqueueAnim());
+            }
+        }
 
 
     }
@@ -193,12 +210,26 @@ public class ActionQueueManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         inQueueAbilityEffects[0].Resolve();
     }
+
+    [SerializeField]
+    float autoResolveInterval;
+    IEnumerator ResolveNextActionEffect()
+    {
+        resolving_auto = true;
+        yield return new WaitForSeconds(autoResolveInterval);
+        resolving_auto = false;
+        inQueueActions[0].Resolve();
+    }
     public void ResolveOne()
     {
-        if (resolving)
+        if (resolving && !autoResolve && !resolving_auto)
         {
             inQueueActions[0].Resolve();
         }
+    }
+    public void ToggleAutoResolve()
+    {
+        autoResolve = !autoResolve;
     }
 
     /// <summary>アクションの処理が終わったらアクション内で呼ばれる </summary>
@@ -224,16 +255,16 @@ public class ActionQueueManager : MonoBehaviour
             CloseQueuePanel();
             StartCoroutine(EndResolve());
         }
-        else
+        else//まだアクションがある
         {
             if (inQueueAbilityEffects.Count>0)//アビリティ効果はプレイヤーの入力待たずに解決する
             {
                 StartCoroutine(ResolveNextAbilityEffect());
             }
-            //else//アビリティ以外なら解決ボタンが押されるのを待つ
-            //{
-            //    resolving = true;
-            //}
+            else if(resolving&&autoResolve)//自動解決モードなら(resolvingがはいってるのはアビリティの解決を参照)
+            {
+                StartCoroutine(ResolveNextActionEffect());
+            }
         }
 
     }
