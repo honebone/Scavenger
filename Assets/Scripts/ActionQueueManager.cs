@@ -121,16 +121,27 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator DisplayActionInqueueAnim()
     {
-        OpenQueuePanel();
-        var wait = new WaitForSeconds(0.2f);
-        while (actionsBuffer.Count > 0)
+        if (autoResolve)//自動解決なら表示をせずにActionの作成のみを行う
         {
-            DisplayActionInQueue(actionsBuffer[0]);
-            actionsBuffer.RemoveAt(0);
-            yield return wait;
-        }
+            foreach (Action.ActionStatus action in actionsBuffer) { DisplayActionInQueue(action); }
+            actionsBuffer.Clear();
 
-        resolving = true;//表示アニメーション終わったので、解決ボタン押せるようにする
+            resolving = true;
+            //StartCoroutine(ResolveNextActionEffect());
+            inQueueActions[0].Resolve();
+        }
+        else//手動解決ならそれらを表示
+        {
+            OpenQueuePanel();
+            var wait = new WaitForSeconds(0.2f);
+            while (actionsBuffer.Count > 0)
+            {
+                DisplayActionInQueue(actionsBuffer[0]);
+                actionsBuffer.RemoveAt(0);
+                yield return wait;
+            }
+            resolving = true;//表示アニメーション終わったので、解決ボタン押せるようにする
+        }
     }
     void DisplayActionInQueue(Action.ActionStatus status)
     {
@@ -187,20 +198,8 @@ public class ActionQueueManager : MonoBehaviour
 
 
         if (CheckIfActionsRemain()) //アビリティ処理終えてもアクションがある=誘発がある
-        { 
-            if (autoResolve)//自動解決なら表示をせずにActionの作成のみを行う
-            {
-                foreach(Action.ActionStatus action in actionsBuffer) { DisplayActionInQueue(action); }
-                actionsBuffer.Clear();
-
-                resolving = true;
-                //StartCoroutine(ResolveNextActionEffect());
-                inQueueActions[0].Resolve();
-            }
-            else//手動解決ならそれらを表示
-            {
-                StartCoroutine(DisplayActionInqueueAnim());
-            }
+        {
+            StartCoroutine(DisplayActionInqueueAnim());
         }
 
 
