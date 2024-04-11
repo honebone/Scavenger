@@ -406,18 +406,18 @@ public class Action : MonoBehaviour
                     actionStatus.actionTargets[i].Kill(actionStatus.actionOwner);
                 }
 
-                if (actionsStatus[i].decreaseHP_max > 0&& actionStatus.actionTargets[i].CheckAlive())//HP減少
+                if (actionsStatus[i].decreaseHP_max > 0 && actionStatus.actionTargets[i].CheckAlive())//HP減少
                 {
                     actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
                 }
-                if (actionsStatus[i].decreaseHPPer_max > 0&& actionStatus.actionTargets[i].CheckAlive())//HP減少
+                if (actionsStatus[i].decreaseHPPer_max > 0 && actionStatus.actionTargets[i].CheckAlive())//HP減少
                 {
                     float percent = Random.Range(actionsStatus[i].decreaseHPPer_min, actionsStatus[i].decreaseHPPer_max) / 100f;
                     actionStatus.actionTargets[i].DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
                 }
 
 
-                if (actionsStatus[i].ATKMod_max > 0&& actionStatus.actionTargets[i].CheckAlive())//攻撃
+                if (actionsStatus[i].ATKMod_max > 0 && actionStatus.actionTargets[i].CheckAlive())//攻撃
                 {
                     bool CRIT = false;
                     int DMG = 0;
@@ -521,7 +521,7 @@ public class Action : MonoBehaviour
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
                         StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
-                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams,applyBonus); }
+                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams, applyBonus); }
                         else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable); }
                     }
                     foreach (ActionData.RemoveStE remove in actionsStatus[i].removeStEs)//StE消去
@@ -530,7 +530,7 @@ public class Action : MonoBehaviour
                     }
                     if (actionsStatus[i].moveChance > 0)//移動
                     {
-                        if ((actionsStatus[i].moveChance-targetStatus.moveRes).Probability() && !targetStatus.immovable)
+                        if ((actionsStatus[i].moveChance - targetStatus.moveRes).Probability() && !targetStatus.immovable)
                         {
                             //string test = "";
                             int moveRange = -1;
@@ -599,7 +599,7 @@ public class Action : MonoBehaviour
                         }
                         else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("MoveResist", Definer.colorRef.failed_unavailable); }
                     }
-                   
+
 
                     foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
                     {
@@ -616,7 +616,10 @@ public class Action : MonoBehaviour
                 //    actionStatus.actionTargetsInt.Remove(i);//攻撃失敗時、その地点に対する処理も行わないようにする
                 //}
             }
-            else { infoText.AddDebugText("対象の消失"); }
+            else if (!notChara)
+            {
+                actionStatus.actionOwner.GetCharacter_Object().SetDamageText("対象消失", Definer.colorRef.failed_unavailable);
+            }
         }
 
 

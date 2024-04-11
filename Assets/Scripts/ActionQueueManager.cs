@@ -128,6 +128,7 @@ public class ActionQueueManager : MonoBehaviour
 
             resolving = true;
             //StartCoroutine(ResolveNextActionEffect());
+            if (inQueueActions.Count == 0) { infoText.AddErrorText("what?"); }
             inQueueActions[0].Resolve();
         }
         else//Žè“®‰ðŒˆ‚È‚ç‚»‚ê‚ç‚ð•\Ž¦

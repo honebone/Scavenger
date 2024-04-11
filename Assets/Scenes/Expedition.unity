@@ -12186,13 +12186,13 @@ MonoBehaviour:
   content: {fileID: 660411532}
   SE_ability: {fileID: 8300000, guid: 3c0399b3ffa1ab646904e1f06a8d9640, type: 3}
   abilityPause: 0.75
-  abilityPause_followthrough: 1.25
+  abilityPause_followthrough: 1
   abilityNameText_player: {fileID: 1846992750}
   abilityNameText_enemy: {fileID: 1408254314}
   actionsBuffer: []
   inQueueActions: []
   inQueueAbilityEffects: []
-  autoResolveInterval: 0.5
+  autoResolveInterval: 0.2
 --- !u!1 &916294348
 GameObject:
   m_ObjectHideFlags: 0
@@ -18248,8 +18248,6 @@ MonoBehaviour:
       weight: 5
     - roomEvent: {fileID: 11400000, guid: 1b361ac52cb3f5d4aa5e73c64f10fc65, type: 2}
       weight: 10
-    - roomEvent: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
-      weight: 100
     normalBattlePool:
     - weight: 10
       enemies:
@@ -18589,7 +18587,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
