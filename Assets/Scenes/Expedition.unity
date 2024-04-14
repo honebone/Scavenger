@@ -12077,6 +12077,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}

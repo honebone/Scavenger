@@ -62,13 +62,15 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+    actionMods: []
     info_start: 
-  actionMods: []
   claw:
     actionName: "\u714C\u5203"
     conditionInfo: "\u8FD1\u63A5\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D(\u884C\u52D5\u6642\u306E\u307F)"
     targetInfo: "\u653B\u6483\u3057\u305F\u76F8\u624B"
     actionInfo: 
+    sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -134,9 +136,13 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 0
     abilityType: 0
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     spriteIndex: 0

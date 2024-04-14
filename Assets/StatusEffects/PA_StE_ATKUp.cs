@@ -10,7 +10,7 @@ public class PA_StE_ATKUp : PA_StatusEffect
     }
     public override void OnAttack(bool evaded, bool missed)
     {
-        Enqueue_Disable();
+        Disable(); 
     }
     public override void OnAddStack(int add)
     {

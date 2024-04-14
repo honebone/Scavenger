@@ -62,13 +62,15 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+    actionMods: []
     info_start: 
-  actionMods: []
   action:
     actionName: "\u6B7B\u795E\u306E\u6307"
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642([\u81EA\u8EAB\u306ECRIT\u7387]x2)"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642([\u81EA\u8EAB\u306ECRIT\u7387]x2\u306E\u78BA\u7387)"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    sprite: {fileID: 21300000, guid: a0ccf47b4cfc3d442a5f2d1123167dd1, type: 3}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -125,8 +127,7 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
       applyChance: 200
-      stack: 1
-      value: 50
+      stack: 25
     applyPEParams: []
     removeStEs: []
     summon: 0
@@ -138,9 +139,13 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 0
     abilityType: 0
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     spriteIndex: 0

@@ -23,6 +23,7 @@ public class Action : MonoBehaviour
         public string targetInfo;
 [TextArea(3, 10)]
         public string actionInfo;
+        public Sprite sprite;
 
         public AudioClip SE;
         public GameObject VE_OnTargets;
@@ -399,8 +400,17 @@ public class Action : MonoBehaviour
                 var v = Instantiate(actionStatus.VE_OnTargets, VEPos + VEOffset, Quaternion.identity);
                 if (targetStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0)); }//プレイヤー対象の時左右反転
             }
-            if (!targetStatus.dead)
+            if (!targetStatus.dead)//対象が生きているときのみ、効果発動
             {
+
+                if (actionStatus.sprite != null)//アクションのアイコンを表示
+                {
+                    if (!notChara)
+                    {
+                        actionStatus.actionOwner.GetCharacter_TargetButton().SetActionIcon(actionStatus.sprite);
+                    }
+                }
+
                 if (actionsStatus[i].kill)
                 {
                     actionStatus.actionTargets[i].Kill(actionStatus.actionOwner);
@@ -452,7 +462,7 @@ public class Action : MonoBehaviour
                         else//回避
                         {
                             actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
-                            FindObjectOfType<InfoText>().AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}は攻撃を回避した", targetStatus.charaName)));
+                            infoText.AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}は攻撃を回避した", targetStatus.charaName)));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;
                             if (!notChara)
@@ -467,7 +477,7 @@ public class Action : MonoBehaviour
                         if (!notChara)
                         {
                             actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
-                            FindObjectOfType<InfoText>().AddLogText(string.Format("{0}は攻撃を外した", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
+                            infoText.AddLogText(string.Format("{0}は攻撃を外した", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
                             actionStatus.actionOwner.OnAttack(false, true);//攻撃時誘発
                         }
                         actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, true);//被攻撃時誘発
@@ -522,7 +532,11 @@ public class Action : MonoBehaviour
                     {
                         StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
                         if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams, applyBonus); }
-                        else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable); }
+                        else
+                        {
+                            actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
+                            infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
+                        }
                     }
                     foreach (ActionData.RemoveStE remove in actionsStatus[i].removeStEs)//StE消去
                     {

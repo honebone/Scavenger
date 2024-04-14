@@ -18,6 +18,10 @@ public class Character_TargetButton : MonoBehaviour
     Image highlightedIcon;
     [SerializeField]
     Image emptyIcon;
+    [SerializeField]
+    Transform actionIconsP;
+    [SerializeField]
+    GameObject actionIcon;
     Character character;
     CharactersManager charactersManager;
     InfoText infoText;
@@ -61,6 +65,12 @@ public class Character_TargetButton : MonoBehaviour
        // if (character == null) { button.SetActive(false); }
         targetGroup.Clear();
         targetIcon.enabled = false;
+    }
+    public void SetActionIcon(Sprite sprite)
+    {
+        var a = Instantiate(actionIcon, actionIconsP);
+        a.GetComponent<ActionIcon>().Init(sprite);
+      
     }
 
     /// <summary> </summary>

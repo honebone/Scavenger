@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PassiveAbility : MonoBehaviour
 {
-   protected Character character;
-    //protected Character.CharacterStatus charaStatus;
+    protected Character character;
     protected CharactersManager charactersManager;
+    protected InfoText infoText;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
@@ -17,11 +17,11 @@ public class PassiveAbility : MonoBehaviour
         print("error:GetPAInfoÇÃoverrideÇ™ê›íËÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ");
         return "error:GetPAInfoÇÃoverrideÇ™ê›íËÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ";
     }
-    public void Init(Character c,int type)
+    public void Init(Character c,int type,InfoText it)
     {
         character = c;
         PAType = type;
-        //charaStatus = character.GetCharacterStatus();
+        infoText = it;
         charactersManager=FindObjectOfType<CharactersManager>();
         OnPAInit();
     }
@@ -29,7 +29,14 @@ public class PassiveAbility : MonoBehaviour
     {
         AtTheEnd();
         character.RemovePA(this);
-        if (PAType == 0) { GetComponent<PA_StatusEffect>().DestroyIcon(); }
+        if (PAType == 0)
+        {
+            PA_StatusEffect StE = GetComponent<PA_StatusEffect>();
+            PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
+            character.GetCharacter_Object().SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+            infoText.AddLogText(string.Format("{0}ÇÃ{1}Ç™è¡ãéÇ≥ÇÍÇΩ", character.GetCharacterStatus().charaName, GetPAName()));
+            StE.DestroyIcon();
+        }
         Destroy(gameObject);
     }
     public virtual void OnPAInit() { }

@@ -101,6 +101,42 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &2238157581734037596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2592502767342389104}
+  m_Layer: 5
+  m_Name: ActionIconP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2592502767342389104
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238157581734037596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3951952995839493976}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 1.25}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2300856147991988164
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +666,7 @@ RectTransform:
   - {fileID: 7767304326171385260}
   - {fileID: 3580158602742731109}
   - {fileID: 9000871957690347465}
+  - {fileID: 2592502767342389104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -718,6 +755,8 @@ MonoBehaviour:
   selectedIcon: {fileID: 6009932824275597709}
   highlightedIcon: {fileID: 977589923020058933}
   emptyIcon: {fileID: 5406059968273802474}
+  actionIconsP: {fileID: 2592502767342389104}
+  actionIcon: {fileID: 5053542377327188667, guid: 9312c8879f4314b488da684ac533fd73, type: 3}
 --- !u!114 &9078332922609768795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -730,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068298dc304c89e43bd7575b6ecb9f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pos: 0
   PEParent: {fileID: 6215882554913772857}
   PEIconParent: {fileID: 7767304326171385260}
 --- !u!1 &4645619586063709620

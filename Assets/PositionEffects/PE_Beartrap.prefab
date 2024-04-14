@@ -60,12 +60,13 @@ MonoBehaviour:
     conditionInfo: "\u30DD\u30B8\u30B7\u30E7\u30F3\u4E0A\u306B\u30AD\u30E3\u30E9\u304C\u79FB\u52D5\u3057\u3066\u304D\u305F\u3068\u304D"
     targetInfo: "\u30DD\u30B8\u30B7\u30E7\u30F3\u4E0A\u306E\u30AD\u30E3\u30E9"
     actionInfo: "\u30B9\u30BF\u30C3\u30AF\u30921\u6E1B\u5C11\u3002"
+    sprite: {fileID: 21300000, guid: 6fed73bfc54002e4181f7b7625721780, type: 3}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -77,6 +78,9 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -89,6 +93,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -113,7 +119,6 @@ MonoBehaviour:
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
       applyChance: 200
       stack: 1
-      value: 0
     applyPEParams: []
     removeStEs: []
     summon: 0
@@ -125,9 +130,13 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 0
     abilityType: 0
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     spriteIndex: 0

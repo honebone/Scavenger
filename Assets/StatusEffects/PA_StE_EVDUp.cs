@@ -10,7 +10,7 @@ public class PA_StE_EVDUp : PA_StatusEffect
     }
     public override void OnAttacked(Character attacker, bool evaded, bool missed)
     {
-        Enqueue_Disable();
+        Disable();
     }
     public override void OnAddStack(int add)
     {

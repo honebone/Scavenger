@@ -84,35 +84,35 @@ public class PA_StatusEffect : PassiveAbility
     {
         return "";
     }
-    public void Enqueue_AddStack(int add)
-    {
-        ActionData.RemoveStE removeStE= new ActionData.RemoveStE();
-        removeStE.removeStE = gameObject;
-        removeStE.addAmount = add;
+    //public void Enqueue_AddStack(int add)
+    //{
+    //    ActionData.RemoveStE removeStE= new ActionData.RemoveStE();
+    //    removeStE.removeStE = gameObject;
+    //    removeStE.addAmount = add;
 
-        Action.ActionStatus action = remove;
-        if (add > 0) { action.actionName = "スタック増加"; }
-        else { action.actionName = "スタック減少"; }
-        action.targetInfo = "自身";
-        action.removeStE_asStE = true;
-        action.removeStE_bySelf = removeStE;
+    //    Action.ActionStatus action = remove;
+    //    if (add > 0) { action.actionName = "スタック増加"; }
+    //    else { action.actionName = "スタック減少"; }
+    //    action.targetInfo = "自身";
+    //    action.removeStE_asStE = true;
+    //    action.removeStE_bySelf = removeStE;
 
-        character.Enqueue(action, true, new List<Character>() { character });
-    }
-    public void Enqueue_Disable()
-    {
-        ActionData.RemoveStE removeStE = new ActionData.RemoveStE();
-        removeStE.removeStE = gameObject;
-        removeStE.removeAll = true;
+    //    character.Enqueue(action, true, new List<Character>() { character });
+    //}
+    //public void Enqueue_Disable()
+    //{
+    //    ActionData.RemoveStE removeStE = new ActionData.RemoveStE();
+    //    removeStE.removeStE = gameObject;
+    //    removeStE.removeAll = true;
 
-        Action.ActionStatus action = remove;
-        action.actionName = "消去";
-        action.targetInfo = "自身";
-        action.removeStE_asStE = true;
-        action.removeStE_bySelf = removeStE;
+    //    Action.ActionStatus action = remove;
+    //    action.actionName = "消去";
+    //    action.targetInfo = "自身";
+    //    action.removeStE_asStE = true;
+    //    action.removeStE_bySelf = removeStE;
 
-        character.Enqueue(action, true, new List<Character>() { character });
-    }
+    //    character.Enqueue(action, true, new List<Character>() { character });
+    //}
     public void AddStack(int stack)
     {
         int prevStack = StEStatus.stack;
@@ -121,7 +121,12 @@ public class PA_StatusEffect : PassiveAbility
             StEStatus.stack += stack;
         }
         else { StEStatus.stack = Mathf.Clamp(StEStatus.stack + stack, 0, StEStatus.maxStack); }
-        OnAddStack(StEStatus.stack - prevStack);
+
+        character.GetCharacter_Object().SetDamageText(string.Format("{0}{1}", StEStatus.StEName, (StEStatus.stack - prevStack).GetValueWithSign()), Definer.colorRef.failed_unavailable);
+        infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", character.GetCharacterStatus().charaName, GetPAName(), (StEStatus.stack - prevStack).GetValueWithSign()));
+
+        OnAddStack(StEStatus.stack - prevStack);//スタック増減時誘発;
+
         if (StEStatus.stack <= 0)
         {
             StEStatus.stack = 0;

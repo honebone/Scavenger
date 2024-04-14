@@ -61,13 +61,16 @@ MonoBehaviour:
       GHeal: 0
       RHeal: 0
       StEResists: []
+      StEApplyBonus: []
+    actionMods: []
     info_start: 
-  actionMods: []
   actionStatus:
     actionName: "\u8108\u52D5"
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    sprite: {fileID: 21300000, guid: d3d66738f1652fe4fbe602283a2a5bc8, type: 3}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -133,9 +136,13 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 0
     abilityType: 0
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     spriteIndex: 0

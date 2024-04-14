@@ -12,7 +12,7 @@ public class PA_StE_Marked : PA_StatusEffect
     {
         if(actor!=null&&(character.GetCharacterStatus().position < 9) != (actor.GetCharacterStatus().position < 9))
         {
-            Enqueue_AddStack(-1);
+           AddStack(-1);
         }
     }
     public override void AtTheEnd()

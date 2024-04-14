@@ -364,13 +364,13 @@ public class Character : MonoBehaviour
     {
         var p = Instantiate(paObj, transform);
         PA_Pa.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this,1);
+        p.GetComponent<PassiveAbility>().Init(this,1,infoText);
     }
     public void EquipItem(Definer.Item item)
     {
         var p = Instantiate(item.data.manager, transform);
         PA_Eq.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this,2);
+        p.GetComponent<PassiveAbility>().Init(this,2,infoText);
         item.createdManager = p;
         charaStatus.equipments.Add(item);
     }
@@ -442,7 +442,7 @@ public class Character : MonoBehaviour
             PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
             s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>(),applyBonus);
-            s.GetComponent<PassiveAbility>().Init(this, 0);
+            s.GetComponent<PassiveAbility>().Init(this, 0,infoText);
             charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
             infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
             soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType]);

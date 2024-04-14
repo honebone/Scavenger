@@ -10,7 +10,7 @@ public class PA_StE_Hide : PA_StatusEffect
     }
     public override void OnTurnEnd()
     {
-        Enqueue_AddStack(-1);
+        AddStack(-1);
     }
     public override void AtTheEnd()
     {

@@ -10,7 +10,7 @@ public class PA_StE_ACTDown : PA_StatusEffect
     }
     public override void OnTurnOrderDecide()
     {
-        Enqueue_Disable();
+        Disable();
     }
     public override void OnAddStack(int add)
     {
