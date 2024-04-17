@@ -25,8 +25,9 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>’Tõ‰æ–Ê‚©‚ç’TõŒ‹‰Ê‰æ–Ê‚É‚¿‰z‚·“à—e</summary>
+    [System.Serializable]
     public class ExpeditionToResult
     {
-
+        public List<Definer.Item> materials;
     }
 }
