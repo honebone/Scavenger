@@ -26,4 +26,5 @@ public class Map_LayerPanel : MonoBehaviour
 
     public Map_RoomButton GetRoomButton(int row) { return roomButtons[row]; }
     public ExpeditionManager.Room GetRoom(int row) { return roomButtons[row].GetRoom(); }
+    public Map_RoomButton[] GetRoomButtons() { return roomButtons; }
 }

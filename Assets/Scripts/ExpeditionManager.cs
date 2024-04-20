@@ -75,6 +75,7 @@ public class ExpeditionManager : MonoBehaviour
     FadeOutUI fadeOutUI;
     SoundManager soundManager;
     LootPanel lootPanel;
+    GameManager gameManager;
 
     private void Start()
     {
@@ -85,6 +86,7 @@ public class ExpeditionManager : MonoBehaviour
         fadeOutUI = FindObjectOfType<FadeOutUI>();
         soundManager = FindObjectOfType<SoundManager>();
         lootPanel = FindObjectOfType<LootPanel>();
+        gameManager = FindObjectOfType<GameManager>();
     }
     public void SetLayers(List<Map_LayerPanel> l)
     {
@@ -100,9 +102,19 @@ public class ExpeditionManager : MonoBehaviour
 
     public void SelectNextRoom()
     {
-        if (currentRoom.up > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y + 1)).SetState_Selectable(); }
-        if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y)).SetState_Selectable(); }
-        if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y - 1)).SetState_Selectable(); }
+        if (teleport)
+        {
+            foreach (Map_LayerPanel layer in layers)
+            {
+                foreach(Map_RoomButton button in layer.GetRoomButtons()) { button.SetState_Selectable(); }
+            }
+        }
+        else
+        {
+            if (currentRoom.up > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y + 1)).SetState_Selectable(); }
+            if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y)).SetState_Selectable(); }
+            if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y - 1)).SetState_Selectable(); }
+        }
         mapPanel.OpenMap();
     }
     public void GoToNextRoom(Vector2Int pos)
@@ -136,7 +148,7 @@ public class ExpeditionManager : MonoBehaviour
         infoText.SwitchToLog();
     }
 
-    //ここからroom event で呼ばれる関数
+    //==========================================[room event で呼ばれる関数]===========================================
     public void Battle(AreaManager.EnemySet enemySet,GameObject fieldEffect)
     {
         if (enemySet.enemies.Length != 9) { infoText.AddErrorText("敵配置の配列数が間違ています"); }
@@ -183,8 +195,23 @@ public class ExpeditionManager : MonoBehaviour
         SelectNextRoom();
     }
 
+    public void EndExpediton()
+    {
+        gameManager.GoToResultScene(true);//test
+    }
+
+    //============================[デバッグ関連]========================================
+    bool teleport;
+    public void Debug_ToggleTeleport()
+    {
+        teleport = !teleport;
+        if (teleport) { infoText.AddDebugText("テレポート：オン"); }
+        else { infoText.AddDebugText("テレポート：オフ"); }
+    }
+
     public PartyStatus GetPartyStatus() { return partyStatus; }
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }
     public Room GetRoom(Vector2Int pos) { return layers[pos.x].GetRoom(pos.y); }
     public RoomEvent GetCurrentRE() { return currentRE; }
+    public AreaManager GetAreaManager() { return currentAreaManger; }
 }

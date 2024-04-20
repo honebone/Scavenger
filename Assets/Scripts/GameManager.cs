@@ -7,6 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Awake()
     {
         CheckInstance();
@@ -28,6 +32,18 @@ public class GameManager : MonoBehaviour
     [System.Serializable]
     public class ExpeditionToResult
     {
+        public bool survive;
         public List<Definer.Item> materials;
     }
+    ExpeditionToResult resultParams;
+
+    public void GoToResultScene(bool survive)
+    {
+        resultParams = new ExpeditionToResult();
+        resultParams.survive = survive;
+        resultParams.materials = FindObjectOfType<Inventory>().GetMaterials();
+
+        SceneManager.LoadScene("Result");
+    }
+    public ExpeditionToResult GetExpeditionToResult() { return resultParams; }
 }

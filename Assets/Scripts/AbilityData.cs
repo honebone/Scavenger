@@ -6,6 +6,7 @@ using UnityEngine;
 public class AbilityData : ScriptableObject
 {
     public string abilityName;
+    public bool lockedDefault;
 
     [Header("設定しなければ汎用的なオブジェクトになる")]
     public GameObject abilityManager;

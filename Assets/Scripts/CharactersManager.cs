@@ -462,6 +462,7 @@ public class CharactersManager : MonoBehaviour
         util = FindObjectOfType<Utility>();
     }
 
+
     public void SpawnPlayer(CharacterData characterData,int pos)
     {
         if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
@@ -472,19 +473,6 @@ public class CharactersManager : MonoBehaviour
 
         Vector2 worldPos = charactersWorldPos_Size1[pos];
         Character_TargetButton tb = targetButtons_size1[pos];
-        //if (generatedCharaStatus.size == 1)
-        //{
-        //    worldPos = charactersWorldPos_Size1[pos];
-        //    tb = targetButtons_size1[pos];
-        //    //existCharaに追加
-        //}
-        //else if (generatedCharaStatus.size == 2)
-        //{
-        //    worldPos = charactersWorldPos_Size2[pos];
-        //    tb = targetButtons_size2[pos];
-        //    //existCharaに追加
-        //}
-        //else { print("サイズ3に対する処理が出来てません"); }
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager,tb,false);

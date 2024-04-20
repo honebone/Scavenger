@@ -19,6 +19,8 @@ public class AreaManager : MonoBehaviour
         public int branchChance;
         public int blindChance;
         public Area_RoomEvent[] roomEvents;
+        public RoomEventData boss;
+        public RoomEventData endArea;
         public EnemySet[] normalBattlePool;
         public FieldEffectWeight[] normalBattleFEPool;
         //nextArea
@@ -101,10 +103,10 @@ public class AreaManager : MonoBehaviour
         layerCount++;
 
         layer[0].empty = true;//1‘w–Ú
-        layer[1] = SetRoom();
+        layer[1] = SetRoom(true);
         layer[1].down = 2;
-        layer[2] = SetRoom();
-        layer[3] = SetRoom();
+        layer[2] = SetRoom(true);
+        layer[3] = SetRoom(true);
         layer[3].up = 2;
         layer[4].empty = true;
         SetLayerPanel(layer, layerCount);
@@ -112,14 +114,14 @@ public class AreaManager : MonoBehaviour
 
         for(int j = 2; j < length - 2; j++)//2`(length-3)‘w–Ú‚Ü‚Å
         {
-            for (int i = 0; i < 5; i++) { layer[i] = SetRoom(); }
+            for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }
             layer[0].down = -1;
             layer[4].up = -1;
             SetLayerPanel(layer, layerCount);
             layerCount++;
         }
 
-        for (int i = 0; i < 5; i++) { layer[i] = SetRoom(); }//length-2‘w–Ú
+        for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }//length-2‘w–Ú
         layer[0].down = -1;
         layer[0].straight = -1;
         layer[0].up = 2;
@@ -132,15 +134,15 @@ public class AreaManager : MonoBehaviour
         layerCount++;
 
         layer[0].empty = true;//length-1‘w–Ú
-        layer[1] = SetRoom();
+        layer[1] = SetRoom(true);
         layer[1].up = 2;
         layer[1].straight = -1;
         layer[1].down = -1;
-        layer[2] = SetRoom();
+        layer[2] = SetRoom(true);
         layer[2].up = -1;
         layer[2].straight = 2;
         layer[2].down = -1;
-        layer[3] = SetRoom();
+        layer[3] = SetRoom(true);
         layer[3].up = -1;
         layer[3].straight = -1;
         layer[3].down = 2;
@@ -150,10 +152,21 @@ public class AreaManager : MonoBehaviour
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length‘w–Ú
         layer[2].empty = false;
+        layer[2] = SetRoom(false);
         layer[2].up = -1;
-        layer[2].straight = 1;
+        layer[2].straight = 2;
         layer[2].down = -1;
-        //layer[2]‚ÌroomEvent‚ðƒ{ƒXí‚É
+        layer[2].SetRoomEvent(area.boss);
+        SetLayerPanel(layer, layerCount);
+        layerCount++;
+
+        for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+1‘w–Ú(ƒGƒŠƒA‚ÌI’[)
+        layer[2].empty = false;
+        layer[2].up = -1;
+        layer[2].straight = -1;
+        layer[2].down = -1;
+        layer[2] = SetRoom(false);
+        layer[2].SetRoomEvent(area.endArea);
         SetLayerPanel(layer, layerCount);
 
         expeditionManager.SetLayers(layers);
@@ -164,14 +177,17 @@ public class AreaManager : MonoBehaviour
         lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
         layers.Add(lp.GetComponent<Map_LayerPanel>());
     }
-    ExpeditionManager.Room SetRoom()
+    ExpeditionManager.Room SetRoom(bool setEventRandomly)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
         if (util.Probability(area.branchChance)){ room.up = 1; }
         room.straight = 1;
         if (util.Probability(area.branchChance)) { room.down = 1; }
         if (util.Probability(area.blindChance)) { room.blind = true; }
-        room.SetRoomEvent(area.roomEvents[area.GetREWeights().ChoiceWithWeight()].roomEvent);
+        if (setEventRandomly)
+        {
+            room.SetRoomEvent(area.roomEvents[area.GetREWeights().ChoiceWithWeight()].roomEvent);
+        }
 
         return room;
     }

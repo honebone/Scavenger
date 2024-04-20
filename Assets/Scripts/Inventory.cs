@@ -203,4 +203,14 @@ public class Inventory : MonoBehaviour
         }
         return 0;
     }
+
+    public List<Definer.Item> GetMaterials()
+    {
+        List<Definer.Item> materials = new List<Definer.Item>();
+        foreach(Definer.Item material in inventory)
+        {
+            if (material.data.itemType == ItemData.ItemType.material) { materials.Add(material); }
+        }
+        return materials;
+    }
 }

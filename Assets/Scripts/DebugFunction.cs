@@ -23,6 +23,9 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     Transform REP;
 
+    [SerializeField]
+    GameObject debugPanel;
+
     CharactersManager charactersManager;
     ExpeditionManager expeditionManager;
     BattleManager battleManager;
@@ -86,5 +89,6 @@ public class DebugFunction : MonoBehaviour
             r.GetComponent<RoomEvent>().Init(new AreaManager.Area());
 
         }
+        if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
     }
 }

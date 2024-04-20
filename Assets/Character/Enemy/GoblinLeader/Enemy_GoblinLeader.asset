@@ -33,7 +33,7 @@ MonoBehaviour:
   actionMods: []
   corpse: {fileID: 0}
   dropItems: []
-  surviveFatalWounds: 0
+  surviveFatalWounds: 1
   maxHP: 250
   maxSAN: 0
   ATK: 10

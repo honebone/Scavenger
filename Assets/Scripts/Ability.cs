@@ -50,34 +50,6 @@ public class Ability : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
-            //if (!(availableFront && availableMid && availableBack))
-            //{
-            //    s += ("発動可能列：");
-            //    bool f=false;
-            //    if (availableFront)
-            //    {
-            //        f = true;
-            //        s += "前";
-            //    }
-            //    if (availableMid)
-            //    {
-            //        if (f)
-            //        {
-            //            s += "、";
-            //        }
-            //        f = true;
-            //        s += "中";
-            //    }
-            //    if (availableBack)
-            //    {
-            //        if (f)
-            //        {
-            //            s += "、";
-            //        }
-            //        s += "後";
-            //    }
-            //    s += "列\n";
-            //}
             s += ("発動可能列：");
             if (!refCharaStatus || characterStatus.position < 9)
             {

@@ -23,7 +23,7 @@ public class ResultSceneManager : MonoBehaviour
 
     void Start()
     {
-        Init(result);//test
+        Init(FindObjectOfType<GameManager>().GetExpeditionToResult());
     }
 
     public void Init(GameManager.ExpeditionToResult r)
