@@ -6,11 +6,11 @@ public class PA_StE_ATKUp : PA_StatusEffect
 {
     public override void OnPAInit()
     {
-        character.AddATK(0, StEStatus.stack);
+        character.AddATK(0, StEStatus.value);
     }
     public override void OnAttack(bool evaded, bool missed)
     {
-        Disable(); 
+        AddStack(-1); 
     }
     public override void OnAddStack(int add)
     {
@@ -18,6 +18,6 @@ public class PA_StE_ATKUp : PA_StatusEffect
     }
     public override void AtTheEnd()
     {
-        character.AddATK(0, StEStatus.stack * -1);
+        character.AddATK(0, StEStatus.value * -1);
     }
 }

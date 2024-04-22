@@ -6,11 +6,11 @@ public class PA_StE_EVDUp : PA_StatusEffect
 {
     public override void OnPAInit()
     {
-        character.AddEVD(StEStatus.stack);
+        character.AddEVD(StEStatus.value);
     }
     public override void OnAttacked(Character attacker, bool evaded, bool missed)
     {
-        Disable();
+        AddStack(-1);
     }
     public override void OnAddStack(int add)
     {
@@ -18,6 +18,6 @@ public class PA_StE_EVDUp : PA_StatusEffect
     }
     public override void AtTheEnd()
     {
-        character.AddEVD(StEStatus.stack * -1);
+        character.AddEVD(StEStatus.value * -1);
     }
 }

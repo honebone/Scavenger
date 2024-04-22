@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: A_P2_Track
   m_EditorClassIdentifier: 
   abilityName: "\u7372\u7269\u306E\u8FFD\u8DE1"
+  lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
@@ -49,6 +50,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u65751\u4F53(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     actionInfo: 
+    sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -112,7 +114,7 @@ MonoBehaviour:
     removeStEs:
     - removeStE: {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
       removeAll: 1
-      removeAmount: 0
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -122,6 +124,11 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 1
     abilityType: 3
     dontChangeSprite: 0
@@ -133,6 +140,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -190,8 +198,8 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
       applyChance: 200
-      stack: 20
-      value: 0
+      stack: 1
+      value: 20
     applyPEParams: []
     removeStEs: []
     summon: 0
@@ -203,6 +211,11 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 1
     abilityType: 3
     dontChangeSprite: 0

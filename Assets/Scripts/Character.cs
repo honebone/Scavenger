@@ -425,12 +425,14 @@ public class Character : MonoBehaviour
         {
             foreach (PassiveAbility pa in PA_StE)
             {
-                if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるなら
+                if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるならそのスタックを増加
                 {
                     if(applyBonus == null) { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack); }
                     else { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack + applyBonus.exStack); }
-                    charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+
+                    charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());//refvalueとmergeは共存しないので、ここでrefvalueのことを考える必要はない
                     infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
+
                     soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
                     f = true;
                 }
@@ -443,8 +445,18 @@ public class Character : MonoBehaviour
             //sort
             s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>(),applyBonus);
             s.GetComponent<PassiveAbility>().Init(this, 0,infoText);
-            charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-            infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+            if (StEStatus.refValue)
+            {
+                int StEValue = StEParams.value;
+                if (applyBonus != null) { StEValue += applyBonus.exValue; }
+                charaObj.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, StEValue), StEStatus.StEType.ToColor());
+                infoText.AddLogText(string.Format("{0}は{1}{2}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName(), StEValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
+            }
+            else
+            {
+                charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+                infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+            }
             soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType]);
         }
     }

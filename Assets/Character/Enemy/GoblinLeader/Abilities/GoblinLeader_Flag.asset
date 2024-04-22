@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GoblinLeader_Flag
   m_EditorClassIdentifier: 
   abilityName: "\u9F13\u821E"
+  lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
@@ -49,6 +50,7 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B9\u5168\u4F53"
     actionInfo: 
+    sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -110,17 +112,17 @@ MonoBehaviour:
       value: 0
     - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
       applyChance: 100
-      stack: 25
-      value: 0
+      stack: 2
+      value: 20
     - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
       applyChance: 100
-      stack: 20
-      value: 0
+      stack: 2
+      value: 20
     applyPEParams: []
     removeStEs:
     - removeStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       removeAll: 1
-      removeAmount: 0
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -130,6 +132,11 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 1
     abilityType: 3
     dontChangeSprite: 0

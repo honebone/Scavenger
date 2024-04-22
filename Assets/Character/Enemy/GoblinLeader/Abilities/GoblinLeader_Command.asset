@@ -13,27 +13,45 @@ MonoBehaviour:
   m_Name: GoblinLeader_Command
   m_EditorClassIdentifier: 
   abilityName: "\u3042\u3044\u3064\u3092\u6BBA\u30BB\uFF01"
+  lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2266012099093118349, guid: e6b5ded9fbe2fc345a5589c0cc3067ef, type: 3}
   spriteIndex: 0
-  SE: {fileID: 0}
   abilityType: 4
   excludeRandomPool: 0
   selectWeight: 1
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  cooldownOnBattleStart: 0
   cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 1
-  availableMid: 1
-  availableBack: 1
   actionsStaus:
-  - actionName: "\u3042\u3044\u3064\u3092\u6BBA\u30BB!"
+  - actionName: "\u3042\u3044\u3064\u3092\u6BBA\u30BB\uFF01"
     conditionInfo: 
     targetInfo: "\u65751\u4F53(\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -93,7 +111,7 @@ MonoBehaviour:
       stack: 2
       value: 0
     - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      applyChance: 100
+      applyChance: 70
       stack: 1
       value: 0
     applyPEParams: []
@@ -107,9 +125,13 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    removeStE_asStE: 0
+    removeStE_bySelf:
+      removeStE: {fileID: 0}
+      removeAll: 0
+      addAmount: 0
     abilityEffect: 1
     abilityType: 4
-    SE: {fileID: 0}
     dontChangeSprite: 0
     activateSprite: {fileID: 2266012099093118349, guid: e6b5ded9fbe2fc345a5589c0cc3067ef, type: 3}
     spriteIndex: 0

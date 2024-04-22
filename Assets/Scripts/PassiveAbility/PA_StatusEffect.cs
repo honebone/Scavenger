@@ -17,11 +17,11 @@ public class PA_StatusEffect : PassiveAbility
         public int maxStack;
         [Tooltip("同種の状態異常がすでにある場合、そのスタックを増加させるか")]
         public bool merge;
-        //public bool refValue;
+        public bool refValue;
 
         [Header("以下は代入される")]
         public int stack;
-        //public int value;
+        public int value;
 
         public string GetName()
         {
@@ -39,7 +39,7 @@ public class PA_StatusEffect : PassiveAbility
         public float applyChance;
 
         public int stack;
-        //public int value;
+        public int value;
     }
 
     [SerializeField]
@@ -48,15 +48,15 @@ public class PA_StatusEffect : PassiveAbility
     public void Init(StatusEffectParams StEParams,StEIcon icon,StEApplyBonus applyBonus)
     {
         StEStatus.stack = StEParams.stack;
-        //StEStatus.value = StEParams.value;
+        StEStatus.value = StEParams.value;
         if (applyBonus != null)
         {
             StEStatus.stack += applyBonus.exStack;
-            //StEStatus.value += applyBonus.exValue;
+            StEStatus.value += applyBonus.exValue;
         }
         StEIcon = icon;
         StEIcon.Init(StEStatus);
-        //if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }
+        if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }
     }
 
 
@@ -73,7 +73,7 @@ public class PA_StatusEffect : PassiveAbility
     public string GetStEInfo_forRef()
     {
         string s = StEStatus.StEName;
-        //if (StEStatus.refValue) { s += "X"; }
+        if (StEStatus.refValue) { s += "X"; }
         s += "：";
         s += StEStatus.StEInfo + "\n";
         s += GetAdditionalInfo();

@@ -131,12 +131,14 @@ MonoBehaviour:
     actionTargetsInt: 
   StEStatus:
     StEName: "\u706B\u50B7"
-    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304CX\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF\u30922\u6E1B\u3089\u3059"
+    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304CX\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
     StEIcon: {fileID: 21300000, guid: 4d14cdfb69680c54d84d63413fbc9479, type: 3}
     StEType: 2
     maxStack: 0
     merge: 0
+    refValue: 0
     stack: 0
+    value: 0
   actionStatus:
     actionName: "\u706B\u50B7"
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"

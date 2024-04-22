@@ -127,7 +127,8 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
       applyChance: 200
-      stack: 25
+      stack: 1
+      value: 50
     applyPEParams: []
     removeStEs: []
     summon: 0
