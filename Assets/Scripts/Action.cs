@@ -328,6 +328,21 @@ public class Action : MonoBehaviour
         }
     }
 
+    //===========================[—U”­ˆ—‚Ìˆø”‚Ég‚¤]================================
+    public struct OnAttackParams
+    {
+        public bool missed;
+        public bool evaded;
+        public Character target;
+    }
+    public struct OnHealParams
+    {
+        public int healValue;
+        public Character target;
+    }
+
+    List<OnAttackParams> onAttackParamsList = new List<OnAttackParams>();
+    List<OnHealParams> onHealParamsList = new List<OnHealParams>();
     
     Utility util;
 
@@ -429,6 +444,8 @@ public class Action : MonoBehaviour
 
                 if (actionsStatus[i].ATKMod_max > 0 && actionStatus.actionTargets[i].CheckAlive())//UŒ‚
                 {
+                    OnAttackParams onAttackParams = new OnAttackParams();
+                    onAttackParams.target = actionStatus.actionTargets[i];
                     bool CRIT = false;
                     int DMG = 0;
 
@@ -453,9 +470,9 @@ public class Action : MonoBehaviour
 
                             if (!notChara)
                             {
-                                actionStatus.actionOwner.OnAttack(false, false);//UŒ‚—U”­
                                 actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i], actionsStatus[i]);//—^ƒ_ƒ—U”­
                             }
+                            onAttackParamsList.Add(onAttackParams);
                             actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, false);//”íUŒ‚—U”­
                             actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ƒ_ƒ[ƒWˆ—ŠJn
                         }
@@ -467,8 +484,9 @@ public class Action : MonoBehaviour
                             attackHit = false;
                             if (!notChara)
                             {
-                                actionStatus.actionOwner.OnAttack(true, false);//UŒ‚—U”­
+                                onAttackParams.evaded = true;
                             }
+                            onAttackParamsList.Add(onAttackParams);
                             actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, true, false);//”íUŒ‚—U”­
                         }
                     }
@@ -478,8 +496,9 @@ public class Action : MonoBehaviour
                         {
                             actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}‚ÍUŒ‚‚ğŠO‚µ‚½", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
-                            actionStatus.actionOwner.OnAttack(false, true);//UŒ‚—U”­
+                            onAttackParams.missed = true;
                         }
+                        onAttackParamsList.Add(onAttackParams);
                         actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, true);//”íUŒ‚—U”­
                         soundManager.PlaySE(Definer.soundRef.miss);
                         attackHit = false;
@@ -490,14 +509,18 @@ public class Action : MonoBehaviour
                 {
                     if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//‰ñ•œ
                     {
+                        OnHealParams onHealParams = new OnHealParams();
+                        onHealParams.target = actionStatus.actionTargets[i];
                         float fheal;
                         fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
                         fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
                         fheal *= ownerStatus.GHeal / 100;
                         fheal *= targetStatus.RHeal / 100;
                         int heal = Mathf.RoundToInt(fheal);
+                        onHealParams.healValue = heal;
 
                         actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
+                        onHealParamsList.Add(onHealParams);
                     }
 
                     if (actionsStatus[i].SANHeal_max > 0)//SAN
@@ -713,6 +736,14 @@ public class Action : MonoBehaviour
             }
 
         }
+
+        EndResolve();
+    }
+
+    void EndResolve()
+    {
+        if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//UŒ‚—U”­
+        if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//—^‰ñ•œ—U”­
 
         actionQueueManager.Dequeue();
     }

@@ -42,9 +42,6 @@ public class PA_StatusEffect : PassiveAbility
         public int value;
     }
 
-    [SerializeField]
-    Action.ActionStatus remove;
-
     public void Init(StatusEffectParams StEParams,StEIcon icon,StEApplyBonus applyBonus)
     {
         StEStatus.stack = StEParams.stack;

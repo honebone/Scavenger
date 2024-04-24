@@ -11,7 +11,7 @@ public class Eq_PoundingHeart : PA_Equipment
     {
         return actionStatus.GetInfo(false,new Character.CharacterStatus());
     }
-    public override void OnRoundEnd()
+    public override void OnRoundStart()
     {
         Action.ActionStatus action = actionStatus;
         actionStatus.actionOwner = character;

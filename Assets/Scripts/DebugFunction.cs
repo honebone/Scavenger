@@ -55,6 +55,7 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
+            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             FindObjectOfType<ExpeditionManager>().Battle(enemySetTest,FindObjectOfType<AreaManager>().GetArea().GetRandomFE());

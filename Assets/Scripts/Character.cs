@@ -430,8 +430,8 @@ public class Character : MonoBehaviour
                     if(applyBonus == null) { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack); }
                     else { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack + applyBonus.exStack); }
 
-                    charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());//refvalueとmergeは共存しないので、ここでrefvalueのことを考える必要はない
-                    infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
+                    //charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());//refvalueとmergeは共存しないので、ここでrefvalueのことを考える必要はない
+                    //infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
 
                     soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
                     f = true;
@@ -1070,10 +1070,8 @@ public class Character : MonoBehaviour
     }
     public void OnRoundStart()
     {
-        if (!charaStatus.playable)
-        { 
-           //予兆設定
-        }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundStart(); }
+        RemovePA_Execute();
     }
     public void OnTurnOrderDecide()
     {
@@ -1108,11 +1106,11 @@ public class Character : MonoBehaviour
         }
     }
     /// <summary>攻撃時、命中したかに関わらず誘発</summary>
-    public void OnAttack(bool evaded,bool missed)
+    public void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(evaded, missed); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(onAttackParamsList); }
             RemovePA_Execute();
         }
     }
@@ -1128,7 +1126,14 @@ public class Character : MonoBehaviour
     public void OnCRIT(int ID) { }
     public void OnKill(int ID) { }
     public void OnMiss(int ID) { }
-    public void OnHeal(int healValue, int ID) { }
+    public void OnHeal(List<Action.OnHealParams> onHealParamsList)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnHeal(onHealParamsList); }
+            RemovePA_Execute();
+        }
+    }
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 

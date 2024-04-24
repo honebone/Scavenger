@@ -8,7 +8,7 @@ public class PA_StE_ACCUp : PA_StatusEffect
     {
         character.AddACC(StEStatus.value);
     }
-    public override void OnAttack(bool evadeed, bool missed)
+    public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
     {
         AddStack(-1);
     }
