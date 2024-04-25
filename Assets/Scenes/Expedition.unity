@@ -8617,7 +8617,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4ad9c8f718210264a8b749b7abe1f95b, type: 3}
     - {fileID: 8300000, guid: 0e4fcd34453c6c74ca20ac8646803829, type: 3}
     - {fileID: 8300000, guid: 08ba9b994502792439f604795147b8ea, type: 3}
-    - {fileID: 8300000, guid: d7557527a7848b049850e7422c80c12d, type: 3}
+    - {fileID: 8300000, guid: 4ad9c8f718210264a8b749b7abe1f95b, type: 3}
     summoned: {fileID: 8300000, guid: a36dd1c4b04501b4c97f4ed893655b70, type: 3}
     stun: {fileID: 8300000, guid: a41b09d1965a70c4e8f00d9be397f66c, type: 3}
     die1: {fileID: 8300000, guid: d7a3401f1b36a404d823d172cb89df58, type: 3}
@@ -19076,7 +19076,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

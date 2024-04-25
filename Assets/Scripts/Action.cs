@@ -747,4 +747,6 @@ public class Action : MonoBehaviour
 
         actionQueueManager.Dequeue();
     }
+
+    public bool CheckIfAbilityEffect() { return actionStatus.abilityEffect; }
 }

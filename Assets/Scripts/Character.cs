@@ -112,7 +112,7 @@ public class Character : MonoBehaviour
             }
             s += "]\n";
             if (immovable) { s += "移動不可\n"; }
-            s += string.Format("HP/maxHP：{0}/{1}\n", HP, maxHP);
+            s += string.Format("HP/maxHP：{0}/{1}({2}％)\n", HP, maxHP, HP.GetPercent(maxHP).ToString("0.0"));
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
@@ -423,7 +423,7 @@ public class Character : MonoBehaviour
         PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
         {
-            foreach (PassiveAbility pa in PA_StE)
+            foreach (PassiveAbility pa in new List<PassiveAbility>(PA_StE))
             {
                 if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるならそのスタックを増加
                 {
