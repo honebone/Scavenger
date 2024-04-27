@@ -38,7 +38,7 @@ public class ActionQueueManager : MonoBehaviour
     Utility util;
     SoundManager soundManager;
 
-    bool autoResolve=true;
+    bool autoResolve;
     bool resolving_auto;
     bool resolving;
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide</summary>
