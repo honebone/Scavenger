@@ -48,7 +48,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u6210\u5C31"
     StEInfo: 
-    StEIcon: {fileID: 21300000, guid: eb86efda984dc93438edcf99f5b58df2, type: 3}
+    StEIcon: {fileID: 21300000, guid: c20300bb694c5b04eb4c60a4ef8c3ac5, type: 3}
     StEType: 4
     maxStack: 1
     merge: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D"
     targetInfo: "\u5168\u3066\u306E\u5473\u65B9"
     actionInfo: 
-    sprite: {fileID: 21300000, guid: eb86efda984dc93438edcf99f5b58df2, type: 3}
+    sprite: {fileID: 21300000, guid: c20300bb694c5b04eb4c60a4ef8c3ac5, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb86efda984dc93438edcf99f5b58df2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c20300bb694c5b04eb4c60a4ef8c3ac5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

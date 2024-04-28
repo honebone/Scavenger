@@ -6,16 +6,25 @@ public class P_Sister_PA : PA_Personality
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
+    [SerializeField]
+    GameObject comeTrue;
+    
     public override void OnActivateAbility()
     {
-        Action.ActionStatus action = actionStatus;
-        character.Enqueue(action, true, new List<Character>() { character });
+        if (!character.CheckHasStE(comeTrue))
+        {
+            Action.ActionStatus action = actionStatus;
+            character.Enqueue(action, true, new List<Character>() { character });
+        }
     }
 
     public override void OnHeal(List<Action.OnHealParams> onHealParamsList)
     {
-        Action.ActionStatus action = actionStatus;
-        character.Enqueue(action, true, new List<Character>() { character });
+        if (!character.CheckHasStE(comeTrue))
+        {
+            Action.ActionStatus action = actionStatus;
+            character.Enqueue(action, true, new List<Character>() { character });
+        }
     }
 
     public override string GetPAInfo()

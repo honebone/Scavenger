@@ -8493,7 +8493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314976142b623e041aab62c11ac7d9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
 --- !u!114 &613893883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12373,9 +12373,8 @@ MonoBehaviour:
   abilityPause_followthrough: 1
   abilityNameText_player: {fileID: 1846992750}
   abilityNameText_enemy: {fileID: 1408254314}
-  actionsBuffer: []
   inQueueActions: []
-  inQueueAbilityEffects: []
+  autoResolve: 1
   autoResolveInterval: 0.2
 --- !u!1 &916294348
 GameObject:

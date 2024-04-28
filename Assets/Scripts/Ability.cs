@@ -493,7 +493,6 @@ public class Ability : MonoBehaviour
 
             string abilityName = abilityStatus.abilityName.ColorStr(abilityStatus.abilityType.ToColor());
             FindObjectOfType<InfoText>().AddLogText(string.Format("Åõ{0}ÇÃ<{1}>", character.GetCharacterStatus().charaName, abilityName));
-            character.OnActivateAbility();
 
             character.Ability_StartCoolDown(abilityStatus.index);
             if (abilityStatus.hasRemain) { character.Ability_AddRemain(-1, abilityStatus.index); }
@@ -509,6 +508,7 @@ public class Ability : MonoBehaviour
 
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
             }
+            character.OnActivateAbility();
             actionQueue.StartResolve(3);
 
             battleManager.ResetSelectedAbility();

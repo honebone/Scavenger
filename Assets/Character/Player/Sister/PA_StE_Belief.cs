@@ -11,16 +11,25 @@ public class PA_StE_Belief : PA_StatusEffect
     [SerializeField]
     CharactersManager.SearchCharaCondition condition;
 
+    bool activateAbility;
+
     public override void OnActivateAbility()
     {
         Action.ActionStatus action = actionStatus;
         character.Enqueue(action, true, charactersManager.SearchCharaWithCondition(condition));
 
-        Disable();
+        activateAbility = true;
+    }
+
+    public override void OnTurnEnd()
+    {
+        if (activateAbility) { Disable(); }
     }
 
     public override string GetAdditionalInfo()
     {
-        return actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
+        s += "自身が行動したターンの終了時、これを消去";
+        return s;
     }
 }
