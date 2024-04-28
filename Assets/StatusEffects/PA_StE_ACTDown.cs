@@ -12,10 +12,6 @@ public class PA_StE_ACTDown : PA_StatusEffect
     {
         Disable();
     }
-    public override void OnAddStack(int add)
-    {
-        character.AddACT(add * -1);
-    }
     public override void AtTheEnd()
     {
         character.AddACT(StEStatus.stack);

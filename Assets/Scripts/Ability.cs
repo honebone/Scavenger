@@ -13,7 +13,6 @@ public class Ability : MonoBehaviour
 
         public bool dontChangeSprite;
         public GameObject activateSprite;
-        public int spriteIndex;
 
         //public AudioClip SE;
 
@@ -105,7 +104,6 @@ public class Ability : MonoBehaviour
 
             dontChangeSprite = data.dontChangeSprite;
             activateSprite = data.activateSprite;
-            spriteIndex = data.spriteIndex;
 
             //SE=data.SE;
 
@@ -139,7 +137,6 @@ public class Ability : MonoBehaviour
                 actionsStatus[i].abilityType = abilityType;
                 actionsStatus[i].dontChangeSprite = dontChangeSprite;
                 actionsStatus[i].activateSprite=activateSprite;
-                actionsStatus[i].spriteIndex = spriteIndex;
                         
             }
 

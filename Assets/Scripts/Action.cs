@@ -112,16 +112,14 @@ public class Action : MonoBehaviour
         public List<ActionData.AbilityRemainControll> abilityRemainControlls;
 
         [Header("\n\n\n\n以下には手を出すな")]
-        [Header("\nStE自身によるスタック増減や消去")]
-        public bool removeStE_asStE;
-        public ActionData.RemoveStE removeStE_bySelf;
         public bool abilityEffect;
         public AbilityData.AbilityType abilityType;
+
+        public List<ActionData.RemoveStE> removeStEs_additional;
+
         public bool dontChangeSprite;
         [Header("スプライトの直接指定")]
         public GameObject activateSprite;
-        [Header("汎用スプライトの番号")]
-        public int spriteIndex;
 
         public Character actionOwner;
         [System.NonSerialized]
@@ -257,14 +255,6 @@ public class Action : MonoBehaviour
                 }
             }
 
-            if (removeStE_asStE)
-            {
-                PA_StatusEffect.StatusEffectStatus status = removeStE_bySelf.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
-                if (removeStE_bySelf.removeAll) { s += "を全て除去\n"; }
-                else { s += string.Format("のスタック{0}\n", GetValueWithSign(removeStE_bySelf.addAmount)); }
-            }
-
             foreach (GameObject actionMod in actionMods)
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
@@ -321,6 +311,10 @@ public class Action : MonoBehaviour
             foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in mod.applySteParams)
             {
                 modifiedStatus.applySteParams.Add(statusEffectParams);
+            }
+            foreach(ActionData.RemoveStE removeStE in mod.removeStEs)
+            {
+                modifiedStatus.removeStEs_additional.Add(removeStE);
             }
             //move
 
@@ -397,6 +391,7 @@ public class Action : MonoBehaviour
         foreach(GameObject actionModObj in actionModsObj)
         {
             var am = Instantiate(actionModObj);
+            am.GetComponent<ActionMod>().Init(characterManager);
             actionsStatus = am.GetComponent<ActionMod>().ModifyAction(actionStatus, actionsStatus);
             Destroy(am);
         }
@@ -561,7 +556,12 @@ public class Action : MonoBehaviour
                             infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                         }
                     }
-                    foreach (ActionData.RemoveStE remove in actionsStatus[i].removeStEs)//StE消去
+
+
+                    List< ActionData.RemoveStE > removeStEs=new List< ActionData.RemoveStE >(actionsStatus[i].removeStEs);
+                    if (actionsStatus[i].removeStEs_additional.Count > 0) { removeStEs.AddRange(actionsStatus[i].removeStEs_additional); }
+                    actionsStatus[i].removeStEs_additional.Clear();
+                    foreach (ActionData.RemoveStE remove in removeStEs)//StE消去
                     {
                         actionStatus.actionTargets[i].RemoveStE(remove);
                     }
@@ -643,10 +643,6 @@ public class Action : MonoBehaviour
                         actionStatus.actionTargets[i].AbilityRemain(remainControll);
                     }
 
-                    if (actionsStatus[i].removeStE_asStE)//StE自身によるスタック増減
-                    {
-                        actionStatus.actionTargets[i].RemoveStE_BySelf(actionsStatus[i].removeStE_bySelf);
-                    }
                 }
                 //else
                 //{

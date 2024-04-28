@@ -40,7 +40,6 @@ public class ActionQueueManager : MonoBehaviour
     bool autoResolve;
     bool canResolve;
     //bool resolveInterval;
-    bool resolving;
     /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide</summary>
     int resolveMode = -1;
     // Start is called before the first frame update
@@ -91,7 +90,6 @@ public class ActionQueueManager : MonoBehaviour
 
         if (inQueueActions.Count > 0)
         {
-            resolving = true;//解決開始　アクションがすべて消えるまでtrue
             if (inQueueActions[0].GetActionStatus().abilityEffect)//アビリティの効果があるなら勝手に解決開始
             {
                 SetResolvingAction();
@@ -216,8 +214,6 @@ public class ActionQueueManager : MonoBehaviour
 
         if (inQueueActions.Count == 0)//キューにアクションが残ってなければ解決終了
         {
-            resolving = false;
-
             CloseQueuePanel();
             StartCoroutine(EndResolve());
         }

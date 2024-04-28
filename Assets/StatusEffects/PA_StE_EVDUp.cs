@@ -12,10 +12,7 @@ public class PA_StE_EVDUp : PA_StatusEffect
     {
         AddStack(-1);
     }
-    public override void OnAddStack(int add)
-    {
-        character.AddEVD(add);
-    }
+   
     public override void AtTheEnd()
     {
         character.AddEVD(StEStatus.value * -1);

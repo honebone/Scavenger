@@ -14,8 +14,6 @@ public class AbilityData : ScriptableObject
     public bool dontChangeSprite;
     [Header("スプライトの直接指定")]
     public GameObject activateSprite;
-    [Header("汎用スプライトの番号")]
-    public int spriteIndex;
 
     //public AudioClip SE;
 

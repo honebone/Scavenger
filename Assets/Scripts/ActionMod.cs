@@ -34,6 +34,8 @@ public class ActionMod : MonoBehaviour
 
         public List<PA_StatusEffect.StatusEffectParams> applySteParams;
 
+        public List<ActionData.RemoveStE> removeStEs;
+
         //public float moveChance;
         //public int moveForword;
         //public int moveUpper;
@@ -64,12 +66,20 @@ public class ActionMod : MonoBehaviour
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("・{0}％の確率で", StEParams.applyChance);
-                //if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.value, StEParams.stack); }
-                //else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
+                if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
                 s += "\n";
             }
+
+            foreach (ActionData.RemoveStE remove in removeStEs)
+            {
+                PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
+                if (remove.removeAll) { s += "を全て除去\n"; }
+                else { s += ValueToStr("のスタック",remove.addAmount,""); }
+            }
+
             return s;
         }
         public string ValueToStr(string start, float value, string end)
@@ -85,7 +95,12 @@ public class ActionMod : MonoBehaviour
     
     [SerializeField]
     protected ActionModStatus actionModStatus;
-    
+    protected CharactersManager charactersManager;
+
+    public void Init(CharactersManager cm)
+    {
+        charactersManager = cm;
+    }
     public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
         if (statusRef.actionTargets.Count != actionsStatus.Length) { FindObjectOfType<InfoText>().AddErrorText("対象の数と行動内容の数が一致しません"); }

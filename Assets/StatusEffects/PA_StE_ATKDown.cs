@@ -12,10 +12,7 @@ public class PA_StE_ATKDown : PA_StatusEffect
     {
         AddStack(-1);
     }
-    public override void OnAddStack(int add)
-    {
-        character.AddATK(0, add * -1);
-    }
+   
     public override void AtTheEnd()
     {
         character.AddATK(0, StEStatus.value);

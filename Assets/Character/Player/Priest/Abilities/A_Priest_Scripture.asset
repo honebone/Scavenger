@@ -10,19 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Sister_Heal
+  m_Name: A_Priest_Scripture
   m_EditorClassIdentifier: 
-  abilityName: "\u7652\u3057"
+  abilityName: "\u8056\u53E5"
   lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  spriteIndex: 0
-  abilityType: 2
+  abilityType: 3
   excludeRandomPool: 0
   selectWeight: 1
   availableFront: 0
-  availableMid: 0
+  availableMid: 1
   availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
@@ -41,12 +40,12 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 3
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u7652\u3057"
+  - actionName: "\u8056\u53E5"
     conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionInfo: 
@@ -54,7 +53,8 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 7922638166886946676, guid: 6a8b76fa94b60f845b77d4864a68df2c, type: 3}
     targetType: 1
     friendly: 1
     condition:
@@ -90,8 +90,8 @@ MonoBehaviour:
     CRITDMod: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 10
-    healValue_max: 20
+    healValue_min: 0
+    healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
     SANHeal_min: 0
@@ -105,7 +105,15 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
+      applyChance: 200
+      stack: 2
+      value: 10
+    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+      applyChance: 200
+      stack: 1
+      value: 50
     applyPEParams: []
     removeStEs: []
     summon: 0
@@ -117,15 +125,10 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 1
-    abilityType: 2
+    abilityType: 3
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 
+    actionTargetsInt: 08000000
