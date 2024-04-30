@@ -7,7 +7,7 @@ public class Eq_ReapersFinger : PA_Equipment
     [SerializeField]
     Action.ActionStatus action;
 
-    public override string GetPAInfo()
+    public override string GetPAInfo_Base()
     {
         string s = equipmentStatus.GetInfo() + "\n\n";
         s += action.GetInfo(false, new Character.CharacterStatus());

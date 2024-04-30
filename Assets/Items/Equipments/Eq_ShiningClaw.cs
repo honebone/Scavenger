@@ -7,7 +7,7 @@ public class Eq_ShiningClaw : PA_Equipment
     [SerializeField]
     Action.ActionStatus claw;
 
-    public override string GetPAInfo()
+    public override string GetPAInfo_Base()
     {
         string s = equipmentStatus.GetInfo()+"\n\n";
         s += claw.GetInfo(false, new Character.CharacterStatus());

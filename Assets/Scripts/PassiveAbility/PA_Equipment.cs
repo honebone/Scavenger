@@ -9,12 +9,13 @@ public class PA_Equipment : PassiveAbility
     {
         public ItemData itemData;
         [TextArea(3, 10)]
+        public string info_start;
+        [TextArea(3, 10)]
         public string equipmentInfo;
         public Character.CharaStatusMod statusMod;
         public List<GameObject> actionMods;
 
-        [TextArea(3, 10)]
-        public string info_start;
+        
 
         public string GetName()
         {
@@ -37,7 +38,7 @@ public class PA_Equipment : PassiveAbility
     {
         return equipmentStatus.GetName();
     }
-    public override string GetPAInfo()
+    public override string GetPAInfo_Base()
     {
         return equipmentStatus.GetInfo();
     }

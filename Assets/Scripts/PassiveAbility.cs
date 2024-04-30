@@ -7,18 +7,32 @@ public class PassiveAbility : MonoBehaviour
     protected Character character;
     protected CharactersManager charactersManager;
     protected InfoText infoText;
+
+    protected bool instantiated;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
-    public virtual string GetPAInfo()
+    public string GetPAInfo()
+    {
+        string s = GetPAInfo_Base();
+        if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
+        return s;
+    }
+    public virtual string GetPAInfo_Base()
     {
         print("error:GetPAInfo‚Ìoverride‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
         return "error:GetPAInfo‚Ìoverride‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ";
     }
+    public virtual string GetCurrentStateInfo()
+    {
+        return "";
+    }
+
     public void Init(Character c,int type,InfoText it)
     {
+        instantiated = true;
         character = c;
         PAType = type;
         infoText = it;

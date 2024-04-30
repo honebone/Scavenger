@@ -11,7 +11,7 @@ public class PA_StatusEffect : PassiveAbility
         [TextArea(3,10)]
         public string StEInfo;
         public Sprite StEIcon;
-        public enum StatusEffectType { neutral, buff, debuff, focus,unique }
+        public enum StatusEffectType { neutral, buff, debuff, focus, unique, DoT }
         public StatusEffectType StEType;
         [Header("0ならスタック制限なし")]
         public int maxStack;
@@ -61,9 +61,12 @@ public class PA_StatusEffect : PassiveAbility
     {
         return StEStatus.GetName();
     }
-    public override string GetPAInfo()
+    public override string GetPAInfo_Base()
     {
-        string s = string.Format("({0}スタック)\n", StEStatus.stack);
+        string s ="";
+        if (StEStatus.maxStack == 0) { s += string.Format("{0}スタック", StEStatus.stack); }
+        else { string.Format("{0}スタック(最大{1})", StEStatus.stack, StEStatus.maxStack); }
+        s += string.Format("[{0}]\n", Definer.StETypeName[StEStatus.StEType].ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]));
         s += GetStEInfo_forRef();
         return s;
     }

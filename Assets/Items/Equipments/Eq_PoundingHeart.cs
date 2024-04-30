@@ -7,7 +7,7 @@ public class Eq_PoundingHeart : PA_Equipment
     [SerializeField]
     Action.ActionStatus actionStatus;
 
-    public override string GetPAInfo()
+    public override string GetPAInfo_Base()
     {
         return actionStatus.GetInfo(false,new Character.CharacterStatus());
     }

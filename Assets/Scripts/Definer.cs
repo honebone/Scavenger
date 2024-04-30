@@ -30,7 +30,7 @@ public class Definer : MonoBehaviour
 
 
         public Color failed_unavailable;
-
+        public Color currentState;
 
     }
     [System.Serializable]
@@ -112,6 +112,12 @@ public class Definer : MonoBehaviour
     public static Dictionary<ItemData.EquipmentTag, string> equipmentTagName = new Dictionary<ItemData.EquipmentTag, string>()
     {
         { ItemData.EquipmentTag.none,"その他"},{ ItemData.EquipmentTag.weapon,"武器"},{ ItemData.EquipmentTag.armor,"防具"}
+    };
+    public static Dictionary<PA_StatusEffect.StatusEffectStatus.StatusEffectType, string> StETypeName = new Dictionary<PA_StatusEffect.StatusEffectStatus.StatusEffectType, string>()
+    {
+        {PA_StatusEffect.StatusEffectStatus.StatusEffectType.neutral,"その他" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff,"バフ" }
+        ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff,"デバフ" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus,"フォーカス" }
+        ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.unique,"固有" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT,"ダメージ" }
     };
 
     [System.Serializable]

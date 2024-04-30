@@ -92,7 +92,10 @@ public class Action : MonoBehaviour
         [Header("ApplyPE")]
         public List<PositionEffect.PositionEffectParams> applyPEParams;
 
-        [Header("RemoveStE")]
+
+        //[Header("\n\nƒfƒoƒt‚Ìœ‹")]
+        //public int removeStE_Debuff;
+        [Header("“Á’è‚ÌStE‚Ìœ‹")]
         public List<ActionData.RemoveStE> removeStEs;
 
         [Header("\n\n¢Š«")]

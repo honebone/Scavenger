@@ -45,95 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df1c11123b42b045b9d8ba8341b1ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remove:
-    actionName: 
-    conditionInfo: 
-    targetInfo: 
-    actionInfo: 
-    sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      front: 0
-      mid: 0
-      back: 0
-      characterTags: 
-      StE: []
-      PE: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
-    exDMG_mul: 0
-    exDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams: []
-    applyPEParams: []
-    removeStEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    moveChance: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
-    abilityEffect: 0
-    abilityType: 0
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
-    spriteIndex: 0
-    actionOwner: {fileID: 0}
-    actionTargetsInt: 
   StEStatus:
     StEName: "\u6BD2"
     StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304CX\u6E1B\u5C11\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
-    StEIcon: {fileID: 21300000, guid: 82aedb2141579644b92878ad50372ce2, type: 3}
-    StEType: 2
+    StEIcon: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
+    StEType: 5
     maxStack: 0
     merge: 0
     refValue: 0
@@ -144,7 +60,7 @@ MonoBehaviour:
     conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
-    sprite: {fileID: 21300000, guid: 82aedb2141579644b92878ad50372ce2, type: 3}
+    sprite: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -201,6 +117,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeDebuff: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -211,16 +128,11 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 0
     abilityType: 0
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
 --- !u!212 &9158235056984087585
@@ -264,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 82aedb2141579644b92878ad50372ce2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

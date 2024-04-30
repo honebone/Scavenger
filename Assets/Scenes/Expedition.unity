@@ -8522,12 +8522,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
   - {fileID: 11400000, guid: 1f5e7e28e1768e64685f1d45d474df80, type: 2}
   - {fileID: 11400000, guid: 86bab616fa581414191919dffad45417, type: 2}
-  - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
+  - {fileID: 11400000, guid: b200bddda16f65c4394d143c3c0c0af0, type: 2}
   - {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
   - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
   - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
   - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
-  - {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
+  - {fileID: 11400000, guid: d9817fc9be8ec804f96eb555be96e323, type: 2}
   amount: 7e000000050000000100000002000000070000000300000015000000060000000100000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
@@ -8580,6 +8580,7 @@ MonoBehaviour:
     - {r: 0.7882353, g: 0, b: 1, a: 1}
     - {r: 0.8679245, g: 0.38930756, b: 0, a: 1}
     - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 1, g: 0, b: 0, a: 1}
     positionEffectColors:
     - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
@@ -8601,6 +8602,7 @@ MonoBehaviour:
     SANHeal: {r: 1, g: 1, b: 1, a: 1}
     SANDecrease: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     failed_unavailable: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    currentState: {r: 1, g: 0.75047123, b: 0.41037738, a: 1}
   soundRef_Inspector:
     miss: {fileID: 8300000, guid: 03c3949a8c191454f9f199ed035496f2, type: 3}
     evade: {fileID: 8300000, guid: f2d5becfdc5cd1249ba72c3e3bd47605, type: 3}
@@ -8618,6 +8620,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 0e4fcd34453c6c74ca20ac8646803829, type: 3}
     - {fileID: 8300000, guid: 08ba9b994502792439f604795147b8ea, type: 3}
     - {fileID: 8300000, guid: 4ad9c8f718210264a8b749b7abe1f95b, type: 3}
+    - {fileID: 8300000, guid: 0e4fcd34453c6c74ca20ac8646803829, type: 3}
     summoned: {fileID: 8300000, guid: a36dd1c4b04501b4c97f4ed893655b70, type: 3}
     stun: {fileID: 8300000, guid: a41b09d1965a70c4e8f00d9be397f66c, type: 3}
     die1: {fileID: 8300000, guid: d7a3401f1b36a404d823d172cb89df58, type: 3}
@@ -8653,6 +8656,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5afa2c8ed9f3eb4a874fefe286601cb, type: 2}
   - {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
   - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
+  - {fileID: 11400000, guid: b200bddda16f65c4394d143c3c0c0af0, type: 2}
+  - {fileID: 11400000, guid: d9817fc9be8ec804f96eb555be96e323, type: 2}
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12327,16 +12332,11 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 0
     abilityType: 0
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
   moveFrontLineCondition:

@@ -36,7 +36,7 @@ public class P_Infantry_PA : PA_Personality
             character.Enqueue(action, true, new List<Character>() { character });
         }
     }
-    public override string GetPAInfo()
+    public override string GetPAInfo_Base()
     {
         string s = move.GetInfo(true, character.GetCharacterStatus())+"\n";
         s += shield.GetInfo(true, character.GetCharacterStatus());
