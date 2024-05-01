@@ -30,6 +30,14 @@ public class Eq_UnstableBlocks : PA_Equipment
         currentValue = stack * valuePerStack;
     }
 
+    public override void OnBattleEnd()
+    {
+        character.AddATK(0, currentValue * -1);
+
+        stack = 0;
+        currentValue = 0;
+    }
+
     public override string GetCurrentStateInfo()
     {
         return string.Format("åªç›+{0}Åì",currentValue);

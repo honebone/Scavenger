@@ -180,10 +180,10 @@ public class AreaManager : MonoBehaviour
     ExpeditionManager.Room SetRoom(bool setEventRandomly)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
-        if (util.Probability(area.branchChance)){ room.up = 1; }
+        if (area.branchChance.Probability()){ room.up = 1; }
         room.straight = 1;
-        if (util.Probability(area.branchChance)) { room.down = 1; }
-        if (util.Probability(area.blindChance)) { room.blind = true; }
+        if (area.branchChance.Probability()) { room.down = 1; }
+        if (area.blindChance.Probability()) { room.blind = true; }
         if (setEventRandomly)
         {
             room.SetRoomEvent(area.roomEvents[area.GetREWeights().ChoiceWithWeight()].roomEvent);

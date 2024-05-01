@@ -40,12 +40,12 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 3
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u8056\u5225"
     conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionInfo: 
@@ -53,7 +53,8 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 7922638166886946676, guid: 504a93b58d5c9624c8d2e780bdd120fb, type: 3}
     targetType: 1
     friendly: 1
     condition:
@@ -106,6 +107,9 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 3
     removeStEs: []
     summon: 0
     summonChara: []
@@ -117,9 +121,9 @@ MonoBehaviour:
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
-    abilityType: 2
+    abilityType: 3
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 
+    actionTargetsInt: 04000000

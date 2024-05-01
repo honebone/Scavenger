@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ActionMod : MonoBehaviour
 {
-    
+
     [System.Serializable]
     public struct ActionModStatus
     {
@@ -34,6 +34,13 @@ public class ActionMod : MonoBehaviour
 
         public List<PA_StatusEffect.StatusEffectParams> applySteParams;
 
+        [Header("\n\nバフの除去")]
+        public int removeStE_buff;
+        [Header("\n\nデバフの除去")]
+        public int removeStE_debuff;
+        [Header("\n\nDoTの除去")]
+        public int removeStE_DoT;
+
         public List<ActionData.RemoveStE> removeStEs;
 
         //public float moveChance;
@@ -45,7 +52,7 @@ public class ActionMod : MonoBehaviour
         public string GetModInfo()
         {
             string s = "";
-            if (conditionInfo != "") { s+=string.Format("○{0}：\n",conditionInfo); }
+            if (conditionInfo != "") { s += string.Format("○{0}：\n", conditionInfo); }
             if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
             if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
             if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
@@ -69,15 +76,18 @@ public class ActionMod : MonoBehaviour
                 if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
-                s += "\n";
             }
+
+            if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
+            if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
+            if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
 
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
                 if (remove.removeAll) { s += "を全て除去\n"; }
-                else { s += ValueToStr("のスタック",remove.addAmount,""); }
+                else { s += ValueToStr("のスタック", remove.addAmount, ""); }
             }
 
             return s;

@@ -143,7 +143,7 @@ public class BattleManager : MonoBehaviour
         }
         for (int i = 0; turns.Count > 0; i++)
         {
-            int a = utility.ChoiceWithWeight(ACT.ToArray());
+            int a = ACT.ChoiceWithWeight();
             if(turns[a] > 0)
             {
                 characterInTurnOrder.Add(charas[a]);

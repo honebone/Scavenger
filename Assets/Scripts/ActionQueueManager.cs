@@ -265,7 +265,7 @@ public class ActionQueueManager : MonoBehaviour
             {
                 case 0:
                     resolveMode = -1;
-                    infoText.AddDebugText("ok");
+                    //infoText.AddDebugText("ok");
                     battleManager.RoundStart();
                     break;
                 case 1:

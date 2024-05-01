@@ -93,8 +93,13 @@ public class Action : MonoBehaviour
         public List<PositionEffect.PositionEffectParams> applyPEParams;
 
 
-        //[Header("\n\nデバフの除去")]
-        //public int removeStE_Debuff;
+        [Header("\n\nバフの除去")]
+        public int removeStE_buff;
+        [Header("\nデバフの除去")]
+        public int removeStE_debuff;
+        [Header("\nDoTの除去")]
+        public int removeStE_DoT;
+
         [Header("特定のStEの除去")]
         public List<ActionData.RemoveStE> removeStEs;
 
@@ -202,7 +207,6 @@ public class Action : MonoBehaviour
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
                 s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
-                s += "\n";
             }
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
@@ -211,9 +215,14 @@ public class Action : MonoBehaviour
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.value, PEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.stack); }
                 s += PEParams.applyPE.GetComponent<PositionEffect>().GetPEInfo(true);
-                s += "\n";
             }
-            foreach(ActionData.RemoveStE remove in removeStEs)
+            if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n"
+                , "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
+            if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n"
+                , "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
+            if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n"
+                , "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
+            foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
                 s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
@@ -257,7 +266,7 @@ public class Action : MonoBehaviour
                     s += string.Format("{0}増加\n", remainControll.value);
                 }
             }
-
+            s += "\n";
             foreach (GameObject actionMod in actionMods)
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
@@ -315,6 +324,11 @@ public class Action : MonoBehaviour
             {
                 modifiedStatus.applySteParams.Add(statusEffectParams);
             }
+
+            removeStE_buff += mod.removeStE_buff;
+            removeStE_debuff += mod.removeStE_debuff;
+            removeStE_DoT += mod.removeStE_DoT;
+
             foreach(ActionData.RemoveStE removeStE in mod.removeStEs)
             {
                 modifiedStatus.removeStEs_additional.Add(removeStE);
@@ -402,9 +416,10 @@ public class Action : MonoBehaviour
         //各対象キャラへの処理
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
-            Character.CharacterStatus targetStatus = actionStatus.actionTargets[i].GetCharacterStatus();
+            Character target = actionStatus.actionTargets[i];
+            Character.CharacterStatus targetStatus = target.GetCharacterStatus();
             bool attackHit = true;//攻撃失敗時、その他の効果も発動しないようにする
-            actionStatus.actionTargets[i].BecomeAbilityTarget(actionStatus.actionOwner);
+            target.BecomeAbilityTarget(actionStatus.actionOwner);
             if (actionStatus.VE_OnTargets)
             {
                 Vector2 VEPos = characterManager.GetCharacterWorldPos(targetStatus.position);
@@ -426,24 +441,24 @@ public class Action : MonoBehaviour
 
                 if (actionsStatus[i].kill)
                 {
-                    actionStatus.actionTargets[i].Kill(actionStatus.actionOwner);
+                    target.Kill(actionStatus.actionOwner);
                 }
 
-                if (actionsStatus[i].decreaseHP_max > 0 && actionStatus.actionTargets[i].CheckAlive())//HP減少
+                if (actionsStatus[i].decreaseHP_max > 0 && target.CheckAlive())//HP減少
                 {
-                    actionStatus.actionTargets[i].DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
+                    target.DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
                 }
-                if (actionsStatus[i].decreaseHPPer_max > 0 && actionStatus.actionTargets[i].CheckAlive())//HP減少
+                if (actionsStatus[i].decreaseHPPer_max > 0 && target.CheckAlive())//HP減少
                 {
                     float percent = Random.Range(actionsStatus[i].decreaseHPPer_min, actionsStatus[i].decreaseHPPer_max) / 100f;
-                    actionStatus.actionTargets[i].DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
+                    target.DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
                 }
 
 
-                if (actionsStatus[i].ATKMod_max > 0 && actionStatus.actionTargets[i].CheckAlive())//攻撃
+                if (actionsStatus[i].ATKMod_max > 0 && target.CheckAlive())//攻撃
                 {
                     OnAttackParams onAttackParams = new OnAttackParams();
-                    onAttackParams.target = actionStatus.actionTargets[i];
+                    onAttackParams.target = target;
                     bool CRIT = false;
                     int DMG = 0;
 
@@ -468,15 +483,15 @@ public class Action : MonoBehaviour
 
                             if (!notChara)
                             {
-                                actionStatus.actionOwner.OnDamage(DMG, actionStatus.actionTargets[i], actionsStatus[i]);//与ダメ時誘発
+                                actionStatus.actionOwner.OnDamage(DMG, target, actionsStatus[i]);//与ダメ時誘発
                             }
                             onAttackParamsList.Add(onAttackParams);
-                            actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
-                            actionStatus.actionTargets[i].Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
+                            target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
+                            target.Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ダメージ処理開始
                         }
                         else//回避
                         {
-                            actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
+                            target.GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
                             infoText.AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}は攻撃を回避した", targetStatus.charaName)));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;
@@ -485,30 +500,30 @@ public class Action : MonoBehaviour
                                 onAttackParams.evaded = true;
                             }
                             onAttackParamsList.Add(onAttackParams);
-                            actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, true, false);//被攻撃時誘発
+                            target.OnAttacked(actionStatus.actionOwner, true, false);//被攻撃時誘発
                         }
                     }
                     else//ミス
                     {
                         if (!notChara)
                         {
-                            actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
+                            target.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}は攻撃を外した", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
                             onAttackParams.missed = true;
                         }
                         onAttackParamsList.Add(onAttackParams);
-                        actionStatus.actionTargets[i].OnAttacked(actionStatus.actionOwner, false, true);//被攻撃時誘発
+                        target.OnAttacked(actionStatus.actionOwner, false, true);//被攻撃時誘発
                         soundManager.PlaySE(Definer.soundRef.miss);
                         attackHit = false;
                     }
                 }
 
-                if (attackHit && actionStatus.actionTargets[i].CheckAlive())
+                if (attackHit && target.CheckAlive())
                 {
                     if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//回復
                     {
                         OnHealParams onHealParams = new OnHealParams();
-                        onHealParams.target = actionStatus.actionTargets[i];
+                        onHealParams.target = target;
                         float fheal;
                         fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
                         fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
@@ -517,45 +532,45 @@ public class Action : MonoBehaviour
                         int heal = Mathf.RoundToInt(fheal);
                         onHealParams.healValue = heal;
 
-                        actionStatus.actionTargets[i].Heal(heal, actionStatus.actionOwner);
+                        target.Heal(heal, actionStatus.actionOwner);
                         onHealParamsList.Add(onHealParams);
                     }
 
                     if (actionsStatus[i].SANHeal_max > 0)//SAN
                     {
-                        actionStatus.actionTargets[i].SANHeal(Random.Range(actionsStatus[i].SANHeal_min, actionsStatus[i].SANHeal_max + 1));
+                        target.SANHeal(Random.Range(actionsStatus[i].SANHeal_min, actionsStatus[i].SANHeal_max + 1));
                     }
                     if (actionsStatus[i].SANDamage_max > 0)
                     {
-                        actionStatus.actionTargets[i].SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
+                        target.SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
                     }
 
 
                     if (actionsStatus[i].shieldAdd_max > 0)//シールド
                     {
-                        actionStatus.actionTargets[i].AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
+                        target.AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
                     }
                     if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
                     {
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
-                        actionStatus.actionTargets[i].AddShield(Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f));
+                        target.AddShield(Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f));
                     }
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去
                     {
-                        actionStatus.actionTargets[i].RemoveShield(true, 0);
+                        target.RemoveShield(true, 0);
                     }
                     else if (actionsStatus[i].shieldRemove_max > 0)//シールド減少
                     {
-                        actionStatus.actionTargets[i].RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
+                        target.RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
                     }
 
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
                         StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
-                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { actionStatus.actionTargets[i].ApplyStE(StEParams, applyBonus); }
+                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { target.ApplyStE(StEParams, applyBonus); }
                         else
                         {
-                            actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
+                            target.GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                         }
                     }
@@ -564,9 +579,22 @@ public class Action : MonoBehaviour
                     List< ActionData.RemoveStE > removeStEs=new List< ActionData.RemoveStE >(actionsStatus[i].removeStEs);
                     if (actionsStatus[i].removeStEs_additional.Count > 0) { removeStEs.AddRange(actionsStatus[i].removeStEs_additional); }
                     actionsStatus[i].removeStEs_additional.Clear();
+
+                    if (actionsStatus[i].removeStE_buff > 0)
+                    {
+                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff, actionsStatus[i].removeStE_buff);
+                    }
+                    if (actionsStatus[i].removeStE_debuff > 0)
+                    {
+                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff, actionsStatus[i].removeStE_debuff);
+                    }
+                    if (actionsStatus[i].removeStE_DoT > 0)
+                    {
+                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT, actionsStatus[i].removeStE_DoT);
+                    }
                     foreach (ActionData.RemoveStE remove in removeStEs)//StE消去
                     {
-                        actionStatus.actionTargets[i].RemoveStE(remove);
+                        target.RemoveStE(remove);
                     }
                     if (actionsStatus[i].moveChance > 0)//移動
                     {
@@ -619,13 +647,13 @@ public class Action : MonoBehaviour
 
                                 if (movable)
                                 {
-                                    actionStatus.actionTargets[i].GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                                    target.GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
                                     foreach (Character c in charasOnTravelingDir)
                                     {
                                         c.GetCharacter_TargetButton().ResetCharacter();
                                     }
 
-                                    actionStatus.actionTargets[i].ChangePos(moveToPos);//移動処理
+                                    target.ChangePos(moveToPos);//移動処理
                                     foreach (Character c in charasOnTravelingDir)
                                     {
                                         c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
@@ -637,13 +665,13 @@ public class Action : MonoBehaviour
                                 }
                             }
                         }
-                        else { actionStatus.actionTargets[i].GetCharacter_Object().SetDamageText("MoveResist", Definer.colorRef.failed_unavailable); }
+                        else { target.GetCharacter_Object().SetDamageText("MoveResist", Definer.colorRef.failed_unavailable); }
                     }
 
 
                     foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
                     {
-                        actionStatus.actionTargets[i].AbilityRemain(remainControll);
+                        target.AbilityRemain(remainControll);
                     }
 
                 }

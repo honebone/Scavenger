@@ -49,7 +49,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u656C\u8654\u306A\u7948\u308A"
-    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F1\u4F53\u4EE5\u4E0A\u306E\u30AD\u30E3\u30E9\u3092\u56DE\u5FA9\u3057\u305F\u3068\u304D"
+    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F1\u4F53\u4EE5\u4E0A\u306E\u30AD\u30E3\u30E9\u3092\u56DE\u5FA9\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u306A\u3089"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
     sprite: {fileID: 0}
@@ -123,16 +123,11 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 0
     abilityType: 0
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
   comeTrue: {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}

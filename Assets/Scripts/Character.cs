@@ -472,6 +472,32 @@ public class Character : MonoBehaviour
         }
         //メッセージ
     }
+    public void RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType type, int amount)
+    {
+        if (amount > 0)
+        {
+            List<PA_StatusEffect> pool = new List<PA_StatusEffect>();
+            foreach (PassiveAbility pa in GetPassiveAbilities())
+            {
+                if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType == type)
+                {
+                    if (!pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().undeletable) { pool.Add(pa.GetComponent<PA_StatusEffect>()); }
+                }
+            }
+            if (pool.Count > 0)
+            {
+                for(int i = 0; i < amount; i++)
+                {
+                    if (pool.Count == 0) { break; }
+                    int index = pool.Count.RandIndex();
+                    pool[index].Disable();
+                    pool.Remove(pool[index]);
+                }
+            }
+            
+        }
+        
+    }
     /// <summary>StE自身がこれを呼んでスタック消費or消去する</summary>
     public void RemoveStE_BySelf(ActionData.RemoveStE removeStE)
     {
@@ -517,7 +543,15 @@ public class Character : MonoBehaviour
         info += "\n◇◇状態異常◇◇\n";
         foreach (PassiveAbility pa in PA_StE)
         {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            if (pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().refValue)
+            {
+                info += string.Format("<{0}>\n{1}\n", pa.GetComponent<PA_StatusEffect>().GetPANameWithValue(), pa.GetPAInfo());
+            }
+            else
+            {
+                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            }
+            
         }
 
         info += "\n◇◇特性◇◇\n";

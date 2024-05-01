@@ -19,6 +19,8 @@ public class PA_StatusEffect : PassiveAbility
         public bool merge;
         public bool refValue;
 
+        public bool undeletable;
+
         [Header("以下は代入される")]
         public int stack;
         public int value;
@@ -61,6 +63,12 @@ public class PA_StatusEffect : PassiveAbility
     {
         return StEStatus.GetName();
     }
+    public string GetPANameWithValue()
+    {
+        string s = GetPAName();
+        s += StEStatus.value.ToString().ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]);
+        return s;
+    }
     public override string GetPAInfo_Base()
     {
         string s ="";
@@ -84,35 +92,7 @@ public class PA_StatusEffect : PassiveAbility
     {
         return "";
     }
-    //public void Enqueue_AddStack(int add)
-    //{
-    //    ActionData.RemoveStE removeStE= new ActionData.RemoveStE();
-    //    removeStE.removeStE = gameObject;
-    //    removeStE.addAmount = add;
-
-    //    Action.ActionStatus action = remove;
-    //    if (add > 0) { action.actionName = "スタック増加"; }
-    //    else { action.actionName = "スタック減少"; }
-    //    action.targetInfo = "自身";
-    //    action.removeStE_asStE = true;
-    //    action.removeStE_bySelf = removeStE;
-
-    //    character.Enqueue(action, true, new List<Character>() { character });
-    //}
-    //public void Enqueue_Disable()
-    //{
-    //    ActionData.RemoveStE removeStE = new ActionData.RemoveStE();
-    //    removeStE.removeStE = gameObject;
-    //    removeStE.removeAll = true;
-
-    //    Action.ActionStatus action = remove;
-    //    action.actionName = "消去";
-    //    action.targetInfo = "自身";
-    //    action.removeStE_asStE = true;
-    //    action.removeStE_bySelf = removeStE;
-
-    //    character.Enqueue(action, true, new List<Character>() { character });
-    //}
+   
     public void AddStack(int stack)
     {
         int prevStack = StEStatus.stack;
