@@ -10,58 +10,57 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Goblin_Panic
+  m_Name: A_Priest_Absolve
   m_EditorClassIdentifier: 
-  abilityName: "\u30D1\u30CB\u30C3\u30AF\uFF01"
+  abilityName: "\u8D66\u3057"
   lockedDefault: 0
-  abilityManager: {fileID: 0}
+  abilityManager: {fileID: 1682909745843474664, guid: 19d066cc4ffe93f4aae7ead1b26bcf39, type: 3}
   dontChangeSprite: 0
-  activateSprite: {fileID: 4429940078702852924, guid: 4c47466700656db478676403d730dff8, type: 3}
-  abilityType: 1
+  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  abilityType: 3
   excludeRandomPool: 0
-  selectWeight: 3
-  availableFront: 1
-  availableMid: 1
+  selectWeight: 1
+  availableFront: 0
+  availableMid: 0
   availableBack: 1
-  hasSelfCondition: 1
-  conditionInfo: "\u81EA\u8EAB\u306B<\u6307\u63EE\u7CFB\u7D71\u306E\u5D29\u58CA>\u304C\u3042\u308B"
+  hasSelfCondition: 0
+  conditionInfo: 
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
-    enemy: 1
-    front: 1
-    mid: 1
-    back: 1
+    enemy: 0
+    front: 0
+    mid: 0
+    back: 0
     characterTags: 
-    StE:
-    - {fileID: 5164891664867224302, guid: eca13a4155cf122448029217a45a6d85, type: 3}
+    StE: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u30D1\u30CB\u30C3\u30AF\uFF01"
+  - actionName: "\u8D66\u3057"
     conditionInfo: 
-    targetInfo: "\u30AD\u30E3\u30E91\u4F53(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
-    actionInfo: 
+    targetInfo: "\u5473\u65B91\u4F53"
+    actionInfo: "\u25CB\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u3042\u308B\u3068\u304D\uFF1A\n\u30FB\u5BFE\u8C61\u304C\u5473\u65B9\u5168\u4F53\u306B\u306A\u308B"
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
-    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
-    friendly: 0
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 1
-      enemy: 1
+      enemy: 0
       front: 1
       mid: 1
       back: 1
@@ -71,27 +70,27 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
-    ignoreMark: 1
-    ignoreHide: 1
+    ignoreMark: 0
+    ignoreHide: 0
     targetParams:
-      targetType: 1
+      targetType: 0
       friendly: 0
       condition:
         searchAsPos: 0
         onlyEmpty: 0
-        player: 1
-        enemy: 1
-        front: 1
-        mid: 1
-        back: 1
+        player: 0
+        enemy: 0
+        front: 0
+        mid: 0
+        back: 0
         characterTags: 
         StE: []
         PE: []
         HPPercent: 0
         HP_lessThan: 0
         HP_excludeEqual: 0
-      ignoreMark: 1
-      ignoreHide: 1
+      ignoreMark: 0
+      ignoreHide: 0
       moveValue: 
     moveValue: 
     kill: 0
@@ -101,8 +100,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 40
-    ATKMod_max: 60
+    ATKMod_min: 0
+    ATKMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -114,8 +113,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
+    SANHeal_min: 5
+    SANHeal_max: 7
     SANDamage_min: 0
     SANDamage_max: 0
     shieldAdd_min: 0
@@ -141,9 +140,9 @@ MonoBehaviour:
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
-    abilityType: 1
+    abilityType: 3
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 4429940078702852924, guid: 4c47466700656db478676403d730dff8, type: 3}
+    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0b000000
+    actionTargetsInt: 00000000040000000600000008000000

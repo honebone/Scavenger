@@ -7,17 +7,11 @@ public class CharactersManager : MonoBehaviour
 {
     [SerializeField]
     Vector2Int[] charactersWorldPos_Size1;
-    //[SerializeField]
-    //Vector2[] charactersWorldPos_Size2;
 
     [SerializeField]
     Character_TargetButton[] targetButtons_size1;
     [SerializeField]
     PositionManager[] positionManagers;
-    //[SerializeField]
-    //Character_TargetButton[] targetButtons_size2;
-    //[SerializeField]
-    //Character_TargetButton[] targetButtons_size3;
 
 
     [SerializeField]
@@ -106,24 +100,7 @@ public class CharactersManager : MonoBehaviour
         else { infoText.AddErrorText("今死亡したキャラは、そもそも存在していません"); }
     }
 
-    public Character_TargetButton GetTargetButton(int pos)
-    {
-        return targetButtons_size1[pos];
-        //switch (size)
-        //{
-        //    case 1:
-        //        return targetButtons_size1[pos];
-        //    case 2:
-        //        if (targetButtons_size2[pos] == null) { infoText.AddDebugText(string.Format("error:{0}",pos)); }
-        //        return targetButtons_size2[pos];
-        //    case 3:
-        //        if (targetButtons_size3[pos] == null) { infoText.AddDebugText(string.Format("error:{0}", pos)); }
-        //        return targetButtons_size3[pos];
-        //    default:
-        //        infoText.AddDebugText(string.Format("error:{0}", size));
-        //        return null;
-        //}
-    }
+    public Character_TargetButton GetTargetButton(int pos)  { return targetButtons_size1[pos];}
     public PositionManager GetPositionManager(int pos) { return positionManagers[pos]; }
     public PositionManager[] GetPositionManagers() { return positionManagers; }
     /// <summary>
@@ -159,25 +136,6 @@ public class CharactersManager : MonoBehaviour
         foreach (Character.CharacterStatus characterStatus in GetExistingCharactersStatus())
         {
             if (characterStatus.position == checkPos) { return true; }
-            //if (checkOnlyCore) { if (characterStatus.position == checkPos) { return true; } }
-            //else
-            //{
-            //    switch (characterStatus.size)
-            //    {
-            //        case 1:
-            //            if (characterStatus.position == checkPos) { return true; }
-            //            break;
-            //        case 2:
-            //            if (characterStatus.position == checkPos) { return true; }
-            //            if (characterStatus.position + 1 == checkPos) { return true; }
-            //            if (characterStatus.position + 3 == checkPos) { return true; }
-            //            if (characterStatus.position + 4 == checkPos) { return true; }
-            //            break;
-            //        case 3:
-            //            if (characterStatus.position < 9 == checkPos < 9) { return true; }
-            //            break;
-            //    }
-            //}         
         }
         return false;
     }
@@ -321,21 +279,6 @@ public class CharactersManager : MonoBehaviour
         {
             Character.CharacterStatus characterStatus = character.GetCharacterStatus();
             if (characterStatus.position == pos) { return character; }
-            //switch (characterStatus.size)
-            //{
-            //    case 1:
-            //        if (characterStatus.position == pos) { return character; }
-            //        break;
-            //    case 2:
-            //        if (characterStatus.position == pos) { return character; }
-            //        if (characterStatus.position + 1 == pos) { return character; }
-            //        if (characterStatus.position + 3 == pos) { return character; }
-            //        if (characterStatus.position + 4 == pos) { return character; }
-            //        break;
-            //    case 3:
-            //        if (characterStatus.position < 9 == pos < 9) { return character; }
-            //        break;
-            //}
         }
         infoText.AddDebugText(string.Format("error:ポジション{0}にキャラクターは存在していません", pos));
         return null;
@@ -405,23 +348,6 @@ public class CharactersManager : MonoBehaviour
     }
     public Vector2 GetCharacterWorldPos(int pos)
     {
-        //Vector2 worldPos=new Vector2();
-        //switch (size)
-        //{
-        //    case 1:
-        //        worldPos = charactersWorldPos_Size1[pos];
-        //        break; 
-        //    case 2:
-        //        worldPos = charactersWorldPos_Size2[pos];
-        //        break;
-        //    case 3:
-        //        infoText.AddDebugText("size3の処理未実装");
-        //        break;
-        //    default:
-        //        infoText.AddDebugText("error:sizeの値がおかしいです");
-        //        break;
-        //}
-        //if (worldPos.x == -1) { infoText.AddDebugText(string.Format("存在しないworldPos:サイズ{0}の位置{1}", size, pos)); }
         return charactersWorldPos_Size1[pos];
     }
 
@@ -488,19 +414,6 @@ public class CharactersManager : MonoBehaviour
 
         Vector2 worldPos = charactersWorldPos_Size1[pos];
         Character_TargetButton tb = targetButtons_size1[pos];
-        //if (generatedCharaStatus.size == 1)
-        //{
-        //    worldPos = charactersWorldPos_Size1[pos];
-        //    tb = targetButtons_size1[pos];
-        //    //existCharaに追加
-        //}
-        //else if (generatedCharaStatus.size == 2)
-        //{
-        //    worldPos = charactersWorldPos_Size2[pos];
-        //    tb = targetButtons_size2[pos];
-        //    //existCharaに追加
-        //}
-        //else { print("サイズ3に対する処理が出来てません"); }
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem);

@@ -440,7 +440,7 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < selectedAbilityParent.childCount; i++) { Destroy(selectedAbilityParent.GetChild(i).gameObject); }
         GameObject abilityManager;
         if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }
-        else { abilityManager=Definer.abilityManager_General; }
+        else { abilityManager = Definer.abilityManager_General; }
         var a = Instantiate(abilityManager, selectedAbilityParent);
         a.GetComponent<Ability>().Init(character, abilityStatus);
         selectedAbility = a.GetComponent<Ability>();

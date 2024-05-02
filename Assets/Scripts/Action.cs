@@ -37,6 +37,18 @@ public class Action : MonoBehaviour
         /// row:段 column:列
         /// </summary>
         public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
+        [System.Serializable]
+        public class ActionTargetParams
+        {
+            public TargetType targetType;
+            public bool friendly;
+            public CharactersManager.SearchCharaCondition condition;
+
+            public bool ignoreMark;
+            public bool ignoreHide;
+            [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
+            public List<int> moveValue;
+        }
         [Header("\n\n\nここからアビリティのみ関係")]
         public TargetType targetType;
         public bool friendly;
@@ -44,6 +56,7 @@ public class Action : MonoBehaviour
        
         public bool ignoreMark;
         public bool ignoreHide;
+        public ActionTargetParams targetParams;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係\n\n\n")]

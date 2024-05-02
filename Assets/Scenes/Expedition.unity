@@ -8527,7 +8527,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
   - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
   - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
-  - {fileID: 11400000, guid: d9817fc9be8ec804f96eb555be96e323, type: 2}
+  - {fileID: 11400000, guid: 6f75fccd2ece0264881728fadc627a8a, type: 2}
   amount: 7e000000050000000100000002000000070000000300000015000000060000000100000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
@@ -8658,6 +8658,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
   - {fileID: 11400000, guid: b200bddda16f65c4394d143c3c0c0af0, type: 2}
   - {fileID: 11400000, guid: d9817fc9be8ec804f96eb555be96e323, type: 2}
+  - {fileID: 11400000, guid: 6f75fccd2ece0264881728fadc627a8a, type: 2}
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12150,9 +12151,9 @@ MonoBehaviour:
     - 5
     - 1
     equipmentDropWeights:
-    - 50
-    - 35
-    - 10
+    - 40
+    - 40
+    - 15
     - 4
     - 1
     turnOrderReveal: 3
@@ -12288,6 +12289,26 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
+    targetParams:
+      targetType: 0
+      friendly: 0
+      condition:
+        searchAsPos: 0
+        onlyEmpty: 0
+        player: 0
+        enemy: 0
+        front: 0
+        mid: 0
+        back: 0
+        characterTags: 
+        StE: []
+        PE: []
+        HPPercent: 0
+        HP_lessThan: 0
+        HP_excludeEqual: 0
+      ignoreMark: 0
+      ignoreHide: 0
+      moveValue: 
     moveValue: 
     kill: 0
     decreaseHP_min: 0
@@ -12322,6 +12343,9 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -12901,7 +12925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

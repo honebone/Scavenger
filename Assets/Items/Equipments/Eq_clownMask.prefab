@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5667121962493394942
+--- !u!1 &9185327421234476493
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,53 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1455896857616258923}
-  - component: {fileID: -3093927964309081174}
-  - component: {fileID: 2102424110011888310}
+  - component: {fileID: 2731747101393116504}
+  - component: {fileID: -2394855223871857447}
+  - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_shiningClaw
+  m_Name: Eq_clownMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1455896857616258923
+--- !u!4 &2731747101393116504
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 9185327421234476493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.43982, y: 44.00264, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3093927964309081174
+--- !u!114 &-2394855223871857447
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0818aac560ede439940f84da6e238f, type: 3}
+  m_Script: {fileID: 11500000, guid: 01a9623c53c2c7f43b7464480ef55996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
+    itemData: {fileID: 11400000, guid: 6f75fccd2ece0264881728fadc627a8a, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
-      ATK_mul: 10
-      CRITC: 5
-      CRITD: 0.5
+      ATK_mul: 0
+      CRITC: 0
+      CRITD: 0
       EVD: 0
       ACC: 0
       ACT: 0
@@ -64,14 +64,15 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
     actionMods: []
-  claw:
-    actionName: "\u714C\u5203"
-    conditionInfo: "\u8FD1\u63A5\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D(\u884C\u52D5\u6642\u306E\u307F)"
-    targetInfo: "\u653B\u6483\u3057\u305F\u76F8\u624B"
+  chance: 25
+  actionStatus:
+    actionName: "\u9053\u5316\u5E2B\u306E\u4EEE\u9762"
+    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642(25\uFF05)"
+    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B9\u5168\u4F53"
     actionInfo: 
-    sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}
+    sprite: {fileID: 21300000, guid: 5314680a335fe2a4bb51f2be02179229, type: 3}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -120,12 +121,12 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 30
-    ATKMod_max: 45
+    ATKMod_min: 0
+    ATKMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
-    CRITCMod: -100
+    CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
     unevadable: 0
@@ -147,7 +148,7 @@ MonoBehaviour:
     applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 0
+    removeStE_debuff: 1
     removeStE_DoT: 0
     removeStEs: []
     summon: 0
@@ -166,13 +167,27 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     actionTargetsInt: 
---- !u!212 &2102424110011888310
+  condition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 1
+    enemy: 0
+    front: 1
+    mid: 1
+    back: 1
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+--- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -207,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5314680a335fe2a4bb51f2be02179229, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

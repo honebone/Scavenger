@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class A_Priest_Absolve : Ability
+{
+    [SerializeField]
+    CharactersManager.SearchCharaCondition condition;
+    public override Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus)
+    {
+        if (charactersManager.CheckIfMatchCondition(character, condition))
+        {
+            actionStatus.targetType = Action.ActionStatus.TargetType.all;
+        }
+        return actionStatus;
+    }
+}

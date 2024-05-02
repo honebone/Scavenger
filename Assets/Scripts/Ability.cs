@@ -147,6 +147,7 @@ public class Ability : MonoBehaviour
             abilityData = data;
             //character = owner;
         }
+       
         public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }
         public void SetRemain(int value) { remain = Mathf.Clamp(value, 0, maxRemain); }
         public void StartCoolDown() { cooldown = cooldownOnUse; }
@@ -260,8 +261,8 @@ public class Ability : MonoBehaviour
         }
     }
 
-    Character character;
-    CharactersManager charactersManager;
+   protected Character character;
+    protected CharactersManager charactersManager;
     BattleManager battleManager;
     ActionQueueManager actionQueue;
     //Utility util;
@@ -290,12 +291,13 @@ public class Ability : MonoBehaviour
     }
 
     public virtual string GetInfo() { return abilityStatus.GetInfo(true, character.GetCharacterStatus()); }
+    public virtual Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus) { return actionStatus; }
     public virtual void StartSelectTarget()
     {
         charactersManager.ResetAllTargetIcons();
         Character.CharacterStatus charaStatus = character.GetCharacterStatus();
         Character.CharacterStatus targetStatus;
-        Action.ActionStatus actionStatus = abilityStatus.actionsStatus[counter];
+        Action.ActionStatus actionStatus = ModifyTargetParams(abilityStatus.actionsStatus[counter]);
         bool playable = charaStatus.playable;
 
         targetIconPos = new List<Vector2Int>();
