@@ -80,6 +80,10 @@ public class Ability : MonoBehaviour
                 else { s += string.Format("使用回数(戦闘開始時)：{0}回\n", remainOnBattleStart); }
             }
             s += "\n";
+            if (abilityType == AbilityData.AbilityType.pass)
+            {
+                s += "ターンをパスする(行動したとはみなされない)\n";
+            }
             if (actionsStatus.Length == 1) { s += actionsStatus[0].GetInfo(refCharaStatus, characterStatus); }
             else if (actionsStatus.Length > 1)
             {
@@ -507,7 +511,7 @@ public class Ability : MonoBehaviour
 
                 actionQueue.Enqueue(abilityStatus.actionsStatus[i]);
             }
-            character.OnActivateAbility();
+            //character.OnActivateAbility();
             actionQueue.StartResolve(3);
 
             battleManager.ResetSelectedAbility();

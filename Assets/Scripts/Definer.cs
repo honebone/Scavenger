@@ -94,6 +94,7 @@ public class Definer : MonoBehaviour
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"“Áê"}, {AbilityData.AbilityType.attack,"UŒ‚"},{AbilityData.AbilityType.heal,"‰ñ•œ"},
     {AbilityData.AbilityType.buff,"‹­‰»"},{AbilityData.AbilityType.debuff,"ã‘Ì‰»"},{AbilityData.AbilityType.summon,"¢Š«"}
+    ,{AbilityData.AbilityType.pass,"ƒpƒX"}
 };
     public static Dictionary<CharacterData.CharacterTag, string> CharacterTagName = new Dictionary<CharacterData.CharacterTag, string>(){
         {CharacterData.CharacterTag.other,"“Áê" },{CharacterData.CharacterTag.corpse,"€‘Ì" },{CharacterData.CharacterTag.human,"lŠÔ" },{CharacterData.CharacterTag.beast,"b"  }

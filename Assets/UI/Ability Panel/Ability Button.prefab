@@ -342,6 +342,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6e474b16e29070a4da65e4da66c8e349, type: 3}
   - {fileID: 21300000, guid: d935e4ec02edea7469cb3faec288eeaa, type: 3}
   - {fileID: 21300000, guid: db4e021edcf96f04a8872734d2753a90, type: 3}
+  - {fileID: 21300000, guid: fe5079e4d89752448a33edf57cee6921, type: 3}
   frame: {fileID: 7313947815173279983}
   nameText: {fileID: 7313947813469909042}
   remainText: {fileID: 3380075004014675755}

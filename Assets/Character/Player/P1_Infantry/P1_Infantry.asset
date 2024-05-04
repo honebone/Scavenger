@@ -32,6 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8eadb511ee71fb4cbc46625eff11c44, type: 2}
   - {fileID: 11400000, guid: cf4baaac5f4a075459cad784f8faa109, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 8883179242248556648, guid: 1093b472bb953134ebdad7b35e9d9039, type: 3}
   actionMods: []
@@ -50,8 +51,6 @@ MonoBehaviour:
   GHeal: 100
   RHeal: 100
   debuffRes: 0
-  stunRes: 0
-  bleedRes: 0
-  poisonRes: 0
-  burnRes: 0
+  StEResists: []
+  StEApplyBonus: []
   moveRes: 0

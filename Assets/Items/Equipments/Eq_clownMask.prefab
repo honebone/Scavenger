@@ -114,6 +114,7 @@ MonoBehaviour:
       ignoreHide: 0
       moveValue: 
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -134,8 +135,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
+    SANHeal_min: 1
+    SANHeal_max: 2
     SANDamage_min: 0
     SANDamage_max: 0
     shieldAdd_min: 0

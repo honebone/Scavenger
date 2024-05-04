@@ -60,6 +60,7 @@ public class Action : MonoBehaviour
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係\n\n\n")]
+        public bool consumeFocus;
         public bool kill;
         public int decreaseHP_min;
         public int decreaseHP_max;
@@ -692,6 +693,10 @@ public class Action : MonoBehaviour
                 //{
                 //    actionStatus.actionTargetsInt.Remove(i);//攻撃失敗時、その地点に対する処理も行わないようにする
                 //}
+                if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                {
+                    target.ConsumeFocus();
+                }
             }
             else if (!notChara)
             {
@@ -784,6 +789,8 @@ public class Action : MonoBehaviour
     {
         if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//攻撃時誘発
         if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//与回復時誘発
+
+        if (actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass) { actionStatus.actionOwner.OnActivateAbility(); }
 
         actionQueueManager.Dequeue();
     }

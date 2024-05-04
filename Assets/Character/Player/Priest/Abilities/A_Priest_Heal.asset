@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: A_Priest_Heal
   m_EditorClassIdentifier: 
-  abilityName: "\u7652\u3057"
+  abilityName: "\u5B89\u606F"
   lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  spriteIndex: 0
   abilityType: 2
   excludeRandomPool: 0
   selectWeight: 1
@@ -46,7 +45,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u7652\u3057"
+  - actionName: "\u5B89\u606F"
     conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     actionInfo: 
@@ -54,7 +53,8 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 7922638166886946676, guid: bb8023da73020df4392107fcd963b66b, type: 3}
     targetType: 1
     friendly: 1
     condition:
@@ -73,7 +73,28 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
+    targetParams:
+      targetType: 0
+      friendly: 0
+      condition:
+        searchAsPos: 0
+        onlyEmpty: 0
+        player: 0
+        enemy: 0
+        front: 0
+        mid: 0
+        back: 0
+        characterTags: 
+        StE: []
+        PE: []
+        HPPercent: 0
+        HP_lessThan: 0
+        HP_excludeEqual: 0
+      ignoreMark: 0
+      ignoreHide: 0
+      moveValue: 
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -91,7 +112,7 @@ MonoBehaviour:
     sureHit: 0
     unevadable: 0
     healValue_min: 10
-    healValue_max: 20
+    healValue_max: 15
     healPercent_min: 0
     healPercent_max: 0
     SANHeal_min: 0
@@ -107,6 +128,9 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -117,15 +141,10 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 1
     abilityType: 2
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 
+    actionTargetsInt: 04000000

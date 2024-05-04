@@ -94,6 +94,7 @@ MonoBehaviour:
       ignoreHide: 0
       moveValue: 
     moveValue: 
+    consumeFocus: 1
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -146,4 +147,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 6517567265050198630, guid: 7a17a74e1e852094781f2f4ed112d02b, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 06000000

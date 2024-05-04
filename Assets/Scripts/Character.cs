@@ -498,30 +498,40 @@ public class Character : MonoBehaviour
         }
         
     }
-    /// <summary>StE自身がこれを呼んでスタック消費or消去する</summary>
-    public void RemoveStE_BySelf(ActionData.RemoveStE removeStE)
+    public void ConsumeFocus()
     {
         foreach (PassiveAbility pa in GetPassiveAbilities())
         {
-            if (pa.gameObject == removeStE.removeStE)
+            if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus)
             {
-                PA_StatusEffect.StatusEffectStatus StEStatus = pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                if (removeStE.removeAll)
-                {
-                    pa.GetComponent<PA_StatusEffect>().Disable();
-                    charaObj.SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-                    infoText.AddLogText(string.Format("{0}の{1}が消去された", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName()));
-                }
-                else
-                {
-                    pa.GetComponent<PA_StatusEffect>().AddStack(removeStE.addAmount);
-                    charaObj.SetDamageText(string.Format("{0}{1}", StEStatus.StEName, removeStE.addAmount.GetValueWithSign()), Definer.colorRef.failed_unavailable);
-                    infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName(), removeStE.addAmount.GetValueWithSign()));
-                }
+                pa.GetComponent<PA_StatusEffect>().AddStack(-1);
             }
         }
-        //メッセージ
     }
+    ///// <summary>StE自身がこれを呼んでスタック消費or消去する</summary>
+    //public void RemoveStE_BySelf(ActionData.RemoveStE removeStE)
+    //{
+    //    foreach (PassiveAbility pa in GetPassiveAbilities())
+    //    {
+    //        if (pa.gameObject == removeStE.removeStE)
+    //        {
+    //            PA_StatusEffect.StatusEffectStatus StEStatus = pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+    //            if (removeStE.removeAll)
+    //            {
+    //                pa.GetComponent<PA_StatusEffect>().Disable();
+    //                charaObj.SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+    //                infoText.AddLogText(string.Format("{0}の{1}が消去された", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName()));
+    //            }
+    //            else
+    //            {
+    //                pa.GetComponent<PA_StatusEffect>().AddStack(removeStE.addAmount);
+    //                charaObj.SetDamageText(string.Format("{0}{1}", StEStatus.StEName, removeStE.addAmount.GetValueWithSign()), Definer.colorRef.failed_unavailable);
+    //                infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName(), removeStE.addAmount.GetValueWithSign()));
+    //            }
+    //        }
+    //    }
+    //    //メッセージ
+    //}
 
     public bool CheckHasStE(GameObject StEObj)
     {

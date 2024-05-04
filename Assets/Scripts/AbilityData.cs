@@ -17,7 +17,7 @@ public class AbilityData : ScriptableObject
 
     //public AudioClip SE;
 
-    public enum AbilityType { other, attack, heal, buff, debuff, summon }
+    public enum AbilityType { other, attack, heal, buff, debuff, summon,pass }
     public AbilityType abilityType;
 
     [Header("\n\n\n‘€ì•s‰ÂƒLƒƒƒ‰‚ÉŠÖŒW")]
