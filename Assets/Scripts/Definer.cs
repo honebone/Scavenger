@@ -86,6 +86,10 @@ public class Definer : MonoBehaviour
 
     [SerializeField]
     List<ItemData> equipmentDataBase;
+    [SerializeField]
+    List<GameObject> personalityDataBase;
+    public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
+
 
     public static List<List<ItemData>> equipments=new List<List<ItemData>>();
 

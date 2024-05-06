@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5942741952113959475}
   - component: {fileID: 7600040905823093917}
   m_Layer: 0
-  m_Name: Per_MaxHPDown
+  m_Name: Per_moveResUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personalityStatus:
-    personalityName: "\u8CA7\u5F31"
-    personalityType: 4
+    personalityName: "\u5B89\u5B9A"
+    personalityType: 3
   statusMod:
-    maxHP_mul: -20
+    maxHP_mul: 0
     maxSAN_mul: 0
     ATK_mul: 0
     CRITC: 0
@@ -61,4 +61,5 @@ MonoBehaviour:
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
+    moveRes: 20
   actionMods: []

@@ -56,7 +56,7 @@ public class Action : MonoBehaviour
        
         public bool ignoreMark;
         public bool ignoreHide;
-        public ActionTargetParams targetParams;
+        //public ActionTargetParams targetParams;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係\n\n\n")]

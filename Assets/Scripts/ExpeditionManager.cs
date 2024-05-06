@@ -41,6 +41,9 @@ public class ExpeditionManager : MonoBehaviour
         public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
 
+        /// <summary>roomEvent終了時に特性追加確率</summary>
+        public int getPerChance_endRE = 10;
+
         /// <summary>支給品の選択肢の数</summary>
         public int supplyOptions = 3;
     }
@@ -68,6 +71,7 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField]
     Transform REManagerParent;
 
+    Definer definer;
     Map_MapPanel mapPanel;
     InfoText infoText;
     CharactersManager charactersManager;
@@ -79,6 +83,7 @@ public class ExpeditionManager : MonoBehaviour
 
     private void Start()
     {
+        definer = FindObjectOfType<Definer>();
         mapPanel = FindObjectOfType<Map_MapPanel>();
         infoText = FindObjectOfType<InfoText>();
         charactersManager = FindObjectOfType<CharactersManager>();
@@ -184,6 +189,22 @@ public class ExpeditionManager : MonoBehaviour
         return equipment;
     }
 
+    public void SetRandomPersonality_ToRandom()
+    {
+        List<Character> pool = new List<Character>();
+        foreach(Character c in charactersManager.GetExistingCharacters_All())
+        {
+            if (c.GetCharacterStatus().playable) { pool.Add(c); }
+        }
+
+        SetPersonality(pool.Choice(), definer.GetPersonalityDataBase().Choice());
+    }
+
+    public void SetPersonality(Character target, GameObject personality)
+    {
+        target.AddPA_Personality(personality, true);
+    }
+
     public void OnEndBattle() { currentRE.OnEndBattle(); }
     public void OnEndLoot() { currentRE.OnEndLoot(); }
     public void OnEndSupply() { currentRE.OnEndSupply(); }
@@ -192,6 +213,10 @@ public class ExpeditionManager : MonoBehaviour
     public void EndRoomEvent()
     {
         //あーだこーだ
+        if (partyStatus.getPerChance_endRE.Probability())
+        {
+            SetRandomPersonality_ToRandom();
+        }
         SelectNextRoom();
     }
 

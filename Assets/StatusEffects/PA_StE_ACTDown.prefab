@@ -51,8 +51,11 @@ MonoBehaviour:
     StEIcon: {fileID: 21300000, guid: d088a2e94ac394944ba632bfba0da6f2, type: 3}
     StEType: 2
     maxStack: 0
-    merge: 0
+    merge: 1
+    refValue: 0
+    undeletable: 0
     stack: 0
+    value: 0
 --- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -52,7 +52,7 @@ MonoBehaviour:
     conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F1\u4F53\u4EE5\u4E0A\u306E\u30AD\u30E3\u30E9\u3092\u56DE\u5FA9\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u306A\u3089"
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 5547585bb7f44bd43bd60e88f9338ac6, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -64,6 +64,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -76,6 +77,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -113,6 +115,9 @@ MonoBehaviour:
       stack: 1
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []

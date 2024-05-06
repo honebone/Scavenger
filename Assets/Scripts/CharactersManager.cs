@@ -156,6 +156,7 @@ public class CharactersManager : MonoBehaviour
         [Header("<ŒŸõ”ÍˆÍ‚ÌŽw’è>")]
         public bool player;
         public bool enemy;
+        public bool onlyPlayable;
         [Space]
         public bool front;
         public bool mid;
@@ -183,6 +184,7 @@ public class CharactersManager : MonoBehaviour
             Character.CharacterStatus status = character.GetCharacterStatus();
             if (!condition.player && status.position < 9) { continue; }
             if (!condition.enemy && status.position >= 9) { continue; }
+            if (condition.onlyPlayable && !status.playable) { continue; }
             if(!condition.front && status.position.GetColumn()==0) { continue; }
             if (!condition.mid && status.position.GetColumn() == 1) { continue; }
             if (!condition.back && status.position.GetColumn() == 2) { continue; }

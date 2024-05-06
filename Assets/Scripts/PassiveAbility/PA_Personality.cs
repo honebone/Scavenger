@@ -26,4 +26,5 @@ public class PA_Personality : PassiveAbility
     }
     [SerializeField]
     protected PersonalityStatus personalityStatus;
+    public PersonalityStatus GetPersonalityStatus() { return personalityStatus; }
 }

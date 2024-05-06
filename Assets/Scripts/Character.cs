@@ -255,6 +255,8 @@ public class Character : MonoBehaviour
 
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
+
+        public float moveRes;
         public string GetInfo()
         {
             string s = "";
@@ -280,6 +282,7 @@ public class Character : MonoBehaviour
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
             }
+            s += ValueToStr("移動耐性", moveRes, "％");
             
             return s;
         }
@@ -333,7 +336,7 @@ public class Character : MonoBehaviour
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
         charaObj.SetHPandShieldBar();
         charaObj.SetSANBar();
-        foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa); }
+        foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa,false); }
 
         targetButton.SetCharacter(this);
 
@@ -360,11 +363,17 @@ public class Character : MonoBehaviour
         passiveAbilities.AddRange(PA_Eq);
         return passiveAbilities;
     }
-    public void AddPA_Personality(GameObject paObj)
+    public void AddPA_Personality(GameObject paObj,bool note)
     {
         var p = Instantiate(paObj, transform);
         PA_Pa.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this,1,infoText);
+        p.GetComponent<PassiveAbility>().Init(this, 1, infoText);
+        if (note)
+        {
+            PA_Personality.PersonalityStatus personality = p.GetComponent<PA_Personality>().GetPersonalityStatus();
+            charaObj.SetDamageText(string.Format("+特性：{0}", personality.personalityName), Definer.colorRef.personalityColors[(int)personality.personalityType]);
+            infoText.AddLogText(string.Format("{0}は新たな特性{1}を得た", charaStatus.charaName,personality.GetName()));
+        }
     }
     public void EquipItem(Definer.Item item)
     {
@@ -828,6 +837,7 @@ public class Character : MonoBehaviour
         {
             AddStEBonus(bonus, set);
         }
+        if (mod.moveRes != 0) { AddMoveRes(mod.moveRes); }
     }
     public void AddMaxHP(int value_base, float value_mul, bool heal)
     {
@@ -953,7 +963,10 @@ public class Character : MonoBehaviour
         if (set) { charaStatus.StEApplyBonus.Add(bonus); }
         else { infoText.AddErrorText("error"); }
     }
-
+    public void AddMoveRes(float value)
+    {
+        charaStatus.moveRes += value;
+    }
     public void AddActionMod(GameObject mod ,bool set)
     {
         if (set) { charaStatus.actionMods.Add(mod); }

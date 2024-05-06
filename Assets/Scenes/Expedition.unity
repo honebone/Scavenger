@@ -8457,8 +8457,8 @@ GameObject:
   - component: {fileID: 613893881}
   - component: {fileID: 613893882}
   - component: {fileID: 613893885}
-  - component: {fileID: 613893883}
   - component: {fileID: 613893884}
+  - component: {fileID: 613893883}
   m_Layer: 0
   m_Name: GeneralManager
   m_TagString: Untagged
@@ -8527,7 +8527,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
   - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
   - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
-  - {fileID: 11400000, guid: 6f75fccd2ece0264881728fadc627a8a, type: 2}
+  - {fileID: 11400000, guid: 7553868910a1db44cbd132458630c245, type: 2}
   amount: 7e000000050000000100000002000000070000000300000015000000060000000100000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
@@ -8661,6 +8661,28 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d9817fc9be8ec804f96eb555be96e323, type: 2}
   - {fileID: 11400000, guid: 6f75fccd2ece0264881728fadc627a8a, type: 2}
   - {fileID: 11400000, guid: c41ab1191e7368447b59f75de3777761, type: 2}
+  - {fileID: 11400000, guid: 7553868910a1db44cbd132458630c245, type: 2}
+  personalityDataBase:
+  - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
+  - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
+  - {fileID: 3170614222137734241, guid: 7993b7bc118abf64493a083dc792cfee, type: 3}
+  - {fileID: 3170614222137734241, guid: 7c115b9d758268642abc1da38cc7a352, type: 3}
+  - {fileID: 3170614222137734241, guid: 3b073dc7d4bd973498a426f854459712, type: 3}
+  - {fileID: 3170614222137734241, guid: ba6fcadb05f84e34cbdde31f0412559c, type: 3}
+  - {fileID: 3170614222137734241, guid: d263272d4e61a6142a2dfeca79b0f399, type: 3}
+  - {fileID: 3170614222137734241, guid: b5d6202cfd19f7e4dbef7455d579f55a, type: 3}
+  - {fileID: 3170614222137734241, guid: 1ffb9b7cec581f34f94db7002a7559e8, type: 3}
+  - {fileID: 3170614222137734241, guid: 82d4608ebc33e414fb30168fac9f440c, type: 3}
+  - {fileID: 3170614222137734241, guid: c5287f353ee8ba24a94dabecb2b0af7c, type: 3}
+  - {fileID: 3170614222137734241, guid: 503812419ecd9324190a93766b6855ba, type: 3}
+  - {fileID: 3170614222137734241, guid: 0fcd6caac30d25747a5d1250c58504c9, type: 3}
+  - {fileID: 3170614222137734241, guid: bb7bc8d5a9463c74591065996c5b0e78, type: 3}
+  - {fileID: 3170614222137734241, guid: d523ebe5b8450ca41b399d612c33b96e, type: 3}
+  - {fileID: 3170614222137734241, guid: c445276afb97ae945af5b345696bcf2c, type: 3}
+  - {fileID: 3170614222137734241, guid: bf78b0bbbc65cc84388e39832f0cec87, type: 3}
+  - {fileID: 3170614222137734241, guid: fbf9edc733d3ce04eb110e19f247ccad, type: 3}
+  - {fileID: 3170614222137734241, guid: f4e89f267bc3e9941abf3029a13d7caa, type: 3}
+  - {fileID: 3170614222137734241, guid: 86f0d9b3c177f8745b344e3acd8626dc, type: 3}
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12159,6 +12181,7 @@ MonoBehaviour:
     - 4
     - 1
     turnOrderReveal: 3
+    getPerChance_endRE: 25
     supplyOptions: 3
   currentPos: {x: 0, y: 0}
   currentAreaManger: {fileID: 1715376304}
@@ -12280,6 +12303,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -12291,26 +12315,6 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
     consumeFocus: 0
     kill: 0
@@ -12371,6 +12375,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0
@@ -19102,7 +19107,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
