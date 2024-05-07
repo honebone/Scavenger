@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e218be0afb332841823d46861ec5cdb, type: 2}
   - {fileID: 11400000, guid: 06a16afe15764a74885868eea6db2a17, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
-  - {fileID: 11400000, guid: cf4baaac5f4a075459cad784f8faa109, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   - {fileID: 11400000, guid: a0c2140d072d9d549bfbf5c93b08f8ef, type: 2}
   passiveAbilities:
   - {fileID: 8883179242248556648, guid: 1093b472bb953134ebdad7b35e9d9039, type: 3}

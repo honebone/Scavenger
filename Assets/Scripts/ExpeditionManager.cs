@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ExpeditionManager : MonoBehaviour
 {
@@ -30,7 +31,8 @@ public class ExpeditionManager : MonoBehaviour
         {
             eventName = data.eventName;
             eventInfo = data.eventInfo;
-            roomEventManager = data.roomEventManager[Random.Range(0, data.roomEventManager.Count)];
+            if (data.debug) { roomEventManager = data.roomEventManager[0]; }
+            else { roomEventManager = data.roomEventManager[Random.Range(0, data.roomEventManager.Count)]; }
             eventIcon = data.eventIcon;
         }
     }
@@ -58,6 +60,13 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField]//test
     AreaManager currentAreaManger;
     RoomEvent currentRE;
+
+    [SerializeField]
+    GameObject REInfoPanel;
+    [SerializeField]
+    TextMeshProUGUI RETitle;
+    [SerializeField]
+    TextMeshProUGUI REInfo;
 
     [SerializeField]
     GameObject REOptionUI;
@@ -166,6 +175,23 @@ public class ExpeditionManager : MonoBehaviour
     }
     
 
+    public void SetREInfo(string title, string info)
+    {
+        REInfoPanel.SetActive(true);
+        RETitle.text = title;
+        REInfo.text = info;
+    }
+    public void EndREInfo()
+    {
+        ResetREInfo();
+        currentRE.OnEndREInfo();
+    }
+    public void ResetREInfo()
+    {
+        REInfoPanel.SetActive(false);
+        RETitle.text = "";
+        REInfo.text = "";
+    }
     public void SetREOptionButtons(List<RoomEvent.REOptionParams> optionParams)
     {
         REOptionUI.SetActive(true);
@@ -178,6 +204,7 @@ public class ExpeditionManager : MonoBehaviour
     public void SelectOption(int index)
     {
         for(int i = 0; i < REOptionButtonsP.childCount; i++) { Destroy(REOptionButtonsP.GetChild(i).gameObject); }
+        ResetREInfo();
         REOptionUI.SetActive(false);
         currentRE.SelectOption(index);
     }
@@ -188,7 +215,9 @@ public class ExpeditionManager : MonoBehaviour
         equipment.Init(Definer.equipments[partyStatus.equipmentDropWeights.ChoiceWithWeight()].Choice());
         return equipment;
     }
-
+    public void SetRandomPersonality(Character target) { 
+        SetPersonality(target, definer.GetPersonalityDataBase().Choice());
+    }
     public void SetRandomPersonality_ToRandom()
     {
         List<Character> pool = new List<Character>();

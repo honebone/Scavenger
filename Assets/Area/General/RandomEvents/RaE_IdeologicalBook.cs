@@ -1,0 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RaE_IdeologicalBook : RE_RandomEvents
+{
+    List<RoomEvent.REOptionParams> options;
+   
+    List<Character> pool = new List<Character>();
+
+    int phase;
+
+    public override void StartRandomEvent()
+    {
+        pool = new List<Character>();
+        foreach (Character c in characterManager.GetExistingCharacters_All())
+        {
+            if (c.GetCharacterStatus().playable) { pool.Add(c); }
+        }
+
+        options = new List<REOptionParams>();
+        foreach (Character character in pool)
+        {
+            Character.CharacterStatus status = character.GetCharacterStatus();
+            REOptionParams option = new REOptionParams();
+            option.optionName = string.Format("{0}Ç…ì«Ç‹ÇπÇÈ", status.charaName);
+            option.optionInfo = "ÉâÉìÉ_ÉÄÇ»1-3å¬ÇÃì¡ê´ÇìæÇÈ";
+            options.Add(option);
+        }
+
+        expeditionManager.SetREOptionButtons(options);
+    }
+
+    public override void SelectOption(int index)
+    {
+        choice = index;
+        StartCoroutine(Consequence());
+    }
+
+    IEnumerator Consequence()
+    {
+        int amount = Random.Range(1, 4);
+        for (int i = 0; i < amount; i++)
+        {
+            expeditionManager.SetRandomPersonality(pool[choice]);
+        }
+        infoText.AddLogText(string.Format("{0}ÇÃçlÇ¶ï˚Ç…ïœâªÇ™ñKÇÍÇΩ", pool[choice].GetCharacterStatus().charaName));
+        infoText.SwitchToLog();
+
+        yield return new WaitForSeconds(1.0f);
+        EndRoomEvent();
+    }
+}

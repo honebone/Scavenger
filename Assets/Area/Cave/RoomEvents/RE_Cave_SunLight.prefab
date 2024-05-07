@@ -44,11 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186f914bd358a1b40875fb5147943f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u964D\u308A\u6CE8\u3050\u967D\u5149"
+  REInfo: "\u660E\u308B\u3044\u5834\u6240\u306B\u51FA\u305F\u3002\n\u5929\u4E95\u306B\u7A7A\u3044\u305F\u7A74\u304B\u3089\u3001\u967D\u306E\u5149\u304C\u964D\u308A\u6CE8\u3044\u3067\u3044\u308B\u3088\u3046\u3060\u3002"
   options:
   - optionName: "\u6F01\u308B"
     optionInfo: 
-  eventName: "\u964D\u308A\u6CE8\u3050\u967D\u5149"
-  eventInfo: "\u660E\u308B\u3044\u5834\u6240\u306B\u51FA\u305F\u3002\n\u5929\u4E95\u306B\u7A7A\u3044\u305F\u7A74\u304B\u3089\u3001\u967D\u306E\u5149\u304C\u964D\u308A\u6CE8\u3044\u3067\u3044\u308B\u3088\u3046\u3060\u3002"
   lootStatus:
     drawAttemptsRange: {x: 6, y: 12}
     dropItems:

@@ -10,10 +10,10 @@ public class RE_Rest : RoomEvent
 
     [SerializeField]
     GameObject umbushed;
-    public override void StartRoomEvent()
+  
+    public override void OnEndREInfo()
     {
-        expeditionManager.LogREName("‹x‘§‚Ìâ¾‰Î");
-       expeditionManager.SetREOptionButtons(options);
+        expeditionManager.SetREOptionButtons(options);
     }
     public override void SelectOption(int index)
     {

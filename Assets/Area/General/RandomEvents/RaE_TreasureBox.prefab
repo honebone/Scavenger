@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae414393924c7a946a65134b263da3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventName: "\u5B9D\u7BB1"
-  eventInfo: "\u5B9D\u7BB1\u3060!\n\u4F55\u304C\u5165\u3063\u3066\u3044\u308B\u3060\u308D\u3046\u304B..."
+  showREInfoOnStart: 1
+  REName: "\u5B9D\u7BB1"
+  REInfo: "\u5B9D\u7BB1\u3060!\n\u4F55\u304C\u5165\u3063\u3066\u3044\u308B\u3060\u308D\u3046\u304B..."
   options:
   - optionName: "\u5B9D\u7BB1\u3092\u958B\u3051\u308B...?"
     optionInfo: "\u30A2\u30A4\u30C6\u30E0\u3092\u5165\u624B\u3059\u308B\n???"

@@ -8,20 +8,12 @@ public class RE_Loot : RoomEvent
     List<RoomEvent.REOptionParams> options;
 
     [SerializeField]
-    string eventName;
-    [SerializeField, TextArea(3, 10)]
-    string eventInfo;
-
-    [SerializeField]
     LootPanel.LootStatus lootStatus;
 
-    public override void StartRoomEvent()
+   
+    public override void OnEndREInfo()
     {
-        if (eventName != "") { expeditionManager.LogREName(eventName); }
-        if (eventInfo != "") { infoText.AddLogText(eventInfo + "\n"); }
-        infoText.SwitchToLog();
-
-        lootPanel=FindObjectOfType<LootPanel>();
+        lootPanel = FindObjectOfType<LootPanel>();
 
         expeditionManager.SetREOptionButtons(options);
     }

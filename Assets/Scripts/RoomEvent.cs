@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class RoomEvent : MonoBehaviour
 {
+    [SerializeField]
+    bool showREInfoOnStart;
+    [SerializeField]
+    string REName;
+    [SerializeField, TextArea(3, 10)]
+    string REInfo;
     protected AreaManager.Area currentArea;
     protected ExpeditionManager expeditionManager;
     protected ExpeditionManager.PartyStatus partyStatus;
@@ -27,9 +33,18 @@ public class RoomEvent : MonoBehaviour
         supplyManager = FindObjectOfType<SupplyManager>();
         characterManager=FindObjectOfType<CharactersManager>();
         infoText = FindObjectOfType<InfoText>();
+
+        if (REName != "") { expeditionManager.LogREName(REName); }
+        if (REInfo != "") { infoText.AddLogText(REInfo + "\n"); }
+        if (showREInfoOnStart)
+        {
+            expeditionManager.SetREInfo(REName, REInfo);
+        }
+
         StartRoomEvent();
     }
     public virtual void StartRoomEvent() { }
+    public virtual void OnEndREInfo() { }
     public virtual void SelectOption(int index) { }
     /// <summary>デフォルトではルート開始</summary>
     public virtual void OnEndBattle() { lootPanel.Loot(); }

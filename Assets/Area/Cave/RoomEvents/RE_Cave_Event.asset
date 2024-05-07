@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: "\u30A4\u30D9\u30F3\u30C8"
   eventInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u51FA\u6765\u4E8B"
+  debug: 0
   roomEventManager:
+  - {fileID: 8180078169205948270, guid: 835183b549fec20448c2994c589491ba, type: 3}
   - {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   - {fileID: 4154373557521219498, guid: c2c66b4ea6134cc49882137f45baf921, type: 3}
   - {fileID: 4154373557521219498, guid: 5ed9c00d98d4fc24cb58b38a36f3c8f9, type: 3}

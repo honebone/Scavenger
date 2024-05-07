@@ -5,10 +5,6 @@ using UnityEngine;
 public class RE_BossBattle : RoomEvent
 {
     [SerializeField]
-    string eventName;
-    [SerializeField, TextArea(3, 10)]
-    string eventInfo;
-    [SerializeField]
     List<RoomEvent.REOptionParams> options;
     [SerializeField]
     AreaManager.EnemySet boss;
@@ -17,12 +13,9 @@ public class RE_BossBattle : RoomEvent
 
     protected int choice = 0;
     //GameObject eventManager;
-    public override void StartRoomEvent()
+   
+    public override void OnEndREInfo()
     {
-        if (eventName != "") { expeditionManager.LogREName(eventName); }
-        if (eventInfo != "") { infoText.AddLogText(eventInfo + "\n"); }
-        infoText.SwitchToLog();
-
         expeditionManager.SetREOptionButtons(options);
     }
     public override void SelectOption(int index)
