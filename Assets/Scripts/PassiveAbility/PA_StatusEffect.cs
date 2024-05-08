@@ -119,7 +119,7 @@ public class PA_StatusEffect : PassiveAbility
 
     public void DestroyIcon()
     {
-        Destroy(StEIcon.gameObject);
+        if (StEIcon != null) { Destroy(StEIcon.gameObject); }
     }
 
     [SerializeField]

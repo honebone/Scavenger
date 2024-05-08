@@ -6,6 +6,9 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField]//test
     List<Definer.Item> inventory=new List<Definer.Item> ();
+    int expOrbs;
+
+
     [SerializeField]
     GameObject inventoryPanel;
     [SerializeField]
@@ -72,7 +75,7 @@ public class Inventory : MonoBehaviour
         }
         foreach(Definer.Item item in inventory)
         {
-            if (sort==0||item.data.itemType==sortType)
+            if (sort == 0 || item.data.itemType == sortType)
             {
                 int a = item.amount;
                 while (a > 0)
@@ -82,7 +85,7 @@ public class Inventory : MonoBehaviour
                     i.amount = Mathf.Min(i.data.amountPerStack, a);
 
                     var ib = Instantiate(inventoryButton, content);
-                    ib.GetComponent<InventoryButton>().Init(i, infoText,detailUI);
+                    ib.GetComponent<InventoryButton>().Init(i, infoText, detailUI);
 
                     a -= item.data.amountPerStack;
                 }

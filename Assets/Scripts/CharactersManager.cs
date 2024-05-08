@@ -220,19 +220,21 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
-            list.Add(character);
 
             float HPPercent = status.HP.GetPercent(status.maxHP);
             if (condition.HP_lessThan)
             {
                 if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { continue; }//HP% < 条件値 のみ通す
-                else if(!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
+                if(!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
             }
             else
             {
                 if(condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
-                else if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
+                if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
             }
+
+            list.Add(character);
+
         }
 
         return list;

@@ -47,12 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "CRIT\u7387\u4E0A\u6607"
-    StEInfo: "\u81EA\u8EAB\u306ECRIT\u7387+X\uFF05\n\u81EA\u8EAB\u304B\u653B\u6483\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "\u81EA\u8EAB\u306ECRIT\u7387+X\uFF05\n\u81EA\u8EAB\u304B\u653B\u6483\u3057\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 5b5c881d5c314ab4b9c2d98d7ff653df, type: 3}
     StEType: 1
     maxStack: 0
     merge: 0
     refValue: 1
+    undeletable: 0
     stack: 0
     value: 0
 --- !u!212 &7692293271465632286

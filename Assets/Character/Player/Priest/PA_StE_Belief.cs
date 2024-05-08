@@ -28,7 +28,8 @@ public class PA_StE_Belief : PA_StatusEffect
 
     public override string GetAdditionalInfo()
     {
-        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = "";
+        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
         s += "自身が行動したターンの終了時、これを消去";
         return s;
     }

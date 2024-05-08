@@ -8,6 +8,8 @@ public class P_Sister_PA : PA_Personality
     Action.ActionStatus actionStatus;
     [SerializeField]
     GameObject comeTrue;
+    [SerializeField, TextArea(3, 10)]
+    string comeTrueInfo;
     
     public override void OnActivateAbility()
     {
@@ -29,6 +31,8 @@ public class P_Sister_PA : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        return actionStatus.GetInfo(true, character.GetCharacterStatus());
+        string s= actionStatus.GetInfo(true, character.GetCharacterStatus());
+        s += comeTrueInfo;
+        return s;
     }
 }

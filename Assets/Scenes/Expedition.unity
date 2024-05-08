@@ -8973,6 +8973,8 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: c445276afb97ae945af5b345696bcf2c, type: 3}
   - {fileID: 3170614222137734241, guid: bf78b0bbbc65cc84388e39832f0cec87, type: 3}
   - {fileID: 3170614222137734241, guid: fbf9edc733d3ce04eb110e19f247ccad, type: 3}
+  - {fileID: 3170614222137734241, guid: ed66f303958671447947caaf808101d2, type: 3}
+  - {fileID: 3170614222137734241, guid: 52cb93f185bf84b42aa58f0646a8afce, type: 3}
   - {fileID: 3170614222137734241, guid: f4e89f267bc3e9941abf3029a13d7caa, type: 3}
   - {fileID: 3170614222137734241, guid: 86f0d9b3c177f8745b344e3acd8626dc, type: 3}
 --- !u!114 &613893885
@@ -19390,8 +19392,16 @@ MonoBehaviour:
       - {fileID: 0}
       - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     normalBattleFEPool:
-    - weight: 10
+    - weight: 80
       fieldEffect: {fileID: 0}
+    - weight: 5
+      fieldEffect: {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}
+    - weight: 5
+      fieldEffect: {fileID: 471706018376148968, guid: 88ecece663c8860408de7e960363f832, type: 3}
+    - weight: 5
+      fieldEffect: {fileID: 471706018376148968, guid: b053e9dde507f7e46859e12c17193e2f, type: 3}
+    - weight: 5
+      fieldEffect: {fileID: 471706018376148968, guid: 085f1034c3cf5a54483007ec5468437f, type: 3}
   content: {fileID: 1232300787}
   mapScroll: {fileID: 2056143813}
   layerPanel: {fileID: 5945821885414207982, guid: ae427af8aad94504ca69d7ea0869a4b2, type: 3}
@@ -19694,7 +19704,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

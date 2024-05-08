@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: -6922174884927904260}
+  m_Layer: 0
+  m_Name: RaE_Statue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6922174884927904260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570aca0faa2ee934eb76ae30c9afe633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u5973\u795E\u50CF"
+  REInfo: "\u795E\u8056\u306A\u5973\u795E\u50CF\u304C\u898B\u3048\u305F\n\u50CF\u306E\u5468\u308A\u306B\u306F\u3001\u4F9B\u7269\u304C\u6367\u3052\u3089\u308C\u3066\u3044\u308B"
+  options:
+  - optionName: "\u7948\u308A\u3092\u6367\u3052\u308B"
+    optionInfo: "\u5168\u54E1\u304CSAN\u30922-10\u56DE\u5FA9\u3059\u308B"
+  - optionName: "\u4F9B\u7269\u3092\u76D7\u3080"
+    optionInfo: "\u5168\u54E1\u304CSAN\u30925-10\u5931\u3046\n\u88C5\u5099\u54C1\u30921-4\u3064\u5165\u624B\u3059\u308B"
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    dropItems: []
+    dropItemFromPresets: []
+    dropEquipmentsRange: {x: 1, y: 4}

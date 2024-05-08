@@ -52,7 +52,7 @@ public class DebugFunction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
+            //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);

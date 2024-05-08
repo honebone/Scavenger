@@ -128,7 +128,7 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 04000000
+    actionTargetsInt: 08000000
   - actionName: "\u8150\u6557"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -211,4 +211,4 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0b000000
+    actionTargetsInt: 0d000000

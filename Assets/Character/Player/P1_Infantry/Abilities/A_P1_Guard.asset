@@ -13,47 +13,69 @@ MonoBehaviour:
   m_Name: A_P1_Guard
   m_EditorClassIdentifier: 
   abilityName: "\u9632\u5FA1"
+  lockedDefault: 0
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
   activateSprite: {fileID: 4119418044249080708, guid: 6b7dcab8d0619d6448fcb942b3ac98c0, type: 3}
-  spriteIndex: 0
-  SE: {fileID: 0}
   abilityType: 3
   excludeRandomPool: 0
   selectWeight: 1
+  availableFront: 1
+  availableMid: 1
+  availableBack: 0
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 1
-  availableMid: 1
-  availableBack: 0
   actionsStaus:
   - actionName: "\u9632\u5FA1"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
     friendly: 1
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 1
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -63,6 +85,8 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -89,6 +113,10 @@ MonoBehaviour:
       stack: 2
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -97,13 +125,11 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 3
-    SE: {fileID: 0}
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 4119418044249080708, guid: 6b7dcab8d0619d6448fcb942b3ac98c0, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargets:
-    - {fileID: 0}
     actionTargetsInt: 04000000

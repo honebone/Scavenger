@@ -12,6 +12,8 @@ public class AbilityButton : MonoBehaviour
     [SerializeField]
     Image frame;
     [SerializeField]
+    Image locked;
+    [SerializeField]
     Text nameText;
     [SerializeField]
     Text remainText;
@@ -34,6 +36,7 @@ public class AbilityButton : MonoBehaviour
 
         nameText.text = abilityStatus.abilityName;
         available = abilityStatus.CheckAvailable(character,cm);
+        if (abilityStatus.locked) { locked.enabled = true; }
         if (!available) { nameText.color = Color.red; }
         if (abilityStatus.cooldown > 0) { 
             cooldownText.text = abilityStatus.cooldown.ToString(); 

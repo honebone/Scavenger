@@ -152,7 +152,13 @@ public class ActionQueueManager : MonoBehaviour
         soundManager.PlaySE(SE_ability);
 
         actionStatus.actionOwner.SetActionInvolvedIcon(true);
-        foreach(Action action in inQueueActions)
+
+        if (!actionStatus.condition.searchAsPos && actionStatus.targetType != Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
+        {
+            foreach (Character target in actionStatus.actionTargets) { target.SetActionInvolvedIcon(false); }
+        }
+
+        foreach (Action action in inQueueActions)//2つめ以降のアビリティ効果についても同様の処理
         {
             if (action.GetActionStatus().abilityEffect)
             {

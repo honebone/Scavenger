@@ -37,6 +37,7 @@ public class Ability : MonoBehaviour
 
         public Action.ActionStatus[] actionsStatus;
 
+        public bool locked;
         public int unavailable;//PAなどによって操作
         public int cooldown;
         public int remain;
@@ -48,7 +49,9 @@ public class Ability : MonoBehaviour
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
-            string s = string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
+            string s = "";
+            if (locked) { s += "(未開放のアビリティ)\n".ColorStr(Definer.colorRef.failed_unavailable); }
+                s+= string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
             s += ("発動可能列：");
             if (!refCharaStatus || characterStatus.position < 9)
             {
@@ -144,6 +147,7 @@ public class Ability : MonoBehaviour
                         
             }
 
+            locked = data.lockedDefault;
             index = idx;
             cooldown = cooldownOnBattleStart;
             remain=remainOnBattleStart;
@@ -152,6 +156,8 @@ public class Ability : MonoBehaviour
             //character = owner;
         }
        
+
+        public void Unlock() { locked = false; }
         public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }
         public void SetRemain(int value) { remain = Mathf.Clamp(value, 0, maxRemain); }
         public void StartCoolDown() { cooldown = cooldownOnUse; }
@@ -167,7 +173,7 @@ public class Ability : MonoBehaviour
             if (availableBack && column == 2) { atProperPos = true; }
             hasProperTarget = !BattleManager.inBattle || HasProperTarget(cm,owner);
             properCondition = !hasSelfCondition || cm.CheckIfMatchCondition(owner, selfCondition);
-            return (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos && hasProperTarget && properCondition;
+            return !locked && (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos && hasProperTarget && properCondition;
         }
         public bool HasProperTarget(CharactersManager charactersManager,Character actionOwner)//Initせずに使う
         {

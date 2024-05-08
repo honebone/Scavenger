@@ -48,6 +48,7 @@ public class ExpeditionManager : MonoBehaviour
 
         /// <summary>x‹‹•i‚Ì‘I‘ğˆ‚Ì”</summary>
         public int supplyOptions = 3;
+
     }
     [SerializeField]
     PartyStatus partyStatus;

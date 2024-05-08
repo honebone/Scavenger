@@ -596,7 +596,7 @@ public class Character : MonoBehaviour
     }
     public void ResetCharaSprite()
     {
-        charaObj.SetCharaSprite(charaStatus.variableSprites[0]);
+        if (!charaStatus.dead) { charaObj.SetCharaSprite(charaStatus.variableSprites[0]); }
     }
     public void SetCharaSprite(GameObject sprite)
     {
@@ -1046,24 +1046,7 @@ public class Character : MonoBehaviour
         battleManager.RemoveTurn(this);
 
         foreach (LootPanel.DropItem dropItem in charaStatus.dropItems)
-        {
-            //float[] dropRate = FindObjectOfType<PartyManager>().GetPartyStatus().dropMaterialChance;
-            //float[] dropRate = new float[] {60, 30, 10, 5, 1 };
-            //int dropQuantity = 0;
-            //for (int i = 0; i < dropItem.quantity; i++)
-            //{
-            //    if (dropRate[(int)dropItem.GetItemData().rarity].Probability())
-            //    {
-            //        dropQuantity++;
-            //    }
-            //}
-
-            //if (dropQuantity > 0)
-            //{
-            //    Definer.Item item = new Definer.Item();
-            //    item.Init(dropItem.GetItemData());
-            //    loot.AddItem(item, dropQuantity);
-            //}
+        { 
             loot.DropItem_Enemy(dropItem);
         }
 
@@ -1071,6 +1054,10 @@ public class Character : MonoBehaviour
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
+        foreach(PassiveAbility pa in PA_StE)
+        {
+            pa.GetComponent<PA_StatusEffect>().DestroyIcon();
+        }
 
         if (charaStatus.corpse != null)
         {

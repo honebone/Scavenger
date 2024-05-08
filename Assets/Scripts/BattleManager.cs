@@ -55,9 +55,21 @@ public class BattleManager : MonoBehaviour
     FieldEffect fieldEffect;
     int roundCount;
 
-    List<Character> characterInTurnOrder;
-    List<Battle_TurnOrderIcon> turnOrderIcons=new List<Battle_TurnOrderIcon>();
-    int currentTurn;
+    public class Turn
+    {
+        public Character character;
+        public Battle_TurnOrderIcon turnIcon;
+
+        public Turn(Character chara, Battle_TurnOrderIcon icon)
+        {
+            character = chara;
+            turnIcon = icon;
+        }
+    }
+    List<Turn> turns;
+    //List<Battle_TurnOrderIcon> turnOrderIcons=new List<Battle_TurnOrderIcon>();
+    Turn currentTurn;
+    int currentTurnCount;
     /// <summary>nextRoundButtonを押せるかどうか</summary>
     //bool roundEnd;
 
@@ -78,7 +90,7 @@ public class BattleManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         positionManagers = charactersManager.GetPositionManagers();
 
-        characterInTurnOrder=new List<Character>();
+        turns = new List<Turn>();
     }
 
     public void BattleStart(GameObject fieldEffectObj)
@@ -129,33 +141,35 @@ public class BattleManager : MonoBehaviour
     }
     public void DicideTurnOrder()
     {
-        currentTurn = 0;
-        characterInTurnOrder.Clear();
+        currentTurn = null;
+        currentTurnCount = 0;
+        turns.Clear();
         List<Character> charas = new List<Character>(charactersManager.GetExistingCharacters_All());
-        List<int> turns = new List<int>();
+        List<int> turnsPerRound = new List<int>();
         List<float> ACT = new List<float>();
 
         foreach(Character chara in charas)
         {
-            turns.Add(chara.GetCharacterStatus().turnPerRound);
+            turnsPerRound.Add(chara.GetCharacterStatus().turnPerRound);
             ACT.Add(chara.GetCharacterStatus().ACT);
             chara.SetTurnIcon();
         }
-        for (int i = 0; turns.Count > 0; i++)
+        for (int i = 0; turnsPerRound.Count > 0; i++)
         {
             int a = ACT.ChoiceWithWeight();
-            if(turns[a] > 0)
+            if(turnsPerRound[a] > 0)
             {
-                characterInTurnOrder.Add(charas[a]);
+                //characterInTurnOrder.Add(charas[a]);
                 var t = Instantiate(turnOrderIcon, turnOrderIconParent);
                 t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < partyStatus.turnOrderReveal);
-                turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
-                turns[a]--;
+                //turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
+                turns.Add(new Turn(charas[a], t.GetComponent<Battle_TurnOrderIcon>()));
+                turnsPerRound[a]--;
             }
             else
             {
                 charas.RemoveAt(a);
-                turns.RemoveAt(a);
+                turnsPerRound.RemoveAt(a);
                 ACT.RemoveAt(a);
             }
         }
@@ -167,17 +181,18 @@ public class BattleManager : MonoBehaviour
         Trigger_TurnOrderDecide();
     }
 
+    /// <summary>消滅時に呼ばれる</summary>
     public void RemoveTurn(Character chara)
     {
-        List<Battle_TurnOrderIcon> removeTurns = new List<Battle_TurnOrderIcon>();
-        foreach (Battle_TurnOrderIcon turn in turnOrderIcons)
+        List<Turn> removeTurns = new List<Turn>();
+        foreach (Turn turn in turns)
         {
-            if (turn.GetCharacter() == chara) { removeTurns.Add(turn); }
+            if (turn.character == chara) { removeTurns.Add(turn); }
         }
-        foreach (Battle_TurnOrderIcon remove in removeTurns)
+        foreach (Turn remove in removeTurns)
         {
-            turnOrderIcons.Remove(remove);
-            Destroy(remove.gameObject);
+            turns.Remove(remove);
+            remove.turnIcon.RemoveTurnOrderIcon();
         }
         //for (int i = 0; i < turnOrderIcons.Count; i++)
         //{
@@ -206,30 +221,41 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inRound = true;
         messageText.ResetText();
-        characterInTurnOrder[currentTurn].MyTurnStart();
+
+        currentTurn = turns[0];
+        currentTurn.character.MyTurnStart();
+        turns.RemoveAt(0);
     }
     public void TurnEnd()
     {
-        Destroy(turnOrderIconParent.GetChild(0).gameObject);
-        turnOrderIcons.RemoveAt(0);
-        for (int i = 0; i < Mathf.Min(turnOrderIcons.Count, 3); i++) { turnOrderIcons[i].Reveal(); }
-
-        for (int i = currentTurn+1; i < characterInTurnOrder.Count; i++)//次の生きているキャラのターンを開始
+        currentTurn.turnIcon.RemoveTurnOrderIcon();
+        if (turns.Count == 0) { RoundEnd(); }
+        else
         {
-            if (characterInTurnOrder[i].CheckAlive())
-            {
-                currentTurn = i;
+            for (int i = 0; i < Mathf.Min(turns.Count, 3); i++) { turns[i].turnIcon.Reveal(); }
 
-                //foreach (Character chara in charactersManager.GetExistingCharacters_All())
-                //{
-                //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
-                //}
-
-                characterInTurnOrder[i].MyTurnStart();
-                return;
-            }
+            currentTurn = turns[0];
+            currentTurn.character.MyTurnStart();
+            turns.RemoveAt(0);
         }
-        RoundEnd();//ターンが回ってきていない生きているキャラがもういないならラウンド終了
+
+        //for (int i = currentTurnCount+1; i < characterInTurnOrder.Count; i++)//次の生きているキャラのターンを開始
+        //{
+        //    if (characterInTurnOrder[i].CheckAlive())
+        //    {
+        //        currentTurnCount = i;
+
+        //        //foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        //        //{
+        //        //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
+        //        //}
+
+        //        characterInTurnOrder[i].MyTurnStart();
+        //        return;
+        //    }
+        //}
+
+        //RoundEnd();//ターンが回ってきていない生きているキャラがもういないならラウンド終了
         //if (currentTurn == characterInTurnOrder.Count) { RoundEnd(); }
         //else
         //{
@@ -254,7 +280,7 @@ public class BattleManager : MonoBehaviour
     public void BattleEnd()
     {
         infoText.AddLogText("\n◇◇◇◇戦闘終了◇◇◇◇");
-        currentTurn = 0;
+        currentTurnCount = 0;
         inRound = false;
         inBattle = false;
         if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
@@ -265,8 +291,9 @@ public class BattleManager : MonoBehaviour
             Destroy(fieldEffectP.GetChild(0).gameObject);
             fieldEffect = null;
         }
-        characterInTurnOrder = new List<Character>();
-        turnOrderIcons = new List<Battle_TurnOrderIcon>();
+        turns = new List<Turn>();
+        //characterInTurnOrder = new List<Character>();
+        //turnOrderIcons = new List<Battle_TurnOrderIcon>();
         for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }
 
         //各キャラクターにも知らせる
@@ -327,10 +354,10 @@ public class BattleManager : MonoBehaviour
     }
     public void Trigger_TurnStart()
     {
-        if (fieldEffect != null) { fieldEffect.OnTurnStart(currentTurn + 1); }
+        if (fieldEffect != null) { fieldEffect.OnTurnStart(currentTurnCount + 1); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
-            character.OnTurnStart(checkIfMyTurn(character), currentTurn + 1);
+            character.OnTurnStart(checkIfMyTurn(character), currentTurnCount + 1);
         }
         foreach (PositionManager positionManager in positionManagers)
         {
@@ -469,17 +496,10 @@ public class BattleManager : MonoBehaviour
     public void SetSelectingTarget(bool f) { selectingTarget = f; }
     public bool checkIfMyTurn(Character character)
     {
-        if (inBattle && inRound && characterInTurnOrder[currentTurn] == character) { return true; }
+        if (inBattle && inRound && currentTurn.character == character) { return true; }
         return false;
     }
-    public bool CheckIfTurnRemain(Character character)
-    {
-        for (int i = currentTurn; i < characterInTurnOrder.Count; i++)
-        {
-            if (characterInTurnOrder[i] == character) { return true; }
-        }
-        return false;
-    }
+    
 
-    public Character GetCurrntTurnChara() { return characterInTurnOrder[currentTurn]; }
+    public Character GetCurrntTurnChara() { return currentTurn.character; }
 }

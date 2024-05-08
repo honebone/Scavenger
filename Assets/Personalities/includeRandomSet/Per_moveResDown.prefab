@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   personalityStatus:
     personalityName: "\u4E0D\u5B89\u5B9A"
-    personalityType: 3
+    personalityType: 4
   statusMod:
     maxHP_mul: 0
     maxSAN_mul: 0

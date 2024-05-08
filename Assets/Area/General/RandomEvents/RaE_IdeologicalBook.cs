@@ -39,15 +39,17 @@ public class RaE_IdeologicalBook : RE_RandomEvents
 
     IEnumerator Consequence()
     {
+        infoText.AddLogText(string.Format("{0}‚Ìl‚¦•û‚É•Ï‰»‚ª–K‚ê‚½", pool[choice].GetCharacterStatus().charaName));
+        infoText.SwitchToLog();
+        yield return new WaitForSeconds(1.0f);
+
         int amount = Random.Range(1, 4);
         for (int i = 0; i < amount; i++)
         {
             expeditionManager.SetRandomPersonality(pool[choice]);
         }
-        infoText.AddLogText(string.Format("{0}‚Ìl‚¦•û‚É•Ï‰»‚ª–K‚ê‚½", pool[choice].GetCharacterStatus().charaName));
-        infoText.SwitchToLog();
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(1.5f);
         EndRoomEvent();
     }
 }

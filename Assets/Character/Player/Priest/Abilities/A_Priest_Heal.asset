@@ -30,6 +30,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0
@@ -47,7 +48,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u5B89\u606F"
     conditionInfo: 
-    targetInfo: "\u5473\u65B91\u4F53"
+    targetInfo: "HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
@@ -62,37 +63,18 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 1
       enemy: 0
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 1
       characterTags: 
       StE: []
       PE: []
-      HPPercent: 0
-      HP_lessThan: 0
+      HPPercent: 50
+      HP_lessThan: 1
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
     consumeFocus: 0
     kill: 0
@@ -111,10 +93,10 @@ MonoBehaviour:
     CRITDMod: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 10
-    healValue_max: 15
-    healPercent_min: 0
-    healPercent_max: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 20
+    healPercent_max: 30
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
