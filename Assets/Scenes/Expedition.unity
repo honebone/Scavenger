@@ -8835,6 +8835,7 @@ MonoBehaviour:
     - {fileID: 0}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   REP: {fileID: 1877823637}
+  personality: {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
   debugPanel: {fileID: 1112393169}
 --- !u!114 &613893884
 MonoBehaviour:
@@ -8977,6 +8978,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 52cb93f185bf84b42aa58f0646a8afce, type: 3}
   - {fileID: 3170614222137734241, guid: f4e89f267bc3e9941abf3029a13d7caa, type: 3}
   - {fileID: 3170614222137734241, guid: 86f0d9b3c177f8745b344e3acd8626dc, type: 3}
+  - {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0

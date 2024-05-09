@@ -219,6 +219,16 @@ public class ExpeditionManager : MonoBehaviour
     public void SetRandomPersonality(Character target) { 
         SetPersonality(target, definer.GetPersonalityDataBase().Choice());
     }
+    public void SetPersonality_ToRandom(GameObject personality)
+    {
+        List<Character> pool = new List<Character>();
+        foreach (Character c in charactersManager.GetExistingCharacters_All())
+        {
+            if (c.GetCharacterStatus().playable) { pool.Add(c); }
+        }
+
+        SetPersonality(pool.Choice(), personality);
+    }
     public void SetRandomPersonality_ToRandom()
     {
         List<Character> pool = new List<Character>();

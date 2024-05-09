@@ -24,6 +24,9 @@ public class DebugFunction : MonoBehaviour
     Transform REP;
 
     [SerializeField]
+    GameObject personality;
+
+    [SerializeField]
     GameObject debugPanel;
 
     CharactersManager charactersManager;
@@ -85,10 +88,7 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-
-            var r = Instantiate(RE, REP);
-            r.GetComponent<RoomEvent>().Init(new AreaManager.Area());
-
+            expeditionManager.SetPersonality_ToRandom(personality);
         }
         if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
     }

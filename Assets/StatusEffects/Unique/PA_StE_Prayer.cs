@@ -15,8 +15,6 @@ public class PA_StE_Prayer : PA_StatusEffect
         {
             Action.ActionStatus action = actionStatus;
             character.Enqueue(action, true, new List<Character>() { character });
-
-            Disable();
         }
     }
     //public override string GetAdditionalInfo()
