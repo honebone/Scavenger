@@ -66,7 +66,6 @@ public class Character_Object : MonoBehaviour
     /// <summary>Ž€–SŽž‚ÉŒÄ‚Î‚ê‚é </summary>
     public void HideCharacterObj()
     {
-        FindObjectOfType<InfoText>().AddDebugText("Ok");
         if (charaSpriteParent.childCount > 0) { for (int i = 0; i < charaSpriteParent.childCount; i++) { Destroy(charaSpriteParent.GetChild(i).gameObject); } }
         HPBarObj.SetActive(false);
         ShieldBarObj.SetActive(false);

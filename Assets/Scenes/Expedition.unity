@@ -8896,6 +8896,7 @@ MonoBehaviour:
     SANDecrease: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     failed_unavailable: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     currentState: {r: 1, g: 0.75047123, b: 0.41037738, a: 1}
+    AMod: {r: 0.39498475, g: 0.6981132, b: 0.2206301, a: 1}
   soundRef_Inspector:
     miss: {fileID: 8300000, guid: 03c3949a8c191454f9f199ed035496f2, type: 3}
     evade: {fileID: 8300000, guid: f2d5becfdc5cd1249ba72c3e3bd47605, type: 3}
@@ -12590,6 +12591,7 @@ MonoBehaviour:
     actionName: "\u6226\u7DDA\u306E\u79FB\u52D5"
     conditionInfo: 
     targetInfo: 
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
@@ -19706,7 +19708,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

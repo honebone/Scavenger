@@ -10,7 +10,11 @@ public class ActionMod : MonoBehaviour
     {
         [TextArea(3, 10)]
         public string conditionInfo;
+        public bool hideValues;
+        [TextArea(3, 10)]
+        public string exInfo;
 
+        public bool consumeFocus;
         public int decreaseHP;
 
         public bool cantCounter;
@@ -51,46 +55,51 @@ public class ActionMod : MonoBehaviour
 
         public string GetModInfo()
         {
-            string s = "";
-            if (conditionInfo != "") { s += string.Format("○{0}：\n", conditionInfo); }
-            if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
-            if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
-            if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
-            if (exDMG_int != 0) { s += ValueToStr("・与ダメージ", exDMG_int, ""); }
-            if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }
-            if (CRITCMod != 0) { s += ValueToStr("・CRIT率補正", CRITCMod, "％"); }
-            if (CRITDMod != 0) { s += ValueToStr("・CRITダメージ補正", CRITDMod, "倍"); }
-            if (sureHit) { s += "・攻撃が必中となる\n"; }
-            if (unevadable) { s += "・攻撃が回避不可となる\n"; }
-            if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }
-            if (healPercent != 0) { s += ValueToStr("・割合回復量", healPercent, "％"); }
-            if (SANHeal != 0) { s += ValueToStr("・正気度回復量", SANHeal, ""); }
-            if (SANDamage != 0) { s += ValueToStr("・正気度割合回復量", SANDamage, "％"); }
-            if (shieldAdd != 0) { s += ValueToStr("・シールド付与量", shieldAdd, ""); }
-            if (shieldRemove != 0) { s += ValueToStr("・シールド除去量", shieldRemove, ""); }
-
-            foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
+            string s = "△能力の変化△\n";
+            if (conditionInfo != "") { s += string.Format("条件：{0}\n", conditionInfo); }
+            if (!hideValues)
             {
-                PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}％の確率で", StEParams.applyChance);
-                if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+                if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
+                if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
+                if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
+                if (exDMG_int != 0) { s += ValueToStr("・与ダメージ", exDMG_int, ""); }
+                if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }
+                if (CRITCMod != 0) { s += ValueToStr("・CRIT率補正", CRITCMod, "％"); }
+                if (CRITDMod != 0) { s += ValueToStr("・CRITダメージ補正", CRITDMod, "倍"); }
+                if (sureHit) { s += "・攻撃が必中となる\n"; }
+                if (unevadable) { s += "・攻撃が回避不可となる\n"; }
+                if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }
+                if (healPercent != 0) { s += ValueToStr("・割合回復量", healPercent, "％"); }
+                if (SANHeal != 0) { s += ValueToStr("・正気度回復量", SANHeal, ""); }
+                if (SANDamage != 0) { s += ValueToStr("・正気度割合回復量", SANDamage, "％"); }
+                if (shieldAdd != 0) { s += ValueToStr("・シールド付与量", shieldAdd, ""); }
+                if (shieldRemove != 0) { s += ValueToStr("・シールド除去量", shieldRemove, ""); }
+
+                foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
+                {
+                    PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                    s += string.Format("・{0}％の確率で", StEParams.applyChance);
+                    if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                    else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                    s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+                }
+
+                if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
+                if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
+                if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
+
+                foreach (ActionData.RemoveStE remove in removeStEs)
+                {
+                    PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                    s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
+                    if (remove.removeAll) { s += "を全て除去\n"; }
+                    else { s += ValueToStr("のスタック", remove.addAmount, ""); }
+                }
             }
 
-            if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
-            if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
-            if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
+            if (exInfo != "") { s += exInfo+"\n"; }
 
-            foreach (ActionData.RemoveStE remove in removeStEs)
-            {
-                PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
-                if (remove.removeAll) { s += "を全て除去\n"; }
-                else { s += ValueToStr("のスタック", remove.addAmount, ""); }
-            }
-
-            return s;
+            return s.ColorStr(Definer.colorRef.AMod);
         }
         public string ValueToStr(string start, float value, string end)
         {

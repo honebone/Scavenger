@@ -30,6 +30,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0
@@ -48,7 +49,8 @@ MonoBehaviour:
   - actionName: "\u304B\u3076\u308A\u3064\u304D"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
-    actionInfo: "\u25CB\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\uFF1A\nATK\u88DC\u6B63+20\uFF05"
+    AModInfo: 
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
     VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
@@ -62,6 +64,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 1
       enemy: 0
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 0
@@ -73,26 +76,6 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
     consumeFocus: 1
     kill: 0

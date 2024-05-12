@@ -21,7 +21,9 @@ public class Action : MonoBehaviour
         public string conditionInfo;
         [TextArea(3, 10)]
         public string targetInfo;
-[TextArea(3, 10)]
+        [TextArea(3, 10),Header("AModのスクリプトを使わないときなどに\n条件入力して改行して変化内容書く")]
+        public string AModInfo;
+        [TextArea(3, 10)]
         public string actionInfo;
         public Sprite sprite;
 
@@ -285,6 +287,10 @@ public class Action : MonoBehaviour
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
             }
+            if (AModInfo != "")
+            {
+                s += string.Format("△能力の変化△\n条件：{0}", AModInfo).ColorStr(Definer.colorRef.AMod);
+            }
             if (actionInfo != "") { s += actionInfo + "\n"; }
 
             return s;
@@ -304,6 +310,7 @@ public class Action : MonoBehaviour
         public ActionStatus Modify(ActionMod.ActionModStatus mod)
         {
             ActionStatus modifiedStatus = this;
+            if (mod.consumeFocus) { modifiedStatus.consumeFocus = true; }
 
             modifiedStatus.decreaseHP_min += mod.decreaseHP;
             modifiedStatus.decreaseHP_max += mod.decreaseHP;

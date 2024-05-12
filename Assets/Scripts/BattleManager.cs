@@ -178,6 +178,8 @@ public class BattleManager : MonoBehaviour
         //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
         //}
 
+        for (int i = 0; i < Mathf.Min(turns.Count, 3); i++) { turns[i].turnIcon.Reveal(); }
+
         Trigger_TurnOrderDecide();
     }
 

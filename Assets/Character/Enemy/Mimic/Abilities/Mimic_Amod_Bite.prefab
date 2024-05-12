@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
+    conditionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B"
+    consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 20
@@ -61,4 +63,9 @@ MonoBehaviour:
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
+    applySteParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
   checkStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}

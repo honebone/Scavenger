@@ -28,9 +28,10 @@ public class Definer : MonoBehaviour
         public Color SANHeal;
         public Color SANDecrease;
 
-
         public Color failed_unavailable;
         public Color currentState;
+
+        public Color AMod;
 
     }
     [System.Serializable]

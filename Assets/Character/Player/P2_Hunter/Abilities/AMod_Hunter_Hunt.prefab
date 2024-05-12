@@ -45,9 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
+    conditionInfo: "\u81EA\u8EAB\u306EACC\u304C100\u4EE5\u4E0A"
+    hideValues: 1
+    exInfo: "\u30FB100\u3092\u8D85\u3048\u305FACC1\u306B\u3064\u304D\u3001ATK\u88DC\u6B63+1\uFF05\n(+75\uFF05\u307E\u3067\u4E0A\u6607)"
+    consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -59,4 +65,9 @@ MonoBehaviour:
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
+    applySteParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
   maxATKMod: 75
