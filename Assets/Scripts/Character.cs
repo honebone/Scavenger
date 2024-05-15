@@ -309,7 +309,7 @@ public class Character : MonoBehaviour
 
     //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_StE = new List<PassiveAbility>();
-    protected List<PassiveAbility> PA_Pa = new List<PassiveAbility>();
+    protected List<PassiveAbility> PA_Per = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_Eq = new List<PassiveAbility>();
     List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
@@ -320,6 +320,7 @@ public class Character : MonoBehaviour
     protected CharactersManager charactersManager;
     SoundManager soundManager;
     LootPanel loot;
+    Definer definer;
 
     public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem)
     {
@@ -347,6 +348,7 @@ public class Character : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         soundManager = FindObjectOfType<SoundManager>();
         loot = FindObjectOfType<LootPanel>();
+        definer = FindObjectOfType<Definer>();
 
         if (!charaStatus.playable)
         {
@@ -359,14 +361,14 @@ public class Character : MonoBehaviour
     {
         List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
         passiveAbilities.AddRange(PA_StE);
-        passiveAbilities.AddRange(PA_Pa);
+        passiveAbilities.AddRange(PA_Per);
         passiveAbilities.AddRange(PA_Eq);
         return passiveAbilities;
     }
     public void AddPA_Personality(GameObject paObj,bool note)
     {
         var p = Instantiate(paObj, transform);
-        PA_Pa.Add(p.GetComponent<PassiveAbility>());
+        PA_Per.Add(p.GetComponent<PassiveAbility>());
         p.GetComponent<PassiveAbility>().Init(this, 1, infoText);
         if (note)
         {
@@ -399,7 +401,7 @@ public class Character : MonoBehaviour
                 PA_StE.Remove(passiveAbility);
                 break;
             case 1:
-                PA_Pa.Remove(passiveAbility);
+                PA_Per.Remove(passiveAbility);
                 break;
             case 2:
                 PA_Eq.Remove(passiveAbility);
@@ -416,7 +418,7 @@ public class Character : MonoBehaviour
                     PA_StE.Remove(deletePA);
                     break;
                 case 1:
-                    PA_Pa.Remove(deletePA);
+                    PA_Per.Remove(deletePA);
                     break;
                 case 2:
                     PA_Eq.Remove(deletePA);
@@ -574,7 +576,7 @@ public class Character : MonoBehaviour
         }
 
         info += "\n◇◇特性◇◇\n";
-        foreach (PassiveAbility pa in PA_Pa)
+        foreach (PassiveAbility pa in PA_Per)
         {
             info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
         } 
@@ -589,7 +591,9 @@ public class Character : MonoBehaviour
         }
         
         info+="\n"+targetButton.GetPositionManager().GetPEInfo();
-        infoText.SetCharaInfo(charaStatus.charaName, info, this);
+        string charaName = charaStatus.charaName;
+        if (CheckAffricted()) { charaName=charaName.ColorStr(Definer.colorRef.affricted); }
+        infoText.SetCharaInfo(charaName, info, this);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
         //charaObj.SetSelectedIcon(true);
         targetButton.SetSelectedIcon(true);
@@ -808,7 +812,23 @@ public class Character : MonoBehaviour
             infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
             soundManager.PlaySE(Definer.soundRef.SANDecrease);
             charaObj.SetSANBar();
-            if (charaStatus.SAN <= 0) { Die(1,null); }
+            if (charaStatus.SAN <= 0) 
+            { 
+                if (!CheckAffricted())
+                {
+                    charaObj.SetDamageText("精神崩壊", Definer.colorRef.affricted);
+                    infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
+                    AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
+
+                    charaStatus.SAN = charaStatus.maxSAN;
+                    charaObj.Affrict();
+                    charaObj.SetSANBar();
+                }
+                else
+                {
+                    Die(1, null);
+                }
+            }
         }
     }
 
@@ -1218,6 +1238,17 @@ public class Character : MonoBehaviour
     //public virtual void OnApplyedStE() { }
     //public virtual void OnRemoveedStE() { }
 
+    public bool CheckAffricted()
+    {
+        foreach(PassiveAbility pa in PA_Per)
+        {
+            if (pa.GetComponent<PA_Personality>().GetPersonalityStatus().personalityType == PA_Personality.PersonalityStatus.PersonalityType.affricted)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public PositionManager GetPositionManager() { return GetCharacter_TargetButton().GetPositionManager(); }
 }
 

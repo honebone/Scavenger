@@ -553,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1067,7 +1067,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5593853823710952050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,6 +1103,7 @@ MonoBehaviour:
   HPBarColor: {fileID: 5593853822631627424}
   ShieldBarObj: {fileID: 1800693861671672961}
   SANBarObj: {fileID: 5593853823460346585}
+  SANFill: {fileID: 5593853822886678987}
   TurnIconParent: {fileID: 5593853824483837415}
   TurnIcon: {fileID: 3261402175330581988, guid: a6d0cbc9e0ea7324aaf5d18f170b709a, type: 3}
   currentTurn: {fileID: 21300000, guid: e37e6d3c1fc066442bc905df63b28923, type: 3}

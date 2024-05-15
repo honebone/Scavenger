@@ -18,6 +18,8 @@ public class Definer : MonoBehaviour
         /// <summary>0:common 1:uncommon 2:rare 3:epic 4:legendary</summary>
         public Color[] rarityColors;
 
+        public Color affricted;
+
         public Color decreaseHP;
         public Color damage;
         public Color CRIT;
@@ -89,7 +91,10 @@ public class Definer : MonoBehaviour
     List<ItemData> equipmentDataBase;
     [SerializeField]
     List<GameObject> personalityDataBase;
+    [SerializeField]
+    List<GameObject> affrictionDataBase;
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
+    public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
 
 
     public static List<List<ItemData>> equipments=new List<List<ItemData>>();

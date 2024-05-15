@@ -244,6 +244,7 @@ public class ExpeditionManager : MonoBehaviour
     {
         target.AddPA_Personality(personality, true);
     }
+    
 
     public void OnEndBattle() { currentRE.OnEndBattle(); }
     public void OnEndLoot() { currentRE.OnEndLoot(); }

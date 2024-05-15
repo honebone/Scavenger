@@ -103,12 +103,18 @@ public class ActionQueueManager : MonoBehaviour
         }
     }
 
+    
+
     void WaitForResolve()
     {
         canResolve = true;
         if (autoResolve)
         {
             ResolveOne();
+        }
+        else
+        {
+            OpenQueuePanel();
         }
     }
 
@@ -209,6 +215,11 @@ public class ActionQueueManager : MonoBehaviour
     public void ToggleAutoResolve()
     {
         autoResolve = !autoResolve;
+        if (autoResolve && canResolve)
+        {
+            canResolve = false;
+            ResolveOne();
+        }
     }
 
     /// <summary>アクションの処理が終わったらアクション内で呼ばれる </summary>

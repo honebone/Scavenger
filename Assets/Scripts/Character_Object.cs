@@ -19,6 +19,8 @@ public class Character_Object : MonoBehaviour
     GameObject ShieldBarObj;
     [SerializeField]
     GameObject SANBarObj;
+    [SerializeField]
+    Image SANFill;
 
     Slider HPBar;
     Slider ShieldBar;
@@ -95,6 +97,10 @@ public class Character_Object : MonoBehaviour
         Character.CharacterStatus status = character.GetCharacterStatus();
         SANBar.maxValue = status.maxSAN;
         SANBar.value = status.SAN;
+    }
+    public void Affrict()
+    {
+        SANFill.color = Definer.colorRef.affricted;
     }
 
     int turnCounter;

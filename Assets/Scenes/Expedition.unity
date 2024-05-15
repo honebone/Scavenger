@@ -2081,8 +2081,20 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 0
+      m_Calls:
+      - m_Target: {fileID: 914944173}
+        m_TargetAssemblyTypeName: ActionQueueManager, Assembly-CSharp
+        m_MethodName: ToggleAutoResolve
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 1
 --- !u!1 &302813572
 GameObject:
   m_ObjectHideFlags: 0
@@ -8866,7 +8878,7 @@ MonoBehaviour:
     - {r: 0, g: 0.73154783, b: 1, a: 1}
     - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
     - {r: 0.7868676, g: 0, b: 1, a: 1}
-    - {r: 1, g: 0, b: 0, a: 1}
+    - {r: 0.7924528, g: 0, b: 0, a: 1}
     statusEffectColors:
     - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
     - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
@@ -8885,6 +8897,7 @@ MonoBehaviour:
     - {r: 0, g: 1, b: 1, a: 1}
     - {r: 0.6, g: 0.2, b: 1, a: 1}
     - {r: 1, g: 0.5019608, b: 0, a: 1}
+    affricted: {r: 0.7921569, g: 0, b: 0, a: 1}
     decreaseHP: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
     damage: {r: 0.764151, g: 0, b: 0, a: 1}
     CRIT: {r: 1, g: 0.54365426, b: 0, a: 1}
@@ -8980,6 +8993,10 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: f4e89f267bc3e9941abf3029a13d7caa, type: 3}
   - {fileID: 3170614222137734241, guid: 86f0d9b3c177f8745b344e3acd8626dc, type: 3}
   - {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
+  affrictionDataBase:
+  - {fileID: 3170614222137734241, guid: 931636989d1c7014ab9e740c04abd43c, type: 3}
+  - {fileID: 3170614222137734241, guid: 5b8fc18424429b2448a9fc1e2d2cb615, type: 3}
+  - {fileID: 3170614222137734241, guid: 5a4298c58f8757c4ba8daa5644c926ff, type: 3}
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19708,7 +19725,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

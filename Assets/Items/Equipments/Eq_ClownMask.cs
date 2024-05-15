@@ -22,8 +22,11 @@ public class Eq_ClownMask : PA_Equipment
             Action.ActionStatus action = actionStatus;
             List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));
             targets.Remove(character);
-            actionStatus.actionOwner = character;
-            character.Enqueue(action, true, targets);
+            if (targets.Count > 0)
+            {
+                actionStatus.actionOwner = character;
+                character.Enqueue(action, true, targets);
+            }
         }
     }
 }
