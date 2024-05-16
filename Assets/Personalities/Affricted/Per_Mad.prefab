@@ -54,7 +54,7 @@ MonoBehaviour:
     targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 3f038f4a2b6579b42ba721aed3f77f00, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 3f038f4a2b6579b42ba721aed3f77f00, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}

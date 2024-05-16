@@ -17,6 +17,8 @@ public class DebugFunction : MonoBehaviour
     ItemData Eq;
     [SerializeField]
     AreaManager.EnemySet enemySetTest;
+    [SerializeField]
+    GameObject FE;
 
     [SerializeField]
     GameObject RE;
@@ -55,13 +57,13 @@ public class DebugFunction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
+            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            FindObjectOfType<ExpeditionManager>().Battle(enemySetTest,FindObjectOfType<AreaManager>().GetArea().GetRandomFE());
+            FindObjectOfType<ExpeditionManager>().Battle(enemySetTest,FE);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }

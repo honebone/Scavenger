@@ -794,8 +794,11 @@ public class Action : MonoBehaviour
 
     void EndResolve()
     {
-        if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//UŒ‚Žž—U”­
-        if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//—^‰ñ•œŽž—U”­
+        if (actionStatus.actionOwner != null)
+        {
+            if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//UŒ‚Žž—U”­
+            if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//—^‰ñ•œŽž—U”­
+        }
 
         if (actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass) { actionStatus.actionOwner.OnActivateAbility(); }
 

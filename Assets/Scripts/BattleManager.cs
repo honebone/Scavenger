@@ -161,7 +161,7 @@ public class BattleManager : MonoBehaviour
             {
                 //characterInTurnOrder.Add(charas[a]);
                 var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-                t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < partyStatus.turnOrderReveal);
+                t.GetComponent<Battle_TurnOrderIcon>().Init(charas[a], i < partyStatus.turnOrderReveal + 1);
                 //turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
                 turns.Add(new Turn(charas[a], t.GetComponent<Battle_TurnOrderIcon>()));
                 turnsPerRound[a]--;
@@ -237,39 +237,10 @@ public class BattleManager : MonoBehaviour
             for (int i = 0; i < Mathf.Min(turns.Count, 3); i++) { turns[i].turnIcon.Reveal(); }
 
             currentTurn = turns[0];
+            currentTurnCount++;
             currentTurn.character.MyTurnStart();
             turns.RemoveAt(0);
         }
-
-        //for (int i = currentTurnCount+1; i < characterInTurnOrder.Count; i++)//次の生きているキャラのターンを開始
-        //{
-        //    if (characterInTurnOrder[i].CheckAlive())
-        //    {
-        //        currentTurnCount = i;
-
-        //        //foreach (Character chara in charactersManager.GetExistingCharacters_All())
-        //        //{
-        //        //    chara.SetOmen(); //このラウンド、ターンが1つ以上まわってくるキャラに予兆をセットさせる
-        //        //}
-
-        //        characterInTurnOrder[i].MyTurnStart();
-        //        return;
-        //    }
-        //}
-
-        //RoundEnd();//ターンが回ってきていない生きているキャラがもういないならラウンド終了
-        //if (currentTurn == characterInTurnOrder.Count) { RoundEnd(); }
-        //else
-        //{
-        //    for (int i = currentTurn; i < characterInTurnOrder.Count; i++)
-        //    {
-        //        if (characterInTurnOrder[i].CheckAlive())
-        //        {
-        //            currentTurn = i;
-        //            characterInTurnOrder[i].MyTurnStart();
-        //        }
-        //    }
-        //}
     }
 
     public void RoundEnd()

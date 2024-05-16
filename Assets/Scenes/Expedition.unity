@@ -8830,7 +8830,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96842cbd0ebe3724bb18b381324ba48e, type: 2}
   - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
   - {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
-  - {fileID: 11400000, guid: 3b8b57930531f544ab87e55ed1466a95, type: 2}
+  - {fileID: 11400000, guid: ba2de88425b4cff4ab78adcdf6f58534, type: 2}
   amount: 7e000000050000000100000002000000070000000300000015000000060000000100000001000000010000000100000001000000010000000100000001000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
@@ -8845,6 +8845,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+  FE: {fileID: 0}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   REP: {fileID: 1877823637}
   personality: {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
@@ -8969,6 +8970,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c41ab1191e7368447b59f75de3777761, type: 2}
   - {fileID: 11400000, guid: 7553868910a1db44cbd132458630c245, type: 2}
   - {fileID: 11400000, guid: 3b8b57930531f544ab87e55ed1466a95, type: 2}
+  - {fileID: 11400000, guid: ba2de88425b4cff4ab78adcdf6f58534, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -9940,7 +9942,7 @@ MonoBehaviour:
   m_Intensity: 0.75
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 17714efc
+  m_ApplyToSortingLayers: 953adc4517714efc
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -19725,7 +19727,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

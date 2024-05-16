@@ -19,6 +19,7 @@ public class FE_SiegeGoblin : FieldEffect
     {
         if (turnCount % interval == 1)
         {
+            infoText.AddDebugText(string.Format("turncount:{0} interval:{1} o:{2}", turnCount, interval, turnCount % interval));
             Action.ActionStatus act = action;
 
             List<Character> targetPool = new List<Character>(charactersManager.SearchCharaWithCondition(condition));
