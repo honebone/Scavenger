@@ -1158,7 +1158,13 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundEnd(); }
         RemovePA_Execute();
     }
-    public void OnBattleEnd() { }
+    public void OnBattleEnd()
+    {
+        charaStatus.shield = 0;//シールド量リセット
+        charaObj.SetHPandShieldBar();
+
+
+    }
 
 
     public void OnActivateAbility()

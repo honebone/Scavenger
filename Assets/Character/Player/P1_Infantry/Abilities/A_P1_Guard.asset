@@ -41,7 +41,7 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   - actionName: "\u9632\u5FA1"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}

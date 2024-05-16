@@ -275,7 +275,11 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator EndResolve()
     {
-        if (charactersManager.CheckVictory()) { battleManager.BattleEnd(); }
+        if (charactersManager.CheckVictory())
+        {
+            resolveMode = -1;
+            battleManager.BattleEnd();
+        }
         else
         {
             switch (resolveMode)
@@ -299,17 +303,17 @@ public class ActionQueueManager : MonoBehaviour
                     battleManager.GetCurrntTurnChara().EndPhase();
                     break;
                 case 4:
-                    resolveMode = -1;                   
+                    resolveMode = -1;
                     battleManager.TurnEnd();
                     break;
                 case 5:
                     resolveMode = -1;
                     battleManager.RoundStart();
-                    break ;
+                    break;
                 case 6:
                     resolveMode = -1;
                     battleManager.EndTrigger_TurnOrderDecide();
-                    break ;
+                    break;
             }
         }
     }

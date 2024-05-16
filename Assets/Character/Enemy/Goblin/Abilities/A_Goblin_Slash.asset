@@ -13,31 +13,50 @@ MonoBehaviour:
   m_Name: A_Goblin_Slash
   m_EditorClassIdentifier: 
   abilityName: "\u30B6\u30C3\u30AF\u30EA"
+  lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 4429940078702852924, guid: 4c47466700656db478676403d730dff8, type: 3}
-  spriteIndex: 0
-  SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 3
+  availableFront: 1
+  availableMid: 0
+  availableBack: 0
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 1
-  availableMid: 0
-  availableBack: 0
   actionsStaus:
   - actionName: "\u30B6\u30C3\u30AF\u30EA"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
+    AModInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
     VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 980131611971298319, guid: 16b0417be1c379642b5df8b4b4c8da27, type: 3}
     targetType: 1
     friendly: 0
     condition:
@@ -45,6 +64,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 1
       enemy: 0
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 0
@@ -57,6 +77,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -94,6 +115,9 @@ MonoBehaviour:
       stack: 5
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -106,9 +130,8 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 4429940078702852924, guid: 4c47466700656db478676403d730dff8, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 04000000
