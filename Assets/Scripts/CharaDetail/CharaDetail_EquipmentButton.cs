@@ -38,9 +38,16 @@ public class CharaDetail_EquipmentButton : MonoBehaviour
 
     public void Unequip()
     {
-        detailUI.GetDisplayingChara().UnequipItem(equipment);
-        detailUI.EndSelectEquipment();
-        detailUI.Refresh();
+        if (!FindObjectOfType<ExpeditionManager>().CheckInRoomEvent())
+        {
+            detailUI.GetDisplayingChara().UnequipItem(equipment);
+            detailUI.EndSelectEquipment();
+            detailUI.Refresh();
+        }
+        else
+        {
+            FindObjectOfType<GuideMessage>().SetWaringText("イベント中の装備変更不可");
+        }
     }
 
     public void OnMouseDown()
@@ -54,7 +61,14 @@ public class CharaDetail_EquipmentButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            detailUI.StartSelectEquipment(empty, equipment);
+            if (!FindObjectOfType<ExpeditionManager>().CheckInRoomEvent())
+            {
+                detailUI.StartSelectEquipment(empty, equipment);
+            }
+            else
+            {
+                FindObjectOfType<GuideMessage>().SetWaringText("イベント中の装備変更不可");
+            }
         }
     }
 }

@@ -122,6 +122,11 @@ public class PA_StatusEffect : PassiveAbility
         if (StEIcon != null) { Destroy(StEIcon.gameObject); }
     }
 
+    public override void OnBattleEnd()
+    {
+        Disable();
+    }
+
     [SerializeField]
     protected StatusEffectStatus StEStatus;
     StEIcon StEIcon;

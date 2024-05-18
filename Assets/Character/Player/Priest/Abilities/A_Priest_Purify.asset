@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: A_Priest_Purify
   m_EditorClassIdentifier: 
   abilityName: "\u6D44\u5316\u306E\u5149"
-  lockedDefault: 0
+  lockedDefault: 1
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  spriteIndex: 0
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
@@ -31,6 +30,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 1
     enemy: 0
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1
@@ -50,6 +50,7 @@ MonoBehaviour:
   - actionName: "\u6D44\u5316\u306E\u5149"
     conditionInfo: 
     targetInfo: "\u52171\u3064\u306E\u6575\u5168\u3066(\u6F5C\u4F0F\u3092\u7121\u8996)"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
@@ -63,6 +64,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 1
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 1
@@ -75,6 +77,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 1
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -112,6 +115,9 @@ MonoBehaviour:
       stack: 3
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs:
     - removeStE: {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
       removeAll: 1
@@ -125,15 +131,10 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 1
     abilityType: 1
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 090000000a0000000b000000

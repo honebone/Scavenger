@@ -171,9 +171,17 @@ public class ItemOptionButton : MonoBehaviour
     }
     public void Equip()
     {
-        if (hasEquipment) { equipChara.UnequipItem(currentEquipment); }
-        inventory.RemoveItem(item, item.amount);
-        equipChara.EquipItem(item);
+        if (!expeditionManager.CheckInRoomEvent())
+        {
+            if (hasEquipment) { equipChara.UnequipItem(currentEquipment); }
+            inventory.RemoveItem(item, item.amount);
+            equipChara.EquipItem(item);
+        }
+        else
+        {
+            FindObjectOfType<GuideMessage>().SetWaringText("イベント中の装備変更不可");
+        }
+       
 
         FindObjectOfType<CharaDetailUI>().EndSelectEquipment();
         FindObjectOfType<CharaDetailUI>().Refresh();

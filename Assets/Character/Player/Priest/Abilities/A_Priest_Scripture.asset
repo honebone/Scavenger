@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_Priest_Scripture
   m_EditorClassIdentifier: 
   abilityName: "\u8056\u53E5"
-  lockedDefault: 0
+  lockedDefault: 1
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -30,6 +30,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0
@@ -48,6 +49,7 @@ MonoBehaviour:
   - actionName: "\u8056\u53E5"
     conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
@@ -62,6 +64,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 1
       enemy: 0
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 1
@@ -73,26 +76,6 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
     consumeFocus: 0
     kill: 0

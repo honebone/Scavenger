@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5954328460363848495}
   - component: {fileID: 3404417727636778070}
   m_Layer: 0
-  m_Name: AMod_Goblin_Slash
+  m_Name: AMod_GoblinArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52,10 +52,10 @@ MonoBehaviour:
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 0
-    exDMG_mul: 0
+    exDMG_mul: 25
     exDMG_int: 0
     ACCMod: 0
-    CRITCMod: 50
+    CRITCMod: 0
     CRITDMod: 0
     sureHit: 0
     unevadable: 0

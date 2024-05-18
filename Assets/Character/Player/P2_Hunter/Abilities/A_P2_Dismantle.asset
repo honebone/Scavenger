@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_P2_Dismantle
   m_EditorClassIdentifier: 
   abilityName: "\u89E3\u4F53"
-  lockedDefault: 0
+  lockedDefault: 1
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 5632338022003734053, guid: e363e940eb7896d4b8b26d55ac3983c8, type: 3}
@@ -49,6 +49,7 @@ MonoBehaviour:
   - actionName: "\u89E3\u4F53"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E[\u6B7B\u4F53]1\u4F53"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
@@ -132,6 +133,7 @@ MonoBehaviour:
   - actionName: "\u89E3\u4F53"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
@@ -177,8 +179,8 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 5
-    healPercent_max: 10
+    healPercent_min: 10
+    healPercent_max: 15
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0

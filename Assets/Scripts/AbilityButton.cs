@@ -62,7 +62,7 @@ public class AbilityButton : MonoBehaviour
         {
             BattleManager.selectedAbility.StartSelectTarget();
         }
-        else
+        else if(Input.GetMouseButtonUp(0))
         {
             List<string> unavailableInfo = abilityStatus.GetUnavailabeInfo(character, charactersManager, battleManager);
             foreach(string s in unavailableInfo)

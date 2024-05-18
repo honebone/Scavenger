@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CharaDetailUI : MonoBehaviour
 {
@@ -18,9 +19,17 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     GameObject newEquipmentButton;
 
+    [Space(25), SerializeField]
+    Transform abilityP;
+    [SerializeField]
+    GameObject abilityButton;
+    [SerializeField]
+    TextMeshProUGUI abilityUpgradeInfo;
+
     InfoText infoText;
     CharactersManager charactersManager;
     Inventory inventory;
+    GuideMessage guideMessage;
 
     Character displayingChara;
     Character.CharacterStatus status;
@@ -35,6 +44,7 @@ public class CharaDetailUI : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         charactersManager = FindObjectOfType<CharactersManager>();
         inventory = FindObjectOfType<Inventory>();
+        guideMessage = FindObjectOfType<GuideMessage>();
         displayingChara = null;
     }
 
@@ -82,6 +92,8 @@ public class CharaDetailUI : MonoBehaviour
             status = displayingChara.GetCharacterStatus();
 
             SetEquipmnetButtons();
+            SetAbilityButtons();
+            abilityUpgradeInfo.text = "";
             displayingChara.DisplayInfo();
         }
     }
@@ -117,6 +129,26 @@ public class CharaDetailUI : MonoBehaviour
     {
         selectingEquipment = false;
         selectedEq = new Definer.Item();
+    }
+
+    public void SetAbilityButtons()
+    {
+        if (abilityP.childCount != 0)
+        {
+            for (int i = 0; i < abilityP.childCount; i++)
+            {
+                Destroy(abilityP.GetChild(i).gameObject);
+            }
+        }
+        foreach (Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
+        {
+            if (abilityStatus.locked)
+            {
+                var a = Instantiate(abilityButton, abilityP);
+                a.GetComponent<CharaDetail_AbilityButton>().Init(abilityStatus, displayingChara, guideMessage, infoText,this,abilityUpgradeInfo);
+            }
+            //アップグレード
+        }
     }
 
     public void NextChara()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_P1_UpperSlash
   m_EditorClassIdentifier: 
   abilityName: "\u5207\u308A\u4E0A\u3052"
-  lockedDefault: 0
+  lockedDefault: 1
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2401220359373207913, guid: b6b87453919615542ab3880a5fdc03b8, type: 3}

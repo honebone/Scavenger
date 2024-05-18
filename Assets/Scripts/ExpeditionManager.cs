@@ -91,6 +91,8 @@ public class ExpeditionManager : MonoBehaviour
     LootPanel lootPanel;
     GameManager gameManager;
 
+    bool inRoomEvent;
+
     private void Start()
     {
         definer = FindObjectOfType<Definer>();
@@ -139,6 +141,7 @@ public class ExpeditionManager : MonoBehaviour
         currentRoom = GetRoom(currentPos);
         soundManager.PlaySE(SE_nextRoom);
 
+        inRoomEvent = true;
         StartCoroutine(AnimationForNextRoom());
     }
     IEnumerator AnimationForNextRoom()
@@ -254,6 +257,7 @@ public class ExpeditionManager : MonoBehaviour
     public void EndRoomEvent()
     {
         //Ç†Å[ÇæÇ±Å[Çæ
+        inRoomEvent = false;
         if (partyStatus.getPerChance_endRE.Probability())
         {
             SetRandomPersonality_ToRandom();
@@ -280,4 +284,6 @@ public class ExpeditionManager : MonoBehaviour
     public Room GetRoom(Vector2Int pos) { return layers[pos.x].GetRoom(pos.y); }
     public RoomEvent GetCurrentRE() { return currentRE; }
     public AreaManager GetAreaManager() { return currentAreaManger; }
+
+    public bool CheckInRoomEvent() { return inRoomEvent; }
 }

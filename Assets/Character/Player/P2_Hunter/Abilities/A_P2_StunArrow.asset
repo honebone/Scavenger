@@ -13,28 +13,46 @@ MonoBehaviour:
   m_Name: A_P2_StunArrow
   m_EditorClassIdentifier: 
   abilityName: "\u9EBB\u75FA\u77E2"
+  lockedDefault: 1
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
-  spriteIndex: 0
-  SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
+  availableFront: 0
+  availableMid: 1
+  availableBack: 1
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 1
   maxRemain: 1
-  availableFront: 0
-  availableMid: 1
-  availableBack: 1
   actionsStaus:
   - actionName: "\u9EBB\u75FA\u77E2"
     conditionInfo: 
     targetInfo: "\u4E2D\u30FB\u5F8C\u5217\u306E\u65751\u4F53"
+    AModInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
     VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
     actionObject: {fileID: 0}
     actionMods:
@@ -46,6 +64,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 1
+      onlyPlayable: 0
       front: 0
       mid: 1
       back: 1
@@ -58,6 +77,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -95,6 +115,9 @@ MonoBehaviour:
       stack: 1
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -107,9 +130,8 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     abilityType: 1
-    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 0d000000

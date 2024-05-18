@@ -47,18 +47,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "\u6BD2"
-    StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304CX\u6E1B\u5C11\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
+    StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304C[\u30B9\u30BF\u30C3\u30AF\u6570]\u6E1B\u5C11\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
     StEIcon: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
     StEType: 5
     maxStack: 0
     merge: 0
     refValue: 0
+    undeletable: 0
     stack: 0
     value: 0
   actionStatus:
     actionName: "\u6BD2"
     conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
     SE: {fileID: 0}
@@ -72,6 +74,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -84,6 +87,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -117,7 +121,9 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
-    removeDebuff: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []

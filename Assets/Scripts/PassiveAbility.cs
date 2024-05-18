@@ -63,6 +63,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnTurnStart(bool myTurn, int turnCount) { }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }
+
+    /// <summary> ‚±‚±‚ÅEnqueue‚µ‚È‚¢!! </summary>
     public virtual void OnBattleEnd() { }
 
 

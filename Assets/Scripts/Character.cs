@@ -144,6 +144,11 @@ public class Character : MonoBehaviour
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
             }
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
+
+            foreach (GameObject actionMod in actionMods)
+            {
+                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+            }
             return s;
         }
 
@@ -1163,7 +1168,8 @@ public class Character : MonoBehaviour
         charaStatus.shield = 0;//シールド量リセット
         charaObj.SetHPandShieldBar();
 
-
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnBattleEnd(); }
+        RemovePA_Execute();
     }
 
 

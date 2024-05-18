@@ -30,7 +30,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af938c11dd74671499a48dd2906915a8, type: 2}
   - {fileID: 11400000, guid: 17c74a47b2163514cbb0d6d0ec2a71ff, type: 2}
   passiveAbilities: []
-  actionMods: []
+  actionMods:
+  - {fileID: 980131611971298319, guid: 82215e08a1362904fbc5fa55f480ae10, type: 3}
   corpse: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}
   dropItems:
   - dropItem: {fileID: 11400000, guid: 9b3ecad76c8787b4cb463a18d479a910, type: 2}

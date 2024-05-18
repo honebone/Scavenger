@@ -6,6 +6,7 @@ public class AMod_Focus : ActionMod
 {
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
+        actionModStatus.consumeFocus = true;
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
             if (statusRef.actionTargets[i].GetCharacterStatus().focused > 0)

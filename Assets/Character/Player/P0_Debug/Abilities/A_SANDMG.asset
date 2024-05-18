@@ -57,7 +57,7 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
-    friendly: 0
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -129,4 +129,4 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 04000000
+    actionTargetsInt: 08000000
