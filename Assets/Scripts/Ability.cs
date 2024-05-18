@@ -175,6 +175,36 @@ public class Ability : MonoBehaviour
             properCondition = !hasSelfCondition || cm.CheckIfMatchCondition(owner, selfCondition);
             return !locked && (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos && hasProperTarget && properCondition;
         }
+
+        public List<string> GetUnavailabeInfo(Character owner, CharactersManager cm,BattleManager bm)
+        {
+            List<string> info = new List<string>();
+            Character.CharacterStatus ownerStatus = owner.GetCharacterStatus();
+            if (!BattleManager.inBattle || !ownerStatus.playable) { return info; }
+
+            bool atProperPos = false;
+            bool hasProperTarget = false;
+            bool properCondition = false;
+
+           
+            int column = ownerStatus.position.GetColumn();
+            if (availableFront && column == 0) { atProperPos = true; }
+            if (availableMid && column == 1) { atProperPos = true; }
+            if (availableBack && column == 2) { atProperPos = true; }
+            hasProperTarget = HasProperTarget(cm, owner);
+            properCondition = !hasSelfCondition || cm.CheckIfMatchCondition(owner, selfCondition);
+
+            if (locked) { info.Add("未解放のアビリティ"); }
+            if (!bm.checkIfMyTurn(owner)) { info.Add("自身のターンでない"); }
+            if (hasRemain && remain <= 0) { info.Add("使用可能数0"); }
+            if (cooldown>0) { info.Add("クールダウン中"); }
+            if (!atProperPos) { info.Add("発動可能列にいない"); }
+            if (!hasProperTarget) { info.Add("対象なし"); }
+            if (!properCondition || unavailable > 0) { info.Add("発動条件を満たしていない"); }
+
+
+            return info;
+        }
         public bool HasProperTarget(CharactersManager charactersManager,Character actionOwner)//Initせずに使う
         {
             Character.CharacterStatus targetStatus;

@@ -90,7 +90,8 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            expeditionManager.SetPersonality_ToRandom(personality);
+            //expeditionManager.SetPersonality_ToRandom(personality);
+            FindObjectOfType<GuideMessage>().SetWaringText("ƒeƒXƒg");
         }
         if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
     }

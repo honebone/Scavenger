@@ -24,15 +24,17 @@ public class AbilityButton : MonoBehaviour
     BattleManager battleManager;
     Character character;
     CharactersManager charactersManager;
+    GuideMessage guideMessage;
 
     bool available;
 
-    public void Init(Ability.AbilityStatus status,BattleManager bm,Character chara,CharactersManager cm)
+    public void Init(Ability.AbilityStatus status,BattleManager bm,Character chara,CharactersManager cm,GuideMessage gm)
     {
         abilityStatus = status;
         battleManager = bm;
         character = chara;
         charactersManager = cm;
+        guideMessage = gm;
 
         nameText.text = abilityStatus.abilityName;
         available = abilityStatus.CheckAvailable(character,cm);
@@ -56,9 +58,17 @@ public class AbilityButton : MonoBehaviour
         battleManager.SetSelectedAbility(abilityStatus, character);
         FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), BattleManager.selectedAbility.GetInfo());
         charactersManager.ResetAllTargetIcons();
-        if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility&&available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
+        if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
         {
             BattleManager.selectedAbility.StartSelectTarget();
+        }
+        else
+        {
+            List<string> unavailableInfo = abilityStatus.GetUnavailabeInfo(character, charactersManager, battleManager);
+            foreach(string s in unavailableInfo)
+            {
+                guideMessage.SetWaringText(s);
+            }
         }
     }
 }
