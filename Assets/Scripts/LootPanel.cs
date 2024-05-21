@@ -6,6 +6,7 @@ public class LootPanel : MonoBehaviour
 {
     [SerializeField]//test
     List<Definer.Item> loots = new List<Definer.Item>();
+    int expOrbs;
     [SerializeField]
     GameObject lootPanel;
     [SerializeField]
@@ -20,6 +21,7 @@ public class LootPanel : MonoBehaviour
 
     [SerializeField]
     AudioClip SE_Equipment;
+    [SerializeField] AudioClip SE_Exp;
 
     bool revealing;
 
@@ -108,6 +110,11 @@ public class LootPanel : MonoBehaviour
                 a -= item.data.amountPerStack;
             }
         }
+        if (expOrbs > 0)
+        {
+            var eb = Instantiate(itemButton, content);
+            eb.GetComponent<LootButton>().Init_AsExp(expOrbs, infoText, soundManager);
+        }
     }
     IEnumerator Reveal()
     {
@@ -117,11 +124,19 @@ public class LootPanel : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             lootButton.Reveal();
 
-            Definer.Item item = lootButton.GetItem();
-            soundManager.PlaySE(Definer.soundRef.getItem[(int)item.data.rarity]);
-            if (item.data.itemType == ItemData.ItemType.equipment) { soundManager.PlaySE(SE_Equipment); }
-            if (item.data.rarity == ItemData.Rarity.epic) { yield return new WaitForSeconds(0.5f); }
-            else if (item.data.rarity == ItemData.Rarity.legendary) { yield return new WaitForSeconds(1f); }
+            if (lootButton.GetIfExp())
+            {
+                soundManager.PlaySE(SE_Exp);
+            }
+            else
+            {
+                Definer.Item item = lootButton.GetItem();
+                soundManager.PlaySE(Definer.soundRef.getItem[(int)item.data.rarity]);
+                if (item.data.itemType == ItemData.ItemType.equipment) { soundManager.PlaySE(SE_Equipment); }
+                if (item.data.rarity == ItemData.Rarity.epic) { yield return new WaitForSeconds(0.5f); }
+                else if (item.data.rarity == ItemData.Rarity.legendary) { yield return new WaitForSeconds(1f); }
+            }
+           
         }
         revealing = false;
     }
@@ -199,6 +214,14 @@ public class LootPanel : MonoBehaviour
         loots.Add(item);
         //Sort();
     }
+    public void AddExp(int amount)
+    {
+        expOrbs += amount;
+    }
+    public void RemoveExp()
+    {
+        expOrbs = 0;
+    }
     public void RemoveItem(Definer.Item remove, int amount)
     {
         if (loots.Count == 0)
@@ -245,6 +268,10 @@ public class LootPanel : MonoBehaviour
             foreach (Definer.Item item in loots)
             {
                 inventory.AddItem(item, item.amount, true);
+            }
+            if(expOrbs > 0)
+            {
+                inventory.AddExp(expOrbs, true);
             }
             EndLoot();
         }

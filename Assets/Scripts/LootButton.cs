@@ -19,18 +19,42 @@ public class LootButton : MonoBehaviour
 
     bool revealed = false;
     Definer.Item item;
+
+    [Header("\n\nexpOrb"),SerializeField] Sprite expSprite;
+    [SerializeField] Color expColor;
+    [SerializeField] string expName;
+    [SerializeField, TextArea(3, 10)] string expInfo;
+    bool expOrb;
+    int expAmount;
     public void Init(Definer.Item i, InfoText it,SoundManager sm)
     {
         item = i;
         infoText = it;
         soundManager = sm;
     }
+    public void Init_AsExp(int amount,InfoText it, SoundManager sm)
+    {
+        expOrb = true;
+        expAmount = amount;
+        infoText = it;
+        soundManager = sm;
+    }
     public void Reveal()
     {
         revealed = true;
-        itemImage.sprite = item.data.sprite;
-        frame.color = item.data.rarity.ToColor();
-        if (item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
+
+        if (expOrb)
+        {
+            itemImage.sprite = expSprite;
+            frame.color = expColor;
+            amountText.text=expAmount.ToString();
+        }
+        else
+        {
+            itemImage.sprite = item.data.sprite;
+            frame.color = item.data.rarity.ToColor();
+            if (item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
+        }
     }
 
     public void OnMouseDown()
@@ -39,7 +63,14 @@ public class LootButton : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
+                if (expOrb)
+                {
+                    infoText.SetText(expName.ColorStr(expColor), expInfo);
+                }
+                else
+                {
+                    infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
+                }
             }
             //if (Input.GetMouseButtonDown(0))
             //{
@@ -49,4 +80,5 @@ public class LootButton : MonoBehaviour
     }
 
     public Definer.Item GetItem() { return item; }
+    public bool GetIfExp() { return expOrb; }
 }

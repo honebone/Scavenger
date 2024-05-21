@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Inventory : MonoBehaviour
     Transform content;
     [SerializeField]
     Transform optionUIPanel;
+
+    [SerializeField]
+    TextMeshProUGUI expOrbText;
 
     [SerializeField]
     GameObject inventoryButton;
@@ -91,6 +95,8 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+
+        expOrbText.text = string.Format("経験のオーブ x{0}", expOrbs);
     }
 
     public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)
@@ -152,6 +158,7 @@ public class Inventory : MonoBehaviour
         inventory.Add(replace);
         SortInventory();
     }
+   
     public void RemoveItem(Definer.Item remove,int amount)
     {
         if (inventory.Count == 0)
@@ -190,6 +197,22 @@ public class Inventory : MonoBehaviour
         }
 
         infoText.AddErrorText("持っていないアイテムの数を減らそうとしてます");        
+    }
+    public void AddExp(int amount, bool note)
+    {
+        if (note)
+        {
+            infoText.AddLogText(string.Format("●{0}x{1}を入手", "経験のオーブ", amount.ToString()));
+        }
+        expOrbs += amount;
+    } public void RemoveExp(int amount, bool note)
+    {
+        if (amount > expOrbs) { infoText.AddErrorText("減らす数所持数より多いです"); }
+        if (note)
+        {
+            infoText.AddLogText(string.Format("○{0}x{1}を失った", "経験のオーブ", amount.ToString()));
+        }
+        expOrbs -= amount;
     }
 
     void SortInventory()
