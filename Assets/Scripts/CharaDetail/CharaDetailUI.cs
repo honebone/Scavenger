@@ -26,6 +26,10 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI abilityUpgradeInfo;
 
+    [SerializeField]
+    TextMeshProUGUI expAmount;
+
+
     InfoText infoText;
     CharactersManager charactersManager;
     Inventory inventory;
@@ -96,6 +100,7 @@ public class CharaDetailUI : MonoBehaviour
             abilityUpgradeInfo.text = "";
             displayingChara.DisplayInfo();
         }
+        expAmount.text = string.Format("経験のオーブ{0}個",inventory.GetExp());
     }
     public void SetEquipmnetButtons()
     {

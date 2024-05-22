@@ -20,7 +20,7 @@ public class PA_Per_Toxic : PA_Personality
     {
         if (myTurn)
         {
-            if (chance.Probability())
+            if (chance.Dice())
             {
                 Action.ActionStatus action = actionStatus;
                 List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));

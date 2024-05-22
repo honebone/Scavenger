@@ -239,4 +239,5 @@ public class Inventory : MonoBehaviour
         }
         return materials;
     }
+    public int GetExp() { return expOrbs; }
 }

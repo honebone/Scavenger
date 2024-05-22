@@ -53,6 +53,21 @@ public class PassiveAbility : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    /// <summary>自身のスプライトを代入してEnqueue</summary>
+    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            actionStatus.sprite = sr.sprite;
+        }
+        else
+        {
+            infoText.AddDebugText(string.Format("{0}にSpriteRendererなし", GetPAName()));
+        }
+        character.Enqueue(actionStatus, setTargets, actionTargets);
+    }
     public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
 

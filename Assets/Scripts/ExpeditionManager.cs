@@ -43,6 +43,8 @@ public class ExpeditionManager : MonoBehaviour
         public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
 
+        public int dropExpChance = 50;
+
         /// <summary>roomEvent終了時に特性追加確率</summary>
         public int getPerChance_endRE = 10;
 
@@ -247,9 +249,13 @@ public class ExpeditionManager : MonoBehaviour
     {
         target.AddPA_Personality(personality, true);
     }
-    
 
-    public void OnEndBattle() { currentRE.OnEndBattle(); }
+
+    public void OnEndBattle()
+    {
+        if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
+        currentRE.OnEndBattle();
+    }
     public void OnEndLoot() { currentRE.OnEndLoot(); }
     public void OnEndSupply() { currentRE.OnEndSupply(); }
 
@@ -258,7 +264,7 @@ public class ExpeditionManager : MonoBehaviour
     {
         //あーだこーだ
         inRoomEvent = false;
-        if (partyStatus.getPerChance_endRE.Probability())
+        if (partyStatus.getPerChance_endRE.Dice())
         {
             SetRandomPersonality_ToRandom();
         }

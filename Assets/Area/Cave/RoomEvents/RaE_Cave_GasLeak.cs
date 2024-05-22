@@ -29,7 +29,7 @@ public class RaE_Cave_GasLeak : RE_RandomEvents
                     yield return new WaitForSeconds(0.5f);
                     infoText.AddLogText("");
                 }
-                if (30.Probability())
+                if (30.Dice())
                 {
                     infoText.AddLogText("ƒKƒX‚ªŒƒ‚µ‚­”š”­‚µA”š•—‚ª‚±‚¿‚ç‚Ü‚Å”ò‚ñ‚Å‚«‚½!!"); 
                     infoText.SwitchToLog();

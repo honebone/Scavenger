@@ -50,7 +50,7 @@ public class RE_Rest : RoomEvent
                     yield return new WaitForSeconds(0.5f);
                     infoText.AddLogText("");
                 }
-                if (20.Probability())
+                if (20.Dice())
                 {
                     expeditionManager.Battle(currentArea.GetRandomEnemySet(), umbushed);
                 }

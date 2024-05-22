@@ -24,7 +24,7 @@ public class PA_Per_Mad : PA_Personality
     {
         if (myTurn)
         {
-            if (chance.Probability())
+            if (chance.Dice())
             {
                 Action.ActionStatus action = SANDMG;
                 List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));

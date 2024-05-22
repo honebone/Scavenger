@@ -17,7 +17,7 @@ public class Eq_ClownMask : PA_Equipment
     }
     public override void OnDamaged(int DMG, Character attacker)
     {
-        if (chance.Probability())
+        if (chance.Dice())
         {
             Action.ActionStatus action = actionStatus;
             List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));

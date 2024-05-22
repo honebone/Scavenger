@@ -28,7 +28,7 @@ public static class Extentions
     {
         return Definer.colorRef.rarityColors[(int)rarity];
     }
-    public static bool Probability(this float fPercent)
+    public static bool Dice(this float fPercent)
     {
         bool result;
         float fProbabilityRate = UnityEngine.Random.value * 100.0f;
@@ -48,7 +48,7 @@ public static class Extentions
         //if (debug) { Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); }
         return result;
     }
-    public static bool Probability(this int fPercent)
+    public static bool Dice(this int fPercent)
     {
         bool result;
         float fProbabilityRate = UnityEngine.Random.value * 100.0f;

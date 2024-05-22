@@ -25,6 +25,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
     CharaDetailUI detailUI;
     InfoText infoText;
     TextMeshProUGUI upgradeInfo;
+    Inventory inventory;
 
     Coroutine hold;
 
@@ -36,6 +37,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
         infoText = it;
         detailUI = d;
         upgradeInfo = ui;
+        inventory = FindObjectOfType<Inventory>();
 
         nameText.text = abilityStatus.abilityName;
         frame.sprite = frames[(int)abilityStatus.abilityType];
@@ -56,13 +58,17 @@ public class CharaDetail_AbilityButton : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (!FindObjectOfType<ExpeditionManager>().CheckInRoomEvent())
+            if (FindObjectOfType<ExpeditionManager>().CheckInRoomEvent())
             {
-                hold = StartCoroutine(Hold());
+                guideMessage.SetWaringText("イベント中のアップグレード不可");
+            }
+            else if (inventory.GetExp() == 0)
+            {
+                guideMessage.SetWaringText("経験のオーブが足りない");
             }
             else
             {
-                FindObjectOfType<GuideMessage>().SetWaringText("イベント中のアップグレード不可");
+                hold = StartCoroutine(Hold());
             }
         }
     }
@@ -84,7 +90,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
             yield return wait;
             holdGauge.fillAmount += 0.05f;
         }
-
+        inventory.RemoveExp(1, true);
         if (abilityStatus.locked) { abilityStatus.Unlock(); }
         detailUI.Refresh();
     }

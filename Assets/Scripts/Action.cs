@@ -365,6 +365,8 @@ public class Action : MonoBehaviour
     {
         public bool missed;
         public bool evaded;
+        public bool CRIT;
+        public float toralCRITC;
         public Character target;
     }
     public struct OnHealParams
@@ -372,9 +374,15 @@ public class Action : MonoBehaviour
         public int healValue;
         public Character target;
     }
+    public struct OnMoveParams
+    {
+        public int dir;
+        public int range;
+    }
 
     List<OnAttackParams> onAttackParamsList = new List<OnAttackParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
+    OnMoveParams onMoveParams = new OnMoveParams();
     
     Utility util;
 
@@ -480,19 +488,21 @@ public class Action : MonoBehaviour
                 {
                     OnAttackParams onAttackParams = new OnAttackParams();
                     onAttackParams.target = target;
+                    onAttackParams.toralCRITC = ownerStatus.CRITC + actionsStatus[i].CRITCMod;
                     bool CRIT = false;
                     int DMG = 0;
 
-                    if (actionsStatus[i].sureHit || (ownerStatus.ACC + actionsStatus[i].ACCMod).Probability())
+                    if (actionsStatus[i].sureHit || (ownerStatus.ACC + actionsStatus[i].ACCMod).Dice())
                     {
-                        if (actionsStatus[i].unevadable || (100f - targetStatus.EVD).Probability())//攻撃命中
+                        if (actionsStatus[i].unevadable || (100f - targetStatus.EVD).Dice())//攻撃命中
                         {
                             float fDMG = ownerStatus.exATK;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             fDMG += ownerStatus.ATK * ATKMod;
-                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Probability())//クリティカル判定
+                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Dice())//クリティカル判定
                             {
                                 CRIT = true;
+                                onAttackParams.CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
                             }
                             fDMG *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
@@ -588,7 +598,7 @@ public class Action : MonoBehaviour
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
                         StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
-                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Probability()) { target.ApplyStE(StEParams, applyBonus); }
+                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Dice()) { target.ApplyStE(StEParams, applyBonus); }
                         else
                         {
                             target.GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
@@ -619,7 +629,7 @@ public class Action : MonoBehaviour
                     }
                     if (actionsStatus[i].moveChance > 0)//移動
                     {
-                        if ((actionsStatus[i].moveChance - targetStatus.moveRes).Probability() && !targetStatus.immovable)
+                        if ((actionsStatus[i].moveChance - targetStatus.moveRes).Dice() && !targetStatus.immovable)
                         {
                             //string test = "";
                             int moveRange = -1;
@@ -651,6 +661,12 @@ public class Action : MonoBehaviour
                             //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
 
                             moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);
+
+                            onMoveParams.dir = moveDir;
+                            onMoveParams.range = moveRange;
+
+                            target.OnMoved(onMoveParams);
+
                             moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
                             //test += string.Format("実際の移動距離:{0} 移動後のpos:{1}", moveRange, moveToPos);
                             //infoText.AddDebugText(test);
@@ -733,7 +749,7 @@ public class Action : MonoBehaviour
             {
                 foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE付与
                 {
-                    if (PEParams.applyChance.Probability())
+                    if (PEParams.applyChance.Dice())
                     {
                         infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName(true)));
                         characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams);
@@ -757,7 +773,7 @@ public class Action : MonoBehaviour
             {
                 ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).y - util.posIntToVector(moveToPos).y);
             }
-            print(ownerMoveRange);
+            print(ownerMoveRange);            
 
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
             foreach (Character c in charasOnTravelingDir)
@@ -781,6 +797,10 @@ public class Action : MonoBehaviour
                 {
                     c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - ownerMoveDir, 1));
                 }
+
+                onMoveParams.dir = ownerMoveDir;
+                onMoveParams.range = ownerMoveRange;
+                actionStatus.actionOwner.OnMoved(onMoveParams);
             }
             else
             {

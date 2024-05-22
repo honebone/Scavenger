@@ -22,7 +22,9 @@ public class AreaManager : MonoBehaviour
         public RoomEventData boss;
         public RoomEventData endArea;
         public EnemySet[] normalBattlePool;
-        public FieldEffectWeight[] normalBattleFEPool;
+        //public FieldEffectWeight[] normalBattleFEPool;
+        public int applyFEChance;
+        public List<GameObject> normalBattleFEPool;
         //nextArea
 
         public List<int> GetREWeights()
@@ -39,9 +41,14 @@ public class AreaManager : MonoBehaviour
         }
         public GameObject GetRandomFE()
         {
-            List<int> weights = new List<int>();
-            foreach (FieldEffectWeight FE in normalBattleFEPool) { weights.Add(FE.weight); }
-            return normalBattleFEPool[weights.ChoiceWithWeight()].fieldEffect;
+            //List<int> weights = new List<int>();
+            //foreach (FieldEffectWeight FE in normalBattleFEPool) { weights.Add(FE.weight); }
+            //return normalBattleFEPool[weights.ChoiceWithWeight()].fieldEffect;
+            if (applyFEChance.Dice())
+            {
+                return normalBattleFEPool.Choice();
+            }
+            else { return null; }
         }
     }
     [System.Serializable]
@@ -180,10 +187,10 @@ public class AreaManager : MonoBehaviour
     ExpeditionManager.Room SetRoom(bool setEventRandomly)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
-        if (area.branchChance.Probability()){ room.up = 1; }
+        if (area.branchChance.Dice()){ room.up = 1; }
         room.straight = 1;
-        if (area.branchChance.Probability()) { room.down = 1; }
-        if (area.blindChance.Probability()) { room.blind = true; }
+        if (area.branchChance.Dice()) { room.down = 1; }
+        if (area.blindChance.Dice()) { room.blind = true; }
         if (setEventRandomly)
         {
             room.SetRoomEvent(area.roomEvents[area.GetREWeights().ChoiceWithWeight()].roomEvent);

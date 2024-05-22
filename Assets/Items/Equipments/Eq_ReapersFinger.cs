@@ -15,7 +15,7 @@ public class Eq_ReapersFinger : PA_Equipment
     }
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if (myTurn && (character.GetCharacterStatus().CRITC * 2f).Probability())
+        if (myTurn && (character.GetCharacterStatus().CRITC * 2f).Dice())
         {
             character.Enqueue(action, true, new List<Character> { character });
         }

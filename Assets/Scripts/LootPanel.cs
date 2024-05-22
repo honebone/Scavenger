@@ -170,7 +170,7 @@ public class LootPanel : MonoBehaviour
         int dropQuantity = 0;
         for (int i = 0; i < dropItem.quantity; i++)
         {
-            if (dropRate[(int)dropItem.dropItem.rarity].Probability())
+            if (dropRate[(int)dropItem.dropItem.rarity].Dice())
             {
                 dropQuantity++;
             }
@@ -287,6 +287,7 @@ public class LootPanel : MonoBehaviour
     public void ResetLoots()
     {
         loots = new List<Definer.Item>();
+        expOrbs = 0;
         SetButtons();
     }
 

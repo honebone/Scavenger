@@ -57,7 +57,7 @@ public class DebugFunction : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
+            //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 6);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
             FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
@@ -94,5 +94,10 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<GuideMessage>().SetWaringText("ƒeƒXƒg");
         }
         if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
+    }
+
+    public void GainExp()
+    {
+        FindObjectOfType<Inventory>().AddExp(99, true);
     }
 }

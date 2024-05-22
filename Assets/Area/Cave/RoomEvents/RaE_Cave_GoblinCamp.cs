@@ -31,7 +31,7 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
         {
             case 0:
                 lootPanel.DropItem_Loot(loot);
-                if (40.Probability()) { expeditionManager.Battle(enemySet, surprise); }
+                if (40.Dice()) { expeditionManager.Battle(enemySet, surprise); }
                 else { expeditionManager.Battle(enemySet, null); }
                 break;
             case 1:
@@ -43,7 +43,7 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
                     infoText.AddLogText("");
                 }
                 lootPanel.DropItem_Loot(loot);
-                if (25.Probability())
+                if (25.Dice())
                 {
                     infoText.AddLogText("–Ú‚ğŠo‚Ü‚µ‚½ƒSƒuƒŠƒ“‚Æ–Ú‚ª‡‚Á‚½!!");
                     infoText.SwitchToLog();

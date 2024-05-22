@@ -15,6 +15,6 @@ public class Eq_PoundingHeart : PA_Equipment
     {
         Action.ActionStatus action = actionStatus;
         actionStatus.actionOwner = character;
-        character.Enqueue(action, true, new List<Character>() { character });
+       Enqueue(action, true, new List<Character>() { character });
     }
 }

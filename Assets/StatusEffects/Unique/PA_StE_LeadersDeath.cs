@@ -8,7 +8,7 @@ public class PA_StE_LeadersDeath : PA_StatusEffect
     Action.ActionStatus actionStatus;
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if (myTurn && 33.Probability())
+        if (myTurn && 33.Dice())
         {
             Action.ActionStatus action = actionStatus;
             character.Enqueue(action, true, new List<Character>() { character });

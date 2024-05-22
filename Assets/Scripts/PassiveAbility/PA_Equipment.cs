@@ -24,8 +24,8 @@ public class PA_Equipment : PassiveAbility
         public string GetInfo()
         {
             string s = "";
-            if (info_start != "") { s = info_start + "\n"; }         
-            s += statusMod.GetInfo();
+            if (info_start != "") { s = info_start + "\n"; }
+            s += statusMod.GetInfo() + "\n";
             foreach(GameObject actionMod in actionMods)
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();

@@ -268,8 +268,8 @@ public class Character : MonoBehaviour
             s += ValueToStr("maxHP", maxHP_mul, "Åì");
             s += ValueToStr("maxSAN", maxSAN_mul, "Åì");
             s += ValueToStr("ATK", ATK_mul, "Åì");
-            s += ValueToStr("CRITó¶", CRITC, "Åì(â¡éZ)");
-            s += ValueToStr("CRITÉ_ÉÅÅ[ÉW", CRITD, "î{(â¡éZ)");
+            s += ValueToStr("CRITó¶", CRITC, "Åì");
+            s += ValueToStr("CRITÉ_ÉÅÅ[ÉW", CRITD, "î{");
             s += ValueToStr("EVD", EVD, "");
             s += ValueToStr("ACC", ACC, "");
             s += ValueToStr("ACT", ACT, "");
@@ -1237,7 +1237,10 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public void OnCRITed(int ID) { }
+    public void OnMoved(Action.OnMoveParams onMoveParams)
+    {
+
+    }
     public void OnDie(Character killer)
     {
         if (BattleManager.inBattle)
