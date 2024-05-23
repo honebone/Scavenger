@@ -511,12 +511,12 @@ public class Ability : MonoBehaviour
                 targetPos.Add(new Vector2Int(targetIconPos[i].x, i));
             }
         }
-       
-        if (playable)
+
+        if (playable && (targetPos.Count > 1 || counter == 0))
         {
             for (int i = 0; i < targetPos.Count; i++)//test
             {
-                charactersManager.SetTargetIcon(targetPos[i].x, targetEmpty, targetPool[targetPos[i].y]); 
+                charactersManager.SetTargetIcon(targetPos[i].x, targetEmpty, targetPool[targetPos[i].y]);
             }
         }
         else { SelectTarget(targetPool[targetPos[Random.Range(0, targetPos.Count)].y]); }

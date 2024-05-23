@@ -68,6 +68,23 @@ public class PassiveAbility : MonoBehaviour
         }
         character.Enqueue(actionStatus, setTargets, actionTargets);
     }
+
+    /// <summary>©g‚ğ‘ÎÛ‚ÉEunqueue</summary>
+    public void Enqueue_Self(Action.ActionStatus actionStatus)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            actionStatus.sprite = sr.sprite;
+        }
+        else
+        {
+            infoText.AddDebugText(string.Format("{0}‚ÉSpriteRenderer‚È‚µ", GetPAName()));
+        }
+
+        Action.ActionStatus action = actionStatus;
+        character.Enqueue(action, true, new List<Character>() { character });
+    }
     public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
 
@@ -101,6 +118,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDamaged(int DMG, Character attacker) { }
     
     public virtual void OnCRITed(int ID) { }
+    public virtual void OnMoved(Action.OnMoveParams onMoveParams) { }
+
     /// <summary>killer:ƒLƒƒƒ‰‚ÌUŒ‚‚âEŠQŒø‰Ê‚É‚æ‚é‘ã“ü</summary>
     public virtual void OnDie(Character killer) { }
     public virtual void OnEvade(int ID) { }

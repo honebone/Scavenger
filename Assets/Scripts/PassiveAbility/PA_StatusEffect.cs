@@ -73,7 +73,7 @@ public class PA_StatusEffect : PassiveAbility
     {
         string s ="";
         if (StEStatus.maxStack == 0) { s += string.Format("{0}スタック", StEStatus.stack); }
-        else { string.Format("{0}スタック(最大{1})", StEStatus.stack, StEStatus.maxStack); }
+        else { s += string.Format("{0}スタック(最大{1})", StEStatus.stack, StEStatus.maxStack); }
         s += string.Format("[{0}]\n", Definer.StETypeName[StEStatus.StEType].ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]));
         s += GetStEInfo_forRef();
         return s;

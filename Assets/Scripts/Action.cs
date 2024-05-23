@@ -363,6 +363,8 @@ public class Action : MonoBehaviour
     //===========================[—U”­ˆ—‚Ìˆø”‚Ég‚¤]================================
     public struct OnAttackParams
     {
+        /// <summary> = !(missed||evaded)</summary>
+        public bool hit;
         public bool missed;
         public bool evaded;
         public bool CRIT;
@@ -496,6 +498,8 @@ public class Action : MonoBehaviour
                     {
                         if (actionsStatus[i].unevadable || (100f - targetStatus.EVD).Dice())//UŒ‚–½’†
                         {
+                            onAttackParams.hit = true;
+
                             float fDMG = ownerStatus.exATK;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             fDMG += ownerStatus.ATK * ATKMod;

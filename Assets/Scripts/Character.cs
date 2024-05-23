@@ -1239,7 +1239,11 @@ public class Character : MonoBehaviour
     }
     public void OnMoved(Action.OnMoveParams onMoveParams)
     {
-
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnMoved(onMoveParams); }
+            RemovePA_Execute();
+        }
     }
     public void OnDie(Character killer)
     {
