@@ -38,6 +38,7 @@ public class PA_StatusEffect : PassiveAbility
     public struct StatusEffectParams
     {
         public GameObject applyStE;
+        public bool guaranteed;
         public float applyChance;
 
         public int stack;

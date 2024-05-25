@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_Priest_Scripture
   m_EditorClassIdentifier: 
   abilityName: "\u8056\u53E5"
-  lockedDefault: 1
+  lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
@@ -40,6 +40,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 2
   hasRemain: 0
@@ -111,7 +112,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 2
       value: 10
     applyPEParams: []
@@ -123,15 +125,17 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 3
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

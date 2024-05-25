@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
+    info_start: 
     equipmentInfo: 
     statusMod:
       maxHP_mul: 0
@@ -62,12 +63,13 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      moveRes: 0
     actionMods: []
-    info_start: 
   action:
     actionName: "\u6B7B\u795E\u306E\u6307"
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642([\u81EA\u8EAB\u306ECRIT\u7387]x2\u306E\u78BA\u7387)"
     targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: a0ccf47b4cfc3d442a5f2d1123167dd1, type: 3}
     SE: {fileID: 0}
@@ -81,6 +83,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -93,6 +96,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -126,30 +130,31 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 50
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
 --- !u!212 &3238141386940741765

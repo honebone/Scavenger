@@ -31,6 +31,7 @@ public class PositionEffect : MonoBehaviour
     public struct PositionEffectParams
     {
         public GameObject applyPE;
+        public bool guaranteed;
         public float applyChance;
 
         public int stack;

@@ -127,6 +127,7 @@ public class Action : MonoBehaviour
 
         [Header("\n\n移動")]
         public float moveChance;
+        public bool guaranteedMove;
         public int moveForword;
         public int moveUpper;
         public int moveLower;
@@ -219,7 +220,8 @@ public class Action : MonoBehaviour
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}％の確率で", StEParams.applyChance);
+                if (StEParams.guaranteed) { s += "・"; }
+                else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
                 if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
@@ -228,7 +230,8 @@ public class Action : MonoBehaviour
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
                 PositionEffect.PositionEffectStatus status = PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus();
-                s += string.Format("・{0}％の確率で対象の地点に", PEParams.applyChance);
+                if(PEParams.guaranteed) { s += "・対象の地点に"; }
+                else { s += string.Format("・{0}％の確率で対象の地点に", PEParams.applyChance); }
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.value, PEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.stack); }
                 s += PEParams.applyPE.GetComponent<PositionEffect>().GetPEInfo(true);
@@ -265,9 +268,10 @@ public class Action : MonoBehaviour
                 }
             }
 
-            if (moveChance > 0)
+            if (guaranteedMove||moveChance > 0)
             {
-                s += string.Format("・{0}％の確率で", moveChance);
+                if (guaranteedMove) { s += "・"; }
+                else { s += string.Format("・{0}％の確率で", moveChance); }
                 if (moveForword > 0) { s += string.Format("{0}前進\n", moveForword); }
                 if (moveUpper > 0) { s += string.Format("{0}上昇\n", moveUpper); }
                 if (moveLower > 0) { s += string.Format("{0}下降\n", moveLower); }
@@ -607,7 +611,7 @@ public class Action : MonoBehaviour
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
                         StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
-                        if ((StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Dice()) { target.ApplyStE(StEParams, applyBonus); }
+                        if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Dice()) { target.ApplyStE(StEParams, applyBonus); }
                         else
                         {
                             target.GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
@@ -636,9 +640,9 @@ public class Action : MonoBehaviour
                     {
                         target.RemoveStE(remove);
                     }
-                    if (actionsStatus[i].moveChance > 0)//移動
+                    if (actionsStatus[i].moveBackword > 0 || actionsStatus[i].moveUpper > 0 || actionsStatus[i].moveForword > 0 || actionsStatus[i].moveLower > 0)//移動
                     {
-                        if ((actionsStatus[i].moveChance - targetStatus.moveRes).Dice() && !targetStatus.immovable)
+                        if ((actionsStatus[i].guaranteedMove || (actionsStatus[i].moveChance - targetStatus.moveRes).Dice()) && !targetStatus.immovable)
                         {
                             //string test = "";
                             int moveRange = -1;

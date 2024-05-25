@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_Priest_Consecration
   m_EditorClassIdentifier: 
   abilityName: "\u8056\u5225"
-  lockedDefault: 0
+  lockedDefault: 1
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 304073816946091927, guid: 00aba150ada93ff428ce82d2986f9109, type: 3}
@@ -40,6 +40,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 2
   hasRemain: 0
@@ -119,12 +120,14 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 3
     removeStEs_additional: []
     dontChangeSprite: 0

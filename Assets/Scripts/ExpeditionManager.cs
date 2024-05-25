@@ -92,6 +92,7 @@ public class ExpeditionManager : MonoBehaviour
     SoundManager soundManager;
     LootPanel lootPanel;
     GameManager gameManager;
+    GuideMessage guideMessage;
 
     bool inRoomEvent;
 
@@ -106,6 +107,7 @@ public class ExpeditionManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         lootPanel = FindObjectOfType<LootPanel>();
         gameManager = FindObjectOfType<GameManager>();
+        guideMessage = FindObjectOfType<GuideMessage>();
     }
     public void SetLayers(List<Map_LayerPanel> l)
     {
@@ -134,7 +136,7 @@ public class ExpeditionManager : MonoBehaviour
             if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y)).SetState_Selectable(); }
             if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y - 1)).SetState_Selectable(); }
         }
-        mapPanel.OpenMap();
+        guideMessage.SetGuideText("ƒ}ƒbƒv‚©‚çŽŸ‚ÌŠK‘w‚ÖˆÚ“®‰Â”\");
     }
     public void GoToNextRoom(Vector2Int pos)
     {

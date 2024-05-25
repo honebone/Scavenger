@@ -8,9 +8,14 @@ public class GuideMessage : MonoBehaviour
     [SerializeField] Color color_guide;
     [SerializeField] Color color_warning;
 
-   public void SetWaringText(string s)
+    public void SetWaringText(string s)
     {
         var t = Instantiate(text, transform);
         t.GetComponent<GuideMessageText>().Init(s.ColorStr(color_warning));
+    }
+    public void SetGuideText(string s)
+    {
+        var t = Instantiate(text, transform);
+        t.GetComponent<GuideMessageText>().Init(s.ColorStr(color_guide));
     }
 }

@@ -111,7 +111,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 50
     applyPEParams: []
@@ -123,6 +124,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -135,7 +137,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 08000000
   - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\n"
@@ -200,7 +202,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 50
     applyPEParams: []
@@ -212,6 +215,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -227,4 +231,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 04000000
+    actionTargetsInt: 03000000

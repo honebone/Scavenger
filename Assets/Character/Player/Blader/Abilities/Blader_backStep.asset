@@ -40,6 +40,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
@@ -118,18 +119,20 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 1
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 09000000
   - actionName: "\u30D0\u30C3\u30AF\u30B9\u30C6\u30C3\u30D7"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -194,7 +197,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 20
     applyPEParams: []
@@ -205,16 +209,18 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
-    moveChance: 200
+    moveChance: 0
+    guaranteedMove: 1
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 1
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 1
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 06000000

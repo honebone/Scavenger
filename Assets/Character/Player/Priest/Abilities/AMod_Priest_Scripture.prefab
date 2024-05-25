@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: "\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u3042\u308B\u3068\u304D"
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
     ATKMod: 0
@@ -64,9 +67,13 @@ MonoBehaviour:
     shieldRemove: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 70
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs:
     - removeStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       removeAll: 1
@@ -77,6 +84,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 1
     enemy: 1
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1
@@ -93,6 +101,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0

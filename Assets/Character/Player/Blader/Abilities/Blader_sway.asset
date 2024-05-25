@@ -119,6 +119,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 09000000
+    actionTargetsInt: 0a000000
   - actionName: "\u53D7\u3051\u6D41\u3057"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -196,7 +197,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 2
       value: 50
     applyPEParams: []
@@ -208,6 +210,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0

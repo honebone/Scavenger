@@ -9,7 +9,7 @@ public class Eq_ReapersFinger : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo() + "\n\n";
+        string s = equipmentStatus.GetInfo();
         s += action.GetInfo(false, new Character.CharacterStatus());
         return s;
     }

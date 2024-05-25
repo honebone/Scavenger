@@ -111,7 +111,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: e0a68374ad7ab2440b3683adbf0248a5, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 3
       value: 0
     applyPEParams: []
@@ -123,6 +124,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0

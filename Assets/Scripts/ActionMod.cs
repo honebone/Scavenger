@@ -78,7 +78,8 @@ public class ActionMod : MonoBehaviour
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
                 {
                     PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                    s += string.Format("・{0}％の確率で", StEParams.applyChance);
+                    if (StEParams.guaranteed) { s += "・"; }
+                    else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
                     if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
                     else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                     s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();

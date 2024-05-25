@@ -48,7 +48,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u30AB\u30A6\u30F3\u30BF\u30FC"
     StEInfo: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u3001ATK\u306EX\uFF05\u306E\u30AB\u30A6\u30F3\u30BF\u30FC\u653B\u6483\u3092\u884C\u3044\u3001\u30B9\u30BF\u30C3\u30AF-1"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: 49e62682885c45142bc014c5b05d0486, type: 3}
     StEType: 1
     maxStack: 0
     merge: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
     actionName: "\u30AB\u30A6\u30F3\u30BF\u30FC"
     conditionInfo: 
     targetInfo: "\u653B\u6483\u3057\u3066\u304D\u305F\u76F8\u624B"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
     SE: {fileID: 0}
@@ -73,6 +74,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -84,27 +86,8 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -146,12 +129,14 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0
@@ -199,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49e62682885c45142bc014c5b05d0486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
