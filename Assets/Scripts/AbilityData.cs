@@ -37,6 +37,7 @@ public class AbilityData : ScriptableObject
     public CharactersManager.SearchCharaCondition selfCondition;
 
     [Header("\n\n\nクールダウン/使用回数制限")]
+    [Header("使用してもターンが終了しない")] public bool freeAction;
     public int cooldownOnBattleStart;
     public int cooldownOnUse;
     public bool hasRemain;

@@ -27,7 +27,11 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 66294b346b387624db4c71401751f7a6, type: 2}
   - {fileID: 11400000, guid: 4aa78bef50e96dc45a0b957effe07130, type: 2}
-  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: fcbf777da79f91446961646ff2cacedc, type: 2}
+  - {fileID: 11400000, guid: fa6891c6ea1252e48886f145a8e03f59, type: 2}
+  - {fileID: 11400000, guid: f81e20cad06536c44ab28ec72dae7c4f, type: 2}
+  - {fileID: 11400000, guid: 3c11b77a0a06ece4fa38f01ce3c0cff1, type: 2}
+  - {fileID: 11400000, guid: 1e5fef3272311a542a5b899557e43dfc, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 5626464818293590775, guid: 599085dd9cc8e254daf10f2eb3d142e6, type: 3}
@@ -42,7 +46,7 @@ MonoBehaviour:
   CRITD: 1.5
   EVD: 7
   ACC: 87
-  ACT: 1200
+  ACT: 12
   turnPerRound: 2
   GHeal: 100
   RHeal: 100

@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class PA_StE_Blader_Combo : PA_StatusEffect
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int CRITCPerStack;
+    [SerializeField] float CRITDPerStack;
+
+    public override void OnPAInit()
     {
-        
+        character.AddCRITC(StEStatus.stack * CRITCPerStack);
+        character.AddCRITD(StEStatus.stack * CRITDPerStack);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnAddStack(int add)
     {
-        
+        character.AddCRITC(add * CRITCPerStack);
+        character.AddCRITD(add * CRITDPerStack);
+    }
+
+    public override void AtTheEnd()
+    {
+        character.AddCRITC(StEStatus.stack * CRITCPerStack * -1);
+        character.AddCRITD(StEStatus.stack * CRITDPerStack * -1);
     }
 }

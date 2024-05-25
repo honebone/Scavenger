@@ -549,6 +549,18 @@ public class Character : MonoBehaviour
     //    //メッセージ
     //}
 
+    public int GetStEStack(GameObject StEObj)
+    {
+        PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+        foreach (PassiveAbility pa in PA_StE)
+        {
+            if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
+            {
+                return pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().stack;
+            }
+        }
+        return 0;
+    }
     public bool CheckHasStE(GameObject StEObj)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
@@ -628,6 +640,7 @@ public class Character : MonoBehaviour
     public void SetActionInvolvedIcon(bool owner) { targetButton.SetActionInvolvedIcon(owner); }
 
     //===================================================<<ターン処理>>========================================================
+    bool continueTurn;
     public void MyTurnStart()
     {
         charaObj.SetTurnIcon_CurentTurn();
@@ -687,17 +700,21 @@ public class Character : MonoBehaviour
     {
         if (CheckAlive())
         {
-
-            OnTurnEnd();
-            charaObj.SetTurnIcon_End();
-            actionQueue.StartResolve(4);
+            if (continueTurn)
+            {
+                continueTurn = false;
+                MainPhase();
+            }
+            else
+            {
+                OnTurnEnd();
+                charaObj.SetTurnIcon_End();
+                actionQueue.StartResolve(4);
+            }           
         }
         else { battleManager.TurnEnd(); }
     }
-    //public void EndMyTurn()
-    //{
-    //    battleManager.TurnEnd();
-    //}
+  public void ContinueTurn() { continueTurn = true; }
 
 
     //======================================================<<アクションによって呼ばれる関数>>=================================================
@@ -1132,7 +1149,7 @@ public class Character : MonoBehaviour
         for(int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {
             //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
-            charaStatus.abilitiesStatus[i].AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
+            charaStatus.abilitiesStatus[i].SetRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
         }
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnBattleStart(); }
         RemovePA_Execute();

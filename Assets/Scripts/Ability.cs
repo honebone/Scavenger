@@ -25,6 +25,7 @@ public class Ability : MonoBehaviour
         public string conditionInfo;
         public CharactersManager.SearchCharaCondition selfCondition;
 
+        public bool freeAction;
         public int cooldownOnBattleStart;
         public int cooldownOnUse;
         public bool hasRemain;
@@ -87,6 +88,7 @@ public class Ability : MonoBehaviour
             {
                 s += "ターンをパスする(行動したとはみなされない)\n";
             }
+            if (freeAction) { s += "使用してもターンが終了しない\n"; }
             if (actionsStatus.Length == 1) { s += actionsStatus[0].GetInfo(refCharaStatus, characterStatus); }
             else if (actionsStatus.Length > 1)
             {
@@ -123,6 +125,7 @@ public class Ability : MonoBehaviour
             conditionInfo = data.conditionInfo;
             selfCondition = data.selfCondition;
 
+            freeAction = data.freeAction;
             cooldownOnBattleStart = data.cooldownOnBattleStart;
             cooldownOnUse = data.cooldownOnUse;
             hasRemain = data.hasRemain;
@@ -137,6 +140,7 @@ public class Ability : MonoBehaviour
 
             //actionsStatus = new Action.ActionStatus[data.actions.Length];
             //actionsStatus[0].SE = SE;
+            actionsStatus[0].freeAction = freeAction;
             for (int i = 0; i < actionsStatus.Length; i++)
             {
                 actionsStatus[i].actionName = abilityName;
@@ -144,13 +148,12 @@ public class Ability : MonoBehaviour
                 actionsStatus[i].abilityType = abilityType;
                 actionsStatus[i].dontChangeSprite = dontChangeSprite;
                 actionsStatus[i].activateSprite=activateSprite;
-                        
             }
 
             locked = data.lockedDefault;
             index = idx;
             cooldown = cooldownOnBattleStart;
-            remain=remainOnBattleStart;
+            remain = remainOnBattleStart;
 
             abilityData = data;
             //character = owner;
@@ -253,6 +256,21 @@ public class Ability : MonoBehaviour
                                 {
                                     found = true;
                                     break;
+                                }
+                            }
+                            if (found) { continue; }
+                            return false;
+                        case Action.ActionStatus.TargetType.singleWoSelf:
+                            foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                            {
+                                if (target != actionOwner)
+                                {
+                                    targetStatus = target.GetCharacterStatus();
+                                    if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
+                                    {
+                                        found = true;
+                                        break;
+                                    }
                                 }
                             }
                             if (found) { continue; }
@@ -426,6 +444,26 @@ public class Ability : MonoBehaviour
                     }
                     for(int i = 0; i < tp.Count; i++) { targetPool.Add(tp); }
 
+                    break;
+                case Action.ActionStatus.TargetType.singleWoSelf:
+                    targetEmpty = false;
+
+                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    {
+                        targetStatus = target.GetCharacterStatus();
+                        int pos = targetStatus.position;
+
+                        if (target != character)//自分自身を除く
+                        {
+                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                            {
+                                if (targetStatus.marked > 0 && !actionStatus.friendly)
+                                { targetIconPos.Add(new Vector2Int(pos, 1)); }
+                                else { targetIconPos.Add(new Vector2Int(pos, 0)); }
+                                targetPool.Add(new List<int>() { pos });
+                            }
+                        }
+                    }
                     break;
                 case Action.ActionStatus.TargetType.allWoSelf:
                     targetEmpty = true;

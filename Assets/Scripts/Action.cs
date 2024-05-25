@@ -137,6 +137,7 @@ public class Action : MonoBehaviour
 
         [Header("\n\n\n\n以下には手を出すな")]
         public bool abilityEffect;
+        public bool freeAction;
         public AbilityData.AbilityType abilityType;
 
         public List<ActionData.RemoveStE> removeStEs_additional;
@@ -428,7 +429,11 @@ public class Action : MonoBehaviour
             if (!actionStatus.actionTargetsInt.Contains(pos)) { actionStatus.actionTargetsInt.Add(pos); }
         }
 
-
+        if (actionStatus.freeAction)
+        {
+            if (!actionStatus.abilityEffect) { infoText.AddErrorText("アビリティじゃないのにフリーアクション"); }
+            actionStatus.actionOwner.ContinueTurn();
+        }
 
         List<GameObject> actionModsObj = new List<GameObject>(actionStatus.actionMods);
         //ここで色々なactionMdsを追加
@@ -777,7 +782,7 @@ public class Action : MonoBehaviour
             {
                 ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).y - util.posIntToVector(moveToPos).y);
             }
-            print(ownerMoveRange);            
+            //print(ownerMoveRange);            
 
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
             foreach (Character c in charasOnTravelingDir)

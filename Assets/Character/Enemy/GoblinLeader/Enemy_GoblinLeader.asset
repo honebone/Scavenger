@@ -36,7 +36,7 @@ MonoBehaviour:
   surviveFatalWounds: 1
   maxHP: 250
   maxSAN: 0
-  ATK: 10
+  ATK: 11
   CRITC: 5
   CRITD: 2
   EVD: 5

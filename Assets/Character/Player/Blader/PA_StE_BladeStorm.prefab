@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7416407499899449687}
-  - component: {fileID: -6365525079354113382}
+  - component: {fileID: -5500329554256866168}
   - component: {fileID: 6391350165293048886}
   m_Layer: 0
-  m_Name: PA_StE_Combo
+  m_Name: PA_StE_BladeStorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6365525079354113382
+--- !u!114 &-5500329554256866168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,22 +42,120 @@ MonoBehaviour:
   m_GameObject: {fileID: 5164891664867224302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0125ac441ece1949946437d25992c92, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a638a4412ab8914a92b4e96fb31c536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   StEStatus:
-    StEName: "\u30B3\u30F3\u30DC"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001CRIT\u7387+3\uFF05\u3001CRIT\u30C0\u30E1\u30FC\u30B80.06\u500D"
+    StEName: "\u5203\u306E\u5D50"
+    StEInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B\u653B\u6483\u3092\u518D\u767A\u52D5\u3055\u305B\u308B\n\u518D\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
     StEType: 4
-    maxStack: 5
+    maxStack: 0
     merge: 1
     refValue: 0
     undeletable: 1
     stack: 0
     value: 0
-  CRITCPerStack: 3
-  CRITDPerStack: 0.06
+  attack:
+    actionName: "\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9"
+    conditionInfo: "\u81EA\u8EAB\u304C\u79FB\u52D5\u3057\u305F\u3068\u304D"
+    targetInfo: "\u65751\u4F53"
+    AModInfo: 
+    actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
+    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 0
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      onlyPlayable: 0
+      front: 0
+      mid: 0
+      back: 0
+      characterTags: 
+      StE: []
+      PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    consumeFocus: 0
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    cantCounter: 0
+    attackType: 0
+    ATKMod_min: 40
+    ATKMod_max: 60
+    exDMG_mul: 0
+    exDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityRemainControlls: []
+    abilityEffect: 0
+    abilityType: 0
+    removeStEs_additional: []
+    dontChangeSprite: 0
+    activateSprite: {fileID: 0}
+    actionOwner: {fileID: 0}
+    actionTargetsInt: 
+  condition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    onlyPlayable: 0
+    front: 1
+    mid: 1
+    back: 1
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

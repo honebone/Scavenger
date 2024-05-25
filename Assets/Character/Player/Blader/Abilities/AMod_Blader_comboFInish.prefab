@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7946423937071675591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7621352762299875079}
+  - component: {fileID: 8985614722450331882}
+  m_Layer: 0
+  m_Name: AMod_Blader_comboFInish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7621352762299875079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946423937071675591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.04982616, y: -0.7945874, z: -0.16522327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8985614722450331882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946423937071675591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6a577dd3b51f640b59405dd738e0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionModStatus:
+    conditionInfo: 
+    hideValues: 1
+    exInfo: "\u30FB\u81EA\u8EAB\u306E\u30B3\u30F3\u30DC1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304DATK\u88DC\u6B63+25\uFF05"
+    consumeFocus: 0
+    decreaseHP: 0
+    cantCounter: 0
+    ATKMod: 0
+    exDMG_mul: 0
+    exDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    sureHit: 0
+    unevadable: 0
+    healValue: 0
+    healPercent: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldRemove: 0
+    applySteParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
+  combo: {fileID: 5164891664867224302, guid: 36c651480af2c1b46bd872d9b6fe9294, type: 3}
+  ATKModPerStack: 25

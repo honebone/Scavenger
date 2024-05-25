@@ -48,25 +48,11 @@ public static class Extentions
         //if (debug) { Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); }
         return result;
     }
-    public static bool Dice(this int fPercent)
+    public static bool Dice(this int chance)
     {
-        bool result;
-        float fProbabilityRate = UnityEngine.Random.value * 100.0f;
-        // Debug.Log(fProbabilityRate.ToString());
-        if (fPercent == 100.0f && fProbabilityRate == fPercent)
-        {
-            result = true;
-        }
-        else if (fProbabilityRate < fPercent)
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-        //Debug.Log("確率：" + fPercent.ToString("N1") + "出目：" + fProbabilityRate.ToString("N1") + "結果：" + result); 
-        return result;
+       int dice= Random.Range(0, 101);
+        //Debug.Log(string.Format("確率：{0}、出目：{1}、結果：{2}", chance, dice, dice <= chance)); 
+        return dice <= chance;
     }
     public static int ChoiceWithWeight(this float[] weight)
     {

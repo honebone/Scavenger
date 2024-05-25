@@ -8281,7 +8281,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.15
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 000000000fa673d92580145f
@@ -13068,6 +13068,7 @@ MonoBehaviour:
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0
@@ -25509,7 +25510,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3951952995086710376, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3951952995465950063, guid: 6b51a7bbab1329644ba9e97a1377ac7c, type: 3}
       propertyPath: m_IsActive
