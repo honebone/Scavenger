@@ -1017,7 +1017,7 @@ public class Character : MonoBehaviour
     }
     public void Ability_AddRemain(int value, int index) { charaStatus.abilitiesStatus[index].AddRemain(value); }
     public void Ability_SetRemain(int value, int index) { charaStatus.abilitiesStatus[index].SetRemain(value); }
-    public void Ability_StartCoolDown(int index) { charaStatus.abilitiesStatus[index].StartCoolDown(); }
+    public void Ability_StartCoolDown(int index) { charaStatus.abilitiesStatus[index].CoolDown_OnUse(); }
     public void Ability_AddCoolDown(int value, int index) { charaStatus.abilitiesStatus[index].AddCoolDown(value); }
 
     public void ChangePos(int moveTo)
@@ -1149,6 +1149,7 @@ public class Character : MonoBehaviour
         for(int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {
             //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
+            charaStatus.abilitiesStatus[i].CoolDown_OnBattleStart();
             charaStatus.abilitiesStatus[i].SetRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
         }
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnBattleStart(); }
@@ -1184,6 +1185,11 @@ public class Character : MonoBehaviour
     {
         charaStatus.shield = 0;//シールド量リセット
         charaObj.SetHPandShieldBar();
+        for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
+        {
+            charaStatus.abilitiesStatus[i].CoolDown_OnBattleStart();
+            charaStatus.abilitiesStatus[i].SetRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart);
+        }
 
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnBattleEnd(); }
         RemovePA_Execute();

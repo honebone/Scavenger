@@ -110,20 +110,20 @@ public class CharactersManager : MonoBehaviour
     /// <param name="targetEmpty">空きスペースを対象とするか</param>
     /// <param name="size">空きスペースを対象とする場合、そのサイズ</param>
     /// <param name="targetGroup"></param>
-    public void SetTargetIcon(int pos,bool targetEmpty,List<int> targetGroup)
+    public void SetTargetIcon(int pos,List<int> targetGroup)//,bool targetEmpty
     {
-        if (targetEmpty)
-        {
-            GetTargetButton(pos).SetTargetIcon(targetGroup);
-        }
-        else
-        {
-            if (CheckCharaExist(pos))
-            {
-                GetTargetButton( GetCharacterWithPos(pos).GetCharacterStatus().position).SetTargetIcon(targetGroup);
-            }
-        }
-        
+        //if (targetEmpty)
+        //{
+        //    GetTargetButton(pos).SetTargetIcon(targetGroup);
+        //}
+        //else
+        //{
+        //    if (CheckCharaExist(pos))
+        //    {
+        //        GetTargetButton( GetCharacterWithPos(pos).GetCharacterStatus().position).SetTargetIcon(targetGroup);
+        //    }
+        //}
+        GetTargetButton(pos).SetTargetIcon(targetGroup);
     }
 
     /// <summary>

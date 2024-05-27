@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: A_GoblinArcher_Shoot
   m_EditorClassIdentifier: 
   abilityName: "\u30E4\u30D0\u3044\u6BD2"
+  lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
-  spriteIndex: 0
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
@@ -30,6 +30,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0
@@ -39,6 +40,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
@@ -48,11 +50,14 @@ MonoBehaviour:
   - actionName: "\u30E4\u30D0\u3044\u6BD2"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
+    AModInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
     VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 980131611971298319, guid: 34fd5a47913ae5143b865b9c0ddfd43c, type: 3}
     targetType: 1
     friendly: 0
     condition:
@@ -60,6 +65,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 1
       enemy: 0
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 1
@@ -72,6 +78,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -105,24 +112,30 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      guaranteed: 0
       applyChance: 50
       stack: 4
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 1
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2164801177852394598, guid: c7c07444517a52f4389ae57a35f812ca, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
-    actionTargetsInt: 
+    actionTargetsInt: 08000000

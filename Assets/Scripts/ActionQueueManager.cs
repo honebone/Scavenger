@@ -40,7 +40,7 @@ public class ActionQueueManager : MonoBehaviour
     bool autoResolve;
     bool canResolve;
     //bool resolveInterval;
-    /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide</summary>
+    /// <summary>0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide 7:BatleEnd</summary>
     int resolveMode = -1;
     // Start is called before the first frame update
     void Start()
@@ -98,13 +98,13 @@ public class ActionQueueManager : MonoBehaviour
 
     /// <summary>
     /// 誘発が発生しうるタイミングの後に呼ばれる
-    /// 0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide
+    /// 0:BattleStart 1:RoundStart 2:TurnStart 3:ActivateAbility 4;TurnEnd 5:RoundEnd 6:turnOrderDecide 6:BattleEnd
     /// </summary>
     public void StartResolve(int mode)
     {
         if (resolveMode != -1) { infoText.AddErrorText(string.Format("resolveModeが予期せぬ値になっています 期待:-1 現在:{0}", resolveMode)); }
         resolveMode = mode;
-
+        if (resolveMode == 7 && inQueueActions.Count > 0) { infoText.AddErrorText("戦闘終了時にActionがEnqueueされています"); }
 
         if (inQueueActions.Count > 0)
         {
@@ -293,7 +293,7 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator EndResolve()
     {
-        if (charactersManager.CheckVictory())
+        if (resolveMode != 7 && charactersManager.CheckVictory())
         {
             resolveMode = -1;
             battleManager.BattleEnd();
@@ -331,6 +331,10 @@ public class ActionQueueManager : MonoBehaviour
                 case 6:
                     resolveMode = -1;
                     battleManager.EndTrigger_TurnOrderDecide();
+                    break;
+                case 7:
+                    resolveMode = -1;
+                    battleManager.EndTrigger_BattleEnd();
                     break;
             }
         }

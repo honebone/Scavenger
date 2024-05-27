@@ -281,8 +281,9 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        StartCoroutine(BattleEndAnim());
+        Trigger_BattleEnd();
     }
+    public void EndTrigger_BattleEnd() { StartCoroutine(BattleEndAnim()); }
 
     IEnumerator BattleEndAnim()
     {
@@ -363,6 +364,19 @@ public class BattleManager : MonoBehaviour
             positionManager.OnRoundEnd();
         }
         actionQueue.StartResolve(5);
+    }
+    public void Trigger_BattleEnd()
+    {
+        if (fieldEffect != null) { fieldEffect.OnBattleEnd(); }
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnBattleEnd();
+        }
+        foreach (PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnBattleEnd();
+        }
+        actionQueue.StartResolve(7);
     }
     void MoveFrontLine(bool player)
     {
