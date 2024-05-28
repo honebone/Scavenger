@@ -694,7 +694,7 @@ public class Character : MonoBehaviour
         battleManager.SetSelectedAbility(SelectAbility_Random(), this);
         //charaStatus.omenSet = false;
         //charaStatus.omen = new Ability.AbilityStatus();
-        BattleManager.selectedAbility.StartSelectTarget();
+        battleManager.GetSelectedAbility().StartSelectTarget();
     }
     public void EndPhase()
     {
@@ -1124,7 +1124,7 @@ public class Character : MonoBehaviour
         List<Ability.AbilityStatus> list = new List<Ability.AbilityStatus>();
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (!ability.excludeRandomPool&&ability.CheckAvailable(this,charactersManager)) { list.Add(ability); }
+            if (!ability.excludeRandomPool&&ability.instantiatedManager.CheckAvailable()) { list.Add(ability); }
         }
         return ChoiceAbilityWithWeight(list);
     }
@@ -1140,7 +1140,7 @@ public class Character : MonoBehaviour
         List<Ability.AbilityStatus> availables = new List<Ability.AbilityStatus>();
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (!(ability.excludeRandomPool && onlyIncludeRandamPool) && ability.CheckAvailable(this, charactersManager)) { availables.Add(ability); }
+            if (!(ability.excludeRandomPool && onlyIncludeRandamPool) && ability.instantiatedManager.CheckAvailable()) { availables.Add(ability); }
         }
         return availables;
     }

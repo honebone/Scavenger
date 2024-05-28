@@ -26,6 +26,7 @@ public class Character_TargetButton : MonoBehaviour
     CharactersManager charactersManager;
     InfoText infoText;
     PositionManager positionManager;
+    BattleManager battleManager;
 
     bool selectableAsTarget;
 
@@ -35,6 +36,7 @@ public class Character_TargetButton : MonoBehaviour
     {
         charactersManager = FindObjectOfType<CharactersManager>();
         infoText = FindObjectOfType<InfoText>();
+        battleManager = FindObjectOfType<BattleManager>();
         positionManager = GetComponent<PositionManager>();
     }
     public void SetCharacter(Character chara)
@@ -102,7 +104,7 @@ public class Character_TargetButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            if (selectableAsTarget) { BattleManager.selectedAbility.SelectTarget(targetGroup); }
+            if (selectableAsTarget) { battleManager.GetSelectedAbility().SelectTarget(targetGroup); }
         }
     }
     public void OnMouseOver()

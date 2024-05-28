@@ -37,7 +37,7 @@ public class AbilityButton : MonoBehaviour
         guideMessage = gm;
 
         nameText.text = abilityStatus.abilityName;
-        available = abilityStatus.CheckAvailable(character,cm);
+        available = abilityStatus.instantiatedManager.CheckAvailable();
         if (abilityStatus.locked) { locked.enabled = true; }
         if (!available) { nameText.color = Color.red; }
         if (abilityStatus.cooldown > 0) { 
@@ -56,15 +56,15 @@ public class AbilityButton : MonoBehaviour
     public void OnMouseDown()
     {
         battleManager.SetSelectedAbility(abilityStatus, character);
-        FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), BattleManager.selectedAbility.GetInfo());
+        FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo());
         charactersManager.ResetAllTargetIcons();
         if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
         {
-            BattleManager.selectedAbility.StartSelectTarget();
+            abilityStatus.instantiatedManager.StartSelectTarget();
         }
         else if(Input.GetMouseButtonUp(0))
         {
-            List<string> unavailableInfo = abilityStatus.GetUnavailabeInfo(character, charactersManager, battleManager);
+            List<string> unavailableInfo = abilityStatus.instantiatedManager.GetUnavailabeInfo();
             foreach(string s in unavailableInfo)
             {
                 guideMessage.SetWaringText(s);

@@ -43,7 +43,6 @@ public class BattleManager : MonoBehaviour
     CharactersManager.SearchCharaCondition moveFrontLineCondition;
 
     CharactersManager charactersManager;
-    Utility utility;
     InfoText infoText;
     MessageText messageText;
     ExpeditionManager expeditionManager;
@@ -77,11 +76,10 @@ public class BattleManager : MonoBehaviour
     public static bool inRound;
     public static bool selectingAbility;
     public static bool selectingTarget;
-    public static Ability selectedAbility;
+    Ability selectedAbility;
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
-        utility =FindObjectOfType<Utility>();
         infoText = FindObjectOfType<InfoText>();
         messageText = FindObjectOfType<MessageText>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
@@ -451,13 +449,8 @@ public class BattleManager : MonoBehaviour
     /// <summary>アビリティボタンをクリックしたときに呼ぶ </summary>
     public void SetSelectedAbility(Ability.AbilityStatus abilityStatus,Character character)
     {
-        for (int i = 0; i < selectedAbilityParent.childCount; i++) { Destroy(selectedAbilityParent.GetChild(i).gameObject); }
-        GameObject abilityManager;
-        if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }
-        else { abilityManager = Definer.abilityManager_General; }
-        var a = Instantiate(abilityManager, selectedAbilityParent);
-        a.GetComponent<Ability>().Init(character, abilityStatus);
-        selectedAbility = a.GetComponent<Ability>();
+        if (selectedAbility != null) { selectedAbility.ResetValue(); }
+        selectedAbility = abilityStatus.instantiatedManager;
         if (selectingAbility) { SetSelectingTarget(true); }
     }
     /// <summary>アビリティの対象選択が終了したときに呼ぶ </summary>
@@ -487,6 +480,6 @@ public class BattleManager : MonoBehaviour
         return false;
     }
     
-
+    public Ability GetSelectedAbility() { return selectedAbility; }
     public Character GetCurrntTurnChara() { return currentTurn.character; }
 }

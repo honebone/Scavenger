@@ -113,6 +113,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: eca13a4155cf122448029217a45a6d85, type: 3}
+      guaranteed: 0
       applyChance: 200
       stack: 1
       value: 0
@@ -125,12 +126,14 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0
@@ -166,7 +169,7 @@ MonoBehaviour:
     targetType: 0
     friendly: 0
     condition:
-      searchAsPos: 0
+      searchAsPos: 1
       onlyEmpty: 0
       player: 0
       enemy: 0
@@ -231,12 +234,14 @@ MonoBehaviour:
     - 25
     - 25
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0

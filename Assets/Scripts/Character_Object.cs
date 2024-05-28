@@ -7,6 +7,8 @@ public class Character_Object : MonoBehaviour
 {
     [SerializeField]
     Transform characterManagerParent;
+    [SerializeField]
+    Transform abilitiesP;
 
     [SerializeField]
     Transform charaSpriteParent;
@@ -61,8 +63,19 @@ public class Character_Object : MonoBehaviour
         if (characterStatus.position >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
 
         var c = Instantiate(charaManager, characterManagerParent);
-        character=c.GetComponent<Character>();
+        character = c.GetComponent<Character>();
         character.Init(characterStatus, this,tb,dropItem);
+
+        foreach(Ability.AbilityStatus abilityStatus in characterStatus.abilitiesStatus)
+        {
+            GameObject abilityManager;
+            if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }
+            else { abilityManager = Definer.abilityManager_General; }
+            var a = Instantiate(abilityManager, abilitiesP);
+            a.GetComponent<Ability>().Init(character, abilityStatus);
+            abilityStatus.SetManager(a.GetComponent<Ability>());
+        }
+
         charactersManager.AddCharacter(character);
     }
     /// <summary>€–S‚ÉŒÄ‚Î‚ê‚é </summary>
