@@ -12,8 +12,5 @@ public class RE_Battle : RoomEvent
     {
         lootPanel.Loot();
     }
-    public override void OnEndLoot()
-    {
-        EndRoomEvent();
-    }
+ 
 }

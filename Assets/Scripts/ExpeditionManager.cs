@@ -93,6 +93,7 @@ public class ExpeditionManager : MonoBehaviour
     LootPanel lootPanel;
     GameManager gameManager;
     GuideMessage guideMessage;
+    SupplyManager supplyManager;
 
     bool inRoomEvent;
 
@@ -108,6 +109,7 @@ public class ExpeditionManager : MonoBehaviour
         lootPanel = FindObjectOfType<LootPanel>();
         gameManager = FindObjectOfType<GameManager>();
         guideMessage = FindObjectOfType<GuideMessage>();
+        supplyManager = FindObjectOfType<SupplyManager>();
     }
     public void SetLayers(List<Map_LayerPanel> l)
     {
@@ -256,6 +258,7 @@ public class ExpeditionManager : MonoBehaviour
     public void OnEndBattle()
     {
         if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
+        supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
         currentRE.OnEndBattle();
     }
     public void OnEndLoot() { currentRE.OnEndLoot(); }

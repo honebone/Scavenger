@@ -499,8 +499,11 @@ public class Ability : MonoBehaviour
                                 }
                             }
                         }
-                        if (includeMarked_column) { tp_mark.Add(tp_column); }
-                        else { tp_noMark.Add(tp_column); }
+                        if (tp_column.Count > 0)
+                        {
+                            if (includeMarked_column) { tp_mark.Add(tp_column); }
+                            else { tp_noMark.Add(tp_column); }
+                        }
                     }
                     for (int i = 0; i < 3; i++)//Še—ñ‚É‘Î‚µ‚Äs‚¤
                     {
@@ -519,9 +522,13 @@ public class Ability : MonoBehaviour
                                 }
                             }
                         }
-                        if (includeMarked_column) { tp_mark.Add(tp_column); }
-                        else { tp_noMark.Add(tp_column); }
+                        if (tp_column.Count > 0)
+                        {
+                            if (includeMarked_column) { tp_mark.Add(tp_column); }
+                            else { tp_noMark.Add(tp_column); }
+                        }
                     }
+
                     break;
                 case Action.ActionStatus.TargetType.all:
                     List<int> tp_all = new List<int>();

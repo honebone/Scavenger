@@ -381,6 +381,11 @@ public class Action : MonoBehaviour
         public int healValue;
         public Character target;
     }
+    public struct OnApplyStEParams
+    {
+        public List<PA_StatusEffect.StatusEffectParams> appliedParams;
+        public Character taget;
+    }
     public struct OnMoveParams
     {
         public int dir;
@@ -388,6 +393,7 @@ public class Action : MonoBehaviour
     }
 
     List<OnAttackParams> onAttackParamsList = new List<OnAttackParams>();
+    List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
     OnMoveParams onMoveParams = new OnMoveParams();
     
@@ -608,16 +614,25 @@ public class Action : MonoBehaviour
                         target.RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
                     }
 
+                    OnApplyStEParams onApplyStEParams = new OnApplyStEParams();
+                    onApplyStEParams.appliedParams = new List<PA_StatusEffect.StatusEffectParams>();
+                    onApplyStEParams.taget = target;
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE•t—^
                     {
                         StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
-                        if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Dice()) { target.ApplyStE(StEParams, applyBonus); }
+                        if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Dice())
+                        {
+                            onApplyStEParams.appliedParams.Add(StEParams);
+
+                            target.ApplyStE(StEParams, applyBonus);
+                        }
                         else
                         {
                             target.GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}‚ª{1}‚ðƒŒƒWƒXƒg", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                         }
                     }
+                    if (onApplyStEParams.appliedParams.Count > 0) { onApplyStEParamsList.Add(onApplyStEParams); }
 
 
                     List< ActionData.RemoveStE > removeStEs=new List< ActionData.RemoveStE >(actionsStatus[i].removeStEs);
@@ -830,6 +845,7 @@ public class Action : MonoBehaviour
         if (actionStatus.actionOwner != null)
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//UŒ‚Žž—U”­
+            if (onApplyStEParamsList.Count > 0) { actionStatus.actionOwner.OnApplyedStE(onApplyStEParamsList); }//StE•t—^Žž—U”­
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//—^‰ñ•œŽž—U”­
         }
 

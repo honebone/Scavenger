@@ -363,6 +363,14 @@ public class CharactersManager : MonoBehaviour
         }
         return true;
     }
+    public bool CheckDefeat()
+    {
+        foreach (Character chara in existingCharacters)
+        {
+            if (chara.GetCharacterStatus().player) { return false; }//player‚ª‚¢‚é‚È‚ç”s–k‚µ‚Ä‚È‚¢
+        }
+        return true;
+    }
 
 
 

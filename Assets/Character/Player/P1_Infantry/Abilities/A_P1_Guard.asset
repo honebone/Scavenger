@@ -113,7 +113,7 @@ MonoBehaviour:
     - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 2
+      stack: 1
       value: 0
     applyPEParams: []
     removeStE_buff: 0

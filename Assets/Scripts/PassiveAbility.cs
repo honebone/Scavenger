@@ -109,7 +109,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnKill(int ID) { }
     public virtual void OnMiss(int ID) { }
     public virtual void OnHeal(List<Action.OnHealParams> onHealParamsList) { }
-    //public virtual void OnApplyStE() { }
+    public virtual void OnApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList) { }
     //public virtual void OnRemoveStE() { }
 
     public virtual void BecomeAbilityTarget(Character actor) { }

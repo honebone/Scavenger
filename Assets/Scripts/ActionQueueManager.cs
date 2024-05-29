@@ -35,6 +35,7 @@ public class ActionQueueManager : MonoBehaviour
     InfoText infoText;
     Utility util;
     SoundManager soundManager;
+    ExpeditionManager expeditionManager;
 
     [SerializeField]
     bool autoResolve;
@@ -50,6 +51,7 @@ public class ActionQueueManager : MonoBehaviour
         infoText=FindObjectOfType<InfoText>();
         util = FindObjectOfType<Utility>();
         soundManager = FindObjectOfType<SoundManager>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
     }
     public void ToggleQueuePanel()
     {
@@ -293,10 +295,18 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator EndResolve()
     {
-        if (resolveMode != 7 && charactersManager.CheckVictory())
+        if (resolveMode != 7 && (charactersManager.CheckVictory() || charactersManager.CheckDefeat()))
         {
-            resolveMode = -1;
-            battleManager.BattleEnd();
+            if (charactersManager.CheckDefeat())
+            {
+                expeditionManager.EndExpediton();//test
+            }
+            else if (charactersManager.CheckVictory())
+            {
+                resolveMode = -1;
+                battleManager.BattleEnd();
+            }
+           
         }
         else
         {

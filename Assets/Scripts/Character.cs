@@ -1277,7 +1277,14 @@ public class Character : MonoBehaviour
         }
     }
     public void OnHealed(int healedValue, int ID) { }
-    //public virtual void OnApplyedStE() { }
+    public virtual void OnApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnApplyedStE(onApplyStEParamsList); }
+            RemovePA_Execute();
+        }
+    }
     //public virtual void OnRemoveedStE() { }
 
     public bool CheckAffricted()

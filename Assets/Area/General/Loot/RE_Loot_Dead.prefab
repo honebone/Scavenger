@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4154373557521219498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 989022739639326194}
+  - component: {fileID: -6026393749182812875}
+  m_Layer: 0
+  m_Name: RE_Loot_Dead
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &989022739639326194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154373557521219498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6026393749182812875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154373557521219498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186f914bd358a1b40875fb5147943f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u6B7B\u4F53\u306E\u5C71"
+  REInfo: "\u534A\u3070\u767D\u9AA8\u5316\u3057\u305F\u6B7B\u4F53\u3092\u898B\u3064\u3051\u305F\n\u8EAB\u306B\u3064\u3051\u3066\u3044\u308B\u88C5\u5099\u54C1\u306F\u307E\u3060\u4F7F\u3048\u305D\u3046\u3060"
+  options:
+  - optionName: "\u6F01\u308B"
+    optionInfo: 
+  lootStatus:
+    drawAttemptsRange: {x: 0, y: 0}
+    dropItems: []
+    dropItemFromPresets:
+    - preset: {fileID: 11400000, guid: d184fced93d75ec43ae1dca144889d71, type: 2}
+      attemptsRange: {x: 3, y: 4}
+    dropEquipmentsRange: {x: 2, y: 4}

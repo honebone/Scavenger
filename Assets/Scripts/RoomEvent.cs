@@ -49,7 +49,11 @@ public class RoomEvent : MonoBehaviour
     /// <summary>デフォルトではルート開始</summary>
     public virtual void OnEndBattle() { lootPanel.Loot(); }
     /// <summary>デフォルトではイベント終了</summary>
-    public virtual void OnEndLoot() { EndRoomEvent(); }
+    public virtual void OnEndLoot()
+    {
+        if (supplyManager.CheckHasSupply()) { supplyManager.StartSupply(); }
+        else { EndRoomEvent(); }
+    }
     public virtual void OnEndSupply() { EndRoomEvent(); }
 
     public  void EndRoomEvent()

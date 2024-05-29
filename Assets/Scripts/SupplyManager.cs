@@ -129,9 +129,9 @@ public class SupplyManager : MonoBehaviour
     //    //inventory‚â”[•i“™‚ÌoptionUI‚à•Â‚¶‚é
     //}
 
-  public void SetSupply_Eq(int choices)
+    public void SetSupply_Eq(int choices)
     {
-        for(int i=0;i<choices; i++)
+        for (int i = 0; i < choices; i++)
         {
             AddItem(expeditionManager.GetRandomEquipment(), 1);
         }
@@ -187,12 +187,5 @@ public class SupplyManager : MonoBehaviour
         SetButtons();
     }
 
-    //public int GetItemAmount(ItemData itemData)
-    //{
-    //    foreach (Definer.Item item in supplies)
-    //    {
-    //        if (item.data == itemData) { return item.amount; }
-    //    }
-    //    return 0;
-    //}
+    public bool CheckHasSupply() { return supplies.Count > 0; }
 }
