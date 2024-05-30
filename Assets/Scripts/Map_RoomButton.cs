@@ -23,10 +23,13 @@ public class Map_RoomButton : MonoBehaviour
 
     [SerializeField]
     Sprite emptyIcon;
+    [SerializeField]
+    Sprite blindIcon;
 
     ExpeditionManager expeditionManager;
     InfoText InfoText;
     bool selectable;
+    bool blind;
     public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em,InfoText it,ScrollRect s)
     {
         room = r;
@@ -34,6 +37,7 @@ public class Map_RoomButton : MonoBehaviour
         expeditionManager = em;
         InfoText = it;
         scroll = s;
+        blind = room.blind;
 
         if (room.empty)
         {
@@ -42,7 +46,12 @@ public class Map_RoomButton : MonoBehaviour
         }
         else
         {
-            roomEventIcon.sprite = room.eventIcon;
+            if (blind)
+            {
+                roomEventIcon.sprite = blindIcon;
+                frame.color = Color.gray;
+            }
+            else { roomEventIcon.sprite = room.eventIcon; }
             if (room.up >= 1) { up.enabled = true; }
             if (room.straight >= 1) { straight.enabled = true; }
             if (room.down >= 1) { down.enabled = true; }
@@ -109,14 +118,16 @@ public class Map_RoomButton : MonoBehaviour
     {
         currentPosText.enabled = false;
         selectable = false;
-        frame.color = Color.white;
+        if (blind) { frame.color = Color.gray; }
+        else { frame.color = Color.white; }
     }
 
     public void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(1) && !room.empty)
         {
-            InfoText.SetText(room.eventName, room.eventInfo);
+            if (blind) { InfoText.SetText("ˆÃˆÅ", "‰½‚ª‹N‚±‚é‚©•ª‚©‚ç‚È‚¢"); }
+            else { InfoText.SetText(room.eventName, room.eventInfo); }
         }
         if (Input.GetMouseButtonDown(0) && selectable)
         {

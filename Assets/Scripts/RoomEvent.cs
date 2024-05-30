@@ -10,7 +10,7 @@ public class RoomEvent : MonoBehaviour
     string REName;
     [SerializeField, TextArea(3, 10)]
     string REInfo;
-    protected AreaManager.Area currentArea;
+    protected AreaData currentArea;
     protected ExpeditionManager expeditionManager;
     protected ExpeditionManager.PartyStatus partyStatus;
     protected LootPanel lootPanel;
@@ -24,7 +24,7 @@ public class RoomEvent : MonoBehaviour
         [TextArea(3, 10)]
         public string optionInfo;
     }
-    public void Init(AreaManager.Area area)
+    public void Init(AreaData area)
     {
         currentArea = area;
         expeditionManager=FindObjectOfType<ExpeditionManager>();

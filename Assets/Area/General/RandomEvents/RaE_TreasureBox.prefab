@@ -69,4 +69,13 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: f7f336972783cfe4986453cc621846a6, type: 2}
+    lowerMid: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
   umbushed: {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

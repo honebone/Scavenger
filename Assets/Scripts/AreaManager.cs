@@ -21,7 +21,7 @@ public class AreaManager : MonoBehaviour
         public Area_RoomEvent[] roomEvents;
         public RoomEventData boss;
         public RoomEventData endArea;
-        public EnemySet[] normalBattlePool;
+        public List<EnemySet> normalBattlePool;
         //public FieldEffectWeight[] normalBattleFEPool;
         public int applyFEChance;
         public List<GameObject> normalBattleFEPool;
@@ -35,9 +35,9 @@ public class AreaManager : MonoBehaviour
         }
         public EnemySet GetRandomEnemySet()
         {
-            List<int> weights = new List<int>();
-            foreach (EnemySet battle in normalBattlePool) { weights.Add(battle.weight); }
-            return normalBattlePool[weights.ChoiceWithWeight()];
+            //List<int> weights = new List<int>();
+            //foreach (EnemySet battle in normalBattlePool) { weights.Add(battle.weight); }
+            return normalBattlePool.Choice();
         }
         public GameObject GetRandomFE()
         {
@@ -60,8 +60,37 @@ public class AreaManager : MonoBehaviour
     [System.Serializable]
     public struct EnemySet
     {
-        public int weight;
-        public CharacterData[] enemies;
+        //public int weight;
+        //public CharacterData[] enemies;
+        public CharacterData upperFront;
+        public CharacterData centerFront;
+        public CharacterData lowerFront;
+        [Header("\n")]
+        public CharacterData upperMid;
+        public CharacterData centerMid;
+        public CharacterData lowerMid;
+        [Header("\n")]
+        public CharacterData upperBack;
+        public CharacterData centerBack;
+        public CharacterData lowerBack;
+
+        public List<CharacterData> GetEnemies()
+        {
+            List<CharacterData> enemies = new List<CharacterData>();
+            enemies.Add(upperFront);
+            enemies.Add(centerFront);
+            enemies.Add(lowerFront);
+
+            enemies.Add(upperMid);
+            enemies.Add(centerMid);
+            enemies.Add(lowerMid);
+
+            enemies.Add(upperBack);
+            enemies.Add(centerBack);
+            enemies.Add(lowerBack);
+
+            return enemies;
+        }
     }
     [System.Serializable]
     public struct FieldEffectWeight
@@ -69,8 +98,8 @@ public class AreaManager : MonoBehaviour
         public int weight;
         public GameObject fieldEffect;
     }
-    [SerializeField]
-    Area area;//test
+    [SerializeField] Area area;//test
+    [SerializeField] AreaData areaData;
     [SerializeField]
     GameObject content;
     [SerializeField]
@@ -96,7 +125,7 @@ public class AreaManager : MonoBehaviour
     {
         for (int i = 0; i < content.transform.childCount; i++) { Destroy(content.transform.GetChild(i).gameObject); }
 
-        int length = Random.Range(area.minLength, area.maxLength + 1);
+        int length = Random.Range(areaData.minLength, areaData.maxLength + 1);
         int layerCount = 0;
         layers = new List<Map_LayerPanel>();
 
@@ -163,7 +192,7 @@ public class AreaManager : MonoBehaviour
         layer[2].up = -1;
         layer[2].straight = 2;
         layer[2].down = -1;
-        layer[2].SetRoomEvent(area.boss);
+        layer[2].SetRoomEvent(areaData.boss);
         SetLayerPanel(layer, layerCount);
         layerCount++;
 
@@ -173,7 +202,7 @@ public class AreaManager : MonoBehaviour
         layer[2].straight = -1;
         layer[2].down = -1;
         layer[2] = SetRoom(false);
-        layer[2].SetRoomEvent(area.endArea);
+        layer[2].SetRoomEvent(areaData.endArea);
         SetLayerPanel(layer, layerCount);
 
         expeditionManager.SetLayers(layers);
@@ -187,16 +216,16 @@ public class AreaManager : MonoBehaviour
     ExpeditionManager.Room SetRoom(bool setEventRandomly)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
-        if (area.branchChance.Dice()){ room.up = 1; }
+        if (areaData.branchChance.Dice()){ room.up = 1; }
         room.straight = 1;
-        if (area.branchChance.Dice()) { room.down = 1; }
-        if (area.blindChance.Dice()) { room.blind = true; }
+        if (areaData.branchChance.Dice()) { room.down = 1; }
+        if (areaData.blindChance.Dice()) { room.blind = true; }
         if (setEventRandomly)
         {
-            room.SetRoomEvent(area.roomEvents[area.GetREWeights().ChoiceWithWeight()].roomEvent);
+            room.SetRoomEvent(areaData.roomEvents[areaData.GetREWeights().ChoiceWithWeight()].roomEvent);
         }
 
         return room;
     }
-    public Area GetArea() { return area; }
+    public AreaData GetArea() { return areaData; }
 }

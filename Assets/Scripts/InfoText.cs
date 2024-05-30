@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InfoText : MonoBehaviour
 {
@@ -18,11 +19,16 @@ public class InfoText : MonoBehaviour
     [SerializeField]
     GameObject logPanel;
     [SerializeField]
-    Text logText;
+    TextMeshProUGUI logText;
 
    // Character displayingChara;
 
     CharactersManager charactersManager;
+
+    int logCount;
+    List<string> logs = new List<string>();
+    [SerializeField] int maxLogs;
+    [SerializeField] int deleteLogs;
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
@@ -96,9 +102,15 @@ public class InfoText : MonoBehaviour
 
     public void AddLogText(string log)
     {
-        //SwitchToLog();
-        //nameText.text = "ÉçÉO";
-        logText.text += "\n" + log;
+        if (logCount >= maxLogs)
+        {
+            AddDebugText("ç≈ëÂÉçÉOêîÇ…ìûíB");
+        }
+        else
+        {
+            logCount++;
+            logText.text += "\n" + logCount.ToString().ColorStr(Definer.colorRef.currentState) + log;
+        }
     }
     public void AddDebugText(string debugLog)
     {
