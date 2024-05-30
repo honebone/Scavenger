@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: dce780711fbf7974c922911ae6daf724, type: 2}
-    info_start: "\u81EA\u8EAB\u304C\u30AD\u30E3\u30E9\u306B\u5F37\u5316\u52B9\u679C\u3092\u4ED8\u4E0E\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
+    info_start: "\u81EA\u8EAB\u304C\u30AD\u30E3\u30E9\u306B\u30D0\u30D5\u3092\u4ED8\u4E0E\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
     equipmentInfo: 
     statusMod:
       maxHP_mul: 0

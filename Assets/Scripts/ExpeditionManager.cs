@@ -54,12 +54,17 @@ public class ExpeditionManager : MonoBehaviour
     }
     [SerializeField]
     PartyStatus partyStatus;
+
+    AreaData currentArea;
+
     /// <summary>x:現在のレイヤー y:上下</summary>
     [SerializeField]
     Vector2Int currentPos;
     Room currentRoom;
     List<Map_LayerPanel> layers;
 
+    [SerializeField]
+    Transform AreaManagerP;
     [SerializeField]//test
     AreaManager currentAreaManger;
     RoomEvent currentRE;
@@ -111,6 +116,17 @@ public class ExpeditionManager : MonoBehaviour
         guideMessage = FindObjectOfType<GuideMessage>();
         supplyManager = FindObjectOfType<SupplyManager>();
     }
+
+    //========================[探索開始]==============================
+    public void StartArea(AreaData area)
+    {
+        currentArea = area;
+        //background
+        var a = Instantiate(currentArea.areaManager, AreaManagerP);
+        a.GetComponent<AreaManager>().Init(area);
+    }
+
+
     public void SetLayers(List<Map_LayerPanel> l)
     {
         layers = l;

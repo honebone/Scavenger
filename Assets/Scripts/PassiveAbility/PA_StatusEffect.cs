@@ -133,6 +133,7 @@ public class PA_StatusEffect : PassiveAbility
         else { StEIcon.SetStackText(StEStatus.stack); }
     }
 
+    /// <summary>addは負の数や最大スタック数を超えたりしない </summary>
     public virtual void OnAddStack(int add) { }
 
     public void DestroyIcon()

@@ -173,6 +173,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -201,10 +202,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
-  comboTH: 3
   combo:
     actionName: "\u30B3\u30F3\u30DC"
-    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305A\u306B3\u56DE\u653B\u6483\u3092\u547D\u4E2D\u3055\u305B\u305F\u3068\u304D"
+    conditionInfo: "\u81EA\u8EAB\u304C\u653B\u6483\u3092\u547D\u4E2D\u3055\u305B\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -267,6 +267,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: 36c651480af2c1b46bd872d9b6fe9294, type: 3}
+      guaranteed: 0
       applyChance: 200
       stack: 1
       value: 0
@@ -279,6 +280,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0

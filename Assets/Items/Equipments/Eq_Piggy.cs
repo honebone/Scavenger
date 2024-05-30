@@ -19,7 +19,7 @@ public class Eq_Piggy : PA_Equipment
                     CRIT = true;
                     break;
                 }
-                value += p.toralCRITC;
+                value += Mathf.Max(0, p.toralCRITC);
             }
         }
         if (CRIT) { ResetValue(); }

@@ -803,7 +803,7 @@ public class Character : MonoBehaviour
         }
 
         charaObj.SetHPandShieldBar();//HPバーに反映
-        if (CheckAlive())
+        if (CheckAlive() && DMG > 0)
         {
             OnDamaged(DMG, attacker);
             //カウンター

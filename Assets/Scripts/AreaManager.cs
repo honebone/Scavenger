@@ -5,52 +5,52 @@ using UnityEngine.UI;
 
 public class AreaManager : MonoBehaviour
 {
-    [System.Serializable]
-    public struct Area
-    {
-        public string areaName;
+    //[System.Serializable]
+    //public struct Area
+    //{
+    //    public string areaName;
 
-        public GameObject background;
+    //    public GameObject background;
 
-        [Header("ランダム生成される層の数(スタート地点,ボス後を除く)")]
-        public int minLength;
-        public int maxLength;
+    //    [Header("ランダム生成される層の数(スタート地点,ボス後を除く)")]
+    //    public int minLength;
+    //    public int maxLength;
 
-        public int branchChance;
-        public int blindChance;
-        public Area_RoomEvent[] roomEvents;
-        public RoomEventData boss;
-        public RoomEventData endArea;
-        public List<EnemySet> normalBattlePool;
-        //public FieldEffectWeight[] normalBattleFEPool;
-        public int applyFEChance;
-        public List<GameObject> normalBattleFEPool;
-        //nextArea
+    //    public int branchChance;
+    //    public int blindChance;
+    //    public Area_RoomEvent[] roomEvents;
+    //    public RoomEventData boss;
+    //    public RoomEventData endArea;
+    //    public List<EnemySet> normalBattlePool;
+    //    //public FieldEffectWeight[] normalBattleFEPool;
+    //    public int applyFEChance;
+    //    public List<GameObject> normalBattleFEPool;
+    //    //nextArea
 
-        public List<int> GetREWeights()
-        {
-            List<int> weights = new List<int>();
-            foreach(Area_RoomEvent roomEvent in roomEvents) { weights.Add(roomEvent.weight); }
-            return weights;
-        }
-        public EnemySet GetRandomEnemySet()
-        {
-            //List<int> weights = new List<int>();
-            //foreach (EnemySet battle in normalBattlePool) { weights.Add(battle.weight); }
-            return normalBattlePool.Choice();
-        }
-        public GameObject GetRandomFE()
-        {
-            //List<int> weights = new List<int>();
-            //foreach (FieldEffectWeight FE in normalBattleFEPool) { weights.Add(FE.weight); }
-            //return normalBattleFEPool[weights.ChoiceWithWeight()].fieldEffect;
-            if (applyFEChance.Dice())
-            {
-                return normalBattleFEPool.Choice();
-            }
-            else { return null; }
-        }
-    }
+    //    public List<int> GetREWeights()
+    //    {
+    //        List<int> weights = new List<int>();
+    //        foreach(Area_RoomEvent roomEvent in roomEvents) { weights.Add(roomEvent.weight); }
+    //        return weights;
+    //    }
+    //    public EnemySet GetRandomEnemySet()
+    //    {
+    //        //List<int> weights = new List<int>();
+    //        //foreach (EnemySet battle in normalBattlePool) { weights.Add(battle.weight); }
+    //        return normalBattlePool.Choice();
+    //    }
+    //    public GameObject GetRandomFE()
+    //    {
+    //        //List<int> weights = new List<int>();
+    //        //foreach (FieldEffectWeight FE in normalBattleFEPool) { weights.Add(FE.weight); }
+    //        //return normalBattleFEPool[weights.ChoiceWithWeight()].fieldEffect;
+    //        if (applyFEChance.Dice())
+    //        {
+    //            return normalBattleFEPool.Choice();
+    //        }
+    //        else { return null; }
+    //    }
+    //}
     [System.Serializable]
     public struct Area_RoomEvent
     {
@@ -98,36 +98,38 @@ public class AreaManager : MonoBehaviour
         public int weight;
         public GameObject fieldEffect;
     }
-    [SerializeField] Area area;//test
+    //[SerializeField] Area area;//test
     [SerializeField] AreaData areaData;
-    [SerializeField]
-    GameObject content;
-    [SerializeField]
-    ScrollRect mapScroll;
-    [SerializeField]
-    GameObject layerPanel;
+    //[SerializeField] GameObject content;
+    //[SerializeField] ScrollRect mapScroll;
+    //[SerializeField] GameObject layerPanel;
 
     ExpeditionManager.Room[] layer;
 
-    List<Map_LayerPanel> layers;
+    //List<Map_LayerPanel> layers;
     ExpeditionManager expeditionManager;
     InfoText infoText;
-    Utility util;
+    Map_MapPanel map;
     private void Start()
     {
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         infoText = FindObjectOfType<InfoText>();
-        util = FindObjectOfType<Utility>();
+        map = FindObjectOfType<Map_MapPanel>();
         layer = new ExpeditionManager.Room[5];
+    }
+
+    public void Init(AreaData area)
+    {
+        areaData = area;
+        GenerateMap();
     }
 
     public virtual void GenerateMap()
     {
-        for (int i = 0; i < content.transform.childCount; i++) { Destroy(content.transform.GetChild(i).gameObject); }
+        map.ResetMap();
 
         int length = Random.Range(areaData.minLength, areaData.maxLength + 1);
         int layerCount = 0;
-        layers = new List<Map_LayerPanel>();
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//0層目
         layer[2].empty = false;
@@ -135,7 +137,7 @@ public class AreaManager : MonoBehaviour
         layer[2].straight = 1;
         layer[2].down = 2;
         //layer[2]のroomEventを開始地点の奴に
-        SetLayerPanel(layer, layerCount);
+        map.SetLayerPanel(layer, layerCount);
         layerCount++;
 
         layer[0].empty = true;//1層目
@@ -145,15 +147,15 @@ public class AreaManager : MonoBehaviour
         layer[3] = SetRoom(true);
         layer[3].up = 2;
         layer[4].empty = true;
-        SetLayerPanel(layer, layerCount);
+        map.SetLayerPanel(layer, layerCount);
         layerCount++;
 
-        for(int j = 2; j < length - 2; j++)//2～(length-3)層目まで
+        for (int j = 2; j < length - 2; j++)//2～(length-3)層目まで
         {
             for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }
             layer[0].down = -1;
             layer[4].up = -1;
-            SetLayerPanel(layer, layerCount);
+            map.SetLayerPanel(layer, layerCount);
             layerCount++;
         }
 
@@ -166,7 +168,7 @@ public class AreaManager : MonoBehaviour
         layer[4].down = 2;
         layer[4].straight = -1;
         layer[4].up = -1;
-        SetLayerPanel(layer, layerCount);
+        map.SetLayerPanel(layer, layerCount);
         layerCount++;
 
         layer[0].empty = true;//length-1層目
@@ -183,7 +185,7 @@ public class AreaManager : MonoBehaviour
         layer[3].straight = -1;
         layer[3].down = 2;
         layer[4].empty = true;
-        SetLayerPanel(layer, layerCount);
+        map.SetLayerPanel(layer, layerCount);
         layerCount++;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length層目
@@ -193,7 +195,7 @@ public class AreaManager : MonoBehaviour
         layer[2].straight = 2;
         layer[2].down = -1;
         layer[2].SetRoomEvent(areaData.boss);
-        SetLayerPanel(layer, layerCount);
+        map.SetLayerPanel(layer, layerCount);
         layerCount++;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+1層目(エリアの終端)
@@ -203,16 +205,16 @@ public class AreaManager : MonoBehaviour
         layer[2].down = -1;
         layer[2] = SetRoom(false);
         layer[2].SetRoomEvent(areaData.endArea);
-        SetLayerPanel(layer, layerCount);
+        map.SetLayerPanel(layer, layerCount);
 
-        expeditionManager.SetLayers(layers);
+        map.EndGenerateMap();
     }
-    void SetLayerPanel(ExpeditionManager.Room[] l,int lc)
-    {
-        var lp = Instantiate(layerPanel, content.transform);
-        lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
-        layers.Add(lp.GetComponent<Map_LayerPanel>());
-    }
+    //void SetLayerPanel(ExpeditionManager.Room[] l,int lc)
+    //{
+    //    var lp = Instantiate(layerPanel, content.transform);
+    //    lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
+    //    layers.Add(lp.GetComponent<Map_LayerPanel>());
+    //}
     ExpeditionManager.Room SetRoom(bool setEventRandomly)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();

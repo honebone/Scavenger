@@ -18,6 +18,10 @@ public class PA_StE_Blader_Combo : PA_StatusEffect
         character.AddCRITC(add * CRITCPerStack);
         character.AddCRITD(add * CRITDPerStack);
     }
+    public override void OnDamaged(int DMG, Character attacker)
+    {
+        AddStack(-2);
+    }
 
     public override void AtTheEnd()
     {

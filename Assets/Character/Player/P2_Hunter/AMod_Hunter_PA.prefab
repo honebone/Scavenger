@@ -45,9 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
+    conditionInfo: "[\u7363]\u306B\u5BFE\u3059\u308B\u653B\u6483"
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
-    ATKMod: 15
+    ATKMod: 0
+    exDMG_mul: 15
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -59,4 +65,9 @@ MonoBehaviour:
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
+    applySteParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
   checkTag: 3
