@@ -7,6 +7,8 @@ public class AreaData : ScriptableObject
     public string areaName;
 
     public GameObject background;
+    public Color GLightColor;
+    public float GLightIntensity;
     public GameObject areaManager;
 
     [Header("ランダム生成される層の数(スタート地点,ボス後を除く)")]

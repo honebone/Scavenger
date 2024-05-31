@@ -102,8 +102,8 @@ MonoBehaviour:
     SANHeal_max: 0
     SANDamage_min: 0
     SANDamage_max: 0
-    shieldAdd_min: 9
-    shieldAdd_max: 11
+    shieldAdd_min: 7
+    shieldAdd_max: 9
     shieldPercent_min: 0
     shieldPercent_max: 0
     shieldRemove_all: 0

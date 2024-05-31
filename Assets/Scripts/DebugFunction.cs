@@ -87,7 +87,6 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            expeditionManager.StartArea(areaData);
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {

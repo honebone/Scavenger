@@ -47,7 +47,7 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: 
     hideValues: 1
-    exInfo: "\u30FB\u81EA\u8EAB\u306E\u30B3\u30F3\u30DC1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304DATK\u88DC\u6B63+25\uFF05"
+    exInfo: "\u30FB\u81EA\u8EAB\u306E\u30B3\u30F3\u30DC1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304DATK\u88DC\u6B63+10\uFF05"
     consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
@@ -71,4 +71,4 @@ MonoBehaviour:
     removeStE_DoT: 0
     removeStEs: []
   combo: {fileID: 5164891664867224302, guid: 36c651480af2c1b46bd872d9b6fe9294, type: 3}
-  ATKModPerStack: 25
+  ATKModPerStack: 15

@@ -54,6 +54,8 @@ public class ExpeditionManager : MonoBehaviour
     }
     [SerializeField]
     PartyStatus partyStatus;
+    [SerializeField]
+    AreaData areaDataForDebug;
 
     int areaCount;
     AreaData currentArea;
@@ -100,6 +102,7 @@ public class ExpeditionManager : MonoBehaviour
     GameManager gameManager;
     GuideMessage guideMessage;
     SupplyManager supplyManager;
+    MainMessage mainMessage;
 
     bool inRoomEvent;
 
@@ -116,6 +119,9 @@ public class ExpeditionManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         guideMessage = FindObjectOfType<GuideMessage>();
         supplyManager = FindObjectOfType<SupplyManager>();
+        mainMessage = FindObjectOfType<MainMessage>();
+
+        //StartArea(areaDataForDebug);//test
     }
 
     //========================[íTçıäJén]==============================
@@ -130,6 +136,19 @@ public class ExpeditionManager : MonoBehaviour
         currentAreaManger = a.GetComponent<AreaManager>();
 
         //background
+
+        StartCoroutine(StartAreaAnim());
+    }
+
+    IEnumerator StartAreaAnim()
+    {
+        fadeOutUI.FadeIn();
+        yield return new WaitForSeconds(0.5f);
+        mainMessage.SetMessage(string.Format("ëÊ{0}äKëw  {1}", areaCount, currentArea.areaName));
+        yield return new WaitForSeconds(2f);
+        mainMessage.ResetMessage();
+        yield return new WaitForSeconds(1.25f);
+        SelectNextRoom();
     }
 
 

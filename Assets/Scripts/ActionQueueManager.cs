@@ -175,27 +175,32 @@ public class ActionQueueManager : MonoBehaviour
 
         abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
-        soundManager.PlaySE(SE_ability);
 
-        actionStatus.actionOwner.SetActionInvolvedIcon(true);
-
-        if (!actionStatus.condition.searchAsPos && actionStatus.targetType != Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
+        if (actionStatus.actionOwner != null && !actionStatus.actionOwner.GetCharacterStatus().player)
         {
-            foreach (Character target in actionStatus.actionTargets) { target.SetActionInvolvedIcon(false); }
-        }
+            soundManager.PlaySE(SE_ability);
 
-        foreach (Action action in inQueueActions)//2つめ以降のアビリティ効果についても同様の処理
-        {
-            if (action.GetActionStatus().abilityEffect)
+            actionStatus.actionOwner.SetActionInvolvedIcon(true);
+
+            if (!actionStatus.condition.searchAsPos && actionStatus.targetType != Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
             {
-                if (!action.GetActionStatus().condition.searchAsPos && action.GetActionStatus().targetType != Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
+                foreach (Character target in actionStatus.actionTargets) { target.SetActionInvolvedIcon(false); }
+            }
+
+            foreach (Action action in inQueueActions)//2つめ以降のアビリティ効果についても同様の処理
+            {
+                if (action.GetActionStatus().abilityEffect)
                 {
-                    foreach (Character target in action.GetActionStatus().actionTargets) { target.SetActionInvolvedIcon(false); }
+                    if (!action.GetActionStatus().condition.searchAsPos && action.GetActionStatus().targetType != Action.ActionStatus.TargetType.move)//キャラクターを対象とする場合、そのキャラクターのスクリプト経由でアイコン表示
+                    {
+                        foreach (Character target in action.GetActionStatus().actionTargets) { target.SetActionInvolvedIcon(false); }
+                    }
                 }
             }
-        }
 
-        yield return new WaitForSeconds(abilityPause);
+            yield return new WaitForSeconds(abilityPause);
+        }
+       
 
         if (!actionStatus.dontChangeSprite) { actionStatus.actionOwner.SetCharaSprite(actionStatus.activateSprite); }
         charactersManager.ResetAllActionInvolvedIcons();

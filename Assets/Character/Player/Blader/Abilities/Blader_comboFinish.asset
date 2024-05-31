@@ -86,8 +86,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 50
-    ATKMod_max: 70
+    ATKMod_min: 10
+    ATKMod_max: 20
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -132,7 +133,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 09000000
   - actionName: "\u30B3\u30F3\u30DC\u30D5\u30A3\u30CB\u30C3\u30B7\u30E5"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -208,6 +209,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -220,4 +222,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 06000000
+    actionTargetsInt: 04000000

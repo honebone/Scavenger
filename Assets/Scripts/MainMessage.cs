@@ -11,12 +11,20 @@ public class MainMessage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+    public void SetMessage(string message)
+    {
+        titleText.text = message;
         anim.SetTrigger("set");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetMessage()
     {
-
+        anim.SetTrigger("reset");
+    }
+    public void ClearText()
+    {
+        titleText.text = "";
     }
 }

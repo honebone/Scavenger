@@ -8,6 +8,12 @@ public class FadeOutUI : MonoBehaviour
 {
     [SerializeField]
     GameObject panel;
+    private void Awake()
+    {
+        Color c = panel.GetComponent<Image>().color;
+        c.a = 1;
+        panel.GetComponent<Image>().color = c;
+    }
     /// <summary>0.4s‚ÅŠ®—¹</summary>
     public void FadeOut()
     {
@@ -27,7 +33,7 @@ public class FadeOutUI : MonoBehaviour
         e.a = 1;
         panel.GetComponent<Image>().color = e;
     }
-
+    /// <summary>0.4s‚ÅŠ®—¹</summary>
     public void FadeIn()
     {
         StartCoroutine("FadingIn");

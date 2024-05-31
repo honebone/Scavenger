@@ -51,10 +51,10 @@ MonoBehaviour:
     consumeFocus: 1
     decreaseHP: 0
     cantCounter: 0
-    ATKMod: 0
+    ATKMod: 20
     exDMG_mul: 0
     exDMG_int: 0
-    ACCMod: 0
+    ACCMod: 10
     CRITCMod: 50
     CRITDMod: 0
     sureHit: 0
