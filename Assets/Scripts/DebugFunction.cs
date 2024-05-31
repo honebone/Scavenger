@@ -20,6 +20,8 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     GameObject FE;
 
+    [SerializeField] AreaData areaData;
+ 
     [SerializeField]
     GameObject RE;
     [SerializeField]
@@ -69,7 +71,11 @@ public class DebugFunction : MonoBehaviour
             FindObjectOfType<ExpeditionManager>().Battle(enemySetTest, FE);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { FindObjectOfType<AreaManager>().GenerateMap(); }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(areaData); }
+            else { expeditionManager.GetAreaManager().GenerateMap(); }
+        }
         if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
@@ -81,15 +87,7 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            List<Definer.Item> equipments = new List<Definer.Item>();
-            int[] rarityCount = new int[5];
-            for (int i = 0; i < 100; i++)
-            {
-                equipments.Add(expeditionManager.GetRandomEquipment());
-                rarityCount[(int)equipments[i].data.rarity]++;
-                print(equipments[i].data.itemName);
-            }
-            foreach (int j in rarityCount) { print(j); }
+            expeditionManager.StartArea(areaData);
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {

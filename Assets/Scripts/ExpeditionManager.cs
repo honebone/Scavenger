@@ -55,6 +55,7 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField]
     PartyStatus partyStatus;
 
+    int areaCount;
     AreaData currentArea;
 
     /// <summary>x:現在のレイヤー y:上下</summary>
@@ -65,7 +66,7 @@ public class ExpeditionManager : MonoBehaviour
 
     [SerializeField]
     Transform AreaManagerP;
-    [SerializeField]//test
+    //[SerializeField]//test
     AreaManager currentAreaManger;
     RoomEvent currentRE;
 
@@ -120,10 +121,15 @@ public class ExpeditionManager : MonoBehaviour
     //========================[探索開始]==============================
     public void StartArea(AreaData area)
     {
+        areaCount++;
+        infoText.AddDebugText("探索開始");
         currentArea = area;
-        //background
-        var a = Instantiate(currentArea.areaManager, AreaManagerP);
+
+        var a = Instantiate(currentArea.areaManager, AreaManagerP);//managerの生成
         a.GetComponent<AreaManager>().Init(area);
+        currentAreaManger = a.GetComponent<AreaManager>();
+
+        //background
     }
 
 

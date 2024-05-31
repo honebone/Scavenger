@@ -121,6 +121,12 @@ public class AreaManager : MonoBehaviour
     public void Init(AreaData area)
     {
         areaData = area;
+
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
+        infoText = FindObjectOfType<InfoText>();
+        map = FindObjectOfType<Map_MapPanel>();
+        layer = new ExpeditionManager.Room[5];
+
         GenerateMap();
     }
 
