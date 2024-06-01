@@ -5,21 +5,35 @@ using UnityEngine;
 public class RE_AreaEnd : RoomEvent
 {
   
-    [SerializeField]
-    List<RoomEvent.REOptionParams> options;
+    [SerializeField] REOptionParams endExpedition;
+    [SerializeField] List<AreaData> nextAreas;
 
     protected int choice = 0;
     //GameObject eventManager;
     
     public override void OnEndREInfo()
     {
-        expeditionManager.SetREOptionButtons(options);
+        List<REOptionParams> list = new List<REOptionParams>();
+        foreach(AreaData area in nextAreas)
+        {
+            REOptionParams option = new REOptionParams();
+            option.optionName=string.Format("{0}に移動",area.areaName);
+            option.optionInfo = string.Format("次のエリア「{0}」に移動する", area.areaName);
+            list.Add(option);   
+        }
+        list.Add(endExpedition);
+        expeditionManager.SetREOptionButtons(list);
     }
     public override void SelectOption(int index)
     {
         choice = index;
 
-        expeditionManager.EndExpediton();//test
+        if (choice == nextAreas.Count) { expeditionManager.EndExpediton(); }
+        else
+        {
+            expeditionManager.NextArea(nextAreas[choice]);
+        }
+        Destroy(this.gameObject);
     }
     //IEnumerator Consequence()
     //{

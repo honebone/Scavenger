@@ -849,10 +849,11 @@ public class Ability : MonoBehaviour
                 actionQueue.Enqueue(status.actionsStatus[i]);
             }
             //character.OnActivateAbility();
-            actionQueue.StartResolve(3);
 
             ResetValue();
             battleManager.ResetSelectedAbility();
+
+            actionQueue.StartResolve(3);
         }
         else { StartSelectTarget(); }//‚Ü‚¾‘I‘ð‚ªŽc‚Á‚Ä‚é‚È‚ç
     }

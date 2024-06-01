@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 562a050e092deb541a8513fa215bdfdb, type: 3}
-  m_Name: Cave
+  m_Name: Village
   m_EditorClassIdentifier: 
-  areaName: "\u6D1E\u7A9F"
-  background: {fileID: 636018300112182328, guid: ef952657bc8bca342a484d515da47819, type: 3}
-  GLightColor: {r: 1, g: 1, b: 1, a: 1}
-  GLightIntensity: 0.15
+  areaName: "\u5EC3\u6751"
+  background: {fileID: 3400666067362364876, guid: ba91d1a80e619304dae078ac7bb74967, type: 3}
+  GLightColor: {r: 1, g: 0.6313726, b: 0, a: 1}
+  GLightIntensity: 0.5
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
   minLength: 10
   maxLength: 10
@@ -35,7 +35,7 @@ MonoBehaviour:
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
     weight: 5
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
-  endArea: {fileID: 11400000, guid: 4a6855ff5aead334095c21599972eef8, type: 2}
+  endArea: {fileID: 11400000, guid: 00955ec3b901e004bbb77604349ffe09, type: 2}
   normalBattlePool:
   - upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}

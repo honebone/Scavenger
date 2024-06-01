@@ -693,7 +693,6 @@ public class Action : MonoBehaviour
                             onMoveParams.dir = moveDir;
                             onMoveParams.range = moveRange;
 
-                            target.OnMoved(onMoveParams);
 
                             moveToPos = targetStatus.position.GetMoveToPos(moveDir, moveRange);
                             //test += string.Format("é¿ç€ÇÃà⁄ìÆãóó£:{0} à⁄ìÆå„ÇÃpos:{1}", moveRange, moveToPos);
@@ -719,9 +718,15 @@ public class Action : MonoBehaviour
                                     }
 
                                     target.ChangePos(moveToPos);//à⁄ìÆèàóù
+                                    target.OnMoved(onMoveParams);
+
                                     foreach (Character c in charasOnTravelingDir)
                                     {
+                                        OnMoveParams onSwapParams = new OnMoveParams();
+                                        onSwapParams.dir = 3 - moveDir;
+                                        onSwapParams.range = 1;
                                         c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1));
+                                        c.OnMoved(onSwapParams);
                                     }
                                 }
                                 else
@@ -823,7 +828,11 @@ public class Action : MonoBehaviour
                 actionStatus.actionOwner.ChangePos(moveToPos);//à⁄ìÆèàóù
                 foreach (Character c in charasOnTravelingDir)
                 {
+                    OnMoveParams onSwapParams = new OnMoveParams();
+                    onSwapParams.dir = 3 - ownerMoveDir;
+                    onSwapParams.range = 1;
                     c.ChangePos(util.GetMoveToPos(c.GetCharacterStatus().position, 3 - ownerMoveDir, 1));
+                    c.OnMoved(onMoveParams);
                 }
 
                 onMoveParams.dir = ownerMoveDir;

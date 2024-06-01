@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering.Universal;
 
 public class ExpeditionManager : MonoBehaviour
 {
@@ -57,6 +58,8 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField]
     AreaData areaDataForDebug;
 
+    [SerializeField] Transform backgroundP;
+    [SerializeField] Light2D globalLight;
     int areaCount;
     AreaData currentArea;
 
@@ -131,11 +134,14 @@ public class ExpeditionManager : MonoBehaviour
         infoText.AddDebugText("íTçıäJén");
         currentArea = area;
 
+        for (int i = 0; i < backgroundP.transform.childCount; i++) { Destroy(backgroundP.transform.GetChild(i).gameObject); }//îwåiê∂ê¨
+        Instantiate(currentArea.background, backgroundP);
+        globalLight.intensity = currentArea.GLightIntensity;
+        globalLight.color = currentArea.GLightColor;
+
         var a = Instantiate(currentArea.areaManager, AreaManagerP);//managerÇÃê∂ê¨
         a.GetComponent<AreaManager>().Init(area);
         currentAreaManger = a.GetComponent<AreaManager>();
-
-        //background
 
         StartCoroutine(StartAreaAnim());
     }
@@ -144,13 +150,27 @@ public class ExpeditionManager : MonoBehaviour
     {
         fadeOutUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
-        mainMessage.SetMessage(string.Format("ëÊ{0}äKëw  {1}", areaCount, currentArea.areaName));
+        mainMessage.SetMessage(string.Format("ëÊ{0}ÉGÉäÉA  {1}", areaCount, currentArea.areaName));
+        infoText.AddLogText(string.Format("Å¢Å§Å¢Å§Å¢<<ëÊ{0}ÉGÉäÉA {1}>>Å¢Å§Å¢Å§Å¢", areaCount, currentArea.areaName));
+
         yield return new WaitForSeconds(2f);
         mainMessage.ResetMessage();
+
         yield return new WaitForSeconds(1.25f);
         SelectNextRoom();
     }
 
+    public void NextArea(AreaData next)
+    {
+        inRoomEvent = false;
+        StartCoroutine(EndAreaAnim(next));
+    }
+    IEnumerator EndAreaAnim(AreaData next)
+    {
+        fadeOutUI.FadeOut();
+        yield return new WaitForSeconds(1f);
+        StartArea(next);
+    }
 
     public void SetLayers(List<Map_LayerPanel> l)
     {
