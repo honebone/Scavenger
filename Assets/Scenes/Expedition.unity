@@ -6097,17 +6097,17 @@ MonoBehaviour:
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
-    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    centerFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    upperFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    centerFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    centerMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
-    lowerMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
+    lowerBack: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
   FE: {fileID: 0}
-  areaData: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
+  areaData: {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   REP: {fileID: 1877823637}
   personality: {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
@@ -10141,6 +10141,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0

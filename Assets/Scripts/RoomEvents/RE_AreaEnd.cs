@@ -18,7 +18,7 @@ public class RE_AreaEnd : RoomEvent
         {
             REOptionParams option = new REOptionParams();
             option.optionName=string.Format("{0}に移動",area.areaName);
-            option.optionInfo = string.Format("次のエリア「{0}」に移動する", area.areaName);
+            option.optionInfo = string.Format("次のエリア「{0}」に移動する\n\n{1}", area.areaName, area.areaInfo.ColorStr(Color.gray));
             list.Add(option);   
         }
         list.Add(endExpedition);

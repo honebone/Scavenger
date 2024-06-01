@@ -81,6 +81,8 @@ public class Action : MonoBehaviour
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
+        [Header("与ダメのdrain％回復")] 
+        public float drain;
         public bool sureHit;
         public bool unevadable;
 
@@ -198,6 +200,7 @@ public class Action : MonoBehaviour
                 if (ACCMod != 0) { s += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
                 if (CRITCMod != 0) { s += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
                 if (CRITDMod != 0) { s += string.Format("CRITダメージ補正：{0}倍\n", GetValueWithSign(CRITDMod)); }
+                if (drain > 0) { s += string.Format("与ダメージの{0}％を回復\n", drain); }
                 if (sureHit) { s += "必中\n"; }
                 if (unevadable) { s += "回避不可\n"; }
                 s += "\n";
@@ -425,6 +428,12 @@ public class Action : MonoBehaviour
             ownerStatus = Definer.nonCharaStatus;
         }
 
+        //if (!notChara && ownerStatus.dead)//発動時は発動主が死んでいた場合はそのままDequeue
+        //{
+        //    actionQueueManager.Dequeue();
+        //    return;
+        //}
+
         if (actionStatus.actionTargets == null) { actionStatus.actionTargets = new List<Character>(); }
         ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
         for (int i = 0; i < actionsStatus.Length; i++)
@@ -534,6 +543,18 @@ public class Action : MonoBehaviour
                             if (!notChara)
                             {
                                 actionStatus.actionOwner.OnDamage(DMG, target, actionsStatus[i]);//与ダメ時誘発
+                                if (DMG > 0 && actionStatus.drain > 0)//吸血処理
+                                {
+                                    OnHealParams onHealParams = new OnHealParams();
+                                    float drainf = DMG * actionStatus.drain / 100f;
+                                    int drain = Mathf.RoundToInt(drainf);
+
+                                    onHealParams.target = actionStatus.actionOwner;
+                                    onHealParams.healValue = drain;
+
+                                    actionStatus.actionOwner.Heal(drain, actionStatus.actionOwner);
+                                    onHealParamsList.Add(onHealParams);
+                                }
                             }
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発

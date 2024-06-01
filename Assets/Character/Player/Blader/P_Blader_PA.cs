@@ -11,7 +11,7 @@ public class P_Blader_PA : PA_Personality
     public override void OnMoved(Action.OnMoveParams onMoveParams)
     {
         List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        Enqueue(attack, true, new List<Character> { target.Choice()});
+        if (target.Count > 0) { Enqueue(attack, true, new List<Character> { target.Choice() }); }
     }
 
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)

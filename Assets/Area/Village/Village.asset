@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Village
   m_EditorClassIdentifier: 
   areaName: "\u5EC3\u6751"
+  areaInfo: "\u304B\u3064\u3066\u306F\u6804\u3048\u3066\u3044\u305F\u8FB2\u6751\u306E\u6210\u308C\u306E\u679C\u3066\n\u4ECA\u3067\u306F\u4EA1\u8005\u305F\u3061\u304C\u99AC\u306E\u6B7B\u4F53\u3092\u98DF\u3044\u8352\u3089\u3057\u3001\u5EC3\u5C4B\u306F\u76D7\u8CCA\u56E3\u306E\u6839\u57CE\u3068\u306A\u3063\u3066\u3044\u308B"
   background: {fileID: 3400666067362364876, guid: ba91d1a80e619304dae078ac7bb74967, type: 3}
   GLightColor: {r: 1, g: 0.6313726, b: 0, a: 1}
   GLightIntensity: 0.5
@@ -24,7 +25,7 @@ MonoBehaviour:
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
     weight: 50
-  - roomEvent: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
+  - roomEvent: {fileID: 11400000, guid: f571d4eef6887014499e252f4f38b235, type: 2}
     weight: 30
   - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
     weight: 5
@@ -37,50 +38,23 @@ MonoBehaviour:
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
   endArea: {fileID: 11400000, guid: 00955ec3b901e004bbb77604349ffe09, type: 2}
   normalBattlePool:
-  - upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+  - upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    centerMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     lowerMid: {fileID: 0}
-    upperBack: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    upperBack: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+  - upperFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    lowerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-    upperBack: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    lowerMid: {fileID: 0}
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-  - upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-    lowerMid: {fileID: 0}
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-  - upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    upperMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     centerMid: {fileID: 0}
-    lowerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    upperBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
-    centerBack: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     lowerBack: {fileID: 0}
   applyFEChance: 20
   normalBattleFEPool:

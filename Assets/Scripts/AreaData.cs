@@ -5,6 +5,7 @@ using UnityEngine;
 public class AreaData : ScriptableObject
 {
     public string areaName;
+    [TextArea(3, 10)] public string areaInfo;
 
     public GameObject background;
     public Color GLightColor;

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4154373557521219498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 989022739639326194}
+  - component: {fileID: -3628833163417914752}
+  m_Layer: 0
+  m_Name: RaE_Village_CrumblingHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &989022739639326194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154373557521219498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3628833163417914752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4154373557521219498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e64a28db4c617e498878ba4f067c7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u5012\u58CA\u5BF8\u524D\u306E\u7D0D\u5C4B"
+  REInfo: "\u5D29\u308C\u304B\u3051\u305F\u7D0D\u5C4B\u3092\u898B\u3064\u3051\u305F\n\u4E2D\u306B\u306F\u4F7F\u3048\u305D\u3046\u306A\u3082\u306E\u304C\u3042\u308A\u305D\u3046\u3060\u304C\u3001\u3044\u3064\u5012\u58CA\u3057\u3066\u3082\u304A\u304B\u3057\u304F\u306A\u3044"
+  exit:
+    optionName: "\u5148\u3078\u9032\u3080"
+    optionInfo: "\u5148\u3078\u9032\u3080"
+  defaultChance: 25
+  mul: 1.5
+  lootStatus:
+    drawAttemptsRange: {x: 0, y: 0}
+    dropItems: []
+    dropItemFromPresets:
+    - preset: {fileID: 11400000, guid: d184fced93d75ec43ae1dca144889d71, type: 2}
+      attemptsRange: {x: 2, y: 4}
+    dropEquipmentsRange: {x: 1, y: 2}
