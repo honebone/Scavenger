@@ -16,7 +16,7 @@ MonoBehaviour:
   lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  activateSprite: {fileID: 3781019327165390246, guid: ea674cd7a1c13be40b116fb73fe31436, type: 3}
   abilityType: 5
   excludeRandomPool: 0
   selectWeight: 1
@@ -133,6 +133,6 @@ MonoBehaviour:
     abilityType: 5
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 3781019327165390246, guid: ea674cd7a1c13be40b116fb73fe31436, type: 3}
     actionOwner: {fileID: 0}
     actionTargetsInt: 0f000000

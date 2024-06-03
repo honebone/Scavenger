@@ -803,7 +803,7 @@ public class Action : MonoBehaviour
             {
                 foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE付与
                 {
-                    if (PEParams.applyChance.Dice())
+                    if (PEParams.guaranteed||PEParams.applyChance.Dice())
                     {
                         infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName(true)));
                         characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams);

@@ -16,7 +16,7 @@ MonoBehaviour:
   lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  activateSprite: {fileID: 7507233825882370128, guid: 7b1720de556abac4fa88f3c665273e00, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
@@ -47,7 +47,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u72E9\u308A"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -136,10 +136,10 @@ MonoBehaviour:
     abilityType: 1
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 7507233825882370128, guid: 7b1720de556abac4fa88f3c665273e00, type: 3}
     actionOwner: {fileID: 0}
     actionTargetsInt: 08000000
-  - actionName: 
+  - actionName: "\u72E9\u308A"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -223,6 +223,6 @@ MonoBehaviour:
     abilityType: 1
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 7507233825882370128, guid: 7b1720de556abac4fa88f3c665273e00, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 0a000000

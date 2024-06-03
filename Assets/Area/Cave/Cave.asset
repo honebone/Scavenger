@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Cave
   m_EditorClassIdentifier: 
   areaName: "\u6D1E\u7A9F"
+  areaInfo: 
   background: {fileID: 636018300112182328, guid: ef952657bc8bca342a484d515da47819, type: 3}
   GLightColor: {r: 1, g: 1, b: 1, a: 1}
   GLightIntensity: 0.15
@@ -88,3 +89,4 @@ MonoBehaviour:
   - {fileID: 471706018376148968, guid: 2afe4c8e5f9c4b34d9dda6ef149748c1, type: 3}
   - {fileID: 471706018376148968, guid: 88ecece663c8860408de7e960363f832, type: 3}
   - {fileID: 471706018376148968, guid: 085f1034c3cf5a54483007ec5468437f, type: 3}
+  - {fileID: 471706018376148968, guid: 9d312f6dee5b1c049a02635bf720bd70, type: 3}

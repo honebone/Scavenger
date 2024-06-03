@@ -54,26 +54,31 @@ public class Ability : MonoBehaviour
             string s = "";
             if (locked) { s += "(未開放のアビリティ)\n".ColorStr(Definer.colorRef.failed_unavailable); }
                 s+= string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
-            s += ("発動可能列：");
+            string s1 = "";
+            string s2 = "";
             if (!refCharaStatus || characterStatus.position < 9)
             {
-                if (availableBack) { s += "○-"; }
-                else { s += "×-"; }
-                if (availableMid) { s += "○-"; }
-                else { s += "×-"; }
-                if (availableFront) { s += "○\n"; }
-                else { s += "×\n"; }
+                s1 = "発動可能列：後-中-前\n";
+                s2 = "            ";
+                if (availableBack) { s2 += "○-"; }
+                else { s2 += "><-"; }
+                if (availableMid) { s2 += "○-"; }
+                else { s2 += "><-"; }
+                if (availableFront) { s2 += "○\n"; }
+                else { s2 += "><\n"; }
             }
             else
             {
-                s += "　　　";
-                if (availableFront) { s += "○-"; }
-                else { s += "×-"; }
-                if (availableMid) { s += "○-"; }
-                else { s += "×-"; }
-                if (availableBack) { s += "○\n"; }
-                else { s += "×\n"; }
+                s1 = "発動可能列：　　　前-中-後\n";
+                s2 = "　　　            ";
+                if (availableFront) { s2 += "○-"; }
+                else { s2 += "><-"; }
+                if (availableMid) { s2 += "○-"; }
+                else { s2 += "><-"; }
+                if (availableBack) { s2 += "○\n"; }
+                else { s2 += "><\n"; }
             }
+            s += s1 + s2;
             if (conditionInfo != "") { s += string.Format("発動条件：{0}\n",conditionInfo); }
 
             if (cooldownOnBattleStart > 0) { s += string.Format("初期クールダウン：{0}ターン\n", cooldownOnBattleStart); }

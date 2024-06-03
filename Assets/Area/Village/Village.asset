@@ -16,7 +16,7 @@ MonoBehaviour:
   areaInfo: "\u304B\u3064\u3066\u306F\u6804\u3048\u3066\u3044\u305F\u8FB2\u6751\u306E\u6210\u308C\u306E\u679C\u3066\n\u4ECA\u3067\u306F\u4EA1\u8005\u305F\u3061\u304C\u99AC\u306E\u6B7B\u4F53\u3092\u98DF\u3044\u8352\u3089\u3057\u3001\u5EC3\u5C4B\u306F\u76D7\u8CCA\u56E3\u306E\u6839\u57CE\u3068\u306A\u3063\u3066\u3044\u308B"
   background: {fileID: 3400666067362364876, guid: ba91d1a80e619304dae078ac7bb74967, type: 3}
   GLightColor: {r: 1, g: 0.6313726, b: 0, a: 1}
-  GLightIntensity: 0.5
+  GLightIntensity: 0.6
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
   minLength: 10
   maxLength: 10
@@ -62,3 +62,4 @@ MonoBehaviour:
   - {fileID: 471706018376148968, guid: 2afe4c8e5f9c4b34d9dda6ef149748c1, type: 3}
   - {fileID: 471706018376148968, guid: 88ecece663c8860408de7e960363f832, type: 3}
   - {fileID: 471706018376148968, guid: 085f1034c3cf5a54483007ec5468437f, type: 3}
+  - {fileID: 471706018376148968, guid: 9d312f6dee5b1c049a02635bf720bd70, type: 3}
