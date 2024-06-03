@@ -12,6 +12,7 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     Image charaImage;
 
+    [SerializeField] int maxEquipments;
     [Space(25), SerializeField]
     Transform equipmentP;
     [SerializeField]
@@ -116,8 +117,12 @@ public class CharaDetailUI : MonoBehaviour
             var e = Instantiate(equipmentButton, equipmentP);
             e.GetComponent<CharaDetail_EquipmentButton>().Init(item, infoText,this);
         }
-        var n = Instantiate(newEquipmentButton, equipmentP);
-        n.GetComponent<CharaDetail_EquipmentButton>().Init(new Definer.Item(), infoText, this);
+        for (int i = 0; i < maxEquipments - status.equipments.Count; i++)
+        {
+            var n = Instantiate(newEquipmentButton, equipmentP);
+            n.GetComponent<CharaDetail_EquipmentButton>().Init(new Definer.Item(), infoText, this);
+        }
+       
     }
 
     public void StartSelectEquipment(bool e,Definer.Item selected)

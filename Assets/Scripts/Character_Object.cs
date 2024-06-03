@@ -153,13 +153,14 @@ public class Character_Object : MonoBehaviour
         return s;
     }
 
+    Coroutine move;
     public void MoveStart(int pos)
     {
-        StartCoroutine(Move( pos));
+       move= StartCoroutine(Move( pos));
     }
     public void StopMove(int pos)
     {
-        StopCoroutine(Move(0));
+        if (move != null) { StopCoroutine(move); }
         transform.position = charactersManager.GetCharacterWorldPos(pos);
     }
     IEnumerator Move(int pos)

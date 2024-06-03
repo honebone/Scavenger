@@ -1801,7 +1801,7 @@ GameObject:
   - component: {fileID: 259843527}
   - component: {fileID: 259843526}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: MovePos Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1871,7 +1871,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1767306641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 914944170}
+        m_TargetAssemblyTypeName: ExpeditionManager, Assembly-CSharp
+        m_MethodName: ToggleMoveMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &259843527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1893,7 +1905,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 6aedae3860461814aaabbfd280d08993, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -12135,6 +12147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIpanel: {fileID: 1178895703}
   charaImage: {fileID: 860048430}
+  maxEquipments: 4
   equipmentP: {fileID: 1897467126}
   equipmentButton: {fileID: 2511670875509986991, guid: 03023256b17eb0e4e932ea0ab6fc3a01, type: 3}
   newEquipmentButton: {fileID: 2701604070160650186, guid: 971d1065b50db5545ae7f4c025420b5b, type: 3}
@@ -18004,7 +18017,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1ba3020a0b7598742918de7e40d04fdd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

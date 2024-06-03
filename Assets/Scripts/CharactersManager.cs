@@ -23,6 +23,8 @@ public class CharactersManager : MonoBehaviour
 
     InfoText infoText;
     Utility util;
+
+   
     public void AddCharacter(Character character)
     {
         generatedCharacters.Add(character);
@@ -100,7 +102,7 @@ public class CharactersManager : MonoBehaviour
         else { infoText.AddErrorText("¡€–S‚µ‚½ƒLƒƒƒ‰‚ÍA‚»‚à‚»‚à‘¶İ‚µ‚Ä‚¢‚Ü‚¹‚ñ"); }
     }
 
-    public Character_TargetButton GetTargetButton(int pos)  { return targetButtons_size1[pos];}
+    public Character_TargetButton GetTargetButton(int pos) { return targetButtons_size1[pos]; }
     public PositionManager GetPositionManager(int pos) { return positionManagers[pos]; }
     public PositionManager[] GetPositionManagers() { return positionManagers; }
     /// <summary>
@@ -398,6 +400,11 @@ public class CharactersManager : MonoBehaviour
 
         infoText = FindObjectOfType<InfoText>();
         util = FindObjectOfType<Utility>();
+
+        for (int i = 0; i < targetButtons_size1.Length; i++)
+        {
+            targetButtons_size1[i].SetPosition(i);
+        }
     }
 
 

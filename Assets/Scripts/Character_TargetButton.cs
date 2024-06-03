@@ -27,8 +27,15 @@ public class Character_TargetButton : MonoBehaviour
     InfoText infoText;
     PositionManager positionManager;
     BattleManager battleManager;
+    ExpeditionManager expeditionManager;
+
+    int position;
 
     bool selectableAsTarget;
+
+    //イベント前の移動関係
+    bool selectableAsMoveTarget;
+    bool selectableAsMoveToPos;
 
     List<int> targetGroup = new List<int>();
 
@@ -38,7 +45,9 @@ public class Character_TargetButton : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         battleManager = FindObjectOfType<BattleManager>();
         positionManager = GetComponent<PositionManager>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
     }
+    public void SetPosition(int pos) { position = pos; }
     public void SetCharacter(Character chara)
     {
         //button.SetActive(true);
@@ -75,6 +84,25 @@ public class Character_TargetButton : MonoBehaviour
       
     }
 
+    public void MoveMode_SelectableAsTarget()
+    {
+        selectableAsMoveTarget = true;
+        targetIcon.enabled = true;
+       
+    }
+    public void MoveMode_SelectableAsMovePos()
+    {
+        selectableAsMoveToPos = true;
+        targetIcon.enabled = true;
+    }
+    public void MoveMode_ResetAll()
+    {
+        selectableAsMoveTarget = false;
+        selectableAsMoveToPos = false;
+        targetIcon.enabled = false;
+        actionTargetIcon.enabled = false;
+    }
+
     /// <summary> </summary>
     /// <param name="owner">falseなら対象と判断</param>
     public void SetActionInvolvedIcon(bool owner)
@@ -105,6 +133,8 @@ public class Character_TargetButton : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             if (selectableAsTarget) { battleManager.GetSelectedAbility().SelectTarget(targetGroup); }
+            else if (selectableAsMoveTarget) { expeditionManager.MoveMode_SelectChara(character); }
+            else if (selectableAsMoveToPos) { expeditionManager.MoveMode_SelectPos(position); }
         }
     }
     public void OnMouseOver()
@@ -123,6 +153,10 @@ public class Character_TargetButton : MonoBehaviour
                 }
             }
         }
+        else if (selectableAsMoveTarget || selectableAsMoveToPos)
+        {
+            actionTargetIcon.enabled = true;
+        }
         else
         {
             highlightedIcon.enabled = true;
@@ -130,7 +164,7 @@ public class Character_TargetButton : MonoBehaviour
     }
     public void OnMouseExit()
     {
-        if (selectableAsTarget) { charactersManager.ResetAllActionInvolvedIcons(); }
+        if (selectableAsTarget || selectableAsMoveTarget || selectableAsMoveToPos) { charactersManager.ResetAllActionInvolvedIcons(); }
         highlightedIcon.enabled = false;
     }
 }

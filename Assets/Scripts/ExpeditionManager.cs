@@ -203,6 +203,7 @@ public class ExpeditionManager : MonoBehaviour
     }
     public void GoToNextRoom(Vector2Int pos)
     {
+        if (moveMode) { ToggleMoveMode(); }
         mapPanel.CloseMap();
         currentPos = pos;
         currentRoom = GetRoom(currentPos);
@@ -231,6 +232,54 @@ public class ExpeditionManager : MonoBehaviour
     {
         infoText.AddLogText(string.Format("～～{0}～～", REName));
         infoText.SwitchToLog();
+    }
+
+    bool moveMode;
+    Character moveChara;
+    /// <summary>部屋移動前の位置の編集</summary>
+    public void ToggleMoveMode()
+    {
+        if (!inRoomEvent)
+        {
+            moveMode = !moveMode;
+            if (moveMode)
+            {
+                foreach(Character chara in charactersManager.GetExistingCharacters_All())
+                {
+                    if (!chara.GetCharacterStatus().player) { infoText.AddErrorText("プレイヤーでないキャラが生きている"); }
+                    chara.GetCharacter_TargetButton().MoveMode_SelectableAsTarget();
+                }
+            }
+            else
+            {
+                moveChara = null;
+                for (int i = 0; i < 9; i++) { charactersManager.GetTargetButton(i).MoveMode_ResetAll(); }
+            }
+        }
+        else { guideMessage.SetWaringText("イベント中のポジション変更不可"); }
+    }
+    public void MoveMode_SelectChara(Character chara)
+    {
+        moveChara = chara;
+        for (int i = 0; i < 9; i++)
+        {
+            charactersManager.GetTargetButton(i).MoveMode_ResetAll();
+            if (moveChara.GetCharacterStatus().position != i)
+            {
+                charactersManager.GetTargetButton(i).MoveMode_SelectableAsMovePos();
+            }
+        }
+    }
+    public void MoveMode_SelectPos(int pos)
+    {
+        moveChara.GetCharacter_TargetButton().ResetCharacter();
+
+        if (charactersManager.CheckCharaExist(pos))
+        {
+            charactersManager.GetCharacterWithPos(pos).ChangePos(moveChara.GetCharacterStatus().position);
+        }
+        moveChara.ChangePos(pos);
+        ToggleMoveMode();
     }
 
     //==========================================[room event で呼ばれる関数]===========================================
