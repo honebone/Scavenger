@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_RougueRobber
+  m_EditorClassIdentifier: 
+  fileName: E_RougueRobber
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u76D7\u8CCA\u30FB\u99AC\u8ECA\u5F37\u76D7"
+  characterTags: 02000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  playable: 0
+  obstacle: 0
+  variableSprites:
+  - {fileID: 1026312498805100584, guid: 320c2e581200c6243baaacfc8ffa1d46, type: 3}
+  spriteForUI: {fileID: 21300000, guid: e6dd87b99cc29224f9ce187d17298aa0, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 800b611bef75450439fd65085a48453d, type: 2}
+  passiveAbilities: []
+  actionMods: []
+  corpse: {fileID: 11400000, guid: ff40b764def0cd148a80fd4e8bfae22a, type: 2}
+  dropItems:
+  - dropItem: {fileID: 11400000, guid: 9b3ecad76c8787b4cb463a18d479a910, type: 2}
+    quantity: 1
+  - dropItem: {fileID: 11400000, guid: 8f21901abf2b9624e80aa2c612b1cc4c, type: 2}
+    quantity: 2
+  - dropItem: {fileID: 11400000, guid: 5a19c4384d17b5342836e153c97e472d, type: 2}
+    quantity: 2
+  surviveFatalWounds: 0
+  maxHP: 25
+  maxSAN: 0
+  ATK: 15
+  CRITC: 5
+  CRITD: 2
+  EVD: 6
+  ACC: 93
+  ACT: 9
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

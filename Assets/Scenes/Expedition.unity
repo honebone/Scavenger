@@ -6110,14 +6110,14 @@ MonoBehaviour:
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
     upperFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
-    centerFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    centerFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
+    upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     centerMid: {fileID: 0}
-    lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    lowerMid: {fileID: 0}
     upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
+    lowerBack: {fileID: 0}
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}

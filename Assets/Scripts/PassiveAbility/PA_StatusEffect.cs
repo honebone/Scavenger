@@ -102,8 +102,9 @@ public class PA_StatusEffect : PassiveAbility
         if (StEStatus.refValue) { s += "X"; }
         s += "ÅF";
         s += StEStatus.StEInfo + "\n";
-        s += GetAdditionalInfo();
-        return s.ColorStr(Color.gray);
+        s = s.ColorStr(Color.gray);
+        if (instantiated) { s += GetAdditionalInfo().ColorStr(Definer.colorRef.currentState); }
+        return s;
     }
   
     public virtual string GetAdditionalInfo()

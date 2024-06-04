@@ -6,18 +6,15 @@ public class PA_StE_ACTUp : PA_StatusEffect
 {
     public override void OnPAInit()
     {
-        character.AddACT(StEStatus.stack);
+        character.AddACT(StEStatus.value);
     }
     public override void OnTurnOrderDecide()
     {
-        Disable();
+        AddStack(-1);
     }
-    public override void OnAddStack(int add)
-    {
-        character.AddACT(add);
-    }
+
     public override void AtTheEnd()
     {
-        character.AddACT(StEStatus.stack * -1);
+        character.AddACT(StEStatus.value * -1);
     }
 }
