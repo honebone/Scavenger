@@ -23,12 +23,15 @@ public class LootPanel : MonoBehaviour
     AudioClip SE_Equipment;
     [SerializeField] AudioClip SE_Exp;
 
+    [SerializeField] TutorialData tutorial_loot;
+
     bool revealing;
 
     InfoText infoText;
     Inventory inventory;
     ExpeditionManager expeditionManager;
     SoundManager soundManager;
+    TutorialManager tutorialManager;
     [System.Serializable]
     public class DropItem
     {
@@ -61,6 +64,7 @@ public class LootPanel : MonoBehaviour
         inventory = FindObjectOfType<Inventory>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         soundManager = FindObjectOfType<SoundManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     public void ToggleLootPanel()
@@ -139,6 +143,7 @@ public class LootPanel : MonoBehaviour
            
         }
         revealing = false;
+        tutorialManager.StartTutorial(tutorial_loot);
     }
 
     public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)

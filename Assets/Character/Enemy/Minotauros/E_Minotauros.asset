@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 7944460793893584784, guid: 8e7684a5fabb0c24fa0a5ebdbb24866f, type: 3}
   spriteForUI: {fileID: 21300000, guid: d43e1a51bcf6b8f42bb8d7f75fb85792, type: 3}
   abilities:
-  - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
+  - {fileID: 11400000, guid: f4edc81d775b70a4aa01f41004992692, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}

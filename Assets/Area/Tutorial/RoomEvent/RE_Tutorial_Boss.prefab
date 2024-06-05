@@ -48,12 +48,12 @@ MonoBehaviour:
   REName: 
   REInfo: 
   enemySet:
-    upperFront: {fileID: 0}
-    centerFront: {fileID: 11400000, guid: 9d37067d8d14b8748bc93429263b07d5, type: 2}
-    lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
+    centerFront: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}
+    lowerFront: {fileID: 11400000, guid: ff40b764def0cd148a80fd4e8bfae22a, type: 2}
+    upperMid: {fileID: 11400000, guid: 017e3d16f52d56946a8aaf4be5fd0ed0, type: 2}
+    centerMid: {fileID: 11400000, guid: 9d37067d8d14b8748bc93429263b07d5, type: 2}
     lowerMid: {fileID: 0}
     upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
+    centerBack: {fileID: 11400000, guid: 4fc1b4c3ad0a6c54fa587a286c6d2444, type: 2}
+    lowerBack: {fileID: 11400000, guid: baa6eeea583dffa4a878ddba1cd0fcdd, type: 2}

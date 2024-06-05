@@ -42,6 +42,10 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     CharactersManager.SearchCharaCondition moveFrontLineCondition;
 
+    [SerializeField] TutorialData tutorial_Battle;
+    [SerializeField] TutorialData tutorial_ability;
+    [SerializeField] TutorialData tutorial_corpse;
+
     CharactersManager charactersManager;
     InfoText infoText;
     MessageText messageText;
@@ -50,6 +54,7 @@ public class BattleManager : MonoBehaviour
     SoundManager soundManager;
     PositionManager[] positionManagers;
     ExpeditionManager.PartyStatus partyStatus;
+    TutorialManager tutorialManager;
 
     FieldEffect fieldEffect;
     int roundCount;
@@ -86,6 +91,7 @@ public class BattleManager : MonoBehaviour
         partyStatus = expeditionManager.GetPartyStatus();
         actionQueue = FindObjectOfType<ActionQueueManager>();
         soundManager = FindObjectOfType<SoundManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
         positionManagers = charactersManager.GetPositionManagers();
 
         turns = new List<Turn>();
@@ -142,11 +148,18 @@ public class BattleManager : MonoBehaviour
         currentTurn = null;
         currentTurnCount = 0;
         turns.Clear();
-        List<Character> charas = new List<Character>(charactersManager.GetExistingCharacters_All());
+        List<Character> charas = new List<Character>();
         List<int> turnsPerRound = new List<int>();//i番目のラウンド毎ターン数
         List<float> ACT = new List<float>();//i番目のACT
+        foreach(Character chara in new List<Character>(charactersManager.GetExistingCharacters_All()))
+        {
+            if (chara.GetCharacterStatus().turnPerRound > 0)
+            {
+                charas.Add(chara);
+            }
+        }
 
-        foreach(Character chara in charas)
+        foreach (Character chara in charas)
         {
             turnsPerRound.Add(chara.GetCharacterStatus().turnPerRound);
             ACT.Add(chara.GetCharacterStatus().ACT);
@@ -317,7 +330,9 @@ public class BattleManager : MonoBehaviour
 
     public void Trigger_BattleStart()
     {
-        if(fieldEffect != null) { fieldEffect.OnBattleStart(); }
+        tutorialManager.StartTutorial(tutorial_Battle);
+
+        if (fieldEffect != null) { fieldEffect.OnBattleStart(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnBattleStart();
@@ -458,6 +473,10 @@ public class BattleManager : MonoBehaviour
 
         }
     }
+
+    public void StartTutorial_Ability() { tutorialManager.StartTutorial(tutorial_ability); }
+    public void StartTutorial_Corpse() { tutorialManager.StartTutorial(tutorial_corpse); }
+
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.Space) && roundEnd)//test

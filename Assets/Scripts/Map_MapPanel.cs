@@ -11,22 +11,35 @@ public class Map_MapPanel : MonoBehaviour
     [SerializeField] GameObject content;
     [SerializeField] ScrollRect mapScroll;
     [SerializeField] GameObject layerPanel;
+
+    [SerializeField] TutorialData tutorial_map;
+    [SerializeField] TutorialData tutorial_expedition;
+
     List<Map_LayerPanel> layers;
 
     ExpeditionManager expeditionManager;
     InfoText infoText;
+    TutorialManager tutorialManager;
     private void Start()
     {
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         infoText = FindObjectOfType<InfoText>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
     public void ToggleMap()
     {
-        mapPanel.SetActive(!mapPanel.activeSelf);
+        if (!mapPanel.activeSelf) { OpenMap(); }
+        else { CloseMap(); }
     }
     public void OpenMap()
     {
-        if (!mapPanel.activeSelf) { mapPanel.SetActive(true); }
+        if (!mapPanel.activeSelf) { 
+            mapPanel.SetActive(true);
+            if (tutorialManager.CheckUnlocked(tutorial_expedition))
+            {
+                tutorialManager.StartTutorial(tutorial_map);
+            }
+        }
     }
     public void CloseMap()
     {

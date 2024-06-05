@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class TutorialText : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject panel;
+    [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI tutorialText;
+   
+    public void SetText(TutorialData.Tutorial tutorial)
     {
-        
+        panel.SetActive(true);
+        titleText.text = tutorial.title;
+        tutorialText.text = tutorial.tutorialText;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void ResetText()
     {
-        
+        titleText.text = "";
+        tutorialText.text = "";
+        panel.SetActive(false);
+
     }
 }

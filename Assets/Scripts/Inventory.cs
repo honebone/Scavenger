@@ -239,5 +239,14 @@ public class Inventory : MonoBehaviour
         }
         return materials;
     }
+    public List<Definer.Item> GetEquipments()
+    {
+        List<Definer.Item> equipments = new List<Definer.Item>();
+        foreach(Definer.Item equipment in inventory)
+        {
+            if (equipment.data.itemType == ItemData.ItemType.equipment) { equipments.Add(equipment); }
+        }
+        return equipments;
+    }
     public int GetExp() { return expOrbs; }
 }

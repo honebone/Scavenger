@@ -27,6 +27,11 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     Transform REP;
 
+    [SerializeField] TutorialData tutorial;
+
+    [SerializeField] AreaData tutorialArea;
+
+
     [SerializeField]
     GameObject personality;
 
@@ -87,11 +92,11 @@ public class DebugFunction : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
+            FindObjectOfType<TutorialManager>().StartTutorial(tutorial);
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            //expeditionManager.SetPersonality_ToRandom(personality);
-            FindObjectOfType<GuideMessage>().SetWaringText("ƒeƒXƒg");
+            
         }
         if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
     }
@@ -112,5 +117,14 @@ public class DebugFunction : MonoBehaviour
     public void SpawnDebugger()
     {
         FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
+    }
+
+    public void StartTutorial()
+    {
+        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
+        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
+
+        if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(tutorialArea); }
+        else { expeditionManager.GetAreaManager().GenerateMap(); }
     }
 }

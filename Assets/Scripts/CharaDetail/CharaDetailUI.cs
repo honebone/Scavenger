@@ -29,12 +29,15 @@ public class CharaDetailUI : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI expAmount;
+    [SerializeField] TutorialData tutorial_unlockAbility;
+    [SerializeField] TutorialData tutorial_equip;
 
 
     InfoText infoText;
     CharactersManager charactersManager;
     Inventory inventory;
     GuideMessage guideMessage;
+    TutorialManager tutorialManager;
 
     Character displayingChara;
     Character.CharacterStatus status;
@@ -50,6 +53,7 @@ public class CharaDetailUI : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         inventory = FindObjectOfType<Inventory>();
         guideMessage = FindObjectOfType<GuideMessage>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
         displayingChara = null;
     }
 
@@ -69,6 +73,8 @@ public class CharaDetailUI : MonoBehaviour
         {
             ChangeChara(charactersManager.GetExistingCharacters_All()[0]);
         }
+        if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_unlockAbility); }
+        else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equip); }
     }
     public void CloseUI()
     {

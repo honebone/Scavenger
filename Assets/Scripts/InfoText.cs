@@ -21,9 +21,13 @@ public class InfoText : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI logText;
 
+    [SerializeField] TutorialData tutorial_info1;
+    [SerializeField] TutorialData tutorial_info2;
+
    // Character displayingChara;
 
     CharactersManager charactersManager;
+    TutorialManager tutorialManager;
 
     int logCount;
     List<string> logs = new List<string>();
@@ -32,6 +36,7 @@ public class InfoText : MonoBehaviour
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
     }
 
     publicÅ@void SetText(string name,string info)
@@ -67,6 +72,7 @@ public class InfoText : MonoBehaviour
         //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
         //    displayingChara = null;
         //}
+        if (tutorialManager.CheckUnlocked(tutorial_info1)) { tutorialManager.StartTutorial(tutorial_info2); }
         charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
         //displayingChara = chara;

@@ -47,5 +47,5 @@ MonoBehaviour:
   areaData: {fileID: 0}
   battle1: {fileID: 11400000, guid: b041398771caca34b99ce84e90589e02, type: 2}
   battle2: {fileID: 11400000, guid: 1bef47e3e605f784fa75290c259a79a1, type: 2}
-  RaE: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
+  RaE: {fileID: 11400000, guid: f09e583ef0cae57429dfcb7a171df690, type: 2}
   rat: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}

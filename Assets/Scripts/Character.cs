@@ -670,6 +670,7 @@ public class Character : MonoBehaviour
                 {
                     DisplayInfo();
                     battleManager.SetSelectingAbility(true);
+                    battleManager.StartTutorial_Ability();
                 }
                 else { StartCoroutine(Test()); }
             }  
@@ -1107,6 +1108,7 @@ public class Character : MonoBehaviour
         {
             if (charaStatus.position < 9) { charactersManager.SpawnPlayer(charaStatus.corpse, charaStatus.position); }
             else { charactersManager.SpawnEnemy(charaStatus.corpse, charaStatus.position, false); }
+            battleManager.StartTutorial_Corpse();
         }
     }
     public void Retreat()

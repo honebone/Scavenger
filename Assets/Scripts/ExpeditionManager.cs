@@ -93,6 +93,11 @@ public class ExpeditionManager : MonoBehaviour
     AudioClip SE_nextRoom;
     [SerializeField]
     Transform REManagerParent;
+    [SerializeField] TutorialData tutorial_expedition;
+    [SerializeField] TutorialData tutorial_exp;
+    [SerializeField] TutorialData tutorial_equipment;
+    [SerializeField] TutorialData tutorial_passive;
+    [SerializeField] TutorialData tutorial_personality;
 
     Definer definer;
     Map_MapPanel mapPanel;
@@ -106,6 +111,8 @@ public class ExpeditionManager : MonoBehaviour
     GuideMessage guideMessage;
     SupplyManager supplyManager;
     MainMessage mainMessage;
+    TutorialManager tutorialManager;
+    Inventory inventory;
 
     bool inRoomEvent;
 
@@ -123,6 +130,8 @@ public class ExpeditionManager : MonoBehaviour
         guideMessage = FindObjectOfType<GuideMessage>();
         supplyManager = FindObjectOfType<SupplyManager>();
         mainMessage = FindObjectOfType<MainMessage>();
+        tutorialManager = FindObjectOfType<TutorialManager>();
+        inventory = FindObjectOfType<Inventory>();
 
         //StartArea(areaDataForDebug);//test
     }
@@ -199,7 +208,10 @@ public class ExpeditionManager : MonoBehaviour
             if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y)).SetState_Selectable(); }
             if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y - 1)).SetState_Selectable(); }
         }
+        tutorialManager.StartTutorial(tutorial_expedition);
         guideMessage.SetGuideText("マップから次の階層へ移動可能");
+        if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_exp); }
+        else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equipment); }
     }
     public void GoToNextRoom(Vector2Int pos)
     {
@@ -398,6 +410,13 @@ public class ExpeditionManager : MonoBehaviour
         if (teleport) { infoText.AddDebugText("テレポート：オン"); }
         else { infoText.AddDebugText("テレポート：オフ"); }
     }
+    //================================[チュートリアル]=======================================
+    public void StartTutorial_Passive()
+    {
+        tutorialManager.StartTutorial(tutorial_passive);
+    }
+    public void StartTutorial_Personality() { tutorialManager.StartTutorial(tutorial_personality); }
+
 
     public PartyStatus GetPartyStatus() { return partyStatus; }
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }

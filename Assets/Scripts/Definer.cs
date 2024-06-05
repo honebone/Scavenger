@@ -156,14 +156,15 @@ public class Definer : MonoBehaviour
                 {
                     case ItemData.ItemType.material:
                         s += "<<素材>>\n\n";
-                        s += "[";
-                        foreach (ItemData.MaterialTag tag in data.materialTags)
-                        {
-                            if (f) { s += ", "; }
-                            f = true;
-                            s += Definer.materialTagName[tag];
-                        }
-                        s += "]\n";
+                        //s += "[";
+                        //foreach (ItemData.MaterialTag tag in data.materialTags)
+                        //{
+                        //    if (f) { s += ", "; }
+                        //    f = true;
+                        //    s += Definer.materialTagName[tag];
+                        //}
+                        //s += "]\n";
+                        s += "現在素材の使い道は実装されていません...\n".ColorStr(Color.red);
                         s += string.Format("スロットあたりの所持数：{0}\n", data.amountPerStack.ToString());
                         s += string.Format("価値：{0}G\n", data.price.ToString());
                         s += string.Format("スロット単価：{0}G\n", (data.price * data.amountPerStack).ToString());

@@ -60,6 +60,10 @@ public class ActionQueueManager : MonoBehaviour
     public void OpenQueuePanel()
     {
         if (!actionQueuePanel.activeSelf) { actionQueuePanel.SetActive(true); }
+        if (actionInfoPanel.activeSelf && inQueueActions.Count > 0)
+        {
+            expeditionManager.StartTutorial_Passive();
+        }
     }
     public void CloseQueuePanel()
     {
