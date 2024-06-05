@@ -20,6 +20,7 @@ public class AMod_General : ActionMod
             {
                 if (!hasCondition_target || charactersManager.CheckIfMatchCondition(statusRef.actionTargets[i], condition_target))//‘ÎÛ‚ÌğŒ
                 {
+                    Debug.Log("ok");
                     actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
                 }
             }

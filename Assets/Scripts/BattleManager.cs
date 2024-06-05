@@ -353,7 +353,7 @@ public class BattleManager : MonoBehaviour
         }
         foreach (PositionManager positionManager in positionManagers)
         {
-            positionManager.OnTurnStart();
+            positionManager.OnTurnStart(currentTurn.character, currentTurnCount + 1);
         }
         actionQueue.StartResolve(2);
     }

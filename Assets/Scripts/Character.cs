@@ -237,6 +237,8 @@ public class Character : MonoBehaviour
             s += end + "\n";
             return s;
         }
+        /// <summary>“•\‹L‚Å•Ô‚·</summary>
+        public  float GetHPPercent() { return HP * 100f / maxHP; }
     }
     [System.Serializable]
     public struct CharaStatusMod

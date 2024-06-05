@@ -99,17 +99,17 @@ public class AreaManager : MonoBehaviour
         public GameObject fieldEffect;
     }
     //[SerializeField] Area area;//test
-    [SerializeField] AreaData areaData;
+    [SerializeField] protected AreaData areaData;
     //[SerializeField] GameObject content;
     //[SerializeField] ScrollRect mapScroll;
     //[SerializeField] GameObject layerPanel;
 
-    ExpeditionManager.Room[] layer;
+    protected ExpeditionManager.Room[] layer;
 
     //List<Map_LayerPanel> layers;
-    ExpeditionManager expeditionManager;
-    InfoText infoText;
-    Map_MapPanel map;
+    protected ExpeditionManager expeditionManager;
+    protected InfoText infoText;
+    protected Map_MapPanel map;
     private void Start()
     {
         expeditionManager = FindObjectOfType<ExpeditionManager>();
@@ -221,7 +221,7 @@ public class AreaManager : MonoBehaviour
     //    lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
     //    layers.Add(lp.GetComponent<Map_LayerPanel>());
     //}
-    ExpeditionManager.Room SetRoom(bool setEventRandomly)
+    public ExpeditionManager.Room SetRoom(bool setEventRandomly)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
         if (areaData.branchChance.Dice()){ room.up = 1; }

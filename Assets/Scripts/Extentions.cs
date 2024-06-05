@@ -229,6 +229,11 @@ public static class Extentions
         if (x == 0 || x == 5) { return 2; }
         return -1;
     }
+    /// <summary>0:lower 1:center 2:upper</summary>
+    public static int GetRow(this int currentPos)
+    {
+        return currentPos.PosIntToVector().y;
+    }
 
     public static float GetPercent(this int value,int max)
     {

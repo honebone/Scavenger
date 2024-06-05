@@ -25,7 +25,11 @@ MonoBehaviour:
   - {fileID: 1026312498805100584, guid: 320c2e581200c6243baaacfc8ffa1d46, type: 3}
   spriteForUI: {fileID: 21300000, guid: e6dd87b99cc29224f9ce187d17298aa0, type: 3}
   abilities:
+  - {fileID: 11400000, guid: 5ce41ad8e941ff943aaaa9cbc3f3dad6, type: 2}
+  - {fileID: 11400000, guid: 20128ec3e8bf2a74eadc6cc42b59a75c, type: 2}
   - {fileID: 11400000, guid: 800b611bef75450439fd65085a48453d, type: 2}
+  - {fileID: 11400000, guid: baacb78df271ffd429e9f9d01628b92d, type: 2}
+  - {fileID: 11400000, guid: 6d345a3bd8eef674fa80f30d611a1419, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 11400000, guid: ff40b764def0cd148a80fd4e8bfae22a, type: 2}
@@ -39,7 +43,7 @@ MonoBehaviour:
   surviveFatalWounds: 0
   maxHP: 25
   maxSAN: 0
-  ATK: 15
+  ATK: 12
   CRITC: 5
   CRITD: 2
   EVD: 6

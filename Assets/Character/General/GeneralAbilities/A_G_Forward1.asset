@@ -20,7 +20,7 @@ MonoBehaviour:
   abilityType: 0
   excludeRandomPool: 0
   selectWeight: 1
-  availableFront: 1
+  availableFront: 0
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 0
@@ -133,4 +133,4 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 10000000
+    actionTargetsInt: 0c000000

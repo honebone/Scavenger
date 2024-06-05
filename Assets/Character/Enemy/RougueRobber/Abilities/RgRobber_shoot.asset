@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_RgAssasin
+  m_Name: RgRobber_shoot
   m_EditorClassIdentifier: 
-  abilityName: "\u6295\u3052\u30CA\u30A4\u30D5"
+  abilityName: "\u7C97\u60AA\u306A\u30D4\u30B9\u30C8\u30EB"
   lockedDefault: 0
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2986825259884118591, guid: d4d645c40731a2f43a0cfc47898a612a, type: 3}
+  activateSprite: {fileID: 2121232945489393377, guid: 75e22a5f1e07b7340901f3ca7069d7e9, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
-  availableFront: 1
+  availableFront: 0
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 0
@@ -47,17 +47,18 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u6295\u3052\u30CA\u30A4\u30D5"
+  - actionName: "\u7C97\u60AA\u306A\u30D4\u30B9\u30C8\u30EB"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
-    VE_OnTargets: {fileID: 2619064900569293486, guid: 71f827f9624434c4a9bebd41d4b06736, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 5
+    actionMods:
+    - {fileID: 980131611971298319, guid: 917ebd7fd73717746bdb4f81853d3d87, type: 3}
+    targetType: 1
     friendly: 0
     condition:
       searchAsPos: 0
@@ -85,8 +86,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 1
-    ATKMod_min: 60
-    ATKMod_max: 100
+    ATKMod_min: 100
+    ATKMod_max: 120
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: -10
@@ -131,6 +132,6 @@ MonoBehaviour:
     abilityType: 1
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2986825259884118591, guid: d4d645c40731a2f43a0cfc47898a612a, type: 3}
+    activateSprite: {fileID: 2121232945489393377, guid: 75e22a5f1e07b7340901f3ca7069d7e9, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 00000000
+    actionTargetsInt: 08000000

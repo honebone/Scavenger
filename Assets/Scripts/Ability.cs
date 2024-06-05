@@ -608,6 +608,16 @@ public class Ability : MonoBehaviour
                         tp_noMark.Add(new List<int>() { i });
                     }
                     break;
+                case Action.ActionStatus.TargetType.column:
+
+                    foreach (int i in charactersManager.SearchPosWithCondition(actionStatus.condition))
+                    {
+                        if (i.GetRow() == 1)//対象候補のうち、中段にあるもののみを検出
+                        {
+                            tp_noMark.Add(new List<int>() { i - 1, i, i + 1 });//その列の下段、上段はi-1、i+1で表される
+                        }
+                    }
+                    break;
             }
         }
 
