@@ -25,6 +25,13 @@ public class AbilityButtonPanel : MonoBehaviour
             var a = Instantiate(abilityButton, parent);
             a.GetComponent<AbilityButton>().Init(abilitiesStatus[i], battleManager, character, charactersManager,guideMessage);
         }
-       
+    }
+    public void SetAbilityButtons_Deploy(Ability.AbilityStatus[] abilitiesStatus)
+    {
+        for(int i = 0; i < parent.childCount; i++) { Destroy(parent.GetChild(i).gameObject); }
+        for (int i = 0; i < abilitiesStatus.Length; i++) {
+            var a = Instantiate(abilityButton, parent);
+            a.GetComponent<AbilityButton>().Init_Deploy(abilitiesStatus[i]);
+        }
     }
 }

@@ -41,7 +41,7 @@ public class RaE_TreasureBox : RE_RandomEvents
                     infoText.AddLogText("ミミックだ!!");
                     infoText.SwitchToLog();
                     yield return new WaitForSeconds(1f);
-                    expeditionManager.Battle(mimic, umbushed);
+                    expeditionManager.Battle(mimic, umbushed, new ExpeditionManager.BattleParams());
                 }
                 else
                 {

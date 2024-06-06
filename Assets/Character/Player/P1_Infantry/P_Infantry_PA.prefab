@@ -94,6 +94,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -120,13 +121,15 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
-    moveChance: 200
+    moveChance: 0
+    guaranteedMove: 1
     moveForword: 1
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0
@@ -179,6 +182,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -206,12 +210,14 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0

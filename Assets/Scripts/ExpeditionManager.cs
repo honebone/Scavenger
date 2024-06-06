@@ -138,9 +138,10 @@ public class ExpeditionManager : MonoBehaviour
     }
 
     //========================[’TõŠJn]==============================
-    public void StartExpedition()
+    public void StartExpedition(AreaData firstArea)
     {
         inExpedition = true;
+        StartArea(firstArea);
     }
     public void StartArea(AreaData area)
     {
@@ -152,6 +153,8 @@ public class ExpeditionManager : MonoBehaviour
         Instantiate(currentArea.background, backgroundP);
         globalLight.intensity = currentArea.GLightIntensity;
         globalLight.color = currentArea.GLightColor;
+
+        soundManager.SetBGM_Normal(currentArea.BGM);
 
         var a = Instantiate(currentArea.areaManager, AreaManagerP);//manager‚Ì¶¬
         a.GetComponent<AreaManager>().Init(area);
@@ -313,13 +316,20 @@ public class ExpeditionManager : MonoBehaviour
     }
 
     //==========================================[room event ‚ÅŒÄ‚Î‚ê‚éŠÖ”]===========================================
-    public void Battle(AreaManager.EnemySet enemySet, GameObject fieldEffect)
+    [System.Serializable]
+    public struct BattleParams
+    {
+       public AudioClip bgm;
+    }
+    public void Battle(AreaManager.EnemySet enemySet, GameObject fieldEffect,BattleParams battleParams)
     {
         List<CharacterData> enemies = enemySet.GetEnemies();
         for (int i = 0; i < 9; i++)
         {
             if (enemies[i] != null) { charactersManager.SpawnEnemy(enemies[i], i + 9, true); }
         }
+        if (battleParams.bgm == null) { soundManager.StartBGM_Battle(currentArea.battleBGM.Choice()); }
+        else { soundManager.StartBGM_Battle(battleParams.bgm); }
         battleManager.BattleStart(fieldEffect);
     }
     
@@ -396,6 +406,7 @@ public class ExpeditionManager : MonoBehaviour
 
     public void OnEndBattle()
     {
+        soundManager.PlayBGM_Normal();
         if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
         supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
         currentRE.OnEndBattle();
@@ -415,6 +426,17 @@ public class ExpeditionManager : MonoBehaviour
         SelectNextRoom();
     }
 
+    public void Defeat()
+    {
+        soundManager.StopBGMs();
+        StartCoroutine(DefeatC());
+    }
+    IEnumerator DefeatC()
+    {
+        fadeOutUI.FadeOut_SetDuration(1f);
+        yield return new WaitForSeconds(1f);
+        gameManager.GoToResultScene(false);//
+    }
     public void EndExpediton()
     {
         gameManager.GoToResultScene(true);//test

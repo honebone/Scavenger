@@ -31,8 +31,8 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
         {
             case 0:
                 lootPanel.DropItem_Loot(loot);
-                if (40.Dice()) { expeditionManager.Battle(enemySet, surprise); }
-                else { expeditionManager.Battle(enemySet, null); }
+                if (40.Dice()) { expeditionManager.Battle(enemySet, surprise,new ExpeditionManager.BattleParams()); }
+                else { expeditionManager.Battle(enemySet, null,new ExpeditionManager.BattleParams()); }
                 break;
             case 1:
                 infoText.AddLogText("見張りに見つからないようにしながら、野営地にもぐりこんだ");
@@ -47,7 +47,7 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
                 {
                     infoText.AddLogText("目を覚ましたゴブリンと目が合った!!");
                     infoText.SwitchToLog();
-                    expeditionManager.Battle(enemySet, siege);
+                    expeditionManager.Battle(enemySet, siege, new ExpeditionManager.BattleParams());
                 }
                 else
                 {

@@ -48,7 +48,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u5203\u306E\u5D50"
     StEInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B\u653B\u6483\u3092\u518D\u767A\u52D5\u3055\u305B\u308B\n\u518D\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF-1"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: ef5ab13ad5819f949b6c5e0bdc74bc87, type: 3}
     StEType: 4
     maxStack: 0
     merge: 1
@@ -102,6 +102,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -129,12 +130,14 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0
@@ -197,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef5ab13ad5819f949b6c5e0bdc74bc87, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

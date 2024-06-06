@@ -146,6 +146,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -248,6 +249,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -267,8 +269,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: 36c651480af2c1b46bd872d9b6fe9294, type: 3}
-      guaranteed: 0
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 0
     applyPEParams: []

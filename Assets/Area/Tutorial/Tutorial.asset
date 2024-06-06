@@ -22,6 +22,7 @@ MonoBehaviour:
   maxLength: 0
   branchChance: 0
   blindChance: 0
+  BGM: {fileID: 8300000, guid: 657325930132a6c4680a685a0cbf7406, type: 3}
   roomEvents: []
   boss: {fileID: 11400000, guid: 716ae309d3ae76b4f8d8446da7ab1b25, type: 2}
   endArea: {fileID: 0}
@@ -35,5 +36,7 @@ MonoBehaviour:
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+  battleBGM:
+  - {fileID: 8300000, guid: 8e8ab15f0f49c014f8e38dd03475351a, type: 3}
   applyFEChance: 0
   normalBattleFEPool: []

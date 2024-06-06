@@ -1115,6 +1115,7 @@ public class Character : MonoBehaviour
     }
     public void Retreat()
     {
+        charaStatus.dead = true;
         charactersManager.RemoveExistingCharacter(this);
         battleManager.RemoveTurn(this);
 

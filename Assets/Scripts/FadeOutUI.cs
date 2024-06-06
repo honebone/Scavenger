@@ -6,50 +6,54 @@ using UnityEngine.UI;
 
 public class FadeOutUI : MonoBehaviour
 {
-    [SerializeField]
-    GameObject panel;
+    [SerializeField] bool blockOnAwake=true;
+
+[SerializeField] CanvasGroup canvas;
     private void Awake()
     {
-        Color c = panel.GetComponent<Image>().color;
-        c.a = 1;
-        panel.GetComponent<Image>().color = c;
+        if (blockOnAwake)
+        {
+            canvas.alpha = 1;
+        }
     }
     /// <summary>0.4s‚ÅŠ®—¹</summary>
     public void FadeOut()
     {
-        StartCoroutine("FadingOut");
+        StartCoroutine(FadingOut(0.4f));
+    }
+    public void FadeOut_SetDuration(float duration)
+    {
+        StartCoroutine(FadingOut(duration));
     }
 
-    IEnumerator FadingOut()
+    IEnumerator FadingOut(float duration)
     {
-        for (int i = 0; i < 5; i++)
+        var wait = new WaitForSeconds(duration / 10f);
+        for (int i = 0; i < 10; i++)
         {
-            Color c = panel.GetComponent<Image>().color;
-            c.a += 0.2f;
-            panel.GetComponent<Image>().color = c;
-            yield return new WaitForSeconds(0.08f);
+            canvas.alpha += 0.1f;
+            yield return wait;
         }
-        Color e = panel.GetComponent<Image>().color;
-        e.a = 1;
-        panel.GetComponent<Image>().color = e;
+        canvas.alpha = 1;
     }
     /// <summary>0.4s‚ÅŠ®—¹</summary>
     public void FadeIn()
     {
-        StartCoroutine("FadingIn");
+        StartCoroutine(FadingIn(0.4f));
+    }
+    public void FadeIn_SetDuration(float duration)
+    {
+        StartCoroutine(FadingIn(duration));
     }
 
-    IEnumerator FadingIn()
+    IEnumerator FadingIn(float duration)
     {
-        for (int i = 0; i < 5; i++)
+        var wait = new WaitForSeconds(duration / 10f);
+        for (int i = 0; i < 10; i++)
         {
-            Color c = panel.GetComponent<Image>().color;
-            c.a -= 0.2f;
-            panel.GetComponent<Image>().color = c;
-            yield return new WaitForSeconds(0.08f);
+            canvas.alpha -= 0.1f;
+            yield return wait;
         }
-        Color e = panel.GetComponent<Image>().color;
-        e.a = 0;
-        panel.GetComponent<Image>().color = e;
+        canvas.alpha = 0;
     }
 }

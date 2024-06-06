@@ -10,6 +10,7 @@ public class RE_BossBattle : RoomEvent
     AreaManager.EnemySet boss;
     [SerializeField]
     GameObject fieldEffect;
+    [SerializeField] ExpeditionManager.BattleParams battleParams;
 
     protected int choice = 0;
     //GameObject eventManager;
@@ -33,8 +34,8 @@ public class RE_BossBattle : RoomEvent
                     yield return new WaitForSeconds(0.5f);
                     infoText.AddLogText("");
                 }
-                if(fieldEffect != null) { expeditionManager.Battle(boss, fieldEffect); }
-                else { expeditionManager.Battle(boss, null); }
+                if(fieldEffect != null) { expeditionManager.Battle(boss, fieldEffect, new ExpeditionManager.BattleParams()); }
+                else { expeditionManager.Battle(boss, null, battleParams); }
                 break;
             case 1:
                 infoText.AddLogText("êÊÇ…êiÇÒÇæ");

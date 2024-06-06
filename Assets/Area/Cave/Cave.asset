@@ -22,6 +22,7 @@ MonoBehaviour:
   maxLength: 10
   branchChance: 30
   blindChance: 20
+  BGM: {fileID: 8300000, guid: 852e508e581db8e4c9b45cf896ae5a79, type: 3}
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
     weight: 50
@@ -83,6 +84,10 @@ MonoBehaviour:
     upperBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+  battleBGM:
+  - {fileID: 8300000, guid: b275770d51ae98f4090575b262ed8e52, type: 3}
+  - {fileID: 8300000, guid: 8e8ab15f0f49c014f8e38dd03475351a, type: 3}
+  - {fileID: 8300000, guid: 9a4a128792e5ec841a714764b5974091, type: 3}
   applyFEChance: 20
   normalBattleFEPool:
   - {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

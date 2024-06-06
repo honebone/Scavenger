@@ -191,6 +191,7 @@ public class ActionQueueManager : MonoBehaviour
 
         abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
+        abilityNameText.transform.parent.GetComponent<Image>().enabled = true;
 
         if (actionStatus.actionOwner != null && !actionStatus.actionOwner.GetCharacterStatus().player)
         {
@@ -227,6 +228,7 @@ public class ActionQueueManager : MonoBehaviour
 
         abilityNameText.text = "";
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Color.clear;
+        abilityNameText.transform.parent.GetComponent<Image>().enabled = false;
 
         actionStatus.actionOwner.ResetCharaSprite();
     }
@@ -320,7 +322,7 @@ public class ActionQueueManager : MonoBehaviour
         {
             if (charactersManager.CheckDefeat())
             {
-                expeditionManager.EndExpediton();//test
+                expeditionManager.Defeat();//test
             }
             else if (charactersManager.CheckVictory())
             {

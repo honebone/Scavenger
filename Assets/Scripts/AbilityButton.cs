@@ -27,6 +27,7 @@ public class AbilityButton : MonoBehaviour
     GuideMessage guideMessage;
 
     bool available;
+    bool deployMode;
 
     public void Init(Ability.AbilityStatus status,BattleManager bm,Character chara,CharactersManager cm,GuideMessage gm)
     {
@@ -52,23 +53,41 @@ public class AbilityButton : MonoBehaviour
         frame.sprite = frames[(int)abilityStatus.abilityType];
         frame.color = Definer.colorRef.abilityColors[(int)abilityStatus.abilityType];
     }
+    public void Init_Deploy(Ability.AbilityStatus status)//出撃キャラ選択画面でのみ有効
+    {
+        deployMode = true;
+        abilityStatus = status;
+
+        nameText.text = abilityStatus.abilityName;
+        if (abilityStatus.locked) { locked.enabled = true; }
+        frame.sprite = frames[(int)abilityStatus.abilityType];
+        frame.color = Definer.colorRef.abilityColors[(int)abilityStatus.abilityType];
+    }
 
     public void OnMouseDown()
     {
-        battleManager.SetSelectedAbility(abilityStatus, character);
-        FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo());
-        charactersManager.ResetAllTargetIcons();
-        if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
+        if (!deployMode)
         {
-            abilityStatus.instantiatedManager.StartSelectTarget();
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            List<string> unavailableInfo = abilityStatus.instantiatedManager.GetUnavailabeInfo();
-            foreach(string s in unavailableInfo)
+            battleManager.SetSelectedAbility(abilityStatus, character);
+            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo());
+            charactersManager.ResetAllTargetIcons();
+            if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
             {
-                guideMessage.SetWaringText(s);
+                abilityStatus.instantiatedManager.StartSelectTarget();
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                List<string> unavailableInfo = abilityStatus.instantiatedManager.GetUnavailabeInfo();
+                foreach (string s in unavailableInfo)
+                {
+                    guideMessage.SetWaringText(s);
+                }
             }
         }
+        else
+        {
+            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false,new Character.CharacterStatus()));
+        }
+
     }
 }

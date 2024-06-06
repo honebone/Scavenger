@@ -94,6 +94,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -113,7 +114,8 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: d13e88729daa07344a62a1e7d67314f5, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 0
     applyPEParams: []
@@ -125,12 +127,14 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
     removeStEs_additional: []
     dontChangeSprite: 0

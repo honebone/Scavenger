@@ -15,7 +15,7 @@ public class PA_StE_Counter : PA_StatusEffect
             action.ATKMod_min = StEStatus.value;
             action.ATKMod_max = StEStatus.value;
             actionStatus.actionOwner = character;
-            character.Enqueue(action, true, new List<Character>() { attacker });
+            Enqueue(action, true, new List<Character>() { attacker });
 
             AddStack(-1);
         }

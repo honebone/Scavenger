@@ -42,6 +42,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     CharactersManager.SearchCharaCondition moveFrontLineCondition;
 
+    [SerializeField] AudioClip battleEnd;
     [SerializeField] TutorialData tutorial_Battle;
     [SerializeField] TutorialData tutorial_ability;
     [SerializeField] TutorialData tutorial_corpse;
@@ -138,6 +139,8 @@ public class BattleManager : MonoBehaviour
 
    public void RoundStart()
     {
+        for (int i = 0; i < turnOrderIconParent.childCount; i++) { turnOrderIconParent.GetChild(i).GetComponent<Battle_TurnOrderIcon>().CheckDeadForDebug(); }
+
         roundCount++;
         roundText.text=roundCount.ToString();
         infoText.AddLogText(string.Format("\nƒ‰ƒEƒ“ƒh{0}", roundCount));
@@ -314,11 +317,16 @@ public class BattleManager : MonoBehaviour
 
         Trigger_BattleEnd();
     }
-    public void EndTrigger_BattleEnd() { StartCoroutine(BattleEndAnim()); }
+    public void EndTrigger_BattleEnd()
+    {
+        charactersManager.DestroyDead();
+        StartCoroutine(BattleEndAnim());
+    }
 
     IEnumerator BattleEndAnim()
     {
         yield return new WaitForSeconds(1f);
+        soundManager.PlaySE(battleEnd);
         anim_battleIcon.SetTrigger("BattleEnd");
         battleText.text = "<color=#FFFF00>Victory!</color>";
         yield return new WaitForSeconds(1.5f);

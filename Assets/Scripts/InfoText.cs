@@ -21,9 +21,6 @@ public class InfoText : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI logText;
 
-    [SerializeField] TutorialData tutorial_info1;
-    [SerializeField] TutorialData tutorial_info2;
-
    // Character displayingChara;
 
     CharactersManager charactersManager;
@@ -72,7 +69,6 @@ public class InfoText : MonoBehaviour
         //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
         //    displayingChara = null;
         //}
-        if (tutorialManager.CheckUnlocked(tutorial_info1)) { tutorialManager.StartTutorial(tutorial_info2); }
         charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
         //displayingChara = chara;
@@ -120,29 +116,38 @@ public class InfoText : MonoBehaviour
 
     public void AddLogText(string log)
     {
+        logs.Add(log);
+        logCount++;
         if (logCount >= maxLogs)
         {
-            AddDebugText("最大ログ数に到達");
+            for(int i = 0; i < deleteLogs; i++)
+            {
+                logs.RemoveAt(i);
+            }
+            logCount -= deleteLogs;
         }
-        else
+
+        string totalLog = "";
+        foreach(string l in logs)
         {
-            logCount++;
-            logText.text += "\n" + logCount.ToString().ColorStr(Definer.colorRef.currentState) + log;
+            totalLog += "\n"+l;
         }
+
+        logText.text = totalLog;
     }
     public void AddDebugText(string debugLog)
     {
-        SwitchToLog();
-        //nameText.text = "ログ";
-        logText.text += string.Format("\n##デバッグ：{0}##", debugLog).ColorStr(Definer.colorRef.debug);
+        //SwitchToLog();
+        ////nameText.text = "ログ";
+        //AddLogText(string.Format("\n##デバッグ：{0}##", debugLog).ColorStr(Definer.colorRef.debug));
         
-        print(debugLog);
+        //print(debugLog);
     }
     public void AddErrorText(string errorLog)
     {
         SwitchToLog();
         //nameText.text = "ログ";
-        logText.text += string.Format("\n##error!!：{0}##", errorLog).ColorStr(Color.red);
+        AddLogText(string.Format("\n##error!!：{0}##", errorLog).ColorStr(Color.red));
         print(errorLog);
     }
 }

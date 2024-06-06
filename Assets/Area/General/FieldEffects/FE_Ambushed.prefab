@@ -50,27 +50,34 @@ MonoBehaviour:
     actionName: "\u5F85\u3061\u4F0F\u305B"
     conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
     targetInfo: "\u6575\u5168\u4F53"
+    AModInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -80,9 +87,12 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -102,26 +112,31 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 999
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
-    SE: {fileID: 0}
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
   condition_enemy:
@@ -129,37 +144,48 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 1
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1
     characterTags: 
     StE: []
     PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
   actionStatus_player:
     actionName: "\u5F85\u3061\u4F0F\u305B"
     conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
     targetInfo: "\u5473\u65B9\u5168\u4F53"
+    AModInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
     friendly: 0
-    involveAll: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
       characterTags: 
       StE: []
       PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -169,9 +195,12 @@ MonoBehaviour:
     attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -191,22 +220,26 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams: []
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
-    SE: {fileID: 0}
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
   condition_player:
@@ -214,9 +247,13 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 1
     enemy: 0
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1
     characterTags: 
     StE: []
     PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0

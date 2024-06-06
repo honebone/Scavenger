@@ -52,7 +52,7 @@ public class RE_Rest : RoomEvent
                 }
                 if (20.Dice())
                 {
-                    expeditionManager.Battle(currentArea.GetRandomEnemySet(), umbushed);
+                    expeditionManager.Battle(currentArea.GetRandomEnemySet(), umbushed, new ExpeditionManager.BattleParams());
                 }
                 else
                 {

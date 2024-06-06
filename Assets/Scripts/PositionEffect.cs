@@ -119,6 +119,7 @@ public class PositionEffect : MonoBehaviour
     {
         AtTheEnd();
         positionManager.RemovePE(this);
+        if (PEIcon != null) { Destroy(PEIcon.gameObject); }
         Destroy(gameObject);
     }
     public virtual void OnPEInit() { }
@@ -133,5 +134,5 @@ public class PositionEffect : MonoBehaviour
     public virtual void OnTurnStart(Character currentTurnChara, int turnCount) { }
     public virtual void OnTurnEnd() { }
     public virtual void OnRoundEnd() { }
-    public virtual void OnBattleEnd() { }
+    public virtual void OnBattleEnd() { Disable(); }
 }

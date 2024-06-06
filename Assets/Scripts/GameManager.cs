@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    bool tutorialarea;//test
 
     private void Start()
     {
@@ -27,6 +28,18 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    //=================================[test¨title]=============================================
+    public void GoTotitleScene()
+    {
+        SceneManager.LoadScene("Title");
+    }
+    //=================================[title¨expedition]=============================================
+    public void  GoToExpeditionScene(bool tutorial)
+    {
+        tutorialarea = tutorial;
+
+        SceneManager.LoadScene("Expedition");
+    }
 
     /// <summary>’Tõ‰æ–Ê‚©‚ç’TõŒ‹‰Ê‰æ–Ê‚É‚¿‰z‚·“à—e</summary>
     [System.Serializable]
@@ -43,7 +56,8 @@ public class GameManager : MonoBehaviour
         resultParams.survive = survive;
         resultParams.materials = FindObjectOfType<Inventory>().GetMaterials();
 
-        SceneManager.LoadScene("Result");
+        SceneManager.LoadScene("TestResult");//test
     }
     public ExpeditionToResult GetExpeditionToResult() { return resultParams; }
+    public bool CheckIfTutorialArea() { return tutorialarea; }
 }

@@ -18,10 +18,12 @@ public class AreaData : ScriptableObject
 
     public int branchChance;
     public int blindChance;
+    public AudioClip BGM;
     public List<AreaManager.Area_RoomEvent> roomEvents;
     public RoomEventData boss;
     public RoomEventData endArea;
     public List<AreaManager.EnemySet> normalBattlePool;
+    public List<AudioClip> battleBGM;
     //public FieldEffectWeight[] normalBattleFEPool;
     public int applyFEChance;
     public List<GameObject> normalBattleFEPool;

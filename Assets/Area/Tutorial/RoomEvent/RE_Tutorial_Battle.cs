@@ -9,7 +9,7 @@ public class RE_Tutorial_Battle : RoomEvent
 
     public override void StartRoomEvent()
     {
-        expeditionManager.Battle(enemySet, null);
+        expeditionManager.Battle(enemySet, null, new ExpeditionManager.BattleParams());
     }
 
     public override void OnEndLoot()

@@ -30,8 +30,8 @@ public class P_Blader_PA : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        string s = attack.GetInfo(true, character.GetCharacterStatus());
-        s += combo.GetInfo(true, character.GetCharacterStatus());
+        string s = attack.GetInfo(false, new Character.CharacterStatus());
+        s += combo.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 }

@@ -53,6 +53,7 @@ MonoBehaviour:
     maxStack: 0
     merge: 1
     refValue: 0
+    undeletable: 0
     stack: 0
     value: 0
   actionStatus:
@@ -60,7 +61,8 @@ MonoBehaviour:
     conditionInfo: '
 
 '
-    targetInfo: 
+    targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: eaea8b63b4fe3ad44942432d0fc39edb, type: 3}
     SE: {fileID: 0}
@@ -74,6 +76,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -86,6 +89,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -100,6 +104,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -119,30 +124,31 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
     actionTargetsInt: 
   stackThreshold: 4

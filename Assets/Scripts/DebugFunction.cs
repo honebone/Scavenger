@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DebugFunction : MonoBehaviour
 {
-
+    [SerializeField]
+     bool debug;
     [SerializeField]
     CharacterData[] characterData;
 
@@ -63,41 +64,44 @@ public class DebugFunction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (debug)
         {
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[4], 6);
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
-            FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            FindObjectOfType<ExpeditionManager>().Battle(enemySetTest, FE);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(areaData); }
-            else { expeditionManager.GetAreaManager().GenerateMap(); }
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            foreach (Definer.Item item in items)
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                FindObjectOfType<Inventory>().AddItem(item, item.amount, true);
+                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[4], 6);
+                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
+                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
+                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                FindObjectOfType<ExpeditionManager>().Battle(enemySetTest, FE, new ExpeditionManager.BattleParams());
             }
 
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(areaData); }
+                else { expeditionManager.GetAreaManager().GenerateMap(); }
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                foreach (Definer.Item item in items)
+                {
+                    FindObjectOfType<Inventory>().AddItem(item, item.amount, true);
+                }
+
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                FindObjectOfType<TutorialManager>().StartTutorial(tutorial);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                FindObjectOfType<DeployCharacterManager>().StartDeploy();
+            }
+            if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            FindObjectOfType<TutorialManager>().StartTutorial(tutorial);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            FindObjectOfType<DeployCharacterManager>().StartDeploy();
-        }
-        if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
     }
 
     public void GainExp()

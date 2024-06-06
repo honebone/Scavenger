@@ -20,9 +20,9 @@ MonoBehaviour:
   abilityType: 0
   excludeRandomPool: 0
   selectWeight: 1
-  availableFront: 0
+  availableFront: 1
   availableMid: 1
-  availableBack: 1
+  availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -47,7 +47,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u524D\u9032"
+  - actionName: "\u5F8C\u9000"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -133,4 +133,4 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c000000
+    actionTargetsInt: 10000000

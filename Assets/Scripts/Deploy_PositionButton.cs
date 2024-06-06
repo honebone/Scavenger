@@ -37,7 +37,16 @@ public class Deploy_PositionButton : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                infoText.SetText(charaStatus.charaName, charaStatus.GetInfo());
+                string info = charaStatus.GetInfo();
+                info += "\n“Á«\n";
+                foreach (GameObject obj in charaStatus.passiveAbilities)
+                {
+                    PassiveAbility pa = obj.GetComponent<PassiveAbility>();
+                    info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                }
+                infoText.SetText(charaStatus.charaName, info);
+                FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons_Deploy(charaStatus.abilitiesStatus);
+                deployCharacterManager.StartTutorial_Info();
             }
             if (Input.GetMouseButtonDown(0))
             {

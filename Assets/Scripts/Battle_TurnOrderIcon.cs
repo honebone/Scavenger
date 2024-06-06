@@ -54,6 +54,11 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         else { FindObjectOfType<InfoText>().SetText("•s–¾", ""); }
     }
 
+    public void CheckDeadForDebug()
+    {
+        if (character.GetCharacterStatus().dead) { RemoveTurnOrderIcon(); }
+    }
+
     public void RemoveTurnOrderIcon()
     {
         Destroy(gameObject);

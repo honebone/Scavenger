@@ -17,7 +17,12 @@ public class TutorialManager : MonoBehaviour
     TutorialText displayingText;
     TutorialData displayingTutorial;
     int count;
-  
+
+    private void Start()
+    {
+        skipTutorial = !FindObjectOfType<GameManager>().CheckIfTutorialArea();
+    }
+
     public void StartTutorial(TutorialData tutorial)
     {
         if (!skipTutorial && !unlockedTutorial.Contains(tutorial))
@@ -68,5 +73,5 @@ public class TutorialManager : MonoBehaviour
         count = 0;
     }
 
-    public bool CheckUnlocked(TutorialData tutorial) { return unlockedTutorial.Contains(tutorial); }
+    public bool CheckUnlocked(TutorialData tutorial) { return skipTutorial || unlockedTutorial.Contains(tutorial); }
 }
