@@ -58,8 +58,13 @@ public class DebugFunction : MonoBehaviour
         //for(int i = 0; i < 18; i++)
         //{
         //    print(string.Format("{0}:{1}",i,i.GetCurrentColumn()));
-        //}
-
+        //}bu
+        List<int> list = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        for(int i = 0; i < 10; i++)
+        {
+            Debug.Log(list.Shuffle());
+        }
+        Debug.Log(list);
     }
     // Update is called once per frame
     void Update()

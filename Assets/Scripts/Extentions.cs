@@ -259,4 +259,18 @@ public static class Extentions
     {
         return list[Random.Range(0, list.Count)];
     }
+
+    public static List<T> Shuffle<T>(this List<T> list)
+    {
+        List<T> shuffle = new List<T>(list);
+        for (int i = shuffle.Count; i > 1; i--)
+        {
+            int k = Random.Range(0, i);
+            T value = shuffle[k];
+            shuffle[k] = shuffle[i - 1];
+            shuffle[i - 1] = value;
+        }
+
+        return shuffle;
+    }
 }

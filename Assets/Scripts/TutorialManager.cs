@@ -6,6 +6,7 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
+    [SerializeField] bool skipTutorial;
     [SerializeField] GameObject panel;
     [SerializeField] Transform guideObjP;
 
@@ -19,7 +20,7 @@ public class TutorialManager : MonoBehaviour
   
     public void StartTutorial(TutorialData tutorial)
     {
-        if (!unlockedTutorial.Contains(tutorial))
+        if (!skipTutorial && !unlockedTutorial.Contains(tutorial))
         {
             Time.timeScale = 0;
             panel.SetActive(true);

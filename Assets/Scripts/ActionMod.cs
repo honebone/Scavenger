@@ -55,8 +55,8 @@ public class ActionMod : MonoBehaviour
 
         public string GetModInfo()
         {
-            string s = "Å¢î\óÕÇÃïœâªÅ¢\n";
-            if (conditionInfo != "") { s += string.Format("èåèÅF{0}\n", conditionInfo); }
+            string s = "";
+            if (conditionInfo != "") { s += string.Format("ÅZ{0}\n", conditionInfo); }
             if (!hideValues)
             {
                 if (decreaseHP != 0) { s += ValueToStr("ÅEHPå∏è≠ó ", decreaseHP, ""); }
