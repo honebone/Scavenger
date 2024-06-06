@@ -422,6 +422,18 @@ public class CharactersManager : MonoBehaviour
         var co = Instantiate(characterObject, worldPos, Quaternion.identity);
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager,tb,false);
     }
+    public void SpawnPlayer2(Character.CharacterStatus charaStatus, int pos)//test
+    {
+        if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
+
+        charaStatus.position = pos;
+
+        Vector2 worldPos = charactersWorldPos_Size1[pos];
+        Character_TargetButton tb = targetButtons_size1[pos];
+
+        var co = Instantiate(characterObject, worldPos, Quaternion.identity);
+        co.GetComponent<Character_Object>().Init(charaStatus, charaStatus.characterData.manager, tb, false);
+    }
 
     public void SpawnEnemy(CharacterData characterData, int pos,bool dropItem)
     {

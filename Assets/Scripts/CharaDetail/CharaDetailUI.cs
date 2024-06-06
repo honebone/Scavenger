@@ -57,9 +57,16 @@ public class CharaDetailUI : MonoBehaviour
         displayingChara = null;
     }
 
-    void Update()
+    public void CharaDetailButton()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            infoText.SetText("キャラクター詳細", "キャラクターの装備品の確認や変更、アビリティの解放ができる");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ToggleUI();
+        }
     }
     public void ToggleUI()
     {

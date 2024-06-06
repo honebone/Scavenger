@@ -23,7 +23,7 @@ public class P_Infantry_PA : PA_Personality
             shieldActivated = true;
             Action.ActionStatus action = shield;
             shield.actionOwner = character;
-            character.Enqueue(action, true, new List<Character>() { character });
+            Enqueue(action, true, new List<Character>() { character });
         }
     }
     public override void OnRoundEnd()
@@ -33,7 +33,7 @@ public class P_Infantry_PA : PA_Personality
         {
             Action.ActionStatus action = move;
             shield.actionOwner = character;
-            character.Enqueue(action, true, new List<Character>() { character });
+            Enqueue(action, true, new List<Character>() { character });
         }
     }
     public override string GetPAInfo_Base()

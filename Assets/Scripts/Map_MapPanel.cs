@@ -26,6 +26,18 @@ public class Map_MapPanel : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         tutorialManager = FindObjectOfType<TutorialManager>();
     }
+
+    public void MapButton()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            infoText.SetText("マップ","マップを開く");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ToggleMap();
+        }
+    }
     public void ToggleMap()
     {
         if (!mapPanel.activeSelf) { OpenMap(); }

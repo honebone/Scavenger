@@ -36,7 +36,18 @@ public class Inventory : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         detailUI=FindObjectOfType<CharaDetailUI>();
     }
-   
+
+    public void InventoryButton()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            infoText.SetText("インベントリ", "所持しているアイテムを確認する");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ToggleInventory();
+        }
+    }
     public void ToggleInventory()
     {
         if (inventoryPanel.activeSelf) { CloseInventory(); }

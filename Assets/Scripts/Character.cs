@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     public struct CharacterStatus
     {
         public string fileName;
+        public CharacterData characterData;
         public List<CharacterData.CharacterTag> characterTags;
         public string charaName;
         //public int size;
@@ -63,7 +64,7 @@ public class Character : MonoBehaviour
         public float moveRes;
         public float debuffRes;
 
-
+        ///<summary>ç°ÇÒÇ∆Ç±égÇ¡ÇƒÇ»Ç¢Ç¡Ç∑</summary>
         public int instanceID;
         public int position;
 
@@ -155,6 +156,7 @@ public class Character : MonoBehaviour
         public void Init(CharacterData data,int ID)
         {
             fileName = data.fileName;
+            characterData = data;
             characterTags = new List<CharacterData.CharacterTag>(data.characterTags);
             charaName = data.charaName;
             //size = data.size;
@@ -591,14 +593,14 @@ public class Character : MonoBehaviour
             {
                 info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
             }
-            
+
         }
 
         info += "\nÅûÅûì¡ê´ÅûÅû\n";
         foreach (PassiveAbility pa in PA_Per)
         {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(),pa.GetPAInfo()); 
-        } 
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+        }
 
         if (charaStatus.player)
         {
@@ -608,12 +610,12 @@ public class Character : MonoBehaviour
                 info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
             }
         }
-        
-        info+="\n"+targetButton.GetPositionManager().GetPEInfo();
+
+        info += "\n" + targetButton.GetPositionManager().GetPEInfo();
         string charaName = charaStatus.charaName;
-        if (CheckAffricted()) { charaName=charaName.ColorStr(Definer.colorRef.affricted); }
+        if (CheckAffricted()) { charaName = charaName.ColorStr(Definer.colorRef.affricted); }
         infoText.SetCharaInfo(charaName, info, this);
-        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus,this);
+        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus, this);
         //charaObj.SetSelectedIcon(true);
         targetButton.SetSelectedIcon(true);
     }

@@ -81,6 +81,18 @@ public class InfoText : MonoBehaviour
         infoTextScrollBar.value = 1;
     }
 
+    public void InfoButton()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            SetText("ログ", "ログを確認する");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            TogglePanel();
+        }
+    }
+
     public void TogglePanel()
     {
         if (infoPanel.activeSelf)

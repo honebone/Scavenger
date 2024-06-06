@@ -53,6 +53,18 @@ public class ActionQueueManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
     }
+
+    public void ActionQueueButton()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            infoText.SetText("アクションキュー", "発動した誘発能力の一覧を見る");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ToggleQueuePanel();
+        }
+    }
     public void ToggleQueuePanel()
     {
         actionQueuePanel.SetActive(!actionQueuePanel.activeSelf);

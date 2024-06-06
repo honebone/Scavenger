@@ -114,6 +114,7 @@ public class ExpeditionManager : MonoBehaviour
     TutorialManager tutorialManager;
     Inventory inventory;
 
+    bool inExpedition;
     bool inRoomEvent;
 
     private void Start()
@@ -137,6 +138,10 @@ public class ExpeditionManager : MonoBehaviour
     }
 
     //========================[探索開始]==============================
+    public void StartExpedition()
+    {
+        inExpedition = true;
+    }
     public void StartArea(AreaData area)
     {
         areaCount++;
@@ -249,6 +254,19 @@ public class ExpeditionManager : MonoBehaviour
     bool moveMode;
     Character moveChara;
     /// <summary>部屋移動前の位置の編集</summary>
+    /// 
+
+    public void MoveButton()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            infoText.SetText("ポジション変更", "キャラクターのポジションを変更する\n(イベント中は不可)");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            ToggleMoveMode();
+        }
+    }
     public void ToggleMoveMode()
     {
         if (!inRoomEvent)
@@ -425,4 +443,6 @@ public class ExpeditionManager : MonoBehaviour
     public AreaManager GetAreaManager() { return currentAreaManger; }
 
     public bool CheckInRoomEvent() { return inRoomEvent; }
+    public bool CheckInExpedition() { return inExpedition; }
+
 }

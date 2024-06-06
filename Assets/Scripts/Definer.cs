@@ -5,7 +5,7 @@ using UnityEngine;
 public class Definer : MonoBehaviour
 {
     [System.Serializable]
-   public class ColorRef
+    public class ColorRef
     {
         public Color debug;
         /// <summary>0:other 1:attack 2:heal 3:buff 4:debuff 5:summon</summary>
@@ -87,18 +87,17 @@ public class Definer : MonoBehaviour
     [SerializeField]
     GameObject positionEffectIcon_Inspector;
 
-    [SerializeField]
-    List<ItemData> equipmentDataBase;
-    [SerializeField]
-    List<GameObject> personalityDataBase;
-    [SerializeField]
-    List<GameObject> affrictionDataBase;
+    [SerializeField] List<CharacterData> playerDataBase;
+    [SerializeField] List<ItemData> equipmentDataBase;
+    [SerializeField] List<GameObject> personalityDataBase;
+    [SerializeField] List<GameObject> affrictionDataBase;
+    public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
     public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
 
 
-    public static List<List<ItemData>> equipments=new List<List<ItemData>>();
+    public static List<List<ItemData>> equipments = new List<List<ItemData>>();
 
 
 
@@ -150,8 +149,8 @@ public class Definer : MonoBehaviour
             if (!data.specialInfo)
             {
                 s += string.Format("{0}\n", Definer.rarityName[data.rarity].ColorStr(data.rarity.ToColor()));
-                bool f = false;
-                
+                //bool f = false;
+
                 switch (data.itemType)
                 {
                     case ItemData.ItemType.material:
@@ -190,29 +189,29 @@ public class Definer : MonoBehaviour
                 }
                 s += data.info;
             }
-           
+
             return s;
         }
     }
 
     private void Awake()
     {
-        nonCharaStatus  = new Character.CharacterStatus();
+        nonCharaStatus = new Character.CharacterStatus();
         nonCharaStatus.Init(nonCharacterData, -1);
 
         colorRef = colorRef_Inspector;
         soundRef = soundRef_Inspector;
         VERef = VERef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
-        actionManager_General=actionManager_General_Inspector;
+        actionManager_General = actionManager_General_Inspector;
         statusEffectIcon = statusEffectIcon_Inspector;
-        positionEffectIcon=positionEffectIcon_Inspector;
+        positionEffectIcon = positionEffectIcon_Inspector;
 
-        for(int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++)
         {
             equipments.Add(new List<ItemData>());
         }
-        foreach(ItemData equipment in equipmentDataBase)
+        foreach (ItemData equipment in equipmentDataBase)
         {
             equipments[(int)equipment.rarity].Add(equipment);
         }
