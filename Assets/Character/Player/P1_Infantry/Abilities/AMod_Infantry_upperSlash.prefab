@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B"
+    hideValues: 0
+    exInfo: 
     consumeFocus: 1
     decreaseHP: 0
     cantCounter: 0
@@ -65,9 +67,10 @@ MonoBehaviour:
     shieldRemove: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
+      guaranteed: 0
       applyChance: 100
-      stack: 5
-      value: 0
+      stack: 1
+      value: 5
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0

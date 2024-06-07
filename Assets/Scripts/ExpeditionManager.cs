@@ -93,6 +93,9 @@ public class ExpeditionManager : MonoBehaviour
     AudioClip SE_nextRoom;
     [SerializeField]
     Transform REManagerParent;
+
+    [SerializeField] GameObject nextRoomButton;
+
     [SerializeField] TutorialData tutorial_expedition;
     [SerializeField] TutorialData tutorial_exp;
     [SerializeField] TutorialData tutorial_equipment;
@@ -218,6 +221,7 @@ public class ExpeditionManager : MonoBehaviour
         }
         tutorialManager.StartTutorial(tutorial_expedition);
         guideMessage.SetGuideText("ƒ}ƒbƒv‚©‚çŽŸ‚ÌŠK‘w‚ÖˆÚ“®‰Â”\");
+        nextRoomButton.SetActive(true);
         if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_exp); }
         else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equipment); }
     }
@@ -228,6 +232,8 @@ public class ExpeditionManager : MonoBehaviour
         currentPos = pos;
         currentRoom = GetRoom(currentPos);
         soundManager.PlaySE(SE_nextRoom);
+
+        nextRoomButton.SetActive(false);
 
         inRoomEvent = true;
         StartCoroutine(AnimationForNextRoom());

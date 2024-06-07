@@ -314,7 +314,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &3138639626691566271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +348,11 @@ MonoBehaviour:
   actionOwnerIcon: {fileID: 7908296780179294947}
   actionTargetIcon: {fileID: 5751530269308456878}
   button: {fileID: 3138639626024939141}
+  selectedIcon: {fileID: 0}
+  highlightedIcon: {fileID: 0}
+  emptyIcon: {fileID: 0}
+  actionIconsP: {fileID: 0}
+  actionIcon: {fileID: 0}
 --- !u!1 &3347162793536044424
 GameObject:
   m_ObjectHideFlags: 0

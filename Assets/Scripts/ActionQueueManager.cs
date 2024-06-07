@@ -36,6 +36,7 @@ public class ActionQueueManager : MonoBehaviour
     Utility util;
     SoundManager soundManager;
     ExpeditionManager expeditionManager;
+    GuideMessage guideMessage;
 
     [SerializeField]
     bool autoResolve;
@@ -52,6 +53,7 @@ public class ActionQueueManager : MonoBehaviour
         util = FindObjectOfType<Utility>();
         soundManager = FindObjectOfType<SoundManager>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
+        guideMessage = FindObjectOfType<GuideMessage>();
     }
 
     public void ActionQueueButton()
@@ -67,7 +69,18 @@ public class ActionQueueManager : MonoBehaviour
     }
     public void ToggleQueuePanel()
     {
-        actionQueuePanel.SetActive(!actionQueuePanel.activeSelf);
+        if (actionQueuePanel.activeSelf)
+        {
+            if (inQueueActions.Count == 0 || inQueueActions[0].CheckIfAbilityEffect())
+            {
+                actionQueuePanel.SetActive(false);
+            }
+            else
+            {
+                guideMessage.SetWaringText("誘発能力を全て解決する必要がある");
+            }
+        }
+        else { actionQueuePanel.SetActive(true); }
     }
     public void OpenQueuePanel()
     {

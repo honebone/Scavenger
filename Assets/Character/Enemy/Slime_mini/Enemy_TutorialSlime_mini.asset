@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_TutorialSlime_mini
+  m_EditorClassIdentifier: 
+  fileName: E_Slime_Mini
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u30DF\u30CB\u30B9\u30E9\u30A4\u30E0"
+  characterTags: 08000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  playable: 0
+  obstacle: 0
+  variableSprites:
+  - {fileID: 3213978173246091084, guid: 1406271000e45ed409f2caf234b17890, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 8601bfecae5392943915572ed15eaca3, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 5140aa6a6678ce6408caeb33c7494c5a, type: 2}
+  passiveAbilities: []
+  actionMods: []
+  corpse: {fileID: 11400000, guid: 798e32b3d1f702d40a1e5d49e9f44d0d, type: 2}
+  dropItems: []
+  surviveFatalWounds: 0
+  maxHP: 5
+  maxSAN: 0
+  ATK: 4
+  CRITC: 5
+  CRITD: 2
+  EVD: 3
+  ACC: 85
+  ACT: 3
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0
