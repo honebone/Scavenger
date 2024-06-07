@@ -48,7 +48,7 @@ MonoBehaviour:
   REName: 
   REInfo: 
   enemySet:
-    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     upperMid: {fileID: 0}

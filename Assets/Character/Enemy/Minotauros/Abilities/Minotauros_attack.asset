@@ -85,16 +85,16 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 100
-    ATKMod_max: 150
+    ATKMod_min: 150
+    ATKMod_max: 200
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
-    sureHit: 0
-    unevadable: 0
+    sureHit: 1
+    unevadable: 1
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0

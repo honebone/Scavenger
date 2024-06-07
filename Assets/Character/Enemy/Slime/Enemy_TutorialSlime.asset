@@ -39,7 +39,7 @@ MonoBehaviour:
   - dropItem: {fileID: 11400000, guid: 7866dfc0f84713f4f9ece5b2d279f869, type: 2}
     quantity: 1
   surviveFatalWounds: 0
-  maxHP: 25
+  maxHP: 22
   maxSAN: 0
   ATK: 7
   CRITC: 5

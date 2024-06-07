@@ -34,13 +34,13 @@ MonoBehaviour:
   surviveFatalWounds: 1
   maxHP: 120
   maxSAN: 0
-  ATK: 25
+  ATK: 30
   CRITC: 15
   CRITD: 2
   EVD: 0
   ACC: 100
   ACT: 18
-  turnPerRound: 3
+  turnPerRound: 6
   GHeal: 100
   RHeal: 100
   debuffRes: 0

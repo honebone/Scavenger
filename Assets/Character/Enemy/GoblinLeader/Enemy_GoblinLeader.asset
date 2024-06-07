@@ -35,7 +35,7 @@ MonoBehaviour:
   corpse: {fileID: 11400000, guid: 58eef15e722a4cb4a8e04e6952a53807, type: 2}
   dropItems: []
   surviveFatalWounds: 1
-  maxHP: 250
+  maxHP: 200
   maxSAN: 0
   ATK: 11
   CRITC: 5

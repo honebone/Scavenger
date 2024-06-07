@@ -51,7 +51,7 @@ MonoBehaviour:
     upperFront: {fileID: 0}
     centerFront: {fileID: 11400000, guid: 5d83bba54843b234f8bf475ac825503c, type: 2}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    upperMid: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
     upperBack: {fileID: 0}
