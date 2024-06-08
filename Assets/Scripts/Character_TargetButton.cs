@@ -28,6 +28,7 @@ public class Character_TargetButton : MonoBehaviour
     PositionManager positionManager;
     BattleManager battleManager;
     ExpeditionManager expeditionManager;
+    MouseOverUI mouseOver;
 
     int position;
 
@@ -46,6 +47,7 @@ public class Character_TargetButton : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         positionManager = GetComponent<PositionManager>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
+        mouseOver = FindObjectOfType<MouseOverUI>();
     }
     public void SetPosition(int pos) { position = pos; }
     public void SetCharacter(Character chara)
@@ -161,6 +163,18 @@ public class Character_TargetButton : MonoBehaviour
         {
             highlightedIcon.enabled = true;
         }
+        //if (character == null) { mouseOver.SetUI("空きスペース", false); }
+        //else
+        //{
+        //    Character.CharacterStatus status = character.GetCharacterStatus();
+        //    string s = status.charaName+"\n";
+        //    if (status.shield > 0)
+        //    {
+        //        s += string.Format("HP：{0}+{1}", status.HP, status.shield);
+        //    }
+        //    else { s+= string.Format("HP：{0}", status.HP); }
+        //    mouseOver.SetUI(s, true);
+        //}
     }
     public void OnMouseExit()
     {

@@ -54,5 +54,14 @@ public class InventoryButton : MonoBehaviour
             }
         }
     }
-    
+
+    public void OnMouseEnter()
+    {
+        FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+    }
+    public void OnMouseExit()
+    {
+        FindObjectOfType<MouseOverUI>().RestUI();
+    }
+
 }

@@ -79,6 +79,23 @@ public class LootButton : MonoBehaviour
         }
     }
 
+    public void OnMouseEnter()
+    {
+        if (expOrb)
+        {
+            FindObjectOfType<MouseOverUI>().SetUI(expName.ColorStr(expColor), true);
+        }
+        else
+        {
+            FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+        }
+    }
+    public void OnMouseExit()
+    {
+        FindObjectOfType<MouseOverUI>().RestUI();
+    }
+
+
     public Definer.Item GetItem() { return item; }
     public bool GetIfExp() { return expOrb; }
 }

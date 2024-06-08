@@ -41,7 +41,7 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 2
+  cooldownOnBattleStart: 3
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0

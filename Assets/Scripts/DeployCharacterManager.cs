@@ -39,6 +39,7 @@ public class DeployCharacterManager : MonoBehaviour
     GuideMessage guideMessage;
     TutorialManager tutorialManager;
     ExpeditionManager expeditionManager;
+    MouseOverUI mouseOver;
 
     Character.CharacterStatus draggingChara;
     GameObject draggingImage;
@@ -57,6 +58,7 @@ public class DeployCharacterManager : MonoBehaviour
         guideMessage = FindObjectOfType<GuideMessage>();
         tutorialManager = FindObjectOfType<TutorialManager>();
         expeditionManager= FindObjectOfType<ExpeditionManager>();
+        mouseOver = FindObjectOfType<MouseOverUI>();
 
         StartCoroutine(Delay());
     }
@@ -94,7 +96,7 @@ public class DeployCharacterManager : MonoBehaviour
             Character.CharacterStatus status = new Character.CharacterStatus();
             status.Init(data, 0);
             var c = Instantiate(deployCharaButton, deployCharaP);
-            c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this);
+            c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this, mouseOver);
         }
         CheckParty();
         if (tutorial) { canEmbark = false; }

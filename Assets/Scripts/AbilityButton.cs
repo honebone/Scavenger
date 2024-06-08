@@ -90,4 +90,13 @@ public class AbilityButton : MonoBehaviour
         }
 
     }
+
+    public void OnMouseEnter()
+    {
+        FindObjectOfType<MouseOverUI>().SetUI("", true);
+    }
+    public void OnMouseExit()
+    {
+        FindObjectOfType<MouseOverUI>().RestUI();
+    }
 }

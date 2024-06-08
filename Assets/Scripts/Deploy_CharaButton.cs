@@ -12,13 +12,15 @@ public class Deploy_CharaButton : MonoBehaviour
 
     InfoText infoText;
     DeployCharacterManager deployCharacterManager;
+    MouseOverUI mouseOver;
 
     Character.CharacterStatus charaStatus;
-    public void Init(Character.CharacterStatus status,InfoText it,DeployCharacterManager dc)
+    public void Init(Character.CharacterStatus status,InfoText it,DeployCharacterManager dc,MouseOverUI mo)
     {
         charaStatus = status;
         infoText = it;
         deployCharacterManager = dc;
+        mouseOver = mo;
 
         charaNameText.text = charaStatus.charaName;
         charaImage.sprite = charaStatus.spriteForUI;
@@ -43,5 +45,14 @@ public class Deploy_CharaButton : MonoBehaviour
         {
             deployCharacterManager.SetDraggingChara(charaStatus);
         }
+    }
+
+    public void OnMouseEnter()
+    {
+        mouseOver.SetUI("", true);
+    }
+    public void OnMouseExit()
+    {
+        mouseOver.RestUI();
     }
 }

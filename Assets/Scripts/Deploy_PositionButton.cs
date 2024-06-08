@@ -10,6 +10,7 @@ public class Deploy_PositionButton : MonoBehaviour
 
     DeployCharacterManager deployCharacterManager;
     InfoText infoText;
+    MouseOverUI mouseOver;
         
     Character.CharacterStatus charaStatus;
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class Deploy_PositionButton : MonoBehaviour
     {
         deployCharacterManager = FindObjectOfType<DeployCharacterManager>();
         infoText=FindObjectOfType<InfoText>();
+        mouseOver = FindObjectOfType<MouseOverUI>();
     }
 
     public void SetChara(Character.CharacterStatus status)
@@ -52,6 +54,22 @@ public class Deploy_PositionButton : MonoBehaviour
             {
                 deployCharacterManager.SetDraggingChara(charaStatus);
             }
+        }
+    }
+
+    public void OnMouseEnter()
+    {
+        if (charaStatus.characterData != null)
+        {
+
+            mouseOver.SetUI("", true);
+        }
+    }
+    public void OnMouseExit()
+    {
+        if (charaStatus.characterData != null)
+        {
+            mouseOver.RestUI();
         }
     }
 
