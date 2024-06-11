@@ -15,6 +15,7 @@ public class SupplyButton : MonoBehaviour
 
     InfoText infoText;
     SupplyManager supplyManager;
+    MouseOverUI mouseOver;
 
     bool revealed = false;
     Definer.Item item;
@@ -23,6 +24,7 @@ public class SupplyButton : MonoBehaviour
         item = i;
         infoText = it;
         supplyManager = sm;
+        mouseOver = FindObjectOfType<MouseOverUI>();
     }
     public void Reveal()
     {
@@ -42,6 +44,7 @@ public class SupplyButton : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0))
             {
+                mouseOver.ResetUI();
                 supplyManager.SelectItem(item);
             }
         }
@@ -49,11 +52,11 @@ public class SupplyButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+       mouseOver.SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
     }
     public void OnMouseExit()
     {
-        FindObjectOfType<MouseOverUI>().RestUI();
+       mouseOver.ResetUI();
     }
 
     public Definer.Item GetItem() { return item; }

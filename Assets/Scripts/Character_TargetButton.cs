@@ -163,22 +163,27 @@ public class Character_TargetButton : MonoBehaviour
         {
             highlightedIcon.enabled = true;
         }
-        //if (character == null) { mouseOver.SetUI("空きスペース", false); }
-        //else
-        //{
-        //    Character.CharacterStatus status = character.GetCharacterStatus();
-        //    string s = status.charaName+"\n";
-        //    if (status.shield > 0)
-        //    {
-        //        s += string.Format("HP：{0}+{1}", status.HP, status.shield);
-        //    }
-        //    else { s+= string.Format("HP：{0}", status.HP); }
-        //    mouseOver.SetUI(s, true);
-        //}
+        if (character == null) { mouseOver.SetUI("空きスペース", false); }
+        else
+        {
+            Character.CharacterStatus status = character.GetCharacterStatus();
+            string s = status.charaName + "\n";
+            if (status.shield > 0)
+            {
+                s += string.Format("HP：{0}+{1} ({2}％)", status.HP, status.shield, status.GetHPPercent().ToString("0.0"));
+            }
+            else { s += string.Format("HP：{0} ({1}％)", status.HP, status.GetHPPercent().ToString("0.0")); }
+            if (status.player)
+            {
+                s += string.Format("\nSAN：{0}", status.SAN);
+            }
+            mouseOver.SetUI(s, true);
+        }
     }
     public void OnMouseExit()
     {
         if (selectableAsTarget || selectableAsMoveTarget || selectableAsMoveToPos) { charactersManager.ResetAllActionInvolvedIcons(); }
+        mouseOver.ResetUI();
         highlightedIcon.enabled = false;
     }
 }

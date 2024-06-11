@@ -53,6 +53,6 @@ public class Deploy_CharaButton : MonoBehaviour
     }
     public void OnMouseExit()
     {
-        mouseOver.RestUI();
+        mouseOver.ResetUI();
     }
 }

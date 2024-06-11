@@ -12,12 +12,12 @@ public class Map_LayerPanel : MonoBehaviour
 
     int layerCount;
 
-    public void Init(ExpeditionManager.Room[] r,int lc,ExpeditionManager em,InfoText it,ScrollRect scroll)
+    public void Init(ExpeditionManager.Room[] r,int lc,ExpeditionManager em,InfoText it,ScrollRect scroll,MouseOverUI mo)
     {
         layerCount = lc;
         layerText.text = layerCount.ToString();
 
-        for(int i = 0; i < 5; i++) { roomButtons[i].Init(r[i], new Vector2Int(layerCount, i),em,it,scroll); }
+        for(int i = 0; i < 5; i++) { roomButtons[i].Init(r[i], new Vector2Int(layerCount, i), em, it, scroll, mo); }
     }
     public void ResetButtonsState()
     {

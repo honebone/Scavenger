@@ -28,15 +28,19 @@ public class Map_RoomButton : MonoBehaviour
 
     ExpeditionManager expeditionManager;
     InfoText InfoText;
+    MouseOverUI mouseOver;
+
     bool selectable;
     bool blind;
-    public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em,InfoText it,ScrollRect s)
+    public void Init(ExpeditionManager.Room r,Vector2Int rp,ExpeditionManager em,InfoText it,ScrollRect s,MouseOverUI mo)
     {
         room = r;
         room.roomPos = rp;
         expeditionManager = em;
         InfoText = it;
         scroll = s;
+        mouseOver = mo;
+
         blind = room.blind;
 
         if (room.empty)
@@ -132,6 +136,7 @@ public class Map_RoomButton : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && selectable)
         {
             selectable = false;
+            mouseOver.ResetUI();
             expeditionManager.GoToNextRoom(room.roomPos);
         }
     }
@@ -155,12 +160,15 @@ public class Map_RoomButton : MonoBehaviour
     public void OnMouseEnter()
     {
         p = true;
+        if (blind) { mouseOver.SetUI("ˆÃˆÅ", true); }
+        else { mouseOver.SetUI(room.eventName, true); }
     }
     public void OnMouseExit()
     {
+        mouseOver.ResetUI();
         p = false;
     }
-    
+
 
     public ExpeditionManager.Room GetRoom() { return room; }
 }

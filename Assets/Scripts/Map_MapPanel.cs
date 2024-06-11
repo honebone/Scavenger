@@ -20,11 +20,13 @@ public class Map_MapPanel : MonoBehaviour
     ExpeditionManager expeditionManager;
     InfoText infoText;
     TutorialManager tutorialManager;
+    MouseOverUI mouseOver;
     private void Start()
     {
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         infoText = FindObjectOfType<InfoText>();
         tutorialManager = FindObjectOfType<TutorialManager>();
+        mouseOver = FindObjectOfType<MouseOverUI>();
     }
 
     public void MapButton()
@@ -67,7 +69,7 @@ public class Map_MapPanel : MonoBehaviour
     public void SetLayerPanel(ExpeditionManager.Room[] l, int lc)
     {
         var lp = Instantiate(layerPanel, content.transform);
-        lp.GetComponent<Map_LayerPanel>().Init(l, lc, expeditionManager, infoText, mapScroll);
+        lp.GetComponent<Map_LayerPanel>().Init(l, lc, expeditionManager, infoText, mapScroll, mouseOver);
         layers.Add(lp.GetComponent<Map_LayerPanel>());
     }
     public void EndGenerateMap()

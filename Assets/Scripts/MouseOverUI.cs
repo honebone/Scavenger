@@ -23,7 +23,7 @@ public class MouseOverUI : MonoBehaviour
         panel.SetActive(true);
     }
 
-    public void RestUI()
+    public void ResetUI()
     {
         text.text = "";
         panel.SetActive(false);

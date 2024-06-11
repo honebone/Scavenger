@@ -92,7 +92,7 @@ public class LootButton : MonoBehaviour
     }
     public void OnMouseExit()
     {
-        FindObjectOfType<MouseOverUI>().RestUI();
+        FindObjectOfType<MouseOverUI>().ResetUI();
     }
 
 

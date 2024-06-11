@@ -69,7 +69,7 @@ public class Deploy_PositionButton : MonoBehaviour
     {
         if (charaStatus.characterData != null)
         {
-            mouseOver.RestUI();
+            mouseOver.ResetUI();
         }
     }
 

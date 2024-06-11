@@ -10,6 +10,8 @@ public class REOptionButton : MonoBehaviour
     RoomEvent.REOptionParams optionParams;
     InfoText infoText;
     ExpeditionManager expeditionManager;
+    MouseOverUI mouseOver;
+
     int index;
     public void Init(RoomEvent.REOptionParams op,int id,InfoText i,ExpeditionManager e)
     {
@@ -18,6 +20,8 @@ public class REOptionButton : MonoBehaviour
         infoText = i;
         optionNameText.text = optionParams.optionName;
         expeditionManager = e;
+        mouseOver = FindObjectOfType<MouseOverUI>();
+
     }
     public void OnMouseDown()
     {
@@ -27,8 +31,17 @@ public class REOptionButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            mouseOver.ResetUI();
             expeditionManager.SelectOption(index);
         }
     }
 
+    public void OnMouseEnter()
+    {
+        mouseOver.SetUI("", true);
+    }
+    public void OnMouseExit()
+    {
+        mouseOver.ResetUI();
+    }
 }

@@ -61,7 +61,7 @@ public class InventoryButton : MonoBehaviour
     }
     public void OnMouseExit()
     {
-        FindObjectOfType<MouseOverUI>().RestUI();
+        FindObjectOfType<MouseOverUI>().ResetUI();
     }
 
 }
