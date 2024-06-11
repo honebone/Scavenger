@@ -41,6 +41,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
@@ -49,7 +50,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u6BB4\u6253"
     conditionInfo: 
-    targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -67,7 +68,7 @@ MonoBehaviour:
       onlyPlayable: 0
       front: 1
       mid: 1
-      back: 0
+      back: 1
       characterTags: 
       StE: []
       PE: []
@@ -85,13 +86,14 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 1
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 60
+    ATKMod_max: 80
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -119,15 +121,17 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 1
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 4145661783842812709, guid: 374165f6f1ca32848a1d628bb4ca1305, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c000000
+    actionTargetsInt: 0d000000

@@ -122,7 +122,7 @@ public class InfoText : MonoBehaviour
         {
             for(int i = 0; i < deleteLogs; i++)
             {
-                logs.RemoveAt(i);
+                logs.RemoveAt(0);
             }
             logCount -= deleteLogs;
         }

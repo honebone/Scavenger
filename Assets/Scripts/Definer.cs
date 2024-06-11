@@ -32,6 +32,7 @@ public class Definer : MonoBehaviour
 
         public Color failed_unavailable;
         public Color currentState;
+        public Color emphasize;
 
         public Color AMod;
 

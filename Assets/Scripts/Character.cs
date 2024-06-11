@@ -119,7 +119,7 @@ public class Character : MonoBehaviour
             else { s += "\n"; }
 
             s += string.Format("ATK：{0}\n", ATK);
-            s += string.Format("CRIT：{0}％で{1}倍ダメージ\n\n", CRITC, CRITD);
+            s += string.Format("CRIT：{0}％で{1}倍ダメージ\n\n", CRITC, CRITD.ToString("0.00"));
 
             s += string.Format("EVD：{0}\n", EVD);
             s += string.Format("ACC：{0}\n\n", ACC);

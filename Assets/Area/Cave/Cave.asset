@@ -18,8 +18,8 @@ MonoBehaviour:
   GLightColor: {r: 1, g: 1, b: 1, a: 1}
   GLightIntensity: 0.15
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
-  minLength: 6
-  maxLength: 6
+  minLength: 8
+  maxLength: 8
   branchChance: 30
   blindChance: 20
   BGM: {fileID: 8300000, guid: 852e508e581db8e4c9b45cf896ae5a79, type: 3}
@@ -85,8 +85,6 @@ MonoBehaviour:
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   battleBGM:
-  - {fileID: 8300000, guid: b275770d51ae98f4090575b262ed8e52, type: 3}
-  - {fileID: 8300000, guid: 8e8ab15f0f49c014f8e38dd03475351a, type: 3}
   - {fileID: 8300000, guid: 9a4a128792e5ec841a714764b5974091, type: 3}
   applyFEChance: 20
   normalBattleFEPool:

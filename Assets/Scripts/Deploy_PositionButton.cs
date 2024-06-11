@@ -34,12 +34,14 @@ public class Deploy_PositionButton : MonoBehaviour
 
     public void SetDragChara()
     {
-        
+
         if (charaStatus.characterData != null)
         {
             if (Input.GetMouseButtonDown(1))
             {
-                string info = charaStatus.GetInfo();
+                string info = string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
+                info += string.Format("使用難易度：{0}\n得意なポジション：{1}\n\n", charaStatus.characterData.difficulty, charaStatus.characterData.preferredPos);
+                info += charaStatus.GetInfo();
                 info += "\n◇◇特性◇◇\n";
                 foreach (GameObject obj in charaStatus.passiveAbilities)
                 {

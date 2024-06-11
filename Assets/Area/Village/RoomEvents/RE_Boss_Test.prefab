@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6930255402659783700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3738759409012451003}
+  - component: {fileID: 2577761945961719997}
+  m_Layer: 0
+  m_Name: RE_Boss_Test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3738759409012451003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930255402659783700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2577761945961719997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930255402659783700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573524d3b094c004fad6156fbe5f57c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u30B4\u30D6\u30EA\u30F3\u306E\u8981\u585E"
+  REInfo: "\u3053\u306E\u30A8\u30EA\u30A2\u3092\u652F\u914D\u3059\u308B\u5F37\u6575\"\u30B4\u30D6\u30EA\u30F3\u30EA\u30FC\u30C0\u30FC\"\u306E\u3082\u3068\u3078\u3068\u305F\u3069\u308A\u7740\u3044\u305F"
+  options:
+  - optionName: "\u6226\u3046"
+    optionInfo: "\u30B4\u30D6\u30EA\u30F3\u30EA\u30FC\u30C0\u30FC\u306B\u6226\u3044\u3092\u6311\u3080"
+  boss:
+    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    centerMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
+    lowerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
+    lowerBack: {fileID: 0}
+  fieldEffect: {fileID: 0}
+  battleParams:
+    bgm: {fileID: 8300000, guid: d021bd0882a73b945aae306d164ed704, type: 3}

@@ -8,6 +8,7 @@ public class MouseOverUI : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] float baseOffset = 0.17f;
+
     public void SetUI(string s,bool rightClickGuide)
     {
         text.text = "";
@@ -27,5 +28,16 @@ public class MouseOverUI : MonoBehaviour
     {
         text.text = "";
         panel.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (panel.activeSelf)
+        {
+            Vector3 offset = new Vector3(0, 0, -10);
+            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
+            else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
+            panel.transform.position = Input.mousePosition + offset;
+        }
     }
 }

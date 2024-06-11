@@ -43,6 +43,7 @@ public class DebugFunction : MonoBehaviour
     ExpeditionManager expeditionManager;
     BattleManager battleManager;
     Inventory inventory;
+    InfoText infoText;
 
     private void Start()
     {
@@ -50,16 +51,14 @@ public class DebugFunction : MonoBehaviour
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         battleManager = FindObjectOfType<BattleManager>();
         inventory = FindObjectOfType<Inventory>();
+        infoText = FindObjectOfType<InfoText>();
         items = new Definer.Item[itemData.Length];
         for (int i = 0; i < itemData.Length; i++)
         {
             items[i].Init(itemData[i]);
             items[i].amount = amount[i];
         }
-        //for(int i = 0; i < 18; i++)
-        //{
-        //    print(string.Format("{0}:{1}",i,i.GetCurrentColumn()));
-        //}bu
+     
     }
     // Update is called once per frame
     void Update()

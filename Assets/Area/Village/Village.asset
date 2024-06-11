@@ -18,9 +18,9 @@ MonoBehaviour:
   GLightColor: {r: 1, g: 0.6313726, b: 0, a: 1}
   GLightIntensity: 0.6
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
-  minLength: 6
+  minLength: 8
   maxLength: 6
-  branchChance: 30
+  branchChance: 8
   blindChance: 20
   BGM: {fileID: 8300000, guid: 58ecde1ca44e9ff4ba6ae970fb780cbb, type: 3}
   roomEvents:
@@ -32,11 +32,9 @@ MonoBehaviour:
     weight: 5
   - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
     weight: 5
-  - roomEvent: {fileID: 11400000, guid: 1b361ac52cb3f5d4aa5e73c64f10fc65, type: 2}
-    weight: 5
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
-    weight: 5
-  boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
+    weight: 10
+  boss: {fileID: 11400000, guid: a2f099821f1bc974b95073b8e990f441, type: 2}
   endArea: {fileID: 11400000, guid: 00955ec3b901e004bbb77604349ffe09, type: 2}
   normalBattlePool:
   - upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
@@ -77,8 +75,6 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
   battleBGM:
   - {fileID: 8300000, guid: a72b91eadd370474da7dd856a0f911f7, type: 3}
-  - {fileID: 8300000, guid: a2a21c5fdf1fab34283ebd58efcb10e8, type: 3}
-  - {fileID: 8300000, guid: 965e2c01e89da934ba9bacee8cfc5dee, type: 3}
   applyFEChance: 20
   normalBattleFEPool:
   - {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}
