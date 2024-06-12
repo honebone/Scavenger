@@ -77,6 +77,8 @@ public class Character : MonoBehaviour
         public int HP;
         public int shield;
 
+        public float PROT;
+
         public int SAN;
 
         public int exATK;
@@ -115,6 +117,7 @@ public class Character : MonoBehaviour
             if (immovable) { s += "移動不可\n"; }
             s += string.Format("HP/maxHP：{0}/{1}({2}％)\n", HP, maxHP, HP.GetPercent(maxHP).ToString("0.0"));
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
+            if (PROT != 0) { s += ValueToStr("被ダメージ", PROT * -1, "％"); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
 
@@ -248,6 +251,8 @@ public class Character : MonoBehaviour
         public float maxHP_mul;
         public float maxSAN_mul;
 
+        public float PROT;
+
         public float ATK_mul;
 
         public float CRITC;
@@ -271,6 +276,7 @@ public class Character : MonoBehaviour
             string s = "";
             s += ValueToStr("maxHP", maxHP_mul, "％");
             s += ValueToStr("maxSAN", maxSAN_mul, "％");
+            s += ValueToStr("被ダメージ", PROT * -1, "％");
             s += ValueToStr("ATK", ATK_mul, "％");
             s += ValueToStr("CRIT率", CRITC, "％");
             s += ValueToStr("CRITダメージ", CRITD, "倍");
@@ -743,11 +749,16 @@ public class Character : MonoBehaviour
                 infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
                 soundManager.PlaySE(Definer.soundRef.dying);
                 charaObj.SetHPandShieldBar();
+                OnDecreasedHP(value);
             }
             else
             {
                 Die(0,null);
             }
+        }
+        else
+        {
+            OnDecreasedHP(value);
         }
     }
     public void Damage(int DMG,bool CRIT,int shieldDMG,bool canCounter,Character attacker)
@@ -811,6 +822,7 @@ public class Character : MonoBehaviour
         if (CheckAlive() && DMG > 0)
         {
             OnDamaged(DMG, attacker);
+            OnDecreasedHP(DMG);
             //カウンター
         }
     }
@@ -867,6 +879,7 @@ public class Character : MonoBehaviour
         if (!set) { n = -1; }
         if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, false); }
         if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, false); }
+        if (mod.PROT != 0) { AddPROT(mod.PROT * n); }
         if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
         if (mod.CRITC != 0) { AddCRITC(mod.CRITC * n); }
         if (mod.CRITD != 0) { AddCRITD(mod.CRITD * n); }
@@ -914,6 +927,9 @@ public class Character : MonoBehaviour
         if (charaStatus.SAN > charaStatus.maxSAN) { charaStatus.SAN = charaStatus.maxSAN; }
         charaObj.SetSANBar();
     }
+
+    public void AddPROT(float value) { charaStatus.PROT += value; }
+
     public void AddATK(int value_base, float value_mul)
     {
         charaStatus.ATK_base += value_base;
@@ -1217,6 +1233,14 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttack(onAttackParamsList); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnDecreasedHP(int value)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDecreasedHP(value); }
             RemovePA_Execute();
         }
     }

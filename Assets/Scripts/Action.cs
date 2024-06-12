@@ -91,6 +91,9 @@ public class Action : MonoBehaviour
         public int healValue_max;
         public float healPercent_min;
         public float healPercent_max;
+        [Header("減少体力の割合回復")]
+        public float healRegain_min;
+        public float healRegain_max;
 
         [Header("\n\nSAN")]
         public int SANHeal_min;
@@ -206,10 +209,11 @@ public class Action : MonoBehaviour
                 s += "\n";
             }
 
-            if (healValue_max > 0 || healPercent_max > 0)//回復
+            if (healValue_max > 0 || healPercent_max > 0 || healRegain_max > 0)//回復
             {
                 if (healValue_max > 0) { s += string.Format("・HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
                 if (healPercent_max > 0) { s += string.Format("・HPを最大値の{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
+                if (healRegain_max > 0) { s += string.Format("・減少したHPの{0}％を回復\n", GetValueRange(healRegain_min, healRegain_max)); }
                 s += "\n";
             }
 
@@ -533,6 +537,10 @@ public class Action : MonoBehaviour
                                 onAttackParams.CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
                             }
+
+                            float RDMG = Mathf.Max((targetStatus.PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
+                            fDMG *= RDMG;
+
                             fDMG *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
                             fDMG += actionsStatus[i].exDMG_int;
 
@@ -591,13 +599,18 @@ public class Action : MonoBehaviour
 
                 if (attackHit && target.CheckAlive())
                 {
-                    if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0)//回復
+                    if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0||actionsStatus[i].healRegain_max>0)//回復
                     {
                         OnHealParams onHealParams = new OnHealParams();
                         onHealParams.target = target;
                         float fheal;
                         fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
                         fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
+                        if(actionsStatus[i].healRegain_max > 0)
+                        {
+                            int decreasedHP = targetStatus.maxHP - targetStatus.HP;
+                            fheal += decreasedHP * Random.Range(actionsStatus[i].healRegain_min, actionsStatus[i].healRegain_max) / 100f;
+                        }
                         fheal *= ownerStatus.GHeal / 100;
                         fheal *= targetStatus.RHeal / 100;
                         int heal = Mathf.RoundToInt(fheal);

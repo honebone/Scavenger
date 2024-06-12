@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -6365525079354113382}
   - component: {fileID: 6391350165293048886}
   m_Layer: 0
-  m_Name: PA_StE_Combo
+  m_Name: PA_StEU_Combo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

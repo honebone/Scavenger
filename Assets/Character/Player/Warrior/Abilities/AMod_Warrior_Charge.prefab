@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5954328460363848495}
   - component: {fileID: 3404417727636778070}
   m_Layer: 0
-  m_Name: AMod_Focused
+  m_Name: AMod_Warrior_Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     ATKMod: 0
     exDMG_mul: 0
     exDMG_int: 0
-    ACCMod: 0
+    ACCMod: 20
     CRITCMod: 0
     CRITDMod: 0
     sureHit: 0

@@ -25,6 +25,7 @@ public class InfoText : MonoBehaviour
 
     CharactersManager charactersManager;
     TutorialManager tutorialManager;
+    DebugFunction debugFunction;
 
     int logCount;
     List<string> logs = new List<string>();
@@ -34,6 +35,7 @@ public class InfoText : MonoBehaviour
     {
         charactersManager = FindObjectOfType<CharactersManager>();
         tutorialManager = FindObjectOfType<TutorialManager>();
+        debugFunction = FindObjectOfType<DebugFunction>();
     }
 
     public　void SetText(string name,string info)
@@ -137,11 +139,15 @@ public class InfoText : MonoBehaviour
     }
     public void AddDebugText(string debugLog)
     {
-        //SwitchToLog();
-        ////nameText.text = "ログ";
-        //AddLogText(string.Format("\n##デバッグ：{0}##", debugLog).ColorStr(Definer.colorRef.debug));
-        
-        //print(debugLog);
+        if (debugFunction.CheckDebugMode())
+        {
+            SwitchToLog();
+            //nameText.text = "ログ";
+            AddLogText(string.Format("\n##デバッグ：{0}##", debugLog).ColorStr(Definer.colorRef.debug));
+
+            print(debugLog);
+        }
+
     }
     public void AddErrorText(string errorLog)
     {

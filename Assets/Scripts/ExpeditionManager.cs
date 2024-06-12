@@ -334,8 +334,16 @@ public class ExpeditionManager : MonoBehaviour
         {
             if (enemies[i] != null) { charactersManager.SpawnEnemy(enemies[i], i + 9, true); }
         }
-        if (battleParams.bgm == null) { soundManager.StartBGM_Battle(currentArea.battleBGM.Choice()); }
-        else { soundManager.StartBGM_Battle(battleParams.bgm); }
+        if (currentArea)
+        {
+            if (battleParams.bgm == null) { soundManager.StartBGM_Battle(currentArea.battleBGM.Choice()); }
+            else { soundManager.StartBGM_Battle(battleParams.bgm); }
+        }
+        else
+        {
+            infoText.AddDebugText("ŒŸ’mFDebugMode‚Å‚Ìí“¬");
+        }
+       
         battleManager.BattleStart(fieldEffect);
     }
     
