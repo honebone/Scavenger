@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DebugFunction : MonoBehaviour
 {
-    [SerializeField]
-     bool debug;
+    [SerializeField] bool debug;
+    [SerializeField] bool skipDeployPhase;
+
     [SerializeField]
     CharacterData[] characterData;
 
@@ -129,4 +130,6 @@ public class DebugFunction : MonoBehaviour
         if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(tutorialArea); }
         else { expeditionManager.GetAreaManager().GenerateMap(); }
     }
+
+    public bool CheckSkipDeploy() { return skipDeployPhase; }
 }

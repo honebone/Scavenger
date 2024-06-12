@@ -60,7 +60,11 @@ public class DeployCharacterManager : MonoBehaviour
         expeditionManager= FindObjectOfType<ExpeditionManager>();
         mouseOver = FindObjectOfType<MouseOverUI>();
 
-        StartCoroutine(Delay());
+        if (FindObjectOfType<DebugFunction>().CheckSkipDeploy()) { fadeOutUI.FadeIn(); }
+        else
+        {
+            StartCoroutine(Delay());
+        }
     }
     IEnumerator Delay()
     {

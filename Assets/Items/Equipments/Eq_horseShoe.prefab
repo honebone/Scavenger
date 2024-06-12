@@ -111,6 +111,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -152,15 +153,15 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     actionTargetsInt: 
-  valuePerACT: 20
-  maxStack: 10
+  valuePerACT: 10
+  maxStack: 20
   ATK:
     applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
     guaranteed: 1
     applyChance: 0
     stack: 1
     value: 0
-  exInfo: "ATK\u4E0A\u6607\u91CF\u306F[10\u3092\u8D85\u3048\u305FACT]x20\uFF05\u3067\u3042\u308B(\u6700\u5927200\uFF05)"
+  exInfo: "ATK\u4E0A\u6607\u91CF\u306F[10\u3092\u8D85\u3048\u305FACT]x10\uFF05\u3067\u3042\u308B(\u6700\u5927200\uFF05)"
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
