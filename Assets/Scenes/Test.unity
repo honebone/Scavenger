@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 34008072}
   - component: {fileID: 34008071}
   - component: {fileID: 34008070}
-  - component: {fileID: 34008069}
   m_Layer: 0
   m_Name: GeneralManager
   m_TagString: Untagged
@@ -186,54 +185,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &34008069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34008068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 0
-  characterData:
-  - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
-  - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
-  - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
-  - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
-  - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-  itemData:
-  - {fileID: 11400000, guid: 8dedc3295e2b174409d16c8be78f90f0, type: 2}
-  - {fileID: 11400000, guid: 85316edc6d6f2394486e0567baccfe5d, type: 2}
-  - {fileID: 11400000, guid: 183d70ffa83e927438dc513055ae9ae8, type: 2}
-  - {fileID: 11400000, guid: 6210b4821a528ca4a92ab85199fa5641, type: 2}
-  - {fileID: 11400000, guid: 171dce5178da1ce478b0fc0ccf4ccb4b, type: 2}
-  - {fileID: 11400000, guid: d9cffd46cc3268f4692a7af52d3eedd8, type: 2}
-  - {fileID: 11400000, guid: fc4df6f9bfeb00a42a23e14e37be9235, type: 2}
-  - {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
-  amount: 7e00000005000000010000000200000007000000030000001500000006000000
-  Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
-  enemySetTest:
-    upperFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
-    centerFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
-    lowerFront: {fileID: 0}
-    upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    centerMid: {fileID: 0}
-    lowerMid: {fileID: 0}
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
-    lowerBack: {fileID: 0}
-  FE: {fileID: 0}
-  areaData: {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
-  RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
-  REP: {fileID: 0}
-  tutorial: {fileID: 11400000, guid: 7f1c54dd96986e74bb5cc54a66e39a9c, type: 2}
-  tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
-  debugPanel: {fileID: 0}
 --- !u!114 &34008070
 MonoBehaviour:
   m_ObjectHideFlags: 0
