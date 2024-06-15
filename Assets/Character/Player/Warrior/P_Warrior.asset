@@ -16,7 +16,7 @@ MonoBehaviour:
   manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
   charaName: "\u6226\u58EB"
   difficulty: "\u4E2D"
-  introduction: "\u9632\u885B\u30BF\u30A4\u30D7\u306E\u30AD\u30E3\u30E9\n"
+  introduction: "\u9632\u885B\u30BF\u30A4\u30D7\u306E\u30AD\u30E3\u30E9\nHP\u304C\u6E1B\u5C11\u3059\u308B\u305F\u3073\u306B\u81EA\u8EAB\u3092\u5F37\u5316\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B\n\u6012\u308A\u304C\u6E9C\u307E\u308B\u3068\u5F37\u529B\u306A\u653B\u6483\u3092\u653E\u3066\u308B\u3088\u3046\u306B\u306A\u308B\u304C\u3001\u81EA\u8EAB\u306EHP\u306B\u6C17\u3092\u4F7F\u3046\u5FC5\u8981\u304C\u3042\u308B"
   preferredPos: "\u524D\u5217"
   characterTags: 02000000
   immovable: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0131d5b1c810ae43a97dfdb99509b4d, type: 2}
   - {fileID: 11400000, guid: b676cfa7740a3fb4fa52d15182fb5940, type: 2}
   - {fileID: 11400000, guid: bd78b275373c0224db2549ce692b3aa4, type: 2}
-  - {fileID: 11400000, guid: e8eadb511ee71fb4cbc46625eff11c44, type: 2}
+  - {fileID: 11400000, guid: 86e01ebc6aa4514449b1263f373c4039, type: 2}
   - {fileID: 11400000, guid: 1341df81ec2bc0c49852556a93d01fd0, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
@@ -44,7 +44,7 @@ MonoBehaviour:
   surviveFatalWounds: 1
   maxHP: 50
   maxSAN: 50
-  ATK: 10
+  ATK: 8
   CRITC: 5
   CRITD: 1.5
   EVD: 3

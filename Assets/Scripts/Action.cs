@@ -10,6 +10,7 @@ public class Action : MonoBehaviour
     CharactersManager characterManager;
     InfoText infoText;
     SoundManager soundManager;
+    CameraManager cameraManager;
 
 
     [System.Serializable]
@@ -233,6 +234,7 @@ public class Action : MonoBehaviour
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
                 s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+                if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n",status.maxStack).ColorStr(Color.gray); }
             }
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
@@ -342,6 +344,8 @@ public class Action : MonoBehaviour
             modifiedStatus.healValue_max += mod.healValue;
             modifiedStatus.healPercent_min += mod.healPercent;
             modifiedStatus.healPercent_max += mod.healPercent;
+            modifiedStatus.healRegain_min += mod.healRegain;
+            modifiedStatus.healRegain_max += mod.healRegain;
 
             modifiedStatus.SANHeal_min += mod.SANHeal;
             modifiedStatus.SANHeal_max += mod.SANHeal;
@@ -403,13 +407,15 @@ public class Action : MonoBehaviour
     List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
     OnMoveParams onMoveParams = new OnMoveParams();
+
+    bool shakeCamera;
     
     Utility util;
 
     /// <summary>
     /// status にはactionOwner(キャラ時) もしくは　ownerStatus_notChara(非キャラ時)のいずれかを代入した状態で渡すこと!!
     /// </summary>
-    public void Init(ActionQueueManager qm, ActionStatus status, ActionInfoPanel infoPanel, InfoText it, Utility u, SoundManager sm)
+    public void Init(ActionQueueManager qm, ActionStatus status, ActionInfoPanel infoPanel, InfoText it, Utility u, SoundManager sm, CameraManager cam)
     {
         actionQueueManager = qm;
         actionStatus = status;
@@ -418,6 +424,7 @@ public class Action : MonoBehaviour
         infoPanel.Init(actionStatus.actionName, actionStatus.GetInfo(false, new Character.CharacterStatus()));
         characterManager = FindObjectOfType<CharactersManager>();
         soundManager = sm;
+        cameraManager = cam;
     }
     public ActionStatus GetActionStatus() { return actionStatus; }
 
@@ -533,6 +540,7 @@ public class Action : MonoBehaviour
                             fDMG += ownerStatus.ATK * ATKMod;
                             if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Dice())//クリティカル判定
                             {
+                                shakeCamera = true;
                                 CRIT = true;
                                 onAttackParams.CRIT = true;
                                 fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
@@ -617,6 +625,7 @@ public class Action : MonoBehaviour
                         onHealParams.healValue = heal;
 
                         target.Heal(heal, actionStatus.actionOwner);
+                        target.OnHealed(actionStatus.actionOwner, onHealParams);
                         onHealParamsList.Add(onHealParams);
                     }
 
@@ -893,6 +902,8 @@ public class Action : MonoBehaviour
         }
 
         if (actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass) { actionStatus.actionOwner.OnActivateAbility(); }
+
+        if (shakeCamera) { cameraManager.ShakeCamera(1); }
 
         actionQueueManager.Dequeue();
     }

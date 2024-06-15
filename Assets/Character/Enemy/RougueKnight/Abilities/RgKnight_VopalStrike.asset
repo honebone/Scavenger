@@ -21,7 +21,7 @@ MonoBehaviour:
   excludeRandomPool: 0
   selectWeight: 999
   availableFront: 1
-  availableMid: 0
+  availableMid: 1
   availableBack: 0
   hasSelfCondition: 1
   conditionInfo: "\u81EA\u8EAB\u306B\u69CB\u3048\u304C\u3042\u308B"
@@ -100,6 +100,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0

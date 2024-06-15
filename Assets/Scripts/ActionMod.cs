@@ -30,6 +30,7 @@ public class ActionMod : MonoBehaviour
 
         public int healValue;
         public float healPercent;
+        public float healRegain;
 
         public int SANHeal;
         public int SANDamage;
@@ -70,6 +71,7 @@ public class ActionMod : MonoBehaviour
                 if (unevadable) { s += "・攻撃が回避不可となる\n"; }
                 if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }
                 if (healPercent != 0) { s += ValueToStr("・割合回復量", healPercent, "％"); }
+                if (healRegain != 0) { s += ValueToStr("・減少したHPの", healRegain, "％を回復"); }
                 if (SANHeal != 0) { s += ValueToStr("・正気度回復量", SANHeal, ""); }
                 if (SANDamage != 0) { s += ValueToStr("・正気度割合回復量", SANDamage, "％"); }
                 if (shieldAdd != 0) { s += ValueToStr("・シールド付与量", shieldAdd, ""); }

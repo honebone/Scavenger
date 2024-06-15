@@ -37,6 +37,7 @@ public class ActionQueueManager : MonoBehaviour
     SoundManager soundManager;
     ExpeditionManager expeditionManager;
     GuideMessage guideMessage;
+    [SerializeField] CameraManager cameraMnager;
 
     [SerializeField]
     bool autoResolve;
@@ -102,7 +103,7 @@ public class ActionQueueManager : MonoBehaviour
         else { obj = Definer.actionManager_General; }
         var p = Instantiate(actionInfoPanel, content);
         var a = Instantiate(obj, p.transform);
-        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), infoText, util, soundManager);
+        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), infoText, util, soundManager, cameraMnager);
 
         inQueueActions.Add(a.GetComponent<Action>());
 

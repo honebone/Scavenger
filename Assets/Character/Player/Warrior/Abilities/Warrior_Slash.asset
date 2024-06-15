@@ -56,8 +56,7 @@ MonoBehaviour:
     SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
     VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 3254016428576288406, guid: 5c84baf55ca4b4147879662302bc71da, type: 3}
+    actionMods: []
     targetType: 1
     friendly: 0
     condition:
@@ -100,6 +99,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -134,4 +135,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 0b000000

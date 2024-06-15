@@ -336,8 +336,9 @@ public class Character : MonoBehaviour
     SoundManager soundManager;
     LootPanel loot;
     Definer definer;
+    CameraManager cameraManager;
 
-    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem)
+    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem )
     {
         charaStatus = status;
         charaObj = obj;
@@ -364,6 +365,7 @@ public class Character : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         loot = FindObjectOfType<LootPanel>();
         definer = FindObjectOfType<Definer>();
+        cameraManager = FindObjectOfType<CameraManager>();
 
         if (!charaStatus.playable)
         {
@@ -1091,7 +1093,10 @@ public class Character : MonoBehaviour
     void Die(int cause,Character killer)
     {
         charaStatus.dead = true;
+
         Instantiate(Definer.VERef.die, charactersManager.GetCharacterWorldPos(charaStatus.position), Quaternion.identity);
+        cameraManager.ShakeCamera(1);
+
         soundManager.PlaySE(Definer.soundRef.die1);
         soundManager.PlaySE(Definer.soundRef.die2);
         if (cause == 0)
@@ -1307,7 +1312,14 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public void OnHealed(int healedValue, int ID) { }
+    public void OnHealed(Character healer, Action.OnHealParams onHealParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnHealed(healer, onHealParams); }
+            RemovePA_Execute();
+        }
+    }
     public virtual void OnApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
     {
         if (BattleManager.inBattle)

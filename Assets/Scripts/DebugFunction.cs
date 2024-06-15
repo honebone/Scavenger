@@ -61,6 +61,7 @@ public class DebugFunction : MonoBehaviour
         }
      
     }
+    float str = 0.5f;
     // Update is called once per frame
     void Update()
     {
@@ -92,9 +93,11 @@ public class DebugFunction : MonoBehaviour
                 }
 
             }
+
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                FindObjectOfType<TutorialManager>().StartTutorial(tutorial);
+                FindObjectOfType<CameraManager>().ShakeCamera(str);
+                str += 0.5f;
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {

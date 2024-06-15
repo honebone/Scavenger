@@ -56,7 +56,8 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 3254016428576288406, guid: d267bed0e5c9d524cb7705e2ddc0aeea, type: 3}
     targetType: 3
     friendly: 1
     condition:
@@ -99,8 +100,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 50
-    healRegain_max: 50
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -117,7 +118,10 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []

@@ -259,8 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
+  debug: 0
+  skipDeployPhase: 0
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
@@ -8566,6 +8566,7 @@ MonoBehaviour:
   positionEffectIcon_Inspector: {fileID: 4322071049489499627, guid: ded2a124e9e7dc3439492f8f626707fe, type: 3}
   playerDataBase:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
+  - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
@@ -13114,6 +13115,7 @@ GameObject:
   - component: {fileID: 909925281}
   - component: {fileID: 909925284}
   - component: {fileID: 909925285}
+  - component: {fileID: 909925286}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13139,7 +13141,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.22519511, g: 0.49056602, b: 0.21982911, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -13236,6 +13238,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &909925286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909925280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907826f02dd20564a84d264307357132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &914944168
 GameObject:
   m_ObjectHideFlags: 0
@@ -13550,6 +13564,7 @@ MonoBehaviour:
   abilityNameText_player: {fileID: 1846992750}
   abilityNameText_enemy: {fileID: 1408254314}
   inQueueActions: []
+  cameraMnager: {fileID: 909925286}
   autoResolve: 1
   autoResolveInterval: 0.2
 --- !u!1 &916294348
