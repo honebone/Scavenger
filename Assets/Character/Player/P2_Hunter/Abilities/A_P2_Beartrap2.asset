@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P2_Hunt
+  m_Name: A_P2_Beartrap2
   m_EditorClassIdentifier: 
-  abilityName: "\u72E9\u731F"
-  lockedDefault: 0
-  upgradeInfo: 
-  prevAbility: {fileID: 0}
-  upgradeAbility: {fileID: 11400000, guid: 4411aec3ff50c5a4db0b7dbfc2bca714, type: 2}
+  abilityName: "\u7F60\u306E\u8A2D\u7F6E+"
+  lockedDefault: 1
+  upgradeInfo: "\u30BF\u30FC\u30F3\u304C\u7D42\u4E86\u3057\u306A\u304F\u306A\u308B"
+  prevAbility: {fileID: 11400000, guid: ffd4dd574c554114fb04272ed57a6a1f, type: 2}
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
-  abilityType: 1
+  activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
+  abilityType: 4
   excludeRandomPool: 0
   selectWeight: 1
-  availableFront: 0
+  availableFront: 1
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 0
@@ -43,28 +43,27 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
-  freeAction: 0
+  freeAction: 1
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 1
-  remainOnBattleStart: 3
-  maxRemain: 3
+  remainOnBattleStart: 1
+  maxRemain: 1
   actionsStaus:
-  - actionName: "\u72E9\u731F"
+  - actionName: "\u7F60\u306E\u8A2D\u7F6E+"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u6575\u5074\u306E\u30DD\u30B8\u30B7\u30E7\u30F31\u3064"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
-    VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 111478303779076297, guid: 65be4c6435fc65647b263d8b05c38f89, type: 3}
+    actionMods: []
     targetType: 1
     friendly: 0
     condition:
-      searchAsPos: 0
+      searchAsPos: 1
       onlyEmpty: 0
       player: 0
       enemy: 1
@@ -88,13 +87,13 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     cantCounter: 0
-    attackType: 1
-    ATKMod_min: 90
-    ATKMod_max: 120
+    attackType: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
-    CRITCMod: 2
+    CRITCMod: 0
     CRITDMod: 0
     drain: 0
     sureHit: 0
@@ -117,7 +116,12 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
-    applyPEParams: []
+    applyPEParams:
+    - applyPE: {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
@@ -133,10 +137,11 @@ MonoBehaviour:
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
-    freeAction: 0
-    abilityType: 1
+    freeAction: 1
+    abilityType: 4
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
+    activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
     actionOwner: {fileID: 0}
     actionTargetsInt: 0d000000

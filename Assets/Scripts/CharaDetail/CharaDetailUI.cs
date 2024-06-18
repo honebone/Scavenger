@@ -168,9 +168,14 @@ public class CharaDetailUI : MonoBehaviour
             if (abilityStatus.locked)
             {
                 var a = Instantiate(abilityButton, abilityP);
-                a.GetComponent<CharaDetail_AbilityButton>().Init(abilityStatus, displayingChara, guideMessage, infoText,this,abilityUpgradeInfo);
+                a.GetComponent<CharaDetail_AbilityButton>().Init(abilityStatus, 0, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
             }
-            //アップグレード
+            else if (abilityStatus.abilityData.upgradeAbility != null)
+            {
+                Ability.AbilityStatus upgrade = new Ability.AbilityStatus(abilityStatus.abilityData.upgradeAbility, 0);
+                var a = Instantiate(abilityButton, abilityP);
+                a.GetComponent<CharaDetail_AbilityButton>().Init(upgrade, 1, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
+            }
         }
     }
 

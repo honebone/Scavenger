@@ -178,4 +178,14 @@ public class Character_Object : MonoBehaviour
             yield return wait;
         }
     }
+
+    public void SetAbilityManager(Ability.AbilityStatus abilityStatus)
+    {
+        GameObject abilityManager;
+        if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }
+        else { abilityManager = Definer.abilityManager_General; }
+        var a = Instantiate(abilityManager, abilitiesP);
+        a.GetComponent<Ability>().Init(character, abilityStatus);
+        abilityStatus.SetManager(a.GetComponent<Ability>());
+    }
 }

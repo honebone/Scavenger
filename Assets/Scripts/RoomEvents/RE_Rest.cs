@@ -29,7 +29,7 @@ public class RE_Rest : RoomEvent
                 {
                     int maxHP = chara.GetCharacterStatus().maxHP;
                     chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
-                    chara.SANHeal(15);
+                    chara.SANHeal(10);
                 }
                 yield return new WaitForSeconds(1f);
                 EndRoomEvent();
@@ -39,7 +39,7 @@ public class RE_Rest : RoomEvent
                 {
                     //int maxHP = chara.GetCharacterStatus().maxHP;
                     //chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
-                    chara.SANHeal(30);
+                    chara.SANHeal(20);
                 }
                 yield return new WaitForSeconds(1f);
                 EndRoomEvent();

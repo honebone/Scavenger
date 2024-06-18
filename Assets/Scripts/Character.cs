@@ -313,8 +313,8 @@ public class Character : MonoBehaviour
     }
    protected CharacterStatus charaStatus;
 
-    [SerializeField]
-    protected Action.ActionStatus[] actionsStatusTest;
+    //[SerializeField]
+    //protected Action.ActionStatus[] actionsStatusTest;
     public CharacterStatus GetCharacterStatus() { return charaStatus; }
 
     Character_Object charaObj;
@@ -1017,11 +1017,7 @@ public class Character : MonoBehaviour
         {
             if (applyBonus.applyStE == bonus.applyStE)
             {
-                int n = 1;
-                if (!set) { n = -1; }
-                applyBonus.exChance += bonus.exChance * n;
-                applyBonus.exStack += bonus.exStack * n;
-                applyBonus.exValue += bonus.exValue * n;
+                applyBonus.AddBonus(bonus, true);
                 return;
             }
         }
@@ -1087,6 +1083,18 @@ public class Character : MonoBehaviour
     
     //Ç±Ç±Ç‹Ç≈ÉAÉNÉVÉáÉìÇ…ÇÊÇ¡ÇƒåƒÇŒÇÍÇÈä÷êî
 
+    public void UpgradeAbility(AbilityData upgrade)
+    {
+        for(int i=0;i<charaStatus.abilitiesStatus.Length; i++)
+        {
+            if (charaStatus.abilitiesStatus[i].abilityData.upgradeAbility == upgrade)
+            {
+                Destroy(charaStatus.abilitiesStatus[i].instantiatedManager.gameObject);
+                charaStatus.abilitiesStatus[i] = new Ability.AbilityStatus(upgrade, i);
+                charaObj.SetAbilityManager(charaStatus.abilitiesStatus[i]);
+            }
+        }
+    }
 
     public bool CheckAlive() { return !charaStatus.dead; }
     /// <summary>0:HP0 1:SAN0</summary>

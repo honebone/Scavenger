@@ -28,10 +28,13 @@ public class CharaDetail_AbilityButton : MonoBehaviour
     Inventory inventory;
 
     Coroutine hold;
+    /// <summary>0:unlock 1:upgrade</summary>
+    int upgradeMode;
 
-    public void Init(Ability.AbilityStatus status, Character chara, GuideMessage gm, InfoText it,CharaDetailUI d,TextMeshProUGUI ui)
+    public void Init(Ability.AbilityStatus status,int mode, Character chara, GuideMessage gm, InfoText it,CharaDetailUI d,TextMeshProUGUI ui)
     {
         abilityStatus = status;
+        upgradeMode = mode;
         character = chara;
         guideMessage = gm;
         infoText = it;
@@ -48,9 +51,13 @@ public class CharaDetail_AbilityButton : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if (abilityStatus.locked)
+            if (upgradeMode==0)
             {
                 upgradeInfo.text = "アビリティを解放し、使用可能にする";
+            }
+            else
+            {
+                upgradeInfo.text = string.Format("アビリティを強化する\n\n{0}", abilityStatus.abilityData.upgradeInfo);
             }
             infoText.SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType])
                 , abilityStatus.GetInfo(false, new Character.CharacterStatus()));
@@ -91,7 +98,8 @@ public class CharaDetail_AbilityButton : MonoBehaviour
             holdGauge.fillAmount += 0.05f;
         }
         inventory.RemoveExp(1, true);
-        if (abilityStatus.locked) { abilityStatus.Unlock(); }
+        if (upgradeMode == 0) { abilityStatus.Unlock(); }
+        else { character.UpgradeAbility(abilityStatus.abilityData); }
         detailUI.Refresh();
     }
 }

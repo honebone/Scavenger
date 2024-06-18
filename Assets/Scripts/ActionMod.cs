@@ -38,6 +38,7 @@ public class ActionMod : MonoBehaviour
         public int shieldRemove;
 
         public List<PA_StatusEffect.StatusEffectParams> applySteParams;
+        public List<StEApplyBonus> applyStEBonus;
 
         [Header("\n\nバフの除去")]
         public int removeStE_buff;
@@ -85,6 +86,13 @@ public class ActionMod : MonoBehaviour
                     if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
                     else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                     s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+                }
+                foreach (StEApplyBonus bonus in applyStEBonus)
+                {
+                    string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                    if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
+                    if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
+                    if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
                 }
 
                 if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5954328460363848495}
   - component: {fileID: 3404417727636778070}
   m_Layer: 0
-  m_Name: AMod_Focused
+  m_Name: AMod_Hunter_StunArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,11 @@ MonoBehaviour:
     shieldAdd: 0
     shieldRemove: 0
     applySteParams: []
-    applyStEBonus: []
+    applyStEBonus:
+    - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+      exChance: 50
+      exStack: 0
+      exValue: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0

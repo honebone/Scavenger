@@ -147,6 +147,8 @@ public class Action : MonoBehaviour
         public bool freeAction;
         public AbilityData.AbilityType abilityType;
 
+        /// <summary>AModによって追加</summary>
+        public List<StEApplyBonus> StEApplyBonus;
         public List<ActionData.RemoveStE> removeStEs_additional;
 
         public bool dontChangeSprite;
@@ -360,6 +362,19 @@ public class Action : MonoBehaviour
             foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in mod.applySteParams)
             {
                 modifiedStatus.applySteParams.Add(statusEffectParams);
+            }
+            foreach (StEApplyBonus bonus in mod.applyStEBonus)
+            {
+                bool f = false;
+                foreach (StEApplyBonus applyBonus in modifiedStatus.StEApplyBonus)
+                {
+                    if (applyBonus.applyStE == bonus.applyStE)
+                    {
+                        applyBonus.AddBonus(bonus, true);
+                        f = true;
+                    }
+                }
+                if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
             }
 
             removeStE_buff += mod.removeStE_buff;
@@ -662,8 +677,14 @@ public class Action : MonoBehaviour
                     onApplyStEParams.taget = target;
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
-                        StEApplyBonus applyBonus = ownerStatus.GetStEApplyBonus(StEParams.applyStE);
-                        if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams.applyStE)).Dice())
+                        StEApplyBonus applyBonus = new StEApplyBonus();
+                        if (ownerStatus.GetStEApplyBonus(StEParams.applyStE) != null) { applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE)); }
+                        foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)
+                        {
+                            if (bonus.applyStE == StEParams.applyStE) { applyBonus.AddBonus(bonus); }
+                        }
+
+                        if (StEParams.guaranteed || (StEParams.applyChance + applyBonus.exChance - targetStatus.GetStERes(StEParams.applyStE)).Dice())
                         {
                             onApplyStEParams.appliedParams.Add(StEParams);
 
@@ -675,6 +696,7 @@ public class Action : MonoBehaviour
                             infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                         }
                     }
+                    actionsStatus[i].StEApplyBonus.Clear();
                     if (onApplyStEParams.appliedParams.Count > 0) { onApplyStEParamsList.Add(onApplyStEParams); }
 
 

@@ -127,4 +127,13 @@ public class StEApplyBonus
     public float exChance;
     public int exStack;
     public int exValue;
+
+    public void AddBonus(StEApplyBonus bonus, bool add = true)
+    {
+        int n = 1;
+        if (!add) { n = -1; }
+        exChance += bonus.exChance * n;
+        exStack += bonus.exStack * n;
+        exValue += bonus.exValue * n;
+    }
 }

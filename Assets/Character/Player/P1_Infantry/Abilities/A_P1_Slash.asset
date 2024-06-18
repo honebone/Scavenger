@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u65AC\u6483"
   lockedDefault: 0
+  upgradeInfo: 
+  prevAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: d2338b90b0d190a4bb22ec31ef811ef6, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2401220359373207913, guid: b6b87453919615542ab3880a5fdc03b8, type: 3}
@@ -100,6 +103,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
