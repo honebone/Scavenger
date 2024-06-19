@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P2_StunArrow
+  m_Name: A_P2_StunArrow2
   m_EditorClassIdentifier: 
-  abilityName: "\u9EBB\u75FA\u77E2"
+  abilityName: "\u9EBB\u75FA\u77E2+"
   lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 6ab0b3bb1b5d97744b96736ffe112b6c, type: 2}
+  upgradeInfo: "ATK\u88DC\u6B63+20\uFF05\nACC\u4F4E\u4E0B\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 5632338022003734053, guid: 94f4590690fd9c74e97b64b55dcceb85, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
   remainOnBattleStart: 1
   maxRemain: 1
   actionsStaus:
-  - actionName: "\u9EBB\u75FA\u77E2"
+  - actionName: "\u9EBB\u75FA\u77E2+"
     conditionInfo: 
     targetInfo: "\u4E2D\u30FB\u5F8C\u5217\u306E\u65751\u4F53"
     AModInfo: 
@@ -89,8 +89,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 1
-    ATKMod_min: 50
-    ATKMod_max: 80
+    ATKMod_min: 70
+    ATKMod_max: 100
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -122,6 +122,11 @@ MonoBehaviour:
       applyChance: 20
       stack: 1
       value: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
+      guaranteed: 0
+      applyChance: 80
+      stack: 1
+      value: 25
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

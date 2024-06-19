@@ -9,7 +9,6 @@ public class AbilityData : ScriptableObject
     public bool lockedDefault;
     
     [Header("アップグレード後のアビリティに書く"),TextArea(3, 10)] public string upgradeInfo;
-    public AbilityData prevAbility;
     public AbilityData upgradeAbility;
 
     [Header("設定しなければ汎用的なオブジェクトになる")]

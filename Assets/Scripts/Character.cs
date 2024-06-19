@@ -1053,15 +1053,18 @@ public class Character : MonoBehaviour
     
     public void AbilityRemain(ActionData.AbilityRemainControll remainControll)
     {
-        foreach(Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
+        foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (ability.abilityData == remainControll.abilityData)
+            bool f = false;
+            if (ability.abilityData == remainControll.abilityData) { f = true; }
+            if (remainControll.abilityData.upgradeAbility != null && ability.abilityData == remainControll.abilityData.upgradeAbility) { f = true; }
+            if (f)
             {
                 if (remainControll.set) { ability.remain = remainControll.value; }
                 else
                 {
                     int maxRemain = ability.maxRemain;
-                    if (ability.maxRemain==0) { maxRemain = 999; }
+                    if (ability.maxRemain == 0) { maxRemain = 999; }
                     ability.remain = Mathf.Clamp(ability.remain + remainControll.value, 0, maxRemain);
                 }
                 infoText.AddLogText(string.Format("{0}ÇÃ<{1}>ÇÃégópâÒêîÇ™{2}Ç…Ç»Ç¡ÇΩ", charaStatus.charaName, ability.abilityName.ColorStr(ability.abilityType.ToColor()), ability.remain));
