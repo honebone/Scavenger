@@ -8530,6 +8530,7 @@ MonoBehaviour:
     currentState: {r: 1, g: 0.75047123, b: 0.41037738, a: 1}
     emphasize: {r: 1, g: 0.7490196, b: 0.4117647, a: 1}
     AMod: {r: 0.39498475, g: 0.6981132, b: 0.2206301, a: 1}
+    expOrb: {r: 0.98039216, g: 0.9647059, b: 0.5882353, a: 1}
   soundRef_Inspector:
     miss: {fileID: 8300000, guid: 03c3949a8c191454f9f199ed035496f2, type: 3}
     evade: {fileID: 8300000, guid: f2d5becfdc5cd1249ba72c3e3bd47605, type: 3}
@@ -13519,6 +13520,8 @@ MonoBehaviour:
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}

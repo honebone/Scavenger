@@ -854,6 +854,7 @@ public class Ability : MonoBehaviour
 
             for (int i = 0; i < status.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
             {
+                status.actionsStatus[i].index = i;
                 status.actionsStatus[i].actionOwner = character;
                 status.actionsStatus[i].actionTargetsInt = new List<int>(targetGroups[i]);
                 if (!status.actionsStatus[i].condition.searchAsPos && status.actionsStatus[i].targetType != Action.ActionStatus.TargetType.move)//対象がキャラであるアビリティの場合は、actionTargetsの設定

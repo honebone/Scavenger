@@ -146,6 +146,7 @@ public class Action : MonoBehaviour
         public bool abilityEffect;
         public bool freeAction;
         public AbilityData.AbilityType abilityType;
+        public int index;//複数効果があるアビリティの際に使う
 
         /// <summary>AModによって追加</summary>
         public List<StEApplyBonus> StEApplyBonus;
@@ -558,7 +559,7 @@ public class Action : MonoBehaviour
                                 shakeCamera = true;
                                 CRIT = true;
                                 onAttackParams.CRIT = true;
-                                fDMG *= ownerStatus.CRITD + actionsStatus[i].CRITDMod;
+                                fDMG *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
                             }
 
                             float RDMG = Mathf.Max((targetStatus.PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
@@ -923,7 +924,8 @@ public class Action : MonoBehaviour
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//与回復時誘発
         }
 
-        if (actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass) { actionStatus.actionOwner.OnActivateAbility(); }
+        if (actionStatus.index == 0 && actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass)
+        { actionStatus.actionOwner.OnActivateAbility(); }
 
         if (shakeCamera) { cameraManager.ShakeCamera(1); }
 

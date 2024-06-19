@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u96C4\u53EB\u3073"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 11400000, guid: 229072b91d5d67140a7d854308b02bc4, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -146,6 +148,8 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 4
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u5B89\u606F"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 11400000, guid: 7f8c85632a0f66447bfd620e0afea5af, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
@@ -40,6 +42,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 3
   hasRemain: 0
@@ -92,12 +95,15 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 20
     healPercent_max: 30
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -119,13 +125,16 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 2
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}

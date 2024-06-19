@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: E_Mimic
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30DF\u30DF\u30C3\u30AF"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 08000000
   immovable: 0
   notChara: 0
@@ -38,7 +41,7 @@ MonoBehaviour:
   maxSAN: 0
   ATK: 12
   CRITC: 5
-  CRITD: 2
+  CRITD: 200
   EVD: 0
   ACC: 90
   ACT: 7

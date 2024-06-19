@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: A_P1_Slash2
   m_EditorClassIdentifier: 
-  abilityName: "\u65AC\u6483"
+  abilityName: "\u65AC\u6483+"
   lockedDefault: 0
   upgradeInfo: "ATK\u88DC\u6B63+20\uFF05"
-  prevAbility: {fileID: 11400000, guid: 12b51d6805e97e245b0d88ad7c24b42f, type: 2}
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
@@ -135,6 +134,8 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2401220359373207913, guid: b6b87453919615542ab3880a5fdc03b8, type: 3}

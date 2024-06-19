@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: A_P2_Beartrap2
   m_EditorClassIdentifier: 
   abilityName: "\u7F60\u306E\u8A2D\u7F6E+"
-  lockedDefault: 1
+  lockedDefault: 0
   upgradeInfo: "\u30BF\u30FC\u30F3\u304C\u7D42\u4E86\u3057\u306A\u304F\u306A\u308B"
-  prevAbility: {fileID: 11400000, guid: ffd4dd574c554114fb04272ed57a6a1f, type: 2}
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
@@ -144,4 +143,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 09000000

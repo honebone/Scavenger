@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: P_Infantry
   manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
   charaName: "\u30C7\u30D0\u30C3\u30B0\u592A\u90CE"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 02000000
   immovable: 0
   notChara: 0
@@ -46,7 +49,7 @@ MonoBehaviour:
   maxSAN: 50
   ATK: 10
   CRITC: 5
-  CRITD: 1.5
+  CRITD: 150
   EVD: 3
   ACC: 100
   ACT: 100

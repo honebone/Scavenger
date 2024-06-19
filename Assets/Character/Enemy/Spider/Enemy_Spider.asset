@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: E_Spider
   manager: {fileID: 2726620601615263115, guid: 41cefb4d25cfa6c47bb77856fe4ba9e9, type: 3}
   charaName: "\u30AF\u30E2"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 04000000
   immovable: 0
   notChara: 0
@@ -45,7 +48,7 @@ MonoBehaviour:
   maxSAN: 0
   ATK: 8
   CRITC: 8
-  CRITD: 2
+  CRITD: 200
   EVD: 7
   ACC: 90
   ACT: 8

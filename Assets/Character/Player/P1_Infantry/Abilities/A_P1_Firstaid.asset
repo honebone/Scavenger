@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u5FDC\u6025\u51E6\u7F6E"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 11400000, guid: a57c89224cbcc834987dddd04d71938d, type: 2}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
   activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}
@@ -99,6 +101,8 @@ MonoBehaviour:
     healValue_max: 10
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -129,6 +133,8 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 2
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}

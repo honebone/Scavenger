@@ -35,7 +35,7 @@ public class Definer : MonoBehaviour
         public Color emphasize;
 
         public Color AMod;
-
+        public Color expOrb;
     }
     [System.Serializable]
     public class SoundRef

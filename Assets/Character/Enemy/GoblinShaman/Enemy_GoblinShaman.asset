@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: E_GoblinShaman
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30B4\u30D6\u30EA\u30F3\u30B7\u30E3\u30FC\u30DE\u30F3"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 0a000000
   immovable: 0
   notChara: 0
@@ -45,7 +48,7 @@ MonoBehaviour:
   maxSAN: 0
   ATK: 12
   CRITC: 0
-  CRITD: 1
+  CRITD: 100
   EVD: 3
   ACC: 85
   ACT: 4

@@ -18,6 +18,8 @@ public class CharaDetail_AbilityButton : MonoBehaviour
     Text nameText;
     [SerializeField]
     Image holdGauge;
+    [SerializeField]
+    Image chain;
 
     Ability.AbilityStatus abilityStatus;
     Character character;
@@ -30,6 +32,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
     Coroutine hold;
     /// <summary>0:unlock 1:upgrade</summary>
     int upgradeMode;
+    int cost;
 
     public void Init(Ability.AbilityStatus status,int mode, Character chara, GuideMessage gm, InfoText it,CharaDetailUI d,TextMeshProUGUI ui)
     {
@@ -45,20 +48,33 @@ public class CharaDetail_AbilityButton : MonoBehaviour
         nameText.text = abilityStatus.abilityName;
         frame.sprite = frames[(int)abilityStatus.abilityType];
         frame.color = Definer.colorRef.abilityColors[(int)abilityStatus.abilityType];
+        if (upgradeMode == 0)
+        {
+            chain.enabled = true;
+            cost = 1;
+        }
+        else
+        {
+            cost = 2;
+        }
     }
 
     public void OnMouseDown()
     {
+
         if (Input.GetMouseButtonDown(1))
         {
+            string s = "";
             if (upgradeMode==0)
             {
-                upgradeInfo.text = "アビリティを解放し、使用可能にする";
+                s = "アビリティを解放し、使用可能にする";
             }
             else
             {
-                upgradeInfo.text = string.Format("アビリティを強化する\n\n{0}", abilityStatus.abilityData.upgradeInfo);
+                s = string.Format("アビリティを強化する\n\n{0}", abilityStatus.abilityData.upgradeInfo);
             }
+            s += string.Format("\n\n必要オーブ数：{0}個", cost).ColorStr(Definer.colorRef.expOrb);
+            upgradeInfo.text = s;
             infoText.SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType])
                 , abilityStatus.GetInfo(false, new Character.CharacterStatus()));
         }
@@ -69,7 +85,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
             {
                 guideMessage.SetWaringText("イベント中のアップグレード不可");
             }
-            else if (inventory.GetExp() == 0)
+            else if (inventory.GetExp() < cost)
             {
                 guideMessage.SetWaringText("経験のオーブが足りない");
             }
@@ -97,7 +113,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
             yield return wait;
             holdGauge.fillAmount += 0.05f;
         }
-        inventory.RemoveExp(1, true);
+        inventory.RemoveExp(cost, true);
         if (upgradeMode == 0) { abilityStatus.Unlock(); }
         else { character.UpgradeAbility(abilityStatus.abilityData); }
         detailUI.Refresh();

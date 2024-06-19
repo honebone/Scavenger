@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "\u30B3\u30F3\u30DC"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001CRIT\u7387+1\uFF05\u3001CRIT\u30C0\u30E1\u30FC\u30B80.02\u500D\n\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-2"
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001CRIT\u7387+1\uFF05\u3001CRIT\u30C0\u30E1\u30FC\u30B8+2\uFF05\n\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-2"
     StEIcon: {fileID: 21300000, guid: 63010851e7121594cb0372994ffb0f0d, type: 3}
     StEType: 4
     maxStack: 15
@@ -57,7 +57,7 @@ MonoBehaviour:
     stack: 0
     value: 0
   CRITCPerStack: 1
-  CRITDPerStack: 0.02
+  CRITDPerStack: 2
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

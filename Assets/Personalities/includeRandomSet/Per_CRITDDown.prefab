@@ -50,9 +50,10 @@ MonoBehaviour:
   statusMod:
     maxHP_mul: 0
     maxSAN_mul: 0
+    PROT: 0
     ATK_mul: 0
     CRITC: 0
-    CRITD: -0.3
+    CRITD: -30
     EVD: 0
     ACC: 0
     ACT: 0
@@ -61,4 +62,5 @@ MonoBehaviour:
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
+    moveRes: 0
   actionMods: []

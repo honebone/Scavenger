@@ -122,7 +122,7 @@ public class Character : MonoBehaviour
             else { s += "\n"; }
 
             s += string.Format("ATK：{0}\n", ATK);
-            s += string.Format("CRIT：{0}％で{1}倍ダメージ\n\n", CRITC, CRITD.ToString("0.00"));
+            s += string.Format("CRIT：{0}％で{1}％ダメージ\n\n", CRITC, CRITD);
 
             s += string.Format("EVD：{0}\n", EVD);
             s += string.Format("ACC：{0}\n\n", ACC);
@@ -279,7 +279,7 @@ public class Character : MonoBehaviour
             s += ValueToStr("被ダメージ", PROT * -1, "％");
             s += ValueToStr("ATK", ATK_mul, "％");
             s += ValueToStr("CRIT率", CRITC, "％");
-            s += ValueToStr("CRITダメージ", CRITD, "倍");
+            s += ValueToStr("CRITダメージ", CRITD, "％");
             s += ValueToStr("EVD", EVD, "");
             s += ValueToStr("ACC", ACC, "");
             s += ValueToStr("ACT", ACT, "");

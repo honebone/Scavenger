@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_P2_StunArrow2
   m_EditorClassIdentifier: 
   abilityName: "\u9EBB\u75FA\u77E2+"
-  lockedDefault: 1
+  lockedDefault: 0
   upgradeInfo: "ATK\u88DC\u6B63+20\uFF05\nACC\u4F4E\u4E0B\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
