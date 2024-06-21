@@ -263,8 +263,8 @@ MonoBehaviour:
   skipDeployPhase: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
-  - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
-  - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
+  - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+  - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   itemData:

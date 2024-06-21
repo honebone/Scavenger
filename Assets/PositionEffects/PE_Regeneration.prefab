@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6100531659314710472}
-  - component: {fileID: -5830444503692336787}
   - component: {fileID: 829522144539712664}
+  - component: {fileID: 3327013355031148552}
   m_Layer: 0
-  m_Name: PE_Burn
+  m_Name: PE_Regeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,59 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5830444503692336787
+--- !u!212 &829522144539712664
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8496128596371283057}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 09a42e64a0566fb45a97e70d7fb54ebf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4.75, y: 4.75}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &3327013355031148552
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,21 +94,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 8496128596371283057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b26abccd2aa0a914198567d924c7f131, type: 3}
+  m_Script: {fileID: 11500000, guid: e0db1d6da75380d40a01fa76510971b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PEStatus:
-    PEName: "\u708E\u4E0A"
-    PEInfo: "\u30DD\u30B8\u30B7\u30E7\u30F3\u4E0A\u306E\u30AD\u30E3\u30E9\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u30B9\u30BF\u30C3\u30AF\u6570\u5206\u6E1B\u5C11\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u30B9\u30BF\u30C3\u30AF-2"
-    PEIcon: {fileID: 21300000, guid: bb06c894b49ca0446a097b8a60476702, type: 3}
-    PEType: 2
+    PEName: "\u518D\u751F"
+    PEInfo: "\u30DD\u30B8\u30B7\u30E7\u30F3\u4E0A\u306E\u30AD\u30E3\u30E9\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u30B9\u30BF\u30C3\u30AF\u6570\u5206\u56DE\u5FA9\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u30B9\u30BF\u30C3\u30AF-2"
+    PEIcon: {fileID: 21300000, guid: 09a42e64a0566fb45a97e70d7fb54ebf, type: 3}
+    PEType: 1
     maxStack: 0
     merge: 1
     refValue: 0
     stack: 0
     value: 0
   actionStatus:
-    actionName: "\u708E\u4E0A"
+    actionName: "\u518D\u751F"
     conditionInfo: "\u30DD\u30B8\u30B7\u30E7\u30F3\u4E0A\u306E\u30AD\u30E3\u30E9\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
     targetInfo: "\u30DD\u30B8\u30B7\u30E7\u30F3\u4E0A\u306E\u30AD\u30E3\u30E9"
     AModInfo: 
@@ -147,55 +199,3 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     actionTargetsInt: 
---- !u!212 &829522144539712664
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8496128596371283057}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bb06c894b49ca0446a097b8a60476702, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 4.75, y: 4.75}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0

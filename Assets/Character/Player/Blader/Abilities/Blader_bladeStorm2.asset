@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Blader_dance
+  m_Name: Blader_bladeStorm2
   m_EditorClassIdentifier: 
-  abilityName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
+  abilityName: "\u5203\u306E\u5D50+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 3dede31b708c5ec41af82601a3a6f3fd, type: 2}
+  upgradeInfo: "\u4ED8\u4E0E\u3059\u308B\u5203\u306E\u5D50\u306E\u30B9\u30BF\u30C3\u30AF\u6570+1"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
   abilityType: 3
   excludeRandomPool: 0
   selectWeight: 1
-  availableFront: 0
+  availableFront: 1
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 0
@@ -44,110 +44,14 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 4
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
+  - actionName: "\u5203\u306E\u5D50"
     conditionInfo: 
-    targetInfo: "\u81EA\u8EAB\u4EE5\u5916\u306E\u5473\u65B91\u4F53"
-    AModInfo: 
-    actionInfo: 
-    sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 6
-    friendly: 1
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 1
-      enemy: 0
-      onlyPlayable: 0
-      front: 1
-      mid: 1
-      back: 1
-      characterTags: 
-      StE: []
-      PE: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    consumeFocus: 0
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
-    exDMG_mul: 0
-    exDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    drain: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    healRegain_min: 0
-    healRegain_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 50
-    applyPEParams: []
-    removeStE_buff: 0
-    removeStE_debuff: 0
-    removeStE_DoT: 0
-    removeStEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    moveChance: 0
-    guaranteedMove: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    abilityRemainControlls: []
-    abilityEffect: 1
-    freeAction: 0
-    abilityType: 3
-    index: 0
-    StEApplyBonus: []
-    removeStEs_additional: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
-    actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
-  - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
-    conditionInfo: 
-    targetInfo: "\u81EA\u8EAB\n"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -211,11 +115,11 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+    - applyStE: {fileID: 5164891664867224302, guid: e0a68374ad7ab2440b3683adbf0248a5, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 1
-      value: 50
+      stack: 4
+      value: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -230,10 +134,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
-    abilityRemainControlls:
-    - abilityData: {fileID: 11400000, guid: 1e5fef3272311a542a5b899557e43dfc, type: 2}
-      set: 0
-      value: 2
+    abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
@@ -243,4 +144,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargetsInt: 07000000

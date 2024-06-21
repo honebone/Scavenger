@@ -618,6 +618,10 @@ public class Ability : MonoBehaviour
                         }
                     }
                     break;
+                case Action.ActionStatus.TargetType.all:
+
+                    tp_noMark.Add(new List<int>(charactersManager.SearchPosWithCondition(actionStatus.condition)));
+                    break;
             }
         }
 

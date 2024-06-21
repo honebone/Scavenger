@@ -92,7 +92,7 @@ public class ActionMod : MonoBehaviour
                     string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
                     if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                     if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                    if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
+                    if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
                 }
 
                 if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }

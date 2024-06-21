@@ -122,6 +122,22 @@ public class PositionEffect : MonoBehaviour
         if (PEIcon != null) { Destroy(PEIcon.gameObject); }
         Destroy(gameObject);
     }
+
+    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            actionStatus.sprite = sr.sprite;
+        }
+        else
+        {
+            //infoText.AddDebugText(string.Format("{0}‚ÉSpriteRenderer‚È‚µ", GetPAName()));
+        }
+        character.Enqueue(actionStatus, setTargets, actionTargets, nullOwner);
+    }
+
+
     public virtual void OnPEInit() { }
     public virtual void AtTheEnd() { }
 

@@ -13,7 +13,7 @@ public class PA_StE_Burn : PA_StatusEffect
             Action.ActionStatus action = actionStatus;
             action.decreaseHP_min = StEStatus.stack;
             action.decreaseHP_max = StEStatus.stack;
-            character.Enqueue(action, true, new List<Character>() { character });
+            Enqueue(action, true, new List<Character>() { character });
             AddStack(-2);
         }
     }

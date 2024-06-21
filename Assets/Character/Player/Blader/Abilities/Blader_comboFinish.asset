@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u30B3\u30F3\u30DC\u30D5\u30A3\u30CB\u30C3\u30B7\u30E5"
   lockedDefault: 1
+  upgradeInfo: 
+  upgradeAbility: {fileID: 11400000, guid: 44bde142814c9af4b9e34e1a4053aee1, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
@@ -42,7 +44,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 3
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -93,12 +95,15 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -129,6 +134,8 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
@@ -179,12 +186,15 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -218,6 +228,8 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}

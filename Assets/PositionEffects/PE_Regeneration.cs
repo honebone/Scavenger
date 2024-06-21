@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PE_Burn : PositionEffect
+public class PE_Regeneration : PositionEffect
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
@@ -12,9 +12,9 @@ public class PE_Burn : PositionEffect
         if (character != null && character == currentTurnChara)
         {
             Action.ActionStatus action = actionStatus;
-            action.decreaseHP_min = PEStatus.stack;
-            action.decreaseHP_max = PEStatus.stack;
-            Enqueue(action, true, new List<Character>() { character }, true);
+            action.healValue_min = PEStatus.stack;
+            action.healValue_max = PEStatus.stack;
+           Enqueue(action, true, new List<Character>() { character }, true);
         }
     }
 
@@ -22,5 +22,4 @@ public class PE_Burn : PositionEffect
     {
         AddStack(-2);
     }
-
 }

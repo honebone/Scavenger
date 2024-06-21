@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u30AF\u30A4\u30C3\u30AF\u30B9\u30C6\u30C3\u30D7"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
   activateSprite: {fileID: 0}
@@ -92,12 +94,15 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -119,6 +124,7 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -127,6 +133,8 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 1
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 1
     activateSprite: {fileID: 0}

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Blader_dance
+  m_Name: Blader_dance2
   m_EditorClassIdentifier: 
-  abilityName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
+  abilityName: "\u821E\u8E0F\u306E\u6B69\u6CD5+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 3dede31b708c5ec41af82601a3a6f3fd, type: 2}
+  upgradeInfo: "\u5473\u65B9\u306EEVD\u4F4E\u4E0B\u3092\u9664\u53BB\n\u81EA\u8EAB\u306B\u5203\u306E\u5D50\u30921\u30B9\u30BF\u30C3\u30AF\u4ED8\u4E0E"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
+  - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\u4EE5\u5916\u306E\u5473\u65B91\u4F53"
     AModInfo: 
@@ -124,7 +124,10 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -145,7 +148,7 @@ MonoBehaviour:
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
     actionTargetsInt: 08000000
-  - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
+  - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\n"
     AModInfo: 
@@ -216,6 +219,11 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 50
+    - applyStE: {fileID: 5164891664867224302, guid: e0a68374ad7ab2440b3683adbf0248a5, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

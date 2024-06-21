@@ -55,7 +55,7 @@ public class PassiveAbility : MonoBehaviour
     }
 
     /// <summary>自身のスプライトを代入してEnqueue</summary>
-    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets)
+    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -66,7 +66,7 @@ public class PassiveAbility : MonoBehaviour
         {
             infoText.AddDebugText(string.Format("{0}にSpriteRendererなし", GetPAName()));
         }
-        character.Enqueue(actionStatus, setTargets, actionTargets);
+        character.Enqueue(actionStatus, setTargets, actionTargets, nullOwner);
     }
 
     /// <summary>自身を対象にEunqueue</summary>

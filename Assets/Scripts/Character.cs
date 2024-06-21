@@ -145,7 +145,7 @@ public class Character : MonoBehaviour
                 string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
                 if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
+                if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
             }
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
 
@@ -496,6 +496,7 @@ public class Character : MonoBehaviour
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
             {
                 if (removeStE.removeAll) { pa.GetComponent<PA_StatusEffect>().Disable(); }
+                else { pa.GetComponent<PA_StatusEffect>().AddStack(removeStE.addAmount); }
             }
         }
         //メッセージ
@@ -641,10 +642,11 @@ public class Character : MonoBehaviour
     /// <param name="actionStatus"></param>
     /// <param name="setTargets">actionTargetに第3引数を代入するか</param>
     /// <param name="actionTargets">setTargetsがtrueの時、これを対象群として改めてactionstatusに代入する</param>
-    public void Enqueue(Action.ActionStatus actionStatus,bool setTargets,List<Character> actionTargets)
+    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
     {
-        actionStatus.actionOwner = this;
-        if (setTargets) { actionStatus.actionTargets = actionTargets; }    
+        if (!nullOwner) { actionStatus.actionOwner = this; }
+        else { actionStatus.actionOwner = null; }
+        if (setTargets) { actionStatus.actionTargets = actionTargets; }
         actionQueue.Enqueue(actionStatus);
     }
 
