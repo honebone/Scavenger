@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Warrior_Rage
+  m_Name: Warrior_Calm2
   m_EditorClassIdentifier: 
-  abilityName: "\u6FC0\u6602"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: f5992f4545041314ea419aae389f5c8a, type: 2}
+  abilityName: "\u51B7\u9759+"
+  lockedDefault: 0
+  upgradeInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u3042\u305F\u308A\u306E\u56DE\u5FA9\u91CF+2\uFF05"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  abilityType: 3
+  abilityType: 2
   excludeRandomPool: 0
   selectWeight: 1
   availableFront: 1
-  availableMid: 0
-  availableBack: 0
+  availableMid: 1
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -44,12 +44,12 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 3
+  cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u6FC0\u6602"
+  - actionName: "\u51B7\u9759"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -58,7 +58,8 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 3254016428576288406, guid: 56ee3bfd7d8a9124e89799a352d3c19d, type: 3}
     targetType: 3
     friendly: 1
     condition:
@@ -114,27 +115,15 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 5
-      value: 0
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 50
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -147,7 +136,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 3
+    abilityType: 2
     index: 0
     StEApplyBonus: []
     removeStEs_additional: []

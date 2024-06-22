@@ -9,7 +9,7 @@ public class AMod_Warrior_Calm : ActionMod
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
         int value = statusRef.actionOwner.GetStEStack(anger) * valuePerStack;
-        FindObjectOfType<InfoText>().AddDebugText(value.ToString());
+        //FindObjectOfType<InfoText>().AddDebugText(value.ToString());
 
         if (value > 0)
         {

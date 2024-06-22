@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Warrior_Rage
+  m_Name: Warrior_Ostentation2
   m_EditorClassIdentifier: 
-  abilityName: "\u6FC0\u6602"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: f5992f4545041314ea419aae389f5c8a, type: 2}
+  abilityName: "\u8A87\u793A+"
+  lockedDefault: 0
+  upgradeInfo: "\u6012\u308A\u3092\u4ED8\u4E0E"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -23,7 +23,7 @@ MonoBehaviour:
   excludeRandomPool: 0
   selectWeight: 1
   availableFront: 1
-  availableMid: 0
+  availableMid: 1
   availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
@@ -49,14 +49,14 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u6FC0\u6602"
+  - actionName: "\u8A87\u793A+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 3497942893351335139, guid: 890f0bf015391fc4c861320172f8f322, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
@@ -115,26 +115,27 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
+    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 5
+      stack: 2
       value: 0
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+    - applyStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 1
       value: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 50
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
+      removeAll: 1
+      addAmount: 0
+    - removeStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []

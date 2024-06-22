@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7587123083285379047}
-  - component: {fileID: 2238494168226250876}
+  - component: {fileID: 7750197595213507553}
   m_Layer: 0
-  m_Name: AMod_Warrior_Slash
+  m_Name: AMod_Warrior_Calm2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2238494168226250876
+--- !u!114 &7750197595213507553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3254016428576288406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 039165ad1ab682246a24bc74bb2cae5e, type: 3}
+  m_Script: {fileID: 11500000, guid: c4a9970294af4e142acb60d3cede7a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: "\u81EA\u8EAB\u306B\u6012\u308A\u304C\u3042\u308B\u3068\u304D"
     hideValues: 1
-    exInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304DCRIT\u7387\u88DC\u6B63+4\uFF05"
+    exInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u6E1B\u5C11\u3057\u305FHP\u306E5\uFF05\u3092\u56DE\u5FA9"
     consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
@@ -73,4 +73,4 @@ MonoBehaviour:
     removeStE_DoT: 0
     removeStEs: []
   anger: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
-  valuePerStack: 4
+  valuePerStack: 7

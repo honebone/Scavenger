@@ -403,6 +403,12 @@ public class Action : MonoBehaviour
         public float toralCRITC;
         public Character target;
     }
+    public struct OnKillParams
+    {
+        public bool obstacle;
+        public bool CRIT;
+        public Character target;
+    }
     public struct OnHealParams
     {
         public int healValue;
@@ -420,6 +426,7 @@ public class Action : MonoBehaviour
     }
 
     List<OnAttackParams> onAttackParamsList = new List<OnAttackParams>();
+    List<OnKillParams> onKillParamsList = new List<OnKillParams>();
     List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
     OnMoveParams onMoveParams = new OnMoveParams();
@@ -590,7 +597,14 @@ public class Action : MonoBehaviour
                             }
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//”íUŒ‚Žž—U”­
-                            target.Damage(DMG, CRIT, shieldDMG, actionsStatus[i].cantCounter, actionStatus.actionOwner);//ƒ_ƒ[ƒWˆ—ŠJŽn
+                            if(target.Damage(DMG, CRIT, shieldDMG, actionStatus.actionOwner))//ƒ_ƒ[ƒWˆ—ŠJŽn
+                            {//ŽEŠQ‚µ‚½‚È‚ç
+                                OnKillParams onKillParams = new OnKillParams();
+                                onKillParams.obstacle = targetStatus.obstacle;
+                                onKillParams.target = target;
+                                onKillParams.CRIT = CRIT;
+                                onKillParamsList.Add(onKillParams);
+                            }
                         }
                         else//‰ñ”ð
                         {
@@ -920,6 +934,7 @@ public class Action : MonoBehaviour
         if (actionStatus.actionOwner != null)
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//UŒ‚Žž—U”­
+            if (onKillParamsList.Count > 0) { actionStatus.actionOwner.Onkill(onKillParamsList); }//ŽEŠQŽž—U”­
             if (onApplyStEParamsList.Count > 0) { actionStatus.actionOwner.OnApplyedStE(onApplyStEParamsList); }//StE•t—^Žž—U”­
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//—^‰ñ•œŽž—U”­
         }

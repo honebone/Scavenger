@@ -264,7 +264,7 @@ MonoBehaviour:
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-  - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
+  - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   itemData:
@@ -8601,6 +8601,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb1a65b8e2d94a4409e9e27bae9ff34a, type: 2}
   - {fileID: 11400000, guid: 649fa5221ed3a7e439fe7ca23ca025bf, type: 2}
   - {fileID: 11400000, guid: dce780711fbf7974c922911ae6daf724, type: 2}
+  - {fileID: 11400000, guid: 7b2fc9b12d738294791b071f35b41908, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}

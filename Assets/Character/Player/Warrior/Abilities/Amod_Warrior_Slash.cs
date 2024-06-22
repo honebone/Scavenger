@@ -16,7 +16,7 @@ public class Amod_Warrior_Slash : ActionMod
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
                 FindObjectOfType<InfoText>().AddDebugText(value.ToString());
-                actionModStatus.exDMG_mul = value;
+                actionModStatus.CRITCMod = value;
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }
         }

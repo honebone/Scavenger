@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Warrior_Rage
+  m_Name: Warrior_Rage2
   m_EditorClassIdentifier: 
-  abilityName: "\u6FC0\u6602"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: f5992f4545041314ea419aae389f5c8a, type: 2}
+  abilityName: "\u6FC0\u6602+"
+  lockedDefault: 0
+  upgradeInfo: "\u88AB\u30C0\u30E1\u30FC\u30B8\u4E0A\u6607\u306E\u52B9\u679C\u91CF-20\uFF05\n\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u78BA\u5B9A\u4ED8\u4E0E\u304B\u308950\uFF05\u3067\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u7DE9\u548C"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -121,20 +121,23 @@ MonoBehaviour:
       stack: 5
       value: 0
     - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      guaranteed: 1
-      applyChance: 0
+      guaranteed: 0
+      applyChance: 50
       stack: 1
       value: 0
     - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 2
-      value: 50
+      value: 30
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []

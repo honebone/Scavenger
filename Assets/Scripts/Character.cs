@@ -765,7 +765,9 @@ public class Character : MonoBehaviour
             OnDecreasedHP(value);
         }
     }
-    public void Damage(int DMG,bool CRIT,int shieldDMG,bool canCounter,Character attacker)
+
+    /// <summary>return:殺害したか</summary>
+    public bool Damage(int DMG,bool CRIT,int shieldDMG,Character attacker)
     {
         charaStatus.shield -=shieldDMG;//シールド減少 
        
@@ -829,6 +831,7 @@ public class Character : MonoBehaviour
             OnDecreasedHP(DMG);
             //カウンター
         }
+        return !CheckAlive();
     }
     public void Heal(int value,Character healer)
     {
@@ -1272,7 +1275,14 @@ public class Character : MonoBehaviour
         }
     }
     public void OnCRIT(int ID) { }
-    public void OnKill(int ID) { }
+    public void Onkill(List<Action.OnKillParams> onKillParamsList)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnKill(onKillParamsList); }
+            RemovePA_Execute();
+        }
+    }
     public void OnMiss(int ID) { }
     public void OnHeal(List<Action.OnHealParams> onHealParamsList)
     {
