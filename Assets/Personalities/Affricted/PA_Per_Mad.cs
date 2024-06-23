@@ -32,11 +32,11 @@ public class PA_Per_Mad : PA_Personality
                 if (targets.Count > 0)
                 {
                     SANDMG.actionOwner = character;
-                    character.Enqueue(action, true, targets);
+                    Enqueue(action, true, targets);
                 }
                 Action.ActionStatus action2 = mark;
                 mark.actionOwner = character;
-                character.Enqueue(action2, true, new List<Character>() { character });
+                Enqueue(action2, true, new List<Character>() { character });
             }
         }
     }

@@ -51,6 +51,7 @@ MonoBehaviour:
   statusMod:
     maxHP_mul: 0
     maxSAN_mul: 0
+    PROT: 0
     ATK_mul: 0
     CRITC: 0
     CRITD: 0
@@ -105,7 +106,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f038f4a2b6579b42ba721aed3f77f00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40665cb94030a6d4481880c9e02e9ca6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

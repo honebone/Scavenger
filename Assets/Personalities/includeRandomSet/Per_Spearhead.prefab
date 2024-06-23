@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 8410473384614033242}
-  - component: {fileID: -3942145009892202332}
+  - component: {fileID: -2870565744983209791}
+  - component: {fileID: -2250003201101246345}
   m_Layer: 0
-  m_Name: Per_Toxic
+  m_Name: Per_Spearhead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8410473384614033242
+--- !u!114 &-2870565744983209791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,20 +42,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f4dfdae53e6654093a3db018d4b54a, type: 3}
+  m_Script: {fileID: 11500000, guid: 11e19e0f0cfc37644bf54fc4a4ef03ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   personalityStatus:
-    personalityName: "\u66B4\u8A00"
-    personalityType: 5
-  chance: 50
+    personalityName: "\u4E00\u756A\u69CD"
+    personalityType: 3
   actionStatus:
-    actionName: "\u66B4\u8A00"
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642(50\uFF05)"
-    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
+    actionName: "\u4E00\u756A\u69CD"
+    conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
-    sprite: {fileID: 21300000, guid: 3f038f4a2b6579b42ba721aed3f77f00, type: 3}
+    sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -106,8 +105,8 @@ MonoBehaviour:
     healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 2
-    SANDamage_max: 12
+    SANDamage_min: 0
+    SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -115,7 +114,12 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 20
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -141,22 +145,7 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     actionTargetsInt: 
-  condition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 1
-    enemy: 0
-    onlyPlayable: 1
-    front: 1
-    mid: 1
-    back: 1
-    characterTags: 
-    StE: []
-    PE: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
---- !u!212 &-3942145009892202332
+--- !u!212 &-2250003201101246345
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,7 +186,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 40665cb94030a6d4481880c9e02e9ca6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04f7106c24b45984e956cb6be7a82416, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
