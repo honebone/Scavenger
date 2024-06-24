@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_seawaterBucket
+  m_Name: Eq_shovel
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u6D77\u6C34\u30D0\u30B1\u30C4"
+  itemName: "\u30B9\u30B3\u30C3\u30D7"
   specialInfo: 0
   info: 
   amountPerStack: 1
   rarity: 2
-  sprite: {fileID: 21300000, guid: bec31f47407fdcc418ef66240aafbee9, type: 3}
+  sprite: {fileID: 21300000, guid: a912e64eded7a154093133ed7d429c77, type: 3}
   materialTags: 00000000
   price: 0
   equipmentTag: 0
-  manager: {fileID: 9185327421234476493, guid: abda2c53f2b10ba42b863d3290da2e72, type: 3}
+  manager: {fileID: 9185327421234476493, guid: aaf22901d99ccb449a994fcdd8f91cb0, type: 3}

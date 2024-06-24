@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: -701729009329728792}
+  - component: {fileID: 8118733032849756672}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_harvestScythe
+  m_Name: Eq_shovel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-701729009329728792
+--- !u!114 &8118733032849756672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,22 +42,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50900aaf3db7e604bbf556c0d64ca161, type: 3}
+  m_Script: {fileID: 11500000, guid: 92b69870514ac5148b62d63e5f1d4d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 7b2fc9b12d738294791b071f35b41908, type: 2}
+    itemData: {fileID: 11400000, guid: 3ac5084fec3aeda4389fb30574b3d089, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 20
+      ATK_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
-      ACC: 5
+      ACC: 0
       ACT: 0
       turnPerRound: 0
       GHeal: 0
@@ -66,15 +66,15 @@ MonoBehaviour:
       StEApplyBonus: []
       moveRes: 0
     actionMods: []
-  attack:
-    actionName: "\u53CE\u7A6B"
-    conditionInfo: "\u6575\u3092\u5012\u3057\u305F\u6642(\u969C\u5BB3\u7269\u3092\u9664\u304F)"
-    targetInfo: "\u6575\u3059\u3079\u3066"
+  actionStatus:
+    actionName: "\u30B9\u30B3\u30C3\u30D7"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
+    targetInfo: "[\u6B7B\u4F53]1\u3064"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
-    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -98,15 +98,15 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
-    kill: 0
+    kill: 1
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 50
-    ATKMod_max: 50
+    ATKMod_min: 0
+    ATKMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
-    characterTags: 
+    characterTags: 01000000
     StE: []
     PE: []
     HPPercent: 0
@@ -214,7 +214,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a912e64eded7a154093133ed7d429c77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

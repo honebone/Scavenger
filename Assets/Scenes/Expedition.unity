@@ -8604,6 +8604,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b2fc9b12d738294791b071f35b41908, type: 2}
   - {fileID: 11400000, guid: 86b79af53c1debd40b57b938d54def09, type: 2}
   - {fileID: 11400000, guid: 83ce021f65572e746bb591f3f9db0c91, type: 2}
+  - {fileID: 11400000, guid: 3ac5084fec3aeda4389fb30574b3d089, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
