@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u72E9\u308A"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 7507233825882370128, guid: 7b1720de556abac4fa88f3c665273e00, type: 3}
@@ -56,7 +58,8 @@ MonoBehaviour:
     SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
     VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 980131611971298319, guid: 066b020d37699654d9f09701fa6211cd, type: 3}
     targetType: 1
     friendly: 0
     condition:
@@ -99,6 +102,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -134,11 +139,13 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 7507233825882370128, guid: 7b1720de556abac4fa88f3c665273e00, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 00000000
   - actionName: "\u72E9\u308A"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -191,6 +198,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -221,8 +230,10 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 1
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 7507233825882370128, guid: 7b1720de556abac4fa88f3c665273e00, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 0c000000

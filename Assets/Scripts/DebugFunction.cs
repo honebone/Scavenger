@@ -136,4 +136,19 @@ public class DebugFunction : MonoBehaviour
     public bool CheckDebugMode() { return debug; }
 
     public bool CheckSkipDeploy() { return skipDeployPhase; }
+    public void UnlockAbility_All()
+    {
+        foreach(Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.UnlockAbility_All();
+        }
+    }
+    public void UpgradeAbility_All()
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.UpgradeAbility_All();
+        }
+    }
+
 }

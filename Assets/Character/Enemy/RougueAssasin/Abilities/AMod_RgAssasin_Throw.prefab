@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &980131611971298319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5954328460363848495}
+  - component: {fileID: 3404417727636778070}
+  m_Layer: 0
+  m_Name: AMod_RgAssasin_Throw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5954328460363848495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980131611971298319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3404417727636778070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980131611971298319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe7ec6b33314dea4ea83c5eecb7896af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionModStatus:
+    conditionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B"
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
+    decreaseHP: 0
+    cantCounter: 0
+    ATKMod: 0
+    exDMG_mul: 0
+    exDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 50
+    CRITDMod: 0
+    sureHit: 1
+    unevadable: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldRemove: 0
+    applySteParams: []
+    applyStEBonus: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []

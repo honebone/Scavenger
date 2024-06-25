@@ -206,7 +206,7 @@ public class Action : MonoBehaviour
                 s += "\n";
                 if (ACCMod != 0) { s += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
                 if (CRITCMod != 0) { s += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
-                if (CRITDMod != 0) { s += string.Format("CRITダメージ補正：{0}倍\n", GetValueWithSign(CRITDMod)); }
+                if (CRITDMod != 0) { s += string.Format("CRITダメージ補正：{0}％\n", GetValueWithSign(CRITDMod)); }
                 if (drain > 0) { s += string.Format("与ダメージの{0}％を回復\n", drain); }
                 if (sureHit) { s += "必中\n"; }
                 if (unevadable) { s += "回避不可\n"; }
@@ -528,6 +528,12 @@ public class Action : MonoBehaviour
                     }
                 }
 
+                if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                {
+                    target.ConsumeFocus();
+                }
+
+
                 if (actionsStatus[i].kill)
                 {
                     target.Kill(actionStatus.actionOwner);
@@ -829,10 +835,6 @@ public class Action : MonoBehaviour
                 //{
                 //    actionStatus.actionTargetsInt.Remove(i);//攻撃失敗時、その地点に対する処理も行わないようにする
                 //}
-                if (actionsStatus[i].consumeFocus)//フォーカスの消費
-                {
-                    target.ConsumeFocus();
-                }
             }
             else if (!notChara)
             {

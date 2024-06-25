@@ -125,9 +125,9 @@ MonoBehaviour:
       applyChance: 100
       stack: 1
       value: 15
-    - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
       guaranteed: 0
-      applyChance: 10
+      applyChance: 33
       stack: 1
       value: 0
     applyPEParams: []
@@ -154,4 +154,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 090000000b000000
+    actionTargetsInt: 090000000a000000

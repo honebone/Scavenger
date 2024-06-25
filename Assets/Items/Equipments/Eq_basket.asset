@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eq_basket
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u5B9F\u308A\u306E\u30D0\u30B9\u30B1\u30C3\u30C8"
+  itemName: "\u8C4A\u7A63\u306E\u30D0\u30B9\u30B1\u30C3\u30C8"
   specialInfo: 0
   info: 
   amountPerStack: 1

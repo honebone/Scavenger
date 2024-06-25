@@ -39,7 +39,7 @@ public class PassiveAbility : MonoBehaviour
         charactersManager=FindObjectOfType<CharactersManager>();
         OnPAInit();
     }
-    public void Disable()
+    public void Disable(bool note=true)
     {
         AtTheEnd();
         character.RemovePA(this);
@@ -47,8 +47,11 @@ public class PassiveAbility : MonoBehaviour
         {
             PA_StatusEffect StE = GetComponent<PA_StatusEffect>();
             PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
-            character.GetCharacter_Object().SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-            infoText.AddLogText(string.Format("{0}ÇÃ{1}Ç™è¡ãéÇ≥ÇÍÇΩ", character.GetCharacterStatus().charaName, GetPAName()));
+            if (note)
+            {
+                character.GetCharacter_Object().SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+                infoText.AddLogText(string.Format("{0}ÇÃ{1}Ç™è¡ãéÇ≥ÇÍÇΩ", character.GetCharacterStatus().charaName, GetPAName()));
+            }
             StE.DestroyIcon();
         }
         Destroy(gameObject);

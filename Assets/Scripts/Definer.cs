@@ -51,6 +51,7 @@ public class Definer : MonoBehaviour
         public AudioClip SANHeal;
         public AudioClip SANDecrease;
         public AudioClip[] ApplyStE;
+        public AudioClip consumeFocus;
         public AudioClip summoned;
         public AudioClip stun;
         public AudioClip die1;

@@ -111,8 +111,8 @@ public class PA_StatusEffect : PassiveAbility
     {
         return "";
     }
-   
-    public void AddStack(int stack)
+
+    public void AddStack(int stack, bool note = true)
     {
         int prevStack = StEStatus.stack;
         if (StEStatus.maxStack == 0)//最大スタック数が無制限なら
@@ -121,15 +121,18 @@ public class PA_StatusEffect : PassiveAbility
         }
         else { StEStatus.stack = Mathf.Clamp(StEStatus.stack + stack, 0, StEStatus.maxStack); }
 
-        character.GetCharacter_Object().SetDamageText(string.Format("{0}{1}", StEStatus.StEName, (StEStatus.stack - prevStack).GetValueWithSign()), Definer.colorRef.failed_unavailable);
-        infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", character.GetCharacterStatus().charaName, GetPAName(), (StEStatus.stack - prevStack).GetValueWithSign()));
+        if (note)
+        {
+            character.GetCharacter_Object().SetDamageText(string.Format("{0}{1}", StEStatus.StEName, (StEStatus.stack - prevStack).GetValueWithSign()), Definer.colorRef.failed_unavailable);
+            infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", character.GetCharacterStatus().charaName, GetPAName(), (StEStatus.stack - prevStack).GetValueWithSign()));
+        }
 
         OnAddStack(StEStatus.stack - prevStack);//スタック増減時誘発;
 
         if (StEStatus.stack <= 0)
         {
             StEStatus.stack = 0;
-            Disable();
+            Disable(note);
         }
         else { StEIcon.SetStackText(StEStatus.stack); }
     }

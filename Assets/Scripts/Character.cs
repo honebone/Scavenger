@@ -533,7 +533,9 @@ public class Character : MonoBehaviour
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus)
             {
-                pa.GetComponent<PA_StatusEffect>().AddStack(-1);
+                pa.GetComponent<PA_StatusEffect>().AddStack(-1, false);
+                charaObj.SetDamageText("☆フォーカス!!☆", Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus]);
+                soundManager.PlaySE(Definer.soundRef.consumeFocus);
             }
         }
     }
@@ -1100,6 +1102,27 @@ public class Character : MonoBehaviour
                 Destroy(charaStatus.abilitiesStatus[i].instantiatedManager.gameObject);
                 charaStatus.abilitiesStatus[i] = new Ability.AbilityStatus(upgrade, i);
                 charaObj.SetAbilityManager(charaStatus.abilitiesStatus[i]);
+            }
+        }
+    }
+
+    public void UnlockAbility_All()
+    {
+        foreach (Ability.AbilityStatus abilityStatus in charaStatus.abilitiesStatus)
+        {
+            if (abilityStatus.locked)
+            {
+                abilityStatus.Unlock();
+            }
+        }
+    }
+    public void UpgradeAbility_All()
+    {
+        foreach (Ability.AbilityStatus abilityStatus in charaStatus.abilitiesStatus)
+        {
+            if (abilityStatus.abilityData.upgradeAbility != null)
+            {
+                UpgradeAbility(abilityStatus.abilityData.upgradeAbility);
             }
         }
     }

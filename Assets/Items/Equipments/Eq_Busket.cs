@@ -37,6 +37,7 @@ public class Eq_Busket : PA_Equipment
     }
     public override void OnBattleEnd()
     {
+        remain = 3;
         count = 0;
     }
 

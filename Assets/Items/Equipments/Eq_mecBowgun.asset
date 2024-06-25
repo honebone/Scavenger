@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_harvestScythe
+  m_Name: Eq_mecBowgun
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u53CE\u7A6B\u306E\u938C"
+  itemName: "\u5DE5\u623F\u306E\u77F3\u5F13"
   specialInfo: 0
   info: 
   amountPerStack: 1
-  rarity: 4
+  rarity: 3
   sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   materialTags: 00000000
   price: 0
   equipmentTag: 1
-  manager: {fileID: 9185327421234476493, guid: 666776923756ebf48bb7e303a91b912d, type: 3}
+  manager: {fileID: 5667121962493394942, guid: 91b11ab4148807b4e97241e5a319d6b1, type: 3}
