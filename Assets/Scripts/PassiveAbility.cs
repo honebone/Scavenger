@@ -130,4 +130,6 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDie(Character killer) { }
     public virtual void OnEvade(int ID) { }
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
+
+    public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }
 }

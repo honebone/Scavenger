@@ -1348,6 +1348,7 @@ public class Character : MonoBehaviour
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnMoved(onMoveParams); }
             RemovePA_Execute();
+            battleManager.Trigger_OnSomeoneMove(onMoveParams);
         }
     }
     public void OnDie(Character killer)
@@ -1371,6 +1372,15 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnApplyedStE(onApplyStEParamsList); }
+            RemovePA_Execute();
+        }
+    }
+
+    public void OnSomeoneMove(Action.OnMoveParams onMoveParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneMove(onMoveParams); }
             RemovePA_Execute();
         }
     }
