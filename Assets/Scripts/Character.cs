@@ -638,6 +638,15 @@ public class Character : MonoBehaviour
     {
         charaObj.SetCharaSprite(sprite);
     }
+
+    public void SpawnVisualEffect(GameObject VE)
+    {
+        Vector2 VEPos = charactersManager.GetCharacterWorldPos(charaStatus.position);
+        Vector2 VEOffset = VE.GetComponent<VisualEffect>().GetOffset();
+        if (charaStatus.position < 9) { VEOffset.x *= -1; }
+        var v = Instantiate(VE, VEPos + VEOffset, VE.transform.rotation);
+        if (charaStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0),Space.World); }//プレイヤーの時左右反転
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -772,8 +781,8 @@ public class Character : MonoBehaviour
     public bool Damage(int DMG,bool CRIT,int shieldDMG,Character attacker)
     {
         charaStatus.shield -=shieldDMG;//シールド減少 
-       
 
+        SpawnVisualEffect(Definer.VERef.damage);
         if (CRIT)//テキストの表示
         {
             charaObj.SetDamageText("Critical!!", Definer.colorRef.CRIT);
@@ -842,6 +851,7 @@ public class Character : MonoBehaviour
         infoText.AddLogText(string.Format("{0}はHPを{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.heal, value.ToString())));
         soundManager.PlaySE(Definer.soundRef.heal);
         charaObj.SetHPandShieldBar();
+        SpawnVisualEffect(Definer.VERef.heal);
     }
     public void SANHeal(int value)
     {

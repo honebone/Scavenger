@@ -516,11 +516,12 @@ public class Action : MonoBehaviour
             target.BecomeAbilityTarget(actionStatus.actionOwner);
             if (actionStatus.VE_OnTargets)
             {
-                Vector2 VEPos = characterManager.GetCharacterWorldPos(targetStatus.position);
-                Vector2 VEOffset = actionStatus.VE_OnTargets.GetComponent<VisualEffect>().GetOffset();
-                if (targetStatus.position < 9) { VEOffset.x *= -1; }
-                var v = Instantiate(actionStatus.VE_OnTargets, VEPos + VEOffset, Quaternion.identity);
-                if (targetStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0)); }//プレイヤー対象の時左右反転
+                //Vector2 VEPos = characterManager.GetCharacterWorldPos(targetStatus.position);
+                //Vector2 VEOffset = actionStatus.VE_OnTargets.GetComponent<VisualEffect>().GetOffset();
+                //if (targetStatus.position < 9) { VEOffset.x *= -1; }
+                //var v = Instantiate(actionStatus.VE_OnTargets, VEPos + VEOffset, actionStatus.VE_OnTargets.transform.rotation);
+                //if (targetStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0)); }//プレイヤー対象の時左右反転
+                target.SpawnVisualEffect(actionStatus.VE_OnTargets);
             }
             if (!targetStatus.dead)//対象が生きているときのみ、効果発動
             {

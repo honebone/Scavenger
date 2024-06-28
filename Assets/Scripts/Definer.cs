@@ -62,6 +62,8 @@ public class Definer : MonoBehaviour
     public class VisualEffectRef
     {
         public GameObject die;
+        public GameObject damage;
+        public GameObject heal;
     }
 
     public static Character.CharacterStatus nonCharaStatus;
