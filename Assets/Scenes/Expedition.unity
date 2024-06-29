@@ -283,7 +283,7 @@ MonoBehaviour:
     centerFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
     lowerFront: {fileID: 0}
     upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    centerMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
     lowerMid: {fileID: 0}
     upperBack: {fileID: 0}
     centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
@@ -8911,6 +8911,7 @@ MonoBehaviour:
   VERef_Inspector:
     die: {fileID: 7006933508149500689, guid: 371da761e9acd254792a41a42553ee7d, type: 3}
     damage: {fileID: 2202515122285287776, guid: 371147d77900c61478bcb6c00f58e319, type: 3}
+    CRIT: {fileID: 2202515122285287776, guid: cbc3072b17482a145a06c87ebd0e0111, type: 3}
     heal: {fileID: 5101693256636877826, guid: addb9c724d4510148b0bed3c51ccc8df, type: 3}
   abilityManager_General_Inspector: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   actionManager_General_Inspector: {fileID: 7602238575876192368, guid: ae70b75fecb0b4249ad13f9a0047c65e, type: 3}

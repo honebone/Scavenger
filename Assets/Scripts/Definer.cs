@@ -63,6 +63,7 @@ public class Definer : MonoBehaviour
     {
         public GameObject die;
         public GameObject damage;
+        public GameObject CRIT;
         public GameObject heal;
     }
 

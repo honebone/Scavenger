@@ -579,6 +579,7 @@ public class Action : MonoBehaviour
                                 CRIT = true;
                                 onAttackParams.CRIT = true;
                                 fDMG *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                target.SpawnVisualEffect(Definer.VERef.CRIT);
                             }
 
                             float RDMG = Mathf.Max((targetStatus.PROT * -1 + 100f) / 100f, 0);//ëŒè€ÇÃîÌÉ_ÉÅÅ[ÉWè„è∏å¯â 

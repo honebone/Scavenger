@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u9F13\u821E"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
@@ -54,7 +56,7 @@ MonoBehaviour:
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 2281130148404574244, guid: ba73cf9b9b22dfe40b45c147612d1386, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 7
@@ -99,6 +101,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -147,8 +151,10 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 090000000b0000000c0000000e00000010000000
+    actionTargetsInt: 090000000c0000000d00000010000000

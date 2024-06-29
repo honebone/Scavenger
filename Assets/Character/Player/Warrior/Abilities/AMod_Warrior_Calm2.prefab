@@ -47,7 +47,7 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: "\u81EA\u8EAB\u306B\u6012\u308A\u304C\u3042\u308B\u3068\u304D"
     hideValues: 1
-    exInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u6E1B\u5C11\u3057\u305FHP\u306E5\uFF05\u3092\u56DE\u5FA9"
+    exInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u6E1B\u5C11\u3057\u305FHP\u306E7\uFF05\u3092\u56DE\u5FA9"
     consumeFocus: 0
     decreaseHP: 0
     cantCounter: 0
