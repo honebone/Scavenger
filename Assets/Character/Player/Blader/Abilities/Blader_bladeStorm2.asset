@@ -49,14 +49,14 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5203\u306E\u5D50"
+  - actionName: "\u5203\u306E\u5D50+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 3282872505435073808, guid: 89cce4485423ac741bb40a1380c2cb03, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
@@ -144,4 +144,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

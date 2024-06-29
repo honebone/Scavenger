@@ -15,7 +15,6 @@ public class AMod_Warrior_Calm : ActionMod
         {
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
-                FindObjectOfType<InfoText>().AddDebugText(value.ToString());
                 actionModStatus.healRegain = value;
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }

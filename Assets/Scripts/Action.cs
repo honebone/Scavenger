@@ -703,8 +703,11 @@ public class Action : MonoBehaviour
                     OnApplyStEParams onApplyStEParams = new OnApplyStEParams();
                     onApplyStEParams.appliedParams = new List<PA_StatusEffect.StatusEffectParams>();
                     onApplyStEParams.taget = target;
+
+                    List<PA_StatusEffect.StatusEffectStatus.StatusEffectType> appliedType = new List<PA_StatusEffect.StatusEffectStatus.StatusEffectType>();
                     foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
                     {
+                        PA_StatusEffect.StatusEffectStatus StEStaus = StEParams.GetStatusEffectStatus();
                         StEApplyBonus applyBonus = new StEApplyBonus();
                         if (ownerStatus.GetStEApplyBonus(StEParams.applyStE) != null) { applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE)); }
                         foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)
@@ -714,6 +717,7 @@ public class Action : MonoBehaviour
 
                         if (StEParams.guaranteed || (StEParams.applyChance + applyBonus.exChance - targetStatus.GetStERes(StEParams.applyStE)).Dice())
                         {
+                            if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
                             onApplyStEParams.appliedParams.Add(StEParams);
 
                             target.ApplyStE(StEParams, applyBonus);
@@ -722,6 +726,13 @@ public class Action : MonoBehaviour
                         {
                             target.GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
+                        }
+                    }
+                    foreach(PA_StatusEffect.StatusEffectStatus.StatusEffectType type in appliedType)//StEのエフェクト
+                    {
+                        if (Definer.VERef.applyStE[(int)type])
+                        {
+                            target.SpawnVisualEffect(Definer.VERef.applyStE[(int)type]);
                         }
                     }
                     actionsStatus[i].StEApplyBonus.Clear();

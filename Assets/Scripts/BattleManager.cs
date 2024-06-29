@@ -60,6 +60,7 @@ public class BattleManager : MonoBehaviour
     FieldEffect fieldEffect;
     int roundCount;
 
+    [System.Serializable]
     public class Turn
     {
         public Character character;
@@ -71,6 +72,7 @@ public class BattleManager : MonoBehaviour
             turnIcon = icon;
         }
     }
+    [SerializeField]
     List<Turn> turns;
     //List<Battle_TurnOrderIcon> turnOrderIcons=new List<Battle_TurnOrderIcon>();
     Turn currentTurn;
@@ -274,6 +276,12 @@ public class BattleManager : MonoBehaviour
             currentTurnCount++;
             currentTurn.character.MyTurnStart();
             turns.RemoveAt(0);
+
+            //if (currentTurn.character != turnOrderIconParent.GetChild(0).GetComponent<Battle_TurnOrderIcon>().GetCharacter())
+            //{
+            //    infoText.AddErrorText("ターン順アイコンエラー");
+            //    Destroy(turnOrderIconParent.GetChild(0).gameObject);
+            //}
         }
     }
 

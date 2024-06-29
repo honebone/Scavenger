@@ -147,7 +147,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 00000000
   - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\n"
@@ -245,10 +245,10 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
-    index: 0
+    index: 1
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8931043405151440243, guid: 37f468ba86cbc8e40b3e2353aa713c0e, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargetsInt: 04000000

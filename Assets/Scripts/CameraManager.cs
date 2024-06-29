@@ -6,10 +6,21 @@ using DG.Tweening;
 public class CameraManager : MonoBehaviour
 {
 
-
+    bool shaking;
     public void ShakeCamera(float strength)
     {
-        transform.DOShakePosition((1 + strength) * strength / 4f, strength, 30, 1);
-        //FindObjectOfType<InfoText>().AddDebugText(string.Format("str:{0} dur:{1}", strength, (1 + strength) * strength / 4f));
+        if (!shaking)
+        {
+            shaking = true;
+            float duration = (1 + strength) * strength / 4f;
+            transform.DOShakePosition(duration, strength, 30, 1);
+            StartCoroutine(Shaking(duration));
+        }
+    }
+
+    IEnumerator Shaking(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        shaking = false;
     }
 }

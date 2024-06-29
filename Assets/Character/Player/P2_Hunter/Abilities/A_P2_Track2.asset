@@ -141,12 +141,13 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
+    index: 0
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 7582409335243652064, guid: 87daee066a98f0542836ef60a41d7dce, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c000000
+    actionTargetsInt: 0d000000
   - actionName: "\u7372\u7269\u306E\u8FFD\u8DE1+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -239,6 +240,7 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
+    index: 1
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0

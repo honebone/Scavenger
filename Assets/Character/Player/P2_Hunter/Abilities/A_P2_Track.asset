@@ -141,6 +141,7 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
+    index: 0
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
@@ -236,6 +237,7 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
+    index: 1
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
