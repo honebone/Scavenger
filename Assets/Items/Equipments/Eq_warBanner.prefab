@@ -52,6 +52,7 @@ MonoBehaviour:
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
+      PROT: 0
       ATK_mul: 0
       CRITC: 0
       CRITD: 0
@@ -73,7 +74,7 @@ MonoBehaviour:
     actionInfo: "\u3053\u308C\u3092\u30AB\u30A6\u30F3\u30C8\u6570+1\u56DE\u884C\u3044\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8\u3059\u308B"
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 6695063782243598986, guid: f9ef51dc3ff19294a8105cd62c042d4b, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -118,6 +119,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -148,6 +151,8 @@ MonoBehaviour:
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
