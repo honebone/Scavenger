@@ -65,11 +65,13 @@ public class BattleManager : MonoBehaviour
     {
         public Character character;
         public Battle_TurnOrderIcon turnIcon;
+        public string charaName;
 
         public Turn(Character chara, Battle_TurnOrderIcon icon)
         {
             character = chara;
             turnIcon = icon;
+            charaName = character.GetCharacterStatus().charaName;
         }
     }
     [SerializeField]
@@ -262,10 +264,14 @@ public class BattleManager : MonoBehaviour
 
         currentTurn = turns[0];
         currentTurn.character.MyTurnStart();
+        infoText.AddDebugText(string.Format("{0}‚Ìturns‚ğíœ", turns[0].character.GetCharacterStatus().charaName));
         turns.RemoveAt(0);
+
     }
-    public void TurnEnd()
+    int test = 0;
+    public void TurnEnd(int cause)
     {
+        test++;
         currentTurn.turnIcon.RemoveTurnOrderIcon();
         if (turns.Count == 0) { RoundEnd(); }
         else
@@ -274,8 +280,11 @@ public class BattleManager : MonoBehaviour
 
             currentTurn = turns[0];
             currentTurnCount++;
-            currentTurn.character.MyTurnStart();
             turns.RemoveAt(0);
+
+            currentTurn.character.MyTurnStart();
+           
+
 
             //if (currentTurn.character != turnOrderIconParent.GetChild(0).GetComponent<Battle_TurnOrderIcon>().GetCharacter())
             //{

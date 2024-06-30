@@ -18,7 +18,7 @@ MonoBehaviour:
   upgradeAbility: {fileID: 11400000, guid: 760bec392ed19f24e85c3b564347ecf3, type: 2}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  activateSprite: {fileID: 8076857709178529593, guid: 4a564a50316271a4c816e06163a113f4, type: 3}
   abilityType: 2
   excludeRandomPool: 0
   selectWeight: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
     removeStE_DoT: 0
     removeStEs:
     - removeStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
-      removeAll: 1
-      addAmount: 0
+      removeAll: 0
+      addAmount: -5
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -141,6 +141,6 @@ MonoBehaviour:
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 8076857709178529593, guid: 4a564a50316271a4c816e06163a113f4, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 07000000

@@ -700,8 +700,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            infoText.AddDebugText("€–S‚É‚Â‚«ƒ^[ƒ“ƒXƒLƒbƒv");
-            battleManager.TurnEnd();
+            StartCoroutine(DeleyOnDeath());
         }
          
     }
@@ -722,6 +721,12 @@ public class Character : MonoBehaviour
         //charaStatus.omen = new Ability.AbilityStatus();
         battleManager.GetSelectedAbility().StartSelectTarget();
     }
+    IEnumerator DeleyOnDeath()
+    {
+        yield return new WaitForSeconds(0.2f);
+        infoText.AddDebugText("€–S‚É‚Â‚«ƒ^[ƒ“ƒXƒLƒbƒv");
+        battleManager.TurnEnd(1);
+    }
     public void EndPhase()
     {
         if (CheckAlive())
@@ -738,7 +743,7 @@ public class Character : MonoBehaviour
                 actionQueue.StartResolve(4);
             }           
         }
-        else { battleManager.TurnEnd(); }
+        else { battleManager.TurnEnd(2); }
     }
   public void ContinueTurn() { continueTurn = true; }
 
@@ -750,31 +755,34 @@ public class Character : MonoBehaviour
     }
     public void DecreaseHP(int value)
     {
-        charaStatus.HP -= value;
-        charaObj.SetHPandShieldBar();
-        charaObj.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
-        infoText.AddLogText(string.Format("{0}‚ÍHP‚ğ{1}¸‚Á‚½", charaStatus.charaName, util.GetColoredText(Definer.colorRef.decreaseHP, value.ToString())));
-        soundManager.PlaySE(Definer.soundRef.damage);
-        if (charaStatus.HP <= 0)
+        if (!charaStatus.dead)
         {
-            if (charaStatus.surviveFatalWounds)//•m€‚Å‘Ï‚¦‚éƒLƒƒƒ‰‚ÍAHPŒ¸­‚É‚æ‚Á‚Ä€‚È‚È‚¢
+            charaStatus.HP -= value;
+            charaObj.SetHPandShieldBar();
+            charaObj.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
+            infoText.AddLogText(string.Format("{0}‚ÍHP‚ğ{1}¸‚Á‚½", charaStatus.charaName, util.GetColoredText(Definer.colorRef.decreaseHP, value.ToString())));
+            soundManager.PlaySE(Definer.soundRef.damage);
+            if (charaStatus.HP <= 0)
             {
-                charaStatus.HP = 0;
-                charaObj.SetDamageText("•m€!", Definer.colorRef.damage);
-                infoText.AddLogText(string.Format("{0}‚Í{1}‚¾...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "•m€")));
-                soundManager.PlaySE(Definer.soundRef.dying);
-                charaObj.SetHPandShieldBar();
-                OnDecreasedHP(value);
+                if (charaStatus.surviveFatalWounds)//•m€‚Å‘Ï‚¦‚éƒLƒƒƒ‰‚ÍAHPŒ¸­‚É‚æ‚Á‚Ä€‚È‚È‚¢
+                {
+                    charaStatus.HP = 0;
+                    charaObj.SetDamageText("•m€!", Definer.colorRef.damage);
+                    infoText.AddLogText(string.Format("{0}‚Í{1}‚¾...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "•m€")));
+                    soundManager.PlaySE(Definer.soundRef.dying);
+                    charaObj.SetHPandShieldBar();
+                    OnDecreasedHP(value);
+                }
+                else
+                {
+                    Die(0, null);
+                }
             }
             else
             {
-                Die(0,null);
+                OnDecreasedHP(value);
             }
-        }
-        else
-        {
-            OnDecreasedHP(value);
-        }
+        }        
     }
 
     /// <summary>return:EŠQ‚µ‚½‚©</summary>

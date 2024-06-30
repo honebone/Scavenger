@@ -15,12 +15,13 @@ public class Deploy_CharaButton : MonoBehaviour
     MouseOverUI mouseOver;
 
     Character.CharacterStatus charaStatus;
-    public void Init(Character.CharacterStatus status,InfoText it,DeployCharacterManager dc,MouseOverUI mo)
+    public void Init(Character.CharacterStatus status,InfoText it,DeployCharacterManager dc,MouseOverUI mo, ScrollRect s)
     {
         charaStatus = status;
         infoText = it;
         deployCharacterManager = dc;
         mouseOver = mo;
+        scroll = s;
 
         charaNameText.text = charaStatus.charaName;
         charaImage.sprite = charaStatus.spriteForUI;
@@ -48,13 +49,31 @@ public class Deploy_CharaButton : MonoBehaviour
             deployCharacterManager.SetDraggingChara(charaStatus);
         }
     }
-
+    [SerializeField]
+    float scrollSpeed = 0.1f;
+    ScrollRect scroll;
+    float wheel;
+    bool p;
+    private void Update()
+    {
+        if (p)
+        {
+            wheel += Input.mouseScrollDelta.y;
+            if (wheel != 0)
+            {
+                scroll.verticalNormalizedPosition += wheel * scrollSpeed;
+                wheel = 0;
+            }
+        }
+    }
     public void OnMouseEnter()
     {
+        p = true;
         mouseOver.SetUI("", true);
     }
     public void OnMouseExit()
     {
+        p = false;
         mouseOver.ResetUI();
     }
 }

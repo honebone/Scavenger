@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u51B7\u9759+"
   lockedDefault: 0
-  upgradeInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u3042\u305F\u308A\u306E\u56DE\u5FA9\u91CF+2\uFF05"
+  upgradeInfo: "\u6012\u308A1\u30B9\u30BF\u30C3\u30AF\u3042\u305F\u308A\u306E\u56DE\u5FA9\u91CF+2\uFF05\n\u6012\u308A\u306E\u6E1B\u5C11\u91CF-1"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  activateSprite: {fileID: 8076857709178529593, guid: 4a564a50316271a4c816e06163a113f4, type: 3}
   abilityType: 2
   excludeRandomPool: 0
   selectWeight: 1
@@ -44,12 +44,12 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u51B7\u9759"
+  - actionName: "\u51B7\u9759+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -122,8 +122,8 @@ MonoBehaviour:
     removeStE_DoT: 0
     removeStEs:
     - removeStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
-      removeAll: 1
-      addAmount: 0
+      removeAll: 0
+      addAmount: -4
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -141,6 +141,6 @@ MonoBehaviour:
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 8076857709178529593, guid: 4a564a50316271a4c816e06163a113f4, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 07000000

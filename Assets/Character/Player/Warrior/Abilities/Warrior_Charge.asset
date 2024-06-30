@@ -18,7 +18,7 @@ MonoBehaviour:
   upgradeAbility: {fileID: 11400000, guid: ff450f08d6f7fa74d933c9c0506c67a8, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  activateSprite: {fileID: 797697358314295903, guid: e059fb0a060d5d7449fa67ec7a2fd2a5, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   selectWeight: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 797697358314295903, guid: e059fb0a060d5d7449fa67ec7a2fd2a5, type: 3}
     actionOwner: {fileID: 0}
     actionTargetsInt: 090000000b000000
   - actionName: "\u7A81\u9032"
@@ -229,6 +229,6 @@ MonoBehaviour:
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+    activateSprite: {fileID: 797697358314295903, guid: e059fb0a060d5d7449fa67ec7a2fd2a5, type: 3}
     actionOwner: {fileID: 0}
     actionTargetsInt: 08000000

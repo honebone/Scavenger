@@ -351,7 +351,6 @@ public class ActionQueueManager : MonoBehaviour
             {
                 case 0:
                     resolveMode = -1;
-                    //infoText.AddDebugText("ok");
                     battleManager.RoundStart();
                     break;
                 case 1:
@@ -369,7 +368,7 @@ public class ActionQueueManager : MonoBehaviour
                     break;
                 case 4:
                     resolveMode = -1;
-                    battleManager.TurnEnd();
+                    battleManager.TurnEnd(0);
                     break;
                 case 5:
                     resolveMode = -1;

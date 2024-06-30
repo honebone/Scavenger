@@ -21,6 +21,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
     //bool omenSet;
     //Ability.AbilityStatus omen;
     bool revealed;
+    bool destroyed;
     public void Init(Character chara,bool reveal) {
         character = chara;
         revealed = reveal;
@@ -61,6 +62,11 @@ public class Battle_TurnOrderIcon : MonoBehaviour
 
     public void RemoveTurnOrderIcon()
     {
+        //if (!destroyed)
+        //{
+        //    destroyed = true;
+        //    Destroy(gameObject);
+        //}
         Destroy(gameObject);
     }
 

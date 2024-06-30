@@ -9,6 +9,7 @@ public class DeployCharacterManager : MonoBehaviour
 {
     [SerializeField] int maxParty = 3;
     [SerializeField] GameObject panel;
+    [SerializeField] ScrollRect scroll;
     [SerializeField] GameObject deployCharaButton;
     [SerializeField] Transform deployCharaP;
 
@@ -100,7 +101,7 @@ public class DeployCharacterManager : MonoBehaviour
             Character.CharacterStatus status = new Character.CharacterStatus();
             status.Init(data, 0);
             var c = Instantiate(deployCharaButton, deployCharaP);
-            c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this, mouseOver);
+            c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this, mouseOver, scroll);
         }
         CheckParty();
         if (tutorial) { canEmbark = false; }
