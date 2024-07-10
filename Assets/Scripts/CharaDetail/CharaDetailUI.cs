@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class CharaDetailUI : MonoBehaviour
 {
     [SerializeField]
     GameObject UIpanel;
-
-    [SerializeField]
-    Image charaImage;
 
     [SerializeField] int maxEquipments;
     [Space(25), SerializeField]
@@ -20,6 +18,9 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     GameObject newEquipmentButton;
 
+    [SerializeField] CharaDetail_InventoryEq inventoryEq;
+    [SerializeField] List<ChataDetail_CharaButton> charaButtons;
+
     [Space(25), SerializeField]
     Transform abilityP;
     [SerializeField]
@@ -27,10 +28,16 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI abilityUpgradeInfo;
 
+    [SerializeField] Definer.Item draggingItem;
+    [SerializeField] Transform dragImageP;
+    [SerializeField] GameObject dragImage;
+
     [SerializeField]
     TextMeshProUGUI expAmount;
     [SerializeField] TutorialData tutorial_unlockAbility;
     [SerializeField] TutorialData tutorial_equip;
+
+    [SerializeField] GraphicRaycaster raycaster;
 
 
     InfoText infoText;
@@ -44,7 +51,10 @@ public class CharaDetailUI : MonoBehaviour
 
     bool selectingEquipment;
     bool empty;
+
+    ChataDetail_CharaButton draggFrom;
     Definer.Item selectedEq;
+    GameObject draggingImage;
 
 
     void Start()
@@ -76,10 +86,25 @@ public class CharaDetailUI : MonoBehaviour
     public void OpenUI()
     {
         UIpanel.SetActive(true);
-        if(displayingChara == null||!displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
+
+        List<Character> characters = new List<Character>();
+        foreach(Character chara in charactersManager.GetExistingCharacters_All())
         {
-            ChangeChara(charactersManager.GetExistingCharacters_All()[0]);
+            Character.CharacterStatus status = chara.GetCharacterStatus();
+            if (status.player&&chara.CheckAlive()) { characters.Add(chara); }
         }
+
+        for (int i = 0; i < characters.Count; i++)
+        {
+            charaButtons[i].SetChara(characters[i]);
+        }
+
+        inventoryEq.SetButtons();//test
+
+        //if (displayingChara == null||!displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
+        //{
+        //    ChangeChara(charactersManager.GetExistingCharacters_All()[0]);
+        //}
         if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_unlockAbility); }
         else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equip); }
     }
@@ -98,7 +123,6 @@ public class CharaDetailUI : MonoBehaviour
         displayingChara = chara;
         status = displayingChara.GetCharacterStatus();
 
-        charaImage.sprite = status.spriteForUI;
         displayingChara.DisplayInfo();
 
         inventory.CloseOptionUI();
@@ -179,53 +203,106 @@ public class CharaDetailUI : MonoBehaviour
         }
     }
 
-    public void NextChara()
-    {
-        List<Character> exist = charactersManager.GetExistingCharacters_All();
-        if (displayingChara == null || !displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
-        {
-            ChangeChara(exist[0]);
-        }
-        else
-        {
-            int index = 0;
-            for (int i = 0; i < exist.Count; i++)
-            {
-                if (displayingChara == exist[i])
-                {
-                    index = i;
-                    break;
-                }
-            }
-            if (index == exist.Count - 1) { ChangeChara(exist[0]); }
-            else { ChangeChara(exist[index + 1]); }
-        }
+    //public void NextChara()
+    //{
+    //    List<Character> exist = charactersManager.GetExistingCharacters_All();
+    //    if (displayingChara == null || !displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
+    //    {
+    //        ChangeChara(exist[0]);
+    //    }
+    //    else
+    //    {
+    //        int index = 0;
+    //        for (int i = 0; i < exist.Count; i++)
+    //        {
+    //            if (displayingChara == exist[i])
+    //            {
+    //                index = i;
+    //                break;
+    //            }
+    //        }
+    //        if (index == exist.Count - 1) { ChangeChara(exist[0]); }
+    //        else { ChangeChara(exist[index + 1]); }
+    //    }
 
-    }
-    public void PrevChara()
+    //}
+    //public void PrevChara()
+    //{
+    //    List<Character> exist = charactersManager.GetExistingCharacters_All();
+    //    if (displayingChara == null || !displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
+    //    {
+    //        ChangeChara(exist[0]);
+    //    }
+    //    else
+    //    {
+    //        int index = 0;
+    //        for (int i = 0; i < exist.Count; i++)
+    //        {
+    //            if (displayingChara == exist[i])
+    //            {
+    //                index = i;
+    //                break;
+    //            }
+    //        }
+    //        if (index == 0) { ChangeChara(exist[exist.Count - 1]); }
+    //        else { ChangeChara(exist[index - 1]); }
+    //    }
+    //}
+
+    public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)
     {
-        List<Character> exist = charactersManager.GetExistingCharacters_All();
-        if (displayingChara == null || !displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
-        {
-            ChangeChara(exist[0]);
-        }
-        else
-        {
-            int index = 0;
-            for (int i = 0; i < exist.Count; i++)
-            {
-                if (displayingChara == exist[i])
-                {
-                    index = i;
-                    break;
-                }
-            }
-            if (index == 0) { ChangeChara(exist[exist.Count - 1]); }
-            else { ChangeChara(exist[index - 1]); }
-        }
+        draggingItem = item;
+        draggFrom = draggChara;
+        draggingImage = Instantiate(dragImage, dragImageP);
+        draggingImage.GetComponent<Image>().sprite = item.data.sprite;
     }
 
-    
+    // Update is called once per frame
+    void Update()
+    {
+        if (draggingImage != null)
+        {
+            draggingImage.transform.position = Input.mousePosition;
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                EventSystem ev = EventSystem.current;
+                PointerEventData ped = new PointerEventData(ev);
+                ped.position = Input.mousePosition;
+                List<RaycastResult> rr = new List<RaycastResult>();
+                raycaster.Raycast(ped, rr);
+
+                foreach (RaycastResult result in rr)
+                {
+                    if (result.gameObject.GetComponent<CharaDetail_CharaEqButton>())
+                    {
+                        CharaDetail_CharaEqButton charaEqButton = result.gameObject.GetComponent<CharaDetail_CharaEqButton>();
+
+                        if (!charaEqButton.CheckLocked() && charaEqButton.GetCharaButton() != draggFrom)
+                        {
+                            if (draggFrom == null)
+                            {
+                                inventory.RemoveItem(draggingItem, 1);
+                            }
+                            else
+                            {
+                                draggFrom.GetCharacter().UnequipItem(draggingItem, false);
+                                draggFrom.SetButtons();
+                            }
+
+                            charaEqButton.Equip(draggingItem);
+                        }
+                        inventoryEq.SetButtons();
+                        //result.gameObject.GetComponent<CharaDetail_CharaEqButton>().SetChara(draggingChara);
+                        break;
+                    }
+                }
+
+                draggingItem = new Definer.Item();
+                Destroy(draggingImage);
+            }
+        }
+    }
 
     public bool CheckSelectingEquipment() { return selectingEquipment; }
     public bool CheckEmpty() { return empty; }

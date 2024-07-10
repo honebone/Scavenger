@@ -58,7 +58,7 @@ public class DeployCharacterManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         guideMessage = FindObjectOfType<GuideMessage>();
         tutorialManager = FindObjectOfType<TutorialManager>();
-        expeditionManager= FindObjectOfType<ExpeditionManager>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
         mouseOver = FindObjectOfType<MouseOverUI>();
 
         if (FindObjectOfType<DebugFunction>().CheckSkipDeploy()) { fadeOutUI.FadeIn(); }
@@ -96,7 +96,7 @@ public class DeployCharacterManager : MonoBehaviour
     {
         panel.SetActive(true);
         deploy = true;
-        foreach(CharacterData data in definer.GetPlayerDataBase())
+        foreach (CharacterData data in definer.GetPlayerDataBase())
         {
             Character.CharacterStatus status = new Character.CharacterStatus();
             status.Init(data, 0);
@@ -121,7 +121,7 @@ public class DeployCharacterManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (deploy&&!tutorial)
+        if (deploy && !tutorial)
         {
             if (draggingImage != null)
             {
@@ -156,7 +156,7 @@ public class DeployCharacterManager : MonoBehaviour
 
     void CheckDouble(Character.CharacterStatus check)
     {
-        foreach(Deploy_PositionButton button in positionButtons)
+        foreach (Deploy_PositionButton button in positionButtons)
         {
             if (button.GetCharacterStatus().characterData == check.characterData) { button.ResetChara(); }
         }

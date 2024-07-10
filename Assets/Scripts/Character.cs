@@ -34,6 +34,8 @@ public class Character : MonoBehaviour
         //[Header("equipableTypesと要素数を合わせる")]
         //public Equipment[] equipments;
 
+        public int level;
+
         public bool surviveFatalWounds;
         public int maxHP;
         public int maxHP_base;
@@ -85,6 +87,7 @@ public class Character : MonoBehaviour
 
         public bool doesDropItem;
 
+        public int equipmentSlots;
         public List<Definer.Item> equipments;
 
         //以下バフ
@@ -115,6 +118,7 @@ public class Character : MonoBehaviour
             }
             s += "]\n";
             if (immovable) { s += "移動不可\n"; }
+            s += string.Format("LVL：{0}\n", level);
             s += string.Format("HP/maxHP：{0}/{1}({2}％)\n", HP, maxHP, HP.GetPercent(maxHP).ToString("0.0"));
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (PROT != 0) { s += ValueToStr("被ダメージ", PROT * -1, "％"); }
@@ -182,6 +186,8 @@ public class Character : MonoBehaviour
             corpse = data.corpse;
             dropItems = data.dropItems;
 
+            level = 1;
+
             surviveFatalWounds = data.surviveFatalWounds;
             maxHP_base = data.maxHP;
             maxHP_mul = 100f;
@@ -212,6 +218,8 @@ public class Character : MonoBehaviour
             StEApplyBonus = new List<StEApplyBonus>(data.StEApplyBonus);
 
             moveRes = data.moveRes;
+
+            equipmentSlots = 4;
 
             instanceID = ID;
             equipments = new List<Definer.Item>();
@@ -402,13 +410,16 @@ public class Character : MonoBehaviour
         item.createdManager = p;
         charaStatus.equipments.Add(item);
     }
-    public void UnequipItem(Definer.Item remove)
+    public void UnequipItem(Definer.Item remove,bool returnToInventory=true)
     {
         charaStatus.equipments.Remove(remove);
         //PA_Eq.Remove(remove.createdManager.GetComponent<PassiveAbility>());
         //Destroy(remove.createdManager);
         remove.createdManager.GetComponent<PassiveAbility>().Disable();
-        FindObjectOfType<Inventory>().AddItem(remove, 1, false);
+        if (returnToInventory)
+        {
+            FindObjectOfType<Inventory>().AddItem(remove, 1, false);
+        }
     }
     public void RemovePA(PassiveAbility passiveAbility)
     {
