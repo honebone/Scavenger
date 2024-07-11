@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharaDetail_InventoryEq : MonoBehaviour
 {
+    [SerializeField] GameObject panel;
     [SerializeField] Transform content;
     [SerializeField] GameObject equipmentButton;
 
@@ -15,7 +16,8 @@ public class CharaDetail_InventoryEq : MonoBehaviour
 
     public void SetButtons()
     {
-        //CloseOptionUI();
+        panel.SetActive(true);
+
         if (content.childCount != 0)
         {
             for (int i = 0; i < content.childCount; i++)
@@ -36,5 +38,17 @@ public class CharaDetail_InventoryEq : MonoBehaviour
                 eb.GetComponent<CharaDetail_InventoryEqButton>().Init(i, infoText, detailUI, mouseOver);
             }
         }
+    }
+
+    public void ClosePanel()
+    {
+        if (content.childCount != 0)
+        {
+            for (int i = 0; i < content.childCount; i++)
+            {
+                Destroy(content.GetChild(i).gameObject);
+            }
+        }
+        panel.SetActive(false);
     }
 }

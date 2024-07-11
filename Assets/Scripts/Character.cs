@@ -35,6 +35,7 @@ public class Character : MonoBehaviour
         //public Equipment[] equipments;
 
         public int level;
+        public int exp;
 
         public bool surviveFatalWounds;
         public int maxHP;
@@ -118,7 +119,10 @@ public class Character : MonoBehaviour
             }
             s += "]\n";
             if (immovable) { s += "移動不可\n"; }
-            s += string.Format("LVL：{0}\n", level);
+            if (player)
+            {
+                s += string.Format("LVL：{0}(次のLVLまで{1}/{2})\n", level, exp, GetNextExp());
+            }
             s += string.Format("HP/maxHP：{0}/{1}({2}％)\n", HP, maxHP, HP.GetPercent(maxHP).ToString("0.0"));
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (PROT != 0) { s += ValueToStr("被ダメージ", PROT * -1, "％"); }
@@ -252,6 +256,7 @@ public class Character : MonoBehaviour
         }
         /// <summary>％表記で返す</summary>
         public  float GetHPPercent() { return HP * 100f / maxHP; }
+        public int GetNextExp() { return level; }
     }
     [System.Serializable]
     public struct CharaStatusMod
@@ -1118,6 +1123,17 @@ public class Character : MonoBehaviour
         //        }
         //    }
         //}
+    }
+
+    public void GainEXP(int amount)
+    {
+        charaStatus.exp += amount;
+        if(charaStatus.exp >= charaStatus.GetNextExp())
+        {
+            charaStatus.exp -= charaStatus.GetNextExp();
+            charaStatus.level++;
+        }
+        //LVLUP判定
     }
     
     //ここまでアクションによって呼ばれる関数

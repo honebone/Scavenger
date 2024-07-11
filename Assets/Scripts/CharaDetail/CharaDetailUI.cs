@@ -18,8 +18,12 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     GameObject newEquipmentButton;
 
+    [SerializeField] GameObject inventoryEqPanel;
     [SerializeField] CharaDetail_InventoryEq inventoryEq;
     [SerializeField] List<ChataDetail_CharaButton> charaButtons;
+
+    [SerializeField] GameObject LVLUpPanel;
+    [SerializeField] CharaDetail_LVLUp lvlup;
 
     [Space(25), SerializeField]
     Transform abilityP;
@@ -125,6 +129,7 @@ public class CharaDetailUI : MonoBehaviour
 
         displayingChara.DisplayInfo();
 
+        lvlup.SetValue();
         inventory.CloseOptionUI();
     }
     public void Refresh()
@@ -203,58 +208,31 @@ public class CharaDetailUI : MonoBehaviour
         }
     }
 
-    //public void NextChara()
-    //{
-    //    List<Character> exist = charactersManager.GetExistingCharacters_All();
-    //    if (displayingChara == null || !displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
-    //    {
-    //        ChangeChara(exist[0]);
-    //    }
-    //    else
-    //    {
-    //        int index = 0;
-    //        for (int i = 0; i < exist.Count; i++)
-    //        {
-    //            if (displayingChara == exist[i])
-    //            {
-    //                index = i;
-    //                break;
-    //            }
-    //        }
-    //        if (index == exist.Count - 1) { ChangeChara(exist[0]); }
-    //        else { ChangeChara(exist[index + 1]); }
-    //    }
-
-    //}
-    //public void PrevChara()
-    //{
-    //    List<Character> exist = charactersManager.GetExistingCharacters_All();
-    //    if (displayingChara == null || !displayingChara.CheckAlive())//表示中のキャラがいないか死んでいるなら
-    //    {
-    //        ChangeChara(exist[0]);
-    //    }
-    //    else
-    //    {
-    //        int index = 0;
-    //        for (int i = 0; i < exist.Count; i++)
-    //        {
-    //            if (displayingChara == exist[i])
-    //            {
-    //                index = i;
-    //                break;
-    //            }
-    //        }
-    //        if (index == 0) { ChangeChara(exist[exist.Count - 1]); }
-    //        else { ChangeChara(exist[index - 1]); }
-    //    }
-    //}
+    public void ToggleToEquipment()
+    {
+        lvlup.ClosePanel();
+        inventoryEq.SetButtons();
+    }
+    public void ToggleToLVLUp()
+    {
+        ResetDraggingItem();
+        inventoryEq.ClosePanel();
+        lvlup.OpenPanel();
+    }
 
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)
     {
+        ToggleToEquipment();
         draggingItem = item;
         draggFrom = draggChara;
         draggingImage = Instantiate(dragImage, dragImageP);
         draggingImage.GetComponent<Image>().sprite = item.data.sprite;
+    }
+    public void ResetDraggingItem()
+    {
+        draggingItem = new Definer.Item();
+        draggFrom = null;
+        Destroy(draggingImage);
     }
 
     // Update is called once per frame
@@ -298,8 +276,7 @@ public class CharaDetailUI : MonoBehaviour
                     }
                 }
 
-                draggingItem = new Definer.Item();
-                Destroy(draggingImage);
+                ResetDraggingItem();
             }
         }
     }
