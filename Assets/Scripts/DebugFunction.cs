@@ -96,8 +96,7 @@ public class DebugFunction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                FindObjectOfType<CameraManager>().ShakeCamera(str);
-                str += 0.5f;
+                FindObjectOfType<LVLUpManager>().LVLUp(charactersManager.GetExistingCharacters_All()[0]);
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
