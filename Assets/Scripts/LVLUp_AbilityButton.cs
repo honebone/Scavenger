@@ -24,7 +24,8 @@ public class LVLUp_AbilityButton : MonoBehaviour
         if (!lvlUpParams.upgrade)
 
         {
-            upgradeStr = string.Format("解放：{0}", lvlUpParams.abilityStatus.abilityName.ColorStr(color));
+            //upgradeStr = string.Format("解放：{0}", lvlUpParams.abilityStatus.abilityName.ColorStr(color));
+            upgradeStr = $"解放：{lvlUpParams.abilityStatus.abilityName.ColorStr(color)}";
             upgradeName.text = upgradeStr;
             upgradeInfo.text = "<<アビリティを解放する>>".ColorStr(Definer.colorRef.expOrb);
         }
@@ -49,6 +50,7 @@ public class LVLUp_AbilityButton : MonoBehaviour
         {
             if (!lvlUpParams.upgrade) { lvlUpParams.abilityStatus.Unlock(); }
             else { lvlUpParams.character.UpgradeAbility(lvlUpParams.abilityStatus.abilityData); }
+            lvlUpParams.character.LVLUp();
 
             lvlUpManger.EndSelectUpgrade();
         }

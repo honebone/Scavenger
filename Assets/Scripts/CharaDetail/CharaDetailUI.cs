@@ -41,6 +41,8 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField] TutorialData tutorial_unlockAbility;
     [SerializeField] TutorialData tutorial_equip;
 
+    [SerializeField] GameObject warningPanel;
+
     [SerializeField] GraphicRaycaster raycaster;
 
 
@@ -92,10 +94,10 @@ public class CharaDetailUI : MonoBehaviour
         UIpanel.SetActive(true);
 
         List<Character> characters = new List<Character>();
-        foreach(Character chara in charactersManager.GetExistingCharacters_All())
+        foreach (Character chara in charactersManager.GetExistingCharacters_All())
         {
             Character.CharacterStatus status = chara.GetCharacterStatus();
-            if (status.player&&chara.CheckAlive()) { characters.Add(chara); }
+            if (status.player && chara.CheckAlive()) { characters.Add(chara); }
         }
 
         for (int i = 0; i < characters.Count; i++)
@@ -103,14 +105,17 @@ public class CharaDetailUI : MonoBehaviour
             charaButtons[i].SetChara(characters[i]);
         }
 
+        if (!displayingChara || !displayingChara.CheckAlive())
+        {
+            charaButtons[0].SelectChara();
+        }
+
         inventoryEq.SetButtons();//test
 
-        //if (displayingChara == null||!displayingChara.CheckAlive())//•\Ž¦’†‚ÌƒLƒƒƒ‰‚ª‚¢‚È‚¢‚©Ž€‚ñ‚Å‚¢‚é‚È‚ç
-        //{
-        //    ChangeChara(charactersManager.GetExistingCharacters_All()[0]);
-        //}
         if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_unlockAbility); }
         else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equip); }
+
+       
     }
     public void CloseUI()
     {
@@ -134,6 +139,7 @@ public class CharaDetailUI : MonoBehaviour
     public void ResetChara()
     {
         EndSelectEquipment();
+        ToggleToEquipment();
 
         displayingChara = null;
         status = new Character.CharacterStatus();
@@ -141,6 +147,14 @@ public class CharaDetailUI : MonoBehaviour
 
         lvlup.ResetValue();
         inventory.CloseOptionUI();
+    }
+
+    public void RestCharaButtonFrame()
+    {
+        foreach(ChataDetail_CharaButton charaButton in charaButtons)
+        {
+            charaButton.ResetFrameColor();
+        }
     }
 
     public void Refresh()
@@ -221,6 +235,7 @@ public class CharaDetailUI : MonoBehaviour
 
     public void ToggleToEquipment()
     {
+        warningPanel.SetActive(false);
         lvlup.ClosePanel();
         inventoryEq.SetButtons();
     }
@@ -229,6 +244,7 @@ public class CharaDetailUI : MonoBehaviour
         ResetDraggingItem();
         inventoryEq.ClosePanel();
         lvlup.OpenPanel();
+        if (!displayingChara) { warningPanel.SetActive(true); }
     }
 
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)

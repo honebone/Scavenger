@@ -9,6 +9,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
     [SerializeField] CharaDetailUI detailUI;
     [SerializeField] MouseOverUI mouseOver;
     [SerializeField] Image charaImage;
+    [SerializeField] Image frame;
 
     [SerializeField] Transform equipmentsP;
     [SerializeField] GameObject eqButton;
@@ -51,9 +52,21 @@ public class ChataDetail_CharaButton : MonoBehaviour
         }
     }
 
+    public void ResetFrameColor()
+    {
+        frame.color = Color.white;
+    }
+
+    public void SelectChara()
+    {
+        detailUI.RestCharaButtonFrame();
+        frame.color = Color.green;
+        detailUI.ChangeChara(character);
+    }
+
     public void OnMouseDown()
     {
-        detailUI.ChangeChara(character);
+        SelectChara();
     }
 
     public void OnMouseEnter()

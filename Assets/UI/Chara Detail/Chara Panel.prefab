@@ -340,6 +340,7 @@ MonoBehaviour:
   detailUI: {fileID: 0}
   mouseOver: {fileID: 0}
   charaImage: {fileID: 5226412726311487909}
+  frame: {fileID: 2550869826004924790}
   equipmentsP: {fileID: 5226412727727501915}
   eqButton: {fileID: 0}
 --- !u!1 &5293139872526954314
