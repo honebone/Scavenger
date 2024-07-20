@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -16.532}
-  m_SizeDelta: {x: 150, y: 222.02}
+  m_AnchoredPosition: {x: 0, y: -16.534}
+  m_SizeDelta: {x: 144.3339, y: 222.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7796885747487980415
 CanvasRenderer:
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: {fileID: 7796885748326280204}
   upgradeInfo: {fileID: 7796885747487980384}
+  infoText: {fileID: 0}
   mouseOver: {fileID: 0}
 --- !u!114 &7796885748081270876
 MonoBehaviour:
@@ -267,6 +268,22 @@ MonoBehaviour:
         - m_Target: {fileID: 352068533299010733}
           m_TargetAssemblyTypeName: LVLUp_AbilityButton, Assembly-CSharp
           m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 352068533299010733}
+          m_TargetAssemblyTypeName: LVLUp_AbilityButton, Assembly-CSharp
+          m_MethodName: OnMouseDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

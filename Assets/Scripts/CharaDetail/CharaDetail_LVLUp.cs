@@ -19,6 +19,7 @@ public class CharaDetail_LVLUp : MonoBehaviour
     [SerializeField] MouseOverUI mouseOver;
     [SerializeField] Inventory inventory;
     [SerializeField] GuideMessage guideMessage;
+    [SerializeField] LVLUpManager lvlUpManager;
 
     Character character;
 
@@ -35,19 +36,22 @@ public class CharaDetail_LVLUp : MonoBehaviour
 
     public void GainEXP()
     {
-        if (inventory.GetExp() > 0)
+        if (!lvlUpManager.GetInLVLUp())
         {
-            inventory.AddExp(-1, false);
-            character.GainEXP(1);
-            SetValue(false);
-        }
-        else
-        {
-            guideMessage.SetWaringText("経験のオーブが足りない");
+            if (inventory.GetExp() > 0)
+            {
+                inventory.AddExp(-1, false);
+                character.GainEXP(1);
+                SetValue(false);
+            }
+            else
+            {
+                guideMessage.SetWaringText("経験のオーブが足りない");
+            }
         }
     }
 
-    public void SetValue(bool fromOrigin=true)
+    public void SetValue(bool fromOrigin = true)
     {
 
         expText.text = string.Format("x{0}", inventory.GetExp());
@@ -64,8 +68,21 @@ public class CharaDetail_LVLUp : MonoBehaviour
         }
     }
 
+    public void ResetValue()
+    {
+        expText.text = "";
+        if (detailUI.GetDisplayingChara())
+        {
+            character = null;
+            currentLVLText.text = "";
+            nextLVLText.text = "";
+
+            expBar_fill.fillAmount = 0;
+        }
+    }
+
     //public void SetChara(Character chara)
     //{
-       
+
     //}
 }

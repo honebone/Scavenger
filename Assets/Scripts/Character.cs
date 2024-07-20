@@ -1130,10 +1130,13 @@ public class Character : MonoBehaviour
         charaStatus.exp += amount;
         if(charaStatus.exp >= charaStatus.GetNextExp())
         {
-            charaStatus.exp -= charaStatus.GetNextExp();
-            charaStatus.level++;
+            FindObjectOfType<LVLUpManager>().LVLUp(this);
         }
-        //LVLUP”»’è
+    }
+    public void LVLUp()
+    {
+        charaStatus.exp -= charaStatus.GetNextExp();
+        charaStatus.level++;
     }
     
     //‚±‚±‚Ü‚ÅƒAƒNƒVƒ‡ƒ“‚É‚æ‚Á‚ÄŒÄ‚Î‚ê‚éŠÖ”

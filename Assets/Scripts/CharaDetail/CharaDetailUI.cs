@@ -116,9 +116,7 @@ public class CharaDetailUI : MonoBehaviour
     {
         UIpanel.SetActive(false);
 
-        displayingChara = null;
-        inventory.CloseOptionUI();
-        EndSelectEquipment();
+        ResetChara();
     }
     public void ChangeChara(Character chara)
     {
@@ -132,6 +130,19 @@ public class CharaDetailUI : MonoBehaviour
         lvlup.SetValue();
         inventory.CloseOptionUI();
     }
+
+    public void ResetChara()
+    {
+        EndSelectEquipment();
+
+        displayingChara = null;
+        status = new Character.CharacterStatus();
+
+
+        lvlup.ResetValue();
+        inventory.CloseOptionUI();
+    }
+
     public void Refresh()
     {
         if(displayingChara != null)

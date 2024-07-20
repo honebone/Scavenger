@@ -13,6 +13,8 @@ public class LVLUp_AbilityButton : MonoBehaviour
     string upgradeStr;
     LVLUpManager.LVLUpParams lvlUpParams;
 
+    [SerializeField] LVLUpManager lvlUpManger;
+    [SerializeField] InfoText infoText;
     [SerializeField] MouseOverUI mouseOver;
 
     public void SetUpgrade(LVLUpManager.LVLUpParams lvlUp)
@@ -24,13 +26,14 @@ public class LVLUp_AbilityButton : MonoBehaviour
         {
             upgradeStr = string.Format("解放：{0}", lvlUpParams.abilityStatus.abilityName.ColorStr(color));
             upgradeName.text = upgradeStr;
-            upgradeInfo.text = "アビリティを解放し、使用可能にする";
+            upgradeInfo.text = "<<アビリティを解放する>>".ColorStr(Definer.colorRef.expOrb);
         }
         else
         {
             upgradeStr = string.Format("強化：{0}", lvlUpParams.abilityStatus.abilityName.ColorStr(color));
             upgradeName.text = upgradeStr;
-            upgradeInfo.text = lvlUpParams.abilityStatus.abilityData.upgradeInfo;
+            upgradeInfo.text = "<<アビリティを強化する>>\n\n".ColorStr(Definer.colorRef.expOrb);
+            upgradeInfo.text += lvlUpParams.abilityStatus.abilityData.upgradeInfo;
         }
     }
 
@@ -39,12 +42,15 @@ public class LVLUp_AbilityButton : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-           
+            infoText.SetText(lvlUpParams.abilityStatus.abilityName.ColorStr(color), lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus()));
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-         
+            if (!lvlUpParams.upgrade) { lvlUpParams.abilityStatus.Unlock(); }
+            else { lvlUpParams.character.UpgradeAbility(lvlUpParams.abilityStatus.abilityData); }
+
+            lvlUpManger.EndSelectUpgrade();
         }
     }
     public void OnMouseEnter()

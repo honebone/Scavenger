@@ -10,9 +10,10 @@ public class LVLUpManager : MonoBehaviour
     [SerializeField] ExpeditionManager expeditionManager;
     [SerializeField] GameObject panel;
 
+    [SerializeField] TextMeshProUGUI lvlUpTitle;
     [SerializeField] List<LVLUp_AbilityButton> buttons;
     [SerializeField] List<Transform> panelsTF;
-    //[SerializeField] 
+    [SerializeField] CharaDetailUI charaDetail;
     List<Character> LVLUpQueue = new List<Character>();
 
     bool inLVLUp;
@@ -36,7 +37,9 @@ public class LVLUpManager : MonoBehaviour
 
     void StartelectUpgrade()
     {
+        charaDetail.CloseUI();
         panel.SetActive(true);
+        LVLUpQueue[0].DisplayInfo();
 
         List<LVLUpParams> pool = new List<LVLUpParams>();
         foreach(Ability.AbilityStatus status in LVLUpQueue[0].GetCharacterStatus().abilitiesStatus)
@@ -67,10 +70,37 @@ public class LVLUpManager : MonoBehaviour
     }
     IEnumerator SelectUpgradeC()
     {
+        Character.CharacterStatus charaStatus = LVLUpQueue[0].GetCharacterStatus();
+        lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
         for(int i = 0; i < 3; i++)
         {
             panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f,RotateMode.WorldAxisAdd);
             yield return new WaitForSeconds(0.15f);
         }
     }
+
+    public void EndSelectUpgrade()
+    {
+        LVLUpQueue[0].DisplayInfo();
+        LVLUpQueue.RemoveAt(0);
+        StartCoroutine(EndSelectUpgradeC());
+    }
+    IEnumerator EndSelectUpgradeC()
+    {
+        lvlUpTitle.text = "";
+        for (int i = 0; i < 3; i++)
+        {
+            panelsTF[i].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd);
+            yield return new WaitForSeconds(0.15f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        if (LVLUpQueue.Count > 0) { StartelectUpgrade(); }
+        else
+        {
+            panel.SetActive(false);
+            inLVLUp = false;
+        }
+    }
+
+    public bool GetInLVLUp() { return inLVLUp; }
 }
