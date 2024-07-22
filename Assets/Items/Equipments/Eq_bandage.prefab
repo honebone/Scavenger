@@ -52,6 +52,7 @@ MonoBehaviour:
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
+      PROT: 0
       ATK_mul: 0
       CRITC: 0
       CRITD: 0
@@ -63,8 +64,9 @@ MonoBehaviour:
       RHeal: 0
       StEResists:
       - ResStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-        value: 25
+        value: 50
       StEApplyBonus: []
+      moveRes: 0
     actionMods: []
 --- !u!212 &3238141386940741765
 SpriteRenderer:

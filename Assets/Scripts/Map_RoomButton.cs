@@ -18,6 +18,7 @@ public class Map_RoomButton : MonoBehaviour
     Image roomEventIcon;
     [SerializeField]
     Image frame;
+    [SerializeField] Image currentRoomImage;
     [SerializeField]
     Text currentPosText;
 
@@ -46,14 +47,14 @@ public class Map_RoomButton : MonoBehaviour
         if (room.empty)
         {
             roomEventIcon.sprite = emptyIcon;
-            roomEventIcon.color = Color.gray;
+            //roomEventIcon.color = Color.gray;
         }
         else
         {
             if (blind)
             {
                 roomEventIcon.sprite = blindIcon;
-                frame.color = Color.gray;
+                //frame.color = Color.gray;
             }
             else { roomEventIcon.sprite = room.eventIcon; }
             if (room.up >= 1) { up.enabled = true; }
@@ -116,14 +117,17 @@ public class Map_RoomButton : MonoBehaviour
     public void SetState_currentPos()
     {
         currentPosText.enabled = true;
-        frame.color = Color.green;
+        currentRoomImage.enabled = true;
+        //frame.color = Color.green;
     }
     public void ResetState()
     {
         currentPosText.enabled = false;
         selectable = false;
-        if (blind) { frame.color = Color.gray; }
-        else { frame.color = Color.white; }
+        frame.color = Color.clear;
+        currentRoomImage.enabled = false;
+        //if (blind) { frame.color = Color.gray; }
+        //else { frame.color = Color.white; }
     }
 
     public void OnMouseDown()

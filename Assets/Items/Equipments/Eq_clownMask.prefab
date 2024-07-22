@@ -52,6 +52,7 @@ MonoBehaviour:
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
+      PROT: 0
       ATK_mul: 0
       CRITC: 0
       CRITD: 0
@@ -63,12 +64,14 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      moveRes: 0
     actionMods: []
-  chance: 25
+  chance: 33
   actionStatus:
     actionName: "\u9053\u5316\u5E2B\u306E\u4EEE\u9762"
-    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642(25\uFF05)"
+    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642(33\uFF05)"
     targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B9\u5168\u4F53"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: 5314680a335fe2a4bb51f2be02179229, type: 3}
     SE: {fileID: 0}
@@ -82,6 +85,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -93,26 +97,6 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
     consumeFocus: 0
     kill: 0
@@ -129,12 +113,15 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 1
     SANHeal_max: 2
     SANDamage_min: 0
@@ -156,13 +143,17 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
@@ -173,6 +164,7 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 1
     enemy: 0
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1

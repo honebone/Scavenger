@@ -27,13 +27,13 @@ public class LVLUp_AbilityButton : MonoBehaviour
             //upgradeStr = string.Format("解放：{0}", lvlUpParams.abilityStatus.abilityName.ColorStr(color));
             upgradeStr = $"解放：{lvlUpParams.abilityStatus.abilityName.ColorStr(color)}";
             upgradeName.text = upgradeStr;
-            upgradeInfo.text = "<<アビリティを解放する>>".ColorStr(Definer.colorRef.expOrb);
+            upgradeInfo.text = "<<アビリティを解放>>".ColorStr(Definer.colorRef.expOrb);
         }
         else
         {
             upgradeStr = string.Format("強化：{0}", lvlUpParams.abilityStatus.abilityName.ColorStr(color));
             upgradeName.text = upgradeStr;
-            upgradeInfo.text = "<<アビリティを強化する>>\n\n".ColorStr(Definer.colorRef.expOrb);
+            upgradeInfo.text = "<<アビリティを強化>>\n\n".ColorStr(Definer.colorRef.expOrb);
             upgradeInfo.text += lvlUpParams.abilityStatus.abilityData.upgradeInfo;
         }
     }

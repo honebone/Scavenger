@@ -1145,9 +1145,14 @@ public class Character : MonoBehaviour
     
     //‚±‚±‚Ü‚ÅƒAƒNƒVƒ‡ƒ“‚É‚æ‚Á‚ÄŒÄ‚Î‚ê‚éŠÖ”
 
+    public void Debug_UnlockEqSlots()
+    {
+        charaStatus.equipmentSlots = 8;
+    }
+
     public void UpgradeAbility(AbilityData upgrade)
     {
-        for(int i=0;i<charaStatus.abilitiesStatus.Length; i++)
+        for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {
             if (charaStatus.abilitiesStatus[i].abilityData.upgradeAbility == upgrade)
             {

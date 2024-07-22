@@ -34,8 +34,15 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            mouseOver.ResetUI();
-            detailUI.SetDraggingItem(item, null);
+            if (!FindObjectOfType<ExpeditionManager>().CheckInRoomEvent())
+            {
+                mouseOver.ResetUI();
+                detailUI.SetDraggingItem(item, null);
+            }
+            else
+            {
+                FindObjectOfType<GuideMessage>().SetWaringText("イベント中の装備変更不可");
+            }
         }
     }
 

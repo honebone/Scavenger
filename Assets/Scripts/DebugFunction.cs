@@ -135,6 +135,13 @@ public class DebugFunction : MonoBehaviour
     public bool CheckDebugMode() { return debug; }
 
     public bool CheckSkipDeploy() { return skipDeployPhase; }
+    public void UnlockEqSlot()
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.Debug_UnlockEqSlots();
+        }
+    }
     public void UnlockAbility_All()
     {
         foreach(Character character in charactersManager.GetExistingCharacters_All())
