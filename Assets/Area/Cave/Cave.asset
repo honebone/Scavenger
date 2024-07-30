@@ -36,6 +36,7 @@ MonoBehaviour:
     weight: 5
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
     weight: 5
+  start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
   endArea: {fileID: 11400000, guid: 4a6855ff5aead334095c21599972eef8, type: 2}
   normalBattlePool:

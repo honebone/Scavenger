@@ -23,8 +23,6 @@ public class Map_RoomButton : MonoBehaviour
     Text currentPosText;
 
     [SerializeField]
-    Sprite emptyIcon;
-    [SerializeField]
     Sprite blindIcon;
 
     ExpeditionManager expeditionManager;
@@ -46,7 +44,7 @@ public class Map_RoomButton : MonoBehaviour
 
         if (room.empty)
         {
-            roomEventIcon.sprite = emptyIcon;
+            roomEventIcon.enabled = false;
             //roomEventIcon.color = Color.gray;
         }
         else
@@ -164,8 +162,11 @@ public class Map_RoomButton : MonoBehaviour
     public void OnMouseEnter()
     {
         p = true;
-        if (blind) { mouseOver.SetUI("ˆÃˆÅ", true); }
-        else { mouseOver.SetUI(room.eventName, true); }
+        if (!room.empty)
+        {
+            if (blind) { mouseOver.SetUI("ˆÃˆÅ", true); }
+            else { mouseOver.SetUI(room.eventName, true); }
+        }
     }
     public void OnMouseExit()
     {

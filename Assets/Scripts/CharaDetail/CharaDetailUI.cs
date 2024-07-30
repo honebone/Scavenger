@@ -134,6 +134,8 @@ public class CharaDetailUI : MonoBehaviour
 
         lvlup.SetValue();
         inventory.CloseOptionUI();
+
+        //ToggleToLVLUp();
     }
 
     public void ResetChara()

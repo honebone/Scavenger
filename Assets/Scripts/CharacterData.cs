@@ -47,7 +47,7 @@ public class CharacterData : ScriptableObject
     public string difficulty;
     [TextArea(3, 10)] public string introduction;
     [TextArea(3, 10)] public string preferredPos;
-    public enum CharacterTag { other, corpse, human, beast, insect, undead, artifact, plant, horror, obstacle,demihuman }
+    public enum CharacterTag { other, corpse, human, beast, insect, undead, artifact, plant, horror, obstacle, demihuman }
     public List<CharacterTag> characterTags;
     //public int size = 1;
     public bool immovable;
@@ -59,7 +59,7 @@ public class CharacterData : ScriptableObject
     /// <summary>èüîsÇ…ä÷åWÇ»Ç¢Ç©</summary>
     public bool obstacle;
     [Header("0:idle 1:damaged")]
-    public GameObject[] variableSprites; 
+    public GameObject[] variableSprites;
     public Sprite spriteForUI;
 
     public AbilityData[] abilities;
@@ -94,7 +94,7 @@ public class CharacterData : ScriptableObject
     public float GHeal = 100f;
     public float RHeal = 100f;
 
-    //counterAction
+    public StatusGrowth statusGrowth;
 
     public float debuffRes;
 
@@ -102,9 +102,6 @@ public class CharacterData : ScriptableObject
     public List<StEApplyBonus> StEApplyBonus;
 
     public float moveRes;
-    
-
-
 }
 [System.Serializable]
 public class DropItem
@@ -135,5 +132,44 @@ public class StEApplyBonus
         exChance += bonus.exChance * n;
         exStack += bonus.exStack * n;
         exValue += bonus.exValue * n;
+    }
+}
+
+[System.Serializable]
+public class StatusGrowth
+{
+    public float maxHP;
+    public float ATK;
+    public float ACT;
+    public float CRITC;
+    public float CRITD;
+
+    public int CalcGrowth(int currentLVL, float value)
+    {
+        int currentGrowth = Mathf.FloorToInt((currentLVL - 1) * value);
+        int nextGrowth = Mathf.FloorToInt((currentLVL + 1 - 1) * value);
+        return nextGrowth - currentGrowth;
+    }
+
+    public string GetInfo(int LVL)
+    {
+        string s = "";
+        s += ValueToStr("äÓëbHP", CalcGrowth(LVL,maxHP), "");
+        s += ValueToStr("äÓëbATK", CalcGrowth(LVL, ATK), "");
+        s += ValueToStr("CRITó¶", CalcGrowth(LVL, CRITC), "Åì");
+        s += ValueToStr("CRITÉ_ÉÅÅ[ÉW", CalcGrowth(LVL, CRITD), "Åì");
+        s += ValueToStr("ACT", CalcGrowth(LVL, ACT), "");     
+
+        return s;
+    }
+
+    public string ValueToStr(string start, float value, string end)
+    {
+        if (value == 0) { return ""; }
+        string s = start;
+        if (value < 0) { s += value.ToString(); }
+        else { s += "+" + value.ToString(); }
+        s += end + "\n";
+        return s;
     }
 }

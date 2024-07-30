@@ -54,6 +54,12 @@ MonoBehaviour:
   turnPerRound: 2
   GHeal: 100
   RHeal: 100
+  statusGrowth:
+    maxHP: 3.5
+    ATK: 1.5
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

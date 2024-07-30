@@ -61,6 +61,8 @@ public class Character : MonoBehaviour
         public float GHeal;
         public float RHeal;
 
+        public StatusGrowth statusGrowth;
+
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
 
@@ -215,6 +217,8 @@ public class Character : MonoBehaviour
 
             GHeal = data.GHeal;
             RHeal = data.RHeal;
+
+            statusGrowth = data.statusGrowth;
 
             debuffRes = data.debuffRes;
 
@@ -1136,6 +1140,15 @@ public class Character : MonoBehaviour
     public void LVLUp()
     {
         charaStatus.exp -= charaStatus.GetNextExp();
+        StatusGrowth SG = charaStatus.statusGrowth;
+        int LVL = charaStatus.level;
+
+        AddMaxHP(SG.CalcGrowth(LVL, SG.maxHP), 0, true);
+        AddATK(SG.CalcGrowth(LVL, SG.ATK), 0);
+        AddCRITC(SG.CalcGrowth(LVL, SG.CRITC));
+        AddCRITD(SG.CalcGrowth(LVL, SG.CRITD));
+        AddACT(SG.CalcGrowth(LVL, SG.ACT));
+
         charaStatus.level++;
         if (charaStatus.exp >= charaStatus.GetNextExp())
         {

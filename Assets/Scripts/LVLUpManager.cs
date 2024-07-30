@@ -12,8 +12,10 @@ public class LVLUpManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI lvlUpTitle;
     [SerializeField] List<LVLUp_AbilityButton> buttons;
+    [SerializeField] TextMeshProUGUI statusGrowthText;
     [SerializeField] List<Transform> panelsTF;
     [SerializeField] CharaDetailUI charaDetail;
+    [SerializeField] CharaDetail_LVLUp charaDetail_lvlUp;
     List<Character> LVLUpQueue = new List<Character>();
 
     bool inLVLUp;
@@ -37,7 +39,7 @@ public class LVLUpManager : MonoBehaviour
 
     void StartelectUpgrade()
     {
-        charaDetail.CloseUI();
+       // charaDetail.CloseUI();
         panel.SetActive(true);
         LVLUpQueue[0].DisplayInfo();
 
@@ -72,7 +74,8 @@ public class LVLUpManager : MonoBehaviour
     {
         Character.CharacterStatus charaStatus = LVLUpQueue[0].GetCharacterStatus();
         lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
-        for(int i = 0; i < 3; i++)
+        statusGrowthText.text = LVLUpQueue[0].GetCharacterStatus().statusGrowth.GetInfo(charaStatus.level);
+        for (int i = 0; i < 3; i++)
         {
             panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f,RotateMode.WorldAxisAdd);
             yield return new WaitForSeconds(0.15f);
@@ -81,6 +84,7 @@ public class LVLUpManager : MonoBehaviour
 
     public void EndSelectUpgrade()
     {
+        charaDetail_lvlUp.SetValue();
         LVLUpQueue[0].DisplayInfo();
         LVLUpQueue.RemoveAt(0);
         StartCoroutine(EndSelectUpgradeC());
@@ -88,6 +92,7 @@ public class LVLUpManager : MonoBehaviour
     IEnumerator EndSelectUpgradeC()
     {
         lvlUpTitle.text = "";
+        statusGrowthText.text = "";
         for (int i = 0; i < 3; i++)
         {
             panelsTF[i].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd);

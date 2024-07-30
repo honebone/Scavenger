@@ -142,7 +142,7 @@ public class AreaManager : MonoBehaviour
         layer[2].up = 2;
         layer[2].straight = 1;
         layer[2].down = 2;
-        //layer[2]のroomEventを開始地点の奴に
+        layer[2].SetRoomEvent(areaData.start);
         map.SetLayerPanel(layer, layerCount);
         layerCount++;
 

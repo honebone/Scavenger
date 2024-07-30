@@ -59,9 +59,7 @@ public class DebugFunction : MonoBehaviour
             items[i].Init(itemData[i]);
             items[i].amount = amount[i];
         }
-     
     }
-    float str = 0.5f;
     // Update is called once per frame
     void Update()
     {

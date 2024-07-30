@@ -5,8 +5,11 @@ using UnityEngine.UI;
 public class SettingManager : MonoBehaviour
 {
     [SerializeField] GameObject panel;
-    [SerializeField] Slider SEVolume;
-    [SerializeField] Slider BGMVolume;
+    [SerializeField] Settings_Slider SEVolume;
+    [SerializeField] Settings_Slider BGMVolume;
+    [SerializeField] Settings_Slider resolveSpeed;
+
+    [SerializeField] ActionQueueManager actionQueue;
 
     SoundManager soundManager;
     InfoText infoText;
@@ -30,10 +33,17 @@ public class SettingManager : MonoBehaviour
 
     public void SetSEVolume()
     {
-        soundManager.SetSEVolume(SEVolume.value);
+        soundManager.SetSEVolume(SEVolume.GetValue());
+        SEVolume.SetValueText();
     }
     public void SetBGMVolume()
     {
-        soundManager.SetBGMVolume(BGMVolume.value);
+        soundManager.SetBGMVolume(BGMVolume.GetValue());
+        BGMVolume.SetValueText();
+    }
+    public void SetResolveSpeed()
+    {
+        actionQueue.SetResolveSpeed(resolveSpeed.GetValue());
+        resolveSpeed.SetValueText();
     }
 }

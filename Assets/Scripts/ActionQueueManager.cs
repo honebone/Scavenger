@@ -264,6 +264,12 @@ public class ActionQueueManager : MonoBehaviour
 
     [SerializeField]
     float autoResolveInterval;
+    public void SetResolveSpeed(float value) { autoResolveInterval = value; }
+    IEnumerator ResolveFirstActionEffect()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ResolveOne();
+    }
     IEnumerator ResolveNextActionEffect()
     {
         yield return new WaitForSeconds(autoResolveInterval);
@@ -321,7 +327,7 @@ public class ActionQueueManager : MonoBehaviour
         yield return new WaitForSeconds(abilityPause_followthrough);
         if (autoResolve)
         {
-            StartCoroutine(ResolveNextActionEffect());
+            StartCoroutine(ResolveFirstActionEffect());
         }
         else
         {

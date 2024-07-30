@@ -18,7 +18,7 @@ public class Area_Tutorial : AreaManager
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//0‘w–Ú
         layer[2].empty = false;
         layer[2].straight = 1;
-        //layer[2]‚ÌroomEvent‚ðŠJŽn’n“_‚Ì“z‚É
+        layer[2].SetRoomEvent(areaData.start);
         map.SetLayerPanel(layer, layerCount);
         layerCount++;
 

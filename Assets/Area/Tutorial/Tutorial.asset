@@ -24,6 +24,7 @@ MonoBehaviour:
   blindChance: 0
   BGM: {fileID: 8300000, guid: 657325930132a6c4680a685a0cbf7406, type: 3}
   roomEvents: []
+  start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
   boss: {fileID: 11400000, guid: 716ae309d3ae76b4f8d8446da7ab1b25, type: 2}
   endArea: {fileID: 0}
   normalBattlePool:
