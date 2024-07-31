@@ -263,7 +263,7 @@ MonoBehaviour:
   skipDeployPhase: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
-  - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
+  - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -9990,6 +9990,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ac5084fec3aeda4389fb30574b3d089, type: 2}
   - {fileID: 11400000, guid: 9f9c71f6123583b4f9fafe9f24d57197, type: 2}
   - {fileID: 11400000, guid: e3519a02bdc15094abe28ff9ff8285b9, type: 2}
+  - {fileID: 11400000, guid: a1f15e7da948fdd439f3b430d9c197b4, type: 2}
+  - {fileID: 11400000, guid: 91d9f580a3c1ffa4dba23d2bdeeac59d, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -28576,7 +28578,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

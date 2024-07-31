@@ -53,11 +53,11 @@ MonoBehaviour:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 0
+      ATK_mul: 20
       CRITC: 0
       CRITD: 0
       EVD: 0
-      ACC: 15
+      ACC: 20
       ACT: 0
       turnPerRound: 0
       GHeal: 0

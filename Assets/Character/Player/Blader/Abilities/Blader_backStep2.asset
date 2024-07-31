@@ -87,8 +87,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 80
-    ATKMod_max: 110
+    ATKMod_min: 60
+    ATKMod_max: 90
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0

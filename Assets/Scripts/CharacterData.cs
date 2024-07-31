@@ -158,7 +158,12 @@ public class StatusGrowth
         s += ValueToStr("基礎ATK", CalcGrowth(LVL, ATK), "");
         s += ValueToStr("CRIT率", CalcGrowth(LVL, CRITC), "％");
         s += ValueToStr("CRITダメージ", CalcGrowth(LVL, CRITD), "％");
-        s += ValueToStr("ACT", CalcGrowth(LVL, ACT), "");     
+        s += ValueToStr("ACT", CalcGrowth(LVL, ACT), "");
+        List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
+        if (unlockEqSlotLVL.Contains(LVL + 1))
+        {
+            s += "装備品スロット+1\n";
+        }
 
         return s;
     }

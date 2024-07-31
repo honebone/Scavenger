@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: -2394855223871857447}
+  - component: {fileID: 6001225443967295111}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_clownMask
+  m_Name: Eq_greatHelm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2394855223871857447
+--- !u!114 &6001225443967295111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,138 +42,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a9623c53c2c7f43b7464480ef55996, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 6f75fccd2ece0264881728fadc627a8a, type: 2}
+    itemData: {fileID: 11400000, guid: a1f15e7da948fdd439f3b430d9c197b4, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
-      maxHP_mul: 10
+      maxHP_mul: 15
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
-      ACC: 0
-      ACT: 0
+      ACC: -8
+      ACT: -3
       turnPerRound: 0
       GHeal: 0
       RHeal: 0
-      StEResists: []
+      StEResists:
+      - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+        value: 20
       StEApplyBonus: []
       moveRes: 0
     actionMods: []
-  chance: 33
-  actionStatus:
-    actionName: "\u9053\u5316\u5E2B\u306E\u4EEE\u9762"
-    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642(33\uFF05)"
-    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B9\u5168\u4F53"
-    AModInfo: 
-    actionInfo: 
-    sprite: {fileID: 21300000, guid: 5314680a335fe2a4bb51f2be02179229, type: 3}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
-      characterTags: 
-      StE: []
-      PE: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    consumeFocus: 0
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
-    exDMG_mul: 0
-    exDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    drain: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    healRegain_min: 0
-    healRegain_max: 0
-    SANHeal_min: 1
-    SANHeal_max: 2
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams: []
-    applyPEParams: []
-    removeStE_buff: 0
-    removeStE_debuff: 1
-    removeStE_DoT: 0
-    removeStEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    moveChance: 0
-    guaranteedMove: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    abilityRemainControlls: []
-    abilityEffect: 0
-    freeAction: 0
-    abilityType: 0
-    index: 0
-    StEApplyBonus: []
-    removeStEs_additional: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
-    actionOwner: {fileID: 0}
-    actionTargetsInt: 
-  condition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 1
-    enemy: 0
-    onlyPlayable: 0
-    front: 1
-    mid: 1
-    back: 1
-    characterTags: 
-    StE: []
-    PE: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -215,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5314680a335fe2a4bb51f2be02179229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 049c49c46c1f9374d8f867b91c9ec29b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

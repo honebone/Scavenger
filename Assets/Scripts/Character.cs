@@ -1149,6 +1149,12 @@ public class Character : MonoBehaviour
         AddCRITD(SG.CalcGrowth(LVL, SG.CRITD));
         AddACT(SG.CalcGrowth(LVL, SG.ACT));
 
+        List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
+        if (unlockEqSlotLVL.Contains(LVL + 1))
+        {
+            charaStatus.equipmentSlots++;
+        }
+
         charaStatus.level++;
         if (charaStatus.exp >= charaStatus.GetNextExp())
         {

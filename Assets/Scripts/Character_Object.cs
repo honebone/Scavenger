@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Character_Object : MonoBehaviour
 {
+    [SerializeField] CanvasGroup canvasGroup;
     [SerializeField]
     Transform characterManagerParent;
     [SerializeField]
@@ -13,20 +14,18 @@ public class Character_Object : MonoBehaviour
     [SerializeField]
     Transform charaSpriteParent;
 
+    
     [SerializeField]
-    GameObject HPBarObj;
-    [SerializeField]
-    Image HPBarColor;
-    [SerializeField]
-    GameObject ShieldBarObj;
-    [SerializeField]
-    GameObject SANBarObj;
+    Image HPBarColor;    
     [SerializeField]
     Image SANFill;
 
-    Slider HPBar;
-    Slider ShieldBar;
-    Slider SANBar;
+    [SerializeField] GameObject SANBarObj;
+
+    [SerializeField] Slider HPBar;
+    [SerializeField] Slider DMGBar;
+    [SerializeField] Slider ShieldBar;
+    [SerializeField] Slider SANBar;
 
     [SerializeField]
     Transform TurnIconParent;
@@ -53,10 +52,7 @@ public class Character_Object : MonoBehaviour
     CharactersManager charactersManager;
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb, bool dropItem)
     {
-        HPBar = HPBarObj.GetComponent<Slider>();
         if (characterStatus.obstacle) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
-        ShieldBar = ShieldBarObj.GetComponent<Slider>();
-        SANBar = SANBarObj.GetComponent<Slider>();
 
         charactersManager = FindObjectOfType<CharactersManager>();
 
@@ -82,9 +78,7 @@ public class Character_Object : MonoBehaviour
     public void HideCharacterObj()
     {
         if (charaSpriteParent.childCount > 0) { for (int i = 0; i < charaSpriteParent.childCount; i++) { Destroy(charaSpriteParent.GetChild(i).gameObject); } }
-        HPBarObj.SetActive(false);
-        ShieldBarObj.SetActive(false);
-        SANBarObj.SetActive(false);
+        canvasGroup.alpha = 0;
         for (int i = 0; i < TurnIconParent.childCount; i++) { Destroy(TurnIconParent.GetChild(i).gameObject); }
         selectedIcon.enabled = false;
     }
@@ -96,14 +90,36 @@ public class Character_Object : MonoBehaviour
     }
 
     public void DisableSANBar() { SANBarObj.SetActive(false); }
+
+    Coroutine barAnim;
     public void SetHPandShieldBar()
     {
         Character.CharacterStatus status = character.GetCharacterStatus();
         ShieldBar.maxValue = status.maxHP + status.shield;
         ShieldBar.value = status.HP + status.shield;
 
+        DMGBar.maxValue = status.maxHP + status.shield;
         HPBar.maxValue = status.maxHP + status.shield;
         HPBar.value = status.HP;
+
+        if(DMGBar.value > HPBar.value)
+        {
+            if (barAnim != null) { StopCoroutine(barAnim); }
+            barAnim = StartCoroutine(DMGBarAnim());
+        }
+        else { DMGBar.value = HPBar.value; }
+    }
+
+    IEnumerator DMGBarAnim()
+    {
+        yield return new WaitForSeconds(0.3f);
+        int dec = Mathf.CeilToInt(character.GetCharacterStatus().maxHP * 0.05f);
+        while (DMGBar.value > HPBar.value)
+        {
+            yield return new WaitForSeconds(0.05f);
+            DMGBar.value -= dec;
+        }
+        DMGBar.value = HPBar.value;
     }
     public void SetSANBar()
     {

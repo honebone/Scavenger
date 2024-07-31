@@ -10,7 +10,9 @@ public class Eq_Quiver : PA_Equipment
     bool act;
     public override string GetPAInfo_Base()
     {
-        return actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = equipmentStatus.GetInfo();
+        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        return s;
     }
    
     public override void OnActivateAbility()

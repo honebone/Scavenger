@@ -30,7 +30,7 @@ public class PA_Equipment : PassiveAbility
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
             }
-            if (equipmentInfo != "") { s += equipmentInfo + "\n"; }
+            if (equipmentInfo != "") { s += equipmentInfo + "\n\n"; }
             return s;
         }
     }

@@ -50,8 +50,9 @@ MonoBehaviour:
     info_start: 
     equipmentInfo: 
     statusMod:
-      maxHP_mul: 0
+      maxHP_mul: 10
       maxSAN_mul: 0
+      PROT: 0
       ATK_mul: 0
       CRITC: 0
       CRITD: 0
@@ -63,12 +64,14 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      moveRes: 0
     actionMods:
     - {fileID: 4030113796962772151, guid: db6796d61296f1e42bfa781be7bda634, type: 3}
   actionStatus:
     actionName: "\u30B9\u30D1\u30A4\u30AF\u30B7\u30FC\u30EB\u30C9"
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642"
     targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: dce393c797a35ca43b59824b28914975, type: 3}
     SE: {fileID: 0}
@@ -82,6 +85,7 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 0
       enemy: 0
+      onlyPlayable: 0
       front: 0
       mid: 0
       back: 0
@@ -93,27 +97,8 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    targetParams:
-      targetType: 0
-      friendly: 0
-      condition:
-        searchAsPos: 0
-        onlyEmpty: 0
-        player: 0
-        enemy: 0
-        front: 0
-        mid: 0
-        back: 0
-        characterTags: 
-        StE: []
-        PE: []
-        HPPercent: 0
-        HP_lessThan: 0
-        HP_excludeEqual: 0
-      ignoreMark: 0
-      ignoreHide: 0
-      moveValue: 
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -128,12 +113,15 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -147,6 +135,7 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
+      guaranteed: 0
       applyChance: 200
       stack: 1
       value: 50
@@ -159,13 +148,17 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 0
+    freeAction: 0
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}

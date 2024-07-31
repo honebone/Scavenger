@@ -45,9 +45,9 @@ MonoBehaviour:
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 2
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
+  hasRemain: 1
+  remainOnBattleStart: 2
+  maxRemain: 2
   actionsStaus:
   - actionName: "\u51B7\u9759"
     conditionInfo: 
@@ -120,10 +120,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
-    removeStEs:
-    - removeStE: {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
-      removeAll: 0
-      addAmount: -5
+    removeStEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []

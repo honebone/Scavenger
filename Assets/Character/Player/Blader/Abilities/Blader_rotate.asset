@@ -87,8 +87,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 70
-    ATKMod_max: 100
+    ATKMod_min: 50
+    ATKMod_max: 80
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 0d000000
   - actionName: "\u56DE\u8EE2\u5207\u308A"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -229,10 +229,10 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
-    index: 0
+    index: 1
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargetsInt: 04000000

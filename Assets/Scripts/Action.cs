@@ -204,12 +204,14 @@ public class Action : MonoBehaviour
                     s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));                   
                 }
                 s += "\n";
-                if (ACCMod != 0) { s += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
-                if (CRITCMod != 0) { s += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
-                if (CRITDMod != 0) { s += string.Format("CRITダメージ補正：{0}％\n", GetValueWithSign(CRITDMod)); }
-                if (drain > 0) { s += string.Format("与ダメージの{0}％を回復\n", drain); }
-                if (sureHit) { s += "必中\n"; }
-                if (unevadable) { s += "EVDを無視\n"; }
+                string attack = "";
+                if (ACCMod != 0) { attack += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
+                if (CRITCMod != 0) { attack += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
+                if (CRITDMod != 0) { attack += string.Format("CRITダメージ補正：{0}％\n", GetValueWithSign(CRITDMod)); }
+                if (drain > 0) { attack += string.Format("与ダメージの{0}％を回復\n", drain); }
+                if (sureHit) { attack += "必中\n"; }
+                if (unevadable) { attack += "EVDを無視\n"; }
+                s += attack.ColorStr(Color.gray);
                 s += "\n";
             }
 
@@ -624,7 +626,6 @@ public class Action : MonoBehaviour
                                 onKillParamsList.Add(onKillParams);
                             }
 
-                            infoText.AddDebugText($"出目：{dice} ACC：{ACC} ACC-EVD：{ACC - EVD} sureHit：{actionsStatus[i].sureHit} unevadable：{actionsStatus[i].unevadable} 結果：命中");//test
                         }
                         else//回避
                         {
@@ -639,7 +640,6 @@ public class Action : MonoBehaviour
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, true, false);//被攻撃時誘発
 
-                            infoText.AddDebugText($"出目：{dice} ACC：{ACC} ACC-EVD：{ACC-EVD} sureHit：{actionsStatus[i].sureHit} unevadable：{actionsStatus[i].unevadable} 結果：回避");//test
                         }
                     }
                     else//ミス
@@ -652,7 +652,6 @@ public class Action : MonoBehaviour
                         }
                         onAttackParamsList.Add(onAttackParams);
                         target.OnAttacked(actionStatus.actionOwner, false, true);//被攻撃時誘発
-                        infoText.AddDebugText($"出目：{dice} ACC：{ACC} ACC-EVD：{ACC - EVD} sureHit：{actionsStatus[i].sureHit} unevadable：{actionsStatus[i].unevadable} 結果：ミス");//test
                         soundManager.PlaySE(Definer.soundRef.miss);
                         attackHit = false;
                     }
