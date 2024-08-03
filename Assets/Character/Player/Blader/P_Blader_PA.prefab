@@ -103,7 +103,7 @@ MonoBehaviour:
   attack:
     actionName: "\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9"
     conditionInfo: "\u81EA\u8EAB\u304C\u79FB\u52D5\u3057\u305F\u3068\u304D"
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u65751\u4F53(\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u3042\u308B\u6575\u3092\u512A\u5148)"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -192,6 +192,22 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     actionTargetsInt: 
+  condition_focus:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    onlyPlayable: 0
+    front: 1
+    mid: 1
+    back: 1
+    characterTags: 
+    StE:
+    - {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
   condition:
     searchAsPos: 0
     onlyEmpty: 0

@@ -44,7 +44,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 2
+  cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 2
   maxRemain: 2
@@ -140,4 +140,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8076857709178529593, guid: 4a564a50316271a4c816e06163a113f4, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 08000000

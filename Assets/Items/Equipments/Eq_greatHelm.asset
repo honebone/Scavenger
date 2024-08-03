@@ -22,4 +22,4 @@ MonoBehaviour:
   materialTags: 00000000
   price: 0
   equipmentTag: 0
-  manager: {fileID: 9185327421234476493, guid: 6621593e1ccf5b742bb867c13f2740a2, type: 3}
+  manager: {fileID: 9185327421234476493, guid: eb5a7fa287f076f498ad64f29ce9d370, type: 3}

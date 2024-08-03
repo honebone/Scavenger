@@ -6,12 +6,15 @@ public class PA_StE_BladeStorm : PA_StatusEffect
 {
 
     [SerializeField] Action.ActionStatus attack;
+    [SerializeField] CharactersManager.SearchCharaCondition condition_focus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
     public override void OnMoved(Action.OnMoveParams onMoveParams)
     {
+        List<Character> target_focus = charactersManager.SearchCharaWithCondition(condition_focus);
         List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        Enqueue(attack, true, new List<Character> { target.Choice() });
+        if (target_focus.Count > 0) { Enqueue(attack, true, new List<Character> { target_focus.Choice() }); }
+        else if (target.Count > 0) { Enqueue(attack, true, new List<Character> { target.Choice() }); }
         AddStack(-1);
     }
 }

@@ -5,13 +5,16 @@ using UnityEngine;
 public class P_Blader_PA : PA_Personality
 {
     [SerializeField] Action.ActionStatus attack;
+    [SerializeField] CharactersManager.SearchCharaCondition condition_focus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] Action.ActionStatus combo;
 
     public override void OnMoved(Action.OnMoveParams onMoveParams)
     {
+        List<Character> target_focus = charactersManager.SearchCharaWithCondition(condition_focus);
         List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        if (target.Count > 0) { Enqueue(attack, true, new List<Character> { target.Choice() }); }
+        if (target_focus.Count > 0) { Enqueue(attack, true, new List<Character> { target_focus.Choice() }); }
+        else if (target.Count > 0) { Enqueue(attack, true, new List<Character> { target.Choice() }); }
     }
 
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)

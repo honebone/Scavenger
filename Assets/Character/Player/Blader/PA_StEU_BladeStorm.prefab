@@ -95,8 +95,8 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     cantCounter: 0
     attackType: 0
-    ATKMod_min: 40
-    ATKMod_max: 60
+    ATKMod_min: 100
+    ATKMod_max: 140
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -109,6 +109,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -139,11 +141,29 @@ MonoBehaviour:
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     actionTargetsInt: 
+  condition_focus:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    onlyPlayable: 0
+    front: 1
+    mid: 1
+    back: 1
+    characterTags: 
+    StE:
+    - {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
   condition:
     searchAsPos: 0
     onlyEmpty: 0
