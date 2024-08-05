@@ -50,7 +50,7 @@ public class Character_Object : MonoBehaviour
 
     Character character;
     CharactersManager charactersManager;
-    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager,Character_TargetButton tb, bool dropItem)
+    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem)
     {
         if (characterStatus.obstacle) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
 
@@ -60,9 +60,9 @@ public class Character_Object : MonoBehaviour
 
         var c = Instantiate(charaManager, characterManagerParent);
         character = c.GetComponent<Character>();
-        character.Init(characterStatus, this,tb,dropItem);
+        character.Init(characterStatus, this, tb, dropItem);
 
-        foreach(Ability.AbilityStatus abilityStatus in characterStatus.abilitiesStatus)
+        foreach (Ability.AbilityStatus abilityStatus in characterStatus.abilitiesStatus)
         {
             GameObject abilityManager;
             if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }

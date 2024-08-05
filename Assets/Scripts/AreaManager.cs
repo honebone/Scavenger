@@ -110,6 +110,8 @@ public class AreaManager : MonoBehaviour
     protected ExpeditionManager expeditionManager;
     protected InfoText infoText;
     protected Map_MapPanel map;
+
+    int areaLength;
     private void Start()
     {
         expeditionManager = FindObjectOfType<ExpeditionManager>();
@@ -134,7 +136,7 @@ public class AreaManager : MonoBehaviour
     {
         map.ResetMap();
 
-        int length = Random.Range(areaData.minLength, areaData.maxLength + 1);
+        areaLength = Random.Range(areaData.minLength, areaData.maxLength + 1);
         int layerCount = 0;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//0‘w–Ú
@@ -156,7 +158,7 @@ public class AreaManager : MonoBehaviour
         map.SetLayerPanel(layer, layerCount);
         layerCount++;
 
-        for (int j = 2; j < length - 2; j++)//2`(length-3)‘w–Ú‚Ü‚Å
+        for (int j = 2; j < areaLength - 2; j++)//2`(length-3)‘w–Ú‚Ü‚Å
         {
             for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }
             layer[0].down = -1;
@@ -236,4 +238,5 @@ public class AreaManager : MonoBehaviour
         return room;
     }
     public AreaData GetArea() { return areaData; }
+    public int GetAreaLength() { return areaLength; }
 }

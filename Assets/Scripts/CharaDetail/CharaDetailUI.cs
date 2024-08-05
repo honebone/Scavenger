@@ -105,6 +105,14 @@ public class CharaDetailUI : MonoBehaviour
             charaButtons[i].SetChara(characters[i]);
         }
 
+        if (characters.Count < 3)
+        {
+            for (int i = characters.Count; i < 3; i++)
+            {
+                charaButtons[i].ResetValue();
+            }
+        }
+
         if (!displayingChara || !displayingChara.CheckAlive())
         {
             charaButtons[0].SelectChara();

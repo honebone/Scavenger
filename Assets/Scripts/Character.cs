@@ -354,6 +354,7 @@ public class Character : MonoBehaviour
     LootPanel loot;
     Definer definer;
     CameraManager cameraManager;
+    ExpeditionManager expeditionManager;
 
     public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem )
     {
@@ -383,6 +384,9 @@ public class Character : MonoBehaviour
         loot = FindObjectOfType<LootPanel>();
         definer = FindObjectOfType<Definer>();
         cameraManager = FindObjectOfType<CameraManager>();
+        expeditionManager = FindObjectOfType<ExpeditionManager>();
+
+        if (charaStatus.position >= 9) { ModifyStatus(expeditionManager.GetEnemyStatusMod(), true, true); }
 
         if (!charaStatus.playable)
         {
@@ -678,7 +682,11 @@ public class Character : MonoBehaviour
         if (!nullOwner) { actionStatus.actionOwner = this; }
         else { actionStatus.actionOwner = null; }
         if (setTargets) { actionStatus.actionTargets = actionTargets; }
-        actionQueue.Enqueue(actionStatus);
+
+        if ((actionStatus.actionTargets != null && actionStatus.actionTargets.Count > 0) || (actionStatus.actionTargetsInt != null && actionStatus.actionTargetsInt.Count > 0))
+        {
+            actionQueue.Enqueue(actionStatus);
+        }
     }
 
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
@@ -919,13 +927,12 @@ public class Character : MonoBehaviour
     }
 
     //==================================================<<ステータス変更系>>===========================================================
-    /// <summary>HP、SANの差分回復はしないことに注意 </summary>
-    public void ModifyStatus(CharaStatusMod mod,bool set)
+    public void ModifyStatus(CharaStatusMod mod, bool set, bool heal = false)
     {
         int n = 1;
         if (!set) { n = -1; }
-        if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, false); }
-        if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, false); }
+        if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, heal); }
+        if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, heal); }
         if (mod.PROT != 0) { AddPROT(mod.PROT * n); }
         if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
         if (mod.CRITC != 0) { AddCRITC(mod.CRITC * n); }
@@ -1131,11 +1138,14 @@ public class Character : MonoBehaviour
 
     public void GainEXP(int amount)
     {
-        charaStatus.exp += amount;
-        if(charaStatus.exp >= charaStatus.GetNextExp())
+        if (charaStatus.level < 10)
         {
-            FindObjectOfType<LVLUpManager>().LVLUp(this);
-        }
+            charaStatus.exp += amount;
+            if (charaStatus.exp >= charaStatus.GetNextExp())
+            {
+                FindObjectOfType<LVLUpManager>().LVLUp(this);
+            }
+        }    
     }
     public void LVLUp()
     {

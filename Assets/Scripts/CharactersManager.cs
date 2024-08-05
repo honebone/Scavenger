@@ -22,10 +22,11 @@ public class CharactersManager : MonoBehaviour
     List<Character> generatedCharacters;
     List<Character> existingCharacters;
 
+    [SerializeField] ExpeditionManager expeditionManager;
     InfoText infoText;
     Utility util;
 
-   
+
     public void AddCharacter(Character character)
     {
         generatedCharacters.Add(character);
@@ -50,17 +51,17 @@ public class CharactersManager : MonoBehaviour
     }
     /// <summary>生存している全てのキャラを返します </summary>
     public List<Character> GetExistingCharacters_All() { return existingCharacters; }
-    public List<Character> GetExistingCharacters(List<int> positions,bool includeEmpty)
+    public List<Character> GetExistingCharacters(List<int> positions, bool includeEmpty)
     {
         List<Character> characters = new List<Character>();
-        foreach (int pos in positions) { if (CheckCharaExist(pos)||includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
+        foreach (int pos in positions) { if (CheckCharaExist(pos) || includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
     public List<int> GetExistingCharactersPos(List<int> targetPool)
     {
         List<int> ints = new List<int>();
         List<Character> characterList = new List<Character>();
-        foreach(int target in targetPool)
+        foreach (int target in targetPool)
         {
             if (CheckCharaExist(target) && !characterList.Contains(GetCharacterWithPos(target)))
             {
@@ -81,12 +82,12 @@ public class CharactersManager : MonoBehaviour
     /// <summary>移動処理に使用　進行方向にいるキャラを取得</summary>
     /// <param name="ranges">0:right 1:upper 2:lower 3:left</param>
     /// <returns></returns>
-    public List<Character> GetTravelingDirCharas(int pos,int dir,int range)
+    public List<Character> GetTravelingDirCharas(int pos, int dir, int range)
     {
         List<Character> c = new List<Character>();
-        for(int i = 1; i <= range; i++)
+        for (int i = 1; i <= range; i++)
         {
-            if(CheckCharaExist(util.GetMoveToPos(pos, dir, i))&&!c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
+            if (CheckCharaExist(util.GetMoveToPos(pos, dir, i)) && !c.Contains(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i))))
             {
                 c.Add(GetCharacterWithPos(util.GetMoveToPos(pos, dir, i)));
             }
@@ -95,7 +96,7 @@ public class CharactersManager : MonoBehaviour
         return c;
     }
 
-   
+
 
     public void RemoveExistingCharacter(Character chara)
     {
@@ -113,7 +114,7 @@ public class CharactersManager : MonoBehaviour
     /// <param name="targetEmpty">空きスペースを対象とするか</param>
     /// <param name="size">空きスペースを対象とする場合、そのサイズ</param>
     /// <param name="targetGroup"></param>
-    public void SetTargetIcon(int pos,List<int> targetGroup)//,bool targetEmpty
+    public void SetTargetIcon(int pos, List<int> targetGroup)//,bool targetEmpty
     {
         //if (targetEmpty)
         //{
@@ -182,13 +183,13 @@ public class CharactersManager : MonoBehaviour
             return null;
         }
         List<Character> list = new List<Character>();
-        foreach(Character character in existingCharacters)
+        foreach (Character character in existingCharacters)
         {
             Character.CharacterStatus status = character.GetCharacterStatus();
             if (!condition.player && status.position < 9) { continue; }
             if (!condition.enemy && status.position >= 9) { continue; }
             if (condition.onlyPlayable && !status.playable) { continue; }
-            if(!condition.front && status.position.GetColumn()==0) { continue; }
+            if (!condition.front && status.position.GetColumn() == 0) { continue; }
             if (!condition.mid && status.position.GetColumn() == 1) { continue; }
             if (!condition.back && status.position.GetColumn() == 2) { continue; }
             bool matched = condition.characterTags.Count == 0;
@@ -212,7 +213,7 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
-            matched = condition.PE.Count == 0; 
+            matched = condition.PE.Count == 0;
 
             foreach (GameObject s in condition.PE)
             {
@@ -228,11 +229,11 @@ public class CharactersManager : MonoBehaviour
             if (condition.HP_lessThan)
             {
                 if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { continue; }//HP% < 条件値 のみ通す
-                if(!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
+                if (!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
             }
             else
             {
-                if(condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
+                if (condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
                 if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
             }
 
@@ -255,7 +256,7 @@ public class CharactersManager : MonoBehaviour
             return null;
         }
         List<int> list = new List<int>();
-        for (int i =0;i<18;i++)
+        for (int i = 0; i < 18; i++)
         {
             if (!condition.player && i < 9) { continue; }
             if (!condition.enemy && i >= 9) { continue; }
@@ -295,7 +296,7 @@ public class CharactersManager : MonoBehaviour
     /// </summary>
     /// <param name="moveValue">0:right 1:upper 2:lower 3:left</param>
     /// <returns></returns>
-    public List<int> GetMoveTargets(int pos,List<int> moveValue)
+    public List<int> GetMoveTargets(int pos, List<int> moveValue)
     {
         int minPos = 0;
         int maxPos = 8;
@@ -347,7 +348,7 @@ public class CharactersManager : MonoBehaviour
     public List<int> GetEmptyPos(List<int> range)
     {
         List<int> empty = new List<int>();
-        foreach(int pos in range)
+        foreach (int pos in range)
         {
             if (!CheckCharaExist(pos)) { empty.Add(pos); }
         }
@@ -362,7 +363,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            if(chara.GetCharacterStatus().position >= 9&&!chara.GetCharacterStatus().obstacle) { return false; }//敵側に障害物でないキャラがいるなら勝利してない
+            if (chara.GetCharacterStatus().position >= 9 && !chara.GetCharacterStatus().obstacle) { return false; }//敵側に障害物でないキャラがいるなら勝利してない
         }
         return true;
     }
@@ -379,7 +380,7 @@ public class CharactersManager : MonoBehaviour
 
     public void ResetAllTargetIcons()
     {
-        foreach(Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetTargetIcon(); }
+        foreach (Character_TargetButton targetButton in targetButtons_size1) { targetButton.ResetTargetIcon(); }
         //foreach (Character_TargetButton targetButton in targetButtons_size2) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
         //foreach (Character_TargetButton targetButton in targetButtons_size3) { if (targetButton != null) { targetButton.ResetTargetIcon(); }; }
     }
@@ -395,7 +396,7 @@ public class CharactersManager : MonoBehaviour
     }
     private void Start()
     {
-        generatedCharacters=new List<Character>();
+        generatedCharacters = new List<Character>();
 
         existingCharacters = new List<Character>();
 
@@ -411,23 +412,23 @@ public class CharactersManager : MonoBehaviour
     public void DestroyDead()
     {
         List<Character> remove = new List<Character>();
-        foreach(Character c in generatedCharacters)
+        foreach (Character c in generatedCharacters)
         {
             if (c.GetCharacterStatus().dead)
             {
                 remove.Add(c);
             }
         }
-        
-        foreach(Character c in remove)
+
+        foreach (Character c in remove)
         {
-           generatedCharacters.Remove(c);
+            generatedCharacters.Remove(c);
             Destroy(c.GetCharacter_Object().gameObject);
         }
 
     }
 
-    public void SpawnPlayer(CharacterData characterData,int pos)
+    public void SpawnPlayer(CharacterData characterData, int pos)
     {
         if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
@@ -438,11 +439,11 @@ public class CharactersManager : MonoBehaviour
         Vector2 worldPos = charactersWorldPos_Size1[pos];
         Character_TargetButton tb = targetButtons_size1[pos];
 
-        var co = Instantiate(characterObject, worldPos, Quaternion.identity,CharactersP);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager,tb,false);
+        var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
+        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false);
     }
 
-    public void SpawnEnemy(CharacterData characterData, int pos,bool dropItem)
+    public void SpawnEnemy(CharacterData characterData, int pos, bool dropItem)
     {
         if (pos < 9) { print("エネミーを召喚するのに、指定した位置がプレイヤー側です!"); }
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
@@ -455,6 +456,6 @@ public class CharactersManager : MonoBehaviour
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem);
-    }
 
+    }
 }

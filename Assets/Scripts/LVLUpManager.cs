@@ -16,7 +16,11 @@ public class LVLUpManager : MonoBehaviour
     [SerializeField] List<Transform> panelsTF;
     [SerializeField] CharaDetailUI charaDetail;
     [SerializeField] CharaDetail_LVLUp charaDetail_lvlUp;
+
+    [SerializeField] AudioClip jingle_LVLUp;
     List<Character> LVLUpQueue = new List<Character>();
+
+    SoundManager soundManager;
 
     bool inLVLUp;
 
@@ -26,7 +30,12 @@ public class LVLUpManager : MonoBehaviour
         public bool upgrade;
         public Ability.AbilityStatus abilityStatus;
     }
-    
+
+    private void Start()
+    {
+        soundManager = FindObjectOfType<SoundManager>();
+    }
+
     public void LVLUp(Character chara)
     {
         LVLUpQueue.Add(chara);
@@ -39,7 +48,8 @@ public class LVLUpManager : MonoBehaviour
 
     void StartelectUpgrade()
     {
-       // charaDetail.CloseUI();
+        // charaDetail.CloseUI();
+        soundManager.PlaySE(jingle_LVLUp);
         panel.SetActive(true);
         LVLUpQueue[0].DisplayInfo();
 
@@ -67,6 +77,7 @@ public class LVLUpManager : MonoBehaviour
         List<LVLUpParams> upgrades = pool.Sample(2);
         buttons[0].SetUpgrade(upgrades[0]);
         if (upgrades.Count == 2) { buttons[1].SetUpgrade(upgrades[1]); }
+        else { buttons[1].SetUpgrade(upgrades[0]); }
 
         StartCoroutine(SelectUpgradeC());
     }
@@ -91,14 +102,15 @@ public class LVLUpManager : MonoBehaviour
     }
     IEnumerator EndSelectUpgradeC()
     {
-        lvlUpTitle.text = "";
-        statusGrowthText.text = "";
+       
         for (int i = 0; i < 3; i++)
         {
             panelsTF[i].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd);
             yield return new WaitForSeconds(0.15f);
         }
         yield return new WaitForSeconds(0.5f);
+        lvlUpTitle.text = "";
+        statusGrowthText.text = "";
         if (LVLUpQueue.Count > 0) { StartelectUpgrade(); }
         else
         {

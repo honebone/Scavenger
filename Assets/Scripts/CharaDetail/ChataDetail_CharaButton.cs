@@ -20,6 +20,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
     {
         character = chara;
         charaImage.sprite = character.GetCharacterStatus().spriteForUI;
+        charaImage.color = Color.white;
         SetButtons();
     }
 
@@ -51,6 +52,18 @@ public class ChataDetail_CharaButton : MonoBehaviour
             l.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(true, infoText, detailUI, mouseOver,this);
         }
     }
+    public void ResetValue()
+    {
+        character = null;
+        charaImage.color = Color.clear;
+        if (equipmentsP.childCount != 0)
+        {
+            for (int i = 0; i < equipmentsP.childCount; i++)
+            {
+                Destroy(equipmentsP.GetChild(i).gameObject);
+            }
+        }
+    }
 
     public void ResetFrameColor()
     {
@@ -66,7 +79,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     public void OnMouseDown()
     {
-        SelectChara();
+        if(character != null) { SelectChara(); }
     }
 
     public void OnMouseEnter()

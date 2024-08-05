@@ -98,7 +98,7 @@ public class DebugFunction : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                FindObjectOfType<DeployCharacterManager>().StartDeploy();
+                expeditionManager.EnemyLVLUp();
             }
             if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
         }

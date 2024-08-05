@@ -403,6 +403,7 @@ public class Action : MonoBehaviour
         public bool evaded;
         public bool CRIT;
         public float toralCRITC;
+        public Action.ActionStatus actionStatus;
         public Character target;
     }
     public struct OnKillParams
@@ -561,6 +562,7 @@ public class Action : MonoBehaviour
                 if (actionsStatus[i].ATKMod_max > 0 && target.CheckAlive())//çUåÇ
                 {
                     OnAttackParams onAttackParams = new OnAttackParams();
+                    onAttackParams.actionStatus = actionsStatus[i];
                     onAttackParams.target = target;
                     onAttackParams.toralCRITC = ownerStatus.CRITC + actionsStatus[i].CRITCMod;
                     bool CRIT = false;

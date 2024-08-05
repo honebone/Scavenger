@@ -55,6 +55,11 @@ public class ExpeditionManager : MonoBehaviour
     }
     [SerializeField]
     PartyStatus partyStatus;
+
+    [SerializeField] float enemyMaxHPGrowth;
+    [SerializeField] float enemyATKGrowth;
+    [SerializeField] Character.CharaStatusMod enemyStatusGrowth;
+
     [SerializeField]
     AreaData areaDataForDebug;
 
@@ -91,8 +96,10 @@ public class ExpeditionManager : MonoBehaviour
 
     [SerializeField]
     AudioClip SE_nextRoom;
+    [SerializeField] AudioClip jingle_EnemyLVLUp;
     [SerializeField]
     Transform REManagerParent;
+
 
     [SerializeField] GameObject nextRoomButton;
 
@@ -177,7 +184,7 @@ public class ExpeditionManager : MonoBehaviour
         mainMessage.ResetMessage();
 
         yield return new WaitForSeconds(1.25f);
-        SelectNextRoom();
+        CheckEnemyLVLUp();
     }
 
     public void NextArea(AreaData next)
@@ -203,6 +210,38 @@ public class ExpeditionManager : MonoBehaviour
         //SelectNextRoom();
     }
     
+    void CheckEnemyLVLUp()
+    {
+        if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))
+        {
+            StartCoroutine(EnemyLVLUpC());
+        }
+        else { SelectNextRoom(); }
+    }
+
+    IEnumerator EnemyLVLUpC()
+    {
+        EnemyLVLUp();
+        string info = "";
+        info += $"ëùâ¡HP:{enemyStatusGrowth.maxHP_mul}Åì\n";
+        info += $"ëùâ¡ATK:{enemyStatusGrowth.ATK_mul}Åì\n";
+        info += $"ëùâ¡EVD:{enemyStatusGrowth.EVD}\n";
+        info += $"ëùâ¡ACC:{enemyStatusGrowth.ACC}\n";
+        info += $"ëùâ¡ACT:{enemyStatusGrowth.ACT}\n";
+
+        soundManager.StopBGMs();
+        soundManager.PlaySE(jingle_EnemyLVLUp);
+
+        mainMessage.SetMessage("ìGÇÃLVLÇ™è„è∏".ColorStr(Definer.colorRef.abilityColors[1]));
+        yield return new WaitForSeconds(1.5f);
+        mainMessage.SetInfo(info.ColorStr(Definer.colorRef.abilityColors[1]));
+        yield return new WaitForSeconds(3f);
+        mainMessage.ResetMessage();
+        yield return new WaitForSeconds(1.25f);
+
+        soundManager.PlayBGM_Normal();
+        SelectNextRoom();
+    }
 
     public void SelectNextRoom()
     {
@@ -259,6 +298,17 @@ public class ExpeditionManager : MonoBehaviour
         infoText.AddLogText(string.Format("Å`Å`{0}Å`Å`", REName));
         infoText.SwitchToLog();
     }
+
+    public void EnemyLVLUp()
+    {
+        enemyStatusGrowth.ACC++;
+        enemyStatusGrowth.EVD++;
+        enemyStatusGrowth.ACT++;
+        enemyStatusGrowth.maxHP_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.maxHP_mul) * enemyMaxHPGrowth - 100);
+        enemyStatusGrowth.ATK_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.ATK_mul) * enemyATKGrowth - 100);
+    }
+    public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
+
 
     bool moveMode;
     Character moveChara;
@@ -437,7 +487,7 @@ public class ExpeditionManager : MonoBehaviour
         {
             SetRandomPersonality_ToRandom();
         }
-        SelectNextRoom();
+        CheckEnemyLVLUp();
     }
 
     public void Defeat()

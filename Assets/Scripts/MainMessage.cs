@@ -8,6 +8,7 @@ public class MainMessage : MonoBehaviour
 {
     [SerializeField] Animator anim;
     [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI infoText;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,14 @@ public class MainMessage : MonoBehaviour
     {
         anim.SetTrigger("reset");
     }
+    public void SetInfo(string info)
+    {
+        infoText.text = info;
+        anim.SetTrigger("info");
+    }
     public void ClearText()
     {
         titleText.text = "";
+        infoText.text = "";
     }
 }
