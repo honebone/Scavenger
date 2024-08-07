@@ -10,6 +10,7 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField]
     GameObject UIpanel;
 
+    [SerializeField] int maxParty = 4;
     [SerializeField] int maxEquipments;
     [Space(25), SerializeField]
     Transform equipmentP;
@@ -105,9 +106,9 @@ public class CharaDetailUI : MonoBehaviour
             charaButtons[i].SetChara(characters[i]);
         }
 
-        if (characters.Count < 3)
+        if (characters.Count < maxParty)
         {
-            for (int i = characters.Count; i < 3; i++)
+            for (int i = characters.Count; i < maxParty; i++)
             {
                 charaButtons[i].ResetValue();
             }

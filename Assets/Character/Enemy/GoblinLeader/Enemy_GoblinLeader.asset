@@ -46,9 +46,15 @@ MonoBehaviour:
   EVD: 5
   ACC: 90
   ACT: 6
-  turnPerRound: 3
+  turnPerRound: 2
   GHeal: 100
   RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
   debuffRes: 0
   StEResists:
   - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}

@@ -50,7 +50,7 @@ MonoBehaviour:
   EVD: 3
   ACC: 95
   ACT: 7
-  turnPerRound: 2
+  turnPerRound: 1
   GHeal: 100
   RHeal: 100
   statusGrowth:

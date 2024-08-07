@@ -67,7 +67,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         //    destroyed = true;
         //    Destroy(gameObject);
         //}
-        Destroy(gameObject);
+        if (gameObject != null) { Destroy(gameObject); }
     }
 
     public  Character GetCharacter() { return character; }

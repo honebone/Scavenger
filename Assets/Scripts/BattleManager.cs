@@ -264,7 +264,7 @@ public class BattleManager : MonoBehaviour
 
         currentTurn = turns[0];
         currentTurn.character.MyTurnStart();
-        infoText.AddDebugText(string.Format("{0}‚Ìturns‚ğíœ", turns[0].character.GetCharacterStatus().charaName));
+        //infoText.AddDebugText(string.Format("{0}‚Ìturns‚ğíœ", turns[0].character.GetCharacterStatus().charaName));
         turns.RemoveAt(0);
 
     }
