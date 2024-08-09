@@ -493,6 +493,7 @@ public class Action : MonoBehaviour
         if (actionStatus.freeAction)
         {
             if (!actionStatus.abilityEffect) { infoText.AddErrorText("アビリティじゃないのにフリーアクション"); }
+            infoText.AddDebugText("FreeAction");
             actionStatus.actionOwner.ContinueTurn();
         }
 
