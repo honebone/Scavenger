@@ -9,6 +9,10 @@ public class TtileSceneManager : MonoBehaviour
 {
     [SerializeField] CanvasGroup textMask;
     [SerializeField] Light2D sunLight;
+    [SerializeField] Toggle skipTutorial;
+
+    GameManager gameManager;
+
     bool canStart;
 
     public void CanStart()
@@ -16,14 +20,21 @@ public class TtileSceneManager : MonoBehaviour
         canStart = true;
         textMask.alpha = 1;
     }
-    // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        if (canStart&&Input.GetMouseButtonDown(0))
-        {
-            StartCoroutine(StartExpedition());
-        }
+        gameManager = FindObjectOfType<GameManager>();
+        //gameManager.SetTutorialMode(true);
     }
+
+    // Update is called once per frame
+    //void Update()
+    //{
+    //    if (canStart&&Input.GetMouseButtonDown(0))
+    //    {
+    //        StartCoroutine(StartExpedition());
+    //    }
+    //}
 
     IEnumerator StartExpedition()
     {
@@ -34,6 +45,16 @@ public class TtileSceneManager : MonoBehaviour
             sunLight.intensity -=0.126f;
         }
         yield return new WaitForSeconds(1f);
-        FindObjectOfType<GameManager>().GoToExpeditionScene(false);
+        gameManager.GoToExpeditionScene(!skipTutorial.isOn);
+    }
+
+    public void ToggleTutorial() { }
+    public void StartGame()
+    {
+        if (canStart)
+        {
+            canStart = false;
+            StartCoroutine(StartExpedition());
+        }
     }
 }

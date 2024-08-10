@@ -434,6 +434,14 @@ public class Character : MonoBehaviour
             FindObjectOfType<Inventory>().AddItem(remove, 1, false);
         }
     }
+    public bool CheckSameEquipment(ItemData eq)
+    {
+        foreach(Definer.Item i in charaStatus.equipments)
+        {
+            if (i.data == eq) { return true; }
+        }
+        return false;
+    }
     public void RemovePA(PassiveAbility passiveAbility)
     {
         switch (passiveAbility.GetPAType())

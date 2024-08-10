@@ -70,19 +70,19 @@ public class DeployCharacterManager : MonoBehaviour
     IEnumerator Delay()
     {
         yield return new WaitForSeconds(1f);
-        tutorial = gameManager.CheckIfTutorialArea();
+        tutorial = gameManager.DoTutorial();
         Debug.Log(tutorial);
         //tutorial = true;
         StartDeploy();
 
         if (tutorial)
         {
-            Character.CharacterStatus inf = new Character.CharacterStatus();
-            Character.CharacterStatus hun = new Character.CharacterStatus();
-            inf.Init(infantry, 0);
-            hun.Init(hunter, 0);
-            positionButtons[4].SetChara(hun);
-            positionButtons[6].SetChara(inf);
+            //Character.CharacterStatus inf = new Character.CharacterStatus();
+            //Character.CharacterStatus hun = new Character.CharacterStatus();
+            //inf.Init(infantry, 0);
+            //hun.Init(hunter, 0);
+            //positionButtons[4].SetChara(hun);
+            //positionButtons[6].SetChara(inf);
 
             yield return new WaitForSeconds(1f);
             tutorialManager.StartTutorial(tutroial_deploy);
@@ -104,24 +104,28 @@ public class DeployCharacterManager : MonoBehaviour
             c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this, mouseOver, scroll);
         }
         CheckParty();
-        if (tutorial) { canEmbark = false; }
+        //if (tutorial) { canEmbark = false; }
     }
 
     public void SetDraggingChara(Character.CharacterStatus character)
     {
-        if (!tutorial)
-        {
-            draggingChara = character;
-            draggingImage = Instantiate(dragImage, dragImageP);
-            draggingImage.GetComponent<Image>().sprite = draggingChara.spriteForUI;
-        }
-        else { guideMessage.SetWaringText("チュートリアル中は編成の変更不可"); }
+        //if (!tutorial)
+        //{
+        //    draggingChara = character;
+        //    draggingImage = Instantiate(dragImage, dragImageP);
+        //    draggingImage.GetComponent<Image>().sprite = draggingChara.spriteForUI;
+        //}
+        //else { guideMessage.SetWaringText("チュートリアル中は編成の変更不可"); }
+
+        draggingChara = character;
+        draggingImage = Instantiate(dragImage, dragImageP);
+        draggingImage.GetComponent<Image>().sprite = draggingChara.spriteForUI;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (deploy && !tutorial)
+        if (deploy)//&& !tutorial
         {
             if (draggingImage != null)
             {
@@ -183,7 +187,7 @@ public class DeployCharacterManager : MonoBehaviour
     {
         if (canEmbark)
         {
-            if (tutorialManager.CheckUnlocked(tutroial_info))
+            if (!gameManager.DoTutorial() || tutorialManager.CheckUnlocked(tutroial_info))
             {
                 panel.SetActive(false);
                 deploy = false;
@@ -196,8 +200,9 @@ public class DeployCharacterManager : MonoBehaviour
                     }
                 }
 
-                if (tutorial) { expeditionManager.StartExpedition(area_tutorial); }
-                else { expeditionManager.StartExpedition(area_cave); }
+                //if (tutorial) { expeditionManager.StartExpedition(area_tutorial); }
+                //else { expeditionManager.StartExpedition(area_cave); }
+                expeditionManager.StartExpedition(area_cave);//test
             }
             else
             {

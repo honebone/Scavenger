@@ -13,18 +13,36 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
     MouseOverUI mouseOver;
 
     Definer.Item item;
-    public void Init(Definer.Item i, InfoText it, CharaDetailUI d,MouseOverUI m)
+    public void Init(Definer.Item i, InfoText it, CharaDetailUI d,MouseOverUI m,ScrollRect scrollRect)
     {
         item = i;
         infoText = it;
         detailUI = d;
         mouseOver = m;
+        scroll = scrollRect;
 
         itemImage.sprite = item.data.sprite;
         frame.color = item.data.rarity.ToColor();
     }
 
+    [SerializeField]
+    float scrollSpeed = 0.1f;
+    ScrollRect scroll;
+    float wheel;
+    bool p;
 
+    private void Update()
+    {
+        if (p)
+        {
+            wheel += Input.mouseScrollDelta.y;
+            if (wheel != 0)
+            {
+                scroll.verticalNormalizedPosition += wheel * scrollSpeed;
+                wheel = 0;
+            }
+        }
+    }
 
     public void OnMouseDown()
     {
@@ -48,10 +66,12 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        p = true;
         mouseOver.SetUI(string.Format("{0}\nƒhƒ‰ƒbƒO‚Å‘•”õ", item.data.itemName.ColorStr(item.data.rarity.ToColor())), true);
     }
     public void OnMouseExit()
     {
+        p = false;
         mouseOver.ResetUI();
     }
 

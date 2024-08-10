@@ -259,8 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   skipDeployPhase: 0
+  skipTutorial: 0
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -3169,7 +3170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f86359875cbcd847973750b7ef68c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipTutorial: 0
   panel: {fileID: 1961925734}
   guideObjP: {fileID: 1141226839}
   left: {fileID: 147430896}
@@ -6317,7 +6317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1684955844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1169858261}
+        m_TargetAssemblyTypeName: CharaDetailUI, Assembly-CSharp
+        m_MethodName: ToggleToPersonality
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &391022337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15093,6 +15105,7 @@ MonoBehaviour:
   infoText: {fileID: 810066771}
   mouseOver: {fileID: 1425116168}
   inventory: {fileID: 1060233965}
+  scrollRect: {fileID: 1717478966}
 --- !u!114 &898553149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29364,7 +29377,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -33736,6 +33749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51eb43b201ae954ea18f7c558f0267d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doTutorial: 0
 --- !u!4 &2045868028
 Transform:
   m_ObjectHideFlags: 0

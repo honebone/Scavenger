@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorials:
   - title: "\u30DE\u30C3\u30D7"
-    tutorialText: "\u7DD1\u8272\u306E\u67A0\u304C\u73FE\u5728\u5730"
+    tutorialText: "\u8D64\u3044\u5186\u3067\u56F2\u308F\u308C\u3066\u3044\u308B\u3068\u3053\u308D\u304C\u73FE\u5728\u5730"
     left: 0
     guideObj: {fileID: 5878612372966413790, guid: ecde32c5abb81d4459488f33d3f06fdf, type: 3}
   - title: "\u30DE\u30C3\u30D7"

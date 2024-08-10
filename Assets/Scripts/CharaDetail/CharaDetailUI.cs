@@ -258,6 +258,11 @@ public class CharaDetailUI : MonoBehaviour
         if (!displayingChara) { warningPanel.SetActive(true); }
     }
 
+    public void ToggleToPersonality()
+    {
+        guideMessage.SetWaringText("この機能は未実装です...");
+    }
+
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)
     {
         ToggleToEquipment();
@@ -288,30 +293,51 @@ public class CharaDetailUI : MonoBehaviour
                 List<RaycastResult> rr = new List<RaycastResult>();
                 raycaster.Raycast(ped, rr);
 
+                bool onSlot = false;
+
                 foreach (RaycastResult result in rr)
                 {
-                    if (result.gameObject.GetComponent<CharaDetail_CharaEqButton>())
+                    if (result.gameObject.GetComponent<CharaDetail_CharaEqButton>())//CharaEqButton上でボタン離したなら
                     {
                         CharaDetail_CharaEqButton charaEqButton = result.gameObject.GetComponent<CharaDetail_CharaEqButton>();
+                        onSlot = true;
 
                         if (!charaEqButton.CheckLocked() && charaEqButton.GetCharaButton() != draggFrom)
                         {
-                            if (draggFrom == null)
+                            if (charaEqButton.GetCharacter().CheckSameEquipment(draggingItem.data))
                             {
-                                inventory.RemoveItem(draggingItem, 1);
+                                guideMessage.SetWaringText("同名の装備品は装備不可");
                             }
                             else
                             {
-                                draggFrom.GetCharacter().UnequipItem(draggingItem, false);
-                                draggFrom.SetButtons();
-                            }
+                                if (draggFrom == null)
+                                {
+                                    inventory.RemoveItem(draggingItem, 1);
+                                }
+                                else
+                                {
+                                    draggFrom.GetCharacter().UnequipItem(draggingItem, false);
+                                    draggFrom.SetButtons();
+                                }
 
-                            charaEqButton.Equip(draggingItem);
+                                charaEqButton.Equip(draggingItem);
+                            }
+                            
                         }
                         inventoryEq.SetButtons();
                         //result.gameObject.GetComponent<CharaDetail_CharaEqButton>().SetChara(draggingChara);
                         break;
                     }
+                }
+
+
+                if (!onSlot && draggFrom != null)
+                {
+                    draggFrom.GetCharacter().UnequipItem(draggingItem, false);
+                    inventory.AddItem(draggingItem, 1, false);
+
+                    draggFrom.SetButtons();
+                    inventoryEq.SetButtons();
                 }
 
                 ResetDraggingItem();

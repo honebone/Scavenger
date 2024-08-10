@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharaDetail_InventoryEq : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CharaDetail_InventoryEq : MonoBehaviour
     [SerializeField] InfoText infoText;
     [SerializeField] MouseOverUI mouseOver;
     [SerializeField] Inventory inventory;
+
+    [SerializeField] ScrollRect scrollRect;
 
 
     public void SetButtons()
@@ -35,7 +38,7 @@ public class CharaDetail_InventoryEq : MonoBehaviour
                 i.amount = 1;
 
                 var eb = Instantiate(equipmentButton, content);
-                eb.GetComponent<CharaDetail_InventoryEqButton>().Init(i, infoText, detailUI, mouseOver);
+                eb.GetComponent<CharaDetail_InventoryEqButton>().Init(i, infoText, detailUI, mouseOver, scrollRect);
             }
         }
     }

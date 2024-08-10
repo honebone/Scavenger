@@ -6,6 +6,7 @@ public class DebugFunction : MonoBehaviour
 {
     [SerializeField] bool debug;
     [SerializeField] bool skipDeployPhase;
+    [SerializeField] bool skipTutorial;
 
     [SerializeField]
     CharacterData[] characterData;
@@ -54,6 +55,9 @@ public class DebugFunction : MonoBehaviour
         inventory = FindObjectOfType<Inventory>();
         infoText = FindObjectOfType<InfoText>();
         items = new Definer.Item[itemData.Length];
+
+        if (debug) { FindObjectOfType<GameManager>().SetTutorialMode(!skipTutorial); }
+
         for (int i = 0; i < itemData.Length; i++)
         {
             items[i].Init(itemData[i]);
@@ -133,6 +137,8 @@ public class DebugFunction : MonoBehaviour
     public bool CheckDebugMode() { return debug; }
 
     public bool CheckSkipDeploy() { return skipDeployPhase; }
+    public bool CheckSkipTutorial() { return skipTutorial; }
+
     public void UnlockEqSlot()
     {
         foreach (Character character in charactersManager.GetExistingCharacters_All())

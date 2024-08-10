@@ -275,3 +275,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 4339044422688787754}
   frame: {fileID: 4339044422948569038}
+  scrollSpeed: 0.1

@@ -25,7 +25,7 @@ public class TestScript_Result : MonoBehaviour
     {
         FindObjectOfType<FadeOutUI>().FadeIn_SetDuration(1);
         yield return new WaitForSeconds(1f);
-        if (gameManager.CheckIfTutorialArea())
+        if (gameManager.DoTutorial())
         {
             yield return new WaitForSeconds(3f);
             dead.transform.DOLocalMoveY(-2000, 25f).SetRelative(true);

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    bool doTutorial;//test
+   [SerializeField] bool doTutorial;//test
 
     private void Start()
     {
@@ -61,5 +61,5 @@ public class GameManager : MonoBehaviour
     public ExpeditionToResult GetExpeditionToResult() { return resultParams; }
 
     public void SetTutorialMode(bool f) { doTutorial = f; }
-    public bool CheckIfTutorialArea() { return doTutorial; }
+    public bool DoTutorial() { return doTutorial; }
 }

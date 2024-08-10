@@ -6,7 +6,7 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
-    [SerializeField] bool skipTutorial;
+    bool skipTutorial;
     [SerializeField] GameObject panel;
     [SerializeField] Transform guideObjP;
 
@@ -16,16 +16,19 @@ public class TutorialManager : MonoBehaviour
 
     TutorialText displayingText;
     TutorialData displayingTutorial;
+    GameManager gameManager;
+
     int count;
 
     private void Start()
     {
-        skipTutorial = !FindObjectOfType<GameManager>().CheckIfTutorialArea();
+        //skipTutorial = !FindObjectOfType<GameManager>().CheckDoesTutorial();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void StartTutorial(TutorialData tutorial)
     {
-        if (!skipTutorial && !unlockedTutorial.Contains(tutorial))
+        if (gameManager.DoTutorial() && !unlockedTutorial.Contains(tutorial))
         {
             Time.timeScale = 0;
             panel.SetActive(true);
