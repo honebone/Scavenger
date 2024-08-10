@@ -135,10 +135,10 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
-      guaranteed: 0
-      applyChance: 200
+      guaranteed: 1
+      applyChance: 0
       stack: 1
-      value: 50
+      value: 70
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

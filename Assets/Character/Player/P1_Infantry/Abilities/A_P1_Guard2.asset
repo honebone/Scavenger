@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u9632\u5FA1+"
   lockedDefault: 0
-  upgradeInfo: "\u30B7\u30FC\u30EB\u30C9\u3092maxHP\u306E5\uFF05\u5206\u8FFD\u52A0\u3067\u4ED8\u4E0E"
+  upgradeInfo: "\u30B7\u30FC\u30EB\u30C9\u4ED8\u4E0E\u91CF+5\uFF05"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   dontChangeSprite: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u9632\u5FA1"
+  - actionName: "\u9632\u5FA1+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -107,10 +107,10 @@ MonoBehaviour:
     SANHeal_max: 0
     SANDamage_min: 0
     SANDamage_max: 0
-    shieldAdd_min: 7
-    shieldAdd_max: 9
-    shieldPercent_min: 5
-    shieldPercent_max: 5
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 20
+    shieldPercent_max: 25
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0

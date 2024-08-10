@@ -12,6 +12,7 @@ public class CharaDetail_ExpBar : MonoBehaviour
     [SerializeField] InfoText infoText;
     [SerializeField] MouseOverUI mouseOver;
 
+
     Tweener tweener;
 
 
@@ -36,7 +37,7 @@ public class CharaDetail_ExpBar : MonoBehaviour
         }
         tweener = transform.DOScale(new Vector3(1.1f, 1.1f, 1), 0.2f);
 
-        //mouseOver.SetUI(string.Format("{0}\nドラッグで装備", item.data.itemName.ColorStr(item.data.rarity.ToColor())), true);
+        mouseOver.SetUI("クリックで経験のオーブを消費",  false);
     }
     public void OnMouseExit()
     {

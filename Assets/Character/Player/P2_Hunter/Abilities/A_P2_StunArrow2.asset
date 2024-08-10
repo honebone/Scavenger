@@ -51,7 +51,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u9EBB\u75FA\u77E2+"
     conditionInfo: 
-    targetInfo: "\u4E2D\u30FB\u5F8C\u5217\u306E\u65751\u4F53"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -69,7 +69,7 @@ MonoBehaviour:
       player: 0
       enemy: 1
       onlyPlayable: 0
-      front: 0
+      front: 1
       mid: 1
       back: 1
       characterTags: 
@@ -145,6 +145,7 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 0
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
