@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    bool tutorialarea;//test
+    bool doTutorial;//test
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     //=================================[titleÅ®expedition]=============================================
     public void  GoToExpeditionScene(bool tutorial)
     {
-        tutorialarea = tutorial;
+        doTutorial = tutorial;
 
         SceneManager.LoadScene("Expedition");
     }
@@ -59,5 +59,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("TestResult");//test
     }
     public ExpeditionToResult GetExpeditionToResult() { return resultParams; }
-    public bool CheckIfTutorialArea() { return tutorialarea; }
+
+    public void SetTutorialMode(bool f) { doTutorial = f; }
+    public bool CheckIfTutorialArea() { return doTutorial; }
 }
