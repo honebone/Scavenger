@@ -44,7 +44,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 6
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
     - applyPE: {fileID: 8496128596371283057, guid: 8472ac4e778ebbf438b64ea9158bfecc, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 3
+      stack: 4
       value: 0
     removeStE_buff: 0
     removeStE_debuff: 0

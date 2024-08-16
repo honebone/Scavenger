@@ -50,7 +50,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u6012\u308A"
-    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u3068\u304D"
+    conditionInfo: "HP\u304C\u6E1B\u5C11\u3057\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 

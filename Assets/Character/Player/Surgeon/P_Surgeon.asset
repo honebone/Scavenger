@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: P_Surgeon
+  m_EditorClassIdentifier: 
+  fileName: P_Surgeon
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u5916\u79D1\u533B"
+  difficulty: "\u4F4E"
+  introduction: "\u652F\u63F4\u30BF\u30A4\u30D7\u306E\u30AD\u30E3\u30E9\n"
+  preferredPos: "\u4E2D\u5217"
+  characterTags: 02000000
+  immovable: 0
+  notChara: 0
+  player: 1
+  playable: 1
+  obstacle: 0
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities: []
+  actionMods: []
+  corpse: {fileID: 0}
+  dropItems: []
+  surviveFatalWounds: 1
+  maxHP: 25
+  maxSAN: 50
+  ATK: 8
+  CRITC: 7
+  CRITD: 150
+  EVD: 6
+  ACC: 96
+  ACT: 6
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  statusGrowth:
+    maxHP: 4
+    ATK: 0.8
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

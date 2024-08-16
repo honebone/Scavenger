@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Priest_Bless2
+  m_Name: A_Surgeon_Heal
   m_EditorClassIdentifier: 
-  abilityName: "\u795D\u798F\u306E\u5149+"
+  abilityName: "\u624B\u8853"
   lockedDefault: 0
-  upgradeInfo: "\u4ED8\u4E0E\u3059\u308B\u518D\u751F\u306E\u30B9\u30BF\u30C3\u30AF\u6570+1"
+  upgradeInfo: 
   upgradeAbility: {fileID: 0}
-  abilityManager: {fileID: 1682909745843474664, guid: 752c856812191a74bb7b86ede0f5ce8b, type: 3}
+  abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
+  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 2
   excludeRandomPool: 0
   selectWeight: 1
   availableFront: 0
-  availableMid: 0
-  availableBack: 1
+  availableMid: 1
+  availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -44,25 +44,26 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 3
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u795D\u798F\u306E\u5149+"
+  - actionName: 
     conditionInfo: 
-    targetInfo: "\u5473\u65B9\u5074\u306E1\u5217\u306E\u30DD\u30B8\u30B7\u30E7\u30F3\u5168\u3066"
-    AModInfo: "\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u3042\u308B\u3068\u304D\n\u30FB\u5BFE\u8C61\u304C\u5473\u65B9\u5074\u306E\u30DD\u30B8\u30B7\u30E7\u30F3\u5168\u4F53\u306B\u306A\u308B"
+    targetInfo: "HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
+    AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 5
+    actionMods:
+    - {fileID: 7922638166886946676, guid: bb8023da73020df4392107fcd963b66b, type: 3}
+    targetType: 1
     friendly: 1
     condition:
-      searchAsPos: 1
+      searchAsPos: 0
       onlyEmpty: 0
       player: 1
       enemy: 0
@@ -73,8 +74,8 @@ MonoBehaviour:
       characterTags: 
       StE: []
       PE: []
-      HPPercent: 0
-      HP_lessThan: 0
+      HPPercent: 50
+      HP_lessThan: 1
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
@@ -99,8 +100,8 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
+    healPercent_min: 20
+    healPercent_max: 30
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -115,12 +116,7 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
-    applyPEParams:
-    - applyPE: {fileID: 8496128596371283057, guid: 8472ac4e778ebbf438b64ea9158bfecc, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 5
-      value: 0
+    applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
@@ -144,4 +140,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 000000000100000002000000030000000400000005000000060000000700000008000000
+    actionTargetsInt: 07000000
