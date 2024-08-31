@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: M_batFangs
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 02000000
-  temporaryTag: 0
   itemName: "\u30B3\u30A6\u30E2\u30EA\u306E\u7259"
+  specialInfo: 0
   info: 
-  amountPerStack: 10
   rarity: 1
   sprite: {fileID: 21300000, guid: 9d5c5d66a30506746a47b8e598574175, type: 3}
+  amountPerStack: 10
+  dropAmountRange: {x: 1, y: 1}
+  materialTags: 02000000
   price: 20
+  equipmentTag: 0
   manager: {fileID: 0}

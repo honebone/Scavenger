@@ -138,6 +138,10 @@ public static class Extentions
         Vector2Int posVec=posInt.PosIntToVector();
         return string.Format("({0},{1})", posVec.x + 1, posVec.y + 1);
     }
+    public static bool IsPlayerPos(this int posInt)
+    {
+        return posInt < 9;
+    }
     /// <summary>
     /// 自身の位置から各方向にどれだけ移動可能かを返す (0:right 1:upper 2:lower 3:left)
     /// pos:position(0-17)
@@ -227,7 +231,7 @@ public static class Extentions
     /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
     public static List<T> Sample<T>(this List<T> list, int amount)
     {
-        if (list.Count <= amount) { return list; }
+        if (list.Count <= amount) { return new List<T>(list); }
 
         List<T> pool = new List<T>(list);
         List<T> sample = new List<T>();

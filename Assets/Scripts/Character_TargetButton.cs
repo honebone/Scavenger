@@ -22,6 +22,10 @@ public class Character_TargetButton : MonoBehaviour
     Transform actionIconsP;
     [SerializeField]
     GameObject actionIcon;
+
+    [SerializeField] Transform damageTextP;
+    [SerializeField] GameObject damageText;
+
     Character character;
     CharactersManager charactersManager;
     InfoText infoText;
@@ -124,6 +128,15 @@ public class Character_TargetButton : MonoBehaviour
 
     public PositionManager GetPositionManager() { return positionManager; }
 
+    //====================[DamageText]==========================================
+
+    public void SetDamageText(string text, Color color)
+    {
+        var d = Instantiate(damageText, damageTextP);
+        d.GetComponent<DamageText>().Init(text, color,position.IsPlayerPos());
+    }
+
+
     public void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(1))
@@ -147,7 +160,7 @@ public class Character_TargetButton : MonoBehaviour
             {
                 if (charactersManager.CheckCharaExist(pos))
                 {
-                    charactersManager.GetCharacterWithPos(pos).GetCharacter_TargetButton().SetActionInvolvedIcon(false);
+                    charactersManager.GetCharacterWithPos(pos).GetTargetButton().SetActionInvolvedIcon(false);
                 }
                 else
                 {

@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: M_batEar
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 02000000
-  temporaryTag: 0
   itemName: "\u30B3\u30A6\u30E2\u30EA\u306E\u8033"
+  specialInfo: 0
   info: 
-  amountPerStack: 5
   rarity: 2
   sprite: {fileID: 21300000, guid: dcd95a11479dcd4468d650d7e820893e, type: 3}
+  amountPerStack: 5
+  dropAmountRange: {x: 1, y: 2}
+  materialTags: 02000000
   price: 80
+  equipmentTag: 0
   manager: {fileID: 0}

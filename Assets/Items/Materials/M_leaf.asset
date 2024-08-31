@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: M_leaf
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 05000000
-  temporaryTag: 0
   itemName: "\u6728\u306E\u8449"
+  specialInfo: 0
   info: 
-  amountPerStack: 50
   rarity: 0
   sprite: {fileID: 21300000, guid: 88876052eb1df014fa9e7891750248d8, type: 3}
+  amountPerStack: 50
+  dropAmountRange: {x: 1, y: 20}
+  materialTags: 05000000
   price: 2
+  equipmentTag: 0
   manager: {fileID: 0}

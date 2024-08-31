@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: M_linenCloth
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 06000000
-  temporaryTag: 0
   itemName: "\u9EBB\u5E03"
+  specialInfo: 0
   info: 
-  amountPerStack: 20
   rarity: 1
   sprite: {fileID: 21300000, guid: 8704841365daadc448743e6351e290f1, type: 3}
+  amountPerStack: 20
+  dropAmountRange: {x: 1, y: 5}
+  materialTags: 06000000
   price: 10
+  equipmentTag: 0
   manager: {fileID: 0}

@@ -49,18 +49,21 @@ public class ItemData : ScriptableObject
     public bool specialInfo;
     [TextArea(3, 10),Header("フレーバーテキストとか?")]
     public string info;
-    public int amountPerStack = 1;
     public enum Rarity { common, uncommon, rare, epic, legendary }
     public Rarity rarity;
     public Sprite sprite;
 
     //material
-    public enum MaterialTag { other, valuables, slay, ore, food, plant, processed }
-    public MaterialTag[] materialTags=new MaterialTag[1];
+    public enum MaterialTag { other, valuables, slay, ore, food, plant, processed ,junk, sundries }
+    [Header("\nMaterial")]
+    public int amountPerStack = 1;
+    public Vector2Int dropAmountRange;
+    public List<MaterialTag> materialTags;
     public int price;//基本となる買値
 
     //equipment
     public enum EquipmentTag { none, weapon, armor }
+    [Header("\nMaterial")]
     public EquipmentTag equipmentTag;
 
     [Header("tool,equipment用")]

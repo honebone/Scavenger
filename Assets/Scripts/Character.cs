@@ -28,7 +28,6 @@ public class Character : MonoBehaviour
         public List<GameObject> actionMods;
 
         public CharacterData corpse;
-        public List<LootPanel.DropItem> dropItems;
 
         //public EquipmentType[] equipableTypes;
         //[Header("equipableTypesと要素数を合わせる")]
@@ -190,7 +189,6 @@ public class Character : MonoBehaviour
             actionMods = new List<GameObject>(data.actionMods);
 
             corpse = data.corpse;
-            dropItems = data.dropItems;
 
             level = 1;
 
@@ -337,7 +335,7 @@ public class Character : MonoBehaviour
     Character_Object charaObj;
     Character_TargetButton targetButton;
     public Character_Object GetCharacter_Object() { return charaObj; }
-    public Character_TargetButton GetCharacter_TargetButton() { return targetButton; }
+    public Character_TargetButton GetTargetButton() { return targetButton; }
 
     //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_StE = new List<PassiveAbility>();
@@ -390,7 +388,7 @@ public class Character : MonoBehaviour
 
         if (!charaStatus.playable)
         {
-            charaObj.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
+            targetButton.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
             infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
         }
         //TurnIconはラウンド開始時にセット
@@ -411,7 +409,7 @@ public class Character : MonoBehaviour
         if (note)
         {
             PA_Personality.PersonalityStatus personality = p.GetComponent<PA_Personality>().GetPersonalityStatus();
-            charaObj.SetDamageText(string.Format("+特性：{0}", personality.personalityName), Definer.colorRef.personalityColors[(int)personality.personalityType]);
+            targetButton.SetDamageText(string.Format("+特性：{0}", personality.personalityName), Definer.colorRef.personalityColors[(int)personality.personalityType]);
             infoText.AddLogText(string.Format("{0}は新たな特性{1}を得た", charaStatus.charaName,personality.GetName()));
         }
     }
@@ -509,12 +507,12 @@ public class Character : MonoBehaviour
             {
                 int StEValue = StEParams.value;
                 if (applyBonus != null) { StEValue += applyBonus.exValue; }
-                charaObj.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, StEValue), StEStatus.StEType.ToColor());
+                targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, StEValue), StEStatus.StEType.ToColor());
                 infoText.AddLogText(string.Format("{0}は{1}{2}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName(), StEValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
             }
             else
             {
-                charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+                targetButton.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
                 infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
             }
             soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType]);
@@ -566,7 +564,7 @@ public class Character : MonoBehaviour
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus)
             {
                 pa.GetComponent<PA_StatusEffect>().AddStack(-1, false);
-                charaObj.SetDamageText("☆フォーカス!!☆", Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus]);
+                targetButton.SetDamageText("☆フォーカス!!☆", Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus]);
                 soundManager.PlaySE(Definer.soundRef.consumeFocus);
             }
         }
@@ -743,7 +741,7 @@ public class Character : MonoBehaviour
     IEnumerator Stun()
     {
         soundManager.PlaySE(Definer.soundRef.stun);
-        charaObj.SetDamageText("行動不能!!", Definer.colorRef.failed_unavailable);
+        targetButton.SetDamageText("行動不能!!", Definer.colorRef.failed_unavailable);
         infoText.AddLogText(string.Format("{0}は行動できない!", charaStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
         yield return new WaitForSeconds(1f);
         EndPhase();
@@ -795,7 +793,7 @@ public class Character : MonoBehaviour
         {
             charaStatus.HP -= value;
             charaObj.SetHPandShieldBar();
-            charaObj.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
+            targetButton.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
             infoText.AddLogText(string.Format("{0}はHPを{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.decreaseHP, value.ToString())));
             soundManager.PlaySE(Definer.soundRef.damage);
             if (charaStatus.HP <= 0)
@@ -803,7 +801,7 @@ public class Character : MonoBehaviour
                 if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、HP減少によって死なない
                 {
                     charaStatus.HP = 0;
-                    charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
+                    targetButton.SetDamageText("瀕死!", Definer.colorRef.damage);
                     infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
                     soundManager.PlaySE(Definer.soundRef.dying);
                     charaObj.SetHPandShieldBar();
@@ -829,14 +827,14 @@ public class Character : MonoBehaviour
         SpawnVisualEffect(Definer.VERef.damage);
         if (CRIT)//テキストの表示
         {
-            charaObj.SetDamageText("Critical!!", Definer.colorRef.CRIT);
-            charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.CRIT);
+            targetButton.SetDamageText("Critical!!", Definer.colorRef.CRIT);
+            targetButton.SetDamageText(DMG.ToString(), Definer.colorRef.CRIT);
             infoText.AddLogText(string.Format("{0}\n{1}は{2}ダメージを受けた", util.GetColoredText(Definer.colorRef.CRIT, "Critical!!"), charaStatus.charaName, util.GetColoredText(Definer.colorRef.CRIT, DMG.ToString())));
             soundManager.PlaySE(Definer.soundRef.CRIT);
         }
         else
         {
-            charaObj.SetDamageText(DMG.ToString(), Definer.colorRef.damage);
+            targetButton.SetDamageText(DMG.ToString(), Definer.colorRef.damage);
             infoText.AddLogText(string.Format("{0}は{1}ダメージを受けた", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, DMG.ToString())));
             soundManager.PlaySE(Definer.soundRef.damage);
         }
@@ -854,7 +852,7 @@ public class Character : MonoBehaviour
             else//0ダメージの時
             {
                 charaStatus.HP = 0;
-                charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
+                targetButton.SetDamageText("瀕死!", Definer.colorRef.damage);
                 infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
                 soundManager.PlaySE(Definer.soundRef.dying);
 
@@ -868,7 +866,7 @@ public class Character : MonoBehaviour
                 if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、瀕死でない状態で致命傷を受けても死なな
                 {
                     charaStatus.HP = 0;
-                    charaObj.SetDamageText("瀕死!", Definer.colorRef.damage);
+                    targetButton.SetDamageText("瀕死!", Definer.colorRef.damage);
                     infoText.AddLogText(string.Format("{0}は{1}だ...", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, "瀕死")));
                     soundManager.PlaySE(Definer.soundRef.dying);
                 }
@@ -891,7 +889,7 @@ public class Character : MonoBehaviour
     public void Heal(int value,Character healer)
     {
         charaStatus.HP = Mathf.Min(charaStatus.HP + value, charaStatus.maxHP);
-        charaObj.SetDamageText(value.ToString(), Definer.colorRef.heal);
+        targetButton.SetDamageText(value.ToString(), Definer.colorRef.heal);
         infoText.AddLogText(string.Format("{0}はHPを{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.heal, value.ToString())));
         soundManager.PlaySE(Definer.soundRef.heal);
         charaObj.SetHPandShieldBar();
@@ -900,7 +898,7 @@ public class Character : MonoBehaviour
     public void SANHeal(int value)
     {
         charaStatus.SAN = Mathf.Min(charaStatus.SAN + value, charaStatus.maxSAN);
-        charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANHeal);
+        targetButton.SetDamageText(value.ToString(), Definer.colorRef.SANHeal);
         infoText.AddLogText(string.Format("{0}は正気度を{1}回復した", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANHeal, value.ToString())));
         soundManager.PlaySE(Definer.soundRef.SANHeal);
         charaObj.SetSANBar();
@@ -910,7 +908,7 @@ public class Character : MonoBehaviour
         if (charaStatus.player)
         {
             charaStatus.SAN -= value;
-            charaObj.SetDamageText(value.ToString(), Definer.colorRef.SANDecrease);
+            targetButton.SetDamageText(value.ToString(), Definer.colorRef.SANDecrease);
             infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.SANDecrease, value.ToString())));
             soundManager.PlaySE(Definer.soundRef.SANDecrease);
             charaObj.SetSANBar();
@@ -918,7 +916,7 @@ public class Character : MonoBehaviour
             { 
                 if (!CheckAffricted())
                 {
-                    charaObj.SetDamageText("精神崩壊", Definer.colorRef.affricted);
+                    targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
                     infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
                     AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
 
@@ -1009,7 +1007,7 @@ public class Character : MonoBehaviour
     public void AddShield(int value)
     {
         charaStatus.shield += value;
-        charaObj.SetDamageText(value.ToString(), Definer.colorRef.shield);
+        targetButton.SetDamageText(value.ToString(), Definer.colorRef.shield);
         infoText.AddLogText(string.Format("{0}はシールドを{1}得た", charaStatus.charaName, util.GetColoredText(Definer.colorRef.shield, value.ToString())));
         soundManager.PlaySE(Definer.soundRef.shield);
         charaObj.SetHPandShieldBar();
@@ -1020,14 +1018,14 @@ public class Character : MonoBehaviour
         {
             if (removeAll)
             {
-                charaObj.SetDamageText("シールドブレイク!", Definer.colorRef.shieldDecrease);
+                targetButton.SetDamageText("シールドブレイク!", Definer.colorRef.shieldDecrease);
                 charaStatus.shield = 0;
                 infoText.AddLogText(string.Format("{0}はシールドを全て失った", charaStatus.charaName).ColorStr(Definer.colorRef.shieldDecrease));
             }
             else
             {
                 int remove = Mathf.Min(value, charaStatus.shield);
-                charaObj.SetDamageText(remove.ToString(), Definer.colorRef.shieldDecrease);
+                targetButton.SetDamageText(remove.ToString(), Definer.colorRef.shieldDecrease);
                 charaStatus.shield -= remove;
                 infoText.AddLogText(string.Format("{0}はシールドを{1}失った", charaStatus.charaName, util.GetColoredText(Definer.colorRef.shieldDecrease, remove.ToString())));
 
@@ -1234,22 +1232,19 @@ public class Character : MonoBehaviour
         soundManager.PlaySE(Definer.soundRef.die2);
         if (cause == 0)
         {
-            charaObj.SetDamageText("死亡", Definer.colorRef.damage);
+            targetButton.SetDamageText("死亡", Definer.colorRef.damage);
             infoText.AddLogText(util.GetColoredText(Definer.colorRef.damage, string.Format("{0}は死亡した", charaStatus.charaName)));
         }
         else if (cause == 1)
         {
-            charaObj.SetDamageText("発狂", Definer.colorRef.damage);
+            targetButton.SetDamageText("発狂", Definer.colorRef.damage);
             infoText.AddLogText(util.GetColoredText(Definer.colorRef.damage, string.Format("{0}は発狂して死亡した", charaStatus.charaName)));
         }
 
         charactersManager.RemoveExistingCharacter(this);
         battleManager.RemoveTurn(this);
 
-        foreach (LootPanel.DropItem dropItem in charaStatus.dropItems)
-        { 
-            loot.DropItem_Enemy(dropItem);
-        }
+        loot.DropItem_Loot(charaStatus.characterData.loot);
 
         OnDie(killer);
 
@@ -1491,6 +1486,6 @@ public class Character : MonoBehaviour
         }
         return false;
     }
-    public PositionManager GetPositionManager() { return GetCharacter_TargetButton().GetPositionManager(); }
+    public PositionManager GetPositionManager() { return GetTargetButton().GetPositionManager(); }
 }
 

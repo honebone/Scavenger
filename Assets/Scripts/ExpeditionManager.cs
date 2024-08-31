@@ -40,7 +40,7 @@ public class ExpeditionManager : MonoBehaviour
     [System.Serializable]
     public class PartyStatus
     {
-        public float[] materialDropChance=new float[] { 60, 30, 10, 5, 1 };
+        public float[] materialDropChance=new float[] { 60, 30, 9, 0.9f, 0.1f };
         public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
 
@@ -338,7 +338,7 @@ public class ExpeditionManager : MonoBehaviour
                 foreach(Character chara in charactersManager.GetExistingCharacters_All())
                 {
                     if (!chara.GetCharacterStatus().player) { infoText.AddErrorText("プレイヤーでないキャラが生きている"); }
-                    chara.GetCharacter_TargetButton().MoveMode_SelectableAsTarget();
+                    chara.GetTargetButton().MoveMode_SelectableAsTarget();
                 }
             }
             else
@@ -363,7 +363,7 @@ public class ExpeditionManager : MonoBehaviour
     }
     public void MoveMode_SelectPos(int pos)
     {
-        moveChara.GetCharacter_TargetButton().ResetCharacter();
+        moveChara.GetTargetButton().ResetCharacter();
 
         if (charactersManager.CheckCharaExist(pos))
         {

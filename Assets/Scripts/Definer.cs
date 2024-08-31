@@ -95,15 +95,18 @@ public class Definer : MonoBehaviour
     GameObject positionEffectIcon_Inspector;
 
     [SerializeField] List<CharacterData> playerDataBase;
+    [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<GameObject> personalityDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
     public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
+    public List<ItemData> GetAllLoots() { return lootDataBase_Inspector; }
+
     public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
 
-
+    public static List<ItemData> lootDataBase = new List<ItemData>();
     public static List<List<ItemData>> equipments = new List<List<ItemData>>();
 
 
@@ -125,7 +128,7 @@ public class Definer : MonoBehaviour
     public static Dictionary<ItemData.MaterialTag, string> materialTagName = new Dictionary<ItemData.MaterialTag, string>()
     {
         { ItemData.MaterialTag.other,"ÇªÇÃëº"},{ ItemData.MaterialTag.valuables,"ãMèdïi"},{ ItemData.MaterialTag.slay,"ì¢î∞"},{ ItemData.MaterialTag.ore,"çÃå@"},{ ItemData.MaterialTag.food,"êHóø"}
-        ,{ ItemData.MaterialTag.plant,"êAï®"},{ ItemData.MaterialTag.processed,"â¡çHïi"}
+        ,{ ItemData.MaterialTag.plant,"êAï®"},{ ItemData.MaterialTag.processed,"â¡çHïi"},{ ItemData.MaterialTag.junk,"ÉKÉâÉNÉ^"},{ ItemData.MaterialTag.sundries,"éGâ›"}
     };
     public static Dictionary<ItemData.EquipmentTag, string> equipmentTagName = new Dictionary<ItemData.EquipmentTag, string>()
     {
@@ -156,20 +159,20 @@ public class Definer : MonoBehaviour
             if (!data.specialInfo)
             {
                 s += string.Format("{0}\n", Definer.rarityName[data.rarity].ColorStr(data.rarity.ToColor()));
-                //bool f = false;
+                bool f = false;
 
                 switch (data.itemType)
                 {
                     case ItemData.ItemType.material:
                         s += "<<ëfçﬁ>>\n\n";
-                        //s += "[";
-                        //foreach (ItemData.MaterialTag tag in data.materialTags)
-                        //{
-                        //    if (f) { s += ", "; }
-                        //    f = true;
-                        //    s += Definer.materialTagName[tag];
-                        //}
-                        //s += "]\n";
+                        s += "É^ÉOÅF";
+                        foreach (ItemData.MaterialTag tag in data.materialTags)
+                        {
+                            if (f) { s += ", "; }
+                            f = true;
+                            s += $"[{Definer.materialTagName[tag]}]";
+                        }
+                        s += "\n";
                         s += "åªç›ëfçﬁÇÃégÇ¢ìπÇÕé¿ëïÇ≥ÇÍÇƒÇ¢Ç‹ÇπÇÒ...\n".ColorStr(Color.red);
                         s += string.Format("ÉXÉçÉbÉgÇ†ÇΩÇËÇÃèäéùêîÅF{0}\n", data.amountPerStack.ToString());
                         s += string.Format("âøílÅF{0}G\n", data.price.ToString());
@@ -213,6 +216,8 @@ public class Definer : MonoBehaviour
         actionManager_General = actionManager_General_Inspector;
         statusEffectIcon = statusEffectIcon_Inspector;
         positionEffectIcon = positionEffectIcon_Inspector;
+
+        lootDataBase = lootDataBase_Inspector;
 
         for (int i = 0; i < 5; i++)
         {

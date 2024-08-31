@@ -32,31 +32,38 @@ public class LootPanel : MonoBehaviour
     ExpeditionManager expeditionManager;
     SoundManager soundManager;
     TutorialManager tutorialManager;
-    [System.Serializable]
-    public class DropItem
-    {
-        //public GameObject itemData;
-        public ItemData dropItem;
-        public int quantity;
+    //[System.Serializable]
+    //public class DropItem
+    //{
+    //    //public GameObject itemData;
+    //    public ItemData dropItem;
+    //    public int quantity;
 
-        //public ItemData GetItemData() { return itemData.GetComponent<ItemObject>().GetItemData(); }
-    }
-    [System.Serializable]
-    public class DropItemFromPreset
-    {
-        public LootPresetData preset;
-        public Vector2Int attemptsRange;
-    }
+    //    //public ItemData GetItemData() { return itemData.GetComponent<ItemObject>().GetItemData(); }
+    //}
+   
     [System.Serializable]
     public class LootStatus
     {
         [Header("x:min y:max")]
         public Vector2Int drawAttemptsRange;
+        //public List<float> rarityWeightMod;
 
-        public List<DropItem> dropItems;
-        public List<DropItemFromPreset> dropItemFromPresets;
-        [Header("確定で落とす個数の範囲")]
+        public List<ItemData> uniqueDropPool;
+        public List<IncludeTag> includeTags;
+        public List<ItemData.MaterialTag> excludeTags;
+
+        [Header("\n\n確定で落とす個数の範囲")]
         public Vector2Int dropEquipmentsRange;
+
+        [System.Serializable]
+        public class IncludeTag
+        {
+            public ItemData.MaterialTag tag;
+            public int weight;
+        }
+
+       
     }
     private void Start()
     {
@@ -167,50 +174,87 @@ public class LootPanel : MonoBehaviour
         }
         //inventoryや納品等のoptionUIも閉じる
     }
-
-    /// <summary>キャラ死亡時のドロップ処理</summary>
-    public void DropItem_Enemy(DropItem dropItem)
-    {
-        float[] dropRate = new float[] { 60, 30, 10, 5, 1 };//test
-        int dropQuantity = 0;
-        for (int i = 0; i < dropItem.quantity; i++)
-        {
-            if (dropRate[(int)dropItem.dropItem.rarity].Dice())
-            {
-                dropQuantity++;
-            }
-        }
-
-        if (dropQuantity > 0)
-        {
-            Definer.Item item = new Definer.Item();
-            item.Init(dropItem.dropItem);
-            AddItem(item, dropQuantity);
-        }
-    }
     public void DropItem_Loot(LootStatus status)
     {
-        //Attempts回だけdropItemsからアイテムを1つ選び、そのアイテムのレアリティに応じた確率でルートに追加
-        int attempts = Random.Range(status.drawAttemptsRange.x, status.drawAttemptsRange.y + 1);
-        //float[] materialDropChance = expeditionManager.GetPartyStatus().materialDropChance;
-
-        for (int i = 0; i < attempts; i++)
+        if (status.uniqueDropPool.Count > 0 || status.includeTags.Count > 0)
         {
-            DropItem_Enemy(status.dropItems.Choice());
-        }
+            List<ItemData> lootDataBase = Definer.lootDataBase;
+            //試行回数の決定
+            int attempts = Random.Range(status.drawAttemptsRange.x, status.drawAttemptsRange.y + 1);
 
-        foreach(DropItemFromPreset preset in status.dropItemFromPresets)
-        {
-            attempts= Random.Range(preset.attemptsRange.x, preset.attemptsRange.y + 1);
             for (int i = 0; i < attempts; i++)
             {
-                DropItem_Enemy(preset.preset.lootItems.Choice());
+                List<ItemData> pool = new List<ItemData>(status.uniqueDropPool);
+
+                if (status.includeTags.Count > 0)
+                {
+                    //ドロップするタグの決定
+                    List<float> tagWeight = new List<float>();
+                    foreach (LootStatus.IncludeTag include in status.includeTags)
+                    {
+                        tagWeight.Add(include.weight);
+                    }
+
+                    ItemData.MaterialTag tag = status.includeTags[tagWeight.ChoiceWithWeight()].tag;
+
+                    //プールからexcludeを除外
+                    foreach (ItemData dataBase in lootDataBase)
+                    {
+                        if (dataBase.materialTags.Contains(tag)) { pool.Add(dataBase); }//データベースから今回ドロップするタグを持つもののみを抽出
+                    }
+
+                    foreach (ItemData item in pool)
+                    {
+                        foreach (ItemData.MaterialTag materialTag in item.materialTags)
+                        {
+                            if (status.excludeTags.Contains(materialTag))//プールに除外するタグを含むアイテムがあるならそれを除外
+                            {
+                                pool.Remove(item);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (pool.Count > 0)
+                {
+                    //レアリティの決定
+                    ItemData.Rarity rarity = (ItemData.Rarity)expeditionManager.GetPartyStatus().materialDropChance.ChoiceWithWeight();
+
+                    //ドロップアイテムの決定
+                    ItemData drop = pool[0];
+                    bool found = false;
+                    pool = pool.Shuffle();
+
+                    for (int j = (int)rarity; j >= 0; j--)//決定されたレアリティのアイテムがpoolになかったら、レアリティを1つ下げる
+                    {
+                        foreach (ItemData item in pool)//シャッフルされたpoolの手前から見て、決定されたレアリティと同じものを見つける
+                        {
+                            if (item.rarity == (ItemData.Rarity)j)
+                            {
+                                drop = item;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (found) { break; }
+                    }
+
+                    if (found)
+                    {
+                        //ドロップ量の決定
+                        Definer.Item item = new Definer.Item();
+                        item.Init(drop);
+                        AddItem(item, Random.Range(drop.dropAmountRange.x, drop.dropAmountRange.y + 1));
+                    }
+                }
             }
-        }
-        attempts = Random.Range(status.dropEquipmentsRange.x, status.dropEquipmentsRange.y + 1);
-        for (int i = 0; i < attempts; i++)
-        {
-            AddItem(expeditionManager.GetRandomEquipment(), 1);
+
+            attempts = Random.Range(status.dropEquipmentsRange.x, status.dropEquipmentsRange.y + 1);//装備品ドロップ
+            for (int i = 0; i < attempts; i++)
+            {
+                AddItem(expeditionManager.GetRandomEquipment(), 1);
+            }
         }
     }
     public void AddItem(Definer.Item item, int amount)

@@ -51,21 +51,10 @@ MonoBehaviour:
   - optionName: "\u6F01\u308B"
     optionInfo: 
   lootStatus:
-    drawAttemptsRange: {x: 6, y: 12}
-    dropItems:
-    - dropItem: {fileID: 11400000, guid: e72ebac2bf256e44f85fefbb65507705, type: 2}
-      quantity: 2
-    - dropItem: {fileID: 11400000, guid: a3a602687403c6343b151babe6a627f9, type: 2}
-      quantity: 1
-    - dropItem: {fileID: 11400000, guid: a9cf4abc81488c14eaac727451f7c534, type: 2}
-      quantity: 3
-    - dropItem: {fileID: 11400000, guid: 12178285defcd41489fcff184bdd9e3a, type: 2}
-      quantity: 2
-    - dropItem: {fileID: 11400000, guid: a028fdc8f71b2d94ab65a9f69d818a7c, type: 2}
-      quantity: 2
-    - dropItem: {fileID: 11400000, guid: d13bf252d00158848802be0d2b2b9bd6, type: 2}
-      quantity: 1
-    dropItemFromPresets:
-    - preset: {fileID: 11400000, guid: d184fced93d75ec43ae1dca144889d71, type: 2}
-      attemptsRange: {x: 2, y: 5}
+    drawAttemptsRange: {x: 3, y: 6}
+    uniqueDropPool: []
+    includeTags:
+    - tag: 5
+      weight: 1
+    excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}

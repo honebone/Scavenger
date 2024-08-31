@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: M_gunpowder
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 06000000
-  temporaryTag: 0
   itemName: "\u706B\u85AC"
+  specialInfo: 0
   info: 
-  amountPerStack: 30
   rarity: 2
   sprite: {fileID: 21300000, guid: 297f7c3030b263742996407d8e69ae1b, type: 3}
+  amountPerStack: 30
+  dropAmountRange: {x: 1, y: 10}
+  materialTags: 06000000
   price: 20
+  equipmentTag: 0
   manager: {fileID: 0}

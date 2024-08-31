@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: M_feces
   m_EditorClassIdentifier: 
   itemType: 0
-  materialTags: 
-  temporaryTag: 0
   itemName: "\u7CDE"
+  specialInfo: 0
   info: 
-  amountPerStack: 30
   rarity: 0
   sprite: {fileID: 21300000, guid: bd91134dd2963fb4f93bbd9109a9ff25, type: 3}
+  amountPerStack: 30
+  dropAmountRange: {x: 1, y: 15}
+  materialTags: 
   price: 3
+  equipmentTag: 0
   manager: {fileID: 0}

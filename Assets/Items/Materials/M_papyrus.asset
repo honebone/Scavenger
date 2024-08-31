@@ -16,10 +16,11 @@ MonoBehaviour:
   itemName: "\u7D19"
   specialInfo: 0
   info: 
-  amountPerStack: 60
   rarity: 2
   sprite: {fileID: 21300000, guid: 20751bacdbde56c4e8afdc46876f7b8f, type: 3}
-  materialTags: 06000000
+  amountPerStack: 60
+  dropAmountRange: {x: 1, y: 30}
+  materialTags: 0600000008000000
   price: 4
   equipmentTag: 0
   manager: {fileID: 0}

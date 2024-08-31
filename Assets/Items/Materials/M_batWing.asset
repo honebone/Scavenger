@@ -16,9 +16,10 @@ MonoBehaviour:
   itemName: "\u30B3\u30A6\u30E2\u30EA\u306E\u7FBD"
   specialInfo: 0
   info: 
-  amountPerStack: 10
   rarity: 0
   sprite: {fileID: 21300000, guid: 1c8815ba55fb0dc41874ac18ea2e94c6, type: 3}
+  amountPerStack: 10
+  dropAmountRange: {x: 1, y: 2}
   materialTags: 02000000
   price: 10
   equipmentTag: 0

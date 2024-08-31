@@ -53,7 +53,11 @@ MonoBehaviour:
   - optionName: "\u4F9B\u7269\u3092\u76D7\u3080"
     optionInfo: "\u5168\u54E1\u304CSAN\u30925-10\u5931\u3046\n\u88C5\u5099\u54C1\u30921-4\u3064\u5165\u624B\u3059\u308B"
   loot:
-    drawAttemptsRange: {x: 0, y: 0}
-    dropItems: []
-    dropItemFromPresets: []
+    drawAttemptsRange: {x: 1, y: 2}
+    rarityWeightMod: []
+    uniqueDropPool: []
     dropEquipmentsRange: {x: 1, y: 4}
+    includeTags:
+    - tag: 1
+      weight: 0
+    excludeTags: 

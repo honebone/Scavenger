@@ -69,7 +69,7 @@ public class CharacterData : ScriptableObject
 
     public CharacterData corpse;
     //public DropItem[] dropItems;
-    public List<LootPanel.DropItem> dropItems;
+    public LootPanel.LootStatus loot;
 
     //public EquipmentType[] equipableTypes;
     //[Header("equipableTypesÇ∆óvëfêîÇçáÇÌÇπÇÈ")]
@@ -102,14 +102,6 @@ public class CharacterData : ScriptableObject
     public List<StEApplyBonus> StEApplyBonus;
 
     public float moveRes;
-}
-[System.Serializable]
-public class DropItem
-{
-    public ItemObject dropItemData;
-    public int quantity;
-
-    public ItemData GetItemData() { return dropItemData.GetItemData(); }
 }
 [System.Serializable]
 public class StEResist

@@ -49,7 +49,7 @@ public class PassiveAbility : MonoBehaviour
             PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
             if (note)
             {
-                character.GetCharacter_Object().SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+                character.GetTargetButton().SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
                 infoText.AddLogText(string.Format("{0}ÇÃ{1}Ç™è¡ãéÇ≥ÇÍÇΩ", character.GetCharacterStatus().charaName, GetPAName()));
             }
             StE.DestroyIcon();

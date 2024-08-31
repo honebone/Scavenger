@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/LootPresetData")]
 public class LootPresetData : ScriptableObject
 {
-   public List<LootPanel.DropItem> lootItems;
+   //public List<LootPanel.DropItem> lootItems;
 }

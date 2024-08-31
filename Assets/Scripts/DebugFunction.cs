@@ -63,6 +63,20 @@ public class DebugFunction : MonoBehaviour
             items[i].Init(itemData[i]);
             items[i].amount = amount[i];
         }
+
+        //List<float> chance = new List<float>(expeditionManager.GetPartyStatus().materialDropChance);
+        //int[] count = new int[5];
+        //ItemData.Rarity rarity;
+        //for (int i= 0; i < 10000; i++)
+        //{
+        //    rarity = (ItemData.Rarity)chance.ChoiceWithWeight();
+        //    count[(int)rarity]++;
+        //}
+
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    Debug.Log($"{Definer.rarityName[(ItemData.Rarity)i]}F{count[i]}({count[i] / 100f}“)");
+        //}
     }
     // Update is called once per frame
     void Update()

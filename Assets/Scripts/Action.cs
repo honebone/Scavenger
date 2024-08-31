@@ -534,7 +534,7 @@ public class Action : MonoBehaviour
                 {
                     if (!notChara)
                     {
-                        actionStatus.actionOwner.GetCharacter_TargetButton().SetActionIcon(actionStatus.sprite);
+                        actionStatus.actionOwner.GetTargetButton().SetActionIcon(actionStatus.sprite);
                     }
                 }
 
@@ -632,7 +632,7 @@ public class Action : MonoBehaviour
                         }
                         else//回避
                         {
-                            target.GetCharacter_Object().SetDamageText("Evade", Definer.colorRef.evade);
+                            target.GetTargetButton().SetDamageText("Evade", Definer.colorRef.evade);
                             infoText.AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}は攻撃を回避した", targetStatus.charaName)));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;
@@ -649,7 +649,7 @@ public class Action : MonoBehaviour
                     {
                         if (!notChara)
                         {
-                            target.GetCharacter_Object().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
+                            target.GetTargetButton().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}は攻撃を外した", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
                             onAttackParams.missed = true;
                         }
@@ -738,7 +738,7 @@ public class Action : MonoBehaviour
                         }
                         else
                         {
-                            target.GetCharacter_Object().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
+                            target.GetTargetButton().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                         }
                     }
@@ -833,10 +833,10 @@ public class Action : MonoBehaviour
 
                                 if (movable)
                                 {
-                                    target.GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの参照の解除
+                                    target.GetTargetButton().ResetCharacter();//ターゲットボタンの参照の解除
                                     foreach (Character c in charasOnTravelingDir)
                                     {
-                                        c.GetCharacter_TargetButton().ResetCharacter();
+                                        c.GetTargetButton().ResetCharacter();
                                     }
 
                                     target.ChangePos(moveToPos);//移動処理
@@ -862,7 +862,7 @@ public class Action : MonoBehaviour
                                 }
                             }
                         }
-                        else { target.GetCharacter_Object().SetDamageText("MoveResist", Definer.colorRef.failed_unavailable); }
+                        else { target.GetTargetButton().SetDamageText("MoveResist", Definer.colorRef.failed_unavailable); }
                     }
 
 
@@ -879,7 +879,7 @@ public class Action : MonoBehaviour
             }
             else if (!notChara)
             {
-                actionStatus.actionOwner.GetCharacter_Object().SetDamageText("対象消失", Definer.colorRef.failed_unavailable);
+                actionStatus.actionOwner.GetTargetButton().SetDamageText("対象消失", Definer.colorRef.failed_unavailable);
             }
         }
 
@@ -942,10 +942,10 @@ public class Action : MonoBehaviour
 
             if (movable)
             {
-                actionStatus.actionOwner.GetCharacter_TargetButton().ResetCharacter();//ターゲットボタンの解除
+                actionStatus.actionOwner.GetTargetButton().ResetCharacter();//ターゲットボタンの解除
                 foreach (Character c in charasOnTravelingDir)
                 {
-                    c.GetCharacter_TargetButton().ResetCharacter();
+                    c.GetTargetButton().ResetCharacter();
                 }
 
                 onMoveParams.prevPos = ownerStatus.position;
