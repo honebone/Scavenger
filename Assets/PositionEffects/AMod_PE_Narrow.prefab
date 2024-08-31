@@ -45,9 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
+    conditionInfo: 
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
     decreaseHP: 0
-    cantCounter: 0
     ATKMod: -30
+    INTMod: 0
+    exDMG_mul: 0
+    exDMG_int: 0
     ACCMod: 20
     CRITCMod: 0
     CRITDMod: 0
@@ -55,8 +61,16 @@ MonoBehaviour:
     unevadable: 0
     healValue: 0
     healPercent: 0
+    healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
-  checkType: 00000000
+    applySteParams: []
+    applyStEBonus: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs: []
+  checkATK: 1
+  checkINT: 0

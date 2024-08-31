@@ -109,7 +109,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDecreasedHP(int value) { }
 
     /// <summary>çUåÇñΩíÜéû</summary>
-    public virtual void OnDamage(int DMG, Character target,Action.ActionStatus actionStatus) {  }
+    public virtual void OnDamage(Action.OnDamageParams onDamageParams) {  }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(List<Action.OnKillParams> onKillParamsList) { }
     public virtual void OnMiss(int ID) { }
@@ -121,7 +121,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnAttacked(Character attacker, bool evaded, bool missed) { }
 
     /// <summary>DMG>0ÇÃéûÇÃÇ›</summary>
-    public virtual void OnDamaged(int DMG, Character attacker) { }
+    public virtual void OnDamaged(Action.OnDamageParams onDamageParams) { }
     
     public virtual void OnCRITed(int ID) { }
     public virtual void OnMoved(Action.OnMoveParams onMoveParams) { }

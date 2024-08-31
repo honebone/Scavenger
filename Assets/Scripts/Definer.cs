@@ -22,6 +22,7 @@ public class Definer : MonoBehaviour
 
         public Color decreaseHP;
         public Color damage;
+        public Color INTDamage;
         public Color CRIT;
         public Color evade;
         public Color heal;

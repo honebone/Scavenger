@@ -10,9 +10,9 @@ public class Eq_UnstableBlocks : PA_Equipment
     [SerializeField]
     int valuePerStack;
     int currentValue;
-    public override void OnDamaged(int DMG, Character attacker)
+    public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        if (DMG > 0)
+        if (onDamageParams.totalDMG > 0)
         {
             character.AddATK(0, currentValue * -1);
 

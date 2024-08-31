@@ -15,9 +15,9 @@ public class StE_RgKnight : PA_StatusEffect
         goalDMG = Mathf.RoundToInt(character.GetCharacterStatus().maxHP * goalPercent / 100f);
     }
 
-    public override void OnDamaged(int DMG, Character attacker)
+    public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        currentDMG += DMG;
+        currentDMG += onDamageParams.totalDMG;
         if(currentDMG >= goalDMG) { Disable(); }
     }
 

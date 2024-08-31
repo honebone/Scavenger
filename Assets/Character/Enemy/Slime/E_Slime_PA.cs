@@ -8,7 +8,7 @@ public class E_Slime_PA : PA_Personality
     Action.ActionStatus actionStatus;
     List<int> list= new List<int>() { 9,10,11,12,13,14,15,16,17};
     List<int> empty=new List<int>();
-    public override void OnDamaged(int DMG, Character attacker)
+    public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
         if (33.Dice())
         {

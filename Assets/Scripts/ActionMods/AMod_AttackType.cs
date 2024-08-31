@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class AMod_AttackType : ActionMod
 {
-    [SerializeField,Header("0:melee 1:ranged 2:magic")]
-    List<int> checkType;
+   [SerializeField] bool checkATK;
+  [SerializeField]  bool checkINT;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
-        for (int i = 0; i < statusRef.actionTargets.Count; i++)
+        if (statusRef.DoesAttack())
         {
-            if (statusRef.ATKMod_max > 0 && checkType.Contains(statusRef.attackType))
+            for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
-                actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
+                if ((statusRef.ATKMod_max > 0 && checkATK) || (statusRef.INTMod_max > 0 && checkINT))
+                {
+                    actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
+                }
             }
         }
+      
         return actionsStatus;
     }
 }

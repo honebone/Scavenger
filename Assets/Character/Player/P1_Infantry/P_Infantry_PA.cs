@@ -15,7 +15,7 @@ public class P_Infantry_PA : PA_Personality
         shieldActivated = false;
     }
 
-    public override void OnDamaged(int DMG, Character attacker)
+    public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
         Character.CharacterStatus charaStatus = character.GetCharacterStatus();
         if (!shieldActivated&&charaStatus.HP.GetPercent(charaStatus.maxHP)<=20)

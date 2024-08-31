@@ -17,9 +17,8 @@ public class ActionMod : MonoBehaviour
         public bool consumeFocus;
         public int decreaseHP;
 
-        public bool cantCounter;
-
         public float ATKMod;
+        public float INTMod;
         public float exDMG_mul;
         public int exDMG_int;
         public float ACCMod;
@@ -63,6 +62,7 @@ public class ActionMod : MonoBehaviour
             {
                 if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
                 if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
+                if (INTMod != 0) { s += ValueToStr("・INT補正", INTMod, "％"); }
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
                 if (exDMG_int != 0) { s += ValueToStr("・与ダメージ", exDMG_int, ""); }
                 if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }

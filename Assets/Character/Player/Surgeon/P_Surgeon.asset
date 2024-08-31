@@ -33,11 +33,17 @@ MonoBehaviour:
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}
-  dropItems: []
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 1
   maxHP: 25
   maxSAN: 50
   ATK: 8
+  INT: 5
   CRITC: 7
   CRITD: 150
   EVD: 6

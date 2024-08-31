@@ -48,6 +48,10 @@ public class Character : MonoBehaviour
         public int ATK_base;
         public float ATK_mul;
 
+        public int INT;
+        public int INT_base;
+        public float INT_mul;
+
         public float CRITC;
         public float CRITD;
         
@@ -85,7 +89,7 @@ public class Character : MonoBehaviour
 
         public int SAN;
 
-        public int exATK;
+        //public int exATK;
 
         public bool doesDropItem;
 
@@ -131,6 +135,7 @@ public class Character : MonoBehaviour
             else { s += "\n"; }
 
             s += string.Format("ATK：{0}\n", ATK);
+            s += string.Format("INT：{0}\n", INT);
             s += string.Format("CRIT：{0}％で{1}％ダメージ\n\n", CRITC, CRITD);
 
             s += string.Format("EVD：{0}\n", EVD);
@@ -203,6 +208,10 @@ public class Character : MonoBehaviour
             ATK_base = data.ATK;
             ATK_mul = 100f;
             ATK = data.ATK;
+            
+            INT_base = data.INT;
+            INT_mul = 100f;
+            INT = data.INT;
 
             CRITC = data.CRITC;
             CRITD = data.CRITD;
@@ -269,6 +278,7 @@ public class Character : MonoBehaviour
         public float PROT;
 
         public float ATK_mul;
+        public float INT_mul;
 
         public float CRITC;
         public float CRITD;
@@ -293,6 +303,7 @@ public class Character : MonoBehaviour
             s += ValueToStr("maxSAN", maxSAN_mul, "％");
             s += ValueToStr("被ダメージ", PROT * -1, "％");
             s += ValueToStr("ATK", ATK_mul, "％");
+            s += ValueToStr("INT", INT_mul, "％");
             s += ValueToStr("CRIT率", CRITC, "％");
             s += ValueToStr("CRITダメージ", CRITD, "％");
             s += ValueToStr("EVD", EVD, "");
@@ -820,32 +831,50 @@ public class Character : MonoBehaviour
     }
 
     /// <summary>return:殺害したか</summary>
-    public bool Damage(int DMG,bool CRIT,int shieldDMG,Character attacker)
+    public bool Damage(Action.OnDamageParams onDamageParams)
     {
-        charaStatus.shield -=shieldDMG;//シールド減少 
+        charaStatus.shield -= onDamageParams.shieldDMG;//シールド減少 
 
         SpawnVisualEffect(Definer.VERef.damage);
-        if (CRIT)//テキストの表示
+        if (onDamageParams.CRIT)//テキストの表示
         {
             targetButton.SetDamageText("Critical!!", Definer.colorRef.CRIT);
-            targetButton.SetDamageText(DMG.ToString(), Definer.colorRef.CRIT);
-            infoText.AddLogText(string.Format("{0}\n{1}は{2}ダメージを受けた", util.GetColoredText(Definer.colorRef.CRIT, "Critical!!"), charaStatus.charaName, util.GetColoredText(Definer.colorRef.CRIT, DMG.ToString())));
+            infoText.AddLogText($"{"Critical!!".ColorStr(Definer.colorRef.CRIT)}");
+
+            if (onDamageParams.ATK)
+            {
+                targetButton.SetDamageText(onDamageParams.ATKDMG.ToString(), Definer.colorRef.CRIT);
+                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.CRIT)}の物理ダメージを受けた");
+            }
+            if (onDamageParams.INT)
+            {
+                targetButton.SetDamageText(onDamageParams.INTDMG.ToString(), Definer.colorRef.CRIT);
+                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.CRIT)}の魔法ダメージを受けた");
+            }
             soundManager.PlaySE(Definer.soundRef.CRIT);
         }
         else
         {
-            targetButton.SetDamageText(DMG.ToString(), Definer.colorRef.damage);
-            infoText.AddLogText(string.Format("{0}は{1}ダメージを受けた", charaStatus.charaName, util.GetColoredText(Definer.colorRef.damage, DMG.ToString())));
+            if (onDamageParams.ATK)
+            {
+                targetButton.SetDamageText(onDamageParams.ATKDMG.ToString(), Definer.colorRef.damage);
+                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.damage)}の物理ダメージを受けた");
+            }
+            if (onDamageParams.INT)
+            {
+                targetButton.SetDamageText(onDamageParams.INTDMG.ToString(), Definer.colorRef.INTDamage);
+                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.INTDamage)}の魔法ダメージを受けた");
+            }
             soundManager.PlaySE(Definer.soundRef.damage);
         }
 
         if (charaStatus.HP == 0)//瀕死の状態で1以上のダメージを受けたら死亡する
         {
-            if (DMG > 0)
+            if (onDamageParams.totalDMG > 0)
             {
                 if (charaStatus.surviveFatalWounds)
                 {
-                    Die(0,attacker);
+                    Die(0, onDamageParams.owner);
                 }
                 else { print("瀕死で耐えるキャラ出ないのにHP0で生き続けています"); }
             }
@@ -860,7 +889,7 @@ public class Character : MonoBehaviour
         }
         else//瀕死でないなら
         {
-            charaStatus.HP -= DMG;
+            charaStatus.HP -= onDamageParams.totalDMG;
             if (charaStatus.HP <= 0)
             {
                 if (charaStatus.surviveFatalWounds)//瀕死で耐えるキャラは、瀕死でない状態で致命傷を受けても死なな
@@ -872,16 +901,16 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
-                    Die(0, attacker);
+                    Die(0, onDamageParams.owner);
                 }
             }
         }
 
         charaObj.SetHPandShieldBar();//HPバーに反映
-        if (CheckAlive() && DMG > 0)
+        if (CheckAlive() && onDamageParams.totalDMG > 0)
         {
-            OnDamaged(DMG, attacker);
-            OnDecreasedHP(DMG);
+            OnDamaged(onDamageParams);
+            OnDecreasedHP(onDamageParams.totalDMG);
             //カウンター
         }
         return !CheckAlive();
@@ -941,6 +970,7 @@ public class Character : MonoBehaviour
         if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, heal); }
         if (mod.PROT != 0) { AddPROT(mod.PROT * n); }
         if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
+        if (mod.INT_mul != 0) { AddINT(0, mod.INT_mul * n); }
         if (mod.CRITC != 0) { AddCRITC(mod.CRITC * n); }
         if (mod.CRITD != 0) { AddCRITD(mod.CRITD * n); }
         if (mod.EVD != 0) { AddEVD(mod.EVD * n); }
@@ -995,6 +1025,13 @@ public class Character : MonoBehaviour
         charaStatus.ATK_base += value_base;
         charaStatus.ATK_mul += value_mul;
         charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt(charaStatus.ATK_base * charaStatus.ATK_mul / 100f));
+    }
+
+    public void AddINT(int value_base, float value_mul)
+    {
+        charaStatus.INT_base += value_base;
+        charaStatus.INT_mul += value_mul;
+        charaStatus.INT = Mathf.Max(0, Mathf.RoundToInt(charaStatus.INT_base * charaStatus.INT_mul / 100f));
     }
     public void AddCRITC(float value) { charaStatus.CRITC += value; }
     public void AddCRITD(float value) { charaStatus.CRITD += value; }
@@ -1378,11 +1415,11 @@ public class Character : MonoBehaviour
         }
     }
     /// <summary>攻撃命中時</summary>
-    public void OnDamage(int DMG, Character target,Action.ActionStatus actionStatus)
+    public void OnDamage(Action.OnDamageParams onDamageParams)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(DMG, target,actionStatus); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(onDamageParams); }
             RemovePA_Execute();
         }
     }
@@ -1423,11 +1460,11 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public void OnDamaged(int DMG, Character attacker)
+    public void OnDamaged(Action.OnDamageParams onDamageParams)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(DMG, attacker); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(onDamageParams); }
             RemovePA_Execute();
         }
     }

@@ -11385,6 +11385,7 @@ MonoBehaviour:
     affricted: {r: 0.7921569, g: 0, b: 0, a: 1}
     decreaseHP: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
     damage: {r: 0.764151, g: 0, b: 0, a: 1}
+    INTDamage: {r: 0.14527705, g: 0.42547327, b: 0.7830189, a: 1}
     CRIT: {r: 1, g: 0.54365426, b: 0, a: 1}
     evade: {r: 0.33459416, g: 0.6886792, b: 0.45733103, a: 1}
     heal: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
@@ -17216,6 +17217,7 @@ MonoBehaviour:
     maxSAN_mul: 0
     PROT: 0
     ATK_mul: 0
+    INT_mul: 0
     CRITC: 0
     CRITD: 0
     EVD: 0
@@ -17382,10 +17384,10 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -31763,7 +31765,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

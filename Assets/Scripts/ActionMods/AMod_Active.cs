@@ -10,7 +10,7 @@ public class AMod_Active : ActionMod
     {
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if ((statusRef.ATKMod_max > 0 || !onlyAttack) && (statusRef.abilityEffect == checkActive))
+            if ((statusRef.DoesAttack() || !onlyAttack) && (statusRef.abilityEffect == checkActive))
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }

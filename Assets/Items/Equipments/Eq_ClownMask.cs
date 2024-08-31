@@ -17,7 +17,7 @@ public class Eq_ClownMask : PA_Equipment
         s+= actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
-    public override void OnDamaged(int DMG, Character attacker)
+    public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
         if (chance.Dice())
         {

@@ -22,7 +22,7 @@ public class Action : MonoBehaviour
         public string conditionInfo;
         [TextArea(3, 10)]
         public string targetInfo;
-        [TextArea(3, 10),Header("AModのスクリプトを使わないときなどに\n条件入力して改行して変化内容書く")]
+        [TextArea(3, 10), Header("AModのスクリプトを使わないときなどに\n条件入力して改行して変化内容書く")]
         public string AModInfo;
         [TextArea(3, 10)]
         public string actionInfo;
@@ -35,11 +35,11 @@ public class Action : MonoBehaviour
         public GameObject actionObject;
         public List<GameObject> actionMods;
         //public bool targetEmpty;
-        
+
         /// <summary>
         /// row:段 column:列
         /// </summary>
-        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move}
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move }
         [System.Serializable]
         public class ActionTargetParams
         {
@@ -56,7 +56,7 @@ public class Action : MonoBehaviour
         public TargetType targetType;
         public bool friendly;
         public CharactersManager.SearchCharaCondition condition;
-       
+
         public bool ignoreMark;
         public bool ignoreHide;
         //public ActionTargetParams targetParams;
@@ -71,18 +71,20 @@ public class Action : MonoBehaviour
         public float decreaseHPPer_max;
 
         [Header("\n\n攻撃")]
-        public bool cantCounter;
-        [Header("0:melee 1:ranged 2:magic 3:counter")]
-        /// <summary>0:melee 1:ranged 2:magic 3:counter</summary>
-        public int attackType;
+        //public bool cantCounter;
+        //[Header("0:melee 1:ranged 2:magic 3:counter")]
+        ///// <summary>0:melee 1:ranged 2:magic 3:counter</summary>
+        //public int attackType;
         public float ATKMod_min;
         public float ATKMod_max;
+        public float INTMod_min;
+        public float INTMod_max;
         public float exDMG_mul;
         public int exDMG_int;
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
-        [Header("与ダメのdrain％回復")] 
+        [Header("与ダメのdrain％回復")]
         public float drain;
         public bool sureHit;
         public bool unevadable;
@@ -163,6 +165,8 @@ public class Action : MonoBehaviour
         /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
         public List<int> actionTargetsInt;
 
+        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0; }
+
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = "";
@@ -173,37 +177,35 @@ public class Action : MonoBehaviour
             if (kill) { s += "・殺害する\n"; }
             if (decreaseHP_max > 0)
             {
-                s += string.Format("・HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max)); 
+                s += string.Format("・HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max));
             }
             if (decreaseHPPer_max > 0)
             {
-                s += string.Format("・HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max)); 
+                s += string.Format("・HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max));
             }
 
-            if (ATKMod_max > 0)//攻撃
+            if (DoesAttack())//攻撃
             {
-                if (cantCounter) { s += "カウンター不可\n"; }
-                switch (attackType)
+                s += "・攻撃を行う\n";
+                if (ATKMod_max > 0)
                 {
-                    case 0:
-                        s += "・近接攻撃を行う\n";
-                        break;
-                    case 1:
-                        s += "・遠距離攻撃を行う\n";
-                        break;
-                    case 2:
-                        s += "・魔術攻撃を行う\n";
-                        break;
-                    case 3:
-                        s += "・カウンター攻撃を行う\n";
-                        break;
+                    s += string.Format("ATKの{0}％物理ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
+                    if (refCharaStatus)
+                    {
+                        s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
+                    }
+                    s += "\n";
                 }
-                s += string.Format("ATKの{0}％ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
-                if (refCharaStatus)
+                if (INTMod_max > 0)
                 {
-                    s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));                   
+                    s += string.Format("INTの{0}％魔法ダメージ", GetValueRange(INTMod_min, INTMod_max));
+                    if (refCharaStatus)
+                    {
+                        s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
+                    }
+                    s += "\n";
                 }
-                s += "\n";
+
                 string attack = "";
                 if (ACCMod != 0) { attack += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
                 if (CRITCMod != 0) { attack += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
@@ -239,12 +241,12 @@ public class Action : MonoBehaviour
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
                 s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
-                if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n",status.maxStack).ColorStr(Color.gray); }
+                if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
             }
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
                 PositionEffect.PositionEffectStatus status = PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus();
-                if(PEParams.guaranteed) { s += "・対象の地点に"; }
+                if (PEParams.guaranteed) { s += "・対象の地点に"; }
                 else { s += string.Format("・{0}％の確率で対象の地点に", PEParams.applyChance); }
                 if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.value, PEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.stack); }
@@ -282,7 +284,7 @@ public class Action : MonoBehaviour
                 }
             }
 
-            if (guaranteedMove||moveChance > 0)
+            if (guaranteedMove || moveChance > 0)
             {
                 if (guaranteedMove) { s += "・"; }
                 else { s += string.Format("・{0}％の確率で", moveChance); }
@@ -292,7 +294,7 @@ public class Action : MonoBehaviour
                 if (moveBackword > 0) { s += string.Format("{0}後退\n", moveBackword); }
             }
 
-            foreach(ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
+            foreach (ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
             {
                 s += string.Format("・<{0}>の使用回数を", remainControll.abilityData.abilityName.ColorStr(remainControll.abilityData.abilityType.ToColor()));
                 if (remainControll.set) { s += string.Format("{0}にする\n", remainControll.value); }
@@ -319,7 +321,7 @@ public class Action : MonoBehaviour
             if (value > 0) { return "+" + value.ToString(); }
             else { return value.ToString(); }
         }
-        public string GetValueRange(float min,float max)
+        public string GetValueRange(float min, float max)
         {
             if (min == max) { return max.ToString(); }
             else { return string.Format("{0}-{1}", min, max); }
@@ -334,9 +336,10 @@ public class Action : MonoBehaviour
             modifiedStatus.decreaseHP_min += mod.decreaseHP;
             modifiedStatus.decreaseHP_max += mod.decreaseHP;
 
-            if (mod.cantCounter) { modifiedStatus.cantCounter = true; }
             modifiedStatus.ATKMod_min += mod.ATKMod;
             modifiedStatus.ATKMod_max += mod.ATKMod;
+            modifiedStatus.INTMod_min += mod.INTMod;
+            modifiedStatus.INTMod_max += mod.INTMod;
             modifiedStatus.exDMG_mul += mod.exDMG_mul;
             modifiedStatus.exDMG_int += mod.exDMG_int;
             modifiedStatus.ACCMod += mod.ACCMod;
@@ -362,7 +365,7 @@ public class Action : MonoBehaviour
             modifiedStatus.shieldRemove_max += mod.shieldRemove;
 
             modifiedStatus.applySteParams = new List<PA_StatusEffect.StatusEffectParams>(modifiedStatus.applySteParams);
-            foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in mod.applySteParams)
+            foreach (PA_StatusEffect.StatusEffectParams statusEffectParams in mod.applySteParams)
             {
                 modifiedStatus.applySteParams.Add(statusEffectParams);
             }
@@ -384,7 +387,7 @@ public class Action : MonoBehaviour
             removeStE_debuff += mod.removeStE_debuff;
             removeStE_DoT += mod.removeStE_DoT;
 
-            foreach(ActionData.RemoveStE removeStE in mod.removeStEs)
+            foreach (ActionData.RemoveStE removeStE in mod.removeStEs)
             {
                 modifiedStatus.removeStEs_additional.Add(removeStE);
             }
@@ -404,6 +407,19 @@ public class Action : MonoBehaviour
         public bool CRIT;
         public float toralCRITC;
         public Action.ActionStatus actionStatus;
+        public Character target;
+    }
+    public struct OnDamageParams
+    {
+        public int totalDMG;
+        public bool ATK;
+        public bool INT;
+        public int ATKDMG;
+        public int INTDMG;
+        public int shieldDMG;
+        public bool CRIT;
+        public Action.ActionStatus actionStatus;
+        public Character owner;
         public Character target;
     }
     public struct OnKillParams
@@ -560,14 +576,16 @@ public class Action : MonoBehaviour
                 }
 
 
-                if (actionsStatus[i].ATKMod_max > 0 && target.CheckAlive())//攻撃
+                if (actionsStatus[i].DoesAttack() && target.CheckAlive())//攻撃
                 {
                     OnAttackParams onAttackParams = new OnAttackParams();
                     onAttackParams.actionStatus = actionsStatus[i];
                     onAttackParams.target = target;
                     onAttackParams.toralCRITC = ownerStatus.CRITC + actionsStatus[i].CRITCMod;
                     bool CRIT = false;
-                    int DMG = 0;
+                    int ATKDMG = 0;
+                    int INTDMG = 0;
+                    int totalDMG = 0;
 
 
                     float ACC = ownerStatus.ACC + actionsStatus[i].ACCMod;
@@ -580,35 +598,84 @@ public class Action : MonoBehaviour
                         {
                             onAttackParams.hit = true;
 
-                            float fDMG = ownerStatus.exATK;
+                            float ATKDMGf = 0;
+                            float INTDMGf = 0;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
-                            fDMG += ownerStatus.ATK * ATKMod;
+                            float INTMod = Random.Range(actionsStatus[i].INTMod_min, actionsStatus[i].INTMod_max) / 100;
+                            ATKDMGf += ownerStatus.ATK * ATKMod;
+                            INTDMGf += ownerStatus.INT * INTMod;
+
+
                             if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Dice())//クリティカル判定
                             {
                                 shakeCamera = true;
                                 CRIT = true;
                                 onAttackParams.CRIT = true;
-                                fDMG *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                ATKDMGf *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                INTDMGf *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
                                 target.SpawnVisualEffect(Definer.VERef.CRIT);
                             }
 
                             float RDMG = Mathf.Max((targetStatus.PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
-                            fDMG *= RDMG;
+                            ATKDMGf *= RDMG;
+                            INTDMGf *= RDMG;
 
-                            fDMG *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
-                            fDMG += actionsStatus[i].exDMG_int;
+                            ATKDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
+                            ATKDMGf += actionsStatus[i].exDMG_int;
 
-                            DMG = Mathf.Max(0, Mathf.RoundToInt(fDMG));
-                            int shieldDMG = Mathf.Min(DMG, targetStatus.shield);
-                            DMG -= shieldDMG;
+                            INTDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
+                            INTDMGf += actionsStatus[i].exDMG_int;
+
+                            ATKDMG = Mathf.Max(0, Mathf.RoundToInt(ATKDMGf));
+                            INTDMG = Mathf.Max(0, Mathf.RoundToInt(INTDMGf));
+
+                            int shield = targetStatus.shield;
+                            //int shieldDMG = Mathf.Min(ATKDMG, targetStatus.shield);
+                            int shieldDMG = 0;
+                            while (shield > 0)//シールドによるダメージ減少
+                            {
+                                if (ATKDMG > 0)
+                                {
+                                    ATKDMG--;
+                                    shield--;
+                                    shieldDMG++;
+                                    if (shield == 0) { break; }
+                                }
+                                if (INTDMG > 0)
+                                {
+                                    INTDMG--;
+                                    shield--;
+                                    shieldDMG++;
+                                    if (shield == 0) { break; }
+                                }
+
+                                if (ATKDMG == 0 && INTDMG == 0) { break; }
+                            }
+
+
+                            totalDMG = ATKDMG + INTDMG;
+
+                            //ATKDMG -= shieldDMG;
+                            OnDamageParams onDamageParams = new OnDamageParams();
+                            onDamageParams.totalDMG = ATKDMG + INTDMG;
+                            onDamageParams.ATK = actionsStatus[i].ATKMod_max > 0;
+                            onDamageParams.INT = actionsStatus[i].INTMod_max > 0;
+                            onDamageParams.ATKDMG = ATKDMG;
+                            onDamageParams.INTDMG = INTDMG;
+                            onDamageParams.shieldDMG = shieldDMG;
+                            onDamageParams.CRIT = CRIT;
+                            onDamageParams.owner = actionStatus.actionOwner;
+                            onDamageParams.target = target;
+                            onDamageParams.actionStatus = actionsStatus[i];
+
 
                             if (!notChara)
                             {
-                                actionStatus.actionOwner.OnDamage(DMG, target, actionsStatus[i]);//与ダメ時誘発
-                                if (DMG > 0 && actionStatus.drain > 0)//吸血処理
+                                actionStatus.actionOwner.OnDamage(onDamageParams);//与ダメ時誘発
+                                if (totalDMG > 0 && actionStatus.drain > 0)//吸血処理
                                 {
                                     OnHealParams onHealParams = new OnHealParams();
-                                    float drainf = DMG * actionStatus.drain / 100f;
+                                    float drainf = totalDMG * actionStatus.drain / 100f;
                                     int drain = Mathf.RoundToInt(drainf);
 
                                     onHealParams.target = actionStatus.actionOwner;
@@ -620,7 +687,7 @@ public class Action : MonoBehaviour
                             }
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
-                            if(target.Damage(DMG, CRIT, shieldDMG, actionStatus.actionOwner))//ダメージ処理開始
+                            if(target.Damage(onDamageParams))//ダメージ処理開始
                             {//殺害したなら
                                 OnKillParams onKillParams = new OnKillParams();
                                 onKillParams.obstacle = targetStatus.obstacle;

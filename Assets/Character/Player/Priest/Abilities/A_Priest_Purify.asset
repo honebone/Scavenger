@@ -86,10 +86,10 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 2
-    ATKMod_min: 60
-    ATKMod_max: 80
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 60
+    INTMod_max: 80
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -140,4 +140,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c000000
+    actionTargetsInt: 0d000000

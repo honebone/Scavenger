@@ -6,7 +6,7 @@ public class PA_StE_Bleed : PA_StatusEffect
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
-    public override void OnDamaged(int DMG, Character attacker)
+    public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
         Action.ActionStatus action = actionStatus;
         action.decreaseHP_min = StEStatus.stack;

@@ -81,6 +81,7 @@ public class CharacterData : ScriptableObject
     public int maxSAN;
 
     public int ATK;
+    public int INT;
 
     public float CRITC;
     public float CRITD;

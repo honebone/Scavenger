@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FEName: "\u72ED\u6240"
-  simpleInfo: "\u8FD1\u63A5\u653B\u6483\u306E\u6027\u80FD\u304C\u6E1B\u5C11"
+  simpleInfo: "\u7269\u7406\u653B\u6483\u306E\u6027\u80FD\u304C\u6E1B\u5C11"
   narrow:
     actionName: "\u72ED\u6240"
     conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642\uFF1A"
@@ -83,10 +83,10 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -134,6 +136,8 @@ MonoBehaviour:
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
+    index: 0
+    StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}

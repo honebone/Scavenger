@@ -85,10 +85,10 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 10000
-    ATKMod_max: 10000
+    ATKMod_min: 100
+    ATKMod_max: 100
+    INTMod_min: 100
+    INTMod_max: 100
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -114,12 +114,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
-      guaranteed: 0
-      applyChance: 200
-      stack: 1
-      value: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

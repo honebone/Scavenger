@@ -40,11 +40,17 @@ MonoBehaviour:
   - {fileID: 5626464818293590775, guid: f779864b1f4384349b73286fc5221277, type: 3}
   actionMods: []
   corpse: {fileID: 0}
-  dropItems: []
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 1
   maxHP: 25
   maxSAN: 50
-  ATK: 8
+  ATK: 5
+  INT: 9
   CRITC: 5
   CRITD: 150
   EVD: 5

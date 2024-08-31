@@ -50,8 +50,8 @@ MonoBehaviour:
     exInfo: "\u30FB\u5BFE\u8C61\u304C\u5217\u5168\u4F53\u306B\u306A\u308B"
     consumeFocus: 0
     decreaseHP: 0
-    cantCounter: 0
-    ATKMod: 40
+    ATKMod: 0
+    INTMod: 40
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
