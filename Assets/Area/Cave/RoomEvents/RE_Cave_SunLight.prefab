@@ -52,6 +52,7 @@ MonoBehaviour:
     optionInfo: 
   lootStatus:
     drawAttemptsRange: {x: 3, y: 6}
+    rarityWeightMod: 0
     uniqueDropPool: []
     includeTags:
     - tag: 5

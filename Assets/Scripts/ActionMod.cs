@@ -110,7 +110,7 @@ public class ActionMod : MonoBehaviour
 
             if (exInfo != "") { s += exInfo+"\n"; }
 
-            return s.ColorStr(Definer.colorRef.AMod);
+            return s;//.ColorStr(Definer.colorRef.AMod)
         }
         public string ValueToStr(string start, float value, string end)
         {

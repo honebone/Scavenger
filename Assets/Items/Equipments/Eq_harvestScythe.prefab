@@ -53,7 +53,8 @@ MonoBehaviour:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 20
+      ATK_mul: 15
+      INT_mul: 15
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -103,10 +104,10 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 50
-    ATKMod_max: 50
+    ATKMod_min: 25
+    ATKMod_max: 25
+    INTMod_min: 25
+    INTMod_max: 25
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0

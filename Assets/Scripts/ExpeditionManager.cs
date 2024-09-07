@@ -40,7 +40,7 @@ public class ExpeditionManager : MonoBehaviour
     [System.Serializable]
     public class PartyStatus
     {
-        public float[] materialDropChance=new float[] { 60, 30, 9, 0.9f, 0.1f };
+        public float materialWeightMod;
         public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
 
@@ -52,6 +52,7 @@ public class ExpeditionManager : MonoBehaviour
         /// <summary>x‹‹•i‚Ì‘I‘ğˆ‚Ì”</summary>
         public int supplyOptions = 3;
 
+       
     }
     [SerializeField]
     PartyStatus partyStatus;

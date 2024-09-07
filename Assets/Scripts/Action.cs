@@ -310,7 +310,7 @@ public class Action : MonoBehaviour
             }
             if (AModInfo != "")
             {
-                s += string.Format("Åõ{0}", AModInfo).ColorStr(Definer.colorRef.AMod);
+                s += string.Format("Åõ{0}", AModInfo);//.ColorStr(Definer.colorRef.AMod)
             }
             if (actionInfo != "") { s += actionInfo + "\n"; }
 

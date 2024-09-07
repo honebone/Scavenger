@@ -228,6 +228,26 @@ public static class Extentions
     {
         return value * 100f / max;
     }
+
+    public static int Sum(this List<int> list)
+    {
+        int sum = 0;
+        foreach (int f in list)
+        {
+            sum += f;
+        }
+        return sum;
+    }
+    public static float Sum(this List<float> list)
+    {
+        float sum= 0;
+        foreach(float f in list)
+        {
+            sum += f;
+        }
+        return sum;
+    }
+
     /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
     public static List<T> Sample<T>(this List<T> list, int amount)
     {

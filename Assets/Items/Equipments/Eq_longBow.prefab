@@ -47,24 +47,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1a15f4f8967430d479589373e59315b4, type: 2}
+    info_start: 
     equipmentInfo: 
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
-      ATK_mul: 0
+      PROT: 0
+      ATK_mul: 10
+      INT_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
-      ACC: 0
+      ACC: 10
       ACT: 0
       turnPerRound: 0
       GHeal: 0
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
-    actionMods:
-    - {fileID: 5987685990520771950, guid: 43a2db0bb314a424d990e10a168a63a3, type: 3}
-    info_start: 
+      moveRes: 0
+    actionMods: []
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

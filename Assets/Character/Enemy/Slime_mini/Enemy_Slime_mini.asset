@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: E_Slime_Mini
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30DF\u30CB\u30B9\u30E9\u30A4\u30E0"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 08000000
   immovable: 0
   notChara: 0
@@ -29,11 +32,18 @@ MonoBehaviour:
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}
-  dropItems: []
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
   maxHP: 5
   maxSAN: 0
   ATK: 4
+  INT: 2
   CRITC: 5
   CRITD: 2
   EVD: 3
@@ -42,9 +52,13 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
   debuffRes: 0
-  stunRes: 0
-  bleedRes: 0
-  poisonRes: 0
-  burnRes: 0
+  StEResists: []
+  StEApplyBonus: []
   moveRes: 0

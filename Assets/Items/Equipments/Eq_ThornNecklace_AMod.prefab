@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u653B\u6483"
+    conditionInfo: "\u81EA\u8EAB\u306E\u5168\u3066\u306E\u653B\u6483"
+    hideValues: 0
+    exInfo: 
     consumeFocus: 0
     decreaseHP: 0
-    cantCounter: 0
     ATKMod: 0
+    INTMod: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -59,17 +61,21 @@ MonoBehaviour:
     unevadable: 0
     healValue: 0
     healPercent: 0
+    healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 0
       applyChance: 80
       stack: 3
       value: 0
+    applyStEBonus: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
     removeStEs: []
-  checkType: 000000000100000002000000
+  checkATK: 0
+  checkINT: 0

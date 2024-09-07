@@ -54,7 +54,7 @@ public class ItemData : ScriptableObject
     public Sprite sprite;
 
     //material
-    public enum MaterialTag { other, valuables, slay, ore, food, plant, processed ,junk, sundries }
+    public enum MaterialTag { other, valuables, slay, ore, food, plant, processed, junk, sundries, book, holy, weapon,crops }
     [Header("\nMaterial")]
     public int amountPerStack = 1;
     public Vector2Int dropAmountRange;

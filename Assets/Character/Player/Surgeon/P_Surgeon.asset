@@ -17,7 +17,7 @@ MonoBehaviour:
   charaName: "\u5916\u79D1\u533B"
   difficulty: "\u4F4E"
   introduction: "\u652F\u63F4\u30BF\u30A4\u30D7\u306E\u30AD\u30E3\u30E9\n"
-  preferredPos: "\u4E2D\u5217"
+  preferredPos: "\u5F8C\u30FB\u4E2D\u5217"
   characterTags: 02000000
   immovable: 0
   notChara: 0
@@ -28,13 +28,16 @@ MonoBehaviour:
   - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
+  - {fileID: 11400000, guid: 6910640f2d72ab146bf0b435e8014f57, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 2b330f4cbc1918044936bb97910b4fd0, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
     uniqueDropPool: []
     includeTags: []
     excludeTags: 
@@ -43,7 +46,7 @@ MonoBehaviour:
   maxHP: 25
   maxSAN: 50
   ATK: 8
-  INT: 5
+  INT: 10
   CRITC: 7
   CRITD: 150
   EVD: 6

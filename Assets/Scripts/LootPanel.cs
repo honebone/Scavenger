@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LootPanel : MonoBehaviour
 {
+    [SerializeField] List<float> MaterialWeightModRatio;
+    [SerializeField] List<float> materialRarityWeight;
+
     [SerializeField]//test
     List<Definer.Item> loots = new List<Definer.Item>();
     int expOrbs;
@@ -47,7 +50,7 @@ public class LootPanel : MonoBehaviour
     {
         [Header("x:min y:max")]
         public Vector2Int drawAttemptsRange;
-        //public List<float> rarityWeightMod;
+        public float rarityWeightMod;
 
         public List<ItemData> uniqueDropPool;
         public List<IncludeTag> includeTags;
@@ -72,6 +75,19 @@ public class LootPanel : MonoBehaviour
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         soundManager = FindObjectOfType<SoundManager>();
         tutorialManager = FindObjectOfType<TutorialManager>();
+
+        //List<float> list = new List<float>();
+        //for (int i = 0; i < 31; i++)
+        //{
+        //    string s=i.ToString()+"：";
+        //    list = GetMaterialRarityWeight(i);
+        //    foreach (float f in list)
+        //    {
+        //        s += $",{((f / list.Sum()) * 100f).ToString(".00")}";
+        //    }
+        //    s += "\n";
+        //    Debug.Log(s);
+        //}
     }
 
     public void ToggleLootPanel()
@@ -219,7 +235,8 @@ public class LootPanel : MonoBehaviour
                 if (pool.Count > 0)
                 {
                     //レアリティの決定
-                    ItemData.Rarity rarity = (ItemData.Rarity)expeditionManager.GetPartyStatus().materialDropChance.ChoiceWithWeight();
+                    List<float> rarityWeight = GetMaterialRarityWeight(status.rarityWeightMod);
+                    ItemData.Rarity rarity = (ItemData.Rarity)rarityWeight.ChoiceWithWeight();
 
                     //ドロップアイテムの決定
                     ItemData drop = pool[0];
@@ -353,5 +370,16 @@ public class LootPanel : MonoBehaviour
             if (item.data == itemData) { return item.amount; }
         }
         return 0;
+    }
+
+    public List<float> GetMaterialRarityWeight(float exMod)
+    {
+        List<float> weight = new List<float>(materialRarityWeight);
+        float mod = expeditionManager.GetPartyStatus().materialWeightMod + exMod;
+        for (int i = 0; i < materialRarityWeight.Count; i++)
+        {
+            weight[i] += MaterialWeightModRatio[i] * mod;
+        }
+        return weight;
     }
 }

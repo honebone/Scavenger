@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8138467120028534782}
-  - component: {fileID: 3527146490000430078}
+  - component: {fileID: -5754461668695591252}
   m_Layer: 0
   m_Name: Eq_SpikeShield_Amod
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3527146490000430078
+--- !u!114 &-5754461668695591252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,14 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4030113796962772151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b21c3991b8bec4bab0952b837524f0, type: 3}
+  m_Script: {fileID: 11500000, guid: d957deff66b562841b06dee7ca2dbf24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u30AB\u30A6\u30F3\u30BF\u30FC\u653B\u6483"
+    conditionInfo: "\u8A98\u767A\u80FD\u529B\u306B\u3088\u308B\u653B\u6483"
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
     decreaseHP: 0
-    cantCounter: 0
     ATKMod: 0
+    INTMod: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -58,17 +61,21 @@ MonoBehaviour:
     unevadable: 0
     healValue: 0
     healPercent: 0
+    healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 0
       applyChance: 50
       stack: 4
       value: 0
+    applyStEBonus: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStE_DoT: 0
     removeStEs: []
-  checkType: 03000000
+  checkActive: 0
+  onlyAttack: 1

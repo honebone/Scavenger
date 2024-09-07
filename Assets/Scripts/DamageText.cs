@@ -8,7 +8,7 @@ using TMPro;
 
 public class DamageText : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] Text text;
     [SerializeField] float duration = 1.25f;
     [SerializeField] float fadeDuration = 1f;
     [SerializeField] CanvasGroup canvas;
@@ -23,8 +23,8 @@ public class DamageText : MonoBehaviour
 
         var textSeq = DOTween.Sequence();
 
-        
-        textSeq.Append(text.transform.DOScale(Vector3.one, duration).SetEase(Ease.OutQuint));
+
+        textSeq.Append(text.transform.DOScale(Vector3.one * 1.25f, duration).SetEase(Ease.OutQuint));
         textSeq.Append(canvas.DOFade(0, fadeDuration).OnComplete(() =>
         {
             Destroy(gameObject);

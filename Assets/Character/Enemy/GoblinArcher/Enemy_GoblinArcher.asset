@@ -36,17 +36,18 @@ MonoBehaviour:
   actionMods:
   - {fileID: 980131611971298319, guid: 82215e08a1362904fbc5fa55f480ae10, type: 3}
   corpse: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}
-  dropItems:
-  - dropItem: {fileID: 11400000, guid: 9b3ecad76c8787b4cb463a18d479a910, type: 2}
-    quantity: 1
-  - dropItem: {fileID: 11400000, guid: 8f21901abf2b9624e80aa2c612b1cc4c, type: 2}
-    quantity: 2
-  - dropItem: {fileID: 11400000, guid: 5a19c4384d17b5342836e153c97e472d, type: 2}
-    quantity: 2
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
   maxHP: 22
   maxSAN: 0
   ATK: 11
+  INT: 5
   CRITC: 6
   CRITD: 200
   EVD: 6
@@ -55,6 +56,12 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

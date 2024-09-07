@@ -14,7 +14,7 @@ public class Eq_UnstableBlocks : PA_Equipment
     {
         if (onDamageParams.totalDMG > 0)
         {
-            character.AddATK(0, currentValue * -1);
+            character.AddATKINT(0, currentValue * -1);
 
             stack = 0;
             currentValue = 0;
@@ -23,16 +23,16 @@ public class Eq_UnstableBlocks : PA_Equipment
 
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        character.AddATK(0, currentValue * -1);
+        character.AddATKINT(0, currentValue * -1);
 
         stack = Mathf.Min(stack + 1, maxStack);
-        character.AddATK(0, stack * valuePerStack);
+        character.AddATKINT(0, stack * valuePerStack);
         currentValue = stack * valuePerStack;
     }
 
     public override void OnBattleEnd()
     {
-        character.AddATK(0, currentValue * -1);
+        character.AddATKINT(0, currentValue * -1);
 
         stack = 0;
         currentValue = 0;

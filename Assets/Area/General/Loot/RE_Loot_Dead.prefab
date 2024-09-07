@@ -51,9 +51,15 @@ MonoBehaviour:
   - optionName: "\u6F01\u308B"
     optionInfo: 
   lootStatus:
-    drawAttemptsRange: {x: 0, y: 0}
-    dropItems: []
-    dropItemFromPresets:
-    - preset: {fileID: 11400000, guid: d184fced93d75ec43ae1dca144889d71, type: 2}
-      attemptsRange: {x: 3, y: 4}
+    drawAttemptsRange: {x: 0, y: 5}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags:
+    - tag: 1
+      weight: 10
+    - tag: 4
+      weight: 20
+    - tag: 11
+      weight: 70
+    excludeTags: 
     dropEquipmentsRange: {x: 2, y: 4}

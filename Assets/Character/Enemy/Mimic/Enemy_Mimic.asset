@@ -35,11 +35,18 @@ MonoBehaviour:
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 11400000, guid: e9de8641fdb975c42b9f9ee245a7fc93, type: 2}
-  dropItems: []
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
   maxHP: 100
   maxSAN: 0
   ATK: 12
+  INT: 5
   CRITC: 5
   CRITD: 200
   EVD: 0

@@ -1019,6 +1019,11 @@ public class Character : MonoBehaviour
     }
 
     public void AddPROT(float value) { charaStatus.PROT += value; }
+    public void AddATKINT(int value_base, float value_mul)
+    {
+        AddATK(value_base, value_mul);
+        AddINT(value_base, value_mul);
+    }
 
     public void AddATK(int value_base, float value_mul)
     {

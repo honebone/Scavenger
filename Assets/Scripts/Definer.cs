@@ -129,7 +129,8 @@ public class Definer : MonoBehaviour
     public static Dictionary<ItemData.MaterialTag, string> materialTagName = new Dictionary<ItemData.MaterialTag, string>()
     {
         { ItemData.MaterialTag.other,"‚»‚Ì‘¼"},{ ItemData.MaterialTag.valuables,"‹Md•i"},{ ItemData.MaterialTag.slay,"“¢”°"},{ ItemData.MaterialTag.ore,"ÌŒ@"},{ ItemData.MaterialTag.food,"H—¿"}
-        ,{ ItemData.MaterialTag.plant,"A•¨"},{ ItemData.MaterialTag.processed,"‰ÁH•i"},{ ItemData.MaterialTag.junk,"ƒKƒ‰ƒNƒ^"},{ ItemData.MaterialTag.sundries,"G‰İ"}
+        ,{ ItemData.MaterialTag.plant,"A•¨"},{ ItemData.MaterialTag.processed,"‰ÁH•i"},{ ItemData.MaterialTag.junk,"ƒKƒ‰ƒNƒ^"},{ ItemData.MaterialTag.sundries,"G‰İ"},{ ItemData.MaterialTag.book," –{"}
+        ,{ ItemData.MaterialTag.holy,"_¹"},{ ItemData.MaterialTag.weapon,"ŒR–"},{ ItemData.MaterialTag.crops,"ì•¨"}
     };
     public static Dictionary<ItemData.EquipmentTag, string> equipmentTagName = new Dictionary<ItemData.EquipmentTag, string>()
     {

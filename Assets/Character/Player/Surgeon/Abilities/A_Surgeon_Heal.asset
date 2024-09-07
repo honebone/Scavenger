@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u624B\u8853"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: fdb3584e4a84a05408ee3523dd9f710e, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -24,7 +24,7 @@ MonoBehaviour:
   selectWeight: 1
   availableFront: 0
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -49,17 +49,17 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u624B\u8853"
     conditionInfo: 
     targetInfo: "HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u81EA\u8EAB\u306EINT\u306E75\uFF05\u3092\u56DE\u5FA9\u91CF\u306B\u52A0\u7B97"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods:
-    - {fileID: 7922638166886946676, guid: bb8023da73020df4392107fcd963b66b, type: 3}
+    - {fileID: 4645981123134532769, guid: 87f9fc99a268df345b116e9a8680bc2d, type: 3}
     targetType: 1
     friendly: 1
     condition:
@@ -86,10 +86,10 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
     drain: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 20
-    healPercent_max: 30
+    healValue_min: 7
+    healValue_max: 10
+    healPercent_min: 0
+    healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -138,6 +138,6 @@ MonoBehaviour:
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
+    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 02000000

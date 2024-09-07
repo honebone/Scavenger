@@ -10,6 +10,7 @@ public class DebugFunction : MonoBehaviour
 
     [SerializeField]
     CharacterData[] characterData;
+    [SerializeField] AreaManager.EnemySet players;
 
     [SerializeField]
     ItemData[] itemData;
@@ -86,9 +87,15 @@ public class DebugFunction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[4], 6);
-                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
-                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
-                FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
+                //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
+                //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
+                //FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[3], 0);
+
+                List<CharacterData> playerList = players.GetEnemies();
+                for (int i = 0; i < 9; i++)
+                {
+                    if (playerList[i] != null) { charactersManager.SpawnPlayer(playerList[i], i); }
+                }
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
