@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u624B\u8853+"
   lockedDefault: 0
-  upgradeInfo: "\u5BFE\u8C61\u306B\u3068\u308B\u305F\u3081\u306EHP\u306E\u5236\u9650\u3092\u7DE9\u548C\nINT\u3092\u56DE\u5FA9\u91CF\u306B\u53CD\u6620\u3055\u305B\u308B\u5272\u5408\u3092\u5897\u52A0"
+  upgradeInfo: "\u5BFE\u8C61\u306B\u3068\u308B\u305F\u3081\u306EHP\u306E\u5236\u9650\u3092\u7DE9\u548C\n\u56DE\u5FA9\u91CF\u306E\u6700\u4F4E\u5024\u3092\u5897\u52A0"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
@@ -53,13 +53,12 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "HP\u304C67\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
     AModInfo: 
-    actionInfo: "\u81EA\u8EAB\u306EINT\u306E75\uFF05\u3092\u56DE\u5FA9\u91CF\u306B\u52A0\u7B97"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 4645981123134532769, guid: 2ddf5516aa9e629429faf87ce31c16e8, type: 3}
+    actionMods: []
     targetType: 1
     friendly: 1
     condition:
@@ -98,10 +97,10 @@ MonoBehaviour:
     drain: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 7
-    healValue_max: 10
-    healPercent_min: 0
-    healPercent_max: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 30
+    healPercent_max: 30
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0

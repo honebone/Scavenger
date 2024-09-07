@@ -162,6 +162,7 @@ public class Character : MonoBehaviour
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
             }
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
+            if (debuffRes != 0) { s += string.Format("デバフ耐性{0}％\n", debuffRes); }
 
             foreach (GameObject actionMod in actionMods)
             {
@@ -240,13 +241,20 @@ public class Character : MonoBehaviour
             equipments = new List<Definer.Item>();
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
-        public float GetStERes(GameObject StE)
+        public float GetStERes(PA_StatusEffect.StatusEffectParams StEParams)
         {
+            float resist = 0;
             foreach (StEResist res in StEResists)
             {
-                if (res.ResStE == StE) { return res.value; }
+                if (res.ResStE == StEParams.applyStE) { resist = res.value; }
             }
-            return 0;
+
+            if (StEParams.GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
+            {
+                resist += debuffRes;
+            }
+
+            return resist;
         }
         public StEApplyBonus GetStEApplyBonus(GameObject StE)
         {
@@ -296,6 +304,7 @@ public class Character : MonoBehaviour
         public List<StEApplyBonus> StEApplyBonus;
 
         public float moveRes;
+        public float debuffRes;
         public string GetInfo()
         {
             string s = "";
@@ -324,6 +333,7 @@ public class Character : MonoBehaviour
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
             }
             s += ValueToStr("移動耐性", moveRes, "％");
+            s += ValueToStr("デバフ耐性", debuffRes, "％");
             
             return s;
         }
@@ -988,6 +998,7 @@ public class Character : MonoBehaviour
             AddStEBonus(bonus, set);
         }
         if (mod.moveRes != 0) { AddMoveRes(mod.moveRes); }
+        if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes); }
     }
     public void AddMaxHP(int value_base, float value_mul, bool heal)
     {
@@ -1127,6 +1138,10 @@ public class Character : MonoBehaviour
     public void AddMoveRes(float value)
     {
         charaStatus.moveRes += value;
+    }
+    public void AddDebuffRes(float value)
+    {
+        charaStatus.debuffRes += value;
     }
     public void AddActionMod(GameObject mod ,bool set)
     {
@@ -1498,11 +1513,19 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public virtual void OnApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    public virtual void OnApplyStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnApplyedStE(onApplyStEParamsList); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnApplyStE(onApplyStEParamsList); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnApplyedStE(Action.OnApplyStEParams onApplyStEParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnApplyedStE(onApplyStEParams); }
             RemovePA_Execute();
         }
     }

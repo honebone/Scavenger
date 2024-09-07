@@ -10,7 +10,16 @@ public class PA_StE_ATKUp : PA_StatusEffect
     }
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
     {
-        AddStack(-1); 
+        bool f = false;
+        foreach (Action.OnAttackParams attackParams in onAttackParamsList)
+        {
+            if (attackParams.actionStatus.ATKMod_max > 0)
+            {
+                f = true;
+                break;
+            }
+        }
+        if(f) AddStack(-1);
     }
    
     public override void AtTheEnd()

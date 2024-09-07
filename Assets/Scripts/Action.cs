@@ -121,8 +121,8 @@ public class Action : MonoBehaviour
         public int removeStE_buff;
         [Header("\nデバフの除去")]
         public int removeStE_debuff;
-        [Header("\nDoTの除去")]
-        public int removeStE_DoT;
+        //[Header("\nDoTの除去")]
+        //public int removeStE_DoT;
 
         [Header("特定のStEの除去")]
         public List<ActionData.RemoveStE> removeStEs;
@@ -166,6 +166,7 @@ public class Action : MonoBehaviour
         public List<int> actionTargetsInt;
 
         public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0; }
+        public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0; }
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
@@ -256,8 +257,8 @@ public class Action : MonoBehaviour
                 , "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
             if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n"
                 , "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
-            if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n"
-                , "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
+            //if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n"
+            //    , "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
@@ -385,7 +386,7 @@ public class Action : MonoBehaviour
 
             removeStE_buff += mod.removeStE_buff;
             removeStE_debuff += mod.removeStE_debuff;
-            removeStE_DoT += mod.removeStE_DoT;
+            //removeStE_DoT += mod.removeStE_DoT;
 
             foreach (ActionData.RemoveStE removeStE in mod.removeStEs)
             {
@@ -435,7 +436,10 @@ public class Action : MonoBehaviour
     }
     public struct OnApplyStEParams
     {
+        /// <summary>appliedParams + resistedParams</summary>
+        public List<PA_StatusEffect.StatusEffectParams> attemptedParams;
         public List<PA_StatusEffect.StatusEffectParams> appliedParams;
+        public List<PA_StatusEffect.StatusEffectParams> resistedParams;
         public Character taget;
     }
     public struct OnMoveParams
@@ -731,7 +735,7 @@ public class Action : MonoBehaviour
 
                 if (attackHit && target.CheckAlive())
                 {
-                    if (actionsStatus[i].healPercent_max > 0 || actionsStatus[i].healValue_max > 0||actionsStatus[i].healRegain_max>0)//回復
+                    if (actionsStatus[i].DoesHeal())//回復
                     {
                         OnHealParams onHealParams = new OnHealParams();
                         onHealParams.target = target;
@@ -782,7 +786,9 @@ public class Action : MonoBehaviour
                     }
 
                     OnApplyStEParams onApplyStEParams = new OnApplyStEParams();
+                    onApplyStEParams.attemptedParams = new List<PA_StatusEffect.StatusEffectParams>(actionsStatus[i].applySteParams);
                     onApplyStEParams.appliedParams = new List<PA_StatusEffect.StatusEffectParams>();
+                    onApplyStEParams.resistedParams = new List<PA_StatusEffect.StatusEffectParams>();
                     onApplyStEParams.taget = target;
 
                     List<PA_StatusEffect.StatusEffectStatus.StatusEffectType> appliedType = new List<PA_StatusEffect.StatusEffectStatus.StatusEffectType>();
@@ -796,7 +802,7 @@ public class Action : MonoBehaviour
                             if (bonus.applyStE == StEParams.applyStE) { applyBonus.AddBonus(bonus); }
                         }
 
-                        if (StEParams.guaranteed || (StEParams.applyChance + applyBonus.exChance - targetStatus.GetStERes(StEParams.applyStE)).Dice())
+                        if (StEParams.guaranteed || (StEParams.applyChance + applyBonus.exChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
                         {
                             if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
                             onApplyStEParams.appliedParams.Add(StEParams);
@@ -805,6 +811,7 @@ public class Action : MonoBehaviour
                         }
                         else
                         {
+                            onApplyStEParams.resistedParams.Add(StEParams);
                             target.GetTargetButton().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
                             infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                         }
@@ -817,7 +824,11 @@ public class Action : MonoBehaviour
                         }
                     }
                     actionsStatus[i].StEApplyBonus.Clear();
-                    if (onApplyStEParams.appliedParams.Count > 0) { onApplyStEParamsList.Add(onApplyStEParams); }
+                    if (onApplyStEParams.attemptedParams.Count > 0)
+                    {
+                        onApplyStEParamsList.Add(onApplyStEParams);
+                        target.OnApplyedStE(onApplyStEParams);//被攻撃時誘発
+                    }
 
 
                     List< ActionData.RemoveStE > removeStEs=new List< ActionData.RemoveStE >(actionsStatus[i].removeStEs);
@@ -832,10 +843,10 @@ public class Action : MonoBehaviour
                     {
                         target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff, actionsStatus[i].removeStE_debuff);
                     }
-                    if (actionsStatus[i].removeStE_DoT > 0)
-                    {
-                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT, actionsStatus[i].removeStE_DoT);
-                    }
+                    //if (actionsStatus[i].removeStE_DoT > 0)
+                    //{
+                    //    target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT, actionsStatus[i].removeStE_DoT);
+                    //}
                     foreach (ActionData.RemoveStE remove in removeStEs)//StE消去
                     {
                         target.RemoveStE(remove);
@@ -1055,7 +1066,7 @@ public class Action : MonoBehaviour
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//攻撃時誘発
             if (onKillParamsList.Count > 0) { actionStatus.actionOwner.Onkill(onKillParamsList); }//殺害時誘発
-            if (onApplyStEParamsList.Count > 0) { actionStatus.actionOwner.OnApplyedStE(onApplyStEParamsList); }//StE付与時誘発
+            if (onApplyStEParamsList.Count > 0) { actionStatus.actionOwner.OnApplyStE(onApplyStEParamsList); }//StE付与時誘発
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//与回復時誘発
         }
 

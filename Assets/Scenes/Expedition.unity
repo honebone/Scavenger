@@ -275,8 +275,8 @@ MonoBehaviour:
     upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
+    upperBack: {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
+    centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   itemData:
   - {fileID: 11400000, guid: 8dedc3295e2b174409d16c8be78f90f0, type: 2}
@@ -17237,6 +17237,7 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     moveRes: 0
+    debuffRes: 0
   areaDataForDebug: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   backgroundP: {fileID: 833599005}
   globalLight: {fileID: 521683945}
@@ -17425,7 +17426,6 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -31785,7 +31785,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

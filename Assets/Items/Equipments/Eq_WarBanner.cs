@@ -8,7 +8,7 @@ public class Eq_WarBanner : PA_Equipment
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
     int count;
-    public override void OnApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    public override void OnApplyStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
     {
         foreach(Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
         {

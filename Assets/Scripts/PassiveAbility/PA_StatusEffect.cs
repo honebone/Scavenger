@@ -11,7 +11,7 @@ public class PA_StatusEffect : PassiveAbility
         [TextArea(3,10)]
         public string StEInfo;
         public Sprite StEIcon;
-        public enum StatusEffectType { neutral, buff, debuff, focus, unique, DoT }
+        public enum StatusEffectType { neutral, buff, debuff, focus, unique }
         public StatusEffectType StEType;
         [Header("0ならスタック制限なし")]
         public int maxStack;

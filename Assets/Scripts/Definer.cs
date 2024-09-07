@@ -140,7 +140,7 @@ public class Definer : MonoBehaviour
     {
         {PA_StatusEffect.StatusEffectStatus.StatusEffectType.neutral,"その他" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff,"バフ" }
         ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff,"デバフ" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus,"フォーカス" }
-        ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.unique,"固有" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT,"ダメージ" }
+        ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.unique,"固有" }/*,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT,"ダメージ" }*/
     };
 
     [System.Serializable]

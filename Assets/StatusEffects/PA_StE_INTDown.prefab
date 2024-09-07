@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StEStatus:
     StEName: "INT\u4F4E\u4E0B"
-    StEInfo: "\u81EA\u8EAB\u306EINT-X\uFF05\n\u81EA\u8EAB\u304B\u653B\u6483\u3057\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "\u81EA\u8EAB\u306EINT-X\uFF05\n\u81EA\u8EAB\u304C\u9B54\u6CD5\u653B\u6483\u3057\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 77c527529c625a248ac97ad064b3042c, type: 3}
     StEType: 2
     maxStack: 0

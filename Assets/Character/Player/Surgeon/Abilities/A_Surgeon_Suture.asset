@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Priest_Consecration
+  m_Name: A_Surgeon_Suture
   m_EditorClassIdentifier: 
-  abilityName: "\u8056\u5225"
-  lockedDefault: 1
+  abilityName: "\u7E2B\u5408"
+  lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 50890ab2487f1a84c9cf05b4e9b4ca17, type: 2}
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 304073816946091927, guid: 00aba150ada93ff428ce82d2986f9109, type: 3}
-  abilityType: 3
+  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  abilityType: 2
   excludeRandomPool: 0
   selectWeight: 1
   availableFront: 0
@@ -44,12 +44,12 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 2
+  cooldownOnUse: 0
   hasRemain: 0
-  remainOnBattleStart: 0
+  remainOnBattleStart: 2
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u8056\u5225"
+  - actionName: "\u7E2B\u5408"
     conditionInfo: 
     targetInfo: "\u5473\u65B91\u4F53"
     AModInfo: 
@@ -58,8 +58,7 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 7922638166886946676, guid: 504a93b58d5c9624c8d2e780bdd120fb, type: 3}
+    actionMods: []
     targetType: 1
     friendly: 1
     condition:
@@ -100,8 +99,8 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
+    healPercent_min: 5
+    healPercent_max: 5
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -118,8 +117,18 @@ MonoBehaviour:
     applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 2
-    removeStEs: []
+    removeStE_debuff: 0
+    removeStE_DoT: 0
+    removeStEs:
+    - removeStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      removeAll: 1
+      addAmount: 0
+    - removeStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      removeAll: 1
+      addAmount: 0
+    - removeStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -132,11 +141,11 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 3
+    abilityType: 2
     index: 0
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 304073816946091927, guid: 00aba150ada93ff428ce82d2986f9109, type: 3}
+    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 07000000

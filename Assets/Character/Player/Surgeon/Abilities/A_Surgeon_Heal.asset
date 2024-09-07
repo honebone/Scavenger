@@ -53,13 +53,12 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
     AModInfo: 
-    actionInfo: "\u81EA\u8EAB\u306EINT\u306E75\uFF05\u3092\u56DE\u5FA9\u91CF\u306B\u52A0\u7B97"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 4645981123134532769, guid: 87f9fc99a268df345b116e9a8680bc2d, type: 3}
+    actionMods: []
     targetType: 1
     friendly: 1
     condition:
@@ -98,10 +97,10 @@ MonoBehaviour:
     drain: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 7
-    healValue_max: 10
-    healPercent_min: 0
-    healPercent_max: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 15
+    healPercent_max: 30
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -140,4 +139,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 02000000
+    actionTargetsInt: 07000000

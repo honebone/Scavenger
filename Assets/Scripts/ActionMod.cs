@@ -43,8 +43,8 @@ public class ActionMod : MonoBehaviour
         public int removeStE_buff;
         [Header("\n\nデバフの除去")]
         public int removeStE_debuff;
-        [Header("\n\nDoTの除去")]
-        public int removeStE_DoT;
+        //[Header("\n\nDoTの除去")]
+        //public int removeStE_DoT;
 
         public List<ActionData.RemoveStE> removeStEs;
 
@@ -97,7 +97,7 @@ public class ActionMod : MonoBehaviour
 
                 if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
                 if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
-                if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
+                //if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
 
                 foreach (ActionData.RemoveStE remove in removeStEs)
                 {

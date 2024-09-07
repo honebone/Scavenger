@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Priest_Consecration
+  m_Name: A_Surgeon_Vaccine
   m_EditorClassIdentifier: 
-  abilityName: "\u8056\u5225"
-  lockedDefault: 1
+  abilityName: "\u4E88\u9632\u63A5\u7A2E"
+  lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 50890ab2487f1a84c9cf05b4e9b4ca17, type: 2}
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 304073816946091927, guid: 00aba150ada93ff428ce82d2986f9109, type: 3}
+  activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 3
   excludeRandomPool: 0
   selectWeight: 1
-  availableFront: 0
+  availableFront: 1
   availableMid: 1
-  availableBack: 1
+  availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -49,18 +49,17 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u8056\u5225"
+  - actionName: "\u4E88\u9632\u63A5\u7A2E"
     conditionInfo: 
-    targetInfo: "\u5473\u65B91\u4F53"
+    targetInfo: "\u5473\u65B9\u5168\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 7922638166886946676, guid: 504a93b58d5c9624c8d2e780bdd120fb, type: 3}
-    targetType: 1
+    actionMods: []
+    targetType: 2
     friendly: 1
     condition:
       searchAsPos: 0
@@ -115,10 +114,15 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: dc5637dedc4143b419ae68f32875179b, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 25
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 2
+    removeStE_debuff: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -137,6 +141,6 @@ MonoBehaviour:
     StEApplyBonus: []
     removeStEs_additional: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 304073816946091927, guid: 00aba150ada93ff428ce82d2986f9109, type: 3}
+    activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 040000000500000006000000
