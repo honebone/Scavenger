@@ -56,6 +56,7 @@ public class BattleManager : MonoBehaviour
     PositionManager[] positionManagers;
     ExpeditionManager.PartyStatus partyStatus;
     TutorialManager tutorialManager;
+    [SerializeField] TotalDamageText totalDamageText;
 
     FieldEffect fieldEffect;
     int roundCount;
@@ -511,6 +512,8 @@ public class BattleManager : MonoBehaviour
 
         }
     }
+
+    public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }
 
     public void StartTutorial_Ability() { tutorialManager.StartTutorial(tutorial_ability); }
     public void StartTutorial_Corpse() { tutorialManager.StartTutorial(tutorial_corpse); }

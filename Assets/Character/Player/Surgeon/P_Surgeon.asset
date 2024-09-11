@@ -33,6 +33,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c410a41f30c45640a55511184134fe1, type: 2}
   - {fileID: 11400000, guid: 84d032702b2b45749849760fad6ef2b3, type: 2}
   - {fileID: 11400000, guid: 75fb95cd003ccce4eaed7111043eb7a1, type: 2}
+  - {fileID: 11400000, guid: 1349c1b6f5583164ba2facbb83b0b0f8, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
@@ -49,7 +50,7 @@ MonoBehaviour:
   surviveFatalWounds: 1
   maxHP: 25
   maxSAN: 50
-  ATK: 8
+  ATK: 6
   INT: 10
   CRITC: 7
   CRITD: 150

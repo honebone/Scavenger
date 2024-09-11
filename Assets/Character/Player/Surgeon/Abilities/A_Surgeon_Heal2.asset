@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u624B\u8853+"
   lockedDefault: 0
-  upgradeInfo: "\u5BFE\u8C61\u306B\u3068\u308B\u305F\u3081\u306EHP\u306E\u5236\u9650\u3092\u7DE9\u548C\n\u56DE\u5FA9\u91CF\u306E\u6700\u4F4E\u5024\u3092\u5897\u52A0"
+  upgradeInfo: "\u5BFE\u8C61\u306B\u3068\u308B\u305F\u3081\u306EHP\u306E\u5236\u9650\u3092\u7DE9\u548C\n\u56DE\u5FA9\u91CF\u306E\u6700\u4F4E\u5024+10\uFF05"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 30
-    healPercent_max: 30
+    healPercent_min: 25
+    healPercent_max: 25
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []

@@ -479,7 +479,7 @@ public class Ability : MonoBehaviour
                         int pos = targetStatus.position;
                         if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                         {
-                            if (targetStatus.marked > 0 && !actionStatus.friendly) { tp_mark.Add(new List<int> { pos }); }
+                            if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { tp_mark.Add(new List<int> { pos }); }
                             else { tp_noMark.Add(new List<int> { pos }); }
                         }
                     }
@@ -499,7 +499,7 @@ public class Ability : MonoBehaviour
                             {
                                 if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                                 {
-                                    if (targetStatus.marked > 0 && !actionStatus.friendly) { includeMarked_column = true; }
+                                    if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_column = true; }
                                     tp_column.Add(pos);
                                 }
                             }
@@ -522,7 +522,7 @@ public class Ability : MonoBehaviour
                             {
                                 if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                                 {
-                                    if (targetStatus.marked > 0 && !actionStatus.friendly) { includeMarked_column = true; }
+                                    if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_column = true; }
                                     tp_column.Add(pos);
                                 }
                             }
@@ -557,7 +557,7 @@ public class Ability : MonoBehaviour
                             int pos = targetStatus.position;
                             if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                             {
-                                if (targetStatus.marked > 0 && !actionStatus.friendly) { tp_mark.Add(new List<int> { pos }); }
+                                if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { tp_mark.Add(new List<int> { pos }); }
                                 else { tp_noMark.Add(new List<int> { pos }); }
                             }
                         }

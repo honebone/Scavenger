@@ -11,6 +11,7 @@ public class Action : MonoBehaviour
     InfoText infoText;
     SoundManager soundManager;
     CameraManager cameraManager;
+    BattleManager battleManager;
 
 
     [System.Serializable]
@@ -460,13 +461,14 @@ public class Action : MonoBehaviour
     OnMoveParams onMoveParams = new OnMoveParams();
 
     bool shakeCamera;
+    int totalDamage;//ƒeƒLƒXƒg•\¦—p
     
     Utility util;
 
     /// <summary>
     /// status ‚É‚ÍactionOwner(ƒLƒƒƒ‰) ‚à‚µ‚­‚Í@ownerStatus_notChara(”ñƒLƒƒƒ‰)‚Ì‚¢‚¸‚ê‚©‚ğ‘ã“ü‚µ‚½ó‘Ô‚Å“n‚·‚±‚Æ!!
     /// </summary>
-    public void Init(ActionQueueManager qm, ActionStatus status, ActionInfoPanel infoPanel, InfoText it, Utility u, SoundManager sm, CameraManager cam)
+    public void Init(ActionQueueManager qm, ActionStatus status, ActionInfoPanel infoPanel, InfoText it, Utility u, SoundManager sm, CameraManager cam,BattleManager bm)
     {
         actionQueueManager = qm;
         actionStatus = status;
@@ -476,6 +478,7 @@ public class Action : MonoBehaviour
         characterManager = FindObjectOfType<CharactersManager>();
         soundManager = sm;
         cameraManager = cam;
+        battleManager = bm;
     }
     public ActionStatus GetActionStatus() { return actionStatus; }
 
@@ -672,9 +675,13 @@ public class Action : MonoBehaviour
                             onDamageParams.target = target;
                             onDamageParams.actionStatus = actionsStatus[i];
 
-
                             if (!notChara)
                             {
+                                if (actionStatus.actionOwner.GetCharacterStatus().position.IsPlayerPos() && !targetStatus.position.IsPlayerPos())
+                                {
+                                    totalDamage += totalDMG;
+                                }
+
                                 actionStatus.actionOwner.OnDamage(onDamageParams);//—^ƒ_ƒ—U”­
                                 if (totalDMG > 0 && actionStatus.drain > 0)//‹zŒŒˆ—
                                 {
@@ -785,6 +792,28 @@ public class Action : MonoBehaviour
                         target.RemoveShield(false, Random.Range(actionsStatus[i].shieldRemove_min, actionsStatus[i].shieldRemove_max + 1));
                     }
 
+
+                    List<ActionData.RemoveStE> removeStEs = new List<ActionData.RemoveStE>(actionsStatus[i].removeStEs);
+                    if (actionsStatus[i].removeStEs_additional.Count > 0) { removeStEs.AddRange(actionsStatus[i].removeStEs_additional); }
+                    actionsStatus[i].removeStEs_additional.Clear();
+
+                    if (actionsStatus[i].removeStE_buff > 0)
+                    {
+                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff, actionsStatus[i].removeStE_buff);
+                    }
+                    if (actionsStatus[i].removeStE_debuff > 0)
+                    {
+                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff, actionsStatus[i].removeStE_debuff);
+                    }
+                    //if (actionsStatus[i].removeStE_DoT > 0)
+                    //{
+                    //    target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT, actionsStatus[i].removeStE_DoT);
+                    //}
+                    foreach (ActionData.RemoveStE remove in removeStEs)//StEÁ‹
+                    {
+                        target.RemoveStE(remove);
+                    }
+
                     OnApplyStEParams onApplyStEParams = new OnApplyStEParams();
                     onApplyStEParams.attemptedParams = new List<PA_StatusEffect.StatusEffectParams>(actionsStatus[i].applySteParams);
                     onApplyStEParams.appliedParams = new List<PA_StatusEffect.StatusEffectParams>();
@@ -830,27 +859,7 @@ public class Action : MonoBehaviour
                         target.OnApplyedStE(onApplyStEParams);//”íUŒ‚—U”­
                     }
 
-
-                    List< ActionData.RemoveStE > removeStEs=new List< ActionData.RemoveStE >(actionsStatus[i].removeStEs);
-                    if (actionsStatus[i].removeStEs_additional.Count > 0) { removeStEs.AddRange(actionsStatus[i].removeStEs_additional); }
-                    actionsStatus[i].removeStEs_additional.Clear();
-
-                    if (actionsStatus[i].removeStE_buff > 0)
-                    {
-                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff, actionsStatus[i].removeStE_buff);
-                    }
-                    if (actionsStatus[i].removeStE_debuff > 0)
-                    {
-                        target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff, actionsStatus[i].removeStE_debuff);
-                    }
-                    //if (actionsStatus[i].removeStE_DoT > 0)
-                    //{
-                    //    target.RemoveStE_ByType(PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT, actionsStatus[i].removeStE_DoT);
-                    //}
-                    foreach (ActionData.RemoveStE remove in removeStEs)//StEÁ‹
-                    {
-                        target.RemoveStE(remove);
-                    }
+               
                     if (actionsStatus[i].moveBackword > 0 || actionsStatus[i].moveUpper > 0 || actionsStatus[i].moveForword > 0 || actionsStatus[i].moveLower > 0)//ˆÚ“®
                     {
                         if ((actionsStatus[i].guaranteedMove || (actionsStatus[i].moveChance - targetStatus.moveRes).Dice()) && !targetStatus.immovable)
@@ -1062,6 +1071,7 @@ public class Action : MonoBehaviour
 
     void EndResolve()
     {
+        if (totalDamage > 0) { battleManager.SetTotalDamageText(totalDamage); }
         if (actionStatus.actionOwner != null)
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//UŒ‚—U”­

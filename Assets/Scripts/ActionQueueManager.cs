@@ -38,6 +38,7 @@ public class ActionQueueManager : MonoBehaviour
     ExpeditionManager expeditionManager;
     GuideMessage guideMessage;
     [SerializeField] CameraManager cameraMnager;
+    [SerializeField] TotalDamageText totalDamageText;
 
     [SerializeField]
     bool autoResolve;
@@ -103,7 +104,7 @@ public class ActionQueueManager : MonoBehaviour
         else { obj = Definer.actionManager_General; }
         var p = Instantiate(actionInfoPanel, content);
         var a = Instantiate(obj, p.transform);
-        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), infoText, util, soundManager, cameraMnager);
+        a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), infoText, util, soundManager, cameraMnager,battleManager);
 
         inQueueActions.Add(a.GetComponent<Action>());
 
@@ -338,6 +339,7 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator EndResolve()
     {
+        totalDamageText.ResetText();
         if (resolveMode != 7 && (charactersManager.CheckVictory() || charactersManager.CheckDefeat()))
         {
             if (charactersManager.CheckDefeat())
@@ -357,35 +359,43 @@ public class ActionQueueManager : MonoBehaviour
             {
                 case 0:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.RoundStart();
                     break;
                 case 1:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.DicideTurnOrder();
                     break;
                 case 2:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.GetCurrntTurnChara().MainPhase();
                     break;
                 case 3:
                     resolveMode = -1;
                     yield return new WaitForSeconds(abilityPause_followthrough);
+                    totalDamageText.ResetText();
                     battleManager.GetCurrntTurnChara().EndPhase();
                     break;
                 case 4:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.TurnEnd(0);
                     break;
                 case 5:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.RoundStart();
                     break;
                 case 6:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.EndTrigger_TurnOrderDecide();
                     break;
                 case 7:
                     resolveMode = -1;
+                    totalDamageText.ResetText();
                     battleManager.EndTrigger_BattleEnd();
                     break;
             }

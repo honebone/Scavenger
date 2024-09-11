@@ -100,7 +100,7 @@ MonoBehaviour:
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 15
-    healPercent_max: 30
+    healPercent_max: 25
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []

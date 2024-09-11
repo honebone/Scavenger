@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u7E2B\u5408"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: e77f0bffb20f5174ea6a612ae8f43037, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -99,10 +99,10 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 5
-    healPercent_max: 5
-    healRegain_min: 0
-    healRegain_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    healRegain_min: 5
+    healRegain_max: 5
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs:
     - removeStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
       removeAll: 1
