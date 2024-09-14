@@ -27,9 +27,9 @@ public class DamageText : MonoBehaviour
         textSeq.Append(text.transform.DOScale(Vector3.one * 1.25f, duration).SetEase(Ease.OutQuint));
         textSeq.Append(canvas.DOFade(0, fadeDuration).OnComplete(() =>
         {
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
         }));
-        textSeq.Join(text.transform.DOLocalMove(endPos * n, duration).SetRelative(true));//.SetEase(Ease.InBack)
+        textSeq.Join(text.transform.DOLocalMove(endPos * n, fadeDuration).SetRelative(true));//.SetEase(Ease.InBack)
 
         //StartCoroutine(FadeAway());
     }

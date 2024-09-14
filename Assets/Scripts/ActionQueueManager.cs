@@ -339,9 +339,9 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator EndResolve()
     {
-        totalDamageText.ResetText();
         if (resolveMode != 7 && (charactersManager.CheckVictory() || charactersManager.CheckDefeat()))
         {
+            totalDamageText.ResetText();
             if (charactersManager.CheckDefeat())
             {
                 expeditionManager.Defeat();//test

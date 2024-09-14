@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u81EA\u8EAB\u306E\u56DE\u5FA9\u5168\u3066"
+    conditionInfo: "\u81EA\u8EAB\u304C\u4E0E\u3048\u308B\u56DE\u5FA9\u5168\u3066"
     hideValues: 1
     exInfo: "\u81EA\u8EAB\u306EINT\u306E50\uFF05\u3092\u56DE\u5FA9\u91CF\u306B\u52A0\u7B97"
     consumeFocus: 0
@@ -70,6 +70,5 @@ MonoBehaviour:
     applyStEBonus: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
   ratio: 0.5

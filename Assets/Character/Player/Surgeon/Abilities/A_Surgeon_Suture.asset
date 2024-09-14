@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A_Surgeon_Suture
   m_EditorClassIdentifier: 
   abilityName: "\u7E2B\u5408"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: e77f0bffb20f5174ea6a612ae8f43037, type: 2}
   abilityManager: {fileID: 0}

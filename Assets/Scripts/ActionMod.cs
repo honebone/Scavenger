@@ -19,6 +19,10 @@ public class ActionMod : MonoBehaviour
 
         public float ATKMod;
         public float INTMod;
+
+        public int trueATKDMG;
+        public int trueINTDMG;
+
         public float exDMG_mul;
         public int exDMG_int;
         public float ACCMod;
@@ -63,6 +67,8 @@ public class ActionMod : MonoBehaviour
                 if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
                 if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
                 if (INTMod != 0) { s += ValueToStr("・INT補正", INTMod, "％"); }
+                if (trueATKDMG != 0) { s += ValueToStr("・固定物理ダメージ", trueATKDMG, ""); }
+                if (trueINTDMG != 0) { s += ValueToStr("・固定魔法ダメージ", trueINTDMG, ""); }
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
                 if (exDMG_int != 0) { s += ValueToStr("・与ダメージ", exDMG_int, ""); }
                 if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }

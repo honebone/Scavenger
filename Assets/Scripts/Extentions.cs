@@ -28,6 +28,9 @@ public static class Extentions
     {
         return Definer.colorRef.rarityColors[(int)rarity];
     }
+
+    public static int ToInt(this float value) { return Mathf.RoundToInt(value); }
+
     public static bool Dice(this float fPercent)
     {
         float dice = UnityEngine.Random.value * 100.0f;
@@ -129,13 +132,73 @@ public static class Extentions
         if (value > 0) { return "+" + value.ToString(); }
         else { return value.ToString(); }
     }
+
+    public static float GetPercent(this int value,int max)
+    {
+        return value * 100f / max;
+    }
+
+    public static int Sum(this List<int> list)
+    {
+        int sum = 0;
+        foreach (int f in list)
+        {
+            sum += f;
+        }
+        return sum;
+    }
+    public static float Sum(this List<float> list)
+    {
+        float sum= 0;
+        foreach(float f in list)
+        {
+            sum += f;
+        }
+        return sum;
+    }
+
+    /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
+    public static List<T> Sample<T>(this List<T> list, int amount)
+    {
+        if (list.Count <= amount) { return new List<T>(list); }
+
+        List<T> pool = new List<T>(list);
+        List<T> sample = new List<T>();
+        int index;
+        for(int i = 0; i < amount; i++)
+        {
+            index = RandIndex(pool.Count);
+            sample.Add(pool[index]);
+            pool.RemoveAt(index);
+        }
+
+        return sample;
+    }public static T Choice<T>(this List<T> list)
+    {
+        return list[Random.Range(0, list.Count)];
+    }
+
+    public static List<T> Shuffle<T>(this List<T> list)
+    {
+        List<T> shuffle = new List<T>(list);
+        for (int i = shuffle.Count; i > 1; i--)
+        {
+            int k = Random.Range(0, i);
+            T value = shuffle[k];
+            shuffle[k] = shuffle[i - 1];
+            shuffle[i - 1] = value;
+        }
+
+        return shuffle;
+    }
+    //=======================================================================[以下Scavenger限定]======================================================================
     public static Vector2Int PosIntToVector(this int posInt)
     {
-         return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);
+        return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);
     }
     public static string PosIntToStr(this int posInt)
     {
-        Vector2Int posVec=posInt.PosIntToVector();
+        Vector2Int posVec = posInt.PosIntToVector();
         return string.Format("({0},{1})", posVec.x + 1, posVec.y + 1);
     }
     public static bool IsPlayerPos(this int posInt)
@@ -224,62 +287,17 @@ public static class Extentions
         return currentPos.PosIntToVector().y;
     }
 
-    public static float GetPercent(this int value,int max)
+    public  static int DotTotalDMG(this int stack)
     {
-        return value * 100f / max;
-    }
+        int DMG = 0;
+        int i = stack;
 
-    public static int Sum(this List<int> list)
-    {
-        int sum = 0;
-        foreach (int f in list)
+        while (i > 0)
         {
-            sum += f;
-        }
-        return sum;
-    }
-    public static float Sum(this List<float> list)
-    {
-        float sum= 0;
-        foreach(float f in list)
-        {
-            sum += f;
-        }
-        return sum;
-    }
-
-    /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
-    public static List<T> Sample<T>(this List<T> list, int amount)
-    {
-        if (list.Count <= amount) { return new List<T>(list); }
-
-        List<T> pool = new List<T>(list);
-        List<T> sample = new List<T>();
-        int index;
-        for(int i = 0; i < amount; i++)
-        {
-            index = RandIndex(pool.Count);
-            sample.Add(pool[index]);
-            pool.RemoveAt(index);
+            DMG += i;
+            i -= 2;
         }
 
-        return sample;
-    }public static T Choice<T>(this List<T> list)
-    {
-        return list[Random.Range(0, list.Count)];
-    }
-
-    public static List<T> Shuffle<T>(this List<T> list)
-    {
-        List<T> shuffle = new List<T>(list);
-        for (int i = shuffle.Count; i > 1; i--)
-        {
-            int k = Random.Range(0, i);
-            T value = shuffle[k];
-            shuffle[k] = shuffle[i - 1];
-            shuffle[i - 1] = value;
-        }
-
-        return shuffle;
+        return DMG;
     }
 }

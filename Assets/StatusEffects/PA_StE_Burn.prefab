@@ -50,6 +50,7 @@ MonoBehaviour:
     StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C[\u30B9\u30BF\u30C3\u30AF\u6570]\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
     StEIcon: {fileID: 21300000, guid: 435fbb85167e67c4d9fd0a0d842a59be, type: 3}
     StEType: 2
+    scaleStackByLVL: 1
     maxStack: 0
     merge: 0
     refValue: 0

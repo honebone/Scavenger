@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: A_Surgeon_Sedative
   m_EditorClassIdentifier: 
   abilityName: "\u93AE\u9759\u5264"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 324093536a654084e911a12fb13ff80e, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}

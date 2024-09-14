@@ -13,6 +13,8 @@ public class PA_StatusEffect : PassiveAbility
         public Sprite StEIcon;
         public enum StatusEffectType { neutral, buff, debuff, focus, unique }
         public StatusEffectType StEType;
+        [Header("付与者のLVL-1だけスタックが増える")]
+        public bool scaleStackByLVL;
         [Header("0ならスタック制限なし")]
         public int maxStack;
         [Tooltip("同種の状態異常がすでにある場合、そのスタックを増加させるか")]
@@ -62,15 +64,11 @@ public class PA_StatusEffect : PassiveAbility
         }
     }
 
-    public void Init(StatusEffectParams StEParams,StEIcon icon,StEApplyBonus applyBonus)
+    public void Init(int stack, int value,StEIcon icon)
     {
-        StEStatus.stack = StEParams.stack;
-        StEStatus.value = StEParams.value;
-        if (applyBonus != null)
-        {
-            StEStatus.stack += applyBonus.exStack;
-            StEStatus.value += applyBonus.exValue;
-        }
+        StEStatus.stack = stack;
+        StEStatus.value = value;
+       
         StEIcon = icon;
         StEIcon.Init(StEStatus);
         if (StEStatus.merge && StEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるStEは作ってはいけません!!"); }
@@ -102,6 +100,7 @@ public class PA_StatusEffect : PassiveAbility
         if (StEStatus.refValue) { s += "X"; }
         s += "：";
         s += StEStatus.StEInfo + "\n";
+        if (StEStatus.scaleStackByLVL) { s += "\n<付与者のLVLでスタック数増加>\n"; }
         s = s.ColorStr(Color.gray);
         if (instantiated) { s += GetAdditionalInfo().ColorStr(Definer.colorRef.currentState); }
         return s;

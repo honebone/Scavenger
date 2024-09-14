@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: P_Pyromancer
+  m_EditorClassIdentifier: 
+  fileName: P_Pyromancer
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u708E\u306E\u9B54\u8853\u5E2B"
+  difficulty: "\u4E2D"
+  introduction: "\u653B\u6483\u30BF\u30A4\u30D7"
+  preferredPos: "\u4E2D\u5217"
+  characterTags: 02000000
+  immovable: 0
+  notChara: 0
+  player: 1
+  playable: 1
+  obstacle: 0
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 6e641e7af50e9274f920715453306783, type: 2}
+  - {fileID: 11400000, guid: 5a45edd6dc02d8542b58e842ad600628, type: 2}
+  - {fileID: 11400000, guid: 6f6c4fd2772476a49bd5a0bdb379cc56, type: 2}
+  - {fileID: 11400000, guid: a8912263db574c24889c9108c6d81557, type: 2}
+  - {fileID: 11400000, guid: 86a45bacaccf3b14796557417d21589d, type: 2}
+  - {fileID: 11400000, guid: 1349c1b6f5583164ba2facbb83b0b0f8, type: 2}
+  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities: []
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  surviveFatalWounds: 1
+  maxHP: 30
+  maxSAN: 50
+  ATK: 5
+  INT: 13
+  CRITC: 5
+  CRITD: 150
+  EVD: 7
+  ACC: 95
+  ACT: 700
+  turnPerRound: 3
+  GHeal: 100
+  RHeal: 100
+  statusGrowth:
+    maxHP: 3
+    ATK: 0.5
+    INT: 1.3
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

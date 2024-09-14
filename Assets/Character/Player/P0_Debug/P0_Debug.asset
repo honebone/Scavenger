@@ -45,6 +45,7 @@ MonoBehaviour:
   corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
     uniqueDropPool: []
     includeTags: []
     excludeTags: 
@@ -65,6 +66,7 @@ MonoBehaviour:
   statusGrowth:
     maxHP: 0
     ATK: 0
+    INT: 0
     ACT: 0
     CRITC: 0
     CRITD: 0
@@ -75,8 +77,8 @@ MonoBehaviour:
   - ResStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
     value: 20
   StEApplyBonus:
-  - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
-    exChance: 10
-    exStack: 1
-    exValue: 3
+  - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+    exChance: 0
+    exStack: 5
+    exValue: 0
   moveRes: 0

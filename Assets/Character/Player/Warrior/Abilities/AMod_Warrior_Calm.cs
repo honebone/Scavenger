@@ -8,7 +8,7 @@ public class AMod_Warrior_Calm : ActionMod
     [SerializeField] int valuePerStack;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
-        int value = statusRef.actionOwner.GetStEStack(anger) * valuePerStack;
+        int value = statusRef.actionOwner.GetStEStack_Sum(anger) * valuePerStack;
         FindObjectOfType<InfoText>().AddDebugText(value.ToString());
 
         if (value > 0)

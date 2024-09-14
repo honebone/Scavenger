@@ -72,21 +72,24 @@ public class Action : MonoBehaviour
         public float decreaseHPPer_max;
 
         [Header("\n\n攻撃")]
-        //public bool cantCounter;
-        //[Header("0:melee 1:ranged 2:magic 3:counter")]
-        ///// <summary>0:melee 1:ranged 2:magic 3:counter</summary>
-        //public int attackType;
+        [TextArea(3, 10)] public string attackInfo;
         public float ATKMod_min;
         public float ATKMod_max;
         public float INTMod_min;
         public float INTMod_max;
+
+        public int trueATKDMG;
+        public int trueINTDMG;
+
         public float exDMG_mul;
         public int exDMG_int;
+
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
         [Header("与ダメのdrain％回復")]
         public float drain;
+        public bool ignoreShield;
         public bool sureHit;
         public bool unevadable;
 
@@ -166,7 +169,7 @@ public class Action : MonoBehaviour
         /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
         public List<int> actionTargetsInt;
 
-        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0; }
+        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
         public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0; }
 
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
@@ -186,12 +189,13 @@ public class Action : MonoBehaviour
                 s += string.Format("・HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max));
             }
 
-            if (DoesAttack())//攻撃
+            if (DoesAttack()||attackInfo!="")//攻撃
             {
-                s += "・攻撃を行う\n";
+                s += (attackInfo != "") ? $"・{attackInfo}\n" : "";
                 if (ATKMod_max > 0)
                 {
-                    s += string.Format("ATKの{0}％物理ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
+                    s += $"・{"物理".ColorStr(Definer.colorRef.damage)}攻撃を行う\n";
+                    s += string.Format("ATKの{0}％ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
                     if (refCharaStatus)
                     {
                         s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
@@ -200,7 +204,8 @@ public class Action : MonoBehaviour
                 }
                 if (INTMod_max > 0)
                 {
-                    s += string.Format("INTの{0}％魔法ダメージ", GetValueRange(INTMod_min, INTMod_max));
+                    s += $"・{"魔法".ColorStr(Definer.colorRef.INTDamage)}攻撃を行う\n";
+                    s += string.Format("INTの{0}％ダメージ", GetValueRange(INTMod_min, INTMod_max));
                     if (refCharaStatus)
                     {
                         s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
@@ -213,6 +218,7 @@ public class Action : MonoBehaviour
                 if (CRITCMod != 0) { attack += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
                 if (CRITDMod != 0) { attack += string.Format("CRITダメージ補正：{0}％\n", GetValueWithSign(CRITDMod)); }
                 if (drain > 0) { attack += string.Format("与ダメージの{0}％を回復\n", drain); }
+                if (ignoreShield) { attack += "シールドを無視\n"; }
                 if (sureHit) { attack += "必中\n"; }
                 if (unevadable) { attack += "EVDを無視\n"; }
                 s += attack.ColorStr(Color.gray);
@@ -342,6 +348,10 @@ public class Action : MonoBehaviour
             modifiedStatus.ATKMod_max += mod.ATKMod;
             modifiedStatus.INTMod_min += mod.INTMod;
             modifiedStatus.INTMod_max += mod.INTMod;
+
+            modifiedStatus.trueATKDMG = mod.trueATKDMG;
+            modifiedStatus.trueINTDMG = mod.trueINTDMG;
+
             modifiedStatus.exDMG_mul += mod.exDMG_mul;
             modifiedStatus.exDMG_int += mod.exDMG_int;
             modifiedStatus.ACCMod += mod.ACCMod;
@@ -385,8 +395,8 @@ public class Action : MonoBehaviour
                 if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
             }
 
-            removeStE_buff += mod.removeStE_buff;
-            removeStE_debuff += mod.removeStE_debuff;
+            modifiedStatus.removeStE_buff += mod.removeStE_buff;
+            modifiedStatus.removeStE_debuff += mod.removeStE_debuff;
             //removeStE_DoT += mod.removeStE_DoT;
 
             foreach (ActionData.RemoveStE removeStE in mod.removeStEs)
@@ -400,6 +410,11 @@ public class Action : MonoBehaviour
     }
 
     //===========================[誘発処理の引数に使う]================================
+    //public struct ActionResult
+    //{
+    //    public Action.ActionStatus actionStatus;
+    //    public Character target;
+    //}
     public struct OnAttackParams
     {
         /// <summary> = !(missed||evaded)</summary>
@@ -504,6 +519,7 @@ public class Action : MonoBehaviour
         for (int i = 0; i < actionsStatus.Length; i++)
         {
             actionsStatus[i] = actionStatus;
+            actionsStatus[i].StEApplyBonus = new List<StEApplyBonus>(actionStatus.StEApplyBonus);
         }
         if (actionStatus.SE != null) { soundManager.PlaySE(actionStatus.SE); }
 
@@ -636,37 +652,43 @@ public class Action : MonoBehaviour
                             ATKDMG = Mathf.Max(0, Mathf.RoundToInt(ATKDMGf));
                             INTDMG = Mathf.Max(0, Mathf.RoundToInt(INTDMGf));
 
+                            ATKDMG += actionsStatus[i].trueATKDMG;
+                            INTDMG += actionsStatus[i].trueINTDMG;
+
                             int shield = targetStatus.shield;
                             //int shieldDMG = Mathf.Min(ATKDMG, targetStatus.shield);
                             int shieldDMG = 0;
-                            while (shield > 0)//シールドによるダメージ減少
+
+                            if (!actionsStatus[i].ignoreShield)
                             {
-                                if (ATKDMG > 0)
+                                while (shield > 0)//シールドによるダメージ減少
                                 {
-                                    ATKDMG--;
-                                    shield--;
-                                    shieldDMG++;
-                                    if (shield == 0) { break; }
-                                }
-                                if (INTDMG > 0)
-                                {
-                                    INTDMG--;
-                                    shield--;
-                                    shieldDMG++;
-                                    if (shield == 0) { break; }
-                                }
+                                    if (ATKDMG > 0)
+                                    {
+                                        ATKDMG--;
+                                        shield--;
+                                        shieldDMG++;
+                                        if (shield == 0) { break; }
+                                    }
+                                    if (INTDMG > 0)
+                                    {
+                                        INTDMG--;
+                                        shield--;
+                                        shieldDMG++;
+                                        if (shield == 0) { break; }
+                                    }
 
-                                if (ATKDMG == 0 && INTDMG == 0) { break; }
+                                    if (ATKDMG == 0 && INTDMG == 0) { break; }
+                                }
                             }
-
 
                             totalDMG = ATKDMG + INTDMG;
 
                             //ATKDMG -= shieldDMG;
                             OnDamageParams onDamageParams = new OnDamageParams();
                             onDamageParams.totalDMG = ATKDMG + INTDMG;
-                            onDamageParams.ATK = actionsStatus[i].ATKMod_max > 0;
-                            onDamageParams.INT = actionsStatus[i].INTMod_max > 0;
+                            onDamageParams.ATK = ATKDMG > 0;
+                            onDamageParams.INT = INTDMG > 0;
                             onDamageParams.ATKDMG = ATKDMG;
                             onDamageParams.INTDMG = INTDMG;
                             onDamageParams.shieldDMG = shieldDMG;
@@ -821,22 +843,30 @@ public class Action : MonoBehaviour
                     onApplyStEParams.taget = target;
 
                     List<PA_StatusEffect.StatusEffectStatus.StatusEffectType> appliedType = new List<PA_StatusEffect.StatusEffectStatus.StatusEffectType>();
-                    foreach (PA_StatusEffect.StatusEffectParams StEParams in actionsStatus[i].applySteParams)//StE付与
+                    foreach (PA_StatusEffect.StatusEffectParams P in actionsStatus[i].applySteParams)//StE付与
                     {
+                        PA_StatusEffect.StatusEffectParams StEParams = P;
                         PA_StatusEffect.StatusEffectStatus StEStaus = StEParams.GetStatusEffectStatus();
-                        StEApplyBonus applyBonus = new StEApplyBonus();
+
+
+                        StEApplyBonus applyBonus = new StEApplyBonus();//bonusの設定
                         if (ownerStatus.GetStEApplyBonus(StEParams.applyStE) != null) { applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE)); }
                         foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)
                         {
                             if (bonus.applyStE == StEParams.applyStE) { applyBonus.AddBonus(bonus); }
                         }
 
-                        if (StEParams.guaranteed || (StEParams.applyChance + applyBonus.exChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
+                        StEParams.applyChance += applyBonus.exChance;//bonusをparamsに反映
+                        StEParams.stack += applyBonus.exStack;
+                        StEParams.value+=applyBonus.exValue;
+                        if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, ownerStatus.level - 1); }
+
+                        if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
                         {
                             if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
                             onApplyStEParams.appliedParams.Add(StEParams);
 
-                            target.ApplyStE(StEParams, applyBonus);
+                            target.ApplyStE(StEParams, StEParams.stack, StEParams.value);
                         }
                         else
                         {
@@ -852,7 +882,7 @@ public class Action : MonoBehaviour
                             target.SpawnVisualEffect(Definer.VERef.applyStE[(int)type]);
                         }
                     }
-                    actionsStatus[i].StEApplyBonus.Clear();
+                    //actionsStatus[i].StEApplyBonus.Clear();
                     if (onApplyStEParams.attemptedParams.Count > 0)
                     {
                         onApplyStEParamsList.Add(onApplyStEParams);
@@ -1085,7 +1115,14 @@ public class Action : MonoBehaviour
 
         if (shakeCamera) { cameraManager.ShakeCamera(1); }
 
+        SecondEffect();
+
         actionQueueManager.Dequeue();
+    }
+
+    public virtual void SecondEffect()
+    {
+
     }
 
     public bool CheckIfAbilityEffect() { return actionStatus.abilityEffect; }

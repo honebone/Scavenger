@@ -78,6 +78,7 @@ public class DebugFunction : MonoBehaviour
         //{
         //    Debug.Log($"{Definer.rarityName[(ItemData.Rarity)i]}ÅF{count[i]}({count[i] / 100f}Åì)");
         //}
+
     }
     // Update is called once per frame
     void Update()

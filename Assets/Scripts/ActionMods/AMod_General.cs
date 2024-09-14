@@ -22,6 +22,8 @@ public class AMod_General : ActionMod
                 {
                     Debug.Log("ok");
                     actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
+                    Debug.Log($"{actionsStatus[i].removeStE_debuff},{actionsStatus[i].removeStE_buff}");
+
                 }
             }
         }

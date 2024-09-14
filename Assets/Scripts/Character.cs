@@ -128,6 +128,10 @@ public class Character : MonoBehaviour
             {
                 s += string.Format("LVL：{0}(次のLVLまで{1}/{2})\n", level, exp, GetNextExp());
             }
+            else
+            {
+                s += string.Format("LVL：{0}\n", level);
+            }
             s += string.Format("HP/maxHP：{0}/{1}({2}％)\n", HP, maxHP, HP.GetPercent(maxHP).ToString("0.0"));
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (PROT != 0) { s += ValueToStr("被ダメージ", PROT * -1, "％"); }
@@ -164,10 +168,10 @@ public class Character : MonoBehaviour
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
             if (debuffRes != 0) { s += string.Format("デバフ耐性{0}％\n", debuffRes); }
 
-            foreach (GameObject actionMod in actionMods)
-            {
-                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
-            }
+            //foreach (GameObject actionMod in actionMods)
+            //{
+            //    s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+            //}
             return s;
         }
 
@@ -495,9 +499,9 @@ public class Character : MonoBehaviour
         }
         deletePAs.Clear();
     }
-    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,StEApplyBonus applyBonus)
+    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,int finalStack,int finalValue)
     {
-        bool f = false;
+        bool alreadyExist = false;
         PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
         PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
@@ -506,30 +510,27 @@ public class Character : MonoBehaviour
             {
                 if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるならそのスタックを増加
                 {
-                    if(applyBonus == null) { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack); }
-                    else { pa.GetComponent<PA_StatusEffect>().AddStack(StEParams.stack + applyBonus.exStack); }
+                    pa.GetComponent<PA_StatusEffect>().AddStack(finalStack);
 
                     //charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());//refvalueとmergeは共存しないので、ここでrefvalueのことを考える必要はない
                     //infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
 
                     soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
-                    f = true;
+                    alreadyExist = true;
                 }
             }
         }
-        if (!f)
+        if (!alreadyExist)
         {
             var s = Instantiate(StEParams.applyStE, transform);
             PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
-            s.GetComponent<PA_StatusEffect>().Init(StEParams, charaObj.SetStEIcon().GetComponent<StEIcon>(),applyBonus);
+            s.GetComponent<PA_StatusEffect>().Init(finalStack,finalValue, charaObj.SetStEIcon().GetComponent<StEIcon>());
             s.GetComponent<PassiveAbility>().Init(this, 0,infoText);
             if (StEStatus.refValue)
             {
-                int StEValue = StEParams.value;
-                if (applyBonus != null) { StEValue += applyBonus.exValue; }
-                targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, StEValue), StEStatus.StEType.ToColor());
-                infoText.AddLogText(string.Format("{0}は{1}{2}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName(), StEValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
+                targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, finalValue), StEStatus.StEType.ToColor());
+                infoText.AddLogText(string.Format("{0}は{1}{2}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
             }
             else
             {
@@ -614,18 +615,26 @@ public class Character : MonoBehaviour
     //    }
     //    //メッセージ
     //}
-
-    public int GetStEStack(GameObject StEObj)
+    /// <summary>各スタックのリストを返す</summary>
+    public List<int> GetStEStacks(GameObject StEObj)
     {
+        List<int> stacks = new List<int>();
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
         foreach (PassiveAbility pa in PA_StE)
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
             {
-                return pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().stack;
+                stacks.Add(pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().stack);
             }
         }
-        return 0;
+        return stacks;
+    }
+    /// <summary>スタックの合計を返す</summary>
+    public int GetStEStack_Sum(GameObject StEObj)
+    {
+        int sum = 0;
+        foreach(int stack in GetStEStacks(StEObj)) { sum += stack; }
+        return sum;
     }
     public bool CheckHasStE(GameObject StEObj)
     {
@@ -1218,6 +1227,7 @@ public class Character : MonoBehaviour
 
         AddMaxHP(SG.CalcGrowth(LVL, SG.maxHP), 0, true);
         AddATK(SG.CalcGrowth(LVL, SG.ATK), 0);
+        AddINT(SG.CalcGrowth(LVL, SG.INT), 0);
         AddCRITC(SG.CalcGrowth(LVL, SG.CRITC));
         AddCRITD(SG.CalcGrowth(LVL, SG.CRITD));
         AddACT(SG.CalcGrowth(LVL, SG.ACT));
