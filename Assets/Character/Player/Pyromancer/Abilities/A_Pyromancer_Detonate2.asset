@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Pyromancer_BurnAll
+  m_Name: A_Pyromancer_Detonate2
   m_EditorClassIdentifier: 
-  abilityName: "\u713C\u304D\u6255\u3044"
+  abilityName: "\u767A\u7834+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 1a581964f587fd54c842ee0f0ba06494, type: 2}
+  upgradeInfo: "\u4E0E\u3048\u308B\u30C0\u30E1\u30FC\u30B8\u304C\u706B\u50B7\u306B\u3088\u308A\u5931\u3046HP\u306E100\uFF05\u306B\u306A\u308B"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -49,18 +49,19 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u713C\u304D\u6255\u3044"
+  - actionName: "\u767A\u7834+"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066(\u6F5C\u4F0F\u3092\u7121\u8996)"
+    targetInfo: "\u706B\u50B7\u306E\u3042\u308B\u6575\u5168\u3066(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u305D\u306E\u5F8C\u3001[\u4E0E\u3048\u305F\u30C0\u30E1\u30FC\u30B8
+      x \u81EA\u8EAB\u306ECRIT\u7387]\u306B\u7B49\u3057\u3044\u30B7\u30FC\u30EB\u30C9\u3092\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u30B7\u30FC\u30EB\u30C9\u91CF\u306F\u81EA\u8EAB\u306EmaxHP\u3092\u8D85\u3048\u306A\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
     VE_OnTargets: {fileID: 5647168121093442190, guid: 1c1259acbd1d4cb4a898727097f570c6, type: 3}
-    actionObject: {fileID: 0}
+    actionObject: {fileID: 3406922096923339616, guid: 730ce0022fde8614fbf2e09889fd2f7e, type: 3}
     actionMods:
-    - {fileID: 6529000616297166250, guid: cf14b90ddef7f9e44a5bbb44f2e4f67d, type: 3}
-    targetType: 5
+    - {fileID: 426792105133336514, guid: 374ff4705c58e4742b00f833b1e85fc7, type: 3}
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
@@ -72,12 +73,13 @@ MonoBehaviour:
       mid: 1
       back: 1
       characterTags: 
-      StE: []
+      StE:
+      - {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       PE: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
-    ignoreMark: 0
+    ignoreMark: 1
     ignoreHide: 1
     moveValue: 
     consumeFocus: 0
@@ -86,11 +88,11 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    attackInfo: 
+    attackInfo: "\u706B\u50B7\u306B\u3088\u308A\u5931\u3046HP\u306B\u7B49\u3057\u3044\u56FA\u5B9A\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u5373\u5EA7\u306B\u4E0E\u3048\u308B"
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 20
-    INTMod_max: 30
+    INTMod_min: 0
+    INTMod_max: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -99,7 +101,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
-    ignoreShield: 0
+    ignoreShield: 1
     sureHit: 1
     unevadable: 0
     healValue_min: 0
@@ -119,16 +121,14 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
-      guaranteed: 0
-      applyChance: 75
-      stack: 5
-      value: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -148,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c0000000d000000
+    actionTargetsInt: 0f000000

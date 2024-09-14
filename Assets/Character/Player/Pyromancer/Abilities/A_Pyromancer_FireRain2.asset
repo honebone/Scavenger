@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Pyromancer_BurnAll
+  m_Name: A_Pyromancer_FireRain2
   m_EditorClassIdentifier: 
-  abilityName: "\u713C\u304D\u6255\u3044"
+  abilityName: "\u708E\u306E\u96E8+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 1a581964f587fd54c842ee0f0ba06494, type: 2}
+  upgradeInfo: "ACC\u88DC\u6B63+5\nCRIT\u7387\u88DC\u6B63+5\uFF05\n\u706B\u50B7\u306E\u30B9\u30BF\u30C3\u30AF+1"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -43,15 +43,15 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnBattleStart: 2
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u713C\u304D\u6255\u3044"
+  - actionName: "\u708E\u306E\u96E8+"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066(\u6F5C\u4F0F\u3092\u7121\u8996)"
+    targetInfo: "\u6575\u5168\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 6529000616297166250, guid: cf14b90ddef7f9e44a5bbb44f2e4f67d, type: 3}
-    targetType: 5
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
@@ -78,7 +78,7 @@ MonoBehaviour:
       HP_lessThan: 0
       HP_excludeEqual: 0
     ignoreMark: 0
-    ignoreHide: 1
+    ignoreHide: 0
     moveValue: 
     consumeFocus: 0
     kill: 0
@@ -89,18 +89,18 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 20
-    INTMod_max: 30
+    INTMod_min: 15
+    INTMod_max: 25
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exDMG_int: 0
-    ACCMod: 0
+    ACCMod: -5
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
     ignoreShield: 0
-    sureHit: 1
+    sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
-      applyChance: 75
+      applyChance: 70
       stack: 5
       value: 0
     applyPEParams: []
@@ -148,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c0000000d000000
+    actionTargetsInt: 090000000a0000000c00000010000000

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Action : MonoBehaviour
 {
-    [SerializeField]//tst
     ActionStatus actionStatus;
     ActionQueueManager actionQueueManager;
     CharactersManager characterManager;
@@ -349,8 +348,8 @@ public class Action : MonoBehaviour
             modifiedStatus.INTMod_min += mod.INTMod;
             modifiedStatus.INTMod_max += mod.INTMod;
 
-            modifiedStatus.trueATKDMG = mod.trueATKDMG;
-            modifiedStatus.trueINTDMG = mod.trueINTDMG;
+            modifiedStatus.trueATKDMG += mod.trueATKDMG;
+            modifiedStatus.trueINTDMG += mod.trueINTDMG;
 
             modifiedStatus.exDMG_mul += mod.exDMG_mul;
             modifiedStatus.exDMG_int += mod.exDMG_int;
@@ -410,11 +409,13 @@ public class Action : MonoBehaviour
     }
 
     //===========================[誘発処理の引数に使う]================================
-    //public struct ActionResult
-    //{
-    //    public Action.ActionStatus actionStatus;
-    //    public Character target;
-    //}
+    public struct ActionResult
+    {
+        public Action.ActionStatus actionStatus;
+        public Character target;
+
+        public OnDamageParams onDamageParams;
+    }
     public struct OnAttackParams
     {
         /// <summary> = !(missed||evaded)</summary>
@@ -468,7 +469,9 @@ public class Action : MonoBehaviour
 
         public Character target;
     }
+    protected Character actionOwner;
 
+    protected List<ActionResult> actionResults = new List<ActionResult>();
     List<OnAttackParams> onAttackParamsList = new List<OnAttackParams>();
     List<OnKillParams> onKillParamsList = new List<OnKillParams>();
     List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
@@ -501,18 +504,17 @@ public class Action : MonoBehaviour
     {
         Character.CharacterStatus ownerStatus = new Character.CharacterStatus();
         bool notChara = false;//フィールド効果やポジション効果などによるアクション
-        if (actionStatus.actionOwner != null) { ownerStatus = actionStatus.actionOwner.GetCharacterStatus(); }
+        if (actionStatus.actionOwner != null) {
+            actionOwner = actionStatus.actionOwner;
+            ownerStatus = actionStatus.actionOwner.GetCharacterStatus(); 
+        }
         else
         {
             notChara = true;
             ownerStatus = Definer.nonCharaStatus;
         }
 
-        //if (!notChara && ownerStatus.dead)//発動時は発動主が死んでいた場合はそのままDequeue
-        //{
-        //    actionQueueManager.Dequeue();
-        //    return;
-        //}
+       
 
         if (actionStatus.actionTargets == null) { actionStatus.actionTargets = new List<Character>(); }
         ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
@@ -556,7 +558,12 @@ public class Action : MonoBehaviour
             Character target = actionStatus.actionTargets[i];
             Character.CharacterStatus targetStatus = target.GetCharacterStatus();
             bool attackHit = true;//攻撃失敗時、その他の効果も発動しないようにする
+            ActionResult result = new ActionResult();
+            result.target = target;
+            result.actionStatus = actionsStatus[i];
+
             target.BecomeAbilityTarget(actionStatus.actionOwner);
+
             if (actionStatus.VE_OnTargets)
             {
                 //Vector2 VEPos = characterManager.GetCharacterWorldPos(targetStatus.position);
@@ -718,6 +725,7 @@ public class Action : MonoBehaviour
                                     onHealParamsList.Add(onHealParams);
                                 }
                             }
+                            result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
                             if(target.Damage(onDamageParams))//ダメージ処理開始
@@ -998,6 +1006,8 @@ public class Action : MonoBehaviour
             {
                 actionStatus.actionOwner.GetTargetButton().SetDamageText("対象消失", Definer.colorRef.failed_unavailable);
             }
+
+            actionResults.Add(result);
         }
 
 
@@ -1123,6 +1133,21 @@ public class Action : MonoBehaviour
     public virtual void SecondEffect()
     {
 
+    }
+
+    //=====================================================[以下SecondEffect関連]=================================================
+    /// <summary>自身のスプライトを代入してEnqueue</summary>
+    public void Enqueue(ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
+    {
+        actionStatus.actionOwner.Enqueue(actionStatus, setTargets, actionTargets, nullOwner);
+    }
+
+    /// <summary>自身を対象にEunqueue</summary>
+    public void Enqueue_Self(ActionStatus act)
+    {
+
+        ActionStatus action = act;
+        actionStatus.actionOwner.Enqueue(action, true, new List<Character>() { actionStatus.actionOwner });
     }
 
     public bool CheckIfAbilityEffect() { return actionStatus.abilityEffect; }

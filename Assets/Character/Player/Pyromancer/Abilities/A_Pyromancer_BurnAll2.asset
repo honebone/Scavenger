@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Pyromancer_BurnAll
+  m_Name: A_Pyromancer_BurnAll2
   m_EditorClassIdentifier: 
-  abilityName: "\u713C\u304D\u6255\u3044"
+  abilityName: "\u713C\u304D\u6255\u3044+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 1a581964f587fd54c842ee0f0ba06494, type: 2}
+  upgradeInfo: "ATK\u88DC\u6B63+10\uFF05\n\u706B\u50B7\u306E\u30B9\u30BF\u30C3\u30AF\u6570+1"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -49,7 +49,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u713C\u304D\u6255\u3044"
+  - actionName: "\u713C\u304D\u6255\u3044+"
     conditionInfo: 
     targetInfo: "1\u5217\u306E\u6575\u5168\u3066(\u6F5C\u4F0F\u3092\u7121\u8996)"
     AModInfo: 
@@ -89,8 +89,8 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 20
-    INTMod_max: 30
+    INTMod_min: 30
+    INTMod_max: 40
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -123,7 +123,7 @@ MonoBehaviour:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
       applyChance: 75
-      stack: 5
+      stack: 8
       value: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0c0000000d000000
+    actionTargetsInt: 0f000000

@@ -144,7 +144,7 @@ public class BattleManager : MonoBehaviour
 
    public void RoundStart()
     {
-        for (int i = 0; i < turnOrderIconParent.childCount; i++) { turnOrderIconParent.GetChild(i).GetComponent<Battle_TurnOrderIcon>().CheckDeadForDebug(); }
+        //for (int i = 0; i < turnOrderIconParent.childCount; i++) { turnOrderIconParent.GetChild(i).GetComponent<Battle_TurnOrderIcon>().CheckDeadForDebug(); }
 
         roundCount++;
         roundText.text=roundCount.ToString();

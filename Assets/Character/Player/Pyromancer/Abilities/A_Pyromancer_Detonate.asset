@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u767A\u7834"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 5f06898a239cf9547a3d75782b841697, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -53,11 +53,12 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u706B\u50B7\u306E\u3042\u308B\u6575\u5168\u3066(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u305D\u306E\u5F8C\u3001[\u4E0E\u3048\u305F\u30C0\u30E1\u30FC\u30B8
+      x \u81EA\u8EAB\u306ECRIT\u7387]\u306B\u7B49\u3057\u3044\u30B7\u30FC\u30EB\u30C9\u3092\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u30B7\u30FC\u30EB\u30C9\u91CF\u306F\u81EA\u8EAB\u306EmaxHP\u3092\u8D85\u3048\u306A\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
     VE_OnTargets: {fileID: 5647168121093442190, guid: 1c1259acbd1d4cb4a898727097f570c6, type: 3}
-    actionObject: {fileID: 0}
+    actionObject: {fileID: 3406922096923339616, guid: 730ce0022fde8614fbf2e09889fd2f7e, type: 3}
     actionMods:
     - {fileID: 426792105133336514, guid: 374ff4705c58e4742b00f833b1e85fc7, type: 3}
     targetType: 2
@@ -147,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 090000000a0000000c0000000d00000010000000
+    actionTargetsInt: 090000000d000000
