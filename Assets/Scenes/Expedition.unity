@@ -11639,6 +11639,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a1f15e7da948fdd439f3b430d9c197b4, type: 2}
   - {fileID: 11400000, guid: 91d9f580a3c1ffa4dba23d2bdeeac59d, type: 2}
   - {fileID: 11400000, guid: c711c1ac6564f4d4683ac6be684dfa87, type: 2}
+  - {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
+  - {fileID: 11400000, guid: ad7df46d8ff3b8244956abcb3857902f, type: 2}
+  - {fileID: 11400000, guid: e743d1409bce463448bd93fdc2dc0d17, type: 2}
+  - {fileID: 11400000, guid: f783378db0081e843b64d09979e3764c, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -31883,7 +31887,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

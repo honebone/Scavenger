@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PA_StE_PROTDown : PA_StatusEffect
 {
+
+    [SerializeField] bool up;
+    int n;
     public override void OnPAInit()
     {
-        character.AddPROT(StEStatus.value * -1);
+        n = up ? 1 : -1;
+        character.AddPROT(StEStatus.value * n);
     }
     public override void OnAttacked(Character attacker, bool evaded, bool missed)
     {
@@ -15,6 +19,7 @@ public class PA_StE_PROTDown : PA_StatusEffect
 
     public override void AtTheEnd()
     {
-        character.AddPROT(StEStatus.value);
+        character.AddPROT(StEStatus.value * n * -1);
     }
+
 }

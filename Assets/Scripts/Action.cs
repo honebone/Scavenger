@@ -867,7 +867,7 @@ public class Action : MonoBehaviour
                         StEParams.applyChance += applyBonus.exChance;//bonus‚ðparams‚É”½‰f
                         StEParams.stack += applyBonus.exStack;
                         StEParams.value+=applyBonus.exValue;
-                        if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, ownerStatus.level - 1); }
+                        if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
 
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//’Š‘I
                         {

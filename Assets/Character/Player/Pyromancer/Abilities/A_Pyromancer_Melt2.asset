@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Pyromancer_Melt
+  m_Name: A_Pyromancer_Melt2
   m_EditorClassIdentifier: 
-  abilityName: "\u6EB6\u89E3"
+  abilityName: "\u6EB6\u89E3+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 9911dc9e77c64d64dbe15521c96a8525, type: 2}
+  upgradeInfo: "\u4ED8\u4E0E\u78BA\u7387+10\uFF05\n\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF+2"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
@@ -121,13 +121,13 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       guaranteed: 0
-      applyChance: 80
-      stack: 1
+      applyChance: 90
+      stack: 3
       value: 25
     - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
       guaranteed: 0
-      applyChance: 80
-      stack: 1
+      applyChance: 90
+      stack: 3
       value: 25
     applyPEParams: []
     removeStE_buff: 0

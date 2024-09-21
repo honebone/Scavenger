@@ -43,7 +43,7 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 2
+  cooldownOnBattleStart: 3
   cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
@@ -122,8 +122,8 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
-      applyChance: 70
-      stack: 4
+      applyChance: 75
+      stack: 5
       value: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 090000000b0000000e0000000f000000
+    actionTargetsInt: 090000000d00000010000000

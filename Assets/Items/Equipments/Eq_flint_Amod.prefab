@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4191570886291093358}
   - component: {fileID: 8607881056121635859}
   m_Layer: 0
-  m_Name: Eq_ThornNecklace_AMod
+  m_Name: Eq_flint_Amod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldRemove: 0
     applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
       applyChance: 80
       stack: 3

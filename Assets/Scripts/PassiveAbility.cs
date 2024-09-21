@@ -69,7 +69,8 @@ public class PassiveAbility : MonoBehaviour
         {
             infoText.AddDebugText(string.Format("{0}‚ÉSpriteRenderer‚È‚µ", GetPAName()));
         }
-        character.Enqueue(actionStatus, setTargets, actionTargets, nullOwner);
+        Action.ActionStatus action = actionStatus;
+        character.Enqueue(action, setTargets, actionTargets, nullOwner);
     }
 
     /// <summary>©g‚ğ‘ÎÛ‚ÉEunqueue</summary>

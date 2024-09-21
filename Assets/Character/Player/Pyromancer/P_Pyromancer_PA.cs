@@ -9,14 +9,18 @@ public class P_Pyromancer_PA : PA_Personality
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    public override void OnRoundEnd()
+    public override void OnRoundStart()
     {
-        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        if (target.Count > 0)
+        if (character.GetCharacterStatus().CRITC.Dice())
         {
-            Enqueue(attack, true, target);
+            List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+            if (target.Count > 0)
+            {
+                Enqueue(attack, true, target);
+            }
         }
     }
+
     public override string GetPAInfo_Base()
     {
         string s = info+"\n\n";
