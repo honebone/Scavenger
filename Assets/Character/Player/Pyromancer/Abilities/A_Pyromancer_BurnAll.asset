@@ -148,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a0000000b000000
+    actionTargetsInt: 0c0000000d000000

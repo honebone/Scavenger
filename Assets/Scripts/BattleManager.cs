@@ -46,6 +46,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] TutorialData tutorial_Battle;
     [SerializeField] TutorialData tutorial_ability;
     [SerializeField] TutorialData tutorial_corpse;
+    [SerializeField] TutorialData tutorial_frontLine;
 
     CharactersManager charactersManager;
     InfoText infoText;
@@ -225,6 +226,8 @@ public class BattleManager : MonoBehaviour
     /// <summary>消滅時に呼ばれる</summary>
     public void RemoveTurn(Character chara)
     {
+        if (currentTurn.character == chara) { currentTurn.turnIcon.RemoveTurnOrderIcon(); }
+
         List<Turn> removeTurns = new List<Turn>();
         foreach (Turn turn in turns)
         {
@@ -273,7 +276,7 @@ public class BattleManager : MonoBehaviour
     public void TurnEnd(int cause)
     {
         test++;
-        currentTurn.turnIcon.RemoveTurnOrderIcon();
+        if (currentTurn.character.CheckAlive()) { currentTurn.turnIcon.RemoveTurnOrderIcon(); }
         if (turns.Count == 0) { RoundEnd(); }
         else
         {
@@ -297,6 +300,7 @@ public class BattleManager : MonoBehaviour
 
     public void RoundEnd()
     {
+        for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }//tst
         inRound = false;
         infoText.AddLogText(string.Format("\n◇◇ラウンド{0}終了◇◇", roundCount));
         Trigger_RoundEnd();
@@ -457,6 +461,7 @@ public class BattleManager : MonoBehaviour
         bool emptyBack = true;
         int colmun, start, end;
         string s = "";
+        bool f = false;
         Action.ActionStatus actionStatus = moveFrontLine;
         CharactersManager.SearchCharaCondition condition = moveFrontLineCondition;
         if (player)
@@ -490,6 +495,7 @@ public class BattleManager : MonoBehaviour
             actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
             actionStatus.targetInfo = string.Format("後列の{0}全て", s);
             actionQueue.Enqueue(actionStatus);
+            f = true;
         }
         else
         {
@@ -500,6 +506,7 @@ public class BattleManager : MonoBehaviour
                 actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
                 actionStatus.targetInfo = string.Format("中列の{0}全て", s);
                 actionQueue.Enqueue(actionStatus);
+                f = true;
             }
             if ((emptyFront||emptyMid) && !emptyBack)//中、前列のいずれかが開いている　かつ　後列にキャラが1体でもいるなら
             {
@@ -508,9 +515,12 @@ public class BattleManager : MonoBehaviour
                 actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
                 actionStatus.targetInfo = string.Format("後列の{0}全て", s);
                 actionQueue.Enqueue(actionStatus);
+                f = true;
             }
 
         }
+
+        if (f) { tutorialManager.StartTutorial(tutorial_frontLine);infoText.AddDebugText("ok"); }
     }
 
     public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }

@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u8F1D\u304F\u708E"
   lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: a9004ae68f7ad224eae1b7ae8ad694ae, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}

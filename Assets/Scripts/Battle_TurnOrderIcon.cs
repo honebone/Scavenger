@@ -55,11 +55,6 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         else { FindObjectOfType<InfoText>().SetText("•s–¾", ""); }
     }
 
-    public void CheckDeadForDebug()
-    {
-        if (character.GetCharacterStatus().dead) { RemoveTurnOrderIcon(); }
-    }
-
     public void RemoveTurnOrderIcon()
     {
         //if (!destroyed)
@@ -67,7 +62,8 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         //    destroyed = true;
         //    Destroy(gameObject);
         //}
-        if (gameObject != null) { Destroy(gameObject); }
+        gameObject.SetActive(false);
+        //if (gameObject != null) { Destroy(gameObject); }
     }
 
     public  Character GetCharacter() { return character; }

@@ -89,8 +89,8 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 15
-    INTMod_max: 25
+    INTMod_min: 30
+    INTMod_max: 50
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a0000000d000000
+    actionTargetsInt: 090000000b0000000d0000000e00000010000000

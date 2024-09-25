@@ -22,13 +22,18 @@ public class Settings_Slider : MonoBehaviour
         
     }
 
+    /// <summary>スライダーの値ではなく実際の値を入れる</summary>
+    public void SetValue(float value)
+    {
+        slider.value = (value - valueMul.x) / (valueMul.y - valueMul.x);
+    }
     public void SetValueText()
     {
         valueText.text = $"{GetValue():0.00}{unit}";
     }
     public float GetValue()
     {
-        return valueMul.x+(valueMul.y-valueMul.x)*slider.value;
+        return valueMul.x + (valueMul.y - valueMul.x) * slider.value;
     }
    
 }

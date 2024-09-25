@@ -38,10 +38,11 @@ public class REOptionButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        mouseOver.SetUI("", true);
+        infoText.SetText(optionParams.optionName, optionParams.optionInfo);
+        //mouseOver.SetUI("");
     }
     public void OnMouseExit()
     {
-        mouseOver.ResetUI();
+        //mouseOver.ResetUI();
     }
 }

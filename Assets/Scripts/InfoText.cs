@@ -64,7 +64,7 @@ public class InfoText : MonoBehaviour
         infoTextScrollBar.value = 1;
     }
 
-    public void SetCharaInfo(string name, string info,Character chara)
+    public void SetCharaInfo(string name, string info)
     {
         //if (displayingChara != null)
         //{

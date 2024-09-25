@@ -685,7 +685,7 @@ public class Character : MonoBehaviour
         info += "\n" + targetButton.GetPositionManager().GetPEInfo();
         string charaName = charaStatus.charaName;
         if (CheckAffricted()) { charaName = charaName.ColorStr(Definer.colorRef.affricted); }
-        infoText.SetCharaInfo(charaName, info, this);
+        infoText.SetCharaInfo(charaName, info);
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus, this);
         //charaObj.SetSelectedIcon(true);
         targetButton.SetSelectedIcon(true);
@@ -835,6 +835,7 @@ public class Character : MonoBehaviour
                     targetButton.SetDamageText("•mŽ€!", Definer.colorRef.damage);
                     infoText.AddLogText(string.Format("{0}‚Í{1}‚¾...", charaStatus.charaName, "•mŽ€".ColorStr(Definer.colorRef.damage)));
                     soundManager.PlaySE(Definer.soundRef.dying);
+                    tutorialManager.Tutorial_dethsDoor();
                     charaObj.SetHPandShieldBar();
                     OnDecreasedHP(value);
                 }
@@ -909,7 +910,7 @@ public class Character : MonoBehaviour
                 targetButton.SetDamageText("•mŽ€!", Definer.colorRef.damage);
                 infoText.AddLogText(string.Format("{0}‚Í{1}‚¾...", charaStatus.charaName, "•mŽ€".ColorStr(Definer.colorRef.damage)));
                 soundManager.PlaySE(Definer.soundRef.dying);
-
+                tutorialManager.Tutorial_dethsDoor();
             }
         }
         else//•mŽ€‚Å‚È‚¢‚È‚ç

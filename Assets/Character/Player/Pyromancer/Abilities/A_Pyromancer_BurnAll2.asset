@@ -123,7 +123,7 @@ MonoBehaviour:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
       applyChance: 75
-      stack: 8
+      stack: 6
       value: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
     index: 0
     StEApplyBonus: []
     removeStEs_additional: []
-    dontChangeSprite: 0
+    dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0f000000
+    actionTargetsInt: 0c000000

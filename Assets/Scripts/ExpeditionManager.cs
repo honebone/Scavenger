@@ -32,8 +32,16 @@ public class ExpeditionManager : MonoBehaviour
         {
             eventName = data.eventName;
             eventInfo = data.eventInfo;
+            List<GameObject> eventM = new List<GameObject>(data.roomEventManager);
             if (data.debug) { roomEventManager = data.roomEventManager[0]; }
-            else { roomEventManager = data.roomEventManager[Random.Range(0, data.roomEventManager.Count)]; }
+            else
+            {
+                if (data.randomEvent)
+                {
+                    eventM.AddRange(Definer.generalRaEDataBase);
+                }
+                roomEventManager = eventM[Random.Range(0, eventM.Count)];
+            }
             eventIcon = data.eventIcon;
         }
     }

@@ -94,6 +94,10 @@ public class AbilityButton : MonoBehaviour
     public void OnMouseEnter()
     {
         FindObjectOfType<MouseOverUI>().SetUI("", true);
+        if (SettingManager.infoOnMouseover)
+        {
+            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false, new Character.CharacterStatus()));
+        }
     }
     public void OnMouseExit()
     {

@@ -266,12 +266,11 @@ public class LootPanel : MonoBehaviour
                     }
                 }
             }
-
-            attempts = Random.Range(status.dropEquipmentsRange.x, status.dropEquipmentsRange.y + 1);//装備品ドロップ
-            for (int i = 0; i < attempts; i++)
-            {
-                AddItem(expeditionManager.GetRandomEquipment(), 1);
-            }
+        }
+        int equipments = Random.Range(status.dropEquipmentsRange.x, status.dropEquipmentsRange.y + 1);//装備品ドロップ
+        for (int i = 0; i < equipments; i++)
+        {
+            AddItem(expeditionManager.GetRandomEquipment(), 1);
         }
     }
     public void AddItem(Definer.Item item, int amount)

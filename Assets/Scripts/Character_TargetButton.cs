@@ -142,7 +142,7 @@ public class Character_TargetButton : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if (character != null) {character.DisplayInfo(); }
-            else { infoText.SetCharaInfo("空きスペース", positionManager.GetPEInfo(), null); }
+            else { infoText.SetCharaInfo("空きスペース", positionManager.GetPEInfo()); }
             //SetSelectedIcon(true);
         }
         if (Input.GetMouseButtonDown(0))
@@ -176,7 +176,11 @@ public class Character_TargetButton : MonoBehaviour
         {
             highlightedIcon.enabled = true;
         }
-        if (character == null) { mouseOver.SetUI("空きスペース", false); }
+        if (character == null)
+        {
+            mouseOver.SetUI("空きスペース", false);
+            if (SettingManager.infoOnMouseover) { infoText.SetCharaInfo("空きスペース", positionManager.GetPEInfo()); }
+        }
         else
         {
             Character.CharacterStatus status = character.GetCharacterStatus();
@@ -191,6 +195,11 @@ public class Character_TargetButton : MonoBehaviour
                 s += string.Format("\nSAN：{0}", status.SAN);
             }
             mouseOver.SetUI(s, true);
+
+            if (SettingManager.infoOnMouseover)
+            {
+                character.DisplayInfo();
+            }
         }
     }
     public void OnMouseExit()

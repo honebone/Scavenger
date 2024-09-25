@@ -94,6 +94,7 @@ public class Definer : MonoBehaviour
     GameObject statusEffectIcon_Inspector;
     [SerializeField]
     GameObject positionEffectIcon_Inspector;
+    [SerializeField] List<GameObject> generalRaEDataBase_Inspector;
 
     [SerializeField] List<CharacterData> playerDataBase;
     [SerializeField] List<ItemData> lootDataBase_Inspector;
@@ -109,6 +110,7 @@ public class Definer : MonoBehaviour
 
     public static List<ItemData> lootDataBase = new List<ItemData>();
     public static List<List<ItemData>> equipments = new List<List<ItemData>>();
+    public static List<GameObject> generalRaEDataBase;
 
 
 
@@ -229,13 +231,6 @@ public class Definer : MonoBehaviour
         {
             equipments[(int)equipment.rarity].Add(equipment);
         }
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    foreach (ItemData equipment in equipments[i])
-        //    {
-        //        print(equipment.itemName);
-        //    }
-        //    print("");
-        //}
+        generalRaEDataBase = new List<GameObject>(generalRaEDataBase_Inspector);
     }
 }
