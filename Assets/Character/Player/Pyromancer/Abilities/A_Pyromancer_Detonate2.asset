@@ -17,7 +17,7 @@ MonoBehaviour:
   upgradeInfo: "\u4E0E\u3048\u308B\u30C0\u30E1\u30FC\u30B8\u304C\u706B\u50B7\u306B\u3088\u308A\u5931\u3046HP\u306E100\uFF05\u306B\u306A\u308B"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
+  dontChangeSprite: 1
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 1
   excludeRandomPool: 0

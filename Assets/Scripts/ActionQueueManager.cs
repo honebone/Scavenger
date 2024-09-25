@@ -234,7 +234,7 @@ public class ActionQueueManager : MonoBehaviour
         }
        
 
-        if (!actionStatus.dontChangeSprite) { actionStatus.actionOwner.SetCharaSprite(actionStatus.activateSprite); }
+        //if (!actionStatus.dontChangeSprite) { actionStatus.actionOwner.SetCharaSprite(actionStatus.activateSprite); }
         charactersManager.ResetAllActionInvolvedIcons();
 
         resolvingAction.Resolve();
@@ -245,7 +245,7 @@ public class ActionQueueManager : MonoBehaviour
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Color.clear;
         abilityNameText.transform.parent.GetComponent<Image>().enabled = false;
 
-        actionStatus.actionOwner.ResetCharaSprite();
+        //actionStatus.actionOwner.ResetCharaSprite();
     }
     IEnumerator ResolveNextAbilityEffect()//2つ目以降のアビリティ効果
     {

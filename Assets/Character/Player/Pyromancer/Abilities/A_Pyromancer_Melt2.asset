@@ -17,7 +17,7 @@ MonoBehaviour:
   upgradeInfo: "\u4ED8\u4E0E\u78BA\u7387+10\uFF05\n\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF+2"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
+  dontChangeSprite: 1
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 4
   excludeRandomPool: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u6EB6\u89E3"
+  - actionName: "\u6EB6\u89E3+"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 

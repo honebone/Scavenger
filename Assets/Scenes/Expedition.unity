@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
@@ -3275,6 +3275,7 @@ MonoBehaviour:
   guideObjP: {fileID: 1141226839}
   left: {fileID: 147430896}
   right: {fileID: 1090261345}
+  T_deathsDoor: {fileID: 0}
 --- !u!1 &175798970
 GameObject:
   m_ObjectHideFlags: 0
@@ -11548,9 +11549,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
+  - {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-  - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
+  - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   lootDataBase_Inspector:
   - {fileID: 11400000, guid: 16ee09dceac778e46b6b65e3d4c5d904, type: 2}
   - {fileID: 11400000, guid: 26c167cff8995c945a7081930962a435, type: 2}
@@ -11643,6 +11645,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad7df46d8ff3b8244956abcb3857902f, type: 2}
   - {fileID: 11400000, guid: e743d1409bce463448bd93fdc2dc0d17, type: 2}
   - {fileID: 11400000, guid: f783378db0081e843b64d09979e3764c, type: 2}
+  - {fileID: 11400000, guid: 0e685522f30177942b2b61206b160967, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -17264,6 +17267,7 @@ GameObject:
   - component: {fileID: 914944171}
   - component: {fileID: 914944173}
   - component: {fileID: 914944172}
+  - component: {fileID: 914944174}
   m_Layer: 0
   m_Name: ExpeditionManager
   m_TagString: Untagged
@@ -17593,6 +17597,18 @@ MonoBehaviour:
   totalDamageText: {fileID: 108737983}
   autoResolve: 1
   autoResolveInterval: 0.7
+--- !u!114 &914944174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914944168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4509f70e266187e49834dff2bd69c24d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &916294348
 GameObject:
   m_ObjectHideFlags: 0

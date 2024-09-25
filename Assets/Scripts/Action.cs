@@ -515,7 +515,7 @@ public class Action : MonoBehaviour
         }
 
        
-
+        //ââèoä÷òA
         if (actionStatus.actionTargets == null) { actionStatus.actionTargets = new List<Character>(); }
         ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
         for (int i = 0; i < actionsStatus.Length; i++)
@@ -530,6 +530,8 @@ public class Action : MonoBehaviour
             int pos = character.GetCharacterStatus().position;
             if (!actionStatus.actionTargetsInt.Contains(pos)) { actionStatus.actionTargetsInt.Add(pos); }
         }
+        if (!notChara) { actionStatus.actionOwner.ActAnim(); }
+
 
         if (actionStatus.freeAction)
         {

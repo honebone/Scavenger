@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Character_Object : MonoBehaviour
 {
@@ -46,10 +47,16 @@ public class Character_Object : MonoBehaviour
 
     [SerializeField]
     Transform StEIconParent;
+
+    [SerializeField] float actAnim_move;
+    [SerializeField] float actAnim_duration;
     
 
     Character character;
     CharactersManager charactersManager;
+
+    Sequence sequence;
+    GameObject charaSprite;
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem)
     {
         if (characterStatus.obstacle) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
@@ -86,7 +93,19 @@ public class Character_Object : MonoBehaviour
     public void SetCharaSprite(GameObject sprite)
     {
         if (charaSpriteParent.childCount > 0) { for (int i = 0; i < charaSpriteParent.childCount; i++) { Destroy(charaSpriteParent.GetChild(i).gameObject); } }
-        Instantiate(sprite, charaSpriteParent);
+        charaSprite= Instantiate(sprite, charaSpriteParent);
+    }
+    public void ActAnim()
+    {
+        if (charaSprite)
+        {
+            if (sequence != null) { sequence.Kill(true); }
+            sequence = DOTween.Sequence();
+            sequence.Append(charaSprite.transform.DOLocalMoveY(actAnim_move, actAnim_duration / 2f).SetRelative(true).SetEase(Ease.OutCubic));
+            sequence.Append(charaSprite.transform.DOLocalMoveY(-actAnim_move, actAnim_duration / 2f).SetRelative(true).SetEase(Ease.InCubic));
+
+            sequence.Play();
+        }
     }
 
     public void DisableSANBar() { SANBarObj.SetActive(false); }

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: A_Pyromancer_Melt
   m_EditorClassIdentifier: 
   abilityName: "\u6EB6\u89E3"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: 9911dc9e77c64d64dbe15521c96a8525, type: 2}
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
+  dontChangeSprite: 1
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 4
   excludeRandomPool: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
     index: 0
     StEApplyBonus: []
     removeStEs_additional: []
-    dontChangeSprite: 0
+    dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 09000000
+    actionTargetsInt: 10000000

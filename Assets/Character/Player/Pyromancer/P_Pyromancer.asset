@@ -16,8 +16,8 @@ MonoBehaviour:
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u708E\u306E\u9B54\u8853\u5E2B"
   difficulty: "\u4E2D"
-  introduction: "\u653B\u6483\u30BF\u30A4\u30D7"
-  preferredPos: "\u4E2D\u5217"
+  introduction: "\u653B\u6483\u30BF\u30A4\u30D7\n\u706B\u50B7\u306B\u3088\u308B\u6301\u7D9A\u30C0\u30E1\u30FC\u30B8\u3092\u4E3B\u306A\u706B\u529B\u6E90\u3068\u3059\u308B\u30AD\u30E3\u30E9\n\u904B\u7528\u6B21\u7B2C\u3067\u306F\u30C7\u30D0\u30D5\u3092\u3070\u3089\u307E\u304F\u652F\u63F4\u30AD\u30E3\u30E9\u3068\u3057\u3066\u3082\u6D3B\u8E8D\u3059\u308B"
+  preferredPos: "\u4E2D\u3001\u5F8C\u5217"
   characterTags: 02000000
   immovable: 0
   notChara: 0
@@ -25,15 +25,15 @@ MonoBehaviour:
   playable: 1
   obstacle: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  - {fileID: 4800315488507104838, guid: 7ffc7f86d143dfc47945bd6dc8fa6d5f, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 5ed7cc45a39baa640af4fe56ef10ae84, type: 3}
   abilities:
   - {fileID: 11400000, guid: 6e641e7af50e9274f920715453306783, type: 2}
   - {fileID: 11400000, guid: 5a45edd6dc02d8542b58e842ad600628, type: 2}
   - {fileID: 11400000, guid: 6f6c4fd2772476a49bd5a0bdb379cc56, type: 2}
   - {fileID: 11400000, guid: a8912263db574c24889c9108c6d81557, type: 2}
   - {fileID: 11400000, guid: 86a45bacaccf3b14796557417d21589d, type: 2}
-  - {fileID: 11400000, guid: 1349c1b6f5583164ba2facbb83b0b0f8, type: 2}
+  - {fileID: 11400000, guid: c09631b6123ee9b43904b7712c2f4bee, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:

@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] TutorialText left;
     [SerializeField] TutorialText right;
     List<TutorialData> unlockedTutorial = new List<TutorialData>();
+    [SerializeField] TutorialData T_deathsDoor;
 
     TutorialText displayingText;
     TutorialData displayingTutorial;
@@ -40,6 +41,7 @@ public class TutorialManager : MonoBehaviour
             DisplayTutorial();
         }
     }
+    public void Tutorial_dethsDoor() { StartTutorial(T_deathsDoor); }
 
     public void DisplayTutorial()
     {

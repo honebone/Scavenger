@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Pyromancer_FireRain2
+  m_Name: A_Pyromancer_Flash2
   m_EditorClassIdentifier: 
-  abilityName: "\u708E\u306E\u96E8+"
+  abilityName: "\u9583\u5149+"
   lockedDefault: 0
-  upgradeInfo: "ACC\u88DC\u6B63+5\nCRIT\u7387\u88DC\u6B63+5\uFF05\n\u706B\u50B7\u306E\u30B9\u30BF\u30C3\u30AF+1"
+  upgradeInfo: "ACC\u4F4E\u4E0B\u3001EVD\u4F4E\u4E0B\u306E\u52B9\u679C\u91CF+15"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  abilityType: 1
+  abilityType: 4
   excludeRandomPool: 0
   selectWeight: 1
   availableFront: 0
@@ -43,23 +43,22 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 3
+  cooldownOnBattleStart: 0
   cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u708E\u306E\u96E8+"
+  - actionName: "\u9583\u5149"
     conditionInfo: 
-    targetInfo: "\u6575\u5168\u4F53"
+    targetInfo: "\u6575\u5168\u3066(\u6F5C\u4F0F\u3092\u7121\u8996)"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
-    VE_OnTargets: {fileID: 5647168121093442190, guid: 1c1259acbd1d4cb4a898727097f570c6, type: 3}
+    SE: {fileID: 8300000, guid: 233b8a3a580706245a110cebaba01ec1, type: 3}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 6529000616297166250, guid: cf14b90ddef7f9e44a5bbb44f2e4f67d, type: 3}
+    actionMods: []
     targetType: 2
     friendly: 0
     condition:
@@ -78,7 +77,7 @@ MonoBehaviour:
       HP_lessThan: 0
       HP_excludeEqual: 0
     ignoreMark: 0
-    ignoreHide: 0
+    ignoreHide: 1
     moveValue: 
     consumeFocus: 0
     kill: 0
@@ -89,13 +88,13 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 15
-    INTMod_max: 25
+    INTMod_min: 0
+    INTMod_max: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exDMG_int: 0
-    ACCMod: -5
+    ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
@@ -120,15 +119,28 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+    - applyStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
       guaranteed: 0
-      applyChance: 75
-      stack: 6
+      applyChance: 80
+      stack: 2
+      value: 35
+    - applyStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
+      guaranteed: 0
+      applyChance: 80
+      stack: 2
+      value: 35
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      guaranteed: 0
+      applyChance: 67
+      stack: 1
       value: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -141,11 +153,11 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 4
     index: 0
     StEApplyBonus: []
     removeStEs_additional: []
-    dontChangeSprite: 0
+    dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 090000000a0000000c00000010000000
+    actionTargetsInt: 0b00000010000000

@@ -1307,6 +1307,8 @@ MonoBehaviour:
   damageTextParent: {fileID: 1913251075364850153}
   damagText: {fileID: 8694295248414631835, guid: 338d598580388654682ea9d36ef8b7e7, type: 3}
   StEIconParent: {fileID: 8419732907719205243}
+  actAnim_move: 1.5
+  actAnim_duration: 0.3
 --- !u!225 &8253639525336066161
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ MonoBehaviour:
   upgradeInfo: "ATK\u88DC\u6B63+10\uFF05\n\u706B\u50B7\u306E\u30B9\u30BF\u30C3\u30AF\u6570+1"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
+  dontChangeSprite: 1
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 1
   excludeRandomPool: 0
