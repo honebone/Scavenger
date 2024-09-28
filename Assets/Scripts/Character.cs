@@ -1431,11 +1431,11 @@ public class Character : MonoBehaviour
     }
 
 
-    public void OnActivateAbility()
+    public void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(actionResultsList); }
             RemovePA_Execute();
         }
     }

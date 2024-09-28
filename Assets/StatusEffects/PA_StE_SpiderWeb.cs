@@ -10,7 +10,7 @@ public class PA_StE_SpiderWeb : PA_StatusEffect
         character.AddACT(-3);
         character.AddEVD(-10);
     }
-    public override void OnActivateAbility()
+    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         AddStack(-1);
     }

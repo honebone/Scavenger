@@ -154,6 +154,8 @@ public class BattleManager : MonoBehaviour
     }
     public void DicideTurnOrder()
     {
+        for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }//tst
+
         currentTurn = null;
         currentTurnCount = 0;
         turns.Clear();
@@ -268,7 +270,6 @@ public class BattleManager : MonoBehaviour
 
         currentTurn = turns[0];
         currentTurn.character.MyTurnStart();
-        //infoText.AddDebugText(string.Format("{0}‚Ìturns‚ðíœ", turns[0].character.GetCharacterStatus().charaName));
         turns.RemoveAt(0);
 
     }
@@ -300,10 +301,10 @@ public class BattleManager : MonoBehaviour
 
     public void RoundEnd()
     {
-        for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }//tst
         inRound = false;
         infoText.AddLogText(string.Format("\nžžƒ‰ƒEƒ“ƒh{0}I—¹žž", roundCount));
         Trigger_RoundEnd();
+        //for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }//tst
     }
 
     public void BattleEnd()

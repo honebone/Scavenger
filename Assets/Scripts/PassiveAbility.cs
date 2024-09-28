@@ -104,7 +104,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnBattleEnd() { }
 
 
-    public virtual void OnActivateAbility() { }
+    public virtual void OnActivateAbility(List<Action.ActionResult> actionResultsList) { }
     /// <summary>UŒ‚A–½’†‚µ‚½‚©‚ÉŠÖ‚í‚ç‚¸—U”­</summary>
     public virtual void OnAttack(List<Action.OnAttackParams> onAttackParamsList) { }
     public virtual void OnDecreasedHP(int value) { }

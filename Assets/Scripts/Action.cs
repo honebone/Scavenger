@@ -1123,7 +1123,7 @@ public class Action : MonoBehaviour
         }
 
         if (actionStatus.index == 0 && actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass)
-        { actionStatus.actionOwner.OnActivateAbility(); }
+        { actionStatus.actionOwner.OnActivateAbility(actionResults); }
 
         if (shakeCamera) { cameraManager.ShakeCamera(1); }
 

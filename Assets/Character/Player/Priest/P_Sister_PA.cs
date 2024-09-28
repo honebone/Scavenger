@@ -11,7 +11,7 @@ public class P_Sister_PA : PA_Personality
     [SerializeField, TextArea(3, 10)]
     string comeTrueInfo;
     
-    public override void OnActivateAbility()
+    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         if (!character.CheckHasStE(comeTrue))
         {

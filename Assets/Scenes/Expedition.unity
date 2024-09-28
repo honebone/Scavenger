@@ -11717,6 +11717,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f783378db0081e843b64d09979e3764c, type: 2}
   - {fileID: 11400000, guid: 0e685522f30177942b2b61206b160967, type: 2}
   - {fileID: 11400000, guid: bbb1d49aafe4ef4409a66f2414593a77, type: 2}
+  - {fileID: 11400000, guid: 950174bfc18d61744a1775525ca97f74, type: 2}
+  - {fileID: 11400000, guid: 8da498511067d4e47af6f0f98206e7df, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -12754,7 +12756,7 @@ Transform:
   - {fileID: 1747688082}
   - {fileID: 2021240327}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &701097027 stripped
 MonoBehaviour:
@@ -32093,7 +32095,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -40257,7 +40259,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8067357777361135079, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8067357777361135079, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
       propertyPath: m_LocalPosition.x

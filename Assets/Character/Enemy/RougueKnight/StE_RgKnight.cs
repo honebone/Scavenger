@@ -21,7 +21,7 @@ public class StE_RgKnight : PA_StatusEffect
         if(currentDMG >= goalDMG) { Disable(); }
     }
 
-    public override void OnActivateAbility()
+    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         if (!f) { f = true; }
         else { Disable(); }

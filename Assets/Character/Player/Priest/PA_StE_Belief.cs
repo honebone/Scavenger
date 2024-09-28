@@ -19,7 +19,7 @@ public class PA_StE_Belief : PA_StatusEffect
         Action.ActionStatus action = clearPrayer;
         character.Enqueue(action, true, charactersManager.SearchCharaWithCondition(condition));
     }
-    public override void OnActivateAbility()
+    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         Action.ActionStatus action = actionStatus;
         character.Enqueue(action, true, charactersManager.SearchCharaWithCondition(condition));

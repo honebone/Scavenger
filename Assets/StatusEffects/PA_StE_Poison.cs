@@ -6,7 +6,7 @@ public class PA_StE_Poison : PA_StatusEffect
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
-    public override void OnActivateAbility()
+    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         Action.ActionStatus action = actionStatus;
         action.decreaseHP_min = StEStatus.stack;

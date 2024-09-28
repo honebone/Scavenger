@@ -2,31 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Eq_Quiver : PA_Equipment
+public class Eq_UnderSleeve : PA_Equipment
 {
-    [SerializeField]
-    Action.ActionStatus actionStatus;
-
-    bool act;
+    [SerializeField] Action.ActionStatus actionStatus;
+    [SerializeField] CharactersManager.SearchCharaCondition condition;
     public override string GetPAInfo_Base()
     {
         string s = equipmentStatus.GetInfo();
         s += actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
-   
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
-        act = true;
-    }
-    public override void OnTurnEnd()
-    {
-        if (!act)
+        if (actionResultsList[0].actionStatus.abilityType != AbilityData.AbilityType.attack)
         {
             Action.ActionStatus action = actionStatus;
-            actionStatus.actionOwner = character;
-            character.Enqueue(action, true, new List<Character>() { character });
+            List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+            Enqueue(action, true, new List<Character> { target.Choice() });
         }
-        act = false;
     }
 }
