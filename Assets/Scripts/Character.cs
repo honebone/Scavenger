@@ -652,6 +652,15 @@ public class Character : MonoBehaviour
 
     public void DisplayInfo()
     {
+        string charaName = charaStatus.charaName;
+        if (CheckAffricted()) { charaName = charaName.ColorStr(Definer.colorRef.affricted); }
+        infoText.SetCharaInfo(charaName, GetInfo());
+        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus, this);
+        //charaObj.SetSelectedIcon(true);
+        targetButton.SetSelectedIcon(true);
+    }
+    public string GetInfo()
+    {
         string info = charaStatus.GetInfo();
         info += "\nó‘ÔˆÙí\n";
         foreach (PassiveAbility pa in PA_StE)
@@ -683,12 +692,8 @@ public class Character : MonoBehaviour
         }
 
         info += "\n" + targetButton.GetPositionManager().GetPEInfo();
-        string charaName = charaStatus.charaName;
-        if (CheckAffricted()) { charaName = charaName.ColorStr(Definer.colorRef.affricted); }
-        infoText.SetCharaInfo(charaName, info);
-        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus, this);
-        //charaObj.SetSelectedIcon(true);
-        targetButton.SetSelectedIcon(true);
+
+        return info;
     }
     public void ResetCharaSprite()
     {

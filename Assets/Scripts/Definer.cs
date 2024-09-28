@@ -111,7 +111,7 @@ public class Definer : MonoBehaviour
     public static List<ItemData> lootDataBase = new List<ItemData>();
     public static List<List<ItemData>> equipments = new List<List<ItemData>>();
     public static List<GameObject> generalRaEDataBase;
-
+    public static List<List<GameObject>> personalities = new List<List<GameObject>>();
 
 
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
@@ -231,6 +231,17 @@ public class Definer : MonoBehaviour
         {
             equipments[(int)equipment.rarity].Add(equipment);
         }
+
+        for (int i = 0; i < 6; i++)
+        {
+            personalities.Add(new List<GameObject>());
+        }
+        foreach (GameObject per in personalityDataBase)
+        {
+            PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
+            personalities[(int)status.personalityType].Add(per);
+        }
+
         generalRaEDataBase = new List<GameObject>(generalRaEDataBase_Inspector);
     }
 }

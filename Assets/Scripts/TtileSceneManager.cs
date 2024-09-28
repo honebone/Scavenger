@@ -11,6 +11,8 @@ public class TtileSceneManager : MonoBehaviour
     [SerializeField] Light2D sunLight;
     [SerializeField] Toggle skipTutorial;
 
+    public static bool skipTutorial_bool;
+
     GameManager gameManager;
 
     bool canStart;
@@ -24,6 +26,8 @@ public class TtileSceneManager : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        skipTutorial_bool = PlayerPrefs.GetInt("Setting_skipTutorial", 0) == 1;
+        skipTutorial.isOn = skipTutorial_bool;
         //gameManager.SetTutorialMode(true);
     }
 
@@ -48,7 +52,7 @@ public class TtileSceneManager : MonoBehaviour
         gameManager.GoToExpeditionScene(!skipTutorial.isOn);
     }
 
-    public void ToggleTutorial() { }
+    public void ToggleTutorial() { PlayerPrefs.SetInt("Setting_skipTutorial", (skipTutorial.isOn) ? 1 : 0); }
     public void StartGame()
     {
         if (canStart)

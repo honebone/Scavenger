@@ -279,6 +279,14 @@ public class LootPanel : MonoBehaviour
         loots.Add(item);
         //Sort();
     }
+    public void AddItem(ItemData itemData, int amount)
+    {
+        Definer.Item item = new Definer.Item();
+        item.Init(itemData);
+        item.amount = amount;
+        loots.Add(item);
+        //Sort();
+    }
     public void AddExp(int amount)
     {
         expOrbs += amount * expeditionManager.GetExpAmount();

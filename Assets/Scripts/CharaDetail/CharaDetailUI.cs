@@ -87,7 +87,10 @@ public class CharaDetailUI : MonoBehaviour
     }
     public void ToggleUI()
     {
-        if (!UIpanel.activeSelf) { OpenUI(); }
+        if (!UIpanel.activeSelf)
+        {
+            if (charactersManager.GetExistingCharacters_All().Count > 0) { OpenUI(); }
+        }
         else { CloseUI(); }
     }
     public void OpenUI()

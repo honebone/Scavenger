@@ -60,7 +60,7 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
-    friendly: 0
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
