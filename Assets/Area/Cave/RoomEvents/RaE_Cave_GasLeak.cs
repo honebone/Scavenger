@@ -67,7 +67,7 @@ public class RaE_Cave_GasLeak : RE_RandomEvents
                 }
                 break;
         }
-        yield return new WaitForSeconds(1.0f);
+        //yield return new WaitForSeconds(1.0f);
         EndRoomEvent();
     }
 }

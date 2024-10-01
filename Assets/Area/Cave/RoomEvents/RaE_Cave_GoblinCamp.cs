@@ -59,7 +59,7 @@ public class RaE_Cave_GoblinCamp : RE_RandomEvents
             case 2:
                 infoText.AddLogText("–ì‰c’n‚ğ”ğ‚¯‚Äæ‚Éi‚ñ‚¾");
                 infoText.SwitchToLog();
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(0.5f);
                 EndRoomEvent();
                 break;
         }

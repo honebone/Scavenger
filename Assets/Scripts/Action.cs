@@ -1016,6 +1016,11 @@ public class Action : MonoBehaviour
         //各対象ポジションへの処理
         if (actionStatus.summon)//召喚
         {
+            ActionResult result = new ActionResult();//応急処置！！！
+            result.actionStatus = actionStatus;
+            actionResults.Add(result);
+
+
             //infoText.AddDebugText("召喚処理は未完成です\n召喚しようとしている場所が空欄であるかどうかを確かめる必要があります");
             soundManager.PlaySE(Definer.soundRef.summoned);
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
@@ -1030,6 +1035,11 @@ public class Action : MonoBehaviour
         }
         else//召喚以外の対象地点への効果
         {
+            ActionResult result = new ActionResult();//応急処置！！！
+            result.actionStatus = actionStatus;
+            actionResults.Add(result);
+
+
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
                 foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE付与
@@ -1045,6 +1055,11 @@ public class Action : MonoBehaviour
 
         if (actionStatus.targetType == ActionStatus.TargetType.move)//移動
         {
+            ActionResult result = new ActionResult();//応急処置！！！
+            result.actionStatus = actionStatus;
+            actionResults.Add(result);
+
+
             int ownerMoveDir = -1;
             int ownerMoveRange = -1;
             int moveToPos = actionStatus.actionTargetsInt[0];//iは0の時しかないはず
@@ -1058,7 +1073,6 @@ public class Action : MonoBehaviour
             {
                 ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).y - util.posIntToVector(moveToPos).y);
             }
-            //print(ownerMoveRange);            
 
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
             foreach (Character c in charasOnTravelingDir)

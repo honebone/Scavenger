@@ -51,7 +51,7 @@ public class RaE_TreasureBox : RE_RandomEvents
             case 1:
                 infoText.AddLogText("Œ™‚È—\Š´‚ª‚·‚é...\n•ó” ‚ğ–³‹‚µ‚Äæ‚Éi‚ñ‚¾");
                 infoText.SwitchToLog();
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(0.5f);
                 EndRoomEvent();
                 break;
         }

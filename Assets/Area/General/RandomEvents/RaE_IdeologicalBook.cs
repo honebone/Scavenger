@@ -49,7 +49,7 @@ public class RaE_IdeologicalBook : RE_RandomEvents
             expeditionManager.SetRandomPersonality(pool[choice]);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         EndRoomEvent();
     }
 }

@@ -48,7 +48,7 @@ public class RaE_DangerousDeal : RE_RandomEvents
                 ExpeditionRef.loot.Loot();
                 break;
             default:
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(0.5f);
                 EndRoomEvent();
                 break;
         }

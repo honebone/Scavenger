@@ -269,9 +269,9 @@ public class BattleManager : MonoBehaviour
         messageText.ResetText();
 
         currentTurn = turns[0];
-        currentTurn.character.MyTurnStart();
         turns.RemoveAt(0);
 
+        currentTurn.character.MyTurnStart();
     }
     int test = 0;
     public void TurnEnd(int cause)

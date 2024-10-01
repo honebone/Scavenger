@@ -234,6 +234,7 @@ public class ExpeditionManager : MonoBehaviour
         string info = "";
         info += $"ëùâ¡HP:{enemyStatusGrowth.maxHP_mul}Åì\n";
         info += $"ëùâ¡ATK:{enemyStatusGrowth.ATK_mul}Åì\n";
+        info += $"ëùâ¡INT:{enemyStatusGrowth.INT_mul}Åì\n";
         info += $"ëùâ¡EVD:{enemyStatusGrowth.EVD}\n";
         info += $"ëùâ¡ACC:{enemyStatusGrowth.ACC}\n";
         info += $"ëùâ¡ACT:{enemyStatusGrowth.ACT}\n";
@@ -315,6 +316,7 @@ public class ExpeditionManager : MonoBehaviour
         enemyStatusGrowth.ACT++;
         enemyStatusGrowth.maxHP_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.maxHP_mul) * enemyMaxHPGrowth - 100);
         enemyStatusGrowth.ATK_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.ATK_mul) * enemyATKGrowth - 100);
+        enemyStatusGrowth.INT_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.INT_mul) * enemyATKGrowth - 100);
     }
     public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
 
@@ -494,9 +496,21 @@ public class ExpeditionManager : MonoBehaviour
     {
         //Ç†Å[ÇæÇ±Å[Çæ
         inRoomEvent = false;
+        StartCoroutine(EndRoomEventC());
+    }
+    IEnumerator EndRoomEventC()
+    {
+        yield return new WaitForSeconds(1f);
+        foreach (Character chara in ExpeditionRef.charactersManager.GetExistingCharacters_All())
+        {
+            int maxHP = chara.GetCharacterStatus().maxHP;
+            chara.Heal(Mathf.RoundToInt(maxHP * 0.05f), null);
+        }
+        yield return new WaitForSeconds(0.75f);
         if (partyStatus.getPerChance_endRE.Dice())
         {
             SetRandomPersonality_ToRandom();
+            yield return new WaitForSeconds(1.5f);
         }
         CheckEnemyLVLUp();
     }

@@ -31,7 +31,6 @@ public class RE_Rest : RoomEvent
                     chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
                     chara.SANHeal(10);
                 }
-                yield return new WaitForSeconds(1f);
                 EndRoomEvent();
                 break;
             case 1:
@@ -41,7 +40,6 @@ public class RE_Rest : RoomEvent
                     //chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
                     chara.SANHeal(20);
                 }
-                yield return new WaitForSeconds(1f);
                 EndRoomEvent();
                 break;
             case 2:
@@ -62,7 +60,6 @@ public class RE_Rest : RoomEvent
                         chara.Heal(Mathf.RoundToInt(maxHP * 0.5f), null);
                         chara.SANHeal(15);
                     }
-                    yield return new WaitForSeconds(1f);
                     EndRoomEvent();
                 }
                 break;

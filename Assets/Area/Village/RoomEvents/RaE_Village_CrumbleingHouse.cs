@@ -92,7 +92,7 @@ public class RaE_Village_CrumbleingHouse : RE_RandomEvents
                         float value = Random.Range(0.2f, 0.3f);
                         chara.DecreaseHP(Mathf.RoundToInt(maxHP * value));
                     }
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(0.5f);
                     EndRoomEvent();
                 }
                 else
@@ -104,7 +104,7 @@ public class RaE_Village_CrumbleingHouse : RE_RandomEvents
             case 1:
                 infoText.AddLogText(exitLog);
                 infoText.SwitchToLog();
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(0.5f);
                 EndRoomEvent();
                 break;
         }
