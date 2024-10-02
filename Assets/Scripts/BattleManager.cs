@@ -495,7 +495,7 @@ public class BattleManager : MonoBehaviour
             actionStatus.moveForword = 2;
             actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
             actionStatus.targetInfo = string.Format("後列の{0}全て", s);
-            actionQueue.Enqueue(actionStatus);
+            actionQueue.Enqueue(actionStatus,0);
             f = true;
         }
         else
@@ -506,7 +506,7 @@ public class BattleManager : MonoBehaviour
                 condition.mid = true;
                 actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
                 actionStatus.targetInfo = string.Format("中列の{0}全て", s);
-                actionQueue.Enqueue(actionStatus);
+                actionQueue.Enqueue(actionStatus,0);
                 f = true;
             }
             if ((emptyFront||emptyMid) && !emptyBack)//中、前列のいずれかが開いている　かつ　後列にキャラが1体でもいるなら
@@ -515,7 +515,7 @@ public class BattleManager : MonoBehaviour
                 condition.back = true;
                 actionStatus.actionTargets = charactersManager.SearchCharaWithCondition(condition);
                 actionStatus.targetInfo = string.Format("後列の{0}全て", s);
-                actionQueue.Enqueue(actionStatus);
+                actionQueue.Enqueue(actionStatus,0);
                 f = true;
             }
 

@@ -30,7 +30,7 @@ public class Eq_CapriciousOrb : PA_Equipment
             else { damages.Add(c); }
         }
 
-        character.Enqueue(action, true, heals);
-        character.Enqueue(action2, true, damages);
+        Enqueue(action, true, heals, 0);
+        Enqueue(action2, true, damages, 0);
     }
 }

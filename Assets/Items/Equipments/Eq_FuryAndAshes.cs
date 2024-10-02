@@ -32,7 +32,7 @@ public class Eq_FuryAndAshes : PA_Equipment
                 {
                     count -= countGoal;
                     remain--;
-                    Enqueue(attack, true, target.Sample(2));
+                    Enqueue(attack, true, target, 2);
                 }
             }
         }

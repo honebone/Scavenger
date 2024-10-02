@@ -513,7 +513,7 @@ public class Character : MonoBehaviour
                     pa.GetComponent<PA_StatusEffect>().AddStack(finalStack);
 
                     //charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());//refvalueとmergeは共存しないので、ここでrefvalueのことを考える必要はない
-                    //infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
+                    infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));
 
                     soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StE.GetStatusEffectStatus().StEType]);
                     alreadyExist = true;
@@ -719,7 +719,7 @@ public class Character : MonoBehaviour
     /// <param name="actionStatus"></param>
     /// <param name="setTargets">actionTargetに第3引数を代入するか</param>
     /// <param name="actionTargets">setTargetsがtrueの時、これを対象群として改めてactionstatusに代入する</param>
-    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
+    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
     {
         if (!nullOwner) { actionStatus.actionOwner = this; }
         else { actionStatus.actionOwner = null; }
@@ -727,7 +727,7 @@ public class Character : MonoBehaviour
 
         if ((actionStatus.actionTargets != null && actionStatus.actionTargets.Count > 0) || (actionStatus.actionTargetsInt != null && actionStatus.actionTargetsInt.Count > 0))
         {
-            actionQueue.Enqueue(actionStatus);
+            actionQueue.Enqueue(actionStatus, targetCount);
         }
     }
 

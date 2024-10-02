@@ -27,7 +27,7 @@ public class Eq_Busket : PA_Equipment
                 List<Character> target = charactersManager.SearchCharaWithCondition(condition);
                 if (target.Count > 0)
                 {
-                    Enqueue(attack, true, target.Sample(2));
+                    Enqueue(attack, true, target, 2);
                 }
                 remain--;
                 if (remain == 0) { break; }

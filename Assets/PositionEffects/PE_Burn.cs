@@ -14,7 +14,7 @@ public class PE_Burn : PositionEffect
             Action.ActionStatus action = actionStatus;
             action.decreaseHP_min = PEStatus.stack;
             action.decreaseHP_max = PEStatus.stack;
-            Enqueue(action, true, new List<Character>() { character }, true);
+            Enqueue(action, true, new List<Character>() { character }, 0, true);
         }
     }
 

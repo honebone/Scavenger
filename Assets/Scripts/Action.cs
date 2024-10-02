@@ -162,8 +162,10 @@ public class Action : MonoBehaviour
         public GameObject activateSprite;
 
         public Character actionOwner;
-        [System.NonSerialized]
+        //[System.NonSerialized]
         //public Character.CharacterStatus ownerStatus_notChara;
+        public int targetCount;
+        /// <summary>この中からtargetCount個だけランダムに選ばれる</summary>
         public List<Character> actionTargets;
         /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
         public List<int> actionTargetsInt;
@@ -512,6 +514,43 @@ public class Action : MonoBehaviour
         {
             notChara = true;
             ownerStatus = Definer.nonCharaStatus;
+        }
+
+        if (actionStatus.targetCount == 0)
+        {
+            //infoText.AddWarningText($"{actionStatus.actionName}の対象指定方法が旧形式の可能性あり");
+        }
+        else//対象の最終設定
+        {
+            if (actionStatus.actionTargets.Count > 0)//キャラを対象とする効果
+            {
+                List<Character> finalTargetsPool = new List<Character>();
+                foreach(Character c in actionStatus.actionTargets)//生存中のキャラのみを抽出
+                {
+                    if (c.CheckAlive()) { finalTargetsPool.Add(c); }
+                }
+                actionStatus.actionTargets = new List<Character>(finalTargetsPool.Sample(actionStatus.targetCount));
+            }
+            else if (actionStatus.summon)//召喚
+            {
+                List<int> finalTargetsPool = new List<int>();
+                foreach (int i in actionStatus.actionTargetsInt)//空いているポジションのみを抽出
+                {
+                    if (!characterManager.CheckCharaExist(i))
+                    {
+                        finalTargetsPool.Add(i);
+                    }
+                }
+                actionStatus.actionTargetsInt = new List<int>(finalTargetsPool.Sample(actionStatus.targetCount));
+            }
+            else if(actionStatus.targetType == ActionStatus.TargetType.move)//移動
+            {
+                //何もしなくてよい
+            }
+            else//その他のポジションへの効果
+            {
+                //何もしなくてよい
+            }
         }
 
        
@@ -1153,17 +1192,16 @@ public class Action : MonoBehaviour
 
     //=====================================================[以下SecondEffect関連]=================================================
     /// <summary>自身のスプライトを代入してEnqueue</summary>
-    public void Enqueue(ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
+    public void Enqueue(ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
     {
-        actionStatus.actionOwner.Enqueue(actionStatus, setTargets, actionTargets, nullOwner);
+        actionStatus.actionOwner.Enqueue(actionStatus, setTargets, actionTargets, targetCount, nullOwner);
     }
 
     /// <summary>自身を対象にEunqueue</summary>
     public void Enqueue_Self(ActionStatus act)
     {
-
         ActionStatus action = act;
-        actionStatus.actionOwner.Enqueue(action, true, new List<Character>() { actionStatus.actionOwner });
+        actionStatus.actionOwner.Enqueue(action, true, new List<Character>() { actionStatus.actionOwner }, 0);
     }
 
     public bool CheckIfAbilityEffect() { return actionStatus.abilityEffect; }

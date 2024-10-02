@@ -26,7 +26,7 @@ public class Eq_MecBowgun : PA_Equipment
                     if (remain > 0)
                     {
                         remain--;
-                        Enqueue(attack, true, target.Sample(1));
+                        Enqueue(attack, true, target,1);
                     }
                 }
                 if (remain == 0) { break; }

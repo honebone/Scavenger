@@ -17,6 +17,6 @@ public class FE_NarrowRoom : FieldEffect
 
         action.actionOwner = null;
         action.actionTargetsInt = new List<int> { 0,2,3,5,6,8,9,11,12,14,15,17};
-        FindObjectOfType<ActionQueueManager>().Enqueue(action);
+        FindObjectOfType<ActionQueueManager>().Enqueue(action,0);
     }
 }

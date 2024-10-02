@@ -12,7 +12,7 @@ public class PE_BearTrap : PositionEffect
 
         action.actionOwner = null;
         action.actionTargets = new List<Character> { character };
-        FindObjectOfType<ActionQueueManager>().Enqueue(action);
+        FindObjectOfType<ActionQueueManager>().Enqueue(action,0);
 
         AddStack(-1);
     }

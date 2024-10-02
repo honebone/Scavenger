@@ -11,7 +11,7 @@ public class PA_Flying : PA_Personality
         Action.ActionStatus action = actionStatus;
         actionStatus.actionOwner = character;
 
-        character.Enqueue(action, true, new List<Character> { character });
+        character.Enqueue(action, true, new List<Character> { character },0);
     }
 
     public override string GetPAInfo_Base()

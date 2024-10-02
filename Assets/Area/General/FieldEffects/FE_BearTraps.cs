@@ -19,6 +19,6 @@ public class FE_BearTraps : FieldEffect
 
         action.actionOwner = null;
         action.actionTargetsInt = pos.Sample(2);
-        FindObjectOfType<ActionQueueManager>().Enqueue(action);
+        FindObjectOfType<ActionQueueManager>().Enqueue(action,0);
     }
 }

@@ -19,6 +19,6 @@ public class FE_Surprise : FieldEffect
 
         action_player.actionOwner = null;
         action_player.actionTargets = charactersManager.SearchCharaWithCondition(condition);
-        FindObjectOfType<ActionQueueManager>().Enqueue(action_player);
+        FindObjectOfType<ActionQueueManager>().Enqueue(action_player,0);
     }
 }

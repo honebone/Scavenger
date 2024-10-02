@@ -23,8 +23,8 @@ public class FE_SiegeGoblin : FieldEffect
             Action.ActionStatus act = action;
 
             List<Character> targetPool = new List<Character>(charactersManager.SearchCharaWithCondition(condition));
-            act.actionTargets = targetPool.Sample(2);
-            FindObjectOfType<ActionQueueManager>().Enqueue(act);
+            act.actionTargets = targetPool;
+            FindObjectOfType<ActionQueueManager>().Enqueue(act, 2);
         }
     }
 }

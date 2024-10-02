@@ -17,28 +17,36 @@ public class PositionManager : MonoBehaviour
 
     List<GameObject> actionMods = new List<GameObject>();
 
+    CharactersManager charactersManager;
     InfoText infoText;
+    Character_TargetButton targetButton;
 
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();
+        charactersManager = ExpeditionRef.charactersManager;
+        targetButton = charactersManager.GetTargetButton(pos);
     }
 
     public void ApplyPE(PositionEffect.PositionEffectParams PEParams)
     {
         bool f = false;
+        PositionEffect PE = PEParams.applyPE.GetComponent<PositionEffect>();
+        PositionEffect.PositionEffectStatus PEStatus = PE.GetPositionEffectStatus();
         if (PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus().merge)//マージするなら
         {
-            PositionEffect PE = PEParams.applyPE.GetComponent<PositionEffect>();
             foreach (PositionEffect pe in positionEffects)
             {
                 if (pe.GetComponent<PositionEffect>().GetPositionEffectStatus().PEName == PE.GetPositionEffectStatus().PEName)//同種のStEがすでにあるなら
                 {
                     pe.GetComponent<PositionEffect>().AddStack(PEParams.stack);
-                    //charaObj.SetDamageText(string.Format("付与：{0}", PE.GetPAName()), Color.white);
-                    //infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, PE.GetPAName()));
+
+                    infoText.AddLogText(string.Format("ポジション{0}に{1}が付与された", pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.PEType.ToColor())));
+
                     f = true;
                 }
+               
+
             }
         }
         if (!f)
@@ -47,8 +55,16 @@ public class PositionManager : MonoBehaviour
             var icon = Instantiate(Definer.positionEffectIcon, PEIconParent);
             positionEffects.Add(s.GetComponent<PositionEffect>());
             s.GetComponent<PositionEffect>().Init(character,this,PEParams,icon.GetComponent<PEIcon>());
-            //charaObj.SetDamageText(string.Format("付与：{0}", s.GetComponent<PA_StatusEffect>().GetPAName()), Color.white);
-            //infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+            if (PEStatus.refValue)
+            {
+                targetButton.SetDamageText(string.Format("+{0}{1}", PEStatus.PEName, PEParams.stack), PEStatus.PEType.ToColor());
+                infoText.AddLogText(string.Format("ポジション{0}に{1}{2}が付与された", pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.PEType.ToColor()), PEParams.value));
+            }
+            else
+            {
+                targetButton.SetDamageText(string.Format("+{0}", PEStatus.PEName), PEStatus.PEType.ToColor());
+                infoText.AddLogText(string.Format("ポジション{0}に{1}が付与された",pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.PEType.ToColor())));
+            }
         }
     }
     public void RemovePE(PositionEffect positionEffect)

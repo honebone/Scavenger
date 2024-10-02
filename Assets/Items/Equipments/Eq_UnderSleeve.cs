@@ -18,7 +18,7 @@ public class Eq_UnderSleeve : PA_Equipment
         {
             Action.ActionStatus action = actionStatus;
             List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-            Enqueue(action, true, new List<Character> { target.Choice() });
+            Enqueue(action, true, target, 1);
         }
     }
 }

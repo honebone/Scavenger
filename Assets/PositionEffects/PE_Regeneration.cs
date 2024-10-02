@@ -14,7 +14,7 @@ public class PE_Regeneration : PositionEffect
             Action.ActionStatus action = actionStatus;
             action.healValue_min = PEStatus.stack;
             action.healValue_max = PEStatus.stack;
-           Enqueue(action, true, new List<Character>() { character }, true);
+           Enqueue(action, true, new List<Character>() { character },0, true);
         }
     }
 

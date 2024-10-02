@@ -15,8 +15,8 @@ public class E_Slime_PA : PA_Personality
             Action.ActionStatus action = actionStatus;
             actionStatus.actionOwner = character;
             empty = charactersManager.GetEmptyPos(list);
-            action.actionTargetsInt = new List<int> { empty[Random.Range(0, empty.Count)] };
-            character.Enqueue(action, false, new List<Character>());
+            action.actionTargetsInt = empty;
+            character.Enqueue(action, false, new List<Character>(),1);
         }
     }
    

@@ -845,7 +845,8 @@ public class Ability : MonoBehaviour
         counter++;
         targetGroups.Add(new List<int>(targetGroup));
 
-        if (counter == status.actionsStatus.Length) {//action数分対象の選択をしたら
+        if (counter == status.actionsStatus.Length)//アビリティ効果数分対象の選択をしたら
+        {
             battleManager.SetSelectingAbility(false);
             battleManager.SetSelectingTarget(false);
             charactersManager.ResetAllTargetIcons();
@@ -856,7 +857,7 @@ public class Ability : MonoBehaviour
             character.Ability_StartCoolDown(status.index);
             if (status.hasRemain) { character.Ability_AddRemain(-1, status.index); }
 
-            for (int i = 0; i < status.actionsStatus.Length; i++)//行動主や対象を代入し、Enqueue
+            for (int i = 0; i < status.actionsStatus.Length; i++)//各アビリティ効果に行動主や対象を代入し、Enqueue
             {
                 status.actionsStatus[i].index = i;
                 status.actionsStatus[i].actionOwner = character;
@@ -866,7 +867,10 @@ public class Ability : MonoBehaviour
                     status.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i], true));
                 }//そうでない場合actionTargetsがnullとなるが、そのケアはActionのReaolve内で行っている
 
-                actionQueue.Enqueue(status.actionsStatus[i]);
+                //対象にとる数をactionTargetsIntの数と一致させる→対象リストのすべてを対象に決定する(手動で対象を選ぶためランダム要素がない)
+                status.actionsStatus[i].targetCount = status.actionsStatus[i].actionTargetsInt.Count;
+
+                actionQueue.Enqueue(status.actionsStatus[i],0);
             }
             //character.OnActivateAbility();
 

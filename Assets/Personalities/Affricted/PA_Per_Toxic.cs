@@ -28,7 +28,7 @@ public class PA_Per_Toxic : PA_Personality
                 if (targets.Count > 0)
                 {
                     actionStatus.actionOwner = character;
-                    Enqueue(action, true, new List<Character>() { targets.Choice() });
+                    Enqueue(action, true, targets,1);
                 }
             }
         }

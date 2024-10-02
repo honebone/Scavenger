@@ -29,7 +29,7 @@ public class Eq_WarBanner : PA_Equipment
         for(int i = 0; i <= count; i++)
         {
             List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-            Enqueue(attack, true, new List<Character> { target.Choice() });
+            Enqueue(attack, true, target,1);
         }
         count = 0;
     }

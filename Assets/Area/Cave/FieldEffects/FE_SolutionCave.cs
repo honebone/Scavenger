@@ -19,7 +19,7 @@ public class FE_SolutionCave : FieldEffect
 
         action.actionOwner = null;
         empty = new List<int>(charactersManager.GetEmptyPos(list));
-        action.actionTargetsInt = new List<int>(empty.Sample(3));
-        FindObjectOfType<ActionQueueManager>().Enqueue(action);
+        action.actionTargetsInt = new List<int>(empty);
+        FindObjectOfType<ActionQueueManager>().Enqueue(action, 3);
     }
 }

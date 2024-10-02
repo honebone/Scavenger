@@ -12,7 +12,7 @@ public class Eq_Shovel : PA_Equipment
         List<Character> target = charactersManager.SearchCharaWithCondition(condition);
         if (target.Count > 0)
         {
-            Enqueue(actionStatus, true, new List<Character> { target.Choice() });
+            Enqueue(actionStatus, true, target, 1);
         }
     }
 

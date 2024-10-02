@@ -33,7 +33,7 @@ public class Eq_CaramityCane : PA_Equipment
             {
                 for (int i = 0; i < applyedStEList.Count; i++)
                 {
-                    Enqueue(attack, true, new List<Character> { target.Choice() });
+                    Enqueue(attack, true, target, 1);
                 }
             }
         }

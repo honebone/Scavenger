@@ -156,4 +156,11 @@ public class InfoText : MonoBehaviour
         AddLogText(string.Format("\n##error!!ÅF{0}##", errorLog).ColorStr(Color.red));
         print(errorLog);
     }
+    public void AddWarningText(string errorLog)
+    {
+        SwitchToLog();
+        //nameText.text = "ÉçÉO";
+        AddLogText(string.Format("\n##warning!ÅF{0}##", errorLog).ColorStr(Color.yellow));
+        print(errorLog);
+    }
 }

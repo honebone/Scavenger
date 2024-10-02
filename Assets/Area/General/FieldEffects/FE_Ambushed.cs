@@ -20,15 +20,17 @@ public class FE_Ambushed : FieldEffect
     public override void OnBattleStart()
     {
         Action.ActionStatus action_enemy = actionStatus_enemy;
+        List<Character> enemyTargets = new List<Character>(charactersManager.SearchCharaWithCondition(condition_enemy));
 
         action_enemy.actionOwner = null;
-        action_enemy.actionTargets = charactersManager.SearchCharaWithCondition(condition_enemy);
-        FindObjectOfType<ActionQueueManager>().Enqueue(action_enemy);
+        action_enemy.actionTargets = enemyTargets;
+        FindObjectOfType<ActionQueueManager>().Enqueue(action_enemy, enemyTargets.Count);
 
         Action.ActionStatus action_player = actionStatus_player;
+        List<Character> playerTargets = new List<Character>(charactersManager.SearchCharaWithCondition(condition_player));
 
         action_player.actionOwner = null;
-        action_player.actionTargets = charactersManager.SearchCharaWithCondition(condition_player);
-        FindObjectOfType<ActionQueueManager>().Enqueue(action_player);
+        action_player.actionTargets = playerTargets;
+        FindObjectOfType<ActionQueueManager>().Enqueue(action_player, playerTargets.Count);
     }
 }

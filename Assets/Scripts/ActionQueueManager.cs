@@ -96,9 +96,11 @@ public class ActionQueueManager : MonoBehaviour
     {
         if (actionQueuePanel.activeSelf) { actionQueuePanel.SetActive(false); }
     }
-
-    public void Enqueue(Action.ActionStatus status)
+    /// <summary>‘ÎÛ”‚Æ‘I‘ğ”‚ğˆê’v‚³‚¹‚½‚¢‚È‚ç0‚ğ‘ã“ü</summary>
+    public void Enqueue(Action.ActionStatus status,int targetCount)
     {
+        if (targetCount > 0) { status.targetCount = targetCount; }
+        
         GameObject obj;
         if (status.actionObject != null) { obj = status.actionObject; }
         else { obj = Definer.actionManager_General; }

@@ -123,7 +123,7 @@ public class PositionEffect : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, bool nullOwner = false)
+    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets,int targetCount=0, bool nullOwner = false)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -134,7 +134,7 @@ public class PositionEffect : MonoBehaviour
         {
             //infoText.AddDebugText(string.Format("{0}‚ÉSpriteRenderer‚È‚µ", GetPAName()));
         }
-        character.Enqueue(actionStatus, setTargets, actionTargets, nullOwner);
+        character.Enqueue(actionStatus, setTargets, actionTargets, targetCount, nullOwner);
     }
 
 
