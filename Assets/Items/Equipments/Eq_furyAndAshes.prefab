@@ -53,8 +53,8 @@ MonoBehaviour:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 15
-      INT_mul: 15
+      ATK_mul: 20
+      INT_mul: 20
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -168,6 +168,8 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   condition:
     searchAsPos: 0

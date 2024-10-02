@@ -50,10 +50,11 @@ MonoBehaviour:
     info_start: 
     equipmentInfo: 
     statusMod:
-      maxHP_mul: 15
+      maxHP_mul: 20
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      INT_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -67,6 +68,7 @@ MonoBehaviour:
         value: 20
       StEApplyBonus: []
       moveRes: 0
+      debuffRes: 0
     actionMods: []
 --- !u!212 &3238141386940741765
 SpriteRenderer:

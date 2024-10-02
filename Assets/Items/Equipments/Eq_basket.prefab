@@ -50,10 +50,11 @@ MonoBehaviour:
     info_start: 
     equipmentInfo: "\u81EA\u8EAB\u304C\u56DE\u5FA9\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u305D\u306E\u56DE\u5FA9\u91CF\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
     statusMod:
-      maxHP_mul: 5
+      maxHP_mul: 10
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      INT_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -65,6 +66,7 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       moveRes: 0
+      debuffRes: 0
     actionMods: []
   attack:
     actionName: "\u8C4A\u7A63\u306E\u30D0\u30B9\u30B1\u30C3\u30C8"
@@ -103,16 +105,20 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 1
+    attackInfo: 
     ATKMod_min: 70
     ATKMod_max: 110
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: -6
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -136,7 +142,6 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -157,6 +162,8 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   condition:
     searchAsPos: 0

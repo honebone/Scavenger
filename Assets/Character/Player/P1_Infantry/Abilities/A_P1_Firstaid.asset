@@ -85,22 +85,26 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 1
-    healValue_max: 10
-    healPercent_min: 0
-    healPercent_max: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 1
+    healPercent_max: 25
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
@@ -118,7 +122,6 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
     summon: 0
     summonChara: []
@@ -139,4 +142,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 5730041707011734897, guid: 906acca36c05b6a47990fe39abbc199c, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 04000000
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 08000000

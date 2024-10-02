@@ -50,7 +50,7 @@ MonoBehaviour:
     info_start: 
     equipmentInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u53D7\u3051\u305F\u3001\u3042\u308B\u3044\u306F\u79FB\u52D5\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B\n(\u79FB\u52D5\u6642\u306F\u79FB\u52D5\u8DDD\u96E2\u306B\u7B49\u3057\u3044\u30AB\u30A6\u30F3\u30C8\u304C\u5897\u52A0)"
     statusMod:
-      maxHP_mul: 15
+      maxHP_mul: 20
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
@@ -162,6 +162,8 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   maxCount: 10
   valuePerCount: 5
