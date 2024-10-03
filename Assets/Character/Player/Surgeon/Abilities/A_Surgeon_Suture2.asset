@@ -45,7 +45,7 @@ MonoBehaviour:
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
-  hasRemain: 0
+  hasRemain: 1
   remainOnBattleStart: 2
   maxRemain: 0
   actionsStaus:
@@ -85,24 +85,28 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
     exDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 5
-    healRegain_max: 5
+    healRegain_min: 15
+    healRegain_max: 15
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -147,4 +151,6 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 07000000
