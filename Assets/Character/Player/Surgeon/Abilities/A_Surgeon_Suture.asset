@@ -47,7 +47,7 @@ MonoBehaviour:
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 2
-  maxRemain: 0
+  maxRemain: 2
   actionsStaus:
   - actionName: "\u7E2B\u5408"
     conditionInfo: 
@@ -151,6 +151,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    targetCount: 0
-    actionTargets: []
-    actionTargetsInt: 07000000
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 00000000

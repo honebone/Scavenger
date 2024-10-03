@@ -47,7 +47,7 @@ MonoBehaviour:
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 2
-  maxRemain: 0
+  maxRemain: 2
   actionsStaus:
   - actionName: "\u7E2B\u5408"
     conditionInfo: 
