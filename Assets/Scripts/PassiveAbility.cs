@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PassiveAbility : MonoBehaviour
 {
+    [SerializeField, TextArea(3, 10)] string PAInfo;
     protected Character character;
     protected CharactersManager charactersManager;
     protected InfoText infoText;
@@ -16,7 +17,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual string GetPAName() { return ""; }
     public string GetPAInfo()
     {
-        string s = GetPAInfo_Base();
+        string s = PAInfo + "\n";
+        s += GetPAInfo_Base();
         if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
         return s;
     }

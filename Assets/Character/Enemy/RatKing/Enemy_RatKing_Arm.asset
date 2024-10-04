@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: Enemy_RatKing
+  m_Name: Enemy_RatKing_Arm
   m_EditorClassIdentifier: 
-  fileName: E_RatKing
+  fileName: E_RatKing_Arm
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
-  charaName: "\u8089\u584A"
+  charaName: "\u8089\u7247\uFF1A\u8155"
   difficulty: 
   introduction: 
   preferredPos: 
@@ -28,14 +28,10 @@ MonoBehaviour:
   - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
-  - {fileID: 11400000, guid: 9c5de2d4b6afd334c96cf548ed49557b, type: 2}
-  - {fileID: 11400000, guid: b6c1f61bcc1df2545bb854d312cd0c41, type: 2}
-  - {fileID: 11400000, guid: 18c41c21d911ccd4abafd3dcc75467de, type: 2}
-  - {fileID: 11400000, guid: bb5343798e2a0e3489ce4bbcb77f6430, type: 2}
-  passiveAbilities:
-  - {fileID: 5551348220021876505, guid: 5cb4f7b72a8ed1443a6fe1eb846a6eff, type: 3}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities: []
   actionMods: []
-  corpse: {fileID: 11400000, guid: 58eef15e722a4cb4a8e04e6952a53807, type: 2}
+  corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0
@@ -43,17 +39,17 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
-  surviveFatalWounds: 1
-  maxHP: 350
+  surviveFatalWounds: 0
+  maxHP: 25
   maxSAN: 0
-  ATK: 10
+  ATK: 5
   INT: 5
-  CRITC: 0
+  CRITC: 5
   CRITD: 200
-  EVD: -100
-  ACC: 70
+  EVD: 0
+  ACC: 90
   ACT: 5
-  turnPerRound: 3
+  turnPerRound: 1
   GHeal: 100
   RHeal: 100
   statusGrowth:
@@ -64,8 +60,6 @@ MonoBehaviour:
     CRITC: 0
     CRITD: 0
   debuffRes: 0
-  StEResists:
-  - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
-    value: 50
+  StEResists: []
   StEApplyBonus: []
-  moveRes: 85
+  moveRes: 0
