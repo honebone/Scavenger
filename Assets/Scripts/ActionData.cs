@@ -64,7 +64,7 @@ public class ActionData : ScriptableObject
         public GameObject removeStE;
 
         public bool removeAll;
-        public int addAmount;
+        [Header("Œ¸‚ç‚·‚Æ‚«‚Í-‚Â‚¯‚ë!!")]public int addAmount;
     }
     [Header("RemoveStE")]
     public List<RemoveStE> removeStEs;

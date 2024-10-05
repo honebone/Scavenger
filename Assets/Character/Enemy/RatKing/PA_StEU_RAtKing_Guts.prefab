@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb90504aa6233840963d87d6b4bcde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PAInfo: 
+  PAInfo_start: 
+  PAInfo_end: 
   StEStatus:
     StEName: "\u5185\u81D3"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u53D7\u3051\u308B\u56DE\u5FA9\u91CF+25\uFF05"
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n\u53D7\u3051\u308B\u56DE\u5FA9\u91CF+25\uFF05\n\u30C7\u30D0\u30D5\u8010\u6027+40\uFF05"
     StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
     StEType: 4
     scaleStackByLVL: 0
@@ -59,6 +60,7 @@ MonoBehaviour:
     stack: 0
     value: 0
   RHealPerStack: 25
+  debuffResPerStack: 40
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

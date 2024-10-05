@@ -99,7 +99,7 @@ public class PA_StatusEffect : PassiveAbility
         string s = StEStatus.StEName;
         if (StEStatus.refValue) { s += "X"; }
         s += "：";
-        s += StEStatus.StEInfo + "\n";
+        s += StEStatus.StEInfo;
         if (StEStatus.scaleStackByLVL) { s += "\n<付与者のLVLでスタック数増加>\n"; }
         s = s.ColorStr(Color.gray);
         if (instantiated) { s += GetAdditionalInfo().ColorStr(Definer.colorRef.currentState); }

@@ -133,8 +133,8 @@ public class Action : MonoBehaviour
         [Header("\n\n召喚")]
         public bool summon;
         //public int summonSize;
-        public CharacterData[] summonChara;
-        public float[] summonChanceWeight;
+        public List<CharacterData> summonChara;
+        public List<float> summonChanceWeight;
 
         [Header("\n\n移動")]
         public float moveChance;
@@ -249,7 +249,7 @@ public class Action : MonoBehaviour
                 if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
                 //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
-                s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+                s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef()+"\n";
                 if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
             }
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
@@ -277,7 +277,7 @@ public class Action : MonoBehaviour
 
             if (summon)
             {
-                if (summonChara.Length == 1)
+                if (summonChara.Count == 1)
                 {
                     s += string.Format("・{0}を召喚", summonChara[0].charaName);
                 }
@@ -286,7 +286,7 @@ public class Action : MonoBehaviour
                     s += "・以下からランダムに召喚\n";
                     float p = 0;
                     foreach (int r in summonChanceWeight) { p += r; }
-                    for (int i = 0; i < summonChanceWeight.Length; i++)
+                    for (int i = 0; i < summonChanceWeight.Count; i++)
                     {
                         s += string.Format("{0}({1})\n", summonChara[i].charaName, (summonChanceWeight[i] / p).ToString("#0.0%"));
                     }
