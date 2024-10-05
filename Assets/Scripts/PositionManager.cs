@@ -23,7 +23,7 @@ public class PositionManager : MonoBehaviour
 
     private void Start()
     {
-        infoText = FindObjectOfType<InfoText>();
+        infoText = ExpeditionRef.infoText;
         charactersManager = ExpeditionRef.charactersManager;
         targetButton = charactersManager.GetTargetButton(pos);
     }

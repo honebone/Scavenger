@@ -155,6 +155,7 @@ public class Action : MonoBehaviour
 
         /// <summary>AModによって追加</summary>
         public List<StEApplyBonus> StEApplyBonus;
+        public float debuffChanceMod;
         public List<ActionData.RemoveStE> removeStEs_additional;
 
         public bool dontChangeSprite;
@@ -385,16 +386,19 @@ public class Action : MonoBehaviour
             foreach (StEApplyBonus bonus in mod.applyStEBonus)
             {
                 bool f = false;
-                foreach (StEApplyBonus applyBonus in modifiedStatus.StEApplyBonus)
+                for(int i=0; i< modifiedStatus.StEApplyBonus.Count;i++)
                 {
-                    if (applyBonus.applyStE == bonus.applyStE)
+                    if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
                     {
-                        applyBonus.AddBonus(bonus, true);
+                        Debug.Log($"変更前：{modifiedStatus.StEApplyBonus[i].exChance}％");
+                        modifiedStatus.StEApplyBonus[i]= modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
+                        Debug.Log($"変更後：{modifiedStatus.StEApplyBonus[i].exChance}％");
                         f = true;
                     }
                 }
                 if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
             }
+            modifiedStatus.debuffChanceMod += mod.debuffChanceMod;
 
             modifiedStatus.removeStE_buff += mod.removeStE_buff;
             modifiedStatus.removeStE_debuff += mod.removeStE_debuff;
@@ -408,6 +412,12 @@ public class Action : MonoBehaviour
 
             return modifiedStatus;
         }
+
+        //public ActionStatus Copy()
+        //{
+        //    ActionStatus copy = this;
+            
+        //}
     }
 
     //===========================[誘発処理の引数に使う]================================
@@ -899,17 +909,25 @@ public class Action : MonoBehaviour
 
 
                         StEApplyBonus applyBonus = new StEApplyBonus();//bonusの設定
-                        if (ownerStatus.GetStEApplyBonus(StEParams.applyStE) != null) { applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE)); }
-                        foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)
+                        if (ownerStatus.GetStEApplyBonus(StEParams.applyStE) != null)//オーナーのボーナス
                         {
-                            if (bonus.applyStE == StEParams.applyStE) { applyBonus.AddBonus(bonus); }
+                            applyBonus= applyBonus.AddBonus((StEApplyBonus)ownerStatus.GetStEApplyBonus(StEParams.applyStE));
+                        }
+                        foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)//アクションのボーナス
+                        {
+                            if (bonus.applyStE == StEParams.applyStE) { applyBonus= applyBonus.AddBonus(bonus); }
                         }
 
-                        StEParams.applyChance += applyBonus.exChance;//bonusをparamsに反映
+                        StEParams.applyChance += applyBonus.exChance;//bonus等をparamsに反映
                         StEParams.stack += applyBonus.exStack;
                         StEParams.value+=applyBonus.exValue;
+                        if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
+                        {
+                            StEParams.applyChance += actionsStatus[i].debuffChanceMod;
+                        }
                         if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
 
+                        infoText.AddDebugText($"{StEParams.applyChance}％");
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
                         {
                             if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }

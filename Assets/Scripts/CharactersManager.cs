@@ -167,6 +167,7 @@ public class CharactersManager : MonoBehaviour
         public bool back;
 
         [Header("\n\n\n<ŒŸõðŒ‚ÌŽw’è>")]
+        public List<CharacterData> characterInclude;
         public List<CharacterData.CharacterTag> characterTags;
         public List<GameObject> StE;
         public List<GameObject> PE;

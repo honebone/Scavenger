@@ -49,7 +49,7 @@ MonoBehaviour:
   PAInfo_end: 
   StEStatus:
     StEName: "\u8155"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\nATK+10\uFF05\nACT+1"
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\nATK+10\uFF05\nACT+2"
     StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
     StEType: 4
     scaleStackByLVL: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
     stack: 0
     value: 0
   ATKPerStack: 10
-  ACTPerStack: 1
+  ACTPerStack: 2
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: RatKing_Metabolism
+  m_Name: RatKing_ThousandVoices
   m_EditorClassIdentifier: 
-  abilityName: "\u4EE3\u8B1D"
+  abilityName: "\u7121\u6570\u306E\u547B\u304D\u58F0"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 2
+  abilityType: 4
   excludeRandomPool: 0
   selectWeight: 3
   availableFront: 1
@@ -36,6 +36,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []
@@ -43,34 +44,34 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 4
-  cooldownOnUse: 4
+  cooldownOnBattleStart: 0
+  cooldownOnUse: 6
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u4EE3\u8B1D"
+  - actionName: 
     conditionInfo: 
-    targetInfo: "\u81EA\u8EAB"
+    targetInfo: "\u6575\u5168\u4F53"
     AModInfo: 
-    actionInfo: "\u30FB\u81EA\u8EAB\u306E\u5185\u81D31\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u30C7\u30D0\u30D5\u30922\u3064\u9664\u53BB"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 4978851485041334594, guid: 006b5e2751e082442a3952a330300d5e, type: 3}
-    targetType: 3
+    actionMods: []
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 0
+      player: 1
       enemy: 0
       onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
+      front: 1
+      mid: 1
+      back: 1
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -104,14 +105,14 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 10
-    healPercent_max: 10
+    healPercent_min: 0
+    healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
+    SANDamage_min: 5
+    SANDamage_max: 10
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -127,16 +128,16 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
-    moveChance: 15
+    moveChance: 0
     guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 1
+    moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 2
+    abilityType: 1
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -144,7 +145,10 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    targetCount: 1
+    targetCount: 4
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    actionTargetsInt: 00000000040000000500000006000000

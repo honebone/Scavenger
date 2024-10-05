@@ -111,20 +111,26 @@ public class StEResist
     public float value;
 }
 [System.Serializable]
-public class StEApplyBonus
+public struct StEApplyBonus
 {
     public GameObject applyStE;
     public float exChance;
     public int exStack;
     public int exValue;
 
-    public void AddBonus(StEApplyBonus bonus, bool add = true)
+    public StEApplyBonus AddBonus(StEApplyBonus bonus, bool add = true)
     {
+        StEApplyBonus modifiedBonus = this;
         int n = 1;
         if (!add) { n = -1; }
-        exChance += bonus.exChance * n;
-        exStack += bonus.exStack * n;
-        exValue += bonus.exValue * n;
+        modifiedBonus.exChance += bonus.exChance * n;
+        modifiedBonus.exStack += bonus.exStack * n;
+        modifiedBonus.exValue += bonus.exValue * n;
+        //exChance += bonus.exChance * n;
+        //exStack += bonus.exStack * n;
+        //exValue += bonus.exValue * n;
+
+        return modifiedBonus;
     }
 }
 

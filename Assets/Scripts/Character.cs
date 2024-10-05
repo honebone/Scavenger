@@ -260,7 +260,7 @@ public class Character : MonoBehaviour
 
             return resist;
         }
-        public StEApplyBonus GetStEApplyBonus(GameObject StE)
+        public StEApplyBonus? GetStEApplyBonus(GameObject StE)
         {
             foreach (StEApplyBonus bonus in StEApplyBonus)
             {
@@ -1145,11 +1145,11 @@ public class Character : MonoBehaviour
     }
     public void AddStEBonus(StEApplyBonus bonus,bool set)
     {
-        foreach (StEApplyBonus applyBonus in charaStatus.StEApplyBonus)
+        for(int i=0;i< charaStatus.StEApplyBonus.Count;i++)
         {
-            if (applyBonus.applyStE == bonus.applyStE)
+            if (charaStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
             {
-                applyBonus.AddBonus(bonus, true);
+                charaStatus.StEApplyBonus[i]=charaStatus.StEApplyBonus[i].AddBonus(bonus, true);
                 return;
             }
         }

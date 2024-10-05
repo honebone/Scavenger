@@ -42,6 +42,7 @@ public class ActionMod : MonoBehaviour
 
         public List<PA_StatusEffect.StatusEffectParams> applySteParams;
         public List<StEApplyBonus> applyStEBonus;
+        public float debuffChanceMod;
 
         [Header("\n\nバフの除去")]
         public int removeStE_buff;
@@ -100,6 +101,7 @@ public class ActionMod : MonoBehaviour
                     if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                     if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
                 }
+                if (debuffChanceMod != 0) { s += ValueToStr("・デバフ付与確率", debuffChanceMod, "％"); }
 
                 if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
                 if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
