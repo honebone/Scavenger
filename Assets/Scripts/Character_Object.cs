@@ -92,8 +92,16 @@ public class Character_Object : MonoBehaviour
 
     public void SetCharaSprite(GameObject sprite)
     {
+        Character.CharacterStatus status = character.GetCharacterStatus();
+        Vector2 pos = charactersManager.GetCharacterWorldPos(status.position);
+        Vector2 offset = status.characterData.spriteOffset;
+        if (status.position < 9) { offset.x *= -1; }
+
         if (charaSpriteParent.childCount > 0) { for (int i = 0; i < charaSpriteParent.childCount; i++) { Destroy(charaSpriteParent.GetChild(i).gameObject); } }
-        charaSprite= Instantiate(sprite, charaSpriteParent);
+        charaSprite = Instantiate(sprite, pos+offset, Quaternion.identity, charaSpriteParent);
+        if (status.position >= 9) { charaSprite.transform.Rotate(new Vector3(0, 180, 0)); }
+        //if (charaSpriteParent.childCount > 0) { for (int i = 0; i < charaSpriteParent.childCount; i++) { Destroy(charaSpriteParent.GetChild(i).gameObject); } }
+        //charaSprite= Instantiate(sprite, charaSpriteParent);
     }
     public void ActAnim()
     {

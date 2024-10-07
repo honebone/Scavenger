@@ -60,6 +60,7 @@ public class CharacterData : ScriptableObject
     public bool obstacle;
     [Header("0:idle 1:damaged")]
     public GameObject[] variableSprites;
+    public Vector2 spriteOffset;
     public Sprite spriteForUI;
 
     public AbilityData[] abilities;

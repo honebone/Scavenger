@@ -927,7 +927,6 @@ public class Action : MonoBehaviour
                         }
                         if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
 
-                        infoText.AddDebugText($"{StEParams.applyChance}Åì");
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//íäëI
                         {
                             if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
