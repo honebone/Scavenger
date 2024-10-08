@@ -203,6 +203,10 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
+
+            matched = condition.characterInclude.Count == 0 || condition.characterInclude.Contains(status.characterData);
+            if (!matched) { continue; }
+
             matched = condition.StE.Count == 0;
 
             foreach (GameObject s in condition.StE)
