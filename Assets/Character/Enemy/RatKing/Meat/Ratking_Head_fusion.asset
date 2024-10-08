@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 2
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 999
   availableFront: 1
   availableMid: 1
@@ -253,4 +254,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 10000000
+    actionTargetsInt: 09000000

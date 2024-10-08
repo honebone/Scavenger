@@ -25,9 +25,9 @@ MonoBehaviour:
   playable: 0
   obstacle: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
-  spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  - {fileID: 4239447333405155379, guid: 5581b7cbf104dd540b4520abe7dd73ea, type: 3}
+  spriteOffset: {x: 0, y: -1}
+  spriteForUI: {fileID: 21300000, guid: 125e0f57e8e19e64cb4b44d49fbc4d2b, type: 3}
   abilities:
   - {fileID: 11400000, guid: a3e596e2931dc4844bb54fef6a4263ad, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}

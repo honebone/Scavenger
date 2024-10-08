@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3738759409012451003}
   - component: {fileID: 2577761945961719997}
   m_Layer: 0
-  m_Name: RE_Boss_Test
+  m_Name: RE_Village_Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,20 +45,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
-  REName: "\u30B4\u30D6\u30EA\u30F3\u306E\u8981\u585E"
-  REInfo: "\u3053\u306E\u30A8\u30EA\u30A2\u3092\u652F\u914D\u3059\u308B\u5F37\u6575\"\u30B4\u30D6\u30EA\u30F3\u30EA\u30FC\u30C0\u30FC\"\u306E\u3082\u3068\u3078\u3068\u305F\u3069\u308A\u7740\u3044\u305F"
+  REName: "\u6751\u306E\u96C6\u4F1A\u6240"
+  REInfo: "\u3053\u306E\u30A8\u30EA\u30A2\u3092\u652F\u914D\u3059\u308B\u5F37\u6575\"\u8089\u584A\"\u306E\u3082\u3068\u3078\u3068\u305F\u3069\u308A\u7740\u3044\u305F"
   options:
   - optionName: "\u6226\u3046"
-    optionInfo: "\u30B4\u30D6\u30EA\u30F3\u30EA\u30FC\u30C0\u30FC\u306B\u6226\u3044\u3092\u6311\u3080"
+    optionInfo: "\u8089\u584A\u306B\u6226\u3044\u3092\u6311\u3080"
   boss:
-    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    centerMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
-    lowerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: ef347ec247c0b8a4e9775f848f12f773, type: 2}
+    lowerFront: {fileID: 0}
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
+    centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   fieldEffect: {fileID: 0}
   battleParams:

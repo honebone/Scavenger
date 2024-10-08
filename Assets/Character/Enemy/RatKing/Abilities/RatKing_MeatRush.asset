@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 3
   availableFront: 1
   availableMid: 1

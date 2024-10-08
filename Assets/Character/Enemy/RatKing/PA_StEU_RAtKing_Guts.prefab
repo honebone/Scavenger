@@ -49,8 +49,8 @@ MonoBehaviour:
   PAInfo_end: 
   StEStatus:
     StEName: "\u5185\u81D3"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n\u53D7\u3051\u308B\u56DE\u5FA9\u91CF+25\uFF05\n\u30C7\u30D0\u30D5\u8010\u6027+40\uFF05"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n\u53D7\u3051\u308B\u56DE\u5FA9\u91CF+20\uFF05\n\u30C7\u30D0\u30D5\u8010\u6027+40\uFF05"
+    StEIcon: {fileID: 21300000, guid: 4e6e5f6284cc9874f91980d74ce0306a, type: 3}
     StEType: 4
     scaleStackByLVL: 0
     maxStack: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     undeletable: 1
     stack: 0
     value: 0
-  RHealPerStack: 25
+  RHealPerStack: 20
   debuffResPerStack: 40
 --- !u!212 &6391350165293048886
 SpriteRenderer:
@@ -102,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e6e5f6284cc9874f91980d74ce0306a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

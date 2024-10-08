@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
   m_Name: RE_Village_BossBattle
   m_EditorClassIdentifier: 
-  eventName: "\u30B4\u30D6\u30EA\u30F3\u306E\u8981\u585E"
+  eventName: "\u6751\u306E\u96C6\u4F1A\u6240"
   eventInfo: "\u30DC\u30B9\u3068\u306E\u6226\u95D8"
+  randomEvent: 0
   debug: 0
   roomEventManager:
-  - {fileID: 6930255402659783700, guid: b263ddae159875545b6a486f06782e6d, type: 3}
+  - {fileID: 6930255402659783700, guid: 3878ba6fbbdf686469cbc315d91a637c, type: 3}
   eventIcon: {fileID: 21300000, guid: e1c9d94609670e54e89edf43cdeb26e6, type: 3}

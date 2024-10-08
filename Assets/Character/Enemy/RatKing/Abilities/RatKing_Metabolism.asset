@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 2
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 3
   availableFront: 1
   availableMid: 1
@@ -36,6 +37,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []
@@ -71,6 +73,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -127,12 +130,12 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
-    moveChance: 15
+    moveChance: 0
     guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 1
+    moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0

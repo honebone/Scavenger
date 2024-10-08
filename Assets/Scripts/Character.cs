@@ -1351,15 +1351,24 @@ public class Character : MonoBehaviour
         charaObj.HideCharacterObj();
     }
 
-    
+
     /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる
-    /// ランダムプールから除外するアビリティ以外から重みを考慮して選ぶ</summary>
+    /// 発動可能なアビリティのうち、優先度が最も高いアビリティの重みを考慮して選ぶ</summary>
     public virtual Ability.AbilityStatus SelectAbility_Random()
     {
+        int priority = -999;
+        foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
+        {
+            if (!ability.excludeRandomPool && ability.instantiatedManager.CheckAvailable())
+            {
+                if (ability.priority >= priority) { priority = ability.priority; }
+            }
+        }
+
         List<Ability.AbilityStatus> list = new List<Ability.AbilityStatus>();
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (!ability.excludeRandomPool&&ability.instantiatedManager.CheckAvailable()) { list.Add(ability); }
+            if (!ability.excludeRandomPool && ability.instantiatedManager.CheckAvailable() && ability.priority == priority) { list.Add(ability); }
         }
         return ChoiceAbilityWithWeight(list);
     }

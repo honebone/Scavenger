@@ -19,7 +19,7 @@ MonoBehaviour:
   introduction: 
   preferredPos: 
   characterTags: 08000000
-  immovable: 0
+  immovable: 1
   notChara: 0
   player: 0
   playable: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
   passiveAbilities:
   - {fileID: 5551348220021876505, guid: 5cb4f7b72a8ed1443a6fe1eb846a6eff, type: 3}
   actionMods: []
-  corpse: {fileID: 11400000, guid: 58eef15e722a4cb4a8e04e6952a53807, type: 2}
+  corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
   ACT: 3
   turnPerRound: 3
   GHeal: 100
-  RHeal: 100
+  RHeal: 80
   statusGrowth:
     maxHP: 0
     ATK: 0
@@ -69,4 +69,4 @@ MonoBehaviour:
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []
-  moveRes: 85
+  moveRes: 0

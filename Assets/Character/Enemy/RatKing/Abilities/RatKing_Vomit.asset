@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 3
   availableFront: 1
   availableMid: 1
@@ -36,6 +37,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []
@@ -55,7 +57,7 @@ MonoBehaviour:
     AModInfo: 
     actionInfo: "\u30FB\u81EA\u8EAB\u306E\u5185\u81D31\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u30C7\u30D0\u30D5\u4ED8\u4E0E\u78BA\u7387+15\uFF05"
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: 79cdceffb0bea00408a9650d8884aa03, type: 3}
+    SE: {fileID: 8300000, guid: 285073c242d812d41b8da7878efb0c5e, type: 3}
     VE_OnTargets: {fileID: 4335527089195860300, guid: 85c6b86882bdb3e48bc5d7c09d972e05, type: 3}
     actionObject: {fileID: 0}
     actionMods:
@@ -71,6 +73,7 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -167,4 +170,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

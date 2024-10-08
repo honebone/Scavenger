@@ -26,6 +26,7 @@ public class AbilityData : ScriptableObject
     [Header("\n\n\n操作不可キャラに関係")]
     [Header("ランダム選択から除外するか")]
     public bool excludeRandomPool;
+    public int priority = 1;
     [Header("選択される重み")]
     public int selectWeight = 1;
 

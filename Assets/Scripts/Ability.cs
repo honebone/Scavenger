@@ -20,6 +20,7 @@ public class Ability : MonoBehaviour
         public AbilityData.AbilityType abilityType;
 
         public bool excludeRandomPool;
+        public int priority;
         public int selectWeight;
 
         public bool hasSelfCondition;
@@ -125,6 +126,7 @@ public class Ability : MonoBehaviour
             abilityType = data.abilityType;
 
             excludeRandomPool = data.excludeRandomPool;
+            priority = data.priority;
             selectWeight = data.selectWeight;
 
             hasSelfCondition = data.hasSelfCondition;
