@@ -140,8 +140,8 @@ MonoBehaviour:
       value: 25
     - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
       guaranteed: 0
-      applyChance: 40
-      stack: 5
+      applyChance: 25
+      stack: 4
       value: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -170,4 +170,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 04000000
+    actionTargetsInt: 00000000

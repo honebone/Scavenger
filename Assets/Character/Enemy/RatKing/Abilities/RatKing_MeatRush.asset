@@ -90,8 +90,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 50
-    ATKMod_max: 60
+    ATKMod_min: 60
+    ATKMod_max: 70
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -158,4 +158,4 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    actionTargetsInt: 00000000040000000500000006000000
+    actionTargetsInt: 00000000020000000400000008000000

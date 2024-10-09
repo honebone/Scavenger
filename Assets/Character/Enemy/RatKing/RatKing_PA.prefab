@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
-  PAInfo_end: "\u81EA\u8EAB\u304CmaxHP\u306E10\uFF05\u5206\u306EHP\u3092\u5931\u3046\u305F\u3073\u3001\u81EA\u8EAB\u306B\u5668\u5B98(\u8155\u3001\u982D\u3001\u5185\u81D3\u306E\u3044\u305A\u308C\u304B)\u304C\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u308B\u306A\u3089\u3001\u305D\u308C\u3089\u306E\u3046\u3061\u30E9\u30F3\u30C0\u30E0\u306B1\u30B9\u30BF\u30C3\u30AF\u6E1B\u5C11\u3055\u305B\u308B\n\u305D\u308C\u306B\u3088\u3063\u3066\u5931\u3063\u305F\u5668\u5B98\u306B\u5BFE\u5FDC\u3057\u305F\u8089\u7247\u3092\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306B\u53EC\u559A\u3059\u308B"
+  PAInfo_end: "\u81EA\u8EAB\u304CmaxHP\u306E10\uFF05\u5206\u306EHP\u3092\u5931\u3046\u305F\u3073\u3001\n\u81EA\u8EAB\u306B\u5668\u5B98(\u8155\u3001\u982D\u3001\u5185\u81D3\u306E\u3044\u305A\u308C\u304B)\u304C\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u308B\u306A\u3089\u3001\u305D\u308C\u3089\u306E\u3046\u3061\u30E9\u30F3\u30C0\u30E0\u306B1\u30B9\u30BF\u30C3\u30AF\u6E1B\u5C11\u3055\u305B\u308B\n\n\u305D\u308C\u306B\u3088\u3063\u3066\u5931\u3063\u305F\u5668\u5B98\u306B\u5BFE\u5FDC\u3057\u305F\u8089\u7247\u3092\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306B\u53EC\u559A\u3059\u308B"
   personalityStatus:
     personalityName: "\u7E2B\u3044\u3064\u3051\u3089\u308C\u305F\u4F53"
     personalityType: 1
@@ -72,6 +72,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -155,6 +156,7 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
@@ -184,6 +186,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -253,6 +256,7 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
@@ -282,6 +286,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -350,6 +355,7 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
@@ -366,6 +372,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []

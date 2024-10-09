@@ -22,7 +22,7 @@ MonoBehaviour:
   abilityType: 2
   excludeRandomPool: 0
   priority: 1
-  selectWeight: 3
+  selectWeight: 2
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 4
-  cooldownOnUse: 4
+  cooldownOnUse: 6
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
