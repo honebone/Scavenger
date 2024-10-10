@@ -8,7 +8,7 @@ using TMPro;
 
 public class DamageText : MonoBehaviour
 {
-    [SerializeField] Text text;
+    [SerializeField] TextMeshProUGUI text;
     [SerializeField] float duration = 1.25f;
     [SerializeField] float fadeDuration = 1f;
     [SerializeField] CanvasGroup canvas;
