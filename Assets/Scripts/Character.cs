@@ -863,24 +863,24 @@ public class Character : MonoBehaviour
         if (onDamageParams.shieldDMG > 0)
         {
             targetButton.SetDamageText($"{"shieldDMGL".ToSpr()}{onDamageParams.shieldDMG}", Definer.colorRef.shieldDecrease);
-            infoText.AddLogText(string.Format("{0}はシールドを{1}失った", charaStatus.charaName, onDamageParams.shieldDMG.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
+            infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName,"shieldDMG".ToSpr(), onDamageParams.shieldDMG.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
         }
 
         SpawnVisualEffect(Definer.VERef.damage);
         if (onDamageParams.CRIT)//テキストの表示
         {
             targetButton.SetDamageText("Critical!!", Definer.colorRef.CRIT);
-            infoText.AddLogText($"{"Critical!!".ColorStr(Definer.colorRef.CRIT)}");
+            infoText.AddLogText($"{"CRIT".ToSpr()}{"Critical!!".ColorStr(Definer.colorRef.CRIT)}");
 
             if (onDamageParams.ATK)
             {
                 targetButton.SetDamageText($"{"CRITL".ToSpr()}{"ATKDMGL".ToSpr()}{onDamageParams.ATKDMG}", Definer.colorRef.CRIT);
-                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.CRIT)}の物理ダメージを受けた");
+                infoText.AddLogText($"{charaStatus.charaName}は{"ATKDMG".ToSpr()}{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.CRIT)}ダメージを受けた");
             }
             if (onDamageParams.INT)
             {
                 targetButton.SetDamageText($"{"CRITL".ToSpr()}{"INTDMGL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.CRIT);
-                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.CRIT)}の魔法ダメージを受けた");
+                infoText.AddLogText($"{charaStatus.charaName}は{"INTDMG".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.CRIT)}ダメージを受けた");
             }
             soundManager.PlaySE(Definer.soundRef.CRIT);
         }
@@ -889,12 +889,12 @@ public class Character : MonoBehaviour
             if (onDamageParams.ATK)
             {
                 targetButton.SetDamageText($"{"ATKDMGL".ToSpr()}{onDamageParams.ATKDMG}", Definer.colorRef.damage);
-                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.damage)}の物理ダメージを受けた");
+                infoText.AddLogText($"{charaStatus.charaName}は{"ATKDMG".ToSpr()}{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.damage)}ダメージを受けた");
             }
             if (onDamageParams.INT)
             {
                 targetButton.SetDamageText($"{"INTDMGL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.INTDamage);
-                infoText.AddLogText($"{charaStatus.charaName}は{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.INTDamage)}の魔法ダメージを受けた");
+                infoText.AddLogText($"{charaStatus.charaName}は{"INTDMG".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.INTDamage)}ダメージを受けた");
             }
             soundManager.PlaySE(Definer.soundRef.damage);
         }
@@ -950,7 +950,7 @@ public class Character : MonoBehaviour
     {
         charaStatus.HP = Mathf.Min(charaStatus.HP + value, charaStatus.maxHP);
         targetButton.SetDamageText($"{"healL".ToSpr()}{value}", Definer.colorRef.heal);
-        infoText.AddLogText(string.Format("{0}はHPを{1}回復した", charaStatus.charaName, value.ToString().ColorStr(Definer.colorRef.heal)));
+        infoText.AddLogText(string.Format("{0}はHPを{1}{2}回復した", charaStatus.charaName,"heal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.heal)));
         soundManager.PlaySE(Definer.soundRef.heal);
         charaObj.SetHPandShieldBar();
         SpawnVisualEffect(Definer.VERef.heal);
@@ -959,7 +959,7 @@ public class Character : MonoBehaviour
     {
         charaStatus.SAN = Mathf.Min(charaStatus.SAN + value, charaStatus.maxSAN);
         targetButton.SetDamageText($"{"SANHealL".ToSpr()}{value}", Definer.colorRef.SANHeal);
-        infoText.AddLogText(string.Format("{0}は正気度を{1}回復した", charaStatus.charaName, value.ToString().ColorStr(Definer.colorRef.SANHeal)));
+        infoText.AddLogText(string.Format("{0}は正気度を{1}{2}回復した", charaStatus.charaName,"SANHeal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.SANHeal)));
         soundManager.PlaySE(Definer.soundRef.SANHeal);
         charaObj.SetSANBar();
     }
@@ -969,7 +969,7 @@ public class Character : MonoBehaviour
         {
             charaStatus.SAN -= value;
             targetButton.SetDamageText($"{"SANDMGL".ToSpr()}{value}", Definer.colorRef.SANDecrease);
-            infoText.AddLogText(string.Format("{0}は正気度を{1}失った", charaStatus.charaName, value.ToString().ColorStr(Definer.colorRef.SANDecrease)));
+            infoText.AddLogText(string.Format("{0}は正気度を{1}{2}失った", charaStatus.charaName, "SANDMG".ToSpr(),value.ToString().ColorStr(Definer.colorRef.SANDecrease)));
             soundManager.PlaySE(Definer.soundRef.SANDecrease);
             charaObj.SetSANBar();
             if (charaStatus.SAN <= 0) 
@@ -1082,7 +1082,7 @@ public class Character : MonoBehaviour
     {
         charaStatus.shield += value;
         targetButton.SetDamageText($"{"shieldL".ToSpr()}{value}", Definer.colorRef.shield);
-        infoText.AddLogText(string.Format("{0}はシールドを{1}得た", charaStatus.charaName, value.ToString().ColorStr(Definer.colorRef.shield)));
+        infoText.AddLogText(string.Format("{0}はシールドを{1}{2}得た", charaStatus.charaName,"shield".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shield)));
         soundManager.PlaySE(Definer.soundRef.shield);
         charaObj.SetHPandShieldBar();
     }
@@ -1092,16 +1092,16 @@ public class Character : MonoBehaviour
         {
             if (removeAll)
             {
-                targetButton.SetDamageText("シールドブレイク!", Definer.colorRef.shieldDecrease);
+                targetButton.SetDamageText($"{"shieldDMG".ToSpr()}シールドブレイク!", Definer.colorRef.shieldDecrease);
                 charaStatus.shield = 0;
-                infoText.AddLogText(string.Format("{0}はシールドを全て失った", charaStatus.charaName).ColorStr(Definer.colorRef.shieldDecrease));
+                infoText.AddLogText(string.Format("{0}は{1}シールドを全て失った", charaStatus.charaName, "shieldDMG".ToSpr()).ColorStr(Definer.colorRef.shieldDecrease));
             }
             else
             {
                 int remove = Mathf.Min(value, charaStatus.shield);
-                targetButton.SetDamageText(remove.ToString(), Definer.colorRef.shieldDecrease);
+                targetButton.SetDamageText($"{"shieldDMG".ToSpr()}{remove}", Definer.colorRef.shieldDecrease);
                 charaStatus.shield -= remove;
-                infoText.AddLogText(string.Format("{0}はシールドを{1}失った", charaStatus.charaName, value.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
+                infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName,"shieldDMG".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
 
             }
             charaObj.SetHPandShieldBar();
