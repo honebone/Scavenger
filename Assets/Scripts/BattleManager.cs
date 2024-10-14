@@ -371,6 +371,13 @@ public class BattleManager : MonoBehaviour
         //    positionManager.OnBattleStart();
         //}
     }
+    public void Trigger_OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnSomeoneApplyedStE(onApplyStEParamsList);
+        }
+    }
 
     public void Trigger_BattleStart()
     {

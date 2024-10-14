@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72760ae166f1ecf49aad06fdc84f98f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
     info_start: 
@@ -70,7 +72,7 @@ MonoBehaviour:
     actionMods: []
   burn: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
   attack:
-    actionName: "\u6FC0\u60C5\u3068\u7070"
+    actionName: 
     conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C3\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53"
     AModInfo: 
@@ -91,6 +93,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -118,7 +121,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    drain: 25
+    drain: 40
     ignoreShield: 0
     sureHit: 0
     unevadable: 0
@@ -164,6 +167,7 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
@@ -180,6 +184,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []

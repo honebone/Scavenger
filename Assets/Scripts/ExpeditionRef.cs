@@ -14,6 +14,7 @@ public class ExpeditionRef : MonoBehaviour
     public static CameraManager cameraManager;
     public static ExpeditionManager expeditionManager;
     public static TutorialManager tutorialManager;
+    public static MouseOverUI mouseover;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class ExpeditionRef : MonoBehaviour
         cameraManager = FindObjectOfType<CameraManager>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         tutorialManager = FindObjectOfType<TutorialManager>();
+        mouseover = FindObjectOfType<MouseOverUI>();
     }
 
     // Update is called once per frame

@@ -151,10 +151,10 @@ MonoBehaviour:
     actionTargetsInt: 
   shield:
     actionName: "\u96D1\u5175\u306E\u751F\u547D\u529B"
-    conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066HP\u304C20\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u6642(\u5404\u6226\u95D81\u56DE)"
+    conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066HP\u304C20\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u3053\u306E\u30B7\u30FC\u30EB\u30C9\u80FD\u529B\u306F\u767A\u52D5\u3057\u3066\u304B\u30894\u30E9\u30A6\u30F3\u30C9\u5F8C\u306B\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -248,6 +248,7 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
+  CDRound: 4
 --- !u!212 &5370314873857094218
 SpriteRenderer:
   m_ObjectHideFlags: 0

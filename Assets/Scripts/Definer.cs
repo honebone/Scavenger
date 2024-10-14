@@ -101,12 +101,39 @@ public class Definer : MonoBehaviour
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<GameObject> personalityDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
+    [SerializeField] List<GameObject> statusEffectDataBase;
     public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
     public List<ItemData> GetAllLoots() { return lootDataBase_Inspector; }
 
     public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
+
+    /// <summary>埋め込んだリンク -> 説明文</summary>
+    public string LinkKeyToStr(string key)
+    {
+        string s = "";
+        switch (key[0])//keyの頭文字がタグの役割を果たす
+        {
+            case 'S'://状態異常
+                foreach (GameObject StE in statusEffectDataBase)
+                {
+                    PA_StatusEffect PA = StE.GetComponent<PA_StatusEffect>();
+                    PA_StatusEffect.StatusEffectStatus status = PA.GetStatusEffectStatus();
+                    if ($"S_{status.StEName}" == key)
+                    {
+                        s += PA.GetStEInfo_forRef() + "\n";
+                        if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
+                        return s;
+                    }
+                }
+                Debug.Log("error:状態異常が見つかりませんでした");
+                return "error:状態異常が見つかりませんでした";               
+            default:
+                Debug.Log("error:頭文字のタグが一致しません");
+                return "error:頭文字のタグが一致しません";
+        }
+    }
 
     public static List<ItemData> lootDataBase = new List<ItemData>();
     public static List<List<ItemData>> equipments = new List<List<ItemData>>();

@@ -177,6 +177,7 @@ public class Action : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = "";
+            bool f = false;
 
             //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
@@ -242,16 +243,23 @@ public class Action : MonoBehaviour
             if (shieldRemove_all) { s += "・シールドを0にする\n"; }
             else if (shieldRemove_max > 0) { s += string.Format("・シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
 
+            f = false;
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                if (StEParams.guaranteed) { s += "・"; }
-                else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
-                if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                //if (StEParams.guaranteed) { s += "・"; }
+                //else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
+                //s += string.Format("{0}を{1}スタック付与\n", status.ToLinkKey(false,StEParams.value), StEParams.stack);
+
+                if (f) { s += "\n"; }
+                f = true;
+                string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
+                s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n({chanceText},{StEParams.stack}スタック)\n";
+
+
                 //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
-                s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef()+"\n";
-                if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
+                //s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef() + "\n";
+                //if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
             }
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
@@ -271,7 +279,7 @@ public class Action : MonoBehaviour
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
+                s += string.Format("・{0}", status.ToLinkKey());
                 if (remove.removeAll) { s += "を全て除去\n"; }
                 else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
             }
@@ -359,6 +367,7 @@ public class Action : MonoBehaviour
             modifiedStatus.ACCMod += mod.ACCMod;
             modifiedStatus.CRITCMod += mod.CRITCMod;
             modifiedStatus.CRITDMod += mod.CRITDMod;
+            modifiedStatus.drain += mod.drain;
             if (mod.sureHit) { modifiedStatus.sureHit = true; }
             if (mod.unevadable) { modifiedStatus.unevadable = true; }
 
@@ -755,27 +764,6 @@ public class Action : MonoBehaviour
                             onDamageParams.target = target;
                             onDamageParams.actionStatus = actionsStatus[i];
 
-                            if (!notChara)
-                            {
-                                if (actionStatus.actionOwner.GetCharacterStatus().position.IsPlayerPos() && !targetStatus.position.IsPlayerPos())
-                                {
-                                    totalDamage += totalDMG;
-                                }
-
-                                actionStatus.actionOwner.OnDamage(onDamageParams);//与ダメ時誘発
-                                if (totalDMG > 0 && actionStatus.drain > 0)//吸血処理
-                                {
-                                    OnHealParams onHealParams = new OnHealParams();
-                                    float drainf = totalDMG * actionStatus.drain / 100f;
-                                    int drain = Mathf.RoundToInt(drainf);
-
-                                    onHealParams.target = actionStatus.actionOwner;
-                                    onHealParams.healValue = drain;
-
-                                    actionStatus.actionOwner.Heal(drain, actionStatus.actionOwner);
-                                    onHealParamsList.Add(onHealParams);
-                                }
-                            }
                             result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
@@ -788,6 +776,27 @@ public class Action : MonoBehaviour
                                 onKillParamsList.Add(onKillParams);
                             }
 
+                            if (!notChara)
+                            {
+                                if (actionStatus.actionOwner.GetCharacterStatus().position.IsPlayerPos() && !targetStatus.position.IsPlayerPos())
+                                {
+                                    totalDamage += totalDMG;
+                                }
+
+                                actionStatus.actionOwner.OnDamage(onDamageParams);//与ダメ時誘発
+                                if (totalDMG > 0 && actionsStatus[i].drain > 0)//吸血処理
+                                {
+                                    OnHealParams onHealParams = new OnHealParams();
+                                    float drainf = totalDMG * actionsStatus[i].drain / 100f;
+                                    int drain = Mathf.RoundToInt(drainf);
+
+                                    onHealParams.target = actionStatus.actionOwner;
+                                    onHealParams.healValue = drain;
+
+                                    actionStatus.actionOwner.Heal(drain, actionStatus.actionOwner);
+                                    onHealParamsList.Add(onHealParams);
+                                }
+                            }
                         }
                         else//回避
                         {
@@ -1188,7 +1197,11 @@ public class Action : MonoBehaviour
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//攻撃時誘発
             if (onKillParamsList.Count > 0) { actionStatus.actionOwner.Onkill(onKillParamsList); }//殺害時誘発
-            if (onApplyStEParamsList.Count > 0) { actionStatus.actionOwner.OnApplyStE(onApplyStEParamsList); }//StE付与時誘発
+            if (onApplyStEParamsList.Count > 0)//StE付与時誘発
+            {
+                actionStatus.actionOwner.OnApplyStE(onApplyStEParamsList);
+                battleManager.Trigger_OnSomeoneApplyedStE(onApplyStEParamsList);
+            }
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//与回復時誘発
         }
 

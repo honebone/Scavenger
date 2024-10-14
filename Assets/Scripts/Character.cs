@@ -327,11 +327,11 @@ public class Character : MonoBehaviour
             s += ValueToStr("受ける回復量", RHeal, "％");
             foreach(StEResist res in StEResists)
             {
-                s += ValueToStr(string.Format("{0}耐性", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName), res.value, "％");
+                s += ValueToStr(string.Format("{0}耐性", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey()), res.value, "％");
             }
             foreach(StEApplyBonus bonus in StEApplyBonus)
             {
-                string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
                 if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
@@ -417,6 +417,15 @@ public class Character : MonoBehaviour
             infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
         }
         //TurnIconはラウンド開始時にセット
+    }
+    public List<PA_Equipment> GetEquipments()
+    {
+        List<PA_Equipment> equipments = new List<PA_Equipment>();
+        foreach(PassiveAbility PA in PA_Eq)
+        {
+            equipments.Add(PA.GetComponent<PA_Equipment>());
+        }
+        return equipments;
     }
     public List<PassiveAbility> GetPassiveAbilities()
     {
@@ -1566,6 +1575,14 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneMove(onMoveParams); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneApplyedStE(onApplyStEParamsList); }
             RemovePA_Execute();
         }
     }

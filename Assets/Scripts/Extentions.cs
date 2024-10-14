@@ -196,9 +196,33 @@ public static class Extentions
         return shuffle;
     }
     //=======================================================================[以下Scavenger限定]======================================================================
+    public static bool OutOfField(this Vector2Int pos)
+    {
+        if (pos.x < 0 || pos.x > 5) { return true; }
+        if (pos.y < 0 || pos.y > 2) { return true; }
+        return false;
+    }
     public static Vector2Int PosIntToVector(this int posInt)
     {
         return new Vector2Int(Mathf.FloorToInt(posInt / 3), posInt % 3);
+    }
+    public static int ToPosInt(this Vector2Int pos)
+    {
+        return pos.x * 3 + pos.y;
+    }
+    public static List<int> RelativePosToAbsolute(this int origin, List<Vector2Int> relativePositions, bool allowOpponent = false)
+    {
+        Vector2Int o = origin.PosIntToVector();
+        List<int> posList = new List<int>();
+        foreach (Vector2Int relPos in relativePositions)
+        {
+            Vector2Int pos = o + relPos;
+            if (!pos.OutOfField())
+            {
+                if (allowOpponent || origin.IsPlayerPos() == pos.ToPosInt().IsPlayerPos()) { posList.Add(pos.ToPosInt()); }
+            }
+        }
+        return posList;
     }
     public static string PosIntToStr(this int posInt)
     {
@@ -303,5 +327,12 @@ public static class Extentions
         }
 
         return DMG;
+    }
+
+    /// <summary>状態異常のストラクト -> リンク付きテキスト</summary>
+    public static string ToLinkKey(this PA_StatusEffect.StatusEffectStatus status, bool ignoreValue = true, int value = 0)
+    {
+        string text = (!status.refValue || ignoreValue) ? $"{status.StEName}" : $"{status.StEName}{value}";
+        return $"<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.StEType.ToColor());
     }
 }

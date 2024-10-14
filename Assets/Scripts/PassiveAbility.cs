@@ -139,4 +139,6 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
 
     public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }
+    public virtual void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList) { }
+
 }

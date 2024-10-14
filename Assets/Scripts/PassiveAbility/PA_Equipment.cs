@@ -44,6 +44,7 @@ public class PA_Equipment : PassiveAbility
     }
     [SerializeField]
     protected EquipmentStatus equipmentStatus;
+    public EquipmentStatus GetEquipmentStatus() { return equipmentStatus; }
   
     public override void OnPAInit()
     {

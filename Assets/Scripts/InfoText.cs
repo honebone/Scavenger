@@ -12,7 +12,7 @@ public class InfoText : MonoBehaviour
     [SerializeField]
     GameObject infoPanel;
     [SerializeField]
-    Text infoText;
+    TextMeshProUGUI infoText;
     [SerializeField]
     Scrollbar infoTextScrollBar;
 
@@ -26,6 +26,7 @@ public class InfoText : MonoBehaviour
     CharactersManager charactersManager;
     TutorialManager tutorialManager;
     DebugFunction debugFunction;
+    MouseOverUI mouseOver;
 
     int logCount;
     List<string> logs = new List<string>();
@@ -36,6 +37,7 @@ public class InfoText : MonoBehaviour
         charactersManager = FindObjectOfType<CharactersManager>();
         tutorialManager = FindObjectOfType<TutorialManager>();
         debugFunction = FindObjectOfType<DebugFunction>();
+        mouseOver = ExpeditionRef.mouseover;
     }
 
     publicÅ@void SetText(string name,string info)
@@ -163,4 +165,7 @@ public class InfoText : MonoBehaviour
         AddLogText(string.Format("\n##warning!ÅF{0}##", errorLog).ColorStr(Color.yellow));
         print(errorLog);
     }
+
+
+    
 }

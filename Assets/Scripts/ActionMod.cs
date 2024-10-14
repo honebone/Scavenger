@@ -28,6 +28,7 @@ public class ActionMod : MonoBehaviour
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
+        public float drain;
         public bool sureHit;
         public bool unevadable;
 
@@ -62,6 +63,7 @@ public class ActionMod : MonoBehaviour
         public string GetModInfo()
         {
             string s = "";
+            bool f = false;
             if (conditionInfo != "") { s += string.Format("○{0}\n", conditionInfo); }
             if (!hideValues)
             {
@@ -75,6 +77,7 @@ public class ActionMod : MonoBehaviour
                 if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }
                 if (CRITCMod != 0) { s += ValueToStr("・CRIT率補正", CRITCMod, "％"); }
                 if (CRITDMod != 0) { s += ValueToStr("・CRITダメージ補正", CRITDMod, "倍"); }
+                if (drain != 0) { s += ValueToStr("・与ダメージの", drain, "％を追加で回復"); }
                 if (sureHit) { s += "・攻撃が必中となる\n"; }
                 if (unevadable) { s += "・EVDを無視\n"; }
                 if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }
@@ -85,14 +88,20 @@ public class ActionMod : MonoBehaviour
                 if (shieldAdd != 0) { s += ValueToStr("・シールド付与量", shieldAdd, ""); }
                 if (shieldRemove != 0) { s += ValueToStr("・シールド除去量", shieldRemove, ""); }
 
+                f = false;
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
                 {
                     PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                    if (StEParams.guaranteed) { s += "・"; }
-                    else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
-                    if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                    else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                    s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+                    //if (StEParams.guaranteed) { s += "・"; }
+                    //else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
+                    //if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                    //else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
+                    //s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+
+                    if (f) { s += "\n"; }
+                    f = true;
+                    string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
+                    s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n({chanceText},{StEParams.stack}スタック)\n";
                 }
                 foreach (StEApplyBonus bonus in applyStEBonus)
                 {
@@ -110,7 +119,7 @@ public class ActionMod : MonoBehaviour
                 foreach (ActionData.RemoveStE remove in removeStEs)
                 {
                     PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                    s += string.Format("・{0}", status.StEName.ColorStr(status.StEType.ToColor()));
+                    s += string.Format("・{0}", status.ToLinkKey());
                     if (remove.removeAll) { s += "を全て除去\n"; }
                     else { s += ValueToStr("のスタック", remove.addAmount, ""); }
                 }

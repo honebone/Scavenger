@@ -12,7 +12,6 @@ public class AMod_StEStack : ActionMod
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
             stack = (checkOwner) ? statusRef.actionOwner.GetStEStack_Sum(checkStE) : statusRef.actionTargets[i].GetStEStack_Sum(checkStE);
-            Debug.Log($"stack:{stack}");
             for (int j = 0; j < stack; j++)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);

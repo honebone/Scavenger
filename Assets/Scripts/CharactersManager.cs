@@ -57,20 +57,20 @@ public class CharactersManager : MonoBehaviour
         foreach (int pos in positions) { if (CheckCharaExist(pos) || includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
-    public List<int> GetExistingCharactersPos(List<int> targetPool)
-    {
-        List<int> ints = new List<int>();
-        List<Character> characterList = new List<Character>();
-        foreach (int target in targetPool)
-        {
-            if (CheckCharaExist(target) && !characterList.Contains(GetCharacterWithPos(target)))
-            {
-                ints.Add(target);
-                characterList.Add(GetCharacterWithPos(target));
-            }
-        }
-        return ints;
-    }
+    //public List<int> GetExistingCharactersPos(List<int> targetPool)
+    //{
+    //    List<int> ints = new List<int>();
+    //    List<Character> characterList = new List<Character>();
+    //    foreach (int target in targetPool)
+    //    {
+    //        if (CheckCharaExist(target) && !characterList.Contains(GetCharacterWithPos(target)))
+    //        {
+    //            ints.Add(target);
+    //            characterList.Add(GetCharacterWithPos(target));
+    //        }
+    //    }
+    //    return ints;
+    //}
     public List<Character.CharacterStatus> GetExistingCharactersStatus()
     {
         List<Character.CharacterStatus> charactersStatus = new List<Character.CharacterStatus>();
@@ -295,6 +295,15 @@ public class CharactersManager : MonoBehaviour
         }
         infoText.AddDebugText(string.Format("error:ポジション{0}にキャラクターは存在していません", pos));
         return null;
+    }
+    public List<Character> GetCharactersWithPos(List<int> posList)
+    {
+        List<Character> list = new List<Character>();
+        foreach (int posInt in posList)
+        {
+            if (CheckCharaExist(posInt)) { list.Add(GetCharacterWithPos(posInt)); }
+        }
+        return list;
     }
     /// <summary>
     /// 

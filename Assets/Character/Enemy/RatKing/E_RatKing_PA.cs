@@ -57,7 +57,7 @@ public class E_RatKing_PA : PA_Personality
 
                     Action.ActionStatus remove = actionStatus_remove;
                     ActionData.RemoveStE removeParams = new ActionData.RemoveStE();
-                    removeParams.removeStE= removeStE;
+                    removeParams.removeStE = removeStE;
                     removeParams.addAmount = -1;
                     remove.removeStEs = new List<ActionData.RemoveStE>() { removeParams };
                     Enqueue_Self(remove);

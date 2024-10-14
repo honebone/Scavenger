@@ -48,6 +48,8 @@ public class DebugFunction : MonoBehaviour
     Inventory inventory;
     InfoText infoText;
 
+    [SerializeField] List<Vector2Int> rel;
+
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
@@ -65,18 +67,15 @@ public class DebugFunction : MonoBehaviour
             items[i].amount = amount[i];
         }
 
-        //List<float> chance = new List<float>(expeditionManager.GetPartyStatus().materialDropChance);
-        //int[] count = new int[5];
-        //ItemData.Rarity rarity;
-        //for (int i= 0; i < 10000; i++)
+        //for (int i = 0; i < 6; i++)
         //{
-        //    rarity = (ItemData.Rarity)chance.ChoiceWithWeight();
-        //    count[(int)rarity]++;
-        //}
-
-        //for (int i = 0; i < 5; i++)
-        //{
-        //    Debug.Log($"{Definer.rarityName[(ItemData.Rarity)i]}F{count[i]}({count[i] / 100f}“)");
+        //    for (int j = 0; j < 3; j++)
+        //    {
+        //        int pos = new Vector2Int(i, j).ToPosInt();
+        //        string s = $"{pos}:";
+        //        foreach(int neighbor in pos.RelativePosToAbsolute(rel,true)) { s += $"{neighbor},"; }
+        //        Debug.Log(s);
+        //    }
         //}
 
     }
