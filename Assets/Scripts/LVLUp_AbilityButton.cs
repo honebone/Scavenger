@@ -57,6 +57,7 @@ public class LVLUp_AbilityButton : MonoBehaviour
     }
     public void OnMouseEnter()
     {
+        //infoText.SetText(lvlUpParams.abilityStatus.abilityName.ColorStr(color), lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus()));
         mouseOver.SetUI(upgradeStr, true);
     }
     public void OnMouseExit()
