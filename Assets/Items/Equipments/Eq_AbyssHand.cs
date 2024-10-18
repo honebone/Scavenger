@@ -4,55 +4,52 @@ using UnityEngine;
 
 public class Eq_AbyssHand : PA_Equipment
 {
-    [SerializeField] GameObject actionMod;
+    [SerializeField] ActionMod.ActionModStatus actionModStatus;
     [SerializeField] List<Vector2Int> neighbor;
     [SerializeField] int maxCount;
+    [SerializeField] int countGoal;
     int count;
     bool activated;
 
     public override void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
     {
-        if (!activated)
+        bool f = false;
+        Character.CharacterStatus status = character.GetCharacterStatus();
+        foreach (Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
         {
-            bool f = false;
-            Character.CharacterStatus status = character.GetCharacterStatus();
-            foreach (Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
+            if (charactersManager.GetCharactersWithPos(status.position.RelativePosToAbsolute(neighbor)).Contains(onApplyStEParams.taget))
             {
-                if (charactersManager.GetCharactersWithPos(status.position.RelativePosToAbsolute(neighbor)).Contains(onApplyStEParams.taget))
+                foreach (PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
                 {
-                    foreach (PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
+                    if (statusEffectParams.GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
                     {
-                        if (statusEffectParams.GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
-                        {
-                            f = true;
-                            break;
-                        }
+                        f = true;
+                        break;
                     }
                 }
-                if (f)
-                {
-                    count++;
-                    break;
-                }
             }
-
-            if (count == maxCount)
+            if (f)
             {
-                count = 0;
-                activated = true;
-                character.AddActionMod(actionMod, true);
+                count++.Limit(maxCount);
+                break;
             }
+        }
+
+        if (count >= countGoal)
+        {
+            activated = true;
+            //character.AddActionMod(actionMod, true);
         }
     }
 
-    public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
-    {
-        if (onAttackParamsList[0].actionStatus.abilityEffect && activated)
-        {
-            activated = false;
-            character.AddActionMod(actionMod, false);
-        }
-    }
+    //public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //{
+    //    if (onAttackParamsList[0].actionStatus.abilityEffect && activated)
+    //    {
+    //        activated = false;
+    //        character.AddActionMod(actionMod, false);
+    //    }
+    //}
 
     public override void OnBattleEnd()
     {
@@ -60,11 +57,26 @@ public class Eq_AbyssHand : PA_Equipment
         if (activated)
         {
             activated = false;
-            character.AddActionMod(actionMod, false);
+            //character.AddActionMod(actionMod, false);
         }
+    }
+
+    public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
+    {
+        if (activated && statusRef.DoesAttack() && statusRef.abilityEffect)
+        {
+            activated = false;
+            count -= 4;
+            for (int i = 0; i < statusRef.actionTargets.Count; i++)
+            {
+                actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
+            }
+        }
+    
+        return actionsStatus;
     }
     public override string GetCurrentStateInfo()
     {
-        return (activated) ? "能力発動中" : $"現在カウント：{count}/{maxCount}";
+        return $"現在カウント：{count}/{countGoal}";
     }
 }

@@ -399,9 +399,7 @@ public class Action : MonoBehaviour
                 {
                     if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
                     {
-                        Debug.Log($"変更前：{modifiedStatus.StEApplyBonus[i].exChance}％");
                         modifiedStatus.StEApplyBonus[i]= modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
-                        Debug.Log($"変更後：{modifiedStatus.StEApplyBonus[i].exChance}％");
                         f = true;
                     }
                 }
@@ -611,6 +609,8 @@ public class Action : MonoBehaviour
             actionsStatus = am.GetComponent<ActionMod>().ModifyAction(actionStatus, actionsStatus);
             Destroy(am);
         }
+
+        if (!notChara) { actionStatus.actionOwner.ModifyAction(actionStatus, actionsStatus); }
 
         //各対象キャラへの処理
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)

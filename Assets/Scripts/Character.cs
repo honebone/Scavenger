@@ -1448,6 +1448,19 @@ public class Character : MonoBehaviour
         RemovePA_Execute();
     }
 
+    public Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities())
+            {
+                actionsStatus = passiveAbility.ModifyAction(statusRef, actionsStatus);
+            }
+            RemovePA_Execute();
+        }
+
+        return actionsStatus;
+    }
 
     public void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {

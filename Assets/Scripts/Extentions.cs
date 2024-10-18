@@ -34,6 +34,7 @@ public static class Extentions
     }
 
     public static int ToInt(this float value) { return Mathf.RoundToInt(value); }
+    public static int Limit(this int value, int max) { return Mathf.Min(value, max); }
 
     public static bool Dice(this float fPercent)
     {

@@ -94,6 +94,14 @@ public class PassiveAbility : MonoBehaviour
         Action.ActionStatus action = actionStatus;
         character.Enqueue(action, true, new List<Character>() { character });
     }
+
+    public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
+    {
+        if (statusRef.actionTargets.Count != actionsStatus.Length) { FindObjectOfType<InfoText>().AddErrorText("‘ÎÛ‚Ì”‚Æs“®“à—e‚Ì”‚ªˆê’v‚µ‚Ü‚¹‚ñ"); }
+
+        return actionsStatus;
+    }
+
     public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
 
