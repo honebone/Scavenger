@@ -26,6 +26,7 @@ MonoBehaviour:
   obstacle: 0
   variableSprites:
   - {fileID: 4800315488507104838, guid: 7ffc7f86d143dfc47945bd6dc8fa6d5f, type: 3}
+  spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: 5ed7cc45a39baa640af4fe56ef10ae84, type: 3}
   abilities:
   - {fileID: 11400000, guid: 6e641e7af50e9274f920715453306783, type: 2}
@@ -38,8 +39,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 4283910244092387297, guid: 245b0d76d75de4342b5ce66b9883140a, type: 3}
-  actionMods:
-  - {fileID: 426178941117634305, guid: 85c61588571d4bf42912296db7aee968, type: 3}
+  actionMods: []
   corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}

@@ -50,7 +50,9 @@ public class Character_Object : MonoBehaviour
 
     [SerializeField] float actAnim_move;
     [SerializeField] float actAnim_duration;
-    
+
+
+    Tweener DMGAnim;
 
     Character character;
     CharactersManager charactersManager;
@@ -118,7 +120,7 @@ public class Character_Object : MonoBehaviour
 
     public void DisableSANBar() { SANBarObj.SetActive(false); }
 
-    Coroutine barAnim;
+    //Coroutine barAnim;
     public void SetHPandShieldBar()
     {
         Character.CharacterStatus status = character.GetCharacterStatus();
@@ -131,8 +133,10 @@ public class Character_Object : MonoBehaviour
 
         if(DMGBar.value > HPBar.value)
         {
-            if (barAnim != null) { StopCoroutine(barAnim); }
-            barAnim = StartCoroutine(DMGBarAnim());
+            //if (barAnim != null) { StopCoroutine(barAnim); }
+            //barAnim = StartCoroutine(DMGBarAnim());
+            if (DMGAnim != null) { DMGAnim.Kill(); }
+            DMGAnim = DMGBar.DOValue(HPBar.value, 0.5f).SetEase(Ease.InExpo);
         }
         else { DMGBar.value = HPBar.value; }
     }

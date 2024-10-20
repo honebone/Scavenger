@@ -4,27 +4,74 @@ using UnityEngine;
 
 public class P_Pyromancer_PA : PA_Personality
 {
-    [SerializeField, TextArea(3, 10)]
-    string info;
+    //[SerializeField, TextArea(3, 10)]
+    //string info;
+    //[SerializeField] Action.ActionStatus attack;
+    //[SerializeField] CharactersManager.SearchCharaCondition condition;
+
+    //public override void OnRoundStart()
+    //{
+    //    if (character.GetCharacterStatus().CRITC.Dice())
+    //    {
+    //        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+    //        if (target.Count > 0)
+    //        {
+    //            Enqueue(attack, true, target);
+    //        }
+    //    }
+    //}
+
+    //public override string GetPAInfo_Base()
+    //{
+    //    string s = info+"\n\n";
+    //    s += attack.GetInfo(false, new Character.CharacterStatus());
+    //    return s;
+    //}
+
+    [SerializeField] Action.ActionStatus actionStatus;
+    [SerializeField] StEApplyBonus stEApplyBonus;
+    [SerializeField] CharactersManager.SearchCharaCondition bunred;
+
+    [SerializeField] GameObject ember;
+    [SerializeField] int threshold;
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    public override void OnRoundStart()
+    public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if (character.GetCharacterStatus().CRITC.Dice())
+        if (myTurn)
+        {
+            int burnCount = charactersManager.SearchCharaWithCondition(bunred).Count;
+            if (burnCount > 0)
+            {
+                Action.ActionStatus action = actionStatus;
+                StEApplyBonus bonus = stEApplyBonus;
+                bonus.exStack = burnCount;
+                action.StEApplyBonus = new List<StEApplyBonus> { bonus };
+
+                Enqueue_Self(action);
+            }
+        }
+    }
+
+    public override void OnTurnEnd()
+    {
+        if(character.GetStEStack_Sum(ember)>= threshold)
         {
             List<Character> target = charactersManager.SearchCharaWithCondition(condition);
             if (target.Count > 0)
             {
                 Enqueue(attack, true, target);
+                character.AddStEStack(ember, threshold);
             }
         }
     }
 
     public override string GetPAInfo_Base()
     {
-        string s = info+"\n\n";
-        s += attack.GetInfo(false, new Character.CharacterStatus());
+        string s = "";
+        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        s += "\n"+attack.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 }

@@ -52,11 +52,15 @@ MonoBehaviour:
     optionInfo: "\u88C5\u5099\u54C1\u30921-2\u500B\u5F97\u308B"
   loot_breach:
     drawAttemptsRange: {x: 0, y: 0}
-    dropItems: []
-    dropItemFromPresets: []
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
     dropEquipmentsRange: {x: 1, y: 2}
   loot_pick:
     drawAttemptsRange: {x: 0, y: 0}
-    dropItems: []
-    dropItemFromPresets: []
-    dropEquipmentsRange: {x: 3, y: 4}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 6, y: 8}

@@ -19,23 +19,27 @@ public class Eq_FuryAndAshes : PA_Equipment
     {
         remain = defRemain;
     }
-    public override void OnDamage(Action.OnDamageParams onDamageParams)
+    public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
         List<Character> target = charactersManager.SearchCharaWithCondition(condition);
 
-        if(remain > 0)
+        foreach(Action.OnDamageParams onDamageParams in onDamageParamsList)
         {
-            if (onDamageParams.target.CheckHasStE(burn))
+            if (remain > 0)
             {
-                count++;
-                if (target.Count > 0 && count >= countGoal)
+                if (onDamageParams.target.CheckHasStE(burn))
                 {
-                    count -= countGoal;
-                    remain--;
-                    Enqueue(attack, true, target, 2);
+                    count++;
+                    if (target.Count > 0 && count >= countGoal)
+                    {
+                        count -= countGoal;
+                        remain--;
+                        Enqueue(attack, true, target, 2);
+                    }
                 }
             }
         }
+       
         
     }
     public override void OnBattleEnd()

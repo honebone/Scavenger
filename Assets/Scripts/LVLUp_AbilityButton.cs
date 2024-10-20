@@ -17,8 +17,11 @@ public class LVLUp_AbilityButton : MonoBehaviour
     [SerializeField] InfoText infoText;
     [SerializeField] MouseOverUI mouseOver;
 
+    bool selectable = false;
+
     public void SetUpgrade(LVLUpManager.LVLUpParams lvlUp)
     {
+        selectable = true;
         lvlUpParams = lvlUp;
         color = Definer.colorRef.abilityColors[(int)lvlUpParams.abilityStatus.abilityType];
         if (!lvlUpParams.upgrade)
@@ -40,19 +43,22 @@ public class LVLUp_AbilityButton : MonoBehaviour
 
     public void OnMouseDown()
     {
-
-        if (Input.GetMouseButtonDown(1))
+        if (selectable)
         {
-            infoText.SetText(lvlUpParams.abilityStatus.abilityName.ColorStr(color), lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus()));
-        }
+            if (Input.GetMouseButtonDown(1))
+            {
+                infoText.SetText(lvlUpParams.abilityStatus.abilityName.ColorStr(color), lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus()));
+            }
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (!lvlUpParams.upgrade) { lvlUpParams.abilityStatus.Unlock(); }
-            else { lvlUpParams.character.UpgradeAbility(lvlUpParams.abilityStatus.abilityData); }
-            lvlUpParams.character.LVLUp();
+            if (Input.GetMouseButtonDown(0))
+            {
+                selectable = false;
+                if (!lvlUpParams.upgrade) { lvlUpParams.abilityStatus.Unlock(); }
+                else { lvlUpParams.character.UpgradeAbility(lvlUpParams.abilityStatus.abilityData); }
+                lvlUpParams.character.LVLUp();
 
-            lvlUpManger.EndSelectUpgrade();
+                lvlUpManger.EndSelectUpgrade();
+            }
         }
     }
     public void OnMouseEnter()

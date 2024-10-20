@@ -101,6 +101,7 @@ public class PA_StatusEffect : PassiveAbility
         s += "：";
         s += StEStatus.StEInfo;
         if (StEStatus.scaleStackByLVL) { s += "\n<付与者のLVLでスタック数増加>\n"; }
+        if (StEStatus.undeletable) { s += "\n消去不可"; }
         //s = s.ColorStr(Color.gray);
         if (instantiated) { s += GetAdditionalInfo().ColorStr(Definer.colorRef.currentState); }
         return s;

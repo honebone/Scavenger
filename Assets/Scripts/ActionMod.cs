@@ -24,7 +24,8 @@ public class ActionMod : MonoBehaviour
         public int trueINTDMG;
 
         public float exDMG_mul;
-        public int exDMG_int;
+        public int exATKDMG_int;
+        public int exINTDMG_int;
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
@@ -73,7 +74,8 @@ public class ActionMod : MonoBehaviour
                 if (trueATKDMG != 0) { s += ValueToStr("・固定物理ダメージ", trueATKDMG, ""); }
                 if (trueINTDMG != 0) { s += ValueToStr("・固定魔法ダメージ", trueINTDMG, ""); }
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
-                if (exDMG_int != 0) { s += ValueToStr("・与ダメージ", exDMG_int, ""); }
+                if (exATKDMG_int != 0) { s += ValueToStr("・与物理ダメージ", exATKDMG_int, ""); }
+                if (exINTDMG_int != 0) { s += ValueToStr("・与魔法ダメージ", exINTDMG_int, ""); }
                 if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }
                 if (CRITCMod != 0) { s += ValueToStr("・CRIT率補正", CRITCMod, "％"); }
                 if (CRITDMod != 0) { s += ValueToStr("・CRITダメージ補正", CRITDMod, "倍"); }
@@ -92,11 +94,6 @@ public class ActionMod : MonoBehaviour
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
                 {
                     PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                    //if (StEParams.guaranteed) { s += "・"; }
-                    //else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
-                    //if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + StEParams.value.ToString()).ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                    //else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack); }
-                    //s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
 
                     if (f) { s += "\n"; }
                     f = true;

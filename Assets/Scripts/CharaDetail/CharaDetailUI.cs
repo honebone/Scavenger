@@ -182,6 +182,27 @@ public class CharaDetailUI : MonoBehaviour
             abilityUpgradeInfo.text = "";
             displayingChara.DisplayInfo();
         }
+
+        List<Character> characters = new List<Character>();
+        foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        {
+            Character.CharacterStatus status = chara.GetCharacterStatus();
+            if (status.player && chara.CheckAlive()) { characters.Add(chara); }
+        }
+
+        for (int i = 0; i < characters.Count; i++)
+        {
+            charaButtons[i].SetChara(characters[i]);
+        }
+
+        if (characters.Count < maxParty)
+        {
+            for (int i = characters.Count; i < maxParty; i++)
+            {
+                charaButtons[i].ResetValue();
+            }
+        }
+
         expAmount.text = string.Format("経験のオーブ{0}個",inventory.GetExp());
     }
     public void SetEquipmnetButtons()

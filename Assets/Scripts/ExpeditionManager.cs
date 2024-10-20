@@ -503,8 +503,9 @@ public class ExpeditionManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         foreach (Character chara in ExpeditionRef.charactersManager.GetExistingCharacters_All())
         {
-            int maxHP = chara.GetCharacterStatus().maxHP;
-            chara.Heal(Mathf.RoundToInt(maxHP * 0.05f), null);
+            Character.CharacterStatus status = chara.GetCharacterStatus();
+            int decreasedHP = status.maxHP - status.HP;
+            chara.Heal(Mathf.RoundToInt(decreasedHP * 0.25f), null);
         }
         yield return new WaitForSeconds(0.75f);
         if (partyStatus.getPerChance_endRE.Dice())

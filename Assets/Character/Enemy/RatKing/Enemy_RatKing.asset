@@ -47,7 +47,7 @@ MonoBehaviour:
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 1
-  maxHP: 300
+  maxHP: 350
   maxSAN: 0
   ATK: 10
   INT: 5

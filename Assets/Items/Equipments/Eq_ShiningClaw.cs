@@ -14,12 +14,15 @@ public class Eq_ShiningClaw : PA_Equipment
         s += "Ç±ÇÍÇ2âÒçsÇ§";
         return s;
     }
-    public override void OnDamage(Action.OnDamageParams onDamageParams)
+    public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
-        if (onDamageParams.actionStatus.abilityEffect)
+        foreach (Action.OnDamageParams onDamageParams in onDamageParamsList)
         {
-            character.Enqueue(claw, true, new List<Character> { onDamageParams.target });
-            character.Enqueue(claw, true, new List<Character> { onDamageParams.target });
+            if (onDamageParams.actionStatus.abilityEffect)
+            {
+                character.Enqueue(claw, true, new List<Character> { onDamageParams.target });
+                character.Enqueue(claw, true, new List<Character> { onDamageParams.target });
+            }
         }
     }
 }

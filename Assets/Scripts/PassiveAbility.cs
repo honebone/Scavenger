@@ -95,7 +95,7 @@ public class PassiveAbility : MonoBehaviour
         character.Enqueue(action, true, new List<Character>() { character });
     }
 
-    public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
+    public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus,bool forCalcDMG)
     {
         if (statusRef.actionTargets.Count != actionsStatus.Length) { FindObjectOfType<InfoText>().AddErrorText("‘ÎÛ‚Ì”‚Æs“®“à—e‚Ì”‚ªˆê’v‚µ‚Ü‚¹‚ñ"); }
 
@@ -123,7 +123,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDecreasedHP(int value) { }
 
     /// <summary>UŒ‚–½’†</summary>
-    public virtual void OnDamage(Action.OnDamageParams onDamageParams) {  }
+    public virtual void OnDamage(List<Action.OnDamageParams> onDamageParamsList) {  }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(List<Action.OnKillParams> onKillParamsList) { }
     public virtual void OnMiss(int ID) { }

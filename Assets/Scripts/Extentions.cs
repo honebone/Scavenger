@@ -162,6 +162,18 @@ public static class Extentions
         return sum;
     }
 
+    /// <summary>重複なしでList追加</summary>
+    public static List<T> AddRangeWithNoOverlap<T>(this List<T> list, List<T> add)
+    {
+        List<T> added = new List<T>(list);
+        foreach (T t in add)
+        {
+            if (!added.Contains(t)) { added.Add(t); }
+        }
+
+        return added;
+    }
+
     /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
     public static List<T> Sample<T>(this List<T> list, int amount)
     {
@@ -178,7 +190,9 @@ public static class Extentions
         }
 
         return sample;
-    }public static T Choice<T>(this List<T> list)
+    }
+    
+    public static T Choice<T>(this List<T> list)
     {
         return list[Random.Range(0, list.Count)];
     }
@@ -335,5 +349,11 @@ public static class Extentions
     {
         string text = (!status.refValue || ignoreValue) ? $"{status.StEName}" : $"{status.StEName}{value}";
         return $"<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.StEType.ToColor());
+    }
+
+    public static string ToLinkKey(this PositionEffect.PositionEffectStatus status, bool ignoreValue = true, int value = 0)
+    {
+        string text = (!status.refValue || ignoreValue) ? $"{status.PEName}" : $"{status.PEName}{value}";
+        return $"<link=P_{status.PEName}><u>{text}</u></link>".ColorStr(status.PEType.ToColor());
     }
 }

@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
@@ -290,15 +290,15 @@ MonoBehaviour:
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
-    upperFront: {fileID: 0}
-    centerFront: {fileID: 11400000, guid: ef347ec247c0b8a4e9775f848f12f773, type: 2}
-    lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 0}
-    lowerMid: {fileID: 0}
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    upperMid: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    centerMid: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    lowerMid: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    upperBack: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    centerBack: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    lowerBack: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
@@ -12342,6 +12342,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8da498511067d4e47af6f0f98206e7df, type: 2}
   - {fileID: 11400000, guid: 5321050e0ffc372438670bc181ed5138, type: 2}
   - {fileID: 11400000, guid: 627a9d4163ac8534897a3842c1f8fd2c, type: 2}
+  - {fileID: 11400000, guid: 026496ef4d279e14f8914da23b085f05, type: 2}
+  - {fileID: 11400000, guid: aa6bade2a9a9b134f9c7272ddae354b3, type: 2}
+  - {fileID: 11400000, guid: 703a1844ce587f3449edf6e1bf0cbb41, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -12427,6 +12430,13 @@ MonoBehaviour:
   - {fileID: 1489497368108049143, guid: 20849c6136550d04e9232dacd303cdfb, type: 3}
   - {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
   - {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+  - {fileID: 5164891664867224302, guid: 14621f1735101844186999a6d52eb27b, type: 3}
+  positionEffectDataBase:
+  - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
+  - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}
+  - {fileID: 8496128596371283057, guid: d5bf6e192053068419740398591ffe4b, type: 3}
+  - {fileID: 8496128596371283057, guid: 8472ac4e778ebbf438b64ea9158bfecc, type: 3}
+  - {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -18395,7 +18405,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

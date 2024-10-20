@@ -81,7 +81,8 @@ public class Action : MonoBehaviour
         public int trueINTDMG;
 
         public float exDMG_mul;
-        public int exDMG_int;
+        public int exATKDMG_int;
+        public int exINTDMG_int;
 
         public float ACCMod;
         public float CRITCMod;
@@ -177,6 +178,7 @@ public class Action : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = "";
+            bool nb = false;
             bool f = false;
 
             //if (friendly) { s += "友好アクション\n"; }
@@ -225,16 +227,16 @@ public class Action : MonoBehaviour
                 if (sureHit) { attack += "必中\n"; }
                 if (unevadable) { attack += "EVDを無視\n"; }
                 s += attack.ColorStr(Color.gray);
-                s += "\n";
             }
+            CheckNewBlock();
 
             if (healValue_max > 0 || healPercent_max > 0 || healRegain_max > 0)//回復
             {
                 if (healValue_max > 0) { s += string.Format("・HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
                 if (healPercent_max > 0) { s += string.Format("・HPを最大値の{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
                 if (healRegain_max > 0) { s += string.Format("・減少したHPの{0}％を回復\n", GetValueRange(healRegain_min, healRegain_max)); }
-                s += "\n";
             }
+            CheckNewBlock();
 
             if (SANHeal_max > 0) { s += string.Format("・正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
             if (SANDamage_max > 0) { s += string.Format("・正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
@@ -242,40 +244,36 @@ public class Action : MonoBehaviour
             if (shieldPercent_max > 0) { s += string.Format("・maxHPの{0}％に等しいシールドを付与\n", GetValueRange(shieldPercent_min, shieldPercent_max)); }
             if (shieldRemove_all) { s += "・シールドを0にする\n"; }
             else if (shieldRemove_max > 0) { s += string.Format("・シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
+            CheckNewBlock();
 
             f = false;
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
                 PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                //if (StEParams.guaranteed) { s += "・"; }
-                //else { s += string.Format("・{0}％の確率で", StEParams.applyChance); }
-                //s += string.Format("{0}を{1}スタック付与\n", status.ToLinkKey(false,StEParams.value), StEParams.stack);
-
                 if (f) { s += "\n"; }
                 f = true;
+
                 string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
                 s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n({chanceText},{StEParams.stack}スタック)\n";
-
-
-                //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
-                //s += StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef() + "\n";
-                //if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
             }
+
+            CheckNewBlock();
+            f = false;
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
                 PositionEffect.PositionEffectStatus status = PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus();
-                if (PEParams.guaranteed) { s += "・対象の地点に"; }
-                else { s += string.Format("・{0}％の確率で対象の地点に", PEParams.applyChance); }
-                if (status.refValue) { s += string.Format("{0}{1}を{2}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.value, PEParams.stack); }
-                else { s += string.Format("{0}を{1}スタック付与\n", status.PEName.ColorStr(status.PEType.ToColor()), PEParams.stack); }
-                s += PEParams.applyPE.GetComponent<PositionEffect>().GetPEInfo(true);
+                if (f) { s += "\n"; }
+                f = true;
+
+                string chanceText = PEParams.guaranteed ? "確定" : $"{PEParams.applyChance}％";
+                s += $"・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n({chanceText},{PEParams.stack}スタック)\n";
             }
+
+            CheckNewBlock();
             if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n"
                 , "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
             if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n"
                 , "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
-            //if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n"
-            //    , "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
@@ -283,6 +281,7 @@ public class Action : MonoBehaviour
                 if (remove.removeAll) { s += "を全て除去\n"; }
                 else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
             }
+            CheckNewBlock();
 
             if (summon)
             {
@@ -301,6 +300,7 @@ public class Action : MonoBehaviour
                     }
                 }
             }
+            CheckNewBlock();
 
             if (guaranteedMove || moveChance > 0)
             {
@@ -311,6 +311,7 @@ public class Action : MonoBehaviour
                 if (moveLower > 0) { s += string.Format("{0}下降\n", moveLower); }
                 if (moveBackword > 0) { s += string.Format("{0}後退\n", moveBackword); }
             }
+            CheckNewBlock();
 
             foreach (ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
             {
@@ -321,18 +322,29 @@ public class Action : MonoBehaviour
                     s += string.Format("{0}増加\n", remainControll.value);
                 }
             }
-            s += "\n";
+            CheckNewBlock();
+
+            if (actionMods.Count > 0) { s += "\n"; }
             foreach (GameObject actionMod in actionMods)
             {
-                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+                string modInfo = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+                if (modInfo != "") { s += modInfo + "\n"; }
             }
             if (AModInfo != "")
             {
-                s += string.Format("○{0}", AModInfo);//.ColorStr(Definer.colorRef.AMod)
+                s += string.Format("\n○{0}", AModInfo);//.ColorStr(Definer.colorRef.AMod)
             }
-            if (actionInfo != "") { s += actionInfo + "\n"; }
+            CheckNewBlock();
+
+            if (actionInfo != "") { s +="\n"+ actionInfo + "\n"; }
 
             return s;
+
+            void CheckNewBlock()
+            {
+                //s += nb ? "\n" : "";
+                //nb=true;
+            }
         }
         public string GetValueWithSign(float value)
         {
@@ -363,7 +375,8 @@ public class Action : MonoBehaviour
             modifiedStatus.trueINTDMG += mod.trueINTDMG;
 
             modifiedStatus.exDMG_mul += mod.exDMG_mul;
-            modifiedStatus.exDMG_int += mod.exDMG_int;
+            modifiedStatus.exATKDMG_int += mod.exATKDMG_int;
+            modifiedStatus.exINTDMG_int += mod.exINTDMG_int;
             modifiedStatus.ACCMod += mod.ACCMod;
             modifiedStatus.CRITCMod += mod.CRITCMod;
             modifiedStatus.CRITDMod += mod.CRITDMod;
@@ -492,6 +505,7 @@ public class Action : MonoBehaviour
 
     protected List<ActionResult> actionResults = new List<ActionResult>();
     List<OnAttackParams> onAttackParamsList = new List<OnAttackParams>();
+    List<OnDamageParams> onDamageParamsList = new List<OnDamageParams>();   
     List<OnKillParams> onKillParamsList = new List<OnKillParams>();
     List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
@@ -610,7 +624,7 @@ public class Action : MonoBehaviour
             Destroy(am);
         }
 
-        if (!notChara) { actionStatus.actionOwner.ModifyAction(actionStatus, actionsStatus); }
+        if (!notChara) { actionStatus.actionOwner.ModifyAction(actionStatus, actionsStatus, false); }
 
         //各対象キャラへの処理
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
@@ -711,10 +725,10 @@ public class Action : MonoBehaviour
                             INTDMGf *= RDMG;
 
                             ATKDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
-                            ATKDMGf += actionsStatus[i].exDMG_int;
+                            ATKDMGf += actionsStatus[i].exATKDMG_int;
 
                             INTDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
-                            INTDMGf += actionsStatus[i].exDMG_int;
+                            INTDMGf += actionsStatus[i].exINTDMG_int;
 
                             ATKDMG = Mathf.Max(0, Mathf.RoundToInt(ATKDMGf));
                             INTDMG = Mathf.Max(0, Mathf.RoundToInt(INTDMGf));
@@ -783,7 +797,7 @@ public class Action : MonoBehaviour
                                     totalDamage += totalDMG;
                                 }
 
-                                actionStatus.actionOwner.OnDamage(onDamageParams);//与ダメ時誘発
+                                onDamageParamsList.Add(onDamageParams);
                                 if (totalDMG > 0 && actionsStatus[i].drain > 0)//吸血処理
                                 {
                                     OnHealParams onHealParams = new OnHealParams();
@@ -1196,6 +1210,7 @@ public class Action : MonoBehaviour
         if (actionStatus.actionOwner != null)
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//攻撃時誘発
+            if (onDamageParamsList.Count > 0) { actionStatus.actionOwner.OnDamage(onDamageParamsList); }
             if (onKillParamsList.Count > 0) { actionStatus.actionOwner.Onkill(onKillParamsList); }//殺害時誘発
             if (onApplyStEParamsList.Count > 0)//StE付与時誘発
             {

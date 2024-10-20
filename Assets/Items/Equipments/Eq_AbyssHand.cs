@@ -61,12 +61,15 @@ public class Eq_AbyssHand : PA_Equipment
         }
     }
 
-    public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
+    public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
     {
         if (activated && statusRef.DoesAttack() && statusRef.abilityEffect)
         {
-            activated = false;
-            count -= 4;
+            if (!forCalcDMG)
+            {
+                activated = false;
+                count -= 4;
+            }
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);

@@ -22,10 +22,22 @@ public class P_Sister_PA : PA_Personality
 
     public override void OnHeal(List<Action.OnHealParams> onHealParamsList)
     {
+        bool f = false;
         if (!character.CheckHasStE(comeTrue))
         {
-            Action.ActionStatus action = actionStatus;
-            character.Enqueue(action, true, new List<Character>() { character });
+            foreach(Action.OnHealParams onHealParams in onHealParamsList)
+            {
+                if (onHealParams.target != character)
+                {
+                    f = true;
+                    break;
+                }
+            }
+            if (f)
+            {
+                Action.ActionStatus action = actionStatus;
+                character.Enqueue(action, true, new List<Character>() { character });
+            }
         }
     }
 

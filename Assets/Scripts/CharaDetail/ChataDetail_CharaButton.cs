@@ -34,22 +34,27 @@ public class ChataDetail_CharaButton : MonoBehaviour
             }
         }
 
+       Refresh();
+    }
+
+    public void Refresh()
+    {
         Character.CharacterStatus status = character.GetCharacterStatus();
 
         foreach (Definer.Item item in status.equipments)
         {
             var e = Instantiate(eqButton, equipmentsP);
-            e.GetComponent<CharaDetail_CharaEqButton>().Init_Equipped(item, infoText, detailUI, mouseOver,this);
+            e.GetComponent<CharaDetail_CharaEqButton>().Init_Equipped(item, infoText, detailUI, mouseOver, this);
         }
         for (int i = 0; i < status.equipmentSlots - status.equipments.Count; i++)
         {
             var n = Instantiate(eqButton, equipmentsP);
-            n.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(false, infoText, detailUI, mouseOver,this);
+            n.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(false, infoText, detailUI, mouseOver, this);
         }
         for (int i = 0; i < 8 - status.equipmentSlots; i++)
         {
             var l = Instantiate(eqButton, equipmentsP);
-            l.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(true, infoText, detailUI, mouseOver,this);
+            l.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(true, infoText, detailUI, mouseOver, this);
         }
     }
     public void ResetValue()

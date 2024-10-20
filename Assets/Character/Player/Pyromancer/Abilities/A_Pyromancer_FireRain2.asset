@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 0
   availableMid: 1
@@ -36,6 +37,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []
@@ -60,6 +62,7 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 6529000616297166250, guid: cf14b90ddef7f9e44a5bbb44f2e4f67d, type: 3}
+    - {fileID: 426178941117634305, guid: 530054430bc716c4db08502be3e207a9, type: 3}
     targetType: 2
     friendly: 0
     condition:
@@ -71,6 +74,7 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -94,7 +98,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: -5
     CRITCMod: 0
     CRITDMod: 0
@@ -122,7 +127,7 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
-      applyChance: 75
+      applyChance: 90
       stack: 6
       value: 0
     applyPEParams: []
@@ -144,8 +149,11 @@ MonoBehaviour:
     abilityType: 1
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 090000000a0000000c00000010000000

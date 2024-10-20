@@ -311,45 +311,50 @@ public class Character : MonoBehaviour
         public float debuffRes;
         public string GetInfo()
         {
-            string s = "";
-            s += ValueToStr("maxHP", maxHP_mul, "％");
-            s += ValueToStr("maxSAN", maxSAN_mul, "％");
-            s += ValueToStr("被ダメージ", PROT * -1, "％");
-            s += ValueToStr("ATK", ATK_mul, "％");
-            s += ValueToStr("INT", INT_mul, "％");
-            s += ValueToStr("CRIT率", CRITC, "％");
-            s += ValueToStr("CRITダメージ", CRITD, "％");
-            s += ValueToStr("EVD", EVD, "");
-            s += ValueToStr("ACC", ACC, "");
-            s += ValueToStr("ACT", ACT, "");
-            s += ValueToStr("ラウンド毎ターン数", turnPerRound, "");
-            s += ValueToStr("与える回復量", GHeal, "％");
-            s += ValueToStr("受ける回復量", RHeal, "％");
-            foreach(StEResist res in StEResists)
+            string info = "";
+            bool f = false;
+            info += ValueToStr("maxHP", maxHP_mul, "％");
+            info += ValueToStr("maxSAN", maxSAN_mul, "％");
+            info += ValueToStr("被ダメージ", PROT * -1, "％");
+            info += ValueToStr("ATK", ATK_mul, "％");
+            info += ValueToStr("INT", INT_mul, "％");
+            info += ValueToStr("CRIT率", CRITC, "％");
+            info += ValueToStr("CRITダメージ", CRITD, "％");
+            info += ValueToStr("EVD", EVD, "");
+            info += ValueToStr("ACC", ACC, "");
+            info += ValueToStr("ACT", ACT, "");
+            info += ValueToStr("ラウンド毎ターン数", turnPerRound, "");
+            info += ValueToStr("与える回復量", GHeal, "％");
+            info += ValueToStr("受ける回復量", RHeal, "％");
+            foreach (StEResist res in StEResists)
             {
-                s += ValueToStr(string.Format("{0}耐性", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey()), res.value, "％");
+                info += ValueToStr(string.Format("{0}耐性", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey()), res.value, "％");
             }
-            foreach(StEApplyBonus bonus in StEApplyBonus)
+            foreach (StEApplyBonus bonus in StEApplyBonus)
             {
                 string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
-                if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
-                if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
+                if (bonus.exChance != 0) { info += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
+                if (bonus.exStack != 0) { info += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
+                if (bonus.exValue != 0) { info += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
             }
-            s += ValueToStr("移動耐性", moveRes, "％");
-            s += ValueToStr("デバフ耐性", debuffRes, "％");
-            
-            return s;
+            info += ValueToStr("移動耐性", moveRes, "％");
+            info += ValueToStr("デバフ耐性", debuffRes, "％");
+
+            return info;
+
+            string ValueToStr(string start, float value, string end)
+            {
+                if (value == 0) { return ""; }
+                string s = f ? "\n" : "";
+                f = true;
+                s += start;
+                if (value < 0) { s += value.ToString(); }
+                else { s += "+" + value.ToString(); }
+                s += end;
+                return s;
+            }
         }
-        public string ValueToStr(string start, float value, string end)
-        {
-            if (value == 0) { return ""; }
-            string s = start;
-            if (value < 0) { s += value.ToString(); }
-            else { s += "+" + value.ToString(); }
-            s += end + "\n";
-            return s;
-        }
+       
     }
    protected CharacterStatus charaStatus;
 
@@ -645,6 +650,19 @@ public class Character : MonoBehaviour
         foreach(int stack in GetStEStacks(StEObj)) { sum += stack; }
         return sum;
     }
+
+    public void AddStEStack(GameObject StEObj,int add)
+    {
+        PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+        foreach (PassiveAbility pa in PA_StE)
+        {
+            if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
+            {
+                pa.GetComponent<PA_StatusEffect>().AddStack(add);
+            }
+        }
+    }
+
     public bool CheckHasStE(GameObject StEObj)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
@@ -1448,13 +1466,13 @@ public class Character : MonoBehaviour
         RemovePA_Execute();
     }
 
-    public Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
+    public Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
     {
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities())
             {
-                actionsStatus = passiveAbility.ModifyAction(statusRef, actionsStatus);
+                actionsStatus = passiveAbility.ModifyAction(statusRef, actionsStatus,forCalcDMG);
             }
             RemovePA_Execute();
         }
@@ -1488,11 +1506,11 @@ public class Character : MonoBehaviour
         }
     }
     /// <summary>攻撃命中時</summary>
-    public void OnDamage(Action.OnDamageParams onDamageParams)
+    public void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(onDamageParams); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(onDamageParamsList); }
             RemovePA_Execute();
         }
     }

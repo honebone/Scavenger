@@ -74,7 +74,7 @@ public class PositionEffect : MonoBehaviour
         string info = string.Format("{0}ÅF\n",GetPEName(forRef));
         if (PEStatus.PEInfo != "") { info += PEStatus.PEInfo + "\n"; }
         info += GetAdditionalInfo();
-        return info.ColorStr(Color.gray);
+        return info;
     }
     public virtual string GetAdditionalInfo()
     {

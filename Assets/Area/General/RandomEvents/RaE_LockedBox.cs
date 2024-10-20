@@ -21,7 +21,7 @@ public class RaE_LockedBox : RE_RandomEvents
 
         REOptionParams pick = new REOptionParams();
         pick.optionName = "開錠する";
-        pick.optionInfo = "パーティで最もCRIT率の多いキャラの、[CRIT率]x2の確率で成功し、装備品を3-4個手に入れる\n";
+        pick.optionInfo = "パーティで最もCRIT率の多いキャラの、[CRIT率]x2の確率で成功し、装備品を6-8個手に入れる\n";
         pick.optionInfo += string.Format("成功確率：{0}％", maxCRITC * 2);
         expeditionManager.SetREOptionButtons(new List<REOptionParams> { breach, pick });
     }

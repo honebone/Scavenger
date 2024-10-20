@@ -114,6 +114,7 @@ public class LVLUpManager : MonoBehaviour
         if (LVLUpQueue.Count > 0) { StartelectUpgrade(); }
         else
         {
+            charaDetail.Refresh();
             panel.SetActive(false);
             inLVLUp = false;
         }

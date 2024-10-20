@@ -102,6 +102,7 @@ public class Definer : MonoBehaviour
     [SerializeField] List<GameObject> personalityDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
     [SerializeField] List<GameObject> statusEffectDataBase;
+    [SerializeField] List<GameObject> positionEffectDataBase;
     public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
     public List<ItemData> GetAllLoots() { return lootDataBase_Inspector; }
 
@@ -128,7 +129,21 @@ public class Definer : MonoBehaviour
                     }
                 }
                 Debug.Log("error:状態異常が見つかりませんでした");
-                return "error:状態異常が見つかりませんでした";               
+                return "error:状態異常が見つかりませんでした";
+            case 'P'://ポジション効果
+                foreach (GameObject PE in positionEffectDataBase)
+                {
+                    PositionEffect PA = PE.GetComponent<PositionEffect>();
+                    PositionEffect.PositionEffectStatus status = PA.GetPositionEffectStatus();
+                    if ($"P_{status.PEName}" == key)
+                    {
+                        s += PA.GetPEInfo(true) + "\n";
+                        if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
+                        return s;
+                    }
+                }
+                Debug.Log("error:ポジション効果が見つかりませんでした");
+                return "error:ポジション効果が見つかりませんでした";
             default:
                 Debug.Log("error:頭文字のタグが一致しません");
                 return "error:頭文字のタグが一致しません";
