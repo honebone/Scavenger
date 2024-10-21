@@ -52,7 +52,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u30A4\u30B0\u30CA\u30A4\u30C8"
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
+    conditionInfo: "\u65751\u4F53\u306B\u706B\u50B7\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: "\u4ED8\u4E0E\u3059\u308B\u706B\u7A2E\u306E\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u9BAD\u5EA6\u306E\u3042\u308B\u6575\u306E\u6570\u306B\u7B49\u3057\u3044"
@@ -177,6 +177,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  burn: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
   ember: {fileID: 5164891664867224302, guid: 14621f1735101844186999a6d52eb27b, type: 3}
   threshold: 7
   attack:

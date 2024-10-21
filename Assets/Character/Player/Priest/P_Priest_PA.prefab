@@ -52,7 +52,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u656C\u8654\u306A\u7948\u308A"
-    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F1\u4F53\u4EE5\u4E0A\u306E\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092\u56DE\u5FA9\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u306A\u3089"
+    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092\u56DE\u5FA9\u3057\u305F\u3068\u304D(\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u3068\u304D\u306E\u307F)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -96,7 +96,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

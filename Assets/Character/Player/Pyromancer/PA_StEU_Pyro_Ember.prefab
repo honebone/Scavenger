@@ -51,12 +51,12 @@ MonoBehaviour:
     StEName: "\u706B\u7A2E"
     StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u5F37\u5316\u3059\u308B"
     StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
-    StEType: 1
+    StEType: 4
     scaleStackByLVL: 0
     maxStack: 0
     merge: 1
     refValue: 0
-    undeletable: 1
+    undeletable: 0
     stack: 0
     value: 0
 --- !u!212 &6391350165293048886

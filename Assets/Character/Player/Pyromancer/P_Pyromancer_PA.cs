@@ -31,26 +31,56 @@ public class P_Pyromancer_PA : PA_Personality
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] StEApplyBonus stEApplyBonus;
     [SerializeField] CharactersManager.SearchCharaCondition bunred;
+    [SerializeField] GameObject burn;
 
     [SerializeField] GameObject ember;
     [SerializeField] int threshold;
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    public override void OnTurnStart(bool myTurn, int turnCount)
-    {
-        if (myTurn)
-        {
-            int burnCount = charactersManager.SearchCharaWithCondition(bunred).Count;
-            if (burnCount > 0)
-            {
-                Action.ActionStatus action = actionStatus;
-                StEApplyBonus bonus = stEApplyBonus;
-                bonus.exStack = burnCount;
-                action.StEApplyBonus = new List<StEApplyBonus> { bonus };
+    //public override void OnTurnStart(bool myTurn, int turnCount)
+    //{
+    //    if (myTurn)
+    //    {
+    //        int burnCount = charactersManager.SearchCharaWithCondition(bunred).Count;
+    //        if (burnCount > 0)
+    //        {
+    //            Action.ActionStatus action = actionStatus;
+    //            StEApplyBonus bonus = stEApplyBonus;
+    //            bonus.exStack = burnCount;
+    //            action.StEApplyBonus = new List<StEApplyBonus> { bonus };
 
-                Enqueue_Self(action);
+    //            Enqueue_Self(action);
+    //        }
+    //    }
+    //}
+
+    public override void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    {
+        int stack = 0;
+        foreach (Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
+        {
+            if (!onApplyStEParams.taget.GetCharacterStatus().position.IsPlayerPos())
+            {
+                foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
+                {
+                    if(statusEffectParams.applyStE== burn)
+                    {
+                        stack++;
+                        break;
+                    }
+                }
             }
+        }
+
+        if (stack > 0)
+        {
+            Action.ActionStatus action = actionStatus;
+            StEApplyBonus bonus = stEApplyBonus;
+            bonus.exStack = stack;
+            action.StEApplyBonus = new List<StEApplyBonus> { bonus };
+
+            Enqueue_Self(action);
         }
     }
 
@@ -62,7 +92,7 @@ public class P_Pyromancer_PA : PA_Personality
             if (target.Count > 0)
             {
                 Enqueue(attack, true, target);
-                character.AddStEStack(ember, threshold);
+                character.AddStEStack(ember, -threshold);
             }
         }
     }
