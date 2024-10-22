@@ -166,7 +166,7 @@ public class LootPanel : MonoBehaviour
            
         }
         revealing = false;
-        tutorialManager.StartTutorial(tutorial_loot);
+        tutorialManager.SetTutorial(tutorial_loot);
     }
 
     public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)

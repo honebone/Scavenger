@@ -51,7 +51,7 @@ public class Map_MapPanel : MonoBehaviour
             mapPanel.SetActive(true);
             if (tutorialManager.CheckUnlocked(tutorial_expedition))
             {
-                tutorialManager.StartTutorial(tutorial_map);
+                tutorialManager.SetTutorial(tutorial_map);
             }
         }
     }

@@ -17,9 +17,11 @@ public class TutorialManager : MonoBehaviour
 
     TutorialText displayingText;
     TutorialData displayingTutorial;
+    List<TutorialData> tutorialQueue = new List<TutorialData>();
     GameManager gameManager;
 
     int count;
+    bool inTutorial;
 
     private void Start()
     {
@@ -27,21 +29,34 @@ public class TutorialManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void StartTutorial(TutorialData tutorial)
+    public void SetTutorial(TutorialData tutorial)
     {
         if (gameManager.DoTutorial() && !unlockedTutorial.Contains(tutorial))
         {
-            Time.timeScale = 0;
-            panel.SetActive(true);
-
-            displayingTutorial = tutorial;
             unlockedTutorial.Add(tutorial);
+            tutorialQueue.Add(tutorial);
 
-            count = 0;
-            DisplayTutorial();
+            if (!inTutorial)
+            {
+                StartTutorial();   
+            }
         }
     }
-    public void Tutorial_dethsDoor() { StartTutorial(T_deathsDoor); }
+
+    public void StartTutorial()
+    {
+        inTutorial = true;
+        Time.timeScale = 0;
+        panel.SetActive(true);
+
+        displayingTutorial = tutorialQueue[0];
+        tutorialQueue.RemoveAt(0);
+
+        count = 0;
+        DisplayTutorial();
+    }
+
+    public void Tutorial_dethsDoor() { SetTutorial(T_deathsDoor); }
 
     public void DisplayTutorial()
     {
@@ -70,12 +85,17 @@ public class TutorialManager : MonoBehaviour
 
         if (guideObjP.childCount != 0) { for (int i = 0; i < guideObjP.childCount; i++) { Destroy(guideObjP.GetChild(i).gameObject); } }
 
-        panel.SetActive(false);
+        if (tutorialQueue.Count > 0) { StartTutorial(); }
+        else
+        {
+            inTutorial = false;
+            panel.SetActive(false);
 
-        displayingTutorial = null;
+            displayingTutorial = null;
 
-        Time.timeScale = 1;
-        count = 0;
+            Time.timeScale = 1;
+            count = 0;
+        }
     }
 
     public bool CheckUnlocked(TutorialData tutorial) { return skipTutorial || unlockedTutorial.Contains(tutorial); }

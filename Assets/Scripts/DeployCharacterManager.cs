@@ -85,7 +85,7 @@ public class DeployCharacterManager : MonoBehaviour
             //positionButtons[6].SetChara(inf);
 
             yield return new WaitForSeconds(1f);
-            tutorialManager.StartTutorial(tutroial_deploy);
+            tutorialManager.SetTutorial(tutroial_deploy);
             //yield return new WaitForSeconds(0.5f);
             //tutorialManager.StartTutorial(tutroial_embark);
             CheckParty();
@@ -213,6 +213,6 @@ public class DeployCharacterManager : MonoBehaviour
 
     public void StartTutorial_Info()
     {
-        if (tutorialManager.CheckUnlocked(tutroial_deploy)) { tutorialManager.StartTutorial(tutroial_info); }
+        if (tutorialManager.CheckUnlocked(tutroial_deploy)) { tutorialManager.SetTutorial(tutroial_info); }
     }
 }

@@ -124,8 +124,8 @@ public class CharaDetailUI : MonoBehaviour
 
         inventoryEq.SetButtons();//test
 
-        if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_unlockAbility); }
-        else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equip); }
+        if (inventory.GetExp() > 0) { tutorialManager.SetTutorial(tutorial_unlockAbility); }
+        else if (inventory.GetEquipments().Count > 0) { tutorialManager.SetTutorial(tutorial_equip); }
 
        
     }

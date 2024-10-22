@@ -381,7 +381,7 @@ public class BattleManager : MonoBehaviour
 
     public void Trigger_BattleStart()
     {
-        tutorialManager.StartTutorial(tutorial_Battle);
+        tutorialManager.SetTutorial(tutorial_Battle);
 
         if (fieldEffect != null) { fieldEffect.OnBattleStart(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
@@ -528,13 +528,13 @@ public class BattleManager : MonoBehaviour
 
         }
 
-        if (f) { tutorialManager.StartTutorial(tutorial_frontLine);infoText.AddDebugText("ok"); }
+        if (f) { tutorialManager.SetTutorial(tutorial_frontLine);infoText.AddDebugText("ok"); }
     }
 
     public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }
 
-    public void StartTutorial_Ability() { tutorialManager.StartTutorial(tutorial_ability); }
-    public void StartTutorial_Corpse() { tutorialManager.StartTutorial(tutorial_corpse); }
+    public void StartTutorial_Ability() { tutorialManager.SetTutorial(tutorial_ability); }
+    public void StartTutorial_Corpse() { tutorialManager.SetTutorial(tutorial_corpse); }
 
     private void Update()
     {

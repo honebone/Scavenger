@@ -268,11 +268,11 @@ public class ExpeditionManager : MonoBehaviour
             if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y)).SetState_Selectable(); }
             if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y - 1)).SetState_Selectable(); }
         }
-        tutorialManager.StartTutorial(tutorial_expedition);
+        tutorialManager.SetTutorial(tutorial_expedition);
         guideMessage.SetGuideText("マップから次の階層へ移動可能");
         nextRoomButton.SetActive(true);
-        if (inventory.GetExp() > 0) { tutorialManager.StartTutorial(tutorial_exp); }
-        else if (inventory.GetEquipments().Count > 0) { tutorialManager.StartTutorial(tutorial_equipment); }
+        if (inventory.GetExp() > 0&&!tutorialManager.CheckUnlocked(tutorial_exp)) { tutorialManager.SetTutorial(tutorial_exp); }
+        else if (inventory.GetEquipments().Count > 0) { tutorialManager.SetTutorial(tutorial_equipment); }
     }
     public void GoToNextRoom(Vector2Int pos)
     {
@@ -543,9 +543,9 @@ public class ExpeditionManager : MonoBehaviour
     //================================[チュートリアル]=======================================
     public void StartTutorial_Passive()
     {
-        tutorialManager.StartTutorial(tutorial_passive);
+        tutorialManager.SetTutorial(tutorial_passive);
     }
-    public void StartTutorial_Personality() { tutorialManager.StartTutorial(tutorial_personality); }
+    public void StartTutorial_Personality() { tutorialManager.SetTutorial(tutorial_personality); }
 
 
     public PartyStatus GetPartyStatus() { return partyStatus; }
