@@ -194,6 +194,12 @@ public class Character_TargetButton : MonoBehaviour
             {
                 s += string.Format("\nSANÅF{0}", status.SAN);
             }
+
+            if (character.GetPACurrentStateInfo() != "")
+            {
+                s += "\n\n" + character.GetPACurrentStateInfo().ColorStr(Definer.colorRef.emphasize);
+            }
+
             mouseOver.SetUI(s, true);
 
             if (SettingManager.infoOnMouseover)

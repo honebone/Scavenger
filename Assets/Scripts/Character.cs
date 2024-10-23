@@ -654,7 +654,7 @@ public class Character : MonoBehaviour
     public void AddStEStack(GameObject StEObj,int add)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-        foreach (PassiveAbility pa in PA_StE)
+        foreach (PassiveAbility pa in GetPassiveAbilities())
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
             {
@@ -686,6 +686,21 @@ public class Character : MonoBehaviour
         //charaObj.SetSelectedIcon(true);
         targetButton.SetSelectedIcon(true);
     }
+
+    public string GetPACurrentStateInfo()
+    {
+        string s = "";
+        foreach(PassiveAbility passiveAbility in GetPassiveAbilities())
+        {
+            string info = passiveAbility.GetCurrentStateInfo();
+            if (info != "")
+            {
+                s += $"<{passiveAbility.GetPAName()}>\n{info}\n";
+            }
+        }
+        return s;
+    }
+
     public string GetInfo()
     {
         string info = charaStatus.GetInfo();

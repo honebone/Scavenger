@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 1
   skipDeployPhase: 0
-  skipTutorial: 0
+  skipTutorial: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -5832,8 +5832,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 85, y: -60.49724}
-  m_SizeDelta: {x: -670.5829, y: -431.98785}
+  m_AnchoredPosition: {x: 63.533733, y: -48.09999}
+  m_SizeDelta: {x: -579.7155, y: -431.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
 MonoBehaviour:
@@ -12345,6 +12345,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 026496ef4d279e14f8914da23b085f05, type: 2}
   - {fileID: 11400000, guid: aa6bade2a9a9b134f9c7272ddae354b3, type: 2}
   - {fileID: 11400000, guid: 703a1844ce587f3449edf6e1bf0cbb41, type: 2}
+  - {fileID: 11400000, guid: 1b021cf47dbd34a48999cc53cea721b6, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -22141,8 +22142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 64.70859, y: -9.19125}
-  m_SizeDelta: {x: 170.72, y: 16.51}
+  m_AnchoredPosition: {x: 110.14227, y: -9.19125}
+  m_SizeDelta: {x: 286.3443, y: 16.51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142065253
 MonoBehaviour:
@@ -26480,7 +26481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 346755977}
   text: {fileID: 1142065253}
-  baseOffset: 0.12
+  baseOffset: 0.19
 --- !u!114 &1425116169
 MonoBehaviour:
   m_ObjectHideFlags: 0
