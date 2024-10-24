@@ -130,6 +130,8 @@ public class Action : MonoBehaviour
 
         [Header("特定のStEの除去")]
         public List<ActionData.RemoveStE> removeStEs;
+        [Header("特定のPEの除去")]
+        public List<ActionData.RemovePE> removePEs;
 
         [Header("\n\n召喚")]
         public bool summon;
@@ -277,6 +279,13 @@ public class Action : MonoBehaviour
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+                s += string.Format("・{0}", status.ToLinkKey());
+                if (remove.removeAll) { s += "を全て除去\n"; }
+                else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
+            }
+            foreach (ActionData.RemovePE remove in removePEs)
+            {
+                PositionEffect.PositionEffectStatus status = remove.removePE.GetComponent<PositionEffect>().GetPositionEffectStatus();
                 s += string.Format("・{0}", status.ToLinkKey());
                 if (remove.removeAll) { s += "を全て除去\n"; }
                 else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
@@ -1121,6 +1130,10 @@ public class Action : MonoBehaviour
 
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
+                foreach (ActionData.RemovePE remove in actionStatus.removePEs)
+                {
+                    characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).RemovePE(remove);
+                }
                 foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE付与
                 {
                     if (PEParams.guaranteed||PEParams.applyChance.Dice())

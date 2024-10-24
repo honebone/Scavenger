@@ -67,11 +67,26 @@ public class PositionManager : MonoBehaviour
             }
         }
     }
-    public void RemovePE(PositionEffect positionEffect)
+    public void DisablePE(PositionEffect positionEffect)
     {
         deletePEs.Add(positionEffect);
         infoText.AddLogText(string.Format("ポジション{0}から{1}が消去", pos.PosIntToStr(), positionEffect.GetPEName(true)));
     }
+
+    public void RemovePE(ActionData.RemovePE removePE)
+    {
+        PositionEffect.PositionEffectStatus status = removePE.removePE.GetComponent<PositionEffect>().GetPositionEffectStatus();
+        foreach (PositionEffect PE in new List<PositionEffect>(positionEffects))
+        {
+            if (PE.GetPositionEffectStatus().PEName == status.PEName)
+            {
+                if (removePE.removeAll) { PE.Disable(); }
+                else { PE.AddStack(removePE.addAmount); }
+            }
+        }
+        //メッセージ
+    }
+
     void RemovePE_Execute()
     {
         foreach (PositionEffect deletePE in deletePEs) { positionEffects.Remove(deletePE); }

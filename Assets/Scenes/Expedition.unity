@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   skipDeployPhase: 0
-  skipTutorial: 1
+  skipTutorial: 0
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -293,12 +293,12 @@ MonoBehaviour:
     upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    upperMid: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    centerMid: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    lowerMid: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    upperBack: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    centerBack: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    lowerBack: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    centerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    lowerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
@@ -18437,6 +18437,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -26481,7 +26482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 346755977}
   text: {fileID: 1142065253}
-  baseOffset: 0.19
+  baseOffset: 0.2
 --- !u!114 &1425116169
 MonoBehaviour:
   m_ObjectHideFlags: 0

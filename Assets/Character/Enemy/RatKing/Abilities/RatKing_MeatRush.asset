@@ -46,7 +46,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 6
+  cooldownOnUse: 5
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -97,7 +97,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -132,6 +133,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -158,4 +160,4 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    actionTargetsInt: 00000000020000000400000008000000
+    actionTargetsInt: 01000000030000000500000007000000

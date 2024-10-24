@@ -21,7 +21,8 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 4
   excludeRandomPool: 0
-  selectWeight: 3
+  priority: 1
+  selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -95,7 +96,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -130,6 +132,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -150,10 +153,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    targetCount: 4
+    targetCount: 1
     actionTargets:
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 00000000040000000500000006000000
+    actionTargetsInt: 01000000

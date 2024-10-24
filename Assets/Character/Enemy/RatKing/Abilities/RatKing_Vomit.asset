@@ -22,7 +22,7 @@ MonoBehaviour:
   abilityType: 1
   excludeRandomPool: 0
   priority: 1
-  selectWeight: 3
+  selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -97,7 +97,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -147,6 +148,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -170,4 +172,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 00000000
+    actionTargetsInt: 03000000

@@ -156,6 +156,7 @@ MonoBehaviour:
     - removeStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
       removeAll: 0
       addAmount: -1
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -221,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31c707b9a66bd8f448c72f339e373270, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

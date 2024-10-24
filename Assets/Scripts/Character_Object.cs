@@ -20,6 +20,8 @@ public class Character_Object : MonoBehaviour
     Image HPBarColor;    
     [SerializeField]
     Image SANFill;
+    [SerializeField]
+    Image DMGBarFill;
 
     [SerializeField] GameObject SANBarObj;
 
@@ -51,8 +53,7 @@ public class Character_Object : MonoBehaviour
     [SerializeField] float actAnim_move;
     [SerializeField] float actAnim_duration;
 
-
-    Tweener DMGAnim;
+    Sequence DMGAnim;
 
     Character character;
     CharactersManager charactersManager;
@@ -133,10 +134,14 @@ public class Character_Object : MonoBehaviour
 
         if(DMGBar.value > HPBar.value)
         {
-            //if (barAnim != null) { StopCoroutine(barAnim); }
-            //barAnim = StartCoroutine(DMGBarAnim());
+            DMGBarFill.color = Definer.colorRef.CRIT;
+
             if (DMGAnim != null) { DMGAnim.Kill(); }
-            DMGAnim = DMGBar.DOValue(HPBar.value, 0.5f).SetEase(Ease.InExpo);
+            DMGAnim = DOTween.Sequence();
+            DMGAnim.Append(DMGBar.DOValue(HPBar.value, 0.5f).SetEase(Ease.InExpo));
+            DMGAnim.Join(DMGBarFill.DOColor(Color.red, 0.25f).SetEase(Ease.InExpo));
+
+            DMGAnim.Play();
         }
         else { DMGBar.value = HPBar.value; }
     }

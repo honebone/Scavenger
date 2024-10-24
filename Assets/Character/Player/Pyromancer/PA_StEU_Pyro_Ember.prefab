@@ -50,7 +50,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u706B\u7A2E"
     StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u5F37\u5316\u3059\u308B"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: 547a567d5b368aa4f8423d8b36ba2e2c, type: 3}
     StEType: 4
     scaleStackByLVL: 0
     maxStack: 0
@@ -100,7 +100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 547a567d5b368aa4f8423d8b36ba2e2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

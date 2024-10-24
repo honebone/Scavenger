@@ -69,6 +69,18 @@ public class ActionData : ScriptableObject
     [Header("RemoveStE")]
     public List<RemoveStE> removeStEs;
 
+    [System.Serializable]
+    public class RemovePE
+    {
+        /// <summary>消去能力の時はプレハブ StE内から呼ばれるときは自身</summary>
+        public GameObject removePE;
+
+        public bool removeAll;
+        [Header("減らすときは-つけろ!!")] public int addAmount;
+    }
+    [Header("RemoveStE")]
+    public List<RemovePE> removePEs;
+
     public bool summon;
     //public int summonSize;
     public CharacterData[] summonChara;

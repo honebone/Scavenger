@@ -13,27 +13,51 @@ MonoBehaviour:
   m_Name: A_Spider_fetch
   m_EditorClassIdentifier: 
   abilityName: "\u624B\u7E70\u308A\u5BC4\u305B"
+  lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
-  spriteIndex: 0
-  SE: {fileID: 0}
   abilityType: 4
   excludeRandomPool: 1
+  priority: 1
   selectWeight: 1
+  availableFront: 1
+  availableMid: 1
+  availableBack: 1
+  hasSelfCondition: 0
   conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterInclude: []
+    characterTags: 
+    StE: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  freeAction: 0
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
-  availableFront: 1
-  availableMid: 1
-  availableBack: 1
   actionsStaus:
   - actionName: "\u624B\u7E70\u308A\u5BC4\u305B"
     conditionInfo: 
     targetInfo: "\u8718\u86DB\u306E\u5DE3\u4E0A\u306B\u3044\u308B\u65751\u4F53(\u30DE\u30FC\u30AF\u3001\u6F5C\u4F0F\u3092\u7121\u8996)"
+    AModInfo: 
     actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -44,34 +68,50 @@ MonoBehaviour:
       onlyEmpty: 0
       player: 1
       enemy: 0
+      onlyPlayable: 0
       front: 1
       mid: 1
       back: 1
+      characterInclude: []
       characterTags: 
       StE: []
       PE:
       - {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
     ignoreMark: 1
     ignoreHide: 1
     moveValue: 
+    consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -85,25 +125,39 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+      guaranteed: 0
       applyChance: 80
       stack: 1
       value: 0
     applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
     removeStEs: []
+    removePEs:
+    - removePE: {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
+      removeAll: 1
+      addAmount: 0
     summon: 0
     summonChara: []
     summonChanceWeight: []
-    moveChance: 120
+    moveChance: 70
+    guaranteedMove: 0
     moveForword: 1
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 4
-    SE: {fileID: 0}
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
+    removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 3206125595271152344, guid: 38d49602b8263ea4ea5688479578113e, type: 3}
-    spriteIndex: 0
     actionOwner: {fileID: 0}
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
     actionTargetsInt: 06000000

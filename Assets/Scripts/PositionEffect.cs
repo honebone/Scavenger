@@ -118,7 +118,7 @@ public class PositionEffect : MonoBehaviour
     public void Disable()
     {
         AtTheEnd();
-        positionManager.RemovePE(this);
+        positionManager.DisablePE(this);
         if (PEIcon != null) { Destroy(PEIcon.gameObject); }
         Destroy(gameObject);
     }
