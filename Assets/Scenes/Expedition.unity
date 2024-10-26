@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   skipDeployPhase: 0
-  skipTutorial: 0
+  skipTutorial: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -269,10 +269,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   players:
-    upperFront: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
+    upperFront: {fileID: 0}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}

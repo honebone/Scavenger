@@ -116,8 +116,8 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 80
-    INTMod_max: 120
+    INTMod_min: 50
+    INTMod_max: 80
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0

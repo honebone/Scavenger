@@ -48,13 +48,9 @@ public class PA_StatusEffect : PassiveAbility
         public string GetInfo()
         {
             string s = "";
-            StatusEffectStatus status =applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-            if (guaranteed) { s += "・"; }
-            else { s += string.Format("・{0}％の確率で", applyChance); }
-            if (status.refValue) { s += string.Format("{0}を{1}スタック付与\n", (status.StEName + value.ToString()).ColorStr(status.StEType.ToColor()), stack); }
-            else { s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), stack); }
-            //s += string.Format("{0}を{1}スタック付与\n", status.StEName.ColorStr(status.StEType.ToColor()), StEParams.stack);
-            s += applyStE.GetComponent<PA_StatusEffect>().GetStEInfo_forRef();
+            StatusEffectStatus status = applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+            string chanceText = guaranteed ? "確定" : $"{applyChance}％";
+            s += $"・対象の地点に{status.ToLinkKey(false, value)}を付与\n({chanceText},{stack}スタック)\n";
 
             return s;
         }

@@ -5,19 +5,39 @@ using UnityEngine;
 public class Eq_Horseshoe : PA_Equipment
 {
     [SerializeField] Action.ActionStatus actionStatus;
-    [SerializeField] int valuePerACT;
-    [SerializeField] int maxStack;
+    [SerializeField] int valueLossPerTurn;
+    [SerializeField] int defValue;
     [SerializeField] PA_StatusEffect.StatusEffectParams ATK;
     [SerializeField, TextArea(3, 10)] string exInfo;
 
+    bool f;
+    int currentValue;
+
+    public override void OnBattleStart()
+    {
+        f = false;
+        currentValue = defValue;
+    }
+
+    public override void OnRoundEnd()
+    {
+        f = false;
+        currentValue = defValue;
+    }
+
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if (myTurn && character.GetCharacterStatus().ACT > 10)
+        if (f)
         {
-            int value = Mathf.Clamp(character.GetCharacterStatus().ACT - 10, 0, maxStack);
+            currentValue = Mathf.Max(0, currentValue - valueLossPerTurn);
+        }
+        f = true;
+
+        if (myTurn && currentValue>0)
+        {
             Action.ActionStatus action = actionStatus;
             PA_StatusEffect.StatusEffectParams apply = ATK;
-            apply.value = value * valuePerACT;
+            apply.value = currentValue;
             action.applySteParams.Add(apply);
 
             Enqueue_Self(action);

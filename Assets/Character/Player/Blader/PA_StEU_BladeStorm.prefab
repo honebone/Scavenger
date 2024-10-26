@@ -45,11 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a638a4412ab8914a92b4e96fb31c536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   StEStatus:
     StEName: "\u5203\u306E\u5D50"
     StEInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B\u653B\u6483\u3092\u518D\u767A\u52D5\u3055\u305B\u308B\n\u518D\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: ef5ab13ad5819f949b6c5e0bdc74bc87, type: 3}
     StEType: 4
+    scaleStackByLVL: 0
     maxStack: 0
     merge: 1
     refValue: 0
@@ -78,6 +81,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -93,16 +97,21 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 100
+    attackInfo: 
+    ATKMod_min: 40
     ATKMod_max: 140
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -126,8 +135,8 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -143,10 +152,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   condition_focus:
     searchAsPos: 0
@@ -157,6 +169,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE:
     - {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
@@ -173,6 +186,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []

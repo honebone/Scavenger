@@ -52,14 +52,14 @@ MonoBehaviour:
     info_start: 
     equipmentInfo: 
     statusMod:
-      maxHP_mul: 10
+      maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
       INT_mul: 0
       CRITC: 0
       CRITD: 0
-      EVD: 5
+      EVD: 10
       ACC: 0
       ACT: 0
       turnPerRound: 0

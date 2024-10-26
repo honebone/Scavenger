@@ -42,6 +42,7 @@ public class PositionEffect : MonoBehaviour
     protected CharactersManager charactersManager;
     protected PositionManager positionManager;
 
+    bool destroyed;
     PEIcon PEIcon;
     public void Init(Character c, PositionManager pm,PositionEffectParams PEParams,PEIcon icon)
     {
@@ -105,18 +106,22 @@ public class PositionEffect : MonoBehaviour
         }
         else { PEStatus.stack = Mathf.Clamp(PEStatus.stack + stack, 0, PEStatus.maxStack); }
 
-        if (PEStatus.stack <= 0)
+        if (!destroyed)
         {
-            PEStatus.stack = 0;
-            Destroy(PEIcon.gameObject);
-            Disable();
-        }
-        else { PEIcon.SetStackText(PEStatus.stack); }
+            if (PEStatus.stack <= 0)
+            {
+                PEStatus.stack = 0;
+                Destroy(PEIcon.gameObject);
+                Disable();
+            }
+            else { PEIcon.SetStackText(PEStatus.stack); }
+        }      
     }
 
 
     public void Disable()
     {
+        destroyed = true;
         AtTheEnd();
         positionManager.DisablePE(this);
         if (PEIcon != null) { Destroy(PEIcon.gameObject); }

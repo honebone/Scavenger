@@ -152,6 +152,15 @@ public class BattleManager : MonoBehaviour
         infoText.AddLogText(string.Format("\n◇◇ラウンド{0}◇◇", roundCount));
         Trigger_RoundStart();
     }
+
+    class TurnOrderParams
+    {
+        public int ACT;
+        public int turns;
+        public int index;
+        public Character chara;
+    }
+
     public void DicideTurnOrder()
     {
         for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }//tst
@@ -160,8 +169,10 @@ public class BattleManager : MonoBehaviour
         currentTurnCount = 0;
         turns.Clear();
         List<Character> charas = new List<Character>();
-        List<int> turnsPerRound = new List<int>();//i番目のラウンド毎ターン数
-        List<float> ACT = new List<float>();//i番目のACT
+        //List<int> turnsPerRound = new List<int>();//i番目のラウンド毎ターン数
+        //List<int> ACT = new List<int>();//i番目のACT
+
+        List<TurnOrderParams> turnOrderParamsList = new List<TurnOrderParams>();
         foreach(Character chara in new List<Character>(charactersManager.GetExistingCharacters_All()))
         {
             if (chara.GetCharacterStatus().turnPerRound > 0)
@@ -170,54 +181,80 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        foreach (Character chara in charas)
+        //foreach (Character chara in charas)
+        //{
+        //    turnsPerRound.Add(chara.GetCharacterStatus().turnPerRound);
+        //    ACT.Add(chara.GetCharacterStatus().ACT);
+        //    chara.SetTurnIcon();
+        //}
+        for(int j = 0; j < charas.Count; j++)
         {
-            turnsPerRound.Add(chara.GetCharacterStatus().turnPerRound);
-            ACT.Add(chara.GetCharacterStatus().ACT);
-            chara.SetTurnIcon();
-        }
-        int minACT = 1;
-        foreach (int act in ACT) { if (act < minACT) { minACT = act; } }
-        if (minACT <= 0)//ACTの最低値が0以下なら
-        {
-            for (int i = 0; i < ACT.Count; i++) { ACT[i] += Mathf.Abs(minACT) + 1; }//|ACTの最低値|+1を全ACTに足す(=0以下のACTがなくなる)
-        }
-        for (int i = 0; turnsPerRound.Count > 0; i++)
-        {
-            int index = ACT.ChoiceWithWeight();
-            //infoText.AddDebugText(string.Format("index:{0} name:{1}", index, charas[index].GetCharacterStatus().charaName));
-            //if(turnsPerRound[index] > 0)
-            //{
-            //    //characterInTurnOrder.Add(charas[a]);
-            //    var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-            //    t.GetComponent<Battle_TurnOrderIcon>().Init(charas[index], i < partyStatus.turnOrderReveal + 1);
-            //    //turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
-            //    turns.Add(new Turn(charas[index], t.GetComponent<Battle_TurnOrderIcon>()));
-            //    turnsPerRound[index]--;
-            //}
-            //else
-            //{
-            //    infoText.AddDebugText("skip");
-            //    charas.RemoveAt(index);
-            //    turnsPerRound.RemoveAt(index);
-            //    ACT.RemoveAt(index);
-            //}
+            TurnOrderParams turnOrderParams = new TurnOrderParams();
+            turnOrderParams.chara = charas[j];
+            turnOrderParams.ACT = charas[j].GetCharacterStatus().ACT;
+            turnOrderParams.turns = charas[j].GetCharacterStatus().turnPerRound;
+            turnOrderParams.index = j;
 
+            turnOrderParamsList.Add(turnOrderParams);
+
+            charas[j].SetTurnIcon();
+        }
+        //int minACT = 1;
+        //foreach (int act in ACT) { if (act < minACT) { minACT = act; } }
+        //if (minACT <= 0)//ACTの最低値が0以下なら
+        //{
+        //    for (int i = 0; i < ACT.Count; i++) { ACT[i] += Mathf.Abs(minACT) + 1; }//|ACTの最低値|+1を全ACTに足す(=0以下のACTがなくなる)
+        //}
+        //for (int i = 0; turnsPerRound.Count > 0; i++)
+        //{
+          
+        //    int index = ACT.ChoiceWithWeight();
+
+        //    var t = Instantiate(turnOrderIcon, turnOrderIconParent);
+        //    t.GetComponent<Battle_TurnOrderIcon>().Init(charas[index], i < partyStatus.turnOrderReveal + 1);
+        //    //turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
+        //    turns.Add(new Turn(charas[index], t.GetComponent<Battle_TurnOrderIcon>()));
+        //    turnsPerRound[index]--;
+
+        //    if (turnsPerRound[index] == 0)
+        //    {
+        //        //infoText.AddDebugText("skip");
+        //        charas.RemoveAt(index);
+        //        turnsPerRound.RemoveAt(index);
+        //        ACT.RemoveAt(index);
+        //    }
+        //    else if (turnsPerRound[index] < 0) { infoText.AddErrorText(""); }           
+        //}
+
+        for (int i = 0; turnOrderParamsList.Count > 0; i++)
+        {
+            //ACTの最大値を探す
+            int maxACT = turnOrderParamsList[0].ACT;
+            foreach (TurnOrderParams turn in turnOrderParamsList) { if (turn.ACT > maxACT) { maxACT = turn.ACT; } }
+
+            //ACTが最大値と等しいキャラを探す
+            List<TurnOrderParams> pool = new List<TurnOrderParams>();
+            foreach(TurnOrderParams turn in turnOrderParamsList)
+            {
+                if (turn.ACT == maxACT) { pool.Add(turn); }
+            }
+
+            //探したキャラからランダムに選ぶ
+            TurnOrderParams selected = pool.Choice();
 
             var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-            t.GetComponent<Battle_TurnOrderIcon>().Init(charas[index], i < partyStatus.turnOrderReveal + 1);
+            t.GetComponent<Battle_TurnOrderIcon>().Init(selected.chara, i < partyStatus.turnOrderReveal + 1);
             //turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
-            turns.Add(new Turn(charas[index], t.GetComponent<Battle_TurnOrderIcon>()));
-            turnsPerRound[index]--;
+            turns.Add(new Turn(selected.chara, t.GetComponent<Battle_TurnOrderIcon>()));
+           selected.turns--;
+            selected.ACT = (selected.ACT / 2f).ToInt();
 
-            if (turnsPerRound[index] == 0)
+            if (selected.turns == 0)
             {
                 //infoText.AddDebugText("skip");
-                charas.RemoveAt(index);
-                turnsPerRound.RemoveAt(index);
-                ACT.RemoveAt(index);
+                turnOrderParamsList.Remove(selected);
             }
-            else if (turnsPerRound[index] < 0) { infoText.AddErrorText(""); }
+            else if (selected.turns  < 0) { infoText.AddErrorText(""); }
         }
 
         for (int i = 0; i < Mathf.Min(turns.Count, partyStatus.turnOrderReveal + 1); i++) { turns[i].turnIcon.Reveal(); }
