@@ -313,7 +313,7 @@ public class ExpeditionManager : MonoBehaviour
     {
         enemyStatusGrowth.ACC++;
         enemyStatusGrowth.EVD++;
-        //enemyStatusGrowth.ACT++;
+        enemyStatusGrowth.ACT++;
         enemyStatusGrowth.maxHP_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.maxHP_mul) * enemyMaxHPGrowth - 100);
         enemyStatusGrowth.ATK_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.ATK_mul) * enemyATKGrowth - 100);
         enemyStatusGrowth.INT_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.INT_mul) * enemyATKGrowth - 100);

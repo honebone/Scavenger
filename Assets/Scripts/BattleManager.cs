@@ -565,7 +565,8 @@ public class BattleManager : MonoBehaviour
 
         }
 
-        if (f) { tutorialManager.SetTutorial(tutorial_frontLine);infoText.AddDebugText("ok"); }
+        if (f) { tutorialManager.SetTutorial(tutorial_frontLine);//infoText.AddDebugText("ok"); 
+        }
     }
 
     public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }

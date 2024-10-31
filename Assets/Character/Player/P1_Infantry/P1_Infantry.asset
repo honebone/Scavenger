@@ -52,7 +52,7 @@ MonoBehaviour:
   maxHP: 55
   maxSAN: 50
   ATK: 9
-  INT: 5
+  INT: 9
   CRITC: 5
   CRITD: 150
   EVD: 3
@@ -64,7 +64,7 @@ MonoBehaviour:
   statusGrowth:
     maxHP: 5
     ATK: 0.9
-    INT: 0.5
+    INT: 0.9
     ACT: 0
     CRITC: 0
     CRITD: 0

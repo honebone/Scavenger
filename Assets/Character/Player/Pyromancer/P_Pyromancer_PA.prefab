@@ -55,7 +55,7 @@ MonoBehaviour:
     conditionInfo: "\u65751\u4F53\u306B\u706B\u50B7\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u4ED8\u4E0E\u3059\u308B\u706B\u7A2E\u306E\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u9BAD\u5EA6\u306E\u3042\u308B\u6575\u306E\u6570\u306B\u7B49\u3057\u3044"
+    actionInfo: "\u4ED8\u4E0E\u3059\u308B\u706B\u7A2E\u306E\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u706B\u50B7\u306E\u3042\u308B\u6575\u306E\u6570\u306B\u7B49\u3057\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -132,6 +132,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -257,6 +258,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []

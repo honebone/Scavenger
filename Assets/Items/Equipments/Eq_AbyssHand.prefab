@@ -55,8 +55,8 @@ MonoBehaviour:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 20
-      INT_mul: 0
+      ATK_mul: 0
+      INT_mul: 20
       CRITC: 0
       CRITD: 0
       EVD: 5

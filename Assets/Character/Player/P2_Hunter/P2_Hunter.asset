@@ -26,6 +26,7 @@ MonoBehaviour:
   obstacle: 0
   variableSprites:
   - {fileID: 7582409335243652064, guid: 882f3d2cf383aa445ac4bdb246ed220b, type: 3}
+  spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: d0caadc484eaf4248bf33898a28d6d3d, type: 3}
   abilities:
   - {fileID: 11400000, guid: 17a60b4c339d5534bba13ba8091e2ee8, type: 2}
@@ -52,7 +53,7 @@ MonoBehaviour:
   maxHP: 40
   maxSAN: 50
   ATK: 15
-  INT: 5
+  INT: 10
   CRITC: 7
   CRITD: 150
   EVD: 10
@@ -64,7 +65,7 @@ MonoBehaviour:
   statusGrowth:
     maxHP: 3.5
     ATK: 1.5
-    INT: 0.5
+    INT: 1
     ACT: 0
     CRITC: 0
     CRITD: 0
