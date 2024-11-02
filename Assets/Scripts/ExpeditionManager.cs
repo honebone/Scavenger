@@ -65,6 +65,8 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField]
     PartyStatus partyStatus;
 
+    public static float playerMaxHPGrowth = 1.15f;
+    public static float playerATKGrowth = 1.15f;
     [SerializeField] float enemyMaxHPGrowth;
     [SerializeField] float enemyATKGrowth;
     [SerializeField] Character.CharaStatusMod enemyStatusGrowth;

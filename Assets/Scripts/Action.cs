@@ -366,6 +366,26 @@ public class Action : MonoBehaviour
             else { return string.Format("{0}-{1}", min, max); }
         }
 
+        public ActionStatus Modify_ApplyStE(List<StEApplyBonus> applyBonus)
+        {
+            ActionStatus modifiedStatus = this;
+            foreach (StEApplyBonus bonus in applyBonus)
+            {
+                bool f = false;
+                for (int i = 0; i < modifiedStatus.StEApplyBonus.Count; i++)
+                {
+                    if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
+                    {
+                        modifiedStatus.StEApplyBonus[i] = modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
+                        f = true;
+                    }
+                }
+                if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
+            }
+
+            return modifiedStatus;
+        }
+
 
         public ActionStatus Modify(ActionMod.ActionModStatus mod)
         {

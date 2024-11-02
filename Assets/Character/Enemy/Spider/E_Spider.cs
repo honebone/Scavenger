@@ -22,10 +22,10 @@ public class E_Spider : Character
         List<Ability.AbilityStatus> abilities = new List<Ability.AbilityStatus>(GetAvailableAbilitiesStatus(true));
         if (charactersManager.SearchCharaWithCondition(condition).Count > 0)//’wå‚Ì‘ƒ‚ª•t—^‚³‚ê‚Ä‚¢‚é“G‚ª‚¢‚é‚È‚ç
         {
-            foreach(Character character in charactersManager.SearchCharaWithCondition(condition))
-            {
-                infoText.AddDebugText(string.Format("{0},{1}", character.GetCharacterStatus().charaName, character.GetCharacterStatus().position.PosIntToStr()));
-            }
+            //foreach(Character character in charactersManager.SearchCharaWithCondition(condition))
+            //{
+            //    infoText.AddDebugText(string.Format("{0},{1}", character.GetCharacterStatus().charaName, character.GetCharacterStatus().position.PosIntToStr()));
+            //}
             abilities.Add(charaStatus.abilitiesStatus[2]);//èŒJ‚èŠñ‚¹‚ğƒv[ƒ‹‚É’Ç‰Á
         }
         return ChoiceAbilityWithWeight(abilities);

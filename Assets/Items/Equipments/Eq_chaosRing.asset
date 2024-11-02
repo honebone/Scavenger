@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
+  m_Name: Eq_chaosRing
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: "\u6DF7\u6C8C\u306E\u6307\u8F2A"
+  specialInfo: 0
+  info: 
+  rarity: 3
+  sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  amountPerStack: 1
+  dropAmountRange: {x: 0, y: 0}
+  materialTags: 00000000
+  price: 0
+  equipmentTag: 0
+  manager: {fileID: 9185327421234476493, guid: 725268bd3a1f0a4449a0e0404cc4d15e, type: 3}

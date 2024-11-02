@@ -85,7 +85,14 @@ public class LVLUpManager : MonoBehaviour
     {
         Character.CharacterStatus charaStatus = LVLUpQueue[0].GetCharacterStatus();
         lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
-        statusGrowthText.text = LVLUpQueue[0].GetCharacterStatus().statusGrowth.GetInfo(charaStatus.level);
+        string growthStr = "";
+        int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP * (ExpeditionManager.playerMaxHPGrowth - 1));
+        int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK * (ExpeditionManager.playerATKGrowth - 1));
+        int INTGrowth = Mathf.CeilToInt(charaStatus.INT * (ExpeditionManager.playerATKGrowth - 1));
+        growthStr += $"Šî‘bHP+{HPGrowth}\nŠî‘bATK+{ATKGrowth}\nŠî‘bINT+{INTGrowth}\n";
+        growthStr += LVLUpQueue[0].GetCharacterStatus().statusGrowth.GetInfo(charaStatus.level);
+
+        statusGrowthText.text = growthStr;
         for (int i = 0; i < 3; i++)
         {
             panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f,RotateMode.WorldAxisAdd);

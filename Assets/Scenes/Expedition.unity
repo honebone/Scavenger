@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
@@ -273,11 +273,11 @@ MonoBehaviour:
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     upperMid: {fileID: 0}
-    centerMid: {fileID: 0}
-    lowerMid: {fileID: 0}
-    upperBack: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+    centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
+    lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+    upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
     centerBack: {fileID: 0}
-    lowerBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
+    lowerBack: {fileID: 0}
   itemData:
   - {fileID: 11400000, guid: 8dedc3295e2b174409d16c8be78f90f0, type: 2}
   - {fileID: 11400000, guid: 85316edc6d6f2394486e0567baccfe5d, type: 2}
@@ -290,11 +290,11 @@ MonoBehaviour:
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
-    upperFront: {fileID: 11400000, guid: 627a7625e63b297448cc181326efa5a7, type: 2}
+    upperFront: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    centerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     lowerMid: {fileID: 0}
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
@@ -12346,6 +12346,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa6bade2a9a9b134f9c7272ddae354b3, type: 2}
   - {fileID: 11400000, guid: 703a1844ce587f3449edf6e1bf0cbb41, type: 2}
   - {fileID: 11400000, guid: 1b021cf47dbd34a48999cc53cea721b6, type: 2}
+  - {fileID: 11400000, guid: 1973397cd3fa86f4aaf73a24b0e019c1, type: 2}
+  - {fileID: 11400000, guid: e8ae6d7d6c6d9e245abb3599a1103ff5, type: 2}
+  - {fileID: 11400000, guid: 10ac2662eed97db4188796b8c3e0150f, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -18222,8 +18225,8 @@ MonoBehaviour:
     dropExpChance: 100
     getPerChance_endRE: 10
     supplyOptions: 3
-  enemyMaxHPGrowth: 1.15
-  enemyATKGrowth: 1.15
+  enemyMaxHPGrowth: 1.25
+  enemyATKGrowth: 1.2
   enemyStatusGrowth:
     maxHP_mul: 0
     maxSAN_mul: 0

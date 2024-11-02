@@ -37,10 +37,11 @@ public class Eq_CaramityCane : PA_Equipment
                 }
             }
         }
+        applyedStEList.Clear();
     }
     public override void OnRoundStart()
     {
-        applyedStEList.Clear();
+        
     }
     public override void OnBattleEnd()
     {

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1455896857616258923}
-  - component: {fileID: -3093927964309081174}
+  - component: {fileID: -4735702535085811932}
   - component: {fileID: 2102424110011888310}
   m_Layer: 0
-  m_Name: Eq_shiningClaw
+  m_Name: Eq_dreamCatcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3093927964309081174
+--- !u!114 &-4735702535085811932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,23 +42,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5667121962493394942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0818aac560ede439940f84da6e238f, type: 3}
+  m_Script: {fileID: 11500000, guid: d79569cd840ced9429f605d5f26d3ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
   PAInfo_end: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
+    itemData: {fileID: 11400000, guid: e8ae6d7d6c6d9e245abb3599a1103ff5, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 10
+      ATK_mul: 0
       INT_mul: 0
-      CRITC: 5
-      CRITD: 30
+      CRITC: 0
+      CRITD: 0
       EVD: 0
       ACC: 0
       ACT: 0
@@ -70,15 +70,15 @@ MonoBehaviour:
       moveRes: 0
       debuffRes: 0
     actionMods: []
-  claw:
-    actionName: "\u714C\u5203"
-    conditionInfo: "\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D(\u884C\u52D5\u6642\u306E\u307F)"
-    targetInfo: "\u653B\u6483\u3057\u305F\u76F8\u624B"
+  actionStatus:
+    actionName: "\u30C9\u30EA\u30FC\u30E0\u30AD\u30E3\u30C3\u30C1\u30E3\u30FC"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u500B\u306E\u30BF\u30FC\u30F3\u306B\u884C\u52D5\u3057\u306A\u304B\u3063\u305F\u306A\u3089"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
-    sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}
+    sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 20
-    ATKMod_max: 30
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
     exATKDMG_int: 0
     exINTDMG_int: 0
     ACCMod: 0
-    CRITCMod: -100
+    CRITCMod: 0
     CRITDMod: 0
     drain: 0
     ignoreShield: 0
@@ -129,8 +129,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 0
-    healRegain_max: 0
+    healRegain_min: 20
+    healRegain_max: 20
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -142,10 +142,15 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 4
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 0
+    removeStE_debuff: 2
     removeStEs: []
     removePEs: []
     summon: 0
@@ -212,12 +217,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.8, y: 4.8}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

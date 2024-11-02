@@ -155,9 +155,9 @@ public class StatusGrowth
     public string GetInfo(int LVL)
     {
         string s = "";
-        s += ValueToStr("äÓëbHP", CalcGrowth(LVL,maxHP), "");
-        s += ValueToStr("äÓëbATK", CalcGrowth(LVL, ATK), "");
-        s += ValueToStr("äÓëbINT", CalcGrowth(LVL, INT), "");
+        //s += ValueToStr("äÓëbHP", CalcGrowth(LVL,maxHP), "");
+        //s += ValueToStr("äÓëbATK", CalcGrowth(LVL, ATK), "");
+        //s += ValueToStr("äÓëbINT", CalcGrowth(LVL, INT), "");
         s += ValueToStr("CRITó¶", CalcGrowth(LVL, CRITC), "Åì");
         s += ValueToStr("CRITÉ_ÉÅÅ[ÉW", CalcGrowth(LVL, CRITD), "Åì");
         s += ValueToStr("ACT", CalcGrowth(LVL, ACT), "");

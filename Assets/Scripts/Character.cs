@@ -1279,9 +1279,16 @@ public class Character : MonoBehaviour
         StatusGrowth SG = charaStatus.statusGrowth;
         int LVL = charaStatus.level;
 
-        AddMaxHP(SG.CalcGrowth(LVL, SG.maxHP), 0, true);
-        AddATK(SG.CalcGrowth(LVL, SG.ATK), 0);
-        AddINT(SG.CalcGrowth(LVL, SG.INT), 0);
+        //AddMaxHP(SG.CalcGrowth(LVL, SG.maxHP), 0, true);
+        //AddATK(SG.CalcGrowth(LVL, SG.ATK), 0);
+        //AddINT(SG.CalcGrowth(LVL, SG.INT), 0);
+        int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP * (ExpeditionManager.playerMaxHPGrowth - 1));
+        int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK * (ExpeditionManager.playerATKGrowth - 1));
+        int INTGrowth = Mathf.CeilToInt(charaStatus.INT * (ExpeditionManager.playerATKGrowth - 1));
+        AddMaxHP(HPGrowth, 0, true);
+        AddATK(ATKGrowth, 0);
+        AddINT(INTGrowth, 0);
+
         AddCRITC(SG.CalcGrowth(LVL, SG.CRITC));
         AddCRITD(SG.CalcGrowth(LVL, SG.CRITD));
         AddACT(SG.CalcGrowth(LVL, SG.ACT));
