@@ -1282,9 +1282,9 @@ public class Character : MonoBehaviour
         //AddMaxHP(SG.CalcGrowth(LVL, SG.maxHP), 0, true);
         //AddATK(SG.CalcGrowth(LVL, SG.ATK), 0);
         //AddINT(SG.CalcGrowth(LVL, SG.INT), 0);
-        int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP * (ExpeditionManager.playerMaxHPGrowth - 1));
-        int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK * (ExpeditionManager.playerATKGrowth - 1));
-        int INTGrowth = Mathf.CeilToInt(charaStatus.INT * (ExpeditionManager.playerATKGrowth - 1));
+        int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP_base * (ExpeditionManager.playerMaxHPGrowth - 1));
+        int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK_base * (ExpeditionManager.playerATKGrowth - 1));
+        int INTGrowth = Mathf.CeilToInt(charaStatus.INT_base * (ExpeditionManager.playerATKGrowth - 1));
         AddMaxHP(HPGrowth, 0, true);
         AddATK(ATKGrowth, 0);
         AddINT(INTGrowth, 0);

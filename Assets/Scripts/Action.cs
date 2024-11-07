@@ -1150,10 +1150,11 @@ public class Action : MonoBehaviour
 
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
-                foreach (ActionData.RemovePE remove in actionStatus.removePEs)
+                foreach (ActionData.RemovePE remove in actionStatus.removePEs)//PEœ‹Ž
                 {
                     characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).RemovePE(remove);
                 }
+
                 foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE•t—^
                 {
                     if (PEParams.guaranteed||PEParams.applyChance.Dice())
