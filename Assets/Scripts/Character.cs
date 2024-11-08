@@ -980,10 +980,10 @@ public class Character : MonoBehaviour
         }
 
         charaObj.SetHPandShieldBar();//HPバーに反映
-        if (CheckAlive() && onDamageParams.totalDMG > 0)
+        if (CheckAlive())
         {
             OnDamaged(onDamageParams);
-            OnDecreasedHP(onDamageParams.totalDMG);
+            if (onDamageParams.totalDMG > 0) OnDecreasedHP(onDamageParams.totalDMG);
             //カウンター
         }
         return !CheckAlive();

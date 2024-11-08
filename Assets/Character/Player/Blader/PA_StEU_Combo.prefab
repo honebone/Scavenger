@@ -45,11 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0125ac441ece1949946437d25992c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   StEStatus:
     StEName: "\u30B3\u30F3\u30DC"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001CRIT\u7387+1\uFF05\u3001CRIT\u30C0\u30E1\u30FC\u30B8+2\uFF05\n\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-2"
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001CRIT\u7387+1\uFF05\u3001CRIT\u30C0\u30E1\u30FC\u30B8+2\uFF05\n\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-2"
     StEIcon: {fileID: 21300000, guid: 63010851e7121594cb0372994ffb0f0d, type: 3}
     StEType: 4
+    scaleStackByLVL: 0
     maxStack: 15
     merge: 1
     refValue: 0

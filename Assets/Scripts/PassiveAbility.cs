@@ -135,7 +135,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void BecomeAbilityTarget(Character actor) { }
     public virtual void OnAttacked(Character attacker, bool evaded, bool missed) { }
 
-    /// <summary>DMG>0‚ÌŽž‚Ì‚Ý</summary>
+    /// <summary>DMG=0‚ÌŽž‚à</summary>
     public virtual void OnDamaged(Action.OnDamageParams onDamageParams) { }
     
     public virtual void OnCRITed(int ID) { }

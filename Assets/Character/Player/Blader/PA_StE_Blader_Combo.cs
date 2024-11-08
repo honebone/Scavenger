@@ -20,7 +20,7 @@ public class PA_StE_Blader_Combo : PA_StatusEffect
     }
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        AddStack(-2);
+        if (onDamageParams.totalDMG > 0) AddStack(-2);
     }
 
     public override void AtTheEnd()

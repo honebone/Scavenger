@@ -10,13 +10,13 @@ public class E_Slime_PA : PA_Personality
     List<int> empty=new List<int>();
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        if (33.Dice())
+        if (onDamageParams.totalDMG > 0 && 33.Dice())
         {
             Action.ActionStatus action = actionStatus;
             actionStatus.actionOwner = character;
             empty = charactersManager.GetEmptyPos(list);
             action.actionTargetsInt = empty;
-            character.Enqueue(action, false, new List<Character>(),1);
+            character.Enqueue(action, false, new List<Character>(), 1);
         }
     }
    
