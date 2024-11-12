@@ -338,6 +338,7 @@ public class BattleManager : MonoBehaviour
 
     public void RoundEnd()
     {
+        currentTurn = null;
         inRound = false;
         infoText.AddLogText(string.Format("\n◇◇ラウンド{0}終了◇◇", roundCount));
         Trigger_RoundEnd();
@@ -350,6 +351,7 @@ public class BattleManager : MonoBehaviour
         currentTurnCount = 0;
         inRound = false;
         inBattle = false;
+        currentTurn = null;
         if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
         if (selectingTarget) { infoText.AddErrorText("対象選択中に戦闘が終了しました"); }
 
