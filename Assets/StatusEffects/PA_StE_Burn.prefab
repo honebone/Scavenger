@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230d476c726f862458f879b0be3d8158, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   StEStatus:
     StEName: "\u706B\u50B7"
-    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C[\u30B9\u30BF\u30C3\u30AF\u6570]\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
+    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 435fbb85167e67c4d9fd0a0d842a59be, type: 3}
     StEType: 2
     scaleStackByLVL: 1
@@ -55,8 +57,10 @@ MonoBehaviour:
     merge: 0
     refValue: 0
     undeletable: 0
+    DoT: 1
     stack: 0
     value: 0
+    DMGPerTurn: 0
   actionStatus:
     actionName: "\u706B\u50B7"
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
@@ -79,6 +83,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -94,16 +99,21 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -128,6 +138,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -143,10 +154,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
 --- !u!212 &843000856407058644
 SpriteRenderer:

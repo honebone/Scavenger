@@ -13,8 +13,6 @@ public class PA_StatusEffect : PassiveAbility
         public Sprite StEIcon;
         public enum StatusEffectType { neutral, buff, debuff, focus, unique }
         public StatusEffectType StEType;
-        [Header("付与者のLVL-1だけスタックが増える")]
-        public bool scaleStackByLVL;
         [Header("0ならスタック制限なし")]
         public int maxStack;
         [Tooltip("同種の状態異常がすでにある場合、そのスタックを増加させるか")]
@@ -22,10 +20,13 @@ public class PA_StatusEffect : PassiveAbility
         public bool refValue;
 
         public bool undeletable;
+        public bool DoT;
 
         [Header("以下は代入される")]
         public int stack;
         public int value;
+
+        public int DMGPerTurn;
 
         public string GetName()
         {
@@ -45,6 +46,11 @@ public class PA_StatusEffect : PassiveAbility
 
         public int stack;
         public int value;
+
+        [Header("DoT")]
+        public bool refATK;
+        [Header("以下は代入される")]
+        public int DMGPerTurn;
         public string GetInfo()
         {
             string s = "";
@@ -60,10 +66,11 @@ public class PA_StatusEffect : PassiveAbility
         }
     }
 
-    public void Init(int stack, int value,StEIcon icon)
+    public void Init(int stack, int value,int DMGPerTurn,StEIcon icon)
     {
         StEStatus.stack = stack;
         StEStatus.value = value;
+        StEStatus.DMGPerTurn = DMGPerTurn;
        
         StEIcon = icon;
         StEIcon.Init(StEStatus);
@@ -88,6 +95,7 @@ public class PA_StatusEffect : PassiveAbility
         else { s += string.Format("{0}スタック(最大{1})", StEStatus.stack, StEStatus.maxStack); }
         s += string.Format("[{0}]\n", Definer.StETypeName[StEStatus.StEType].ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]));
         s += GetStEInfo_forRef();
+        if (StEStatus.DoT) { s += $"\n減少HP：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
         return s;
     }
     public string GetStEInfo_forRef()
@@ -96,7 +104,6 @@ public class PA_StatusEffect : PassiveAbility
         if (StEStatus.refValue) { s += "X"; }
         s += "：";
         s += StEStatus.StEInfo;
-        if (StEStatus.scaleStackByLVL) { s += "\n<付与者のLVLでスタック数増加>\n"; }
         if (StEStatus.undeletable) { s += "\n消去不可"; }
         //s = s.ColorStr(Color.gray);
         if (instantiated) { s += GetAdditionalInfo().ColorStr(Definer.colorRef.currentState); }

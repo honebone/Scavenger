@@ -128,12 +128,15 @@ MonoBehaviour:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
       applyChance: 90
-      stack: 5
-      value: 0
+      stack: 3
+      value: 50
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -157,4 +160,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 11000000

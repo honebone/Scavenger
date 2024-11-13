@@ -110,14 +110,15 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 50
-    ATKMod_max: 60
-    INTMod_min: 50
-    INTMod_max: 60
+    ATKMod_min: 40
+    ATKMod_max: 50
+    INTMod_min: 40
+    INTMod_max: 50
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -145,13 +146,16 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
-      applyChance: 80
-      stack: 4
-      value: 0
+      applyChance: 100
+      stack: 3
+      value: 30
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []

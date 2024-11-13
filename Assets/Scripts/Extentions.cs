@@ -330,19 +330,19 @@ public static class Extentions
         return currentPos.PosIntToVector().y;
     }
 
-    public  static int DotTotalDMG(this int stack)
-    {
-        int DMG = 0;
-        int i = stack;
+    //public  static int DotTotalDMG(this int stack)
+    //{
+    //    int DMG = 0;
+    //    int i = stack;
 
-        while (i > 0)
-        {
-            DMG += i;
-            i -= 2;
-        }
+    //    while (i > 0)
+    //    {
+    //        DMG += i;
+    //        i -= 2;
+    //    }
 
-        return DMG;
-    }
+    //    return DMG;
+    //}
 
     /// <summary>状態異常のストラクト -> リンク付きテキスト</summary>
     public static string ToLinkKey(this PA_StatusEffect.StatusEffectStatus status, bool ignoreValue = true, int value = 0)

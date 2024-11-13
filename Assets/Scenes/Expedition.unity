@@ -272,7 +272,7 @@ MonoBehaviour:
     upperFront: {fileID: 0}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
-    upperMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
     upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}

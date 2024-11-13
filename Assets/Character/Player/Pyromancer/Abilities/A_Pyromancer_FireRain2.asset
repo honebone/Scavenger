@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u708E\u306E\u96E8+"
   lockedDefault: 0
-  upgradeInfo: "ACC\u88DC\u6B63+5\nCRIT\u7387\u88DC\u6B63+5\uFF05\n\u706B\u50B7\u306E\u30B9\u30BF\u30C3\u30AF+1"
+  upgradeInfo: "ACC\u88DC\u6B63+5\nCRIT\u7387\u88DC\u6B63+5\uFF05\n\u706B\u50B7\u306E\u52B9\u679C\u91CF+15\uFF05"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
@@ -128,12 +128,15 @@ MonoBehaviour:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
       applyChance: 90
-      stack: 6
-      value: 0
+      stack: 3
+      value: 65
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []

@@ -152,12 +152,16 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 20
       stack: 3
-      value: 0
+      value: 20
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
       guaranteed: 0
       applyChance: 5
       stack: 1
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

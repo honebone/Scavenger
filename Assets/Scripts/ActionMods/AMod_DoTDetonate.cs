@@ -15,10 +15,7 @@ public class AMod_DoTDetonate : ActionMod
             int DMG = 0;
             foreach(GameObject d in DoT)
             {
-                foreach(int stack in statusRef.actionTargets[i].GetStEStacks(d))
-                {
-                    DMG += stack.DotTotalDMG();
-                }
+                DMG += statusRef.actionTargets[i].GetDoTDMG(d, true);
             }
 
             if (ATKDMG) { actionModStatus.trueATKDMG = (DMG * ratio).ToInt(); }

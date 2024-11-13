@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u7C89\u7815"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 4580567757570660169, guid: d6f6a2cd2de339346800b4d43a2c3291, type: 3}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 3
   availableFront: 1
   availableMid: 1
@@ -34,6 +37,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []
@@ -69,6 +73,7 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -84,21 +89,29 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    attackInfo: 
     ATKMod_min: 60
     ATKMod_max: 110
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -115,17 +128,21 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 50
       stack: 3
-      value: 0
+      value: 20
+      refATK: 1
+      DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
       guaranteed: 0
       applyChance: 20
       stack: 1
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -139,8 +156,13 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 4580567757570660169, guid: d6f6a2cd2de339346800b4d43a2c3291, type: 3}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 06000000

@@ -256,7 +256,18 @@ public class Action : MonoBehaviour
                 f = true;
 
                 string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
-                s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n({chanceText},{StEParams.stack}スタック)\n";
+                string DoTText = "";
+                if (status.DoT)
+                {
+                    DoTText += $"HP減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                    if (refCharaStatus)
+                    {
+                        int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
+                        int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
+                        DoTText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
+                    }
+                }
+                s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{DoTText}({chanceText},{StEParams.stack}スタック)\n";
             }
 
             CheckNewBlock();
@@ -977,7 +988,12 @@ public class Action : MonoBehaviour
                         {
                             StEParams.applyChance += actionsStatus[i].debuffChanceMod;
                         }
-                        if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
+                        //if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
+                        if (StEStaus.DoT)
+                        {
+                            int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+                            StEParams.DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
+                        }
 
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
                         {

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f651a2ad1240688478ed77cc4b7cb8ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c711c1ac6564f4d4683ac6be684dfa87, type: 2}
     info_start: 
@@ -54,6 +56,7 @@ MonoBehaviour:
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      INT_mul: 0
       CRITC: 0
       CRITD: 15
       EVD: 0
@@ -65,6 +68,7 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       moveRes: 0
+      debuffRes: 0
     actionMods:
     - {fileID: 3631413296726765430, guid: c1a5540b37003af44abf1a604c51c795, type: 3}
   attack:
@@ -89,6 +93,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -104,16 +109,21 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 1
+    attackInfo: 
     ATKMod_min: 20
     ATKMod_max: 50
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -138,12 +148,14 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 30
       stack: 2
-      value: 0
+      value: 10
+      refATK: 1
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -159,10 +171,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   condition:
     searchAsPos: 0
@@ -173,6 +188,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []

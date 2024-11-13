@@ -351,7 +351,6 @@ public class BattleManager : MonoBehaviour
         currentTurnCount = 0;
         inRound = false;
         inBattle = false;
-        currentTurn = null;
         if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
         if (selectingTarget) { infoText.AddErrorText("対象選択中に戦闘が終了しました"); }
 
@@ -376,6 +375,8 @@ public class BattleManager : MonoBehaviour
                 chara.Retreat();
             }
         }
+
+        currentTurn = null;
 
         Trigger_BattleEnd();
     }

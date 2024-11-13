@@ -45,21 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df1c11123b42b045b9d8ba8341b1ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   StEStatus:
     StEName: "\u6BD2"
-    StEInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306EHP\u304C[\u30B9\u30BF\u30C3\u30AF\u6570]\u6E1B\u5C11\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-2"
+    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
     StEType: 2
-    scaleStackByLVL: 1
     maxStack: 0
     merge: 0
     refValue: 0
     undeletable: 0
+    DoT: 1
     stack: 0
     value: 0
+    DMGPerTurn: 0
   actionStatus:
     actionName: "\u6BD2"
-    conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3057\u305F\u6642"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -79,6 +82,7 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -94,16 +98,21 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -128,6 +137,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -143,10 +153,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
 --- !u!212 &9158235056984087585
 SpriteRenderer:

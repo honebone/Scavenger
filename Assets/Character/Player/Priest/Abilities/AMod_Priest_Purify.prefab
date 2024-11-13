@@ -52,11 +52,15 @@ MonoBehaviour:
     decreaseHP: 0
     ATKMod: 0
     INTMod: 40
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 1
     healValue: 0
@@ -70,12 +74,14 @@ MonoBehaviour:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
       applyChance: 100
-      stack: 4
-      value: 0
+      stack: 3
+      value: 30
+      refATK: 0
+      DMGPerTurn: 0
     applyStEBonus: []
+    debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
   hasCondition_owner: 1
   condition_owner:
@@ -87,6 +93,7 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE:
     - {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}
@@ -104,6 +111,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []

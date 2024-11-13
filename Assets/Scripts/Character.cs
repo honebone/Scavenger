@@ -539,7 +539,7 @@ public class Character : MonoBehaviour
             var s = Instantiate(StEParams.applyStE, transform);
             PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
-            s.GetComponent<PA_StatusEffect>().Init(finalStack,finalValue, charaObj.SetStEIcon().GetComponent<StEIcon>());
+            s.GetComponent<PA_StatusEffect>().Init(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>());
             s.GetComponent<PassiveAbility>().Init(this, 0,infoText);
             if (StEStatus.refValue)
             {
@@ -649,6 +649,21 @@ public class Character : MonoBehaviour
         int sum = 0;
         foreach(int stack in GetStEStacks(StEObj)) { sum += stack; }
         return sum;
+    }
+
+    public int GetDoTDMG(GameObject StEObj, bool total)
+    {
+        int DMG = 0;
+        PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+        foreach (PassiveAbility pa in PA_StE)
+        {
+            if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName)
+            {
+                int DMGPerTurn = pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().DMGPerTurn;
+                DMG += total ? DMGPerTurn * pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().stack : DMGPerTurn;
+            }
+        }
+        return DMG;
     }
 
     public void AddStEStack(GameObject StEObj,int add)

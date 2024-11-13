@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u304B\u3076\u308A\u3064\u304D"
   lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 3361710016604790159, guid: 8a05e450c7b1873408d0a7e4491547db, type: 3}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 2
   availableFront: 1
   availableMid: 1
@@ -34,12 +37,14 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
@@ -68,6 +73,7 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
       PE: []
@@ -83,21 +89,29 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    attackInfo: 
     ATKMod_min: 80
     ATKMod_max: 120
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -111,27 +125,37 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 0
       applyChance: 40
-      stack: 4
-      value: 0
+      stack: 3
+      value: 25
+      refATK: 1
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
+    freeAction: 0
     abilityType: 1
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 3361710016604790159, guid: 8a05e450c7b1873408d0a7e4491547db, type: 3}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 04000000
