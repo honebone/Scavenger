@@ -47,11 +47,11 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: "\u81EA\u8EAB\u306B\u706B\u7A2E\u304C\u3042\u308B"
     hideValues: 1
-    exInfo: "\u706B\u7A2E1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001INT\u88DC\u6B63+7\uFF05"
+    exInfo: "\u706B\u7A2E1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001\u706B\u50B7\u306E\u52B9\u679C\u91CF+2"
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
-    INTMod: 7
+    INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -71,7 +71,11 @@ MonoBehaviour:
     shieldAdd: 0
     shieldRemove: 0
     applySteParams: []
-    applyStEBonus: []
+    applyStEBonus:
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      exChance: 0
+      exStack: 0
+      exValue: 2
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0

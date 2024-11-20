@@ -993,6 +993,7 @@ public class Action : MonoBehaviour
                         {
                             int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
                             StEParams.DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
+                            infoText.AddDebugText($"value:{StEParams.value}");
                         }
 
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//’Š‘I

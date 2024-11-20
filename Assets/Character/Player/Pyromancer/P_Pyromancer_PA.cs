@@ -84,24 +84,24 @@ public class P_Pyromancer_PA : PA_Personality
         }
     }
 
-    public override void OnTurnEnd()
-    {
-        if(character.GetStEStack_Sum(ember)>= threshold)
-        {
-            List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-            if (target.Count > 0)
-            {
-                Enqueue(attack, true, target);
-                character.AddStEStack(ember, -threshold);
-            }
-        }
-    }
+    //public override void OnTurnEnd()
+    //{
+    //    if(character.GetStEStack_Sum(ember)>= threshold)
+    //    {
+    //        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+    //        if (target.Count > 0)
+    //        {
+    //            Enqueue(attack, true, target);
+    //            character.AddStEStack(ember, -threshold);
+    //        }
+    //    }
+    //}
 
     public override string GetPAInfo_Base()
     {
         string s = "";
         s += actionStatus.GetInfo(false, new Character.CharacterStatus());
-        s += "\n"+attack.GetInfo(false, new Character.CharacterStatus());
+        //s += "\n"+attack.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 }

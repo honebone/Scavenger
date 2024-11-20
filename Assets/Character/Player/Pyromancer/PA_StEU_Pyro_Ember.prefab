@@ -49,16 +49,17 @@ MonoBehaviour:
   PAInfo_end: 
   StEStatus:
     StEName: "\u706B\u7A2E"
-    StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u5F37\u5316\u3059\u308B"
+    StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u706B\u50B7\u306E\u52B9\u679C\u91CF\u3092\u5897\u52A0\u3055\u305B\u308B"
     StEIcon: {fileID: 21300000, guid: 547a567d5b368aa4f8423d8b36ba2e2c, type: 3}
     StEType: 4
-    scaleStackByLVL: 0
-    maxStack: 0
+    maxStack: 50
     merge: 1
     refValue: 0
     undeletable: 0
+    DoT: 0
     stack: 0
     value: 0
+    DMGPerTurn: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

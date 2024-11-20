@@ -187,12 +187,23 @@ public class Character_TargetButton : MonoBehaviour
             string s = status.charaName + "\n";
             if (status.shield > 0)
             {
-                s += string.Format("HP：{0}+{1} ({2}％)", status.HP, status.shield, status.GetHPPercent().ToString("0.0"));
+                s += string.Format("HP：{0}+{1} ({2}％)", status.HP, status.shield.ToString().ColorStr(Definer.colorRef.shield), status.GetHPPercent().ToString("0.0"));
             }
             else { s += string.Format("HP：{0} ({1}％)", status.HP, status.GetHPPercent().ToString("0.0")); }
             if (status.player)
             {
                 s += string.Format("\nSAN：{0}", status.SAN);
+            }
+
+            foreach (GameObject DoT in ExpeditionRef.definer.GetDoTDataBese())
+            {
+                int DMGNextTurn = character.GetDoTDMG(DoT, false);
+                int DMGTotal = character.GetDoTDMG(DoT, true);
+                if (DMGTotal > 0)
+                {
+                    string StEName = DoT.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                    s += $"\n{StEName}：次ターン{DMGNextTurn.ToString().ColorStr(Definer.colorRef.decreaseHP)}(計{DMGTotal.ToString().ColorStr(Definer.colorRef.decreaseHP)})";
+                }
             }
 
             if (character.GetPACurrentStateInfo() != "")
