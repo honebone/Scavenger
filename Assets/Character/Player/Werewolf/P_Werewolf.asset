@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: P_Werewolf
+  m_EditorClassIdentifier: 
+  fileName: P_Werewolf
+  manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
+  charaName: "\u546A\u308F\u308C\u3057\u8005"
+  difficulty: "\u9AD8"
+  introduction: "\u9632\u885B\u30BF\u30A4\u30D7\n"
+  preferredPos: "\u524D\u5217"
+  characterTags: 0200000003000000
+  immovable: 0
+  notChara: 0
+  player: 1
+  playable: 1
+  obstacle: 0
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 5626464818293590775, guid: 1b61c4caa91363a449b847598419488c, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  surviveFatalWounds: 1
+  maxHP: 50
+  maxSAN: 50
+  ATK: 9
+  INT: 9
+  CRITC: 5
+  CRITD: 150
+  EVD: 5
+  ACC: 95
+  ACT: 10
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  statusGrowth:
+    maxHP: 5
+    ATK: 0.9
+    INT: 0.9
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

@@ -19,9 +19,13 @@ public class PositionEffect : MonoBehaviour
         public bool merge;
         public bool refValue;
 
+        public bool DoT;
+
         [Header("以下は代入される")]
         public int stack;
         public int value;
+
+        public int DMGPerTurn;
     }
     [SerializeField]
     protected PositionEffectStatus PEStatus;
@@ -36,6 +40,11 @@ public class PositionEffect : MonoBehaviour
 
         public int stack;
         public int value;
+
+        [Header("DoT")]
+        public bool refATK;
+        [Header("以下は代入される")]
+        public int DMGPerTurn;
     }
     protected Character character;
     //protected Character.CharacterStatus charaStatus;
@@ -44,13 +53,19 @@ public class PositionEffect : MonoBehaviour
 
     bool destroyed;
     PEIcon PEIcon;
-    public void Init(Character c, PositionManager pm,PositionEffectParams PEParams,PEIcon icon)
+    public void Init(Character c, PositionManager pm,PositionEffectParams PEParams,Character.CharacterStatus ownerStatus,PEIcon icon)
     {
         character = c;
         positionManager = pm;
 
         PEStatus.stack = PEParams.stack;
         PEStatus.value = PEParams.value;
+        if (PEStatus.DoT)
+        {
+            int baseDMG = (PEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+            PEStatus.DMGPerTurn = (baseDMG * PEParams.value / 100f).ToInt();
+        }
+        
         PEIcon = icon;
         PEIcon.Init(PEStatus);
         if (PEStatus.merge && PEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるPEは作ってはいけません!!"); }
@@ -75,6 +90,7 @@ public class PositionEffect : MonoBehaviour
         string info = string.Format("{0}：\n",GetPEName(forRef));
         if (PEStatus.PEInfo != "") { info += PEStatus.PEInfo + "\n"; }
         info += GetAdditionalInfo();
+        if (PEStatus.DoT) { info += $"\n減少HP：{PEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
         return info;
     }
     public virtual string GetAdditionalInfo()

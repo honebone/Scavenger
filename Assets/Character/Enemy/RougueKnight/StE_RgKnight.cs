@@ -27,7 +27,7 @@ public class StE_RgKnight : PA_StatusEffect
         else { Disable(); }
     }
 
-    public override string GetAdditionalInfo()
+    public override string GetCurrentStateInfo()
     {
         return string.Format("現在の被ダメージ：{0}/{1}", currentDMG, goalDMG);
     }

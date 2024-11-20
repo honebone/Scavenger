@@ -106,7 +106,8 @@ public class PA_StatusEffect : PassiveAbility
         s += StEStatus.StEInfo;
         if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬"; }
         //s = s.ColorStr(Color.gray);
-        if (instantiated) { s += GetAdditionalInfo().ColorStr(Definer.colorRef.currentState); }
+        if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
+        
         return s;
     }
   

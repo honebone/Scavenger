@@ -279,7 +279,19 @@ public class Action : MonoBehaviour
                 f = true;
 
                 string chanceText = PEParams.guaranteed ? "確定" : $"{PEParams.applyChance}％";
-                s += $"・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n({chanceText},{PEParams.stack}スタック)\n";
+                string DoTText = "";
+                if (status.DoT)
+                {
+                    DoTText += $"HP減少量：{(PEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{PEParams.value}％\n";
+                    if (refCharaStatus)
+                    {
+                        int baseDMG = (PEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
+                        int DMGPerTurn = (baseDMG * PEParams.value / 100f).ToInt();
+                        DoTText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
+                    }
+                }
+
+                s += $"・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n{DoTText}({chanceText},{PEParams.stack}スタック)\n";
             }
 
             CheckNewBlock();
@@ -326,10 +338,10 @@ public class Action : MonoBehaviour
             {
                 if (guaranteedMove) { s += "・"; }
                 else { s += string.Format("・{0}％の確率で", moveChance); }
-                if (moveForword > 0) { s += string.Format("{0}前進\n", moveForword); }
-                if (moveUpper > 0) { s += string.Format("{0}上昇\n", moveUpper); }
-                if (moveLower > 0) { s += string.Format("{0}下降\n", moveLower); }
-                if (moveBackword > 0) { s += string.Format("{0}後退\n", moveBackword); }
+                if (moveForword > 0) { s += string.Format("{0}マス前進\n", moveForword); }
+                if (moveUpper > 0) { s += string.Format("{0}マス上昇\n", moveUpper); }
+                if (moveLower > 0) { s += string.Format("{0}マス下降\n", moveLower); }
+                if (moveBackword > 0) { s += string.Format("{0}マス後退\n", moveBackword); }
             }
             CheckNewBlock();
 
@@ -764,7 +776,7 @@ public class Action : MonoBehaviour
                             ATKDMGf *= RDMG;
                             INTDMGf *= RDMG;
 
-                            ATKDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
+                            ATKDMGf *= (100f + actionsStatus[i].exDMG_mul + ownerStatus.exDMG_mul) / 100f;//与ダメージ上昇効果
                             ATKDMGf += actionsStatus[i].exATKDMG_int;
 
                             INTDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
@@ -1177,7 +1189,7 @@ public class Action : MonoBehaviour
                     if (PEParams.guaranteed||PEParams.applyChance.Dice())
                     {
                         infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName(true)));
-                        characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams);
+                        characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams, ownerStatus);
                     }
                 }
             }

@@ -28,7 +28,7 @@ public class PositionManager : MonoBehaviour
         targetButton = charactersManager.GetTargetButton(pos);
     }
 
-    public void ApplyPE(PositionEffect.PositionEffectParams PEParams)
+    public void ApplyPE(PositionEffect.PositionEffectParams PEParams,Character.CharacterStatus ownerStatus)
     {
         bool f = false;
         PositionEffect PE = PEParams.applyPE.GetComponent<PositionEffect>();
@@ -54,7 +54,7 @@ public class PositionManager : MonoBehaviour
             var s = Instantiate(PEParams.applyPE, PEParent);
             var icon = Instantiate(Definer.positionEffectIcon, PEIconParent);
             positionEffects.Add(s.GetComponent<PositionEffect>());
-            s.GetComponent<PositionEffect>().Init(character,this,PEParams,icon.GetComponent<PEIcon>());
+            s.GetComponent<PositionEffect>().Init(character,this,PEParams,ownerStatus,icon.GetComponent<PEIcon>());
             if (PEStatus.refValue)
             {
                 targetButton.SetDamageText(string.Format("+{0}{1}", PEStatus.PEName, PEParams.stack), PEStatus.PEType.ToColor());

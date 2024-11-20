@@ -275,7 +275,7 @@ MonoBehaviour:
     upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-    upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
+    upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   itemData:
@@ -296,7 +296,7 @@ MonoBehaviour:
     upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     lowerMid: {fileID: 0}
-    upperBack: {fileID: 0}
+    upperBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   FE: {fileID: 0}
@@ -12435,6 +12435,8 @@ MonoBehaviour:
   - {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
   - {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
   - {fileID: 5164891664867224302, guid: 14621f1735101844186999a6d52eb27b, type: 3}
+  - {fileID: 1489497368108049143, guid: 8ed583e08393a3445b99e63968b1a817, type: 3}
+  - {fileID: 1489497368108049143, guid: c25334058e17c0c43b959b6468050a4c, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}

@@ -52,6 +52,8 @@ public class Character : MonoBehaviour
         public int INT_base;
         public float INT_mul;
 
+        public float exDMG_mul;
+
         public float CRITC;
         public float CRITD;
         
@@ -140,7 +142,9 @@ public class Character : MonoBehaviour
 
             s += string.Format("ATK：{0}\n", ATK);
             s += string.Format("INT：{0}\n", INT);
-            s += string.Format("CRIT：{0}％で{1}％ダメージ\n\n", CRITC, CRITD);
+            s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
+            s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
+            s += "\n";
 
             s += string.Format("EVD：{0}\n", EVD);
             s += string.Format("ACC：{0}\n\n", ACC);
@@ -1129,6 +1133,7 @@ public class Character : MonoBehaviour
     }
     public void AddCRITC(float value) { charaStatus.CRITC += value; }
     public void AddCRITD(float value) { charaStatus.CRITD += value; }
+    public void AddExDMG_Mul(float value) { charaStatus.exDMG_mul += value; }
     public void AddEVD(float value) { charaStatus.EVD += value; }
     public void AddACC(float value) { charaStatus.ACC += value; }
     public void AddACT(int value) { charaStatus.ACT += value; }

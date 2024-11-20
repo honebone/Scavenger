@@ -12,15 +12,15 @@ public class PE_Burn : PositionEffect
         if (character != null && character == currentTurnChara)
         {
             Action.ActionStatus action = actionStatus;
-            action.decreaseHP_min = PEStatus.stack;
-            action.decreaseHP_max = PEStatus.stack;
+            action.decreaseHP_min = PEStatus.DMGPerTurn;
+            action.decreaseHP_max = PEStatus.DMGPerTurn;
             Enqueue(action, true, new List<Character>() { character }, 0, true);
         }
     }
 
     public override void OnRoundEnd()
     {
-        AddStack(-2);
+        AddStack(-1);
     }
 
 }
