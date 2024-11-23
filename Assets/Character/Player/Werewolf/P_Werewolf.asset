@@ -29,6 +29,8 @@ MonoBehaviour:
   spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
+  - {fileID: 11400000, guid: eff3191b28c268547a5e49dd7ca4504a, type: 2}
+  - {fileID: 11400000, guid: c33bcb379dcff4c4aaf5530497d362ce, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:

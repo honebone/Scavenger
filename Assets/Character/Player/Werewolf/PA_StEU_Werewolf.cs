@@ -8,6 +8,10 @@ public class PA_StEU_Werewolf : PA_StatusEffect
     [SerializeField] float PROTPerStack;
     [SerializeField] Action.ActionStatus onTurnEnd;
 
+    [SerializeField] GameObject bleed;
+    [SerializeField] Action.ActionStatus onApplyBleed;
+    
+
     public override void OnPAInit()
     {
         character.AddExDMG_Mul(StEStatus.stack * exDMGPerStack);
@@ -32,8 +36,27 @@ public class PA_StEU_Werewolf : PA_StatusEffect
         Enqueue_Self(onTurnEnd);
     }
 
+    public override void OnApplyStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
+    {
+        foreach(Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
+        {
+            foreach(PA_StatusEffect.StatusEffectParams StEParams in onApplyStEParams.appliedParams)
+            {
+                if(StEParams.applyStE == bleed)
+                {
+                    Enqueue_Self(onApplyBleed);
+                    break;
+                }
+            }
+
+        }
+    }
+
     public override string GetAdditionalInfo()
     {
-        return onTurnEnd.GetInfo(false, new Character.CharacterStatus());
+        string s = "";
+        s+= onTurnEnd.GetInfo(false, new Character.CharacterStatus());
+        s+= "\n"+onApplyBleed.GetInfo(false, new Character.CharacterStatus());
+        return s;
     }
 }

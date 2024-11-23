@@ -776,11 +776,11 @@ public class Action : MonoBehaviour
                             ATKDMGf *= RDMG;
                             INTDMGf *= RDMG;
 
-                            ATKDMGf *= (100f + actionsStatus[i].exDMG_mul + ownerStatus.exDMG_mul) / 100f;//与ダメージ上昇効果
-                            ATKDMGf += actionsStatus[i].exATKDMG_int;
+                            ATKDMGf += actionsStatus[i].exATKDMG_int;//与ダメージ上昇効果
+                            ATKDMGf *= (100f + actionsStatus[i].exDMG_mul + ownerStatus.exDMG_mul) / 100f;
 
-                            INTDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;//与ダメージ上昇効果
-                            INTDMGf += actionsStatus[i].exINTDMG_int;
+                            INTDMGf += actionsStatus[i].exINTDMG_int;//与ダメージ上昇効果
+                            INTDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;
 
                             ATKDMG = Mathf.Max(0, Mathf.RoundToInt(ATKDMGf));
                             INTDMG = Mathf.Max(0, Mathf.RoundToInt(INTDMGf));
