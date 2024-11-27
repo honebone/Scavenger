@@ -49,7 +49,7 @@ MonoBehaviour:
   PAInfo_end: 
   StEStatus:
     StEName: "\u4EBA\u72FC"
-    StEInfo: "\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306B\u4E0E\u30C0\u30E1\u30FC\u30B8+3\uFF05\u3001\u88AB\u30C0\u30E1\u30FC\u30B8+5\uFF05"
+    StEInfo: "\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306B\u4E0E\u30C0\u30E1\u30FC\u30B8+3\uFF05\u3001\u88AB\u30C0\u30E1\u30FC\u30B8+6\uFF05"
     StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
     StEType: 4
     maxStack: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
     value: 0
     DMGPerTurn: 0
   exDMGPerStack: 3
-  PROTPerStack: -5
+  PROTPerStack: -6
   onTurnEnd:
     actionName: "\u4EBA\u72FC"
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
@@ -87,6 +87,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -199,6 +200,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0

@@ -28,7 +28,7 @@ public class P_Werewolf_PA : PA_Personality
     {
         string s = "";
         s += applyWerewolf.GetInfo(false, new Character.CharacterStatus());
-        s += removeWerewolf.GetInfo(false, new Character.CharacterStatus());
+        s += "\n"+removeWerewolf.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 }

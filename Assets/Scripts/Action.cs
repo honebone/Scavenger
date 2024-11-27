@@ -150,6 +150,8 @@ public class Action : MonoBehaviour
         [Header("\n\nアビリティ使用回数/クールダウン")]
         public List<ActionData.AbilityRemainControll> abilityRemainControlls;
 
+        public int exTurn;
+
         [Header("\n\n\n\n以下には手を出すな")]
         public bool abilityEffect;
         public bool freeAction;
@@ -180,7 +182,7 @@ public class Action : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
         {
             string s = "";
-            bool nb = false;
+           // bool nb = false;
             bool f = false;
 
             //if (friendly) { s += "友好アクション\n"; }
@@ -354,6 +356,7 @@ public class Action : MonoBehaviour
                     s += string.Format("{0}増加\n", remainControll.value);
                 }
             }
+            if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
             CheckNewBlock();
 
             if (actionMods.Count > 0) { s += "\n"; }
@@ -1133,6 +1136,10 @@ public class Action : MonoBehaviour
                     foreach (ActionData.AbilityRemainControll remainControll in actionsStatus[i].abilityRemainControlls)//アビリティの使用回数
                     {
                         target.AbilityRemain(remainControll);
+                    }
+                    if (actionsStatus[i].exTurn > 0)
+                    {
+                        target.AddTurn(actionsStatus[i].exTurn);
                     }
 
                 }

@@ -242,10 +242,11 @@ public class BattleManager : MonoBehaviour
             //’T‚µ‚½ƒLƒƒƒ‰‚©‚çƒ‰ƒ“ƒ_ƒ€‚É‘I‚Ô
             TurnOrderParams selected = pool.Choice();
 
-            var t = Instantiate(turnOrderIcon, turnOrderIconParent);
-            t.GetComponent<Battle_TurnOrderIcon>().Init(selected.chara, i < partyStatus.turnOrderReveal + 1);
-            //turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
-            turns.Add(new Turn(selected.chara, t.GetComponent<Battle_TurnOrderIcon>()));
+            //var t = Instantiate(turnOrderIcon, turnOrderIconParent);
+            //t.GetComponent<Battle_TurnOrderIcon>().Init(selected.chara, i < partyStatus.turnOrderReveal + 1);
+            ////turnOrderIcons.Add(t.GetComponent<Battle_TurnOrderIcon>());
+            //turns.Add(new Turn(selected.chara, t.GetComponent<Battle_TurnOrderIcon>()));
+            AddTurn(selected.chara,i < partyStatus.turnOrderReveal + 1,1);
            selected.turns--;
             selected.ACT = (selected.ACT / 2f).ToInt();
 
@@ -260,6 +261,19 @@ public class BattleManager : MonoBehaviour
         for (int i = 0; i < Mathf.Min(turns.Count, partyStatus.turnOrderReveal + 1); i++) { turns[i].turnIcon.Reveal(); }
 
         Trigger_TurnOrderDecide();
+    }
+
+    public void AddTurn(Character chara,bool reveal,int add)
+    {
+        if (chara.CheckAlive())
+        {
+            for(int i = 0; i < add; i++)
+            {
+                var t = Instantiate(turnOrderIcon, turnOrderIconParent);
+                t.GetComponent<Battle_TurnOrderIcon>().Init(chara, reveal);
+                turns.Add(new Turn(chara, t.GetComponent<Battle_TurnOrderIcon>()));
+            }
+        }
     }
 
     /// <summary>Á–Å‚ÉŒÄ‚Î‚ê‚é</summary>

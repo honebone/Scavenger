@@ -178,6 +178,13 @@ public class Character_Object : MonoBehaviour
             Instantiate(TurnIcon, TurnIconParent);
         }
     }
+    public void AddTurnIcons(int turns)
+    {
+        for (int i = 0; i < turns; i++)
+        {
+            Instantiate(TurnIcon, TurnIconParent);
+        }
+    }
     public void SetTurnIcon_CurentTurn()
     {
         TurnIconParent.GetChild(turnCounter).GetComponent<Image>().sprite = currentTurn;

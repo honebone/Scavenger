@@ -170,6 +170,7 @@ public class CharactersManager : MonoBehaviour
         public List<CharacterData> characterInclude;
         public List<CharacterData.CharacterTag> characterTags;
         public List<GameObject> StE;
+        public List<GameObject> StEExclude;
         public List<GameObject> PE;
         public float HPPercent;
         public bool HP_lessThan;
@@ -218,6 +219,18 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
+
+            matched = true;
+            foreach (GameObject s in condition.StEExclude)
+            {
+                if (character.CheckHasStE(s))
+                {
+                    matched = false;
+                    break;
+                }
+            }
+            if (!matched) { continue; }
+
             matched = condition.PE.Count == 0;
 
             foreach (GameObject s in condition.PE)

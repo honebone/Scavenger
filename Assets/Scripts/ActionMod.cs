@@ -79,7 +79,7 @@ public class ActionMod : MonoBehaviour
                 if (ACCMod != 0) { s += ValueToStr("・ACC補正", ACCMod, ""); }
                 if (CRITCMod != 0) { s += ValueToStr("・CRIT率補正", CRITCMod, "％"); }
                 if (CRITDMod != 0) { s += ValueToStr("・CRITダメージ補正", CRITDMod, "倍"); }
-                if (drain != 0) { s += ValueToStr("・与ダメージの", drain, "％を追加で回復"); }
+                if (drain != 0) { s += ValueToStr("・与ダメージの", drain, "％を回復"); }
                 if (sureHit) { s += "・攻撃が必中となる\n"; }
                 if (unevadable) { s += "・EVDを無視\n"; }
                 if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }

@@ -1053,6 +1053,13 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void AddTurn(int turns)
+    {
+        battleManager.AddTurn(this, false, turns);
+        targetButton.SetDamageText("追加ターン", Definer.colorRef.emphasize);
+        charaObj.AddTurnIcons(turns);
+    }
+
     //==================================================<<ステータス変更系>>===========================================================
     public void ModifyStatus(CharaStatusMod mod, bool set, bool heal = false)
     {

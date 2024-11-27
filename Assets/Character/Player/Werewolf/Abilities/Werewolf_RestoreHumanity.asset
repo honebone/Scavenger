@@ -10,70 +10,69 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Werewolf_JawsOfBeast
+  m_Name: Werewolf_RestoreHumanity
   m_EditorClassIdentifier: 
-  abilityName: "\u7363\u306E\u5927\u984E"
+  abilityName: "\u4EBA\u9593\u6027\u306E\u56DE\u5FA9"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 1
+  abilityType: 2
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 1
-  conditionInfo: "\u81EA\u8EAB\u306B\u4EBA\u72FC\u304C\u3042\u308B"
+  conditionInfo: "\u81EA\u8EAB\u306B\u4EBA\u72FC\u304C\u306A\u3044"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 1
-    enemy: 1
-    onlyPlayable: 1
+    enemy: 0
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1
     characterInclude: []
     characterTags: 
-    StE:
+    StE: []
+    StEExclude:
     - {fileID: 1489497368108049143, guid: c25334058e17c0c43b959b6468050a4c, type: 3}
-    StEExclude: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u7363\u306E\u5927\u984E"
+  - actionName: "\u4EBA\u9593\u6027\u306E\u56DE\u5FA9"
     conditionInfo: 
-    targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 9048899445099364302, guid: ffcb210d4dbab3543bc5b186a2dd84b9, type: 3}
-    targetType: 1
-    friendly: 0
+    actionMods: []
+    targetType: 3
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 0
-      enemy: 1
+      enemy: 0
       onlyPlayable: 0
-      front: 1
-      mid: 1
+      front: 0
+      mid: 0
       back: 0
       characterInclude: []
       characterTags: 
@@ -93,8 +92,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -115,8 +114,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
+    SANHeal_min: 10
+    SANHeal_max: 15
     SANDamage_min: 0
     SANDamage_max: 0
     shieldAdd_min: 0
@@ -126,17 +125,10 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 0
-      applyChance: 80
-      stack: 3
-      value: 25
-      refATK: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 0
+    removeStE_debuff: 2
     removeStEs: []
     removePEs: []
     summon: 0
@@ -149,10 +141,9 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 2
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -163,4 +154,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 06000000
