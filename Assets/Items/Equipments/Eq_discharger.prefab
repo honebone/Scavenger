@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373e0eacda216f241965eb44394378a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+3\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+2"
+  PAInfo_start: 
   PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 026496ef4d279e14f8914da23b085f05, type: 2}
     info_start: 
-    equipmentInfo: 
+    equipmentInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+3\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+2"
     statusMod:
       maxHP_mul: 0
       maxSAN_mul: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -136,6 +137,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -177,6 +179,7 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    exTurn: 0
     abilityEffect: 0
     freeAction: 0
     abilityType: 0

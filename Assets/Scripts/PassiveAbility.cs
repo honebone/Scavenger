@@ -102,6 +102,11 @@ public class PassiveAbility : MonoBehaviour
         return actionsStatus;
     }
 
+    public virtual Action.ActionStatus ModifyAction_Targeted(Action.ActionStatus statusRef , bool forCalcDMG)
+    {
+        return statusRef;
+    }
+
     public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
 

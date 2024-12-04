@@ -185,10 +185,10 @@ public class Definer : MonoBehaviour
         ,{ ItemData.MaterialTag.plant,"A•¨"},{ ItemData.MaterialTag.processed,"‰ÁH•i"},{ ItemData.MaterialTag.junk,"ƒKƒ‰ƒNƒ^"},{ ItemData.MaterialTag.sundries,"G‰İ"},{ ItemData.MaterialTag.book," –{"}
         ,{ ItemData.MaterialTag.holy,"_¹"},{ ItemData.MaterialTag.weapon,"ŒR–"},{ ItemData.MaterialTag.crops,"ì•¨"}
     };
-    public static Dictionary<ItemData.EquipmentTag, string> equipmentTagName = new Dictionary<ItemData.EquipmentTag, string>()
-    {
-        { ItemData.EquipmentTag.none,"‚»‚Ì‘¼"},{ ItemData.EquipmentTag.weapon,"•Ší"},{ ItemData.EquipmentTag.armor,"–h‹ï"}
-    };
+    //public static Dictionary<ItemData.EquipmentTag, string> equipmentTagName = new Dictionary<ItemData.EquipmentTag, string>()
+    //{
+    //    { ItemData.EquipmentTag.none,"‚»‚Ì‘¼"},{ ItemData.EquipmentTag.weapon,"•Ší"},{ ItemData.EquipmentTag.armor,"–h‹ï"}
+    //};
     public static Dictionary<PA_StatusEffect.StatusEffectStatus.StatusEffectType, string> StETypeName = new Dictionary<PA_StatusEffect.StatusEffectStatus.StatusEffectType, string>()
     {
         {PA_StatusEffect.StatusEffectStatus.StatusEffectType.neutral,"‚»‚Ì‘¼" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff,"ƒoƒt" }
@@ -237,11 +237,11 @@ public class Definer : MonoBehaviour
 
                     case ItemData.ItemType.equipment:
                         s += "<<‘•”õ•i>>\n";
-                        if (data.equipmentTag != ItemData.EquipmentTag.none)
-                        {
-                            s += string.Format("[{0}]\n", Definer.equipmentTagName[data.equipmentTag]);
-                        }
-                        s += "\n";
+                        //if (data.equipmentTag != ItemData.EquipmentTag.none)
+                        //{
+                        //    s += string.Format("[{0}]\n", Definer.equipmentTagName[data.equipmentTag]);
+                        //}
+                        //s += "\n";
                         s += data.manager.GetComponent<PassiveAbility>().GetPAInfo();
                         break;
 

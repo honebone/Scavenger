@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Werewolf_Rampage
   m_EditorClassIdentifier: 
   abilityName: "\u5927\u66B4\u308C"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: cd2d2d45fee0bf946ae61450c559097e, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
@@ -115,6 +115,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -131,7 +132,7 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 80
       stack: 3
-      value: 30
+      value: 25
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []
@@ -164,7 +165,7 @@ MonoBehaviour:
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
-    actionTargetsInt: 090000000a000000
+    actionTargetsInt: 0c0000000e000000
   - actionName: "\u5927\u66B4\u308C"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -226,6 +227,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -274,4 +276,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 06000000

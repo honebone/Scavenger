@@ -81,17 +81,12 @@ public class Character : MonoBehaviour
         /// <summary>自身をかばっているキャラのinstanceID</summary>
         public int protectedBy;
 
-        //public bool omenSet;
-        //public Ability.AbilityStatus omen;
-
         public int HP;
         public int shield;
 
         public float PROT;
 
         public int SAN;
-
-        //public int exATK;
 
         public bool doesDropItem;
 
@@ -117,7 +112,7 @@ public class Character : MonoBehaviour
             string s = "";
             if (player && !playable) { s += "操作不可\n"; }
             bool f = false;
-            s += "[";
+            s += "タグ：[";
             foreach(CharacterData.CharacterTag tag in characterTags)
             {
                 if (f) { s += ", "; }
@@ -360,11 +355,40 @@ public class Character : MonoBehaviour
         }
        
     }
+
+    public class BattleReport
+    {
+        public int ATKDMG;
+        public int INTDMG;
+        public int decreaseHP;
+
+        public int RDMG;
+        public int RShieldDMG;
+
+        public int GHeal;
+        public int GShield;
+
+        public string Report()
+        {
+            string s = "";
+
+            s += $"与ダメージ：{ATKDMG + INTDMG+ decreaseHP}({"ATKDMG".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INTDMG".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
+                $"+{decreaseHP.ColorStr(Definer.colorRef.decreaseHP)})";
+            s += $"\n被ダメージ：{RDMG + RShieldDMG}({RDMG.ColorStr(Definer.colorRef.damage)}+{"shieldDMG".ToSpr()}{RShieldDMG.ColorStr(Definer.colorRef.shieldDecrease)})";
+            s += $"\n与えた回復/シールド：{GHeal + GShield}({"heal".ToSpr()}{GHeal.ColorStr(Definer.colorRef.heal)},{"shield".ToSpr()}{GShield.ColorStr(Definer.colorRef.shield)})";
+
+            return s;
+        }
+    }
+
    protected CharacterStatus charaStatus;
+    BattleReport battleReport = new BattleReport();
 
     //[SerializeField]
     //protected Action.ActionStatus[] actionsStatusTest;
     public CharacterStatus GetCharacterStatus() { return charaStatus; }
+    public BattleReport GetBattleReport() { return battleReport; }
+    public void ResetBattleReport() { battleReport = new BattleReport(); }
 
     Character_Object charaObj;
     Character_TargetButton targetButton;
@@ -517,7 +541,7 @@ public class Character : MonoBehaviour
         }
         deletePAs.Clear();
     }
-    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,int finalStack,int finalValue)
+    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,int finalStack,int finalValue,Character applyer)
     {
         bool alreadyExist = false;
         PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
@@ -543,7 +567,7 @@ public class Character : MonoBehaviour
             var s = Instantiate(StEParams.applyStE, transform);
             PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
-            s.GetComponent<PA_StatusEffect>().Init(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>());
+            s.GetComponent<PA_StatusEffect>().Init(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer);
             s.GetComponent<PassiveAbility>().Init(this, 0,infoText);
             if (StEStatus.refValue)
             {
@@ -1218,7 +1242,7 @@ public class Character : MonoBehaviour
         {
             if (charaStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
             {
-                charaStatus.StEApplyBonus[i]=charaStatus.StEApplyBonus[i].AddBonus(bonus, true);
+                charaStatus.StEApplyBonus[i]=charaStatus.StEApplyBonus[i].AddBonus(bonus, set);
                 return;
             }
         }
@@ -1527,6 +1551,20 @@ public class Character : MonoBehaviour
         }
 
         return actionsStatus;
+    }
+
+    public Action.ActionStatus ModifyAction_Targeted(Action.ActionStatus statusRef, bool forCalcDMG)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities())
+            {
+                statusRef = passiveAbility.ModifyAction_Targeted(statusRef, forCalcDMG);
+            }
+            RemovePA_Execute();
+        }
+
+        return statusRef;
     }
 
     public void OnActivateAbility(List<Action.ActionResult> actionResultsList)

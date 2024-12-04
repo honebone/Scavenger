@@ -33,6 +33,7 @@ public class ActionMod : MonoBehaviour
         public bool sureHit;
         public bool unevadable;
 
+        public float exHeal_mul;
         public int healValue;
         public float healPercent;
         public float healRegain;
@@ -82,6 +83,7 @@ public class ActionMod : MonoBehaviour
                 if (drain != 0) { s += ValueToStr("・与ダメージの", drain, "％を回復"); }
                 if (sureHit) { s += "・攻撃が必中となる\n"; }
                 if (unevadable) { s += "・EVDを無視\n"; }
+                if (exHeal_mul != 0) { s += ValueToStr("・回復量", exHeal_mul, "％"); }
                 if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }
                 if (healPercent != 0) { s += ValueToStr("・割合回復量", healPercent, "％"); }
                 if (healRegain != 0) { s += ValueToStr("・減少したHPの", healRegain, "％を回復"); }

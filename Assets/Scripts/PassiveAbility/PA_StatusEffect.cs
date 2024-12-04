@@ -23,6 +23,7 @@ public class PA_StatusEffect : PassiveAbility
         public bool DoT;
 
         [Header("à»â∫ÇÕë„ì¸Ç≥ÇÍÇÈ")]
+        public Character applyer;
         public int stack;
         public int value;
 
@@ -66,11 +67,12 @@ public class PA_StatusEffect : PassiveAbility
         }
     }
 
-    public void Init(int stack, int value,int DMGPerTurn,StEIcon icon)
+    public void Init(int stack, int value,int DMGPerTurn,StEIcon icon,Character applyer)
     {
         StEStatus.stack = stack;
         StEStatus.value = value;
         StEStatus.DMGPerTurn = DMGPerTurn;
+        if(applyer!= null) { StEStatus.applyer = applyer; }
        
         StEIcon = icon;
         StEIcon.Init(StEStatus);
@@ -104,10 +106,10 @@ public class PA_StatusEffect : PassiveAbility
         if (StEStatus.refValue) { s += "X"; }
         s += "ÅF";
         s += StEStatus.StEInfo;
-        if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬"; }
         //s = s.ColorStr(Color.gray);
         if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
-        
+        if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬"; }
+
         return s;
     }
   

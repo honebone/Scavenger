@@ -102,6 +102,8 @@ public class Action : MonoBehaviour
         public float healRegain_min;
         public float healRegain_max;
 
+        public float exHeal_mul;
+
         [Header("\n\nSAN")]
         public int SANHeal_min;
         public int SANHeal_max;
@@ -439,6 +441,7 @@ public class Action : MonoBehaviour
             if (mod.sureHit) { modifiedStatus.sureHit = true; }
             if (mod.unevadable) { modifiedStatus.unevadable = true; }
 
+            modifiedStatus.exHeal_mul += mod.exHeal_mul;
             modifiedStatus.healValue_min += mod.healValue;
             modifiedStatus.healValue_max += mod.healValue;
             modifiedStatus.healPercent_min += mod.healPercent;
@@ -680,6 +683,10 @@ public class Action : MonoBehaviour
         }
 
         if (!notChara) { actionStatus.actionOwner.ModifyAction(actionStatus, actionsStatus, false); }
+        for (int i = 0; i < actionStatus.actionTargets.Count; i++)
+        {
+            actionsStatus[i] = actionStatus.actionTargets[i].ModifyAction_Targeted(actionsStatus[i], false);
+        }
 
         //各対象キャラへの処理
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
@@ -851,18 +858,30 @@ public class Action : MonoBehaviour
                                 {
                                     totalDamage += totalDMG;
                                 }
+                                actionOwner.GetBattleReport().ATKDMG += ATKDMG;
+                                actionOwner.GetBattleReport().INTDMG += INTDMG;
+
+                                target.GetBattleReport().RDMG += totalDMG;
+                                target.GetBattleReport().RShieldDMG += shieldDMG;
 
                                 onDamageParamsList.Add(onDamageParams);
-                                if (totalDMG > 0 && actionsStatus[i].drain > 0)//吸血処理
+                                if (totalDMG > 0 && actionsStatus[i].drain > 0&&!notChara)//吸血処理
                                 {
                                     OnHealParams onHealParams = new OnHealParams();
                                     float drainf = totalDMG * actionsStatus[i].drain / 100f;
-                                    int drain = Mathf.RoundToInt(drainf);
+
+                                    //drainf *= (100f + actionsStatus[i].exHeal_mul) / 100;
+                                    drainf *= ownerStatus.GHeal / 100;
+                                    drainf *= ownerStatus.RHeal / 100;
+
+                                    int drain = Mathf.Max(0, drainf.ToInt());
 
                                     onHealParams.target = actionStatus.actionOwner;
                                     onHealParams.healValue = drain;
 
                                     actionStatus.actionOwner.Heal(drain, actionStatus.actionOwner);
+                                    actionStatus.actionOwner.OnHealed(actionStatus.actionOwner, onHealParams);
+                                    actionOwner.GetBattleReport().GHeal += drain;
                                     onHealParamsList.Add(onHealParams);
                                 }
                             }
@@ -913,11 +932,14 @@ public class Action : MonoBehaviour
                             int decreasedHP = targetStatus.maxHP - targetStatus.HP;
                             fheal += decreasedHP * Random.Range(actionsStatus[i].healRegain_min, actionsStatus[i].healRegain_max) / 100f;
                         }
+                        fheal *= (100f + actionsStatus[i].exHeal_mul) / 100;
+                        infoText.AddDebugText($"exHEal{actionsStatus[i].exHeal_mul}");
                         fheal *= ownerStatus.GHeal / 100;
                         fheal *= targetStatus.RHeal / 100;
-                        int heal = Mathf.RoundToInt(fheal);
+                        int heal = Mathf.Max(0, fheal.ToInt());
                         onHealParams.healValue = heal;
 
+                        actionOwner.GetBattleReport().GHeal += heal;
                         target.Heal(heal, actionStatus.actionOwner);
                         target.OnHealed(actionStatus.actionOwner, onHealParams);
                         onHealParamsList.Add(onHealParams);
@@ -935,12 +957,16 @@ public class Action : MonoBehaviour
 
                     if (actionsStatus[i].shieldAdd_max > 0)//シールド
                     {
-                        target.AddShield(Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1));
+                        int shield = Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1);
+                        actionOwner.GetBattleReport().GShield += shield;
+                        target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
                     {
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
-                        target.AddShield(Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f));
+                        int shield = Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
+                        actionOwner.GetBattleReport().GShield += shield;
+                        target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去
                     {
@@ -1016,7 +1042,7 @@ public class Action : MonoBehaviour
                             if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
                             onApplyStEParams.appliedParams.Add(StEParams);
 
-                            target.ApplyStE(StEParams, StEParams.stack, StEParams.value);
+                            target.ApplyStE(StEParams, StEParams.stack, StEParams.value,actionOwner);
                         }
                         else
                         {

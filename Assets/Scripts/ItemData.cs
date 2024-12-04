@@ -61,10 +61,10 @@ public class ItemData : ScriptableObject
     public List<MaterialTag> materialTags;
     public int price;//Šî–{‚Æ‚È‚é”ƒ’l
 
-    //equipment
-    public enum EquipmentTag { none, weapon, armor }
-    [Header("\nMaterial")]
-    public EquipmentTag equipmentTag;
+    ////equipment
+    //public enum EquipmentTag { none, weapon, armor }
+    //[Header("\nMaterial")]
+    //public EquipmentTag equipmentTag;
 
     [Header("tool,equipment—p")]
     public GameObject manager;

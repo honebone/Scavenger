@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3885198277178587470}
-  - component: {fileID: -1934768658045037176}
+  - component: {fileID: -8522944357460535618}
   - component: {fileID: 7692293271465632286}
   m_Layer: 0
-  m_Name: PA_StE_Counter
+  m_Name: PA_StE_RHealUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1934768658045037176
+--- !u!114 &-8522944357460535618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,107 +42,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1489497368108049143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d5871143bd56034281b8df4f3caf6cc, type: 3}
+  m_Script: {fileID: 11500000, guid: d9a9148d90d5e564eb03c15150b4cd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   StEStatus:
-    StEName: "\u30AB\u30A6\u30F3\u30BF\u30FC"
-    StEInfo: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u3001ATK\u306EX\uFF05\u306E\u30AB\u30A6\u30F3\u30BF\u30FC\u653B\u6483\u3092\u884C\u3044\u3001\u30B9\u30BF\u30C3\u30AF-1"
-    StEIcon: {fileID: 21300000, guid: 49e62682885c45142bc014c5b05d0486, type: 3}
+    StEName: "\u88AB\u56DE\u5FA9\u91CF\u5897\u52A0"
+    StEInfo: "\u53D7\u3051\u308B\u56DE\u5FA9\u91CF+X\uFF05\n\u81EA\u8EAB\u304C\u56DE\u5FA9\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEIcon: {fileID: 21300000, guid: c8d0a63f2fe139d4b98dc14a9c91ff57, type: 3}
     StEType: 1
     maxStack: 0
     merge: 0
     refValue: 1
     undeletable: 0
+    DoT: 0
     stack: 0
     value: 0
-  actionStatus:
-    actionName: "\u30AB\u30A6\u30F3\u30BF\u30FC"
-    conditionInfo: 
-    targetInfo: "\u653B\u6483\u3057\u3066\u304D\u305F\u76F8\u624B"
-    AModInfo: 
-    actionInfo: 
-    sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 9026872467518674270, guid: 59e6d3a9232a004489cb89d2000a008d, type: 3}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
-      characterTags: 
-      StE: []
-      PE: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    consumeFocus: 0
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 3
-    ATKMod_min: 0
-    ATKMod_max: 0
-    exDMG_mul: 0
-    exDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams: []
-    applyPEParams: []
-    removeStE_buff: 0
-    removeStE_debuff: 0
-    removeStE_DoT: 0
-    removeStEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    moveChance: 0
-    guaranteedMove: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    abilityRemainControlls: []
-    abilityEffect: 0
-    freeAction: 0
-    abilityType: 0
-    removeStEs_additional: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
-    actionOwner: {fileID: 0}
-    actionTargetsInt: 
+    DMGPerTurn: 0
+  up: 1
 --- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -184,7 +102,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 49e62682885c45142bc014c5b05d0486, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c8d0a63f2fe139d4b98dc14a9c91ff57, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

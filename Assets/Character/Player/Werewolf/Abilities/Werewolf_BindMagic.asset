@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Werewolf_BindMagic
   m_EditorClassIdentifier: 
   abilityName: "\u675F\u7E1B\u306E\u5370"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: fccea9343f539ef49addcb02d87b4785, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0

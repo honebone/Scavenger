@@ -8,6 +8,10 @@ public static class Extentions
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + str + "</color>";
     }
+    public static string ColorStr(this int value, Color color)
+    {
+        return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + value.ToString() + "</color>";
+    }
     public static string ToSpr(this string spriteName)
     {
         return $"<sprite name={spriteName}>";

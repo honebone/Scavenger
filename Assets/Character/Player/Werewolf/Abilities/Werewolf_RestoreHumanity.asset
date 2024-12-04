@@ -15,11 +15,11 @@ MonoBehaviour:
   abilityName: "\u4EBA\u9593\u6027\u306E\u56DE\u5FA9"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: bfcf85a811140e54eb03483dc730d36e, type: 2}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 2
+  abilityType: 3
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
@@ -114,6 +114,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 10
     SANHeal_max: 15
     SANDamage_min: 0
@@ -141,9 +142,10 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
+    exTurn: 0
     abilityEffect: 1
     freeAction: 0
-    abilityType: 2
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

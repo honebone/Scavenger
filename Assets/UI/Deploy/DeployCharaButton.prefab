@@ -292,6 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charaNameText: {fileID: 7759540501758681470}
   charaImage: {fileID: 457608088}
+  scrollSpeed: 0.1
 --- !u!114 &4483989429626485801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

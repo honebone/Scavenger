@@ -368,6 +368,19 @@ public class BattleManager : MonoBehaviour
         if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
         if (selectingTarget) { infoText.AddErrorText("対象選択中に戦闘が終了しました"); }
 
+        //test
+        infoText.AddLogText("\n====戦闘レポート====");
+        foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        {
+            if (chara.GetCharacterStatus().player)
+            {
+                string s = chara.GetCharacterStatus().charaName + "\n";
+                s += chara.GetBattleReport().Report();
+                infoText.AddLogText(s+"\n");
+                chara.ResetBattleReport();
+            }
+        }
+
         if (fieldEffect != null)
         {
             Destroy(fieldEffectP.GetChild(0).gameObject);
