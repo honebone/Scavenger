@@ -128,6 +128,26 @@ public class Map_RoomButton : MonoBehaviour
         //else { frame.color = Color.white; }
     }
 
+    public void SetBranchUp(int value)
+    {
+        room.up = value;
+        if (value >= 1) { up.enabled = true; }
+        else { up.enabled = false; }
+    }
+    public void SetBranchDown(int value)
+    {
+        room.down = value;
+        if (value >= 1) { down.enabled = true; }
+        else { down.enabled = false; }
+    }
+    public void SetBlind(bool set)
+    {
+        room.blind = set;
+        blind = set;
+        if (blind) { roomEventIcon.sprite = blindIcon; }
+        else { roomEventIcon.sprite = room.eventIcon; }
+    }
+
     public void OnMouseDown()
     {
         if (Input.GetMouseButtonDown(1) && !room.empty)

@@ -260,8 +260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
+  battleDebug: 1
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -12236,6 +12237,7 @@ MonoBehaviour:
   - {fileID: 8180078169205948270, guid: e298cd9b66907724889a0e0174f6bdbd, type: 3}
   - {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   - {fileID: 8180078169205948270, guid: b5857a50d2ab9a540ad9d12d879151d6, type: 3}
+  - {fileID: 8180078169205948270, guid: c2ab6244e21822c4fb8dc220311955b8, type: 3}
   playerDataBase:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}

@@ -7,6 +7,7 @@ public class DebugFunction : MonoBehaviour
     [SerializeField] bool debug;
     [SerializeField] bool skipDeployPhase;
     [SerializeField] bool skipTutorial;
+    public bool battleDebug;
 
     [SerializeField]
     CharacterData[] characterData;
@@ -50,8 +51,11 @@ public class DebugFunction : MonoBehaviour
 
     [SerializeField] List<Vector2Int> rel;
 
+    public static DebugFunction instance;
+
     private void Start()
     {
+        instance = this;
         charactersManager = FindObjectOfType<CharactersManager>();
         expeditionManager = FindObjectOfType<ExpeditionManager>();
         battleManager = FindObjectOfType<BattleManager>();

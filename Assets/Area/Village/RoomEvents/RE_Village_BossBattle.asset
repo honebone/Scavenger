@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: "\u6751\u306E\u96C6\u4F1A\u6240"
   eventInfo: "\u30DC\u30B9\u3068\u306E\u6226\u95D8"
+  noBlind: 1
   randomEvent: 0
   debug: 0
   roomEventManager:

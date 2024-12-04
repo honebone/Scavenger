@@ -9,6 +9,7 @@ public class ExpeditionManager : MonoBehaviour
     [System.Serializable]
     public struct Room
     {
+      public  RoomEventData eventData;
         /// <summary>開始地点の上下2段ずつとかはtrue</summary>
         public bool empty;
 
@@ -30,6 +31,7 @@ public class ExpeditionManager : MonoBehaviour
         public Vector2Int roomPos;
         public void SetRoomEvent(RoomEventData data)
         {
+            eventData = data;
             eventName = data.eventName;
             eventInfo = data.eventInfo;
             List<GameObject> eventM = new List<GameObject>(data.roomEventManager);
@@ -497,12 +499,13 @@ public class ExpeditionManager : MonoBehaviour
     public void EndRoomEvent()
     {
         //あーだこーだ
-        inRoomEvent = false;
         StartCoroutine(EndRoomEventC());
     }
     IEnumerator EndRoomEventC()
     {
         yield return new WaitForSeconds(1f);
+        inRoomEvent = false;
+
         foreach (Character chara in ExpeditionRef.charactersManager.GetExistingCharacters_All())
         {
             Character.CharacterStatus status = chara.GetCharacterStatus();
@@ -553,7 +556,9 @@ public class ExpeditionManager : MonoBehaviour
     public PartyStatus GetPartyStatus() { return partyStatus; }
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }
     public Room GetRoom(Vector2Int pos) { return layers[pos.x].GetRoom(pos.y); }
+    public List<Map_LayerPanel> GetLayers() { return layers; }
     public RoomEvent GetCurrentRE() { return currentRE; }
+    public Vector2Int GetCurrentPos() { return currentPos; }
     public AreaManager GetAreaManager() { return currentAreaManger; }
 
     public bool CheckInRoomEvent() { return inRoomEvent; }

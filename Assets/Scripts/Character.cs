@@ -1426,6 +1426,7 @@ public class Character : MonoBehaviour
         loot.DropItem_Loot(charaStatus.characterData.loot);
 
         OnDie(killer);
+        battleManager.Trigger_OnSomeoneDied(this);
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
@@ -1693,6 +1694,14 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneMove(onMoveParams); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnSomeoneDied(Character died)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneDied(died); }
             RemovePA_Execute();
         }
     }

@@ -105,6 +105,7 @@ public class AreaManager : MonoBehaviour
     //[SerializeField] GameObject layerPanel;
 
     protected ExpeditionManager.Room[] layer;
+    protected List<List<ExpeditionManager.Room>> areaRooms = new List<List<ExpeditionManager.Room>>();
 
     //List<Map_LayerPanel> layers;
     protected ExpeditionManager expeditionManager;
@@ -146,6 +147,7 @@ public class AreaManager : MonoBehaviour
         layer[2].down = 2;
         layer[2].SetRoomEvent(areaData.start);
         map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
         layerCount++;
 
         layer[0].empty = true;//1‘w–Ú
@@ -156,6 +158,7 @@ public class AreaManager : MonoBehaviour
         layer[3].up = 2;
         layer[4].empty = true;
         map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
         layerCount++;
 
         for (int j = 2; j < areaLength - 2; j++)//2`(length-3)‘w–Ú‚Ü‚Å
@@ -164,6 +167,7 @@ public class AreaManager : MonoBehaviour
             layer[0].down = -1;
             layer[4].up = -1;
             map.SetLayerPanel(layer, layerCount);
+            areaRooms.Add(new List<ExpeditionManager.Room>(layer));
             layerCount++;
         }
 
@@ -177,6 +181,7 @@ public class AreaManager : MonoBehaviour
         layer[4].straight = -1;
         layer[4].up = -1;
         map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
         layerCount++;
 
         layer[0].empty = true;//length-1‘w–Ú
@@ -194,16 +199,18 @@ public class AreaManager : MonoBehaviour
         layer[3].down = 2;
         layer[4].empty = true;
         map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
         layerCount++;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length‘w–Ú
         layer[2].empty = false;
-        layer[2] = SetRoom(false);
+        layer[2] = SetRoom(false, true);
         layer[2].up = -1;
         layer[2].straight = 2;
         layer[2].down = -1;
         layer[2].SetRoomEvent(areaData.boss);
         map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
         layerCount++;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+1‘w–Ú(ƒGƒŠƒA‚ÌI’[)
@@ -211,9 +218,10 @@ public class AreaManager : MonoBehaviour
         layer[2].up = -1;
         layer[2].straight = -1;
         layer[2].down = -1;
-        layer[2] = SetRoom(false);
+        layer[2] = SetRoom(false,true);
         layer[2].SetRoomEvent(areaData.endArea);
         map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
 
         map.EndGenerateMap();
     }
@@ -223,20 +231,57 @@ public class AreaManager : MonoBehaviour
     //    lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
     //    layers.Add(lp.GetComponent<Map_LayerPanel>());
     //}
-    public ExpeditionManager.Room SetRoom(bool setEventRandomly)
+    public ExpeditionManager.Room SetRoom(bool setEventRandomly,bool noBlind=false)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
         if (areaData.branchChance.Dice()){ room.up = 1; }
         room.straight = 1;
         if (areaData.branchChance.Dice()) { room.down = 1; }
-        if (areaData.blindChance.Dice()) { room.blind = true; }
+        room.blind = !noBlind && areaData.blindChance.Dice();
         if (setEventRandomly)
         {
             room.SetRoomEvent(areaData.roomEvents[areaData.GetREWeights().ChoiceWithWeight()].roomEvent);
         }
+        //room.blind = !room.eventData.noBlind && areaData.blindChance.Dice();
 
         return room;
     }
+
+    public void AddBranch(int chance)
+    {
+        List<Map_LayerPanel> layers = expeditionManager.GetLayers();
+        for (int i = expeditionManager.GetCurrentPos().x; i < areaLength; i++)
+        {
+            foreach(Map_RoomButton roomButton in layers[i].GetRoomButtons())
+            {
+                ExpeditionManager.Room room = roomButton.GetRoom();
+                if (room.up == 0 && chance.Dice())
+                {
+                    roomButton.SetBranchUp(1);
+                }
+                if (room.down == 0 && chance.Dice())
+                {
+                    roomButton.SetBranchDown(1);
+                }
+            }
+        }
+    }
+    public void Reveal(int chance)
+    {
+        List<Map_LayerPanel> layers = expeditionManager.GetLayers();
+        for (int i = expeditionManager.GetCurrentPos().x; i < areaLength; i++)
+        {
+            foreach (Map_RoomButton roomButton in layers[i].GetRoomButtons())
+            {
+                ExpeditionManager.Room room = roomButton.GetRoom();
+                if (room.blind && chance.Dice())
+                {
+                    roomButton.SetBlind(false);
+                }
+            }
+        }
+    }
+
     public AreaData GetArea() { return areaData; }
     public int GetAreaLength() { return areaLength; }
 }
