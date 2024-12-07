@@ -949,6 +949,7 @@ public class Character : MonoBehaviour
         {
             targetButton.SetDamageText($"{"shieldDMGL".ToSpr()}{onDamageParams.shieldDMG}", Definer.colorRef.shieldDecrease);
             infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName,"shieldDMG".ToSpr(), onDamageParams.shieldDMG.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
+            soundManager.PlaySE(Definer.soundRef.shieldDMG);
         }
 
         SpawnVisualEffect(Definer.VERef.damage);
@@ -981,7 +982,7 @@ public class Character : MonoBehaviour
                 targetButton.SetDamageText($"{"INTDMGL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.INTDamage);
                 infoText.AddLogText($"{charaStatus.charaName}は{"INTDMG".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.INTDamage)}ダメージを受けた");
             }
-            soundManager.PlaySE(Definer.soundRef.damage);
+            if (onDamageParams.totalDMG > 0) soundManager.PlaySE(Definer.soundRef.damage);
         }
 
         if (charaStatus.HP == 0)//瀕死の状態で1以上のダメージを受けたら死亡する

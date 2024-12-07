@@ -279,7 +279,7 @@ public class BattleManager : MonoBehaviour
     /// <summary>Á–Å‚ÉŒÄ‚Î‚ê‚é</summary>
     public void RemoveTurn(Character chara)
     {
-        if (currentTurn.character == chara) { currentTurn.turnIcon.RemoveTurnOrderIcon(); }
+        if (currentTurn != null && currentTurn.character == chara) { currentTurn.turnIcon.RemoveTurnOrderIcon(); }
 
         List<Turn> removeTurns = new List<Turn>();
         foreach (Turn turn in turns)
@@ -694,5 +694,5 @@ public class BattleManager : MonoBehaviour
     }
     
     public Ability GetSelectedAbility() { return selectedAbility; }
-    public Character GetCurrntTurnChara() { return currentTurn.character; }
+    public Character GetCurrntTurnChara() { return (currentTurn == null) ? null : currentTurn.character; }
 }

@@ -64,6 +64,9 @@ public class Action : MonoBehaviour
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係\n\n\n")]
         public bool consumeFocus;
+
+        public int exTurn;
+
         public bool kill;
         public int decreaseHP_min;
         public int decreaseHP_max;
@@ -152,8 +155,6 @@ public class Action : MonoBehaviour
         [Header("\n\nアビリティ使用回数/クールダウン")]
         public List<ActionData.AbilityRemainControll> abilityRemainControlls;
 
-        public int exTurn;
-
         [Header("\n\n\n\n以下には手を出すな")]
         public bool abilityEffect;
         public bool freeAction;
@@ -190,6 +191,7 @@ public class Action : MonoBehaviour
             //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             s += string.Format("対象：{0}\n", targetInfo);
+            if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
             if (kill) { s += "・殺害する\n"; }
             if (decreaseHP_max > 0)
             {
@@ -358,7 +360,6 @@ public class Action : MonoBehaviour
                     s += string.Format("{0}増加\n", remainControll.value);
                 }
             }
-            if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
             CheckNewBlock();
 
             if (actionMods.Count > 0) { s += "\n"; }

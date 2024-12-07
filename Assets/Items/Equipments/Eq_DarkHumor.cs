@@ -16,8 +16,9 @@ public class Eq_DarkHumor : PA_Equipment
 
     public override void OnSomeoneDied(Character died)
     {
-        if (ExpeditionRef.battleManager.GetCurrntTurnChara() == died)
+        if (!activated && ExpeditionRef.battleManager.GetCurrntTurnChara() == died)
         {
+            activated = true;
             Enqueue_Self(actionStatus);
         }
     }

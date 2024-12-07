@@ -7,7 +7,7 @@ using UnityEngine.Rendering.Universal;
 public class ExpeditionManager : MonoBehaviour
 {
     [System.Serializable]
-    public struct Room
+    public class Room
     {
       public  RoomEventData eventData;
         /// <summary>開始地点の上下2段ずつとかはtrue</summary>

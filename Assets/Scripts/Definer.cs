@@ -44,11 +44,11 @@ public class Definer : MonoBehaviour
         public AudioClip miss;
         public AudioClip evade;
         public AudioClip damage;
+        public AudioClip shieldDMG;
         public AudioClip CRIT;
         public AudioClip dying;
         public AudioClip heal;
         public AudioClip shield;
-        public AudioClip shieldRemove;
         public AudioClip SANHeal;
         public AudioClip SANDecrease;
         public AudioClip[] ApplyStE;

@@ -113,13 +113,13 @@ public class AreaManager : MonoBehaviour
     protected Map_MapPanel map;
 
     int areaLength;
-    private void Start()
-    {
-        expeditionManager = FindObjectOfType<ExpeditionManager>();
-        infoText = FindObjectOfType<InfoText>();
-        map = FindObjectOfType<Map_MapPanel>();
-        layer = new ExpeditionManager.Room[5];
-    }
+    //private void Start()
+    //{
+    //    expeditionManager = FindObjectOfType<ExpeditionManager>();
+    //    infoText = FindObjectOfType<InfoText>();
+    //    map = FindObjectOfType<Map_MapPanel>();
+    //    layer = new ExpeditionManager.Room[5];
+    //}
 
     public void Init(AreaData area)
     {
@@ -129,6 +129,10 @@ public class AreaManager : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         map = FindObjectOfType<Map_MapPanel>();
         layer = new ExpeditionManager.Room[5];
+        for(int i = 0; i < layer.Length; i++)
+        {
+            layer[i] = new ExpeditionManager.Room();
+        }
 
         GenerateMap();
     }

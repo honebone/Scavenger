@@ -72,7 +72,7 @@ MonoBehaviour:
     actionMods: []
   actionStatus:
     actionName: "\u30C0\u30FC\u30AF\u30FB\u30E6\u30FC\u30E2\u30A2"
-    conditionInfo: "\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u3001\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089\n(\u5404\u30E9\u30A6\u30F3\u30C91\u56DE)"
+    conditionInfo: "\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u3001\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089(\u5404\u30E9\u30A6\u30F3\u30C91\u56DE)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -128,8 +128,8 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
+    healPercent_min: 10
+    healPercent_max: 20
     healRegain_min: 0
     healRegain_max: 0
     exHeal_mul: 0
@@ -144,7 +144,14 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 50
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -160,7 +167,7 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    exTurn: 0
+    exTurn: 1
     abilityEffect: 0
     freeAction: 0
     abilityType: 0

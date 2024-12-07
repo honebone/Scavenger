@@ -8,6 +8,7 @@ public static class Extentions
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + str + "</color>";
     }
+
     public static string ColorStr(this int value, Color color)
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + value.ToString() + "</color>";
@@ -45,12 +46,13 @@ public static class Extentions
         float dice = UnityEngine.Random.value * 100.0f;
         return dice <= fPercent;
     }
+
     public static bool Dice(this int chance)
     {
-       int dice= Random.Range(0, 101);
-        //Debug.Log(string.Format("確率：{0}、出目：{1}、結果：{2}", chance, dice, dice <= chance)); 
-        return dice <= chance;
+       int dice= Random.Range(0, 100);
+        return dice < chance;
     }
+
     public static int ChoiceWithWeight(this float[] weight)
     {
         float sum = 0;
@@ -188,7 +190,7 @@ public static class Extentions
         int index;
         for(int i = 0; i < amount; i++)
         {
-            index = RandIndex(pool.Count);
+            index = pool.Count.RandIndex();
             sample.Add(pool[index]);
             pool.RemoveAt(index);
         }
