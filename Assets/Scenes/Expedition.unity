@@ -12348,6 +12348,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8ae6d7d6c6d9e245abb3599a1103ff5, type: 2}
   - {fileID: 11400000, guid: 10ac2662eed97db4188796b8c3e0150f, type: 2}
   - {fileID: 11400000, guid: bc08646ce1a30f346b56a425f914feeb, type: 2}
+  - {fileID: 11400000, guid: 1a2965865679d984bbc081dcb4d03b4a, type: 2}
+  - {fileID: 11400000, guid: 728f05a715c33de4fb69e3aa8938606b, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
