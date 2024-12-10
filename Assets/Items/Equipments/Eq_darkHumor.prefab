@@ -104,6 +104,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 1
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -167,7 +168,6 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    exTurn: 1
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
@@ -222,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95b5e9f1c3ed454458a5092de7b4c664, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

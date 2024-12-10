@@ -96,6 +96,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -149,36 +152,50 @@ MonoBehaviour:
       applyChance: 40
       stack: 1
       value: 25
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 3
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 25
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: f784c7dec8cd7644fa53b387f984165c, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 25
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 25
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 15
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
       guaranteed: 0
       applyChance: 15
       stack: 1
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -219,6 +236,7 @@ MonoBehaviour:
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0
@@ -264,7 +282,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72dcf241d248479499a4a632a2eef699, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
