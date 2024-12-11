@@ -934,7 +934,6 @@ public class Action : MonoBehaviour
                             fheal += decreasedHP * Random.Range(actionsStatus[i].healRegain_min, actionsStatus[i].healRegain_max) / 100f;
                         }
                         fheal *= (100f + actionsStatus[i].exHeal_mul) / 100;
-                        infoText.AddDebugText($"exHEal{actionsStatus[i].exHeal_mul}");
                         fheal *= ownerStatus.GHeal / 100;
                         fheal *= targetStatus.RHeal / 100;
                         int heal = Mathf.Max(0, fheal.ToInt());
@@ -1035,7 +1034,6 @@ public class Action : MonoBehaviour
                         {
                             int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
                             StEParams.DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
-                            infoText.AddDebugText($"value:{StEParams.value}");
                         }
 
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//’Š‘I

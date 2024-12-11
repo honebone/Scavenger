@@ -9,13 +9,13 @@ public class DebugFunction : MonoBehaviour
     [SerializeField] bool debug;
     [SerializeField] bool skipDeployPhase;
     [SerializeField] bool skipTutorial;
-    [SerializeField] bool glitchTest;
     public bool battleDebug;
 
     [SerializeField] Volume volume;
     [SerializeField] Vector2 aberrationValueRange;
     [SerializeField] Vector2 aberrationDurationRange;
 
+    bool glitch;
     Vignette vig;
     ChromaticAberration aberration;
     BagPostProcessVolume bag;
@@ -93,12 +93,7 @@ public class DebugFunction : MonoBehaviour
         //    }
         //}
 
-        if (glitchTest)
-        {
-            if (volume.profile.TryGet<Vignette>(out vig)) StartCoroutine(TestC());
-            if (volume.profile.TryGet<ChromaticAberration>(out aberration)) StartCoroutine(TestC2());
-            if(volume.profile.TryGet<BagPostProcessVolume>(out bag)) bag.active = true;
-        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -156,17 +151,17 @@ public class DebugFunction : MonoBehaviour
         vig.intensity.value = 0.1f;
         for (int i = 0; i < 20; i++)
         {
-            vig.intensity.value += 0.015f;
+            vig.intensity.value += 0.02f;
             yield return new WaitForSeconds(0.05f);
         }
 
         for (int i = 0; i < 20; i++)
         {
-            vig.intensity.value -= 0.015f;
+            vig.intensity.value -= 0.02f;
             yield return new WaitForSeconds(0.05f);
         }
         yield return new WaitForSeconds(0.5f);
-        StartCoroutine(TestC());
+        if (glitch) StartCoroutine(TestC());
     }
 
     IEnumerator TestC2()
@@ -174,7 +169,7 @@ public class DebugFunction : MonoBehaviour
         aberration.active = true;
         aberration.intensity.value = Random.Range(aberrationValueRange.x, aberrationValueRange.y);
         yield return new WaitForSeconds(Random.Range(aberrationDurationRange.x, aberrationDurationRange.y));
-        StartCoroutine(TestC2());
+        if (glitch) StartCoroutine(TestC2());
     }
 
     public void GainExp()
@@ -227,6 +222,23 @@ public class DebugFunction : MonoBehaviour
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.UpgradeAbility_All();
+        }
+    }
+
+    public void ToggleGlitch()
+    {
+        glitch = !glitch;
+        if (glitch)
+        {
+            if (volume.profile.TryGet<Vignette>(out vig)) StartCoroutine(TestC());
+            if (volume.profile.TryGet<ChromaticAberration>(out aberration)) StartCoroutine(TestC2());
+            if (volume.profile.TryGet<BagPostProcessVolume>(out bag)) bag.active = true;
+        }
+        else
+        {
+            vig.active = false;
+            aberration.active = false;
+            bag.active = false;
         }
     }
 

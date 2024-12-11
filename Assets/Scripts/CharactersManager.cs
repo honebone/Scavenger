@@ -22,10 +22,25 @@ public class CharactersManager : MonoBehaviour
     List<Character> generatedCharacters;
     List<Character> existingCharacters;
 
-    [SerializeField] ExpeditionManager expeditionManager;
+    ExpeditionManager expeditionManager;
     InfoText infoText;
     Utility util;
 
+   private void Start()
+    {
+        expeditionManager = ExpeditionRef.expeditionManager;
+        generatedCharacters = new List<Character>();
+
+        existingCharacters = new List<Character>();
+
+        infoText = FindObjectOfType<InfoText>();
+        util = FindObjectOfType<Utility>();
+
+        for (int i = 0; i < targetButtons_size1.Length; i++)
+        {
+            targetButtons_size1[i].SetPosition(i);
+        }
+    }
 
     public void AddCharacter(Character character)
     {
@@ -421,20 +436,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character_TargetButton targetButton in targetButtons_size1) { targetButton.SetSelectedIcon(false); }
     }
-    private void Start()
-    {
-        generatedCharacters = new List<Character>();
 
-        existingCharacters = new List<Character>();
-
-        infoText = FindObjectOfType<InfoText>();
-        util = FindObjectOfType<Utility>();
-
-        for (int i = 0; i < targetButtons_size1.Length; i++)
-        {
-            targetButtons_size1[i].SetPosition(i);
-        }
-    }
 
     public void DestroyDead()
     {
@@ -455,7 +457,7 @@ public class CharactersManager : MonoBehaviour
 
     }
 
-    public void SpawnPlayer(CharacterData characterData, int pos)
+    public void SpawnPlayer(CharacterData characterData, int pos, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
@@ -467,12 +469,16 @@ public class CharactersManager : MonoBehaviour
         Character_TargetButton tb = targetButtons_size1[pos];
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false);
+        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false, summonCharaParams);
     }
 
-    public void SpawnEnemy(CharacterData characterData, int pos, bool dropItem)
+    public void SpawnEnemy(CharacterData characterData, int pos, bool dropItem, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos < 9) { print("エネミーを召喚するのに、指定した位置がプレイヤー側です!"); }
+        Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
+        statusParams.statusMods.Add(expeditionManager.GetEnemyStatusMod());
+        statusParams.PAs.AddRange(expeditionManager.GetMadnessPA());
+
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
         generatedCharaStatus.Init(characterData, generatedCharacters.Count);
@@ -482,7 +488,7 @@ public class CharactersManager : MonoBehaviour
         Character_TargetButton tb = targetButtons_size1[pos];
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem);
+        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem, statusParams);
 
     }
 }

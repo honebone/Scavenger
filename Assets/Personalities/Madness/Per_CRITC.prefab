@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7600040905823093917}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_NarrowedEye
+  m_Name: Per_CRITC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   PAInfo_start: 
   PAInfo_end: 
   personalityStatus:
-    personalityName: "\u8996\u91CE\u72ED\u7A84"
+    personalityName: "\u9996\u5143\u72D9\u3044"
     personalityType: 5
   statusMod:
     maxHP_mul: 0
@@ -56,10 +56,10 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     INT_mul: 0
-    CRITC: 0
+    CRITC: 10
     CRITD: 0
-    EVD: -10
-    ACC: -10
+    EVD: 0
+    ACC: 0
     ACT: 0
     turnPerRound: 0
     GHeal: 0

@@ -356,6 +356,17 @@ public class Character : MonoBehaviour
        
     }
 
+    public class SummonCharaStatusParams
+    {
+        public List<CharaStatusMod> statusMods = new List<CharaStatusMod>();
+        public List<GameObject> PAs = new List<GameObject>();
+        //public SummonCharaStatusParams()
+        //{
+        //    statusMods = new List<CharaStatusMod>();
+        //    PAs = new List<GameObject>();
+        //}
+    }
+
     public class BattleReport
     {
         public int ATKDMG;
@@ -412,7 +423,7 @@ public class Character : MonoBehaviour
     ExpeditionManager expeditionManager;
     TutorialManager tutorialManager;
 
-    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem )
+    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem,SummonCharaStatusParams summonCharaParams)
     {
         charaStatus = status;
         charaObj = obj;
@@ -423,11 +434,23 @@ public class Character : MonoBehaviour
 
         charaStatus.doesDropItem = dropItem;
 
+        if (summonCharaParams != null)
+        {
+            foreach (CharaStatusMod mod in summonCharaParams.statusMods)
+            {
+                ModifyStatus(mod, true, true);
+            }
+            if (summonCharaParams.PAs.Count > 0) { charaStatus.passiveAbilities.AddRange(new List<GameObject>(summonCharaParams.PAs)); }
+        }
+
+        foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa, false); }
+
+        charaStatus.HP = charaStatus.maxHP;
+
         charaObj.SetCharaSprite(charaStatus.variableSprites[0]);
         if (!charaStatus.player) { charaObj.DisableSANBar(); }
         charaObj.SetHPandShieldBar();
         charaObj.SetSANBar();
-        foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa,false); }
 
         targetButton.SetCharacter(this);
 
@@ -442,7 +465,7 @@ public class Character : MonoBehaviour
         expeditionManager = ExpeditionRef.expeditionManager;
         tutorialManager = ExpeditionRef.tutorialManager;
 
-        if (charaStatus.position >= 9) { ModifyStatus(expeditionManager.GetEnemyStatusMod(), true, true); }
+        //if (charaStatus.position >= 9) { ModifyStatus(expeditionManager.GetEnemyStatusMod(), true, true); }
 
         if (!charaStatus.playable)
         {
@@ -1064,6 +1087,7 @@ public class Character : MonoBehaviour
                 {
                     targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
                     infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
+                    expeditionManager.AddMadness(1);
                     AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
 
                     charaStatus.SAN = charaStatus.maxSAN;
@@ -1072,7 +1096,10 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
-                    Die(1, null);
+                    targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
+                    infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
+                    expeditionManager.AddMadness(1);
+                    charaStatus.SAN = charaStatus.maxSAN;
                 }
             }
         }

@@ -62,10 +62,13 @@ public class ExpeditionManager : MonoBehaviour
         /// <summary>支給品の選択肢の数</summary>
         public int supplyOptions = 3;
 
-       
+        public int maxMadness = 5;
+        public int madness;
     }
     [SerializeField]
     PartyStatus partyStatus;
+
+    [SerializeField] List<GameObject> MadnessPAPool;
 
     public static float playerMaxHPGrowth = 1.15f;
     public static float playerATKGrowth = 1.15f;
@@ -80,6 +83,9 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField] Light2D globalLight;
     int areaCount;
     AreaData currentArea;
+
+    int addedMadness;
+    List<GameObject> madnessPAs = new List<GameObject>();
 
     /// <summary>x:現在のレイヤー y:上下</summary>
     [SerializeField]
@@ -222,14 +228,20 @@ public class ExpeditionManager : MonoBehaviour
         GetRoomButton(currentPos).SetState_currentPos();
         //SelectNextRoom();
     }
-    
+
+    public void AddMadness(int value)
+    {
+        addedMadness += value;
+        infoText.AddLogText("狂気が満ちていく...".ColorStr(Definer.colorRef.affricted));
+    }
+
     void CheckEnemyLVLUp()
     {
         if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))
         {
             StartCoroutine(EnemyLVLUpC());
         }
-        else { SelectNextRoom(); }
+        else { CheckMadness(); }
     }
 
     IEnumerator EnemyLVLUpC()
@@ -254,8 +266,32 @@ public class ExpeditionManager : MonoBehaviour
         yield return new WaitForSeconds(1.25f);
 
         soundManager.PlayBGM_Normal();
+        CheckMadness();
+    }
+
+    void CheckMadness()
+    {
+        if (addedMadness == 0) { SelectNextRoom(); }
+        else if (addedMadness > 0) { StartCoroutine(AddMandessC()); }
+    }
+
+    IEnumerator AddMandessC()
+    {
+        for(int i = 0; i < addedMadness; i++)
+        {
+            GameObject add = MadnessPAPool.Choice();
+            MadnessPAPool.Remove(add);
+            madnessPAs.Add(add);
+            infoText.AddDebugText($"新たな狂気：{add.GetComponent<PA_Personality>().GetPersonalityStatus().personalityName}");
+            partyStatus.madness++;
+            if (partyStatus.madness == partyStatus.maxMadness) break;
+        }
+        addedMadness = 0;
+        infoText.AddDebugText("狂気が増加");
+        yield return new WaitForSeconds(1f);
         SelectNextRoom();
     }
+
 
     public void SelectNextRoom()
     {
@@ -563,5 +599,6 @@ public class ExpeditionManager : MonoBehaviour
 
     public bool CheckInRoomEvent() { return inRoomEvent; }
     public bool CheckInExpedition() { return inExpedition; }
+    public List<GameObject> GetMadnessPA() { return madnessPAs; }
 
 }

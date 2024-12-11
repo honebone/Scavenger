@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7600040905823093917}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_NarrowedEye
+  m_Name: Per_DoTDMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,7 @@ MonoBehaviour:
   PAInfo_start: 
   PAInfo_end: 
   personalityStatus:
-    personalityName: "\u8996\u91CE\u72ED\u7A84"
+    personalityName: "\u7981\u5FCC\u306E\u89E6\u5A92"
     personalityType: 5
   statusMod:
     maxHP_mul: 0
@@ -58,14 +58,26 @@ MonoBehaviour:
     INT_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: -10
-    ACC: -10
+    EVD: 0
+    ACC: 0
     ACT: 0
     turnPerRound: 0
     GHeal: 0
     RHeal: 0
     StEResists: []
-    StEApplyBonus: []
+    StEApplyBonus:
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      exChance: 10
+      exStack: 0
+      exValue: 20
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      exChance: 10
+      exStack: 0
+      exValue: 20
+    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      exChance: 10
+      exStack: 0
+      exValue: 20
     moveRes: 0
     debuffRes: 0
   actionMods: []
