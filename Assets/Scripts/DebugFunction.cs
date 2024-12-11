@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine;
 
 public class DebugFunction : MonoBehaviour
@@ -7,7 +9,16 @@ public class DebugFunction : MonoBehaviour
     [SerializeField] bool debug;
     [SerializeField] bool skipDeployPhase;
     [SerializeField] bool skipTutorial;
+    [SerializeField] bool glitchTest;
     public bool battleDebug;
+
+    [SerializeField] Volume volume;
+    [SerializeField] Vector2 aberrationValueRange;
+    [SerializeField] Vector2 aberrationDurationRange;
+
+    Vignette vig;
+    ChromaticAberration aberration;
+    BagPostProcessVolume bag;
 
     [SerializeField]
     CharacterData[] characterData;
@@ -82,6 +93,12 @@ public class DebugFunction : MonoBehaviour
         //    }
         //}
 
+        if (glitchTest)
+        {
+            if (volume.profile.TryGet<Vignette>(out vig)) StartCoroutine(TestC());
+            if (volume.profile.TryGet<ChromaticAberration>(out aberration)) StartCoroutine(TestC2());
+            if(volume.profile.TryGet<BagPostProcessVolume>(out bag)) bag.active = true;
+        }
     }
     // Update is called once per frame
     void Update()
@@ -131,6 +148,33 @@ public class DebugFunction : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
         }
+    }
+
+    IEnumerator TestC()
+    {
+        vig.active = true;
+        vig.intensity.value = 0.1f;
+        for (int i = 0; i < 20; i++)
+        {
+            vig.intensity.value += 0.015f;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        for (int i = 0; i < 20; i++)
+        {
+            vig.intensity.value -= 0.015f;
+            yield return new WaitForSeconds(0.05f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(TestC());
+    }
+
+    IEnumerator TestC2()
+    {
+        aberration.active = true;
+        aberration.intensity.value = Random.Range(aberrationValueRange.x, aberrationValueRange.y);
+        yield return new WaitForSeconds(Random.Range(aberrationDurationRange.x, aberrationDurationRange.y));
+        StartCoroutine(TestC2());
     }
 
     public void GainExp()

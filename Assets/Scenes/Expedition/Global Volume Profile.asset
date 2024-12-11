@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.419
+    m_Value: 0.25
 --- !u!114 &-557878735792183603
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: -886317867021972090}
   - {fileID: 9073405340623677024}
   - {fileID: 6453127911740309520}
+  - {fileID: 7715255991685959993}
 --- !u!114 &6453127911740309520
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -98,6 +99,46 @@ MonoBehaviour:
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
+--- !u!114 &7715255991685959993
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547099d5917703b4d904affc691350a2, type: 3}
+  m_Name: BagPostProcessVolume
+  m_EditorClassIdentifier: 
+  active: 0
+  isActive:
+    m_OverrideState: 1
+    m_Value: 1
+  splitX:
+    m_OverrideState: 1
+    m_Value: 10
+  splitY:
+    m_OverrideState: 1
+    m_Value: 10
+  shift:
+    m_OverrideState: 1
+    m_Value: 0.1
+  frec:
+    m_OverrideState: 1
+    m_Value: 1
+  colorGap:
+    m_OverrideState: 1
+    m_Value: 1
+  ratio:
+    m_OverrideState: 1
+    m_Value: 0.01
+  strength:
+    m_OverrideState: 1
+    m_Value: 0.5
+  blur:
+    m_OverrideState: 1
+    m_Value: 0.2
 --- !u!114 &9073405340623677024
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -115,14 +156,14 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0, b: 0, a: 1}
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.433
+    m_Value: 0.4
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.197
+    m_Value: 0.5
   rounded:
     m_OverrideState: 1
     m_Value: 0
