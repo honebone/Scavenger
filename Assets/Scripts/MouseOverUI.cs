@@ -8,6 +8,11 @@ public class MouseOverUI : MonoBehaviour
     [SerializeField] GameObject panel;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] float baseOffset = 0.17f;
+    [SerializeField] float baseOffset_x;
+    [SerializeField] float baseOffset_y;
+
+    Vector3 offset;
+    Vector3 pos;
 
     public void SetUI(string s,bool rightClickGuide=false)
     {
@@ -16,12 +21,21 @@ public class MouseOverUI : MonoBehaviour
         text.text += s;
         if (text.text != "")
         {
-            Vector3 offset = new Vector3(0, 0, -10);
-            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
-            else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
-            panel.transform.position = Input.mousePosition + offset;
-            //print(Input.mousePosition);
-            //print(Camera.main.ScreenToWorldPoint(offset));
+            //Vector3 offset = new Vector3(0, 0, -10);
+            //if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
+            //else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
+            //panel.transform.position = Input.mousePosition + offset;
+
+            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset_x; }
+            else { offset.x = -1 * baseOffset_x; }
+            if (Input.mousePosition.y / Camera.main.pixelHeight < 0.5f) { offset.y = baseOffset_y; }
+            else { offset.y = -1 * baseOffset_y; }
+
+            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + offset);
+            pos.z = 0;
+            panel.transform.position = pos + offset;
+
+
             panel.SetActive(true);
         }
     }
@@ -40,10 +54,21 @@ public class MouseOverUI : MonoBehaviour
     {
         if (panel.activeSelf)
         {
-            Vector3 offset = new Vector3(0, 0, -10);
-            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
-            else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
-            panel.transform.position = Input.mousePosition + offset;
+            //Vector3 offset = new Vector3(0, 0, -10);
+            //if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
+            //else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
+            //panel.transform.position = Input.mousePosition + offset;
+
+            offset = Vector3.zero;
+
+            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset_x; }
+            else { offset.x = -1 * baseOffset_x; }
+            if (Input.mousePosition.y / Camera.main.pixelHeight < 0.5f) { offset.y = baseOffset_y; }
+            else { offset.y = -1 * baseOffset_y; }
+
+            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + offset);
+            pos.z = 0;
+            panel.transform.position = pos + offset;
         }
     }
 }

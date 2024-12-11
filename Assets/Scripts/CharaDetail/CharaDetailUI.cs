@@ -61,6 +61,7 @@ public class CharaDetailUI : MonoBehaviour
 
     ChataDetail_CharaButton draggFrom;
     Definer.Item selectedEq;
+    Vector3 dragImagePos;
     GameObject draggingImage;
 
 
@@ -307,7 +308,9 @@ public class CharaDetailUI : MonoBehaviour
     {
         if (draggingImage != null)
         {
-            draggingImage.transform.position = Input.mousePosition;
+            dragImagePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dragImagePos.z = 0;
+            draggingImage.transform.position = dragImagePos;
 
             if (Input.GetMouseButtonUp(0))
             {

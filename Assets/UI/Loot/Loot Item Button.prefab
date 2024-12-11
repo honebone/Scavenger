@@ -140,6 +140,12 @@ MonoBehaviour:
   amountText: {fileID: 2115670492131687183}
   itemImage: {fileID: 2115670491536747973}
   frame: {fileID: 2115670491786026785}
+  revealVE:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 6129233796141590907, guid: 50039041e568ffa4e8068732ea0c462d, type: 3}
+  - {fileID: 6129233796141590907, guid: 5c850acea41f82b4da02fb43dc1fc212, type: 3}
+  - {fileID: 6129233796141590907, guid: b0358a2d3a92df24fa20b590969dd599, type: 3}
   expSprite: {fileID: 21300000, guid: c95b4a6fae64ab74eb9d50c98dea1ac5, type: 3}
   expColor: {r: 0.9811321, g: 0.96370393, b: 0.58775365, a: 1}
   expName: "\u7D4C\u9A13\u306E\u30AA\u30FC\u30D6"

@@ -11,6 +11,8 @@ public class SupplyButton : MonoBehaviour
     Image itemImage;
     [SerializeField]
     Image frame;
+    [SerializeField]
+    List<GameObject> revealVE;
 
 
     InfoText infoText;
@@ -32,6 +34,7 @@ public class SupplyButton : MonoBehaviour
         itemImage.sprite = item.data.sprite;
         frame.color = item.data.rarity.ToColor();
         if (item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
+        if (revealVE[(int)item.data.rarity] != null) { Instantiate(revealVE[(int)item.data.rarity], transform); }
     }
 
     public void OnMouseDown()
@@ -52,7 +55,15 @@ public class SupplyButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
-       mouseOver.SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+        if (revealed)
+        {
+            mouseOver.SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+        }
+        else
+        {
+            ExpeditionRef.mouseover.SetUI("???");
+        }
+
     }
     public void OnMouseExit()
     {

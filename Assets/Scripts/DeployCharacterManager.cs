@@ -43,6 +43,7 @@ public class DeployCharacterManager : MonoBehaviour
     MouseOverUI mouseOver;
 
     Character.CharacterStatus draggingChara;
+    Vector3 dragImagePos;
     GameObject draggingImage;
 
     bool tutorial;
@@ -129,7 +130,9 @@ public class DeployCharacterManager : MonoBehaviour
         {
             if (draggingImage != null)
             {
-                draggingImage.transform.position = Input.mousePosition;
+                dragImagePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                dragImagePos.z = 0;
+                draggingImage.transform.position = dragImagePos;
 
                 if (Input.GetMouseButtonUp(0))
                 {

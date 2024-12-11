@@ -12,6 +12,8 @@ public class LootButton : MonoBehaviour
     Image itemImage;
     [SerializeField]
     Image frame;
+    [SerializeField]
+    List<GameObject> revealVE;
 
 
     InfoText infoText;
@@ -54,6 +56,7 @@ public class LootButton : MonoBehaviour
             itemImage.sprite = item.data.sprite;
             frame.color = item.data.rarity.ToColor();
             if (item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
+            if (revealVE[(int)item.data.rarity] != null) { Instantiate(revealVE[(int)item.data.rarity], transform); }
         }
     }
 
@@ -81,14 +84,22 @@ public class LootButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        if (expOrb)
+        if (revealed)
         {
-            FindObjectOfType<MouseOverUI>().SetUI(expName.ColorStr(expColor), true);
+            if (expOrb)
+            {
+                FindObjectOfType<MouseOverUI>().SetUI(expName.ColorStr(expColor), true);
+            }
+            else
+            {
+                FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+            }
         }
         else
         {
-            FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+            ExpeditionRef.mouseover.SetUI("???");
         }
+       
     }
     public void OnMouseExit()
     {
