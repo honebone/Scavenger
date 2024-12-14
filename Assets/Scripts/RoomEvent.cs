@@ -45,6 +45,8 @@ public class RoomEvent : MonoBehaviour
     }
     public virtual void StartRoomEvent() { }
     public virtual void OnEndREInfo() { }
+    /// <summary>optionを右クリック時に呼ばれる</summary>
+    public virtual void OnRClick(int index) { }
     public virtual void SelectOption(int index) { }
     /// <summary>デフォルトではルート開始</summary>
     public virtual void OnEndBattle() { lootPanel.Loot(); }

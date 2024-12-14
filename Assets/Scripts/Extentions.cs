@@ -179,6 +179,13 @@ public static class Extentions
 
         return added;
     }
+    public static void RemoveList<T>(this List<T> list, List<T> remove)
+    {
+        foreach (T t in remove)
+        {
+            if (list.Contains(t)) { list.Remove(t); }
+        }
+    }
 
     /// <summary>重複なしで指定された個数の配列をランダムに取得　要素数<=指定個数の時はリスト全体を返す</summary>
     public static List<T> Sample<T>(this List<T> list, int amount)

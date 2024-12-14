@@ -28,11 +28,12 @@ public class REOptionButton : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             infoText.SetText(optionParams.optionName, optionParams.optionInfo);
+            expeditionManager.REOption_OnRClick(index);
         }
         if (Input.GetMouseButtonDown(0))
         {
             mouseOver.ResetUI();
-            expeditionManager.SelectOption(index);
+            expeditionManager.REOption_Select(index);
         }
     }
 

@@ -18650,7 +18650,6 @@ MonoBehaviour:
   areaDataForDebug: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   backgroundP: {fileID: 833599005}
   globalLight: {fileID: 521683945}
-  currentPos: {x: 0, y: 0}
   AreaManagerP: {fileID: 240593738}
   REInfoPanel: {fileID: 375029918}
   RETitle: {fileID: 209384739}
@@ -18667,6 +18666,8 @@ MonoBehaviour:
   tutorial_equipment: {fileID: 11400000, guid: 04f307a436b202a4c8cbca99ef7fac77, type: 2}
   tutorial_passive: {fileID: 11400000, guid: 24ec07efb35d7054f84e9bbd45540c3e, type: 2}
   tutorial_personality: {fileID: 11400000, guid: 0c36ea985df2c984a9db6e9de6b53b8d, type: 2}
+  deployedChara: []
+  currentPos: {x: 0, y: 0}
 --- !u!114 &914944171
 MonoBehaviour:
   m_ObjectHideFlags: 0

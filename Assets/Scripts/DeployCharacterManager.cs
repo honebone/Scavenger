@@ -200,6 +200,7 @@ public class DeployCharacterManager : MonoBehaviour
                     if (positionButtons[i].GetCharacterStatus().characterData)
                     {
                         charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i);
+                        expeditionManager.deployedChara.Add(positionButtons[i].GetCharacterStatus().characterData);
                     }
                 }
 

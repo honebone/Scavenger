@@ -50,5 +50,8 @@ MonoBehaviour:
   endExpedition:
     optionName: "\u5E30\u9084\u3059\u308B"
     optionInfo: "\u63A2\u7D22\u3092\u7D42\u4E86\u3057\u3001\u6301\u3063\u3066\u3044\u308B\u7D20\u6750\u30A2\u30A4\u30C6\u30E0\u306E\u3059\u3079\u3066\u3092\u62E0\u70B9\u306B\u6301\u3061\u5E30\u308B"
+  skipDeploy:
+    optionName: "\u30B9\u30AD\u30C3\u30D7"
+    optionInfo: 
   nextAreas:
   - {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}

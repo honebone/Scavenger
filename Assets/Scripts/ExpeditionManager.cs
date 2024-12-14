@@ -81,17 +81,6 @@ public class ExpeditionManager : MonoBehaviour
 
     [SerializeField] Transform backgroundP;
     [SerializeField] Light2D globalLight;
-    int areaCount;
-    AreaData currentArea;
-
-    int addedMadness;
-    List<GameObject> madnessPAs = new List<GameObject>();
-
-    /// <summary>x:現在のレイヤー y:上下</summary>
-    [SerializeField]
-    Vector2Int currentPos;
-    Room currentRoom;
-    List<Map_LayerPanel> layers;
 
     [SerializeField]
     Transform AreaManagerP;
@@ -145,6 +134,19 @@ public class ExpeditionManager : MonoBehaviour
 
     bool inExpedition;
     bool inRoomEvent;
+
+    public List<CharacterData> deployedChara = new List<CharacterData>();
+    int areaCount;
+    AreaData currentArea;
+
+    int addedMadness;
+    List<GameObject> madnessPAs = new List<GameObject>();
+
+    /// <summary>x:現在のレイヤー y:上下</summary>
+    [SerializeField]
+    Vector2Int currentPos;
+    Room currentRoom;
+    List<Map_LayerPanel> layers;
 
     private void Start()
     {
@@ -477,7 +479,11 @@ public class ExpeditionManager : MonoBehaviour
             o.GetComponent<REOptionButton>().Init(optionParams[i], i, infoText,this);
         }
     }
-    public void SelectOption(int index)
+    public void REOption_OnRClick(int index)
+    {
+        currentRE.OnRClick(index);
+    }
+    public void REOption_Select(int index)
     {
         for(int i = 0; i < REOptionButtonsP.childCount; i++) { Destroy(REOptionButtonsP.GetChild(i).gameObject); }
         ResetREInfo();

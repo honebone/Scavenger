@@ -12,6 +12,12 @@ public class AbilityButtonPanel : MonoBehaviour
     BattleManager battleManager;
     CharactersManager charactersManager;
     GuideMessage guideMessage;
+
+    public static AbilityButtonPanel instance;
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         battleManager=FindObjectOfType<BattleManager>();
