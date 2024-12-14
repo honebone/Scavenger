@@ -136,13 +136,14 @@ public class AreaManager : MonoBehaviour
 
         GenerateMap();
     }
+    int layerCount;
 
     public virtual void GenerateMap()
     {
         map.ResetMap();
 
         areaLength = Random.Range(areaData.minLength, areaData.maxLength + 1);
-        int layerCount = 0;
+        layerCount = 0;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//0‘w–Ú
         layer[2].empty = false;
@@ -150,9 +151,7 @@ public class AreaManager : MonoBehaviour
         layer[2].straight = 1;
         layer[2].down = 2;
         layer[2].SetRoomEvent(areaData.start);
-        map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
-        layerCount++;
+        SetLayer();
 
         layer[0].empty = true;//1‘w–Ú
         layer[1] = SetRoom(true);
@@ -161,18 +160,14 @@ public class AreaManager : MonoBehaviour
         layer[3] = SetRoom(true);
         layer[3].up = 2;
         layer[4].empty = true;
-        map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
-        layerCount++;
+        SetLayer();
 
         for (int j = 2; j < areaLength - 2; j++)//2`(length-3)‘w–Ú‚Ü‚Å
         {
             for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }
             layer[0].down = -1;
             layer[4].up = -1;
-            map.SetLayerPanel(layer, layerCount);
-            areaRooms.Add(new List<ExpeditionManager.Room>(layer));
-            layerCount++;
+            SetLayer();
         }
 
         for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }//length-2‘w–Ú
@@ -184,9 +179,7 @@ public class AreaManager : MonoBehaviour
         layer[4].down = 2;
         layer[4].straight = -1;
         layer[4].up = -1;
-        map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
-        layerCount++;
+        SetLayer();
 
         layer[0].empty = true;//length-1‘w–Ú
         layer[1] = SetRoom(true);
@@ -202,9 +195,7 @@ public class AreaManager : MonoBehaviour
         layer[3].straight = -1;
         layer[3].down = 2;
         layer[4].empty = true;
-        map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
-        layerCount++;
+        SetLayer();
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length‘w–Ú
         layer[2].empty = false;
@@ -213,9 +204,7 @@ public class AreaManager : MonoBehaviour
         layer[2].straight = 2;
         layer[2].down = -1;
         layer[2].SetRoomEvent(areaData.boss);
-        map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
-        layerCount++;
+        SetLayer();
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+1‘w–Ú(ƒGƒŠƒA‚ÌI’[)
         layer[2].empty = false;
@@ -224,17 +213,22 @@ public class AreaManager : MonoBehaviour
         layer[2].down = -1;
         layer[2] = SetRoom(false,true);
         layer[2].SetRoomEvent(areaData.endArea);
-        map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
+        SetLayer();
 
         map.EndGenerateMap();
     }
-    //void SetLayerPanel(ExpeditionManager.Room[] l,int lc)
-    //{
-    //    var lp = Instantiate(layerPanel, content.transform);
-    //    lp.GetComponent<Map_LayerPanel>().Init(l, lc,expeditionManager,infoText,mapScroll);
-    //    layers.Add(lp.GetComponent<Map_LayerPanel>());
-    //}
+   
+    void SetLayer()
+    {
+        map.SetLayerPanel(layer, layerCount);
+        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
+        layerCount++;
+        for (int i = 0; i < layer.Length; i++)
+        {
+            layer[i] = new ExpeditionManager.Room();
+        }
+    }
+
     public ExpeditionManager.Room SetRoom(bool setEventRandomly,bool noBlind=false)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();

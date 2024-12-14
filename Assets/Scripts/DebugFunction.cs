@@ -54,6 +54,7 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     GameObject debugPanel;
 
+
     CharactersManager charactersManager;
     ExpeditionManager expeditionManager;
     BattleManager battleManager;

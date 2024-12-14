@@ -9,7 +9,10 @@ public class P_Werewolf_PA : PA_Personality
     [SerializeField] GameObject werewolf;
 
     bool act;
-
+    public override void OnBattleStart()
+    {
+        act = false;
+    }
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         act = true;

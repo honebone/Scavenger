@@ -15,6 +15,11 @@ public class Eq_DreamCatcher : PA_Equipment
         return s;
     }
 
+    public override void OnBattleStart()
+    {
+        act = false;
+    }
+
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         act = true;

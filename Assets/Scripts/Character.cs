@@ -1557,6 +1557,7 @@ public class Character : MonoBehaviour
     public void OnBattleEnd()
     {
         charaStatus.shield = 0;//シールド量リセット
+        continueTurn = false;
         charaObj.SetHPandShieldBar();
         for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {

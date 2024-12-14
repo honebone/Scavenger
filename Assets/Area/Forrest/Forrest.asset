@@ -36,7 +36,7 @@ MonoBehaviour:
     weight: 10
   start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
   boss: {fileID: 11400000, guid: a2f099821f1bc974b95073b8e990f441, type: 2}
-  endArea: {fileID: 11400000, guid: ccbef681c6466094984d1de7cc13dd8a, type: 2}
+  endArea: {fileID: 11400000, guid: f49e2db89d4591446a8279247c444817, type: 2}
   normalBattlePool:
   - upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     centerFront: {fileID: 0}

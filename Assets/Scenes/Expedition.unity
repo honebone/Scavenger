@@ -284,7 +284,7 @@ MonoBehaviour:
     upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-    upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
+    upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   itemData:
@@ -12362,6 +12362,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc08646ce1a30f346b56a425f914feeb, type: 2}
   - {fileID: 11400000, guid: 1a2965865679d984bbc081dcb4d03b4a, type: 2}
   - {fileID: 11400000, guid: 728f05a715c33de4fb69e3aa8938606b, type: 2}
+  - {fileID: 11400000, guid: 1055ae7c848691e4dbb70b8676179670, type: 2}
+  - {fileID: 11400000, guid: ee4b521c8e76a3342bcbdef8b63c591b, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}

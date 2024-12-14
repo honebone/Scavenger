@@ -14,7 +14,12 @@ public class Eq_Quiver : PA_Equipment
         s += actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
-   
+
+    public override void OnBattleStart()
+    {
+        act = false;
+    }
+
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
         act = true;

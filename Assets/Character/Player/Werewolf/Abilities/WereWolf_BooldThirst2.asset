@@ -86,6 +86,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -138,7 +139,7 @@ MonoBehaviour:
       guaranteed: 1
       applyChance: 0
       stack: 2
-      value: 50
+      value: 30
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []
@@ -156,7 +157,6 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 1
     freeAction: 1
     abilityType: 3
@@ -170,4 +170,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 06000000
+    actionTargetsInt: 07000000

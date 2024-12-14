@@ -11,6 +11,7 @@ public class Eq_DelayCertificate : PA_Equipment
     public override void OnBattleStart()
     {
         activated = false;
+        act = false;
     }
     public override void OnRoundStart()
     {

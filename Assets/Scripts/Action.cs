@@ -939,7 +939,7 @@ public class Action : MonoBehaviour
                         int heal = Mathf.Max(0, fheal.ToInt());
                         onHealParams.healValue = heal;
 
-                        actionOwner.GetBattleReport().GHeal += heal;
+                        if(!notChara) actionOwner.GetBattleReport().GHeal += heal;
                         target.Heal(heal, actionStatus.actionOwner);
                         target.OnHealed(actionStatus.actionOwner, onHealParams);
                         onHealParamsList.Add(onHealParams);
@@ -958,14 +958,14 @@ public class Action : MonoBehaviour
                     if (actionsStatus[i].shieldAdd_max > 0)//シールド
                     {
                         int shield = Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1);
-                        actionOwner.GetBattleReport().GShield += shield;
+                        if (!notChara) actionOwner.GetBattleReport().GShield += shield;
                         target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
                     {
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
                         int shield = Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
-                        actionOwner.GetBattleReport().GShield += shield;
+                        if (!notChara) actionOwner.GetBattleReport().GShield += shield;
                         target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去
