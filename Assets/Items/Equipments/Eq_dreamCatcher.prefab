@@ -95,6 +95,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -103,6 +104,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -131,6 +133,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 20
     healRegain_max: 20
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -148,6 +151,8 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 4
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 2
@@ -217,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33194db482cf01e4cb54794a526cc254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

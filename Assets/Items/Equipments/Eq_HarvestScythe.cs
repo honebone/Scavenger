@@ -13,7 +13,7 @@ public class Eq_HarvestScythe : PA_Equipment
         {
             foreach (Action.OnKillParams onKillParams in onKillParamsList)
             {
-                if (!onKillParams.obstacle && onKillParams.target.GetCharacterStatus().position >= 9)
+                if (!onKillParams.obstacle && onKillParams.target.CharaStatus().position >= 9)
                 {
                     Enqueue(attack, true, target);
                 }

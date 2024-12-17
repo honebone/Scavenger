@@ -19,7 +19,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
     public void SetChara(Character chara)
     {
         character = chara;
-        charaImage.sprite = character.GetCharacterStatus().spriteForUI;
+        charaImage.sprite = character.CharaStatus().spriteForUI;
         charaImage.color = Color.white;
         SetButtons();
     }
@@ -39,7 +39,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     public void Refresh()
     {
-        Character.CharacterStatus status = character.GetCharacterStatus();
+        Character.CharacterStatus status = character.CharaStatus();
 
         foreach (Definer.Item item in status.equipments)
         {

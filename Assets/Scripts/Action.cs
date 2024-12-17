@@ -540,6 +540,7 @@ public class Action : MonoBehaviour
     public struct OnHealParams
     {
         public int healValue;
+        public bool ability;
         public Character target;
     }
     public struct OnApplyStEParams
@@ -598,7 +599,7 @@ public class Action : MonoBehaviour
         bool notChara = false;//フィールド効果やポジション効果などによるアクション
         if (actionStatus.actionOwner != null) {
             actionOwner = actionStatus.actionOwner;
-            ownerStatus = actionStatus.actionOwner.GetCharacterStatus(); 
+            ownerStatus = actionStatus.actionOwner.CharaStatus(); 
         }
         else
         {
@@ -656,7 +657,7 @@ public class Action : MonoBehaviour
 
         foreach(Character character in actionStatus.actionTargets)
         {
-            int pos = character.GetCharacterStatus().position;
+            int pos = character.CharaStatus().position;
             if (!actionStatus.actionTargetsInt.Contains(pos)) { actionStatus.actionTargetsInt.Add(pos); }
         }
         if (!notChara) { actionStatus.actionOwner.ActAnim(); }
@@ -693,7 +694,7 @@ public class Action : MonoBehaviour
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)
         {
             Character target = actionStatus.actionTargets[i];
-            Character.CharacterStatus targetStatus = target.GetCharacterStatus();
+            Character.CharacterStatus targetStatus = target.CharaStatus();
             bool attackHit = true;//攻撃失敗時、その他の効果も発動しないようにする
             ActionResult result = new ActionResult();
             result.target = target;
@@ -855,7 +856,7 @@ public class Action : MonoBehaviour
 
                             if (!notChara)
                             {
-                                if (actionStatus.actionOwner.GetCharacterStatus().position.IsPlayerPos() && !targetStatus.position.IsPlayerPos())
+                                if (actionStatus.actionOwner.CharaStatus().position.IsPlayerPos() && !targetStatus.position.IsPlayerPos())
                                 {
                                     totalDamage += totalDMG;
                                 }
@@ -924,6 +925,7 @@ public class Action : MonoBehaviour
                     if (actionsStatus[i].DoesHeal())//回復
                     {
                         OnHealParams onHealParams = new OnHealParams();
+                        onHealParams.ability = actionStatus.abilityEffect;
                         onHealParams.target = target;
                         float fheal;
                         fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
@@ -1117,7 +1119,7 @@ public class Action : MonoBehaviour
                                 List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(targetStatus.position, moveDir, moveRange));
                                 foreach (Character c in charasOnTravelingDir)
                                 {
-                                    if (c.GetCharacterStatus().immovable)
+                                    if (c.CharaStatus().immovable)
                                     {
                                         movable = false;
                                     }
@@ -1136,12 +1138,12 @@ public class Action : MonoBehaviour
 
                                     foreach (Character c in charasOnTravelingDir)
                                     {
-                                        int swapToPos = util.GetMoveToPos(c.GetCharacterStatus().position, 3 - moveDir, 1);
+                                        int swapToPos = util.GetMoveToPos(c.CharaStatus().position, 3 - moveDir, 1);
                                         OnMoveParams onSwapParams = new OnMoveParams();
                                         onSwapParams.target = c;
                                         onSwapParams.dir = 3 - moveDir;
                                         onSwapParams.range = 1;
-                                        onSwapParams.prevPos = c.GetCharacterStatus().position;
+                                        onSwapParams.prevPos = c.CharaStatus().position;
                                         onSwapParams.currentPos = swapToPos;
                                         onSwapParams.secondaryMove = true;
                                         c.ChangePos(swapToPos);
@@ -1251,7 +1253,7 @@ public class Action : MonoBehaviour
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));
             foreach (Character c in charasOnTravelingDir)
             {
-                if (c.GetCharacterStatus().immovable)
+                if (c.CharaStatus().immovable)
                 {
                     movable = false;
                 }
@@ -1276,11 +1278,11 @@ public class Action : MonoBehaviour
 
                 foreach (Character c in charasOnTravelingDir)
                 {
-                    int swapToPos= util.GetMoveToPos(c.GetCharacterStatus().position, 3 - ownerMoveDir, 1);
+                    int swapToPos= util.GetMoveToPos(c.CharaStatus().position, 3 - ownerMoveDir, 1);
                     OnMoveParams onSwapParams = new OnMoveParams();
                     onSwapParams.dir = 3 - ownerMoveDir;
                     onSwapParams.range = 1;
-                    onSwapParams.prevPos = c.GetCharacterStatus().position;
+                    onSwapParams.prevPos = c.CharaStatus().position;
                     onSwapParams.currentPos = swapToPos;
                     onSwapParams.secondaryMove = true;
                     c.ChangePos(swapToPos);

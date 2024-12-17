@@ -9,10 +9,10 @@ public class AMod_Surgeon_Sedative : ActionMod
 
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
-        Character.CharacterStatus ownerStatus = statusRef.actionOwner.GetCharacterStatus();
+        Character.CharacterStatus ownerStatus = statusRef.actionOwner.CharaStatus();
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if(statusRef.actionTargets[i].GetCharacterStatus().position.IsPlayerPos()) actionsStatus[i] = actionsStatus[i].Modify(actionModStatus_player);
+            if(statusRef.actionTargets[i].CharaStatus().position.IsPlayerPos()) actionsStatus[i] = actionsStatus[i].Modify(actionModStatus_player);
             else actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
         }
 

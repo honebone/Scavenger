@@ -73,7 +73,7 @@ MonoBehaviour:
   burn: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
   attack:
     actionName: 
-    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C3\u306B\u306A\u3063\u305F\u3068\u304D"
+    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C2\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53"
     AModInfo: 
     actionInfo: "\u3053\u306E\u80FD\u529B\u306F\u5404\u30E9\u30A6\u30F3\u30C93\u56DE\u307E\u3067\u767A\u52D5\u3059\u308B"
@@ -96,6 +96,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -191,11 +194,12 @@ MonoBehaviour:
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
-  countGoal: 3
+  countGoal: 2
   defRemain: 2
 --- !u!212 &2102424110011888310
 SpriteRenderer:

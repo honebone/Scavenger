@@ -130,7 +130,7 @@ public class PA_StatusEffect : PassiveAbility
         if (note)
         {
             character.GetTargetButton().SetDamageText(string.Format("{0}{1}", StEStatus.StEName, (StEStatus.stack - prevStack).GetValueWithSign()), Definer.colorRef.failed_unavailable);
-            infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", character.GetCharacterStatus().charaName, GetPAName(), (StEStatus.stack - prevStack).GetValueWithSign()));
+            infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", character.CharaStatus().charaName, GetPAName(), (StEStatus.stack - prevStack).GetValueWithSign()));
         }
 
         OnAddStack(StEStatus.stack - prevStack);//スタック増減時誘発;

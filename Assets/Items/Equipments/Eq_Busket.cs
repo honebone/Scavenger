@@ -18,7 +18,7 @@ public class Eq_Busket : PA_Equipment
     public override void OnHealed(Character healer, Action.OnHealParams onHealParams)
     {
         count += onHealParams.healValue;
-        int th = Mathf.RoundToInt(character.GetCharacterStatus().maxHP * thPercent / 100f);
+        int th = Mathf.RoundToInt(character.CharaStatus().maxHP * thPercent / 100f);
         if (remain > 0)
         {
             while (count >= th)
@@ -49,7 +49,7 @@ public class Eq_Busket : PA_Equipment
     }
     public override string GetCurrentStateInfo()
     {
-        int th = Mathf.RoundToInt(character.GetCharacterStatus().maxHP * thPercent / 100f);
+        int th = Mathf.RoundToInt(character.CharaStatus().maxHP * thPercent / 100f);
         return string.Format("現在のカウント：{0}/{1}\n残り発動回数：{2}", count, th, remain);
     }
 }

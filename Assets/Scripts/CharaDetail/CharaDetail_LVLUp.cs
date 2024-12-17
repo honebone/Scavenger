@@ -58,7 +58,7 @@ public class CharaDetail_LVLUp : MonoBehaviour
         if (detailUI.GetDisplayingChara())
         {
             character = detailUI.GetDisplayingChara();
-            Character.CharacterStatus status = character.GetCharacterStatus();
+            Character.CharacterStatus status = character.CharaStatus();
             currentLVLText.text = status.level.ToString();
             nextLVLText.text = string.Format("éüÇÃLVLÇ‹Ç≈ÅF{0}/{1}", status.exp, status.GetNextExp());
 

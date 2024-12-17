@@ -183,7 +183,7 @@ public class Character_TargetButton : MonoBehaviour
         }
         else
         {
-            Character.CharacterStatus status = character.GetCharacterStatus();
+            Character.CharacterStatus status = character.CharaStatus();
             string s = status.charaName + "\n";
             if (status.shield > 0)
             {

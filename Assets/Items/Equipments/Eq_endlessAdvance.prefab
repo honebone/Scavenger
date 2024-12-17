@@ -59,9 +59,9 @@ MonoBehaviour:
       INT_mul: 0
       CRITC: 0
       CRITD: 0
-      EVD: 0
+      EVD: 5
       ACC: 0
-      ACT: 0
+      ACT: 2
       turnPerRound: 0
       GHeal: 0
       RHeal: 0

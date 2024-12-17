@@ -20,7 +20,7 @@ public class E_RatKing_PA : PA_Personality
 
     public override void OnBattleStart()
     {
-        countGoal = Mathf.RoundToInt(character.GetCharacterStatus().maxHP * spawnHPRatio);
+        countGoal = Mathf.RoundToInt(character.CharaStatus().maxHP * spawnHPRatio);
         Enqueue_Self(actionStatus_BattleStart);
     }
 
@@ -70,7 +70,7 @@ public class E_RatKing_PA : PA_Personality
     }
     public override string GetPAInfo_Base()
     {
-        string s = actionStatus_BattleStart.GetInfo(true, character.GetCharacterStatus()) + "\n";
+        string s = actionStatus_BattleStart.GetInfo(true, character.CharaStatus()) + "\n";
         //s += actionStatus_summon.GetInfo(true, character.GetCharacterStatus());
         return s;
     }

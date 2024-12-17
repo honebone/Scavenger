@@ -60,7 +60,7 @@ public class P_Pyromancer_PA : PA_Personality
         int stack = 0;
         foreach (Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
         {
-            if (!onApplyStEParams.taget.GetCharacterStatus().position.IsPlayerPos())
+            if (!onApplyStEParams.taget.CharaStatus().position.IsPlayerPos())
             {
                 foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
                 {

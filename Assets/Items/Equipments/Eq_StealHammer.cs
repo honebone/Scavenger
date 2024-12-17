@@ -24,7 +24,7 @@ public class Eq_StealHammer : PA_Equipment
         {
             if (!forCalcDMG) { activated = false; }
             ActionMod.ActionModStatus mod = actionModStatus;
-            mod.exATKDMG_int = (character.GetCharacterStatus().maxHP * HPRatio).ToInt();
+            mod.exATKDMG_int = (character.CharaStatus().maxHP * HPRatio).ToInt();
 
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {

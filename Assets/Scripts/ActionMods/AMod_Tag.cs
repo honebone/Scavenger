@@ -10,7 +10,7 @@ public class AMod_Tag : ActionMod
     {
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if (statusRef.actionTargets[i].GetCharacterStatus().characterTags.Contains(checkTag))
+            if (statusRef.actionTargets[i].CharaStatus().characterTags.Contains(checkTag))
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }

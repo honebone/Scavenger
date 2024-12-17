@@ -19,7 +19,7 @@ public class E_GoblinLeader_PA : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        string s = actionStatus.GetInfo(true, character.GetCharacterStatus()) + "\n";
+        string s = actionStatus.GetInfo(true, character.CharaStatus()) + "\n";
         return s;
     }
 }

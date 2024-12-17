@@ -9,7 +9,7 @@ public class AMod_Focus : ActionMod
         actionModStatus.consumeFocus = true;
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if (statusRef.actionTargets[i].GetCharacterStatus().focused > 0)
+            if (statusRef.actionTargets[i].CharaStatus().focused > 0)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }

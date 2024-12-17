@@ -8,7 +8,7 @@ public class AMod_Hunter_Hunt : ActionMod
     float maxATKMod;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
-        Character.CharacterStatus ownerStatus = statusRef.actionOwner.GetCharacterStatus();
+        Character.CharacterStatus ownerStatus = statusRef.actionOwner.CharaStatus();
         actionModStatus.ATKMod = Mathf.Clamp(ownerStatus.ACC - 100, 0, maxATKMod) * 2;
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {

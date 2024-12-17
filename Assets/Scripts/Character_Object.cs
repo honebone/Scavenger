@@ -95,7 +95,7 @@ public class Character_Object : MonoBehaviour
 
     public void SetCharaSprite(GameObject sprite)
     {
-        Character.CharacterStatus status = character.GetCharacterStatus();
+        Character.CharacterStatus status = character.CharaStatus();
         Vector2 pos = charactersManager.GetCharacterWorldPos(status.position);
         Vector2 offset = status.characterData.spriteOffset;
         if (status.position < 9) { offset.x *= -1; }
@@ -124,7 +124,7 @@ public class Character_Object : MonoBehaviour
     //Coroutine barAnim;
     public void SetHPandShieldBar()
     {
-        Character.CharacterStatus status = character.GetCharacterStatus();
+        Character.CharacterStatus status = character.CharaStatus();
         ShieldBar.maxValue = status.maxHP + status.shield;
         ShieldBar.value = status.HP + status.shield;
 
@@ -149,7 +149,7 @@ public class Character_Object : MonoBehaviour
     IEnumerator DMGBarAnim()
     {
         yield return new WaitForSeconds(0.3f);
-        int dec = Mathf.CeilToInt(character.GetCharacterStatus().maxHP * 0.05f);
+        int dec = Mathf.CeilToInt(character.CharaStatus().maxHP * 0.05f);
         while (DMGBar.value > HPBar.value)
         {
             yield return new WaitForSeconds(0.05f);
@@ -159,7 +159,7 @@ public class Character_Object : MonoBehaviour
     }
     public void SetSANBar()
     {
-        Character.CharacterStatus status = character.GetCharacterStatus();
+        Character.CharacterStatus status = character.CharaStatus();
         SANBar.maxValue = status.maxSAN;
         SANBar.value = status.SAN;
     }

@@ -390,7 +390,7 @@ public class ExpeditionManager : MonoBehaviour
             {
                 foreach(Character chara in charactersManager.GetExistingCharacters_All())
                 {
-                    if (!chara.GetCharacterStatus().player) { infoText.AddErrorText("プレイヤーでないキャラが生きている"); }
+                    if (!chara.CharaStatus().player) { infoText.AddErrorText("プレイヤーでないキャラが生きている"); }
                     chara.GetTargetButton().MoveMode_SelectableAsTarget();
                 }
             }
@@ -408,7 +408,7 @@ public class ExpeditionManager : MonoBehaviour
         for (int i = 0; i < 9; i++)
         {
             charactersManager.GetTargetButton(i).MoveMode_ResetAll();
-            if (moveChara.GetCharacterStatus().position != i)
+            if (moveChara.CharaStatus().position != i)
             {
                 charactersManager.GetTargetButton(i).MoveMode_SelectableAsMovePos();
             }
@@ -420,7 +420,7 @@ public class ExpeditionManager : MonoBehaviour
 
         if (charactersManager.CheckCharaExist(pos))
         {
-            charactersManager.GetCharacterWithPos(pos).ChangePos(moveChara.GetCharacterStatus().position);
+            charactersManager.GetCharacterWithPos(pos).ChangePos(moveChara.CharaStatus().position);
         }
         moveChara.ChangePos(pos);
         ToggleMoveMode();
@@ -505,7 +505,7 @@ public class ExpeditionManager : MonoBehaviour
         List<Character> pool = new List<Character>();
         foreach (Character c in charactersManager.GetExistingCharacters_All())
         {
-            if (c.GetCharacterStatus().playable) { pool.Add(c); }
+            if (c.CharaStatus().playable) { pool.Add(c); }
         }
 
         SetPersonality(pool.Choice(), personality);
@@ -515,7 +515,7 @@ public class ExpeditionManager : MonoBehaviour
         List<Character> pool = new List<Character>();
         foreach(Character c in charactersManager.GetExistingCharacters_All())
         {
-            if (c.GetCharacterStatus().playable) { pool.Add(c); }
+            if (c.CharaStatus().playable) { pool.Add(c); }
         }
 
         SetPersonality(pool.Choice(), definer.GetPersonalityDataBase().Choice());
@@ -550,7 +550,7 @@ public class ExpeditionManager : MonoBehaviour
 
         foreach (Character chara in ExpeditionRef.charactersManager.GetExistingCharacters_All())
         {
-            Character.CharacterStatus status = chara.GetCharacterStatus();
+            Character.CharacterStatus status = chara.CharaStatus();
             int decreasedHP = status.maxHP - status.HP;
             chara.Heal(Mathf.RoundToInt(decreasedHP * 0.25f), null);
         }

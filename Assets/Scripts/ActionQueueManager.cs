@@ -203,14 +203,14 @@ public class ActionQueueManager : MonoBehaviour
         if (!actionStatus.abilityEffect) { infoText.AddErrorText("ability‚Å‚È‚¢ƒAƒNƒVƒ‡ƒ“‚ð‰ðŒˆ‚µ‚Ä‚¢‚Ü‚·"); }
 
         Text abilityNameText;
-        if (actionStatus.actionOwner.GetCharacterStatus().position < 9) { abilityNameText = abilityNameText_player; }
+        if (actionStatus.actionOwner.CharaStatus().position < 9) { abilityNameText = abilityNameText_player; }
         else { abilityNameText = abilityNameText_enemy; }
 
         abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
         abilityNameText.transform.parent.GetComponent<Image>().enabled = true;
 
-        if (actionStatus.actionOwner != null && !actionStatus.actionOwner.GetCharacterStatus().player)
+        if (actionStatus.actionOwner != null && !actionStatus.actionOwner.CharaStatus().player)
         {
             soundManager.PlaySE(SE_ability);
 

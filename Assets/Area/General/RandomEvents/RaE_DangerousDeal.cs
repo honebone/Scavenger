@@ -26,7 +26,7 @@ public class RaE_DangerousDeal : RE_RandomEvents
                 ExpeditionRef.loot.AddItem(Definer.equipments[(int)ItemData.Rarity.epic].Choice(), 1);
                 foreach (Character c in characterManager.GetExistingCharacters_All())
                 {
-                    if (c.GetCharacterStatus().playable)
+                    if (c.CharaStatus().playable)
                     {
                         expeditionManager.SetPersonality(c, Definer.personalities[(int)PA_Personality.PersonalityStatus.PersonalityType.bad].Choice());
                     }
@@ -38,7 +38,7 @@ public class RaE_DangerousDeal : RE_RandomEvents
                 ExpeditionRef.loot.AddItem(Definer.equipments[(int)ItemData.Rarity.legendary].Choice(), 1);
                 foreach (Character c in characterManager.GetExistingCharacters_All())
                 {
-                    if (c.GetCharacterStatus().playable)
+                    if (c.CharaStatus().playable)
                     {
                         expeditionManager.SetPersonality(c, Definer.personalities[(int)PA_Personality.PersonalityStatus.PersonalityType.bad].Choice());
                         expeditionManager.SetPersonality(c, Definer.personalities[(int)PA_Personality.PersonalityStatus.PersonalityType.bad].Choice());

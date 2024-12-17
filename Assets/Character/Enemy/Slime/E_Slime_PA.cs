@@ -22,6 +22,6 @@ public class E_Slime_PA : PA_Personality
    
     public override string GetPAInfo_Base()
     {
-        return actionStatus.GetInfo(true, character.GetCharacterStatus());
+        return actionStatus.GetInfo(true, character.CharaStatus());
     }
 }

@@ -17,10 +17,9 @@ MonoBehaviour:
   specialInfo: 0
   info: 
   rarity: 2
-  sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  sprite: {fileID: 21300000, guid: 33194db482cf01e4cb54794a526cc254, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  equipmentTag: 1
   manager: {fileID: 5667121962493394942, guid: c2577f51afb6efa4e93c18c52755591d, type: 3}

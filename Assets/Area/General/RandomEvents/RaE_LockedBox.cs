@@ -14,7 +14,7 @@ public class RaE_LockedBox : RE_RandomEvents
         float maxCRITC = 0;
         foreach (Character chara in characterManager.GetExistingCharacters_All())
         {
-            float CRITC = chara.GetCharacterStatus().CRITC;
+            float CRITC = chara.CharaStatus().CRITC;
             maxCRITC = Mathf.Max(CRITC, maxCRITC);
         }
         chance = maxCRITC * 2;

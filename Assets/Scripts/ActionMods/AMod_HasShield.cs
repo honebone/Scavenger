@@ -10,7 +10,7 @@ public class AMod_HasShield : ActionMod
     {
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if ((statusRef.DoesAttack() || !onlyAttack) && (statusRef.actionTargets[i].GetCharacterStatus().shield > 0 == hasShield))
+            if ((statusRef.DoesAttack() || !onlyAttack) && (statusRef.actionTargets[i].CharaStatus().shield > 0 == hasShield))
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }

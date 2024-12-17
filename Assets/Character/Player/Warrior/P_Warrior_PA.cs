@@ -10,7 +10,7 @@ public class P_Warrior_PA : PA_Personality
 
     public override void OnBattleStart()
     {
-        float decreased = 100f - character.GetCharacterStatus().GetHPPercent();
+        float decreased = 100f - character.CharaStatus().GetHPPercent();
         while (decreased >= 10f)
         {
             decreased -= 10f;

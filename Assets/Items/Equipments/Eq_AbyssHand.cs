@@ -14,10 +14,10 @@ public class Eq_AbyssHand : PA_Equipment
     public override void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
     {
         bool f = false;
-        Character.CharacterStatus status = character.GetCharacterStatus();
+        Character.CharacterStatus status = character.CharaStatus();
         foreach (Action.OnApplyStEParams onApplyStEParams in onApplyStEParamsList)
         {
-            if (charactersManager.GetCharactersWithPos(status.position.RelativePosToAbsolute(neighbor)).Contains(onApplyStEParams.taget))
+            if (charactersManager.GetCharactersWithPos(status.position.RelPosToAbs(neighbor)).Contains(onApplyStEParams.taget))
             {
                 foreach (PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
                 {

@@ -10,7 +10,7 @@ public class PA_StE_Marked : PA_StatusEffect
     }
     public override void BecomeAbilityTarget(Character actor)
     {
-        if(actor!=null&&(character.GetCharacterStatus().position < 9) != (actor.GetCharacterStatus().position < 9))
+        if(actor!=null&&(character.CharaStatus().position < 9) != (actor.CharaStatus().position < 9))
         {
            AddStack(-1);
         }

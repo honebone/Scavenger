@@ -101,7 +101,7 @@ public class CharaDetailUI : MonoBehaviour
         List<Character> characters = new List<Character>();
         foreach (Character chara in charactersManager.GetExistingCharacters_All())
         {
-            Character.CharacterStatus status = chara.GetCharacterStatus();
+            Character.CharacterStatus status = chara.CharaStatus();
             if (status.player && chara.CheckAlive()) { characters.Add(chara); }
         }
 
@@ -141,7 +141,7 @@ public class CharaDetailUI : MonoBehaviour
         EndSelectEquipment();
 
         displayingChara = chara;
-        status = displayingChara.GetCharacterStatus();
+        status = displayingChara.CharaStatus();
 
         displayingChara.DisplayInfo();
 
@@ -176,7 +176,7 @@ public class CharaDetailUI : MonoBehaviour
     {
         if(displayingChara != null)
         {
-            status = displayingChara.GetCharacterStatus();
+            status = displayingChara.CharaStatus();
 
             SetEquipmnetButtons();
             SetAbilityButtons();
@@ -187,7 +187,7 @@ public class CharaDetailUI : MonoBehaviour
         List<Character> characters = new List<Character>();
         foreach (Character chara in charactersManager.GetExistingCharacters_All())
         {
-            Character.CharacterStatus status = chara.GetCharacterStatus();
+            Character.CharacterStatus status = chara.CharaStatus();
             if (status.player && chara.CheckAlive()) { characters.Add(chara); }
         }
 

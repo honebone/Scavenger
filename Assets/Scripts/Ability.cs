@@ -377,7 +377,7 @@ public class Ability : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
-    public virtual string GetInfo() { return status.GetInfo(true, character.GetCharacterStatus()); }
+    public virtual string GetInfo() { return status.GetInfo(true, character.CharaStatus()); }
     public virtual Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus) { return actionStatus; }
 
     public bool CheckAvailable()
@@ -385,7 +385,7 @@ public class Ability : MonoBehaviour
         bool atProperPos = false;
         bool hasProperTarget = true;
         bool properCondition = false; ;
-        Character.CharacterStatus ownerStatus = character.GetCharacterStatus();
+        Character.CharacterStatus ownerStatus = character.CharaStatus();
         int column = ownerStatus.position.GetColumn();
         if (status.availableFront && column == 0) { atProperPos = true; }
         if (status.availableMid && column == 1) { atProperPos = true; }
@@ -407,7 +407,7 @@ public class Ability : MonoBehaviour
     public List<string> GetUnavailabeInfo()
     {
         List<string> info = new List<string>();
-        Character.CharacterStatus ownerStatus = character.GetCharacterStatus();
+        Character.CharacterStatus ownerStatus = character.CharaStatus();
         if (!BattleManager.inBattle || !ownerStatus.playable) { return info; }
 
         bool atProperPos = false;
@@ -443,7 +443,7 @@ public class Ability : MonoBehaviour
 
     public void StartSelectTarget()
     {
-        Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        Character.CharacterStatus charaStatus = character.CharaStatus();
         targetPool = GetTargetPool(counter);
         if (charaStatus.playable && (targetPool.Count > 1 || counter == 0))
         {
@@ -460,7 +460,7 @@ public class Ability : MonoBehaviour
     public virtual List<List<int>> GetTargetPool(int index)//対象候補を返す
     {
         charactersManager.ResetAllTargetIcons();
-        Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        Character.CharacterStatus charaStatus = character.CharaStatus();
         Character.CharacterStatus targetStatus;
         Action.ActionStatus actionStatus = ModifyTargetParams(status.actionsStatus[index]);
 
@@ -477,7 +477,7 @@ public class Ability : MonoBehaviour
                 case Action.ActionStatus.TargetType.single://単体対象
                     foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                     {
-                        targetStatus = target.GetCharacterStatus();
+                        targetStatus = target.CharaStatus();
                         int pos = targetStatus.position;
                         if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                         {
@@ -495,7 +495,7 @@ public class Ability : MonoBehaviour
                         includeMarked_column = false;
                         foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                         {
-                            targetStatus = target.GetCharacterStatus();
+                            targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
                             if (pos < 9 && pos.GetColumn() == i)//プレイヤー側で列がiと等しい
                             {
@@ -518,7 +518,7 @@ public class Ability : MonoBehaviour
                         includeMarked_column = false;
                         foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                         {
-                            targetStatus = target.GetCharacterStatus();
+                            targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
                             if (pos >= 9 && pos.GetColumn() == i)//エネミー側で列がiと等しい
                             {
@@ -541,7 +541,7 @@ public class Ability : MonoBehaviour
                     List<int> tp_all = new List<int>();
                     foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                     {
-                        targetStatus = target.GetCharacterStatus();
+                        targetStatus = target.CharaStatus();
                         if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
                         {
                             tp_all.Add(targetStatus.position);
@@ -555,7 +555,7 @@ public class Ability : MonoBehaviour
                     {
                         if (target != character)
                         {
-                            targetStatus = target.GetCharacterStatus();
+                            targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
                             if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                             {
@@ -571,7 +571,7 @@ public class Ability : MonoBehaviour
                     {
                         if (target != character)
                         {
-                            targetStatus = target.GetCharacterStatus();
+                            targetStatus = target.CharaStatus();
                             if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
                             {
                                 tp_allWoSelf.Add(targetStatus.position);
@@ -854,7 +854,7 @@ public class Ability : MonoBehaviour
             charactersManager.ResetAllTargetIcons();
 
             string abilityName = status.abilityName.ColorStr(status.abilityType.ToColor());
-            FindObjectOfType<InfoText>().AddLogText(string.Format("○{0}の<{1}>", character.GetCharacterStatus().charaName, abilityName));
+            FindObjectOfType<InfoText>().AddLogText(string.Format("○{0}の<{1}>", character.CharaStatus().charaName, abilityName));
 
             character.Ability_StartCoolDown(status.index);
             if (status.hasRemain) { character.Ability_AddRemain(-1, status.index); }

@@ -28,7 +28,7 @@ public class Eq_NightCloak : PA_Equipment
     }
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        Character.CharacterStatus charaStatus = character.CharaStatus();
         if (available && charaStatus.HP.GetPercent(charaStatus.maxHP) <= threshold)
         {
             available = false;

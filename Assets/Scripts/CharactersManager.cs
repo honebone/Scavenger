@@ -62,7 +62,7 @@ public class CharactersManager : MonoBehaviour
     }
     public void SortExistingCharacters()
     {
-        existingCharacters.Sort((a, b) => a.GetCharacterStatus().position - b.GetCharacterStatus().position);
+        existingCharacters.Sort((a, b) => a.CharaStatus().position - b.CharaStatus().position);
     }
     /// <summary>¶‘¶‚µ‚Ä‚¢‚é‘S‚Ä‚ÌƒLƒƒƒ‰‚ğ•Ô‚µ‚Ü‚· </summary>
     public List<Character> GetExistingCharacters_All() { return existingCharacters; }
@@ -89,7 +89,7 @@ public class CharactersManager : MonoBehaviour
     public List<Character.CharacterStatus> GetExistingCharactersStatus()
     {
         List<Character.CharacterStatus> charactersStatus = new List<Character.CharacterStatus>();
-        foreach (Character existingCharacter in existingCharacters) { charactersStatus.Add(existingCharacter.GetCharacterStatus()); }
+        foreach (Character existingCharacter in existingCharacters) { charactersStatus.Add(existingCharacter.CharaStatus()); }
         return charactersStatus;
     }
 
@@ -202,7 +202,7 @@ public class CharactersManager : MonoBehaviour
         List<Character> list = new List<Character>();
         foreach (Character character in existingCharacters)
         {
-            Character.CharacterStatus status = character.GetCharacterStatus();
+            Character.CharacterStatus status = character.CharaStatus();
             if (!condition.player && status.position < 9) { continue; }
             if (!condition.enemy && status.position >= 9) { continue; }
             if (condition.onlyPlayable && !status.playable) { continue; }
@@ -318,7 +318,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character character in GetExistingCharacters_All())
         {
-            Character.CharacterStatus characterStatus = character.GetCharacterStatus();
+            Character.CharacterStatus characterStatus = character.CharaStatus();
             if (characterStatus.position == pos) { return character; }
         }
         infoText.AddDebugText(string.Format("error:ƒ|ƒWƒVƒ‡ƒ“{0}‚ÉƒLƒƒƒ‰ƒNƒ^[‚Í‘¶İ‚µ‚Ä‚¢‚Ü‚¹‚ñ", pos));
@@ -405,7 +405,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            if (chara.GetCharacterStatus().position >= 9 && !chara.GetCharacterStatus().obstacle) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
+            if (chara.CharaStatus().position >= 9 && !chara.CharaStatus().obstacle) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
         }
         return true;
     }
@@ -413,7 +413,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            if (chara.GetCharacterStatus().player) { return false; }//player‚ª‚¢‚é‚È‚ç”s–k‚µ‚Ä‚È‚¢
+            if (chara.CharaStatus().player) { return false; }//player‚ª‚¢‚é‚È‚ç”s–k‚µ‚Ä‚È‚¢
         }
         return true;
     }
@@ -443,7 +443,7 @@ public class CharactersManager : MonoBehaviour
         List<Character> remove = new List<Character>();
         foreach (Character c in generatedCharacters)
         {
-            if (c.GetCharacterStatus().dead)
+            if (c.CharaStatus().dead)
             {
                 remove.Add(c);
             }

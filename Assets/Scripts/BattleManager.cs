@@ -73,7 +73,7 @@ public class BattleManager : MonoBehaviour
         {
             character = chara;
             turnIcon = icon;
-            charaName = character.GetCharacterStatus().charaName;
+            charaName = character.CharaStatus().charaName;
         }
     }
     [SerializeField]
@@ -175,7 +175,7 @@ public class BattleManager : MonoBehaviour
         List<TurnOrderParams> turnOrderParamsList = new List<TurnOrderParams>();
         foreach(Character chara in new List<Character>(charactersManager.GetExistingCharacters_All()))
         {
-            if (chara.GetCharacterStatus().turnPerRound > 0)
+            if (chara.CharaStatus().turnPerRound > 0)
             {
                 charas.Add(chara);
             }
@@ -191,8 +191,8 @@ public class BattleManager : MonoBehaviour
         {
             TurnOrderParams turnOrderParams = new TurnOrderParams();
             turnOrderParams.chara = charas[j];
-            turnOrderParams.ACT = charas[j].GetCharacterStatus().ACT;
-            turnOrderParams.turns = charas[j].GetCharacterStatus().turnPerRound;
+            turnOrderParams.ACT = charas[j].CharaStatus().ACT;
+            turnOrderParams.turns = charas[j].CharaStatus().turnPerRound;
             turnOrderParams.index = j;
 
             turnOrderParamsList.Add(turnOrderParams);
@@ -372,9 +372,9 @@ public class BattleManager : MonoBehaviour
         infoText.AddLogText("\n====戦闘レポート====");
         foreach (Character chara in charactersManager.GetExistingCharacters_All())
         {
-            if (chara.GetCharacterStatus().player)
+            if (chara.CharaStatus().player)
             {
-                string s = chara.GetCharacterStatus().charaName + "\n";
+                string s = chara.CharaStatus().charaName + "\n";
                 s += chara.GetBattleReport().Report();
                 infoText.AddLogText(s+"\n");
                 chara.ResetBattleReport();
@@ -397,7 +397,7 @@ public class BattleManager : MonoBehaviour
         List<Character> test=new List<Character>(charactersManager.GetExistingCharacters_All());
         foreach(Character chara in test)//プレイヤーでないキャラ全てを消去
         {
-            if (!chara.GetCharacterStatus().player)
+            if (!chara.CharaStatus().player)
             {
                 chara.Retreat();
             }
@@ -459,7 +459,7 @@ public class BattleManager : MonoBehaviour
         if (DebugFunction.instance.battleDebug)
         {
             infoText.AddDebugText("戦闘開始");
-            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.GetCharacterStatus().charaName}"); }
+            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.CharaStatus().charaName}"); }
             else { infoText.AddDebugText("現在のターン：なし"); }
         }
 
@@ -479,7 +479,7 @@ public class BattleManager : MonoBehaviour
         if (DebugFunction.instance.battleDebug)
         {
             infoText.AddDebugText("ラウンド開始");
-            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.GetCharacterStatus().charaName}"); }
+            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.CharaStatus().charaName}"); }
             else { infoText.AddDebugText("現在のターン：なし"); }
         }
 
@@ -502,7 +502,7 @@ public class BattleManager : MonoBehaviour
         if (DebugFunction.instance.battleDebug)
         {
             infoText.AddDebugText("ターン開始");
-            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.GetCharacterStatus().charaName}"); }
+            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.CharaStatus().charaName}"); }
             else { infoText.AddDebugText("現在のターン：なし"); }
         }
 
@@ -522,7 +522,7 @@ public class BattleManager : MonoBehaviour
         if (DebugFunction.instance.battleDebug)
         {
             infoText.AddDebugText("ターン順決定");
-            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.GetCharacterStatus().charaName}"); }
+            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.CharaStatus().charaName}"); }
             else { infoText.AddDebugText("現在のターン：なし"); }
         }
         if (fieldEffect != null) { fieldEffect.OnTurnOrderDecide(); }
@@ -541,7 +541,7 @@ public class BattleManager : MonoBehaviour
         if (DebugFunction.instance.battleDebug)
         {
             infoText.AddDebugText("ラウンド終了");
-            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.GetCharacterStatus().charaName}"); }
+            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.CharaStatus().charaName}"); }
             else { infoText.AddDebugText("現在のターン：なし"); }
         }
 
@@ -561,7 +561,7 @@ public class BattleManager : MonoBehaviour
         if (DebugFunction.instance.battleDebug)
         {
             infoText.AddDebugText("戦闘終了");
-            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.GetCharacterStatus().charaName}"); }
+            if (currentTurn != null) { infoText.AddDebugText($"現在のターン：{currentTurn.character.CharaStatus().charaName}"); }
             else { infoText.AddDebugText("現在のターン：なし"); }
         }
 
@@ -604,7 +604,7 @@ public class BattleManager : MonoBehaviour
         {// && !charactersManager.GetCharacterWithPos(i).GetCharacterStatus().immovable
             if (charactersManager.CheckCharaExist(i))//移動不可でないキャラがポジションiに存在しているなら
             {
-                colmun = charactersManager.GetCharacterWithPos(i).GetCharacterStatus().position.GetColumn();
+                colmun = charactersManager.GetCharacterWithPos(i).CharaStatus().position.GetColumn();
                 if (colmun == 0) { emptyFront = false; }
                 else if (colmun == 1) { emptyMid = false; }
                 else if (colmun == 2) { emptyBack = false; }

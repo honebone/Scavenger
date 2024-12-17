@@ -15,13 +15,13 @@ public class RaE_IdeologicalBook : RE_RandomEvents
         pool = new List<Character>();
         foreach (Character c in characterManager.GetExistingCharacters_All())
         {
-            if (c.GetCharacterStatus().playable) { pool.Add(c); }
+            if (c.CharaStatus().playable) { pool.Add(c); }
         }
 
         options = new List<REOptionParams>();
         foreach (Character character in pool)
         {
-            Character.CharacterStatus status = character.GetCharacterStatus();
+            Character.CharacterStatus status = character.CharaStatus();
             REOptionParams option = new REOptionParams();
             option.optionName = string.Format("{0}‚É“Ç‚Ü‚¹‚é", status.charaName);
             option.optionInfo = "ƒ‰ƒ“ƒ_ƒ€‚È1-3ŒÂ‚Ì“Á«‚ğ“¾‚é";
@@ -39,7 +39,7 @@ public class RaE_IdeologicalBook : RE_RandomEvents
 
     IEnumerator Consequence()
     {
-        infoText.AddLogText(string.Format("{0}‚Ìl‚¦•û‚É•Ï‰»‚ª–K‚ê‚½", pool[choice].GetCharacterStatus().charaName));
+        infoText.AddLogText(string.Format("{0}‚Ìl‚¦•û‚É•Ï‰»‚ª–K‚ê‚½", pool[choice].CharaStatus().charaName));
         infoText.SwitchToLog();
         yield return new WaitForSeconds(1.0f);
 

@@ -53,7 +53,7 @@ MonoBehaviour:
   maxSAN: 50
   ATK: 10
   INT: 10
-  CRITC: 7
+  CRITC: 5
   CRITD: 150
   EVD: 6
   ACC: 96

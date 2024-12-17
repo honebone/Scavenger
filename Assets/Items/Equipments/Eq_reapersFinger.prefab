@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5717969baa793498f5ed1ab6b8a777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
     info_start: 
@@ -66,6 +68,7 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       moveRes: 0
+      debuffRes: 0
     actionMods: []
   action:
     actionName: "\u6B7B\u795E\u306E\u6307"
@@ -89,8 +92,10 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -99,29 +104,36 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 10
-    healPercent_max: 10
+    healPercent_min: 20
+    healPercent_max: 20
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -139,11 +151,13 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 50
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -159,10 +173,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
 --- !u!212 &3238141386940741765
 SpriteRenderer:

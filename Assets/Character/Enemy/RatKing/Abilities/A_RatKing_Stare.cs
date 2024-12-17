@@ -13,7 +13,7 @@ public class A_RatKing_Stare : Ability
         List<int> pos = new List<int>();
         foreach(Character c in target)
         {
-            pos.Add(c.GetCharacterStatus().position);
+            pos.Add(c.CharaStatus().position);
         }
 
         return new List<List<int>> { pos };

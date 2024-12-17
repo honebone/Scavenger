@@ -12,7 +12,7 @@ public class StE_RgKnight : PA_StatusEffect
     bool f;
     public override void OnPAInit()
     {
-        goalDMG = Mathf.RoundToInt(character.GetCharacterStatus().maxHP * goalPercent / 100f);
+        goalDMG = Mathf.RoundToInt(character.CharaStatus().maxHP * goalPercent / 100f);
     }
 
     public override void OnDamaged(Action.OnDamageParams onDamageParams)

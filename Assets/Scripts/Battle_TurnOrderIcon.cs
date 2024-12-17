@@ -25,7 +25,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
     public void Init(Character chara,bool reveal) {
         character = chara;
         revealed = reveal;
-        if (revealed) { charaSprite.sprite = character.GetCharacterStatus().spriteForUI; }
+        if (revealed) { charaSprite.sprite = character.CharaStatus().spriteForUI; }
         else
         {
             charaSprite.sprite = unrevealedIcon;
@@ -44,7 +44,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         if (!revealed&&character.CheckAlive())
         {
             revealed = true;
-            charaSprite.sprite = character.GetCharacterStatus().spriteForUI;
+            charaSprite.sprite = character.CharaStatus().spriteForUI;
             frame.color = Color.white;
             //if (omenSet) { sign.sprite = signIcons[(int)omen.abilityType]; }
         }

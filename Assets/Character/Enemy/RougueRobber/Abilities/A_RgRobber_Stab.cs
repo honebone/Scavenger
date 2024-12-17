@@ -12,16 +12,16 @@ public class A_RgRobber_Stab : Ability
        float lowestHPPercent = 100f;
         foreach (Character chara in pool)
         {
-            Character.CharacterStatus status = chara.GetCharacterStatus();
+            Character.CharacterStatus status = chara.CharaStatus();
             if (status.GetHPPercent() < lowestHPPercent) { lowestHPPercent = status.GetHPPercent();}
         }
 
         List<Character> pool2 = new List<Character>();
         foreach (Character chara in pool)
         {
-            if (chara.GetCharacterStatus().GetHPPercent() == lowestHPPercent) { pool2.Add(chara); }
+            if (chara.CharaStatus().GetHPPercent() == lowestHPPercent) { pool2.Add(chara); }
         }
 
-        return new List<List<int>>() { new List<int> { pool2.Choice().GetCharacterStatus().position } };
+        return new List<List<int>>() { new List<int> { pool2.Choice().CharaStatus().position } };
     }
 }

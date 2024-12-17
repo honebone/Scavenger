@@ -55,7 +55,7 @@ public class PassiveAbility : MonoBehaviour
             if (note)
             {
                 character.GetTargetButton().SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-                infoText.AddLogText(string.Format("{0}ÇÃ{1}Ç™è¡ãéÇ≥ÇÍÇΩ", character.GetCharacterStatus().charaName, GetPAName()));
+                infoText.AddLogText(string.Format("{0}ÇÃ{1}Ç™è¡ãéÇ≥ÇÍÇΩ", character.CharaStatus().charaName, GetPAName()));
             }
             StE.DestroyIcon();
         }

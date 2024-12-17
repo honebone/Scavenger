@@ -169,15 +169,12 @@ public static class Extentions
     }
 
     /// <summary>èdï°Ç»ÇµÇ≈Listí«â¡</summary>
-    public static List<T> AddRangeWithNoOverlap<T>(this List<T> list, List<T> add)
+    public static void AddRangeWithNoOverlap<T>(this List<T> list, List<T> add)
     {
-        List<T> added = new List<T>(list);
         foreach (T t in add)
         {
-            if (!added.Contains(t)) { added.Add(t); }
+            if (!list.Contains(t)) { list.Add(t); }
         }
-
-        return added;
     }
     public static void RemoveList<T>(this List<T> list, List<T> remove)
     {
@@ -238,7 +235,7 @@ public static class Extentions
     {
         return pos.x * 3 + pos.y;
     }
-    public static List<int> RelativePosToAbsolute(this int origin, List<Vector2Int> relativePositions, bool allowOpponent = false)
+    public static List<int> RelPosToAbs(this int origin, List<Vector2Int> relativePositions, bool allowOpponent = false)
     {
         Vector2Int o = origin.PosIntToVector();
         List<int> posList = new List<int>();

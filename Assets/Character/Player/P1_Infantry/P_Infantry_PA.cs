@@ -30,7 +30,7 @@ public class P_Infantry_PA : PA_Personality
     }
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        Character.CharacterStatus charaStatus = character.CharaStatus();
         if (available && charaStatus.HP.GetPercent(charaStatus.maxHP) <= 20)
         {
             available = false;
@@ -42,7 +42,7 @@ public class P_Infantry_PA : PA_Personality
     }
     public override void OnRoundEnd()
     {
-        Character.CharacterStatus charaStatus = character.GetCharacterStatus();
+        Character.CharacterStatus charaStatus = character.CharaStatus();
         if (charaStatus.position.GetColumn()!=0)
         {
             Action.ActionStatus action = move;

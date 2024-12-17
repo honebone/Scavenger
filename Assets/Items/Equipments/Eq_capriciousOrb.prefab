@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724206d9434215a4fb1c86eea7ab0f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 950174bfc18d61744a1775525ca97f74, type: 2}
     info_start: "\u6C17\u307E\u3050\u308C\u306A\u30AA\u30FC\u30D6"
@@ -90,8 +92,10 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -100,6 +104,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -113,7 +118,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -127,6 +133,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -143,6 +150,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -158,10 +166,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   actionStatus:
     actionName: "\u6C17\u307E\u3050\u308C\u306A\u30AA\u30FC\u30D6"
@@ -185,8 +196,10 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -195,6 +208,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -208,7 +222,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -219,9 +234,10 @@ MonoBehaviour:
     healValue_min: 0
     healValue_max: 0
     healPercent_min: 1
-    healPercent_max: 10
+    healPercent_max: 15
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -238,6 +254,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -253,10 +270,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   actionStatus2:
     actionName: "\u6C17\u307E\u3050\u308C\u306A\u30AA\u30FC\u30D6"
@@ -280,8 +300,10 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -290,6 +312,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -303,7 +326,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -317,6 +341,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -333,6 +358,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -348,10 +374,13 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 
   condition:
     searchAsPos: 0
@@ -362,8 +391,10 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0

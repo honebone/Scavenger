@@ -96,6 +96,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -104,6 +105,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -146,9 +149,9 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
       guaranteed: 0
-      applyChance: 30
+      applyChance: 50
       stack: 2
-      value: 10
+      value: 20
       refATK: 1
       DMGPerTurn: 0
     applyPEParams: []
@@ -191,6 +194,7 @@ MonoBehaviour:
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0

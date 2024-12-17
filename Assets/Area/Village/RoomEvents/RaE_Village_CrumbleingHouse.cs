@@ -88,7 +88,7 @@ public class RaE_Village_CrumbleingHouse : RE_RandomEvents
                     yield return new WaitForSeconds(1f);
                     foreach (Character chara in characterManager.GetExistingCharacters_All())
                     {
-                        int maxHP = chara.GetCharacterStatus().maxHP;
+                        int maxHP = chara.CharaStatus().maxHP;
                         float value = Random.Range(0.2f, 0.3f);
                         chara.DecreaseHP(Mathf.RoundToInt(maxHP * value));
                     }

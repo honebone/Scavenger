@@ -10,11 +10,11 @@ public class AMod_HPPercentDiff : ActionMod
 
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
-        float selfHP = statusRef.actionOwner.GetCharacterStatus().GetHPPercent();
+        float selfHP = statusRef.actionOwner.CharaStatus().GetHPPercent();
 
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            float targetHP = statusRef.actionTargets[i].GetCharacterStatus().GetHPPercent();
+            float targetHP = statusRef.actionTargets[i].CharaStatus().GetHPPercent();
             if ((statusRef.DoesAttack() || !onlyAttack) && (selfHP > targetHP) == ownerIsGreater && (selfHP == targetHP) == allowEqual)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);

@@ -25,7 +25,7 @@ public class Eq_Discharger : PA_Equipment
             {
                 if (onDamageParams.totalDMG > 0)
                 {
-                    List<Character> neigborsChara = charactersManager.GetCharactersWithPos(onDamageParams.target.GetCharacterStatus().position.RelativePosToAbsolute(neigbors));
+                    List<Character> neigborsChara = charactersManager.GetCharactersWithPos(onDamageParams.target.CharaStatus().position.RelPosToAbs(neigbors));
                     //attackedChara.AddRangeWithNoOverlap(neigborsChara);
                     foreach (Character c in neigborsChara)
                     {

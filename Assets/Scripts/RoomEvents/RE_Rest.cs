@@ -27,7 +27,7 @@ public class RE_Rest : RoomEvent
             case 0:
                 foreach (Character chara in characterManager.GetExistingCharacters_All())
                 {
-                    int maxHP = chara.GetCharacterStatus().maxHP;
+                    int maxHP = chara.CharaStatus().maxHP;
                     chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
                     chara.SANHeal(10);
                 }
@@ -56,7 +56,7 @@ public class RE_Rest : RoomEvent
                 {
                     foreach (Character chara in characterManager.GetExistingCharacters_All())
                     {
-                        int maxHP = chara.GetCharacterStatus().maxHP;
+                        int maxHP = chara.CharaStatus().maxHP;
                         chara.Heal(Mathf.RoundToInt(maxHP * 0.5f), null);
                         chara.SANHeal(15);
                     }

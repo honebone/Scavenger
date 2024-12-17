@@ -397,7 +397,7 @@ public class Character : MonoBehaviour
 
     //[SerializeField]
     //protected Action.ActionStatus[] actionsStatusTest;
-    public CharacterStatus GetCharacterStatus() { return charaStatus; }
+    public CharacterStatus CharaStatus() { return charaStatus; }
     public BattleReport GetBattleReport() { return battleReport; }
     public void ResetBattleReport() { battleReport = new BattleReport(); }
 

@@ -10,7 +10,7 @@ public class PA_StE_Counter : PA_StatusEffect
  
     public override void OnAttacked(Character attacker, bool evaded, bool missed)
     {
-        if (!character.GetCharacterStatus().dead)
+        if (!character.CharaStatus().dead)
         {
             Action.ActionStatus action = actionStatus;
             if (!INTCounter)

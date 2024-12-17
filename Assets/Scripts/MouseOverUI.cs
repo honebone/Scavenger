@@ -7,7 +7,6 @@ public class MouseOverUI : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     [SerializeField] TextMeshProUGUI text;
-    [SerializeField] float baseOffset = 0.17f;
     [SerializeField] float baseOffset_x;
     [SerializeField] float baseOffset_y;
 

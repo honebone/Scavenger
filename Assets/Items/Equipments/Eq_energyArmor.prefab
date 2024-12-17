@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de2dc1711032cc74198031c4d656d167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: bbb1d49aafe4ef4409a66f2414593a77, type: 2}
     info_start: 
@@ -73,7 +75,7 @@ MonoBehaviour:
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u81EA\u8EAB\u306BmaxHP\u306E[\u30AB\u30A6\u30F3\u30C8\u6570 x 5]\uFF05\u306B\u7B49\u3057\u3044\u30B7\u30FC\u30EB\u30C9\u3092\u5F97\u308B\n\u305D\u306E\u5F8C\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8\u3059\u308B"
+    actionInfo: "\u81EA\u8EAB\u306BmaxHP\u306E[\u30AB\u30A6\u30F3\u30C8\u6570 x 10]\uFF05\u306B\u7B49\u3057\u3044\u30B7\u30FC\u30EB\u30C9\u3092\u5F97\u308B\n\u305D\u306E\u5F8C\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8\u3059\u308B"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -90,8 +92,10 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -100,6 +104,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -113,7 +118,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -127,6 +133,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -143,6 +150,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -158,6 +166,7 @@ MonoBehaviour:
     abilityType: 0
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
@@ -166,7 +175,7 @@ MonoBehaviour:
     actionTargets: []
     actionTargetsInt: 
   maxCount: 10
-  valuePerCount: 5
+  valuePerCount: 10
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0
