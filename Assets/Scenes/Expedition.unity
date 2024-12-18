@@ -299,7 +299,7 @@ MonoBehaviour:
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
-    upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     upperMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
@@ -12457,6 +12457,7 @@ MonoBehaviour:
   - {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
   - {fileID: 1489497368108049143, guid: f83b5e29a8f9f314cb6511b9ebc4ada9, type: 3}
   - {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
+  - {fileID: 5164891664867224302, guid: 6522bb4bf44b3fe48996755b507647d7, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}

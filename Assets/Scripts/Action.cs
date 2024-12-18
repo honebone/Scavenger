@@ -182,7 +182,7 @@ public class Action : MonoBehaviour
         public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
         public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0; }
 
-        public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
+        public string GetInfo(bool refCharaStatus=false, Character.CharacterStatus characterStatus=new Character.CharacterStatus())
         {
             string s = "";
            // bool nb = false;

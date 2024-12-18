@@ -129,14 +129,17 @@ public class Character : MonoBehaviour
             {
                 s += string.Format("LVL：{0}\n", level);
             }
-            s += string.Format("HP/maxHP：{0}/{1}({2}％)\n", HP, maxHP, HP.GetPercent(maxHP).ToString("0.0"));
+            string s2 = $"({maxHP_base} { (maxHP_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
             if (PROT != 0) { s += ValueToStr("被ダメージ", PROT * -1, "％"); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
 
-            s += string.Format("ATK：{0}\n", ATK);
-            s += string.Format("INT：{0}\n", INT);
+            s2 = $"({ATK_base} { (ATK_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s += string.Format("ATK：{0} {1}\n", ATK, s2);
+            s2 = $"({INT_base} { (INT_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s += string.Format("INT：{0} {1}\n", INT, s2);
             s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";

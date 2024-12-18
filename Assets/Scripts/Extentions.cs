@@ -135,7 +135,7 @@ public static class Extentions
 
     public static string GetValueWithSign(this float value)
     {
-        if (value > 0) { return "+" + value.ToString(); }
+        if (value >= 0) { return "+" + value.ToString(); }
         else { return value.ToString(); }
     }
     public static string GetValueWithSign(this int value)

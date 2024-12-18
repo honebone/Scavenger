@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
+  m_Name: A_Pest_Bite
+  m_EditorClassIdentifier: 
+  abilityName: "\u565B\u307F\u3064\u304D"
+  lockedDefault: 0
+  upgradeInfo: 
+  upgradeAbility: {fileID: 0}
+  abilityManager: {fileID: 0}
+  dontChangeSprite: 0
+  activateSprite: {fileID: 0}
+  abilityType: 1
+  excludeRandomPool: 0
+  priority: 1
+  selectWeight: 3
+  availableFront: 1
+  availableMid: 1
+  availableBack: 0
+  hasSelfCondition: 0
+  conditionInfo: 
+  selfCondition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterInclude: []
+    characterTags: 
+    StE: []
+    StEExclude: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  freeAction: 0
+  cooldownOnBattleStart: 0
+  cooldownOnUse: 0
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
+  actionsStaus:
+  - actionName: "\u565B\u307F\u3064\u304D"
+    conditionInfo: 
+    targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
+    AModInfo: 
+    actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
+    VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
+    actionObject: {fileID: 0}
+    actionMods:
+    - {fileID: 6532284353846998303, guid: 98634375f61558047a70ff77a75d9b00, type: 3}
+    targetType: 1
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 1
+      enemy: 0
+      onlyPlayable: 0
+      front: 1
+      mid: 1
+      back: 0
+      characterInclude: []
+      characterTags: 
+      StE: []
+      StEExclude: []
+      PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    consumeFocus: 0
+    exTurn: 0
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    attackInfo: 
+    ATKMod_min: 80
+    ATKMod_max: 120
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
+    exHeal_mul: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    removePEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 0
+    guaranteedMove: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    abilityRemainControlls: []
+    abilityEffect: 1
+    freeAction: 0
+    abilityType: 1
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
+    removeStEs_additional: []
+    dontChangeSprite: 0
+    activateSprite: {fileID: 0}
+    actionOwner: {fileID: 0}
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 03000000
