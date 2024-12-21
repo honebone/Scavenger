@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
     info_start: 
@@ -53,7 +55,7 @@ MonoBehaviour:
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
-      ATK_mul: 10
+      ATK_mul: 15
       INT_mul: 0
       CRITC: 0
       CRITD: 0
@@ -66,6 +68,7 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       moveRes: 0
+      debuffRes: 0
     actionMods: []
 --- !u!212 &2102424110011888310
 SpriteRenderer:

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: -396282255730340412}
+  - component: {fileID: 5808055585694196759}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_basket
+  m_Name: Eq_brawlerBuckle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-396282255730340412
+--- !u!114 &5808055585694196759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,17 +42,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b500b143b2518dc4294891cde59cfee1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d6795439776d9d458390ccbd459d437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
   PAInfo_end: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 86b79af53c1debd40b57b938d54def09, type: 2}
+    itemData: {fileID: 11400000, guid: 97fa1b18ee1234a4db58b07fdb332587, type: 2}
     info_start: 
-    equipmentInfo: "\u81EA\u8EAB\u304C\u56DE\u5FA9\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u305D\u306E\u56DE\u5FA9\u91CF\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
+    equipmentInfo: 
     statusMod:
-      maxHP_mul: 10
+      maxHP_mul: 15
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
@@ -64,16 +64,16 @@ MonoBehaviour:
       ACT: 0
       turnPerRound: 0
       GHeal: 0
-      RHeal: 15
+      RHeal: 0
       StEResists: []
       StEApplyBonus: []
       moveRes: 0
       debuffRes: 0
     actionMods: []
-  attack:
-    actionName: "\u8C4A\u7A63\u306E\u30D0\u30B9\u30B1\u30C3\u30C8"
-    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304CmaxHP\u306E20\uFF05\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D(\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067)"
-    targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53"
+  actionStatus:
+    actionName: "\u55A7\u5629\u5C4B\u306E\u30D0\u30C3\u30AF\u30EB"
+    conditionInfo: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D"
+    targetInfo: "\u653B\u6483\u3057\u3066\u304D\u305F\u76F8\u624B"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -111,8 +111,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 70
-    ATKMod_max: 110
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
-    ACCMod: -6
+    ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
@@ -145,7 +145,14 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      guaranteed: 0
+      applyChance: 50
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -174,24 +181,6 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  condition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 1
-    onlyPlayable: 0
-    front: 1
-    mid: 1
-    back: 1
-    characterInclude: []
-    characterTags: 
-    StE: []
-    StEExclude: []
-    PE: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-  thPercent: 20
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -233,7 +222,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3be2f0ea936e54a44b7d7490c91824ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

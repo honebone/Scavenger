@@ -7,6 +7,7 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
 {
     [SerializeField] Image itemImage;
     [SerializeField] Image frame;
+    [SerializeField] Material glitched;
 
     InfoText infoText;
     CharaDetailUI detailUI;
@@ -23,6 +24,10 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
 
         itemImage.sprite = item.data.sprite;
         frame.color = item.data.rarity.ToColor();
+        if (item.data.rarity == ItemData.Rarity.madness)
+        {
+            itemImage.material = glitched;
+        }
     }
 
     [SerializeField]

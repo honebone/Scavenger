@@ -86,10 +86,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4339044422948569072}
   - component: {fileID: 4339044422948569039}
+  - component: {fileID: 3410546151245514243}
   - component: {fileID: 4339044422948569038}
   - component: {fileID: 4339044422948569073}
   - component: {fileID: 6238156837250602787}
-  - component: {fileID: 3410546151245514243}
   m_Layer: 5
   m_Name: inventoryEqButton
   m_TagString: Untagged
@@ -126,6 +126,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4339044422948569075}
   m_CullTransparentMesh: 1
+--- !u!114 &3410546151245514243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339044422948569075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b797a8b65fdf2cd449227cf82fc52856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 4339044422688787754}
+  frame: {fileID: 4339044422948569038}
+  glitched: {fileID: 2100000, guid: 311f116a077dadd459b8462579242ad6, type: 2}
+  scrollSpeed: 0.1
 --- !u!114 &4339044422948569038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,18 +277,3 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &3410546151245514243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4339044422948569075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b797a8b65fdf2cd449227cf82fc52856, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemImage: {fileID: 4339044422688787754}
-  frame: {fileID: 4339044422948569038}
-  scrollSpeed: 0.1

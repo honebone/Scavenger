@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_PestArmor
+  m_EditorClassIdentifier: 
+  fileName: E_PestArmor
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u30DA\u30B9\u30C8\u30FB\u30A2\u30FC\u30DE\u30FC"
+  difficulty: 
+  introduction: 
+  preferredPos: 
+  characterTags: 04000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  playable: 0
+  obstacle: 0
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: fa1c621eb8002624f821bede428d8ace, type: 2}
+  - {fileID: 11400000, guid: 9fe5e4a52d3568848b1e44f80ba48ecd, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 5551348220021876505, guid: e96eba28b2ea91b4ebadd6ea853f2b9e, type: 3}
+  actionMods: []
+  corpse: {fileID: 11400000, guid: 798e32b3d1f702d40a1e5d49e9f44d0d, type: 2}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  surviveFatalWounds: 0
+  maxHP: 17
+  maxSAN: 0
+  ATK: 5
+  INT: 6
+  CRITC: 5
+  CRITD: 200
+  EVD: 0
+  ACC: 85
+  ACT: 1
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    INT: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

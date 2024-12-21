@@ -42,6 +42,6 @@ public class Eq_EndlessAdvance : PA_Equipment
     public override string GetCurrentStateInfo()
     {
         int exDMG = (count >= 2) ? count*DMGPerCount : 0;
-        return $"カウント{count}(与ダメージ+{exDMG}％)";
+        return $"回ってきたターン{count}(与ダメージ+{exDMG}％)";
     }
 }

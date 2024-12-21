@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: RatKing_Metabolism
+  m_Name: A_PestArmor_shield
   m_EditorClassIdentifier: 
-  abilityName: "\u4EE3\u8B1D"
+  abilityName: "\u786C\u5316"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 2
+  abilityType: 3
   excludeRandomPool: 0
-  priority: 1
-  selectWeight: 2
+  priority: 2
+  selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -46,23 +46,22 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 4
-  cooldownOnUse: 6
+  cooldownOnBattleStart: 0
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u4EE3\u8B1D"
+  - actionName: 
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u30FB\u81EA\u8EAB\u306E\u5185\u81D31\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u30C7\u30D0\u30D5\u30922\u3064\u9664\u53BB"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 3497942893351335139, guid: 890f0bf015391fc4c861320172f8f322, type: 3}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 4978851485041334594, guid: 006b5e2751e082442a3952a330300d5e, type: 3}
+    actionMods: []
     targetType: 3
     friendly: 0
     condition:
@@ -111,8 +110,8 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
-    healPercent_min: 5
-    healPercent_max: 5
+    healPercent_min: 0
+    healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
     exHeal_mul: 0
@@ -127,7 +126,21 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: a1f11822ce7769147bf9b2365bfc58d4, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 3
+      value: 50
+      refATK: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -145,7 +158,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 2
+    abilityType: 1
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -156,4 +169,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0a000000
+    actionTargetsInt: 03000000

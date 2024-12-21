@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Definer : MonoBehaviour
 {
@@ -178,7 +179,9 @@ public class Definer : MonoBehaviour
     public static Dictionary<ItemData.Rarity, string> rarityName = new Dictionary<ItemData.Rarity, string>()
     {
         { ItemData.Rarity.common,"コモン"},{ ItemData.Rarity.uncommon,"アンコモン"},{ ItemData.Rarity.rare,"レア"},{ ItemData.Rarity.epic,"エピック"},{ ItemData.Rarity.legendary,"レジェンダリー"}
+        ,{ ItemData.Rarity.madness,"狂気"}
     };
+
     public static Dictionary<ItemData.MaterialTag, string> materialTagName = new Dictionary<ItemData.MaterialTag, string>()
     {
         { ItemData.MaterialTag.other,"その他"},{ ItemData.MaterialTag.valuables,"貴重品"},{ ItemData.MaterialTag.slay,"討伐"},{ ItemData.MaterialTag.ore,"採掘"},{ ItemData.MaterialTag.food,"食料"}
@@ -274,7 +277,7 @@ public class Definer : MonoBehaviour
 
         lootDataBase = lootDataBase_Inspector;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Enum.GetNames(typeof(ItemData.Rarity)).Length; i++)
         {
             equipments.Add(new List<ItemData>());
         }

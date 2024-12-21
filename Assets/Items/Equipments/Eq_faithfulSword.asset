@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_roundShield
+  m_Name: Eq_faithfulSword
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u6728\u306E\u5186\u76FE"
+  itemName: "\u5FE0\u5B9F\u306A\u5175\u58EB\u306E\u5263"
   specialInfo: 0
   info: 
-  rarity: 1
-  sprite: {fileID: 21300000, guid: a45cf6357cecfc1428d5843beed7a0ff, type: 3}
+  rarity: 2
+  sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 9185327421234476493, guid: 3288a78b06ee94e458c7fd6dd644261c, type: 3}
+  manager: {fileID: 9185327421234476493, guid: a2c23e4a6d8678d45ad7ae1e6c6dff2d, type: 3}

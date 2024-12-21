@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8018130570343507496}
   - component: {fileID: -8906143573783088983}
   m_Layer: 0
-  m_Name: GoblinLeader_PA
+  m_Name: Pest_PA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

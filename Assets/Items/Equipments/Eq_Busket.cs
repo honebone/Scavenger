@@ -8,11 +8,11 @@ public class Eq_Busket : PA_Equipment
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] int thPercent;
     int count;
-    int remain = 3;
+    int remain = 5;
 
     public override void OnRoundStart()
     {
-        remain = 3;
+        remain = 5;
     }
 
     public override void OnHealed(Character healer, Action.OnHealParams onHealParams)
@@ -37,7 +37,7 @@ public class Eq_Busket : PA_Equipment
     }
     public override void OnBattleEnd()
     {
-        remain = 3;
+        remain = 5;
         count = 0;
     }
 
