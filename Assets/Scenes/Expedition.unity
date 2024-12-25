@@ -305,7 +305,7 @@ MonoBehaviour:
     upperMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     centerMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
     lowerMid: {fileID: 0}
-    upperBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
+    upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
   FE: {fileID: 0}
