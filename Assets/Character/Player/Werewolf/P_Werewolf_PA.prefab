@@ -154,6 +154,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 3818007022705561067, guid: ae1fbd9df7edb1940a0bd743112253eb, type: 3}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 3588835003632152574, guid: f0ba45e597c95034b9ad8f8f6d377fd1, type: 3}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -289,6 +291,7 @@ MonoBehaviour:
     actionTargets: []
     actionTargetsInt: 
   werewolf: {fileID: 1489497368108049143, guid: c25334058e17c0c43b959b6468050a4c, type: 3}
+  sprite_human: {fileID: 3588835003632152574, guid: f0ba45e597c95034b9ad8f8f6d377fd1, type: 3}
 --- !u!212 &8483728386356586883
 SpriteRenderer:
   m_ObjectHideFlags: 0

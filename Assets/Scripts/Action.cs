@@ -152,6 +152,9 @@ public class Action : MonoBehaviour
         public int moveLower;
         public int moveBackword;
 
+        [Header("\n\n行動主のSprite変更")]
+        public GameObject changeSelfSprite;
+
         [Header("\n\nアビリティ使用回数/クールダウン")]
         public List<ActionData.AbilityRemainControll> abilityRemainControlls;
 
@@ -689,6 +692,8 @@ public class Action : MonoBehaviour
         {
             actionsStatus[i] = actionStatus.actionTargets[i].ModifyAction_Targeted(actionsStatus[i], false);
         }
+
+        if (actionStatus.changeSelfSprite != null) { actionOwner.SetCharaSprite(actionStatus.changeSelfSprite); }
 
         //各対象キャラへの処理
         for (int i = 0; i < actionStatus.actionTargets.Count; i++)

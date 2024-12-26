@@ -8,6 +8,8 @@ public class P_Werewolf_PA : PA_Personality
     [SerializeField] Action.ActionStatus removeWerewolf;
     [SerializeField] GameObject werewolf;
 
+    [SerializeField] GameObject sprite_human;
+
     bool act;
     public override void OnBattleStart()
     {
@@ -25,6 +27,11 @@ public class P_Werewolf_PA : PA_Personality
             else { Enqueue_Self(removeWerewolf); }
         }
         act = false;
+    }
+
+    public override void OnBattleEnd()
+    {
+       character.SetCharaSprite(sprite_human);
     }
 
     public override string GetPAInfo_Base()
