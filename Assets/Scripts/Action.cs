@@ -398,25 +398,25 @@ public class Action : MonoBehaviour
             else { return string.Format("{0}-{1}", min, max); }
         }
 
-        public ActionStatus Modify_ApplyStE(List<StEApplyBonus> applyBonus)
-        {
-            ActionStatus modifiedStatus = this;
-            foreach (StEApplyBonus bonus in applyBonus)
-            {
-                bool f = false;
-                for (int i = 0; i < modifiedStatus.StEApplyBonus.Count; i++)
-                {
-                    if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
-                    {
-                        modifiedStatus.StEApplyBonus[i] = modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
-                        f = true;
-                    }
-                }
-                if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
-            }
+        //public ActionStatus Modify_ApplyStE(List<StEApplyBonus> applyBonus)
+        //{
+        //    ActionStatus modifiedStatus = this;
+        //    foreach (StEApplyBonus bonus in applyBonus)
+        //    {
+        //        bool f = false;
+        //        for (int i = 0; i < modifiedStatus.StEApplyBonus.Count; i++)
+        //        {
+        //            if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
+        //            {
+        //                modifiedStatus.StEApplyBonus[i] = modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
+        //                f = true;
+        //            }
+        //        }
+        //        if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
+        //    }
 
-            return modifiedStatus;
-        }
+        //    return modifiedStatus;
+        //}
 
 
         public ActionStatus Modify(ActionMod.ActionModStatus mod)
@@ -467,6 +467,13 @@ public class Action : MonoBehaviour
             {
                 modifiedStatus.applySteParams.Add(statusEffectParams);
             }
+
+            //============================================================[StEApplyBonus]===============================================
+            modifiedStatus.StEApplyBonus = new List<StEApplyBonus>();
+            for (int i = 0; i < modifiedStatus.StEApplyBonus.Count; i++)
+            {
+                modifiedStatus.StEApplyBonus.Add(new StEApplyBonus(modifiedStatus.StEApplyBonus[i]));
+            }
             foreach (StEApplyBonus bonus in mod.applyStEBonus)
             {
                 bool f = false;
@@ -474,12 +481,14 @@ public class Action : MonoBehaviour
                 {
                     if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
                     {
-                        modifiedStatus.StEApplyBonus[i]= modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
+                        modifiedStatus.StEApplyBonus[i].AddBonus(bonus, true);
                         f = true;
                     }
                 }
                 if (!f) { modifiedStatus.StEApplyBonus.Add(bonus); }
             }
+
+
             modifiedStatus.debuffChanceMod += mod.debuffChanceMod;
 
             modifiedStatus.removeStE_buff += mod.removeStE_buff;
@@ -654,7 +663,12 @@ public class Action : MonoBehaviour
         for (int i = 0; i < actionsStatus.Length; i++)
         {
             actionsStatus[i] = actionStatus;
-            actionsStatus[i].StEApplyBonus = new List<StEApplyBonus>(actionStatus.StEApplyBonus);
+            List<StEApplyBonus> bonus = new List<StEApplyBonus>();
+            for(int j=0;j< actionStatus.StEApplyBonus.Count; j++)
+            {
+                bonus.Add(new StEApplyBonus(actionStatus.StEApplyBonus[j]));
+            }
+            actionsStatus[i].StEApplyBonus = bonus;
         }
         if (actionStatus.SE != null) { soundManager.PlaySE(actionStatus.SE); }
 
@@ -1019,16 +1033,22 @@ public class Action : MonoBehaviour
                         PA_StatusEffect.StatusEffectStatus StEStaus = StEParams.GetStatusEffectStatus();
 
 
-                        StEApplyBonus applyBonus = new StEApplyBonus();//bonusの設定
-                        if (ownerStatus.GetStEApplyBonus(StEParams.applyStE) != null)//オーナーのボーナス
+                        StEApplyBonus applyBonus = new StEApplyBonus(StEParams.applyStE);//bonusの設定
+                        if (ownerStatus.CheckHasStEApplyBonus(StEParams.applyStE))//オーナーのボーナス
                         {
-                            applyBonus= applyBonus.AddBonus((StEApplyBonus)ownerStatus.GetStEApplyBonus(StEParams.applyStE));
+                            //ownerStatus.GetStEApplyBonus(StEParams.applyStE).Log("ownerBonus");
+                           applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE));
                         }
                         foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)//アクションのボーナス
                         {
-                            if (bonus.applyStE == StEParams.applyStE) { applyBonus= applyBonus.AddBonus(bonus); }
+                            if (bonus.applyStE == StEParams.applyStE)
+                            {
+                                //bonus.Log("action bonus");
+                                applyBonus.AddBonus(bonus);
+                            }
                         }
 
+                        //applyBonus.Log("final bonus");
                         StEParams.applyChance += applyBonus.exChance;//bonus等をparamsに反映
                         StEParams.stack += applyBonus.exStack;
                         StEParams.value+=applyBonus.exValue;

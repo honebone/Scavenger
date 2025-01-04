@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -278,12 +278,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   players:
+    dontShuffleFront: 0
     upperFront: {fileID: 0}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
@@ -299,12 +302,15 @@ MonoBehaviour:
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
+    dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
-    centerMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
+    centerMid: {fileID: 11400000, guid: 4fc1b4c3ad0a6c54fa587a286c6d2444, type: 2}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
@@ -3298,6 +3304,7 @@ MonoBehaviour:
   left: {fileID: 147430896}
   right: {fileID: 1090261345}
   T_deathsDoor: {fileID: 11400000, guid: fd111989ed3a9674891a72a7273d8df6, type: 2}
+  T_redeploy: {fileID: 11400000, guid: c2a39965b2cc1c6409803f5769adaf1a, type: 2}
 --- !u!1 &175798970
 GameObject:
   m_ObjectHideFlags: 0
@@ -18615,9 +18622,9 @@ MonoBehaviour:
     materialWeightMod: 0
     equipmentDropWeights:
     - 0
-    - 60
+    - 61
     - 33
-    - 6
+    - 5
     - 1
     turnOrderReveal: 3
     dropExpChance: 100

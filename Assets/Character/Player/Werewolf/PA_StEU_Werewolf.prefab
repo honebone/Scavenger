@@ -49,8 +49,8 @@ MonoBehaviour:
   PAInfo_end: 
   StEStatus:
     StEName: "\u4EBA\u72FC"
-    StEInfo: "\u57FA\u790EATK+3\nACT+3\n\u4ED6\u306E\u30AD\u30E3\u30E9\u304B\u3089\u53D7\u3051\u308B\u56DE\u5FA9\u91CF-50\uFF05\n\u4E0E\u30C0\u30E1\u30FC\u30B8\u306E25\uFF05\u3092\u56DE\u5FA9\u3059\u308B\n\u305D\u308C\u304C\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u306A\u3089\u3001\u4EE3\u308F\u308A\u306B50\uFF05\u3092\u56DE\u5FA9\u3059\u308B\n\n\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306BATK+5\uFF05\u3001\u88AB\u30C0\u30E1\u30FC\u30B8+6\uFF05"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEInfo: "\u57FA\u790EATK+3\nACT+3\n\u4ED6\u306E\u30AD\u30E3\u30E9\u304B\u3089\u53D7\u3051\u308B\u56DE\u5FA9\u91CF-50\uFF05\n\n\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306BATK+5\uFF05\u3001\u88AB\u30C0\u30E1\u30FC\u30B8+6\uFF05"
+    StEIcon: {fileID: 21300000, guid: e3c290645d8151742a856ec84318685e, type: 3}
     StEType: 4
     maxStack: 20
     merge: 1
@@ -99,6 +99,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -168,8 +169,8 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
@@ -286,6 +287,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -348,8 +350,8 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
@@ -404,7 +406,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3c290645d8151742a856ec84318685e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

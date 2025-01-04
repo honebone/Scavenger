@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: C_Spider
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6B7B\u4F53"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 0100000009000000
   immovable: 0
   notChara: 0
@@ -23,17 +26,26 @@ MonoBehaviour:
   obstacle: 1
   variableSprites:
   - {fileID: 809527472060186479, guid: aba21315db7415245b8c87268ee58f6f, type: 3}
+  spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: 861a4c86d5d92734a84ddae36dd1b40b, type: 3}
   abilities:
   - {fileID: 11400000, guid: b952f83759072aa48a93d24a4def618c, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}
-  dropItems: []
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
   maxHP: 15
   maxSAN: 0
   ATK: 0
+  INT: 0
   CRITC: 0
   CRITD: 0
   EVD: 0
@@ -42,9 +54,14 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    INT: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
   debuffRes: 0
-  stunRes: 0
-  bleedRes: 0
-  poisonRes: 0
-  burnRes: 0
+  StEResists: []
+  StEApplyBonus: []
   moveRes: 0

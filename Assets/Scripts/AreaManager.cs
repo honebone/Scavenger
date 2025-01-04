@@ -62,14 +62,17 @@ public class AreaManager : MonoBehaviour
     {
         //public int weight;
         //public CharacterData[] enemies;
+        public bool dontShuffleFront;
         public CharacterData upperFront;
         public CharacterData centerFront;
         public CharacterData lowerFront;
         [Header("\n")]
+        public bool dontShuffleMid;
         public CharacterData upperMid;
         public CharacterData centerMid;
         public CharacterData lowerMid;
         [Header("\n")]
+        public bool dontShuffleBack;
         public CharacterData upperBack;
         public CharacterData centerBack;
         public CharacterData lowerBack;
@@ -77,17 +80,26 @@ public class AreaManager : MonoBehaviour
         public List<CharacterData> GetEnemies()
         {
             List<CharacterData> enemies = new List<CharacterData>();
-            enemies.Add(upperFront);
-            enemies.Add(centerFront);
-            enemies.Add(lowerFront);
+            List<CharacterData> buffer = new List<CharacterData>();
+            buffer.Add(upperFront);
+            buffer.Add(centerFront);
+            buffer.Add(lowerFront);
+            if (!dontShuffleFront) { buffer = buffer.Shuffle(); }
+            enemies.AddRange(buffer);
 
-            enemies.Add(upperMid);
-            enemies.Add(centerMid);
-            enemies.Add(lowerMid);
+            buffer = new List<CharacterData>();
+            buffer.Add(upperMid);
+            buffer.Add(centerMid);
+            buffer.Add(lowerMid);
+            if (!dontShuffleMid) { buffer = buffer.Shuffle(); }
+            enemies.AddRange(buffer);
 
-            enemies.Add(upperBack);
-            enemies.Add(centerBack);
-            enemies.Add(lowerBack);
+            buffer = new List<CharacterData>();
+            buffer.Add(upperBack);
+            buffer.Add(centerBack);
+            buffer.Add(lowerBack);
+            if (!dontShuffleBack) { buffer = buffer.Shuffle(); }
+            enemies.AddRange(buffer);
 
             return enemies;
         }

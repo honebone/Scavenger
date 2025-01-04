@@ -59,11 +59,12 @@ MonoBehaviour:
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: c05b23991daa1224a81bf9aace6739b5, type: 3}
+    VE_OnTargets: {fileID: 4366905902945979247, guid: f9e2bccca01141b43acf812a533015db, type: 3}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 9048899445099364302, guid: ffcb210d4dbab3543bc5b186a2dd84b9, type: 3}
+    - {fileID: 9048899445099364302, guid: 76876f6ad96327746ad3b4a84b8874e9, type: 3}
     targetType: 5
     friendly: 0
     condition:
@@ -87,6 +88,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -105,7 +107,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    drain: 0
+    drain: 25
     ignoreShield: 0
     sureHit: 0
     unevadable: 0
@@ -149,8 +151,8 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
@@ -165,7 +167,7 @@ MonoBehaviour:
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
-    actionTargetsInt: 0c0000000e000000
+    actionTargetsInt: 090000000a000000
   - actionName: "\u5927\u66B4\u308C"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -199,6 +201,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -261,8 +264,8 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
@@ -276,4 +279,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 06000000
+    actionTargetsInt: 07000000

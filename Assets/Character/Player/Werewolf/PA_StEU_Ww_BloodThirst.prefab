@@ -50,7 +50,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u8840\u72C2\u3044"
     StEInfo: "\u4EBA\u72FC\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u51FA\u8840\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483\u304C\u3001INT100\uFF05\u5206\u306E\u8FFD\u52A0\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u3001\u3053\u308C\u306E\u30B9\u30BF\u30C3\u30AF-1"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: 026645c5a9e1c8d4ca3ffa3dc669e432, type: 3}
     StEType: 4
     maxStack: 5
     merge: 1
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 026645c5a9e1c8d4ca3ffa3dc669e432, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

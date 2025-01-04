@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u546A\u3044\u306E\u62BD\u51FA+"
   lockedDefault: 0
-  upgradeInfo: "INT\u88DC\u6B63+20\uFF05\nCRIT\u7387\u88DC\u6B63+10\uFF05"
+  upgradeInfo: "INT\u88DC\u6B63+30\uFF05"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u546A\u3044\u306E\u62BD\u51FA+"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -86,6 +86,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -94,15 +95,15 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 100
-    INTMod_max: 140
+    INTMod_min: 80
+    INTMod_max: 120
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
     ACCMod: 0
-    CRITCMod: 10
+    CRITCMod: 0
     CRITDMod: 0
     drain: 0
     ignoreShield: 0
@@ -141,8 +142,8 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 1
     freeAction: 0
     abilityType: 1

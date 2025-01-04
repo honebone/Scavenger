@@ -10,8 +10,7 @@ public class AMod_Pyromancer : ActionMod
     
 
         Character.CharacterStatus ownerStatus = statusRef.actionOwner.CharaStatus();
-        StEApplyBonus bonus = new StEApplyBonus();
-        bonus.applyStE = burn;
+        StEApplyBonus bonus = new StEApplyBonus(burn);
         bonus.exChance += ownerStatus.CRITC;
         actionModStatus.applyStEBonus = new List<StEApplyBonus>() { bonus };
 

@@ -51,12 +51,15 @@ MonoBehaviour:
   - optionName: "\u6226\u3046"
     optionInfo: "\u8089\u584A\u306B\u6226\u3044\u3092\u6311\u3080"
   boss:
+    dontShuffleFront: 1
     upperFront: {fileID: 0}
     centerFront: {fileID: 11400000, guid: ef347ec247c0b8a4e9775f848f12f773, type: 2}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}

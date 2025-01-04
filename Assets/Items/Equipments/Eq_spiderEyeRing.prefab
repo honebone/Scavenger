@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
-  PAInfo_end: "\u3007\u8907\u6570\u4F53\u3092\u5BFE\u8C61\u3068\u3059\u308B\u653B\u6483\uFF1A\n\u5BFE\u8C611\u4F53\u306B\u3064\u304D\u4E0E\u30C0\u30E1\u30FC\u30B8+12.5\uFF05"
+  PAInfo_end: "\u3007\u8907\u6570\u4F53\u3092\u5BFE\u8C61\u3068\u3059\u308B\u653B\u6483\uFF1A\n\u5BFE\u8C611\u4F53\u306B\u3064\u304D\u4E0E\u30C0\u30E1\u30FC\u30B8+15\uFF05"
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1973397cd3fa86f4aaf73a24b0e019c1, type: 2}
     info_start: 
@@ -103,7 +103,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
-  DMGPerTarget: 12.5
+  DMGPerTarget: 15
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -306,13 +306,13 @@ public class CharaDetailUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (draggingImage != null)
+        if (draggingImage != null)//保持中のアイテムがあるなら
         {
             dragImagePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             dragImagePos.z = 0;
             draggingImage.transform.position = dragImagePos;
 
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))//左クリックを話した時
             {
                 EventSystem ev = EventSystem.current;
                 PointerEventData ped = new PointerEventData(ev);
@@ -322,7 +322,7 @@ public class CharaDetailUI : MonoBehaviour
 
                 bool onSlot = false;
 
-                foreach (RaycastResult result in rr)
+                foreach (RaycastResult result in rr)//カーソルに重なってる前オブジェクトに対して
                 {
                     if (result.gameObject.GetComponent<CharaDetail_CharaEqButton>())//CharaEqButton上でボタン離したなら
                     {

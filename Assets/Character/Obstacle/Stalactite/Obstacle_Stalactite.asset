@@ -15,6 +15,9 @@ MonoBehaviour:
   fileName: O_Stalactite
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u937E\u4E73\u77F3"
+  difficulty: 
+  introduction: 
+  preferredPos: 
   characterTags: 09000000
   immovable: 1
   notChara: 0
@@ -23,16 +26,25 @@ MonoBehaviour:
   obstacle: 1
   variableSprites:
   - {fileID: 4077295475819443234, guid: 5d74ce756922c9c41b75f0715068709b, type: 3}
+  spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: 8e5416d95f8dd27449597b40767bc13b, type: 3}
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 0}
-  dropItems: []
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
   maxHP: 50
   maxSAN: 0
   ATK: 0
+  INT: 0
   CRITC: 0
   CRITD: 0
   EVD: 0
@@ -41,6 +53,13 @@ MonoBehaviour:
   turnPerRound: 0
   GHeal: 100
   RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    INT: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
   debuffRes: 200
   StEResists: []
   StEApplyBonus: []

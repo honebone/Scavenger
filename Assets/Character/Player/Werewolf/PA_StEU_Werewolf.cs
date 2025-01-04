@@ -56,26 +56,20 @@ public class PA_StEU_Werewolf : PA_StatusEffect
         return statusRef;
     }
 
-    public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
-    {
-        if (statusRef.DoesAttack())
-        {
-            for (int i = 0; i < statusRef.actionTargets.Count; i++)
-            {
-                ActionMod.ActionModStatus mod = AMod2; ;
-                if (statusRef.abilityEffect)
-                {
-                    mod.drain = drain_ability;
-                }
-                else
-                {
-                    mod.drain = drain_passive;
-                }
-                actionsStatus[i] = actionsStatus[i].Modify(mod);
-            }
-        }
-        return actionsStatus;
-    }
+    //public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
+    //{
+    //    if (statusRef.DoesAttack() && character.CharaStatus().GetHPPercent() <= 50)
+    //    {
+    //        for (int i = 0; i < statusRef.actionTargets.Count; i++)
+    //        {
+    //            ActionMod.ActionModStatus mod = AMod2; ;
+    //            float ratio = 50 - character.CharaStatus().GetHPPercent();
+    //            mod.drain = ratio;
+    //            actionsStatus[i] = actionsStatus[i].Modify(mod);
+    //        }
+    //    }
+    //    return actionsStatus;
+    //}
 
     public override void OnApplyStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
     {

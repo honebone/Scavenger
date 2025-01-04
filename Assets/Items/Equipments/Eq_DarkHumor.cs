@@ -6,19 +6,23 @@ public class Eq_DarkHumor : PA_Equipment
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
-
-    bool activated;
+    [SerializeField] int maxRemain = 5;
+    int remain;
 
     public override void OnBattleStart()
     {
-        activated = false;
+        remain = maxRemain;
+    }
+    public override void OnRoundStart()
+    {
+        remain = maxRemain;
     }
 
     public override void OnSomeoneDied(Character died)
     {
-        if (!activated && ExpeditionRef.battleManager.GetCurrntTurnChara() == died)
+        if (remain > 0 && ExpeditionRef.battleManager.GetCurrntTurnChara() == died && !died.CharaStatus().characterTags.Contains(CharacterData.CharacterTag.corpse))
         {
-            activated = true;
+            remain--;
             Enqueue_Self(actionStatus);
         }
     }
@@ -32,6 +36,6 @@ public class Eq_DarkHumor : PA_Equipment
 
     public override string GetCurrentStateInfo()
     {
-        return activated ? "能力発動済み" : "能力発動可能";
+        return $"残り発動回数：{remain}/{maxRemain}";
     }
 }

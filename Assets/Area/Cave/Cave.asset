@@ -40,51 +40,78 @@ MonoBehaviour:
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
   endArea: {fileID: 11400000, guid: 4a6855ff5aead334095c21599972eef8, type: 2}
   normalBattlePool:
-  - upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-  - upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-  - upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    dontShuffleBack: 0
+    upperBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
   battleBGM:
   - {fileID: 8300000, guid: 9a4a128792e5ec841a714764b5974091, type: 3}
   applyFEChance: 20

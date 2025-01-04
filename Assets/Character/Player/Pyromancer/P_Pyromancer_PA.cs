@@ -76,7 +76,7 @@ public class P_Pyromancer_PA : PA_Personality
         if (stack > 0)
         {
             Action.ActionStatus action = actionStatus;
-            StEApplyBonus bonus = stEApplyBonus;
+            StEApplyBonus bonus = new StEApplyBonus(stEApplyBonus);
             bonus.exStack = stack;
             action.StEApplyBonus = new List<StEApplyBonus> { bonus };
 

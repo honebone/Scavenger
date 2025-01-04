@@ -49,7 +49,7 @@ MonoBehaviour:
   PAInfo_end: 
   StEStatus:
     StEName: "\u51FA\u8840"
-    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1\n\u6E1B\u5C11\u91CF\u306F\u3001\u51FA\u8840\u306E\u4ED8\u4E0E\u8005\u306EATK\u307E\u305F\u306FINT\u306EX\uFF05\u306B\u7B49\u3057\u3044"
     StEIcon: {fileID: 21300000, guid: 4f91b0cd47f60914286bbe8f1b0fe260, type: 3}
     StEType: 2
     maxStack: 0
@@ -57,6 +57,7 @@ MonoBehaviour:
     refValue: 0
     undeletable: 0
     DoT: 1
+    applyer: {fileID: 0}
     stack: 0
     value: 0
     DMGPerTurn: 0
@@ -85,6 +86,7 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
@@ -93,6 +95,7 @@ MonoBehaviour:
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -121,6 +124,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -147,6 +151,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0

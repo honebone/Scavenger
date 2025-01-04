@@ -41,8 +41,10 @@ public class RE_AreaEnd : RoomEvent
             option.optionInfo = data.GetInfo();
             list.Add(option);
         }
+        list = new List<REOptionParams>(list.Sample(4));
         list.Add(skipDeploy);
         expeditionManager.SetREOptionButtons(list);
+        ExpeditionRef.tutorialManager.Tutorial_Redeploy();
     }
     void StartSelecrNextArea()
     {

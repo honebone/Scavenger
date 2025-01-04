@@ -26,11 +26,13 @@ MonoBehaviour:
   obstacle: 0
   variableSprites:
   - {fileID: 9151243408299108219, guid: b5e6c4d61d0e1324181d820b43c7baab, type: 3}
+  spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: f559c9e6e80cfa644a1afac9b2d6ce92, type: 3}
   abilities:
   - {fileID: 11400000, guid: e5b6413fdada5fa42b8ce0ff5a83fec9, type: 2}
   - {fileID: 11400000, guid: c46ff81e9861e674b9ba791dc32f584c, type: 2}
   - {fileID: 11400000, guid: 7f982a83f22d3b64492d734d6e8355fc, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities: []
   actionMods: []
   corpse: {fileID: 11400000, guid: 798e32b3d1f702d40a1e5d49e9f44d0d, type: 2}
@@ -57,6 +59,7 @@ MonoBehaviour:
   statusGrowth:
     maxHP: 0
     ATK: 0
+    INT: 0
     ACT: 0
     CRITC: 0
     CRITD: 0

@@ -54,7 +54,7 @@ MonoBehaviour:
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
-    exDMG_mul: 40
+    exDMG_mul: 60
     exATKDMG_int: 0
     exINTDMG_int: 0
     ACCMod: 0

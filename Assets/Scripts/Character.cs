@@ -262,13 +262,29 @@ public class Character : MonoBehaviour
 
             return resist;
         }
-        public StEApplyBonus? GetStEApplyBonus(GameObject StE)
+        public bool CheckHasStEApplyBonus(GameObject StE)
         {
+            string StEName = StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+            //Debug.Log($"{charaName}の{StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName}探索開始");
             foreach (StEApplyBonus bonus in StEApplyBonus)
             {
-                if (bonus.applyStE == StE) { return bonus; }
+                //Debug.Log($"{bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName}");
+                if (bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StEName) { return true; }
             }
-            return null;
+            //Debug.Log("見つからず");
+            return false;
+        }
+
+        /// <summary>絶対にCheckHasStEApplyBonusでチェックしてから呼ぶこと！！！</summary>
+
+        public StEApplyBonus GetStEApplyBonus(GameObject StE)
+        {
+            string StEName = StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+            foreach (StEApplyBonus bonus in StEApplyBonus)
+            {
+                if (bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StEName) { return bonus; }
+            }
+            return null;//ここが呼ばれることはない
         }
         public string ValueToStr(string start, float value, string end)
         {
@@ -475,6 +491,17 @@ public class Character : MonoBehaviour
             targetButton.SetDamageText("出現", Definer.colorRef.abilityColors[5]);
             infoText.AddLogText(string.Format("{0}が現れた", charaStatus.charaName));
         }
+
+        bool hasPass = false;
+        foreach(Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
+        {
+            if (abilityStatus.abilityType == AbilityData.AbilityType.pass)
+            {
+                hasPass = true;
+                break;
+            }
+        }
+        if(!hasPass) { infoText.AddWarningText($"{status.fileName}にはパスを行うアビリティがありません"); }
         //TurnIconはラウンド開始時にセット
     }
     public List<PA_Equipment> GetEquipments()
@@ -1273,7 +1300,7 @@ public class Character : MonoBehaviour
         {
             if (charaStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
             {
-                charaStatus.StEApplyBonus[i]=charaStatus.StEApplyBonus[i].AddBonus(bonus, set);
+                charaStatus.StEApplyBonus[i].AddBonus(bonus, set);
                 return;
             }
         }

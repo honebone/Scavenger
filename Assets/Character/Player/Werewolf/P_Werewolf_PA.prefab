@@ -57,8 +57,8 @@ MonoBehaviour:
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: c05b23991daa1224a81bf9aace6739b5, type: 3}
+    VE_OnTargets: {fileID: 8885251123404196513, guid: a5b7a639259c0f84ea363fa502c89cb1, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0

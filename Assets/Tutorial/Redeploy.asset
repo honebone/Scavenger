@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cd56a61cad6a6458b877f24371e80e, type: 3}
+  m_Name: Redeploy
+  m_EditorClassIdentifier: 
+  tutorials:
+  - title: "\u30D1\u30FC\u30C6\u30A3\u306E\u88DC\u5145"
+    tutorialText: "\u30D1\u30FC\u30C6\u30A3\u304C4\u4EBA\u672A\u6E80\u306E\u72B6\u614B\u3067\u30A8\u30EA\u30A2\u306E\u7D42\u7AEF\u306B\u305F\u3069\u308A\u7740\u304F\u3068\u3001\u30D1\u30FC\u30C6\u30A3\u30E1\u30F3\u30D0\u30FC\u30921\u4EBA\u88DC\u5145\u3067\u304D\u308B"
+    left: 1
+    guideObj: {fileID: 0}

@@ -72,7 +72,7 @@ MonoBehaviour:
     actionMods: []
   actionStatus:
     actionName: "\u30C0\u30FC\u30AF\u30FB\u30E6\u30FC\u30E2\u30A2"
-    conditionInfo: "\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u3001\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089(\u5404\u30E9\u30A6\u30F3\u30C91\u56DE)"
+    conditionInfo: "[\u6B7B\u4F53]\u3067\u306A\u3044\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u3001\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089(\u5404\u30E9\u30A6\u30F3\u30C95\u56DE)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -167,6 +167,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -181,6 +182,7 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
+  maxRemain: 5
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

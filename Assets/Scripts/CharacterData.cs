@@ -130,26 +130,50 @@ public class StEResist
     public float value;
 }
 [System.Serializable]
-public struct StEApplyBonus
+public class StEApplyBonus
 {
     public GameObject applyStE;
     public float exChance;
     public int exStack;
     public int exValue;
 
-    public StEApplyBonus AddBonus(StEApplyBonus bonus, bool add = true)
+    public void AddBonus(StEApplyBonus bonus, bool add = true)
     {
-        StEApplyBonus modifiedBonus = this;
         int n = 1;
         if (!add) { n = -1; }
-        modifiedBonus.exChance += bonus.exChance * n;
-        modifiedBonus.exStack += bonus.exStack * n;
-        modifiedBonus.exValue += bonus.exValue * n;
+        exChance += bonus.exChance * n;
+       exStack += bonus.exStack * n;
+        exValue += bonus.exValue * n;
         //exChance += bonus.exChance * n;
         //exStack += bonus.exStack * n;
         //exValue += bonus.exValue * n;
+    }
 
-        return modifiedBonus;
+    public StEApplyBonus(GameObject StE)
+    {
+        this.applyStE = StE;
+        this.exChance = 0;
+        this.exStack = 0;
+        this.exValue = 0;
+    }
+
+    public StEApplyBonus(StEApplyBonus copy)
+    {
+        this.applyStE = copy.applyStE;
+        this.exChance = copy.exChance;
+        this.exStack = copy.exStack;
+        this.exValue = copy.exValue;
+    }
+
+    public  void Log(string note)
+    {
+        string log = "";
+        if (note != "") { log += $"<{note}>\n"; }
+        note += applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName + "\n";
+        note += $"exChance:{exChance}\n";
+        note += $"exStack:{exStack}\n";
+        note += $"exValue:{exValue}\n";
+        Debug.Log(note);
     }
 }
 
