@@ -24,6 +24,7 @@ public class P_Infantry_PA : PA_Personality
             CD--;
             if(CD == 0)
             {
+                Log("Ä”­“®‰Â”\");
                 available = true;
             }
         }

@@ -198,7 +198,12 @@ public class Definer : MonoBehaviour
         ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff,"デバフ" },{PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus,"フォーカス" }
         ,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.unique,"固有" }/*,{PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT,"ダメージ" }*/
     };
-
+    public static Dictionary<PA_Personality.PersonalityStatus.PersonalityType, string> PerTypeName = new Dictionary<PA_Personality.PersonalityStatus.PersonalityType, string>()
+    {
+        {PA_Personality.PersonalityStatus.PersonalityType.neutral,"特殊" },{PA_Personality.PersonalityStatus.PersonalityType.unique,"固有" },{PA_Personality.PersonalityStatus.PersonalityType.awoken,"覚醒" }
+        ,{PA_Personality.PersonalityStatus.PersonalityType.good,"ポジティブ" },{PA_Personality.PersonalityStatus.PersonalityType.bad,"ネガティブ" }
+        ,{PA_Personality.PersonalityStatus.PersonalityType.affricted,"精神崩壊" } ,{PA_Personality.PersonalityStatus.PersonalityType.mutation,"変異" }
+    };
     [System.Serializable]
     public struct Item
     {

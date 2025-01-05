@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy_Spider
   m_EditorClassIdentifier: 
   fileName: E_Spider
-  manager: {fileID: 2726620601615263115, guid: 41cefb4d25cfa6c47bb77856fe4ba9e9, type: 3}
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30AF\u30E2"
   difficulty: 
   introduction: 

@@ -10,7 +10,10 @@ public class Eq_StealHammer : PA_Equipment
    
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        if (onDamageParams.totalDMG > 0) { activated = true; }
+        if (onDamageParams.totalDMG > 0) {
+            if (!activated) { Log("”­“®"); };
+            activated = true;
+        }
     }
 
     public override void OnBattleEnd()

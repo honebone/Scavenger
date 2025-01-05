@@ -23,6 +23,7 @@ public class Eq_NightCloak : PA_Equipment
             if (CD == 0)
             {
                 available = true;
+                Log("Ä”­“®‰Â”\");
             }
         }
     }

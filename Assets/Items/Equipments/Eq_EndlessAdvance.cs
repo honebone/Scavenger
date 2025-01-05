@@ -36,7 +36,9 @@ public class Eq_EndlessAdvance : PA_Equipment
 
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if (myTurn) { count++; }
+        if (myTurn) { count++;
+            if (count >= 2) { Log($"—^ƒ_ƒ[ƒW‘‰Á({count * DMGPerCount}“)"); }
+        }
     }
 
     public override string GetCurrentStateInfo()

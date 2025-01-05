@@ -8,7 +8,7 @@ public class PA_Personality : PassiveAbility
     public struct PersonalityStatus
     {
         public string personalityName;
-        public enum PersonalityType { neutral, unique, awoken, good, bad, affricted }
+        public enum PersonalityType { neutral, unique, awoken, good, bad, affricted, mutation }
         public PersonalityType personalityType;
 
         public string GetName()

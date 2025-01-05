@@ -53,6 +53,7 @@ public class Eq_Discharger : PA_Equipment
         if (myTurn)
         {
             charge += chargeOnTS;
+            Log($"ƒ`ƒƒ[ƒW‘‰Á({charge})");
         }
     }
 

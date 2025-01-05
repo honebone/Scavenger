@@ -18,11 +18,19 @@ public class Eq_EnergyArmor : PA_Equipment
     }
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        count = Mathf.Min(count + 1, maxCount);
+        if (count < maxCount)
+        {
+            count++;
+            Log($"カウント増加({count})");
+        }
     }
     public override void OnMoved(Action.OnMoveParams onMoveParams)
     {
-        count = Mathf.Min(count + onMoveParams.range, maxCount);
+        if(count < maxCount)
+        {
+            count = Mathf.Min(count + onMoveParams.range, maxCount);
+            Log($"カウント増加({count})");
+        }
     }
     public override void OnRoundEnd()
     {

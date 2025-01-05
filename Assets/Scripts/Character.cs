@@ -132,7 +132,7 @@ public class Character : MonoBehaviour
             string s2 = $"({maxHP_base} { (maxHP_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
             s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
             if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
-            if (PROT != 0) { s += ValueToStr("被ダメージ", PROT * -1, "％"); }
+            //if (PROT != 0) { s += ValueToStr("PROT", PROT, $" {"(上限75)".ColorStr(Color.gray)}"); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
 
@@ -144,7 +144,8 @@ public class Character : MonoBehaviour
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";
 
-            s += string.Format("EVD：{0}\n", EVD);
+            if (PROT != 0) { s += $"PROT：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
+            s += string.Format("EVD：{0} {1}\n", EVD, "(上限75)".ColorStr(Color.gray));
             s += string.Format("ACC：{0}\n\n", ACC);
 
             s += string.Format("ACT：{0}\n", ACT);
@@ -310,6 +311,8 @@ public class Character : MonoBehaviour
         public float ATK_mul;
         public float INT_mul;
 
+        public float exDMG_mul;
+
         public float CRITC;
         public float CRITD;
 
@@ -333,9 +336,10 @@ public class Character : MonoBehaviour
             bool f = false;
             info += ValueToStr("maxHP", maxHP_mul, "％");
             info += ValueToStr("maxSAN", maxSAN_mul, "％");
-            info += ValueToStr("被ダメージ", PROT * -1, "％");
+            info += ValueToStr("PROT", PROT, "");
             info += ValueToStr("ATK", ATK_mul, "％");
             info += ValueToStr("INT", INT_mul, "％");
+            info += ValueToStr("与ダメージ", exDMG_mul, "％");
             info += ValueToStr("CRIT率", CRITC, "％");
             info += ValueToStr("CRITダメージ", CRITD, "％");
             info += ValueToStr("EVD", EVD, "");
@@ -444,6 +448,17 @@ public class Character : MonoBehaviour
 
     public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem,SummonCharaStatusParams summonCharaParams)
     {
+        actionQueue = ExpeditionRef.actionQueue;
+        battleManager = ExpeditionRef.battleManager;
+        infoText = ExpeditionRef.infoText;
+        charactersManager = ExpeditionRef.charactersManager;
+        soundManager = ExpeditionRef.soundManager;
+        loot = ExpeditionRef.loot;
+        definer = ExpeditionRef.definer;
+        cameraManager = ExpeditionRef.cameraManager;
+        expeditionManager = ExpeditionRef.expeditionManager;
+        tutorialManager = ExpeditionRef.tutorialManager;
+
         charaStatus = status;
         charaObj = obj;
         targetButton = tb;
@@ -472,17 +487,6 @@ public class Character : MonoBehaviour
         charaObj.SetSANBar();
 
         targetButton.SetCharacter(this);
-
-        actionQueue = ExpeditionRef.actionQueue;
-        battleManager = ExpeditionRef.battleManager;
-        infoText = ExpeditionRef.infoText;
-        charactersManager = ExpeditionRef.charactersManager;
-        soundManager = ExpeditionRef.soundManager;
-        loot = ExpeditionRef.loot;
-        definer = ExpeditionRef.definer;
-        cameraManager = ExpeditionRef.cameraManager;
-        expeditionManager = ExpeditionRef.expeditionManager;
-        tutorialManager = ExpeditionRef.tutorialManager;
 
         //if (charaStatus.position >= 9) { ModifyStatus(expeditionManager.GetEnemyStatusMod(), true, true); }
 
@@ -957,7 +961,12 @@ public class Character : MonoBehaviour
 
 
     //======================================================<<アクションによって呼ばれる関数>>=================================================
-   public void Kill(Character attacker)
+   
+    public void SetDamageText(string str,Color color)
+    {
+        targetButton.SetDamageText(str, color);
+    }
+    public void Kill(Character attacker)
     {
         Die(0,attacker);
     }
@@ -1152,6 +1161,7 @@ public class Character : MonoBehaviour
         if (mod.PROT != 0) { AddPROT(mod.PROT * n); }
         if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
         if (mod.INT_mul != 0) { AddINT(0, mod.INT_mul * n); }
+        if (mod.exDMG_mul != 0) { AddExDMG_Mul(mod.exDMG_mul * n); }
         if (mod.CRITC != 0) { AddCRITC(mod.CRITC * n); }
         if (mod.CRITD != 0) { AddCRITD(mod.CRITD * n); }
         if (mod.EVD != 0) { AddEVD(mod.EVD * n); }
@@ -1168,8 +1178,8 @@ public class Character : MonoBehaviour
         {
             AddStEBonus(bonus, set);
         }
-        if (mod.moveRes != 0) { AddMoveRes(mod.moveRes); }
-        if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes); }
+        if (mod.moveRes != 0) { AddMoveRes(mod.moveRes * n); }
+        if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes * n); }
     }
     public void AddMaxHP(int value_base, float value_mul, bool heal)
     {
@@ -1523,6 +1533,7 @@ public class Character : MonoBehaviour
                 if (ability.priority >= priority) { priority = ability.priority; }
             }
         }
+        //infoText.AddDebugText($"priority:{priority}");
 
         List<Ability.AbilityStatus> list = new List<Ability.AbilityStatus>();
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)

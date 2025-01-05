@@ -31,6 +31,7 @@ public class Eq_AbyssHand : PA_Equipment
             if (f)
             {
                 count++.Limit(maxCount);
+                Log($"ƒJƒEƒ“ƒg‘‰Á({count}/{maxCount})");
                 break;
             }
         }

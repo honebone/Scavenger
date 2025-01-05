@@ -776,7 +776,7 @@ public class Action : MonoBehaviour
 
 
                     float ACC = ownerStatus.ACC + actionsStatus[i].ACCMod;
-                    float EVD = Mathf.Max(0, targetStatus.EVD);
+                    float EVD = Mathf.Clamp(targetStatus.EVD, 0, 75);
                     float dice = Random.value * 100f;
 
                     if (actionsStatus[i].sureHit || dice <= ownerStatus.ACC + actionsStatus[i].ACCMod)//ミス判定
@@ -803,7 +803,8 @@ public class Action : MonoBehaviour
                                 target.SpawnVisualEffect(Definer.VERef.CRIT);
                             }
 
-                            float RDMG = Mathf.Max((targetStatus.PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
+                            float PROT = Mathf.Min(targetStatus.PROT, 75);//PROTの最大値を75に制限
+                            float RDMG = Mathf.Max((PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
                             ATKDMGf *= RDMG;
                             INTDMGf *= RDMG;
 

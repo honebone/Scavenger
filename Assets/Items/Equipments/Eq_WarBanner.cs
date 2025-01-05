@@ -18,6 +18,7 @@ public class Eq_WarBanner : PA_Equipment
                 if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff)
                 {
                     count++;
+                    Log($"ƒJƒEƒ“ƒg‘‰Á({count})");
                     break;
                 }
             }

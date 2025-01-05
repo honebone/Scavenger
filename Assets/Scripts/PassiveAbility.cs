@@ -5,6 +5,7 @@ using UnityEngine;
 public class PassiveAbility : MonoBehaviour
 {
     [SerializeField, TextArea(3, 10)] string PAInfo_start;
+    [SerializeField] bool skipGetInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_end;
     protected Character character;
     protected CharactersManager charactersManager;
@@ -20,7 +21,7 @@ public class PassiveAbility : MonoBehaviour
     {
         string s = "";
         if (PAInfo_start != "") { s+=PAInfo_start + "\n"; }
-        s += GetPAInfo_Base() + "\n";
+        if (!skipGetInfo) s += GetPAInfo_Base() + "\n";
         if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
         if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
         return s;
@@ -60,6 +61,11 @@ public class PassiveAbility : MonoBehaviour
             StE.DestroyIcon();
         }
         Destroy(gameObject);
+    }
+    public void Log(string str)
+    {
+        infoText.AddLogText($"<{character.CharaStatus().charaName}の{GetPAName()}>：{str}");
+        character.SetDamageText($"{GetPAName()}：{str}", Definer.colorRef.currentState);
     }
 
     /// <summary>自身のスプライトを代入してEnqueue</summary>
