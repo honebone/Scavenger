@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
+  m_Name: RE_Forrest_Event
+  m_EditorClassIdentifier: 
+  eventName: "\u30A4\u30D9\u30F3\u30C8"
+  eventInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u51FA\u6765\u4E8B"
+  noBlind: 0
+  randomEvent: 1
+  debug: 1
+  roomEventManager:
+  - {fileID: 8180078169205948270, guid: b2cd45c11f4454c4e935c0311f25a8bc, type: 3}
+  eventIcon: {fileID: 21300000, guid: 71d73fded5b631b44a0fa060e31f898d, type: 3}

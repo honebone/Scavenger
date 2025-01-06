@@ -26,7 +26,7 @@ MonoBehaviour:
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
     weight: 50
-  - roomEvent: {fileID: 11400000, guid: f571d4eef6887014499e252f4f38b235, type: 2}
+  - roomEvent: {fileID: 11400000, guid: fa7a5305a52a2c34290bc2e05b2ff5a6, type: 2}
     weight: 30
   - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
     weight: 5
@@ -38,39 +38,51 @@ MonoBehaviour:
   boss: {fileID: 11400000, guid: a2f099821f1bc974b95073b8e990f441, type: 2}
   endArea: {fileID: 11400000, guid: f49e2db89d4591446a8279247c444817, type: 2}
   normalBattlePool:
-  - upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
     centerFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
     centerMid: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
     lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
-  - upperFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
     lowerBack: {fileID: 0}
