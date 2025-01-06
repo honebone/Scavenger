@@ -141,6 +141,7 @@ public class BattleManager : MonoBehaviour
         }
         //戦闘開始時誘発
         Trigger_BattleStart();
+        AddBattleReport();//test
     }
 
    public void RoundStart()
@@ -407,6 +408,8 @@ public class BattleManager : MonoBehaviour
 
         Trigger_BattleEnd();
     }
+
+
     public void EndTrigger_BattleEnd()
     {
         charactersManager.DestroyDead();
@@ -646,6 +649,54 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    //======================================[戦闘レポート関連]===============================
+    [SerializeField] List<BattleReport> battleReports=new List<BattleReport>();
+
+    public void AddBattleReport()
+    {
+        BattleReport report = new BattleReport();
+        int count = 0;
+        int enmCount = 0;
+        foreach(Character character in charactersManager.GetExistingCharacters_All())
+        {
+            Character.CharacterStatus status = character.CharaStatus();
+            if (status.player)
+            {
+                count++;
+                report.playerTotalMaxHP += status.maxHP;
+                report.playerTotalATK_INT += status.ATK + status.INT;
+                report.playerAveLVL += status.level;
+            }
+            else if (!status.position.IsPlayerPos())
+            {
+                enmCount++;
+                report.enemyAveLVL += status.level;
+            }
+        }
+        report.playerTotalATK_INT = (report.playerTotalATK_INT / 2f).ToInt();
+        report.playerAveMaxHP = (report.playerTotalMaxHP / count * 1f).ToInt();
+        report.playerAveATK_INT = (report.playerTotalATK_INT / count * 1f).ToInt();
+        report.playerAveLVL /= count;
+        report.enemyAveLVL /= enmCount;
+        battleReports.Add(report);
+
+        string maxHP = "playerAveMaxHP\n";
+        string ATK = "playerTotalATK_INT\n";
+        string playerLVL = "playerAveLVL\n";
+        string enemyLVL = "enemyAveLVL\n";
+        for (int i = 0; i < battleReports.Count; i++)
+        {
+            maxHP += $"{battleReports[i].playerAveMaxHP}\n";
+            ATK += $"{battleReports[i].playerTotalATK_INT}\n";
+            playerLVL += $"{battleReports[i].playerAveLVL}\n";
+            enemyLVL += $"{battleReports[i].enemyAveLVL}\n";
+        }
+        Debug.Log(maxHP);
+        Debug.Log(ATK);
+        Debug.Log(playerLVL);
+        Debug.Log(enemyLVL);
+    }
+
     public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }
 
     public void StartTutorial_Ability() { tutorialManager.SetTutorial(tutorial_ability); }
@@ -695,4 +746,15 @@ public class BattleManager : MonoBehaviour
     
     public Ability GetSelectedAbility() { return selectedAbility; }
     public Character GetCurrntTurnChara() { return (currentTurn == null) ? null : currentTurn.character; }
+}
+
+[System.Serializable]
+public class BattleReport
+{
+    public int playerTotalATK_INT;
+    public int playerTotalMaxHP;
+    public int playerAveATK_INT;
+    public int playerAveMaxHP;
+    public float playerAveLVL;
+    public float enemyAveLVL;
 }

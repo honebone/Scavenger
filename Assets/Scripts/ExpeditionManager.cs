@@ -353,6 +353,7 @@ public class ExpeditionManager : MonoBehaviour
 
     public void EnemyLVLUp()
     {
+        enemyStatusGrowth.LVL++;
         enemyStatusGrowth.ACC++;
         enemyStatusGrowth.EVD++;
         enemyStatusGrowth.ACT++;

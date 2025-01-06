@@ -303,6 +303,8 @@ public class Character : MonoBehaviour
     [System.Serializable]
     public struct CharaStatusMod
     {
+        public int LVL;
+
         public float maxHP_mul;
         public float maxSAN_mul;
 
@@ -390,7 +392,7 @@ public class Character : MonoBehaviour
         //}
     }
 
-    public class BattleReport
+    public class PersonalBattleReport
     {
         public int ATKDMG;
         public int INTDMG;
@@ -416,13 +418,13 @@ public class Character : MonoBehaviour
     }
 
    protected CharacterStatus charaStatus;
-    BattleReport battleReport = new BattleReport();
+    PersonalBattleReport battleReport = new PersonalBattleReport();
 
     //[SerializeField]
     //protected Action.ActionStatus[] actionsStatusTest;
     public CharacterStatus CharaStatus() { return charaStatus; }
-    public BattleReport GetBattleReport() { return battleReport; }
-    public void ResetBattleReport() { battleReport = new BattleReport(); }
+    public PersonalBattleReport GetBattleReport() { return battleReport; }
+    public void ResetBattleReport() { battleReport = new PersonalBattleReport(); }
 
     Character_Object charaObj;
     Character_TargetButton targetButton;
@@ -1156,6 +1158,7 @@ public class Character : MonoBehaviour
     {
         int n = 1;
         if (!set) { n = -1; }
+        if (mod.LVL != 0) { charaStatus.level += mod.LVL * n; }
         if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, heal); }
         if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, heal); }
         if (mod.PROT != 0) { AddPROT(mod.PROT * n); }
