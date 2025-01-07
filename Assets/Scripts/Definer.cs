@@ -101,6 +101,7 @@ public class Definer : MonoBehaviour
     [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<GameObject> personalityDataBase;
+    [SerializeField] List<GameObject> mutationDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
     [SerializeField] List<GameObject> statusEffectDataBase;
     [SerializeField] List<GameObject> positionEffectDataBase;
