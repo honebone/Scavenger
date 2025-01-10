@@ -100,12 +100,16 @@ public class ActionMod : MonoBehaviour
                     if (f) { s += "\n"; }
                     f = true;
                     string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
-                    string DoTText = "";
+                    string exText = "";
                     if (status.DoT)
                     {
-                        DoTText += $"HP減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                        exText += $"HP減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
                     }
-                    s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{DoTText}({chanceText},{StEParams.stack}スタック)\n";
+                    if (status.regen)
+                    {
+                        exText += $"回復量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                    }
+                    s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{exText}({chanceText},{StEParams.stack}スタック)\n";
                 }
                 foreach (StEApplyBonus bonus in applyStEBonus)
                 {

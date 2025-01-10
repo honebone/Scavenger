@@ -39,27 +39,16 @@ public class Action : MonoBehaviour
         /// <summary>
         /// row:段 column:列
         /// </summary>
-        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move }
-        [System.Serializable]
-        public class ActionTargetParams
-        {
-            public TargetType targetType;
-            public bool friendly;
-            public CharactersManager.SearchCharaCondition condition;
-
-            public bool ignoreMark;
-            public bool ignoreHide;
-            [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
-            public List<int> moveValue;
-        }
+        public enum TargetType { other, single, all, self, row, column, singleWoSelf, allWoSelf, random, move,neigbor }
+       
         [Header("\n\n\nここからアビリティのみ関係")]
         public TargetType targetType;
         public bool friendly;
         public CharactersManager.SearchCharaCondition condition;
+        [Header("targetTypeがneigborの時のみ参照")]public List<Vector2Int> neigborPos;
 
         public bool ignoreMark;
         public bool ignoreHide;
-        //public ActionTargetParams targetParams;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
         [Header("ここまでアビリティのみ関係\n\n\n")]
@@ -105,6 +94,7 @@ public class Action : MonoBehaviour
         public float healRegain_min;
         public float healRegain_max;
 
+        public int trueHeal;
         public float exHeal_mul;
 
         [Header("\n\nSAN")]
@@ -183,7 +173,7 @@ public class Action : MonoBehaviour
         public List<int> actionTargetsInt;
 
         public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
-        public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0; }
+        public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
         public string GetInfo(bool refCharaStatus=false, Character.CharacterStatus characterStatus=new Character.CharacterStatus())
         {
@@ -241,11 +231,12 @@ public class Action : MonoBehaviour
             }
             CheckNewBlock();
 
-            if (healValue_max > 0 || healPercent_max > 0 || healRegain_max > 0)//回復
+            if (DoesHeal())//回復
             {
                 if (healValue_max > 0) { s += string.Format("・HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
                 if (healPercent_max > 0) { s += string.Format("・HPを最大値の{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
                 if (healRegain_max > 0) { s += string.Format("・減少したHPの{0}％を回復\n", GetValueRange(healRegain_min, healRegain_max)); }
+                if (trueHeal > 0) { s += string.Format("・HPを{0}固定量回復\n", trueHeal); }
             }
             CheckNewBlock();
 
@@ -265,18 +256,28 @@ public class Action : MonoBehaviour
                 f = true;
 
                 string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
-                string DoTText = "";
+                string exText = "";
                 if (status.DoT)
                 {
-                    DoTText += $"HP減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                    exText += $"HP減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
                     if (refCharaStatus)
                     {
                         int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
                         int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
-                        DoTText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
+                        exText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
                     }
                 }
-                s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{DoTText}({chanceText},{StEParams.stack}スタック)\n";
+                if (status.regen)
+                {
+                    exText += $"回復量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                    if (refCharaStatus)
+                    {
+                        int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
+                        int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
+                        exText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.heal);
+                    }
+                }
+                s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{exText}({chanceText},{StEParams.stack}スタック)\n";
             }
 
             CheckNewBlock();
@@ -959,6 +960,7 @@ public class Action : MonoBehaviour
                         fheal *= ownerStatus.GHeal / 100;
                         fheal *= targetStatus.RHeal / 100;
                         int heal = Mathf.Max(0, fheal.ToInt());
+                        heal += actionsStatus[i].trueHeal;
                         onHealParams.healValue = heal;
 
                         if(!notChara) actionOwner.GetBattleReport().GHeal += heal;
@@ -1062,6 +1064,11 @@ public class Action : MonoBehaviour
                         {
                             int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
                             StEParams.DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
+                        }
+                        if (StEStaus.regen)
+                        {
+                            int baseValue = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+                            StEParams.DMGPerTurn = (baseValue * StEParams.value / 100f).ToInt();
                         }
 
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//抽選

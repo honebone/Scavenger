@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_G_Backward1
+  m_Name: G_MoveBy1
   m_EditorClassIdentifier: 
-  abilityName: "\u5F8C\u9000"
+  abilityName: "\u79FB\u52D5"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
@@ -21,11 +21,11 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 0
   excludeRandomPool: 0
-  priority: 0
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -51,17 +51,17 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5F8C\u9000"
+  - actionName: "\u79FB\u52D5"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u4E0A\u4E0B\u5DE6\u53F3\u306B1\u79FB\u52D5"
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: d561ba97ef404e246b980d8e012ff34f, type: 3}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 3
+    targetType: 9
     friendly: 0
     condition:
       searchAsPos: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
       HP_excludeEqual: 0
     ignoreMark: 0
     ignoreHide: 0
-    moveValue: 
+    moveValue: 01000000010000000100000001000000
     consumeFocus: 0
     kill: 0
     decreaseHP_min: 0
@@ -130,11 +130,11 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
-    guaranteedMove: 1
+    guaranteedMove: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 1
+    moveBackword: 0
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
@@ -146,6 +146,6 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
-    actionTargetsInt: 10000000
+    actionTargetsInt: 04000000

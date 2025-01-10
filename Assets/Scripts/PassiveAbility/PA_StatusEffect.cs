@@ -21,6 +21,7 @@ public class PA_StatusEffect : PassiveAbility
 
         public bool undeletable;
         public bool DoT;
+        public bool regen;
 
         [Header("以下は代入される")]
         public Character applyer;
@@ -98,6 +99,7 @@ public class PA_StatusEffect : PassiveAbility
         s += string.Format("[{0}]\n", Definer.StETypeName[StEStatus.StEType].ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]));
         s += GetStEInfo_forRef();
         if (StEStatus.DoT) { s += $"\n減少HP：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
+        if (StEStatus.regen) { s += $"\n回復量：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
         return s;
     }
     public string GetStEInfo_forRef()

@@ -278,15 +278,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   players:
-    dontShuffleFront: 0
+    dontShuffleFront: 1
     upperFront: {fileID: 0}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
-    dontShuffleMid: 0
+    dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     lowerMid: {fileID: 0}
-    dontShuffleBack: 0
+    dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
@@ -304,12 +304,12 @@ MonoBehaviour:
   enemySetTest:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
-    centerFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
-    centerMid: {fileID: 11400000, guid: 4fc1b4c3ad0a6c54fa587a286c6d2444, type: 2}
-    lowerMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 43d139cb98f72d24bbe3032953fe77f5, type: 2}
+    centerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
+    lowerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
     dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerBack: {fileID: 0}
@@ -12419,6 +12419,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: bd6a522c8c1749347858679dc08c9bba, type: 3}
   - {fileID: 3170614222137734241, guid: 2aca624430ed5b74f90537c145a3d5ed, type: 3}
   - {fileID: 3170614222137734241, guid: fe748f979cb1283438518f69ba1bd4f4, type: 3}
+  mutationDataBase: []
   affrictionDataBase:
   - {fileID: 3170614222137734241, guid: 931636989d1c7014ab9e740c04abd43c, type: 3}
   - {fileID: 3170614222137734241, guid: 5b8fc18424429b2448a9fc1e2d2cb615, type: 3}
@@ -12470,6 +12471,7 @@ MonoBehaviour:
   - {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
   - {fileID: 5164891664867224302, guid: 6522bb4bf44b3fe48996755b507647d7, type: 3}
   - {fileID: 1489497368108049143, guid: a1f11822ce7769147bf9b2365bfc58d4, type: 3}
+  - {fileID: 1489497368108049143, guid: f3031c37ce778ac458fdac04d880c657, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}
@@ -18811,6 +18813,7 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
@@ -18844,6 +18847,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
@@ -41519,7 +41523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -119.94499
+      value: -119.94501
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

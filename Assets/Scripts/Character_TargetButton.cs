@@ -195,7 +195,7 @@ public class Character_TargetButton : MonoBehaviour
                 s += string.Format("\nSANÅF{0}", status.SAN);
             }
 
-            foreach (GameObject DoT in ExpeditionRef.definer.GetDoTDataBese())
+            foreach (GameObject DoT in Definer.DoTDataBase)
             {
                 int DMGNextTurn = character.GetDoTDMG(DoT, false);
                 int DMGTotal = character.GetDoTDMG(DoT, true);

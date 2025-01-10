@@ -105,21 +105,14 @@ public class Definer : MonoBehaviour
     [SerializeField] List<GameObject> affrictionDataBase;
     [SerializeField] List<GameObject> statusEffectDataBase;
     [SerializeField] List<GameObject> positionEffectDataBase;
+
+    public static List<GameObject> DoTDataBase = new List<GameObject>();
     public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
     public List<ItemData> GetAllLoots() { return lootDataBase_Inspector; }
 
     public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
-    public List<GameObject> GetDoTDataBese()
-    {
-        List<GameObject> list = new List<GameObject>();
-        foreach (GameObject StE in statusEffectDataBase)
-        {
-            if (StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().DoT) { list.Add(StE); }
-        }
-        return list;
-    }
 
     /// <summary>ñÑÇﬂçûÇÒÇæÉäÉìÉN -> ê‡ñæï∂</summary>
     public string LinkKeyToStr(string key)
@@ -300,6 +293,11 @@ public class Definer : MonoBehaviour
         {
             PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
             personalities[(int)status.personalityType].Add(per);
+        }
+
+        foreach (GameObject StE in statusEffectDataBase)
+        {
+            if (StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().DoT) { DoTDataBase.Add(StE); }
         }
 
         generalRaEDataBase = new List<GameObject>(generalRaEDataBase_Inspector);

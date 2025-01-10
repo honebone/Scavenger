@@ -591,6 +591,28 @@ public class Ability : MonoBehaviour
                         tp_noMark.Add(new List<int>() { target });
                     }
                     break;
+
+                case Action.ActionStatus.TargetType.neigbor://自身を中心とした相対座標を対象
+                    List<Vector2Int> neigborVector=new List<Vector2Int>(actionStatus.neigborPos);
+                    if (!charaStatus.position.IsPlayerPos())//オーナーが敵なら、相対座標を反転
+                    {
+                        for (int i = 0; i < neigborVector.Count; i++) { neigborVector[i] = new Vector2Int(-neigborVector[i].x, neigborVector[i].y); }
+                    }
+                    List<int> neigborPos = charaStatus.position.RelPosToAbs(neigborVector);
+                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    {
+                        targetStatus = target.CharaStatus();
+                        int pos = targetStatus.position;
+                        if (neigborPos.Contains(pos))//指定した相対座標に含まれているか
+                        {
+                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                            {
+                                if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { tp_mark.Add(new List<int> { pos }); }
+                                else { tp_noMark.Add(new List<int> { pos }); }
+                            }
+                        }
+                    }
+                    break;
                 default:
                     print("そのtargetTypeの処理は未実装");
                     break;

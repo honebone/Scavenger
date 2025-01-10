@@ -6,7 +6,7 @@ public class AMod_DoTDetonate : ActionMod
 {
     [SerializeField] bool ATKDMG;
     [SerializeField] List<GameObject> DoT;
-    [SerializeField] float ratio;
+    [SerializeField,Header("Ç»Ç∫Ç©Åìï\ãLÇ∂Ç·Ç»Ç¢")] float ratio;
 
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {

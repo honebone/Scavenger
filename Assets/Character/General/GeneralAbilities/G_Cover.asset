@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_G_Pass
+  m_Name: G_Cover
   m_EditorClassIdentifier: 
-  abilityName: "\u30D1\u30B9"
+  abilityName: "\u906E\u853D"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
   activateSprite: {fileID: 0}
-  abilityType: 6
+  abilityType: 3
   excludeRandomPool: 0
-  priority: -1
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
@@ -40,6 +40,7 @@ MonoBehaviour:
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
     HPPercent: 0
     HP_lessThan: 0
@@ -51,9 +52,9 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u30D1\u30B9"
+  - actionName: "\u906E\u853D"
     conditionInfo: 
-    targetInfo: "\u81EA\u8EAB"
+    targetInfo: "\u81EA\u8EAB\u306E1\u30DE\u30B9\u5F8C\u65B9\u306B\u3044\u308B\u5473\u65B9"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -61,28 +62,32 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 3
-    friendly: 0
+    targetType: 10
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 0
-      enemy: 0
+      player: 1
+      enemy: 1
       onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
+      front: 1
+      mid: 1
+      back: 1
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos:
+    - {x: -1, y: 0}
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -96,7 +101,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -110,6 +116,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -121,11 +129,19 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -135,10 +151,11 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 6
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -149,4 +166,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 10000000
+    actionTargetsInt: 0d000000
