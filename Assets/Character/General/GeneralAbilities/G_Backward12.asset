@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Test
+  m_Name: G_Backward12
   m_EditorClassIdentifier: 
-  abilityName: "\u30C6\u30B9\u30C8"
+  abilityName: "\u5F8C\u9000"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
@@ -21,11 +21,11 @@ MonoBehaviour:
   activateSprite: {fileID: 0}
   abilityType: 0
   excludeRandomPool: 0
-  priority: 1
+  priority: 0
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 1
+  availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -52,28 +52,27 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u30C6\u30B9\u30C8"
+  - actionName: "\u5F8C\u9000"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: d561ba97ef404e246b980d8e012ff34f, type: 3}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 491992989292504568, guid: 378617f8978e35946b0307f3f79a216c, type: 3}
-    targetType: 1
+    actionMods: []
+    targetType: 3
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 0
-      enemy: 1
+      enemy: 0
       onlyPlayable: 0
-      front: 1
-      mid: 1
-      back: 1
+      front: 0
+      mid: 0
+      back: 0
       characterInclude: []
       characterTags: 
       StE: []
@@ -129,14 +128,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 0
-      refATK: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -146,11 +138,11 @@ MonoBehaviour:
     summonChara: []
     summonChanceWeight: []
     moveChance: 0
-    guaranteedMove: 0
+    guaranteedMove: 1
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 0
+    moveBackword: 2
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
@@ -163,7 +155,6 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 09000000
+    targetCount: 0
+    actionTargets: []
+    actionTargetsInt: 10000000
