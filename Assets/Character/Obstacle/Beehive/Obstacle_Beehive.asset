@@ -10,33 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: Enemy_Bear
+  m_Name: Obstacle_Beehive
   m_EditorClassIdentifier: 
-  fileName: E_Bear
+  fileName: O_Beehive
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
-  charaName: "\u30AF\u30DE"
+  charaName: "\u30CF\u30C1\u306E\u5DE3"
   difficulty: 
   introduction: 
   preferredPos: 
-  characterTags: 03000000
+  characterTags: 09000000
   immovable: 0
   notChara: 0
   player: 0
   playable: 0
-  obstacle: 0
+  obstacle: 1
   variableSprites:
-  - {fileID: 3714059239575686852, guid: f8565dbbbb2f7b345829d6f185442fde, type: 3}
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: -1293640100, guid: 6383cab3f421ccb448f6a1cece77c0ac, type: 3}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
-  - {fileID: 11400000, guid: 88348b85f82b628429e24757edd3c372, type: 2}
-  - {fileID: 11400000, guid: 7961793375f757443a8eab8df6ccd821, type: 2}
-  - {fileID: 11400000, guid: 63757f6d262a2dd4fa061c7c4a92ef71, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
-  - {fileID: 11400000, guid: 2128bc6fc2b938740a8d7dc05bc3d38a, type: 2}
-  passiveAbilities: []
+  passiveAbilities:
+  - {fileID: 5245743984243299787, guid: 233c0df0f41ee6e4688606d6199688e5, type: 3}
   actionMods: []
-  corpse: {fileID: 11400000, guid: ff2200c854c6ec7428bae7cdf9cf6ead, type: 2}
+  corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0
@@ -44,17 +41,17 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
-  surviveFatalWounds: 1
-  maxHP: 75
+  surviveFatalWounds: 0
+  maxHP: 18
   maxSAN: 0
-  ATK: 10
-  INT: 6
-  CRITC: 5
-  CRITD: 200
-  EVD: 5
-  ACC: 93
+  ATK: 0
+  INT: 0
+  CRITC: 0
+  CRITD: 0
+  EVD: 0
+  ACC: 0
   ACT: 5
-  turnPerRound: 1
+  turnPerRound: 0
   GHeal: 100
   RHeal: 100
   statusGrowth:
@@ -64,7 +61,7 @@ MonoBehaviour:
     ACT: 0
     CRITC: 0
     CRITD: 0
-  debuffRes: 20
+  debuffRes: 0
   StEResists: []
   StEApplyBonus: []
-  moveRes: 50
+  moveRes: 0

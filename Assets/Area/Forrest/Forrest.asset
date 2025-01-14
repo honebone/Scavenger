@@ -39,52 +39,40 @@ MonoBehaviour:
   endArea: {fileID: 11400000, guid: f49e2db89d4591446a8279247c444817, type: 2}
   normalBattlePool:
   - dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+    upperFront: {fileID: 11400000, guid: 43d139cb98f72d24bbe3032953fe77f5, type: 2}
+    centerFront: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
+    lowerFront: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    centerMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
-    lowerMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
+    centerMid: {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
+    lowerMid: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
     dontShuffleBack: 0
-    upperBack: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    centerBack: {fileID: 0}
+    upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
+    centerBack: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
     lowerBack: {fileID: 0}
   - dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    centerFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    lowerFront: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    upperMid: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerMid: {fileID: 0}
-    lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    lowerMid: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    centerBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     lowerBack: {fileID: 0}
   - dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
-    centerFront: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    lowerFront: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    centerFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    lowerFront: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
-    centerMid: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
-    lowerMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    dontShuffleBack: 0
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
-  - dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
-    dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
+    upperMid: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerMid: {fileID: 0}
-    lowerMid: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
+    centerBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     lowerBack: {fileID: 0}
   battleBGM:
   - {fileID: 8300000, guid: 965e2c01e89da934ba9bacee8cfc5dee, type: 3}

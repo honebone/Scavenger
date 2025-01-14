@@ -303,12 +303,12 @@ MonoBehaviour:
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    upperFront: {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
     centerFront: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 43d139cb98f72d24bbe3032953fe77f5, type: 2}
-    centerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
+    centerMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
     lowerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
     dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}

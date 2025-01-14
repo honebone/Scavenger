@@ -1,78 +1,76 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
+--- !u!1 &5245743984243299787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9149228449936082634}
+  - component: {fileID: 4806771525796517932}
+  m_Layer: 0
+  m_Name: O_Beehive_PA
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9149228449936082634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5245743984243299787}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4806771525796517932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5245743984243299787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Bear_Clow
+  m_Script: {fileID: 11500000, guid: ad4a6dc9bf4c0bf46969c4244adf8f1c, type: 3}
+  m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: "\u5F15\u304D\u88C2\u304D"
-  lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 0}
-  abilityManager: {fileID: 0}
-  dontChangeSprite: 0
-  activateSprite: {fileID: 0}
-  abilityType: 1
-  excludeRandomPool: 0
-  priority: 1
-  selectWeight: 3
-  availableFront: 1
-  availableMid: 1
-  availableBack: 0
-  hasSelfCondition: 0
-  conditionInfo: 
-  selfCondition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    characterInclude: []
-    characterTags: 
-    StE: []
-    StEExclude: []
-    PE: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-  freeAction: 0
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
-  actionsStaus:
-  - actionName: "\u5F15\u304D\u88C2\u304D"
-    conditionInfo: 
-    targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  personalityStatus:
+    personalityName: "\u5DE3\u306E\u9632\u885B"
+    personalityType: 1
+  actionStatus:
+    actionName: "\u5DE3\u306E\u9632\u885B"
+    conditionInfo: "1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
+    targetInfo: "\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B91-2\u3064"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 4366905902945979247, guid: 06ec826725d92e64e8c32875f5906e4e, type: 3}
+    VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 2387339138951462637, guid: 892d3fa23661441479dbe6ff09933a38, type: 3}
-    targetType: 1
+    actionMods: []
+    targetType: 0
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
+      player: 0
       enemy: 0
       onlyPlayable: 0
-      front: 1
-      mid: 1
+      front: 0
+      mid: 0
       back: 0
       characterInclude: []
       characterTags: 
@@ -94,8 +92,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -129,22 +127,17 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
-      guaranteed: 0
-      applyChance: 100
-      stack: 1
-      value: 30
-      refATK: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
     removePEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
+    summon: 1
+    summonChara:
+    - {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
+    summonChanceWeight:
+    - 1
     moveChance: 0
     guaranteedMove: 0
     moveForword: 0
@@ -153,9 +146,9 @@ MonoBehaviour:
     moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    abilityEffect: 1
+    abilityEffect: 0
     freeAction: 0
-    abilityType: 1
+    abilityType: 0
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

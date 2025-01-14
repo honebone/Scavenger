@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7851532707322402335
+--- !u!1 &5914351714439134719
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3524397596493089808}
-  - component: {fileID: 4604378820201153321}
+  - component: {fileID: 2666612655228603540}
+  - component: {fileID: 2978040479611753177}
   m_Layer: 0
-  m_Name: Bee_Stab_AMod
+  m_Name: Bear_Tackle_AMod2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3524397596493089808
+--- !u!4 &2666612655228603540
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851532707322402335}
+  m_GameObject: {fileID: 5914351714439134719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,25 +32,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4604378820201153321
+--- !u!114 &2978040479611753177
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851532707322402335}
+  m_GameObject: {fileID: 5914351714439134719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064aca2ac0b98794284cbf3c1af8d6ac, type: 3}
+  m_Script: {fileID: 11500000, guid: d0e63ca2644c3274a8ce3b4caa745cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u6BD2\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483"
-    hideValues: 1
-    exInfo: "\u5BFE\u8C61\u306E\u6BD2\u3092\u3059\u3079\u3066\u6D88\u53BB\u3057\u3001\u6BD2\u306B\u3088\u3063\u3066\u5931\u3046\u306F\u305A\u3060\u3063\u305FHP\u306B\u7B49\u3057\u3044\u56FA\u5B9A\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+    conditionInfo: "\u3055\u3089\u306B\u3001\u81EA\u8EAB\u304C\u5F8C\u5217\u306B\u3044\u308B\u306A\u3089"
+    hideValues: 0
+    exInfo: 
     consumeFocus: 0
     decreaseHP: 0
-    ATKMod: 0
+    ATKMod: 30
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
@@ -58,7 +58,7 @@ MonoBehaviour:
     exATKDMG_int: 0
     exINTDMG_int: 0
     ACCMod: 0
-    CRITCMod: 0
+    CRITCMod: 10
     CRITDMod: 0
     drain: 0
     sureHit: 0
@@ -72,15 +72,48 @@ MonoBehaviour:
     shieldAdd: 0
     shieldRemove: 0
     applySteParams: []
-    applyStEBonus: []
+    applyStEBonus:
+    - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+      exChance: 20
+      exStack: 0
+      exValue: 0
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs:
-    - removeStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
-      removeAll: 1
-      addAmount: 0
-  ATKDMG: 0
-  DoT:
-  - {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
-  ratio: 1
+    removeStEs: []
+  hasCondition_owner: 1
+  condition_owner:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 1
+    characterInclude: []
+    characterTags: 
+    StE: []
+    StEExclude: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+  hasCondition_target: 0
+  condition_target:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    characterInclude: []
+    characterTags: 
+    StE: []
+    StEExclude: []
+    PE: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
