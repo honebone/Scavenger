@@ -20,6 +20,7 @@ public class PositionEffect : MonoBehaviour
         public bool refValue;
 
         public bool DoT;
+        public bool regen;
 
         [Header("以下は代入される")]
         public int stack;
@@ -60,12 +61,12 @@ public class PositionEffect : MonoBehaviour
 
         PEStatus.stack = PEParams.stack;
         PEStatus.value = PEParams.value;
-        if (PEStatus.DoT)
+        if (PEStatus.DoT || PEStatus.regen)
         {
             int baseDMG = (PEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
             PEStatus.DMGPerTurn = (baseDMG * PEParams.value / 100f).ToInt();
         }
-        
+
         PEIcon = icon;
         PEIcon.Init(PEStatus);
         if (PEStatus.merge && PEStatus.refValue) { FindObjectOfType<InfoText>().AddErrorText("mergeとrefValueが同時にtrueとなるPEは作ってはいけません!!"); }
@@ -91,6 +92,7 @@ public class PositionEffect : MonoBehaviour
         if (PEStatus.PEInfo != "") { info += PEStatus.PEInfo + "\n"; }
         info += GetAdditionalInfo();
         if (PEStatus.DoT) { info += $"\n減少HP：{PEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
+        if (PEStatus.regen) { info += $"\n回復量：{PEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
         return info;
     }
     public virtual string GetAdditionalInfo()

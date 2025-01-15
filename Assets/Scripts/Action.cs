@@ -289,19 +289,29 @@ public class Action : MonoBehaviour
                 f = true;
 
                 string chanceText = PEParams.guaranteed ? "確定" : $"{PEParams.applyChance}％";
-                string DoTText = "";
+                string exText = "";
                 if (status.DoT)
                 {
-                    DoTText += $"HP減少量：{(PEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{PEParams.value}％\n";
+                    exText += $"HP減少量：{(PEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{PEParams.value}％\n";
                     if (refCharaStatus)
                     {
                         int baseDMG = (PEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
                         int DMGPerTurn = (baseDMG * PEParams.value / 100f).ToInt();
-                        DoTText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
+                        exText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
+                    }
+                }
+                if (status.regen)
+                {
+                    exText += $"回復量：{(PEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{PEParams.value}％\n";
+                    if (refCharaStatus)
+                    {
+                        int baseDMG = (PEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
+                        int DMGPerTurn = (baseDMG * PEParams.value / 100f).ToInt();
+                        exText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.heal);
                     }
                 }
 
-                s += $"・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n{DoTText}({chanceText},{PEParams.stack}スタック)\n";
+                s += $"・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n{exText}({chanceText},{PEParams.stack}スタック)\n";
             }
 
             CheckNewBlock();

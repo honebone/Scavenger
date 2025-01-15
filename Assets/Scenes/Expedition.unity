@@ -284,12 +284,13 @@ MonoBehaviour:
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
-    centerMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
-    lowerMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
+    lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   itemData:
   - {fileID: 11400000, guid: 8dedc3295e2b174409d16c8be78f90f0, type: 2}
   - {fileID: 11400000, guid: 85316edc6d6f2394486e0567baccfe5d, type: 2}
@@ -314,6 +315,7 @@ MonoBehaviour:
     upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}

@@ -12,14 +12,13 @@ public class PE_Regeneration : PositionEffect
         if (character != null && character == currentTurnChara)
         {
             Action.ActionStatus action = actionStatus;
-            action.healValue_min = PEStatus.stack;
-            action.healValue_max = PEStatus.stack;
+            action.trueHeal = PEStatus.DMGPerTurn;
            Enqueue(action, true, new List<Character>() { character },0, true);
         }
     }
 
     public override void OnRoundEnd()
     {
-        AddStack(-2);
+        AddStack(-1);
     }
 }

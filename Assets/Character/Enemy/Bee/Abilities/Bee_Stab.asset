@@ -93,8 +93,8 @@ MonoBehaviour:
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 50
+    ATKMod_max: 70
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -158,7 +158,19 @@ MonoBehaviour:
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
-    removeStEs_additional: []
+    removeStEs_additional:
+    - removeStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      removeAll: 1
+      addAmount: 0
+    - removeStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      removeAll: 1
+      addAmount: 0
+    - removeStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      removeAll: 1
+      addAmount: 0
+    - removeStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      removeAll: 1
+      addAmount: 0
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}

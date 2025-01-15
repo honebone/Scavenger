@@ -77,6 +77,9 @@ public class AreaManager : MonoBehaviour
         public CharacterData centerBack;
         public CharacterData lowerBack;
 
+        [Header("\n")]
+        public List<CharacterData> atRandom;
+
         public List<CharacterData> GetEnemies()
         {
             List<CharacterData> enemies = new List<CharacterData>();
@@ -100,6 +103,17 @@ public class AreaManager : MonoBehaviour
             buffer.Add(lowerBack);
             if (!dontShuffleBack) { buffer = buffer.Shuffle(); }
             enemies.AddRange(buffer);
+
+            List<int> empty;
+            foreach(CharacterData random in atRandom)
+            {
+                empty = new List<int>();
+                for(int i = 0; i < 9; i++)
+                {
+                    if (enemies[i] == null) { empty.Add(i); }
+                }
+                if (empty.Count > 0) { enemies[empty.Choice()] = random; }
+            }
 
             return enemies;
         }
