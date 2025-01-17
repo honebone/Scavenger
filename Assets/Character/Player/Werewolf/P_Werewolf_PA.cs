@@ -19,9 +19,9 @@ public class P_Werewolf_PA : PA_Personality
     {
         act = true;
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (!act)
+        if (!act&&myTurn)
         {
             if (!character.CheckHasStE(werewolf)) { Enqueue_Self(applyWerewolf); }
             else { Enqueue_Self(removeWerewolf); }

@@ -62,7 +62,7 @@ public class Character_Object : MonoBehaviour
     GameObject charaSprite;
     public void Init(Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem, Character.SummonCharaStatusParams summonCharaParams)
     {
-        if (characterStatus.obstacle) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
+        if (characterStatus.Obstacle()) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
 
         charactersManager = FindObjectOfType<CharactersManager>();
 

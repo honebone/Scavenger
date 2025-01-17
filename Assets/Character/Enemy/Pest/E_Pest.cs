@@ -8,6 +8,7 @@ public class E_Pest : PA_Personality
 
     [SerializeField] Action.ActionStatus heal;
     [SerializeField] Action.ActionStatus acid;
+    [SerializeField] int maxHPRatio = 5;
     [SerializeField] GameObject secretion;
     [SerializeField] int thRatio;
     bool applyed;
@@ -27,7 +28,9 @@ public class E_Pest : PA_Personality
         {
             if (character.CheckHasStE(secretion))
             {
-                Enqueue(acid, true, new List<Character> { killer });
+                Action.ActionStatus action = acid;
+                action.exATKDMG_int = (killer.CharaStatus().maxHP * maxHPRatio / 100f).ToInt();
+                Enqueue(action, true, new List<Character> { killer });
             }
             else
             {

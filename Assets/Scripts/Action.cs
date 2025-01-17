@@ -61,6 +61,8 @@ public class Action : MonoBehaviour
         public int decreaseHP_max;
         public float decreaseHPPer_min;
         public float decreaseHPPer_max;
+        public Vector2 decreaseHP_ATK;
+        public Vector2 decreaseHP_INT;
 
         [Header("\n\n攻撃")]
         [TextArea(3, 10)] public string attackInfo;
@@ -164,6 +166,8 @@ public class Action : MonoBehaviour
         public GameObject activateSprite;
 
         public Character actionOwner;
+        /// <summary>アクションの引き金となった原因</summary>
+        public PassiveAbility source;
         //[System.NonSerialized]
         //public Character.CharacterStatus ownerStatus_notChara;
         public int targetCount;
@@ -172,6 +176,7 @@ public class Action : MonoBehaviour
         /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
         public List<int> actionTargetsInt;
 
+        public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0; }
         public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
         public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
@@ -183,7 +188,7 @@ public class Action : MonoBehaviour
 
             //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
-            s += string.Format("対象：{0}\n", targetInfo);
+            if (targetInfo != "") s += string.Format("対象：{0}\n", targetInfo);
             if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
             if (kill) { s += "・殺害する\n"; }
             if (decreaseHP_max > 0)
@@ -193,6 +198,14 @@ public class Action : MonoBehaviour
             if (decreaseHPPer_max > 0)
             {
                 s += string.Format("・HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max));
+            }
+            if (decreaseHP_ATK.y > 0)
+            {
+                s += $"・HPがATKの{GetValueRange(decreaseHP_ATK)}％分減少\n";
+            }
+            if (decreaseHP_INT.y > 0)
+            {
+                s += $"・HPがINTの{GetValueRange(decreaseHP_INT)}％分減少\n";
             }
 
             if (DoesAttack()||attackInfo!="")//攻撃
@@ -389,7 +402,11 @@ public class Action : MonoBehaviour
             CheckNewBlock();
 
             if (actionInfo != "") { s +="\n"+ actionInfo + "\n"; }
-
+            if (actionObject != null)
+            {
+                string ex = actionObject.GetComponent<Action>().GetAdditionalInfo();
+                if (ex != "") { s += ex + "\n"; }
+            }
             return s;
 
             void CheckNewBlock()
@@ -407,6 +424,12 @@ public class Action : MonoBehaviour
         {
             if (min == max) { return max.ToString(); }
             else { return string.Format("{0}-{1}", min, max); }
+        }
+
+        public string GetValueRange(Vector2 range)
+        {
+            if (range.x == range.y) { return range.x.ToString(); }
+            else { return string.Format("{0}-{1}", range.x, range.y); }
         }
 
         //public ActionStatus Modify_ApplyStE(List<StEApplyBonus> applyBonus)
@@ -528,7 +551,10 @@ public class Action : MonoBehaviour
         public Action.ActionStatus actionStatus;
         public Character target;
 
+        public bool damage;
         public OnDamageParams onDamageParams;
+        public bool kill;
+        public OnKillParams onKillParams;
     }
     public struct OnAttackParams
     {
@@ -757,20 +783,33 @@ public class Action : MonoBehaviour
                     target.ConsumeFocus();
                 }
 
+                OnKillParams onKillParams = new OnKillParams();
 
                 if (actionsStatus[i].kill)
                 {
                     target.Kill(actionStatus.actionOwner);
+                    result.kill = true;
+
+                    onKillParams.obstacle = targetStatus.Obstacle();//resultの記述
+                    onKillParams.target = target;
+                    onKillParams.CRIT = false;
+                    result.onKillParams = onKillParams;
                 }
 
-                if (actionsStatus[i].decreaseHP_max > 0 && target.CheckAlive())//HP減少
+                if (actionsStatus[i].DoesDecreaseHP() && target.CheckAlive())//HP減少
                 {
-                    target.DecreaseHP(Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1));
-                }
-                if (actionsStatus[i].decreaseHPPer_max > 0 && target.CheckAlive())//HP減少
-                {
+                    int decrease = Random.Range(actionsStatus[i].decreaseHP_min, actionsStatus[i].decreaseHP_max + 1);
+
                     float percent = Random.Range(actionsStatus[i].decreaseHPPer_min, actionsStatus[i].decreaseHPPer_max) / 100f;
-                    target.DecreaseHP(Mathf.RoundToInt(targetStatus.maxHP * percent));
+                    decrease += Mathf.RoundToInt(targetStatus.maxHP * percent);
+
+                    percent= Random.Range(actionsStatus[i].decreaseHP_ATK.x, actionsStatus[i].decreaseHP_ATK.y) / 100f;
+                    decrease += (ownerStatus.ATK * percent).ToInt();
+
+                    percent = Random.Range(actionsStatus[i].decreaseHP_INT.x, actionsStatus[i].decreaseHP_INT.y) / 100f;
+                    decrease += (ownerStatus.INT * percent).ToInt();
+
+                    target.DecreaseHP(decrease);
                 }
 
 
@@ -873,16 +912,19 @@ public class Action : MonoBehaviour
                             onDamageParams.target = target;
                             onDamageParams.actionStatus = actionsStatus[i];
 
+                            result.damage = true;
                             result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
                             if(target.Damage(onDamageParams))//ダメージ処理開始
                             {//殺害したなら
-                                OnKillParams onKillParams = new OnKillParams();
-                                onKillParams.obstacle = targetStatus.obstacle;
+                                onKillParams.obstacle = targetStatus.Obstacle();
                                 onKillParams.target = target;
                                 onKillParams.CRIT = CRIT;
                                 onKillParamsList.Add(onKillParams);
+
+                                result.kill = true;
+                                result.onKillParams = onKillParams;
                             }
 
                             if (!notChara)
@@ -1390,4 +1432,6 @@ public class Action : MonoBehaviour
     }
 
     public bool CheckIfAbilityEffect() { return actionStatus.abilityEffect; }
+
+    public virtual string GetAdditionalInfo() { return ""; }
 }

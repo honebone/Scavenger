@@ -23,6 +23,6 @@ public class O_Beehive_PA : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        return actionStatus.GetInfo(true, character.CharaStatus());
+        return actionStatus.GetInfo();
     }
 }

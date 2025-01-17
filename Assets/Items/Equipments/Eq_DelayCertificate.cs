@@ -21,9 +21,9 @@ public class Eq_DelayCertificate : PA_Equipment
     {
         act = true;
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (!act&&!activated)
+        if (!act&&!activated&&myTurn)
         {
             activated = true;
             Enqueue_Self(actionStatus);

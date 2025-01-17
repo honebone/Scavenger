@@ -28,9 +28,13 @@ public class SupplyManager : MonoBehaviour
     ExpeditionManager expeditionManager;
     ExpeditionManager.PartyStatus partyStatus;
     SoundManager soundManager;
-  
-   
-    
+
+    public static SupplyManager inst;
+    private void Awake()
+    {
+        inst = this;
+    }
+
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();

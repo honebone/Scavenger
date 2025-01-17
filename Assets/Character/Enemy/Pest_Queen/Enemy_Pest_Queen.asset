@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_Pest_Queen
+  m_EditorClassIdentifier: 
+  fileName: E_Pest_Queen
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u30DA\u30B9\u30C8\u30FB\u30AF\u30A4\u30FC\u30F3"
+  difficulty: 
+  introduction: 
+  preferredPos: 
+  characterTags: 04000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  playable: 0
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 2b1669fe257af5c43a79a5b6feed8356, type: 2}
+  - {fileID: 11400000, guid: bc2410f4226302e4aabba7afa3633ef3, type: 2}
+  - {fileID: 11400000, guid: 12184b1ee8fcd7d45b37c4b828955ee9, type: 2}
+  - {fileID: 11400000, guid: 68c4b20d3c2e33c4491aaf54425da692, type: 2}
+  - {fileID: 11400000, guid: 7261a29cf1f3b7c49bbda194954b0749, type: 2}
+  - {fileID: 11400000, guid: c726730ad29b6774cbfc225ffa3e16ea, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 4317599220986398242, guid: 4330036b9e2315d4d8fbb1bded71d3ba, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  surviveFatalWounds: 1
+  maxHP: 250
+  maxSAN: 0
+  ATK: 10
+  INT: 10
+  CRITC: 5
+  CRITD: 200
+  EVD: 5
+  ACC: 93
+  ACT: 6
+  turnPerRound: 2
+  GHeal: 100
+  RHeal: 100
+  statusGrowth:
+    maxHP: 0
+    ATK: 0
+    INT: 0
+    ACT: 0
+    CRITC: 0
+    CRITD: 0
+  debuffRes: 0
+  StEResists:
+  - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+    value: 50
+  StEApplyBonus: []
+  moveRes: 50

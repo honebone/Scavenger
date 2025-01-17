@@ -56,8 +56,7 @@ public class CharacterData : ScriptableObject
     public bool notChara;
     public bool player;
     public bool playable;
-    /// <summary>Ÿ”s‚ÉŠÖŒW‚È‚¢‚©</summary>
-    public bool obstacle;
+    //public bool obstacle;
     [Header("0:idle 1:damaged")]
     public GameObject[] variableSprites;
     public Vector2 spriteOffset;

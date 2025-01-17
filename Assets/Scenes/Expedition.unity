@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -285,7 +285,7 @@ MonoBehaviour:
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     centerMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
-    lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+    lowerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
@@ -306,7 +306,7 @@ MonoBehaviour:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
     centerFront: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
-    lowerFront: {fileID: 0}
+    lowerFront: {fileID: 11400000, guid: 556fa5ba7c3492640905a1c41b18d0cf, type: 2}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 43d139cb98f72d24bbe3032953fe77f5, type: 2}
     centerMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
@@ -815,7 +815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 139.98999, y: -24.299011}
+  m_AnchoredPosition: {x: 139.98999, y: -24.298996}
   m_SizeDelta: {x: -279.98, y: -48.597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66345595
@@ -12378,6 +12378,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0cdbbd5a4434fff4f8465574b4b7601b, type: 2}
   - {fileID: 11400000, guid: b86a75129586e454885e4e7ccc7cf204, type: 2}
   - {fileID: 11400000, guid: 97fa1b18ee1234a4db58b07fdb332587, type: 2}
+  - {fileID: 11400000, guid: 419150cc8f87a8842a25bf436baac5b8, type: 2}
+  - {fileID: 11400000, guid: dfcca0d32e1caaa4ba0d2a56cff52473, type: 2}
+  - {fileID: 11400000, guid: 4cc8894b0b925854d9b76e84ea41af70, type: 2}
+  - {fileID: 11400000, guid: 3a5384d72efe8ed4ea1aafa66254a29f, type: 2}
+  - {fileID: 11400000, guid: d57614bb8779ae14fb1076a7f6474050, type: 2}
+  - {fileID: 11400000, guid: 380a9ab664d7135438170cd328cb1902, type: 2}
+  - {fileID: 11400000, guid: d2e3457f5ee061b4d839ecb133d9db3e, type: 2}
+  - {fileID: 11400000, guid: d3709688bae15a449bad55754f941236, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -12474,12 +12482,14 @@ MonoBehaviour:
   - {fileID: 5164891664867224302, guid: 6522bb4bf44b3fe48996755b507647d7, type: 3}
   - {fileID: 1489497368108049143, guid: a1f11822ce7769147bf9b2365bfc58d4, type: 3}
   - {fileID: 1489497368108049143, guid: f3031c37ce778ac458fdac04d880c657, type: 3}
+  - {fileID: 3904089656222173935, guid: 283ec298289e38b439fecf95cd91f530, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}
   - {fileID: 8496128596371283057, guid: d5bf6e192053068419740398591ffe4b, type: 3}
   - {fileID: 8496128596371283057, guid: 8472ac4e778ebbf438b64ea9158bfecc, type: 3}
   - {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
+  - {fileID: 8496128596371283057, guid: 4271be2e25fc6224d8d0e44e72bd7db7, type: 3}
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0
@@ -18812,6 +18822,7 @@ MonoBehaviour:
       StE: []
       StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -18826,6 +18837,8 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -18889,6 +18902,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
@@ -18906,6 +18920,7 @@ MonoBehaviour:
     StE: []
     StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -31950,7 +31965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -41.200012
+      value: -41.199997
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -40383,7 +40398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 140.00006, y: -23.874023}
+  m_AnchoredPosition: {x: 140.00006, y: -23.874008}
   m_SizeDelta: {x: -280, y: -47.752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130337479 stripped
@@ -41525,7 +41540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -119.94501
+      value: -119.94499
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

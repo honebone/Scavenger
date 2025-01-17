@@ -187,6 +187,8 @@ public class CharactersManager : MonoBehaviour
         public List<GameObject> StE;
         public List<GameObject> StEExclude;
         public List<GameObject> PE;
+        public List<GameObject> PEExclude;
+
         public float HPPercent;
         public bool HP_lessThan;
         public bool HP_excludeEqual;
@@ -258,6 +260,17 @@ public class CharactersManager : MonoBehaviour
             }
             if (!matched) { continue; }
 
+            matched = true;
+            foreach (GameObject s in condition.PEExclude)
+            {
+                if (character.CheckHasPE(s))
+                {
+                    matched = false;
+                    break;
+                }
+            }
+            if (!matched) { continue; }
+
             float HPPercent = status.HP.GetPercent(status.maxHP);
             if (condition.HP_lessThan)
             {
@@ -308,6 +321,19 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
+
+            matched = true;
+            foreach (GameObject s in condition.PEExclude)
+            {
+                if (GetPositionManager(i).CheckHasPE(s))
+                {
+                    matched = false;
+                    break;
+                }
+            }
+            if (!matched) { continue; }
+
+
             list.Add(i);
 
         }
@@ -405,7 +431,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            if (chara.CharaStatus().position >= 9 && !chara.CharaStatus().obstacle) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
+            if (chara.CharaStatus().position >= 9 && !chara.CharaStatus().Obstacle()) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
         }
         return true;
     }

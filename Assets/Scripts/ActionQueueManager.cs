@@ -383,7 +383,7 @@ public class ActionQueueManager : MonoBehaviour
                 case 4:
                     resolveMode = -1;
                     totalDamageText.ResetText();
-                    battleManager.TurnEnd(0);
+                    battleManager.NextTurn();
                     break;
                 case 5:
                     resolveMode = -1;

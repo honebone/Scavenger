@@ -17,8 +17,7 @@ public class Character : MonoBehaviour
         public bool notChara;
         public bool player;
         public bool playable;
-        /// <summary>èüîsÇ…ä÷åWÇ»Ç¢Ç©</summary>
-        public bool obstacle;
+        //public bool obstacle;
         /// <summary>0:idle 1:damaged </summary>
         public GameObject[] variableSprites; 
         public Sprite spriteForUI;
@@ -190,7 +189,7 @@ public class Character : MonoBehaviour
             notChara = data.notChara;
             player = data.player;
             playable = data.playable;
-            obstacle = data.obstacle;
+            //obstacle = characterTags.Contains(CharacterData.CharacterTag.obstacle);
             variableSprites = data.variableSprites;
             spriteForUI = data.spriteForUI;
 
@@ -299,6 +298,8 @@ public class Character : MonoBehaviour
         /// <summary>Åìï\ãLÇ≈ï‘Ç∑</summary>
         public  float GetHPPercent() { return HP * 100f / maxHP; }
         public int GetNextExp() { return level; }
+
+        public bool Obstacle() { return characterTags.Contains(CharacterData.CharacterTag.obstacle); }
     }
     [System.Serializable]
     public struct CharaStatusMod
@@ -952,9 +953,8 @@ public class Character : MonoBehaviour
             }
             else
             {
-                OnTurnEnd();
                 charaObj.SetTurnIcon_End();
-                actionQueue.StartResolve(4);
+                battleManager.TurnEnd(0);
             }           
         }
         else { battleManager.TurnEnd(2); }
@@ -1470,6 +1470,12 @@ public class Character : MonoBehaviour
     }
 
     public bool CheckAlive() { return !charaStatus.dead; }
+
+    public List<Character> GetNeigbor(List<Vector2Int> neigbor)
+    {
+       return new List<Character>(charactersManager.GetCharactersWithPos(charaStatus.position.RelPosToAbs(neigbor)));
+    }
+
     /// <summary>0:HP0 1:SAN0</summary>
     void Die(int cause,Character killer)
     {
@@ -1587,10 +1593,10 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(myTurn, turnCount); }
         RemovePA_Execute();
     }
-    public void OnTurnEnd()
+    public void OnTurnEnd(bool myTurn,int turnCount,bool deadTurnChara)
     {
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(); }
-        targetButton.GetPositionManager().OnTurnEnd();
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(myTurn, turnCount, deadTurnChara); }
+        //targetButton.GetPositionManager().OnTurnEnd();
         RemovePA_Execute();
     }
     public void OnRoundEnd()

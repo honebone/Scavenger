@@ -58,7 +58,7 @@ public class PA_StatusEffect : PassiveAbility
             string s = "";
             StatusEffectStatus status = applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
             string chanceText = guaranteed ? "確定" : $"{applyChance}％";
-            s += $"・対象の地点に{status.ToLinkKey(false, value)}を付与\n({chanceText},{stack}スタック)\n";
+            s += $"・{status.ToLinkKey(false, value)}を付与\n({chanceText},{stack}スタック)\n";
 
             return s;
         }

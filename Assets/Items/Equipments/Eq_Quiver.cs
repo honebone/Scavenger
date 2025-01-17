@@ -24,9 +24,9 @@ public class Eq_Quiver : PA_Equipment
     {
         act = true;
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (!act)
+        if (!act&&myTurn)
         {
             Action.ActionStatus action = actionStatus;
             actionStatus.actionOwner = character;

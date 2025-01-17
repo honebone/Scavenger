@@ -6,13 +6,16 @@ public class Eq_SeawaterBucket : PA_Equipment
 {
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
-    
-    public override void OnTurnEnd()
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        if (target.Count > 0)
+        if (myTurn)
         {
-            Enqueue(attack, true, target);
+            List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+            if (target.Count > 0)
+            {
+                Enqueue(attack, true, target);
+            }
         }
     }
 

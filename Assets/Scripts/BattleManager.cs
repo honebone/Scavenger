@@ -325,10 +325,13 @@ public class BattleManager : MonoBehaviour
 
         currentTurn.character.MyTurnStart();
     }
-    int test = 0;
     public void TurnEnd(int cause)
     {
-        test++;
+        Trigger_TurnEnd();
+    }
+
+    public void NextTurn()
+    {
         if (currentTurn.character.CheckAlive()) { currentTurn.turnIcon.RemoveTurnOrderIcon(); }
         if (turns.Count == 0) { RoundEnd(); }
         else
@@ -340,14 +343,7 @@ public class BattleManager : MonoBehaviour
             turns.RemoveAt(0);
 
             currentTurn.character.MyTurnStart();
-           
 
-
-            //if (currentTurn.character != turnOrderIconParent.GetChild(0).GetComponent<Battle_TurnOrderIcon>().GetCharacter())
-            //{
-            //    infoText.AddErrorText("ターン順アイコンエラー");
-            //    Destroy(turnOrderIconParent.GetChild(0).gameObject);
-            //}
         }
     }
 
@@ -539,6 +535,21 @@ public class BattleManager : MonoBehaviour
         }
         actionQueue.StartResolve(6);
     }
+
+    public void Trigger_TurnEnd()
+    {
+        if (!CheckCurrentTurnAlive()) infoText.AddDebugText("Triggerチェック：ターン中のキャラの死亡を確認");
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnTurnEnd(checkIfMyTurn(character), currentTurnCount + 1, !CheckCurrentTurnAlive());
+        }
+        foreach (PositionManager positionManager in positionManagers)
+        {
+            positionManager.OnTurnEnd(currentTurn.character, currentTurnCount + 1,!CheckCurrentTurnAlive());
+        }
+        actionQueue.StartResolve(4);
+    }
+
     public void Trigger_RoundEnd()
     {
         if (DebugFunction.instance.battleDebug)
@@ -742,6 +753,10 @@ public class BattleManager : MonoBehaviour
     {
         if (inBattle && inRound && currentTurn.character == character) { return true; }
         return false;
+    }
+    public bool CheckCurrentTurnAlive()
+    {
+        return currentTurn.character.CheckAlive();
     }
     
     public Ability GetSelectedAbility() { return selectedAbility; }

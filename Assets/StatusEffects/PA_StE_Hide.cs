@@ -15,9 +15,9 @@ public class PA_StE_Hide : PA_StatusEffect
         appliedThisTurn = false;
     }
 
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (!appliedThisTurn) { AddStack(-1); }
+        if (!appliedThisTurn&&myTurn) { AddStack(-1); }
     }
     public override void AtTheEnd()
     {

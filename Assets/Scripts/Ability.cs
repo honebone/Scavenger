@@ -486,6 +486,56 @@ public class Ability : MonoBehaviour
                         }
                     }
                     break;
+                case Action.ActionStatus.TargetType.row:
+                    List<int> tp_row;
+                    bool includeMarked_row;
+                    for (int i = 0; i < 3; i++)//各列に対して行う
+                    {
+                        tp_row = new List<int>();
+                        includeMarked_row = false;
+                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        {
+                            targetStatus = target.CharaStatus();
+                            int pos = targetStatus.position;
+                            if (pos < 9 && pos.GetRow() == i)//プレイヤー側で列がiと等しい
+                            {
+                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                {
+                                    if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_row = true; }
+                                    tp_row.Add(pos);
+                                }
+                            }
+                        }
+                        if (tp_row.Count > 0)
+                        {
+                            if (includeMarked_row) { tp_mark.Add(tp_row); }
+                            else { tp_noMark.Add(tp_row); }
+                        }
+                    }
+                    for (int i = 0; i < 3; i++)//各列に対して行う
+                    {
+                        tp_row = new List<int>();
+                        includeMarked_row = false;
+                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        {
+                            targetStatus = target.CharaStatus();
+                            int pos = targetStatus.position;
+                            if (pos >= 9 && pos.GetRow() == i)//エネミー側で列がiと等しい
+                            {
+                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                {
+                                    if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_row = true; }
+                                    tp_row.Add(pos);
+                                }
+                            }
+                        }
+                        if (tp_row.Count > 0)
+                        {
+                            if (includeMarked_row) { tp_mark.Add(tp_row); }
+                            else { tp_noMark.Add(tp_row); }
+                        }
+                    }
+                    break;
                 case Action.ActionStatus.TargetType.column:
                     List<int> tp_column;
                     bool includeMarked_column;

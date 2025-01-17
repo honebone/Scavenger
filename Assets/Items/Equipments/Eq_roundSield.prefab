@@ -45,18 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: d165bb41fa5abd24d9ed6b264ea717ab, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
+      LVL: 0
       maxHP_mul: 10
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      INT_mul: 0
+      exDMG_mul: 0
       CRITC: 0
       CRITD: 0
-      EVD: 0
+      EVD: 4
       ACC: 0
       ACT: 0
       turnPerRound: 0
@@ -65,6 +71,7 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       moveRes: 0
+      debuffRes: 0
     actionMods: []
 --- !u!212 &3238141386940741765
 SpriteRenderer:

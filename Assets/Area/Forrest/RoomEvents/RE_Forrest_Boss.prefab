@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6930255402659783700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3738759409012451003}
+  - component: {fileID: 2577761945961719997}
+  m_Layer: 0
+  m_Name: RE_Forrest_Boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3738759409012451003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930255402659783700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2577761945961719997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930255402659783700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573524d3b094c004fad6156fbe5f57c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u5BB3\u866B\u306E\u5DE3\u7A74"
+  REInfo: "\u3053\u306E\u30A8\u30EA\u30A2\u3092\u652F\u914D\u3059\u308B\u5F37\u6575\"\u30DA\u30B9\u30C8\u30FB\u30AF\u30A4\u30FC\u30F3\"\u306E\u3082\u3068\u3078\u3068\u305F\u3069\u308A\u7740\u3044\u305F"
+  options:
+  - optionName: "\u6226\u3046"
+    optionInfo: "\u30DA\u30B9\u30C8\u30FB\u30AF\u30A4\u30FC\u30F3\u306B\u6226\u3044\u3092\u6311\u3080"
+  boss:
+    dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    centerFront: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
+    lowerFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    dontShuffleMid: 1
+    upperMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
+    centerMid: {fileID: 11400000, guid: 556fa5ba7c3492640905a1c41b18d0cf, type: 2}
+    lowerMid: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    dontShuffleBack: 0
+    upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
+    centerBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
+    lowerBack: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    atRandom: []
+  fieldEffect: {fileID: 0}
+  battleParams:
+    bgm: {fileID: 8300000, guid: 3dbc497d5d638394ebf9a535e64d7210, type: 3}

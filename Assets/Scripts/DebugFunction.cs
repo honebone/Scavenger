@@ -127,9 +127,11 @@ public class DebugFunction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                foreach (Definer.Item item in items)
+                foreach (ItemData eqData in FindObjectOfType<Definer>().GetAllEquipments())
                 {
-                    FindObjectOfType<Inventory>().AddItem(item, item.amount, true);
+                    Definer.Item eq = new Definer.Item();
+                    eq.Init(eqData);
+                    SupplyManager.inst.AddItem(eq, 1);
                 }
 
             }

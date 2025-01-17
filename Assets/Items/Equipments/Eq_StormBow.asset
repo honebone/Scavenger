@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
+  m_Name: Eq_StormBow
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: "\u5927\u5D50\u306E\u5F13"
+  specialInfo: 0
+  info: 
+  rarity: 3
+  sprite: {fileID: 21300000, guid: bf24d90f804c80b4493bb76e9383f3ad, type: 3}
+  amountPerStack: 1
+  dropAmountRange: {x: 0, y: 0}
+  materialTags: 00000000
+  price: 0
+  manager: {fileID: 9185327421234476493, guid: 9d2d136fce5312143bb16bf9d4667ca5, type: 3}

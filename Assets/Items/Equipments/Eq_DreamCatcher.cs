@@ -24,9 +24,9 @@ public class Eq_DreamCatcher : PA_Equipment
     {
         act = true;
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (!act)
+        if (!act&&myTurn)
         {
             Enqueue_Self(actionStatus);
         }

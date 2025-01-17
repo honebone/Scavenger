@@ -81,6 +81,7 @@ public class PassiveAbility : MonoBehaviour
             infoText.AddDebugText(string.Format("{0}‚ÉSpriteRenderer‚È‚µ", GetPAName()));
         }
         Action.ActionStatus action = actionStatus;
+        action.source = this;
         character.Enqueue(action, setTargets, actionTargets, targetCount, nullOwner);
     }
 
@@ -98,6 +99,7 @@ public class PassiveAbility : MonoBehaviour
         }
 
         Action.ActionStatus action = actionStatus;
+        action.source = this;
         character.Enqueue(action, true, new List<Character>() { character });
     }
 
@@ -121,7 +123,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnTurnOrderDecide() { }
 
     public virtual void OnTurnStart(bool myTurn, int turnCount) { }
-    public virtual void OnTurnEnd() { }
+    public virtual void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara) { }
     public virtual void OnRoundEnd() { }
 
     /// <summary> ‚±‚±‚ÅEnqueue‚µ‚È‚¢!! </summary>
@@ -133,7 +135,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnAttack(List<Action.OnAttackParams> onAttackParamsList) { }
     public virtual void OnDecreasedHP(int value) { }
 
-    /// <summary>UŒ‚–½’†</summary>
+    /// <summary>UŒ‚–½’† â‘Î—v‘f”‚Í1ˆÈã 0ƒ_ƒ‚Å‚àŒÄ‚Î‚ê‚é</summary>
     public virtual void OnDamage(List<Action.OnDamageParams> onDamageParamsList) {  }
     public virtual void OnCRIT(int ID) { }
     public virtual void OnKill(List<Action.OnKillParams> onKillParamsList) { }

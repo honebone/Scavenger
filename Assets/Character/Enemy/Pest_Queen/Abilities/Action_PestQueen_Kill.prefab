@@ -1,0 +1,213 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &873456385736995473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7741622831951000375}
+  - component: {fileID: 1624581410003379861}
+  m_Layer: 0
+  m_Name: Action_PestQueen_Kill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7741622831951000375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873456385736995473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624581410003379861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873456385736995473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54fc6b31f3e50c4b936bf87c1e24473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondAction:
+    actionName: 
+    conditionInfo: "\u3053\u306E\u52B9\u679C\u30671\u4F53\u4EE5\u4E0A\u306E\u30AD\u30E3\u30E9\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D"
+    targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
+    actionInfo: "\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E92\u4F53\u306B\u3064\u304D\u3001\u5375\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E91\u4F53\u306B\u3064\u304D\u3001ATK\u30FBINT\u4E0A\u6607\u306E\u52B9\u679C\u91CF+10"
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 0
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      onlyPlayable: 0
+      front: 0
+      mid: 0
+      back: 0
+      characterInclude: []
+      characterTags: 
+      StE: []
+      StEExclude: []
+      PE: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+    neigborPos: []
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    consumeFocus: 0
+    exTurn: 0
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams:
+    - applyStE: {fileID: 3904089656222173935, guid: 283ec298289e38b439fecf95cd91f530, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 0
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 4
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
+    applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    removePEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    moveChance: 0
+    guaranteedMove: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    changeSelfSprite: {fileID: 0}
+    abilityRemainControlls: []
+    abilityEffect: 0
+    freeAction: 0
+    abilityType: 0
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
+    removeStEs_additional: []
+    dontChangeSprite: 0
+    activateSprite: {fileID: 0}
+    actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
+    actionTargetsInt: 
+  actionModStatus:
+    conditionInfo: 
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
+    decreaseHP: 0
+    ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    sureHit: 0
+    unevadable: 0
+    exHeal_mul: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldRemove: 0
+    applySteParams: []
+    applyStEBonus:
+    - applyStE: {fileID: 3904089656222173935, guid: 283ec298289e38b439fecf95cd91f530, type: 3}
+      exChance: 0
+      exStack: 0
+      exValue: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
+      exChance: 0
+      exStack: 0
+      exValue: 0
+    debuffChanceMod: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+  killPerEggStack: 2
+  valuePerKill: 10

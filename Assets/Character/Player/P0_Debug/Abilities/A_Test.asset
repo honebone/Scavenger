@@ -63,7 +63,7 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 491992989292504568, guid: 378617f8978e35946b0307f3f79a216c, type: 3}
-    targetType: 1
+    targetType: 4
     friendly: 0
     condition:
       searchAsPos: 0
@@ -93,6 +93,8 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -163,7 +165,10 @@ MonoBehaviour:
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
-    targetCount: 1
+    source: {fileID: 0}
+    targetCount: 3
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 09000000
+    - {fileID: 0}
+    - {fileID: 0}
+    actionTargetsInt: 0a0000000d00000010000000

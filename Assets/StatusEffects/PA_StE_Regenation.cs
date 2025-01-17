@@ -7,13 +7,16 @@ public class PA_StE_Regenation : PA_StatusEffect
     [SerializeField]
     Action.ActionStatus actionStatus;
 
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        Action.ActionStatus action = actionStatus;
-        action.trueHeal = StEStatus.DMGPerTurn;
-        Enqueue(action, true, new List<Character>() { character });
-        if (StEStatus.applyer != null) { StEStatus.applyer.GetBattleReport().GHeal += StEStatus.DMGPerTurn; }
-        AddStack(-1);
+        if (myTurn)
+        {
+            Action.ActionStatus action = actionStatus;
+            action.trueHeal = StEStatus.DMGPerTurn;
+            Enqueue(action, true, new List<Character>() { character });
+            if (StEStatus.applyer != null) { StEStatus.applyer.GetBattleReport().GHeal += StEStatus.DMGPerTurn; }
+            AddStack(-1);
+        }
     }
 
     public override string GetCurrentStateInfo()

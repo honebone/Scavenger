@@ -178,9 +178,9 @@ public class PositionManager : MonoBehaviour
         foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnStart(currentTurnChara, turnCount); }
         RemovePE_Execute();
     }
-    public void OnTurnEnd()
+    public void OnTurnEnd(Character currentTurnChara, int turnCount,bool deadTurnChara)
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnEnd(); }
+        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnEnd(currentTurnChara, turnCount, deadTurnChara); }
         RemovePE_Execute();
     }
     public void OnRoundEnd() {

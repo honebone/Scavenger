@@ -10,10 +10,13 @@ public class PA_StE_Fear : PA_StatusEffect
     {
         character.AddExDMG_Mul(exDMG);
     }
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        Enqueue_Self(actionStatus);
-        AddStack(-1);
+        if (myTurn)
+        {
+            Enqueue_Self(actionStatus);
+            AddStack(-1);
+        }
     }
 
     public override void AtTheEnd()

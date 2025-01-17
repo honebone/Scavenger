@@ -20,8 +20,8 @@ public class Eq_ShiningClaw : PA_Equipment
         {
             if (onDamageParams.actionStatus.abilityEffect)
             {
-                character.Enqueue(claw, true, new List<Character> { onDamageParams.target });
-                character.Enqueue(claw, true, new List<Character> { onDamageParams.target });
+                Enqueue(claw, true, new List<Character> { onDamageParams.target });
+                Enqueue(claw, true, new List<Character> { onDamageParams.target });
             }
         }
     }

@@ -27,9 +27,9 @@ public class PA_StE_Belief : PA_StatusEffect
         activateAbility = true;
     }
 
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (activateAbility) { Disable(); }
+        if (activateAbility&&myTurn) { Disable(); }
     }
 
     public override string GetAdditionalInfo()

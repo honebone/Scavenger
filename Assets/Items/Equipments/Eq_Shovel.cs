@@ -7,12 +7,15 @@ public class Eq_Shovel : PA_Equipment
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        if (target.Count > 0)
+        if (myTurn)
         {
-            Enqueue(actionStatus, true, target, 1);
+            List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+            if (target.Count > 0)
+            {
+                Enqueue(actionStatus, true, target, 1);
+            }
         }
     }
 

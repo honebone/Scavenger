@@ -42,9 +42,9 @@ public class PA_StEU_Werewolf : PA_StatusEffect
         character.AddPROT(StEStatus.stack * PROTPerStack * -1);
     }
 
-    public override void OnTurnEnd()
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        Enqueue_Self(onTurnEnd);
+       if(myTurn) Enqueue_Self(onTurnEnd);
     }
 
     public override Action.ActionStatus ModifyAction_Targeted(Action.ActionStatus statusRef, bool forCalcDMG)
@@ -89,8 +89,8 @@ public class PA_StEU_Werewolf : PA_StatusEffect
     public override string GetAdditionalInfo()
     {
         string s = "";
-        s+= onTurnEnd.GetInfo(false, new Character.CharacterStatus());
-        s+= "\n"+onApplyBleed.GetInfo(false, new Character.CharacterStatus());
+        s+= onTurnEnd.GetInfo();
+        s+= "\n"+onApplyBleed.GetInfo();
         return s;
     }
 }

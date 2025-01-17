@@ -295,6 +295,7 @@ public class Definer : MonoBehaviour
             personalities[(int)status.personalityType].Add(per);
         }
 
+        DoTDataBase = new List<GameObject>();
         foreach (GameObject StE in statusEffectDataBase)
         {
             if (StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().DoT) { DoTDataBase.Add(StE); }
