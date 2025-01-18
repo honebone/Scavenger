@@ -498,6 +498,13 @@ public class ExpeditionManager : MonoBehaviour
         equipment.Init(Definer.equipments[partyStatus.equipmentDropWeights.ChoiceWithWeight()].Choice());
         return equipment;
     }
+    /// <summary>指定したレアリティからランダムに選ぶ</summary>
+    public Definer.Item GetRandomEquipment_WithRarity(ItemData.Rarity rarity)
+    {
+        Definer.Item equipment = new Definer.Item();
+        equipment.Init(Definer.equipments[(int)rarity].Choice());
+        return equipment;
+    }
     public void SetRandomPersonality(Character target) { 
         SetPersonality(target, definer.GetPersonalityDataBase().Choice());
     }

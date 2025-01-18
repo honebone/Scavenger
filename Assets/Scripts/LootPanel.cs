@@ -35,15 +35,8 @@ public class LootPanel : MonoBehaviour
     ExpeditionManager expeditionManager;
     SoundManager soundManager;
     TutorialManager tutorialManager;
-    //[System.Serializable]
-    //public class DropItem
-    //{
-    //    //public GameObject itemData;
-    //    public ItemData dropItem;
-    //    public int quantity;
 
-    //    //public ItemData GetItemData() { return itemData.GetComponent<ItemObject>().GetItemData(); }
-    //}
+    public static LootPanel inst;
    
     [System.Serializable]
     public class LootStatus
@@ -67,6 +60,10 @@ public class LootPanel : MonoBehaviour
         }
 
        
+    }
+    private void Awake()
+    {
+        inst = this;
     }
     private void Start()
     {
@@ -95,6 +92,7 @@ public class LootPanel : MonoBehaviour
         if (lootPanel.activeSelf) { CloseLootPanel(); }
         else { Loot(); }
     }
+    /// <summary>ルートを開始する </summary>
     public void Loot()
     {
         SetButtons();

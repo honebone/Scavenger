@@ -339,7 +339,7 @@ public class CharaDetailUI : MonoBehaviour
                             {
                                 if (draggFrom == null)
                                 {
-                                    inventory.RemoveItem(draggingItem, 1);
+                                    inventory.RemoveItem(draggingItem, 1, false);
                                 }
                                 else
                                 {

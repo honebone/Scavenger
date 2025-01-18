@@ -27,10 +27,17 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     GameObject optionPanel_equipment;
 
+    public static Inventory inst;
+
     /// <summary>0:all 1:material 2:equipment 3:tool</summary>
     int sort;
     InfoText infoText;
     CharaDetailUI detailUI;
+
+    private void Awake()
+    {
+        inst = this;
+    }
     private void Start()
     {
         infoText = FindObjectOfType<InfoText>();
@@ -170,7 +177,7 @@ public class Inventory : MonoBehaviour
         SortInventory();
     }
    
-    public void RemoveItem(Definer.Item remove,int amount)
+    public void RemoveItem(Definer.Item remove,int amount,bool note = true)
     {
         if (inventory.Count == 0)
         {
@@ -187,7 +194,7 @@ public class Inventory : MonoBehaviour
             if (inventory[i].data == remove.data)
             {
                
-                infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.data.itemName.ColorStr(remove.data.rarity.ToColor()), amount.ToString()));
+               if(note) infoText.AddLogText(string.Format("○{0}x{1}を失った", remove.data.itemName.ColorStr(remove.data.rarity.ToColor()), amount.ToString()));
                 
                 if (inventory[i].amount == amount) { inventory.RemoveAt(i); }//減らす量がスロットのamountと同じ
                 else if (inventory[i].amount < amount)//減らす量がamountより多い
@@ -259,5 +266,45 @@ public class Inventory : MonoBehaviour
         }
         return equipments;
     }
+
+    /// <summary>キャラに装備中のアイテムも含めて返す</summary>
+    public List<Definer.Item> GetEquipments_WithEquipped()
+    {
+        List<Definer.Item> list = new List<Definer.Item>(GetEquipments());
+        List<Definer.Item> equipped = new List<Definer.Item>();
+        foreach(Character chara in CharactersManager.inst.GetExistingCharacters_All())
+        {
+            equipped.AddRange(chara.CharaStatus().equipments);
+        }
+
+        foreach(Definer.Item item in equipped)
+        {
+            Definer.Item replace = new Definer.Item();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].data == item.data)
+                {
+                    replace = list[i];
+                    replace.amount ++;
+                    list.RemoveAt(i);
+                    list.Add(replace);
+
+                    continue;
+                }
+            }
+
+            //見つからなければ新たに追加
+            replace.Init(item.data);
+            replace.amount = 1;
+            list.Add(replace);
+        }
+
+        return list;
+    }
+    //public List<List<Definer.Item>> GetEquipments_ByRarity(bool includeEquipped = false)
+    //{
+
+    //}
+
     public int GetExp() { return expOrbs; }
 }

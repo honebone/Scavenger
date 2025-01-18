@@ -26,7 +26,14 @@ public class CharactersManager : MonoBehaviour
     InfoText infoText;
     Utility util;
 
-   private void Start()
+    public static CharactersManager inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
+    private void Start()
     {
         expeditionManager = ExpeditionRef.expeditionManager;
         generatedCharacters = new List<Character>();

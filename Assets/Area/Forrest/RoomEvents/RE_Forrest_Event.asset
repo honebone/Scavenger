@@ -16,7 +16,8 @@ MonoBehaviour:
   eventInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u51FA\u6765\u4E8B"
   noBlind: 0
   randomEvent: 1
-  debug: 0
+  debug: 1
   roomEventManager:
+  - {fileID: 8180078169205948270, guid: 02728e33f97f3fc4da21b88a9044016c, type: 3}
   - {fileID: 8180078169205948270, guid: b2cd45c11f4454c4e935c0311f25a8bc, type: 3}
   eventIcon: {fileID: 21300000, guid: 71d73fded5b631b44a0fa060e31f898d, type: 3}
