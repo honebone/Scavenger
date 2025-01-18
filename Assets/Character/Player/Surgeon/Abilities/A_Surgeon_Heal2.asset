@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 2
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 0
   availableMid: 1
@@ -36,9 +37,12 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -51,7 +55,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u624B\u8853+"
     conditionInfo: 
-    targetInfo: "HP\u304C67\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
+    targetInfo: "HP\u304C50\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -70,21 +74,28 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
-      HPPercent: 67
+      PEExclude: []
+      HPPercent: 50
       HP_lessThan: 1
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -93,7 +104,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -107,6 +119,8 @@ MonoBehaviour:
     healPercent_max: 35
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -123,6 +137,7 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
@@ -132,16 +147,20 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 2
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
-    targetCount: 0
-    actionTargets: []
-    actionTargetsInt: 08000000
+    source: {fileID: 0}
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 03000000

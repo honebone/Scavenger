@@ -135,6 +135,7 @@ public class StEApplyBonus
     public float exChance;
     public int exStack;
     public int exValue;
+    public int exDMGPerTurn;
 
     public void AddBonus(StEApplyBonus bonus, bool add = true)
     {
@@ -143,6 +144,7 @@ public class StEApplyBonus
         exChance += bonus.exChance * n;
        exStack += bonus.exStack * n;
         exValue += bonus.exValue * n;
+        exDMGPerTurn += bonus.exDMGPerTurn * n;
         //exChance += bonus.exChance * n;
         //exStack += bonus.exStack * n;
         //exValue += bonus.exValue * n;

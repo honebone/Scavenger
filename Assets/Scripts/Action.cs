@@ -1081,6 +1081,9 @@ public class Action : MonoBehaviour
                     onApplyStEParams.resistedParams = new List<PA_StatusEffect.StatusEffectParams>();
                     onApplyStEParams.taget = target;
 
+
+                    //========================================================================================[StE•t—^]==============================================================================
+
                     List<PA_StatusEffect.StatusEffectStatus.StatusEffectType> appliedType = new List<PA_StatusEffect.StatusEffectStatus.StatusEffectType>();
                     foreach (PA_StatusEffect.StatusEffectParams P in actionsStatus[i].applySteParams)//StE•t—^
                     {
@@ -1107,6 +1110,7 @@ public class Action : MonoBehaviour
                         StEParams.applyChance += applyBonus.exChance;//bonus“™‚ðparams‚É”½‰f
                         StEParams.stack += applyBonus.exStack;
                         StEParams.value+=applyBonus.exValue;
+                        StEParams.DMGPerTurn += applyBonus.exDMGPerTurn;
                         if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
                         {
                             StEParams.applyChance += actionsStatus[i].debuffChanceMod;
@@ -1115,12 +1119,12 @@ public class Action : MonoBehaviour
                         if (StEStaus.DoT)
                         {
                             int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
-                            StEParams.DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
+                            StEParams.DMGPerTurn += (baseDMG * StEParams.value / 100f).ToInt();
                         }
                         if (StEStaus.regen)
                         {
                             int baseValue = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
-                            StEParams.DMGPerTurn = (baseValue * StEParams.value / 100f).ToInt();
+                            StEParams.DMGPerTurn += (baseValue * StEParams.value / 100f).ToInt();
                         }
 
                         if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//’Š‘I
