@@ -84,23 +84,23 @@ public class AreaManager : MonoBehaviour
         {
             List<CharacterData> enemies = new List<CharacterData>();
             List<CharacterData> buffer = new List<CharacterData>();
-            buffer.Add(upperFront);
-            buffer.Add(centerFront);
             buffer.Add(lowerFront);
+            buffer.Add(centerFront);
+            buffer.Add(upperFront);
             if (!dontShuffleFront) { buffer = buffer.Shuffle(); }
             enemies.AddRange(buffer);
 
             buffer = new List<CharacterData>();
-            buffer.Add(upperMid);
-            buffer.Add(centerMid);
             buffer.Add(lowerMid);
+            buffer.Add(centerMid);
+            buffer.Add(upperMid);
             if (!dontShuffleMid) { buffer = buffer.Shuffle(); }
             enemies.AddRange(buffer);
 
             buffer = new List<CharacterData>();
-            buffer.Add(upperBack);
-            buffer.Add(centerBack);
             buffer.Add(lowerBack);
+            buffer.Add(centerBack);
+            buffer.Add(upperBack);
             if (!dontShuffleBack) { buffer = buffer.Shuffle(); }
             enemies.AddRange(buffer);
 

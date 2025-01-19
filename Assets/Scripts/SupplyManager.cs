@@ -133,11 +133,11 @@ public class SupplyManager : MonoBehaviour
     //    //inventory‚â”[•i“™‚ÌoptionUI‚à•Â‚¶‚é
     //}
 
-    public void SetSupply_Eq(int choices)
+    public void SetSupply_Eq(int choices,ItemData.Rarity guarantee = ItemData.Rarity.common)
     {
         for (int i = 0; i < choices; i++)
         {
-            AddItem(expeditionManager.GetRandomEquipment(), 1);
+            AddItem(expeditionManager.GetRandomEquipment_WithGuarantee(guarantee), 1);
         }
     }
     public void AddItem(Definer.Item item, int amount)

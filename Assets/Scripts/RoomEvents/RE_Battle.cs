@@ -8,9 +8,9 @@ public class RE_Battle : RoomEvent
     {
         expeditionManager.Battle(currentArea.GetRandomEnemySet(),currentArea.GetRandomFE(), new ExpeditionManager.BattleParams());
     }
-    public override void OnEndBattle()
-    {
-        lootPanel.Loot();
-    }
+    //public override void OnEndBattle()
+    //{
+    //    lootPanel.Loot();
+    //}
  
 }

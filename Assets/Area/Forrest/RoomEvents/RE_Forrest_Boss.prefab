@@ -56,13 +56,13 @@ MonoBehaviour:
     centerFront: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
     lowerFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
-    centerMid: {fileID: 11400000, guid: 556fa5ba7c3492640905a1c41b18d0cf, type: 2}
-    lowerMid: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    upperMid: {fileID: 11400000, guid: 556fa5ba7c3492640905a1c41b18d0cf, type: 2}
+    centerMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
+    lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
-    lowerBack: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
+    lowerBack: {fileID: 0}
     atRandom: []
   fieldEffect: {fileID: 0}
   battleParams:

@@ -216,6 +216,50 @@ public class Inventory : MonoBehaviour
 
         infoText.AddErrorText("持っていないアイテムの数を減らそうとしてます");        
     }
+
+    /// <summary>装備品を消去　インベントリにないなら、装備中のアイテムを外す</summary>
+    public void RemoveEq_WithEquipped(Definer.Item remove, bool note = true)
+    {
+        for (int i = inventory.Count - 1; i >= 0; i--)
+        {
+            if (inventory[i].data == remove.data)
+            {
+
+                if (note) infoText.AddLogText(string.Format("○{0}を失った", remove.data.itemName.ColorStr(remove.data.rarity.ToColor())));
+
+                if (inventory[i].amount == 1) { inventory.RemoveAt(i); }
+                else if (inventory[i].amount < 1)//アイテム数が0以下　本来あり得ないが一応
+                {
+                    infoText.AddErrorText("アイテムの数が異常です");
+                }
+                else//減らす量がスロットのamountより小さい
+                {
+                    Definer.Item replace = inventory[i];
+                    replace.amount --;
+                    inventory.RemoveAt(i);
+                    inventory.Add(replace);
+                }
+
+                SortInventory();
+                return;
+            }
+        }
+
+        foreach (Character chara in CharactersManager.inst.GetExistingCharacters_All())
+        {
+            foreach(Definer.Item equipped in chara.CharaStatus().equipments)
+            {
+                if (equipped.data == remove.data)
+                {
+                    chara.UnequipItem(equipped, false);
+                    return;
+                }
+            }
+        }
+
+        infoText.AddErrorText("持っていない装備品を減らそうとしてます");
+    }
+
     public void AddExp(int amount, bool note)
     {
         if (note)

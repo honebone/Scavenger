@@ -48,7 +48,7 @@ public class RaE_FriendlyMimic : RE_RandomEvents
                 SupplyManager.inst.AddItem(item, 1);
             }
 
-            //ƒAƒCƒeƒ€¸‚¤
+            Inventory.inst.RemoveEq_WithEquipped(eq[index]);
             SupplyManager.inst.StartSupply();
         }
         else { EndRoomEvent(); }

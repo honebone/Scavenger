@@ -23,7 +23,6 @@ MonoBehaviour:
   notChara: 0
   player: 0
   playable: 0
-  obstacle: 1
   variableSprites:
   - {fileID: 4077295475819443234, guid: 5d74ce756922c9c41b75f0715068709b, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -50,7 +49,7 @@ MonoBehaviour:
   EVD: 0
   ACC: 0
   ACT: 10
-  turnPerRound: 0
+  turnPerRound: 1
   GHeal: 100
   RHeal: 100
   statusGrowth:

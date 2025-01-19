@@ -505,6 +505,25 @@ public class ExpeditionManager : MonoBehaviour
         equipment.Init(Definer.equipments[(int)rarity].Choice());
         return equipment;
     }
+    
+    /// <summary>指定したレアリティ以上の装備品をランダムに選ぶ</summary>
+    public Definer.Item GetRandomEquipment_WithGuarantee(ItemData.Rarity rarity)
+    {
+        List<float> weight = new List<float>(partyStatus.equipmentDropWeights);
+        float buffer = 0;
+
+        for (int i = 0; i < (int)rarity; i++)
+        {
+            buffer += weight[i];
+            weight[i] = 0;
+        }
+
+        weight[(int)rarity] += buffer;
+
+        Definer.Item equipment = new Definer.Item();
+        equipment.Init(Definer.equipments[weight.ChoiceWithWeight()].Choice());
+        return equipment;
+    }
     public void SetRandomPersonality(Character target) { 
         SetPersonality(target, definer.GetPersonalityDataBase().Choice());
     }
@@ -539,7 +558,7 @@ public class ExpeditionManager : MonoBehaviour
     {
         soundManager.PlayBGM_Normal();
         if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
-        supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
+        //supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
         currentRE.OnEndBattle();
     }
     public void OnEndLoot() { currentRE.OnEndLoot(); }

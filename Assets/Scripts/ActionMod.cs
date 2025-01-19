@@ -88,7 +88,7 @@ public class ActionMod : MonoBehaviour
                 if (healPercent != 0) { s += ValueToStr("・割合回復量", healPercent, "％"); }
                 if (healRegain != 0) { s += ValueToStr("・減少したHPの", healRegain, "％を回復"); }
                 if (SANHeal != 0) { s += ValueToStr("・正気度回復量", SANHeal, ""); }
-                if (SANDamage != 0) { s += ValueToStr("・正気度割合回復量", SANDamage, "％"); }
+                if (SANDamage != 0) { s += ValueToStr("・正気度減少", SANDamage, ""); }
                 if (shieldAdd != 0) { s += ValueToStr("・シールド付与量", shieldAdd, ""); }
                 if (shieldRemove != 0) { s += ValueToStr("・シールド除去量", shieldRemove, ""); }
 

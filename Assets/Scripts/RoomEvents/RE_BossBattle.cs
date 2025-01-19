@@ -46,4 +46,10 @@ public class RE_BossBattle : RoomEvent
                 break;
         }
     }
+
+    public override void OnEndBattle()
+    {
+        supplyManager.SetSupply_Eq(partyStatus.supplyOptions,ItemData.Rarity.epic);
+        lootPanel.Loot();
+    }
 }

@@ -24,9 +24,9 @@ MonoBehaviour:
   player: 0
   playable: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 7376020507324805397, guid: 103594677778e594684e51d652571db8, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  spriteForUI: {fileID: 1692964701, guid: c33f061f44d83ac4cbd71f92a9c12178, type: 3}
   abilities:
   - {fileID: 11400000, guid: 2b1669fe257af5c43a79a5b6feed8356, type: 2}
   - {fileID: 11400000, guid: bc2410f4226302e4aabba7afa3633ef3, type: 2}
@@ -55,10 +55,10 @@ MonoBehaviour:
   CRITD: 200
   EVD: 5
   ACC: 93
-  ACT: 6
+  ACT: 7
   turnPerRound: 2
   GHeal: 100
-  RHeal: 100
+  RHeal: 50
   statusGrowth:
     maxHP: 0
     ATK: 0

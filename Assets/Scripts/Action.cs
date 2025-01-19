@@ -51,6 +51,7 @@ public class Action : MonoBehaviour
         public bool ignoreHide;
         [Header("0:right 1:upper 2:lower 3:left(targetypeがmoveのときに使用)")]
         public List<int> moveValue;
+        [Header("アビリティ使用時のポーズをなくす(非プレイヤーのみ関係)")]public bool skipAnim;
         [Header("ここまでアビリティのみ関係\n\n\n")]
         public bool consumeFocus;
 

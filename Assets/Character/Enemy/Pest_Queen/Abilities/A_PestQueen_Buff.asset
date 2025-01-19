@@ -37,6 +37,7 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE: []
@@ -55,7 +56,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u6234\u51A0"
     conditionInfo: 
-    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
+    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -74,6 +75,7 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      excludeObstacle: 1
       characterInclude: []
       characterTags: 
       StE: []
@@ -87,6 +89,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
     exTurn: 0
     kill: 0
@@ -177,4 +180,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 09000000
+    actionTargetsInt: 11000000

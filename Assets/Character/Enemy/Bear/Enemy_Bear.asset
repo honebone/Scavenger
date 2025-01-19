@@ -23,7 +23,6 @@ MonoBehaviour:
   notChara: 0
   player: 0
   playable: 0
-  obstacle: 0
   variableSprites:
   - {fileID: 3714059239575686852, guid: f8565dbbbb2f7b345829d6f185442fde, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -45,7 +44,7 @@ MonoBehaviour:
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 1
-  maxHP: 75
+  maxHP: 150
   maxSAN: 0
   ATK: 10
   INT: 6

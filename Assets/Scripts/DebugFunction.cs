@@ -54,7 +54,6 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     GameObject debugPanel;
 
-    List<Definer.Item> equTest;
 
 
     CharactersManager charactersManager;
@@ -140,11 +139,14 @@ public class DebugFunction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                equTest = Inventory.inst.GetEquipments_WithEquipped();
+                for (int i = 0; i < 100; i++)
+                {
+                    SupplyManager.inst.AddItem(expeditionManager.GetRandomEquipment_WithGuarantee(ItemData.Rarity.rare), 1);
+                }
+                SupplyManager.inst.StartSupply();
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                expeditionManager.EnemyLVLUp();
             }
             if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
         }

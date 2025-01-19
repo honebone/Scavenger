@@ -210,7 +210,7 @@ public class ActionQueueManager : MonoBehaviour
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
         abilityNameText.transform.parent.GetComponent<Image>().enabled = true;
 
-        if (actionStatus.actionOwner != null && !actionStatus.actionOwner.CharaStatus().player)
+        if (actionStatus.actionOwner != null && !actionStatus.actionOwner.CharaStatus().player && !actionStatus.skipAnim)
         {
             soundManager.PlaySE(SE_ability);
 

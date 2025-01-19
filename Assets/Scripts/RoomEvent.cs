@@ -49,7 +49,11 @@ public class RoomEvent : MonoBehaviour
     public virtual void OnRClick(int index) { }
     public virtual void SelectOption(int index) { }
     /// <summary>デフォルトではルート開始</summary>
-    public virtual void OnEndBattle() { lootPanel.Loot(); }
+    public virtual void OnEndBattle()
+    {
+        supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
+        lootPanel.Loot();
+    }
     /// <summary>デフォルトではイベント終了</summary>
     public virtual void OnEndLoot()
     {

@@ -189,6 +189,7 @@ public class CharactersManager : MonoBehaviour
         public bool back;
 
         [Header("\n\n\n<ŒŸõðŒ‚ÌŽw’è>")]
+        public bool excludeObstacle;
         public List<CharacterData> characterInclude;
         public List<CharacterData.CharacterTag> characterTags;
         public List<GameObject> StE;
@@ -218,6 +219,7 @@ public class CharactersManager : MonoBehaviour
             if (!condition.front && status.position.GetColumn() == 0) { continue; }
             if (!condition.mid && status.position.GetColumn() == 1) { continue; }
             if (!condition.back && status.position.GetColumn() == 2) { continue; }
+            if (condition.excludeObstacle && status.Obstacle()) { continue; }
             bool matched = condition.characterTags.Count == 0;
             foreach (CharacterData.CharacterTag tag in condition.characterTags)
             {
