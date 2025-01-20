@@ -81,7 +81,7 @@ MonoBehaviour:
   ATKRatio: 50
   actionStatus:
     actionName: "\u98E2\u3048\u305F\u5927\u65A7"
-    conditionInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
     targetInfo: "\u96A3\u63A5\u3059\u308B\u5473\u65B9"
     AModInfo: 
     actionInfo: 
@@ -101,11 +101,13 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
       StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -113,6 +115,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
     exTurn: 0
     kill: 0

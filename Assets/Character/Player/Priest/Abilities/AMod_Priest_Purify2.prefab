@@ -62,7 +62,8 @@ MonoBehaviour:
     CRITDMod: 0
     drain: 0
     sureHit: 1
-    unevadable: 1
+    unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
     healRegain: 0
@@ -93,11 +94,14 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE:
     - {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -111,10 +115,13 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

@@ -46,17 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 026496ef4d279e14f8914da23b085f05, type: 2}
     info_start: 
-    equipmentInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+3\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+2"
+    equipmentInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+3(\u6700\u5927\u30C1\u30E3\u30FC\u30B8\u306F5)\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u30C1\u30E3\u30FC\u30B8+2"
     statusMod:
+      LVL: 0
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 15
       INT_mul: 0
+      exDMG_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -97,23 +100,30 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
       StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -137,6 +147,7 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
@@ -178,8 +189,8 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    exTurn: 0
     abilityEffect: 0
     freeAction: 0
     abilityType: 0
@@ -190,11 +201,13 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
   chargeOnBS: 3
   chargeOnTS: 2
+  maxCharge: 5
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

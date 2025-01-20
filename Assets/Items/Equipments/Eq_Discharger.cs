@@ -8,6 +8,7 @@ public class Eq_Discharger : PA_Equipment
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] int chargeOnBS;
     [SerializeField] int chargeOnTS;
+    [SerializeField] int maxCharge;
     int charge;
     List<Character> attackedChara=new List<Character>();
 
@@ -53,6 +54,7 @@ public class Eq_Discharger : PA_Equipment
         if (myTurn)
         {
             charge += chargeOnTS;
+            charge = charge.Limit(maxCharge);
             Log($"チャージ増加({charge})");
         }
     }
@@ -70,6 +72,6 @@ public class Eq_Discharger : PA_Equipment
     }
     public override string GetCurrentStateInfo()
     {
-        return $"現在のチャージ：{charge}";
+        return $"現在のチャージ：{charge}/{maxCharge}";
     }
 }
