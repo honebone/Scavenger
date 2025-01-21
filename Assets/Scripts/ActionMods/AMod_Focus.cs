@@ -13,7 +13,7 @@ public class AMod_Focus : ActionMod
         if (!statusRef.abilityEffect && onlyAbility) return actionsStatus;
         if (statusRef.abilityEffect && onlyPassive) return actionsStatus;
 
-        actionModStatus.consumeFocus = true;
+        //actionModStatus.consumeFocus = true;
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
             if (statusRef.actionTargets[i].CharaStatus().focused > 0)

@@ -68,6 +68,21 @@ public class PassiveAbility : MonoBehaviour
         character.SetDamageText($"{GetPAName()}：{str}", Definer.colorRef.currentState);
     }
 
+    /// <summary>指定した条件に合致する対象を探してEnqueue 実際にEnqueueしたかを返す</summary>
+
+    public bool Enqueue_SearchTarget(Action.ActionStatus actionStatus, CharactersManager.SearchCharaCondition condition, int targetCount = 0)
+    {
+        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+
+        if (target.Count > 0) 
+        {
+            Enqueue(actionStatus, true, target, targetCount);
+            return true;
+        }
+        return false;
+    }
+
+
     /// <summary>自身のスプライトを代入してEnqueue</summary>
     public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets,int targetCount=0, bool nullOwner = false)
     {
@@ -137,7 +152,7 @@ public class PassiveAbility : MonoBehaviour
 
     /// <summary>攻撃命中時 絶対要素数は1以上 0ダメでも呼ばれる</summary>
     public virtual void OnDamage(List<Action.OnDamageParams> onDamageParamsList) {  }
-    public virtual void OnCRIT(int ID) { }
+    public virtual void OnConsumeFocus(Action.ActionParams actionParams) { }
     public virtual void OnKill(List<Action.OnKillParams> onKillParamsList) { }
     public virtual void OnMiss(int ID) { }
     public virtual void OnHeal(List<Action.OnHealParams> onHealParamsList) { }
@@ -160,6 +175,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
 
     public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }
+    public virtual void OnSomeoneConsumeFocus(Action.ActionParams actionParams) { }
+
     public virtual void OnSomeoneDied(Character died) { }
     public virtual void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList) { }
 

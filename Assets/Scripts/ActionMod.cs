@@ -69,6 +69,7 @@ public class ActionMod : MonoBehaviour
             if (conditionInfo != "") { s += string.Format("○{0}\n", conditionInfo); }
             if (!hideValues)
             {
+                if (consumeFocus) { s += "・対象のフォーカスを消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
                 if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
                 if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
                 if (INTMod != 0) { s += ValueToStr("・INT補正", INTMod, "％"); }

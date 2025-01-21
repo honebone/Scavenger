@@ -190,6 +190,7 @@ public class Action : MonoBehaviour
             //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             if (targetInfo != "") s += string.Format("対象：{0}\n", targetInfo);
+            if (consumeFocus) { s += "・対象のフォーカスを消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
             if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
             if (kill) { s += "・殺害する\n"; }
             if (decreaseHP_max > 0)
@@ -547,6 +548,13 @@ public class Action : MonoBehaviour
     }
 
     //===========================[誘発処理の引数に使う]================================
+    public struct ActionParams
+    {
+        public Action.ActionStatus actionStatus;
+        public Character target;
+        public Character owner;
+    }
+
     public struct ActionResult
     {
         public Action.ActionStatus actionStatus;
@@ -601,6 +609,7 @@ public class Action : MonoBehaviour
         public List<PA_StatusEffect.StatusEffectParams> resistedParams;
         public Character taget;
     }
+
     public struct OnMoveParams
     {
         public int prevPos;
@@ -757,6 +766,11 @@ public class Action : MonoBehaviour
             result.target = target;
             result.actionStatus = actionsStatus[i];
 
+            ActionParams actionParams = new ActionParams();
+            actionParams.actionStatus=actionsStatus[i];
+            actionParams.target = target;
+            actionParams.owner = actionOwner;
+
             target.BecomeAbilityTarget(actionStatus.actionOwner);
 
             if (actionStatus.VE_OnTargets)
@@ -779,10 +793,7 @@ public class Action : MonoBehaviour
                     }
                 }
 
-                if (actionsStatus[i].consumeFocus)//フォーカスの消費
-                {
-                    target.ConsumeFocus();
-                }
+              
 
                 OnKillParams onKillParams = new OnKillParams();
 
@@ -834,6 +845,12 @@ public class Action : MonoBehaviour
                     {
                         if (actionsStatus[i].sureHit || actionsStatus[i].unevadable || dice <= ACC - EVD)//回避判定
                         {
+                            if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                            {
+                                target.ConsumeFocus();
+                                if (!notChara) { actionOwner.OnConsumeFocus(actionParams); }
+                            }
+
                             onAttackParams.hit = true;
 
                             float ATKDMGf = 0;
@@ -996,6 +1013,15 @@ public class Action : MonoBehaviour
 
                 if (attackHit && target.CheckAlive())
                 {
+                    if (!attackHit)//攻撃時のフォーカス消費は上で
+                    {
+                        if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                        {
+                            target.ConsumeFocus();
+                            if (!notChara) { actionOwner.OnConsumeFocus(actionParams); }
+                        }
+                    }
+
                     if (actionsStatus[i].DoesHeal())//回復
                     {
                         OnHealParams onHealParams = new OnHealParams();

@@ -1736,6 +1736,15 @@ public class Character : MonoBehaviour
             battleManager.Trigger_OnSomeoneMove(onMoveParams);
         }
     }
+    public void OnConsumeFocus(Action.ActionParams actionParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnConsumeFocus(actionParams); }
+            RemovePA_Execute();
+            battleManager.Trigger_OnSomeoneConsumeFocus(actionParams);
+        }
+    }
     public void OnDie(Character killer)
     {
         if (BattleManager.inBattle)
@@ -1774,6 +1783,14 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneMove(onMoveParams); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnSomeoneConsumeFocus(Action.ActionParams actionParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneConsumeFocus(actionParams); }
             RemovePA_Execute();
         }
     }

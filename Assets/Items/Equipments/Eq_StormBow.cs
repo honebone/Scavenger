@@ -22,8 +22,11 @@ public class Eq_StormBow : PA_Equipment
                     infoText.AddDebugText(action.ACCMod.ToString());
                     List<Character> target = charactersManager.SearchCharaWithCondition(condition);
 
-                    Enqueue(action, true, target, 1);
-                    ACCMod -= ModPerAttack;
+                   if(target.Count>0) Enqueue(action, true, target, 1);
+                    {
+                        ACCMod -= ModPerAttack;
+
+                    }
                     break;
                 }
             }
