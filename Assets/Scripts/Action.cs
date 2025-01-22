@@ -609,6 +609,11 @@ public class Action : MonoBehaviour
         public List<PA_StatusEffect.StatusEffectParams> resistedParams;
         public Character taget;
     }
+    public struct OnFocusParams
+    {
+        public ActionParams actionParams;
+        public bool kill;
+    }
 
     public struct OnMoveParams
     {
@@ -628,6 +633,7 @@ public class Action : MonoBehaviour
     List<OnKillParams> onKillParamsList = new List<OnKillParams>();
     List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
+    List<OnFocusParams> onFocusParamsList = new List<OnFocusParams>();
     OnMoveParams onMoveParams = new OnMoveParams();
 
     bool shakeCamera;
@@ -845,11 +851,7 @@ public class Action : MonoBehaviour
                     {
                         if (actionsStatus[i].sureHit || actionsStatus[i].unevadable || dice <= ACC - EVD)//回避判定
                         {
-                            if (actionsStatus[i].consumeFocus)//フォーカスの消費
-                            {
-                                target.ConsumeFocus();
-                                if (!notChara) { actionOwner.OnConsumeFocus(actionParams); }
-                            }
+                            
 
                             onAttackParams.hit = true;
 
@@ -934,7 +936,10 @@ public class Action : MonoBehaviour
                             result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(actionStatus.actionOwner, false, false);//被攻撃時誘発
-                            if(target.Damage(onDamageParams))//ダメージ処理開始
+
+                            bool kill = target.Damage(onDamageParams);
+
+                            if (kill)//ダメージ処理開始
                             {//殺害したなら
                                 onKillParams.obstacle = targetStatus.Obstacle();
                                 onKillParams.target = target;
@@ -943,6 +948,15 @@ public class Action : MonoBehaviour
 
                                 result.kill = true;
                                 result.onKillParams = onKillParams;
+                            }
+
+                            if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                            {
+                                target.ConsumeFocus();
+                                OnFocusParams onFocusParams = new OnFocusParams();
+                                onFocusParams.actionParams = actionParams;
+                                onFocusParams.kill = kill;
+                                onFocusParamsList.Add(onFocusParams);
                             }
 
                             if (!notChara)
@@ -1018,7 +1032,9 @@ public class Action : MonoBehaviour
                         if (actionsStatus[i].consumeFocus)//フォーカスの消費
                         {
                             target.ConsumeFocus();
-                            if (!notChara) { actionOwner.OnConsumeFocus(actionParams); }
+                            OnFocusParams onFocusParams = new OnFocusParams();
+                            onFocusParams.actionParams = actionParams;
+                            onFocusParamsList.Add(onFocusParams);
                         }
                     }
 
@@ -1424,6 +1440,7 @@ public class Action : MonoBehaviour
         {
             if (onAttackParamsList.Count > 0) { actionStatus.actionOwner.OnAttack(onAttackParamsList); }//攻撃時誘発
             if (onDamageParamsList.Count > 0) { actionStatus.actionOwner.OnDamage(onDamageParamsList); }
+            if (onFocusParamsList.Count > 0) { actionOwner.OnFocus(onFocusParamsList); }
             if (onKillParamsList.Count > 0) { actionStatus.actionOwner.Onkill(onKillParamsList); }//殺害時誘発
             if (onApplyStEParamsList.Count > 0)//StE付与時誘発
             {

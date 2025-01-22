@@ -152,7 +152,7 @@ public class PassiveAbility : MonoBehaviour
 
     /// <summary>çUåÇñΩíÜéû ê‚ëŒóvëfêîÇÕ1à»è„ 0É_ÉÅÇ≈Ç‡åƒÇŒÇÍÇÈ</summary>
     public virtual void OnDamage(List<Action.OnDamageParams> onDamageParamsList) {  }
-    public virtual void OnConsumeFocus(Action.ActionParams actionParams) { }
+    public virtual void OnFocus(List<Action.OnFocusParams> focusParamsList) { }
     public virtual void OnKill(List<Action.OnKillParams> onKillParamsList) { }
     public virtual void OnMiss(int ID) { }
     public virtual void OnHeal(List<Action.OnHealParams> onHealParamsList) { }
@@ -175,7 +175,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
 
     public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }
-    public virtual void OnSomeoneConsumeFocus(Action.ActionParams actionParams) { }
+    public virtual void OnSomeoneFocus(List<Action.OnFocusParams> focusParamsList) { }
 
     public virtual void OnSomeoneDied(Character died) { }
     public virtual void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList) { }

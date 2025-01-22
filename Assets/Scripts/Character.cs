@@ -1736,13 +1736,13 @@ public class Character : MonoBehaviour
             battleManager.Trigger_OnSomeoneMove(onMoveParams);
         }
     }
-    public void OnConsumeFocus(Action.ActionParams actionParams)
+    public void OnFocus(List<Action.OnFocusParams> focusParamsList)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnConsumeFocus(actionParams); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnFocus(focusParamsList); }
             RemovePA_Execute();
-            battleManager.Trigger_OnSomeoneConsumeFocus(actionParams);
+            battleManager.Trigger_OnSomeoneFocus(focusParamsList);
         }
     }
     public void OnDie(Character killer)
@@ -1786,11 +1786,11 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public void OnSomeoneConsumeFocus(Action.ActionParams actionParams)
+    public void OnSomeoneFocus(List<Action.OnFocusParams> focusParamsList)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneConsumeFocus(actionParams); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneFocus(focusParamsList); }
             RemovePA_Execute();
         }
     }

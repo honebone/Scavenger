@@ -437,12 +437,12 @@ public class BattleManager : MonoBehaviour
         //    positionManager.OnBattleStart();
         //}
     }
-    public void Trigger_OnSomeoneConsumeFocus(Action.ActionParams actionParams)
+    public void Trigger_OnSomeoneFocus(List<Action.OnFocusParams> focusParamsList)
     {
         //if (fieldEffect != null) { fieldEffect.OnBattleStart(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
-            character.OnSomeoneConsumeFocus(actionParams);
+            character.OnSomeoneFocus(focusParamsList);
         }
         //foreach (PositionManager positionManager in positionManagers)
         //{

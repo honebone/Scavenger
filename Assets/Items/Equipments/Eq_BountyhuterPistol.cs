@@ -10,13 +10,16 @@ public class Eq_BountyhuterPistol : PA_Equipment
     [SerializeField] int ATKPerCOunt;
     int count;
 
-    public override void OnConsumeFocus(Action.ActionParams actionParams)
+    public override void OnFocus(List<Action.OnFocusParams> focusParamsList)
     {
-        if (count < maxCount)
+        for (int i = 0; i < focusParamsList.Count; i++)
         {
-            count++;
-            Log($"カウント増加({count})");
-            character.AddATK(0, ATKPerCOunt);
+            if (count < maxCount)
+            {
+                count++;
+                Log($"カウント増加({count})");
+                character.AddATK(0, ATKPerCOunt);
+            }
         }
     }
 
