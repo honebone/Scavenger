@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_furyAndAshes
+  m_Name: Eq_bountyList
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u714C\u3081\u304F\u708E"
+  itemName: "\u8CDE\u91D1\u9996\u30EA\u30B9\u30C8"
   specialInfo: 0
   info: 
-  rarity: 3
-  sprite: {fileID: 21300000, guid: 7ff14b87601a17f4ba2bcbb4bb70e910, type: 3}
+  rarity: 2
+  sprite: {fileID: 21300000, guid: 63d1fd24c10be594db6efedcf0071f06, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 5667121962493394942, guid: 85ee132ec1a3b1448ada0e027aa72797, type: 3}
+  manager: {fileID: 9185327421234476493, guid: 6a08b9816b97ab743b8cbf3d038c0c9f, type: 3}

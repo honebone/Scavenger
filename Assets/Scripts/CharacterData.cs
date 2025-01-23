@@ -95,8 +95,6 @@ public class CharacterData : ScriptableObject
     public float GHeal = 100f;
     public float RHeal = 100f;
 
-    public StatusGrowth statusGrowth;
-
     public float debuffRes;
 
     public List<StEResist> StEResists;
@@ -107,7 +105,7 @@ public class CharacterData : ScriptableObject
     public string GetInfo()
     {
         Character.CharacterStatus charaStatus = new Character.CharacterStatus();
-        charaStatus.Init(this, 0);
+        charaStatus.Init(this);
 
         string info = string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
         info += string.Format("使用難易度：{0}\n得意なポジション：{1}\n\n", charaStatus.characterData.difficulty, charaStatus.characterData.preferredPos);
@@ -181,12 +179,11 @@ public class StEApplyBonus
 [System.Serializable]
 public class StatusGrowth
 {
-    public float maxHP;
-    public float ATK;
-    public float INT;
-    public float ACT;
-    public float CRITC;
-    public float CRITD;
+    [Header("乗算値")] public float maxHP_mul;
+    [Header("乗算値")] public float ATKINT_mul;
+    [Header("実数値")] public float ACT;
+    [Header("実数値")] public float EVD;
+    [Header("実数値")] public float ACC;
 
     public int CalcGrowth(int currentLVL, float value)
     {
@@ -198,16 +195,39 @@ public class StatusGrowth
     public string GetInfo(int LVL)
     {
         string s = "";
-        //s += ValueToStr("基礎HP", CalcGrowth(LVL,maxHP), "");
-        //s += ValueToStr("基礎ATK", CalcGrowth(LVL, ATK), "");
-        //s += ValueToStr("基礎INT", CalcGrowth(LVL, INT), "");
-        s += ValueToStr("CRIT率", CalcGrowth(LVL, CRITC), "％");
-        s += ValueToStr("CRITダメージ", CalcGrowth(LVL, CRITD), "％");
-        s += ValueToStr("ACT", CalcGrowth(LVL, ACT), "");
-        List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
-        if (unlockEqSlotLVL.Contains(LVL + 1))
+        StatusMod_ByLVL next = GetStatusMod(LVL);
+        s += $"LVL {LVL - 1} -> {LVL}\n";
+        s += ValueToStr("基礎maxHP：", next.maxHP_mul, "％");
+        s += ValueToStr("基礎ATK・INT：", next.ATKINT_mul, "％");
+        s += ValueToStr("ACT：", next.ACT, "");
+        s += ValueToStr("EVD：", next.EVD, "");
+        s += ValueToStr("ACC：", next.ACC, "");
+
+        return s;
+    }
+
+    public string GetLVLUPInfo(int nextLVL, bool player,int baseHP,int baseATK,int baseINT)
+    {
+        string s = "";
+        StatusMod_ByLVL current = GetStatusMod(nextLVL - 1);
+        StatusMod_ByLVL next = GetStatusMod(nextLVL);
+        current.SetStatus(baseHP, baseATK, baseINT);
+        next.SetStatus(baseHP, baseATK, baseINT);
+
+        s += ValueToStr("基礎maxHP", next.maxHP - current.maxHP, "");
+        s += ValueToStr("基礎ATK", next.ATK - current.ATK,"");
+        s += ValueToStr("基礎INT", next.INT - current.INT, "");
+        s += ValueToStr("ACT", next.ACT - current.ACT, "");
+        s += ValueToStr("EVD", next.EVD - current.EVD, "");
+        s += ValueToStr("ACC", next.ACC - current.ACC, "");
+
+        if (player)
         {
-            s += "装備品スロット+1\n";
+            List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
+            if (unlockEqSlotLVL.Contains(nextLVL))
+            {
+                s += "装備品スロット+1\n";
+            }
         }
 
         return s;
@@ -221,5 +241,57 @@ public class StatusGrowth
         else { s += "+" + value.ToString(); }
         s += end + "\n";
         return s;
+    }
+
+    public StatusMod_ByLVL GetStatusMod(int LVL)
+    {
+        StatusMod_ByLVL statusMod = new StatusMod_ByLVL();
+        if (LVL <= 1) { return new StatusMod_ByLVL(); }
+
+        statusMod.maxHP_mul = Mathf.CeilToInt(maxHP_mul);
+        statusMod.ATKINT_mul = Mathf.CeilToInt(ATKINT_mul);
+
+        for (int i = 2; i < LVL; i++)
+        {
+            statusMod.maxHP_mul = Mathf.CeilToInt((100 + statusMod.maxHP_mul) * ((maxHP_mul + 100) / 100f)) - 100;
+            statusMod.ATKINT_mul = Mathf.CeilToInt((100 + statusMod.ATKINT_mul) * ((ATKINT_mul + 100) / 100f)) - 100;
+        }
+
+        statusMod.ACT = Mathf.FloorToInt(ACT * LVL);
+        statusMod.EVD = Mathf.FloorToInt(EVD * LVL);
+        statusMod.ACC = Mathf.FloorToInt(ACC * LVL);
+
+        return statusMod;
+    }
+}
+
+public class StatusMod_ByLVL
+{
+    public int maxHP_mul;
+    public int ATKINT_mul;
+
+    public int ACT;
+    public int EVD;
+    public int ACC;
+
+    public int maxHP;
+    public int ATK;
+    public int INT;
+
+    public void SetStatus(int baseHP, int baseATK, int baseINT)
+    {
+        maxHP = Mathf.FloorToInt(baseHP * (100 + maxHP_mul) / 100f) - baseHP;
+        ATK = Mathf.FloorToInt(baseATK * (100 + ATKINT_mul) / 100f) - baseATK;
+        INT = Mathf.FloorToInt(baseINT * (100 + ATKINT_mul) / 100f) - baseINT;
+    }
+
+    public void DeltaMode(StatusMod_ByLVL prev)
+    {
+        maxHP -= prev.maxHP;
+        ATK -= prev.ATK;
+        INT -= prev.INT;
+        ACT -= prev.ACT;
+        EVD -= prev.EVD;
+        ACC -= prev.ACC;
     }
 }

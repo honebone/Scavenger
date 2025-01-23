@@ -38,6 +38,7 @@ public class Character : MonoBehaviour
         public bool surviveFatalWounds;
         public int maxHP;
         public int maxHP_base;
+        public int maxHP_baseByLVL;
         public float maxHP_mul;
         public int maxSAN;
         public int maxSAN_base;
@@ -45,10 +46,12 @@ public class Character : MonoBehaviour
 
         public int ATK;
         public int ATK_base;
+        public int ATK_baseByLVL;
         public float ATK_mul;
 
         public int INT;
         public int INT_base;
+        public int INT_baseByLVL;
         public float INT_mul;
 
         public float exDMG_mul;
@@ -64,8 +67,6 @@ public class Character : MonoBehaviour
 
         public float GHeal;
         public float RHeal;
-
-        public StatusGrowth statusGrowth;
 
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
@@ -112,7 +113,7 @@ public class Character : MonoBehaviour
             if (player && !playable) { s += "操作不可\n"; }
             bool f = false;
             s += "タグ：[";
-            foreach(CharacterData.CharacterTag tag in characterTags)
+            foreach (CharacterData.CharacterTag tag in characterTags)
             {
                 if (f) { s += ", "; }
                 f = true;
@@ -128,16 +129,16 @@ public class Character : MonoBehaviour
             {
                 s += string.Format("LVL：{0}\n", level);
             }
-            string s2 = $"({maxHP_base} { (maxHP_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            string s2 = $"({maxHP_base + maxHP_baseByLVL} {(maxHP_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
             s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
-            if (shield > 0) { s += string.Format("シールド：{0}\n", shield); }
+            if (shield > 0) { s += $"{"シールド".ToLinkKey().ColorStr(Definer.colorRef.shield)}：{shield}\n"; }
             //if (PROT != 0) { s += ValueToStr("PROT", PROT, $" {"(上限75)".ColorStr(Color.gray)}"); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
 
-            s2 = $"({ATK_base} { (ATK_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s2 = $"({ATK_base + ATK_baseByLVL} {(ATK_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
             s += string.Format("ATK：{0} {1}\n", ATK, s2);
-            s2 = $"({INT_base} { (INT_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s2 = $"({INT_base + INT_baseByLVL} {(INT_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
             s += string.Format("INT：{0} {1}\n", INT, s2);
             s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
@@ -160,7 +161,7 @@ public class Character : MonoBehaviour
                     s += string.Format("{0}耐性{1}％\n", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName, res.value);
                 }
             }
-            foreach(StEApplyBonus bonus in StEApplyBonus)
+            foreach (StEApplyBonus bonus in StEApplyBonus)
             {
                 string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
                 if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
@@ -177,7 +178,7 @@ public class Character : MonoBehaviour
             return s;
         }
 
-        public void Init(CharacterData data,int ID)
+        public void Init(CharacterData data)
         {
             fileName = data.fileName;
             characterData = data;
@@ -232,8 +233,6 @@ public class Character : MonoBehaviour
             GHeal = data.GHeal;
             RHeal = data.RHeal;
 
-            statusGrowth = data.statusGrowth;
-
             debuffRes = data.debuffRes;
 
             StEResists = new List<StEResist>(data.StEResists);
@@ -243,7 +242,6 @@ public class Character : MonoBehaviour
 
             equipmentSlots = 4;
 
-            instanceID = ID;
             equipments = new List<Definer.Item>();
         }
         public Vector2Int posIntToVector() { return new Vector2Int(position % 3, Mathf.FloorToInt(position / 3)); }
@@ -385,6 +383,7 @@ public class Character : MonoBehaviour
 
     public class SummonCharaStatusParams
     {
+        public int LVL = 1;
         public List<CharaStatusMod> statusMods = new List<CharaStatusMod>();
         public List<GameObject> PAs = new List<GameObject>();
         //public SummonCharaStatusParams()
@@ -474,6 +473,24 @@ public class Character : MonoBehaviour
 
         if (summonCharaParams != null)
         {
+            if (summonCharaParams.LVL > 1)
+            {
+                StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
+                StatusMod_ByLVL mod = SG.GetStatusMod(summonCharaParams.LVL);
+                mod.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
+
+                charaStatus.level = summonCharaParams.LVL;
+                charaStatus.maxHP_baseByLVL += mod.maxHP;
+                charaStatus.ATK_baseByLVL += mod.ATK;
+                charaStatus.INT_baseByLVL += mod.INT;
+                AddMaxHP(0, 0, true);
+                AddATK(0, 0);
+                AddINT(0, 0);
+
+                AddACT(mod.ACT);
+                AddEVD(mod.EVD);
+                AddACC(mod.ACC);
+            }
             foreach (CharaStatusMod mod in summonCharaParams.statusMods)
             {
                 ModifyStatus(mod, true, true);
@@ -1191,7 +1208,7 @@ public class Character : MonoBehaviour
 
         charaStatus.maxHP_base += value_base;
         charaStatus.maxHP_mul += value_mul;
-        charaStatus.maxHP = Mathf.Max(1, Mathf.RoundToInt(charaStatus.maxHP_base * charaStatus.maxHP_mul / 100f));
+        charaStatus.maxHP = Mathf.Max(1, Mathf.RoundToInt((charaStatus.maxHP_base+ charaStatus.maxHP_baseByLVL) * charaStatus.maxHP_mul / 100f));
         if (charaStatus.maxHP > oldMaxHP&&heal)//差分を回復
         {
             charaStatus.HP += charaStatus.maxHP - oldMaxHP;
@@ -1225,14 +1242,14 @@ public class Character : MonoBehaviour
     {
         charaStatus.ATK_base += value_base;
         charaStatus.ATK_mul += value_mul;
-        charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt(charaStatus.ATK_base * charaStatus.ATK_mul / 100f));
+        charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt((charaStatus.ATK_base+ charaStatus.ATK_baseByLVL) * charaStatus.ATK_mul / 100f));
     }
 
     public void AddINT(int value_base, float value_mul)
     {
         charaStatus.INT_base += value_base;
         charaStatus.INT_mul += value_mul;
-        charaStatus.INT = Mathf.Max(0, Mathf.RoundToInt(charaStatus.INT_base * charaStatus.INT_mul / 100f));
+        charaStatus.INT = Mathf.Max(0, Mathf.RoundToInt((charaStatus.INT_base+ charaStatus.INT_baseByLVL) * charaStatus.INT_mul / 100f));
     }
     public void AddCRITC(float value) { charaStatus.CRITC += value; }
     public void AddCRITD(float value) { charaStatus.CRITD += value; }
@@ -1399,22 +1416,25 @@ public class Character : MonoBehaviour
     public void LVLUp()
     {
         charaStatus.exp -= charaStatus.GetNextExp();
-        StatusGrowth SG = charaStatus.statusGrowth;
+        StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
         int LVL = charaStatus.level;
 
-        //AddMaxHP(SG.CalcGrowth(LVL, SG.maxHP), 0, true);
-        //AddATK(SG.CalcGrowth(LVL, SG.ATK), 0);
-        //AddINT(SG.CalcGrowth(LVL, SG.INT), 0);
-        int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP_base * (ExpeditionManager.playerMaxHPGrowth - 1));
-        int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK_base * (ExpeditionManager.playerATKGrowth - 1));
-        int INTGrowth = Mathf.CeilToInt(charaStatus.INT_base * (ExpeditionManager.playerATKGrowth - 1));
-        AddMaxHP(HPGrowth, 0, true);
-        AddATK(ATKGrowth, 0);
-        AddINT(INTGrowth, 0);
+        StatusMod_ByLVL prev = SG.GetStatusMod(LVL);
+        StatusMod_ByLVL next = SG.GetStatusMod(LVL+1);
+        prev.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
+        next.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
+        next.DeltaMode(prev);
 
-        AddCRITC(SG.CalcGrowth(LVL, SG.CRITC));
-        AddCRITD(SG.CalcGrowth(LVL, SG.CRITD));
-        AddACT(SG.CalcGrowth(LVL, SG.ACT));
+        charaStatus.maxHP_baseByLVL += next.maxHP;
+        charaStatus.ATK_baseByLVL += next.ATK;
+        charaStatus.INT_baseByLVL += next.INT;
+        AddMaxHP(0, 0, true);
+        AddATK(0, 0);
+        AddINT(0, 0);
+
+        AddACT(next.ACT);
+        AddEVD(next.EVD);
+        AddACC(next.ACC);
 
         List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
         if (unlockEqSlotLVL.Contains(LVL + 1))
@@ -1478,7 +1498,7 @@ public class Character : MonoBehaviour
     }
 
     /// <summary>0:HP0 1:SAN0</summary>
-    void Die(int cause,Character killer)
+    void Die(int cause, Character killer)
     {
         charaStatus.dead = true;
 
@@ -1508,15 +1528,15 @@ public class Character : MonoBehaviour
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
-        foreach(PassiveAbility pa in PA_StE)
+        foreach (PassiveAbility pa in PA_StE)
         {
             pa.GetComponent<PA_StatusEffect>().DestroyIcon();
         }
 
         if (charaStatus.corpse != null)
         {
-            if (charaStatus.position < 9) { charactersManager.SpawnPlayer(charaStatus.corpse, charaStatus.position); }
-            else { charactersManager.SpawnEnemy(charaStatus.corpse, charaStatus.position, false); }
+            if (charaStatus.position < 9) { charactersManager.SpawnPlayer(charaStatus.corpse, charaStatus.position, charaStatus.level); }
+            else { charactersManager.SpawnEnemy(charaStatus.corpse, charaStatus.position, false, charaStatus.level); }
             battleManager.StartTutorial_Corpse();
         }
     }
@@ -1596,6 +1616,10 @@ public class Character : MonoBehaviour
     }
     public void OnTurnEnd(bool myTurn,int turnCount,bool deadTurnChara)
     {
+        if (charaStatus.shield > 0 && battleManager.GetCurrntTurnChara().CharaStatus().position.IsPlayerPos() != charaStatus.position.IsPlayerPos())
+        {
+            RemoveShield(false, Mathf.CeilToInt(charaStatus.shield * 0.25f));
+        }
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(myTurn, turnCount, deadTurnChara); }
         //targetButton.GetPositionManager().OnTurnEnd();
         RemovePA_Execute();

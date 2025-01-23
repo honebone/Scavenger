@@ -100,7 +100,7 @@ public class DeployCharacterManager : MonoBehaviour
         foreach (CharacterData data in definer.GetPlayerDataBase())
         {
             Character.CharacterStatus status = new Character.CharacterStatus();
-            status.Init(data, 0);
+            status.Init(data);
             var c = Instantiate(deployCharaButton, deployCharaP);
             c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this, mouseOver, scroll);
         }
@@ -199,7 +199,7 @@ public class DeployCharacterManager : MonoBehaviour
                 {
                     if (positionButtons[i].GetCharacterStatus().characterData)
                     {
-                        charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i);
+                        charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i, 1);
                         expeditionManager.deployedChara.Add(positionButtons[i].GetCharacterStatus().characterData);
                     }
                 }

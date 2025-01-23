@@ -9,11 +9,17 @@ public class Eq_BountyList : PA_Equipment
     int maxCount;
     int count;
 
+    void Start()
+    {
+        maxCount = defMax;
+        count = 0;
+    }
+
     public override void OnFocus(List<Action.OnFocusParams> focusParamsList)
     {
-        foreach(var focusParams in focusParamsList)
+        foreach (var focusParams in focusParamsList)
         {
-            if (count < maxCount&&focusParams.kill)
+            if (count < maxCount && focusParams.kill)
             {
                 count++;
                 Log($"カウント増加({count})");
@@ -23,9 +29,13 @@ public class Eq_BountyList : PA_Equipment
 
     public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (myTurn)
+        if ( count > 0)
         {
-
+            Action.ActionStatus action = actionStatus;
+            action.exTurn = count;
+            Enqueue_Self(action);
+            maxCount -= count;
+            count = 0;
         }
     }
 
@@ -39,5 +49,10 @@ public class Eq_BountyList : PA_Equipment
     {
         maxCount = defMax;
         count = 0;
+    }
+
+    public override string GetCurrentStateInfo()
+    {
+        return $"このラウンドで得た追加ターン：{defMax - maxCount}";
     }
 }

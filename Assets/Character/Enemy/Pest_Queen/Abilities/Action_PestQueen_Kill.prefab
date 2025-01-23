@@ -49,7 +49,7 @@ MonoBehaviour:
     conditionInfo: "\u3053\u306E\u52B9\u679C\u30671\u4F53\u4EE5\u4E0A\u306E\u30AD\u30E3\u30E9\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E92\u4F53\u306B\u3064\u304D\u3001\u5375\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E91\u4F53\u306B\u3064\u304D\u3001ATK\u30FBINT\u4E0A\u6607\u306E\u52B9\u679C\u91CF+10"
+    actionInfo: "\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E92\u4F53\u306B\u3064\u304D\u3001\u5375\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E91\u4F53\u306B\u3064\u304D\u3001ATK\u30FBINT\u4E0A\u6607\u306E\u52B9\u679C\u91CF+5"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -66,11 +66,13 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
       StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -78,6 +80,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
     exTurn: 0
     kill: 0
@@ -201,13 +204,15 @@ MonoBehaviour:
       exChance: 0
       exStack: 0
       exValue: 0
+      exDMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
       exChance: 0
       exStack: 0
       exValue: 0
+      exDMGPerTurn: 0
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
   killPerEggStack: 2
-  valuePerKill: 10
+  valuePerKill: 5

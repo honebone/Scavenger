@@ -112,7 +112,7 @@ public class DebugFunction : MonoBehaviour
                 List<CharacterData> playerList = players.GetEnemies();
                 for (int i = 0; i < 9; i++)
                 {
-                    if (playerList[i] != null) { charactersManager.SpawnPlayer(playerList[i], i); }
+                    if (playerList[i] != null) { charactersManager.SpawnPlayer(playerList[i], i,1); }
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -194,13 +194,13 @@ public class DebugFunction : MonoBehaviour
     }
     public void SpawnDebugger()
     {
-        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7);
+        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[0], 7,1);
     }
 
     public void StartTutorial()
     {
-        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8);
-        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4);
+        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[2], 8, 1);
+        FindObjectOfType<CharactersManager>().SpawnPlayer(characterData[1], 4, 1);
 
         if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(tutorialArea); }
         else { expeditionManager.GetAreaManager().GenerateMap(); }

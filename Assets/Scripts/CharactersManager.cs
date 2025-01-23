@@ -492,12 +492,15 @@ public class CharactersManager : MonoBehaviour
 
     }
 
-    public void SpawnPlayer(CharacterData characterData, int pos, Character.SummonCharaStatusParams summonCharaParams = null)
+    public void SpawnPlayer(CharacterData characterData, int pos,int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
+        Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
+        statusParams.LVL = LVL;
+
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
-        generatedCharaStatus.Init(characterData, generatedCharacters.Count);
+        generatedCharaStatus.Init(characterData);
         generatedCharaStatus.position = pos;
 
         Vector2 worldPos = charactersWorldPos_Size1[pos];
@@ -507,16 +510,17 @@ public class CharactersManager : MonoBehaviour
         co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false, summonCharaParams);
     }
 
-    public void SpawnEnemy(CharacterData characterData, int pos, bool dropItem, Character.SummonCharaStatusParams summonCharaParams = null)
+    public void SpawnEnemy(CharacterData characterData, int pos, bool dropItem, int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos < 9) { print("エネミーを召喚するのに、指定した位置がプレイヤー側です!"); }
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
-        statusParams.statusMods.Add(expeditionManager.GetEnemyStatusMod());
+        statusParams.LVL = LVL;
+        //statusParams.statusMods.Add(expeditionManager.GetEnemyStatusMod());
         statusParams.PAs.AddRange(expeditionManager.GetMadnessPA());
 
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
-        generatedCharaStatus.Init(characterData, generatedCharacters.Count);
+        generatedCharaStatus.Init(characterData);
         generatedCharaStatus.position = pos;
 
         Vector2 worldPos = charactersWorldPos_Size1[pos];

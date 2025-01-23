@@ -85,12 +85,12 @@ public class LVLUpManager : MonoBehaviour
     {
         Character.CharacterStatus charaStatus = LVLUpQueue[0].CharaStatus();
         lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
-        string growthStr = "";
-        int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP_base * (ExpeditionManager.playerMaxHPGrowth - 1));
-        int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK_base * (ExpeditionManager.playerATKGrowth - 1));
-        int INTGrowth = Mathf.CeilToInt(charaStatus.INT_base * (ExpeditionManager.playerATKGrowth - 1));
-        growthStr += $"Šî‘bHP+{HPGrowth}\nŠî‘bATK+{ATKGrowth}\nŠî‘bINT+{INTGrowth}\n";
-        growthStr += LVLUpQueue[0].CharaStatus().statusGrowth.GetInfo(charaStatus.level);
+        string growthStr = ExpeditionManager.inst.playerStatusGrowth.GetLVLUPInfo(charaStatus.level + 1, true, charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
+        //int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP_base * (ExpeditionManager.playerMaxHPGrowth - 1));
+        //int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK_base * (ExpeditionManager.playerATKGrowth - 1));
+        //int INTGrowth = Mathf.CeilToInt(charaStatus.INT_base * (ExpeditionManager.playerATKGrowth - 1));
+        //growthStr += $"Šî‘bHP+{HPGrowth}\nŠî‘bATK+{ATKGrowth}\nŠî‘bINT+{INTGrowth}\n";
+        //growthStr += LVLUpQueue[0].CharaStatus().statusGrowth.GetInfo(charaStatus.level);
 
         statusGrowthText.text = growthStr;
         for (int i = 0; i < 3; i++)

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: -1851725857051600049}
+  - component: {fileID: 6903758799337648697}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_ThornArmor
+  m_Name: Eq_gauntletOfProsperity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1851725857051600049
+--- !u!114 &6903758799337648697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,19 +42,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f112091d23c4444998bcf38151aebf, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ef22d9e33f21aa45af34d0c28a961e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PAInfo_start: 
+  PAInfo_start: "\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B(\u6700\u592710)\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001maxHP+10\uFF05"
   skipGetInfo: 0
   PAInfo_end: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: d3709688bae15a449bad55754f941236, type: 2}
+    itemData: {fileID: 11400000, guid: da1e6f6741ab8bc4da7e836e9e916dc6, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
-      maxHP_mul: 20
+      maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
@@ -73,57 +73,17 @@ MonoBehaviour:
       moveRes: 0
       debuffRes: 0
     actionMods: []
-  actionStatus:
-    actionName: "\u8328\u306E\u93A7"
-    conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
-    targetInfo: "\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B"
-    AModInfo: 
-    actionInfo: 
-    sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
-      excludeObstacle: 0
-      characterInclude: []
-      characterTags: 
-      StE: []
-      StEExclude: []
-      PE: []
-      PEExclude: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    neigborPos: []
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    skipAnim: 0
-    consumeFocus: 0
-    exTurn: 0
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    decreaseHP_ATK: {x: 0, y: 0}
-    decreaseHP_INT: {x: 0, y: 0}
-    attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
-    INTMod_min: 0
-    INTMod_max: 0
+  maxCount: 10
+  maxHPPerCount: 10
+  DMGRatio: 12
+  actionModStatus:
+    conditionInfo: "\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483(\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u307F)"
+    hideValues: 0
+    exInfo: "\u30FB\u81EA\u8EAB\u306EmaxHP\u306E12\uFF05\u306B\u7B49\u3057\u3044\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+    consumeFocus: 1
+    decreaseHP: 0
+    ATKMod: 0
+    INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -133,66 +93,22 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
-    ignoreShield: 0
     sureHit: 0
     unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    healRegain_min: 0
-    healRegain_max: 0
-    trueHeal: 0
     exHeal_mul: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 0
-      applyChance: 100
-      stack: 2
-      value: 35
-      refATK: 1
-      DMGPerTurn: 0
-    applyPEParams: []
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldRemove: 0
+    applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
-    removePEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    moveChance: 0
-    guaranteedMove: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    changeSelfSprite: {fileID: 0}
-    abilityRemainControlls: []
-    abilityEffect: 0
-    freeAction: 0
-    abilityType: 0
-    index: 0
-    StEApplyBonus: []
-    debuffChanceMod: 0
-    removeStEs_additional: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
-    actionOwner: {fileID: 0}
-    source: {fileID: 0}
-    targetCount: 0
-    actionTargets: []
-    actionTargetsInt: 
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -234,7 +150,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fafdacd0454159b4da00a9fae2638e04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 285039e15e4a80e4db6f70a24ebebcac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

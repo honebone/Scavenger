@@ -63,7 +63,7 @@ MonoBehaviour:
       CRITC: 0
       CRITD: 0
       EVD: 0
-      ACC: 25
+      ACC: 15
       ACT: 0
       turnPerRound: 0
       GHeal: 0
@@ -95,11 +95,13 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
       StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -107,6 +109,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
     exTurn: 0
     kill: 0
@@ -114,9 +117,11 @@ MonoBehaviour:
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 50
-    ATKMod_max: 75
+    ATKMod_min: 30
+    ATKMod_max: 50
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -190,11 +195,13 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE: []
     StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

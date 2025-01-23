@@ -257,8 +257,10 @@ public class Action : MonoBehaviour
 
             if (SANHeal_max > 0) { s += string.Format("・正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
             if (SANDamage_max > 0) { s += string.Format("・正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
-            if (shieldAdd_max > 0) { s += string.Format("・シールドを{0}付与\n", GetValueRange(shieldAdd_min, shieldAdd_max)); }
-            if (shieldPercent_max > 0) { s += string.Format("・maxHPの{0}％に等しいシールドを付与\n", GetValueRange(shieldPercent_min, shieldPercent_max)); }
+
+            string shield = "シールド".ToLinkKey().ColorStr(Definer.colorRef.shield);
+            if (shieldAdd_max > 0) { s += string.Format("・{0}を{1}付与\n", shield, GetValueRange(shieldAdd_min, shieldAdd_max)); }
+            if (shieldPercent_max > 0) { s += string.Format("・maxHPの{0}％に等しい{1}を付与\n", GetValueRange(shieldPercent_min, shieldPercent_max), shield); }
             if (shieldRemove_all) { s += "・シールドを0にする\n"; }
             else if (shieldRemove_max > 0) { s += string.Format("・シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
             CheckNewBlock();
@@ -670,6 +672,7 @@ public class Action : MonoBehaviour
         {
             notChara = true;
             ownerStatus = Definer.nonCharaStatus;
+            ownerStatus.level = ExpeditionManager.inst.enemyLVL;
         }
 
         if (actionStatus.targetCount == 0)
@@ -1330,8 +1333,8 @@ public class Action : MonoBehaviour
             {
                 if (!characterManager.CheckCharaExist(actionStatus.actionTargetsInt[i]))
                 {
-                    if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i]); }
-                    else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], false); }
+                    if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], ownerStatus.level); }
+                    else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], false, ownerStatus.level); }
                 }
                 else { infoText.AddDebugText("召喚能力の打消し"); }
             }

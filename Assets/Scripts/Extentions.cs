@@ -366,4 +366,10 @@ public static class Extentions
         string text = (!status.refValue || ignoreValue) ? $"{status.PEName}" : $"{status.PEName}{value}";
         return $"<link=P_{status.PEName}><u>{text}</u></link>".ColorStr(status.PEType.ToColor());
     }
+
+    public static string ToLinkKey(this string text,string key = "")
+    {
+        string k = (key == "") ? text : key;
+        return $"<link=U_{k}><u>{text}</u></link>";
+    }
 }

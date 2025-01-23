@@ -74,7 +74,10 @@ public class ExpeditionManager : MonoBehaviour
     public static float playerATKGrowth = 1.15f;
     [SerializeField] float enemyMaxHPGrowth;
     [SerializeField] float enemyATKGrowth;
-    [SerializeField] Character.CharaStatusMod enemyStatusGrowth;
+    public StatusGrowth playerStatusGrowth;
+    public StatusGrowth enemyStatusGrowth;
+    //[SerializeField] Character.CharaStatusMod enemyStatusGrowth;
+    public int enemyLVL = 1;
 
     [SerializeField]
     AreaData areaDataForDebug;
@@ -148,6 +151,12 @@ public class ExpeditionManager : MonoBehaviour
     Room currentRoom;
     List<Map_LayerPanel> layers;
 
+    public static ExpeditionManager inst;
+    private void Awake()
+    {
+        inst = this;
+    }
+
     private void Start()
     {
         definer = FindObjectOfType<Definer>();
@@ -172,6 +181,7 @@ public class ExpeditionManager : MonoBehaviour
     public void StartExpedition(AreaData firstArea)
     {
         inExpedition = true;
+        enemyLVL = 1;
         StartArea(firstArea);
     }
     public void StartArea(AreaData area)
@@ -248,14 +258,9 @@ public class ExpeditionManager : MonoBehaviour
 
     IEnumerator EnemyLVLUpC()
     {
-        EnemyLVLUp();
-        string info = "";
-        info += $"増加HP:{enemyStatusGrowth.maxHP_mul}％\n";
-        info += $"増加ATK:{enemyStatusGrowth.ATK_mul}％\n";
-        info += $"増加INT:{enemyStatusGrowth.INT_mul}％\n";
-        info += $"増加EVD:{enemyStatusGrowth.EVD}\n";
-        info += $"増加ACC:{enemyStatusGrowth.ACC}\n";
-        info += $"増加ACT:{enemyStatusGrowth.ACT}\n";
+        //EnemyLVLUp();
+        enemyLVL++;
+        string info = enemyStatusGrowth.GetInfo(enemyLVL);
 
         soundManager.StopBGMs();
         soundManager.PlaySE(jingle_EnemyLVLUp);
@@ -274,7 +279,7 @@ public class ExpeditionManager : MonoBehaviour
     void CheckMadness()
     {
         if (addedMadness == 0) { SelectNextRoom(); }
-        else if (addedMadness > 0) { StartCoroutine(AddMandessC()); }
+        //else if (addedMadness > 0) { StartCoroutine(AddMandessC()); } 次回アップデートで戻そう
     }
 
     IEnumerator AddMandessC()
@@ -351,17 +356,17 @@ public class ExpeditionManager : MonoBehaviour
         infoText.SwitchToLog();
     }
 
-    public void EnemyLVLUp()
-    {
-        enemyStatusGrowth.LVL++;
-        enemyStatusGrowth.ACC++;
-        enemyStatusGrowth.EVD++;
-        enemyStatusGrowth.ACT++;
-        enemyStatusGrowth.maxHP_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.maxHP_mul) * enemyMaxHPGrowth - 100);
-        enemyStatusGrowth.ATK_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.ATK_mul) * enemyATKGrowth - 100);
-        enemyStatusGrowth.INT_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.INT_mul) * enemyATKGrowth - 100);
-    }
-    public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
+    //public void EnemyLVLUp()
+    //{
+    //    enemyStatusGrowth.LVL++;
+    //    enemyStatusGrowth.ACC++;
+    //    enemyStatusGrowth.EVD++;
+    //    enemyStatusGrowth.ACT++;
+    //    enemyStatusGrowth.maxHP_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.maxHP_mul) * enemyMaxHPGrowth - 100);
+    //    enemyStatusGrowth.ATK_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.ATK_mul) * enemyATKGrowth - 100);
+    //    enemyStatusGrowth.INT_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.INT_mul) * enemyATKGrowth - 100);
+    //}
+    //public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
 
     //エリアの進行度に応じた経験値量を返す
     public int GetExpAmount() { return areaCount; }//test
@@ -438,7 +443,7 @@ public class ExpeditionManager : MonoBehaviour
         List<CharacterData> enemies = enemySet.GetEnemies();
         for (int i = 0; i < 9; i++)
         {
-            if (enemies[i] != null) { charactersManager.SpawnEnemy(enemies[i], i + 9, true); }
+            if (enemies[i] != null) { charactersManager.SpawnEnemy(enemies[i], i + 9, true,enemyLVL); }
         }
         if (currentArea)
         {

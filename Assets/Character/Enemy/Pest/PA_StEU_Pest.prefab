@@ -51,7 +51,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u904E\u5270\u5206\u6CCC"
     StEInfo: "\u5929\u6575\u306E\u5B58\u5728\u3092\u691C\u77E5\u3057\u305F\uFF01"
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: 49074dc8bb146744880618ea674c9d6e, type: 3}
     StEType: 4
     maxStack: 0
     merge: 1

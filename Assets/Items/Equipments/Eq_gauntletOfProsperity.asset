@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_furyAndAshes
+  m_Name: Eq_gauntletOfProsperity
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u714C\u3081\u304F\u708E"
+  itemName: "\u9686\u76DB\u306E\u30AC\u30F3\u30C8\u30EC\u30C3\u30C8"
   specialInfo: 0
   info: 
   rarity: 3
-  sprite: {fileID: 21300000, guid: 7ff14b87601a17f4ba2bcbb4bb70e910, type: 3}
+  sprite: {fileID: 21300000, guid: 285039e15e4a80e4db6f70a24ebebcac, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 5667121962493394942, guid: 85ee132ec1a3b1448ada0e027aa72797, type: 3}
+  manager: {fileID: 9185327421234476493, guid: 4b76d3f6341980b40afa8c8b5c5369a3, type: 3}

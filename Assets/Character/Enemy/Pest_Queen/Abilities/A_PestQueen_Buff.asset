@@ -147,7 +147,7 @@ MonoBehaviour:
       guaranteed: 1
       applyChance: 0
       stack: 1
-      value: 70
+      value: 40
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []
@@ -180,4 +180,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 11000000
+    actionTargetsInt: 0c000000

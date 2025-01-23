@@ -64,7 +64,7 @@ public class RE_AreaEnd : RoomEvent
         if (phase == 0 && index < deployPool.Count)
         {
             Character.CharacterStatus status = new Character.CharacterStatus();
-            status.Init(deployPool[index], 0);
+            status.Init(deployPool[index]);
             AbilityButtonPanel.instance.SetAbilityButtons_Deploy(status.abilitiesStatus);
         }
     }
@@ -77,7 +77,7 @@ public class RE_AreaEnd : RoomEvent
             if (choice < deployPool.Count)
             {
                 List<int> playerPos = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-                characterManager.SpawnPlayer(deployPool[index], characterManager.GetEmptyPos(playerPos)[0]);
+                characterManager.SpawnPlayer(deployPool[index], characterManager.GetEmptyPos(playerPos)[0], 1);
                 expeditionManager.deployedChara.Add(deployPool[index]);
             }
 

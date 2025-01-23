@@ -105,6 +105,7 @@ public class Definer : MonoBehaviour
     [SerializeField] List<GameObject> affrictionDataBase;
     [SerializeField] List<GameObject> statusEffectDataBase;
     [SerializeField] List<GameObject> positionEffectDataBase;
+    
 
     public static List<GameObject> DoTDataBase = new List<GameObject>();
     public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
@@ -113,6 +114,15 @@ public class Definer : MonoBehaviour
     public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
+
+    [System.Serializable]
+    public class UniqueLinkInfo
+    {
+        public string linkKey;
+       [TextArea(3,10)] public string linkInfo;
+    }
+
+    public List<UniqueLinkInfo> uniqueLinkInfos = new List<UniqueLinkInfo>();
 
     /// <summary>埋め込んだリンク -> 説明文</summary>
     public string LinkKeyToStr(string key)
@@ -148,6 +158,16 @@ public class Definer : MonoBehaviour
                 }
                 Debug.Log("error:ポジション効果が見つかりませんでした");
                 return "error:ポジション効果が見つかりませんでした";
+            case 'U'://その他
+                foreach(UniqueLinkInfo linkInfo in uniqueLinkInfos)
+                {
+                    if ($"U_{linkInfo.linkKey}" == key)
+                    {
+                        return linkInfo.linkInfo;
+                    }
+                }
+                Debug.Log("error:keyに合う説明文が見つかりませんでした");
+                return "error:keyに合う説明文が見つかりませんでした";
             default:
                 Debug.Log("error:頭文字のタグが一致しません");
                 return "error:頭文字のタグが一致しません";
@@ -264,7 +284,7 @@ public class Definer : MonoBehaviour
     private void Awake()
     {
         nonCharaStatus = new Character.CharacterStatus();
-        nonCharaStatus.Init(nonCharacterData, -1);
+        nonCharaStatus.Init(nonCharacterData);
 
         colorRef = colorRef_Inspector;
         soundRef = soundRef_Inspector;

@@ -71,8 +71,12 @@ public class ActionMod : MonoBehaviour
             {
                 if (consumeFocus) { s += "・対象のフォーカスを消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
                 if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
-                if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
-                if (INTMod != 0) { s += ValueToStr("・INT補正", INTMod, "％"); }
+                //if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
+                //if (INTMod != 0) { s += ValueToStr("・INT補正", INTMod, "％"); }
+                if (ATKMod > 0) { s += $"・ATK{ATKMod}％分の物理ダメージを追加で与える\n"; }
+                else if (ATKMod < 0) { s += $"・ATK補正{ATKMod}％\n"; }
+                if (INTMod > 0) { s += $"・INT{INTMod}％分の魔法ダメージを追加で与える\n"; }
+                else if (INTMod < 0) { s += $"・INT補正{INTMod}％\n"; }
                 if (trueATKDMG != 0) { s += ValueToStr("・固定物理ダメージ", trueATKDMG, ""); }
                 if (trueINTDMG != 0) { s += ValueToStr("・固定魔法ダメージ", trueINTDMG, ""); }
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
@@ -90,8 +94,9 @@ public class ActionMod : MonoBehaviour
                 if (healRegain != 0) { s += ValueToStr("・減少したHPの", healRegain, "％を回復"); }
                 if (SANHeal != 0) { s += ValueToStr("・正気度回復量", SANHeal, ""); }
                 if (SANDamage != 0) { s += ValueToStr("・正気度減少", SANDamage, ""); }
-                if (shieldAdd != 0) { s += ValueToStr("・シールド付与量", shieldAdd, ""); }
-                if (shieldRemove != 0) { s += ValueToStr("・シールド除去量", shieldRemove, ""); }
+                string shield = "シールド".ToLinkKey().ColorStr(Definer.colorRef.shield);
+                if (shieldAdd != 0) { s += ValueToStr($"・{shield}付与量", shieldAdd, ""); }
+                if (shieldRemove != 0) { s += ValueToStr($"・{shield}除去量", shieldRemove, ""); }
 
                 f = false;
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
