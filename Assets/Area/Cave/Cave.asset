@@ -32,10 +32,8 @@ MonoBehaviour:
     weight: 5
   - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
     weight: 5
-  - roomEvent: {fileID: 11400000, guid: 1b361ac52cb3f5d4aa5e73c64f10fc65, type: 2}
-    weight: 5
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
-    weight: 5
+    weight: 10
   start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
   endArea: {fileID: 11400000, guid: 4a6855ff5aead334095c21599972eef8, type: 2}
@@ -52,6 +50,7 @@ MonoBehaviour:
     upperBack: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     centerFront: {fileID: 0}
@@ -64,6 +63,7 @@ MonoBehaviour:
     upperBack: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
@@ -76,6 +76,7 @@ MonoBehaviour:
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    atRandom: []
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     centerFront: {fileID: 0}
@@ -88,6 +89,7 @@ MonoBehaviour:
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    atRandom: []
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     centerFront: {fileID: 0}
@@ -100,6 +102,7 @@ MonoBehaviour:
     upperBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     centerFront: {fileID: 0}
@@ -112,6 +115,7 @@ MonoBehaviour:
     upperBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
+    atRandom: []
   battleBGM:
   - {fileID: 8300000, guid: 9a4a128792e5ec841a714764b5974091, type: 3}
   applyFEChance: 20

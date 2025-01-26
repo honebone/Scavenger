@@ -246,7 +246,12 @@ public class StatusGrowth
     public StatusMod_ByLVL GetStatusMod(int LVL)
     {
         StatusMod_ByLVL statusMod = new StatusMod_ByLVL();
-        if (LVL <= 1) { return new StatusMod_ByLVL(); }
+
+        statusMod.ACT = Mathf.FloorToInt(ACT * LVL);
+        statusMod.EVD = Mathf.FloorToInt(EVD * LVL);
+        statusMod.ACC = Mathf.FloorToInt(ACC * LVL);
+
+        if (LVL <= 1) { return statusMod; }
 
         statusMod.maxHP_mul = Mathf.CeilToInt(maxHP_mul);
         statusMod.ATKINT_mul = Mathf.CeilToInt(ATKINT_mul);
@@ -257,9 +262,6 @@ public class StatusGrowth
             statusMod.ATKINT_mul = Mathf.CeilToInt((100 + statusMod.ATKINT_mul) * ((ATKINT_mul + 100) / 100f)) - 100;
         }
 
-        statusMod.ACT = Mathf.FloorToInt(ACT * LVL);
-        statusMod.EVD = Mathf.FloorToInt(EVD * LVL);
-        statusMod.ACC = Mathf.FloorToInt(ACC * LVL);
 
         return statusMod;
     }

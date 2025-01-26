@@ -16,14 +16,13 @@ MonoBehaviour:
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u72E9\u4EBA"
   difficulty: "\u4F4E"
-  introduction: "\u653B\u6483\u30BF\u30A4\u30D7\n\u57FA\u790E\u653B\u6483\u529B\u304C\u9AD8\u304F\u3001\u5E8F\u76E4\u304B\u3089\u5927\u304D\u306A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u304C\u3001\u4E2D\u76E4\u4EE5\u964D\u306E\u706B\u529B\u306E\u4F38\u3073\u304C\u60AA\u3044\n\u4F59\u5206\u306AACC\u3092\u706B\u529B\u306B\u5909\u63DB\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
+  introduction: "\u653B\u6483\u30BF\u30A4\u30D7\n\u57FA\u790E\u653B\u6483\u529B\u304C\u9AD8\u304F\u3001\u5E8F\u76E4\u304B\u3089\u5927\u304D\u306A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u304C\u3001\u8907\u6570\u4F53\u306E\u6575\u3078\u306E\u653B\u6483\u304C\u82E6\u624B\n\u4F59\u5206\u306AACC\u3092\u706B\u529B\u306B\u5909\u63DB\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
   preferredPos: "\u4E2D\u5217"
   characterTags: 02000000
   immovable: 0
   notChara: 0
   player: 1
   playable: 1
-  obstacle: 0
   variableSprites:
   - {fileID: 7582409335243652064, guid: 882f3d2cf383aa445ac4bdb246ed220b, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -62,13 +61,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 3.5
-    ATK: 1.5
-    INT: 1
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

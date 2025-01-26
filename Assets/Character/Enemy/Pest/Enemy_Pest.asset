@@ -23,7 +23,6 @@ MonoBehaviour:
   notChara: 0
   player: 0
   playable: 0
-  obstacle: 0
   variableSprites:
   - {fileID: 6757054100256552381, guid: 81799cab2002d8b4d9dd11950a3a81bf, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -44,7 +43,7 @@ MonoBehaviour:
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
-  maxHP: 14
+  maxHP: 17
   maxSAN: 0
   ATK: 8
   INT: 8
@@ -56,13 +55,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

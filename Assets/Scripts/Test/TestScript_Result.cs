@@ -25,20 +25,26 @@ public class TestScript_Result : MonoBehaviour
     {
         FindObjectOfType<FadeOutUI>().FadeIn_SetDuration(1);
         yield return new WaitForSeconds(1f);
-        if (gameManager.DoTutorial())
-        {
-            yield return new WaitForSeconds(3f);
-            dead.transform.DOLocalMoveY(-2000, 25f).SetRelative(true);
-            yield return new WaitForSeconds(16f);
-            FindObjectOfType<GameManager>().GoTotitleScene();
-        }
-        else
-        {
-            yield return new WaitForSeconds(3f);
-            FindObjectOfType<FadeOutUI>().FadeOut_SetDuration(1);
-            yield return new WaitForSeconds(1f);
-            FindObjectOfType<GameManager>().GoTotitleScene();
-        }
+
+        yield return new WaitForSeconds(3f);
+        FindObjectOfType<FadeOutUI>().FadeOut_SetDuration(1);
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<GameManager>().GoTotitleScene();
+
+        //if (gameManager.DoTutorial())
+        //{
+        //    yield return new WaitForSeconds(3f);
+        //    dead.transform.DOLocalMoveY(-2000, 25f).SetRelative(true);
+        //    yield return new WaitForSeconds(16f);
+        //    FindObjectOfType<GameManager>().GoTotitleScene();
+        //}
+        //else
+        //{
+        //    yield return new WaitForSeconds(3f);
+        //    FindObjectOfType<FadeOutUI>().FadeOut_SetDuration(1);
+        //    yield return new WaitForSeconds(1f);
+        //    FindObjectOfType<GameManager>().GoTotitleScene();
+        //}
 
 
 

@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadc971267f37484dbf53376164976eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
   StEStatus:
     StEName: "CRIT\u30C0\u30E1\u30FC\u30B8\u4E0A\u6607"
     StEInfo: "\u81EA\u8EAB\u306ECRIT\u30C0\u30E1\u30FC\u30B8+X\uFF05\n\u81EA\u8EAB\u304B\u653B\u6483\u3057\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
@@ -54,8 +57,13 @@ MonoBehaviour:
     merge: 0
     refValue: 1
     undeletable: 0
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
+  up: 1
 --- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0

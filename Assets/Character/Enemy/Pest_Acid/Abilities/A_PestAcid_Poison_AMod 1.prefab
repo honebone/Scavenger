@@ -48,7 +48,7 @@ MonoBehaviour:
     conditionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B"
     hideValues: 0
     exInfo: 
-    consumeFocus: 0
+    consumeFocus: 1
     decreaseHP: 0
     ATKMod: 0
     INTMod: 0
@@ -77,6 +77,7 @@ MonoBehaviour:
       exChance: 100
       exStack: 0
       exValue: 15
+      exDMGPerTurn: 0
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0

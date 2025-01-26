@@ -46,17 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1055ae7c848691e4dbb70b8676179670, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
+      LVL: 0
       maxHP_mul: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 10
       INT_mul: 0
+      exDMG_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -71,6 +74,12 @@ MonoBehaviour:
         exChance: 0
         exStack: 0
         exValue: 25
+        exDMGPerTurn: 0
+      - applyStE: {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
+        exChance: 0
+        exStack: 0
+        exValue: 25
+        exDMGPerTurn: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
@@ -115,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a2ecea03c4cab44588099e948444331, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

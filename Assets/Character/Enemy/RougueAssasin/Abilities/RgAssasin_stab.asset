@@ -22,7 +22,7 @@ MonoBehaviour:
   abilityType: 1
   excludeRandomPool: 0
   priority: 1
-  selectWeight: 1
+  selectWeight: 2
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -37,10 +37,13 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -72,25 +75,33 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 60
-    ATKMod_max: 80
+    ATKMod_min: 40
+    ATKMod_max: 60
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -111,6 +122,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -137,6 +150,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
@@ -148,6 +162,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 8735794092381845660, guid: f59c6b0db5e846b4180358251e637b46, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 1
     actionTargets:
     - {fileID: 0}

@@ -144,11 +144,11 @@ public class Character : MonoBehaviour
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";
 
-            if (PROT != 0) { s += $"PROT：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
-            s += string.Format("EVD：{0} {1}\n", EVD, "(上限75)".ColorStr(Color.gray));
-            s += string.Format("ACC：{0}\n\n", ACC);
+            if (PROT != 0) { s += $"{"PROT".ToLinkKey()}：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
+            s += $"{"EVD".ToLinkKey()}：{EVD} {"(上限75)".ColorStr(Color.gray)}\n";
+            s += $"{"ACC".ToLinkKey()}：{ACC}\n\n";
 
-            s += string.Format("ACT：{0}\n", ACT);
+            s += $"{"ACT".ToLinkKey()}：{ACT}\n";
             s += string.Format("ラウンド毎ターン数：{0}\n\n", turnPerRound);
 
             if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
@@ -358,7 +358,7 @@ public class Character : MonoBehaviour
                 string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
                 if (bonus.exChance != 0) { info += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                 if (bonus.exStack != 0) { info += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                if (bonus.exValue != 0) { info += ValueToStr(string.Format("付与する{0}の値", StEName), bonus.exValue, ""); }
+                if (bonus.exValue != 0) { info += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
                 if (bonus.exDMGPerTurn != 0) { info += ValueToStr(string.Format("{0}のHP減少量", StEName), bonus.exDMGPerTurn, "/ターン"); }
             }
             info += ValueToStr("移動耐性", moveRes, "％");

@@ -264,9 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
-  skipTutorial: 1
+  debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
   battleDebug: 0
   volume: {fileID: 1421441752}
   aberrationValueRange: {x: 0, y: 0.5}
@@ -12392,6 +12392,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4466dc117c7a8cb44915cc35d046c2c6, type: 2}
   - {fileID: 11400000, guid: da1e6f6741ab8bc4da7e836e9e916dc6, type: 2}
   - {fileID: 11400000, guid: 0d38f03d3a8a77a4990db3545727b495, type: 2}
+  - {fileID: 11400000, guid: ffc41cea7997e834c92181c69dc9b0d1, type: 2}
+  - {fileID: 11400000, guid: 289e5032e44ea1045a23262e8af33ba7, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -12489,6 +12491,8 @@ MonoBehaviour:
   - {fileID: 1489497368108049143, guid: a1f11822ce7769147bf9b2365bfc58d4, type: 3}
   - {fileID: 1489497368108049143, guid: f3031c37ce778ac458fdac04d880c657, type: 3}
   - {fileID: 3904089656222173935, guid: 283ec298289e38b439fecf95cd91f530, type: 3}
+  - {fileID: 1489497368108049143, guid: 413872c257cee5a4985eea40067a6f82, type: 3}
+  - {fileID: 1489497368108049143, guid: 77fcc58ef3d1a1d4787b7af55ba4b894, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}
@@ -12499,6 +12503,16 @@ MonoBehaviour:
   uniqueLinkInfos:
   - linkKey: "\u30B7\u30FC\u30EB\u30C9"
     linkInfo: "\u53D7\u3051\u308B\u30C0\u30E1\u30FC\u30B8\u3092\u30B7\u30FC\u30EB\u30C9\u306E\u6570\u3060\u3051\u6E1B\u5C11\u3055\u305B\u3001\u30B7\u30FC\u30EB\u30C9\u3092\u6D88\u8CBB\u3059\u308B\n\n\u6575\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B7\u30FC\u30EB\u30C9\u309225\uFF05\u5931\u3046"
+  - linkKey: ACC
+    linkInfo: "\u653B\u6483\u306E\u547D\u4E2D\u7387\n\n\u653B\u6483\u306F\u3001\n{[\u653B\u6483\u8005\u306EACC]
+      - [\u5BFE\u8C61\u306EEVD]}\uFF05\n\u306E\u78BA\u7387\u3067\u547D\u4E2D\u3059\u308B"
+  - linkKey: EVD
+    linkInfo: "\u653B\u6483\u306E\u56DE\u907F\u7387\n\n\u653B\u6483\u306F\u3001\n{[\u653B\u6483\u8005\u306EACC]
+      - [\u5BFE\u8C61\u306EEVD]}\uFF05\n\u306E\u78BA\u7387\u3067\u547D\u4E2D\u3059\u308B\n\nEVD\u306E\u4E0A\u9650\u306F75"
+  - linkKey: ACT
+    linkInfo: "\u30BF\u30FC\u30F3\u306E\u56DE\u3063\u3066\u304F\u308B\u30B9\u30D4\u30FC\u30C9\n\nACT\u306E\u9AD8\u3044\u9806\u306B\u30BF\u30FC\u30F3\u304C\u56DE\u3063\u3066\u304F\u308B"
+  - linkKey: PROT
+    linkInfo: "\u88AB\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11\u91CF\n\nPROT1\u306B\u3064\u304D\u88AB\u30C0\u30E1\u30FC\u30B8-1\uFF05\nPROT\u304C\u30DE\u30A4\u30CA\u30B9\u306E\u6642\u306F\u88AB\u30C0\u30E1\u30FC\u30B8\u304C\u305D\u306E\u5206\u4E0A\u6607\u3059\u308B\n\n\u4E0A\u9650\u306F75\u3001\u4E0B\u9650\u306F\u7121\u3057"
 --- !u!1 &618016578
 GameObject:
   m_ObjectHideFlags: 0

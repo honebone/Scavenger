@@ -48,25 +48,35 @@ MonoBehaviour:
     conditionInfo: "\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D"
     hideValues: 0
     exInfo: 
-    consumeFocus: 0
+    consumeFocus: 1
     decreaseHP: 0
-    cantCounter: 0
     ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 20
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
+    healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
     shieldRemove: 0
     applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+  onlyAttack: 0
+  onlyAbility: 0
+  onlyPassive: 0

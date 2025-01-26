@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PA_StE_CRITDUp : PA_StatusEffect
 {
+    [SerializeField] bool up;
+    int n;
+
     public override void OnPAInit()
     {
-        character.AddCRITD(StEStatus.value);
+        n = up ? 1 : -1;
+        character.AddCRITD(StEStatus.value* n);
     }
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
     {
@@ -15,6 +19,6 @@ public class PA_StE_CRITDUp : PA_StatusEffect
 
     public override void AtTheEnd()
     {
-        character.AddCRITD(StEStatus.value * -1);
+        character.AddCRITD(StEStatus.value * -1* n);
     }
 }

@@ -43,7 +43,7 @@ MonoBehaviour:
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
   surviveFatalWounds: 0
-  maxHP: 20
+  maxHP: 25
   maxSAN: 0
   ATK: 5
   INT: 6
@@ -55,13 +55,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

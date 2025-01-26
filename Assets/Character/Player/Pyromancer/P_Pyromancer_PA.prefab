@@ -46,16 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
   personalityStatus:
     personalityName: "\u30A4\u30B0\u30CA\u30A4\u30C8"
     personalityType: 1
   actionStatus:
     actionName: "\u30A4\u30B0\u30CA\u30A4\u30C8"
-    conditionInfo: "\u65751\u4F53\u306B\u706B\u50B7\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D"
+    conditionInfo: "\u6575\u306B\u706B\u50B7\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u4ED8\u4E0E\u3059\u308B\u706B\u7A2E\u306E\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u706B\u50B7\u306E\u3042\u308B\u6575\u306E\u6570\u306B\u7B49\u3057\u3044"
+    actionInfo: "\u4ED8\u4E0E\u3059\u308B\u706B\u7A2E\u306E\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u706B\u50B7\u3092\u4ED8\u4E0E\u3055\u308C\u305F\u6575\u306E\u6570\u306B\u7B49\u3057\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -72,22 +73,30 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -111,6 +120,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -128,6 +139,8 @@ MonoBehaviour:
       applyChance: 0
       stack: 0
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -142,6 +155,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -153,6 +167,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
@@ -161,6 +176,7 @@ MonoBehaviour:
     exChance: 0
     exStack: 0
     exValue: 0
+    exDMGPerTurn: 0
   bunred:
     searchAsPos: 0
     onlyEmpty: 0
@@ -170,11 +186,14 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE:
     - {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -203,22 +222,30 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -242,6 +269,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -268,6 +297,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -279,6 +309,7 @@ MonoBehaviour:
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
@@ -291,10 +322,13 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

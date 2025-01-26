@@ -249,7 +249,7 @@ public class BattleManager : MonoBehaviour
             //turns.Add(new Turn(selected.chara, t.GetComponent<Battle_TurnOrderIcon>()));
             AddTurn(selected.chara,i < partyStatus.turnOrderReveal + 1,1);
            selected.turns--;
-            selected.ACT = (selected.ACT / 2f).ToInt();
+            selected.ACT = (selected.ACT / 1.5f).ToInt();
 
             if (selected.turns == 0)
             {

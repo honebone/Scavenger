@@ -1338,6 +1338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b51eb43b201ae954ea18f7c558f0267d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doTutorial: 0
 --- !u!4 &1316672295
 Transform:
   m_ObjectHideFlags: 0
@@ -1833,12 +1834,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
+  battleDebug: 0
+  volume: {fileID: 0}
+  aberrationValueRange: {x: 0, y: 0}
+  aberrationDurationRange: {x: 0, y: 0}
   characterData:
   - {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+  players:
+    dontShuffleFront: 0
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []
   itemData:
   - {fileID: 11400000, guid: 8dedc3295e2b174409d16c8be78f90f0, type: 2}
   - {fileID: 11400000, guid: 85316edc6d6f2394486e0567baccfe5d, type: 2}
@@ -1851,15 +1872,19 @@ MonoBehaviour:
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   Eq: {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   enemySetTest:
+    dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
     centerFront: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
     lowerBack: {fileID: 0}
+    atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
@@ -1868,6 +1893,7 @@ MonoBehaviour:
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
   personality: {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
   debugPanel: {fileID: 0}
+  rel: []
 --- !u!114 &2074832373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1919,6 +1945,7 @@ MonoBehaviour:
     affricted: {r: 0.7921569, g: 0, b: 0, a: 1}
     decreaseHP: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
     damage: {r: 0.764151, g: 0, b: 0, a: 1}
+    INTDamage: {r: 0, g: 0, b: 0, a: 0}
     CRIT: {r: 1, g: 0.54365426, b: 0, a: 1}
     evade: {r: 0.33459416, g: 0.6886792, b: 0.45733103, a: 1}
     heal: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
@@ -1928,16 +1955,18 @@ MonoBehaviour:
     SANDecrease: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
     failed_unavailable: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
     currentState: {r: 1, g: 0.75047123, b: 0.41037738, a: 1}
+    emphasize: {r: 0, g: 0, b: 0, a: 0}
     AMod: {r: 0.39498475, g: 0.6981132, b: 0.2206301, a: 1}
+    expOrb: {r: 0, g: 0, b: 0, a: 0}
   soundRef_Inspector:
     miss: {fileID: 8300000, guid: 03c3949a8c191454f9f199ed035496f2, type: 3}
     evade: {fileID: 8300000, guid: f2d5becfdc5cd1249ba72c3e3bd47605, type: 3}
     damage: {fileID: 8300000, guid: c8677862719e441688678e6632161da9, type: 3}
+    shieldDMG: {fileID: 0}
     CRIT: {fileID: 8300000, guid: d078401f77fb20c48b920c9eae64be29, type: 3}
     dying: {fileID: 8300000, guid: 61346b13978810c4ebab54573611a9dc, type: 3}
     heal: {fileID: 8300000, guid: aef08a43ca2f3cc4db21ababce929534, type: 3}
     shield: {fileID: 8300000, guid: 6714829bfc6b1aa47824cbbae9ea640c, type: 3}
-    shieldRemove: {fileID: 0}
     SANHeal: {fileID: 0}
     SANDecrease: {fileID: 8300000, guid: 90b9cc90a01a47c4b8d6dbe460f21ebb, type: 3}
     ApplyStE:
@@ -1947,6 +1976,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 08ba9b994502792439f604795147b8ea, type: 3}
     - {fileID: 8300000, guid: 4ad9c8f718210264a8b749b7abe1f95b, type: 3}
     - {fileID: 8300000, guid: 0e4fcd34453c6c74ca20ac8646803829, type: 3}
+    consumeFocus: {fileID: 0}
     summoned: {fileID: 8300000, guid: a36dd1c4b04501b4c97f4ed893655b70, type: 3}
     stun: {fileID: 8300000, guid: a41b09d1965a70c4e8f00d9be397f66c, type: 3}
     die1: {fileID: 8300000, guid: d7a3401f1b36a404d823d172cb89df58, type: 3}
@@ -1959,15 +1989,21 @@ MonoBehaviour:
     - {fileID: 8300000, guid: a99fe82ed2f4be042854de8ac98ff63e, type: 3}
   VERef_Inspector:
     die: {fileID: 7006933508149500689, guid: 371da761e9acd254792a41a42553ee7d, type: 3}
+    damage: {fileID: 0}
+    CRIT: {fileID: 0}
+    heal: {fileID: 0}
+    applyStE: []
   abilityManager_General_Inspector: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
   actionManager_General_Inspector: {fileID: 7602238575876192368, guid: ae70b75fecb0b4249ad13f9a0047c65e, type: 3}
   statusEffectIcon_Inspector: {fileID: 754321851861881814, guid: c77862d553d38ac40b6141b60954efa3, type: 3}
   positionEffectIcon_Inspector: {fileID: 4322071049489499627, guid: ded2a124e9e7dc3439492f8f626707fe, type: 3}
+  generalRaEDataBase_Inspector: []
   playerDataBase:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
+  lootDataBase_Inspector: []
   equipmentDataBase:
   - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
   - {fileID: 11400000, guid: 4392afa8c6fca0e4caa9b8d029c068b8, type: 2}
@@ -2022,10 +2058,14 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: f4e89f267bc3e9941abf3029a13d7caa, type: 3}
   - {fileID: 3170614222137734241, guid: 86f0d9b3c177f8745b344e3acd8626dc, type: 3}
   - {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
+  mutationDataBase: []
   affrictionDataBase:
   - {fileID: 3170614222137734241, guid: 931636989d1c7014ab9e740c04abd43c, type: 3}
   - {fileID: 3170614222137734241, guid: 5b8fc18424429b2448a9fc1e2d2cb615, type: 3}
   - {fileID: 3170614222137734241, guid: 5a4298c58f8757c4ba8daa5644c926ff, type: 3}
+  statusEffectDataBase: []
+  positionEffectDataBase: []
+  uniqueLinkInfos: []
 --- !u!114 &2074832374
 MonoBehaviour:
   m_ObjectHideFlags: 0
