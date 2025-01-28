@@ -278,7 +278,8 @@ public class ExpeditionManager : MonoBehaviour
 
     void CheckMadness()
     {
-        if (addedMadness == 0) { SelectNextRoom(); }
+        SelectNextRoom();
+        //if (addedMadness == 0) { SelectNextRoom(); }
         //else if (addedMadness > 0) { StartCoroutine(AddMandessC()); } 次回アップデートで戻そう
     }
 

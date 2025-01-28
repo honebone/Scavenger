@@ -109,8 +109,11 @@ public class Map_RoomButton : MonoBehaviour
 
     public void SetState_Selectable()
     {
-        selectable = true;
-        frame.color = Color.yellow;
+        if (room.eventData != null)
+        {
+            selectable = true;
+            frame.color = Color.yellow;
+        }
     }
     public void SetState_currentPos()
     {

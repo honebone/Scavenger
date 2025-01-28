@@ -20,7 +20,7 @@ MonoBehaviour:
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
   minLength: 8
   maxLength: 6
-  branchChance: 8
+  branchChance: 30
   blindChance: 20
   BGM: {fileID: 8300000, guid: d3501066994c2d142803e281cf326b62, type: 3}
   roomEvents:
