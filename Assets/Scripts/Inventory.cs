@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Inventory : MonoBehaviour
@@ -27,6 +28,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     GameObject optionPanel_equipment;
 
+    [SerializeField] ScrollRect scrollRect;
+
     public static Inventory inst;
 
     /// <summary>0:all 1:material 2:equipment 3:tool</summary>
@@ -43,6 +46,14 @@ public class Inventory : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
         detailUI=FindObjectOfType<CharaDetailUI>();
     }
+
+    //private void Update()
+    //{
+    //    if (inventoryPanel.activeSelf)
+    //    {
+    //        scrollRect.verticalScrollbar.size = 0;
+    //    }
+    //}
 
     public void InventoryButton()
     {
@@ -107,7 +118,7 @@ public class Inventory : MonoBehaviour
                     i.amount = Mathf.Min(i.data.amountPerStack, a);
 
                     var ib = Instantiate(inventoryButton, content);
-                    ib.GetComponent<InventoryButton>().Init(i, infoText, detailUI);
+                    ib.GetComponent<InventoryButton>().Init(i, infoText, detailUI,scrollRect);
 
                     a -= item.data.amountPerStack;
                 }

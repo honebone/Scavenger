@@ -33,6 +33,7 @@ public class RE_AreaEnd : RoomEvent
     {
         deployPool = ExpeditionRef.definer.GetPlayerDataBase();
         deployPool.RemoveList(expeditionManager.deployedChara);
+        deployPool = deployPool.Sample(4);
         List<REOptionParams> list = new List<REOptionParams>();
         foreach (CharacterData data in deployPool)
         {
@@ -41,7 +42,7 @@ public class RE_AreaEnd : RoomEvent
             option.optionInfo = data.GetInfo();
             list.Add(option);
         }
-        list = new List<REOptionParams>(list.Sample(4));
+        list = new List<REOptionParams>(list);
         list.Add(skipDeploy);
         expeditionManager.SetREOptionButtons(list);
         ExpeditionRef.tutorialManager.Tutorial_Redeploy();

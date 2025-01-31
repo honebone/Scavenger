@@ -14,17 +14,22 @@ public class InventoryButton : MonoBehaviour
     [SerializeField]
     Sprite[] frames;
 
-   
+    [SerializeField]
+    float scrollSpeed = 0.1f;
+    ScrollRect scroll;
+    float wheel;
+    bool p;
 
     InfoText infoText;
     CharaDetailUI detailUI;
 
     Definer.Item item;
-    public void Init(Definer.Item i,InfoText it,CharaDetailUI d)
+    public void Init(Definer.Item i,InfoText it,CharaDetailUI d, ScrollRect scrollRect)
     {
         item = i;
         infoText = it;
         detailUI = d;
+        scroll = scrollRect;
 
         itemImage.sprite = item.data.sprite;
         frame.sprite = frames[(int)item.data.itemType];
@@ -33,7 +38,18 @@ public class InventoryButton : MonoBehaviour
         else { amountText.text = ""; }
     }
 
-   
+    private void Update()
+    {
+        if (p)
+        {
+            wheel += Input.mouseScrollDelta.y;
+            if (wheel != 0)
+            {
+                scroll.verticalNormalizedPosition += wheel * scrollSpeed;
+                wheel = 0;
+            }
+        }
+    }
 
     public void OnMouseDown()
     {
@@ -57,10 +73,12 @@ public class InventoryButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        p = true;
         FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
     }
     public void OnMouseExit()
     {
+        p = false;
         FindObjectOfType<MouseOverUI>().ResetUI();
     }
 

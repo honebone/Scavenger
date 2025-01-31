@@ -30,7 +30,7 @@ public class DebugFunction : MonoBehaviour
     int[] amount;
     Definer.Item[] items;
     [SerializeField]
-    ItemData Eq;
+    List<ItemData> eq_exclusive;
     [SerializeField]
     AreaManager.EnemySet enemySetTest;
     [SerializeField]
@@ -186,6 +186,12 @@ public class DebugFunction : MonoBehaviour
     public void GetAllEquipments()
     {
         foreach (ItemData eqData in FindObjectOfType<Definer>().GetAllEquipments())
+        {
+            Definer.Item eq = new Definer.Item();
+            eq.Init(eqData);
+            inventory.AddItem(eq, 1, true);
+        }
+        foreach (ItemData eqData in eq_exclusive)
         {
             Definer.Item eq = new Definer.Item();
             eq.Init(eqData);
