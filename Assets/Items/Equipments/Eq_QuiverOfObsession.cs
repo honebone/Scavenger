@@ -56,7 +56,7 @@ public class Eq_QuiverOfObsession : PA_Equipment
     public override string GetCurrentStateInfo()
     {
         string info = $"攻撃命中回数：{hitCount}/{maxHit}(ACC+{hitCount * ACCPerHit})\n";
-        info += $"与ダメージ+{Mathf.Clamp((character.CharaStatus().ACC - 100) * exDMGPerACC, 0, maxExDMG)}(最大{maxExDMG}％)";
+        info += $"与ダメージ：+{Mathf.Clamp((character.CharaStatus().ACC - 100) * exDMGPerACC, 0, maxExDMG)}％(最大{maxExDMG}％)";
         return info;
     }
 }
