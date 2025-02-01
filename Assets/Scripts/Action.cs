@@ -1157,35 +1157,40 @@ public class Action : MonoBehaviour
                         StEParams.stack += applyBonus.exStack;
                         StEParams.value+=applyBonus.exValue;
                         StEParams.DMGPerTurn += applyBonus.exDMGPerTurn;
-                        if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
-                        {
-                            StEParams.applyChance += actionsStatus[i].debuffChanceMod;
-                        }
-                        //if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
-                        if (StEStaus.DoT)
-                        {
-                            int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
-                            StEParams.DMGPerTurn += (baseDMG * StEParams.value / 100f).ToInt();
-                        }
-                        if (StEStaus.regen)
-                        {
-                            int baseValue = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
-                            StEParams.DMGPerTurn += (baseValue * StEParams.value / 100f).ToInt();
-                        }
 
-                        if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
+                        if (StEParams.stack > 0||true)//付与スタック数が1以上なら付与処理
                         {
-                            if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
-                            onApplyStEParams.appliedParams.Add(StEParams);
+                            if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
+                            {
+                                StEParams.applyChance += actionsStatus[i].debuffChanceMod;
+                            }
+                            //if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
+                            if (StEStaus.DoT)
+                            {
+                                int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+                                StEParams.DMGPerTurn += (baseDMG * StEParams.value / 100f).ToInt();
+                            }
+                            if (StEStaus.regen)
+                            {
+                                int baseValue = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+                                StEParams.DMGPerTurn += (baseValue * StEParams.value / 100f).ToInt();
+                            }
 
-                            target.ApplyStE(StEParams, StEParams.stack, StEParams.value,actionOwner);
+                            if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//抽選
+                            {
+                                if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
+                                onApplyStEParams.appliedParams.Add(StEParams);
+
+                                target.ApplyStE(StEParams, StEParams.stack, StEParams.value, actionOwner);
+                            }
+                            else
+                            {
+                                onApplyStEParams.resistedParams.Add(StEParams);
+                                target.GetTargetButton().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
+                                infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
+                            }
                         }
-                        else
-                        {
-                            onApplyStEParams.resistedParams.Add(StEParams);
-                            target.GetTargetButton().SetDamageText("Resist", Definer.colorRef.failed_unavailable);
-                            infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
-                        }
+                       
                     }
                     foreach(PA_StatusEffect.StatusEffectStatus.StatusEffectType type in appliedType)//StEのエフェクト
                     {

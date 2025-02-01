@@ -34,25 +34,15 @@ public class P_Pyromancer_PA : PA_Personality
     [SerializeField] GameObject burn;
 
     [SerializeField] GameObject ember;
-    [SerializeField] int threshold;
-    [SerializeField] Action.ActionStatus attack;
-    [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    //public override void OnTurnStart(bool myTurn, int turnCount)
+    //public override void OnBattleStart()
     //{
-    //    if (myTurn)
-    //    {
-    //        int burnCount = charactersManager.SearchCharaWithCondition(bunred).Count;
-    //        if (burnCount > 0)
-    //        {
-    //            Action.ActionStatus action = actionStatus;
-    //            StEApplyBonus bonus = stEApplyBonus;
-    //            bonus.exStack = burnCount;
-    //            action.StEApplyBonus = new List<StEApplyBonus> { bonus };
+    //    Enqueue_Self(actionStatus);
+    //}
 
-    //            Enqueue_Self(action);
-    //        }
-    //    }
+    //public override void OnRoundStart()
+    //{
+    //    Enqueue_Self(actionStatus);
     //}
 
     public override void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList)
@@ -62,9 +52,9 @@ public class P_Pyromancer_PA : PA_Personality
         {
             if (!onApplyStEParams.taget.CharaStatus().position.IsPlayerPos())
             {
-                foreach(PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
+                foreach (PA_StatusEffect.StatusEffectParams statusEffectParams in onApplyStEParams.appliedParams)
                 {
-                    if(statusEffectParams.applyStE== burn)
+                    if (statusEffectParams.applyStE == burn)
                     {
                         stack++;
                         break;
@@ -83,19 +73,6 @@ public class P_Pyromancer_PA : PA_Personality
             Enqueue_Self(action);
         }
     }
-
-    //public override void OnTurnEnd()
-    //{
-    //    if(character.GetStEStack_Sum(ember)>= threshold)
-    //    {
-    //        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-    //        if (target.Count > 0)
-    //        {
-    //            Enqueue(attack, true, target);
-    //            character.AddStEStack(ember, -threshold);
-    //        }
-    //    }
-    //}
 
     public override string GetPAInfo_Base()
     {

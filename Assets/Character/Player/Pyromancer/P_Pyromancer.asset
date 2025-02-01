@@ -23,7 +23,6 @@ MonoBehaviour:
   notChara: 0
   player: 1
   playable: 1
-  obstacle: 0
   variableSprites:
   - {fileID: 4800315488507104838, guid: 7ffc7f86d143dfc47945bd6dc8fa6d5f, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -61,13 +60,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 4.5
-    ATK: 1
-    INT: 1.3
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

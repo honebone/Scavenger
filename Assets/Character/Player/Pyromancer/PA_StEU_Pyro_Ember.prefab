@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
   StEStatus:
     StEName: "\u706B\u7A2E"
@@ -57,6 +58,8 @@ MonoBehaviour:
     refValue: 0
     undeletable: 0
     DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
     DMGPerTurn: 0
