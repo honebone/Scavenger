@@ -41,6 +41,7 @@ public class ActionMod : MonoBehaviour
         public int SANHeal;
         public int SANDamage;
         public int shieldAdd;
+        public int shieldAdd_percent;
         public int shieldRemove;
 
         public List<PA_StatusEffect.StatusEffectParams> applySteParams;
@@ -95,7 +96,8 @@ public class ActionMod : MonoBehaviour
                 if (SANHeal != 0) { s += ValueToStr("・正気度回復量", SANHeal, ""); }
                 if (SANDamage != 0) { s += ValueToStr("・正気度減少", SANDamage, ""); }
                 string shield = "シールド".ToLinkKey().ColorStr(Definer.colorRef.shield);
-                if (shieldAdd != 0) { s += ValueToStr($"・{shield}付与量", shieldAdd, ""); }
+                if (shieldAdd != 0) { s += ValueToStr($"・{shield}を", shieldAdd, "付与"); }
+                if (shieldAdd_percent != 0) { s += ValueToStr($"・maxHPの", shieldAdd_percent, $"％に等しい{shield}を付与"); }
                 if (shieldRemove != 0) { s += ValueToStr($"・{shield}除去量", shieldRemove, ""); }
 
                 f = false;

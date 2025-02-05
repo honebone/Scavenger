@@ -58,8 +58,8 @@ public class P_Infantry_PA : PA_Personality
     }
     public override string GetPAInfo_Base()
     {
-        string s = move.GetInfo(false, new Character.CharacterStatus()) +"\n";
-        s += shield.GetInfo(false, new Character.CharacterStatus());
+        string s = move.GetInfo() +"\n";
+        s += shield.GetInfo();
         return s;
     }
     public override string GetCurrentStateInfo()

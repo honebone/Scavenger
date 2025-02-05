@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
         public bool playable;
         //public bool obstacle;
         /// <summary>0:idle 1:damaged </summary>
-        public GameObject[] variableSprites; 
+        public GameObject[] variableSprites;
         public Sprite spriteForUI;
         public Ability.AbilityStatus[] abilitiesStatus;
 
@@ -36,10 +36,14 @@ public class Character : MonoBehaviour
         public int exp;
 
         public bool surviveFatalWounds;
+
         public int maxHP;
         public int maxHP_base;
         public int maxHP_baseByLVL;
         public float maxHP_mul;
+        /// <summary>乗算はこれに乗らない</summary>
+        public int maxHP_int;
+
         public int maxSAN;
         public int maxSAN_base;
         public float maxSAN_mul;
@@ -48,17 +52,19 @@ public class Character : MonoBehaviour
         public int ATK_base;
         public int ATK_baseByLVL;
         public float ATK_mul;
+        public int ATK_int;
 
         public int INT;
         public int INT_base;
         public int INT_baseByLVL;
         public float INT_mul;
+        public int INT_int;
 
         public float exDMG_mul;
 
         public float CRITC;
         public float CRITD;
-        
+
         public float EVD;
         public float ACC;
 
@@ -129,16 +135,16 @@ public class Character : MonoBehaviour
             {
                 s += string.Format("LVL：{0}\n", level);
             }
-            string s2 = $"({maxHP_base + maxHP_baseByLVL} {(maxHP_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            string s2 = $"({maxHP_base + maxHP_baseByLVL} {(maxHP_mul - 100).GetValueWithSign()}％ {maxHP_int.GetValueWithSign()})".ColorStr(Color.gray);
             s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
             if (shield > 0) { s += $"{"シールド".ToLinkKey().ColorStr(Definer.colorRef.shield)}：{shield}\n"; }
             //if (PROT != 0) { s += ValueToStr("PROT", PROT, $" {"(上限75)".ColorStr(Color.gray)}"); }
             if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
             else { s += "\n"; }
 
-            s2 = $"({ATK_base + ATK_baseByLVL} {(ATK_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s2 = $"({ATK_base + ATK_baseByLVL} {(ATK_mul - 100).GetValueWithSign()}％ {ATK_int.GetValueWithSign()})".ColorStr(Color.gray);
             s += string.Format("ATK：{0} {1}\n", ATK, s2);
-            s2 = $"({INT_base + INT_baseByLVL} {(INT_mul - 100).GetValueWithSign()}％)".ColorStr(Color.gray);
+            s2 = $"({INT_base + INT_baseByLVL} {(INT_mul - 100).GetValueWithSign()}％ {INT_int.GetValueWithSign()})".ColorStr(Color.gray);
             s += string.Format("INT：{0} {1}\n", INT, s2);
             s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
@@ -196,7 +202,7 @@ public class Character : MonoBehaviour
 
             abilitiesStatus = new Ability.AbilityStatus[data.abilities.Length];
             //FindObjectOfType<InfoText>().AddDebugText(abilitiesStatus[0].abilityName);
-            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i]=new Ability.AbilityStatus(data.abilities[i],i); }
+            for (int i = 0; i < abilitiesStatus.Length; i++) { abilitiesStatus[i] = new Ability.AbilityStatus(data.abilities[i], i); }
             passiveAbilities = new List<GameObject>(data.passiveAbilities);
 
             actionMods = new List<GameObject>(data.actionMods);
@@ -216,7 +222,7 @@ public class Character : MonoBehaviour
             ATK_base = data.ATK;
             ATK_mul = 100f;
             ATK = data.ATK;
-            
+
             INT_base = data.INT;
             INT_mul = 100f;
             INT = data.INT;
@@ -294,7 +300,7 @@ public class Character : MonoBehaviour
             return s;
         }
         /// <summary>％表記で返す</summary>
-        public  float GetHPPercent() { return HP * 100f / maxHP; }
+        public float GetHPPercent() { return HP * 100f / maxHP; }
         public int GetNextExp() { return level; }
 
         public bool Obstacle() { return characterTags.Contains(CharacterData.CharacterTag.obstacle); }
@@ -305,12 +311,17 @@ public class Character : MonoBehaviour
         public int LVL;
 
         public float maxHP_mul;
+        public int maxHP_int;
+
         public float maxSAN_mul;
 
         public float PROT;
 
         public float ATK_mul;
+        public int ATK_int;
+
         public float INT_mul;
+        public int INT_int;
 
         public float exDMG_mul;
 
@@ -336,10 +347,13 @@ public class Character : MonoBehaviour
             string info = "";
             bool f = false;
             info += ValueToStr("maxHP", maxHP_mul, "％");
+            info += ValueToStr("maxHP", maxHP_int, "");
             info += ValueToStr("maxSAN", maxSAN_mul, "％");
             info += ValueToStr("PROT", PROT, "");
             info += ValueToStr("ATK", ATK_mul, "％");
+            info += ValueToStr("ATK", ATK_int, "");
             info += ValueToStr("INT", INT_mul, "％");
+            info += ValueToStr("INT", INT_int, "");
             info += ValueToStr("与ダメージ", exDMG_mul, "％");
             info += ValueToStr("CRIT率", CRITC, "％");
             info += ValueToStr("CRITダメージ", CRITD, "％");
@@ -378,7 +392,7 @@ public class Character : MonoBehaviour
                 return s;
             }
         }
-       
+
     }
 
     public class SummonCharaStatusParams
@@ -409,7 +423,7 @@ public class Character : MonoBehaviour
         {
             string s = "";
 
-            s += $"与ダメージ：{ATKDMG + INTDMG+ decreaseHP}({"ATKDMG".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INTDMG".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
+            s += $"与ダメージ：{ATKDMG + INTDMG + decreaseHP}({"ATKDMG".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INTDMG".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
                 $"+{decreaseHP.ColorStr(Definer.colorRef.decreaseHP)})";
             s += $"\n被ダメージ：{RDMG + RShieldDMG}({RDMG.ColorStr(Definer.colorRef.damage)}+{"shieldDMG".ToSpr()}{RShieldDMG.ColorStr(Definer.colorRef.shieldDecrease)})";
             s += $"\n与えた回復/シールド：{GHeal + GShield}({"heal".ToSpr()}{GHeal.ColorStr(Definer.colorRef.heal)},{"shield".ToSpr()}{GShield.ColorStr(Definer.colorRef.shield)})";
@@ -418,7 +432,7 @@ public class Character : MonoBehaviour
         }
     }
 
-   protected CharacterStatus charaStatus;
+    protected CharacterStatus charaStatus;
     PersonalBattleReport battleReport = new PersonalBattleReport();
 
     //[SerializeField]
@@ -449,7 +463,7 @@ public class Character : MonoBehaviour
     ExpeditionManager expeditionManager;
     TutorialManager tutorialManager;
 
-    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem,SummonCharaStatusParams summonCharaParams)
+    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem, SummonCharaStatusParams summonCharaParams)
     {
         actionQueue = ExpeditionRef.actionQueue;
         battleManager = ExpeditionRef.battleManager;
@@ -518,7 +532,7 @@ public class Character : MonoBehaviour
         }
 
         bool hasPass = false;
-        foreach(Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
+        foreach (Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
         {
             if (abilityStatus.abilityType == AbilityData.AbilityType.pass)
             {
@@ -526,13 +540,13 @@ public class Character : MonoBehaviour
                 break;
             }
         }
-        if(!hasPass) { infoText.AddWarningText($"{status.fileName}にはパスを行うアビリティがありません"); }
+        if (!hasPass) { infoText.AddWarningText($"{status.fileName}にはパスを行うアビリティがありません"); }
         //TurnIconはラウンド開始時にセット
     }
     public List<PA_Equipment> GetEquipments()
     {
         List<PA_Equipment> equipments = new List<PA_Equipment>();
-        foreach(PassiveAbility PA in PA_Eq)
+        foreach (PassiveAbility PA in PA_Eq)
         {
             equipments.Add(PA.GetComponent<PA_Equipment>());
         }
@@ -546,7 +560,7 @@ public class Character : MonoBehaviour
         passiveAbilities.AddRange(PA_Eq);
         return passiveAbilities;
     }
-    public void AddPA_Personality(GameObject paObj,bool note)
+    public void AddPA_Personality(GameObject paObj, bool note)
     {
         var p = Instantiate(paObj, transform);
         PA_Per.Add(p.GetComponent<PassiveAbility>());
@@ -555,18 +569,18 @@ public class Character : MonoBehaviour
         {
             PA_Personality.PersonalityStatus personality = p.GetComponent<PA_Personality>().GetPersonalityStatus();
             targetButton.SetDamageText(string.Format("+特性：{0}", personality.personalityName), Definer.colorRef.personalityColors[(int)personality.personalityType]);
-            infoText.AddLogText(string.Format("{0}は新たな特性{1}を得た", charaStatus.charaName,personality.GetName()));
+            infoText.AddLogText(string.Format("{0}は新たな特性{1}を得た", charaStatus.charaName, personality.GetName()));
         }
     }
     public void EquipItem(Definer.Item item)
     {
         var p = Instantiate(item.data.manager, transform);
         PA_Eq.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this,2,infoText);
+        p.GetComponent<PassiveAbility>().Init(this, 2, infoText);
         item.createdManager = p;
         charaStatus.equipments.Add(item);
     }
-    public void UnequipItem(Definer.Item remove,bool returnToInventory=true)
+    public void UnequipItem(Definer.Item remove, bool returnToInventory = true)
     {
         charaStatus.equipments.Remove(remove);
         //PA_Eq.Remove(remove.createdManager.GetComponent<PassiveAbility>());
@@ -579,7 +593,7 @@ public class Character : MonoBehaviour
     }
     public bool CheckSameEquipment(ItemData eq)
     {
-        foreach(Definer.Item i in charaStatus.equipments)
+        foreach (Definer.Item i in charaStatus.equipments)
         {
             if (i.data == eq) { return true; }
         }
@@ -603,7 +617,8 @@ public class Character : MonoBehaviour
     }
     void RemovePA_Execute()
     {
-        foreach (PassiveAbility deletePA in deletePAs) {
+        foreach (PassiveAbility deletePA in deletePAs)
+        {
             switch (deletePA.GetPAType())
             {
                 case 0:
@@ -619,7 +634,7 @@ public class Character : MonoBehaviour
         }
         deletePAs.Clear();
     }
-    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams,int finalStack,int finalValue,Character applyer)
+    public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams, int finalStack, int finalValue, Character applyer)
     {
         bool alreadyExist = false;
         PA_StatusEffect StE = StEParams.applyStE.GetComponent<PA_StatusEffect>();
@@ -646,7 +661,7 @@ public class Character : MonoBehaviour
             PA_StE.Add(s.GetComponent<PassiveAbility>());
             //sort
             s.GetComponent<PA_StatusEffect>().Init(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer);
-            s.GetComponent<PassiveAbility>().Init(this, 0,infoText);
+            s.GetComponent<PassiveAbility>().Init(this, 0, infoText);
             if (StEStatus.refValue)
             {
                 targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, finalValue), StEStatus.StEType.ToColor());
@@ -687,7 +702,7 @@ public class Character : MonoBehaviour
             }
             if (pool.Count > 0)
             {
-                for(int i = 0; i < amount; i++)
+                for (int i = 0; i < amount; i++)
                 {
                     if (pool.Count == 0) { break; }
                     int index = pool.Count.RandIndex();
@@ -695,9 +710,9 @@ public class Character : MonoBehaviour
                     pool.Remove(pool[index]);
                 }
             }
-            
+
         }
-        
+
     }
     public void ConsumeFocus()
     {
@@ -753,7 +768,7 @@ public class Character : MonoBehaviour
     public int GetStEStack_Sum(GameObject StEObj)
     {
         int sum = 0;
-        foreach(int stack in GetStEStacks(StEObj)) { sum += stack; }
+        foreach (int stack in GetStEStacks(StEObj)) { sum += stack; }
         return sum;
     }
 
@@ -772,7 +787,7 @@ public class Character : MonoBehaviour
         return DMG;
     }
 
-    public void AddStEStack(GameObject StEObj,int add)
+    public void AddStEStack(GameObject StEObj, int add)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
         foreach (PassiveAbility pa in GetPassiveAbilities())
@@ -811,7 +826,7 @@ public class Character : MonoBehaviour
     public string GetPACurrentStateInfo()
     {
         string s = "";
-        foreach(PassiveAbility passiveAbility in GetPassiveAbilities())
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities())
         {
             string info = passiveAbility.GetCurrentStateInfo();
             if (info != "")
@@ -874,7 +889,7 @@ public class Character : MonoBehaviour
         Vector2 VEOffset = VE.GetComponent<VisualEffect>().GetOffset();
         if (charaStatus.position < 9) { VEOffset.x *= -1; }
         var v = Instantiate(VE, VEPos + VEOffset, VE.transform.rotation);
-        if (charaStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0),Space.World); }//プレイヤーの時左右反転
+        if (charaStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0), Space.World); }//プレイヤーの時左右反転
     }
     /// <summary>
     /// 
@@ -929,13 +944,13 @@ public class Character : MonoBehaviour
                     battleManager.StartTutorial_Ability();
                 }
                 else { StartCoroutine(Test()); }
-            }  
+            }
         }
         else
         {
             StartCoroutine(DeleyOnDeath());
         }
-         
+
     }
     IEnumerator Stun()
     {
@@ -973,22 +988,22 @@ public class Character : MonoBehaviour
             {
                 charaObj.SetTurnIcon_End();
                 battleManager.TurnEnd(0);
-            }           
+            }
         }
         else { battleManager.TurnEnd(2); }
     }
-  public void ContinueTurn() { continueTurn = true; }
+    public void ContinueTurn() { continueTurn = true; }
 
 
     //======================================================<<アクションによって呼ばれる関数>>=================================================
-   
-    public void SetDamageText(string str,Color color)
+
+    public void SetDamageText(string str, Color color)
     {
         targetButton.SetDamageText(str, color);
     }
     public void Kill(Character attacker)
     {
-        Die(0,attacker);
+        Die(0, attacker);
     }
     public void DecreaseHP(int value)
     {
@@ -1020,7 +1035,7 @@ public class Character : MonoBehaviour
             {
                 OnDecreasedHP(value);
             }
-        }        
+        }
     }
 
     /// <summary>return:殺害したか</summary>
@@ -1030,7 +1045,7 @@ public class Character : MonoBehaviour
         if (onDamageParams.shieldDMG > 0)
         {
             targetButton.SetDamageText($"{"shieldDMGL".ToSpr()}{onDamageParams.shieldDMG}", Definer.colorRef.shieldDecrease);
-            infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName,"shieldDMG".ToSpr(), onDamageParams.shieldDMG.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
+            infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName, "shieldDMG".ToSpr(), onDamageParams.shieldDMG.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
             soundManager.PlaySE(Definer.soundRef.shieldDMG);
         }
 
@@ -1114,11 +1129,11 @@ public class Character : MonoBehaviour
         }
         return !CheckAlive();
     }
-    public void Heal(int value,Character healer)
+    public void Heal(int value, Character healer)
     {
         charaStatus.HP = Mathf.Min(charaStatus.HP + value, charaStatus.maxHP);
         targetButton.SetDamageText($"{"healL".ToSpr()}{value}", Definer.colorRef.heal);
-        infoText.AddLogText(string.Format("{0}はHPを{1}{2}回復した", charaStatus.charaName,"heal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.heal)));
+        infoText.AddLogText(string.Format("{0}はHPを{1}{2}回復した", charaStatus.charaName, "heal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.heal)));
         soundManager.PlaySE(Definer.soundRef.heal);
         charaObj.SetHPandShieldBar();
         SpawnVisualEffect(Definer.VERef.heal);
@@ -1127,7 +1142,7 @@ public class Character : MonoBehaviour
     {
         charaStatus.SAN = Mathf.Min(charaStatus.SAN + value, charaStatus.maxSAN);
         targetButton.SetDamageText($"{"SANHealL".ToSpr()}{value}", Definer.colorRef.SANHeal);
-        infoText.AddLogText(string.Format("{0}は正気度を{1}{2}回復した", charaStatus.charaName,"SANHeal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.SANHeal)));
+        infoText.AddLogText(string.Format("{0}は正気度を{1}{2}回復した", charaStatus.charaName, "SANHeal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.SANHeal)));
         soundManager.PlaySE(Definer.soundRef.SANHeal);
         charaObj.SetSANBar();
     }
@@ -1137,11 +1152,11 @@ public class Character : MonoBehaviour
         {
             charaStatus.SAN -= value;
             targetButton.SetDamageText($"{"SANDMGL".ToSpr()}{value}", Definer.colorRef.SANDecrease);
-            infoText.AddLogText(string.Format("{0}は正気度を{1}{2}失った", charaStatus.charaName, "SANDMG".ToSpr(),value.ToString().ColorStr(Definer.colorRef.SANDecrease)));
+            infoText.AddLogText(string.Format("{0}は正気度を{1}{2}失った", charaStatus.charaName, "SANDMG".ToSpr(), value.ToString().ColorStr(Definer.colorRef.SANDecrease)));
             soundManager.PlaySE(Definer.soundRef.SANDecrease);
             charaObj.SetSANBar();
-            if (charaStatus.SAN <= 0) 
-            { 
+            if (charaStatus.SAN <= 0)
+            {
                 if (!CheckAffricted())
                 {
                     targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
@@ -1177,11 +1192,14 @@ public class Character : MonoBehaviour
         int n = 1;
         if (!set) { n = -1; }
         if (mod.LVL != 0) { charaStatus.level += mod.LVL * n; }
-        if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, heal); }
+        //if (mod.maxHP_mul != 0) { AddMaxHP(0, mod.maxHP_mul * n, heal); }
+        AddMaxHP(0, mod.maxHP_mul * n, heal, mod.maxHP_int * n);
         if (mod.maxSAN_mul != 0) { AddMaxSAN(0, mod.maxSAN_mul * n, heal); }
         if (mod.PROT != 0) { AddPROT(mod.PROT * n); }
-        if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
-        if (mod.INT_mul != 0) { AddINT(0, mod.INT_mul * n); }
+        //if (mod.ATK_mul != 0) { AddATK(0, mod.ATK_mul * n); }
+        AddATK(0, mod.ATK_mul * n, mod.ATK_int * n);
+        //if (mod.INT_mul != 0) { AddINT(0, mod.INT_mul * n); }
+        AddINT(0, mod.INT_mul * n, mod.INT_int * n);
         if (mod.exDMG_mul != 0) { AddExDMG_Mul(mod.exDMG_mul * n); }
         if (mod.CRITC != 0) { AddCRITC(mod.CRITC * n); }
         if (mod.CRITD != 0) { AddCRITD(mod.CRITD * n); }
@@ -1202,14 +1220,15 @@ public class Character : MonoBehaviour
         if (mod.moveRes != 0) { AddMoveRes(mod.moveRes * n); }
         if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes * n); }
     }
-    public void AddMaxHP(int value_base, float value_mul, bool heal)
+    public void AddMaxHP(int value_base, float value_mul, bool heal, int value_int = 0)
     {
         int oldMaxHP = charaStatus.maxHP;
 
         charaStatus.maxHP_base += value_base;
         charaStatus.maxHP_mul += value_mul;
-        charaStatus.maxHP = Mathf.Max(1, Mathf.RoundToInt((charaStatus.maxHP_base+ charaStatus.maxHP_baseByLVL) * charaStatus.maxHP_mul / 100f));
-        if (charaStatus.maxHP > oldMaxHP&&heal)//差分を回復
+        charaStatus.maxHP_int += value_int;
+        charaStatus.maxHP = Mathf.Max(1, Mathf.RoundToInt((charaStatus.maxHP_base + charaStatus.maxHP_baseByLVL) * charaStatus.maxHP_mul / 100f) + charaStatus.maxHP_int);
+        if (charaStatus.maxHP > oldMaxHP && heal)//差分を回復
         {
             charaStatus.HP += charaStatus.maxHP - oldMaxHP;
         }
@@ -1223,7 +1242,7 @@ public class Character : MonoBehaviour
         charaStatus.maxSAN_base += value_base;
         charaStatus.maxSAN_mul += value_mul;
         charaStatus.maxSAN = Mathf.Max(1, Mathf.RoundToInt(charaStatus.maxSAN_base * charaStatus.maxSAN_mul / 100f));
-        if (charaStatus.maxSAN > oldMaxSAN&&heal)//差分を回復
+        if (charaStatus.maxSAN > oldMaxSAN && heal)//差分を回復
         {
             charaStatus.SAN += charaStatus.maxSAN - oldMaxSAN;
         }
@@ -1238,18 +1257,20 @@ public class Character : MonoBehaviour
         AddINT(value_base, value_mul);
     }
 
-    public void AddATK(int value_base, float value_mul)
+    public void AddATK(int value_base, float value_mul, int value_int = 0)
     {
         charaStatus.ATK_base += value_base;
         charaStatus.ATK_mul += value_mul;
-        charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt((charaStatus.ATK_base+ charaStatus.ATK_baseByLVL) * charaStatus.ATK_mul / 100f));
+        charaStatus.ATK_int += value_int;
+        charaStatus.ATK = Mathf.Max(0, Mathf.RoundToInt((charaStatus.ATK_base + charaStatus.ATK_baseByLVL) * charaStatus.ATK_mul / 100f) + charaStatus.ATK_int);
     }
 
-    public void AddINT(int value_base, float value_mul)
+    public void AddINT(int value_base, float value_mul, int value_int = 0)
     {
         charaStatus.INT_base += value_base;
         charaStatus.INT_mul += value_mul;
-        charaStatus.INT = Mathf.Max(0, Mathf.RoundToInt((charaStatus.INT_base+ charaStatus.INT_baseByLVL) * charaStatus.INT_mul / 100f));
+        charaStatus.INT_int += value_int;
+        charaStatus.INT = Mathf.Max(0, Mathf.RoundToInt((charaStatus.INT_base + charaStatus.INT_baseByLVL) * charaStatus.INT_mul / 100f) + charaStatus.INT_int);
     }
     public void AddCRITC(float value) { charaStatus.CRITC += value; }
     public void AddCRITD(float value) { charaStatus.CRITD += value; }
@@ -1264,13 +1285,13 @@ public class Character : MonoBehaviour
     {
         charaStatus.shield += value;
         targetButton.SetDamageText($"{"shieldL".ToSpr()}{value}", Definer.colorRef.shield);
-        infoText.AddLogText(string.Format("{0}はシールドを{1}{2}得た", charaStatus.charaName,"shield".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shield)));
+        infoText.AddLogText(string.Format("{0}はシールドを{1}{2}得た", charaStatus.charaName, "shield".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shield)));
         soundManager.PlaySE(Definer.soundRef.shield);
         charaObj.SetHPandShieldBar();
     }
-    public void RemoveShield(bool removeAll,int value)
+    public void RemoveShield(bool removeAll, int value)
     {
-        if(charaStatus.shield > 0)
+        if (charaStatus.shield > 0)
         {
             if (removeAll)
             {
@@ -1283,7 +1304,7 @@ public class Character : MonoBehaviour
                 int remove = Mathf.Min(value, charaStatus.shield);
                 targetButton.SetDamageText($"{"shieldDMG".ToSpr()}{remove}", Definer.colorRef.shieldDecrease);
                 charaStatus.shield -= remove;
-                infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName,"shieldDMG".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
+                infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName, "shieldDMG".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
 
             }
             charaObj.SetHPandShieldBar();
@@ -1310,10 +1331,10 @@ public class Character : MonoBehaviour
         if (apply) { charaStatus.stun++; }
         else { charaStatus.stun--; }
     }
-    
+
     public void AddStERes(StEResist resist, bool set)
     {
-        foreach(StEResist res in charaStatus.StEResists)
+        foreach (StEResist res in charaStatus.StEResists)
         {
             if (res.ResStE == resist.ResStE)
             {
@@ -1325,9 +1346,9 @@ public class Character : MonoBehaviour
         if (set) { charaStatus.StEResists.Add(resist); }
         else { infoText.AddErrorText("error"); }
     }
-    public void AddStEBonus(StEApplyBonus bonus,bool set)
+    public void AddStEBonus(StEApplyBonus bonus, bool set)
     {
-        for(int i=0;i< charaStatus.StEApplyBonus.Count;i++)
+        for (int i = 0; i < charaStatus.StEApplyBonus.Count; i++)
         {
             if (charaStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
             {
@@ -1346,11 +1367,11 @@ public class Character : MonoBehaviour
     {
         charaStatus.debuffRes += value;
     }
-    public void AddActionMod(GameObject mod ,bool set)
+    public void AddActionMod(GameObject mod, bool set)
     {
         if (set) { charaStatus.actionMods.Add(mod); }
         else { charaStatus.actionMods.Remove(mod); }
-       
+
     }
     public void Ability_AddRemain(int value, int index) { charaStatus.abilitiesStatus[index].AddRemain(value); }
     public void Ability_SetRemain(int value, int index) { charaStatus.abilitiesStatus[index].SetRemain(value); }
@@ -1359,7 +1380,7 @@ public class Character : MonoBehaviour
 
     public void ChangePos(int moveTo)
     {
-        infoText.AddLogText(string.Format("{0}はポジション{1}から{2}へ移動した", charaStatus.charaName,charaStatus.position.PosIntToStr(),moveTo.PosIntToStr()));
+        infoText.AddLogText(string.Format("{0}はポジション{1}から{2}へ移動した", charaStatus.charaName, charaStatus.position.PosIntToStr(), moveTo.PosIntToStr()));
         charaObj.StopMove(charaStatus.position);
         charaStatus.position = moveTo;
         targetButton = charactersManager.GetTargetButton(charaStatus.position);
@@ -1368,7 +1389,7 @@ public class Character : MonoBehaviour
 
         charaObj.MoveStart(charaStatus.position);
     }
-    
+
     public void AbilityRemain(ActionData.AbilityRemainControll remainControll)
     {
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
@@ -1411,7 +1432,7 @@ public class Character : MonoBehaviour
             {
                 FindObjectOfType<LVLUpManager>().LVLUp(this);
             }
-        }    
+        }
     }
     public void LVLUp()
     {
@@ -1420,7 +1441,7 @@ public class Character : MonoBehaviour
         int LVL = charaStatus.level;
 
         StatusMod_ByLVL prev = SG.GetStatusMod(LVL);
-        StatusMod_ByLVL next = SG.GetStatusMod(LVL+1);
+        StatusMod_ByLVL next = SG.GetStatusMod(LVL + 1);
         prev.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
         next.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
         next.DeltaMode(prev);
@@ -1448,7 +1469,7 @@ public class Character : MonoBehaviour
             FindObjectOfType<LVLUpManager>().LVLUp(this);
         }
     }
-    
+
     //ここまでアクションによって呼ばれる関数
 
     public void Debug_UnlockEqSlots()
@@ -1491,10 +1512,11 @@ public class Character : MonoBehaviour
     }
 
     public bool CheckAlive() { return !charaStatus.dead; }
+    public bool PlayerPos() { return charaStatus.position.IsPlayerPos(); }
 
     public List<Character> GetNeigbor(List<Vector2Int> neigbor)
     {
-       return new List<Character>(charactersManager.GetCharactersWithPos(charaStatus.position.RelPosToAbs(neigbor)));
+        return new List<Character>(charactersManager.GetCharactersWithPos(charaStatus.position.RelPosToAbs(neigbor)));
     }
 
     /// <summary>0:HP0 1:SAN0</summary>
@@ -1590,7 +1612,7 @@ public class Character : MonoBehaviour
     }
     public void OnBattleStart()
     {
-        for(int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
+        for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {
             //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
             charaStatus.abilitiesStatus[i].CoolDown_OnBattleStart();
@@ -1609,12 +1631,12 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnOrderDecide(); }
         RemovePA_Execute();
     }
-    public void OnTurnStart(bool myTurn,int turnCount)
+    public void OnTurnStart(bool myTurn, int turnCount)
     {
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(myTurn, turnCount); }
         RemovePA_Execute();
     }
-    public void OnTurnEnd(bool myTurn,int turnCount,bool deadTurnChara)
+    public void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
         if (charaStatus.shield > 0 && battleManager.GetCurrntTurnChara().CharaStatus().position.IsPlayerPos() != charaStatus.position.IsPlayerPos())
         {
@@ -1650,7 +1672,7 @@ public class Character : MonoBehaviour
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities())
             {
-                actionsStatus = passiveAbility.ModifyAction(statusRef, actionsStatus,forCalcDMG);
+                actionsStatus = passiveAbility.ModifyAction(statusRef, actionsStatus, forCalcDMG);
             }
             RemovePA_Execute();
         }
@@ -1735,7 +1757,7 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public void OnAttacked(Character attacker,bool evaded,bool missed)
+    public void OnAttacked(Character attacker, bool evaded, bool missed)
     {
         if (BattleManager.inBattle)
         {
@@ -1749,6 +1771,7 @@ public class Character : MonoBehaviour
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamaged(onDamageParams); }
             RemovePA_Execute();
+            battleManager.Trigger_OnSomeoneDamaged(onDamageParams);
         }
     }
     public void OnMoved(Action.OnMoveParams onMoveParams)
@@ -1802,6 +1825,15 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void OnSomeoneDamaged(Action.OnDamageParams onDamageParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneDamaged(onDamageParams); }
+            RemovePA_Execute();
+        }
+    }
+
     public void OnSomeoneMove(Action.OnMoveParams onMoveParams)
     {
         if (BattleManager.inBattle)
@@ -1838,7 +1870,7 @@ public class Character : MonoBehaviour
 
     public bool CheckAffricted()
     {
-        foreach(PassiveAbility pa in PA_Per)
+        foreach (PassiveAbility pa in PA_Per)
         {
             if (pa.GetComponent<PA_Personality>().GetPersonalityStatus().personalityType == PA_Personality.PersonalityStatus.PersonalityType.affricted)
             {

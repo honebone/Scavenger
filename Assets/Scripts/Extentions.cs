@@ -140,7 +140,7 @@ public static class Extentions
     }
     public static string GetValueWithSign(this int value)
     {
-        if (value > 0) { return "+" + value.ToString(); }
+        if (value >= 0) { return "+" + value.ToString(); }
         else { return value.ToString(); }
     }
 
@@ -176,6 +176,19 @@ public static class Extentions
             if (!list.Contains(t)) { list.Add(t); }
         }
     }
+
+    /// <summary>èdï°ÇµÇƒÇÈÇ‡ÇÃÇÃÇ›ï‘Ç∑</summary>
+    public static List<T> AND<T>(this List<T> list1, List<T> list2)
+    {
+        List<T> list = new List<T>();
+        foreach (T t in list2)
+        {
+            if (list1.Contains(t)) { list.Add(t); }
+        }
+
+        return list;
+    }
+
     public static void RemoveList<T>(this List<T> list, List<T> remove)
     {
         foreach (T t in remove)

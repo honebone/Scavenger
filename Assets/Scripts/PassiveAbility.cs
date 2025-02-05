@@ -7,6 +7,10 @@ public class PassiveAbility : MonoBehaviour
     [SerializeField, TextArea(3, 10)] string PAInfo_start;
     [SerializeField] bool skipGetInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_end;
+
+    public enum PATag { special, 武器, 防具, 装飾品, 魔術, ルーン }
+    public List<PATag> PATags = new List<PATag>();
+
     protected Character character;
     protected CharactersManager charactersManager;
     protected InfoText infoText;
@@ -20,6 +24,19 @@ public class PassiveAbility : MonoBehaviour
     public string GetPAInfo()
     {
         string s = "";
+        if(PATags.Count > 0)
+        {
+            bool f = false;
+            s += "タグ：";
+            foreach (PATag tag in PATags)
+            {
+                if (f) { s += ", "; }
+                f = true;
+                s += $"[{tag}]";
+            }
+            s += "\n";
+        }
+      
         if (PAInfo_start != "") { s+=PAInfo_start + "\n"; }
         if (!skipGetInfo) s += GetPAInfo_Base() + "\n";
         if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
@@ -130,6 +147,9 @@ public class PassiveAbility : MonoBehaviour
         return statusRef;
     }
 
+    public virtual void Cast() { infoText.AddErrorText($"効果のない詠唱をしています！：{GetPAName()}"); }
+
+
     public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
 
@@ -173,6 +193,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDie(Character killer) { }
     public virtual void OnEvade(int ID) { }
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
+
+    public virtual void OnSomeoneDamaged(Action.OnDamageParams onDamageParams) { }
 
     public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }
     public virtual void OnSomeoneFocus(List<Action.OnFocusParams> focusParamsList) { }

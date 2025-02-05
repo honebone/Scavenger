@@ -97,13 +97,13 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom:
     - {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
-  - dontShuffleFront: 0
+  - dontShuffleFront: 1
     upperFront: {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
     centerFront: {fileID: 11400000, guid: 43d139cb98f72d24bbe3032953fe77f5, type: 2}
-    lowerFront: {fileID: 0}
-    dontShuffleMid: 0
+    lowerFront: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
+    dontShuffleMid: 1
     upperMid: {fileID: 0}
-    centerMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
@@ -111,7 +111,6 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom:
     - {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
-    - {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
   battleBGM:
   - {fileID: 8300000, guid: 965e2c01e89da934ba9bacee8cfc5dee, type: 3}
   applyFEChance: 20

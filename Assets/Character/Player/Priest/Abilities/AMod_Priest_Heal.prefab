@@ -46,26 +46,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: "\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u3042\u308B\u3068\u304D"
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
     decreaseHP: 0
-    cantCounter: 0
     ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
+    healRegain: 0
     SANHeal: 0
     SANDamage: 0
-    shieldAdd: 7
+    shieldAdd: 0
+    shieldAdd_percent: 20
     shieldRemove: 0
     applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
   hasCondition_owner: 1
   condition_owner:
@@ -73,13 +84,18 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 1
     enemy: 1
+    onlyPlayable: 0
     front: 1
     mid: 1
     back: 1
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
     StE:
     - {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -89,12 +105,17 @@ MonoBehaviour:
     onlyEmpty: 0
     player: 0
     enemy: 0
+    onlyPlayable: 0
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

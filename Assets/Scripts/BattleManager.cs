@@ -425,6 +425,18 @@ public class BattleManager : MonoBehaviour
         expeditionManager.OnEndBattle();
     }
 
+    public void Trigger_OnSomeoneDamaged(Action.OnDamageParams onDamageParams)
+    {
+        //if (fieldEffect != null) { fieldEffect.OnBattleStart(); }
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnSomeoneDamaged(onDamageParams);
+        }
+        //foreach (PositionManager positionManager in positionManagers)
+        //{
+        //    positionManager.OnBattleStart();
+        //}
+    }
     public void Trigger_OnSomeoneMove(Action.OnMoveParams onMoveParams)
     {
         //if (fieldEffect != null) { fieldEffect.OnBattleStart(); }

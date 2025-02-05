@@ -497,6 +497,9 @@ public class Action : MonoBehaviour
             modifiedStatus.SANDamage_max += mod.SANDamage;
             modifiedStatus.shieldAdd_min += mod.shieldAdd;
             modifiedStatus.shieldAdd_max += mod.shieldAdd;
+            modifiedStatus.shieldPercent_min += mod.shieldAdd_percent;
+            modifiedStatus.shieldPercent_max += mod.shieldAdd_percent;
+
             modifiedStatus.shieldRemove_min += mod.shieldRemove;
             modifiedStatus.shieldRemove_max += mod.shieldRemove;
 

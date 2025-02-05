@@ -83,18 +83,6 @@ public class DebugFunction : MonoBehaviour
             items[i].Init(itemData[i]);
             items[i].amount = amount[i];
         }
-
-        //for (int i = 0; i < 6; i++)
-        //{
-        //    for (int j = 0; j < 3; j++)
-        //    {
-        //        int pos = new Vector2Int(i, j).ToPosInt();
-        //        string s = $"{pos}:";
-        //        foreach(int neighbor in pos.RelativePosToAbsolute(rel,true)) { s += $"{neighbor},"; }
-        //        Debug.Log(s);
-        //    }
-        //}
-
         
     }
     // Update is called once per frame

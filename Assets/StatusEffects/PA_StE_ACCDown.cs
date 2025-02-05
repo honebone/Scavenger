@@ -12,10 +12,10 @@ public class PA_StE_ACCDown : PA_StatusEffect
     {
         AddStack(-1);
     }
-    public override void OnAddStack(int add)
-    {
-        character.AddACC(add * -1);
-    }
+    //public override void OnAddStack(int add)
+    //{
+    //    character.AddACC(add * -1);
+    //}
     public override void AtTheEnd()
     {
         character.AddACC(StEStatus.value);

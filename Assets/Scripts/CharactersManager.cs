@@ -298,6 +298,48 @@ public class CharactersManager : MonoBehaviour
 
         return list;
     }
+
+    //=============================================================================[ƒLƒƒƒ‰ŒŸõ•Ö—˜Œn]=====================================================================
+   /// <summary>
+   /// Å‚àHP(‚Ü‚½‚ÍHPŠ„‡)‚Ì¬‚³‚¢ƒLƒƒƒ‰
+   /// </summary>
+   /// <param name="condition"></param>
+   /// <param name="percent"></param>
+   /// <returns></returns>
+    public List<Character> SearchChara_Weakest(SearchCharaCondition condition,bool percent)
+    {
+        List<Character> pool = new List<Character>(SearchCharaWithCondition(condition));
+        float minValue = 0;
+        for (int i = 0; i < pool.Count; i++)
+        {
+            if (percent)
+            {
+                if (i == 0 || pool[i].CharaStatus().GetHPPercent() <= minValue) { minValue = pool[i].CharaStatus().GetHPPercent(); }
+            }
+            else
+            {
+                if (i == 0 || pool[i].CharaStatus().HP <= minValue) { minValue = pool[i].CharaStatus().HP; }
+            }
+        }
+
+        List<Character> list = new List<Character>();
+
+        foreach(Character chara in pool)
+        {
+            if (percent)
+            {
+                if(chara.CharaStatus().GetHPPercent() == minValue) { list.Add(chara); }
+            }
+            else
+            {
+                if (chara.CharaStatus().HP == minValue) { list.Add(chara); }
+            }
+        }
+
+        return list;
+    }
+
+
     public bool CheckIfMatchCondition(Character character, SearchCharaCondition condition)
     {
         return SearchCharaWithCondition(condition).Contains(character);
