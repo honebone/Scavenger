@@ -27,11 +27,17 @@ public class InfoText : MonoBehaviour
     TutorialManager tutorialManager;
     DebugFunction debugFunction;
     MouseOverUI mouseOver;
+    public static InfoText inst;
 
     int logCount;
     List<string> logs = new List<string>();
     [SerializeField] int maxLogs;
     [SerializeField] int deleteLogs;
+
+    private void Awake()
+    {
+        inst = this;
+    }
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();

@@ -135,9 +135,10 @@ public class PassiveAbility : MonoBehaviour
         character.Enqueue(action, true, new List<Character>() { character });
     }
 
-    public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus,bool forCalcDMG)
+    public virtual Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
     {
-        if (statusRef.actionTargets.Count != actionsStatus.Length) { FindObjectOfType<InfoText>().AddErrorText("対象の数と行動内容の数が一致しません"); }
+        if (statusRef.actionTargets.Count == actionsStatus.Length) { }
+        else if (statusRef.actionTargetsInt == null || statusRef.actionTargetsInt.Count != actionsStatus.Length) { InfoText.inst.AddErrorText("アクション対象エラー"); }
 
         return actionsStatus;
     }

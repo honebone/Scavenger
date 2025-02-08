@@ -307,7 +307,7 @@ MonoBehaviour:
     centerFront: {fileID: 11400000, guid: 8e80fea36922d1b4384cb07113c3cd75, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
+    upperMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
     centerMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
     lowerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
     dontShuffleBack: 0
@@ -18477,6 +18477,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}

@@ -162,6 +162,8 @@ public class Action : MonoBehaviour
         public float debuffChanceMod;
         public List<ActionData.RemoveStE> removeStEs_additional;
 
+        public List<Character.CharaStatusMod> summonStatusMods;
+
         public bool dontChangeSprite;
         [Header("スプライトの直接指定")]
         public GameObject activateSprite;
@@ -718,7 +720,12 @@ public class Action : MonoBehaviour
        
         //演出関連
         if (actionStatus.actionTargets == null) { actionStatus.actionTargets = new List<Character>(); }
-        ActionStatus[] actionsStatus =new ActionStatus[actionStatus.actionTargets.Count];
+        ActionStatus[] actionsStatus ;
+
+        if (actionStatus.actionTargets.Count > 0) { actionsStatus = new ActionStatus[actionStatus.actionTargets.Count]; }
+        else if (actionStatus.actionTargetsInt != null) { actionsStatus = new ActionStatus[actionStatus.actionTargetsInt.Count]; }
+        else { actionsStatus = new ActionStatus[0]; }
+
         for (int i = 0; i < actionsStatus.Length; i++)
         {
             actionsStatus[i] = actionStatus;
@@ -748,7 +755,8 @@ public class Action : MonoBehaviour
 
         List<GameObject> actionModsObj = new List<GameObject>(actionStatus.actionMods);
         //ここで色々なactionMdsを追加
-        if (!notChara) { 
+        if (!notChara)
+        {
             actionModsObj.AddRange(ownerStatus.actionMods);
             actionModsObj.AddRange(actionStatus.actionOwner.GetPositionManager().GetActionMods());
         }
@@ -1335,14 +1343,17 @@ public class Action : MonoBehaviour
             actionResults.Add(result);
 
 
-            //infoText.AddDebugText("召喚処理は未完成です\n召喚しようとしている場所が空欄であるかどうかを確かめる必要があります");
             soundManager.PlaySE(Definer.soundRef.summoned);
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
-                if (!characterManager.CheckCharaExist(actionStatus.actionTargetsInt[i]))
+                int targetPos = actionStatus.actionTargetsInt[i];
+                if (!characterManager.CheckCharaExist(targetPos))
                 {
-                    if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], ownerStatus.level); }
-                    else { characterManager.SpawnEnemy(actionStatus.summonChara[actionStatus.summonChanceWeight.ChoiceWithWeight()], actionStatus.actionTargetsInt[i], false, ownerStatus.level); }
+                    CharacterData summonChara = actionsStatus[i].summonChara[actionsStatus[i].summonChanceWeight.ChoiceWithWeight()];
+                    Character.SummonCharaStatusParams summonStatusParams = new Character.SummonCharaStatusParams();
+                    summonStatusParams.statusMods = new List<Character.CharaStatusMod>(actionsStatus[i].summonStatusMods);
+                    if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(summonChara, targetPos, ownerStatus.level, summonStatusParams); }
+                    else { characterManager.SpawnEnemy(summonChara, targetPos, false, ownerStatus.level, summonStatusParams); }
                 }
                 else { infoText.AddDebugText("召喚能力の打消し"); }
             }

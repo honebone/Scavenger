@@ -192,7 +192,16 @@ public class CharactersManager : MonoBehaviour
         public bool excludeObstacle;
         public List<CharacterData> characterInclude;
         public List<CharacterData.CharacterTag> characterTags;
-        public List<GameObject> StE;
+        public class StECondition
+        {
+            public GameObject StE;
+            //スタック数が関係ないときはいじらなければokなように作ってあります
+            public int stack;
+            public int stack_lessThan;
+            public bool stack_excludeEqual;
+        }
+        public List<StECondition> StEConditions;
+        [Header("これは旧式のStE条件です")] public List<GameObject> StE;
         public List<GameObject> StEExclude;
         public List<GameObject> PE;
         public List<GameObject> PEExclude;
@@ -220,6 +229,9 @@ public class CharactersManager : MonoBehaviour
             if (!condition.mid && status.position.GetColumn() == 1) { continue; }
             if (!condition.back && status.position.GetColumn() == 2) { continue; }
             if (condition.excludeObstacle && status.Obstacle()) { continue; }
+
+
+
             bool matched = condition.characterTags.Count == 0;
             foreach (CharacterData.CharacterTag tag in condition.characterTags)
             {
@@ -231,11 +243,27 @@ public class CharactersManager : MonoBehaviour
             }
             if (!matched) { continue; }
 
+
+
             matched = condition.characterInclude.Count == 0 || condition.characterInclude.Contains(status.characterData);
             if (!matched) { continue; }
 
-            matched = condition.StE.Count == 0;
 
+
+            //matched = condition.StEConditions.Count == 0;
+            //foreach (GameObject s in condition.StE)
+            //{
+            //    if (character.CheckHasStE(s))
+            //    {
+            //        matched = true;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
+
+
+
+            matched = condition.StE.Count == 0;
             foreach (GameObject s in condition.StE)
             {
                 if (character.CheckHasStE(s))
@@ -245,6 +273,8 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
+
+
 
             matched = true;
             foreach (GameObject s in condition.StEExclude)
@@ -257,8 +287,9 @@ public class CharactersManager : MonoBehaviour
             }
             if (!matched) { continue; }
 
-            matched = condition.PE.Count == 0;
 
+
+            matched = condition.PE.Count == 0;
             foreach (GameObject s in condition.PE)
             {
                 if (character.CheckHasPE(s))
@@ -268,6 +299,8 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
+
+
 
             matched = true;
             foreach (GameObject s in condition.PEExclude)
@@ -279,6 +312,8 @@ public class CharactersManager : MonoBehaviour
                 }
             }
             if (!matched) { continue; }
+
+
 
             float HPPercent = status.HP.GetPercent(status.maxHP);
             if (condition.HP_lessThan)

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: GoblinLeader_Summon
+  m_Name: Commander_Assult
   m_EditorClassIdentifier: 
-  abilityName: "\u51FA\u3066\u30B3\u30A4\uFF01\uFF01"
+  abilityName: "\u7121\u6148\u60B2\u306A\u7A81\u6483\u4EE4"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
-  abilityManager: {fileID: 6787944588447312381, guid: e9b9e7097feb8cf4990c74ca014914b9, type: 3}
+  abilityManager: {fileID: 0}
   dontChangeSprite: 0
-  activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
-  abilityType: 5
+  activateSprite: {fileID: 0}
+  abilityType: 3
   excludeRandomPool: 0
-  priority: 2
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
@@ -48,15 +48,15 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 12
-  cooldownOnUse: 12
+  cooldownOnBattleStart: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u51FA\u3066\u30B3\u30A4\uFF01\uFF01"
+  - actionName: 
     conditionInfo: 
-    targetInfo: "\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u6700\u59273\u3064"
+    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -64,17 +64,17 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 0
+    targetType: 6
     friendly: 0
     condition:
-      searchAsPos: 1
+      searchAsPos: 0
       onlyEmpty: 0
-      player: 0
+      player: 1
       enemy: 0
       onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
+      front: 1
+      mid: 1
+      back: 1
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -91,7 +91,7 @@ MonoBehaviour:
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
-    exTurn: 0
+    exTurn: 1
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -126,8 +126,8 @@ MonoBehaviour:
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
+    SANDamage_min: 3
+    SANDamage_max: 7
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -141,15 +141,9 @@ MonoBehaviour:
     removeStE_debuff: 0
     removeStEs: []
     removePEs: []
-    summon: 1
-    summonChara:
-    - {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
-    - {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    - {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
-    summonChanceWeight:
-    - 50
-    - 25
-    - 25
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
     moveChance: 0
     guaranteedMove: 0
     moveForword: 0
@@ -158,18 +152,18 @@ MonoBehaviour:
     moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    abilityEffect: 1
+    abilityEffect: 0
     freeAction: 0
-    abilityType: 5
+    abilityType: 0
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
     dontChangeSprite: 0
-    activateSprite: {fileID: 1577116636067389741, guid: 90233eb1f75f2cf4987ae5e5776bff52, type: 3}
+    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 0
     actionTargets: []
-    actionTargetsInt: 0a0000000f00000010000000
+    actionTargetsInt: 
