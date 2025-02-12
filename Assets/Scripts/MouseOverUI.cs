@@ -7,16 +7,17 @@ public class MouseOverUI : MonoBehaviour
 {
     [SerializeField] GameObject panel;
     [SerializeField] TextMeshProUGUI text;
+    [SerializeField] RectTransform rt;
     [SerializeField] float baseOffset_x;
     [SerializeField] float baseOffset_y;
 
     Vector3 offset;
     Vector3 pos;
 
-    public void SetUI(string s,bool rightClickGuide=false)
+    public void SetUI(string s, bool rightClickGuide = false)
     {
         text.text = "";
-        if (rightClickGuide&&!SettingManager.infoOnMouseover) { text.text += "右クリックで詳細表示\n"; }
+        if (rightClickGuide && !SettingManager.infoOnMouseover) { text.text += "右クリックで詳細表示\n"; }
         text.text += s;
         if (text.text != "")
         {
@@ -62,8 +63,10 @@ public class MouseOverUI : MonoBehaviour
 
             if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset_x; }
             else { offset.x = -1 * baseOffset_x; }
-            if (Input.mousePosition.y / Camera.main.pixelHeight < 0.5f) { offset.y = baseOffset_y; }
-            else { offset.y = -1 * baseOffset_y; }
+
+            if (Input.mousePosition.y / Camera.main.pixelHeight < 0.25f) { rt.pivot = new Vector2(0.5f, 0); }
+            else if (Input.mousePosition.y / Camera.main.pixelHeight > 0.75f) { rt.pivot = new Vector2(0.5f, 1); }
+            else { rt.pivot = new Vector2(0.5f, 0.5f); }
 
             pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + offset);
             pos.z = 0;

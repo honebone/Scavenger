@@ -57,6 +57,8 @@ public class ActionMod : MonoBehaviour
 
         public List<ActionData.RemoveStE> removeStEs;
 
+        public Character.CharaStatusMod summonStatusMod;
+
         //public float moveChance;
         //public int moveForword;
         //public int moveUpper;
@@ -88,7 +90,7 @@ public class ActionMod : MonoBehaviour
                 if (CRITDMod != 0) { s += ValueToStr("・CRITダメージ補正", CRITDMod, "倍"); }
                 if (drain != 0) { s += ValueToStr("・与ダメージの", drain, "％を回復"); }
                 if (sureHit) { s += "・攻撃が必中となる\n"; }
-                if (unevadable) { s += "・EVDを無視\n"; }
+                if (unevadable) { s += "・対象のEVDを無視\n"; }
                 if (exHeal_mul != 0) { s += ValueToStr("・回復量", exHeal_mul, "％"); }
                 if (healValue != 0) { s += ValueToStr("・回復量", healValue, ""); }
                 if (healPercent != 0) { s += ValueToStr("・割合回復量", healPercent, "％"); }
@@ -139,6 +141,8 @@ public class ActionMod : MonoBehaviour
                     if (remove.removeAll) { s += "を全て除去\n"; }
                     else { s += ValueToStr("のスタック", remove.addAmount, ""); }
                 }
+                string summonMod = summonStatusMod.GetInfo();
+                if (summonMod != "") { s += $"・召喚体のステータスが増加：\n{summonMod}\n\n"; }
             }
 
             if (exInfo != "") { s += exInfo+"\n"; }

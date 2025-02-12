@@ -40,6 +40,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
     StEExclude: []
     PE: []
@@ -54,7 +55,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u524D\u7DDA\u3078\uFF01"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u4E2D\u30FB\u5F8C\u5217\u306E\u5473\u65B91\u4F53"
     AModInfo: 
@@ -65,19 +66,20 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 6
-    friendly: 0
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 1
       enemy: 0
       onlyPlayable: 0
-      front: 1
+      front: 0
       mid: 1
-      back: 0
+      back: 1
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -152,17 +154,19 @@ MonoBehaviour:
     moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    abilityEffect: 0
-    freeAction: 0
+    abilityEffect: 1
+    freeAction: 1
     abilityType: 0
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
-    actionTargets: []
-    actionTargetsInt: 
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 03000000

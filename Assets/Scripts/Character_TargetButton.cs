@@ -195,6 +195,12 @@ public class Character_TargetButton : MonoBehaviour
                 s += string.Format("\nSAN：{0}", status.SAN);
             }
 
+            if (status.lifetime > 0)
+            {
+                int lifetimeDMG = Mathf.CeilToInt(1f*status.BaseHP() / status.lifetime);
+                s += "\n寿命によるHP減少：" + $"{lifetimeDMG}/ラウンド".ColorStr(Definer.colorRef.decreaseHP);
+            }
+
             foreach (GameObject DoT in Definer.DoTDataBase)
             {
                 int DMGNextTurn = character.GetDoTDMG(DoT, false);

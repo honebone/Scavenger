@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Extentions
 {
-    public static string ColorStr(this string str,Color color)
+    public static string ColorStr(this string str, Color color)
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + str + "</color>";
     }
@@ -49,7 +49,7 @@ public static class Extentions
 
     public static bool Dice(this int chance)
     {
-       int dice= Random.Range(0, 100);
+        int dice = Random.Range(0, 100);
         return dice < chance;
     }
 
@@ -130,7 +130,7 @@ public static class Extentions
     }
     public static int RandIndex(this int length)
     {
-        return Random.Range(0,length);
+        return Random.Range(0, length);
     }
 
     public static string GetValueWithSign(this float value)
@@ -144,7 +144,7 @@ public static class Extentions
         else { return value.ToString(); }
     }
 
-    public static float GetPercent(this int value,int max)
+    public static float GetPercent(this int value, int max)
     {
         return value * 100f / max;
     }
@@ -160,8 +160,8 @@ public static class Extentions
     }
     public static float Sum(this List<float> list)
     {
-        float sum= 0;
-        foreach(float f in list)
+        float sum = 0;
+        foreach (float f in list)
         {
             sum += f;
         }
@@ -205,7 +205,7 @@ public static class Extentions
         List<T> pool = new List<T>(list);
         List<T> sample = new List<T>();
         int index;
-        for(int i = 0; i < amount; i++)
+        for (int i = 0; i < amount; i++)
         {
             index = pool.Count.RandIndex();
             sample.Add(pool[index]);
@@ -214,7 +214,7 @@ public static class Extentions
 
         return sample;
     }
-    
+
     public static T Choice<T>(this List<T> list)
     {
         return list[Random.Range(0, list.Count)];
@@ -379,8 +379,12 @@ public static class Extentions
         string text = (!status.refValue || ignoreValue) ? $"{status.PEName}" : $"{status.PEName}{value}";
         return $"<link=P_{status.PEName}><u>{text}</u></link>".ColorStr(status.PEType.ToColor());
     }
+    public static string ToLinkKey(this CharacterData data)
+    {
+        return $"<link=C_{data.fileName}><u>{data.charaName}</u></link>";
+    }
 
-    public static string ToLinkKey(this string text,string key = "")
+    public static string ToLinkKey(this string text, string key = "")
     {
         string k = (key == "") ? text : key;
         return $"<link=U_{k}><u>{text}</u></link>";

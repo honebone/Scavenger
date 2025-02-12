@@ -89,11 +89,23 @@ public class PassiveAbility : MonoBehaviour
 
     public bool Enqueue_SearchTarget(Action.ActionStatus actionStatus, CharactersManager.SearchCharaCondition condition, int targetCount = 0)
     {
-        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-
-        if (target.Count > 0) 
+        Action.ActionStatus action = actionStatus;
+        List<Character> target=new List<Character>();
+        List<int> targetPos=new List<int>();
+        if (condition.searchAsPos)
         {
-            Enqueue(actionStatus, true, target, targetCount);
+            targetPos = charactersManager.SearchPosWithCondition(condition);
+            action.actionTargetsInt = targetPos;
+        }
+        else
+        {
+            target = charactersManager.SearchCharaWithCondition(condition);
+            action.actionTargets = target;
+        }
+
+        if (target.Count > 0|| targetPos.Count>0) 
+        {
+            Enqueue(action, false, target, targetCount);
             return true;
         }
         return false;
@@ -187,13 +199,14 @@ public class PassiveAbility : MonoBehaviour
     /// <summary>DMG=0‚Ì‚à</summary>
     public virtual void OnDamaged(Action.OnDamageParams onDamageParams) { }
     
-    public virtual void OnCRITed(int ID) { }
     public virtual void OnMoved(Action.OnMoveParams onMoveParams) { }
 
     /// <summary>killer:ƒLƒƒƒ‰‚ÌUŒ‚‚âEŠQŒø‰Ê‚É‚æ‚é‘ã“ü</summary>
     public virtual void OnDie(Character killer) { }
-    public virtual void OnEvade(int ID) { }
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
+    public virtual void OnSummon(List<Action.OnSummonParams> onSummonParamsList) { }
+
+    public virtual void OnSummoned(Action.OnSummonParams onSummonParams) {  }
 
     public virtual void OnSomeoneDamaged(Action.OnDamageParams onDamageParams) { }
 

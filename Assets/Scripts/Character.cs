@@ -35,6 +35,7 @@ public class Character : MonoBehaviour
         public int level;
         public int exp;
 
+        public int lifetime;
         public bool surviveFatalWounds;
 
         public int maxHP;
@@ -80,12 +81,7 @@ public class Character : MonoBehaviour
         public float moveRes;
         public float debuffRes;
 
-        ///<summary>今んとこ使ってないっす</summary>
-        public int instanceID;
         public int position;
-
-        /// <summary>自身をかばっているキャラのinstanceID</summary>
-        public int protectedBy;
 
         public int HP;
         public int shield;
@@ -99,6 +95,8 @@ public class Character : MonoBehaviour
         public int equipmentSlots;
         public List<Definer.Item> equipments;
 
+        public Character summoner;
+
         //以下バフ
         public int hide;
 
@@ -106,9 +104,6 @@ public class Character : MonoBehaviour
         public int marked;
         public int focused;
         public int stun;
-        //public int bleed;//被ダメージ時この値分HP減少
-        //public int poison;//行動時この値分HP減少
-        //public int burn;//ターン終了時にこの値分HPが減少
 
         public bool dead;
         //ここに状態異常入れれるといいね 
@@ -135,6 +130,7 @@ public class Character : MonoBehaviour
             {
                 s += string.Format("LVL：{0}\n", level);
             }
+            if (lifetime > 0) { s += $"{"寿命".ToLinkKey()}：{lifetime}\n"; }
             string s2 = $"({maxHP_base + maxHP_baseByLVL} {(maxHP_mul - 100).GetValueWithSign()}％ {maxHP_int.GetValueWithSign()})".ColorStr(Color.gray);
             s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
             if (shield > 0) { s += $"{"シールド".ToLinkKey().ColorStr(Definer.colorRef.shield)}：{shield}\n"; }
@@ -211,6 +207,7 @@ public class Character : MonoBehaviour
 
             level = 1;
 
+            lifetime = data.lifetime;
             surviveFatalWounds = data.surviveFatalWounds;
             maxHP_base = data.maxHP;
             maxHP_mul = 100f;
@@ -300,6 +297,9 @@ public class Character : MonoBehaviour
             return s;
         }
         /// <summary>％表記で返す</summary>
+        public int BaseHP() { return maxHP_base + maxHP_baseByLVL; }
+        public int BaseATK() { return ATK_base + ATK_baseByLVL; }
+        public int BaseINT() { return INT_base + INT_baseByLVL; }
         public float GetHPPercent() { return HP * 100f / maxHP; }
         public int GetNextExp() { return level; }
 
@@ -337,8 +337,14 @@ public class Character : MonoBehaviour
         public float GHeal;
         public float RHeal;
 
+        //リスト追加時は絶対にInitに追記しろ！！
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
+        public void Init()
+        {
+            StEResists = new List<StEResist>();
+            StEApplyBonus = new List<StEApplyBonus>();
+        }
 
         public float moveRes;
         public float debuffRes;
@@ -392,11 +398,11 @@ public class Character : MonoBehaviour
                 return s;
             }
         }
-
     }
 
     public class SummonCharaStatusParams
     {
+        public Character summoner;
         public int LVL = 1;
         public List<CharaStatusMod> statusMods = new List<CharaStatusMod>();
         public List<GameObject> PAs = new List<GameObject>();
@@ -487,6 +493,7 @@ public class Character : MonoBehaviour
 
         if (summonCharaParams != null)
         {
+            status.summoner = summonCharaParams.summoner;
             if (summonCharaParams.LVL > 1)
             {
                 StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
@@ -1648,6 +1655,7 @@ public class Character : MonoBehaviour
     }
     public void OnRoundEnd()
     {
+        if (charaStatus.lifetime > 0) { DecreaseHP(Mathf.CeilToInt(1f * charaStatus.BaseHP() / charaStatus.lifetime)); }
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundEnd(); }
         RemovePA_Execute();
     }
@@ -1821,6 +1829,24 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnApplyedStE(onApplyStEParams); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnSummon(List<Action.OnSummonParams> onSummonParamsList)
+    {
+        //infoText.AddDebugText(charaStatus.position.ToString());
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSummon(onSummonParamsList); }
+            RemovePA_Execute();
+        }
+    }
+    public void OnSummoned(Action.OnSummonParams onSummonParams)
+    {
+        //infoText.AddDebugText(charaStatus.position.ToString());
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSummoned(onSummonParams); }
             RemovePA_Execute();
         }
     }

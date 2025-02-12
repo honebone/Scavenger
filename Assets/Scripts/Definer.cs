@@ -79,8 +79,7 @@ public class Definer : MonoBehaviour
     public static GameObject actionManager_General;
     public static GameObject statusEffectIcon;
     public static GameObject positionEffectIcon;
-    [SerializeField]
-    CharacterData nonCharacterData;
+    [SerializeField] CharacterData nonCharacterData;
     [SerializeField]
     ColorRef colorRef_Inspector;
     [SerializeField]
@@ -98,6 +97,9 @@ public class Definer : MonoBehaviour
     [SerializeField] List<GameObject> generalRaEDataBase_Inspector;
 
     [SerializeField] List<CharacterData> playerDataBase;
+    [SerializeField] List<CharacterData> enemyDataBase;
+    [SerializeField] List<CharacterData> obstacleDataBase;
+    [SerializeField] List<CharacterData> summonDataBase;
     [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<GameObject> personalityDataBase;
@@ -144,6 +146,9 @@ public class Definer : MonoBehaviour
                 }
                 Debug.Log("error:状態異常が見つかりませんでした");
                 return "error:状態異常が見つかりませんでした";
+
+
+
             case 'P'://ポジション効果
                 foreach (GameObject PE in positionEffectDataBase)
                 {
@@ -158,6 +163,49 @@ public class Definer : MonoBehaviour
                 }
                 Debug.Log("error:ポジション効果が見つかりませんでした");
                 return "error:ポジション効果が見つかりませんでした";
+
+
+
+            case 'C'://キャラ
+                List<CharacterData> database;
+                switch (key[2])
+                {
+                    case 'P':
+                        database= new List<CharacterData>(playerDataBase);
+                        break; 
+                    case 'E':
+                        database= new List<CharacterData>(enemyDataBase);
+                        break; 
+                    case 'S':
+                        database= new List<CharacterData>(summonDataBase);
+                        break;
+                    default:
+                        Debug.Log($"error:キャラの分類が不適切です：{key[2]}");
+                        return $"error:キャラの分類が不適切です：{key[2]}";
+                }
+                foreach (CharacterData data in database)
+                {
+                    if ($"C_{data.fileName}" == key)
+                    {
+                        Character.CharacterStatus status = new Character.CharacterStatus();
+                        status.Init(data);
+                        string info = "";
+                        if (data.introduction != "") { info += $"\"{data.introduction}\"\n\n".ColorStr(colorRef.emphasize); }
+                        info += status.GetInfo();
+                        info += "\n◇◇特性◇◇\n";
+                        foreach (GameObject obj in status.passiveAbilities)
+                        {
+                            PassiveAbility pa = obj.GetComponent<PassiveAbility>();
+                            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                        }
+                        return info;
+                    }
+                }
+                Debug.Log($"error:キャラが見つかりませんでした：{key}");
+                return $"error:キャラが見つかりませんでした：{key}";
+
+
+
             case 'U'://その他
                 foreach(UniqueLinkInfo linkInfo in uniqueLinkInfos)
                 {

@@ -131,11 +131,75 @@ public class Action : MonoBehaviour
         [Header("特定のPEの除去")]
         public List<ActionData.RemovePE> removePEs;
 
+       
         [Header("\n\n召喚")]
         public bool summon;
         //public int summonSize;
         public List<CharacterData> summonChara;
         public List<float> summonChanceWeight;
+        [System.Serializable]
+        public class SummonStatusInherit
+        {
+           [Header("全部％で")] 
+            public float maxHP;
+            public float ATK;
+            public float INT;
+            public float CRITC_TH;
+            public float CRITC;
+            public float CRITD_TH;
+            public float CRITD;
+
+            public float EVD_TH;
+            public float EVD;
+            public float ACC_TH;
+            public float ACC;
+
+            public float ACT_TH;
+            public float ACT;
+
+            public string GetInfo(bool refStatus=false, Character.CharacterStatus status=new Character.CharacterStatus())
+            {
+                Character.CharaStatusMod mod = new Character.CharaStatusMod();
+               if (refStatus) mod = ToStatuMod(status);
+                string info = "";
+                if (maxHP > 0) { info += $"・maxHPの{(maxHP + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.maxHP_int})" : "")}\n"; }
+                if (ATK > 0) { info+=$"・ATKの{(ATK + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.ATK_int})" : "")}\n"; }
+                if (INT > 0) { info+=$"・INTの{(INT + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.INT_int})" : "")}\n"; }
+                if (CRITC > 0) { info += ToStr(CRITC_TH, true, CRITC, "CRITC",refStatus,mod.CRITC); }
+                if (CRITD > 0) { info += ToStr(CRITD_TH, true, CRITD, "CRITダメージ", refStatus, mod.CRITD); }
+                if (EVD > 0) { info += ToStr(EVD_TH, false, EVD, "EVD", refStatus, mod.EVD); }
+                if (ACC > 0) { info += ToStr(ACC_TH, false, ACC, "ACC", refStatus, mod.ACC); }
+                if (ACT > 0) { info += ToStr(ACT_TH, false, ACT, "ACT", refStatus, mod.ACT); }
+
+                return info;
+            }
+
+            public Character.CharaStatusMod ToStatuMod(Character.CharacterStatus status)
+            {
+                Character.CharaStatusMod mod = new Character.CharaStatusMod();
+                mod.Init();
+
+                mod.maxHP_int = Mathf.FloorToInt(status.maxHP * maxHP / 100f);
+                mod.ATK_int = Mathf.FloorToInt(status.ATK * ATK / 100f);
+                mod.INT_int = Mathf.FloorToInt(status.INT * INT / 100f);
+
+                if (status.CRITC - CRITC_TH > 0) { mod.CRITC = status.CRITC * CRITC / 100f; }
+                if (status.CRITD - CRITD_TH > 0) { mod.CRITD = status.CRITD * CRITD / 100f; }
+                if (status.EVD - EVD_TH > 0) { mod.EVD = (status.EVD - EVD_TH) * EVD / 100f; }
+                if (status.ACC - ACC_TH > 0) { mod.ACC = (status.ACC - ACC_TH) * ACC / 100f; }
+                if (status.ACT - ACT_TH > 0) { mod.ACT = Mathf.FloorToInt((status.ACT - ACT_TH) * ACT / 100f); }
+                return mod;
+            }
+
+            string ToStr(float TH,bool THPercent,float ratio,string statName,bool refStatus,float value)
+            {
+                string str = "・";
+                if (TH > 0) str += $"{(TH+(THPercent ? "％" : "")).ColorStr(Definer.colorRef.emphasize)}を超えた";
+                str += $"{statName}の{(ratio+"％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({value}{(THPercent ? "％" : "")})" : "")}\n";
+                return str;
+            }
+        }
+        public SummonStatusInherit summonStatusInherit;
 
         [Header("\n\n移動")]
         public float moveChance;
@@ -243,7 +307,7 @@ public class Action : MonoBehaviour
                 if (drain > 0) { attack += string.Format("与ダメージの{0}％を回復\n", drain); }
                 if (ignoreShield) { attack += "シールドを無視\n"; }
                 if (sureHit) { attack += "必中\n"; }
-                if (unevadable) { attack += "EVDを無視\n"; }
+                if (unevadable) { attack += "対象のEVDを無視\n"; }
                 s += attack.ColorStr(Color.gray);
             }
             CheckNewBlock();
@@ -358,7 +422,7 @@ public class Action : MonoBehaviour
             {
                 if (summonChara.Count == 1)
                 {
-                    s += string.Format("・{0}を召喚", summonChara[0].charaName);
+                    s += string.Format("・{0}を召喚\n", summonChara[0].ToLinkKey());
                 }
                 else
                 {
@@ -367,8 +431,12 @@ public class Action : MonoBehaviour
                     foreach (int r in summonChanceWeight) { p += r; }
                     for (int i = 0; i < summonChanceWeight.Count; i++)
                     {
-                        s += string.Format("{0}({1})\n", summonChara[i].charaName, (summonChanceWeight[i] / p).ToString("#0.0%"));
+                        s += string.Format("{0}({1})\n", summonChara[i].ToLinkKey(), (summonChanceWeight[i] / p).ToString("#0.0%"));
                     }
+                }
+                if (summonStatusInherit.GetInfo() != "")
+                {
+                    s += $"召喚されたキャラはステータスの一部を受け継ぐ：\n{summonStatusInherit.GetInfo(refCharaStatus, characterStatus)}\n";
                 }
             }
             CheckNewBlock();
@@ -542,6 +610,8 @@ public class Action : MonoBehaviour
             {
                 modifiedStatus.removeStEs_additional.Add(removeStE);
             }
+
+            modifiedStatus.summonStatusMods.Add(mod.summonStatusMod);
             //move
 
             return modifiedStatus;
@@ -632,6 +702,10 @@ public class Action : MonoBehaviour
 
         public Character target;
     }
+    public struct OnSummonParams
+    {
+        public ActionParams actionParams;
+    }
     protected Character actionOwner;
 
     protected List<ActionResult> actionResults = new List<ActionResult>();
@@ -641,6 +715,7 @@ public class Action : MonoBehaviour
     List<OnApplyStEParams> onApplyStEParamsList = new List<OnApplyStEParams>();
     List<OnHealParams> onHealParamsList = new List<OnHealParams>();
     List<OnFocusParams> onFocusParamsList = new List<OnFocusParams>();
+    List<OnSummonParams> onSummonParamsList = new List<OnSummonParams>();
     OnMoveParams onMoveParams = new OnMoveParams();
 
     bool shakeCamera;
@@ -825,6 +900,8 @@ public class Action : MonoBehaviour
                     onKillParams.obstacle = targetStatus.Obstacle();//resultの記述
                     onKillParams.target = target;
                     onKillParams.CRIT = false;
+                    onKillParamsList.Add(onKillParams);
+
                     result.onKillParams = onKillParams;
                 }
 
@@ -1342,18 +1419,32 @@ public class Action : MonoBehaviour
             result.actionStatus = actionStatus;
             actionResults.Add(result);
 
-
             soundManager.PlaySE(Definer.soundRef.summoned);
             for (int i = 0; i < actionStatus.actionTargetsInt.Count; i++)
             {
+                ActionParams actionParams = new ActionParams();
+                actionParams.actionStatus = actionsStatus[i];
+                //actionParams.target = target;
+                actionParams.owner = actionOwner;
+
                 int targetPos = actionStatus.actionTargetsInt[i];
                 if (!characterManager.CheckCharaExist(targetPos))
                 {
-                    CharacterData summonChara = actionsStatus[i].summonChara[actionsStatus[i].summonChanceWeight.ChoiceWithWeight()];
+                    CharacterData summonCharaData = actionsStatus[i].summonChara[actionsStatus[i].summonChanceWeight.ChoiceWithWeight()];
                     Character.SummonCharaStatusParams summonStatusParams = new Character.SummonCharaStatusParams();
+                    OnSummonParams onSummonParams = new OnSummonParams();
+                    Character summoned;
+
+                    onSummonParams.actionParams = actionParams;
+
+                    if (!notChara) { summonStatusParams.summoner = actionOwner; }
                     summonStatusParams.statusMods = new List<Character.CharaStatusMod>(actionsStatus[i].summonStatusMods);
-                    if (actionStatus.actionTargetsInt[i] < 9) { characterManager.SpawnPlayer(summonChara, targetPos, ownerStatus.level, summonStatusParams); }
-                    else { characterManager.SpawnEnemy(summonChara, targetPos, false, ownerStatus.level, summonStatusParams); }
+                    summonStatusParams.statusMods.Add(actionsStatus[i].summonStatusInherit.ToStatuMod(ownerStatus));
+
+                    if (actionStatus.actionTargetsInt[i] < 9) { summoned = characterManager.SpawnPlayer(summonCharaData, targetPos, ownerStatus.level, summonStatusParams); }
+                    else { summoned = characterManager.SpawnEnemy(summonCharaData, targetPos, false, ownerStatus.level, summonStatusParams); }
+                    summoned.OnSummoned(onSummonParams);
+                    onSummonParamsList.Add(onSummonParams);
                 }
                 else { infoText.AddDebugText("召喚能力の打消し"); }
             }
@@ -1374,7 +1465,7 @@ public class Action : MonoBehaviour
 
                 foreach (PositionEffect.PositionEffectParams PEParams in actionStatus.applyPEParams)//PE付与
                 {
-                    if (PEParams.guaranteed||PEParams.applyChance.Dice())
+                    if (PEParams.guaranteed || PEParams.applyChance.Dice())
                     {
                         infoText.AddLogText(string.Format("ポジション{0}に{1}が付与", actionStatus.actionTargetsInt[i].PosIntToStr(), PEParams.applyPE.GetComponent<PositionEffect>().GetPEName(true)));
                         characterManager.GetPositionManager(actionStatus.actionTargetsInt[i]).ApplyPE(PEParams, ownerStatus);
@@ -1470,6 +1561,7 @@ public class Action : MonoBehaviour
                 battleManager.Trigger_OnSomeoneApplyedStE(onApplyStEParamsList);
             }
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//与回復時誘発
+            if (onSummonParamsList.Count > 0) { actionStatus.actionOwner.OnSummon(onSummonParamsList); }//召喚時誘発
         }
 
         if (actionStatus.index == 0 && actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass)

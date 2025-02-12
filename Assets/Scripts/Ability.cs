@@ -479,7 +479,7 @@ public class Ability : MonoBehaviour
                     {
                         targetStatus = target.CharaStatus();
                         int pos = targetStatus.position;
-                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                        if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                         {
                             if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { tp_mark.Add(new List<int> { pos }); }
                             else { tp_noMark.Add(new List<int> { pos }); }
@@ -499,7 +499,7 @@ public class Ability : MonoBehaviour
                             int pos = targetStatus.position;
                             if (pos < 9 && pos.GetRow() == i)//プレイヤー側で列がiと等しい
                             {
-                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                                 {
                                     if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_row = true; }
                                     tp_row.Add(pos);
@@ -522,7 +522,7 @@ public class Ability : MonoBehaviour
                             int pos = targetStatus.position;
                             if (pos >= 9 && pos.GetRow() == i)//エネミー側で列がiと等しい
                             {
-                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                                 {
                                     if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_row = true; }
                                     tp_row.Add(pos);
@@ -549,7 +549,7 @@ public class Ability : MonoBehaviour
                             int pos = targetStatus.position;
                             if (pos < 9 && pos.GetColumn() == i)//プレイヤー側で列がiと等しい
                             {
-                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                                 {
                                     if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_column = true; }
                                     tp_column.Add(pos);
@@ -572,7 +572,7 @@ public class Ability : MonoBehaviour
                             int pos = targetStatus.position;
                             if (pos >= 9 && pos.GetColumn() == i)//エネミー側で列がiと等しい
                             {
-                                if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                                if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                                 {
                                     if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { includeMarked_column = true; }
                                     tp_column.Add(pos);
@@ -592,7 +592,7 @@ public class Ability : MonoBehaviour
                     foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
                     {
                         targetStatus = target.CharaStatus();
-                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
+                        if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
                         {
                             tp_all.Add(targetStatus.position);
                         }
@@ -607,7 +607,7 @@ public class Ability : MonoBehaviour
                         {
                             targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
-                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                            if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                             {
                                 if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { tp_mark.Add(new List<int> { pos }); }
                                 else { tp_noMark.Add(new List<int> { pos }); }
@@ -622,7 +622,7 @@ public class Ability : MonoBehaviour
                         if (target != character)
                         {
                             targetStatus = target.CharaStatus();
-                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
+                            if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
                             {
                                 tp_allWoSelf.Add(targetStatus.position);
                             }
@@ -655,7 +655,7 @@ public class Ability : MonoBehaviour
                         int pos = targetStatus.position;
                         if (neigborPos.Contains(pos))//指定した相対座標に含まれているか
                         {
-                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
+                            if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
                             {
                                 if (targetStatus.marked > 0 && !(actionStatus.friendly || actionStatus.ignoreMark)) { tp_mark.Add(new List<int> { pos }); }
                                 else { tp_noMark.Add(new List<int> { pos }); }

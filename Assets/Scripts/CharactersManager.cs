@@ -192,13 +192,13 @@ public class CharactersManager : MonoBehaviour
         public bool excludeObstacle;
         public List<CharacterData> characterInclude;
         public List<CharacterData.CharacterTag> characterTags;
+
+        [System.Serializable]
         public class StECondition
         {
             public GameObject StE;
-            //スタック数が関係ないときはいじらなければokなように作ってあります
-            public int stack;
-            public int stack_lessThan;
-            public bool stack_excludeEqual;
+            [Header("同数も許可")] public int stack = 1;
+            public bool stack_lessThan;
         }
         public List<StECondition> StEConditions;
         [Header("これは旧式のStE条件です")] public List<GameObject> StE;
@@ -250,16 +250,22 @@ public class CharactersManager : MonoBehaviour
 
 
 
-            //matched = condition.StEConditions.Count == 0;
-            //foreach (GameObject s in condition.StE)
-            //{
-            //    if (character.CheckHasStE(s))
-            //    {
-            //        matched = true;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
+            matched = condition.StEConditions.Count == 0;
+            foreach (SearchCharaCondition.StECondition cond in condition.StEConditions)
+            {
+                int stack = character.GetStEStack_Sum(cond.StE);
+                if (cond.stack_lessThan&& stack <= cond.stack)
+                {
+                    matched = true;
+                    break;
+                }
+                else if(!cond.stack_lessThan && stack >= cond.stack)
+                {
+                    matched = true;
+                    break;
+                }
+            }
+            if (!matched) { continue; }
 
 
 
@@ -423,6 +429,7 @@ public class CharactersManager : MonoBehaviour
             list.Add(i);
 
         }
+        infoText.AddDebugText(list.Count.ToString());
         return list;
     }
 
@@ -569,7 +576,7 @@ public class CharactersManager : MonoBehaviour
 
     }
 
-    public void SpawnPlayer(CharacterData characterData, int pos,int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
+    public Character SpawnPlayer(CharacterData characterData, int pos,int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
@@ -584,10 +591,10 @@ public class CharactersManager : MonoBehaviour
         Character_TargetButton tb = targetButtons_size1[pos];
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false, summonCharaParams);
+        return co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false, summonCharaParams);
     }
 
-    public void SpawnEnemy(CharacterData characterData, int pos, bool dropItem, int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
+    public Character SpawnEnemy(CharacterData characterData, int pos, bool dropItem, int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos < 9) { print("エネミーを召喚するのに、指定した位置がプレイヤー側です!"); }
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
@@ -604,7 +611,6 @@ public class CharactersManager : MonoBehaviour
         Character_TargetButton tb = targetButtons_size1[pos];
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
-        co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem, statusParams);
-
+        return co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem, statusParams);
     }
 }

@@ -60,7 +60,7 @@ public class Character_Object : MonoBehaviour
 
     Sequence sequence;
     GameObject charaSprite;
-    public void Init(Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem, Character.SummonCharaStatusParams summonCharaParams)
+    public Character Init(Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem, Character.SummonCharaStatusParams summonCharaParams)
     {
         if (characterStatus.Obstacle()) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
 
@@ -83,6 +83,7 @@ public class Character_Object : MonoBehaviour
         }
 
         charactersManager.AddCharacter(character);
+        return character;
     }
     /// <summary>Ž€–SŽž‚ÉŒÄ‚Î‚ê‚é </summary>
     public void HideCharacterObj()
