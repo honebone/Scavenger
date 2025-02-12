@@ -64,6 +64,8 @@ public class Character : MonoBehaviour
         public float exDMG_mul;
 
         public float CRITC;
+        /// <summary>後から代入される </summary>
+        public float CRITD_base;
         public float CRITD;
 
         public float EVD;
@@ -142,7 +144,9 @@ public class Character : MonoBehaviour
             s += string.Format("ATK：{0} {1}\n", ATK, s2);
             s2 = $"({INT_base + INT_baseByLVL} {(INT_mul - 100).GetValueWithSign()}％ {INT_int.GetValueWithSign()})".ColorStr(Color.gray);
             s += string.Format("INT：{0} {1}\n", INT, s2);
-            s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
+            s += $"CRIT率：{CRITC}％\n";
+            s += $"CRITダメージ：{CRITD}％ {$"({CRITD_base} {(CRITD - CRITD_base).GetValueWithSign()})".ColorStr(Color.gray)}\n";
+            //s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";
 
@@ -225,6 +229,7 @@ public class Character : MonoBehaviour
             INT = data.INT;
 
             CRITC = data.CRITC;
+            CRITD_base = data.CRITD;
             CRITD = data.CRITD;
 
             EVD = data.EVD;
@@ -934,8 +939,16 @@ public class Character : MonoBehaviour
         }
         battleManager.Trigger_TurnStart();
     }
-    public virtual void MainPhase()
+
+    public virtual void MainPhase(bool StEFlag=false)
     {
+        if (StEFlag)
+        {
+            foreach (PassiveAbility StE in PA_StE)
+            {
+                StE.StE_ApplyFlag();
+            }
+        }
         if (CheckAlive())
         {
             if (charaStatus.stun > 0)//行動不能

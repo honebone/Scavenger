@@ -16,6 +16,7 @@ public class PassiveAbility : MonoBehaviour
     protected InfoText infoText;
 
     protected bool instantiated;
+    protected bool applyFlag;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
@@ -161,6 +162,9 @@ public class PassiveAbility : MonoBehaviour
     }
 
     public virtual void Cast() { infoText.AddErrorText($"効果のない詠唱をしています！：{GetPAName()}"); }
+
+    /// <summary>このターンに付与されたかのチェック</summary>
+    public void StE_ApplyFlag() { applyFlag = true; }
 
 
     public virtual void OnPAInit() { }

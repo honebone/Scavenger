@@ -8,20 +8,25 @@ public class PA_StE_ATKDown : PA_StatusEffect
     {
         character.AddATK(0, StEStatus.value * -1);
     }
-    public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //{
+    //    bool f = false;
+    //    foreach (Action.OnAttackParams attackParams in onAttackParamsList)
+    //    {
+    //        if (attackParams.actionStatus.ATKMod_max > 0)
+    //        {
+    //            f = true;
+    //            break;
+    //        }
+    //    }
+    //    //if (f) AddStack(-1);
+    //}
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        bool f = false;
-        foreach (Action.OnAttackParams attackParams in onAttackParamsList)
-        {
-            if (attackParams.actionStatus.ATKMod_max > 0)
-            {
-                f = true;
-                break;
-            }
-        }
-        if (f) AddStack(-1);
+        if (myTurn && applyFlag) { AddStack(-1); }
     }
-   
+
     public override void AtTheEnd()
     {
         character.AddATK(0, StEStatus.value);

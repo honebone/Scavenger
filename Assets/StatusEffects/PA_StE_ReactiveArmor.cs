@@ -19,8 +19,13 @@ public class PA_StE_ReactiveArmor : PA_StatusEffect
         }
     }
 
-    public override void OnTurnStart(bool myTurn, int turnCount)
+    //public override void OnTurnStart(bool myTurn, int turnCount)
+    //{
+    //    if (myTurn) AddStack(-1);
+    //}
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        if (myTurn) AddStack(-1);
+        if (myTurn && applyFlag) { AddStack(-1); }
     }
 }

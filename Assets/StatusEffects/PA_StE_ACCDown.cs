@@ -8,10 +8,16 @@ public class PA_StE_ACCDown : PA_StatusEffect
     {
         character.AddACC(StEStatus.value * -1);
     }
-    public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //{
+    //    AddStack(-1);
+    //}
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        AddStack(-1);
+        if (myTurn&&applyFlag) { AddStack(-1); }
     }
+
     //public override void OnAddStack(int add)
     //{
     //    character.AddACC(add * -1);

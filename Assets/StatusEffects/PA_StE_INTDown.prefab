@@ -45,17 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88b2644a8b560840bc6a6e8a5ad2e5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "INT\u4F4E\u4E0B"
-    StEInfo: "\u81EA\u8EAB\u306EINT-X\uFF05\n\u81EA\u8EAB\u304C\u9B54\u6CD5\u653B\u6483\u3057\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "\u81EA\u8EAB\u306EINT-X\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 77c527529c625a248ac97ad064b3042c, type: 3}
     StEType: 2
     maxStack: 0
     merge: 0
     refValue: 1
     undeletable: 0
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
   up: 0
 --- !u!212 &7692293271465632286
 SpriteRenderer:

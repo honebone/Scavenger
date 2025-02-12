@@ -11,11 +11,15 @@ public class PA_StE_CRITCUp : PA_StatusEffect
         n = up ? 1 : -1;
         character.AddCRITC(StEStatus.value*n);
     }
-    public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
+    //{
+    //    AddStack(-1);
+    //}
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        AddStack(-1);
+        if (myTurn && applyFlag) { AddStack(-1); }
     }
-   
+
     public override void AtTheEnd()
     {
         character.AddCRITC(StEStatus.value * -1*n);

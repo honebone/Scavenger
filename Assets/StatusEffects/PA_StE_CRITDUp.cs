@@ -17,6 +17,10 @@ public class PA_StE_CRITDUp : PA_StatusEffect
         AddStack(-1);
     }
 
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    {
+        if (myTurn && applyFlag) { AddStack(-1); }
+    }
     public override void AtTheEnd()
     {
         character.AddCRITD(StEStatus.value * -1* n);

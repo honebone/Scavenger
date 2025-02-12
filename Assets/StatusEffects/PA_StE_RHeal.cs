@@ -12,9 +12,14 @@ public class PA_StE_RHeal : PA_StatusEffect
         character.AddRHeal(StEStatus.value * n);
     }
 
-    public override void OnHealed(Character healer, Action.OnHealParams onHealParams)
+    //public override void OnHealed(Character healer, Action.OnHealParams onHealParams)
+    //{
+    //    AddStack(-1);
+    //}
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        AddStack(-1);
+        if (myTurn && applyFlag) { AddStack(-1); }
     }
 
     public override void AtTheEnd()

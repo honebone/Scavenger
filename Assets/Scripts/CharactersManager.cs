@@ -429,7 +429,7 @@ public class CharactersManager : MonoBehaviour
             list.Add(i);
 
         }
-        infoText.AddDebugText(list.Count.ToString());
+        //infoText.AddDebugText(list.Count.ToString());
         return list;
     }
 

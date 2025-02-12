@@ -11,19 +11,24 @@ public class PA_StE_DebuffRes : PA_StatusEffect
         n = up ? 1 : -1;
         character.AddDebuffRes( StEStatus.value * n);
     }
-    public override void OnApplyedStE(Action.OnApplyStEParams onApplyStEParams)
-    {
-        bool f = false;
+    //public override void OnApplyedStE(Action.OnApplyStEParams onApplyStEParams)
+    //{
+    //    bool f = false;
 
-        foreach (StatusEffectParams StEParams in onApplyStEParams.attemptedParams)
-        {
-            if (StEParams.GetStatusEffectStatus().StEType == StatusEffectStatus.StatusEffectType.debuff)
-            {
-                f = true;
-                break;
-            }
-        }
-        if (f) AddStack(-1);
+    //    foreach (StatusEffectParams StEParams in onApplyStEParams.attemptedParams)
+    //    {
+    //        if (StEParams.GetStatusEffectStatus().StEType == StatusEffectStatus.StatusEffectType.debuff)
+    //        {
+    //            f = true;
+    //            break;
+    //        }
+    //    }
+    //    if (f) AddStack(-1);
+    //}
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    {
+        if (myTurn && applyFlag) { AddStack(-1); }
     }
 
     public override void AtTheEnd()
