@@ -14,6 +14,12 @@ public class MouseOverUI : MonoBehaviour
     Vector3 offset;
     Vector3 pos;
 
+    public static MouseOverUI inst;
+    private void Awake()
+    {
+        inst = this;
+    }
+
     public void SetUI(string s, bool rightClickGuide = false)
     {
         text.text = "";

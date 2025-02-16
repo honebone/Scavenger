@@ -9,11 +9,16 @@ public class TtileSceneManager : MonoBehaviour
 {
     [SerializeField] CanvasGroup textMask;
     [SerializeField] Light2D sunLight;
-    [SerializeField] Toggle skipTutorial;
+    [SerializeField] AudioClip BGM;
+    [SerializeField] GameObject settingsPanel;
+    //[SerializeField] Toggle skipTutorial;
 
     public static bool skipTutorial_bool;
 
+    [Header("Settings_[key] Ç∆Ç»ÇÈ")] public List<SettingManager.SettingParams> settings;
+
     GameManager gameManager;
+    SoundManager soundManager;
 
     bool canStart;
 
@@ -26,19 +31,52 @@ public class TtileSceneManager : MonoBehaviour
     private void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
-        skipTutorial_bool = PlayerPrefs.GetInt("Setting_skipTutorial", 0) == 1;
-        skipTutorial.isOn = skipTutorial_bool;
-        //gameManager.SetTutorialMode(true);
+        soundManager = SoundManager.instance;
+        //skipTutorial_bool = PlayerPrefs.GetInt("Setting_skipTutorial", 0) == 1;
+        //skipTutorial.isOn = skipTutorial_bool;
+
+        foreach (var setting in settings)
+        {
+            setting.setting.Init(setting.key, SetValue);
+        }
+
+        soundManager.SetBGMVolume(settings[0].setting.GetValue());
+        soundManager.SetSEVolume(settings[1].setting.GetValue());
+        skipTutorial_bool = settings[2].setting.GetValue() == 1;
+        Debug.Log($"skipTutorial is {skipTutorial_bool}");
+
+        soundManager.SetBGM_Normal(BGM);
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (canStart&&Input.GetMouseButtonDown(0))
-    //    {
-    //        StartCoroutine(StartExpedition());
-    //    }
-    //}
+    public void SetValue(float value, string key)
+    {
+        SettingManager.SettingParams setting = new SettingManager.SettingParams();
+        if (key == settings[0].key)//BGMVolume
+        {
+            setting = settings[0];
+            soundManager.SetBGMVolume(value);
+        }
+        else if (key == settings[1].key)//SEVolume
+        {
+            setting = settings[1];
+            soundManager.SetSEVolume(value);
+        }
+        else if (key == settings[2].key)//skipTutorial
+        {
+            setting = settings[2];
+            skipTutorial_bool = value == 1;
+            Debug.Log($"skipTutorial is {skipTutorial_bool}");
+        }
+
+
+        else
+        {
+            Debug.Log("ê›íËÇÃkeyÇ™ä‘à·Ç¡ÇƒÇ¢Ç‹Ç∑");
+            return;
+        }
+
+        PlayerPrefs.SetFloat($"Settings_{setting.key}", value);
+    }
 
     IEnumerator StartExpedition()
     {
@@ -49,14 +87,17 @@ public class TtileSceneManager : MonoBehaviour
             sunLight.intensity -=0.126f;
         }
         yield return new WaitForSeconds(1f);
-        gameManager.GoToExpeditionScene(!skipTutorial.isOn);
+        gameManager.GoToExpeditionScene(!skipTutorial_bool);
     }
 
-    public void ToggleTutorial() { PlayerPrefs.SetInt("Setting_skipTutorial", (skipTutorial.isOn) ? 1 : 0); }
+    //public void ToggleTutorial() { PlayerPrefs.SetInt("Setting_skipTutorial", (skipTutorial.isOn) ? 1 : 0); }
     public void StartGame()
     {
         if (canStart)
         {
+            settingsPanel.SetActive(false);
+            soundManager.StopBGMs();
+            PlayerPrefs.Save();
             canStart = false;
             StartCoroutine(StartExpedition());
         }

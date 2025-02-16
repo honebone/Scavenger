@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Battle_TurnOrderIcon : MonoBehaviour
 {
     [SerializeField]
     Image charaSprite;
-    [SerializeField]
-    Image sign;
+    //[SerializeField]
+    //Image sign;
     [SerializeField]
     Image frame;
 
@@ -18,17 +19,21 @@ public class Battle_TurnOrderIcon : MonoBehaviour
     Sprite[] signIcons;
 
     Character character;
-    //bool omenSet;
-    //Ability.AbilityStatus omen;
+
+    Tweener tweener;
+
     bool revealed;
     bool destroyed;
-    public void Init(Character chara,bool reveal) {
+    public void Init(Character chara, bool reveal)
+    {
         character = chara;
-        revealed = reveal;
-        if (revealed) { charaSprite.sprite = character.CharaStatus().spriteForUI; }
+        if (reveal)
+        {
+           Reveal();
+        }
         else
         {
-            charaSprite.sprite = unrevealedIcon;
+            charaSprite.enabled = false;
             frame.color = Color.grey;
         }
     }
@@ -44,9 +49,11 @@ public class Battle_TurnOrderIcon : MonoBehaviour
         if (!revealed&&character.CheckAlive())
         {
             revealed = true;
+            charaSprite.enabled = true;
             charaSprite.sprite = character.CharaStatus().spriteForUI;
-            frame.color = Color.white;
+            frame.color = !character.PlayerPos() ? Definer.colorRef.enemy : (character.CharaStatus().player) ? Definer.colorRef.player : Definer.colorRef.abilityColors[5];
             //if (omenSet) { sign.sprite = signIcons[(int)omen.abilityType]; }
+            if(tweener == null) { tweener = charaSprite.transform.DOLocalMoveX(0, 0.5f); }
         }
     }
     public void OnMouseDown()

@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 353983878476983547}
   - component: {fileID: 2739891163595929071}
   m_Layer: 5
-  m_Name: TurnOrderButton
+  m_Name: TurnOrderButton_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

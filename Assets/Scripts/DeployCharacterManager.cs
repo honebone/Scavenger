@@ -178,7 +178,7 @@ public class DeployCharacterManager : MonoBehaviour
             if (button.GetCharacterStatus().characterData != null) { count++; }
         }
         if (count > maxParty) { embarkText.text = string.Format("編成できるキャラクターは{0}体まで", maxParty).ColorStr(Color.red); }
-        else if (count == 0) { embarkText.text = "キャラを編成".ColorStr(Color.red); }
+        else if (count == 0) { embarkText.text = "キャラを編成(0/4)".ColorStr(Color.red); }
         else
         {
             canEmbark = true;

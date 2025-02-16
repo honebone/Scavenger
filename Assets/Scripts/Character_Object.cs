@@ -54,6 +54,7 @@ public class Character_Object : MonoBehaviour
     [SerializeField] float actAnim_duration;
 
     Sequence DMGAnim;
+    Tweener moveAnim;
 
     Character character;
     CharactersManager charactersManager;
@@ -216,7 +217,9 @@ public class Character_Object : MonoBehaviour
     Coroutine move;
     public void MoveStart(int pos)
     {
-       move= StartCoroutine(Move( pos));
+       //move= StartCoroutine(Move( pos));
+        if (moveAnim != null) { moveAnim.Kill(true); }
+        moveAnim = transform.DOMove(charactersManager.GetCharacterWorldPos(pos), 0.3f);
     }
     public void StopMove(int pos)
     {

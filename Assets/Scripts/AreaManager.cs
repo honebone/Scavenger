@@ -190,7 +190,16 @@ public class AreaManager : MonoBehaviour
 
         for (int j = 2; j < areaLength - 2; j++)//2`(length-3)‘w–Ú‚Ü‚Å
         {
-            for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }
+            if (areaData.halfway != null && j == Mathf.CeilToInt(areaLength / 2f))
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    layer[i].straight = 2;
+                    layer[i].SetRoomEvent(areaData.halfway);
+                }
+            }
+            else { for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); } }
+            //for (int i = 0; i < 5; i++) { layer[i] = SetRoom(true); }
             layer[0].down = -1;
             layer[4].up = -1;
             SetLayer();

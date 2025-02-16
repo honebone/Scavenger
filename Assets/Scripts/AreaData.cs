@@ -21,6 +21,7 @@ public class AreaData : ScriptableObject
     public AudioClip BGM;
     public List<AreaManager.Area_RoomEvent> roomEvents;
     public RoomEventData start;
+    public RoomEventData halfway;
     public RoomEventData boss;
     public RoomEventData endArea;
     public List<AreaManager.EnemySet> normalBattlePool;

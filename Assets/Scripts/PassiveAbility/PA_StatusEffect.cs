@@ -129,7 +129,7 @@ public class PA_StatusEffect : PassiveAbility
         }
         else { StEStatus.stack = Mathf.Clamp(StEStatus.stack + stack, 0, StEStatus.maxStack); }
 
-        if (note)
+        if (note && StEStatus.stack > 0)
         {
             character.GetTargetButton().SetDamageText(string.Format("{0}{1}", StEStatus.StEName, (StEStatus.stack - prevStack).GetValueWithSign()), Definer.colorRef.failed_unavailable);
             infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", character.CharaStatus().charaName, GetPAName(), (StEStatus.stack - prevStack).GetValueWithSign()));

@@ -84,11 +84,18 @@ public class BattleManager : MonoBehaviour
     /// <summary>nextRoundButton‚ð‰Ÿ‚¹‚é‚©‚Ç‚¤‚©</summary>
     //bool roundEnd;
 
+    public static BattleManager inst;
+
     public static bool inBattle;
     public static bool inRound;
     public static bool selectingAbility;
     public static bool selectingTarget;
     Ability selectedAbility;
+
+    private void Awake()
+    {
+        inst = this;
+    }
     private void Start()
     {
         charactersManager = FindObjectOfType<CharactersManager>();
@@ -584,7 +591,7 @@ public class BattleManager : MonoBehaviour
         }
 
         if (fieldEffect != null) { fieldEffect.OnRoundEnd(); }
-        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        foreach (Character character in new List<Character>(charactersManager.GetExistingCharacters_All()))
         {
             character.OnRoundEnd();
         }
@@ -733,6 +740,11 @@ public class BattleManager : MonoBehaviour
     }
 
     public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }
+
+    //===============================================================[Settings]=================================================================
+    public static bool displayInfoOnTS;
+
+    public void Settings_DisplayInfoOnTS(bool value) { displayInfoOnTS = value; }
 
     public void StartTutorial_Ability() { tutorialManager.SetTutorial(tutorial_ability); }
     public void StartTutorial_Corpse() { tutorialManager.SetTutorial(tutorial_corpse); }

@@ -562,6 +562,7 @@ public class ExpeditionManager : MonoBehaviour
 
     public void OnEndBattle()
     {
+       if(setting_ResetPos) charactersManager.ResetPlayerPos();
         soundManager.PlayBGM_Normal();
         if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
         //supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
@@ -627,6 +628,9 @@ public class ExpeditionManager : MonoBehaviour
     }
     public void StartTutorial_Personality() { tutorialManager.SetTutorial(tutorial_personality); }
 
+    //====================================[Settings]========================================================
+    public static bool setting_ResetPos;
+    public void Setting_ResetPos(bool value) { setting_ResetPos = value; }
 
     public PartyStatus GetPartyStatus() { return partyStatus; }
     public Map_RoomButton GetRoomButton(Vector2Int pos) { return layers[pos.x].GetRoomButton(pos.y); }

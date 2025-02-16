@@ -84,6 +84,7 @@ public class Character : MonoBehaviour
         public float debuffRes;
 
         public int position;
+        public int position_battleStart;
 
         public int HP;
         public int shield;
@@ -959,7 +960,7 @@ public class Character : MonoBehaviour
             {
                 if (charaStatus.playable)
                 {
-                    DisplayInfo();
+                    if (BattleManager.displayInfoOnTS) DisplayInfo();
                     battleManager.SetSelectingAbility(true);
                     battleManager.StartTutorial_Ability();
                 }
@@ -1201,9 +1202,16 @@ public class Character : MonoBehaviour
 
     public void AddTurn(int turns)
     {
-        battleManager.AddTurn(this, false, turns);
-        targetButton.SetDamageText("追加ターン", Definer.colorRef.emphasize);
-        charaObj.AddTurnIcons(turns);
+        if (BattleManager.inRound)
+        {
+            battleManager.AddTurn(this, false, turns);
+            targetButton.SetDamageText("追加ターン", Definer.colorRef.emphasize);
+            charaObj.AddTurnIcons(turns);
+        }
+        else
+        {
+            infoText.AddWarningText("ラウンド中でないタイミングでターンの追加処理が行われました");
+        }
     }
 
     //==================================================<<ステータス変更系>>===========================================================
@@ -1401,11 +1409,22 @@ public class Character : MonoBehaviour
     public void ChangePos(int moveTo)
     {
         infoText.AddLogText(string.Format("{0}はポジション{1}から{2}へ移動した", charaStatus.charaName, charaStatus.position.PosIntToStr(), moveTo.PosIntToStr()));
-        charaObj.StopMove(charaStatus.position);
+        //charaObj.StopMove(charaStatus.position);
         charaStatus.position = moveTo;
         targetButton = charactersManager.GetTargetButton(charaStatus.position);
         targetButton.SetCharacter(this);
         charactersManager.SortExistingCharacters();
+
+        charaObj.MoveStart(charaStatus.position);
+    }
+
+    public void ResetPos()
+    {
+        charaStatus.position = charaStatus.position_battleStart;
+        charaStatus.position_battleStart = -1;
+
+        targetButton = charactersManager.GetTargetButton(charaStatus.position);
+        targetButton.SetCharacter(this);
 
         charaObj.MoveStart(charaStatus.position);
     }
@@ -1575,6 +1594,11 @@ public class Character : MonoBehaviour
             pa.GetComponent<PA_StatusEffect>().DestroyIcon();
         }
 
+        if (charaStatus.player)
+        {
+            tutorialManager.SetTutorial("playerDeath");
+        }
+
         if (charaStatus.corpse != null)
         {
             if (charaStatus.position < 9) { charactersManager.SpawnPlayer(charaStatus.corpse, charaStatus.position, charaStatus.level); }
@@ -1632,6 +1656,7 @@ public class Character : MonoBehaviour
     }
     public void OnBattleStart()
     {
+        charaStatus.position_battleStart = charaStatus.position;
         for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {
             //Ability_AddRemain(charaStatus.abilitiesStatus[i].remainOnBattleStart, i);
@@ -1668,7 +1693,12 @@ public class Character : MonoBehaviour
     }
     public void OnRoundEnd()
     {
-        if (charaStatus.lifetime > 0) { DecreaseHP(Mathf.CeilToInt(1f * charaStatus.BaseHP() / charaStatus.lifetime)); }
+        if (charaStatus.lifetime > 0)
+        {
+
+            DecreaseHP(Mathf.CeilToInt(1f * charaStatus.BaseHP() / charaStatus.lifetime));
+            tutorialManager.SetTutorial("lifetime");
+        }
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundEnd(); }
         RemovePA_Execute();
     }

@@ -1392,6 +1392,7 @@ public class Action : MonoBehaviour
                     {
                         target.AbilityRemain(remainControll);
                     }
+
                     if (actionsStatus[i].exTurn > 0)
                     {
                         target.AddTurn(actionsStatus[i].exTurn);
@@ -1444,6 +1445,7 @@ public class Action : MonoBehaviour
                     if (actionStatus.actionTargetsInt[i] < 9) { summoned = characterManager.SpawnPlayer(summonCharaData, targetPos, ownerStatus.level, summonStatusParams); }
                     else { summoned = characterManager.SpawnEnemy(summonCharaData, targetPos, false, ownerStatus.level, summonStatusParams); }
                     summoned.OnSummoned(onSummonParams);
+                    if (BattleManager.inRound) { summoned.AddTurn(1); }
                     onSummonParamsList.Add(onSummonParams);
                 }
                 else { infoText.AddDebugText("¢Š«”\—Í‚Ì‘ÅÁ‚µ"); }

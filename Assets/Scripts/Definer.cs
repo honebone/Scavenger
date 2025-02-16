@@ -9,6 +9,8 @@ public class Definer : MonoBehaviour
     public class ColorRef
     {
         public Color debug;
+        public Color player;
+        public Color enemy;
         /// <summary>0:other 1:attack 2:heal 3:buff 4:debuff 5:summon</summary>
         public Color[] abilityColors;
         public Color[] personalityColors;
@@ -72,6 +74,7 @@ public class Definer : MonoBehaviour
     }
 
     public static Character.CharacterStatus nonCharaStatus;
+    public static Action.ActionStatus actionRef;
     public static ColorRef colorRef;
     public static SoundRef soundRef;
     public static VisualEffectRef VERef;
@@ -80,6 +83,7 @@ public class Definer : MonoBehaviour
     public static GameObject statusEffectIcon;
     public static GameObject positionEffectIcon;
     [SerializeField] CharacterData nonCharacterData;
+    [SerializeField] Action.ActionStatus actionRef_Inspector;
     [SerializeField]
     ColorRef colorRef_Inspector;
     [SerializeField]
@@ -333,6 +337,8 @@ public class Definer : MonoBehaviour
     {
         nonCharaStatus = new Character.CharacterStatus();
         nonCharaStatus.Init(nonCharacterData);
+
+        actionRef = actionRef_Inspector;
 
         colorRef = colorRef_Inspector;
         soundRef = soundRef_Inspector;

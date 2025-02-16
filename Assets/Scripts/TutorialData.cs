@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/TutorialData")]
 public class TutorialData : ScriptableObject
 {
+    public string key;
     [System.Serializable]
     public class Tutorial
     {

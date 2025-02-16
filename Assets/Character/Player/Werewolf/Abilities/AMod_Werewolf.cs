@@ -9,11 +9,11 @@ public class AMod_Werewolf : ActionMod
     {
         if (statusRef.DoesAttack() && statusRef.actionOwner.CharaStatus().GetHPPercent() <= THPercent)
         {
+            ActionModStatus mod = actionModStatus;
+            float ratio = THPercent - statusRef.actionOwner.CharaStatus().GetHPPercent();
+            mod.drain = ratio;
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
-                ActionModStatus mod = actionModStatus;
-                float ratio = THPercent - statusRef.actionOwner.CharaStatus().GetHPPercent();
-                mod.drain = ratio;
                 ExpeditionRef.infoText.AddDebugText($"drain:{mod.drain}");
                 actionsStatus[i] = actionsStatus[i].Modify(mod);
             }

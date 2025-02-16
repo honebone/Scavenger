@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
+  m_Name: RE_FarewellGift
+  m_EditorClassIdentifier: 
+  eventName: "\u991E\u5225\u306E\u54C1"
+  eventInfo: "\u5F37\u529B\u306A\u88C5\u5099\u54C1\u306E\u5165\u624B"
+  noBlind: 1
+  randomEvent: 0
+  debug: 0
+  roomEventManager:
+  - {fileID: 4154373557521219498, guid: 0f20454bca560f148b98c313a988fd5f, type: 3}
+  eventIcon: {fileID: 21300000, guid: c3b7dfaf45e7e34459f09350be7faf69, type: 3}

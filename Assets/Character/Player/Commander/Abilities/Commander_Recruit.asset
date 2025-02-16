@@ -152,19 +152,19 @@ MonoBehaviour:
     summonChanceWeight:
     - 1
     summonStatusInherit:
-      maxHP: 20
-      ATK: 50
-      INT: 50
-      CRITC_TH: 5
-      CRITC: 100
-      CRITD_TH: 150
-      CRITD: 100
-      EVD_TH: 2
-      EVD: 250
-      ACC_TH: 100
-      ACC: 100
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
       ACT_TH: 0
-      ACT: 50
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
     moveForword: 0

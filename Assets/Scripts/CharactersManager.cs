@@ -537,6 +537,18 @@ public class CharactersManager : MonoBehaviour
         return true;
     }
 
+    public void ResetPlayerPos()
+    {
+        foreach (Character chara in existingCharacters)
+        {
+            if (!chara.CharaStatus().player) { infoText.AddErrorText("戦闘終了時にプレイヤー以外のキャラがいます"); }
+        }
+        foreach (Character character in GetExistingCharacters_All()) { character.GetTargetButton().ResetCharacter(); }
+        foreach (Character character in GetExistingCharacters_All()) { character.ResetPos(); }
+
+        SortExistingCharacters();
+    }
+
 
 
     public void ResetAllTargetIcons()
