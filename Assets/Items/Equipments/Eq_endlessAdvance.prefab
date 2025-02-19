@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 488a638ec3b8e8841823eb6ad0f378de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_endlessAdvance
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: ee4b521c8e76a3342bcbdef8b63c591b, type: 2}
     info_start: 
@@ -55,10 +57,13 @@ MonoBehaviour:
     statusMod:
       LVL: 0
       maxHP_mul: 0
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
       exDMG_mul: 0
       CRITC: 0
       CRITD: 0
@@ -99,6 +104,7 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -106,6 +112,29 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
   DMGPerCount: 20
 --- !u!212 &2102424110011888310
 SpriteRenderer:

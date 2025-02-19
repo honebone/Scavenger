@@ -45,18 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5101f8930e93ec14591718a600dbddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: per_Forrest_Leaf
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u68EE\u306E\u6075\u307F\uFF1A\u63FA\u308C\u308B\u6728\u306E\u8449"
     personalityType: 6
   statusMod:
+    LVL: 0
     maxHP_mul: -20
+    maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
     ATK_mul: 0
+    ATK_int: 0
     INT_mul: 0
+    INT_int: 0
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0

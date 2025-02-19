@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77dd54f8fbdb36b4085a4a7d784a2b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_QuiverOfObsession
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 3a5384d72efe8ed4ea1aafa66254a29f, type: 2}
     info_start: "\u81EA\u8EAB\u306E\u653B\u6483\u304C\u30AD\u30E3\u30E91\u4F53\u306B\u547D\u4E2D\u3059\u308B\u305F\u3073\u3001\u81EA\u8EAB\u306EACC+2\n15\u56DE\u307E\u3067\u7D2F\u7A4D\n\n100\u3092\u8D85\u3048\u305FACC1\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8+0.5\uFF05(\u6700\u5927+100\uFF05)"
@@ -55,10 +57,13 @@ MonoBehaviour:
     statusMod:
       LVL: 0
       maxHP_mul: 0
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
       exDMG_mul: 0
       CRITC: 0
       CRITD: 0
@@ -103,6 +108,7 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -110,6 +116,29 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

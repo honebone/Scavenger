@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ce3ef193ab329418d6b2280aaad207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_warrior
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u6012\u308A"
     StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u81EA\u8EAB\u306EATK+15\uFF05\n\u56DE\u5FA9\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
@@ -54,8 +59,12 @@ MonoBehaviour:
     merge: 1
     refValue: 0
     undeletable: 1
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
   ATKPerStack: 15
 --- !u!212 &6391350165293048886
 SpriteRenderer:

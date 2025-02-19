@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58d56a87cf35f847a01f51f137872bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_TalismanOfResonance
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: fabdf2703504b4546a52f38fa2827293, type: 2}
     info_start: 
@@ -55,10 +57,13 @@ MonoBehaviour:
     statusMod:
       LVL: 0
       maxHP_mul: 10
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
       exDMG_mul: 0
       CRITC: 0
       CRITD: 0
@@ -103,6 +108,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -169,8 +175,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -184,6 +205,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}

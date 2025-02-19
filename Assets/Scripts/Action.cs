@@ -204,6 +204,8 @@ public class Action : MonoBehaviour
         [Header("\n\n移動")]
         public float moveChance;
         public bool guaranteedMove;
+        public int moveRandomDir;
+        [Header("randomDirが1以上のとき、以下の4つはboolとして働く")]
         public int moveForword;
         public int moveUpper;
         public int moveLower;
@@ -445,10 +447,27 @@ public class Action : MonoBehaviour
             {
                 if (guaranteedMove) { s += "・"; }
                 else { s += string.Format("・{0}％の確率で", moveChance); }
-                if (moveForword > 0) { s += string.Format("{0}マス前進\n", moveForword); }
-                if (moveUpper > 0) { s += string.Format("{0}マス上昇\n", moveUpper); }
-                if (moveLower > 0) { s += string.Format("{0}マス下降\n", moveLower); }
-                if (moveBackword > 0) { s += string.Format("{0}マス後退\n", moveBackword); }
+                if (moveRandomDir > 0)
+                {
+                    string dir = "";
+                    if(moveForword > 0 && moveUpper > 0 && moveLower > 0 && moveBackword > 0) { s += $"ランダムな方向に{moveRandomDir}マス移動\n"; }
+                    else
+                    {
+                        if (moveForword > 0) { dir += $"{(dir == "" ? "" : ",")}前"; }
+                        if (moveUpper > 0) { dir += $"{(dir == "" ? "" : ",")}上"; }
+                        if (moveLower > 0) { dir += $"{(dir == "" ? "" : ",")}下"; }
+                        if (moveBackword > 0) { dir += $"{(dir == "" ? "" : ",")}後ろ"; }
+                        s += $"ランダムな{dir}方向に{moveRandomDir}マス移動\n";
+                    }                                       
+                }
+                else
+                {
+                    if (moveForword > 0) { s += string.Format("{0}マス前進\n", moveForword); }
+                    if (moveUpper > 0) { s += string.Format("{0}マス上昇\n", moveUpper); }
+                    if (moveLower > 0) { s += string.Format("{0}マス下降\n", moveLower); }
+                    if (moveBackword > 0) { s += string.Format("{0}マス後退\n", moveBackword); }
+                }
+                
             }
             CheckNewBlock();
 
@@ -1305,28 +1324,51 @@ public class Action : MonoBehaviour
                             int moveDir = -1;
                             int moveToPos;
                             List<int> movableRanges = targetStatus.position.GetMovableRanges();
-                            if (actionsStatus[i].moveBackword > 0)
+                            if (actionsStatus[i].moveRandomDir > 0)
                             {
-                                moveRange = actionsStatus[i].moveBackword;
-                                if (targetStatus.position < 9) { moveDir = 3; }
-                                else { moveDir = 0; }
+                                List<int> movePool = new List<int>();
+                                if (actionsStatus[i].moveBackword > 0)
+                                {
+                                    if (targetStatus.position < 9 && movableRanges[3] > 0) { movePool.Add(3); }
+                                    else if (targetStatus.position >= 9 && movableRanges[0] > 0) { movePool.Add(0); }
+                                }
+                                if (actionsStatus[i].moveUpper > 0 && movableRanges[1] > 0) { movePool.Add(1); }
+                                if (actionsStatus[i].moveForword > 0)
+                                {
+                                    if (targetStatus.position < 9 && movableRanges[0] > 0) { movePool.Add(0); }
+                                    else if (targetStatus.position >= 9 && movableRanges[3] > 0) { movePool.Add(3); }
+                                }
+                                if (actionsStatus[i].moveLower > 0 && movableRanges[2] > 0) { movePool.Add(2); }
+
+                                moveDir = movePool.Choice();
+                                moveRange = actionsStatus[i].moveRandomDir;
                             }
-                            else if (actionsStatus[i].moveUpper > 0)
+                            else
                             {
-                                moveRange = actionsStatus[i].moveUpper;
-                                moveDir = 1;
+                                if (actionsStatus[i].moveBackword > 0)
+                                {
+                                    moveRange = actionsStatus[i].moveBackword;
+                                    if (targetStatus.position < 9) { moveDir = 3; }
+                                    else { moveDir = 0; }
+                                }
+                                else if (actionsStatus[i].moveUpper > 0)
+                                {
+                                    moveRange = actionsStatus[i].moveUpper;
+                                    moveDir = 1;
+                                }
+                                else if (actionsStatus[i].moveForword > 0)
+                                {
+                                    moveRange = actionsStatus[i].moveForword;
+                                    if (targetStatus.position < 9) { moveDir = 0; }
+                                    else { moveDir = 3; }
+                                }
+                                else if (actionsStatus[i].moveLower > 0)
+                                {
+                                    moveRange = actionsStatus[i].moveLower;
+                                    moveDir = 2;
+                                }
                             }
-                            else if (actionsStatus[i].moveForword > 0)
-                            {
-                                moveRange = actionsStatus[i].moveForword;
-                                if (targetStatus.position < 9) { moveDir = 0; }
-                                else { moveDir = 3; }
-                            }
-                            else if (actionsStatus[i].moveLower > 0)
-                            {
-                                moveRange = actionsStatus[i].moveLower;
-                                moveDir = 2;
-                            }
+                            
                             //test += string.Format("移動方向:{0} 移動予定距離:{1} 移動可能距離:{2} ", moveDir, moveRange, movableRanges[moveDir]);
 
                             moveRange = Mathf.Min(moveRange, movableRanges[moveDir]);

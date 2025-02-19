@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edf373bf9f1a9547a24cf1ad84cd005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_rgNight
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u69CB\u3048"
     StEInfo: "\u6B21\u306E\u884C\u52D5\u3067\u30F4\u30A9\u30FC\u30D1\u30EB\u30B9\u30C8\u30E9\u30A4\u30AF\u3092\u4F7F\u7528\u3059\u308B\n\u7D2F\u8A08\u3067maxHP\u306E50\uFF05\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u308B\u3068\u6D88\u53BB"
@@ -54,8 +59,12 @@ MonoBehaviour:
     merge: 1
     refValue: 0
     undeletable: 1
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
   goalPercent: 50
 --- !u!212 &6391350165293048886
 SpriteRenderer:

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e529c6dad2bb5eb4487e1a3b98d8fd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_debuffResU
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

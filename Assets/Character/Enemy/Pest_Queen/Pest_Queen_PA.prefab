@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 535c4db5429ed2c43b8bc835d37ae839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: perU_E_pestQueen
   PAInfo_start: "\u81EA\u8EAB\u3067\u3082\u969C\u5BB3\u7269\u3067\u3082\u306A\u3044\u5473\u65B9\u304C\u6B7B\u4EA1\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B\n\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30AB\u30A6\u30F3\u30C84\u306B\u3064\u304D\u8FFD\u52A0\u30BF\u30FC\u30F3\u30921\u5F97\u3066\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u6D88\u8CBB\u3059\u308B"
   skipGetInfo: 1
   PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u5BB3\u866B\u306E\u5973\u738B"
     personalityType: 1
@@ -73,11 +75,14 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -85,6 +90,7 @@ MonoBehaviour:
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
     exTurn: 0
     kill: 0
@@ -139,8 +145,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -154,6 +175,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}

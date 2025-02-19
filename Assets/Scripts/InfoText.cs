@@ -21,7 +21,7 @@ public class InfoText : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI logText;
 
-   // Character displayingChara;
+    // Character displayingChara;
 
     CharactersManager charactersManager;
     TutorialManager tutorialManager;
@@ -46,7 +46,7 @@ public class InfoText : MonoBehaviour
         mouseOver = ExpeditionRef.mouseover;
     }
 
-    public　void SetText(string name,string info)
+    public void SetText(string name, string info)
     {
         //if (displayingChara != null)
         //{
@@ -130,7 +130,7 @@ public class InfoText : MonoBehaviour
         logCount++;
         if (logCount >= maxLogs)
         {
-            for(int i = 0; i < deleteLogs; i++)
+            for (int i = 0; i < deleteLogs; i++)
             {
                 logs.RemoveAt(0);
             }
@@ -138,9 +138,9 @@ public class InfoText : MonoBehaviour
         }
 
         string totalLog = "";
-        foreach(string l in logs)
+        foreach (string l in logs)
         {
-            totalLog += "\n"+l;
+            totalLog += "\n" + l;
         }
 
         logText.text = totalLog;
@@ -168,10 +168,9 @@ public class InfoText : MonoBehaviour
     {
         SwitchToLog();
         //nameText.text = "ログ";
-        AddLogText(string.Format("\n##warning!：{0}##", errorLog).ColorStr(Color.yellow));
+        string message = "深刻なエラーではありませんが、想定されていない挙動です\n";
+        message += "この警告文をコメント欄で報告していただけると非常にありがたいです";
+        AddLogText(string.Format("\n##warning!：{0}\n{1}##", errorLog, message).ColorStr(Color.yellow));
         print(errorLog);
     }
-
-
-    
 }

@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becf968cfd98c9f4990b2cf07f8b2a0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: perU_E_Pest
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u904E\u5270\u5206\u6CCC"
     personalityType: 1
@@ -76,6 +78,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -156,8 +159,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -171,6 +189,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
@@ -203,6 +222,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -269,8 +289,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -284,6 +319,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
@@ -316,6 +352,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -389,8 +426,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -404,6 +456,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}

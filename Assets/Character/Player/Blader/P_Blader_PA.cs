@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class P_Blader_PA : PA_Personality
 {
+    [SerializeField] int attackChance_increased;
     [SerializeField] int attackChance;
     [SerializeField] int danceOnMovedAll;
     [SerializeField] Action.ActionStatus attack;
@@ -18,14 +19,15 @@ public class P_Blader_PA : PA_Personality
 
     public override void OnMoved(Action.OnMoveParams onMoveParams)
     {
-        if (!movedDir[onMoveParams.dir] || attackChance.Dice())
+        if ((movedDir[onMoveParams.dir] ? attackChance : attackChance_increased).Dice())
         {
-            if (!movedDir[onMoveParams.dir])
-            {
-                movedDir[onMoveParams.dir] = true;
-                Log($"{dirName[onMoveParams.dir]}ï˚å¸íBê¨");
-            }
             Dance();
+        }
+
+        if (!movedDir[onMoveParams.dir])
+        {
+            movedDir[onMoveParams.dir] = true;
+            Log($"{dirName[onMoveParams.dir]}ï˚å¸íBê¨");
         }
     }
 

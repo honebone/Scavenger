@@ -45,20 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650cf6c2a398aad45bf42c0bb0f245e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_ratking_arm
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u8155"
     StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\nATK+10\uFF05\nACT+2"
     StEIcon: {fileID: 21300000, guid: 3e4a967ddb26ef94d9b79159e89b3ba8, type: 3}
     StEType: 4
-    scaleStackByLVL: 0
     maxStack: 0
     merge: 1
     refValue: 0
     undeletable: 1
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
   ATKPerStack: 10
   ACTPerStack: 2
 --- !u!212 &6391350165293048886

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9a9148d90d5e564eb03c15150b4cd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_RHealU
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

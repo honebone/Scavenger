@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af872b19dabd6cc438f5d5e48b38c034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_slime_gigantic
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u5DE8\u5927\u5316"
     StEInfo: "maxHP,ATK+33\uFF05"
@@ -53,8 +58,13 @@ MonoBehaviour:
     maxStack: 0
     merge: 0
     refValue: 0
+    undeletable: 0
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
   value: 33
 --- !u!212 &7584252081864818493
 SpriteRenderer:

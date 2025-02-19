@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62628413d671de84f9d879944a9da783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_pest
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u904E\u5270\u5206\u6CCC"
     StEInfo: "\u5929\u6575\u306E\u5B58\u5728\u3092\u691C\u77E5\u3057\u305F\uFF01"

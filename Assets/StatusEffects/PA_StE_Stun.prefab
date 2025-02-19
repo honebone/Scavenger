@@ -45,90 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46edb07164f709e40a050a2fc7134281, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remove:
-    actionName: 
-    conditionInfo: 
-    targetInfo: 
-    actionInfo: 
-    sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      front: 0
-      mid: 0
-      back: 0
-      characterTags: 
-      StE: []
-      PE: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
-    ATKMod_min: 0
-    ATKMod_max: 0
-    exDMG_mul: 0
-    exDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams: []
-    applyPEParams: []
-    removeStEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    moveChance: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    abilityRemainControlls: []
-    removeStE_asStE: 0
-    removeStE_bySelf:
-      removeStE: {fileID: 0}
-      removeAll: 0
-      addAmount: 0
-    abilityEffect: 0
-    abilityType: 0
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
-    spriteIndex: 0
-    actionOwner: {fileID: 0}
-    actionTargetsInt: 
+  fileName: StE_stun
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u30B9\u30BF\u30F3"
     StEInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u3067\u884C\u52D5\u304C\u3067\u304D\u306A\u304F\u306A\u308B\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
@@ -137,8 +58,13 @@ MonoBehaviour:
     maxStack: 0
     merge: 1
     refValue: 0
+    undeletable: 0
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

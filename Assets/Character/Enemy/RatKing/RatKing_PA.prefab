@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 955cdeaf1554abb4b90e44e5727e126c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: perU_E_ratKing
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: "\u81EA\u8EAB\u304CmaxHP\u306E10\uFF05\u5206\u306EHP\u3092\u5931\u3046\u305F\u3073\u3001\n\u81EA\u8EAB\u306B\u5668\u5B98(\u8155\u3001\u982D\u3001\u5185\u81D3\u306E\u3044\u305A\u308C\u304B)\u304C\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u308B\u306A\u3089\u3001\u305D\u308C\u3089\u306E\u3046\u3061\u30E9\u30F3\u30C0\u30E0\u306B1\u30B9\u30BF\u30C3\u30AF\u6E1B\u5C11\u3055\u305B\u308B\n\n\u305D\u308C\u306B\u3088\u3063\u3066\u5931\u3063\u305F\u5668\u5B98\u306B\u5BFE\u5FDC\u3057\u305F\u8089\u7247\u3092\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306B\u53EC\u559A\u3059\u308B"
+  PATags: 
   personalityStatus:
     personalityName: "\u7E2B\u3044\u3064\u3051\u3089\u308C\u305F\u4F53"
     personalityType: 1
@@ -72,22 +75,31 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -96,7 +108,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -110,6 +123,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -127,29 +142,52 @@ MonoBehaviour:
       applyChance: 0
       stack: 5
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: cd34b66024dc78342b7fd0d756b368ac, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 3
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: 69cdb4636ffde444cb563a1b8aa4aa00, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 2
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -158,9 +196,11 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
@@ -186,22 +226,31 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -210,7 +259,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -224,6 +274,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -240,16 +292,33 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 1
     summonChara: []
     summonChanceWeight:
     - 1
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -258,9 +327,11 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
@@ -286,22 +357,31 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -310,7 +390,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -324,6 +405,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -340,15 +423,32 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
     freeAction: 0
@@ -357,9 +457,11 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
@@ -372,10 +474,14 @@ MonoBehaviour:
     front: 1
     mid: 1
     back: 1
+    excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

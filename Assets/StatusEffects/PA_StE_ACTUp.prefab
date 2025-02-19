@@ -45,6 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462ae533180dbe04c8a2b2ede7badc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_ACTU
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "ACT\u4E0A\u6607"
     StEInfo: "\u6B21\u306E\u30BF\u30FC\u30F3\u9806\u6C7A\u5B9A\u6642\u307E\u3067\u3001\u81EA\u8EAB\u306EACT+X"
@@ -54,8 +59,12 @@ MonoBehaviour:
     merge: 0
     refValue: 1
     undeletable: 0
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
 --- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0

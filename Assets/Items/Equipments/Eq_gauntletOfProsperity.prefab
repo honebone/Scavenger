@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef22d9e33f21aa45af34d0c28a961e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_gauntletOfProsperity
   PAInfo_start: "\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B(\u6700\u592710)\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001maxHP+10\uFF05"
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: da1e6f6741ab8bc4da7e836e9e916dc6, type: 2}
     info_start: 
@@ -55,10 +57,13 @@ MonoBehaviour:
     statusMod:
       LVL: 0
       maxHP_mul: 0
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
       exDMG_mul: 0
       CRITC: 0
       CRITD: 0
@@ -102,6 +107,7 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -109,6 +115,29 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

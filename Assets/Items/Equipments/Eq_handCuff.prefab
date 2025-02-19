@@ -45,16 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_handCuff
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: ded56d7ee7905e34b9f1e2fa39ceafab, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
+      LVL: 0
       maxHP_mul: 15
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -71,6 +81,7 @@ MonoBehaviour:
         exChance: 10
         exStack: 0
         exValue: 0
+        exDMGPerTurn: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

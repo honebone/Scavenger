@@ -21,6 +21,7 @@ MonoBehaviour:
   activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 0
@@ -36,9 +37,14 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -70,31 +76,46 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 0
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
     ATKMod_min: 60
     ATKMod_max: 80
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -103,6 +124,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -118,28 +141,94 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods:
+    - LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
+    - LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
-    actionTargetsInt: 0a000000
+    source: {fileID: 0}
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 0c000000
   - actionName: "\u53D7\u3051\u6D41\u3057"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -161,31 +250,46 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -194,6 +298,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -211,28 +317,52 @@ MonoBehaviour:
       applyChance: 0
       stack: 2
       value: 50
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
-    guaranteedMove: 0
+    guaranteedMove: 1
+    moveRandomDir: 1
     moveForword: 0
-    moveUpper: 0
-    moveLower: 0
+    moveUpper: 1
+    moveLower: 1
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
-    index: 0
+    index: 1
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8196811281692734092, guid: 44c1b7ebd31b42c498f379de004200f1, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 1
+    actionTargets:
+    - {fileID: 0}
     actionTargetsInt: 06000000

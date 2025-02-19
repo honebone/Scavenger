@@ -462,7 +462,7 @@ public class Character : MonoBehaviour
     protected List<PassiveAbility> PA_StE = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_Per = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_Eq = new List<PassiveAbility>();
-    List<PassiveAbility> deletePAs = new List<PassiveAbility>();
+    //List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
     ActionQueueManager actionQueue;
     BattleManager battleManager;
@@ -630,22 +630,22 @@ public class Character : MonoBehaviour
     }
     void RemovePA_Execute()
     {
-        foreach (PassiveAbility deletePA in deletePAs)
-        {
-            switch (deletePA.GetPAType())
-            {
-                case 0:
-                    PA_StE.Remove(deletePA);
-                    break;
-                case 1:
-                    PA_Per.Remove(deletePA);
-                    break;
-                case 2:
-                    PA_Eq.Remove(deletePA);
-                    break;
-            }
-        }
-        deletePAs.Clear();
+        //foreach (PassiveAbility deletePA in deletePAs)
+        //{
+        //    switch (deletePA.GetPAType())
+        //    {
+        //        case 0:
+        //            PA_StE.Remove(deletePA);
+        //            break;
+        //        case 1:
+        //            PA_Per.Remove(deletePA);
+        //            break;
+        //        case 2:
+        //            PA_Eq.Remove(deletePA);
+        //            break;
+        //    }
+        //}
+        //deletePAs.Clear();
     }
     public void ApplyStE(PA_StatusEffect.StatusEffectParams StEParams, int finalStack, int finalValue, Character applyer)
     {
@@ -818,6 +818,7 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility pa in PA_StE)
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.StEName) { return true; }
+            //if (pa.FileName() == fileName) { return true; }
         }
         return false;
     }

@@ -45,8 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77c225f3dd2910c4d83e145178aa857e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_werewolf_bloodThirst
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u8840\u72C2\u3044"
     StEInfo: "\u4EBA\u72FC\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u51FA\u8840\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483\u304C\u3001INT100\uFF05\u5206\u306E\u8FFD\u52A0\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u3001\u3053\u308C\u306E\u30B9\u30BF\u30C3\u30AF-1"
@@ -57,16 +60,22 @@ MonoBehaviour:
     refValue: 0
     undeletable: 1
     DoT: 0
+    regen: 0
     applyer: {fileID: 0}
     stack: 0
     value: 0
     DMGPerTurn: 0
   statusMod:
+    LVL: 0
     maxHP_mul: 0
+    maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
     ATK_mul: 0
+    ATK_int: 0
     INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
     CRITC: 0
     CRITD: 0
     EVD: 0
@@ -81,6 +90,7 @@ MonoBehaviour:
       exChance: 0
       exStack: 1
       exValue: 0
+      exDMGPerTurn: 0
     moveRes: 0
     debuffRes: 0
   actionModStatus:
@@ -109,6 +119,7 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -116,6 +127,29 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
   bleed: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
 --- !u!212 &7692293271465632286
 SpriteRenderer:

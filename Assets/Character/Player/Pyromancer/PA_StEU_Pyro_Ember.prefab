@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62628413d671de84f9d879944a9da783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_pyro_ember
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u706B\u7A2E"
     StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u706B\u50B7\u306E\u52B9\u679C\u91CF\u3092\u5897\u52A0\u3055\u305B\u308B"

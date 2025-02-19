@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_monocle
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: d5afa2c8ed9f3eb4a874fefe286601cb, type: 2}
     info_start: 
@@ -55,10 +57,13 @@ MonoBehaviour:
     statusMod:
       LVL: 0
       maxHP_mul: 0
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
       exDMG_mul: 0
       CRITC: 8
       CRITD: 0

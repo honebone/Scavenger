@@ -12469,6 +12469,7 @@ MonoBehaviour:
       ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -19299,6 +19300,7 @@ MonoBehaviour:
       ACT: 0
     moveChance: 200
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fadc971267f37484dbf53376164976eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_CRITDU
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

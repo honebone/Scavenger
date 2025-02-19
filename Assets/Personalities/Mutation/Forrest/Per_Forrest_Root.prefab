@@ -45,18 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc058cfbf9a5df04c9ebcf583e5a896a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: per_Forrest_Root
   PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\u3001PROT+20\u3001\u79FB\u52D5\u8010\u6027+25\uFF05\u3001\u30C7\u30D0\u30D5\u8010\u6027+50\uFF05\n\u81EA\u8EAB\u304C\u79FB\u52D5\u3057\u305F\u3068\u304D\u3001\u4E0A\u8A18\u52B9\u679C\u3092\u5931\u3044\u3001\u3055\u3089\u306BPROT-30\u3001\u79FB\u52D5\u8010\u6027-30\uFF05\u3001\u30C7\u30D0\u30D5\u8010\u6027-30\uFF05"
   skipGetInfo: 1
   PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u68EE\u306E\u6075\u307F\uFF1A\u6839\u6DF1\u3044\u610F\u601D"
     personalityType: 6
   statusMod1:
+    LVL: 0
     maxHP_mul: 0
+    maxHP_int: 0
     maxSAN_mul: 0
     PROT: 20
     ATK_mul: 0
+    ATK_int: 0
     INT_mul: 0
+    INT_int: 0
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
@@ -71,11 +77,15 @@ MonoBehaviour:
     moveRes: 25
     debuffRes: 50
   statusMod2:
+    LVL: 0
     maxHP_mul: 0
+    maxHP_int: 0
     maxSAN_mul: 0
     PROT: -30
     ATK_mul: 0
+    ATK_int: 0
     INT_mul: 0
+    INT_int: 0
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0

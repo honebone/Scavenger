@@ -45,20 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb90504aa6233840963d87d6b4bcde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_ratKing_guts
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   StEStatus:
     StEName: "\u5185\u81D3"
     StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n\u53D7\u3051\u308B\u56DE\u5FA9\u91CF+20\uFF05\n\u30C7\u30D0\u30D5\u8010\u6027+25\uFF05"
     StEIcon: {fileID: 21300000, guid: 4e6e5f6284cc9874f91980d74ce0306a, type: 3}
     StEType: 4
-    scaleStackByLVL: 0
     maxStack: 0
     merge: 1
     refValue: 0
     undeletable: 1
+    DoT: 0
+    regen: 0
+    applyer: {fileID: 0}
     stack: 0
     value: 0
+    DMGPerTurn: 0
   RHealPerStack: 20
   debuffResPerStack: 25
 --- !u!212 &6391350165293048886

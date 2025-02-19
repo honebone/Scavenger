@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0687777f5faffd4b8a5241eb3da3dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_hide
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

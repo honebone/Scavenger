@@ -45,11 +45,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec460841841e50d4d87dbe5301905dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: perU_P_surgeon
   PAInfo_start: "\u4E0E\u3048\u308B\u56DE\u5FA9\u91CF\u304C\u3001\u81EA\u8EAB\u306EINT\u306E50\uFF05\u5206\u5897\u52A0\u3059\u308B\n\u3053\u308C\u306B\u3088\u308B\u56DE\u5FA9\u5897\u52A0\u91CF\u306F\n\u5BFE\u8C61\u306EmaxHP\u306E[5+\u81EA\u8EAB\u306ECRIT\u7387]\uFF05\u3092\u8D85\u3048\u306A\u3044"
+  skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u533B\u5B66\u306E\u77E5\u8B58"
     personalityType: 1
+  actionModStatus:
+    conditionInfo: 
+    hideValues: 0
+    exInfo: 
+    consumeFocus: 0
+    decreaseHP: 0
+    ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    sureHit: 0
+    unevadable: 0
+    exHeal_mul: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldAdd_percent: 0
+    shieldRemove: 0
+    applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
   ratio: 0.5
   exLimitRatio: 5
 --- !u!212 &-349353357723227082

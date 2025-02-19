@@ -45,18 +45,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0302cc3cd4a59f240860dbf5a6dc00b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: Eq_StealHammer
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: "\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\uFF1A\n\u6B21\u306E\u81EA\u8EAB\u306E\u653B\u6483\u304C\u3001\u81EA\u8EAB\u306EmaxHP10\uFF05\u5206\u306E\u7269\u7406\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+  PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 703a1844ce587f3449edf6e1bf0cbb41, type: 2}
     info_start: 
     equipmentInfo: 
     statusMod:
+      LVL: 0
       maxHP_mul: 15
+      maxHP_int: 0
       maxSAN_mul: 0
       PROT: 0
       ATK_mul: 0
+      ATK_int: 0
       INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
       CRITC: 0
       CRITD: 0
       EVD: 0
@@ -89,12 +97,14 @@ MonoBehaviour:
     drain: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
     healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -102,6 +112,29 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      moveRes: 0
+      debuffRes: 0
   HPRatio: 0.1
 --- !u!212 &3238141386940741765
 SpriteRenderer:

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd174b4ded9c3a4c9044035ad609e2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StEU_werewolf
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -190,6 +191,7 @@ MonoBehaviour:
       ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -443,6 +445,7 @@ MonoBehaviour:
       ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0

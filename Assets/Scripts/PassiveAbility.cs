@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PassiveAbility : MonoBehaviour
 {
+    [SerializeField] string fileName;
     [SerializeField, TextArea(3, 10)] string PAInfo_start;
     [SerializeField] bool skipGetInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_end;
@@ -17,6 +18,8 @@ public class PassiveAbility : MonoBehaviour
 
     protected bool instantiated;
     protected bool applyFlag;
+
+    public string FileName() { return fileName; }
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
@@ -54,13 +57,14 @@ public class PassiveAbility : MonoBehaviour
         return "";
     }
 
-    public void Init(Character c,int type,InfoText it)
+    public void Init(Character c, int type, InfoText it)
     {
         instantiated = true;
         character = c;
         PAType = type;
         infoText = it;
-        charactersManager=FindObjectOfType<CharactersManager>();
+        charactersManager = CharactersManager.inst;
+        if (fileName == "") { infoText.AddWarningText($"{GetPAName()}‚ÌfileName‚ª‚ ‚è‚Ü‚¹‚ñ"); }
         OnPAInit();
     }
     public void Disable(bool note=true)

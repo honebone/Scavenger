@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edc9d37b3a4fbb49a1dab4963abd035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: perU_P_hunter
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u7363\u72E9\u308A\u306E\u4F5C\u6CD5"
     personalityType: 1

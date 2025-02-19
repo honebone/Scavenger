@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd607c61913e6a14bb572ccebfbfebc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_ATKU
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

@@ -45,17 +45,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5101f8930e93ec14591718a600dbddae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: per_madness_CRITD
   PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
+  PATags: 
   personalityStatus:
     personalityName: "\u5510\u7A81\u306A\u7D42\u308F\u308A"
     personalityType: 5
   statusMod:
+    LVL: 0
     maxHP_mul: 0
+    maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
     ATK_mul: 0
+    ATK_int: 0
     INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
     CRITC: 0
     CRITD: 50
     EVD: 0

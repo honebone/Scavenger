@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8c3d77903ba5b43acc9c728246c00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_marked
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

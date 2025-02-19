@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2236161d5f3004abaf657b2f9523da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: StE_reactiveArmor
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -172,6 +173,7 @@ MonoBehaviour:
       ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
