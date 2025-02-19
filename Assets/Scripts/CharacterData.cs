@@ -45,7 +45,7 @@ public class CharacterData : ScriptableObject
 
     public string charaName;
     public string difficulty;
-    [TextArea(3, 10)] public string introduction;
+    [TextArea(10, 15)] public string introduction;
     [TextArea(3, 10)] public string preferredPos;
     public enum CharacterTag { other, corpse, human, beast, insect, undead, artifact, plant, horror, obstacle, demihuman }
     public List<CharacterTag> characterTags;

@@ -696,6 +696,7 @@ public class Action : MonoBehaviour
     {
         public int prevPos;
         public int currentPos;
+        /// <summary>0:右　1:上　2:下　3:左</summary>
         public int dir;
         public int range;
         public bool secondaryMove;
