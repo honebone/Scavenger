@@ -671,21 +671,22 @@ public class Character : MonoBehaviour
         if (!alreadyExist)
         {
             var s = Instantiate(StEParams.applyStE, transform);
-            PA_StE.Add(s.GetComponent<PassiveAbility>());
+            PA_StatusEffect pa = s.GetComponent<PA_StatusEffect>();
+            PA_StE.Add(pa);
             //sort
-            s.GetComponent<PA_StatusEffect>().Init(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer);
-            s.GetComponent<PassiveAbility>().Init(this, 0, infoText);
+            pa.Init_StE(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer);
+            pa.Init(this, 0, infoText);
             if (StEStatus.refValue)
             {
                 targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, finalValue), StEStatus.StEType.ToColor());
-                infoText.AddLogText(string.Format("{0}‚Í{1}{2}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
+                infoText.AddLogText(string.Format("{0}‚Í{1}{2}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
             }
             else
             {
                 targetButton.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-                infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, s.GetComponent<PA_StatusEffect>().GetPAName()));
+                infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName()));
             }
-            soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType]);
+            soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)pa.GetStatusEffectStatus().StEType]);
         }
     }
     public void RemoveStE(ActionData.RemoveStE removeStE)

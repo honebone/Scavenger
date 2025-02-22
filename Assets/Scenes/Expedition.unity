@@ -280,7 +280,7 @@ MonoBehaviour:
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
     centerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-    lowerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
+    lowerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
     centerBack: {fileID: 0}
@@ -304,17 +304,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 0}
-    centerFront: {fileID: 11400000, guid: 507aa40d6d2f2e74f8b0d8c4f1208e24, type: 2}
-    lowerFront: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    centerFront: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    lowerFront: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 546fd2e3f93c50743bb630266ea0ba2f, type: 2}
-    centerMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
-    lowerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
+    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    centerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    lowerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     dontShuffleBack: 0
-    upperBack: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
+    upperBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    centerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    lowerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}

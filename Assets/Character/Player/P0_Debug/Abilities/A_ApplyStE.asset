@@ -64,8 +64,9 @@ MonoBehaviour:
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 1
+    actionMods:
+    - {fileID: 980131611971298319, guid: 539b0820e1e758543a92e37f4978e18c, type: 3}
+    targetType: 7
     friendly: 0
     condition:
       searchAsPos: 0
@@ -139,12 +140,75 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 8ed583e08393a3445b99e63968b1a817, type: 3}
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 2
-      value: 0
-      refATK: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 1
+      refATK: 1
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -170,6 +234,7 @@ MonoBehaviour:
       ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -342,7 +407,19 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 13
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 04000000
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    actionTargetsInt: 03000000040000000500000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000

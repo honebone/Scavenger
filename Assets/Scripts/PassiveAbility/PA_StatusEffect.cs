@@ -68,7 +68,7 @@ public class PA_StatusEffect : PassiveAbility
         }
     }
 
-    public void Init(int stack, int value,int DMGPerTurn,StEIcon icon,Character applyer)
+    public void Init_StE(int stack, int value,int DMGPerTurn,StEIcon icon,Character applyer)
     {
         StEStatus.stack = stack;
         StEStatus.value = value;

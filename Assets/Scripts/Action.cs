@@ -644,14 +644,14 @@ public class Action : MonoBehaviour
     }
 
     //===========================[誘発処理の引数に使う]================================
-    public struct ActionParams
+    public class ActionParams
     {
         public Action.ActionStatus actionStatus;
         public Character target;
         public Character owner;
     }
 
-    public struct ActionResult
+    public class ActionResult
     {
         public Action.ActionStatus actionStatus;
         public Character target;
@@ -661,7 +661,7 @@ public class Action : MonoBehaviour
         public bool kill;
         public OnKillParams onKillParams;
     }
-    public struct OnAttackParams
+    public class OnAttackParams
     {
         /// <summary> = !(missed||evaded)</summary>
         public bool hit;
@@ -672,7 +672,7 @@ public class Action : MonoBehaviour
         public Action.ActionStatus actionStatus;
         public Character target;
     }
-    public struct OnDamageParams
+    public class OnDamageParams
     {
         public int totalDMG;
         public bool ATK;
@@ -685,19 +685,19 @@ public class Action : MonoBehaviour
         public Character owner;
         public Character target;
     }
-    public struct OnKillParams
+    public class OnKillParams
     {
         public bool obstacle;
         public bool CRIT;
         public Character target;
     }
-    public struct OnHealParams
+    public class OnHealParams
     {
         public int healValue;
         public bool ability;
         public Character target;
     }
-    public struct OnApplyStEParams
+    public class OnApplyStEParams
     {
         /// <summary>appliedParams + resistedParams</summary>
         public List<PA_StatusEffect.StatusEffectParams> attemptedParams;
@@ -705,13 +705,13 @@ public class Action : MonoBehaviour
         public List<PA_StatusEffect.StatusEffectParams> resistedParams;
         public Character taget;
     }
-    public struct OnFocusParams
+    public class OnFocusParams
     {
         public ActionParams actionParams;
         public bool kill;
     }
 
-    public struct OnMoveParams
+    public class OnMoveParams
     {
         public int prevPos;
         public int currentPos;
@@ -722,7 +722,7 @@ public class Action : MonoBehaviour
 
         public Character target;
     }
-    public struct OnSummonParams
+    public class OnSummonParams
     {
         public ActionParams actionParams;
     }
@@ -1266,7 +1266,7 @@ public class Action : MonoBehaviour
                         StEParams.value+=applyBonus.exValue;
                         StEParams.DMGPerTurn += applyBonus.exDMGPerTurn;
 
-                        if (StEParams.stack > 0||true)//付与スタック数が1以上なら付与処理
+                        if (StEParams.stack > 0)//付与スタック数が1以上なら付与処理
                         {
                             if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
                             {
