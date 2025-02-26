@@ -206,7 +206,7 @@ public class ActionQueueManager : MonoBehaviour
         if (actionStatus.actionOwner.CharaStatus().position < 9) { abilityNameText = abilityNameText_player; }
         else { abilityNameText = abilityNameText_enemy; }
 
-        abilityNameText.text = util.GetColoredText(Definer.colorRef.abilityColors[(int)actionStatus.abilityType], actionStatus.actionName);
+        abilityNameText.text = actionStatus.actionName.ColorStr(Definer.colorRef.abilityColors[(int)actionStatus.abilityType]);
         abilityNameText.transform.GetChild(0).GetComponent<Image>().color = Definer.colorRef.abilityColors[(int)actionStatus.abilityType];
         abilityNameText.transform.parent.GetComponent<Image>().enabled = true;
 

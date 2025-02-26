@@ -52,7 +52,7 @@ MonoBehaviour:
   cooldownOnBattleStart: 0
   cooldownOnUse: 1
   hasRemain: 1
-  remainOnBattleStart: 4
+  remainOnBattleStart: 2
   maxRemain: 8
   actionsStaus:
   - actionName: "\u30AF\u30A4\u30C3\u30AF\u30B9\u30C6\u30C3\u30D7"
@@ -183,4 +183,4 @@ MonoBehaviour:
     source: {fileID: 0}
     targetCount: 1
     actionTargets: []
-    actionTargetsInt: 07000000
+    actionTargetsInt: 04000000

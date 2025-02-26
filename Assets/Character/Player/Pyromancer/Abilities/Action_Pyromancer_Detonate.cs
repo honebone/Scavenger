@@ -10,7 +10,10 @@ public class Action_Pyromancer_Detonate : Action
         int DMG = 0;
         foreach(ActionResult result in actionResults)
         {
-            DMG += result.onDamageParams.totalDMG;
+            if (result.onDamageParams != null)
+            {
+                DMG += result.onDamageParams.totalDMG;
+            }
         }
         int shield = Mathf.Min((DMG * 0.5f).ToInt(), actionOwner.CharaStatus().maxHP);
         ActionStatus action = secondAction;

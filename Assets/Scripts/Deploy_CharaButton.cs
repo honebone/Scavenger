@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class Deploy_CharaButton : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI charaNameText;
+    //[SerializeField] TextMeshProUGUI charaNameText;
     [SerializeField] Image charaImage;
 
 
@@ -23,24 +24,28 @@ public class Deploy_CharaButton : MonoBehaviour
         mouseOver = mo;
         scroll = s;
 
-        charaNameText.text = charaStatus.charaName;
+        //charaNameText.text = charaStatus.charaName;
         charaImage.sprite = charaStatus.spriteForUI;
+    }
+    public void Anim()
+    {
+        charaImage.transform.DOLocalMoveX(0, 0.5f);
     }
 
     public void SetDragChara()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            string info = string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
-            info += string.Format("使用難易度：{0}\n得意なポジション：{1}\n\n", charaStatus.characterData.difficulty, charaStatus.characterData.preferredPos);
-            info += charaStatus.GetInfo();
-            info += "\n◇◇特性◇◇\n";
-            foreach (GameObject obj in charaStatus.passiveAbilities)
-            {
-                PassiveAbility pa = obj.GetComponent<PassiveAbility>();
-                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
-            }
-            infoText.SetText(charaStatus.charaName, info);
+            //string info = string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
+            //info += string.Format("使用難易度：{0}\n得意なポジション：{1}\n\n", charaStatus.characterData.difficulty, charaStatus.characterData.preferredPos);
+            //info += charaStatus.GetInfo();
+            //info += "\n◇◇特性◇◇\n";
+            //foreach (GameObject obj in charaStatus.passiveAbilities)
+            //{
+            //    PassiveAbility pa = obj.GetComponent<PassiveAbility>();
+            //    info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            //}
+            infoText.SetText(charaStatus.charaName, charaStatus.characterData.GetInfo());
             FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons_Deploy(charaStatus.abilitiesStatus);
             deployCharacterManager.StartTutorial_Info();
         }
@@ -56,20 +61,25 @@ public class Deploy_CharaButton : MonoBehaviour
     bool p;
     private void Update()
     {
-        if (p)
-        {
-            wheel += Input.mouseScrollDelta.y;
-            if (wheel != 0)
-            {
-                scroll.verticalNormalizedPosition += wheel * scrollSpeed;
-                wheel = 0;
-            }
-        }
+        //if (p)
+        //{
+        //    wheel += Input.mouseScrollDelta.y;
+        //    if (wheel != 0)
+        //    {
+        //        scroll.verticalNormalizedPosition += wheel * scrollSpeed;
+        //        wheel = 0;
+        //    }
+        //}
     }
     public void OnMouseEnter()
     {
         p = true;
-        mouseOver.SetUI("", true);
+        string info = $"<{charaStatus.charaName}>\n\n{charaStatus.characterData.GetRoleInfo()}\n";
+        //info += string.Format("使用難易度：{0}\n", charaStatus.characterData.difficulty);
+        info += $"得意な列：{charaStatus.characterData.GetPreferedPos()}列\n\n";
+        info += string.Format("\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
+
+        mouseOver.SetUI(info, true);
     }
     public void OnMouseExit()
     {

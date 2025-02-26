@@ -311,8 +311,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 15
-    shieldPercent_max: 20
+    shieldPercent_min: 10
+    shieldPercent_max: 15
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0

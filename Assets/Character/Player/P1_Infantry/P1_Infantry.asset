@@ -15,15 +15,22 @@ MonoBehaviour:
   fileName: P_Infantry
   manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
   charaName: "\u5175\u58EB"
+  introduction: "\u69D8\u3005\u306A\u7A2E\u985E\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u6709\u3057\u3066\u304A\u308A\u3001\u3069\u306E\u3088\u3046\u306A\u72B6\u6CC1\u3067\u3082\u5FC5\u8981\u6700\u4F4E\u9650\u306E\u4ED5\u4E8B\u304C\u3067\u304D\u308B\u304C\u3001\u305D\u308C\u4EE5\u4E0A\u306E\u3053\u3068\u306F\u3067\u304D\u306A\u3044"
   difficulty: "\u4F4E"
-  introduction: "\u9632\u885B\u30BF\u30A4\u30D7\n\u69D8\u3005\u306A\u7A2E\u985E\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u6709\u3057\u3066\u304A\u308A\u3001\u3069\u306E\u3088\u3046\u306A\u72B6\u6CC1\u3067\u3082\u5FC5\u8981\u6700\u4F4E\u9650\u306E\u4ED5\u4E8B\u304C\u3067\u304D\u308B\u304C\u3001\u305D\u308C\u4EE5\u4E0A\u306E\u3053\u3068\u306F\u3067\u304D\u306A\u3044"
-  preferredPos: "\u524D\u5217"
+  preferFront: 1
+  preferMid: 0
+  preferBack: 0
+  mainRole:
+  - "\u30BF\u30F3\u30AF"
+  - "\u30B7\u30FC\u30EB\u30C9"
+  subRole:
+  - "\u56DE\u5FA9"
+  - "\u5F37\u5316"
   characterTags: 02000000
   immovable: 0
   notChara: 0
   player: 1
   playable: 1
-  obstacle: 0
   variableSprites:
   - {fileID: 2008618111378349020, guid: 3540d5ef60ed3b0418712411b2a40186, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -48,6 +55,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 1
   maxHP: 55
   maxSAN: 50
@@ -61,13 +69,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 5
-    ATK: 0.9
-    INT: 0.9
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

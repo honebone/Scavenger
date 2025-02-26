@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c682c1c218f959144b9b2e8b82b5fb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fileName: per_summon
   PAInfo_start: "\u6575\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u5BFE\u8C61\u306B\u306A\u3089\u306A\u3044\n(\u6F5C\u4F0F\u3068\u540C\u69D8\u306E\u6271\u3044)"
   skipGetInfo: 1
   PAInfo_end: 

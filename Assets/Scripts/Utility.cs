@@ -2,15 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+
+[CustomEditor(typeof(Utility))]
+//[CanEditMultipleObjects]
+public class UtilityEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        Utility util = target as Utility;
+        if (GUILayout.Button("ColorText"))
+        {
+            util.ColorStr();
+        }
+    }
+}
+
+#endif
+
 public class Utility : MonoBehaviour
 {
-    [SerializeField]
-    bool debug;
-    
-
-    public string GetColoredText(Color color, string text)
+    [SerializeField] string text;
+    [SerializeField] Color textColor;
+    public string coloredText;
+    public void ColorStr()
     {
-        return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + text + "</color>";
+        coloredText = text.ColorStr(textColor);
     }
     //for (int i = 0; i < Parent.childCount; i++) { Destroy(Parent.GetChild(i).gameObject); }
 
@@ -53,6 +73,4 @@ public class Utility : MonoBehaviour
         print("error");
         return -1;
     }
-    public Vector2Int posIntToVector(int pos) { return new Vector2Int(Mathf.FloorToInt(pos / 3), pos % 3); }
-
 }

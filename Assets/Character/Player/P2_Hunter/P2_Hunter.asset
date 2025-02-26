@@ -15,9 +15,15 @@ MonoBehaviour:
   fileName: P_Hunter
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u72E9\u4EBA"
+  introduction: "\u57FA\u790E\u653B\u6483\u529B\u304C\u9AD8\u304F\u3001\u5E8F\u76E4\u304B\u3089\u5927\u304D\u306A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u304C\u3001\u8907\u6570\u4F53\u306E\u6575\u3078\u306E\u653B\u6483\u304C\u82E6\u624B\n\u4F59\u5206\u306AACC\u3092\u706B\u529B\u306B\u5909\u63DB\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
   difficulty: "\u4F4E"
-  introduction: "\u653B\u6483\u30BF\u30A4\u30D7\n\u57FA\u790E\u653B\u6483\u529B\u304C\u9AD8\u304F\u3001\u5E8F\u76E4\u304B\u3089\u5927\u304D\u306A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\u3053\u3068\u304C\u3067\u304D\u308B\u304C\u3001\u8907\u6570\u4F53\u306E\u6575\u3078\u306E\u653B\u6483\u304C\u82E6\u624B\n\u4F59\u5206\u306AACC\u3092\u706B\u529B\u306B\u5909\u63DB\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
-  preferredPos: "\u4E2D\u5217"
+  preferFront: 0
+  preferMid: 1
+  preferBack: 1
+  mainRole:
+  - "\u653B\u6483"
+  subRole:
+  - "\u81EA\u5DF1\u56DE\u5FA9"
   characterTags: 02000000
   immovable: 0
   notChara: 0
@@ -48,6 +54,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 1
   maxHP: 40
   maxSAN: 50

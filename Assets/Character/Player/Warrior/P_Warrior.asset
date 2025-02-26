@@ -15,15 +15,21 @@ MonoBehaviour:
   fileName: P_Warrior
   manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
   charaName: "\u6226\u58EB"
+  introduction: "HP\u304C\u6E1B\u5C11\u3059\u308B\u305F\u3073\u306B\u6226\u58EB\u306F\u6012\u308A\u3001\u529B\u3092\u84C4\u3048\u308B\n\u6B8B\u308AHP\u306B\u6C17\u3092\u4F7F\u3046\u5FC5\u8981\u306F\u3042\u308B\u304C\u3001\u5F37\u529B\u306A\u653B\u6483\u3092\u653E\u3064\u3053\u3068\u304C\u3067\u304D\u308B\u30AD\u30E3\u30E9"
   difficulty: "\u4E2D"
-  introduction: "\u9632\u885B\u30BF\u30A4\u30D7\nHP\u304C\u6E1B\u5C11\u3059\u308B\u305F\u3073\u306B\u6226\u58EB\u306F\u6012\u308A\u3001\u529B\u3092\u84C4\u3048\u308B\n\u6B8B\u308AHP\u306B\u6C17\u3092\u4F7F\u3046\u5FC5\u8981\u306F\u3042\u308B\u304C\u3001\u5F37\u529B\u306A\u653B\u6483\u3092\u653E\u3064\u3053\u3068\u304C\u3067\u304D\u308B\u30AD\u30E3\u30E9"
-  preferredPos: "\u524D\u5217"
+  preferFront: 1
+  preferMid: 0
+  preferBack: 0
+  mainRole:
+  - "\u30BF\u30F3\u30AF"
+  - "\u81EA\u5DF1\u56DE\u5FA9"
+  subRole:
+  - "\u653B\u6483"
   characterTags: 02000000
   immovable: 0
   notChara: 0
   player: 1
   playable: 1
-  obstacle: 0
   variableSprites:
   - {fileID: 4914315917224086301, guid: 2617f941f4539724892348058fb1e9a4, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -48,6 +54,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 1
   maxHP: 50
   maxSAN: 50
@@ -61,13 +68,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 5
-    ATK: 0.9
-    INT: 0.9
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

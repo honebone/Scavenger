@@ -31,6 +31,11 @@ public class DeployCharacterManager : MonoBehaviour
     [SerializeField] CharacterData infantry;
     [SerializeField] CharacterData hunter;
 
+    [SerializeField] Animator anim;
+
+    [SerializeField] AudioClip pickChara;
+    [SerializeField] AudioClip setChara;
+
     Definer definer;
     InfoText infoText;
     CharactersManager charactersManager;
@@ -93,6 +98,8 @@ public class DeployCharacterManager : MonoBehaviour
         }
     }
 
+    List<Deploy_CharaButton> charaButtons = new List<Deploy_CharaButton>();
+    public float animSpeed;
     public void StartDeploy()
     {
         panel.SetActive(true);
@@ -102,14 +109,27 @@ public class DeployCharacterManager : MonoBehaviour
             Character.CharacterStatus status = new Character.CharacterStatus();
             status.Init(data);
             var c = Instantiate(deployCharaButton, deployCharaP);
-            c.GetComponent<Deploy_CharaButton>().Init(status, infoText, this, mouseOver, scroll);
+            Deploy_CharaButton button = c.GetComponent<Deploy_CharaButton>();
+            charaButtons.Add(button);
+            button.Init(status, infoText, this, mouseOver, scroll);
         }
+        StartCoroutine(CharaButtonAnim());
         CheckParty();
         //if (tutorial) { canEmbark = false; }
     }
 
+    IEnumerator CharaButtonAnim()
+    {
+        foreach(Deploy_CharaButton button in charaButtons)
+        {
+            button.Anim();
+            yield return new WaitForSeconds(animSpeed);
+        }
+    }
+
     public void SetDraggingChara(Character.CharacterStatus character)
     {
+        soundManager.PlaySE(pickChara);
         //if (!tutorial)
         //{
         //    draggingChara = character;
@@ -118,9 +138,21 @@ public class DeployCharacterManager : MonoBehaviour
         //}
         //else { guideMessage.SetWaringText("チュートリアル中は編成の変更不可"); }
 
+        List<int> i = new List<int>();
+        if (character.characterData.preferBack) i.AddRange(new List<int>() { 0, 1, 2 });
+        if (character.characterData.preferMid) i.AddRange(new List<int>() { 3, 4, 5 });
+        if (character.characterData.preferFront) i.AddRange(new List<int>() { 6, 7, 8 });
+
+        foreach(int index in i) { positionButtons[index].SetAnim(true); }
+
         draggingChara = character;
         draggingImage = Instantiate(dragImage, dragImageP);
         draggingImage.GetComponent<Image>().sprite = draggingChara.spriteForUI;
+    }
+
+    void ResetGrid()
+    {
+        foreach(Deploy_PositionButton grid in positionButtons) { grid.SetAnim(false); }
     }
 
     // Update is called once per frame
@@ -148,12 +180,14 @@ public class DeployCharacterManager : MonoBehaviour
                         if (result.gameObject.GetComponent<Deploy_PositionButton>())
                         {
                             result.gameObject.GetComponent<Deploy_PositionButton>().SetChara(draggingChara);
+                            soundManager.PlaySE(setChara);
                             break;
                         }
                     }
 
                     draggingChara = new Character.CharacterStatus();
                     Destroy(draggingImage);
+                    ResetGrid();
 
                     CheckParty();
                 }
@@ -172,15 +206,22 @@ public class DeployCharacterManager : MonoBehaviour
     void CheckParty()
     {
         int count = 0;
-        canEmbark = false;
+        //canEmbark = false;
         foreach (Deploy_PositionButton button in positionButtons)
         {
             if (button.GetCharacterStatus().characterData != null) { count++; }
         }
-        if (count > maxParty) { embarkText.text = string.Format("編成できるキャラクターは{0}体まで", maxParty).ColorStr(Color.red); }
-        else if (count == 0) { embarkText.text = "キャラを編成(0/4)".ColorStr(Color.red); }
+        if (count > maxParty || count == 0)
+        {
+            if (canEmbark) { anim.SetTrigger("Flip"); }
+            canEmbark = false;
+            embarkText.text = $"出撃({count}/{maxParty})".ColorStr(Color.red);
+        }
+        //if (count > maxParty) { embarkText.text = $"出撃({count}/{maxParty})".ColorStr(Color.red); }
+        //else if (count == 0) { embarkText.text = "キャラを編成(0/4)".ColorStr(Color.red); }
         else
         {
+            if (!canEmbark) { anim.SetTrigger("Flip"); }
             canEmbark = true;
             embarkText.text = string.Format("出撃({0}/{1})", count, maxParty);
         }

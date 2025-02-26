@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u821E\u8E0F\u306E\u6B69\u6CD5+"
   lockedDefault: 0
-  upgradeInfo: "\u5473\u65B9\u306EEVD\u4F4E\u4E0B\u3092\u9664\u53BB\n\u81EA\u8EAB\u306B\u5203\u306E\u5D50\u30921\u30B9\u30BF\u30C3\u30AF\u4ED8\u4E0E\n<\u30AF\u30A4\u30C3\u30AF\u30B9\u30C6\u30C3\u30D7>\u306E\u4F7F\u7528\u53EF\u80FD\u6570+1"
+  upgradeInfo: "\u5473\u65B9\u306EEVD\u4F4E\u4E0B\u3092\u9664\u53BB\n\u81EA\u8EAB\u306B\u5203\u306E\u5D50\u30921\u30B9\u30BF\u30C3\u30AF\u4ED8\u4E0E"
   upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
     abilityRemainControlls:
     - abilityData: {fileID: 11400000, guid: 1e5fef3272311a542a5b899557e43dfc, type: 2}
       set: 0
-      value: 4
+      value: 2
     abilityEffect: 1
     freeAction: 0
     abilityType: 3

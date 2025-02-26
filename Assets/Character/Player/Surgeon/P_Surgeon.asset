@@ -15,15 +15,20 @@ MonoBehaviour:
   fileName: P_Surgeon
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u5916\u79D1\u533B"
+  introduction: "\u5358\u4F53\u56DE\u5FA9\u304C\u5F97\u610F\u306A\u30B7\u30F3\u30D7\u30EB\u306A\u30AD\u30E3\u30E9\n\u81EA\u8EAB\u306EINT\u306B\u5FDC\u3058\u3066\u56DE\u5FA9\u91CF\u304C\u5897\u52A0\u3059\u308B"
   difficulty: "\u4F4E"
-  introduction: "\u652F\u63F4\u30BF\u30A4\u30D7\n\u5358\u4F53\u56DE\u5FA9\u304C\u5F97\u610F\u306A\u30B7\u30F3\u30D7\u30EB\u306A\u30AD\u30E3\u30E9\n\u81EA\u8EAB\u306EINT\u306B\u5FDC\u3058\u3066\u56DE\u5FA9\u91CF\u304C\u5897\u52A0\u3059\u308B"
-  preferredPos: "\u4E2D\u5217"
+  preferFront: 0
+  preferMid: 1
+  preferBack: 1
+  mainRole:
+  - "\u56DE\u5FA9"
+  subRole:
+  - "\u5F37\u5316"
   characterTags: 02000000
   immovable: 0
   notChara: 0
   player: 1
   playable: 1
-  obstacle: 0
   variableSprites:
   - {fileID: 8238060339186495348, guid: b715cf61371f6304f9d7d177af9b6519, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -48,6 +53,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 1
   maxHP: 40
   maxSAN: 50
@@ -61,13 +67,6 @@ MonoBehaviour:
   turnPerRound: 1
   GHeal: 100
   RHeal: 100
-  statusGrowth:
-    maxHP: 2.5
-    ATK: 1
-    INT: 1
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

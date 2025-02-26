@@ -29,6 +29,22 @@ public class P_Blader_PA : PA_Personality
             movedDir[onMoveParams.dir] = true;
             Log($"{dirName[onMoveParams.dir]}方向達成");
         }
+
+        bool all = true;
+        foreach (bool m in movedDir)
+        {
+            if (!m)
+            {
+                all = false;
+                break;
+            }
+        }
+        if (all)
+        {
+            Log($"全方向達成");
+            movedDir = new bool[4];
+            for (int i = 0; i < danceOnMovedAll; i++) { Dance(); }
+        }
     }
 
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
@@ -56,28 +72,29 @@ public class P_Blader_PA : PA_Personality
         }
     }
 
-    public override void OnRoundEnd()
-    {
-        List<int> moved = new List<int>();
+    //public override void OnRoundEnd()
+    //{
+    //    List<int> moved = new List<int>();
 
-        for (int i = 0; i < movedDir.Length; i++)
-        {
-            if (movedDir[i]) { moved.Add(i); }
-        }
+    //    for (int i = 0; i < movedDir.Length; i++)
+    //    {
+    //        if (movedDir[i]) { moved.Add(i); }
+    //    }
 
-        if (moved.Count == movedDir.Length)
-        {
-            Log($"全方向達成");
-            movedDir = new bool[4];
-            for (int i = 0; i < danceOnMovedAll; i++) { Dance(); }
-        }
-        else if (moved.Count > 0)
-        {
-            int reset = moved.Choice();
-            movedDir[reset] = false;
-            Log($"記録リセット：{dirName[reset]}");
-        }
-    }
+    //    if (moved.Count == movedDir.Length)
+    //    {
+    //        Log($"全方向達成");
+    //        movedDir = new bool[4];
+    //        for (int i = 0; i < danceOnMovedAll; i++) { Dance(); }
+    //    }
+
+    //    else if (moved.Count > 0)
+    //    {
+    //        int reset = moved.Choice();
+    //        movedDir[reset] = false;
+    //        Log($"記録リセット：{dirName[reset]}");
+    //    }
+    //}
 
     public override void OnBattleEnd()
     {

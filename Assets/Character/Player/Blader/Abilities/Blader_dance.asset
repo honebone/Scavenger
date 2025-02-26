@@ -191,7 +191,7 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 01000000
   - actionName: "\u821E\u8E0F\u306E\u6B69\u6CD5"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB\n"
@@ -315,7 +315,7 @@ MonoBehaviour:
     abilityRemainControlls:
     - abilityData: {fileID: 11400000, guid: 1e5fef3272311a542a5b899557e43dfc, type: 2}
       set: 0
-      value: 3
+      value: 2
     abilityEffect: 1
     freeAction: 0
     abilityType: 3

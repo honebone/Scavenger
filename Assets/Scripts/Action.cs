@@ -1107,7 +1107,7 @@ public class Action : MonoBehaviour
                         else//âÒî
                         {
                             target.GetTargetButton().SetDamageText("Evade", Definer.colorRef.evade);
-                            infoText.AddLogText(util.GetColoredText(Definer.colorRef.evade, string.Format("{0}ÇÕçUåÇÇâÒîÇµÇΩ", targetStatus.charaName)));
+                            infoText.AddLogText(string.Format("{0}ÇÕçUåÇÇâÒîÇµÇΩ", targetStatus.charaName).ColorStr(Definer.colorRef.evade));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;
                             if (!notChara)
@@ -1533,11 +1533,11 @@ public class Action : MonoBehaviour
             ownerMoveDir = util.GetMoveDir(ownerStatus.position, moveToPos);
             if (ownerMoveDir == 0 || ownerMoveDir == 3)//ç∂âEà⁄ìÆÇ»ÇÁ
             {
-                ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).x - util.posIntToVector(moveToPos).x);
+                ownerMoveRange = Mathf.Abs(ownerStatus.position.PosIntToVector().x - moveToPos.PosIntToVector().x);
             }
             else if (ownerMoveDir == 1 || ownerMoveDir == 2)//è„â∫à⁄ìÆÇ»ÇÁ
             {
-                ownerMoveRange = Mathf.Abs(util.posIntToVector(ownerStatus.position).y - util.posIntToVector(moveToPos).y);
+                ownerMoveRange = Mathf.Abs(ownerStatus.position.PosIntToVector().y - moveToPos.PosIntToVector().y);
             }
 
             List<Character> charasOnTravelingDir = new List<Character>(FindObjectOfType<CharactersManager>().GetTravelingDirCharas(ownerStatus.position, ownerMoveDir, ownerMoveRange));

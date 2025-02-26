@@ -44,11 +44,16 @@ public class CharacterData : ScriptableObject
     public GameObject manager;
 
     public string charaName;
-    public string difficulty;
     [TextArea(10, 15)] public string introduction;
-    [TextArea(3, 10)] public string preferredPos;
+
+    [Header("\n\nここからプレイヤーのみ\n")] public string difficulty;
+    public bool preferFront;
+    public bool preferMid;
+    public bool preferBack;
+    public List<string> mainRole;
+    public List<string> subRole;
     public enum CharacterTag { other, corpse, human, beast, insect, undead, artifact, plant, horror, obstacle, demihuman }
-    public List<CharacterTag> characterTags;
+    [Header("ここまでプレイヤーのみ\n\n")] public List<CharacterTag> characterTags;
     //public int size = 1;
     public bool immovable;
 
@@ -108,8 +113,13 @@ public class CharacterData : ScriptableObject
         Character.CharacterStatus charaStatus = new Character.CharacterStatus();
         charaStatus.Init(this);
 
-        string info = string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
-        info += string.Format("使用難易度：{0}\n得意なポジション：{1}\n\n", charaStatus.characterData.difficulty, charaStatus.characterData.preferredPos);
+        string info = $"{GetRoleInfo()}\n";
+
+        info += string.Format("使用難易度：{0}\n", charaStatus.characterData.difficulty);       
+        info += $"得意な列：{GetPreferedPos()}列\n\n";
+
+        info += string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
+
         info += charaStatus.GetInfo();
         info += "\n◇◇特性◇◇\n";
         foreach (GameObject obj in charaStatus.passiveAbilities)
@@ -119,6 +129,28 @@ public class CharacterData : ScriptableObject
         }
 
         return info;
+    }
+    public string GetPreferedPos()
+    {
+        string prefer = "";
+        if (preferFront) prefer += "前";
+        if (preferMid) prefer += prefer == "" ? "中" : ",中";
+        if (preferBack) prefer += prefer == "" ? "後" : ",後";
+        return prefer;
+    }
+
+    public string GetRoleInfo()
+    {
+        string role="";
+        foreach(string main in mainRole)
+        {
+            role += $"◎{main}\n";
+        }
+        foreach (string sub in subRole)
+        {
+            role += $"○{sub}\n".ColorStr(Color.gray);
+        }
+        return role;
     }
 }
 [System.Serializable]
