@@ -23,7 +23,7 @@ MonoBehaviour:
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
-  availableFront: 0
+  availableFront: 1
   availableMid: 1
   availableBack: 0
   hasSelfCondition: 0

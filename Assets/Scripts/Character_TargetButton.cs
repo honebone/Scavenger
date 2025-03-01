@@ -139,6 +139,8 @@ public class Character_TargetButton : MonoBehaviour
 
     public void OnMouseDown()
     {
+        Debug.Log("Click");
+
         if (Input.GetMouseButtonDown(1))
         {
             if (character != null) {character.DisplayInfo(); }

@@ -762,6 +762,7 @@ public class Action : MonoBehaviour
 
     public virtual void Resolve()
     {
+        DebugFunction.int1++;
         Character.CharacterStatus ownerStatus = new Character.CharacterStatus();
         bool notChara = false;//フィールド効果やポジション効果などによるアクション
         if (actionStatus.actionOwner != null) {
@@ -1249,7 +1250,7 @@ public class Action : MonoBehaviour
                         if (ownerStatus.CheckHasStEApplyBonus(StEParams.applyStE))//オーナーのボーナス
                         {
                             //ownerStatus.GetStEApplyBonus(StEParams.applyStE).Log("ownerBonus");
-                           applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE));
+                            applyBonus.AddBonus(ownerStatus.GetStEApplyBonus(StEParams.applyStE));
                         }
                         foreach (StEApplyBonus bonus in actionsStatus[i].StEApplyBonus)//アクションのボーナス
                         {
@@ -1263,7 +1264,7 @@ public class Action : MonoBehaviour
                         //applyBonus.Log("final bonus");
                         StEParams.applyChance += applyBonus.exChance;//bonus等をparamsに反映
                         StEParams.stack += applyBonus.exStack;
-                        StEParams.value+=applyBonus.exValue;
+                        StEParams.value += applyBonus.exValue;
                         StEParams.DMGPerTurn += applyBonus.exDMGPerTurn;
 
                         if (StEParams.stack > 0)//付与スタック数が1以上なら付与処理
@@ -1289,7 +1290,7 @@ public class Action : MonoBehaviour
                                 if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
                                 onApplyStEParams.appliedParams.Add(StEParams);
 
-                                target.ApplyStE(StEParams, StEParams.stack, StEParams.value, actionOwner);
+                               target.ApplyStE(StEParams, StEParams.stack, StEParams.value, actionOwner);
                             }
                             else
                             {
@@ -1298,16 +1299,15 @@ public class Action : MonoBehaviour
                                 infoText.AddLogText(string.Format("{0}が{1}をレジスト", targetStatus.charaName, StEParams.applyStE.GetComponent<PA_StatusEffect>().GetPAName()));
                             }
                         }
-                       
+
                     }
-                    foreach(PA_StatusEffect.StatusEffectStatus.StatusEffectType type in appliedType)//StEのエフェクト
+                    foreach (PA_StatusEffect.StatusEffectStatus.StatusEffectType type in appliedType)//StEのエフェクト
                     {
                         if (Definer.VERef.applyStE[(int)type])
                         {
                             target.SpawnVisualEffect(Definer.VERef.applyStE[(int)type]);
                         }
                     }
-                    //actionsStatus[i].StEApplyBonus.Clear();
                     if (onApplyStEParams.attemptedParams.Count > 0)
                     {
                         onApplyStEParamsList.Add(onApplyStEParams);
@@ -1587,7 +1587,6 @@ public class Action : MonoBehaviour
             }
 
         }
-
         EndResolve();
     }
 

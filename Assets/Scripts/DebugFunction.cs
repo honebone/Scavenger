@@ -54,6 +54,8 @@ public class DebugFunction : MonoBehaviour
     [SerializeField]
     GameObject debugPanel;
 
+    public static int int1;
+
 
 
     CharactersManager charactersManager;

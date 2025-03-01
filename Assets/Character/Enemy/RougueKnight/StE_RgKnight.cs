@@ -6,6 +6,7 @@ public class StE_RgKnight : PA_StatusEffect
 {
     [SerializeField]
     int goalPercent;
+    public int ACT;
     int goalDMG;
     int currentDMG;
 
@@ -13,12 +14,19 @@ public class StE_RgKnight : PA_StatusEffect
     public override void OnPAInit()
     {
         goalDMG = Mathf.RoundToInt(character.CharaStatus().maxHP * goalPercent / 100f);
+        character.AddACT(ACT);
     }
 
-    public override void OnDamaged(Action.OnDamageParams onDamageParams)
+    //public override void OnDamaged(Action.OnDamageParams onDamageParams)
+    //{
+    //    currentDMG += onDamageParams.totalDMG;
+    //    if(currentDMG >= goalDMG) { Disable(); }
+    //}
+
+    public override void OnDecreasedHP(int value)
     {
-        currentDMG += onDamageParams.totalDMG;
-        if(currentDMG >= goalDMG) { Disable(); }
+        currentDMG += value;
+        if (currentDMG >= goalDMG) { Disable(); }
     }
 
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
@@ -27,8 +35,13 @@ public class StE_RgKnight : PA_StatusEffect
         else { Disable(); }
     }
 
+    public override void AtTheEnd()
+    {
+        character.AddACT(-ACT);
+    }
+
     public override string GetCurrentStateInfo()
     {
-        return string.Format("現在の被ダメージ：{0}/{1}", currentDMG, goalDMG);
+        return string.Format("減少したHP：{0}/{1}", currentDMG, goalDMG);
     }
 }

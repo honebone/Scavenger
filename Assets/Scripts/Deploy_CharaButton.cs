@@ -75,7 +75,7 @@ public class Deploy_CharaButton : MonoBehaviour
     {
         p = true;
         string info = $"<{charaStatus.charaName}>\n\n{charaStatus.characterData.GetRoleInfo()}\n";
-        //info += string.Format("使用難易度：{0}\n", charaStatus.characterData.difficulty);
+        info += string.Format("使用難易度：{0}\n", charaStatus.characterData.difficulty);
         info += $"得意な列：{charaStatus.characterData.GetPreferedPos()}列\n\n";
         info += string.Format("\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
 

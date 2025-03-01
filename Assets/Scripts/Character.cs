@@ -673,21 +673,27 @@ public class Character : MonoBehaviour
             var s = Instantiate(StEParams.applyStE, transform);
             PA_StatusEffect pa = s.GetComponent<PA_StatusEffect>();
             PA_StE.Add(pa);
-            //sort
+           
             pa.Init_StE(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer);
             pa.Init(this, 0, infoText);
+
             if (StEStatus.refValue)
             {
                 targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, finalValue), StEStatus.StEType.ToColor());
-                infoText.AddLogText(string.Format("{0}‚Í{1}{2}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
+                //infoText.AddLogText(string.Format("{0}‚Í{1}{2}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
             }
             else
             {
-                targetButton.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-                infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName()));
+                 targetButton.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
+                 //infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName()));
+                //infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", "test","ok"));
             }
+
+            Debug.Log("SE");
             soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)pa.GetStatusEffectStatus().StEType]);
         }
+      
+        
     }
     public void RemoveStE(ActionData.RemoveStE removeStE)
     {

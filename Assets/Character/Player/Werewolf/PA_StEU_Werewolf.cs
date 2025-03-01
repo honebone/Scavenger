@@ -51,7 +51,7 @@ public class PA_StEU_Werewolf : PA_StatusEffect
     {
         if (statusRef.DoesHeal() && statusRef.actionOwner != character)
         {
-            statusRef=statusRef.Modify(AMod);
+            statusRef = statusRef.Modify(AMod);
         }
         return statusRef;
     }
