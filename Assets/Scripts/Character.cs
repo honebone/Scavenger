@@ -680,12 +680,12 @@ public class Character : MonoBehaviour
             if (StEStatus.refValue)
             {
                 targetButton.SetDamageText(string.Format("+{0}{1}", StEStatus.StEName, finalValue), StEStatus.StEType.ToColor());
-                //infoText.AddLogText(string.Format("{0}‚Í{1}{2}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
+                infoText.AddLogText(string.Format("{0}‚Í{1}{2}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName(), finalValue.ToString().ColorStr(StEStatus.StEType.ToColor())));
             }
             else
             {
                  targetButton.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-                 //infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName()));
+                 infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", charaStatus.charaName, pa.GetPAName()));
                 //infoText.AddLogText(string.Format("{0}‚Í{1}‚ð•t—^‚³‚ê‚½", "test","ok"));
             }
 

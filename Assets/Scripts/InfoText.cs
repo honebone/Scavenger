@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -124,27 +125,84 @@ public class InfoText : MonoBehaviour
         //nameText.text = "ログ";
     }
 
+    private StringBuilder stringBuilder = new StringBuilder();
+
+    // 更新が必要かどうかのフラグ
+    private bool isDirty = false;
+
+    // 更新頻度を制限するためのタイマー
+    private float updateTimer = 0f;
+    private const float UPDATE_INTERVAL = 0.1f;
+
+    //public void AddLogText(string log)
+    //{
+    //    logs.Add(log);
+    //    logCount++;
+    //    if (logCount >= maxLogs)
+    //    {
+    //        for (int i = 0; i < deleteLogs; i++)
+    //        {
+    //            logs.RemoveAt(0);
+    //        }
+    //        logCount -= deleteLogs;
+    //    }
+
+    //    string totalLog = "";
+    //    foreach (string l in logs)
+    //    {
+    //        totalLog += "\n" + l;
+    //    }
+
+    //    logText.text = totalLog;
+    //}
+
     public void AddLogText(string log)
     {
+        // ログを追加
         logs.Add(log);
         logCount++;
+
+        // 最大ログ数を超えたら古いログを削除
         if (logCount >= maxLogs)
         {
-            for (int i = 0; i < deleteLogs; i++)
-            {
-                logs.RemoveAt(0);
-            }
+            logs.RemoveRange(0, deleteLogs);
             logCount -= deleteLogs;
         }
 
-        string totalLog = "";
-        foreach (string l in logs)
+        // 更新フラグを立てる
+        isDirty = true;
+    }
+
+    private void Update()
+    {
+        // 更新が必要で、かつ更新間隔を過ぎている場合のみ更新
+        if (isDirty)
         {
-            totalLog += "\n" + l;
+            updateTimer += Time.deltaTime;
+            if (updateTimer >= UPDATE_INTERVAL)
+            {
+                UpdateLogText();
+                updateTimer = 0f;
+                isDirty = false;
+            }
+        }
+    }
+
+    private void UpdateLogText()
+    {
+        // StringBuilderをクリア
+        stringBuilder.Clear();
+
+        // ログを結合
+        foreach (string log in logs)
+        {
+            stringBuilder.Append("\n").Append(log);
         }
 
-        logText.text = totalLog;
+        // テキストを更新
+        logText.text = stringBuilder.ToString();
     }
+
     public void AddDebugText(string debugLog)
     {
         if (debugFunction.CheckDebugMode())
