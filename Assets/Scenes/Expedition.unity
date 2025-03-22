@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
-  skipDeployPhase: 0
-  skipTutorial: 0
+  debug: 1
+  skipDeployPhase: 1
+  skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
   aberrationValueRange: {x: 0, y: 0.5}
@@ -278,9 +278,9 @@ MonoBehaviour:
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
-    centerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
-    lowerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
+    upperMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
+    centerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
+    lowerMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
     centerBack: {fileID: 0}
@@ -13207,6 +13207,8 @@ MonoBehaviour:
     linkInfo: "\u88AB\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11\u91CF\n\nPROT1\u306B\u3064\u304D\u88AB\u30C0\u30E1\u30FC\u30B8-1\uFF05\nPROT\u304C\u30DE\u30A4\u30CA\u30B9\u306E\u6642\u306F\u88AB\u30C0\u30E1\u30FC\u30B8\u304C\u305D\u306E\u5206\u4E0A\u6607\u3059\u308B\n\n\u4E0A\u9650\u306F75\u3001\u4E0B\u9650\u306F\u7121\u3057"
   - linkKey: "\u5BFF\u547D"
     linkInfo: "\u5BFF\u547D\u306E\u3042\u308B\u30AD\u30E3\u30E9\u306F\u3001\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u306B\u81EA\u8EAB\u306E\u57FA\u790EmaxHP\u306E1/[\u5BFF\u547D]\u306B\u7B49\u3057\u3044HP\u3092\u5931\u3046(\u7AEF\u6570\u5207\u308A\u4E0A\u3052)"
+  - linkKey: "ATK(INT)\u88DC\u6B63"
+    linkInfo: "ATK\u88DC\u6B63\u5024\u3068\u306F\u3001\u30AD\u30E3\u30E9\u306EATK\u306E\u4F55\uFF05\u3092\u30C0\u30E1\u30FC\u30B8\u306B\u53CD\u6620\u3055\u305B\u308B\u304B\u3092\u793A\u3059\u5024\n\n\u80FD\u529B\u306B\u3042\u308B\n\"ATK\u306E80-120\uFF05\u30C0\u30E1\u30FC\u30B8\"\u306E80-120\uFF05\u304CATK\u88DC\u6B63\u5024\u306B\u3042\u305F\u308B\n\n\u4E0A\u8A18\u80FD\u529B\u306EATK\u88DC\u6B63\u5024\u3092+50\uFF05\u3057\u305F\u3068\u304D\u3001\u6700\u7D42\u7684\u306A\u88DC\u6B63\u5024\u306F130-170\uFF05\u3068\u306A\u308B\n\nINT\u88DC\u6B63\u3082\u540C\u69D8\n"
 --- !u!4 &617800463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3757956418339782286, guid: 54e64d82de1ef424d947fd8256602e52, type: 3}

@@ -549,6 +549,7 @@ public class Action : MonoBehaviour
         public ActionStatus Modify(ActionMod.ActionModStatus mod)
         {
             ActionStatus modifiedStatus = this;
+            modifiedStatus.exTurn += mod.exTurn;
             if (mod.consumeFocus) { modifiedStatus.consumeFocus = true; }
 
             modifiedStatus.decreaseHP_min += mod.decreaseHP;

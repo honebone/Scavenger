@@ -53,19 +53,7 @@ public class CharactersManager : MonoBehaviour
     {
         generatedCharacters.Add(character);
         existingCharacters.Add(character);
-        SortExistingCharacters();
-        //if (existingCharacters.Count == 0) { existingCharacters.Add(character); }
-        //else
-        //{
-        //    for (int i = 0; i < existingCharacters.Count; i++)
-        //    {
-        //        if (existingCharacters[i].GetCharacterStatus().positon > character.GetCharacterStatus().positon)
-        //        {
-        //            existingCharacters.Insert(i, character);
-        //            break;
-        //        }
-        //    }
-        //}         
+        SortExistingCharacters();   
     }
     public void SortExistingCharacters()
     {
@@ -79,20 +67,7 @@ public class CharactersManager : MonoBehaviour
         foreach (int pos in positions) { if (CheckCharaExist(pos) || includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
-    //public List<int> GetExistingCharactersPos(List<int> targetPool)
-    //{
-    //    List<int> ints = new List<int>();
-    //    List<Character> characterList = new List<Character>();
-    //    foreach (int target in targetPool)
-    //    {
-    //        if (CheckCharaExist(target) && !characterList.Contains(GetCharacterWithPos(target)))
-    //        {
-    //            ints.Add(target);
-    //            characterList.Add(GetCharacterWithPos(target));
-    //        }
-    //    }
-    //    return ints;
-    //}
+    
     public List<Character.CharacterStatus> GetExistingCharactersStatus()
     {
         List<Character.CharacterStatus> charactersStatus = new List<Character.CharacterStatus>();
@@ -377,6 +352,17 @@ public class CharactersManager : MonoBehaviour
             }
         }
 
+        return list;
+    }
+
+    /// <summary>‚¢‚¸‚ê‚©‚Ìw‰c‚ÌƒLƒƒƒ‰‚·‚×‚Ä‚ğ•Ô‚·</summary>
+    public List<Character> SearchChara_AllInOneSide(bool player)
+    {
+        List<Character> list = new List<Character>();
+        foreach (Character chara in GetExistingCharacters_All())
+        {
+            if (chara.PlayerPos() == player) list.Add(chara);
+        }
         return list;
     }
 

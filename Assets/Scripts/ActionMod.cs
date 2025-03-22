@@ -14,6 +14,8 @@ public class ActionMod : MonoBehaviour
         [TextArea(3, 10)]
         public string exInfo;
 
+        public int exTurn;
+
         public bool consumeFocus;
         public int decreaseHP;
 
@@ -72,14 +74,15 @@ public class ActionMod : MonoBehaviour
             if (conditionInfo != "") { s += string.Format("○{0}\n", conditionInfo); }
             if (!hideValues)
             {
+                if (exTurn > 0) { s += $"追加ターンを{exTurn}得る\n"; }
                 if (consumeFocus) { s += "・対象のフォーカスを消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
                 if (decreaseHP != 0) { s += ValueToStr("・HP減少量", decreaseHP, ""); }
-                //if (ATKMod != 0) { s += ValueToStr("・ATK補正", ATKMod, "％"); }
-                //if (INTMod != 0) { s += ValueToStr("・INT補正", INTMod, "％"); }
-                if (ATKMod > 0) { s += $"・ATK{ATKMod}％分の物理ダメージを追加で与える\n"; }
-                else if (ATKMod < 0) { s += $"・ATK補正{ATKMod}％\n"; }
-                if (INTMod > 0) { s += $"・INT{INTMod}％分の魔法ダメージを追加で与える\n"; }
-                else if (INTMod < 0) { s += $"・INT補正{INTMod}％\n"; }
+                if (ATKMod != 0) { s += ValueToStr($"・{"ATK補正".ToLinkKey("ATK(INT)補正")}", ATKMod, "％"); }
+                if (INTMod != 0) { s += ValueToStr($"・{"INT補正".ToLinkKey("ATK(INT)補正")}", INTMod, "％"); }
+                //if (ATKMod > 0) { s += $"・ATK{ATKMod}％分の物理ダメージを追加で与える\n"; }
+                //else if (ATKMod < 0) { s += $"・ATK補正{ATKMod}％\n"; }
+                //if (INTMod > 0) { s += $"・INT{INTMod}％分の魔法ダメージを追加で与える\n"; }
+                //else if (INTMod < 0) { s += $"・INT補正{INTMod}％\n"; }
                 if (trueATKDMG != 0) { s += ValueToStr("・固定物理ダメージ", trueATKDMG, ""); }
                 if (trueINTDMG != 0) { s += ValueToStr("・固定魔法ダメージ", trueINTDMG, ""); }
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
