@@ -15,15 +15,18 @@ MonoBehaviour:
   fileName: E_RatKing
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u8089\u584A"
-  difficulty: 
   introduction: 
-  preferredPos: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 08000000
   immovable: 1
   notChara: 0
   player: 0
   playable: 0
-  obstacle: 0
   variableSprites:
   - {fileID: 5073708421225518628, guid: ba90091c2ec91864eb9f475cbffc4f31, type: 3}
   spriteOffset: {x: 2, y: 4}
@@ -33,7 +36,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 044ddd179e31ac143b175e906b500adc, type: 2}
   - {fileID: 11400000, guid: 0bb9e9a5720dc5643893c8b2974dcd90, type: 2}
   - {fileID: 11400000, guid: 725c747da75523648a48cde31f506b11, type: 2}
-  - {fileID: 11400000, guid: 236bb72112003034eb68b4c202947b0f, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 5551348220021876505, guid: 5cb4f7b72a8ed1443a6fe1eb846a6eff, type: 3}
@@ -46,6 +48,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 1
   maxHP: 275
   maxSAN: 0
@@ -59,13 +62,6 @@ MonoBehaviour:
   turnPerRound: 2
   GHeal: 100
   RHeal: 80
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

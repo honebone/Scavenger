@@ -144,6 +144,7 @@ public class Definer : MonoBehaviour
                     if ($"S_{status.StEName}" == key)
                     {
                         s += PA.GetStEInfo_forRef() + "\n";
+                        //s += StE.GetComponent<PassiveAbility>().GetPAInfo() + "\n";
                         if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
                         return s;
                     }

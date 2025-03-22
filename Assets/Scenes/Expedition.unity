@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
-  skipTutorial: 1
+  debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
   battleDebug: 0
   volume: {fileID: 1421441752}
   aberrationValueRange: {x: 0, y: 0.5}
@@ -304,17 +304,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    centerFront: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    lowerFront: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    centerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    lowerMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    upperMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
     dontShuffleBack: 0
-    upperBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    centerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    lowerBack: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
@@ -13184,6 +13184,7 @@ MonoBehaviour:
   - {fileID: 1489497368108049143, guid: 77fcc58ef3d1a1d4787b7af55ba4b894, type: 3}
   - {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
   - {fileID: 5164891664867224302, guid: e0c7df9d806a7464d89513a9557438d4, type: 3}
+  - {fileID: 1489497368108049143, guid: b0088dd5e73ffc54dabec8ae5a9cbd6e, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}
