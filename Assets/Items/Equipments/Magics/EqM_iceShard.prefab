@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
@@ -86,7 +87,7 @@ MonoBehaviour:
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 7287685452746213919, guid: 5f67b5836be9b894ea8df1cee867dd6e, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0

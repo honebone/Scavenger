@@ -1273,6 +1273,7 @@ public class Action : MonoBehaviour
                             if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
                             {
                                 StEParams.applyChance += actionsStatus[i].debuffChanceMod;
+                                StEParams.applyChance += ownerStatus.debuffChance;
                             }
                             //if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
                             if (StEStaus.DoT)
@@ -1286,7 +1287,7 @@ public class Action : MonoBehaviour
                                 StEParams.DMGPerTurn += (baseValue * StEParams.value / 100f).ToInt();
                             }
 
-                            if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//íäëI
+                            if (StEParams.guaranteed || (StEParams.applyChance - targetStatus.GetStERes(StEParams)).Dice())//é¿ç€Ç…ïtó^Ç∑ÇÈÇ©ÇÃíäëI====================================
                             {
                                 if (!appliedType.Contains(StEStaus.StEType)) { appliedType.Add(StEStaus.StEType); }
                                 onApplyStEParams.appliedParams.Add(StEParams);

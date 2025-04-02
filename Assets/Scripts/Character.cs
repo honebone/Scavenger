@@ -79,6 +79,7 @@ public class Character : MonoBehaviour
 
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
+        public float debuffChance;
 
         public float moveRes;
         public float debuffRes;
@@ -175,6 +176,7 @@ public class Character : MonoBehaviour
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
             }
+            if (debuffChance != 0) { s += $"デバフ付与確率{debuffChance}％\n"; }
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
             if (debuffRes != 0) { s += string.Format("デバフ耐性{0}％\n", debuffRes); }
 
@@ -351,7 +353,7 @@ public class Character : MonoBehaviour
             StEResists = new List<StEResist>();
             StEApplyBonus = new List<StEApplyBonus>();
         }
-
+        public float debuffChance;
         public float moveRes;
         public float debuffRes;
         public string GetInfo()
@@ -387,6 +389,7 @@ public class Character : MonoBehaviour
                 if (bonus.exValue != 0) { info += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
                 if (bonus.exDMGPerTurn != 0) { info += ValueToStr(string.Format("{0}のHP減少量", StEName), bonus.exDMGPerTurn, "/ターン"); }
             }
+            info += ValueToStr("デバフ付与確率", debuffChance, "％");
             info += ValueToStr("移動耐性", moveRes, "％");
             info += ValueToStr("デバフ耐性", debuffRes, "％");
 
@@ -1253,6 +1256,7 @@ public class Character : MonoBehaviour
         {
             AddStEBonus(bonus, set);
         }
+        if (mod.debuffChance != 0) { AddDebuffChance(mod.debuffChance * n); }
         if (mod.moveRes != 0) { AddMoveRes(mod.moveRes * n); }
         if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes * n); }
     }
@@ -1394,6 +1398,10 @@ public class Character : MonoBehaviour
         }
         if (set) { charaStatus.StEApplyBonus.Add(bonus); }
         else { infoText.AddErrorText("error"); }
+    }
+    public void AddDebuffChance(float value)
+    {
+        charaStatus.debuffChance += value;
     }
     public void AddMoveRes(float value)
     {

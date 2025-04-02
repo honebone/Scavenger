@@ -19,7 +19,7 @@ MonoBehaviour:
   difficulty: "\u4F4E"
   preferFront: 0
   preferMid: 1
-  preferBack: 1
+  preferBack: 0
   mainRole:
   - "\u653B\u6483"
   subRole:

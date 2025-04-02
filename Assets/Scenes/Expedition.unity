@@ -302,14 +302,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 68b07d6ad458b7944b704abf090b58ac, type: 2}
   - {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
   - {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
+  - {fileID: 11400000, guid: 875513ecc35dbeb47852d5c0743dee15, type: 2}
   enemySetTest:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-    centerFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
-    centerMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
