@@ -144,7 +144,7 @@ MonoBehaviour:
     - applyStE: {fileID: 5164891664867224302, guid: e0c7df9d806a7464d89513a9557438d4, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 2
+      stack: 1
       value: 0
       refATK: 0
       DMGPerTurn: 0
@@ -170,8 +170,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -190,10 +205,11 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 2
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 08000000
+    - {fileID: 0}
+    actionTargetsInt: 0700000008000000
   - actionName: "\u8A13\u7DF4"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -288,8 +304,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -311,4 +342,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 05000000
+    actionTargetsInt: 03000000

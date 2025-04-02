@@ -921,7 +921,7 @@ public class Character : MonoBehaviour
     /// <param name="actionStatus"></param>
     /// <param name="setTargets">actionTarget‚É‘æ3ˆø”‚ğ‘ã“ü‚·‚é‚©</param>
     /// <param name="actionTargets">setTargets‚ªtrue‚ÌA‚±‚ê‚ğ‘ÎÛŒQ‚Æ‚µ‚Ä‰ü‚ß‚Äactionstatus‚É‘ã“ü‚·‚é</param>
-    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
+    public bool Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
     {
         if (!nullOwner) { actionStatus.actionOwner = this; }
         else { actionStatus.actionOwner = null; }
@@ -930,7 +930,9 @@ public class Character : MonoBehaviour
         if ((actionStatus.actionTargets != null && actionStatus.actionTargets.Count > 0) || (actionStatus.actionTargetsInt != null && actionStatus.actionTargetsInt.Count > 0))
         {
             actionQueue.Enqueue(actionStatus, targetCount);
+            return true;
         }
+        return false;
     }
 
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }

@@ -152,7 +152,7 @@ MonoBehaviour:
     summonChanceWeight:
     - 1
     summonStatusInherit:
-      maxHP: 50
+      maxHP: 0
       ATK: 0
       INT: 0
       CRITC_TH: 0
@@ -161,8 +161,8 @@ MonoBehaviour:
       CRITD: 0
       EVD_TH: 0
       EVD: 0
-      ACC_TH: 80
-      ACC: 200
+      ACC_TH: 0
+      ACC: 0
       ACT_TH: 0
       ACT: 0
     moveChance: 0
@@ -321,4 +321,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 05000000
+    actionTargetsInt: 03000000

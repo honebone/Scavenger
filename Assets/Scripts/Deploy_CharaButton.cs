@@ -22,7 +22,7 @@ public class Deploy_CharaButton : MonoBehaviour
         infoText = it;
         deployCharacterManager = dc;
         mouseOver = mo;
-        scroll = s;
+        //scroll = s;
 
         //charaNameText.text = charaStatus.charaName;
         charaImage.sprite = charaStatus.spriteForUI;
@@ -54,11 +54,11 @@ public class Deploy_CharaButton : MonoBehaviour
             deployCharacterManager.SetDraggingChara(charaStatus);
         }
     }
-    [SerializeField]
-    float scrollSpeed = 0.1f;
-    ScrollRect scroll;
-    float wheel;
-    bool p;
+    //[SerializeField]
+    //float scrollSpeed = 0.1f;
+    //ScrollRect scroll;
+    //float wheel;
+    //bool p;
     private void Update()
     {
         //if (p)
@@ -73,7 +73,7 @@ public class Deploy_CharaButton : MonoBehaviour
     }
     public void OnMouseEnter()
     {
-        p = true;
+       // p = true;
         string info = $"<{charaStatus.charaName}>\n\n{charaStatus.characterData.GetRoleInfo()}\n";
         info += string.Format("使用難易度：{0}\n", charaStatus.characterData.difficulty);
         info += $"得意な列：{charaStatus.characterData.GetPreferedPos()}列\n\n";
@@ -83,7 +83,7 @@ public class Deploy_CharaButton : MonoBehaviour
     }
     public void OnMouseExit()
     {
-        p = false;
+        //p = false;
         mouseOver.ResetUI();
     }
 }

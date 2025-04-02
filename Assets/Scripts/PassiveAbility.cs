@@ -118,7 +118,7 @@ public class PassiveAbility : MonoBehaviour
 
 
     /// <summary>自身のスプライトを代入してEnqueue</summary>
-    public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets,int targetCount=0, bool nullOwner = false)
+    public bool Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets,int targetCount=0, bool nullOwner = false)
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         if (sr != null)
@@ -131,7 +131,7 @@ public class PassiveAbility : MonoBehaviour
         }
         Action.ActionStatus action = actionStatus;
         action.source = this;
-        character.Enqueue(action, setTargets, actionTargets, targetCount, nullOwner);
+       return character.Enqueue(action, setTargets, actionTargets, targetCount, nullOwner);
     }
 
     /// <summary>自身を対象にEunqueue</summary>
