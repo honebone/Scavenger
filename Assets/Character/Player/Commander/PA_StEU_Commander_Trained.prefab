@@ -69,13 +69,14 @@ MonoBehaviour:
     conditionInfo: "\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483(\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u307F)"
     hideValues: 0
     exInfo: "\u30B9\u30BF\u30C3\u30AF-1"
+    exTurn: 0
     consumeFocus: 1
     decreaseHP: 0
     ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
-    exDMG_mul: 70
+    exDMG_mul: 50
     exATKDMG_int: 0
     exINTDMG_int: 0
     ACCMod: 0
@@ -120,6 +121,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
 --- !u!212 &6391350165293048886

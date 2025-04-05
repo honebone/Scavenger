@@ -140,7 +140,7 @@ MonoBehaviour:
     - applyStE: {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 3
+      stack: 6
       value: 0
       refATK: 0
       DMGPerTurn: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
     - applyStE: {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 2
+      stack: 1
       value: 0
       refATK: 0
       DMGPerTurn: 0
