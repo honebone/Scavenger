@@ -25,7 +25,9 @@ public class P_Commander2 : PA_Personality
 
     public override void OnRoundEnd()
     {
-        if(count >= 2)
+        //count = 8;
+
+        if (count >= 2)
         {
             Action.ActionStatus action = actionStatus;
             if (count >= 3) action = action.Modify(mod_3);

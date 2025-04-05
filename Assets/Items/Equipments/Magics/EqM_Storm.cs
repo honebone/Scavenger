@@ -7,7 +7,6 @@ public class EqM_Storm : Eq_Magic
     public int castChance;
     public int DMGPerCast;
     [SerializeField] Action.ActionStatus actionStatus;
-    [SerializeField] CharactersManager.SearchCharaCondition condition_focus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
     int castCount;
@@ -18,7 +17,7 @@ public class EqM_Storm : Eq_Magic
 
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if(myTurn && castChance.Dice())
+        if (BattleManager.inst.GetCurrntTurnChara().PlayerPos() == character.PlayerPos() && castChance.Dice())
         {
             Cast();
         }
@@ -29,10 +28,9 @@ public class EqM_Storm : Eq_Magic
         Action.ActionStatus action = actionStatus;
         action.INTMod_max += DMGPerCast * castCount;
         action.INTMod_min += DMGPerCast * castCount;
-        List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition_focus));
-        if(targets.Count == 0) targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));
+        List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));
 
-        if (Enqueue(action, true, targets))
+        if (Enqueue(action, true, targets,1))
         {
             Log("ÉJÉEÉìÉgëùâ¡");
             castCount++;

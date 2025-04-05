@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -296,26 +296,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc4df6f9bfeb00a42a23e14e37be9235, type: 2}
   - {fileID: 11400000, guid: 4f91ef266e18e0a4c83a905ed25f1ff2, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
-  eq_exclusive:
-  - {fileID: 11400000, guid: a391517e4b10764408fe716698595981, type: 2}
-  - {fileID: 11400000, guid: ede4d768a59e5c140935f176161440c2, type: 2}
-  - {fileID: 11400000, guid: 68b07d6ad458b7944b704abf090b58ac, type: 2}
-  - {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
-  - {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
-  - {fileID: 11400000, guid: 875513ecc35dbeb47852d5c0743dee15, type: 2}
+  eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    upperFront: {fileID: 0}
     centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
-    lowerBack: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
@@ -12923,6 +12917,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
+  - {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
   enemyDataBase:
   - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
   - {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
@@ -13084,6 +13079,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ffc41cea7997e834c92181c69dc9b0d1, type: 2}
   - {fileID: 11400000, guid: 289e5032e44ea1045a23262e8af33ba7, type: 2}
   - {fileID: 11400000, guid: 10ac2662eed97db4188796b8c3e0150f, type: 2}
+  - {fileID: 11400000, guid: 875513ecc35dbeb47852d5c0743dee15, type: 2}
+  - {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
+  - {fileID: 11400000, guid: d81fa3c9b33803d4c9da02f0d8b1e646, type: 2}
+  - {fileID: 11400000, guid: a391517e4b10764408fe716698595981, type: 2}
+  - {fileID: 11400000, guid: ede4d768a59e5c140935f176161440c2, type: 2}
+  - {fileID: 11400000, guid: 68b07d6ad458b7944b704abf090b58ac, type: 2}
+  - {fileID: 11400000, guid: 0305bdb9b8eb6a1459882ba538955834, type: 2}
+  - {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
+  - {fileID: 11400000, guid: c5ba7b5316dde064187ef245a5a3136a, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}

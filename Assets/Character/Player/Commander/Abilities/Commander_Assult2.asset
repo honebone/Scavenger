@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Commander_Recruit
+  m_Name: Commander_Assult2
   m_EditorClassIdentifier: 
-  abilityName: "\u5FB4\u5175"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 65be1d6593d556f4d816a3e611fccf5f, type: 2}
+  abilityName: "\u7121\u6148\u60B2\u306A\u7A81\u6483\u4EE4+"
+  lockedDefault: 0
+  upgradeInfo: "\u8A13\u7DF4\u3092\u4ED8\u4E0E"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 5
+  abilityType: 3
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
@@ -58,9 +58,9 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5FB4\u5175"
-    conditionInfo: "\u4F5C\u6226\u304C3\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u3042\u308B"
-    targetInfo: "\u5473\u65B9\u5074\u524D\u5217\u306E\u7A7A\u3044\u3066\u3044\u308B1\u30DE\u30B9"
+  - actionName: "\u7121\u6148\u60B2\u306A\u7A81\u6483\u4EE4+"
+    conditionInfo: 
+    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -68,17 +68,17 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
-    friendly: 0
+    targetType: 6
+    friendly: 1
     condition:
-      searchAsPos: 1
-      onlyEmpty: 1
+      searchAsPos: 0
+      onlyEmpty: 0
       player: 1
       enemy: 0
       onlyPlayable: 0
       front: 1
-      mid: 0
-      back: 0
+      mid: 1
+      back: 1
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -96,7 +96,7 @@ MonoBehaviour:
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
-    exTurn: 0
+    exTurn: 1
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -131,8 +131,8 @@ MonoBehaviour:
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
+    SANDamage_min: 3
+    SANDamage_max: 7
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -140,17 +140,22 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 5164891664867224302, guid: e0c7df9d806a7464d89513a9557438d4, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
     removePEs: []
-    summon: 1
-    summonChara:
-    - {fileID: 11400000, guid: d67c2f83189ea364186d143f19bb329e, type: 2}
-    summonChanceWeight:
-    - 1
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
     summonStatusInherit:
       maxHP: 0
       ATK: 0
@@ -176,7 +181,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 5
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -187,9 +192,10 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets: []
+    actionTargets:
+    - {fileID: 0}
     actionTargetsInt: 07000000
-  - actionName: "\u5FB4\u5175"
+  - actionName: "\u7121\u6148\u60B2\u306A\u7A81\u6483\u4EE4"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -308,7 +314,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 5
+    abilityType: 3
     index: 1
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -321,4 +327,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargetsInt: 05000000

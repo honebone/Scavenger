@@ -200,7 +200,7 @@ public class BattleManager : MonoBehaviour
             TurnOrderParams turnOrderParams = new TurnOrderParams();
             turnOrderParams.chara = charas[j];
             turnOrderParams.ACT = charas[j].CharaStatus().ACT;
-            turnOrderParams.turns = charas[j].CharaStatus().turnPerRound;
+            turnOrderParams.turns = charas[j].CharaStatus().turnPerRound + charas[j].CharaStatus().exTurn;
             turnOrderParams.index = j;
 
             turnOrderParamsList.Add(turnOrderParams);

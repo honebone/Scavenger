@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5954328460363848495}
   - component: {fileID: 3404417727636778070}
   m_Layer: 0
-  m_Name: Commander_Attack_AMod
+  m_Name: Commander_Attack_AMod2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     exTurn: 0
     consumeFocus: 1
     decreaseHP: 0
-    ATKMod: 50
+    ATKMod: 75
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0

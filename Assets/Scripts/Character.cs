@@ -73,6 +73,7 @@ public class Character : MonoBehaviour
 
         public int ACT;
         public int turnPerRound;
+        public int exTurn;
 
         public float GHeal;
         public float RHeal;
@@ -692,7 +693,6 @@ public class Character : MonoBehaviour
                 //infoText.AddLogText(string.Format("{0}は{1}を付与された", "test","ok"));
             }
 
-            Debug.Log("SE");
             soundManager.PlaySE(Definer.soundRef.ApplyStE[(int)pa.GetStatusEffectStatus().StEType]);
         }
       
@@ -935,7 +935,7 @@ public class Character : MonoBehaviour
         return false;
     }
 
-    public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound); }
+    public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound+ charaStatus.exTurn); }
     public void SetActionInvolvedIcon(bool owner) { targetButton.SetActionInvolvedIcon(owner); }
 
     //===================================================<<ターン処理>>========================================================
@@ -1215,15 +1215,16 @@ public class Character : MonoBehaviour
 
     public void AddTurn(int turns)
     {
+        targetButton.SetDamageText($"追加ターン {turns}", Definer.colorRef.emphasize);
+        infoText.AddLogText($"{charaStatus.charaName}は追加ターンを{turns}得た");
         if (BattleManager.inRound)
         {
             battleManager.AddTurn(this, false, turns);
-            targetButton.SetDamageText("追加ターン", Definer.colorRef.emphasize);
             charaObj.AddTurnIcons(turns);
         }
         else
         {
-            infoText.AddWarningText("ラウンド中でないタイミングでターンの追加処理が行われました");
+            charaStatus.exTurn += turns;
         }
     }
 
@@ -1691,6 +1692,7 @@ public class Character : MonoBehaviour
     }
     public void OnTurnOrderDecide()
     {
+        charaStatus.exTurn = 0;//追加ターンリセット
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnOrderDecide(); }
         RemovePA_Execute();
     }
@@ -1723,6 +1725,7 @@ public class Character : MonoBehaviour
     public void OnBattleEnd()
     {
         charaStatus.shield = 0;//シールド量リセット
+        charaStatus.exTurn = 0;//追加ターンリセット
         continueTurn = false;
         charaObj.SetHPandShieldBar();
         for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)

@@ -695,6 +695,7 @@ public class Action : MonoBehaviour
     public class OnHealParams
     {
         public int healValue;
+        public int overheal;
         public bool ability;
         public Character target;
     }
@@ -1096,6 +1097,12 @@ public class Action : MonoBehaviour
 
                                     int drain = Mathf.Max(0, drainf.ToInt());
 
+                                    if (drain > ownerStatus.maxHP - ownerStatus.HP)
+                                    {
+                                        onHealParams.overheal = drain - (ownerStatus.maxHP - ownerStatus.HP);
+                                        drain = ownerStatus.maxHP - ownerStatus.HP;
+                                    }
+
                                     onHealParams.target = actionStatus.actionOwner;
                                     onHealParams.healValue = drain;
 
@@ -1169,6 +1176,12 @@ public class Action : MonoBehaviour
                         fheal *= targetStatus.RHeal / 100;
                         int heal = Mathf.Max(0, fheal.ToInt());
                         heal += actionsStatus[i].trueHeal;
+
+                        if (heal > targetStatus.maxHP - targetStatus.HP)
+                        {
+                            onHealParams.overheal = heal - (targetStatus.maxHP - targetStatus.HP);
+                            heal = targetStatus.maxHP - targetStatus.HP;
+                        }
                         onHealParams.healValue = heal;
 
                         if(!notChara) actionOwner.GetBattleReport().GHeal += heal;
@@ -1438,9 +1451,10 @@ public class Action : MonoBehaviour
                         target.AbilityRemain(remainControll);
                     }
 
-                    if (actionsStatus[i].exTurn > 0)
+                    if (actionsStatus[i].exTurn > 0)//í«â¡É^Å[Éì
                     {
                         target.AddTurn(actionsStatus[i].exTurn);
+
                     }
 
                 }

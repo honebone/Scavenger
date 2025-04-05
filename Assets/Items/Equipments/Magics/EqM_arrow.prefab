@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1455896857616258923}
-  - component: {fileID: -357088034216577552}
+  - component: {fileID: 1060209480430271920}
   - component: {fileID: 2102424110011888310}
   m_Layer: 0
-  m_Name: EqM_iceShard
+  m_Name: EqM_arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-357088034216577552
+--- !u!114 &1060209480430271920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,18 +42,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5667121962493394942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4661a2ad1443b0146932aba09129ed59, type: 3}
+  m_Script: {fileID: 11500000, guid: 2cf8cf3e9ac356d4ea15c76478a04157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: EqM_iceShard
+  fileName: EqM_Arrow
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 04000000
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 68b07d6ad458b7944b704abf090b58ac, type: 2}
+    itemData: {fileID: 11400000, guid: d81fa3c9b33803d4c9da02f0d8b1e646, type: 2}
     info_start: 
-    equipmentInfo: "CRIT\u304C\u767A\u751F\u3059\u308B\u305F\u3073\u3001\u3053\u308C\u306F\u5531\u3048\u3089\u308C\u308B(\u3053\u306E\u9B54\u8853\u306E\u653B\u6483\u306B\u3088\u308BCRIT\u3092\u9664\u304F)\n\u3053\u306E\u6761\u4EF6\u306B\u3088\u308B\u8A60\u5531\u306F\u3001\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067"
+    equipmentInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u3042\u308B\u6575\u304C\u3044\u308B\u306A\u3089\u3001\u3053\u308C\u306F\u5531\u3048\u3089\u308C\u308B"
     statusMod:
       LVL: 0
       maxHP_mul: 0
@@ -62,11 +62,11 @@ MonoBehaviour:
       PROT: 0
       ATK_mul: 0
       ATK_int: 0
-      INT_mul: 5
+      INT_mul: 15
       INT_int: 0
       exDMG_mul: 0
-      CRITC: 7
-      CRITD: 20
+      CRITC: 0
+      CRITD: 0
       EVD: 0
       ACC: 0
       ACT: 0
@@ -80,16 +80,17 @@ MonoBehaviour:
       debuffRes: 0
     actionMods: []
   actionStatus:
-    actionName: "\u9B54\u8853\uFF1A\u6C37\u67F1"
+    actionName: "\u9B54\u8853\u306E\u77E2"
     conditionInfo: "\u5531\u3048\u3089\u308C\u305F\u3068\u304D"
-    targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65751\u4F53\n\u305F\u3060\u3057\u3001\u81EA\u8EAB\u306E150\uFF05\u3092\u8D85\u3048\u3066\u4E0A\u6607\u3057\u305FCRIT\u30C0\u30E1\u30FC\u30B825\uFF05\u306B\u3064\u304D\u5BFE\u8C61\u306E\u6570\u304C1\u5897\u3048\u308B(\u6700\u59273\u5897\u52A0)\n"
+    targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65751\u4F53\n\u305F\u3060\u3057\u3001\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u3042\u308B\u6575\u3092\u512A\u5148"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 7287685452746213919, guid: 5f67b5836be9b894ea8df1cee867dd6e, type: 3}
+    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
+    VE_OnTargets: {fileID: 4158323115027654249, guid: c3e35d737abe8614abe8e530650e13d1, type: 3}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 1438175727545095413, guid: ecd5dcfc1a95b7d40909ecb3fee0a89d, type: 3}
     targetType: 0
     friendly: 0
     condition:
@@ -129,14 +130,14 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 20
-    INTMod_max: 20
+    INTMod_min: 30
+    INTMod_max: 50
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
-    ACCMod: 0
+    ACCMod: -20
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
@@ -162,14 +163,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
-      guaranteed: 0
-      applyChance: 100
-      stack: 1
-      value: 1
-      refATK: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -216,6 +210,29 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
+  condition_focus:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    onlyPlayable: 0
+    front: 1
+    mid: 1
+    back: 1
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    StEConditions:
+    - StE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      stack: 1
+      stack_lessThan: 0
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
   condition:
     searchAsPos: 0
     onlyEmpty: 0
@@ -236,9 +253,6 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
-  maxRemain: 5
-  maxTargetCount: 3
-  CRITDPerTargetCount: 25
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -280,7 +294,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 388cef52f1365914a8556e0ffdcf60cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8dacc232e9e1114ea8d9def33dc9179, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

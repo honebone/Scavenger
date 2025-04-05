@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Commander_Recruit
+  m_Name: Commander_Recruit2
   m_EditorClassIdentifier: 
-  abilityName: "\u5FB4\u5175"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 65be1d6593d556f4d816a3e611fccf5f, type: 2}
+  abilityName: "\u5FB4\u5175+"
+  lockedDefault: 0
+  upgradeInfo: "\u5175\u58EB\u306E\u30B9\u30C6\u30FC\u30BF\u30B9\u304C\u4E0A\u6607"
+  upgradeAbility: {fileID: 0}
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
@@ -152,8 +152,8 @@ MonoBehaviour:
     summonChanceWeight:
     - 1
     summonStatusInherit:
-      maxHP: 0
-      ATK: 0
+      maxHP: 15
+      ATK: 25
       INT: 0
       CRITC_TH: 0
       CRITC: 0

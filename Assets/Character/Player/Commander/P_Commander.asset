@@ -15,13 +15,17 @@ MonoBehaviour:
   fileName: P_Commander
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6307\u63EE\u5B98"
-  introduction: 
-  difficulty: "\u4E2D"
+  introduction: "\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u4ED8\u4E0E\u306B\u9577\u3051\u305F\u706B\u529B\u30B5\u30DD\u30FC\u30BF\u30FC\n\u5473\u65B9\u304C\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u306B\u5FDC\u3058\u3066\u5473\u65B9\u5168\u4F53\u3092\u5F37\u5316\u3059\u308B\n\u5473\u65B9\u304C\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u6D88\u8CBB\u3057\u305F\u969B\u306B\u81EA\u8EAB\u306B\u4F5C\u6226\u3092\u4ED8\u4E0E\u3059\u308B\n\u3053\u306E\u4F5C\u6226\u306F\u3001\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3059\u308B\u305F\u3081\u306B\u5FC5\u8981\u3068\u306A\u308B"
+  difficulty: "\u9AD8"
   preferFront: 0
-  preferMid: 0
-  preferBack: 0
-  mainRole: []
-  subRole: []
+  preferMid: 1
+  preferBack: 1
+  mainRole:
+  - "\u30D5\u30A9\u30FC\u30AB\u30B9\u4ED8\u4E0E"
+  - "\u30D5\u30A9\u30FC\u30AB\u30B9\u6D88\u8CBB"
+  - "\u5F37\u5316"
+  subRole:
+  - "\u5F31\u4F53"
   characterTags: 02000000
   immovable: 0
   notChara: 0
