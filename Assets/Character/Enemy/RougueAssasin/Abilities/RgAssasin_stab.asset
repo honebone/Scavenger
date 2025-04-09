@@ -40,6 +40,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
     StEExclude: []
     PE: []
@@ -56,7 +57,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u30D0\u30C3\u30AF\u30B9\u30BF\u30D6"
     conditionInfo: 
-    targetInfo: "\u6700\u3082HP\u5272\u5408\u304C\u5C11\u306A\u3044\u65751\u4F53"
+    targetInfo: "\u6700\u3082HP\u5272\u5408\u304C\u5C11\u306A\u3044\u65751\u4F53(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -78,6 +79,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -144,8 +146,23 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -159,6 +176,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 8735794092381845660, guid: f59c6b0db5e846b4180358251e637b46, type: 3}
     actionOwner: {fileID: 0}
