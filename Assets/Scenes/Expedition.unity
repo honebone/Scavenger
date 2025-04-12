@@ -5969,7 +5969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.09999}
+  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
   m_SizeDelta: {x: -579.7155, y: -431.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -13088,6 +13088,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0305bdb9b8eb6a1459882ba538955834, type: 2}
   - {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
   - {fileID: 11400000, guid: c5ba7b5316dde064187ef245a5a3136a, type: 2}
+  - {fileID: 11400000, guid: f4cb6e47d63e366458eb6f9ab8f6b0e3, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -39188,7 +39189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 101.3053, y: -157.43001}
+  m_AnchoredPosition: {x: 101.3053, y: -157.43}
   m_SizeDelta: {x: -682.6246, y: -314.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021522965
@@ -41536,7 +41537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2125168444
 RectTransform:
   m_ObjectHideFlags: 0
