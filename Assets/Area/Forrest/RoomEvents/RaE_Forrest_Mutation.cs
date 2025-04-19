@@ -63,7 +63,8 @@ public class RaE_Forrest_Mutation : RoomEvent
         }
         else if (phase == 1)
         {
-            characters[choice].AddPA_Personality(selectedMutation, true);
+            expeditionManager.SetPersonality(characters[choice], selectedMutation);
+            //characters[choice].AddPA_Personality(selectedMutation, true);
             EndRoomEvent();
         }
     }

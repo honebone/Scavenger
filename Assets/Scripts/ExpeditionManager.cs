@@ -134,6 +134,7 @@ public class ExpeditionManager : MonoBehaviour
     MainMessage mainMessage;
     TutorialManager tutorialManager;
     Inventory inventory;
+    RoomEndLogManager relManager;
 
     bool inExpedition;
     bool inRoomEvent;
@@ -162,17 +163,18 @@ public class ExpeditionManager : MonoBehaviour
         definer = FindObjectOfType<Definer>();
         mapPanel = FindObjectOfType<Map_MapPanel>();
         infoText = FindObjectOfType<InfoText>();
-        charactersManager = FindObjectOfType<CharactersManager>();
-        battleManager = FindObjectOfType<BattleManager>();
+        charactersManager = CharactersManager.inst;
+        battleManager = BattleManager.inst;
         fadeOutUI = FindObjectOfType<FadeOutUI>();
-        soundManager = FindObjectOfType<SoundManager>();
-        lootPanel = FindObjectOfType<LootPanel>();
-        gameManager = FindObjectOfType<GameManager>();
+        soundManager = SoundManager.instance;
+        lootPanel = LootPanel.inst;
+        gameManager = GameManager.instance;
         guideMessage = FindObjectOfType<GuideMessage>();
         supplyManager = FindObjectOfType<SupplyManager>();
         mainMessage = FindObjectOfType<MainMessage>();
         tutorialManager = FindObjectOfType<TutorialManager>();
         inventory = FindObjectOfType<Inventory>();
+        relManager = RoomEndLogManager.inst;
 
         //StartArea(areaDataForDebug);//test
     }
@@ -215,7 +217,7 @@ public class ExpeditionManager : MonoBehaviour
         mainMessage.ResetMessage();
 
         yield return new WaitForSeconds(1.25f);
-        CheckEnemyLVLUp();
+        CheckRoomEndEvent();
     }
 
     public void NextArea(AreaData next)
@@ -247,63 +249,85 @@ public class ExpeditionManager : MonoBehaviour
         infoText.AddLogText("狂気が満ちていく...".ColorStr(Definer.colorRef.affricted));
     }
 
-    void CheckEnemyLVLUp()
+    void CheckRoomEndEvent()
     {
-        if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))
+        if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))//enemyLVLUP
         {
-            StartCoroutine(EnemyLVLUpC());
+            //StartCoroutine(EnemyLVLUpC());
+            relManager.Enqueue_EnemyLVL();
+            relManager.Enqueue_EnemyLVL();
+            relManager.Enqueue_EnemyLVL();
+
         }
-        else { CheckMadness(); }
+
+        if (partyStatus.getPerChance_endRE.Dice())
+        {
+            SetRandomPersonality_ToRandom();
+        }
+
+        RoomEndLog();
     }
 
-    IEnumerator EnemyLVLUpC()
+    void RoomEndLog()
     {
-        enemyLVL++;
-        string info = enemyStatusGrowth.GetInfo(enemyLVL);
-
-        soundManager.StopBGMs();
-        soundManager.PlaySE(jingle_EnemyLVLUp);
-
-        mainMessage.SetMessage("敵のLVLが上昇".ColorStr(Definer.colorRef.abilityColors[1]));
-        yield return new WaitForSeconds(1.5f);
-        mainMessage.SetInfo(info.ColorStr(Definer.colorRef.abilityColors[1]));
-        yield return new WaitForSeconds(3f);
-        mainMessage.ResetMessage();
-        yield return new WaitForSeconds(1.25f);
-
-        soundManager.PlayBGM_Normal();
-        CheckMadness();
+        if (relManager.HasLog())
+        {
+            relManager.StartREL();
+        }
+        else
+        {
+            SelectNextRoom();
+        }
     }
+
+    //IEnumerator EnemyLVLUpC()
+    //{
+    //    enemyLVL++;
+    //    string info = enemyStatusGrowth.GetInfo(enemyLVL);
+
+    //    soundManager.StopBGMs();
+    //    soundManager.PlaySE(jingle_EnemyLVLUp);
+
+    //    mainMessage.SetMessage("敵のLVLが上昇".ColorStr(Definer.colorRef.abilityColors[1]));
+    //    yield return new WaitForSeconds(1.5f);
+    //    mainMessage.SetInfo(info.ColorStr(Definer.colorRef.abilityColors[1]));
+    //    yield return new WaitForSeconds(3f);
+    //    mainMessage.ResetMessage();
+    //    yield return new WaitForSeconds(1.25f);
+
+    //    soundManager.PlayBGM_Normal();
+    //    CheckMadness();
+    //}
 
     public string EnemyLVLUP()
     {
         enemyLVL++;
-       return enemyStatusGrowth.GetInfo(enemyLVL);
+        return enemyStatusGrowth.GetInfo(enemyLVL);
     }
 
-    void CheckMadness()
-    {
-        SelectNextRoom();
-        //if (addedMadness == 0) { SelectNextRoom(); }
-        //else if (addedMadness > 0) { StartCoroutine(AddMandessC()); } 次回アップデートで戻そう
-    }
+    //void CheckMadness()
+    //{
+    //    SelectNextRoom();
+    //    //if (addedMadness == 0) { SelectNextRoom(); }
+    //    //else if (addedMadness > 0) { StartCoroutine(AddMandessC()); } 次回アップデートで戻そう
+    //}
 
-    IEnumerator AddMandessC()
-    {
-        for(int i = 0; i < addedMadness; i++)
-        {
-            GameObject add = MadnessPAPool.Choice();
-            MadnessPAPool.Remove(add);
-            madnessPAs.Add(add);
-            infoText.AddDebugText($"新たな狂気：{add.GetComponent<PA_Personality>().GetPersonalityStatus().personalityName}");
-            partyStatus.madness++;
-            if (partyStatus.madness == partyStatus.maxMadness) break;
-        }
-        addedMadness = 0;
-        infoText.AddDebugText("狂気が増加");
-        yield return new WaitForSeconds(1f);
-        SelectNextRoom();
-    }
+    //IEnumerator AddMandessC()
+    //{
+    //    for(int i = 0; i < addedMadness; i++)
+    //    {
+    //        GameObject add = MadnessPAPool.Choice();
+    //        MadnessPAPool.Remove(add);
+    //        madnessPAs.Add(add);
+    //        infoText.AddDebugText($"新たな狂気：{add.GetComponent<PA_Personality>().GetPersonalityStatus().personalityName}");
+    //        partyStatus.madness++;
+    //        if (partyStatus.madness == partyStatus.maxMadness) break;
+    //    }
+    //    addedMadness = 0;
+    //    infoText.AddDebugText("狂気が増加");
+    //    yield return new WaitForSeconds(1f);
+    //    SelectNextRoom();
+    //}
 
 
     public void SelectNextRoom()
@@ -561,7 +585,7 @@ public class ExpeditionManager : MonoBehaviour
 
     public void SetPersonality(Character target, GameObject personality)
     {
-        target.AddPA_Personality(personality, true);
+        relManager.Enqueue_AddPer(target, personality);
     }
 
 
@@ -594,12 +618,8 @@ public class ExpeditionManager : MonoBehaviour
             chara.Heal(Mathf.RoundToInt(decreasedHP * 0.25f), null);
         }
         yield return new WaitForSeconds(0.75f);
-        if (partyStatus.getPerChance_endRE.Dice())
-        {
-            SetRandomPersonality_ToRandom();
-            yield return new WaitForSeconds(1.5f);
-        }
-        CheckEnemyLVLUp();
+        
+        CheckRoomEndEvent();
     }
 
     public void Defeat()

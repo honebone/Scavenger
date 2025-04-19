@@ -1196,7 +1196,8 @@ public class Character : MonoBehaviour
                     targetButton.SetDamageText("ê∏ê_ïˆâÛ", Definer.colorRef.affricted);
                     infoText.AddLogText(string.Format("{0}ÇÕê∏ê_ïˆâÛÇµÇΩ!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
                     expeditionManager.AddMadness(1);
-                    AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
+                    //AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
+                    expeditionManager.SetPersonality(this, definer.GetAffrictionDataBase().Choice());
 
                     charaStatus.SAN = charaStatus.maxSAN;
                     charaObj.Affrict();

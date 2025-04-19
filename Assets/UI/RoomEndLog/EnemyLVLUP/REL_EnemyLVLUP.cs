@@ -28,11 +28,11 @@ public class REL_EnemyLVLUP : RoomEndLog
         soundManager.PlaySE(SE);
 
         titleText.text = "ìGÇÃLVLÇ™è„è∏";
-        titleCanvas.DOFade(1, 1f);
-        yield return new WaitForSeconds(1.5f);
+        titleCanvas.DOFade(1, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         infoText.text = info;
-        infoCanvas.DOFade(1, 1f);
-        yield return new WaitForSeconds(2f);
+        infoCanvas.DOFade(1, 0.75f);
+        //yield return new WaitForSeconds(2f);
 
         soundManager.PlayBGM_Normal();
         manager.LogEnd();
