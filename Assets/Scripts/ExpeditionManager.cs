@@ -258,7 +258,6 @@ public class ExpeditionManager : MonoBehaviour
 
     IEnumerator EnemyLVLUpC()
     {
-        //EnemyLVLUp();
         enemyLVL++;
         string info = enemyStatusGrowth.GetInfo(enemyLVL);
 
@@ -274,6 +273,12 @@ public class ExpeditionManager : MonoBehaviour
 
         soundManager.PlayBGM_Normal();
         CheckMadness();
+    }
+
+    public string EnemyLVLUP()
+    {
+        enemyLVL++;
+       return enemyStatusGrowth.GetInfo(enemyLVL);
     }
 
     void CheckMadness()
