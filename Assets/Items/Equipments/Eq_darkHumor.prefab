@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_darkHumor
+  simpleInfo: "\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089\u3001\r\n\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u5F97\u3066\u3001<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u3001<color=#FAED8A><sprite
+    name=buff><link=S_\u9B54\u6CD5\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u9B54\u6CD5\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: bc08646ce1a30f346b56a425f914feeb, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +77,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

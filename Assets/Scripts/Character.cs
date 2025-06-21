@@ -136,28 +136,29 @@ public class Character : MonoBehaviour
                 s += string.Format("LVL：{0}\n", level);
             }
             if (lifetime > 0) { s += $"{"寿命".ToLinkKey()}：{lifetime}\n"; }
-            string s2 = $"({maxHP_base + maxHP_baseByLVL} {(maxHP_mul - 100).GetValueWithSign()}％ {maxHP_int.GetValueWithSign()})".ColorStr(Color.gray);
-            s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
-            if (shield > 0) { s += $"{"シールド".ToLinkKey().ColorStr(Definer.colorRef.shield)}：{shield}\n"; }
+            string s2 = $"{maxHP_base + maxHP_baseByLVL} {(maxHP_mul - 100).GetValueWithSign()}％ {maxHP_int.GetValueWithSign()}".ColorStr(Color.gray);
+            //s += string.Format("HP/maxHP：{0}/{1} {2}\n", HP, maxHP, s2);
+            s += $"{"HP".ToSpr_withName()}：{HP}/{maxHP} {s2}\n";
+            if (shield > 0) { s += $"{"shield".ToSpr_withLink().ColorStr(Definer.colorRef.shield)}：{shield}\n"; }
             //if (PROT != 0) { s += ValueToStr("PROT", PROT, $" {"(上限75)".ColorStr(Color.gray)}"); }
-            if (player) { s += string.Format("SAN/maxSAN：{0}/{1}\n\n", SAN, maxSAN); }
+            if (player) { s += $"{"SAN".ToSpr_withLink()}：{SAN}/{maxSAN}\n"; }
             else { s += "\n"; }
 
-            s2 = $"({ATK_base + ATK_baseByLVL} {(ATK_mul - 100).GetValueWithSign()}％ {ATK_int.GetValueWithSign()})".ColorStr(Color.gray);
-            s += string.Format("ATK：{0} {1}\n", ATK, s2);
-            s2 = $"({INT_base + INT_baseByLVL} {(INT_mul - 100).GetValueWithSign()}％ {INT_int.GetValueWithSign()})".ColorStr(Color.gray);
-            s += string.Format("INT：{0} {1}\n", INT, s2);
-            s += $"CRIT率：{CRITC}％\n";
-            s += $"CRITダメージ：{CRITD}％ {$"({CRITD_base} {(CRITD - CRITD_base).GetValueWithSign()})".ColorStr(Color.gray)}\n";
+            s2 = $"{ATK_base + ATK_baseByLVL} {(ATK_mul - 100).GetValueWithSign()}％ {ATK_int.GetValueWithSign()}".ColorStr(Color.gray);
+            s += $"{"ATK".ToSpr_withLink()}：{ATK} {s2}\n";
+            s2 = $"{INT_base + INT_baseByLVL} {(INT_mul - 100).GetValueWithSign()}％ {INT_int.GetValueWithSign()}".ColorStr(Color.gray);
+            s += $"{"INT".ToSpr_withLink()}：{INT} {s2}\n";
+            s += $"{"CRIT".ToSpr_withLink()}率：{CRITC}％\n";
+            s += $"{"CRIT".ToSpr_withLink()}ダメージ：{CRITD}％ {$"{CRITD_base} {(CRITD - CRITD_base).GetValueWithSign()}".ColorStr(Color.gray)}\n";
             //s += string.Format("CRIT：{0}％で{1}％ダメージ\n", CRITC, CRITD);
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";
 
             if (PROT != 0) { s += $"{"PROT".ToLinkKey()}：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
-            s += $"{"EVD".ToLinkKey()}：{EVD} {"(上限75)".ColorStr(Color.gray)}\n";
-            s += $"{"ACC".ToLinkKey()}：{ACC}\n\n";
+            s += $"{"EVD".ToSpr_withLink()}：{EVD} {"(上限75)".ColorStr(Color.gray)}\n";
+            s += $"{"ACC".ToSpr_withLink()}：{ACC}\n\n";
 
-            s += $"{"ACT".ToLinkKey()}：{ACT}\n";
+            s += $"{"ACT".ToSpr_withLink()}：{ACT}\n";
             s += string.Format("ラウンド毎ターン数：{0}\n\n", turnPerRound);
 
             if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
@@ -177,9 +178,9 @@ public class Character : MonoBehaviour
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
             }
-            if (debuffChance != 0) { s += $"デバフ付与確率{debuffChance}％\n"; }
+            if (debuffChance != 0) { s += $"{"debuff".ToSpr_withName()}付与確率{debuffChance}％\n"; }
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
-            if (debuffRes != 0) { s += string.Format("デバフ耐性{0}％\n", debuffRes); }
+            if (debuffRes != 0) { s += $"{"debuff".ToSpr_withName()}耐性{debuffRes}％\n"; }
 
             //foreach (GameObject actionMod in actionMods)
             //{
@@ -361,20 +362,20 @@ public class Character : MonoBehaviour
         {
             string info = "";
             bool f = false;
-            info += ValueToStr("maxHP", maxHP_mul, "％");
-            info += ValueToStr("maxHP", maxHP_int, "");
-            info += ValueToStr("maxSAN", maxSAN_mul, "％");
+            info += ValueToStr("HP".ToSpr_withName("maxHP"), maxHP_mul, "％");
+            info += ValueToStr("HP".ToSpr_withName("maxHP"), maxHP_int, "");
+            info += ValueToStr("SAN".ToSpr_withName("maxSAN"), maxSAN_mul, "％");
             info += ValueToStr("PROT", PROT, "");
-            info += ValueToStr("ATK", ATK_mul, "％");
-            info += ValueToStr("ATK", ATK_int, "");
-            info += ValueToStr("INT", INT_mul, "％");
-            info += ValueToStr("INT", INT_int, "");
+            info += ValueToStr("ATK".ToSpr_withLink(), ATK_mul, "％");
+            info += ValueToStr("ATK".ToSpr_withLink(), ATK_int, "");
+            info += ValueToStr("INT".ToSpr_withLink(), INT_mul, "％");
+            info += ValueToStr("INT".ToSpr_withLink(), INT_int, "");
             info += ValueToStr("与ダメージ", exDMG_mul, "％");
-            info += ValueToStr("CRIT率", CRITC, "％");
-            info += ValueToStr("CRITダメージ", CRITD, "％");
-            info += ValueToStr("EVD", EVD, "");
-            info += ValueToStr("ACC", ACC, "");
-            info += ValueToStr("ACT", ACT, "");
+            info += ValueToStr($"{"CRIT".ToSpr_withLink()}率", CRITC, "％");
+            info += ValueToStr($"{"CRIT".ToSpr_withLink()}ダメージ", CRITD, "％");
+            info += ValueToStr("EVD".ToSpr_withLink(), EVD, "");
+            info += ValueToStr("ACC".ToSpr_withLink(), ACC, "");
+            info += ValueToStr("ACT".ToSpr_withLink(), ACT, "");
             info += ValueToStr("ラウンド毎ターン数", turnPerRound, "");
             info += ValueToStr("与える回復量", GHeal, "％");
             info += ValueToStr("受ける回復量", RHeal, "％");
@@ -390,20 +391,19 @@ public class Character : MonoBehaviour
                 if (bonus.exValue != 0) { info += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
                 if (bonus.exDMGPerTurn != 0) { info += ValueToStr(string.Format("{0}のHP減少量", StEName), bonus.exDMGPerTurn, "/ターン"); }
             }
-            info += ValueToStr("デバフ付与確率", debuffChance, "％");
+            info += ValueToStr($"{"debuff".ToSpr_withName()}付与確率", debuffChance, "％");
             info += ValueToStr("移動耐性", moveRes, "％");
-            info += ValueToStr("デバフ耐性", debuffRes, "％");
+            info += ValueToStr($"{"debuff".ToSpr_withName()}耐性", debuffRes, "％");
 
             return info;
 
-            string ValueToStr(string start, float value, string end)
+            string ValueToStr(string start, float value, string end,bool invert=false)
             {
                 if (value == 0) { return ""; }
                 string s = f ? "\n" : "";
                 f = true;
                 s += start;
-                if (value < 0) { s += value.ToString(); }
-                else { s += "+" + value.ToString(); }
+                s += value.Evaluate(invert);
                 s += end;
                 return s;
             }
@@ -439,10 +439,10 @@ public class Character : MonoBehaviour
         {
             string s = "";
 
-            s += $"与ダメージ：{ATKDMG + INTDMG + decreaseHP}({"ATKDMG".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INTDMG".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
+            s += $"与ダメージ：{ATKDMG + INTDMG + decreaseHP}({"ATK".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INT".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
                 $"+{decreaseHP.ColorStr(Definer.colorRef.decreaseHP)})";
             s += $"\n被ダメージ：{RDMG + RShieldDMG}({RDMG.ColorStr(Definer.colorRef.damage)}+{"shieldDMG".ToSpr()}{RShieldDMG.ColorStr(Definer.colorRef.shieldDecrease)})";
-            s += $"\n与えた回復/シールド：{GHeal + GShield}({"heal".ToSpr()}{GHeal.ColorStr(Definer.colorRef.heal)},{"shield".ToSpr()}{GShield.ColorStr(Definer.colorRef.shield)})";
+            s += $"\n与えた回復/シールド：{GHeal + GShield}({"HP".ToSpr()}{GHeal.ColorStr(Definer.colorRef.heal)},{"shield".ToSpr()}{GShield.ColorStr(Definer.colorRef.shield)})";
 
             return s;
         }
@@ -1091,13 +1091,13 @@ public class Character : MonoBehaviour
 
             if (onDamageParams.ATK)
             {
-                targetButton.SetDamageText($"{"CRITL".ToSpr()}{"ATKDMGL".ToSpr()}{onDamageParams.ATKDMG}", Definer.colorRef.CRIT);
-                infoText.AddLogText($"{charaStatus.charaName}は{"ATKDMG".ToSpr()}{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.CRIT)}ダメージを受けた");
+                targetButton.SetDamageText($"{"CRITL".ToSpr()}{"ATKL".ToSpr()}{onDamageParams.ATKDMG}", Definer.colorRef.CRIT);
+                infoText.AddLogText($"{charaStatus.charaName}は{"ATK".ToSpr()}{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.CRIT)}ダメージを受けた");
             }
             if (onDamageParams.INT)
             {
-                targetButton.SetDamageText($"{"CRITL".ToSpr()}{"INTDMGL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.CRIT);
-                infoText.AddLogText($"{charaStatus.charaName}は{"INTDMG".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.CRIT)}ダメージを受けた");
+                targetButton.SetDamageText($"{"CRITL".ToSpr()}{"INTL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.CRIT);
+                infoText.AddLogText($"{charaStatus.charaName}は{"INT".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.CRIT)}ダメージを受けた");
             }
             soundManager.PlaySE(Definer.soundRef.CRIT);
         }
@@ -1105,13 +1105,13 @@ public class Character : MonoBehaviour
         {
             if (onDamageParams.ATK)
             {
-                targetButton.SetDamageText($"{"ATKDMGL".ToSpr()}{onDamageParams.ATKDMG}", Definer.colorRef.damage);
-                infoText.AddLogText($"{charaStatus.charaName}は{"ATKDMG".ToSpr()}{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.damage)}ダメージを受けた");
+                targetButton.SetDamageText($"{"ATKL".ToSpr()}{onDamageParams.ATKDMG}", Definer.colorRef.damage);
+                infoText.AddLogText($"{charaStatus.charaName}は{"ATK".ToSpr()}{onDamageParams.ATKDMG.ToString().ColorStr(Definer.colorRef.damage)}ダメージを受けた");
             }
             if (onDamageParams.INT)
             {
-                targetButton.SetDamageText($"{"INTDMGL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.INTDamage);
-                infoText.AddLogText($"{charaStatus.charaName}は{"INTDMG".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.INTDamage)}ダメージを受けた");
+                targetButton.SetDamageText($"{"INTL".ToSpr()}{onDamageParams.INTDMG}", Definer.colorRef.INTDamage);
+                infoText.AddLogText($"{charaStatus.charaName}は{"INT".ToSpr()}{onDamageParams.INTDMG.ToString().ColorStr(Definer.colorRef.INTDamage)}ダメージを受けた");
             }
             if (onDamageParams.totalDMG > 0) soundManager.PlaySE(Definer.soundRef.damage);
         }
@@ -1166,8 +1166,8 @@ public class Character : MonoBehaviour
     public void Heal(int value, Character healer)
     {
         charaStatus.HP = Mathf.Min(charaStatus.HP + value, charaStatus.maxHP);
-        targetButton.SetDamageText($"{"healL".ToSpr()}{value}", Definer.colorRef.heal);
-        infoText.AddLogText(string.Format("{0}はHPを{1}{2}回復した", charaStatus.charaName, "heal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.heal)));
+        targetButton.SetDamageText($"{"HPL".ToSpr()}{value}", Definer.colorRef.heal);
+        infoText.AddLogText(string.Format("{0}はHPを{1}{2}回復した", charaStatus.charaName, "HP".ToSpr(), value.ToString().ColorStr(Definer.colorRef.heal)));
         soundManager.PlaySE(Definer.soundRef.heal);
         charaObj.SetHPandShieldBar();
         SpawnVisualEffect(Definer.VERef.heal);
@@ -1175,8 +1175,8 @@ public class Character : MonoBehaviour
     public void SANHeal(int value)
     {
         charaStatus.SAN = Mathf.Min(charaStatus.SAN + value, charaStatus.maxSAN);
-        targetButton.SetDamageText($"{"SANHealL".ToSpr()}{value}", Definer.colorRef.SANHeal);
-        infoText.AddLogText(string.Format("{0}は正気度を{1}{2}回復した", charaStatus.charaName, "SANHeal".ToSpr(), value.ToString().ColorStr(Definer.colorRef.SANHeal)));
+        targetButton.SetDamageText($"{"SANL".ToSpr()}{value}", Definer.colorRef.SANHeal);
+        infoText.AddLogText(string.Format("{0}は正気度を{1}{2}回復した", charaStatus.charaName, "SAN".ToSpr(), value.ToString().ColorStr(Definer.colorRef.SANHeal)));
         soundManager.PlaySE(Definer.soundRef.SANHeal);
         charaObj.SetSANBar();
     }
@@ -1216,8 +1216,8 @@ public class Character : MonoBehaviour
 
     public void AddTurn(int turns)
     {
-        targetButton.SetDamageText($"追加ターン {turns}", Definer.colorRef.emphasize);
-        infoText.AddLogText($"{charaStatus.charaName}は追加ターンを{turns}得た");
+        targetButton.SetDamageText($"{"ACT".ToSpr(true)}追加ターン {turns}", Definer.colorRef.emphasize);
+        infoText.AddLogText($"{charaStatus.charaName}は{"ACT".ToSpr()}追加ターンを{turns}得た");
         if (BattleManager.inRound)
         {
             battleManager.AddTurn(this, false, turns);

@@ -46,13 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_chainedMonster
+  simpleInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u4E00\u5B9A\u5272\u5408\u4EE5\u4E0B\u306B\u306A\u308B\u3068\u3001<color=#00FFFF><sprite
+    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3068<color=#FAED8A><sprite
+    name=buff><link=S_ATK\u4E0A\u6607><u>ATK\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B\r\n\u3055\u3089\u306B\u6575\u5168\u4F53\u306B<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B\r\n\r\n\u3053\u306E\u80FD\u529B\u306F\u3001<sprite
+    name=HP><color=#87FF79>HP</color>\u3092\u4E00\u5B9A\u91CF\u56DE\u5FA9\u3059\u308B\u3068\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c5ba7b5316dde064187ef245a5a3136a, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -86,7 +90,8 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u5168\u3066\u306E\u6575"
     AModInfo: 
-    actionInfo: "\u3053\u306E\u80FD\u529B\u306F\u3001HP\u3092maxHP\u306E75\uFF05\u5206\u56DE\u5FA9\u3059\u308B\u3068\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
+    actionInfo: "\u3053\u306E\u80FD\u529B\u306F\u3001<sprite name=HP><color=#87FF79>HP</color>\u3092<sprite
+      name=HP><color=#87FF79>maxHP</color>\u306E75\uFF05\u5206\u56DE\u5FA9\u3059\u308B\u3068\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -213,7 +218,7 @@ MonoBehaviour:
     actionTargetsInt: 
   actionStatus_self:
     actionName: "\u7E1B\u3089\u308C\u305F\u602A\u7269"
-    conditionInfo: "HP\u304C\u6E1B\u5C11\u3057\u306625\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D"
+    conditionInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u6E1B\u5C11\u3057\u306625\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 

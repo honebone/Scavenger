@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_filthyBell
+  simpleInfo: "\u6575\u306B<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3059\u308B\u3068\u304D\u3001\u8FFD\u52A0\u3067<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 875513ecc35dbeb47852d5c0743dee15, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0

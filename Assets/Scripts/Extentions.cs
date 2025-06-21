@@ -13,10 +13,7 @@ public static class Extentions
     {
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + value.ToString() + "</color>";
     }
-    public static string ToSpr(this string spriteName)
-    {
-        return $"<sprite name={spriteName}>";
-    }
+
     public static Color ToColor(this AbilityData.AbilityType abilityType)
     {
         return Definer.colorRef.abilityColors[(int)abilityType];
@@ -142,6 +139,20 @@ public static class Extentions
     {
         if (value >= 0) { return "+" + value.ToString(); }
         else { return value.ToString(); }
+    }
+
+    public static string Evaluate(this int value, bool invertEvaluation = false)
+    {
+        Color c = (value == 0) ? Color.gray : (value < 0 == invertEvaluation) ? Color.green : Color.red;
+        if (value >= 0) { return ("+" + value.ToString()).ColorStr(c); }
+        else { return value.ColorStr(c); }
+    }
+
+    public static string Evaluate(this float value, bool invertEvaluation = false)
+    {
+        Color c = (value == 0) ? Color.gray : (value < 0 == invertEvaluation) ? Color.green : Color.red;
+        if (value >= 0) { return ("+" + value.ToString("0.##")).ColorStr(c); }
+        else { return value.ToString("0.##").ColorStr(c); }
     }
 
     public static float GetPercent(this int value, int max)
@@ -367,11 +378,29 @@ public static class Extentions
     //    return DMG;
     //}
 
+    public static string ToSpr(this string spriteName, bool outline = false)
+    {
+        if (outline) return $"<sprite name={spriteName}L>";
+        else return $"<sprite name={spriteName}>";
+    }
+    public static string ToSpr_withName(this string key,string nameOverride=null, bool outline = false)
+    {
+        return Definer.inst.GetTS_withName(key, nameOverride, outline);
+    }
+    public static string ToSpr_withLink(this string key, string nameOverride = null, bool outline = false)
+    {
+        return Definer.inst.GetTS_withLink(key, nameOverride, outline);
+    }
+
     /// <summary>状態異常のストラクト -> リンク付きテキスト</summary>
     public static string ToLinkKey(this PA_StatusEffect.StatusEffectStatus status, bool ignoreValue = true, int value = 0)
     {
+        string sprite = "";
+        if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff) sprite = "buff".ToSpr();
+        else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff) sprite = "debuff".ToSpr();
+        else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus) sprite = "focus".ToSpr();
         string text = (!status.refValue || ignoreValue) ? $"{status.StEName}" : $"{status.StEName}{value}";
-        return $"<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.StEType.ToColor());
+        return $"{sprite}<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.StEType.ToColor());
     }
 
     public static string ToLinkKey(this PositionEffect.PositionEffectStatus status, bool ignoreValue = true, int value = 0)

@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_AxeOfRevenge
+  simpleInfo: "\u81EA\u8EAB\u3088\u308A<sprite name=HP><color=#87FF79>HP</color>\u5272\u5408\u304C\u5927\u304D\u3044\u6575\u3078\u306E\u653B\u6483\u306F\u5F37\u5316\u3055\u308C\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 0e685522f30177942b2b61206b160967, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods:

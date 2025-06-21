@@ -255,9 +255,6 @@ public class ExpeditionManager : MonoBehaviour
         {
             //StartCoroutine(EnemyLVLUpC());
             relManager.Enqueue_EnemyLVL();
-            relManager.Enqueue_EnemyLVL();
-            relManager.Enqueue_EnemyLVL();
-
         }
 
         if (partyStatus.getPerChance_endRE.Dice())
@@ -410,7 +407,7 @@ public class ExpeditionManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText("ポジション変更", "キャラクターのポジションを変更する\n(イベント中は不可)");
+            infoText.SetText_Old("ポジション変更", "キャラクターのポジションを変更する\n(イベント中は不可)");
         }
         if (Input.GetMouseButtonDown(0))
         {

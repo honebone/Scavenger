@@ -59,7 +59,7 @@ public class Battle_TurnOrderIcon : MonoBehaviour
     public void OnMouseDown()
     {
         if (revealed) { character.DisplayInfo(); }
-        else { FindObjectOfType<InfoText>().SetText("•s–¾", ""); }
+        else { FindObjectOfType<InfoText>().SetText_Old("•s–¾", ""); }
     }
 
     public void RemoveTurnOrderIcon()

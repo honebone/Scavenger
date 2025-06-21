@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_NightCloak
+  simpleInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u4E00\u5B9A\u5272\u5408\u4EE5\u4E0B\u306B\u306A\u308B\u3068\u3001<color=#FAED8A><sprite
+    name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u3092\u5F97\u3066<sprite
+    name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u3068<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u53BB\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -81,7 +85,8 @@ MonoBehaviour:
   threshold: 30
   actionStatus:
     actionName: "\u95C7\u591C\u306E\u30AF\u30ED\u30FC\u30AF"
-    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066HP\u304C30\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D"
+    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066<sprite
+      name=HP><color=#87FF79>HP</color>\u304C30\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: "\u3053\u306E\u80FD\u529B\u306F3\u30E9\u30A6\u30F3\u30C9\u5F8C\u306B\u518D\u767A\u52D5\u53EF\u80FD"

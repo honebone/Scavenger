@@ -155,8 +155,8 @@ public class Map_RoomButton : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1) && !room.empty)
         {
-            if (blind) { InfoText.SetText("ˆÃˆÅ", "‰½‚ª‹N‚±‚é‚©•ª‚©‚ç‚È‚¢"); }
-            else { InfoText.SetText(room.eventName, room.eventInfo); }
+            if (blind) { InfoText.SetText_Old("ˆÃˆÅ", "‰½‚ª‹N‚±‚é‚©•ª‚©‚ç‚È‚¢"); }
+            else { InfoText.SetText_Old(room.eventName, room.eventInfo); }
         }
         if (Input.GetMouseButtonDown(0) && selectable)
         {

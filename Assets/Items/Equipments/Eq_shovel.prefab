@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_shovel
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u6B7B\u4F53\u30921\u3064\u9664\u53BB"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 3ac5084fec3aeda4389fb30574b3d089, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

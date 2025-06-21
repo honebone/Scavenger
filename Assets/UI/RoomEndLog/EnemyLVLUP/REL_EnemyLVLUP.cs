@@ -24,7 +24,7 @@ public class REL_EnemyLVLUP : RoomEndLog
     {
         string info = ExpeditionManager.inst.EnemyLVLUP();
 
-        soundManager.StopBGMs();
+        //soundManager.StopBGMs();
         soundManager.PlaySE(SE);
 
         titleText.text = "ìGÇÃLVLÇ™è„è∏";
@@ -34,7 +34,7 @@ public class REL_EnemyLVLUP : RoomEndLog
         infoCanvas.DOFade(1, 0.75f);
         //yield return new WaitForSeconds(2f);
 
-        soundManager.PlayBGM_Normal();
+        //soundManager.PlayBGM_Normal();
         manager.LogEnd();
     }
 }

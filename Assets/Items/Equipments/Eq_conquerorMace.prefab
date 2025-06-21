@@ -46,13 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_conquerorMace
+  simpleInfo: "\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D\u3001\u96A3\u63A5\u3059\u308B\u6575\u306B<color=#C900FF><sprite
+    name=debuff><link=S_\u6050\u6016><u>\u6050\u6016</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\r\n\r\n\u3055\u3089\u306B\u3001\u5012\u3057\u305F\u6575\u306E<color=#C30000><sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=HP><color=#87FF79>maxHP</color>\u3092\u596A\u3044\u53D6\u308B"
   PAInfo_start: 
   skipGetInfo: 0
-  PAInfo_end: "\u307E\u305F\u3001\u6BBA\u5BB3\u3057\u305F\u6575\u306EATK\u3068maxHP\u306E20\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u6700\u5927\u3067\u81EA\u8EAB\u306E\u57FA\u790EATK\u30FB\u57FA\u790EmaxHP\u306E400\uFF05\u307E\u3067"
+  PAInfo_end: "\u307E\u305F\u3001\u6BBA\u5BB3\u3057\u305F\u6575\u306E<color=#C30000><sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=HP><color=#87FF79>maxHP</color>\u306E20\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u6700\u5927\u3067\u81EA\u8EAB\u306E\u57FA\u790E<color=#C30000><sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u30FB\u57FA\u790E<sprite name=HP><color=#87FF79>maxHP</color>\u306E400\uFF05\u307E\u3067"
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +79,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

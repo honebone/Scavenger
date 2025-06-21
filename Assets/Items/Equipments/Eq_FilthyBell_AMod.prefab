@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u6575\u3078\u306E\u30C7\u30D0\u30D5\u4ED8\u4E0E\u80FD\u529B"
+    conditionInfo: "\u6575\u3078\u306E<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u4ED8\u4E0E\u80FD\u529B"
     hideValues: 0
     exInfo: 
     exTurn: 0

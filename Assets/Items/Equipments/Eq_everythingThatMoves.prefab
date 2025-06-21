@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_everythingThatMoves
+  simpleInfo: "\u6575\u304C\u79FB\u52D5\u3059\u308B\u3068\u3001\u305D\u306E\u6575\u306B<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: e3519a02bdc15094abe28ff9ff8285b9, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

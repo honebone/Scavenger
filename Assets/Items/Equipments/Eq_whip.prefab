@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_whip
+  simpleInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u304C\u306A\u3044\u6575\u3078\u306E\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 91d9f580a3c1ffa4dba23d2bdeeac59d, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods:

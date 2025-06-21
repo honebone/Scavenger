@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_hungryAxe
+  simpleInfo: "\u88C5\u5099\u6642\u306E<color=#C30000><sprite name=ATK><link=T_ATK><u>ATK</u></link></color>\u5897\u52A0\u91CF\u306F\u5927\u304D\u3044\u304C\u3001\r\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u96A3\u63A5\u3059\u308B\u5473\u65B9\u306E<sprite
+    name=HP><color=#87FF79>HP</color>\u3092\u6E1B\u5C11\u3055\u305B\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: d57614bb8779ae14fb1076a7f6474050, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

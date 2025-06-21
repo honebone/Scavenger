@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_bodybag
+  simpleInfo: "\u6B7B\u4F53\u3092\u9664\u53BB\u3057\u305F\u3068\u304D\u3001\u524D\u30FB\u4E2D\u5217\u306E\u3069\u3053\u304B\u306B\u30BE\u30F3\u30D3\u3092\u53EC\u559A\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
@@ -234,6 +235,7 @@ MonoBehaviour:
     conditionInfo: 
     hideValues: 0
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -285,6 +287,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
   CDRound: 2

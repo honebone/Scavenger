@@ -56,7 +56,7 @@ public class CharaDetail_EquipmentButton : MonoBehaviour
         {
             if (!empty)
             {
-                infoText.SetText(equipment.data.itemName.ColorStr(equipment.data.rarity.ToColor()), equipment.GetInfo());
+                infoText.SetText(equipment.data.itemName.ColorStr(equipment.data.rarity.ToColor()), equipment.GetInfo(false), equipment.GetInfo(true));
             }
         }
         if (Input.GetMouseButtonDown(0))

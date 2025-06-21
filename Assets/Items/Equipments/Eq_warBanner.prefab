@@ -46,14 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_warBanner
+  simpleInfo: "\u5473\u65B9\u306B<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B\r\n\r\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u65751\u4F53\u306B<sprite
+    name=INT><color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u3092\u3059\u308B\r\n\u3053\u308C\u3092\u30AB\u30A6\u30F3\u30C8\u306B\u5FDC\u3058\u305F\u56DE\u6570\u884C\u3044\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: dce780711fbf7974c922911ae6daf724, type: 2}
-    info_start: 
-    equipmentInfo: "\u81EA\u8EAB\u304C\u30AD\u30E3\u30E91\u4F53\u306B\u30D0\u30D5\u3092\u4ED8\u4E0E\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1"
+    equipmentInfo: "\u81EA\u8EAB\u304C\u30AD\u30E3\u30E91\u4F53\u306B<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1"
     statusMod:
       LVL: 0
       maxHP_mul: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

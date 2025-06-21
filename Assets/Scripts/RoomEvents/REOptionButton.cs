@@ -27,7 +27,7 @@ public class REOptionButton : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText(optionParams.optionName, optionParams.optionInfo);
+            infoText.SetText_Old(optionParams.optionName, optionParams.optionInfo);
             expeditionManager.REOption_OnRClick(index);
         }
         if (Input.GetMouseButtonDown(0))
@@ -39,7 +39,7 @@ public class REOptionButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        infoText.SetText(optionParams.optionName, optionParams.optionInfo);
+        infoText.SetText_Old(optionParams.optionName, optionParams.optionInfo);
         //mouseOver.SetUI("");
     }
     public void OnMouseExit()

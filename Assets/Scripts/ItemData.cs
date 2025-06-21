@@ -49,6 +49,7 @@ public class ItemData : ScriptableObject
     public bool specialInfo;
     [TextArea(3, 10),Header("フレーバーテキストとか?")]
     public string info;
+
     public enum Rarity { common, uncommon, rare, epic, legendary,madness }
     public Rarity rarity;
     public Sprite sprite;

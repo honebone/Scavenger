@@ -46,13 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_StealHammer
+  simpleInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u5F8C\u3001\u6B21\u306E\u81EA\u8EAB\u306E\u653B\u6483\u304C\u8FFD\u52A0\u306E<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B\r\n\u3053\u306E\u30C0\u30E1\u30FC\u30B8\u306F\u81EA\u8EAB\u306E<sprite
+    name=HP><color=#87FF79>maxHP</color>\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
-  PAInfo_end: "\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\uFF1A\n\u6B21\u306E\u81EA\u8EAB\u306E\u653B\u6483\u304C\u3001\u81EA\u8EAB\u306EmaxHP10\uFF05\u5206\u306E\u7269\u7406\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+  PAInfo_end: "\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\uFF1A\n\u6B21\u306E\u81EA\u8EAB\u306E\u653B\u6483\u304C\u3001\u81EA\u8EAB\u306E<sprite
+    name=HP><color=#87FF79>maxHP</color>10\uFF05\u5206\u306E<sprite name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 703a1844ce587f3449edf6e1bf0cbb41, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +78,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
@@ -82,6 +86,7 @@ MonoBehaviour:
     conditionInfo: 
     hideValues: 0
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -133,6 +138,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
   HPRatio: 0.1

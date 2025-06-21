@@ -39,8 +39,9 @@ public class SoundManager : MonoBehaviour
         BGM_battle.volume = value;
     }
 
-    public void PlaySE(AudioClip clip) {
-        if (!clipList.Contains(clip))
+    public void PlaySE(AudioClip clip)
+    {
+        if (clip != null && !clipList.Contains(clip))
         {
             clipList.Add(clip);
             audioSource.PlayOneShot(clip);

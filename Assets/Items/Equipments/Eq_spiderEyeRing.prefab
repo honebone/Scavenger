@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_spiderEyeRing
+  simpleInfo: "\u8907\u6570\u4F53\u3092\u540C\u6642\u306B\u653B\u6483\u3059\u308B\u3068\u304D\u3001\u5BFE\u8C61\u306E\u6570\u306B\u5FDC\u3058\u3066\u4E0E\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: "\u3007\u8907\u6570\u4F53\u3092\u5BFE\u8C61\u3068\u3059\u308B\u653B\u6483\uFF1A\n\u5BFE\u8C611\u4F53\u306B\u3064\u304D\u4E0E\u30C0\u30E1\u30FC\u30B8+15\uFF05"
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1973397cd3fa86f4aaf73a24b0e019c1, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
@@ -82,6 +83,7 @@ MonoBehaviour:
     conditionInfo: "\u8907\u6570\u4F53\u3092\u5BFE\u8C61\u3068\u3059\u308B\u653B\u6483"
     hideValues: 1
     exInfo: "\u4E0E\u30C0\u30E1\u30FC\u30B8+12.5\uFF05"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -133,6 +135,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
   DMGPerTarget: 15

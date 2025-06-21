@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText("インベントリ", "所持しているアイテムを確認する");
+            infoText.SetText_Old("インベントリ", "所持しているアイテムを確認する");
         }
         if (Input.GetMouseButtonDown(0))
         {

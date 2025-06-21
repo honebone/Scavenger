@@ -29,14 +29,21 @@ public class PA_Equipment : PassiveAbility
             {
                 s += s += statusMod.GetInfo() + "\n\n";
             }
-           
-            foreach(GameObject actionMod in actionMods)
+
+            foreach (GameObject actionMod in actionMods)
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
             }
             if (equipmentInfo != "") { s += equipmentInfo + "\n\n"; }
+
             return s;
         }
+    }
+    public override string GetSimpleInfo()
+    {
+        Debug.Log(equipmentStatus.statusMod.GetInfo() != "");
+        string s = equipmentStatus.statusMod.GetInfo() != "" ? equipmentStatus.statusMod.GetInfo()+ "\n\n" : "";
+        return $"{s}{simpleInfo}";
     }
     public override string GetPAName()
     {

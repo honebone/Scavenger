@@ -32,31 +32,33 @@ public class RoomEndLog : MonoBehaviour
 
     public void FadeIn()
     {
-        transform.localPosition = new Vector3(0, -move, 0);
-        canvas.alpha = 0;
-        if (sequence != null) sequence.Kill(true);
-        sequence = DOTween.Sequence();
+        canvas.alpha = 1;
 
-        sequence.Append(canvas.DOFade(1, 0.25f));
-        sequence.Join(transform.DOLocalMoveY(move, 0.25f)).SetRelative(true);
+        //transform.localPosition = new Vector3(0, -move, 0);
+        //if (sequence != null) sequence.Kill(true);
+        //sequence = DOTween.Sequence();
 
-        sequence.Play();
+        //sequence.Append(canvas.DOFade(1, 0.25f));
+        //sequence.Join(transform.DOLocalMoveY(move, 0.25f)).SetRelative(true);
+
+        //sequence.Play().SetDelay(0.5f);
     }
     public void FadeOut()
     {
-        if (sequence != null) sequence.Kill(true);
-        sequence = DOTween.Sequence();
+        //if (sequence != null) sequence.Kill(true);
+        //sequence = DOTween.Sequence();
 
-        sequence.Append(canvas.DOFade(0, 0.25f));
-        sequence.Join(transform.DOLocalMoveY(move, 0.25f)).SetRelative(true);
+        //sequence.Append(canvas.DOFade(0, 0.25f));
+        //sequence.Join(transform.DOLocalMoveY(move, 0.25f)).SetRelative(true);
 
-        sequence.Play().OnComplete(() =>
-        {
-            FadeOutEnd();
-        }).OnKill(() =>
-        {
-            FadeOutEnd();
-        });
+        //sequence.Play().OnComplete(() =>
+        //{
+        //    FadeOutEnd();
+        //}).OnKill(() =>
+        //{
+        //    FadeOutEnd();
+        //});
+        FadeOutEnd();
     }
 
     void FadeOutEnd()

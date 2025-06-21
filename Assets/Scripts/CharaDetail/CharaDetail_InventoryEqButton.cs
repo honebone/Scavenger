@@ -53,7 +53,7 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
+            infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo(false), item.GetInfo(true));
         }
         if (Input.GetMouseButtonDown(0))
         {

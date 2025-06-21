@@ -79,7 +79,7 @@ public class CharaDetailUI : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText("キャラクター詳細", "キャラクターの装備品の確認や変更、アビリティの解放ができる");
+            infoText.SetText_Old("キャラクター詳細", "キャラクターの装備品の確認や変更、アビリティの解放ができる");
         }
         if (Input.GetMouseButtonDown(0))
         {

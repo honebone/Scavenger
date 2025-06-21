@@ -19,7 +19,7 @@ public class RaE_DuplicateMirror : RE_RandomEvents
             string eqName = item.data.itemName.ColorStr(item.data.rarity.ToColor());
             option.optionName = eqName;
             option.optionInfo = $"{eqName}Çï°êªÇ∑ÇÈ";
-            option.optionInfo += $"\n\n{item.GetInfo()}";
+            option.optionInfo += $"\n\n{item.GetInfo(true)}";
 
             list.Add(option);
         }

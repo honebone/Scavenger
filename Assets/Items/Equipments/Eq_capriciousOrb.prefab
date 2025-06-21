@@ -46,13 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_capriciousOrb
+  simpleInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u5473\u65B9\u5168\u4F53\u306EHP\u3092\u56DE\u5FA9\u307E\u305F\u306F\u6E1B\u5C11\u3055\u305B\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 950174bfc18d61744a1775525ca97f74, type: 2}
-    info_start: "\u6C17\u307E\u3050\u308C\u306A\u30AA\u30FC\u30D6"
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

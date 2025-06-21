@@ -5,6 +5,8 @@ using System;
 
 public class Definer : MonoBehaviour
 {
+    public static Definer inst;
+
     [System.Serializable]
     public class ColorRef
     {
@@ -27,7 +29,9 @@ public class Definer : MonoBehaviour
         public Color damage;
         public Color INTDamage;
         public Color CRIT;
+        public Color ACC;
         public Color evade;
+        public Color ACT;
         public Color heal;
         public Color shield;
         public Color shieldDecrease;
@@ -84,8 +88,8 @@ public class Definer : MonoBehaviour
     public static GameObject positionEffectIcon;
     [SerializeField] CharacterData nonCharacterData;
     [SerializeField] Action.ActionStatus actionRef_Inspector;
-    [SerializeField]
-    ColorRef colorRef_Inspector;
+    //[SerializeField]
+    //ColorRef colorRef_Inspector;
     [SerializeField]
     SoundRef soundRef_Inspector;
     [SerializeField]
@@ -109,7 +113,7 @@ public class Definer : MonoBehaviour
     [SerializeField] List<GameObject> personalityDataBase;
     [SerializeField] List<GameObject> mutationDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
-    [SerializeField] List<GameObject> statusEffectDataBase;
+    //[SerializeField] List<GameObject> statusEffectDataBase;
     [SerializeField] List<GameObject> positionEffectDataBase;
     
 
@@ -128,6 +132,7 @@ public class Definer : MonoBehaviour
        [TextArea(3,10)] public string linkInfo;
     }
 
+    public CommonParams cp;
     public List<UniqueLinkInfo> uniqueLinkInfos = new List<UniqueLinkInfo>();
 
     /// <summary>埋め込んだリンク -> 説明文</summary>
@@ -137,7 +142,7 @@ public class Definer : MonoBehaviour
         switch (key[0])//keyの頭文字がタグの役割を果たす
         {
             case 'S'://状態異常
-                foreach (GameObject StE in statusEffectDataBase)
+                foreach (GameObject StE in cp.statusEffectDataBase)
                 {
                     PA_StatusEffect PA = StE.GetComponent<PA_StatusEffect>();
                     PA_StatusEffect.StatusEffectStatus status = PA.GetStatusEffectStatus();
@@ -209,6 +214,16 @@ public class Definer : MonoBehaviour
                 Debug.Log($"error:キャラが見つかりませんでした：{key}");
                 return $"error:キャラが見つかりませんでした：{key}";
 
+            case 'T':
+                foreach (var info in cp.textSpriteParamsList)
+                {
+                    if ($"T_{info.key}" == key)
+                    {
+                        return info.GetInfo();
+                    }
+                }
+                Debug.Log("error:keyに合う説明文が見つかりませんでした");
+                return "error:keyに合う説明文が見つかりませんでした";
 
 
             case 'U'://その他
@@ -225,6 +240,32 @@ public class Definer : MonoBehaviour
                 Debug.Log("error:頭文字のタグが一致しません");
                 return "error:頭文字のタグが一致しません";
         }
+    }
+
+    public string GetTS_withName(string key, string nameOverride = null ,bool outline=false)
+    {
+        foreach (var ts in cp.textSpriteParamsList)
+        {
+            if (ts.key == key)
+            {
+                return ts.GetTextSprite(SpriteTextMode.withName, outline, nameOverride);
+            }
+        }
+        Debug.Log("error:keyが不一致");
+        return "error:keyが不一致";
+    }
+
+    public string GetTS_withLink(string key, string nameOverride = null, bool outline = false)
+    {
+        foreach (var ts in cp.textSpriteParamsList)
+        {
+            if (ts.key == key)
+            {
+                return ts.GetTextSprite(SpriteTextMode.withLink, outline, nameOverride);
+            }
+        }
+        Debug.Log("error:keyが不一致");
+        return "error:keyが不一致";
     }
 
     public static List<ItemData> lootDataBase = new List<ItemData>();
@@ -282,7 +323,7 @@ public class Definer : MonoBehaviour
         {
             data = d;
         }
-        public string GetInfo()
+        public string GetInfo(bool simple)
         {
             string s = "";
 
@@ -317,7 +358,7 @@ public class Definer : MonoBehaviour
                         //    s += string.Format("[{0}]\n", Definer.equipmentTagName[data.equipmentTag]);
                         //}
                         //s += "\n";
-                        s += data.manager.GetComponent<PassiveAbility>().GetPAInfo();
+                        s += data.manager.GetComponent<PassiveAbility>().GetPAInfo(simple);
                         break;
 
 
@@ -336,12 +377,13 @@ public class Definer : MonoBehaviour
 
     private void Awake()
     {
+        if (inst == null) inst = this;
         nonCharaStatus = new Character.CharacterStatus();
         nonCharaStatus.Init(nonCharacterData);
 
         actionRef = actionRef_Inspector;
 
-        colorRef = colorRef_Inspector;
+        colorRef = cp.colorRef;
         soundRef = soundRef_Inspector;
         VERef = VERef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
@@ -371,11 +413,43 @@ public class Definer : MonoBehaviour
         }
 
         DoTDataBase = new List<GameObject>();
-        foreach (GameObject StE in statusEffectDataBase)
+        foreach (GameObject StE in cp.statusEffectDataBase)
         {
             if (StE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().DoT) { DoTDataBase.Add(StE); }
         }
 
         generalRaEDataBase = new List<GameObject>(generalRaEDataBase_Inspector);
+    }
+}
+
+public enum SpriteTextMode { spriteOnly, withName, withLink }
+
+[System.Serializable]
+public class TextSpriteParams
+{
+    public string key;
+    public string defaultName;
+    public Color color;
+    [TextArea(3, 10)] public string info;
+    public string GetTextSprite(SpriteTextMode mode, bool outline, string nameOverride = null)
+    {
+        switch (mode)
+        {
+            case SpriteTextMode.spriteOnly:
+                return key.ToSpr(outline);
+            case SpriteTextMode.withName:
+                string n = (nameOverride == null ? defaultName : nameOverride).ColorStr(color);
+                return $"{key.ToSpr(outline)}{n}";
+            case SpriteTextMode.withLink:
+                string n2 = nameOverride == null ? defaultName : nameOverride;
+                return $"{key.ToSpr(outline)}<link=T_{key}><u>{n2}</u></link>".ColorStr(color);
+            default:
+                return "";
+        }
+    }
+
+    public string GetInfo()
+    {
+        return $"<{GetTextSprite(SpriteTextMode.withName, false)}>\n\n{info}";
     }
 }

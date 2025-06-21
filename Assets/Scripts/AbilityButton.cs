@@ -69,7 +69,7 @@ public class AbilityButton : MonoBehaviour
         if (!deployMode)
         {
             battleManager.SetSelectedAbility(abilityStatus, character);
-            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo());
+            FindObjectOfType<InfoText>().SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo());
             charactersManager.ResetAllTargetIcons();
             if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
             {
@@ -86,7 +86,7 @@ public class AbilityButton : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false,new Character.CharacterStatus()));
+            FindObjectOfType<InfoText>().SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false,new Character.CharacterStatus()));
         }
 
     }
@@ -96,7 +96,7 @@ public class AbilityButton : MonoBehaviour
         FindObjectOfType<MouseOverUI>().SetUI("", true);
         if (SettingManager.infoOnMouseover)
         {
-            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false, new Character.CharacterStatus()));
+            FindObjectOfType<InfoText>().SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false, new Character.CharacterStatus()));
         }
     }
     public void OnMouseExit()

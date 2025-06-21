@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_StormBow
+  simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D\u3001\u65751\u4F53\u306B<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B\r\n\u3053\u306E\u653B\u6483\u304C\u547D\u4E2D\u3059\u308B\u3068\u3001\u518D\u3073\u653B\u6483\u3092\u3059\u308B\r\n\u3053\u308C\u3092\u5916\u3059\u307E\u3067\u7E70\u308A\u8FD4\u3059\r\n(\u547D\u4E2D\u7387\u306F\u6BCE\u5EA6\u4F4E\u4E0B\u3057\u3066\u3044\u304F)"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 4cc8894b0b925854d9b76e84ea41af70, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

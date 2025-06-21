@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_TalismanOfResonance
+  simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u3063\u3066\u5473\u65B9\u3092<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u305F\u3068\u304D\u3001\u305D\u306E\u5473\u65B9\u3068\u96A3\u63A5\u3059\u308B\u5473\u65B91\u4F53\u3082<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: fabdf2703504b4546a52f38fa2827293, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +77,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
@@ -85,8 +88,9 @@ MonoBehaviour:
   - {x: -1, y: 0}
   actionStatus:
     actionName: "\u97FF\u9CF4\u306E\u8B77\u7B26"
-    conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u3063\u3066\u56DE\u5FA9\u3092\u3057\u305F\u3068\u304D"
-    targetInfo: "\u56DE\u5FA9\u3057\u305F\u5BFE\u8C61\u3068\u96A3\u63A5\u3059\u308B\u30AD\u30E3\u30E91\u4F53"
+    conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u3063\u3066<sprite
+      name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3092\u3057\u305F\u3068\u304D"
+    targetInfo: "<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u305F\u5BFE\u8C61\u3068\u96A3\u63A5\u3059\u308B\u30AD\u30E3\u30E91\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}

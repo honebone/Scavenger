@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_mecBowgun
+  simpleInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3057\u305F\u3068\u304D\u3001\u65751\u4F53\u306B<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 9f9c71f6123583b4f9fafe9f24d57197, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,12 +76,13 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
   attack:
     actionName: "\u5DE5\u623F\u306E\u77F3\u5F13"
-    conditionInfo: "CRIT\u767A\u751F\u6642"
+    conditionInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u767A\u751F\u6642"
     targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: "\u3053\u306E\u80FD\u529B\u306F3\u56DE\u307E\u3067\u767A\u52D5\u3067\u304D\u3001\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u306B\u767A\u52D5\u56DE\u6570\u304C\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"

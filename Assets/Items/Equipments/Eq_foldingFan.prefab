@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_foldingFan
+  simpleInfo: "\u653B\u6483\u3092<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D\u3001\u5473\u65B9\u5168\u4F53\u306B<color=#FAED8A><sprite
+    name=buff><link=S_ATK\u30FBINT\u4E0A\u6607><u>ATK\u30FBINT\u4E0A\u6607</u></link></color>\u3068<color=#FAED8A><sprite
+    name=buff><link=S_ACT\u4E0A\u6607><u>ACT\u4E0A\u6607</u></link></color>\u3092\u4ED8\u4E0E"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 7553868910a1db44cbd132458630c245, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,12 +77,13 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
   actionStatus:
     actionName: "\u6247\u5B50"
-    conditionInfo: "\u653B\u6483\u3092\u56DE\u907F\u3057\u305F\u3068\u304D"
+    conditionInfo: "\u653B\u6483\u3092<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D"
     targetInfo: "\u5473\u65B9\u5168\u4F53"
     AModInfo: 
     actionInfo: 

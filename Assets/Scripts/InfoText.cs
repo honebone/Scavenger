@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class InfoText : MonoBehaviour
 {
@@ -35,6 +36,18 @@ public class InfoText : MonoBehaviour
     [SerializeField] int maxLogs;
     [SerializeField] int deleteLogs;
 
+    public float toggleDur;
+    public Image toggleKnob;
+    public Image toggleImage;
+    public TextMeshProUGUI detailToggleText;
+    public Color enabledColor;
+
+    bool showSimple = true;
+    string detailInfo;
+    string simpleInfo;
+
+    Sequence sequence;
+
     private void Awake()
     {
         inst = this;
@@ -47,7 +60,7 @@ public class InfoText : MonoBehaviour
         mouseOver = ExpeditionRef.mouseover;
     }
 
-    public void SetText(string name, string info)
+    public void SetText_Old(string name, string info)
     {
         //if (displayingChara != null)
         //{
@@ -56,10 +69,23 @@ public class InfoText : MonoBehaviour
         //}
         charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
+
+        detailInfo = info;
+        simpleInfo = info;
+
         nameText.text = name;
         infoText.text = info;
         infoTextScrollBar.value = 1;
     }
+
+    public void SetText(string name, string detailed, string simple = null)
+    {
+        nameText.text = name;
+        detailInfo = detailed;
+        simpleInfo = simple;
+        infoText.text = showSimple ? simpleInfo : detailInfo;
+    }
+
     public void ResetText()
     {
         //if (displayingChara != null)
@@ -83,16 +109,43 @@ public class InfoText : MonoBehaviour
         charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
         //displayingChara = chara;
+
+        detailInfo = info;
+        simpleInfo = info;
+
         nameText.text = name;
         infoText.text = info;
         infoTextScrollBar.value = 1;
+    }
+
+    public void ToggleInfoType()
+    {
+        if (sequence != null) sequence.Kill();
+        sequence = DOTween.Sequence();
+        if (showSimple)
+        {
+            showSimple = false;
+            sequence.Append(toggleKnob.rectTransform.DOLocalMoveX(-15, toggleDur));
+            sequence.Join(detailToggleText.DOColor(Definer.colorRef.failed_unavailable, toggleDur));
+            sequence.Join(toggleImage.DOColor(Definer.colorRef.failed_unavailable, toggleDur));
+        }
+        else
+        {
+            showSimple = true;
+            sequence.Append(toggleKnob.rectTransform.DOLocalMoveX(15, toggleDur));
+            sequence.Join(detailToggleText.DOColor(enabledColor, toggleDur));
+            sequence.Join(toggleImage.DOColor(enabledColor, toggleDur));
+
+        }
+        infoText.text = showSimple ? simpleInfo : detailInfo;
+        sequence.Play().SetUpdate(true);
     }
 
     public void InfoButton()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            SetText("ログ", "ログを確認する");
+            SetText_Old("ログ", "ログを確認する");
         }
         if (Input.GetMouseButtonDown(0))
         {

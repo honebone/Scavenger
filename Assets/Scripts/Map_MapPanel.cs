@@ -33,7 +33,7 @@ public class Map_MapPanel : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText("マップ","マップを開く");
+            infoText.SetText_Old("マップ","マップを開く");
         }
         if (Input.GetMouseButtonDown(0))
         {

@@ -59,7 +59,7 @@ public class SettingManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText("İ’è", "İ’è‰æ–Ê‚ğŠJ‚­");
+            infoText.SetText_Old("İ’è", "İ’è‰æ–Ê‚ğŠJ‚­");
         }
         if (Input.GetMouseButtonDown(0))
         {

@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_spikeShield
+  simpleInfo: "<link=U_\u8A98\u767A\u80FD\u529B><u>\u8A98\u767A\u80FD\u529B</u></link>\u306B\u3088\u308B\u3059\u3079\u3066\u306E\u653B\u6483\u304C<color=#C900FF><sprite
+    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B\r\n\n\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306B<color=#FAED8A><sprite
+    name=buff><link=S_\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u3092\u4ED8\u4E0E"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c41ab1191e7368447b59f75de3777761, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +77,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods:

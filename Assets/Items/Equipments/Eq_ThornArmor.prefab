@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_ThornArmor
+  simpleInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B\u306B<color=#C900FF><sprite
+    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3092\u4ED8\u4E0E"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: d3709688bae15a449bad55754f941236, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

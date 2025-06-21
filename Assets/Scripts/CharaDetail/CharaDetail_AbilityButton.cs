@@ -75,7 +75,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
             }
             s += string.Format("\n\n必要オーブ数：{0}個", cost).ColorStr(Definer.colorRef.expOrb);
             upgradeInfo.text = s;
-            infoText.SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType])
+            infoText.SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType])
                 , abilityStatus.GetInfo(false, new Character.CharacterStatus()));
         }
 

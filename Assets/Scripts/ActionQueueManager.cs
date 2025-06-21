@@ -62,7 +62,7 @@ public class ActionQueueManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            infoText.SetText("アクションキュー", "発動した誘発能力の一覧を見る");
+            infoText.SetText_Old("アクションキュー", "発動した誘発能力の一覧を見る");
         }
         if (Input.GetMouseButtonDown(0))
         {

@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391e64709cfd27b449e8a8f7b6174820, type: 3}
+  m_Name: commonParams
+  m_EditorClassIdentifier: 
+  textSpriteParamsList:
+  - key: ATK
+    defaultName: ATK
+    color: {r: 0.7647059, g: 0, b: 0, a: 1}
+    info: "<color=#C30000>\u7269\u7406</color>\u653B\u6483\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u6C7A\u5B9A\u3059\u308B"
+  - key: INT
+    defaultName: INT
+    color: {r: 0.14509805, g: 0.42352942, b: 0.78431374, a: 1}
+    info: "<color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u6C7A\u5B9A\u3059\u308B"
+  - key: CRIT
+    defaultName: CRIT
+    color: {r: 1, g: 0.54509807, b: 0, a: 1}
+    info: "\u653B\u6483\u306F\u4E00\u5B9A\u306E\u78BA\u7387\u3067<sprite name=CRIT><color=#FF8B00>\u30AF\u30EA\u30C6\u30A3\u30AB\u30EB</color>\u3068\u306A\u308A\u3001\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0\u3059\u308B"
+  - key: HP
+    defaultName: HP
+    color: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
+    info: 
+  - key: SAN
+    defaultName: SAN
+    color: {r: 1, g: 1, b: 1, a: 1}
+    info: "\u6B63\u6C17\u5EA6\n0\u306B\u306A\u308B\u3068\u7CBE\u795E\u5D29\u58CA\u3057\u3001\u30B2\u30FC\u30E0\u306E\u96E3\u6613\u5EA6\u304C\u5897\u52A0\u3059\u308B"
+  - key: SANDMG
+    defaultName: SANDMG
+    color: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
+    info: 
+  - key: shield
+    defaultName: "\u30B7\u30FC\u30EB\u30C9"
+    color: {r: 0, g: 1, b: 1, a: 1}
+    info: "\u53D7\u3051\u308B\u30C0\u30E1\u30FC\u30B8\u3092<sprite name=shield><color=#00FFFF>\u30B7\u30FC\u30EB\u30C9</color>\u306E\u6570\u3060\u3051\u6E1B\u5C11\u3055\u305B\u3001<sprite
+      name=shield>\u3092\u6D88\u8CBB\u3059\u308B\n\n\u6575\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<sprite
+      name=shield>\u309225\uFF05\u5931\u3046"
+  - key: shieldDMG
+    defaultName: shieldDMG
+    color: {r: 0, g: 0.42352942, b: 0.42352942, a: 1}
+    info: 
+  - key: buff
+    defaultName: "\u30D0\u30D5"
+    color: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
+    info: 
+  - key: debuff
+    defaultName: "\u30C7\u30D0\u30D5"
+    color: {r: 0.7882353, g: 0, b: 1, a: 1}
+    info: 
+  - key: focus
+    defaultName: "\u30D5\u30A9\u30FC\u30AB\u30B9"
+    color: {r: 0.8666667, g: 0.3882353, b: 0, a: 1}
+    info: 
+  - key: EVD
+    defaultName: EVD
+    color: {r: 0.33333334, g: 0.6901961, b: 0.45882353, a: 1}
+    info: "\u653B\u6483\u306E\u56DE\u907F\u7387\n\n\u653B\u6483\u306F\u3001\n{[\u653B\u6483\u8005\u306E<sprite
+      name=ACC><color=#FF6CC1>ACC</color>] - [\u5BFE\u8C61\u306E<sprite name=EVD><color=#55B075>EVD</color>]}\uFF05\n\u306E\u78BA\u7387\u3067\u547D\u4E2D\u3059\u308B\n\n<sprite
+      name=EVD>\u306E\u4E0A\u9650\u306F75"
+  - key: ACC
+    defaultName: ACC
+    color: {r: 1, g: 0.42352942, b: 0.75686276, a: 1}
+    info: "\u653B\u6483\u306E\u547D\u4E2D\u7387\n\n\u653B\u6483\u306F\u3001\n{[\u653B\u6483\u8005\u306E<sprite
+      name=ACC><color=#FF6CC1>ACC</color>] - [\u5BFE\u8C61\u306E<sprite name=EVD><color=#55B075>EVD</color>]}\uFF05\n\u306E\u78BA\u7387\u3067\u547D\u4E2D\u3059\u308B"
+  - key: ACT
+    defaultName: ACT
+    color: {r: 1, g: 1, b: 0, a: 1}
+    info: "\u884C\u52D5\u5024\n\n<sprite name=ACT><color=#FFFF00>ACT</color>\u306E\u9AD8\u3044\u9806\u306B\u30BF\u30FC\u30F3\u304C\u56DE\u3063\u3066\u304F\u308B"
+  statusEffectDataBase:
+  - {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
+  - {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}
+  - {fileID: 5164891664867224302, guid: d13e88729daa07344a62a1e7d67314f5, type: 3}
+  - {fileID: 5164891664867224302, guid: 9f276bc6663e9de4da5d1d12eda5e785, type: 3}
+  - {fileID: 5164891664867224302, guid: 133a5bb12bcf93b4897f45139bd4f009, type: 3}
+  - {fileID: 5164891664867224302, guid: 69cdb4636ffde444cb563a1b8aa4aa00, type: 3}
+  - {fileID: 5164891664867224302, guid: cd34b66024dc78342b7fd0d756b368ac, type: 3}
+  - {fileID: 5164891664867224302, guid: e0a68374ad7ab2440b3683adbf0248a5, type: 3}
+  - {fileID: 5164891664867224302, guid: 36c651480af2c1b46bd872d9b6fe9294, type: 3}
+  - {fileID: 5164891664867224302, guid: eca13a4155cf122448029217a45a6d85, type: 3}
+  - {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
+  - {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
+  - {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
+  - {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
+  - {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
+  - {fileID: 1489497368108049143, guid: ce0f256752c759348bd070d05badbe07, type: 3}
+  - {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
+  - {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
+  - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+  - {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+  - {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
+  - {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
+  - {fileID: 1489497368108049143, guid: c081015b5a0ef344091ae6bd4ceac824, type: 3}
+  - {fileID: 1489497368108049143, guid: dc5637dedc4143b419ae68f32875179b, type: 3}
+  - {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
+  - {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+  - {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+  - {fileID: 8267598975640588613, guid: 3ea5eb41a7b4c7d4292bb11ef28e8e26, type: 3}
+  - {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
+  - {fileID: 1489497368108049143, guid: f784c7dec8cd7644fa53b387f984165c, type: 3}
+  - {fileID: 1489497368108049143, guid: 40db9527a55f21b42869819ba1eb7361, type: 3}
+  - {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+  - {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+  - {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
+  - {fileID: 1489497368108049143, guid: 20849c6136550d04e9232dacd303cdfb, type: 3}
+  - {fileID: 720826847831702638, guid: 8c1e4b7d57c970c40abef8002601d7b8, type: 3}
+  - {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+  - {fileID: 5164891664867224302, guid: 14621f1735101844186999a6d52eb27b, type: 3}
+  - {fileID: 1489497368108049143, guid: 8ed583e08393a3445b99e63968b1a817, type: 3}
+  - {fileID: 1489497368108049143, guid: 6823f2ba4a2cc5349a5a396e7f1f7e28, type: 3}
+  - {fileID: 1489497368108049143, guid: c25334058e17c0c43b959b6468050a4c, type: 3}
+  - {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
+  - {fileID: 1489497368108049143, guid: f83b5e29a8f9f314cb6511b9ebc4ada9, type: 3}
+  - {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
+  - {fileID: 5164891664867224302, guid: 6522bb4bf44b3fe48996755b507647d7, type: 3}
+  - {fileID: 1489497368108049143, guid: a1f11822ce7769147bf9b2365bfc58d4, type: 3}
+  - {fileID: 1489497368108049143, guid: f3031c37ce778ac458fdac04d880c657, type: 3}
+  - {fileID: 3904089656222173935, guid: 283ec298289e38b439fecf95cd91f530, type: 3}
+  - {fileID: 1489497368108049143, guid: 413872c257cee5a4985eea40067a6f82, type: 3}
+  - {fileID: 1489497368108049143, guid: 77fcc58ef3d1a1d4787b7af55ba4b894, type: 3}
+  - {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
+  - {fileID: 5164891664867224302, guid: e0c7df9d806a7464d89513a9557438d4, type: 3}
+  - {fileID: 1489497368108049143, guid: b0088dd5e73ffc54dabec8ae5a9cbd6e, type: 3}
+  colorRef:
+    debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
+    player: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
+    enemy: {r: 0.7882353, g: 0, b: 1, a: 1}
+    abilityColors:
+    - {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
+    - {r: 0.7529412, g: 0.02745098, b: 0, a: 1}
+    - {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
+    - {r: 0.9811321, g: 0.9291176, b: 0.54147387, a: 1}
+    - {r: 0.5411765, g: 0.30980393, b: 0.65882355, a: 1}
+    - {r: 0, g: 0.95686275, b: 1, a: 1}
+    - {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 1}
+    personalityColors:
+    - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 0, g: 0.73154783, b: 1, a: 1}
+    - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
+    - {r: 0.7868676, g: 0, b: 1, a: 1}
+    - {r: 0.7924528, g: 0, b: 0, a: 1}
+    - {r: 0.39489147, g: 0.9622642, b: 0.686682, a: 1}
+    statusEffectColors:
+    - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
+    - {r: 0.7882353, g: 0, b: 1, a: 1}
+    - {r: 0.8679245, g: 0.38930756, b: 0, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 1, g: 0, b: 0, a: 1}
+    positionEffectColors:
+    - {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
+    - {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
+    - {r: 0.7882353, g: 0, b: 1, a: 1}
+    - {r: 0.8679245, g: 0.38930756, b: 0, a: 1}
+    rarityColors:
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 0.2509804, g: 0.8, b: 0.2509804, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 0.6, g: 0.2, b: 1, a: 1}
+    - {r: 1, g: 0.5019608, b: 0, a: 1}
+    - {r: 0.7921569, g: 0, b: 0, a: 1}
+    affricted: {r: 0.7921569, g: 0, b: 0, a: 1}
+    decreaseHP: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
+    damage: {r: 0.764151, g: 0, b: 0, a: 1}
+    INTDamage: {r: 0.14527705, g: 0.42547327, b: 0.7830189, a: 1}
+    CRIT: {r: 1, g: 0.54365426, b: 0, a: 1}
+    ACC: {r: 1, g: 0.42352942, b: 0.75686276, a: 1}
+    evade: {r: 0.33459416, g: 0.6886792, b: 0.45733103, a: 1}
+    ACT: {r: 1, g: 1, b: 0, a: 1}
+    heal: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
+    shield: {r: 0, g: 1, b: 1, a: 1}
+    shieldDecrease: {r: 0, g: 0.4245283, b: 0.4245283, a: 1}
+    SANHeal: {r: 1, g: 1, b: 1, a: 1}
+    SANDecrease: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
+    failed_unavailable: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+    currentState: {r: 1, g: 0.75047123, b: 0.41037738, a: 1}
+    emphasize: {r: 1, g: 0.7490196, b: 0.4117647, a: 1}
+    AMod: {r: 0.39498475, g: 0.6981132, b: 0.2206301, a: 1}
+    expOrb: {r: 0.98039216, g: 0.9647059, b: 0.5882353, a: 1}

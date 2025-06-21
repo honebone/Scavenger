@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_reapersFinger
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u4E00\u5B9A\u78BA\u7387\u3067<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u3001<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u5F97\u308B\r\n\u3053\u306E\u78BA\u7387\u306F<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,12 +77,14 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []
   action:
     actionName: "\u6B7B\u795E\u306E\u6307"
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642([\u81EA\u8EAB\u306ECRIT\u7387]x2\u306E\u78BA\u7387)"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642([\u81EA\u8EAB\u306E<color=#FF8B00><sprite
+      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387]x2\u306E\u78BA\u7387)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 

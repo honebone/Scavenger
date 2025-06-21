@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_Quiver
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u3067\u884C\u52D5\u3057\u306A\u304B\u3063\u305F\u306A\u3089\u3001<sprite
+    name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 3b8b57930531f544ab87e55ed1466a95, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_ThornNecklace
+  simpleInfo: "\u81EA\u8EAB\u306E\u3042\u3089\u3086\u308B\u653B\u6483\u304C<color=#C900FF><sprite
+    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 6855666529f42964b8a3c7e13f9bbb51, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods:

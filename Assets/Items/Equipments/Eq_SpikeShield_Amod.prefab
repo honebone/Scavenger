@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u8A98\u767A\u80FD\u529B\u306B\u3088\u308B\u653B\u6483"
+    conditionInfo: "<link=U_\u8A98\u767A\u80FD\u529B><u>\u8A98\u767A\u80FD\u529B</u></link>\u306B\u3088\u308B\u653B\u6483"
     hideValues: 0
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -63,12 +64,14 @@ MonoBehaviour:
     drain: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
     healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
@@ -83,5 +86,29 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   checkActive: 0
   onlyAttack: 1

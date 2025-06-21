@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_ProtectionShield
+  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<color=#FAED8A><sprite name=buff><link=S_PROT\u4E0A\u6607><u>PROT\u4E0A\u6607</u></link></color>\u3068<color=#FAED8A><sprite
+    name=buff><link=S_\u30C7\u30D0\u30D5\u8010\u6027\u4E0A\u6607><u>\u30C7\u30D0\u30D5\u8010\u6027\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: e743d1409bce463448bd93fdc2dc0d17, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -75,6 +76,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

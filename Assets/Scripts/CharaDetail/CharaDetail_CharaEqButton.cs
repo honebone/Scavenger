@@ -66,7 +66,7 @@ public class CharaDetail_CharaEqButton : MonoBehaviour
         {
             if (!empty)
             {
-                infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo());
+                infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo(false), item.GetInfo(true));
             }
         }
         if (Input.GetMouseButtonDown(0))

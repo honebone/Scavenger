@@ -5,6 +5,7 @@ using UnityEngine;
 public class PassiveAbility : MonoBehaviour
 {
     [SerializeField] string fileName;
+    [TextArea(3, 10)] public string simpleInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_start;
     [SerializeField] bool skipGetInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_end;
@@ -25,7 +26,7 @@ public class PassiveAbility : MonoBehaviour
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
-    public string GetPAInfo()
+    public string GetPAInfo(bool simple=false)
     {
         string s = "";
         if(PATags.Count > 0)
@@ -40,13 +41,24 @@ public class PassiveAbility : MonoBehaviour
             }
             s += "\n";
         }
-      
-        if (PAInfo_start != "") { s+=PAInfo_start + "\n"; }
-        if (!skipGetInfo) s += GetPAInfo_Base() + "\n";
-        if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
-        if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
+
+        if (simple) { s+=GetSimpleInfo(); }
+        else
+        {
+            if (PAInfo_start != "") { s += PAInfo_start + "\n"; }
+            if (!skipGetInfo) s += GetPAInfo_Base() + "\n";
+            if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
+            if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
+        }
         return s;
     }
+
+    /// <summary>個別のスクリプトではoverrideしない</summary>
+    public virtual string GetSimpleInfo()
+    {
+        return simpleInfo;
+    }
+
     public virtual string GetPAInfo_Base()
     {
         print("error:GetPAInfoのoverrideが設定されていません");
