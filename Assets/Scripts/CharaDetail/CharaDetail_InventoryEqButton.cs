@@ -72,7 +72,7 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
     public void OnMouseEnter()
     {
         p = true;
-        mouseOver.SetUI(string.Format("{0}\nドラッグで装備", item.data.itemName.ColorStr(item.data.rarity.ToColor())), true);
+        mouseOver.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\nドラッグで装備\n{item.GetInfo(true)}", true);
     }
     public void OnMouseExit()
     {

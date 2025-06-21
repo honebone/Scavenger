@@ -11,6 +11,8 @@ public class AbilityData : ScriptableObject
     [Header("アップグレード後のアビリティに書く"),TextArea(3, 10)] public string upgradeInfo;
     public AbilityData upgradeAbility;
 
+    [TextArea(3, 10)] public string simpleInfo;
+
     [Header("設定しなければ汎用的なオブジェクトになる")]
     public GameObject abilityManager;
 

@@ -57,7 +57,7 @@ public class SupplyButton : MonoBehaviour
     {
         if (revealed)
         {
-            mouseOver.SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+            mouseOver.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\n{item.GetInfo(true)}", true);
         }
         else
         {

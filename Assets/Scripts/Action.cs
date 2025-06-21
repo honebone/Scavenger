@@ -258,24 +258,24 @@ public class Action : MonoBehaviour
             //if (friendly) { s += "友好アクション\n"; }
             if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
             if (targetInfo != "") s += string.Format("対象：{0}\n", targetInfo);
-            if (consumeFocus) { s += "・対象のフォーカスを消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
+            if (consumeFocus) { s += $"・対象の<color=#DD6300><sprite name=focus><link=S_フォーカス><u>フォーカス</u></link></color>を消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
             if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
             if (kill) { s += "・殺害する\n"; }
             if (decreaseHP_max > 0)
             {
-                s += string.Format("・HPが{0}減少\n", GetValueRange(decreaseHP_min, decreaseHP_max));
+                s += $"・{"HP".ToSpr_withName()}が{GetValueRange(decreaseHP_min, decreaseHP_max)}減少\n";
             }
             if (decreaseHPPer_max > 0)
             {
-                s += string.Format("・HPが{0}％減少\n", GetValueRange(decreaseHPPer_min, decreaseHPPer_max));
+                s += $"・{"HP".ToSpr_withName()}が{GetValueRange(decreaseHPPer_min, decreaseHPPer_max)}％減少\n";
             }
             if (decreaseHP_ATK.y > 0)
             {
-                s += $"・HPがATKの{GetValueRange(decreaseHP_ATK)}％分減少\n";
+                s += $"・{"HP".ToSpr_withName()}が{"ATK".ToSpr_withLink()}の{GetValueRange(decreaseHP_ATK)}％分減少\n";
             }
             if (decreaseHP_INT.y > 0)
             {
-                s += $"・HPがINTの{GetValueRange(decreaseHP_INT)}％分減少\n";
+                s += $"・{"HP".ToSpr_withName()}が{"INT".ToSpr_withLink()}の{GetValueRange(decreaseHP_INT)}％分減少\n";
             }
 
             if (DoesAttack()||attackInfo!="")//攻撃
@@ -283,8 +283,8 @@ public class Action : MonoBehaviour
                 s += (attackInfo != "") ? $"・{attackInfo}\n" : "";
                 if (ATKMod_max > 0)
                 {
-                    s += $"・{"物理".ColorStr(Definer.colorRef.damage)}攻撃を行う\n";
-                    s += string.Format("ATKの{0}％ダメージ", GetValueRange(ATKMod_min, ATKMod_max));
+                    s += $"・{"ATK".ToSpr_withName("物理")}攻撃を行う\n";
+                    s += $"{"ATK".ToSpr_withLink()}の{GetValueRange(ATKMod_min, ATKMod_max)}％ダメージ";
                     if (refCharaStatus)
                     {
                         s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
@@ -293,8 +293,8 @@ public class Action : MonoBehaviour
                 }
                 if (INTMod_max > 0)
                 {
-                    s += $"・{"魔法".ColorStr(Definer.colorRef.INTDamage)}攻撃を行う\n";
-                    s += string.Format("INTの{0}％ダメージ", GetValueRange(INTMod_min, INTMod_max));
+                    s += $"・{"INT".ToSpr_withName("魔法")}攻撃を行う\n";
+                    s += $"{"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
                     if (refCharaStatus)
                     {
                         s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
@@ -303,34 +303,34 @@ public class Action : MonoBehaviour
                 }
 
                 string attack = "";
-                if (ACCMod != 0) { attack += string.Format("ACC補正：{0}\n", GetValueWithSign(ACCMod)); }
-                if (CRITCMod != 0) { attack += string.Format("CRIT率補正：{0}％\n", GetValueWithSign(CRITCMod)); }
-                if (CRITDMod != 0) { attack += string.Format("CRITダメージ補正：{0}％\n", GetValueWithSign(CRITDMod)); }
-                if (drain > 0) { attack += string.Format("与ダメージの{0}％を回復\n", drain); }
-                if (ignoreShield) { attack += "シールドを無視\n"; }
+                if (ACCMod != 0) { attack += $"{"ACC".ToSpr_withLink()}補正：{GetValueWithSign(ACCMod)}\n"; }
+                if (CRITCMod != 0) { attack += $"{"CRIT".ToSpr_withLink()}率補正：{GetValueWithSign(CRITCMod)}％\n"; }
+                if (CRITDMod != 0) { attack += $"{"CRIT".ToSpr_withLink()}ダメージ補正：{GetValueWithSign(CRITDMod)}％\n"; }
+                if (drain > 0) { attack += $"与ダメージの{drain}％を{"HP".ToSpr_withName("回復")}\n"; }
+                if (ignoreShield) { attack += $"{"shield".ToSpr_withLink()}を無視\n"; }
                 if (sureHit) { attack += "必中\n"; }
-                if (unevadable) { attack += "対象のEVDを無視\n"; }
+                if (unevadable) { attack += $"対象の{"EVD".ToSpr_withLink()}を無視\n"; }
                 s += attack.ColorStr(Color.gray);
             }
             CheckNewBlock();
 
             if (DoesHeal())//回復
             {
-                if (healValue_max > 0) { s += string.Format("・HPを{0}回復\n", GetValueRange(healValue_min, healValue_max)); }
-                if (healPercent_max > 0) { s += string.Format("・HPを最大値の{0}％回復\n", GetValueRange(healPercent_min, healPercent_max)); }
-                if (healRegain_max > 0) { s += string.Format("・減少したHPの{0}％を回復\n", GetValueRange(healRegain_min, healRegain_max)); }
-                if (trueHeal > 0) { s += string.Format("・HPを{0}固定量回復\n", trueHeal); }
+                if (healValue_max > 0) { s += $"・{"HP".ToSpr_withName()}を{ GetValueRange(healValue_min, healValue_max)}回復\n"; }
+                if (healPercent_max > 0) { s += $"・{"HP".ToSpr_withName()}を最大値の{ GetValueRange(healPercent_min, healPercent_max)}％回復\n"; }
+                if (healRegain_max > 0) { s += $"・減少した{"HP".ToSpr_withName()}の{GetValueRange(healRegain_min, healRegain_max)}％を回復\n"; }
+                if (trueHeal > 0) { s += $"・{"HP".ToSpr_withName()}を{trueHeal}固定量回復\n"; }
             }
             CheckNewBlock();
 
-            if (SANHeal_max > 0) { s += string.Format("・正気度を{0}回復\n", GetValueRange(SANHeal_min, SANHeal_max)); }
-            if (SANDamage_max > 0) { s += string.Format("・正気度が{0}減少\n", GetValueRange(SANDamage_min, SANDamage_max)); }
+            if (SANHeal_max > 0) { s += $"・{"SAN".ToSpr_withLink()}を{GetValueRange(SANHeal_min, SANHeal_max)}回復\n"; }
+            if (SANDamage_max > 0) { s += $"・{"SAN".ToSpr_withLink()}が{GetValueRange(SANDamage_min, SANDamage_max)}減少\n"; }
 
-            string shield = "シールド".ToLinkKey().ColorStr(Definer.colorRef.shield);
+            string shield = "shield".ToSpr_withLink();
             if (shieldAdd_max > 0) { s += string.Format("・{0}を{1}付与\n", shield, GetValueRange(shieldAdd_min, shieldAdd_max)); }
-            if (shieldPercent_max > 0) { s += string.Format("・maxHPの{0}％に等しい{1}を付与\n", GetValueRange(shieldPercent_min, shieldPercent_max), shield); }
-            if (shieldRemove_all) { s += "・シールドを0にする\n"; }
-            else if (shieldRemove_max > 0) { s += string.Format("・シールドを{0}除去\n", GetValueRange(shieldRemove_min, shieldRemove_max)); }
+            if (shieldPercent_max > 0) { s += $"・{"HP".ToSpr_withName("maxHP")}の{GetValueRange(shieldPercent_min, shieldPercent_max)}％に等しい{shield}を付与\n"; }
+            if (shieldRemove_all) { s += $"・{shield}を0にする\n"; }
+            else if (shieldRemove_max > 0) { s += $"・{shield}を{ GetValueRange(shieldRemove_min, shieldRemove_max)}除去\n"; }
             CheckNewBlock();
 
             f = false;
@@ -344,7 +344,7 @@ public class Action : MonoBehaviour
                 string exText = "";
                 if (status.DoT)
                 {
-                    exText += $"HP減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                    exText += $"{"HP".ToSpr_withName()}減少量：{(StEParams.refATK ? "ATK".ToSpr_withLink() : "INT".ToSpr_withLink())}の{StEParams.value}％\n";
                     if (refCharaStatus)
                     {
                         int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
@@ -354,7 +354,7 @@ public class Action : MonoBehaviour
                 }
                 if (status.regen)
                 {
-                    exText += $"回復量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                    exText += $"{"HP".ToSpr_withName("回復")}量：{(StEParams.refATK ? "ATK".ToSpr_withLink() : "INT".ToSpr_withLink())}の{StEParams.value}％\n";
                     if (refCharaStatus)
                     {
                         int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
@@ -377,7 +377,7 @@ public class Action : MonoBehaviour
                 string exText = "";
                 if (status.DoT)
                 {
-                    exText += $"HP減少量：{(PEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{PEParams.value}％\n";
+                    exText += $"{"HP".ToSpr_withName()}減少量：{(PEParams.refATK ? "ATK".ToSpr_withLink() : "INT".ToSpr_withLink())}の{PEParams.value}％\n";
                     if (refCharaStatus)
                     {
                         int baseDMG = (PEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
@@ -387,7 +387,7 @@ public class Action : MonoBehaviour
                 }
                 if (status.regen)
                 {
-                    exText += $"回復量：{(PEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{PEParams.value}％\n";
+                    exText += $"{"HP".ToSpr_withName("回復")}量：{(PEParams.refATK ? "ATK".ToSpr_withLink() : "INT".ToSpr_withLink())}の{PEParams.value}％\n";
                     if (refCharaStatus)
                     {
                         int baseDMG = (PEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
@@ -400,10 +400,8 @@ public class Action : MonoBehaviour
             }
 
             CheckNewBlock();
-            if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n"
-                , "バフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff]), removeStE_buff); }
-            if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n"
-                , "デバフ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff]), removeStE_debuff); }
+            if (removeStE_buff > 0) { s += $"・{"buff".ToSpr_withName()}を{removeStE_buff}個消去\n"; }
+            if (removeStE_debuff > 0) { s += $"・{"debuff".ToSpr_withName()}を{removeStE_debuff}個消去\n"; }
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();

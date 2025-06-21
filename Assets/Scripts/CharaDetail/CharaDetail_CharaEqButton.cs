@@ -90,7 +90,7 @@ public class CharaDetail_CharaEqButton : MonoBehaviour
     {
         if (!empty)
         {
-            mouseOver.SetUI(string.Format("{0}", item.data.itemName.ColorStr(item.data.rarity.ToColor())), true);
+            mouseOver.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\n{item.GetInfo(true)}", true);
         }
     }
     public void OnMouseExit()

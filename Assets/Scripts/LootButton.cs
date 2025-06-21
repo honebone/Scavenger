@@ -92,7 +92,7 @@ public class LootButton : MonoBehaviour
             }
             else
             {
-                FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+                MouseOverUI.inst.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\n{item.GetInfo(true)}", true);
             }
         }
         else

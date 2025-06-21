@@ -71,7 +71,7 @@ public class InventoryButton : MonoBehaviour
     public void OnMouseEnter()
     {
         p = true;
-        FindObjectOfType<MouseOverUI>().SetUI(item.data.itemName.ColorStr(item.data.rarity.ToColor()), true);
+        MouseOverUI.inst.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\n{item.GetInfo(true)}", true);
     }
     public void OnMouseExit()
     {

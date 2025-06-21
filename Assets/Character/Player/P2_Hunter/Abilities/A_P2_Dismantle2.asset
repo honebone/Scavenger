@@ -16,11 +16,13 @@ MonoBehaviour:
   lockedDefault: 0
   upgradeInfo: "HP\u56DE\u5FA9\u91CF+10\uFF05"
   upgradeAbility: {fileID: 0}
+  simpleInfo: 
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 5632338022003734053, guid: e363e940eb7896d4b8b26d55ac3983c8, type: 3}
-  abilityType: 1
+  abilityType: 2
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
@@ -36,9 +38,14 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -70,21 +77,31 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 0
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 01000000
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 1
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -93,7 +110,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -107,6 +125,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -123,25 +143,45 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 5632338022003734053, guid: e363e940eb7896d4b8b26d55ac3983c8, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 0c000000
@@ -166,21 +206,31 @@ MonoBehaviour:
       front: 0
       mid: 0
       back: 0
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 01000000
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -189,7 +239,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -203,6 +254,8 @@ MonoBehaviour:
     healPercent_max: 40
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -219,25 +272,45 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 5632338022003734053, guid: e363e940eb7896d4b8b26d55ac3983c8, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 04000000

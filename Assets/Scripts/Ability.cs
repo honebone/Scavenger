@@ -50,7 +50,7 @@ public class Ability : MonoBehaviour
 
         //public Character character;
 
-        public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus)
+        public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus,bool simple=false)
         {
             string s = "";
             if (locked) { s += "(未開放のアビリティ)\n".ColorStr(Definer.colorRef.failed_unavailable); }
@@ -96,16 +96,24 @@ public class Ability : MonoBehaviour
                 s += "ターンをパスする(行動したとはみなされない)\n";
             }
             if (freeAction) { s += "使用してもターンが終了しない\n"; }
-            if (actionsStatus.Length == 1) { s += actionsStatus[0].GetInfo(refCharaStatus, characterStatus); }
-            else if (actionsStatus.Length > 1)
+
+            if (simple)
             {
-                int couter =1;
-                foreach(Action.ActionStatus actionStatus in actionsStatus)
+                s += abilityData.simpleInfo;
+            }
+            else
+            {
+                if (actionsStatus.Length == 1) { s += actionsStatus[0].GetInfo(refCharaStatus, characterStatus); }
+                else if (actionsStatus.Length > 1)
                 {
-                    s += string.Format("<効果{0}>\n", couter);
-                    s += actionStatus.GetInfo(refCharaStatus, characterStatus);
-                    s += "\n";
-                    couter++;
+                    int couter = 1;
+                    foreach (Action.ActionStatus actionStatus in actionsStatus)
+                    {
+                        s += string.Format("<効果{0}>\n", couter);
+                        s += actionStatus.GetInfo(refCharaStatus, characterStatus);
+                        s += "\n";
+                        couter++;
+                    }
                 }
             }
 
