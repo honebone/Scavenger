@@ -383,6 +383,15 @@ public static class Extentions
         if (outline) return $"<sprite name={spriteName}L>";
         else return $"<sprite name={spriteName}>";
     }
+
+    public static string ToSpr(this PA_StatusEffect.StatusEffectStatus.StatusEffectType type, bool outline = false)
+    {
+        if (type == PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff) return "buff".ToSpr();
+        else if (type == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff) return "debuff".ToSpr();
+        else if (type == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus) return "focus".ToSpr();
+        else return "";
+    }
+
     public static string ToSpr_withName(this string key,string nameOverride=null, bool outline = false)
     {
         return Definer.inst.GetTS_withName(key, nameOverride, outline);

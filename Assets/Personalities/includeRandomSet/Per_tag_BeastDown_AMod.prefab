@@ -48,6 +48,7 @@ MonoBehaviour:
     conditionInfo: "[\u7363]\u306B\u5BFE\u3059\u308B\u653B\u6483"
     hideValues: 0
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -55,18 +56,22 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: -20
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: -10
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
     healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -74,4 +79,28 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   checkTag: 3

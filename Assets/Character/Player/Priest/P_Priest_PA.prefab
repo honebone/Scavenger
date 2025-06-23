@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321366b36b4ecb746a284b1e26b43fb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: perU_P_hunter
+  fileName: perU_P_sister
+  simpleInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u305F\u3068\u304D\u3001<color=#FFFFFF><link=S_\u7948\u308A><u>\u7948\u308A</u></link></color>\u3092\u5F97\u308B\r\n\r\n<color=#FFFFFF><link=S_\u7948\u308A><u>\u7948\u308A</u></link></color>\u304C4\u30B9\u30BF\u30C3\u30AF\u306B\u9054\u3059\u308B\u3068\u3001<color=#FFFFFF><link=S_\u6210\u5C31><u>\u6210\u5C31</u></link></color>\u306B\u5909\u63DB\u3055\u308C\u3001\u6B21\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u304C\u5F37\u5316\u3055\u308C\u3001\u8FFD\u52A0\u3067\u5473\u65B9\u5168\u4F53\u3092<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -55,7 +58,8 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u656C\u8654\u306A\u7948\u308A"
-    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092\u56DE\u5FA9\u3057\u305F\u3068\u304D(\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u3068\u304D\u306E\u307F)"
+    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092<sprite
+      name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u305F\u3068\u304D(\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u3068\u304D\u306E\u307F)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 

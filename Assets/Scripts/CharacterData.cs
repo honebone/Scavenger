@@ -108,7 +108,7 @@ public class CharacterData : ScriptableObject
 
     public float moveRes;
 
-    public string GetInfo()
+    public string GetInfo(bool simple)
     {
         Character.CharacterStatus charaStatus = new Character.CharacterStatus();
         charaStatus.Init(this);
@@ -125,7 +125,7 @@ public class CharacterData : ScriptableObject
         foreach (GameObject obj in charaStatus.passiveAbilities)
         {
             PassiveAbility pa = obj.GetComponent<PassiveAbility>();
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
         }
 
         return info;

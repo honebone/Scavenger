@@ -15,9 +15,13 @@ MonoBehaviour:
   fileName: S_Soldier
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6B69\u5175"
+  introduction: "\u524D\u5217\u3067\u6226\u3046\u53EC\u559A\u4F53\n<sprite name=focus><color=#DD6300>\u30D5\u30A9\u30FC\u30AB\u30B9</color>\u306E\u3042\u308B\u6575\u304C\u3044\u308B\u3068\u3001\u5F37\u529B\u306A\u653B\u6483\u3092\u884C\u3046"
   difficulty: 
-  introduction: "\u524D\u5217\u3067\u6226\u3046\u53EC\u559A\u4F53\n\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u3042\u308B\u6575\u304C\u3044\u308B\u3068\u3001\u5F37\u529B\u306A\u653B\u6483\u3092\u884C\u3046"
-  preferredPos: "\u5F8C\u5217"
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 02000000
   immovable: 0
   notChara: 0

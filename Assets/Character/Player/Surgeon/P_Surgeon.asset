@@ -15,7 +15,9 @@ MonoBehaviour:
   fileName: P_Surgeon
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u5916\u79D1\u533B"
-  introduction: "\u5358\u4F53\u56DE\u5FA9\u304C\u5F97\u610F\u306A\u30B7\u30F3\u30D7\u30EB\u306A\u30AD\u30E3\u30E9\n\u81EA\u8EAB\u306EINT\u306B\u5FDC\u3058\u3066\u56DE\u5FA9\u91CF\u304C\u5897\u52A0\u3059\u308B"
+  introduction: "\u5358\u4F53<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u304C\u5F97\u610F\u306A\u30B7\u30F3\u30D7\u30EB\u306A\u30AD\u30E3\u30E9\n\u81EA\u8EAB\u306E<color=#256CC8><sprite
+    name=INT><link=T_INT><u>INT</u></link></color>\u306B\u5FDC\u3058\u3066<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u91CF\u304C\u5897\u52A0\u3059\u308B"
   difficulty: "\u4F4E"
   preferFront: 0
   preferMid: 1

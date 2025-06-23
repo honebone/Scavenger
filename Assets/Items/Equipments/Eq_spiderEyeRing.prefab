@@ -50,6 +50,31 @@ MonoBehaviour:
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: "\u3007\u8907\u6570\u4F53\u3092\u5BFE\u8C61\u3068\u3059\u308B\u653B\u6483\uFF1A\n\u5BFE\u8C611\u4F53\u306B\u3064\u304D\u4E0E\u30C0\u30E1\u30FC\u30B8+15\uFF05"
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 5
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1973397cd3fa86f4aaf73a24b0e019c1, type: 2}

@@ -118,13 +118,10 @@ public class DebugFunction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                foreach (ItemData eqData in FindObjectOfType<Definer>().GetAllEquipments())
-                {
-                    Definer.Item eq = new Definer.Item();
-                    eq.Init(eqData);
-                    SupplyManager.inst.AddItem(eq, 1);
-                }
-
+                List<GameObject> list = new List<GameObject>(Definer.inst.GetPersonalityDataBase());
+                list.AddRange(Definer.inst.mutationDataBase);
+                list.AddRange(Definer.inst.GetAffrictionDataBase());
+                charactersManager.GetExistingCharacters_All()[0].AddPA_Personality(list.Choice(), false);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha6))

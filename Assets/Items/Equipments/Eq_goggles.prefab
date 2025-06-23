@@ -46,13 +46,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_goggles
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 10
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists:
+    - ResStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
+      value: 50
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 289e5032e44ea1045a23262e8af33ba7, type: 2}
-    info_start: 
     equipmentInfo: 
     statusMod:
       LVL: 0
@@ -77,6 +104,7 @@ MonoBehaviour:
       - ResStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
         value: 50
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     actionMods: []

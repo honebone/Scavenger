@@ -114,6 +114,18 @@ public class PA_StatusEffect : PassiveAbility
 
         return s;
     }
+
+    public string GetInfo_ForLink()
+    {
+        string rv = StEStatus.refValue ? "X" : "";
+        string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>\n";
+        s += StEStatus.StEInfo;
+        //s = s.ColorStr(Color.gray);
+        if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
+        if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬"; }
+
+        return s;
+    }
   
     public virtual string GetAdditionalInfo()
     {

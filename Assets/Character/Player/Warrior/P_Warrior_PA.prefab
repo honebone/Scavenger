@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_P_warrior
+  simpleInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u6E1B\u5C11\u3059\u308B\u305F\u3073\u3001<color=#FFFFFF><link=S_\u6012\u308A><u>\u6012\u308A</u></link></color>\u3092\u5F97\u308B\r\n\r\n\u6226\u95D8\u958B\u59CB\u6642\u3001\u5931\u3063\u3066\u3044\u308B<sprite
+    name=HP><color=#87FF79>HP</color>\u306B\u5FDC\u3058\u3066<color=#FFFFFF><link=S_\u6012\u308A><u>\u6012\u308A</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -55,7 +57,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u6012\u308A"
-    conditionInfo: "HP\u304C\u6E1B\u5C11\u3057\u305F\u3068\u304D"
+    conditionInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u6E1B\u5C11\u3057\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -190,7 +192,7 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  battleStart: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u5931\u3063\u305FHP10\uFF05\u306B\u3064\u304D\u3001\u6012\u308A\u30921\u30B9\u30BF\u30C3\u30AF\u4ED8\u4E0E"
+  battleStart: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u5931\u3063\u305F<sprite name=HP><color=#87FF79>HP</color>10\uFF05\u306B\u3064\u304D\u3001<color=#FFFFFF><link=S_\u6012\u308A><u>\u6012\u308A</u></link></color>\u30921\u30B9\u30BF\u30C3\u30AF\u4ED8\u4E0E"
 --- !u!212 &8483728386356586883
 SpriteRenderer:
   m_ObjectHideFlags: 0

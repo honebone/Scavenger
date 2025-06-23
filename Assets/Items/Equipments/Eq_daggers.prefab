@@ -52,6 +52,32 @@ MonoBehaviour:
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 15
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods:
+  - {fileID: 3631413296726765430, guid: c1a5540b37003af44abf1a604c51c795, type: 3}
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c711c1ac6564f4d4683ac6be684dfa87, type: 2}

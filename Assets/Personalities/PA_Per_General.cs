@@ -5,7 +5,7 @@ using UnityEngine;
 public class PA_Per_General : PA_Personality
 {
    [SerializeField]
-    Character.CharaStatusMod statusMod;
+    public Character.CharaStatusMod statusMod;
     [SerializeField]
     public List<GameObject> actionMods;
 

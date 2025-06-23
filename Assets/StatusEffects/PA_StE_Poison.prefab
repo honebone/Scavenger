@@ -46,13 +46,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_poison
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   StEStatus:
     StEName: "\u6BD2"
-    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001HP\u304C\u6E1B\u5C11\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1\n\u6E1B\u5C11\u91CF\u306F\u3001\u6BD2\u306E\u4ED8\u4E0E\u8005\u306EATK\u307E\u305F\u306FINT\u306EX\uFF05\u306B\u7B49\u3057\u3044"
+    StEInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001<sprite name=HP><color=#87FF79>HP</color>\u304C\u6E1B\u5C11\u3059\u308B\r\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1\r\n\u6E1B\u5C11\u91CF\u306F\u3001\u4ED8\u4E0E\u8005\u306E<color=#C30000><sprite
+      name=ATK><link=T_ATK><u>ATK</u></link></color>\u307E\u305F\u306F<color=#256CC8><sprite
+      name=INT><link=T_INT><u>INT</u></link></color>\u306EX\uFF05\u306B\u7B49\u3057\u3044"
     StEIcon: {fileID: 21300000, guid: 464ca7085129cf84f83f60f3b688a627, type: 3}
     StEType: 2
     maxStack: 0

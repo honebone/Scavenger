@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEditor.Experimental.SceneManagement;
 
 
 public class UtilityWindow : EditorWindow
@@ -23,6 +25,9 @@ public class UtilityWindow : EditorWindow
     string spriteTextName;
     SpriteTextMode spriteTextMode;
 
+    Vector2 scroll;
+    List<GameObject> prefabList = new List<GameObject>();
+
 
     [MenuItem("Tools/Utility Window")]
     public static void ShowWindow()
@@ -33,6 +38,8 @@ public class UtilityWindow : EditorWindow
     private void OnGUI()
     {
         cp = (CommonParams)EditorGUILayout.ObjectField("Common Params", cp, typeof(CommonParams), false);
+
+        scroll = EditorGUILayout.BeginScrollView(scroll);
 
         GUI.enabled = cp != null;
 
@@ -103,7 +110,51 @@ public class UtilityWindow : EditorWindow
             StELink();
         }
 
+        EditorGUILayout.LabelField("編集するプレハブ一覧", EditorStyles.boldLabel);
 
+        if (GUILayout.Button("プレハブを追加"))
+            prefabList.Add(null);
+
+
+        for (int i = 0; i < prefabList.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            prefabList[i] = (GameObject)EditorGUILayout.ObjectField(prefabList[i], typeof(GameObject), false);
+            if (GUILayout.Button("×", GUILayout.Width(20)))
+                prefabList.RemoveAt(i);
+            EditorGUILayout.EndHorizontal();
+        }
+
+        if (GUILayout.Button("変数を一括変更"))
+        {
+            foreach (var prefab in prefabList)
+            {
+                if (prefab == null) continue;
+
+                string path = AssetDatabase.GetAssetPath(prefab);
+                GameObject prefabRoot = PrefabUtility.LoadPrefabContents(path);
+
+                // 任意のスクリプトと変数を変更
+                var eq = prefabRoot.GetComponent<PA_Equipment>();
+                if (eq == null)
+                {
+                    Debug.Log(path);
+                }
+                else
+                {
+                    //eq.statMod = eq.GetEquipmentStatus().statusMod;
+                    //eq.AMods = new List<GameObject>(eq.GetEquipmentStatus().actionMods);
+                }
+                
+                PrefabUtility.SaveAsPrefabAsset(prefabRoot, path);
+                PrefabUtility.UnloadPrefabContents(prefabRoot);
+            }
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        EditorGUILayout.EndScrollView();
 
         GUI.enabled = true;
     }

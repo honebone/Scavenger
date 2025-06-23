@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 7600040905823093917}
+  - component: {fileID: -4821428192164516712}
   m_Layer: 0
   m_Name: Per_MaxHPUp
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7600040905823093917
+--- !u!114 &-4821428192164516712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,18 +41,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5101f8930e93ec14591718a600dbddae, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_maxHPUp
+  simpleInfo: 
   PAInfo_start: 
-  skipGetInfo: 0
+  skipGetInfo: 1
   PAInfo_end: 
-  PATags: 
-  personalityStatus:
-    personalityName: "\u58EE\u5065"
-    personalityType: 3
-  statusMod:
+  statMod:
     LVL: 0
     maxHP_mul: 20
     maxHP_int: 0
@@ -73,6 +70,11 @@ MonoBehaviour:
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
+    debuffChance: 0
     moveRes: 0
     debuffRes: 0
-  actionMods: []
+  AMods: []
+  PATags: 
+  personalityStatus:
+    personalityName: "\u58EE\u5065"
+    personalityType: 3

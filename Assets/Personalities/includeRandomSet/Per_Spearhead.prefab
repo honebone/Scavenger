@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5942741952113959475}
   - component: {fileID: -2870565744983209791}
   - component: {fileID: -2250003201101246345}
+  - component: {fileID: -2376110737120910728}
   m_Layer: 0
   m_Name: Per_Spearhead
   m_TagString: Untagged
@@ -46,9 +47,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_spearhead
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u4E00\u756A\u69CD"
@@ -242,3 +269,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2376110737120910728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170614222137734241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: 
+  simpleInfo: 
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
+  PATags: 
+  personalityStatus:
+    personalityName: 
+    personalityType: 0

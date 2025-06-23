@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PassiveAbility : MonoBehaviour
 {
-    [SerializeField] string fileName;
+    public string fileName;
     [TextArea(3, 10)] public string simpleInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_start;
     [SerializeField] bool skipGetInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_end;
+
+    public Character.CharaStatusMod statMod;
+    public List<GameObject> AMods;
 
     public enum PATag { special, 武器, 防具, 装飾品, 魔術, ルーン }
     public List<PATag> PATags = new List<PATag>();
@@ -26,10 +29,10 @@ public class PassiveAbility : MonoBehaviour
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
-    public string GetPAInfo(bool simple=false)
+    public string GetPAInfo(bool simple = false)
     {
         string s = "";
-        if(PATags.Count > 0)
+        if (PATags.Count > 0)
         {
             bool f = false;
             s += "タグ：";
@@ -42,9 +45,20 @@ public class PassiveAbility : MonoBehaviour
             s += "\n";
         }
 
-        if (simple) { s+=GetSimpleInfo(); }
+        string statModInfo = statMod.GetInfo();
+
+        if (simple)
+        {
+            if (statModInfo != "") s += statModInfo + "\n";
+            s += $"\n{GetSimpleInfo()}";
+        }
         else
         {
+            if (statModInfo != "") s += statModInfo + "\n";
+            foreach (GameObject actionMod in AMods)
+            {
+                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+            }
             if (PAInfo_start != "") { s += PAInfo_start + "\n"; }
             if (!skipGetInfo) s += GetPAInfo_Base() + "\n";
             if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
@@ -77,11 +91,17 @@ public class PassiveAbility : MonoBehaviour
         infoText = it;
         charactersManager = CharactersManager.inst;
         if (fileName == "") { infoText.AddWarningText($"{GetPAName()}のfileNameがありません"); }
+
+        character.ModifyStatus(statMod, true);
+        foreach (GameObject mod in AMods) { character.AddActionMod(mod, true); }
         OnPAInit();
     }
     public void Disable(bool note=true)
     {
         AtTheEnd();
+        character.ModifyStatus(statMod, false);
+        foreach (GameObject mod in AMods) { character.AddActionMod(mod, false); }
+
         character.RemovePA(this);
         if (PAType == 0)
         {

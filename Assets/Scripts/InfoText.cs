@@ -99,7 +99,7 @@ public class InfoText : MonoBehaviour
         infoTextScrollBar.value = 1;
     }
 
-    public void SetCharaInfo(string name, string info)
+    public void SetCharaInfo(string name, string info, string simple = null)
     {
         //if (displayingChara != null)
         //{
@@ -111,10 +111,10 @@ public class InfoText : MonoBehaviour
         //displayingChara = chara;
 
         detailInfo = info;
-        simpleInfo = info;
+        simpleInfo = simple == null ? info : simple;
 
         nameText.text = name;
-        infoText.text = info;
+        infoText.text = showSimple ? simpleInfo : detailInfo;
         infoTextScrollBar.value = 1;
     }
 

@@ -39,7 +39,7 @@ public class RE_AreaEnd : RoomEvent
         {
             REOptionParams option = new REOptionParams();
             option.optionName = data.charaName;
-            option.optionInfo = data.GetInfo();
+            option.optionInfo = data.GetInfo(true);
             list.Add(option);
         }
         list = new List<REOptionParams>(list);

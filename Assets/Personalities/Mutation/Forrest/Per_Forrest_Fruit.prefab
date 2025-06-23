@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 7600040905823093917}
   - component: {fileID: -2250003201101246345}
+  - component: {fileID: -1388829471633438753}
   m_Layer: 0
   m_Name: Per_Forrest_Fruit
   m_TagString: Untagged
@@ -33,50 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7600040905823093917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170614222137734241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5101f8930e93ec14591718a600dbddae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: per_forrest_fruit
-  PAInfo_start: 
-  skipGetInfo: 0
-  PAInfo_end: 
-  PATags: 
-  personalityStatus:
-    personalityName: "\u68EE\u306E\u6075\u307F\uFF1A\u7652\u3057\u306E\u679C\u5B9F"
-    personalityType: 6
-  statusMod:
-    LVL: 0
-    maxHP_mul: 0
-    maxHP_int: 0
-    maxSAN_mul: 0
-    PROT: 0
-    ATK_mul: 0
-    ATK_int: 0
-    INT_mul: 0
-    INT_int: 0
-    exDMG_mul: -30
-    CRITC: 0
-    CRITD: 0
-    EVD: 0
-    ACC: 0
-    ACT: 0
-    turnPerRound: 0
-    GHeal: 30
-    RHeal: 0
-    StEResists: []
-    StEApplyBonus: []
-    moveRes: 0
-    debuffRes: 0
-  actionMods: []
 --- !u!212 &-2250003201101246345
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -129,3 +85,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1388829471633438753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170614222137734241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: per_Forrest_Fruit
+  simpleInfo: 
+  PAInfo_start: 
+  skipGetInfo: 1
+  PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: -50
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 30
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
+  PATags: 
+  personalityStatus:
+    personalityName: "\u68EE\u306E\u6075\u307F\uFF1A\u8C4A\u7A63\u306E\u679C\u5B9F"
+    personalityType: 6

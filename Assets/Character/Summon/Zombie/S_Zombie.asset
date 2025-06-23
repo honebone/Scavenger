@@ -15,9 +15,13 @@ MonoBehaviour:
   fileName: S_Zombie
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30BE\u30F3\u30D3"
+  introduction: "\u5438\u8840\u52B9\u679C\u306E\u3042\u308B\u653B\u6483\u304C\u3067\u304D\u308B"
   difficulty: 
-  introduction: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u306BHP\u304C\u6E1B\u5C11\u3057\u3066\u3044\u304F\u304C\u3001\u5438\u8840\u52B9\u679C\u306E\u3042\u308B\u653B\u6483\u304C\u3067\u304D\u308B"
-  preferredPos: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 05000000
   immovable: 0
   notChara: 0

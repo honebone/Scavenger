@@ -46,13 +46,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_ACCDown
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   StEStatus:
     StEName: "ACC\u4F4E\u4E0B"
-    StEInfo: "\u81EA\u8EAB\u306EACC-X\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "<color=#FF6CC1><sprite name=ACC><link=T_ACC><u>ACC</u></link></color>-X\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 5e6a21e3b1a770f4a8ba5c1c24de7454, type: 3}
     StEType: 2
     maxStack: 0

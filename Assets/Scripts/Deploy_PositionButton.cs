@@ -49,7 +49,7 @@ public class Deploy_PositionButton : MonoBehaviour
                 //    PassiveAbility pa = obj.GetComponent<PassiveAbility>();
                 //    info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
                 //}
-                infoText.SetText_Old(charaStatus.charaName, charaStatus.characterData.GetInfo());
+                infoText.SetText(charaStatus.charaName, charaStatus.characterData.GetInfo(false), charaStatus.characterData.GetInfo(true));
                 FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons_Deploy(charaStatus.abilitiesStatus);
                 deployCharacterManager.StartTutorial_Info();
             }

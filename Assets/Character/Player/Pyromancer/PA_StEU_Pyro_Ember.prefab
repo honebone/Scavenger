@@ -46,13 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StEU_pyro_ember
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   PATags: 
   StEStatus:
     StEName: "\u706B\u7A2E"
-    StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u706B\u50B7\u306E\u52B9\u679C\u91CF\u3092\u5897\u52A0\u3055\u305B\u308B"
+    StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B<color=#C900FF><sprite
+      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E\u52B9\u679C\u91CF\u3092\u5897\u52A0\u3055\u305B\u308B"
     StEIcon: {fileID: 21300000, guid: 547a567d5b368aa4f8423d8b36ba2e2c, type: 3}
     StEType: 4
     maxStack: 50

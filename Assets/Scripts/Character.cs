@@ -350,6 +350,7 @@ public class Character : MonoBehaviour
         //リスト追加時は絶対にInitに追記しろ！！
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
+
         public void Init()
         {
             StEResists = new List<StEResist>();
@@ -841,7 +842,7 @@ public class Character : MonoBehaviour
     {
         string charaName = charaStatus.charaName;
         if (CheckAffricted()) { charaName = charaName.ColorStr(Definer.colorRef.affricted); }
-        infoText.SetCharaInfo(charaName, GetInfo());
+        infoText.SetCharaInfo(charaName, GetInfo(false), GetInfo(true));
         FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons(charaStatus.abilitiesStatus, this);
         //charaObj.SetSelectedIcon(true);
         targetButton.SetSelectedIcon(true);
@@ -861,7 +862,7 @@ public class Character : MonoBehaviour
         return s;
     }
 
-    public string GetInfo()
+    public string GetInfo(bool simple)
     {
         string info = charaStatus.GetInfo();
         info += "\n◇◇状態異常◇◇\n";
@@ -869,11 +870,11 @@ public class Character : MonoBehaviour
         {
             if (pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().refValue)
             {
-                info += string.Format("<{0}>\n{1}\n", pa.GetComponent<PA_StatusEffect>().GetPANameWithValue(), pa.GetPAInfo());
+                info += string.Format("<{0}>\n{1}\n", pa.GetComponent<PA_StatusEffect>().GetPANameWithValue(), pa.GetPAInfo(simple));
             }
             else
             {
-                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
             }
 
         }
@@ -881,7 +882,7 @@ public class Character : MonoBehaviour
         info += "\n◇◇特性◇◇\n";
         foreach (PassiveAbility pa in PA_Per)
         {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
         }
 
         if (charaStatus.player)
@@ -889,7 +890,7 @@ public class Character : MonoBehaviour
             info += "\n◇◇装備品◇◇\n";
             foreach (PassiveAbility pa in PA_Eq)
             {
-                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
             }
         }
 

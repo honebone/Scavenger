@@ -111,7 +111,7 @@ public class Definer : MonoBehaviour
     [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<GameObject> personalityDataBase;
-    [SerializeField] List<GameObject> mutationDataBase;
+    public List<GameObject> mutationDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
     //[SerializeField] List<GameObject> statusEffectDataBase;
     [SerializeField] List<GameObject> positionEffectDataBase;
@@ -148,7 +148,7 @@ public class Definer : MonoBehaviour
                     PA_StatusEffect.StatusEffectStatus status = PA.GetStatusEffectStatus();
                     if ($"S_{status.StEName}" == key)
                     {
-                        s += PA.GetStEInfo_forRef() + "\n";
+                        s += PA.GetInfo_ForLink() + "\n";
                         //s += StE.GetComponent<PassiveAbility>().GetPAInfo() + "\n";
                         if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
                         return s;
@@ -450,6 +450,6 @@ public class TextSpriteParams
 
     public string GetInfo()
     {
-        return $"<{GetTextSprite(SpriteTextMode.withName, false)}>\n\n{info}";
+        return $"<{GetTextSprite(SpriteTextMode.withName, false)}>\n{info}";
     }
 }
