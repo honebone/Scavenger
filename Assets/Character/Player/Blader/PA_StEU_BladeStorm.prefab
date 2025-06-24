@@ -46,13 +46,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StEU_bladeStorm
+  noSimpleInfo: 1
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   StEStatus:
     StEName: "\u5203\u306E\u5D50"
-    StEInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B\u821E\u8E0F\u52B9\u679C\u3092\u3001\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u30662\u56DE\u767A\u52D5\u3055\u305B\u308B"
+    StEInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B\u821E\u8E0F\u3092\u3059\u308B\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u3066\u3082\u3046\u4E00\u5EA6\u821E\u8E0F\u3059\u308B"
     StEIcon: {fileID: 21300000, guid: ef5ab13ad5819f949b6c5e0bdc74bc87, type: 3}
     StEType: 4
     maxStack: 0

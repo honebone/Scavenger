@@ -5,6 +5,7 @@ using UnityEngine;
 public class PassiveAbility : MonoBehaviour
 {
     public string fileName;
+    public bool noSimpleInfo;
     [TextArea(3, 10)] public string simpleInfo;
     [SerializeField, TextArea(3, 10)] string PAInfo_start;
     [SerializeField] bool skipGetInfo;
@@ -47,14 +48,14 @@ public class PassiveAbility : MonoBehaviour
 
         string statModInfo = statMod.GetInfo();
 
-        if (simple)
+        if (simple && !noSimpleInfo)
         {
             if (statModInfo != "") s += statModInfo + "\n";
             s += $"\n{GetSimpleInfo()}";
         }
         else
         {
-            if (statModInfo != "") s += statModInfo + "\n";
+            if (statModInfo != "") s += statModInfo + "\n\n";
             foreach (GameObject actionMod in AMods)
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();

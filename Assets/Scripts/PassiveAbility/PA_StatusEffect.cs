@@ -88,9 +88,22 @@ public class PA_StatusEffect : PassiveAbility
     public string GetPANameWithValue()
     {
         string s = GetPAName();
-        s += StEStatus.value.ToString().ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]);
+        s += (" <i>{" + StEStatus.value.ToString() + "}</i>").ColorStr(Definer.colorRef.emphasize);
         return s;
     }
+
+    public override string GetSimpleInfo()
+    {
+        string s = "";
+        if (StEStatus.maxStack == 0) { s += string.Format("{0}スタック", StEStatus.stack); }
+        else { s += string.Format("{0}スタック(最大{1})", StEStatus.stack, StEStatus.maxStack); }
+        s += string.Format("[{0}]\n", Definer.StETypeName[StEStatus.StEType].ColorStr(Definer.colorRef.statusEffectColors[(int)StEStatus.StEType]));
+        s += $"{simpleInfo}\n";
+        if (StEStatus.DoT) { s += $"\n減少HP：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
+        if (StEStatus.regen) { s += $"\n回復量：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
+        return s;
+    }
+
     public override string GetPAInfo_Base()
     {
         string s ="";
@@ -104,11 +117,11 @@ public class PA_StatusEffect : PassiveAbility
     }
     public string GetStEInfo_forRef()
     {
-        string s = StEStatus.StEName;
-        if (StEStatus.refValue) { s += "X"; }
-        s += "：";
+        string s = "";
+        //string s = StEStatus.StEName;
+        //if (StEStatus.refValue) { s += "X"; }
+        //s += "：";
         s += StEStatus.StEInfo;
-        //s = s.ColorStr(Color.gray);
         if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
         if (StEStatus.undeletable) { s += "\n消去不可"; }
 
@@ -117,7 +130,7 @@ public class PA_StatusEffect : PassiveAbility
 
     public string GetInfo_ForLink()
     {
-        string rv = StEStatus.refValue ? "X" : "";
+        string rv = StEStatus.refValue ? " <color=#FFBF69><i>{X}</i></color>" : "";
         string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>\n";
         s += StEStatus.StEInfo;
         //s = s.ColorStr(Color.gray);

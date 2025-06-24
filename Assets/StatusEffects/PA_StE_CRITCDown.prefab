@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_CRITCD
+  noSimpleInfo: 1
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   PATags: 
   StEStatus:
     StEName: "CRIT\u7387\u4F4E\u4E0B"
-    StEInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387-X\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387-<color=#FFBF69><i>{X}</i></color>\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 105080f34c9c0d44d8a4caad6862dd64, type: 3}
     StEType: 2
     maxStack: 0

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_regen
+  noSimpleInfo: 1
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0

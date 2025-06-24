@@ -46,9 +46,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_P_commander
+  noSimpleInfo: 1
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: 
@@ -192,7 +219,7 @@ MonoBehaviour:
     actionTargetsInt: 
   onFocus:
     actionName: 
-    conditionInfo: "\u5473\u65B9\u304C\u30D5\u30A9\u30FC\u30AB\u30B9\u30921\u3064\u6D88\u8CBB\u3059\u308B\u305F\u3073"
+    conditionInfo: "\u5473\u65B9\u304C<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u30921\u3064\u6D88\u8CBB\u3059\u308B\u305F\u3073"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 

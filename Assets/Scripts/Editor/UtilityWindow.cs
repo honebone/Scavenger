@@ -28,6 +28,17 @@ public class UtilityWindow : EditorWindow
     Vector2 scroll;
     List<GameObject> prefabList = new List<GameObject>();
 
+    Dictionary<string, string> commonText = new Dictionary<string, string>()
+    {
+        {"物理","<sprite name=ATK><color=#C30000>物理</color>" },
+        {"魔法","<sprite name=INT><color=#256CC8>魔法</color>" },
+        {"回復","<sprite name=HP><color=#87FF79>回復</color>" },
+        {"誘発能力","<link=U_誘発能力><u>誘発能力</u></link>" },
+        {"{X}","<color=#FFBF69><i>{X}</i></color>" },
+        {"ATK補正","<link=U_ATK(INT)補正><u><sprite name=ATK><color=#C30000>ATK</color>補正</u></link>" },
+        {"INT補正","<link=U_ATK(INT)補正><u><sprite name=INT><color=#256CC8>INT</color>補正</u></link>" },
+    };
+
 
     [MenuItem("Tools/Utility Window")]
     public static void ShowWindow()
@@ -81,7 +92,7 @@ public class UtilityWindow : EditorWindow
         spriteTextName = EditorGUILayout.TextField("上書きする名称", spriteTextName);
         spriteTextMode = (SpriteTextMode)EditorGUILayout.EnumPopup("mode", spriteTextMode);
 
-        int columns = 4;
+        int columns = 7;
         if (cp != null)
         {
             for (int i = 0; i < cp.textSpriteParamsList.Count; i++)
@@ -101,6 +112,38 @@ public class UtilityWindow : EditorWindow
                     GUILayout.EndHorizontal();
                 }
             }
+        }
+
+        GUILayout.Space(10);
+        GUILayout.Label("text sprite", EditorStyles.boldLabel);
+        STOutline = EditorGUILayout.Toggle("outline", STOutline);
+        overrideSTName = EditorGUILayout.Toggle("override name", overrideSTName);
+        spriteTextName = EditorGUILayout.TextField("上書きする名称", spriteTextName);
+        spriteTextMode = (SpriteTextMode)EditorGUILayout.EnumPopup("mode", spriteTextMode);
+
+        int columns_ct = 7;
+        if (cp != null)
+        {
+            int i = 0;
+            foreach(var key in commonText.Keys)
+            {
+                if (i % columns_ct == 0)
+                {
+                    GUILayout.BeginHorizontal();
+                }
+
+                if (GUILayout.Button(key, GUILayout.Height(30), GUILayout.Width(150)))
+                {
+                    CopyCommonText(key);
+                }
+
+                if (i % columns_ct == columns_ct - 1 || i == commonText.Count - 1)
+                {
+                    GUILayout.EndHorizontal();
+                }
+                i++;
+            }
+            
         }
 
         GUILayout.Space(10);
@@ -198,6 +241,15 @@ public class UtilityWindow : EditorWindow
                 else output = s.GetTextSprite(spriteTextMode, STOutline, null);
             }
         }
+        EditorGUIUtility.systemCopyBuffer = output;
+        Debug.Log($"Copied: {output}");
+        ShowNotification(new GUIContent($"Copied: {output}"));
+    }
+
+    void CopyCommonText(string key)
+    {
+        string output = commonText[key];
+       
         EditorGUIUtility.systemCopyBuffer = output;
         Debug.Log($"Copied: {output}");
         ShowNotification(new GUIContent($"Copied: {output}"));

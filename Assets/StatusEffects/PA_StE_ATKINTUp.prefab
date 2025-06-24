@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_ATKINTU
+  noSimpleInfo: 1
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
@@ -78,8 +79,8 @@ MonoBehaviour:
   PATags: 
   StEStatus:
     StEName: "ATK\u30FBINT\u4E0A\u6607"
-    StEInfo: "<color=#C30000><sprite name=ATK><link=T_ATK><u>ATK</u></link></color>+X\uFF05\n<color=#256CC8><sprite
-      name=INT><link=T_INT><u>INT</u></link></color>+X\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "<color=#C30000><sprite name=ATK><link=T_ATK><u>ATK</u></link></color>+<color=#FFBF69><i>{X}</i></color>\uFF05\n<color=#256CC8><sprite
+      name=INT><link=T_INT><u>INT</u></link></color>+<color=#FFBF69><i>{X}</i></color>\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 5d497422ad225114bacf9e4684e8916b, type: 3}
     StEType: 1
     maxStack: 0

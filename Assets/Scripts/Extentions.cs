@@ -405,10 +405,11 @@ public static class Extentions
     public static string ToLinkKey(this PA_StatusEffect.StatusEffectStatus status, bool ignoreValue = true, int value = 0)
     {
         string sprite = "";
+        string valueText = $"<i>{{{value}}}</i>".ColorStr(Definer.colorRef.emphasize);
         if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff) sprite = "buff".ToSpr();
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff) sprite = "debuff".ToSpr();
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus) sprite = "focus".ToSpr();
-        string text = (!status.refValue || ignoreValue) ? $"{status.StEName}" : $"{status.StEName}{value}";
+        string text = (!status.refValue || ignoreValue) ? $"{status.StEName}" : $"{status.StEName} {valueText}";
         return $"{sprite}<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.StEType.ToColor());
     }
 

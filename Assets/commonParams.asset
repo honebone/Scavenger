@@ -29,6 +29,10 @@ MonoBehaviour:
     defaultName: HP
     color: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
     info: 
+  - key: maxHP
+    defaultName: maxHP
+    color: {r: 0.5294118, g: 1, b: 0.4745098, a: 1}
+    info: 
   - key: SAN
     defaultName: SAN
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -74,6 +78,17 @@ MonoBehaviour:
     defaultName: ACT
     color: {r: 1, g: 1, b: 0, a: 1}
     info: "\u884C\u52D5\u5024\n\n<sprite name=ACT><color=#FFFF00>ACT</color>\u306E\u9AD8\u3044\u9806\u306B\u30BF\u30FC\u30F3\u304C\u56DE\u3063\u3066\u304F\u308B"
+  - key: PROT
+    defaultName: PROT
+    color: {r: 0.5529412, g: 0.81960785, b: 1, a: 1}
+    info: "\u30C0\u30E1\u30FC\u30B8\u8EFD\u6E1B\u91CF\n\n\u53D7\u3051\u308B\u30C0\u30E1\u30FC\u30B8\u3092<sprite
+      name=PROT><color=#8DD1FF>PROT</color>\uFF05\u8EFD\u6E1B\u3059\u308B\n\n<sprite
+      name=PROT>\u304C\u30DE\u30A4\u30CA\u30B9\u306E\u6642\u306F\u88AB\u30C0\u30E1\u30FC\u30B8\u304C\u305D\u306E\u5206\u4E0A\u6607\u3059\u308B\n\n<sprite
+      name=PROT>\u306E\u4E0A\u9650\u306F75"
+  - key: summon
+    defaultName: "\u53EC\u559A"
+    color: {r: 0, g: 0.95686275, b: 1, a: 1}
+    info: 
   statusEffectDataBase:
   - {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
   - {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_chainedMonster
+  noSimpleInfo: 0
   simpleInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u4E00\u5B9A\u5272\u5408\u4EE5\u4E0B\u306B\u306A\u308B\u3068\u3001<color=#00FFFF><sprite
     name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3068<color=#FAED8A><sprite
     name=buff><link=S_ATK\u4E0A\u6607><u>ATK\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B\r\n\u3055\u3089\u306B\u6575\u5168\u4F53\u306B<sprite
@@ -83,31 +84,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c5ba7b5316dde064187ef245a5a3136a, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 15
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 15
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   HPTH: 25
   reqHPHeal: 75
   actionStatus:
@@ -116,7 +92,7 @@ MonoBehaviour:
     targetInfo: "\u5168\u3066\u306E\u6575"
     AModInfo: 
     actionInfo: "\u3053\u306E\u80FD\u529B\u306F\u3001<sprite name=HP><color=#87FF79>HP</color>\u3092<sprite
-      name=HP><color=#87FF79>maxHP</color>\u306E75\uFF05\u5206\u56DE\u5FA9\u3059\u308B\u3068\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
+      name=maxHP><color=#87FF79>maxHP</color>\u306E75\uFF05\u5206\u56DE\u5FA9\u3059\u308B\u3068\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}

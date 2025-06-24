@@ -6,12 +6,12 @@ public class Eq_BountyList : PA_Equipment
 {
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] int defMax;
-    int maxCount;
+    //int maxCount;
     int count;
 
     void Start()
     {
-        maxCount = defMax;
+        //maxCount = defMax;
         count = 0;
     }
 
@@ -19,40 +19,39 @@ public class Eq_BountyList : PA_Equipment
     {
         foreach (var focusParams in focusParamsList)
         {
-            if (count < maxCount && focusParams.kill)
+            if (count < defMax && focusParams.kill)
             {
                 count++;
+                Enqueue_Self(actionStatus);
                 Log($"カウント増加({count})");
             }
         }
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
-    {
-        if ( count > 0)
-        {
-            Action.ActionStatus action = actionStatus;
-            action.exTurn = count;
-            Enqueue_Self(action);
-            maxCount -= count;
-            count = 0;
-        }
-    }
+    //public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    //{
+    //    if ( count > 0)
+    //    {
+    //        Action.ActionStatus action = actionStatus;
+    //        action.exTurn = count;
+    //        Enqueue_Self(action);
+    //        maxCount -= count;
+    //        count = 0;
+    //    }
+    //}
 
     public override void OnRoundEnd()
     {
-        maxCount = defMax;
         count = 0;
     }
 
     public override void OnBattleEnd()
     {
-        maxCount = defMax;
         count = 0;
     }
 
     public override string GetCurrentStateInfo()
     {
-        return $"このラウンドで得た追加ターン：{defMax - maxCount}";
+        return $"このラウンドで得た追加ターン：{count}";
     }
 }

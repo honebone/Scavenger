@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_INTU
+  noSimpleInfo: 1
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
   PATags: 
   StEStatus:
     StEName: "INT\u4E0A\u6607"
-    StEInfo: "<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>+X\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>+<color=#FFBF69><i>{X}</i></color>\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 06cd0f93027cadd4696d8ea3f2a40cec, type: 3}
     StEType: 1
     maxStack: 0

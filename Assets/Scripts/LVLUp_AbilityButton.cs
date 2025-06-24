@@ -47,7 +47,9 @@ public class LVLUp_AbilityButton : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                infoText.SetText_Old(lvlUpParams.abilityStatus.abilityName.ColorStr(color), lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus()));
+                infoText.SetText(lvlUpParams.abilityStatus.abilityName.ColorStr(color)
+                    , lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus(), false)
+                    , lvlUpParams.abilityStatus.GetInfo(false, new Character.CharacterStatus(), true));
             }
 
             if (Input.GetMouseButtonDown(0))

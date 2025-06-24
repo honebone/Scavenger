@@ -14,13 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u5207\u308A\u4E0A\u3052+"
   lockedDefault: 0
-  upgradeInfo: "ATK\u88DC\u6B63+10\uFF05\n\u5F8C\u9000\u3055\u305B\u308B\u78BA\u7387+20\uFF05"
+  upgradeInfo: "<link=U_ATK(INT)\u88DC\u6B63><u><sprite name=ATK><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+10\uFF05\n\u5F8C\u9000\u3055\u305B\u308B\u78BA\u7387+20\uFF05"
   upgradeAbility: {fileID: 0}
+  noSimpleInfo: 0
+  simpleInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53\u306E<color=#00FFFF><sprite
+    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u30920\u306B\u3057\u3064\u3064<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u884C\u3046\r\n\r\n\u9AD8\u78BA\u7387\u3067\u5BFE\u8C61\u3092\u5F8C\u9000\u3055\u305B\u308B\r\n\r\n\u5BFE\u8C61\u306B<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u304C\u3042\u308B\u306A\u3089\u3001<color=#C900FF><sprite
+    name=debuff><link=S_ACT\u4F4E\u4E0B><u>ACT\u4F4E\u4E0B</u></link></color>\u3092\u4ED8\u4E0E"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 2401220359373207913, guid: b6b87453919615542ab3880a5fdc03b8, type: 3}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 0
@@ -36,9 +43,14 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -71,31 +83,46 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 0
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
     ATKMod_min: 60
     ATKMod_max: 120
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: -3
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -104,6 +131,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -119,25 +148,46 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 100
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 1
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 2401220359373207913, guid: b6b87453919615542ab3880a5fdc03b8, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 0a000000

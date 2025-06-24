@@ -46,14 +46,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_conquerorMace
+  noSimpleInfo: 0
   simpleInfo: "\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D\u3001\u96A3\u63A5\u3059\u308B\u6575\u306B<color=#C900FF><sprite
     name=debuff><link=S_\u6050\u6016><u>\u6050\u6016</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\r\n\r\n\u3055\u3089\u306B\u3001\u5012\u3057\u305F\u6575\u306E<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=HP><color=#87FF79>maxHP</color>\u3092\u596A\u3044\u53D6\u308B"
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E\u4E00\u90E8\u3092\u596A\u3044\u53D6\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: "\u307E\u305F\u3001\u6BBA\u5BB3\u3057\u305F\u6575\u306E<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=HP><color=#87FF79>maxHP</color>\u306E20\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u6700\u5927\u3067\u81EA\u8EAB\u306E\u57FA\u790E<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u30FB\u57FA\u790E<sprite name=HP><color=#87FF79>maxHP</color>\u306E400\uFF05\u307E\u3067"
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E20\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u596A\u3044\u53D6\u308B<sprite
+    name=ATK>/<sprite name=maxHP>\u306E\u4E0A\u9650\u306F\u81EA\u8EAB\u306E\u57FA\u790E<sprite
+    name=ATK>/<sprite name=maxHP>\u306E400\uFF05\u307E\u3067"
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -83,31 +85,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 20
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   actionStatus:
     actionName: "\u5F81\u670D\u8005\u306E\u5927\u69CC"
     conditionInfo: "[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D"

@@ -16,11 +16,15 @@ MonoBehaviour:
   lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: a0334d71eb9e20b43999ff41bb9b71ce, type: 2}
+  noSimpleInfo: 0
+  simpleInfo: "\u5473\u65B9\u5168\u4F53\u306E<color=#FFFFFF><sprite name=SAN><link=T_SAN><u>SAN</u></link></color>\u3092\u56DE\u5FA9\u3057\u3001<color=#FAED8A><sprite
+    name=buff><link=S_ACT\u4E0A\u6607><u>ACT\u4E0A\u6607</u></link></color>\u3092\u4ED8\u4E0E"
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 4119418044249080708, guid: 35e1157458bea854da69bea9f122877f, type: 3}
   abilityType: 3
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
@@ -36,9 +40,14 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -70,31 +79,46 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 
+      StEConditions: []
       StE: []
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
-    cantCounter: 0
-    attackType: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     healValue_min: 0
@@ -103,6 +127,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 3
     SANHeal_max: 8
     SANDamage_min: 0
@@ -120,28 +146,51 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 5
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 3
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 0
     activateSprite: {fileID: 4119418044249080708, guid: 35e1157458bea854da69bea9f122877f, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 000000000400000008000000

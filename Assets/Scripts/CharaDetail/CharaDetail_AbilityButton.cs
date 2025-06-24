@@ -65,7 +65,7 @@ public class CharaDetail_AbilityButton : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             string s = "";
-            if (upgradeMode==0)
+            if (upgradeMode == 0)
             {
                 s = "アビリティを解放し、使用可能にする";
             }
@@ -75,8 +75,9 @@ public class CharaDetail_AbilityButton : MonoBehaviour
             }
             s += string.Format("\n\n必要オーブ数：{0}個", cost).ColorStr(Definer.colorRef.expOrb);
             upgradeInfo.text = s;
-            infoText.SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType])
-                , abilityStatus.GetInfo(false, new Character.CharacterStatus()));
+            infoText.SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType])
+                , abilityStatus.GetInfo(false, new Character.CharacterStatus(), false)
+                , abilityStatus.GetInfo(false, new Character.CharacterStatus(), true));
         }
 
         if (Input.GetMouseButtonDown(0))

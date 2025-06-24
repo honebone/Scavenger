@@ -29,6 +29,8 @@ public class AbilityButton : MonoBehaviour
     bool available;
     bool deployMode;
 
+    List<string> unavailableInfo;
+
     public void Init(Ability.AbilityStatus status,BattleManager bm,Character chara,CharactersManager cm,GuideMessage gm)
     {
         abilityStatus = status;
@@ -52,6 +54,8 @@ public class AbilityButton : MonoBehaviour
         }
         frame.sprite = frames[(int)abilityStatus.abilityType];
         frame.color = Definer.colorRef.abilityColors[(int)abilityStatus.abilityType];
+
+        unavailableInfo = new List<string>(abilityStatus.instantiatedManager.GetUnavailabeInfo());
     }
     public void Init_Deploy(Ability.AbilityStatus status)//出撃キャラ選択画面でのみ有効
     {
@@ -69,7 +73,7 @@ public class AbilityButton : MonoBehaviour
         if (!deployMode)
         {
             battleManager.SetSelectedAbility(abilityStatus, character);
-            FindObjectOfType<InfoText>().SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo());
+            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo(false), abilityStatus.instantiatedManager.GetInfo(true));
             charactersManager.ResetAllTargetIcons();
             if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
             {
@@ -77,7 +81,7 @@ public class AbilityButton : MonoBehaviour
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                List<string> unavailableInfo = abilityStatus.instantiatedManager.GetUnavailabeInfo();
+                //List<string> unavailableInfo = abilityStatus.instantiatedManager.GetUnavailabeInfo();
                 foreach (string s in unavailableInfo)
                 {
                     guideMessage.SetWaringText(s);
@@ -86,18 +90,32 @@ public class AbilityButton : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<InfoText>().SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false,new Character.CharacterStatus()));
+            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false,new Character.CharacterStatus(),false), abilityStatus.GetInfo(false, new Character.CharacterStatus(), true));
         }
 
     }
 
     public void OnMouseEnter()
     {
-        FindObjectOfType<MouseOverUI>().SetUI("", true);
-        if (SettingManager.infoOnMouseover)
+        string availableInfo = "";
+        if (!deployMode)
         {
-            FindObjectOfType<InfoText>().SetText_Old(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.GetInfo(false, new Character.CharacterStatus()));
+            if (available && battleManager.checkIfMyTurn(character))
+            {
+                availableInfo = "発動可能".ColorStr(Definer.colorRef.emphasize);
+            }
+            else
+            {
+                availableInfo += "発動不可\n";
+                foreach (string s in unavailableInfo)
+                {
+                    availableInfo += $"・{s}\n";
+                }
+                availableInfo = availableInfo.ColorStr(Color.red);
+            }
         }
+        MouseOverUI.inst.SetUI(availableInfo, true);
+        
     }
     public void OnMouseExit()
     {

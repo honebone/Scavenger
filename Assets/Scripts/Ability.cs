@@ -50,34 +50,36 @@ public class Ability : MonoBehaviour
 
         //public Character character;
 
-        public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus,bool simple=false)
+        public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus,bool simple)
         {
             string s = "";
             if (locked) { s += "(未開放のアビリティ)\n".ColorStr(Definer.colorRef.failed_unavailable); }
                 s+= string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
             string s1 = "";
             string s2 = "";
+            string available = "○".ColorStr(Color.green);
+            string unavailable = "><".ColorStr(Color.red);
             if (!refCharaStatus || characterStatus.position < 9)
             {
                 s1 = "発動可能列：後-中-前\n";
                 s2 = "            ";
-                if (availableBack) { s2 += "○-"; }
-                else { s2 += "><-"; }
-                if (availableMid) { s2 += "○-"; }
-                else { s2 += "><-"; }
-                if (availableFront) { s2 += "○\n"; }
-                else { s2 += "><\n"; }
+                if (availableBack) { s2 += $"{available}-"; }
+                else { s2 += $"{unavailable}-"; }
+                if (availableMid) { s2 += $"{available}-"; }
+                else { s2 += $"{unavailable}-"; }
+                if (availableFront) { s2 +=$"{available}\n"; }
+                else { s2 += $"{unavailable}\n"; }
             }
             else
             {
                 s1 = "発動可能列：　　　前-中-後\n";
                 s2 = "　　　            ";
-                if (availableFront) { s2 += "○-"; }
-                else { s2 += "><-"; }
-                if (availableMid) { s2 += "○-"; }
-                else { s2 += "><-"; }
-                if (availableBack) { s2 += "○\n"; }
-                else { s2 += "><\n"; }
+                if (availableFront) { s2 += $"{available}-"; }
+                else { s2 += $"{unavailable}-"; }
+                if (availableMid) { s2 += $"{available}-"; }
+                else { s2 += $"{unavailable}-"; }
+                if (availableBack) { s2 += $"{available}\n"; }
+                else { s2 += $"{unavailable}\n"; }
             }
             s += s1 + s2;
             if (conditionInfo != "") { s += string.Format("発動条件：{0}\n",conditionInfo); }
@@ -97,9 +99,13 @@ public class Ability : MonoBehaviour
             }
             if (freeAction) { s += "使用してもターンが終了しない\n"; }
 
-            if (simple)
+            if (simple&&!abilityData.noSimpleInfo&&false)//test
             {
-                s += abilityData.simpleInfo;
+                s += $"{abilityData.simpleInfo}\n";
+                if (abilityData.upgradeInfo != "")
+                {
+                    s += $"\n{"+アビリティ強化済み+".ColorStr(Definer.colorRef.emphasize)}\n{abilityData.upgradeInfo}";
+                }
             }
             else
             {
@@ -385,7 +391,7 @@ public class Ability : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
-    public virtual string GetInfo() { return status.GetInfo(true, character.CharaStatus()); }
+    public virtual string GetInfo(bool simple) { return status.GetInfo(true, character.CharaStatus(),simple); }
     public virtual Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus) { return actionStatus; }
 
     public bool CheckAvailable()
@@ -443,7 +449,7 @@ public class Ability : MonoBehaviour
         if (status.cooldown > 0) { info.Add("クールダウン中"); }
         if (!atProperPos) { info.Add("発動可能列にいない"); }
         if (!hasProperTarget) { info.Add("対象なし"); }
-        if (!properCondition || status.unavailable > 0) { info.Add("発動条件を満たしていない"); }
+        if (!properCondition || status.unavailable > 0) { info.Add($"条件：\"{status.conditionInfo}\"を満たしていない"); }
 
 
         return info;

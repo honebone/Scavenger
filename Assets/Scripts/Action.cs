@@ -249,6 +249,11 @@ public class Action : MonoBehaviour
         public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
         public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
+        public string GetTargetInfo()
+        {
+            return $"対象：{targetInfo}";
+        }
+
         public string GetInfo(bool refCharaStatus=false, Character.CharacterStatus characterStatus=new Character.CharacterStatus())
         {
             string s = "";
@@ -328,7 +333,7 @@ public class Action : MonoBehaviour
 
             string shield = "shield".ToSpr_withLink();
             if (shieldAdd_max > 0) { s += string.Format("・{0}を{1}付与\n", shield, GetValueRange(shieldAdd_min, shieldAdd_max)); }
-            if (shieldPercent_max > 0) { s += $"・{"HP".ToSpr_withName("maxHP")}の{GetValueRange(shieldPercent_min, shieldPercent_max)}％に等しい{shield}を付与\n"; }
+            if (shieldPercent_max > 0) { s += $"・{"maxHP".ToSpr_withName()}の{GetValueRange(shieldPercent_min, shieldPercent_max)}％に等しい{shield}を付与\n"; }
             if (shieldRemove_all) { s += $"・{shield}を0にする\n"; }
             else if (shieldRemove_max > 0) { s += $"・{shield}を{ GetValueRange(shieldRemove_min, shieldRemove_max)}除去\n"; }
             CheckNewBlock();

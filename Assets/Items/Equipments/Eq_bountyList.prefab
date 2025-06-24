@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_bountyList
+  noSimpleInfo: 0
   simpleInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u653B\u6483\u3067\u6575\u3092\u6BBA\u5BB3\u3059\u308B\u3068\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
@@ -79,31 +80,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 4466dc117c7a8cb44915cc35d046c2c6, type: 2}
     equipmentInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u653B\u6483\u3067\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u30921\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u8FFD\u52A0\u30BF\u30FC\u30F3\u306F\u3001\u5404\u30E9\u30A6\u30F3\u30C93\u30BF\u30FC\u30F3\u307E\u3067"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   actionStatus:
     actionName: "\u8CDE\u91D1\u9996\u30EA\u30B9\u30C8"
     conditionInfo: "\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
@@ -143,7 +119,7 @@ MonoBehaviour:
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
-    exTurn: 0
+    exTurn: 1
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0

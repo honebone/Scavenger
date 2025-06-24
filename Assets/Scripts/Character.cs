@@ -154,7 +154,7 @@ public class Character : MonoBehaviour
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";
 
-            if (PROT != 0) { s += $"{"PROT".ToLinkKey()}：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
+            if (PROT != 0) { s += $"{"PROT".ToSpr_withLink()}：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
             s += $"{"EVD".ToSpr_withLink()}：{EVD} {"(上限75)".ColorStr(Color.gray)}\n";
             s += $"{"ACC".ToSpr_withLink()}：{ACC}\n\n";
 
@@ -176,7 +176,7 @@ public class Character : MonoBehaviour
                 string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
                 if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
+                if (bonus.exValue != 0) { s += ValueToStr($"付与する{StEName}の<color=#FFBF69><i>{{効果量}}</i></color>", bonus.exValue, ""); }
             }
             if (debuffChance != 0) { s += $"{"debuff".ToSpr_withName()}付与確率{debuffChance}％\n"; }
             if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
@@ -363,10 +363,10 @@ public class Character : MonoBehaviour
         {
             string info = "";
             bool f = false;
-            info += ValueToStr("HP".ToSpr_withName("maxHP"), maxHP_mul, "％");
-            info += ValueToStr("HP".ToSpr_withName("maxHP"), maxHP_int, "");
+            info += ValueToStr("maxHP".ToSpr_withName(), maxHP_mul, "％");
+            info += ValueToStr("maxHP".ToSpr_withName(), maxHP_int, "");
             info += ValueToStr("SAN".ToSpr_withName("maxSAN"), maxSAN_mul, "％");
-            info += ValueToStr("PROT", PROT, "");
+            info += ValueToStr("PROT".ToSpr_withLink(), PROT, "");
             info += ValueToStr("ATK".ToSpr_withLink(), ATK_mul, "％");
             info += ValueToStr("ATK".ToSpr_withLink(), ATK_int, "");
             info += ValueToStr("INT".ToSpr_withLink(), INT_mul, "％");
@@ -389,7 +389,7 @@ public class Character : MonoBehaviour
                 string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
                 if (bonus.exChance != 0) { info += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                 if (bonus.exStack != 0) { info += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                if (bonus.exValue != 0) { info += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
+                if (bonus.exValue != 0) { info += ValueToStr($"付与する{StEName}の<color=#FFBF69><i>{{効果量}}</i></color>", bonus.exValue, ""); }
                 if (bonus.exDMGPerTurn != 0) { info += ValueToStr(string.Format("{0}のHP減少量", StEName), bonus.exDMGPerTurn, "/ターン"); }
             }
             info += ValueToStr($"{"debuff".ToSpr_withName()}付与確率", debuffChance, "％");

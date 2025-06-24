@@ -84,6 +84,8 @@ public class InfoText : MonoBehaviour
         detailInfo = detailed;
         simpleInfo = simple;
         infoText.text = showSimple ? simpleInfo : detailInfo;
+
+        SwitchToInfo();
     }
 
     public void ResetText()

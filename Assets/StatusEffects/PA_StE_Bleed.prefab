@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StE_bleed
-  simpleInfo: 
+  noSimpleInfo: 0
+  simpleInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001<sprite name=HP><color=#87FF79>HP</color>\u304C\u6E1B\u5C11\u3059\u308B\r\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1\r"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
