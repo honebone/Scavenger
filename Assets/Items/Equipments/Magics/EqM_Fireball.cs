@@ -26,8 +26,6 @@ public class EqM_Fireball : Eq_Magic
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += "\n" + actionStatus.GetInfo(false, new Character.CharacterStatus());
-        return s;
+        return actionStatus.GetInfo(false, new Character.CharacterStatus());
     }
 }

@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -13345,6 +13345,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77dc98dc9fe21b14a89f27d4cb7947c9, type: 2}
   - {fileID: 11400000, guid: c5ba7b5316dde064187ef245a5a3136a, type: 2}
   - {fileID: 11400000, guid: f4cb6e47d63e366458eb6f9ab8f6b0e3, type: 2}
+  - {fileID: 11400000, guid: c06241cc17d77a24bb65410aada06328, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
