@@ -33,7 +33,7 @@ public class P_Comannder : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        string s = "";
+        //string s = "";
         //s += operation.GetInfo(false, new Character.CharacterStatus());
         //s += "\n" + onFocus.GetInfo(false, new Character.CharacterStatus());
         //s += "\n" + focus.GetInfo(false, new Character.CharacterStatus());

@@ -47,7 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: perU_P_commander
   noSimpleInfo: 0
-  simpleInfo: 
+  simpleInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u306E\u3042\u308B\u6575\u304C\u3044\u306A\u3044\u306A\u3089\u3001\u65751\u4F53\u306B<sprite
+    name=focus>\u3092\u4ED8\u4E0E"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 

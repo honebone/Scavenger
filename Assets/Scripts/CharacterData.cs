@@ -207,6 +207,8 @@ public class StEApplyBonus
         note += $"exValue:{exValue}\n";
         Debug.Log(note);
     }
+
+    public PA_StatusEffect GetPA() { return applyStE.GetComponent<PA_StatusEffect>(); }
 }
 
 [System.Serializable]

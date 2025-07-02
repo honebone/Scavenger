@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3813859069630942105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7780654225980432715}
+  - component: {fileID: 2586548071555664354}
+  m_Layer: 0
+  m_Name: Commander_Charge_AMod2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7780654225980432715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813859069630942105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2586548071555664354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3813859069630942105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e51c44c2fdfac5479a01d17252db1f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionModStatus:
+    conditionInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53\u306B\u3064\u304D"
+    hideValues: 0
+    exInfo: 
+    exTurn: 0
+    consumeFocus: 0
+    decreaseHP: 0
+    ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    sureHit: 0
+    unevadable: 0
+    exHeal_mul: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldAdd_percent: 0
+    shieldRemove: 0
+    applySteParams: []
+    applyStEBonus:
+    - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
+      exChance: 0
+      exStack: 0
+      exValue: 20
+      exDMGPerTurn: 0
+    debuffChanceMod: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
+  onlyAttack: 0
+  TH: 1

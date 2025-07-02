@@ -733,10 +733,10 @@ public class BattleManager : MonoBehaviour
             playerLVL += $"{battleReports[i].playerAveLVL}\n";
             enemyLVL += $"{battleReports[i].enemyAveLVL}\n";
         }
-        Debug.Log(maxHP);
-        Debug.Log(ATK);
-        Debug.Log(playerLVL);
-        Debug.Log(enemyLVL);
+        //Debug.Log(maxHP);
+        //Debug.Log(ATK);
+        //Debug.Log(playerLVL);
+        //Debug.Log(enemyLVL);
     }
 
     public void SetTotalDamageText(int damage) { totalDamageText.SetText(damage); }

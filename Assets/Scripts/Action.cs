@@ -603,15 +603,17 @@ public class Action : MonoBehaviour
             }
 
             //============================================================[StEApplyBonus]===============================================
-            modifiedStatus.StEApplyBonus = new List<StEApplyBonus>();
+            List<StEApplyBonus> bonusTemp = new List<StEApplyBonus>();
             for (int i = 0; i < modifiedStatus.StEApplyBonus.Count; i++)
             {
-                modifiedStatus.StEApplyBonus.Add(new StEApplyBonus(modifiedStatus.StEApplyBonus[i]));
+                bonusTemp.Add(new StEApplyBonus(modifiedStatus.StEApplyBonus[i]));
             }
+            modifiedStatus.StEApplyBonus = new List<StEApplyBonus>(bonusTemp);
+
             foreach (StEApplyBonus bonus in mod.applyStEBonus)
             {
                 bool f = false;
-                for(int i=0; i< modifiedStatus.StEApplyBonus.Count;i++)
+                for (int i = 0; i < modifiedStatus.StEApplyBonus.Count; i++)
                 {
                     if (modifiedStatus.StEApplyBonus[i].applyStE == bonus.applyStE)
                     {

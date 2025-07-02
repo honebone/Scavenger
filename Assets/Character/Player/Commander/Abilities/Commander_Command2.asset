@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Commander_Train
+  m_Name: Commander_Command2
   m_EditorClassIdentifier: 
-  abilityName: "\u8A13\u7DF4"
+  abilityName: "\u6307\u4EE4+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 0f2c52ca1a51e334e873921cf2b46f0a, type: 2}
+  upgradeInfo: "2\u3064\u76EE\u306E<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u4ED8\u4E0E\u78BA\u7387+50\uFF05"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 3
+  abilityType: 4
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
@@ -60,9 +60,9 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u8A13\u7DF4"
+  - actionName: "\u6307\u4EE4"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u5473\u65B9\u5168\u3066"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -70,13 +70,13 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 5
-    friendly: 1
+    targetType: 1
+    friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
-      enemy: 0
+      player: 0
+      enemy: 1
       onlyPlayable: 0
       front: 1
       mid: 1
@@ -143,25 +143,11 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: e0c7df9d806a7464d89513a9557438d4, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 2
       value: 0
-      refATK: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 25
-      refATK: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 6e9796d0a6b97bb4cb8893ef8bb2fe6a, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 3
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []
@@ -197,7 +183,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 3
+    abilityType: 4
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -207,8 +193,7 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 2
+    targetCount: 1
     actionTargets:
     - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0700000008000000
+    actionTargetsInt: 0d000000
