@@ -46,9 +46,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_summon
-  PAInfo_start: "\u6575\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u5BFE\u8C61\u306B\u306A\u3089\u306A\u3044\n(\u6F5C\u4F0F\u3068\u540C\u69D8\u306E\u6271\u3044)"
+  noSimpleInfo: 1
+  simpleInfo: 
+  PAInfo_start: "\u6575\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u5BFE\u8C61\u306B\u306A\u3089\u306A\u3044\n(<color=#FAED8A><sprite
+    name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u3068\u540C\u69D8\u306E\u6271\u3044)"
   skipGetInfo: 1
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u53EC\u559A\u4F53"

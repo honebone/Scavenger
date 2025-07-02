@@ -46,9 +46,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_fly
+  noSimpleInfo: 0
+  simpleInfo: "\u6700\u521D\u306B\u653B\u6483\u3092\u53D7\u3051\u308B\u307E\u3067\u3001<color=#55B075><sprite
+    name=EVD><link=T_EVD><u>EVD</u></link></color>\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u98DB\u884C"

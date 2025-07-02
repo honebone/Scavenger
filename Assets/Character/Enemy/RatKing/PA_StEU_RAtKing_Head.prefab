@@ -46,19 +46,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StEU_ratKing_head
+  noSimpleInfo: 1
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   StEStatus:
     StEName: "\u982D"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\nACC+20\nCRIT\u7387+5\uFF05"
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n<color=#FF6CC1><sprite
+      name=ACC><link=T_ACC><u>ACC</u></link></color>+20\n<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+5\uFF05"
     StEIcon: {fileID: 21300000, guid: ba04c50e1fa04044db46fd6bbbbb05b0, type: 3}
     StEType: 4
     maxStack: 0
     merge: 1
     refValue: 0
-    undeletable: 0
+    undeletable: 1
     DoT: 0
     regen: 0
     applyer: {fileID: 0}

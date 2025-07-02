@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u81EA\u8EAB\u306EACC\u304C100\u4EE5\u4E0A\u306E\u6642"
+    conditionInfo: "\u81EA\u8EAB\u306E<color=#FF6CC1><sprite name=ACC><link=T_ACC><u>ACC</u></link></color>\u304C100\u4EE5\u4E0A\u306E\u6642"
     hideValues: 1
-    exInfo: "\u30FB100\u3092\u8D85\u3048\u305FACC1\u306B\u3064\u304D\u3001ATK\u88DC\u6B63+1\uFF05\n(+150\uFF05\u307E\u3067\u4E0A\u6607)"
+    exInfo: "\u30FB100\u3092\u8D85\u3048\u305F<sprite name=ACC>1\u306B\u3064\u304D\u3001<sprite
+      name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+1\uFF05\n(+150\uFF05\u307E\u3067\u4E0A\u6607)"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -70,6 +72,7 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -77,4 +80,28 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   maxATKMod: 150

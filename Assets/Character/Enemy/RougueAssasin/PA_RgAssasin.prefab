@@ -45,9 +45,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_E_rgAssasin
+  noSimpleInfo: 0
+  simpleInfo: "\u81EA\u8EAB\u306B<color=#FAED8A><sprite name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u304C\u3042\u308B\u3068\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u9996\u5207\u308A"
@@ -73,6 +100,7 @@ MonoBehaviour:
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
+    debuffChance: 0
     moveRes: 0
     debuffRes: 0
   actionMods:

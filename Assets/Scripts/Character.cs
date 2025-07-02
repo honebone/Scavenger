@@ -168,12 +168,12 @@ public class Character : MonoBehaviour
             {
                 if (res.value != 0)
                 {
-                    s += string.Format("{0}耐性{1}％\n", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName, res.value);
+                    s += string.Format("{0}耐性{1}％\n", res.ResStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey(), res.value);
                 }
             }
             foreach (StEApplyBonus bonus in StEApplyBonus)
             {
-                string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                string StEName = bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
                 if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr($"付与する{StEName}の<color=#FFBF69><i>{{効果量}}</i></color>", bonus.exValue, ""); }

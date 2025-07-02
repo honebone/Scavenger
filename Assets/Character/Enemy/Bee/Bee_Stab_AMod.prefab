@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u6BD2\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483"
+    conditionInfo: "<color=#C900FF><sprite name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483"
     hideValues: 1
-    exInfo: "\u5BFE\u8C61\u306E\u6BD2\u3092\u3059\u3079\u3066\u6D88\u53BB\u3057\u3001\u6BD2\u306B\u3088\u3063\u3066\u5931\u3046\u306F\u305A\u3060\u3063\u305FHP\u306B\u7B49\u3057\u3044\u56FA\u5B9A\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+    exInfo: "\u5BFE\u8C61\u306E<color=#C900FF><sprite name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u3092\u3059\u3079\u3066\u6D88\u53BB\u3057\u3001<color=#C900FF><sprite
+      name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u306B\u3088\u3063\u3066\u5931\u3046\u306F\u305A\u3060\u3063\u305FHP\u306B\u7B49\u3057\u3044\u56FA\u5B9A<sprite
+      name=INT><color=#256CC8>\u9B54\u6CD5</color>\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -70,6 +73,7 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
     applyStEBonus: []
@@ -80,6 +84,30 @@ MonoBehaviour:
     - removeStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
       removeAll: 1
       addAmount: 0
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   ATKDMG: 0
   DoT:
   - {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}

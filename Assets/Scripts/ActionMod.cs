@@ -75,10 +75,10 @@ public class ActionMod : MonoBehaviour
             if (!hideValues)
             {
                 if (exTurn > 0) { s += $"追加ターンを{exTurn}得る\n"; }
-                if (consumeFocus) { s += "・対象のフォーカスを消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
+                if (consumeFocus) { s += $"・対象の{"focus".ToSpr()}を消費する\n"; }
                 if (decreaseHP != 0) { s += ValueToStr($"・{"HP".ToSpr_withName()}減少量", decreaseHP, ""); }
-                if (ATKMod != 0) { s += ValueToStr($"・{"ATK補正".ToLinkKey("ATK(INT)補正")}", ATKMod, "％"); }
-                if (INTMod != 0) { s += ValueToStr($"・{"INT補正".ToLinkKey("ATK(INT)補正")}", INTMod, "％"); }
+                if (ATKMod != 0) { s += ValueToStr($"・{"ATK".ToSpr()}{"<color=#C30000>ATK</color>補正".ToLinkKey("ATK(INT)補正")}", ATKMod, "％"); }
+                if (INTMod != 0) { s += ValueToStr($"・{"INT".ToSpr()}{"<color=#256CC8>INT</color>補正".ToLinkKey("ATK(INT)補正")}", INTMod, "％"); }
                 //if (ATKMod > 0) { s += $"・ATK{ATKMod}％分の物理ダメージを追加で与える\n"; }
                 //else if (ATKMod < 0) { s += $"・ATK補正{ATKMod}％\n"; }
                 //if (INTMod > 0) { s += $"・INT{INTMod}％分の魔法ダメージを追加で与える\n"; }
@@ -126,7 +126,7 @@ public class ActionMod : MonoBehaviour
                 }
                 foreach (StEApplyBonus bonus in applyStEBonus)
                 {
-                    string StEName = "・"+bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                    string StEName = "・"+bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
                     if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
                     if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                     if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }

@@ -35,8 +35,8 @@ public class UtilityWindow : EditorWindow
         {"âÒïú","<sprite name=HP><color=#87FF79>âÒïú</color>" },
         {"óUî≠î\óÕ","<link=U_óUî≠î\óÕ><u>óUî≠î\óÕ</u></link>" },
         {"{X}","<color=#FFBF69><i>{X}</i></color>" },
-        {"ATKï‚ê≥","<link=U_ATK(INT)ï‚ê≥><u><sprite name=ATK><color=#C30000>ATK</color>ï‚ê≥</u></link>" },
-        {"INTï‚ê≥","<link=U_ATK(INT)ï‚ê≥><u><sprite name=INT><color=#256CC8>INT</color>ï‚ê≥</u></link>" },
+        {"ATKï‚ê≥","<sprite name=ATK><link=U_ATK(INT)ï‚ê≥><u><color=#C30000>ATK</color>ï‚ê≥</u></link>" },
+        {"INTï‚ê≥","<sprite name=INT><link=U_ATK(INT)ï‚ê≥><u><color=#256CC8>INT</color>ï‚ê≥</u></link>" },
     };
 
 
@@ -115,11 +115,7 @@ public class UtilityWindow : EditorWindow
         }
 
         GUILayout.Space(10);
-        GUILayout.Label("text sprite", EditorStyles.boldLabel);
-        STOutline = EditorGUILayout.Toggle("outline", STOutline);
-        overrideSTName = EditorGUILayout.Toggle("override name", overrideSTName);
-        spriteTextName = EditorGUILayout.TextField("è„èëÇ´Ç∑ÇÈñºèÃ", spriteTextName);
-        spriteTextMode = (SpriteTextMode)EditorGUILayout.EnumPopup("mode", spriteTextMode);
+        GUILayout.Label("common texts", EditorStyles.boldLabel);
 
         int columns_ct = 7;
         if (cp != null)

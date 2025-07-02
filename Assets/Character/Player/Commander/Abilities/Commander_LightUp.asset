@@ -16,6 +16,8 @@ MonoBehaviour:
   lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
+  noSimpleInfo: 0
+  simpleInfo: 
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
@@ -26,8 +28,8 @@ MonoBehaviour:
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 1
-  conditionInfo: "\u4F5C\u6226\u304C5\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u3042\u308B"
+  hasSelfCondition: 0
+  conditionInfo: 
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0

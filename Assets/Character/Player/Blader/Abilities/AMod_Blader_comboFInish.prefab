@@ -47,28 +47,62 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: 
     hideValues: 1
-    exInfo: "\u30FB\u81EA\u8EAB\u306E\u30B3\u30F3\u30DC1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304DATK\u88DC\u6B63+10\uFF05"
+    exInfo: "\u30FB\u81EA\u8EAB\u306E\u30B3\u30F3\u30DC1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D<sprite
+      name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+10\uFF05"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
-    cantCounter: 0
     ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
+    drain: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
+    healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
     applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStE_DoT: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   combo: {fileID: 5164891664867224302, guid: 36c651480af2c1b46bd872d9b6fe9294, type: 3}
   ATKModPerStack: 15

@@ -46,16 +46,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_E_Pest
+  noSimpleInfo: 0
+  simpleInfo: "\u81EA\u8EAB\u304C\u6BBA\u5BB3\u3055\u308C\u308B\u3068\u3001\u6BBA\u3057\u305F\u76F8\u624B\u3092<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B\r\n\u305F\u3060\u3057\u3001\u4E00\u5EA6<sprite
+    name=HP><color=#87FF79>HP</color>\u304C\u534A\u5206\u4EE5\u4E0B\u306B\u306A\u308B\u3068\u3001\u4EE3\u308F\u308A\u306B\u653B\u6483\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u904E\u5270\u5206\u6CCC"
     personalityType: 1
   applySecretion:
     actionName: 
-    conditionInfo: "HP\u304C50\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u6642(1\u56DE\u306E\u307F)"
+    conditionInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C50\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u6642(1\u56DE\u306E\u307F)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 

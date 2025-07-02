@@ -46,9 +46,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_E_goblinLeader
+  noSimpleInfo: 0
+  simpleInfo: "\u81EA\u8EAB\u304C\u6B7B\u4EA1\u3059\u308B\u3068\u3001\u624B\u4E0B\u305F\u3061\u306E<color=#FFFFFF><link=S_\u6307\u63EE\u7CFB\u7D71\u306E\u5D29\u58CA><u>\u6307\u63EE\u7CFB\u7D71\u304C\u5D29\u58CA</u></link></color>\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u4E9C\u4EBA\u306E\u90E8\u968A\u9577"

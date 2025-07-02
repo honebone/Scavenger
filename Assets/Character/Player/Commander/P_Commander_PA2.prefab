@@ -46,12 +46,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_P_commander2
+  noSimpleInfo: 0
+  simpleInfo: 
   PAInfo_start: "\u5473\u65B9\u304C\u30D5\u30A9\u30FC\u30AB\u30B9\u30921\u3064\u6D88\u8CBB\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1\n\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u306B\u30AB\u30A6\u30F3\u30C8\u306B\u5FDC\u3058\u305F\u52B9\u679C\u3092\u767A\u52D5\u3055\u305B\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8"
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
-    personalityName: 
+    personalityName: "\u5F93\u8ECD\u8005\u306E\u52F2"
     personalityType: 1
   actionStatus:
     actionName: 
@@ -253,6 +280,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
   mod_4:
@@ -311,6 +339,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
   mod_5:
@@ -369,6 +398,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
   mod_8:
@@ -427,6 +457,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
 --- !u!212 &8483728386356586883

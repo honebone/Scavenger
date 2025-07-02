@@ -16,11 +16,14 @@ MonoBehaviour:
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: 5f06898a239cf9547a3d75782b841697, type: 2}
+  noSimpleInfo: 0
+  simpleInfo: 
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
   activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   abilityType: 1
   excludeRandomPool: 0
+  priority: 1
   selectWeight: 1
   availableFront: 0
   availableMid: 1
@@ -36,9 +39,14 @@ MonoBehaviour:
     front: 0
     mid: 0
     back: 0
+    excludeObstacle: 0
+    characterInclude: []
     characterTags: 
+    StEConditions: []
     StE: []
+    StEExclude: []
     PE: []
+    PEExclude: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -53,7 +61,9 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u706B\u50B7\u306E\u3042\u308B\u6575\u5168\u3066(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     AModInfo: 
-    actionInfo: "\u305D\u306E\u5F8C\u3001\u4E0E\u3048\u305F\u30C0\u30E1\u30FC\u30B8\u306E50\uFF05\u306B\u7B49\u3057\u3044\u30B7\u30FC\u30EB\u30C9\u3092\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u30B7\u30FC\u30EB\u30C9\u91CF\u306F\u81EA\u8EAB\u306EmaxHP\u3092\u8D85\u3048\u306A\u3044"
+    actionInfo: "\u305D\u306E\u5F8C\u3001\u4E0E\u3048\u305F\u30C0\u30E1\u30FC\u30B8\u306E50\uFF05\u306B\u7B49\u3057\u3044<color=#00FFFF><sprite
+      name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B<sprite
+      name=shield>\u306F\u81EA\u8EAB\u306E<sprite name=maxHP><color=#87FF79>maxHP</color>\u3092\u8D85\u3048\u306A\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
     VE_OnTargets: {fileID: 5647168121093442190, guid: 1c1259acbd1d4cb4a898727097f570c6, type: 3}
@@ -71,22 +81,32 @@ MonoBehaviour:
       front: 1
       mid: 1
       back: 1
+      excludeObstacle: 0
+      characterInclude: []
       characterTags: 
+      StEConditions: []
       StE:
       - {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      StEExclude: []
       PE: []
+      PEExclude: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+    neigborPos: []
     ignoreMark: 1
     ignoreHide: 1
     moveValue: 
+    skipAnim: 0
     consumeFocus: 0
+    exTurn: 0
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
     decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
     attackInfo: "\u706B\u50B7\u306B\u3088\u308A\u5931\u3046HP\u306E70\uFF05\u306B\u7B49\u3057\u3044\u56FA\u5B9A\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u5373\u5EA7\u306B\u4E0E\u3048\u308B"
     ATKMod_min: 0
     ATKMod_max: 0
@@ -95,7 +115,8 @@ MonoBehaviour:
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
-    exDMG_int: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -109,6 +130,8 @@ MonoBehaviour:
     healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
     SANDamage_min: 0
@@ -128,23 +151,45 @@ MonoBehaviour:
     - removeStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       removeAll: 1
       addAmount: 0
+    removePEs: []
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
+    changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
     index: 0
     StEApplyBonus: []
+    debuffChanceMod: 0
     removeStEs_additional: []
+    summonStatusMods: []
     dontChangeSprite: 1
     activateSprite: {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
     actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
     actionTargetsInt: 090000000b000000

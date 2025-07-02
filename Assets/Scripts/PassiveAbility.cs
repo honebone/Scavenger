@@ -50,8 +50,8 @@ public class PassiveAbility : MonoBehaviour
 
         if (simple && !noSimpleInfo)
         {
-            if (statModInfo != "") s += statModInfo + "\n";
-            s += $"\n{GetSimpleInfo()}";
+            if (statModInfo != "") s += $"{statModInfo}\n\n{GetSimpleInfo()}";
+            else s += GetSimpleInfo();
         }
         else
         {
