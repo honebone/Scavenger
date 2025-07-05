@@ -21,13 +21,25 @@ public class P_Comannder : PA_Personality
     //    }
     //}
 
-    public override void OnRoundEnd()
+    //public override void OnRoundEnd()
+    //{
+    //    //infoText.AddDebugText(charactersManager.SearchCharaWithCondition(focusSearch).Count.ToString());
+    //    if (charactersManager.SearchCharaWithCondition(focusSearch).Count == 0)
+    //    {
+    //        List<Character> targets = charactersManager.SearchChara_Weakest(condition, true);
+    //        Enqueue(focus, true, targets, 1);
+    //    }
+    //}
+
+    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
     {
-        //infoText.AddDebugText(charactersManager.SearchCharaWithCondition(focusSearch).Count.ToString());
-        if (charactersManager.SearchCharaWithCondition(focusSearch).Count == 0)
+        if (BattleManager.inst.GetCurrntTurnChara().PlayerPos() == character.PlayerPos() && !myTurn)
         {
-            List<Character> targets = charactersManager.SearchChara_Weakest(condition, true);
-            Enqueue(focus, true, targets, 1);
+            if (charactersManager.SearchCharaWithCondition(focusSearch).Count == 0)
+            {
+                List<Character> targets = charactersManager.SearchChara_Weakest(condition, true);
+                Enqueue(focus, true, targets, 1);
+            }
         }
     }
 

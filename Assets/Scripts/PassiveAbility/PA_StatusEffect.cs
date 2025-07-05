@@ -121,8 +121,10 @@ public class PA_StatusEffect : PassiveAbility
         //string s = StEStatus.StEName;
         //if (StEStatus.refValue) { s += "X"; }
         //s += "ÅF";
-        s += StEStatus.StEInfo;
-        if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
+        //string statModInfo = statMod.GetInfo();
+        //if (statModInfo != "") s += statModInfo + "\n";
+        if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
+        if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }
         if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬"; }
 
         return s;
@@ -132,6 +134,8 @@ public class PA_StatusEffect : PassiveAbility
     {
         string rv = StEStatus.refValue ? " <color=#FFBF69><i>{X}</i></color>" : "";
         string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>\n";
+        string statModInfo = statMod.GetInfo();
+        if (statModInfo != "") s += statModInfo + "\n";
         s += StEStatus.StEInfo;
         //s = s.ColorStr(Color.gray);
         if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }

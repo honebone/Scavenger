@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: P_Cavalry
+  m_EditorClassIdentifier: 
+  fileName: P_Cavalry
+  manager: {fileID: 4375515343414860991, guid: 690c742a4e854074fbb461f32f53157e, type: 3}
+  charaName: "\u9A0E\u5175"
+  introduction: "\u69D8\u3005\u306A\u7A2E\u985E\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u6709\u3057\u3066\u304A\u308A\u3001\u3069\u306E\u3088\u3046\u306A\u72B6\u6CC1\u3067\u3082\u5FC5\u8981\u6700\u4F4E\u9650\u306E\u4ED5\u4E8B\u304C\u3067\u304D\u308B\u304C\u3001\u305D\u308C\u4EE5\u4E0A\u306E\u3053\u3068\u306F\u3067\u304D\u306A\u3044"
+  difficulty: "\u4E2D"
+  preferFront: 1
+  preferMid: 0
+  preferBack: 0
+  mainRole:
+  - "\u30BF\u30F3\u30AF"
+  - "\u30B7\u30FC\u30EB\u30C9"
+  subRole:
+  - "\u653B\u6483"
+  characterTags: 02000000
+  immovable: 0
+  notChara: 0
+  player: 1
+  playable: 1
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 12b51d6805e97e245b0d88ad7c24b42f, type: 2}
+  - {fileID: 11400000, guid: b6de6de4c6a89344cab3f6f920f70002, type: 2}
+  - {fileID: 11400000, guid: b06e47a8081dd654e97e76ff915a5daf, type: 2}
+  - {fileID: 11400000, guid: 9fa74365ae8a8b047b2f2b4af4f8c067, type: 2}
+  - {fileID: 11400000, guid: e8eadb511ee71fb4cbc46625eff11c44, type: 2}
+  - {fileID: 11400000, guid: cf4baaac5f4a075459cad784f8faa109, type: 2}
+  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 5626464818293590775, guid: e4dbeb7bee8e17a4b9c36ae875bc0778, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
+  surviveFatalWounds: 1
+  maxHP: 45
+  maxSAN: 50
+  ATK: 9
+  INT: 9
+  CRITC: 5
+  CRITD: 150
+  EVD: 0
+  ACC: 95
+  ACT: 3
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

@@ -28,9 +28,9 @@ MonoBehaviour:
   player: 0
   playable: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 4820303296396893962, guid: 7f13f29f499b7b3458a49c3b5d90569c, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  spriteForUI: {fileID: -1902864313, guid: db87426803363694c96dbc06671c820c, type: 3}
   abilities:
   - {fileID: 11400000, guid: 656d28e594d89c342a13f751ebc2e092, type: 2}
   - {fileID: 11400000, guid: 4cec0446b0250bb43a81a568c840f2fe, type: 2}
@@ -51,7 +51,7 @@ MonoBehaviour:
   surviveFatalWounds: 0
   maxHP: 15
   maxSAN: 50
-  ATK: 5
+  ATK: 7
   INT: 5
   CRITC: 5
   CRITD: 150
