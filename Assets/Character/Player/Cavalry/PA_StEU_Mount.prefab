@@ -49,7 +49,8 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: "\u3053\u308C\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D\u3001<color=#00FFFF><sprite
     name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3068<color=#FAED8A><sprite
-    name=buff><link=S_ATK\u4E0A\u6607><u>ATK\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B\r\n\r\n<sprite
+    name=buff><link=S_ATK\u4E0A\u6607><u>ATK\u4E0A\u6607</u></link></color>\u3068<color=#C900FF><sprite
+    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u5F97\u308B\r\n\r\n<sprite
     name=HP><color=#87FF79>HP</color>\u304C50\uFF05\u3092\u4E0B\u56DE\u308B\u3068\u6D88\u53BB"
   PAInfo_start: 
   skipGetInfo: 0
@@ -184,6 +185,13 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 75
+      refATK: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []

@@ -573,6 +573,7 @@ public class Action : MonoBehaviour
             modifiedStatus.CRITCMod += mod.CRITCMod;
             modifiedStatus.CRITDMod += mod.CRITDMod;
             modifiedStatus.drain += mod.drain;
+            if (mod.ignoreShield) modifiedStatus.ignoreShield = true;
             if (mod.sureHit) { modifiedStatus.sureHit = true; }
             if (mod.unevadable) { modifiedStatus.unevadable = true; }
 
@@ -595,6 +596,7 @@ public class Action : MonoBehaviour
 
             modifiedStatus.shieldRemove_min += mod.shieldRemove;
             modifiedStatus.shieldRemove_max += mod.shieldRemove;
+            if (mod.shieldRemove_all) modifiedStatus.shieldRemove_all = true;
 
             modifiedStatus.applySteParams = new List<PA_StatusEffect.StatusEffectParams>(modifiedStatus.applySteParams);
             foreach (PA_StatusEffect.StatusEffectParams statusEffectParams in mod.applySteParams)

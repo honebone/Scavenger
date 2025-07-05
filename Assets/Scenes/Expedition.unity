@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -1075,7 +1075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 139.98999, y: -24.298996}
+  m_AnchoredPosition: {x: 139.98999, y: -24.299011}
   m_SizeDelta: {x: -279.98, y: -48.597}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66345595
@@ -1783,16 +1783,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "<sprite name=ATKL><color=#C30000>ATK</color>\r\n<sprite name=INTL><color=#256CC8>INT</color>\r\n<sprite
-    name=CRITL><color=#FF8B00>CRIT</color>\r\n<sprite name=HPL><color=#87FF79>HP</color>\r\n<sprite
-    name=SANL><color=#FFFFFF>SAN</color>\r\n<sprite name=SANDMGL><color=#BCBCBC>SANDMG</color>\r\n<sprite
-    name=shieldL><color=#00FFFF>\u30B7\u30FC\u30EB\u30C9</color>\r\n<sprite name=shieldDMGL><color=#006C6C>shieldDMG</color>\r\n<sprite
-    name=buffL><color=#FAED8A>\u30D0\u30D5</color>\r\n<sprite name=debuffL><color=#C900FF>\u30C7\u30D0\u30D5</color>\r\n<sprite
-    name=focusL><color=#DD6300>\u30D5\u30A9\u30FC\u30AB\u30B9</color>\r\n<sprite
-    name=EVDL><color=#55B075>EVD</color>\r\n<sprite name=ACCL><color=#FF6CC1>ACC</color>\r\n<sprite
-    name=ACTL><color=#FFFF00>ACT</color>\n<sprite name=maxHP><color=#87FF79>maxHP</color>\n<sprite
-    name=PROTL><color=#8DD1FF>PROT</color>\n<sprite name=summonL><color=#00F4FF>\u53EC\u559A</color>\n<color=#FFBF69><i>{X}</i></color>
-    <color=#FFBF69><i>{25}</i></color>"
+  m_text: <color=#FF0000>+12345</color>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
   m_sharedMaterial: {fileID: 1749331179072275075, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
@@ -13168,6 +13159,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
   - {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
+  - {fileID: 11400000, guid: 2eb6072248bdf954c8f1512e6ff475f9, type: 2}
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
   - {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
@@ -22834,8 +22826,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 10
@@ -24834,7 +24826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1171697980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25487,7 +25479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1197886041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29477,7 +29469,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31766,7 +31758,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1.25, y: 0}
   m_SizeDelta: {x: 12.5, y: 37.5}
   m_Pivot: {x: 0.5, y: 1}
@@ -32267,7 +32259,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -34018,7 +34010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -41.199997
+      value: -41.200012
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -36007,7 +35999,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -43057,7 +43049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 140.00006, y: -23.874008}
+  m_AnchoredPosition: {x: 140.00006, y: -23.874023}
   m_SizeDelta: {x: -280, y: -47.752}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2130337479 stripped
@@ -44199,7 +44191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -119.94499
+      value: -119.94501
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

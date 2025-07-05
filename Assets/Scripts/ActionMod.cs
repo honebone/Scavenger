@@ -32,6 +32,7 @@ public class ActionMod : MonoBehaviour
         public float CRITCMod;
         public float CRITDMod;
         public float drain;
+        public bool ignoreShield;
         public bool sureHit;
         public bool unevadable;
 
@@ -45,6 +46,7 @@ public class ActionMod : MonoBehaviour
         public int shieldAdd;
         public int shieldAdd_percent;
         public int shieldRemove;
+        public bool shieldRemove_all;
 
         public List<PA_StatusEffect.StatusEffectParams> applySteParams;
         public List<StEApplyBonus> applyStEBonus;
@@ -92,6 +94,7 @@ public class ActionMod : MonoBehaviour
                 if (CRITCMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}率補正", CRITCMod, "％"); }
                 if (CRITDMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}ダメージ補正", CRITDMod, "倍"); }
                 if (drain != 0) { s += ValueToStr("・与ダメージの", drain, $"％を{"HP".ToSpr_withName("回復")}"); }
+                if (ignoreShield) s += $"・{"shield".ToSpr_withLink()}を無視するようになる\n";
                 if (sureHit) { s += "・攻撃が必中となる\n"; }
                 if (unevadable) { s += $"・対象の{"EVD".ToSpr_withLink()}を無視\n"; }
                 if (exHeal_mul != 0) { s += ValueToStr($"・{"HP".ToSpr_withName("回復")}量", exHeal_mul, "％"); }
@@ -104,6 +107,7 @@ public class ActionMod : MonoBehaviour
                 if (shieldAdd != 0) { s += ValueToStr($"・{shield}を", shieldAdd, "付与"); }
                 if (shieldAdd_percent != 0) { s += ValueToStr($"・{"maxHP".ToSpr_withName()}の", shieldAdd_percent, $"％に等しい{shield}を付与"); }
                 if (shieldRemove != 0) { s += ValueToStr($"・{shield}除去量", shieldRemove, ""); }
+                if (shieldRemove_all) { s += $"・{shield}をすべて除去する\n"; }
 
                 f = false;
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
