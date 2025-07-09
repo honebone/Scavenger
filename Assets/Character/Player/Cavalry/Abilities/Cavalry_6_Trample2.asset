@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Cavalry_6_Trample
+  m_Name: Cavalry_6_Trample2
   m_EditorClassIdentifier: 
-  abilityName: "\u30C8\u30E9\u30F3\u30D7\u30EB"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 1aae162bb910cf344aa0d67e00e46931, type: 2}
+  abilityName: "\u30C8\u30E9\u30F3\u30D7\u30EB+"
+  lockedDefault: 0
+  upgradeInfo: "<sprite name=HP><color=#87FF79>HP</color>\u6BCE\u306E<color=#C900FF><sprite
+    name=debuff><link=S_\u30B9\u30BF\u30F3><u>\u30B9\u30BF\u30F3</u></link></color>\u4ED8\u4E0E\u78BA\u7387+0.5\uFF05\n<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -70,7 +72,7 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 9026872467518674270, guid: 59e6d3a9232a004489cb89d2000a008d, type: 3}
     actionObject: {fileID: 0}
     actionMods:
-    - {fileID: 1682909745843474664, guid: b8143387ef341a64388e16fca5b97570, type: 3}
+    - {fileID: 1682909745843474664, guid: 676e2d1fa2ab75a4db3a5d122ce7ae73, type: 3}
     targetType: 5
     friendly: 0
     condition:
@@ -163,6 +165,13 @@ MonoBehaviour:
       applyChance: 100
       stack: 1
       value: 7
+      refATK: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      guaranteed: 0
+      applyChance: 75
+      stack: 1
+      value: 0
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []

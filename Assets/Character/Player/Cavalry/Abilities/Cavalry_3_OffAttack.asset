@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: Cavalry_3_OffAttack
   m_EditorClassIdentifier: 
-  abilityName: "\u672A\u5B9A"
+  abilityName: "\u964D\u81E8"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
@@ -482,6 +482,52 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+    - LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
+    - LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
     dontChangeSprite: 0
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
@@ -490,7 +536,7 @@ MonoBehaviour:
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
-    actionTargetsInt: 090000000a000000
+    actionTargetsInt: 0a0000000b000000
   - actionName: "\u672A\u5B9A"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -623,4 +669,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 07000000

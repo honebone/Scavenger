@@ -10,39 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Cavalry_2_heal
+  m_Name: Cavalry_4_mark2
   m_EditorClassIdentifier: 
-  abilityName: "\u99AC\u306E\u624B\u5F53\u3066"
+  abilityName: "\u5636\u304D+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: b92b818110b8f9a47af6d07716222588, type: 2}
+  upgradeInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u4ED8\u4E0E\u91CF+5\uFF05\n<color=#C900FF><sprite
+    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF+1"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
   dontChangeSprite: 0
   activateSprite: {fileID: 0}
-  abilityType: 2
+  abilityType: 3
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "\u81EA\u8EAB\u304C\u9A0E\u4E57\u4E2D\u3067\u3042\u308B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 0
+    player: 1
     enemy: 0
     onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
-    StEConditions: []
+    StEConditions:
+    - StE: {fileID: 5164891664867224302, guid: be3722c745a7f4941914fc1d5a6dd9fa, type: 3}
+      stack: 1
+      stack_lessThan: 0
     StE: []
     StEExclude: []
     PE: []
@@ -57,7 +61,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u99AC\u306E\u624B\u5F53\u3066"
+  - actionName: "\u5636\u304D"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -124,8 +128,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 20
-    healRegain_max: 25
+    healRegain_min: 0
+    healRegain_max: 0
     trueHeal: 0
     exHeal_mul: 0
     SANHeal_min: 0
@@ -134,12 +138,19 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
+    shieldPercent_min: 20
+    shieldPercent_max: 20
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -173,7 +184,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 2
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -347,4 +358,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 07000000

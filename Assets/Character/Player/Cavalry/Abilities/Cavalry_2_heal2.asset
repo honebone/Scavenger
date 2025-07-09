@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Cavalry_2_heal
+  m_Name: Cavalry_2_heal2
   m_EditorClassIdentifier: 
-  abilityName: "\u99AC\u306E\u624B\u5F53\u3066"
+  abilityName: "\u99AC\u306E\u624B\u5F53\u3066+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: b92b818110b8f9a47af6d07716222588, type: 2}
+  upgradeInfo: "<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u91CF+7\uFF05"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -57,7 +57,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u99AC\u306E\u624B\u5F53\u3066"
+  - actionName: "\u99AC\u306E\u624B\u5F53\u3066+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -124,8 +124,8 @@ MonoBehaviour:
     healValue_max: 0
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 20
-    healRegain_max: 25
+    healRegain_min: 27
+    healRegain_max: 32
     trueHeal: 0
     exHeal_mul: 0
     SANHeal_min: 0
@@ -179,6 +179,29 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods:
+    - LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
