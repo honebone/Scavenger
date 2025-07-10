@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: EqM_iceShard
+  noSimpleInfo: 0
   simpleInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3059\u308B\u3068\u3001\u6575\u306B<color=#C900FF><sprite
     name=debuff><link=S_ACT\u4F4E\u4E0B><u>ACT\u4F4E\u4E0B</u></link></color>\u3092\u4F34\u3046<sprite
     name=INT><color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u3092\u3059\u308B\r\n\u5BFE\u8C61\u306B\u3059\u308B\u6575\u306E\u6570\u306F\u3001\u81EA\u8EAB\u306E<sprite
     name=CRIT>\u30C0\u30E1\u30FC\u30B8\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
-  PAInfo_start: 
+  PAInfo_start: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3059\u308B\u305F\u3073\u3001\u3053\u308C\u306F\u5531\u3048\u3089\u308C\u308B(\u3053\u306E\u9B54\u8853\u306E\u653B\u6483\u306B\u3088\u308B<sprite
+    name=CRIT>\u3092\u9664\u304F)\n\u3053\u306E\u6761\u4EF6\u306B\u3088\u308B\u8A60\u5531\u306F\u3001\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -81,33 +83,7 @@ MonoBehaviour:
   PATags: 04000000
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 68b07d6ad458b7944b704abf090b58ac, type: 2}
-    equipmentInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3059\u308B\u305F\u3073\u3001\u3053\u308C\u306F\u5531\u3048\u3089\u308C\u308B(\u3053\u306E\u9B54\u8853\u306E\u653B\u6483\u306B\u3088\u308B<sprite
-      name=CRIT>\u3092\u9664\u304F)\n\u3053\u306E\u6761\u4EF6\u306B\u3088\u308B\u8A60\u5531\u306F\u3001\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 5
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 7
-      CRITD: 20
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
+    equipmentInfo: 
   actionStatus:
     actionName: "\u9B54\u8853\uFF1A\u6C37\u67F1"
     conditionInfo: "\u5531\u3048\u3089\u308C\u305F\u3068\u304D"

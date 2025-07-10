@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: PA_Per_Perfectionism
-  simpleInfo: 
+  noSimpleInfo: 0
+  simpleInfo: "\u653B\u6483\u3092\u5916\u3059\u3068\u3001"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -129,8 +130,8 @@ MonoBehaviour:
   AMods: []
   PATags: 
   personalityStatus:
-    personalityName: 
-    personalityType: 0
+    personalityName: "\u5B8C\u74A7\u4E3B\u7FA9\u8005"
+    personalityType: 4
   actionStatus:
     actionName: 
     conditionInfo: "\u653B\u6483\u3092\u5916\u3057\u305F\u6642"
@@ -218,8 +219,8 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: ce0f256752c759348bd070d05badbe07, type: 3}
       guaranteed: 0
       applyChance: 50
-      stack: 30
-      value: 1
+      stack: 1
+      value: 25
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []

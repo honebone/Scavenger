@@ -60,8 +60,8 @@ public class PassiveAbility : MonoBehaviour
             {
                 s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
             }
-            if (PAInfo_start != "") { s += PAInfo_start + "\n"; }
-            if (!skipGetInfo) s += GetPAInfo_Base() + "\n";
+            if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
+            if (!skipGetInfo&& GetPAInfo_Base()!="") s += GetPAInfo_Base() + "\n\n";
             if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
             if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
         }

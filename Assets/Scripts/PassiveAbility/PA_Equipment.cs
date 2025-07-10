@@ -10,7 +10,7 @@ public class PA_Equipment : PassiveAbility
         public ItemData itemData;
         //[TextArea(3, 10)]
         //public string info_start;
-        [TextArea(3, 10)]
+        [Header("Ç±Ç±Ç…èëÇ≠Ç»")]
         public string equipmentInfo;
         //public Character.CharaStatusMod statusMod;
         //public List<GameObject> actionMods;

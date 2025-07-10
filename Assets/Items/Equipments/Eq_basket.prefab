@@ -49,7 +49,7 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: "\u4E00\u5B9A\u91CF\u306E<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3092\u53D7\u3051\u308B\u3068\u3001\u65752\u4F53\u306B<sprite
     name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B"
-  PAInfo_start: 
+  PAInfo_start: "\u81EA\u8EAB\u304C<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u305D\u306E\u56DE\u5FA9\u91CF\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -80,7 +80,7 @@ MonoBehaviour:
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 86b79af53c1debd40b57b938d54def09, type: 2}
-    equipmentInfo: "\u81EA\u8EAB\u304C<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3092\u53D7\u3051\u305F\u3068\u304D\u3001\u305D\u306E\u56DE\u5FA9\u91CF\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
+    equipmentInfo: 
   attack:
     actionName: "\u8C4A\u7A63\u306E\u30D0\u30B9\u30B1\u30C3\u30C8"
     conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E20\uFF05\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D(\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067)"
