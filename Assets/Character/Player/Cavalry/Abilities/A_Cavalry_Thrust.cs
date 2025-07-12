@@ -7,7 +7,7 @@ public class A_Cavalry_Thrust : Ability
     public CharactersManager.SearchCharaCondition condition;
     public override Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus)
     {
-        if (charactersManager.CheckIfMatchCondition(character, condition))
+        if (charactersManager.ExamineCharacter(character, condition))
         {
             actionStatus.targetType = Action.ActionStatus.TargetType.row;
         }

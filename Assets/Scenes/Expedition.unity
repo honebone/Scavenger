@@ -299,16 +299,16 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
     centerFront: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     lowerFront: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
     dontShuffleMid: 0
-    upperMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
     centerMid: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    lowerMid: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
     dontShuffleBack: 0
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
+    upperBack: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
+    centerBack: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
     lowerBack: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     atRandom: []
   FE: {fileID: 0}
@@ -12996,6 +12996,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -13339,6 +13340,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f4cb6e47d63e366458eb6f9ab8f6b0e3, type: 2}
   - {fileID: 11400000, guid: c06241cc17d77a24bb65410aada06328, type: 2}
   - {fileID: 11400000, guid: 3d965af5013dd7f42ab6eebeb4e15211, type: 2}
+  - {fileID: 11400000, guid: 2551542232f7d29448964e3290d66560, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -19957,6 +19959,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -20074,6 +20077,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []

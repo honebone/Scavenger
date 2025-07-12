@@ -415,7 +415,7 @@ public class Ability : MonoBehaviour
                 }
             }
         }
-        properCondition = !status.hasSelfCondition || charactersManager.CheckIfMatchCondition(character, status.selfCondition);
+        properCondition = !status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition);
         return !status.locked && (!status.hasRemain || status.remain > 0) && status.cooldown == 0 && status.unavailable == 0 && atProperPos && hasProperTarget && properCondition;
     }
     public List<string> GetUnavailabeInfo()
@@ -441,7 +441,7 @@ public class Ability : MonoBehaviour
                 break;
             }
         }
-        properCondition = !status.hasSelfCondition || charactersManager.CheckIfMatchCondition(character, status.selfCondition);
+        properCondition = !status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition);
 
         if (status.locked) { info.Add("未解放のアビリティ"); }
         if (!battleManager.checkIfMyTurn(character)) { info.Add("自身のターンでない"); }

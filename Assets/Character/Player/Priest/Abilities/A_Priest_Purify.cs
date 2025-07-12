@@ -8,7 +8,7 @@ public class A_Priest_Purify : Ability
     CharactersManager.SearchCharaCondition condition;
     public override Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus)
     {
-        if (charactersManager.CheckIfMatchCondition(character, condition))
+        if (charactersManager.ExamineCharacter(character, condition))
         {
             actionStatus.targetType = Action.ActionStatus.TargetType.column;
         }

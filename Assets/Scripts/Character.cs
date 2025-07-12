@@ -1063,6 +1063,7 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
+                    charaStatus.HP = 0;
                     Die(0, null);
                 }
             }
@@ -1123,6 +1124,7 @@ public class Character : MonoBehaviour
             {
                 if (charaStatus.surviveFatalWounds)
                 {
+                    charaStatus.HP = 0;
                     Die(0, onDamageParams.owner);
                 }
                 else { print("•m€‚Å‘Ï‚¦‚éƒLƒƒƒ‰o‚È‚¢‚Ì‚ÉHP0‚Å¶‚«‘±‚¯‚Ä‚¢‚Ü‚·"); }
@@ -1150,6 +1152,8 @@ public class Character : MonoBehaviour
                 }
                 else
                 {
+
+                    charaStatus.HP = 0;
                     Die(0, onDamageParams.owner);
                 }
             }

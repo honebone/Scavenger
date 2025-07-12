@@ -18,7 +18,7 @@ public class Eq_EverythingThatMoves : PA_Equipment
     {
         if (remain > 0 && !onMoveParams.secondaryMove)
         {
-            if (charactersManager.CheckIfMatchCondition(onMoveParams.target, condition))
+            if (charactersManager.ExamineCharacter(onMoveParams.target, condition))
             {
                 Enqueue(attack, true, new List<Character> { onMoveParams.target });
                 remain--;

@@ -638,7 +638,9 @@ public class Action : MonoBehaviour
                 modifiedStatus.removeStEs_additional.Add(removeStE);
             }
 
-            modifiedStatus.summonStatusMods.Add(mod.summonStatusMod);
+            List<Character.CharaStatusMod> summonModsTemp = new List<Character.CharaStatusMod>(modifiedStatus.summonStatusMods);
+            summonModsTemp.Add(mod.summonStatusMod);
+            modifiedStatus.summonStatusMods = new List<Character.CharaStatusMod>(summonModsTemp);
             //move
 
             return modifiedStatus;
@@ -1505,6 +1507,7 @@ public class Action : MonoBehaviour
                     onSummonParams.actionParams = actionParams;
 
                     if (!notChara) { summonStatusParams.summoner = actionOwner; }
+                    infoText.AddDebugText(actionsStatus[i].summonStatusMods.Count.ToString());
                     summonStatusParams.statusMods = new List<Character.CharaStatusMod>(actionsStatus[i].summonStatusMods);
                     summonStatusParams.statusMods.Add(actionsStatus[i].summonStatusInherit.ToStatuMod(ownerStatus));
 

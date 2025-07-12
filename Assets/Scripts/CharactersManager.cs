@@ -167,6 +167,7 @@ public class CharactersManager : MonoBehaviour
         public bool excludeObstacle;
         public List<CharacterData> characterInclude;
         public List<CharacterData.CharacterTag> characterTags;
+        public List<CharacterData.CharacterTag> characterTagsExclude;
 
         [System.Serializable]
         public class StECondition
@@ -186,6 +187,129 @@ public class CharactersManager : MonoBehaviour
         public bool HP_excludeEqual;
 
     }
+
+    public bool ExamineCharacter(Character character, SearchCharaCondition condition)
+    {
+        if (condition.searchAsPos)
+        {
+            infoText.AddErrorText("ポジションを検査するためにキャラクター検索を行っています!!");
+            return false;
+        }
+        Character.CharacterStatus status = character.CharaStatus();
+        if (!condition.player && status.position < 9) { return false; }
+        if (!condition.enemy && status.position >= 9) { return false; }
+        if (condition.onlyPlayable && !status.playable) { return false; }
+        if (!condition.front && status.position.GetColumn() == 0) { return false; }
+        if (!condition.mid && status.position.GetColumn() == 1) { return false; }
+        if (!condition.back && status.position.GetColumn() == 2) { return false; }
+        if (condition.excludeObstacle && status.Obstacle()) { return false; }
+
+        bool matched = condition.characterTags.Count == 0;
+        foreach (CharacterData.CharacterTag tag in condition.characterTags)
+        {
+            if (status.characterTags.Contains(tag))
+            {
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) { return false; }
+
+
+
+        matched = condition.characterInclude.Count == 0 || condition.characterInclude.Contains(status.characterData);
+        if (!matched) { return false; }
+
+        foreach (CharacterData.CharacterTag tag in condition.characterTagsExclude)
+        {
+            if (status.characterTags.Contains(tag))
+            {
+                return false;
+            }
+        }
+
+        matched = condition.StEConditions.Count == 0;
+        foreach (SearchCharaCondition.StECondition cond in condition.StEConditions)
+        {
+            int stack = character.GetStEStack_Sum(cond.StE);
+            if (cond.stack_lessThan && stack <= cond.stack)
+            {
+                matched = true;
+                break;
+            }
+            else if (!cond.stack_lessThan && stack >= cond.stack)
+            {
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) { return false; }
+
+        matched = condition.StE.Count == 0;
+        foreach (GameObject s in condition.StE)
+        {
+            if (character.CheckHasStE(s))
+            {
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) { return false; }
+
+
+
+        matched = true;
+        foreach (GameObject s in condition.StEExclude)
+        {
+            if (character.CheckHasStE(s))
+            {
+                matched = false;
+                break;
+            }
+        }
+        if (!matched) { return false; }
+
+
+
+        matched = condition.PE.Count == 0;
+        foreach (GameObject s in condition.PE)
+        {
+            if (character.CheckHasPE(s))
+            {
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) { return false; }
+
+
+
+        matched = true;
+        foreach (GameObject s in condition.PEExclude)
+        {
+            if (character.CheckHasPE(s))
+            {
+                matched = false;
+                break;
+            }
+        }
+        if (!matched) { return false; }
+
+        float HPPercent = status.HP.GetPercent(status.maxHP);
+        if (condition.HP_lessThan)
+        {
+            if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { return false; }//HP% < 条件値 のみ通す
+            if (!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { return false; }//HP% <= 条件値 のみ通す
+        }
+        else
+        {
+            if (condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { return false; }//HP% > 条件値 のみ通す
+            if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { return false; }//HP% >= 条件値 のみ通す
+        }
+
+        return true;
+    }   
+
     public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)
     {
         if (condition.searchAsPos)
@@ -196,119 +320,130 @@ public class CharactersManager : MonoBehaviour
         List<Character> list = new List<Character>();
         foreach (Character character in existingCharacters)
         {
-            Character.CharacterStatus status = character.CharaStatus();
-            if (!condition.player && status.position < 9) { continue; }
-            if (!condition.enemy && status.position >= 9) { continue; }
-            if (condition.onlyPlayable && !status.playable) { continue; }
-            if (!condition.front && status.position.GetColumn() == 0) { continue; }
-            if (!condition.mid && status.position.GetColumn() == 1) { continue; }
-            if (!condition.back && status.position.GetColumn() == 2) { continue; }
-            if (condition.excludeObstacle && status.Obstacle()) { continue; }
+            //Character.CharacterStatus status = character.CharaStatus();
+            //if (!condition.player && status.position < 9) { continue; }
+            //if (!condition.enemy && status.position >= 9) { continue; }
+            //if (condition.onlyPlayable && !status.playable) { continue; }
+            //if (!condition.front && status.position.GetColumn() == 0) { continue; }
+            //if (!condition.mid && status.position.GetColumn() == 1) { continue; }
+            //if (!condition.back && status.position.GetColumn() == 2) { continue; }
+            //if (condition.excludeObstacle && status.Obstacle()) { continue; }
 
 
 
-            bool matched = condition.characterTags.Count == 0;
-            foreach (CharacterData.CharacterTag tag in condition.characterTags)
-            {
-                if (status.characterTags.Contains(tag))
-                {
-                    matched = true;
-                    break;
-                }
-            }
-            if (!matched) { continue; }
+            //bool matched = condition.characterTags.Count == 0;
+            //foreach (CharacterData.CharacterTag tag in condition.characterTags)
+            //{
+            //    if (status.characterTags.Contains(tag))
+            //    {
+            //        matched = true;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
 
 
 
-            matched = condition.characterInclude.Count == 0 || condition.characterInclude.Contains(status.characterData);
-            if (!matched) { continue; }
+            //matched = condition.characterInclude.Count == 0 || condition.characterInclude.Contains(status.characterData);
+            //if (!matched) { continue; }
+
+            //matched = true;
+            //foreach (CharacterData.CharacterTag tag in condition.characterTagsExclude)
+            //{
+            //    if (status.characterTags.Contains(tag))
+            //    {
+            //        infoText.AddDebugText(tag.ToString());
+            //        matched = false;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
+
+
+            //matched = condition.StEConditions.Count == 0;
+            //foreach (SearchCharaCondition.StECondition cond in condition.StEConditions)
+            //{
+            //    int stack = character.GetStEStack_Sum(cond.StE);
+            //    if (cond.stack_lessThan&& stack <= cond.stack)
+            //    {
+            //        matched = true;
+            //        break;
+            //    }
+            //    else if(!cond.stack_lessThan && stack >= cond.stack)
+            //    {
+            //        matched = true;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
 
 
 
-            matched = condition.StEConditions.Count == 0;
-            foreach (SearchCharaCondition.StECondition cond in condition.StEConditions)
-            {
-                int stack = character.GetStEStack_Sum(cond.StE);
-                if (cond.stack_lessThan&& stack <= cond.stack)
-                {
-                    matched = true;
-                    break;
-                }
-                else if(!cond.stack_lessThan && stack >= cond.stack)
-                {
-                    matched = true;
-                    break;
-                }
-            }
-            if (!matched) { continue; }
+            //matched = condition.StE.Count == 0;
+            //foreach (GameObject s in condition.StE)
+            //{
+            //    if (character.CheckHasStE(s))
+            //    {
+            //        matched = true;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
 
 
 
-            matched = condition.StE.Count == 0;
-            foreach (GameObject s in condition.StE)
-            {
-                if (character.CheckHasStE(s))
-                {
-                    matched = true;
-                    break;
-                }
-            }
-            if (!matched) { continue; }
+            //matched = true;
+            //foreach (GameObject s in condition.StEExclude)
+            //{
+            //    if (character.CheckHasStE(s))
+            //    {
+            //        matched = false;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
 
 
 
-            matched = true;
-            foreach (GameObject s in condition.StEExclude)
-            {
-                if (character.CheckHasStE(s))
-                {
-                    matched = false;
-                    break;
-                }
-            }
-            if (!matched) { continue; }
+            //matched = condition.PE.Count == 0;
+            //foreach (GameObject s in condition.PE)
+            //{
+            //    if (character.CheckHasPE(s))
+            //    {
+            //        matched = true;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
 
 
 
-            matched = condition.PE.Count == 0;
-            foreach (GameObject s in condition.PE)
-            {
-                if (character.CheckHasPE(s))
-                {
-                    matched = true;
-                    break;
-                }
-            }
-            if (!matched) { continue; }
+            //matched = true;
+            //foreach (GameObject s in condition.PEExclude)
+            //{
+            //    if (character.CheckHasPE(s))
+            //    {
+            //        matched = false;
+            //        break;
+            //    }
+            //}
+            //if (!matched) { continue; }
 
 
 
-            matched = true;
-            foreach (GameObject s in condition.PEExclude)
-            {
-                if (character.CheckHasPE(s))
-                {
-                    matched = false;
-                    break;
-                }
-            }
-            if (!matched) { continue; }
+            //float HPPercent = status.HP.GetPercent(status.maxHP);
+            //if (condition.HP_lessThan)
+            //{
+            //    if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { continue; }//HP% < 条件値 のみ通す
+            //    if (!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
+            //}
+            //else
+            //{
+            //    if (condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
+            //    if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
+            //}
 
-
-
-            float HPPercent = status.HP.GetPercent(status.maxHP);
-            if (condition.HP_lessThan)
-            {
-                if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { continue; }//HP% < 条件値 のみ通す
-                if (!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
-            }
-            else
-            {
-                if (condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
-                if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
-            }
-
-            list.Add(character);
+            if (ExamineCharacter(character, condition)) list.Add(character);
 
         }
 
@@ -364,13 +499,7 @@ public class CharactersManager : MonoBehaviour
             if (chara.PlayerPos() == player) list.Add(chara);
         }
         return list;
-    }
-
-
-    public bool CheckIfMatchCondition(Character character, SearchCharaCondition condition)
-    {
-        return SearchCharaWithCondition(condition).Contains(character);
-    }
+    }    
 
     public List<int> SearchPosWithCondition(SearchCharaCondition condition)
     {

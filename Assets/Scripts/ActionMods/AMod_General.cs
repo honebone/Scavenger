@@ -16,14 +16,11 @@ public class AMod_General : ActionMod
     {
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if (!hasCondition_owner || charactersManager.CheckIfMatchCondition(statusRef.actionOwner, condition_owner))//”­“®ŽÒ‚ÌðŒ
+            if (!hasCondition_owner || charactersManager.ExamineCharacter(statusRef.actionOwner, condition_owner))//”­“®ŽÒ‚ÌðŒ
             {
-                if (!hasCondition_target || charactersManager.CheckIfMatchCondition(statusRef.actionTargets[i], condition_target))//‘ÎÛ‚ÌðŒ
+                if (!hasCondition_target || charactersManager.ExamineCharacter(statusRef.actionTargets[i], condition_target))//‘ÎÛ‚ÌðŒ
                 {
-                    Debug.Log("ok");
                     actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
-                    Debug.Log($"{actionsStatus[i].removeStE_debuff},{actionsStatus[i].removeStE_buff}");
-
                 }
             }
         }
