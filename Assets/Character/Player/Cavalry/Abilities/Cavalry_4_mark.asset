@@ -137,8 +137,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 20
-    shieldPercent_max: 20
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -148,6 +148,13 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 100
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []

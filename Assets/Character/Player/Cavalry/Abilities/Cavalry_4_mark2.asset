@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u5636\u304D+"
   lockedDefault: 0
-  upgradeInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u4ED8\u4E0E\u91CF+5\uFF05\n<color=#C900FF><sprite
-    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF+1"
+  upgradeInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5C11\u91CF\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\n<color=#FAED8A><sprite
+    name=buff><link=S_\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+50"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -138,8 +138,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 20
-    shieldPercent_max: 20
+    shieldPercent_min: 10
+    shieldPercent_max: 10
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -149,6 +149,13 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      refATK: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 150
       refATK: 0
       DMGPerTurn: 0
     applyPEParams: []
