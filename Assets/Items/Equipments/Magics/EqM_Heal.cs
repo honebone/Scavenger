@@ -33,7 +33,7 @@ public class EqM_Heal : Eq_Magic
     {
         Character target = onDamageParams.target;
 
-        if (available && target.PlayerPos() == character.PlayerPos() && target.CharaStatus().GetHPPercent() <= TH)
+        if (available && target.IsPlayer() && target.CharaStatus().GetHPPercent() <= TH)
         {
             available = false;
             CD = CDRound;

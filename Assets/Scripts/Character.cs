@@ -1577,6 +1577,8 @@ public class Character : MonoBehaviour
 
     public bool CheckAlive() { return !charaStatus.dead; }
     public bool PlayerPos() { return charaStatus.position.IsPlayerPos(); }
+    /// <summary>player‚©‚Ç‚¤‚©‚ð•Ô‚·(player‘¤‚ÌƒLƒƒƒ‰‚©‚Å‚Í‚È‚¢)</summary>
+    public bool IsPlayer() { return charaStatus.playable; }
 
     public List<Character> GetNeigbor(List<Vector2Int> neigbor)
     {

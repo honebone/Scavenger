@@ -42,6 +42,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
       stack: 3
@@ -84,6 +85,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -190,4 +192,4 @@ MonoBehaviour:
     source: {fileID: 0}
     targetCount: 1
     actionTargets: []
-    actionTargetsInt: 07000000
+    actionTargetsInt: 06000000

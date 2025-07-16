@@ -867,7 +867,7 @@ public class Action : MonoBehaviour
             actionModsObj.AddRange(ownerStatus.actionMods);
             actionModsObj.AddRange(actionStatus.actionOwner.GetPositionManager().GetActionMods());
         }
-        foreach(GameObject actionModObj in actionModsObj)
+        foreach (GameObject actionModObj in actionModsObj)
         {
             var am = Instantiate(actionModObj);
             am.GetComponent<ActionMod>().Init(characterManager);
@@ -1507,7 +1507,6 @@ public class Action : MonoBehaviour
                     onSummonParams.actionParams = actionParams;
 
                     if (!notChara) { summonStatusParams.summoner = actionOwner; }
-                    infoText.AddDebugText(actionsStatus[i].summonStatusMods.Count.ToString());
                     summonStatusParams.statusMods = new List<Character.CharaStatusMod>(actionsStatus[i].summonStatusMods);
                     summonStatusParams.statusMods.Add(actionsStatus[i].summonStatusInherit.ToStatuMod(ownerStatus));
 

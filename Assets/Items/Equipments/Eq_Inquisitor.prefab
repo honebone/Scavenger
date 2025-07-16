@@ -99,6 +99,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -110,6 +111,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams:
     - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
       guaranteed: 0
@@ -188,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a9f57f35e788c24488fcb0ee52d79c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

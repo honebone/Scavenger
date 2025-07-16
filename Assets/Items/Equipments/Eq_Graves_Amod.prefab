@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5954328460363848495}
-  - component: {fileID: 3404417727636778070}
+  - component: {fileID: 3450146282969940911}
   m_Layer: 0
   m_Name: Eq_Graves_Amod
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3404417727636778070
+--- !u!114 &3450146282969940911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 980131611971298319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe7ec6b33314dea4ea83c5eecb7896af, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f56ea381f69bba4d8af7c7a740d87d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
@@ -105,6 +105,3 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-  onlyAttack: 0
-  onlyAbility: 0
-  onlyPassive: 0

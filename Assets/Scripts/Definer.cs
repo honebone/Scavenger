@@ -104,10 +104,10 @@ public class Definer : MonoBehaviour
     GameObject positionEffectIcon_Inspector;
     [SerializeField] List<GameObject> generalRaEDataBase_Inspector;
 
-    [SerializeField] List<CharacterData> playerDataBase;
-    [SerializeField] List<CharacterData> enemyDataBase;
-    [SerializeField] List<CharacterData> obstacleDataBase;
-    [SerializeField] List<CharacterData> summonDataBase;
+    //[SerializeField] List<CharacterData> playerDataBase;
+    //[SerializeField] List<CharacterData> enemyDataBase;
+    //[SerializeField] List<CharacterData> obstacleDataBase;
+    //[SerializeField] List<CharacterData> summonDataBase;
     [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<GameObject> personalityDataBase;
@@ -118,7 +118,7 @@ public class Definer : MonoBehaviour
     
 
     public static List<GameObject> DoTDataBase = new List<GameObject>();
-    public List<CharacterData> GetPlayerDataBase() { return playerDataBase; }
+    public List<CharacterData> GetPlayerDataBase() { return cp.playerDataBase; }
     public List<ItemData> GetAllLoots() { return lootDataBase_Inspector; }
 
     public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
@@ -181,13 +181,13 @@ public class Definer : MonoBehaviour
                 switch (key[2])
                 {
                     case 'P':
-                        database= new List<CharacterData>(playerDataBase);
+                        database= new List<CharacterData>(cp.playerDataBase);
                         break; 
                     case 'E':
-                        database= new List<CharacterData>(enemyDataBase);
+                        database= new List<CharacterData>(cp.enemyDataBase);
                         break; 
                     case 'S':
-                        database= new List<CharacterData>(summonDataBase);
+                        database= new List<CharacterData>(cp.summonDataBase);
                         break;
                     default:
                         Debug.Log($"error:キャラの分類が不適切です：{key[2]}");
