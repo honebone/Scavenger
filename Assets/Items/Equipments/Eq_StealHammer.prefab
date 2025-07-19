@@ -53,7 +53,7 @@ MonoBehaviour:
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: "\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\uFF1A\n\u6B21\u306E\u81EA\u8EAB\u306E\u653B\u6483\u304C\u3001\u81EA\u8EAB\u306E<sprite
-    name=maxHP><color=#87FF79>maxHP</color>10\uFF05\u5206\u306E<sprite name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
+    name=maxHP><color=#87FF79>maxHP</color>15\uFF05\u5206\u306E<sprite name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
   statMod:
     LVL: 0
     maxHP_mul: 15
@@ -101,6 +101,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -112,6 +113,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
@@ -142,7 +144,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-  HPRatio: 0.1
+  HPRatio: 0.15
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
