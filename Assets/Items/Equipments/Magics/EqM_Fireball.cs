@@ -16,7 +16,7 @@ public class EqM_Fireball : Eq_Magic
 
     public override void Cast()
     {
-        Enqueue_SearchTarget(actionStatus, condition, 1);  
+        if(Enqueue_SearchTarget(actionStatus, condition, 1)) character.OnCast(this);
     }
 
     public override void OnBattleEnd()

@@ -18,7 +18,7 @@ public class EqM_Arrow : Eq_Magic
         List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition_focus));
         if (targets.Count == 0) targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));
 
-        Enqueue(actionStatus, true, targets,1);
+        if (Enqueue(actionStatus, true, targets, 1)) character.OnCast(this);
     }
 
     public override string GetPAInfo_Base()

@@ -16,6 +16,7 @@ public class EqM_Cleanse : Eq_Magic
     public override void Cast()
     {
         Enqueue_Self(actionStatus);
+        character.OnCast(this);
     }
 
     public override void OnBattleEnd()

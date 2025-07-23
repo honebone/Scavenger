@@ -39,6 +39,8 @@ public class UtilityWindow : EditorWindow
         {"ATK補正","<sprite name=ATK><link=U_ATK(INT)補正><u><color=#C30000>ATK</color>補正</u></link>" },
         {"INT補正","<sprite name=INT><link=U_ATK(INT)補正><u><color=#256CC8>INT</color>補正</u></link>" },
         {"フォーカス","<color=#DD6300><sprite name=focus><link=S_フォーカス><u>フォーカス</u></link></color>" },
+        {"[魔術]","<link=U_魔術><u>[魔術]</u></link>" },
+
     };
 
 

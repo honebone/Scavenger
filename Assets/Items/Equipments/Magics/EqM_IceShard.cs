@@ -43,7 +43,7 @@ public class EqM_IceShard : Eq_Magic
     public override void Cast()
     {
         int targets = 1 + Mathf.FloorToInt((character.CharaStatus().CRITD - 150) / CRITDPerTargetCount);
-        Enqueue_SearchTarget(actionStatus, condition, targets);
+        if(Enqueue_SearchTarget(actionStatus, condition, targets)) character.OnCast(this);
         //if (castCount < maxCastCount)
         //{
         //    castCount++;

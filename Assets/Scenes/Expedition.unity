@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -278,7 +278,7 @@ MonoBehaviour:
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
+    upperMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
     centerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
     lowerMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
     dontShuffleBack: 1
@@ -6104,7 +6104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.09999}
+  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
   m_SizeDelta: {x: -579.7155, y: -431.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -13296,6 +13296,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c06241cc17d77a24bb65410aada06328, type: 2}
   - {fileID: 11400000, guid: 3d965af5013dd7f42ab6eebeb4e15211, type: 2}
   - {fileID: 11400000, guid: 2551542232f7d29448964e3290d66560, type: 2}
+  - {fileID: 11400000, guid: f05242a9d9ff0fe4e8a241b622351225, type: 2}
+  - {fileID: 11400000, guid: d8a1947f51d92264a99869af4cd5e659, type: 2}
+  - {fileID: 11400000, guid: 3cb04664f6c49c94ab3001a7f2aec3bf, type: 2}
+  - {fileID: 11400000, guid: ba137fd5ad1d11c41812f90a160f3c9d, type: 2}
+  - {fileID: 11400000, guid: 842970f14245bd744852658b669eac98, type: 2}
+  - {fileID: 11400000, guid: 21223cb1733cd2d4c8b16748f06d9ec2, type: 2}
+  - {fileID: 11400000, guid: a57f66650c027c743aeefafc5018642b, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -13374,6 +13381,8 @@ MonoBehaviour:
     linkInfo: "ATK\u88DC\u6B63\u5024\u3068\u306F\u3001\u30AD\u30E3\u30E9\u306EATK\u306E\u4F55\uFF05\u3092\u30C0\u30E1\u30FC\u30B8\u306B\u53CD\u6620\u3055\u305B\u308B\u304B\u3092\u793A\u3059\u5024\n\n\u80FD\u529B\u306B\u3042\u308B\n\"ATK\u306E80-120\uFF05\u30C0\u30E1\u30FC\u30B8\"\u306E80-120\uFF05\u304CATK\u88DC\u6B63\u5024\u306B\u3042\u305F\u308B\n\n\u4E0A\u8A18\u80FD\u529B\u306EATK\u88DC\u6B63\u5024\u3092+50\uFF05\u3057\u305F\u3068\u304D\u3001\u6700\u7D42\u7684\u306A\u88DC\u6B63\u5024\u306F130-170\uFF05\u3068\u306A\u308B\n\nINT\u88DC\u6B63\u3082\u540C\u69D8\n"
   - linkKey: "\u8A98\u767A\u80FD\u529B"
     linkInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u306F\u306A\u304F\u3001\u7279\u6027\u3084\u88C5\u5099\u54C1\u3001\u72B6\u614B\u7570\u5E38\u306A\u3069\u306B\u3088\u3063\u3066\u81EA\u52D5\u3067\u767A\u52D5\u3057\u305F\u80FD\u529B\u306E\u3053\u3068"
+  - linkKey: "\u9B54\u8853"
+    linkInfo: "\u9B54\u8853\u306F\u7279\u5B9A\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3068\u5531\u3048\u3089\u308C\u3001\u69D8\u3005\u306A\u52B9\u679C\u3092\u3082\u305F\u3089\u3059"
 --- !u!4 &617800463 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3757956418339782286, guid: 54e64d82de1ef424d947fd8256602e52, type: 3}
@@ -40431,7 +40440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 101.3053, y: -157.43001}
+  m_AnchoredPosition: {x: 101.3053, y: -157.43}
   m_SizeDelta: {x: -682.6246, y: -314.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021522965

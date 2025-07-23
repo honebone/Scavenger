@@ -34,6 +34,7 @@ public class EqM_Storm : Eq_Magic
         {
             Log("ƒJƒEƒ“ƒg‘‰Á");
             castCount++;
+            character.OnCast(this);
         }
             
     }

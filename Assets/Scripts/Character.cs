@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Character : MonoBehaviour
 {
@@ -578,6 +579,16 @@ public class Character : MonoBehaviour
         passiveAbilities.AddRange(PA_Eq);
         return passiveAbilities;
     }
+
+    public List<Eq_Magic> GetMagics(List<Eq_Magic> excludeList=null)
+    {
+        if (excludeList == null) excludeList = new List<Eq_Magic>();
+        return GetPassiveAbilities()
+            .OfType<Eq_Magic>()
+            .Where(m => !excludeList.Contains(m))
+            .ToList();
+    }
+
     public void AddPA_Personality(GameObject paObj, bool note)
     {
         var p = Instantiate(paObj, transform);
@@ -1340,23 +1351,27 @@ public class Character : MonoBehaviour
     }
     public void RemoveShield(bool removeAll, int value)
     {
+        int remove;
         if (charaStatus.shield > 0)
         {
             if (removeAll)
             {
+                remove = charaStatus.shield;
                 targetButton.SetDamageText($"{"shieldDMG".ToSpr()}シールドブレイク!", Definer.colorRef.shieldDecrease);
                 charaStatus.shield = 0;
                 infoText.AddLogText(string.Format("{0}は{1}シールドを全て失った", charaStatus.charaName, "shieldDMG".ToSpr()).ColorStr(Definer.colorRef.shieldDecrease));
             }
             else
             {
-                int remove = Mathf.Min(value, charaStatus.shield);
+                remove = Mathf.Min(value, charaStatus.shield);
                 targetButton.SetDamageText($"{"shieldDMG".ToSpr()}{remove}", Definer.colorRef.shieldDecrease);
                 charaStatus.shield -= remove;
                 infoText.AddLogText(string.Format("{0}はシールドを{1}{2}失った", charaStatus.charaName, "shieldDMG".ToSpr(), value.ToString().ColorStr(Definer.colorRef.shieldDecrease)));
 
             }
             charaObj.SetHPandShieldBar();
+
+            OnDecreasedShield(remove);
         }
     }
 
@@ -1799,6 +1814,14 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
+    public void OnDecreasedShield(int value)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDecreasedShield(value); }
+            RemovePA_Execute();
+        }
+    }
     /// <summary>攻撃命中時</summary>
     public void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
@@ -1828,6 +1851,15 @@ public class Character : MonoBehaviour
     }
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
+
+    public virtual void OnCast(Eq_Magic cast)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnCast(cast); }
+            RemovePA_Execute();
+        }
+    }
 
     public void BecomeAbilityTarget(Character actor)
     {

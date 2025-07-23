@@ -569,7 +569,7 @@ public class BattleManager : MonoBehaviour
 
     public void Trigger_TurnEnd()
     {
-        if (!CheckCurrentTurnAlive()) infoText.AddDebugText("Triggerチェック：ターン中のキャラの死亡を確認");
+        //if (!CheckCurrentTurnAlive()) infoText.AddDebugText("Triggerチェック：ターン中のキャラの死亡を確認");
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnTurnEnd(checkIfMyTurn(character), currentTurnCount + 1, !CheckCurrentTurnAlive());

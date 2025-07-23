@@ -231,7 +231,7 @@ public class Definer : MonoBehaviour
                 {
                     if ($"U_{linkInfo.linkKey}" == key)
                     {
-                        return linkInfo.linkInfo;
+                        return $"<{linkInfo.linkKey}>\n\n{linkInfo.linkInfo}";
                     }
                 }
                 Debug.Log("error:key‚É‡‚¤à–¾•¶‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½");

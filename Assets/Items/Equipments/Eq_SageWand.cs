@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Eq_SageWand : PA_Equipment
 {
+    public int casts;
     public override void OnRoundStart()
     {
-        base.OnRoundStart();
+        foreach(var magic in character.GetMagics().Sample(casts))
+        {
+            magic.Cast();
+        }
     }
 }

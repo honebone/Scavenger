@@ -44,7 +44,7 @@ public class EqM_Heal : Eq_Magic
 
     public override void Cast()
     {
-        Enqueue(actionStatus, true, charactersManager.SearchChara_Weakest(condition, true));
+       if( Enqueue(actionStatus, true, charactersManager.SearchChara_Weakest(condition, true))) character.OnCast(this);
     }
 
     public override void OnBattleEnd()

@@ -41,7 +41,8 @@ public class PassiveAbility : MonoBehaviour
             {
                 if (f) { s += ", "; }
                 f = true;
-                s += $"[{tag}]";
+                if(tag.ToString()=="–‚p") s += "<link=U_–‚p><u>[–‚p]</u></link>";
+                else s += $"[{tag}]";
             }
             s += "\n";
         }
@@ -223,6 +224,7 @@ public class PassiveAbility : MonoBehaviour
     /// <summary>UŒ‚A–½’†‚µ‚½‚©‚ÉŠÖ‚í‚ç‚¸—U”­</summary>
     public virtual void OnAttack(List<Action.OnAttackParams> onAttackParamsList) { }
     public virtual void OnDecreasedHP(int value) { }
+    public virtual void OnDecreasedShield(int value) { }
 
     /// <summary>UŒ‚–½’† â‘Î—v‘f”‚Í1ˆÈã 0ƒ_ƒ‚Å‚àŒÄ‚Î‚ê‚é</summary>
     public virtual void OnDamage(List<Action.OnDamageParams> onDamageParamsList) {  }
@@ -245,6 +247,9 @@ public class PassiveAbility : MonoBehaviour
     /// <summary>killer:ƒLƒƒƒ‰‚ÌUŒ‚‚âEŠQŒø‰Ê‚É‚æ‚é‘ã“ü</summary>
     public virtual void OnDie(Character killer) { }
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
+
+    public virtual void OnCast(Eq_Magic cast) { }
+
     public virtual void OnSummon(List<Action.OnSummonParams> onSummonParamsList) { }
 
     public virtual void OnSummoned(Action.OnSummonParams onSummonParams) {  }
