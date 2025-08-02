@@ -42,6 +42,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: be3722c745a7f4941914fc1d5a6dd9fa, type: 3}
       stack: 1
@@ -85,6 +86,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -108,10 +110,10 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 70
-    ATKMod_max: 110
-    INTMod_min: 0
-    INTMod_max: 0
+    ATKMod_min: 35
+    ATKMod_max: 50
+    INTMod_min: 175
+    INTMod_max: 175
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -561,6 +563,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []

@@ -42,6 +42,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: be3722c745a7f4941914fc1d5a6dd9fa, type: 3}
       stack: 1
@@ -60,7 +61,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u672A\u5B9A"
+  - actionName: "\u964D\u81E8"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u3069\u3061\u3089\u304B1\u5217\u306E\u6575\u5168\u3066"
     AModInfo: 
@@ -85,6 +86,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -108,10 +110,10 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 70
-    ATKMod_max: 110
-    INTMod_min: 0
-    INTMod_max: 0
+    ATKMod_min: 35
+    ATKMod_max: 50
+    INTMod_min: 175
+    INTMod_max: 175
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -536,8 +538,8 @@ MonoBehaviour:
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
-    actionTargetsInt: 0a0000000b000000
-  - actionName: "\u672A\u5B9A"
+    actionTargetsInt: 0c0000000d000000
+  - actionName: "\u964D\u81E8"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -561,6 +563,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -669,4 +672,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 07000000
+    actionTargetsInt: 08000000

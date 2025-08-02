@@ -420,6 +420,8 @@ public class Definer : MonoBehaviour
 
         generalRaEDataBase = new List<GameObject>(generalRaEDataBase_Inspector);
     }
+
+
 }
 
 public enum SpriteTextMode { spriteOnly, withName, withLink }

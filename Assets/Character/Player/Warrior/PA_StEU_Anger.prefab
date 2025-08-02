@@ -79,8 +79,8 @@ MonoBehaviour:
   PATags: 
   StEStatus:
     StEName: "\u6012\u308A"
-    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n<color=#C30000><sprite
-      name=ATK><link=T_ATK><u>ATK</u></link></color>+15\uFF05\n\n<sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D <color=#C30000><sprite
+      name=ATK><link=T_ATK><u>ATK</u></link></color>+15\uFF05  <sprite name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3092\u53D7\u3051\u305F\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 303bacb0027461d4fae97ddb98cac9e7, type: 3}
     StEType: 4
     maxStack: 10

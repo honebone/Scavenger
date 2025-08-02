@@ -6,7 +6,6 @@ public class StE_RgKnight : PA_StatusEffect
 {
     [SerializeField]
     int goalPercent;
-    public int ACT;
     int goalDMG;
     int currentDMG;
 
@@ -14,7 +13,6 @@ public class StE_RgKnight : PA_StatusEffect
     public override void OnPAInit()
     {
         goalDMG = Mathf.RoundToInt(character.CharaStatus().maxHP * goalPercent / 100f);
-        character.AddACT(ACT);
     }
 
     //public override void OnDamaged(Action.OnDamageParams onDamageParams)
@@ -33,11 +31,6 @@ public class StE_RgKnight : PA_StatusEffect
     {
         if (!f) { f = true; }
         else { Disable(); }
-    }
-
-    public override void AtTheEnd()
-    {
-        character.AddACT(-ACT);
     }
 
     public override string GetCurrentStateInfo()

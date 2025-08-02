@@ -7,9 +7,9 @@ public class PassiveAbility : MonoBehaviour
     public string fileName;
     public bool noSimpleInfo;
     [TextArea(3, 10)] public string simpleInfo;
-    [SerializeField, TextArea(3, 10)] string PAInfo_start;
-    [SerializeField] bool skipGetInfo;
-    [SerializeField, TextArea(3, 10)] string PAInfo_end;
+    [TextArea(3, 10)] public string PAInfo_start;
+    public bool skipGetInfo;
+    [TextArea(3, 10)] public string PAInfo_end;
 
     public Character.CharaStatusMod statMod;
     public List<GameObject> AMods;

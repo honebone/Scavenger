@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u8E44\u9244\u306E\u5A01\u5727+"
   lockedDefault: 0
-  upgradeInfo: "<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u6D88\u53BB\u6570\u5897\u52A0\n<color=#C900FF><sprite
-    name=debuff><link=S_ACC\u4F4E\u4E0B><u>ACC\u4F4E\u4E0B</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+25"
+  upgradeInfo: "<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u306E\u6D88\u53BB\u6570\u5897\u52A0\n<color=#C900FF><sprite
+    name=debuff><link=S_\u6050\u6016><u>\u6050\u6016</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -43,6 +43,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: be3722c745a7f4941914fc1d5a6dd9fa, type: 3}
       stack: 1
@@ -85,6 +86,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -146,13 +148,20 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
       guaranteed: 0
-      applyChance: 100
+      applyChance: 75
       stack: 1
       value: 50
       refATK: 0
       DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 8ed583e08393a3445b99e63968b1a817, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
-    removeStE_buff: 3
+    removeStE_buff: 2
     removeStE_debuff: 0
     removeStEs: []
     removePEs: []
