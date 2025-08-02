@@ -31,7 +31,7 @@ public class RE_AreaEnd : RoomEvent
     }
     void StartDeploy()
     {
-        deployPool = ExpeditionRef.definer.GetPlayerDataBase();
+        deployPool = new List<CharacterData>(ExpeditionRef.definer.GetPlayerDataBase());
         deployPool.RemoveList(expeditionManager.deployedChara);
         deployPool = deployPool.Sample(4);
         List<REOptionParams> list = new List<REOptionParams>();

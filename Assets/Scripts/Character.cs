@@ -1625,6 +1625,10 @@ public class Character : MonoBehaviour
         battleManager.RemoveTurn(this);
 
         loot.DropItem_Loot(charaStatus.characterData.loot);
+        foreach(var eq in charaStatus.equipments)
+        {
+            loot.AddItem(eq.data, 1);
+        }
 
         OnDie(killer);
         battleManager.Trigger_OnSomeoneDied(this);

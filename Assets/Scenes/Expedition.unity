@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -44159,7 +44159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -119.94501
+      value: -119.94499
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
