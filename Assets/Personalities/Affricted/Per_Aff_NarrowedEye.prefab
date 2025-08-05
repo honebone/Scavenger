@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1030419323051224424}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_NarrowedEye
+  m_Name: Per_Aff_NarrowedEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

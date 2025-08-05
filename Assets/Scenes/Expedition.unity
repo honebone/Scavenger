@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   battleDebug: 0
   volume: {fileID: 1421441752}
@@ -13351,9 +13351,11 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}
   - {fileID: 3170614222137734241, guid: fddaabc2efaedc44489cc1e53f251de1, type: 3}
   affrictionDataBase:
-  - {fileID: 3170614222137734241, guid: 931636989d1c7014ab9e740c04abd43c, type: 3}
-  - {fileID: 3170614222137734241, guid: 5b8fc18424429b2448a9fc1e2d2cb615, type: 3}
+  - {fileID: 3170614222137734241, guid: fdd45a4c239da9c48a19b0cb5aa21b01, type: 3}
+  - {fileID: 3170614222137734241, guid: 5da04bde10fe5754a8dab176e901c637, type: 3}
   - {fileID: 3170614222137734241, guid: 5a4298c58f8757c4ba8daa5644c926ff, type: 3}
+  - {fileID: 3170614222137734241, guid: b3ae0dc6d0aacc94a8778e064f23778a, type: 3}
+  - {fileID: 3170614222137734241, guid: 5b8fc18424429b2448a9fc1e2d2cb615, type: 3}
   positionEffectDataBase:
   - {fileID: 8496128596371283057, guid: e073fcb2b4d3d704e85f46481057adb7, type: 3}
   - {fileID: 8496128596371283057, guid: f8c7f71b12e02604c841be6e29302486, type: 3}
@@ -44159,7 +44161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -119.94499
+      value: -119.94501
       objectReference: {fileID: 0}
     - target: {fileID: 5226412727983586662, guid: 8293b83f917fa9f44b98b4341285b74e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 4047075010264335123}
-  - component: {fileID: 7950017574099690807}
+  - component: {fileID: 8410473384614033242}
+  - component: {fileID: -3942145009892202332}
   m_Layer: 0
-  m_Name: Per_Mad
+  m_Name: Per_Aff_Toxic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4047075010264335123
+--- !u!114 &8410473384614033242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,13 +42,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5ce8192c53d2b46a9f8305c2aedd80, type: 3}
+  m_Script: {fileID: 11500000, guid: 38f4dfdae53e6654093a3db018d4b54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_mad
+  fileName: per_toxic
   simpleInfo: 
   PAInfo_start: 
-  skipGetInfo: 0
+  skipGetInfo: 1
   PAInfo_end: 
   statMod:
     LVL: 0
@@ -77,12 +77,12 @@ MonoBehaviour:
   AMods: []
   PATags: 
   personalityStatus:
-    personalityName: "\u767A\u72C2"
+    personalityName: "\u66B4\u8A00"
     personalityType: 5
-  chance: 15
-  SANDMG:
-    actionName: "\u767A\u72C2"
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642(15\uFF05)"
+  chance: 25
+  actionStatus:
+    actionName: "\u66B4\u8A00"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642(25\uFF05)"
     targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
@@ -154,8 +154,8 @@ MonoBehaviour:
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 3
-    SANDamage_max: 10
+    SANDamage_min: 2
+    SANDamage_max: 6
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -164,150 +164,6 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams: []
-    applyPEParams: []
-    removeStE_buff: 0
-    removeStE_debuff: 0
-    removeStEs: []
-    removePEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    summonStatusInherit:
-      maxHP: 0
-      ATK: 0
-      INT: 0
-      CRITC_TH: 0
-      CRITC: 0
-      CRITD_TH: 0
-      CRITD: 0
-      EVD_TH: 0
-      EVD: 0
-      ACC_TH: 0
-      ACC: 0
-      ACT_TH: 0
-      ACT: 0
-    moveChance: 0
-    guaranteedMove: 0
-    moveRandomDir: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    changeSelfSprite: {fileID: 0}
-    abilityRemainControlls: []
-    abilityEffect: 0
-    freeAction: 0
-    abilityType: 0
-    index: 0
-    StEApplyBonus: []
-    debuffChanceMod: 0
-    removeStEs_additional: []
-    summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
-    actionOwner: {fileID: 0}
-    source: {fileID: 0}
-    targetCount: 0
-    actionTargets: []
-    actionTargetsInt: 
-  mark:
-    actionName: "\u767A\u72C2"
-    conditionInfo: 
-    targetInfo: "\u81EA\u8EAB"
-    AModInfo: 
-    actionInfo: 
-    sprite: {fileID: 21300000, guid: 3f038f4a2b6579b42ba721aed3f77f00, type: 3}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      onlyPlayable: 0
-      front: 0
-      mid: 0
-      back: 0
-      excludeObstacle: 0
-      characterInclude: []
-      characterTags: 
-      StEConditions: []
-      StE: []
-      StEExclude: []
-      PE: []
-      PEExclude: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-    neigborPos: []
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    skipAnim: 0
-    consumeFocus: 0
-    exTurn: 0
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    decreaseHP_ATK: {x: 0, y: 0}
-    decreaseHP_INT: {x: 0, y: 0}
-    attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
-    INTMod_min: 0
-    INTMod_max: 0
-    trueATKDMG: 0
-    trueINTDMG: 0
-    exDMG_mul: 0
-    exATKDMG_int: 0
-    exINTDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    drain: 0
-    ignoreShield: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healPercent_min: 0
-    healPercent_max: 0
-    healRegain_min: 0
-    healRegain_max: 0
-    trueHeal: 0
-    exHeal_mul: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 0
-      refATK: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 0
-      refATK: 0
-      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -374,7 +230,7 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
---- !u!212 &7950017574099690807
+--- !u!212 &-3942145009892202332
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
