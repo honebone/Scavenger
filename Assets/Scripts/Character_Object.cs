@@ -61,19 +61,22 @@ public class Character_Object : MonoBehaviour
 
     Sequence sequence;
     GameObject charaSprite;
-    public Character Init(Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem, Character.SummonCharaStatusParams summonCharaParams)
+
+
+    //Character.CharacterStatus characterStatus, GameObject charaManager, Character_TargetButton tb, bool dropItem, Character.SummonCharaStatusParams summonCharaParams
+    public Character Init(SpawnCharaParams spawnCharaParams)
     {
-        if (characterStatus.Obstacle()) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
+        if (spawnCharaParams.generatedCharaStatus.Obstacle()) { HPBarColor.color = Definer.colorRef.failed_unavailable; }
 
         charactersManager = FindObjectOfType<CharactersManager>();
 
-        if (characterStatus.position >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
+        if (spawnCharaParams.generatedCharaStatus.position >= 9) { charaSpriteParent.Rotate(new Vector3(0, 180, 0)); }
 
-        var c = Instantiate(charaManager, characterManagerParent);
+        var c = Instantiate(spawnCharaParams.manager, characterManagerParent);
         character = c.GetComponent<Character>();
-        character.Init(characterStatus, this, tb, dropItem,summonCharaParams);
+        character.Init(spawnCharaParams, this);
 
-        foreach (Ability.AbilityStatus abilityStatus in characterStatus.abilitiesStatus)
+        foreach (Ability.AbilityStatus abilityStatus in spawnCharaParams.generatedCharaStatus.abilitiesStatus)
         {
             GameObject abilityManager;
             if (abilityStatus.abilityManager != null) { abilityManager = abilityStatus.abilityManager; }

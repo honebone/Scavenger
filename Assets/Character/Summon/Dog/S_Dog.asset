@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: S_Dog
+  m_EditorClassIdentifier: 
+  fileName: S_Dog
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u72AC"
+  introduction: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
+  characterTags: 03000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  playable: 0
+  variableSprites:
+  - {fileID: 1697496878135814982, guid: 300b5d9ab18756d4c855ed6fb40d2cc5, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 1e3125d63a99044419c0232a598c0088, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: c269c13bb71801d4fbb0dfd619abf365, type: 2}
+  - {fileID: 11400000, guid: 6805ca6078d07a245be4f64d974359be, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 1808138132528202961, guid: 4a2a701533909824d8330178ec3bd4e3, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 3
+  surviveFatalWounds: 0
+  maxHP: 10
+  maxSAN: 50
+  ATK: 10
+  INT: 10
+  CRITC: 5
+  CRITD: 150
+  EVD: 5
+  ACC: 95
+  ACT: 7
+  turnPerRound: 1
+  GHeal: 100
+  RHeal: 100
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

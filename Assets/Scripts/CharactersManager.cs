@@ -709,16 +709,24 @@ public class CharactersManager : MonoBehaviour
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
         statusParams.LVL = LVL;
 
+        SpawnCharaParams spawnParams = new SpawnCharaParams();
+
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
         generatedCharaStatus.Init(characterData);
         generatedCharaStatus.position = pos;
+        spawnParams.generatedCharaStatus = generatedCharaStatus;
+        spawnParams.manager = characterData.manager;
 
         Vector2 worldPos = charactersWorldPos_Size1[pos];
         Character_TargetButton tb = targetButtons_size1[pos];
 
+        spawnParams.targetButton = tb;
+        spawnParams.dropItem = false;
+        spawnParams.summonCharaParams = statusParams;
+
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
-        return co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, false, summonCharaParams);
+        return co.GetComponent<Character_Object>().Init(spawnParams);
     }
 
     public Character SpawnEnemy(CharacterData characterData, int pos, bool dropItem, int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
@@ -729,15 +737,32 @@ public class CharactersManager : MonoBehaviour
         //statusParams.statusMods.Add(expeditionManager.GetEnemyStatusMod());
         statusParams.PAs.AddRange(expeditionManager.GetMadnessPA());
 
+        SpawnCharaParams spawnParams = new SpawnCharaParams();
+
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
         generatedCharaStatus.Init(characterData);
         generatedCharaStatus.position = pos;
+        spawnParams.generatedCharaStatus = generatedCharaStatus;
+        spawnParams.manager = characterData.manager;
 
         Vector2 worldPos = charactersWorldPos_Size1[pos];
         Character_TargetButton tb = targetButtons_size1[pos];
 
+        spawnParams.targetButton = tb;
+        spawnParams.dropItem = dropItem;
+        spawnParams.summonCharaParams = statusParams;  
+
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
-        return co.GetComponent<Character_Object>().Init(generatedCharaStatus, characterData.manager, tb, dropItem, statusParams);
+        return co.GetComponent<Character_Object>().Init(spawnParams);
     }
+}
+
+public class SpawnCharaParams
+{
+    public Character.CharacterStatus generatedCharaStatus;
+    public GameObject manager;
+    public Character_TargetButton targetButton;
+    public bool dropItem;
+    public Character.SummonCharaStatusParams summonCharaParams = null;
 }

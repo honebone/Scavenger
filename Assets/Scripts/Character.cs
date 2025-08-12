@@ -76,6 +76,9 @@ public class Character : MonoBehaviour
         public int turnPerRound;
         public int exTurn;
 
+        /// <summary>このラウンドで終了した自身のターン数</summary>
+        public int spendTurn;
+
         public float GHeal;
         public float RHeal;
 
@@ -481,7 +484,7 @@ public class Character : MonoBehaviour
     ExpeditionManager expeditionManager;
     TutorialManager tutorialManager;
 
-    public void Init(CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem, SummonCharaStatusParams summonCharaParams)
+    public void Init(SpawnCharaParams spawnParams,Character_Object obj)//CharacterStatus status, Character_Object obj, Character_TargetButton tb, bool dropItem, SummonCharaStatusParams summonCharaParams
     {
         actionQueue = ExpeditionRef.actionQueue;
         battleManager = ExpeditionRef.battleManager;
@@ -494,25 +497,25 @@ public class Character : MonoBehaviour
         expeditionManager = ExpeditionRef.expeditionManager;
         tutorialManager = ExpeditionRef.tutorialManager;
 
-        charaStatus = status;
+        charaStatus = spawnParams.generatedCharaStatus;
         charaObj = obj;
-        targetButton = tb;
+        targetButton = spawnParams.targetButton;
 
         charaStatus.HP = charaStatus.maxHP;
         charaStatus.SAN = charaStatus.maxSAN;
 
-        charaStatus.doesDropItem = dropItem;
+        charaStatus.doesDropItem = spawnParams.dropItem;
 
-        if (summonCharaParams != null)
+        if (spawnParams.summonCharaParams != null)
         {
-            status.summoner = summonCharaParams.summoner;
-            if (summonCharaParams.LVL > 1)
+            charaStatus.summoner = spawnParams.summonCharaParams.summoner;
+            if (spawnParams.summonCharaParams.LVL > 1)
             {
                 StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
-                StatusMod_ByLVL mod = SG.GetStatusMod(summonCharaParams.LVL);
+                StatusMod_ByLVL mod = SG.GetStatusMod(spawnParams.summonCharaParams.LVL);
                 mod.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
 
-                charaStatus.level = summonCharaParams.LVL;
+                charaStatus.level = spawnParams.summonCharaParams.LVL;
                 charaStatus.maxHP_baseByLVL += mod.maxHP;
                 charaStatus.ATK_baseByLVL += mod.ATK;
                 charaStatus.INT_baseByLVL += mod.INT;
@@ -524,11 +527,11 @@ public class Character : MonoBehaviour
                 AddEVD(mod.EVD);
                 AddACC(mod.ACC);
             }
-            foreach (CharaStatusMod mod in summonCharaParams.statusMods)
+            foreach (CharaStatusMod mod in spawnParams.summonCharaParams.statusMods)
             {
                 ModifyStatus(mod, true, true);
             }
-            if (summonCharaParams.PAs.Count > 0) { charaStatus.passiveAbilities.AddRange(new List<GameObject>(summonCharaParams.PAs)); }
+            if (spawnParams.summonCharaParams.PAs.Count > 0) { charaStatus.passiveAbilities.AddRange(new List<GameObject>(spawnParams.summonCharaParams.PAs)); }
         }
 
         foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa, false); }
@@ -551,7 +554,7 @@ public class Character : MonoBehaviour
         }
 
         bool hasPass = false;
-        foreach (Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
+        foreach (Ability.AbilityStatus abilityStatus in charaStatus.abilitiesStatus)
         {
             if (abilityStatus.abilityType == AbilityData.AbilityType.pass)
             {
@@ -559,7 +562,7 @@ public class Character : MonoBehaviour
                 break;
             }
         }
-        if (!hasPass) { infoText.AddWarningText($"{status.fileName}にはパスを行うアビリティがありません"); }
+        if (!hasPass) { infoText.AddWarningText($"{charaStatus.fileName}にはパスを行うアビリティがありません"); }
         //TurnIconはラウンド開始時にセット
     }
     public List<PA_Equipment> GetEquipments()
@@ -1734,6 +1737,10 @@ public class Character : MonoBehaviour
         {
             RemoveShield(false, Mathf.CeilToInt(charaStatus.shield * 0.25f));
         }
+        if (myTurn)
+        {
+            charaStatus.spendTurn++;
+        }
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(myTurn, turnCount, deadTurnChara); }
         //targetButton.GetPositionManager().OnTurnEnd();
         RemovePA_Execute();
@@ -1746,6 +1753,7 @@ public class Character : MonoBehaviour
             DecreaseHP(Mathf.CeilToInt(1f * charaStatus.BaseHP() / charaStatus.lifetime));
             tutorialManager.SetTutorial("lifetime");
         }
+        charaStatus.spendTurn = 0;
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRoundEnd(); }
         RemovePA_Execute();
     }
@@ -1755,6 +1763,7 @@ public class Character : MonoBehaviour
         charaStatus.exTurn = 0;//追加ターンリセット
         continueTurn = false;
         charaObj.SetHPandShieldBar();
+        charaStatus.spendTurn = 0;
         for (int i = 0; i < charaStatus.abilitiesStatus.Length; i++)
         {
             charaStatus.abilitiesStatus[i].CoolDown_OnBattleStart();

@@ -67,6 +67,7 @@ public class ExpeditionManager : MonoBehaviour
     }
     [SerializeField]
     PartyStatus partyStatus;
+    public GameParams gameParams;
 
     [SerializeField] List<GameObject> MadnessPAPool;
 
@@ -249,6 +250,11 @@ public class ExpeditionManager : MonoBehaviour
         infoText.AddLogText("狂気が満ちていく...".ColorStr(Definer.colorRef.affricted));
     }
 
+    public string GetMadnessInfo(PA_Personality mad)
+    {
+        return $"{mad.GetPAName()}\n敵は{gameParams.madnessSpawnChance}％の確率で以下の能力を得る：\n{gameParams.madnessStatMod.GetInfo()}\n\nさらに、\n{mad.GetPAInfo(false)}\n";
+    }
+
     void CheckRoomEndEvent()
     {
         if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))//enemyLVLUP
@@ -257,9 +263,19 @@ public class ExpeditionManager : MonoBehaviour
             relManager.Enqueue_EnemyLVL();
         }
 
-        if (partyStatus.getPerChance_endRE.Dice())
+        if (partyStatus.getPerChance_endRE.Dice())//特性追加
         {
             SetRandomPersonality_ToRandom();
+        }
+
+        for (int i = 0; i < addedMadness; i++)
+        {
+            GameObject add = MadnessPAPool.Choice();
+            MadnessPAPool.Remove(add);
+            madnessPAs.Add(add);
+            partyStatus.madness++;
+            relManager.Enqueue_Madness(partyStatus.madness, add);
+            if (partyStatus.madness == partyStatus.maxMadness) break;
         }
 
         RoomEndLog();
@@ -311,7 +327,7 @@ public class ExpeditionManager : MonoBehaviour
 
     //IEnumerator AddMandessC()
     //{
-    //    for(int i = 0; i < addedMadness; i++)
+    //    for (int i = 0; i < addedMadness; i++)
     //    {
     //        GameObject add = MadnessPAPool.Choice();
     //        MadnessPAPool.Remove(add);

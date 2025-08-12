@@ -13,6 +13,7 @@ public class RoomEndLogManager : MonoBehaviour
 
     public GameObject manager_enemyLVLUP;
     public GameObject manager_addPer;
+    public GameObject manager_madness;
 
     ExpeditionManager em;
     List<RoomEndLog> queue = new List<RoomEndLog>();
@@ -52,6 +53,17 @@ public class RoomEndLogManager : MonoBehaviour
         var l = Instantiate(manager_addPer, managerP);
         l.GetComponent<RoomEndLog>().Init(this);
         l.GetComponent<REL_AddPer>().Init_AddPer(chara,per);
+
+        queue.Add(l.GetComponent<RoomEndLog>());
+        l.SetActive(false);
+        //var s = Instantiate
+    }
+
+    public void Enqueue_Madness(int m, GameObject PA)
+    {
+        var l = Instantiate(manager_madness, managerP);
+        l.GetComponent<RoomEndLog>().Init(this);
+        l.GetComponent<REL_Madness>().Init_Madness(m, PA);
 
         queue.Add(l.GetComponent<RoomEndLog>());
         l.SetActive(false);

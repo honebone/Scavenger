@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5987685990520771950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4191570886291093358}
+  - component: {fileID: -9213864339350080568}
+  m_Layer: 0
+  m_Name: Eq_TwinDaggers_AMod
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4191570886291093358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987685990520771950}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-9213864339350080568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5987685990520771950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b079258f45d9c014fa2a15722fc5a64f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionModStatus:
+    conditionInfo: "\u3053\u306E\u30E9\u30A6\u30F3\u30C9\u306B\u307E\u3060\u30BF\u30FC\u30F3\u304C\u56DE\u3063\u3066\u6765\u3066\u3044\u306A\u3044\u6575\u3078\u306E\u653B\u6483(\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u307F)"
+    hideValues: 0
+    exInfo: 
+    exTurn: 0
+    consumeFocus: 0
+    decreaseHP: 0
+    ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 25
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 10
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    exHeal_mul: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldAdd_percent: 0
+    shieldRemove: 0
+    shieldRemove_all: 0
+    applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
+  onlyAttack: 1
+  notSpendTurn: 1

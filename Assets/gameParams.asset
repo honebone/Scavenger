@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
+  m_Name: gameParams
+  m_EditorClassIdentifier: 
+  madnessSpawnChance: 5
+  madnessStatMod:
+    LVL: 0
+    maxHP_mul: 50
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 30
+    ATK_int: 0
+    INT_mul: 30
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0

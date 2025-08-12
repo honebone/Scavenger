@@ -134,11 +134,7 @@ public class DebugFunction : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                RoomEndLogManager.inst.Enqueue_EnemyLVL();
-                RoomEndLogManager.inst.Enqueue_EnemyLVL();
-                RoomEndLogManager.inst.Enqueue_EnemyLVL();
-                RoomEndLogManager.inst.Enqueue_EnemyLVL();
-                RoomEndLogManager.inst.StartREL();
+                ExpeditionManager.inst.AddMadness(1);
             }
             if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
         }
