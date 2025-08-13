@@ -734,8 +734,21 @@ public class CharactersManager : MonoBehaviour
         if (pos < 9) { print("エネミーを召喚するのに、指定した位置がプレイヤー側です!"); }
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
         statusParams.LVL = LVL;
-        //statusParams.statusMods.Add(expeditionManager.GetEnemyStatusMod());
-        statusParams.PAs.AddRange(expeditionManager.GetMadnessPA());
+        GameParams gp = expeditionManager.GameParams();
+        int madnessCount = expeditionManager.GetPartyStatus().madness;
+        if (madnessCount != expeditionManager.GetMadnessPA().Count) InfoText.inst.AddErrorText("狂気の数と狂気PAの数が一致しません");
+
+        foreach(GameObject PA in expeditionManager.GetMadnessPA())
+        {
+            if (gp.madnessSpawnChance.Dice())
+            {
+                statusParams.PAs.Add(PA);
+                statusParams.statusMods.Add(gp.madnessStatMod);
+                InfoText.inst.AddDebugText("狂気に呑まれた敵が出現");
+                break;
+            }
+        }
+        //statusParams.PAs.AddRange(expeditionManager.GetMadnessPA());
 
         SpawnCharaParams spawnParams = new SpawnCharaParams();
 

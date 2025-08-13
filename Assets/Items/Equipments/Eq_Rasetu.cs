@@ -40,7 +40,7 @@ public class Eq_Rasetu : PA_Equipment
         stack = Mathf.Min(stack + 1, maxStack);
         character.AddATK(0, stack * valuePerStack);
         currentValue = stack * valuePerStack;
-        Log($"ATK+{currentValue}Åì");
+        Log($"{"ATK".ToSpr_withName()}+{valuePerStack}Åì ({currentValue}Åì)");
     }
 
     public override string GetCurrentStateInfo()

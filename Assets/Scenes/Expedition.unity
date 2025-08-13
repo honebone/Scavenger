@@ -282,7 +282,7 @@ MonoBehaviour:
     centerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
     lowerMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 2eb6072248bdf954c8f1512e6ff475f9, type: 2}
+    upperBack: {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
     atRandom: []
@@ -13306,6 +13306,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 954f3628b8bc5794eb71c03e252fe9e8, type: 2}
   - {fileID: 11400000, guid: 2e171eb96cc36424f8b8244061495e5d, type: 2}
   - {fileID: 11400000, guid: 40a0ec565fdf61a42b6e1d90e13b189e, type: 2}
+  - {fileID: 11400000, guid: 5e119ef14e859954982c2f41f7837df7, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}

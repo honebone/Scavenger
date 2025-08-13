@@ -41,7 +41,7 @@ public class Eq_QuiverOfObsession : PA_Equipment
 
     void RefreshValue()
     {
-        if (hitCount > currentHit) { Log($"ACC‘‰Á({hitCount * ACCPerHit})"); }
+        if (hitCount > currentHit) { Log($"{"ACC".ToSpr_withName()}+{(hitCount - currentHit) * ACCPerHit} ({hitCount * ACCPerHit})"); }
         character.AddACC(currentHit * ACCPerHit * -1);
         character.AddACC(hitCount * ACCPerHit);
         currentHit = hitCount;

@@ -32,7 +32,7 @@ public class EqM_Storm : Eq_Magic
 
         if (Enqueue(action, true, targets,1))
         {
-            Log("カウント増加");
+            Log("カウント+1");
             castCount++;
             character.OnCast(this);
         }

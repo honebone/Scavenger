@@ -32,7 +32,7 @@ public class Eq_AbyssHand : PA_Equipment
             {
                 count++;
                 count = count.Limit(maxCount);
-                Log($"カウント増加({count}/{maxCount})");
+                Log($"カウント+1 ({count}/{maxCount})");
                 break;
             }
         }

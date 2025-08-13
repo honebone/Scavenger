@@ -19,7 +19,7 @@ public class Eq_CaramityCane : PA_Equipment
                 if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff && !applyedStEList.Contains(appliedStE.applyStE))
                 {
                     applyedStEList.Add(appliedStE.applyStE);
-                    Log($"カウント増加({applyedStEList.Count})");
+                    Log($"カウント+1 ({applyedStEList.Count})");
                 }
             }
         }

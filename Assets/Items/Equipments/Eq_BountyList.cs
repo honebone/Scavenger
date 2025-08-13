@@ -23,7 +23,6 @@ public class Eq_BountyList : PA_Equipment
             {
                 count++;
                 Enqueue_Self(actionStatus);
-                Log($"ƒJƒEƒ“ƒg‘‰Á({count})");
             }
         }
     }

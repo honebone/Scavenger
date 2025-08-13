@@ -277,6 +277,7 @@ public class ExpeditionManager : MonoBehaviour
             relManager.Enqueue_Madness(partyStatus.madness, add);
             if (partyStatus.madness == partyStatus.maxMadness) break;
         }
+        addedMadness = 0;
 
         RoomEndLog();
     }
@@ -681,5 +682,5 @@ public class ExpeditionManager : MonoBehaviour
     public bool CheckInRoomEvent() { return inRoomEvent; }
     public bool CheckInExpedition() { return inExpedition; }
     public List<GameObject> GetMadnessPA() { return madnessPAs; }
-
+    public GameParams GameParams() { return gameParams; }
 }

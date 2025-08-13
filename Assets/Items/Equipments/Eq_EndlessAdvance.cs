@@ -37,7 +37,7 @@ public class Eq_EndlessAdvance : PA_Equipment
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
         if (myTurn) { count++;
-            if (count >= 2) { Log($"与ダメージ増加({count * DMGPerCount}％)"); }
+            if (count >= 2) { Log($"与ダメージ+{DMGPerCount} ({count * DMGPerCount}％)"); }
         }
     }
 
