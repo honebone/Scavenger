@@ -13,7 +13,7 @@ public class Eq_Graves : PA_Equipment
         if (charactersManager.ExamineCharacter(died, diedCond))
         {
             count++;
-            Log($"カウント+1 ({count})");
+            Log($"カウント増加({count})");
         }
     }
 

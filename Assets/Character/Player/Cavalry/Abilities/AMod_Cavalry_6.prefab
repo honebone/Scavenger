@@ -47,7 +47,7 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: "50\uFF05\u3092\u8D85\u3048\u305F<sprite name=HP><color=#87FF79>HP</color>1\uFF05\u306B\u3064\u304D"
     hideValues: 1
-    exInfo: "\u30FB<color=#C900FF><sprite name=debuff><link=S_\u30B9\u30BF\u30F3><u>\u30B9\u30BF\u30F3</u></link></color>\u4ED8\u4E0E\u78BA\u7387+1\uFF05"
+    exInfo: "\u30FB<color=#C900FF><sprite name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u4ED8\u4E0E\u78BA\u7387+1\uFF05"
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0

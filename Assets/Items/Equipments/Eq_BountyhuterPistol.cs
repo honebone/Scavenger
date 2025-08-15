@@ -17,7 +17,7 @@ public class Eq_BountyhuterPistol : PA_Equipment
             if (count < maxCount)
             {
                 count++;
-                Log($"カウント+1 ({count})");
+                Log($"カウント増加({count})");
                 character.AddATK(0, ATKPerCOunt);
             }
         }

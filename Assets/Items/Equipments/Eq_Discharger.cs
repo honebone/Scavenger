@@ -55,7 +55,7 @@ public class Eq_Discharger : PA_Equipment
         {
             charge += chargeOnTS;
             charge = charge.Limit(maxCharge);
-            Log($"チャージ+{chargeOnTS} ({charge})");
+            Log($"チャージ増加({charge})");
         }
     }
 

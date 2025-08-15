@@ -40,10 +40,10 @@ public class Eq_ConquerorMace : PA_Equipment
                     int atk = Mathf.FloorToInt(status.ATK * ATKRatio / 100f);
                     atk = (ATK + atk >= maxATK) ? maxATK - ATK : atk;
 
-                    ATK += atk;
-                    Log($"{"ATK".ToSpr_withName()}+{atk} ({ATK})");
+                    Log($"ATKëùâ¡(+{atk})");
                     character.AddATK(0, 0, atk);
 
+                    ATK += atk;
                 }
 
                 if (HP < maxHP)
@@ -51,9 +51,10 @@ public class Eq_ConquerorMace : PA_Equipment
                     int hp = Mathf.FloorToInt(status.maxHP * HPRatio / 100f);
                     hp = (HP + hp >= maxHP) ? maxHP - HP : hp;
 
-                    HP += hp;
-                    Log($"{"maxHP".ToSpr_withName()}+{hp} ({HP})");
+                    Log($"maxHPëùâ¡(+{hp})");
                     character.AddMaxHP(0, 0, true, hp);
+
+                    HP += hp;
                 }
             }
         }
