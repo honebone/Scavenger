@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Eq_favoriteBone
   noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u72AC\u3092<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3059\u308B"
+  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<link=C_S_Dog><u>\u72AC</u></link>\u3092<sprite
+    name=summon><color=#00F4FF>\u53EC\u559A</color>\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -433,7 +434,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89b8f664ce62f2c4a9d633d9257a9371, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

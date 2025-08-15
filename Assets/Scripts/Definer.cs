@@ -189,6 +189,9 @@ public class Definer : MonoBehaviour
                     case 'S':
                         database= new List<CharacterData>(cp.summonDataBase);
                         break;
+                    case 'O':
+                        database = new List<CharacterData>(cp.obstacleDataBase);
+                        break;
                     default:
                         Debug.Log($"error:キャラの分類が不適切です：{key[2]}");
                         return $"error:キャラの分類が不適切です：{key[2]}";

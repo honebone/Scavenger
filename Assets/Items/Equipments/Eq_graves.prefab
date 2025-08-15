@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Eq_Graves
   noSimpleInfo: 0
-  simpleInfo: 
+  simpleInfo: "\u81EA\u8EAB\u304C<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3059\u308B\u30AD\u30E3\u30E9\u306E\u30B9\u30C6\u30FC\u30BF\u30B9\u304C\u5897\u52A0\n\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u3053\u306E\u30E9\u30A6\u30F3\u30C9\u306B\u6B7B\u4EA1\u3057\u305F[\u6B7B\u4F53]\u3067\u3082[\u4E0D\u6B7B\u8005]\u3067\u3082\u306A\u3044\u30AD\u30E3\u30E9\u306E\u6570\u306B\u7B49\u3057\u3044<link=C_S_Skeleton_Cracked><u>\u3072\u3073\u5272\u308C\u305F\u30B9\u30B1\u30EB\u30C8\u30F3</u></link>\u3092<sprite
+    name=summon><color=#00F4FF>\u53EC\u559A</color>"
   PAInfo_start: "[\u6B7B\u4F53]\u3067\u3082[\u4E0D\u6B7B\u8005]\u3067\u3082\u306A\u3044\u30AD\u30E3\u30E91\u4F53\u304C\u6B7B\u4EA1\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1"
   skipGetInfo: 0
   PAInfo_end: 
@@ -297,7 +298,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ad7b6332a2708046af738bf46ee2c75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

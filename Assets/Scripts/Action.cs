@@ -427,11 +427,11 @@ public class Action : MonoBehaviour
             {
                 if (summonChara.Count == 1)
                 {
-                    s += string.Format("・{0}を召喚\n", summonChara[0].ToLinkKey());
+                    s += $"・{summonChara[0].ToLinkKey()}を{"summon".ToSpr_withName()}\n";
                 }
                 else
                 {
-                    s += "・以下からランダムに召喚\n";
+                    s += $"・以下からランダムに{"summon".ToSpr_withName()}\n";
                     float p = 0;
                     foreach (int r in summonChanceWeight) { p += r; }
                     for (int i = 0; i < summonChanceWeight.Count; i++)

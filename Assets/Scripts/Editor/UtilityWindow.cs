@@ -19,6 +19,7 @@ public class UtilityWindow : EditorWindow
     bool invertEvaluation;
 
     GameObject obj;
+    CharacterData charaData;
 
     bool overrideSTName;
     bool STOutline;
@@ -153,6 +154,13 @@ public class UtilityWindow : EditorWindow
             StELink();
         }
 
+        GUILayout.Space(10);
+        charaData = (CharacterData)EditorGUILayout.ObjectField("chara data", charaData, typeof(CharacterData), false);
+        if (GUILayout.Button("Chara Link"))
+        {
+            CharaLink();
+        }
+
         EditorGUILayout.LabelField("編集するプレハブ一覧", EditorStyles.boldLabel);
 
         if (GUILayout.Button("プレハブを追加"))
@@ -266,6 +274,17 @@ public class UtilityWindow : EditorWindow
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus) sprite = "focus".ToSpr();
 
         output = $"{sprite}<link=S_{status.StEName}><u>{status.StEName}</u></link>".ColorStr(c);
+        EditorGUIUtility.systemCopyBuffer = output;
+        Debug.Log($"Copied: {output}");
+        ShowNotification(new GUIContent($"Copied: {output}"));
+    }
+
+    void CharaLink()
+    {
+        string output = "error";
+
+        //output = $"<link=C_{charaData.fileName}><u>{charaData.charaName}</u></link>";
+        output = charaData.ToLinkKey();
         EditorGUIUtility.systemCopyBuffer = output;
         Debug.Log($"Copied: {output}");
         ShowNotification(new GUIContent($"Copied: {output}"));
