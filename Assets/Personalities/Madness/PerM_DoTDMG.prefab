@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: -6527285640717900902}
+  - component: {fileID: -4522879817091609123}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_CRITC
+  m_Name: PerM_DoTDMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6527285640717900902
+--- !u!114 &-4522879817091609123
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_madness_CRITC
+  fileName: per_madness_DoTDMG
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
@@ -61,7 +62,7 @@ MonoBehaviour:
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 10
+    CRITC: 0
     CRITD: 0
     EVD: 0
     ACC: 0
@@ -70,14 +71,29 @@ MonoBehaviour:
     GHeal: 0
     RHeal: 0
     StEResists: []
-    StEApplyBonus: []
+    StEApplyBonus:
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      exChance: 25
+      exStack: 0
+      exValue: 20
+      exDMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      exChance: 25
+      exStack: 0
+      exValue: 20
+      exDMGPerTurn: 0
+    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      exChance: 25
+      exStack: 0
+      exValue: 20
+      exDMGPerTurn: 0
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
   AMods: []
   PATags: 
   personalityStatus:
-    personalityName: "\u9996\u5143\u72D9\u3044"
+    personalityName: "\u7981\u5FCC\u306E\u89E6\u5A92"
     personalityType: 5
 --- !u!212 &-3715555271002300972
 SpriteRenderer:

@@ -1109,11 +1109,11 @@ MonoBehaviour:
   canvas: {fileID: 5077359830026814253}
   startDelay: 0.3
   fillDur: 1.25
-  eyeDelay: 0.5
+  eyeDelay: 0.35
   eyeDur: 1
   infoFadeDelay: 1
   infoFadeDur: 0.5
-  endDelay: 1
+  endDelay: 0.25
   fill: {fileID: 8444161191866712636}
   fillAmount:
   - 0.09

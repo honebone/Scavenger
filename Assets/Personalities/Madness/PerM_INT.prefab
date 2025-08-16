@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -4248697876608902550}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_INT
+  m_Name: PerM_INT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_madness_INT
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
@@ -58,7 +59,7 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 20
+    INT_mul: 30
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0

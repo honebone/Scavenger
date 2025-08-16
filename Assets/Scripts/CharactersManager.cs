@@ -53,7 +53,7 @@ public class CharactersManager : MonoBehaviour
     {
         generatedCharacters.Add(character);
         existingCharacters.Add(character);
-        SortExistingCharacters();   
+        SortExistingCharacters();
     }
     public void SortExistingCharacters()
     {
@@ -67,7 +67,7 @@ public class CharactersManager : MonoBehaviour
         foreach (int pos in positions) { if (CheckCharaExist(pos) || includeEmpty) { characters.Add(GetCharacterWithPos(pos)); } }
         return characters;
     }
-    
+
     public List<Character.CharacterStatus> GetExistingCharactersStatus()
     {
         List<Character.CharacterStatus> charactersStatus = new List<Character.CharacterStatus>();
@@ -308,7 +308,7 @@ public class CharactersManager : MonoBehaviour
         }
 
         return true;
-    }   
+    }
 
     public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)
     {
@@ -451,13 +451,13 @@ public class CharactersManager : MonoBehaviour
     }
 
     //=============================================================================[キャラ検索便利系]=====================================================================
-   /// <summary>
-   /// 最もHP(またはHP割合)の小さいキャラ
-   /// </summary>
-   /// <param name="condition"></param>
-   /// <param name="percent"></param>
-   /// <returns></returns>
-    public List<Character> SearchChara_Weakest(SearchCharaCondition condition,bool percent)
+    /// <summary>
+    /// 最もHP(またはHP割合)の小さいキャラ
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <param name="percent"></param>
+    /// <returns></returns>
+    public List<Character> SearchChara_Weakest(SearchCharaCondition condition, bool percent)
     {
         List<Character> pool = new List<Character>(SearchCharaWithCondition(condition));
         float minValue = 0;
@@ -475,11 +475,11 @@ public class CharactersManager : MonoBehaviour
 
         List<Character> list = new List<Character>();
 
-        foreach(Character chara in pool)
+        foreach (Character chara in pool)
         {
             if (percent)
             {
-                if(chara.CharaStatus().GetHPPercent() == minValue) { list.Add(chara); }
+                if (chara.CharaStatus().GetHPPercent() == minValue) { list.Add(chara); }
             }
             else
             {
@@ -499,7 +499,7 @@ public class CharactersManager : MonoBehaviour
             if (chara.PlayerPos() == player) list.Add(chara);
         }
         return list;
-    }    
+    }
 
     public List<int> SearchPosWithCondition(SearchCharaCondition condition)
     {
@@ -703,7 +703,7 @@ public class CharactersManager : MonoBehaviour
 
     }
 
-    public Character SpawnPlayer(CharacterData characterData, int pos,int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
+    public Character SpawnPlayer(CharacterData characterData, int pos, int LVL, Character.SummonCharaStatusParams summonCharaParams = null)
     {
         if (pos >= 9) { print("プレイヤーを召喚するのに、指定した位置がエネミー側です!"); }
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
@@ -735,17 +735,23 @@ public class CharactersManager : MonoBehaviour
         Character.SummonCharaStatusParams statusParams = (summonCharaParams == null) ? new Character.SummonCharaStatusParams() : summonCharaParams;
         statusParams.LVL = LVL;
 
-        GameParams gp=ExpeditionManager.inst.gameParams;
-        foreach(GameObject PA in expeditionManager.GetMadnessPA())
+        SpawnCharaParams spawnParams = new SpawnCharaParams();
+
+        GameParams gp = ExpeditionManager.inst.gameParams;
+        if (!characterData.boss&&!characterData.characterTags.Contains(CharacterData.CharacterTag.obstacle))
         {
-            if (gp.madnessSpawnChance.Dice())
+            foreach (GameObject PA in expeditionManager.GetMadnessPA().Shuffle())
             {
-                statusParams.PAs.Add(PA);
-                statusParams.statusMods.Add(gp.madnessStatMod);
+                if (gp.madnessSpawnChance.Dice())
+                {
+                    statusParams.PAs.Add(PA);
+                    statusParams.statusMods.Add(gp.madnessStatMod);
+                    spawnParams.madness = true;
+                    break;
+                }
             }
         }
 
-        SpawnCharaParams spawnParams = new SpawnCharaParams();
 
         Character.CharacterStatus generatedCharaStatus = new Character.CharacterStatus();
 
@@ -759,7 +765,7 @@ public class CharactersManager : MonoBehaviour
 
         spawnParams.targetButton = tb;
         spawnParams.dropItem = dropItem;
-        spawnParams.summonCharaParams = statusParams;  
+        spawnParams.summonCharaParams = statusParams;
 
         var co = Instantiate(characterObject, worldPos, Quaternion.identity, CharactersP);
         return co.GetComponent<Character_Object>().Init(spawnParams);
@@ -772,5 +778,6 @@ public class SpawnCharaParams
     public GameObject manager;
     public Character_TargetButton targetButton;
     public bool dropItem;
+    public bool madness;
     public Character.SummonCharaStatusParams summonCharaParams = null;
 }

@@ -378,10 +378,10 @@ public static class Extentions
     //    return DMG;
     //}
 
-    public static List<PassiveAbility> SampleStE(this List<PassiveAbility> list, PassiveAbility StE)
+    public static List<PA_StatusEffect.StatusEffectStatus> SampleStE(this List<PA_StatusEffect.StatusEffectStatus> list, PA_StatusEffect StE)
     {
-        string StEName = StE.GetPAName();
-        return list.Where(m => m.GetPAName()==StEName).ToList();
+        string StEName = StE.GetStatusEffectStatus().GetName();
+        return list.Where(m => m.GetName()==StEName).ToList();
     }
 
     public static string ToSpr(this string spriteName, bool outline = false)

@@ -277,6 +277,7 @@ public class ExpeditionManager : MonoBehaviour
             relManager.Enqueue_Madness(partyStatus.madness, add);
             if (partyStatus.madness == partyStatus.maxMadness) break;
         }
+        addedMadness = 0;
 
         RoomEndLog();
     }

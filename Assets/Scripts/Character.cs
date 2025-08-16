@@ -468,7 +468,7 @@ public class Character : MonoBehaviour
     public Character_TargetButton GetTargetButton() { return targetButton; }
 
     //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
-    protected List<PassiveAbility> PA_StE = new List<PassiveAbility>();
+    protected List<PA_StatusEffect> PA_StE = new List<PA_StatusEffect>();
     protected List<PassiveAbility> PA_Per = new List<PassiveAbility>();
     protected List<PassiveAbility> PA_Eq = new List<PassiveAbility>();
     //List<PassiveAbility> deletePAs = new List<PassiveAbility>();
@@ -583,7 +583,7 @@ public class Character : MonoBehaviour
         return passiveAbilities;
     }
 
-    public List<PassiveAbility> GetStEs() { return new List<PassiveAbility>(PA_StE); }
+    public List<PA_StatusEffect> GetStEs() { return new List<PA_StatusEffect>(PA_StE); }
 
     public List<Eq_Magic> GetMagics(List<Eq_Magic> excludeList=null)
     {
@@ -638,7 +638,7 @@ public class Character : MonoBehaviour
         switch (passiveAbility.GetPAType())
         {
             case 0:
-                PA_StE.Remove(passiveAbility);
+                PA_StE.Remove((PA_StatusEffect)passiveAbility);
                 break;
             case 1:
                 PA_Per.Remove(passiveAbility);
@@ -675,11 +675,11 @@ public class Character : MonoBehaviour
         PA_StatusEffect.StatusEffectStatus StEStatus = StE.GetStatusEffectStatus();
         if (StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().merge)
         {
-            foreach (PassiveAbility pa in new List<PassiveAbility>(PA_StE))
+            foreach (PA_StatusEffect pa in new List<PA_StatusEffect>(PA_StE))
             {
-                if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるならそのスタックを増加
+                if (pa.GetPAType() == 0 && pa.GetStatusEffectStatus().StEName == StE.GetStatusEffectStatus().StEName)//同種のStEがすでにあるならそのスタックを増加
                 {
-                    pa.GetComponent<PA_StatusEffect>().AddStack(finalStack);
+                    pa.AddStack(finalStack);
 
                     //charaObj.SetDamageText(string.Format("+{0}", StEStatus.StEName), StEStatus.StEType.ToColor());//refvalueとmergeは共存しないので、ここでrefvalueのことを考える必要はない
                     infoText.AddLogText(string.Format("{0}は{1}を付与された", charaStatus.charaName, StE.GetPAName()));

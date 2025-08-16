@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
   m_Name: gameParams
   m_EditorClassIdentifier: 
-  madnessSpawnChance: 5
+  madnessSpawnChance: 10
   madnessStatMod:
     LVL: 0
-    maxHP_mul: 50
+    maxHP_mul: 150
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0

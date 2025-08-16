@@ -60,6 +60,7 @@ public class CharacterData : ScriptableObject
     [Header("フィールド効果などの場合はこれをtrueに")]
     public bool notChara;
     public bool player;
+    public bool boss;
     public bool playable;
     //public bool obstacle;
     [Header("0:idle 1:damaged")]

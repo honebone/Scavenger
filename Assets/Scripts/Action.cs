@@ -659,7 +659,7 @@ public class Action : MonoBehaviour
         public Action.ActionStatus actionStatus;
         public Character target;
         public Character owner;
-        public List<PassiveAbility> targetStEs_preResolve;
+        public List<PA_StatusEffect.StatusEffectStatus> targetStEs_preResolve;
     }
 
     public class ActionResult
@@ -896,7 +896,8 @@ public class Action : MonoBehaviour
             actionParams.actionStatus=actionsStatus[i];
             actionParams.target = target;
             actionParams.owner = actionOwner;
-            actionParams.targetStEs_preResolve = target.GetStEs();
+            actionParams.targetStEs_preResolve = new List<PA_StatusEffect.StatusEffectStatus>();
+            foreach(var stat in target.GetStEs()) { actionParams.targetStEs_preResolve.Add(stat.GetStatusEffectStatus()); }
 
             target.BecomeAbilityTarget(actionStatus.actionOwner);
 
@@ -1167,6 +1168,7 @@ public class Action : MonoBehaviour
 
                     if (actionsStatus[i].DoesHeal())//‰ñ•œ
                     {
+                        infoText.AddDebugText("heal");
                         OnHealParams onHealParams = new OnHealParams();
                         onHealParams.ability = actionStatus.abilityEffect;
                         onHealParams.target = target;

@@ -86,6 +86,11 @@ public class Character_Object : MonoBehaviour
             abilityStatus.SetManager(a.GetComponent<Ability>());
         }
 
+        if (spawnCharaParams.madness)
+        {
+            HPBarColor.color = Definer.colorRef.affricted;
+        }
+
         charactersManager.AddCharacter(character);
         return character;
     }

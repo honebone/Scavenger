@@ -7,7 +7,7 @@ public class Eq_BloodCutlass : PA_Equipment
 {
     public int DMGPercent;
     public int drainPercent;
-    [Header("与ダメージの何%を上限とするか")]
+    [Header("maxHPの何パーセントを上限とするか")]
     public int drainLimitPercent;
 
     public GameObject bleed;
@@ -16,40 +16,46 @@ public class Eq_BloodCutlass : PA_Equipment
 
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
     {
-        for (int i = 0; i < statusRef.actionTargets.Count; i++)
+        if (statusRef.DoesAttack() && statusRef.abilityEffect)
         {
-            int DMG = (statusRef.actionTargets[i].GetDoTDMG(bleed, false) * DMGPercent / 100f).ToInt();
-
-            if (DMG > 0)
+            for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
-                ActionMod.ActionModStatus mod = actionMod;
-                mod.trueINTDMG = DMG;
-                actionsStatus[i] = actionsStatus[i].Modify(mod);
+                int DMG = (statusRef.actionTargets[i].GetDoTDMG(bleed, false) * DMGPercent / 100f).ToInt();
+
+                if (DMG > 0)
+                {
+                    ActionMod.ActionModStatus mod = actionMod;
+                    mod.trueINTDMG = DMG;
+                    actionsStatus[i] = actionsStatus[i].Modify(mod);
+                }
             }
         }
+       
         return actionsStatus;
     }
 
     public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
-        PassiveAbility bleedPA = bleed.GetComponent<PassiveAbility>();
+        PA_StatusEffect bleedPA = bleed.GetComponent<PA_StatusEffect>();
         int heal = 0;
         foreach (var list in onDamageParamsList)
         {
             int value = 0;
-            List<PassiveAbility> bleeds = list.ap.targetStEs_preResolve.SampleStE(bleedPA);
-            foreach(var b in bleeds)
+            List<PA_StatusEffect.StatusEffectStatus> bleeds = list.ap.targetStEs_preResolve.SampleStE(bleedPA);
+            infoText.AddDebugText(bleeds.Count.ToString());
+            foreach (var b in bleeds)
             {
-                value += b.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().DMGPerTurn;
+                value += b.DMGPerTurn;
             }
             if(value > 0)
             {
-                value = Mathf.Min((value * drainPercent / 100f).ToInt(), (list.totalDMG * drainLimitPercent / 100f).ToInt());
+                value = Mathf.Min((value * drainPercent / 100f).ToInt(), (character.CharaStatus().maxHP * drainLimitPercent / 100f).ToInt());
                 heal += value;
             }
         }
         if (heal > 0)
         {
+            infoText.AddDebugText(heal.ToString());
             Action.ActionStatus action = actionStatus;
             action.healValue_min = heal;
             action.healValue_max = heal;

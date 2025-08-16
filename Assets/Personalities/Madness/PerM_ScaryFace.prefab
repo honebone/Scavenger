@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 2128260593916601868}
+  - component: {fileID: 2005467472783571940}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_CRITD
+  m_Name: PerM_ScaryFace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2128260593916601868
+--- !u!114 &2005467472783571940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_madness_CRITD
-  simpleInfo: 
+  fileName: per_madness_scaryFace
+  noSimpleInfo: 0
+  simpleInfo: "\u81EA\u8EAB\u306E\u653B\u6483\u304C<color=#C900FF><sprite name=debuff><link=S_\u6050\u6016><u>\u6050\u6016</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
   PAInfo_start: 
   skipGetInfo: 1
   PAInfo_end: 
@@ -62,7 +63,7 @@ MonoBehaviour:
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
-    CRITD: 50
+    CRITD: 0
     EVD: 0
     ACC: 0
     ACT: 0
@@ -74,10 +75,11 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
-  AMods: []
+  AMods:
+  - {fileID: 2034159964178472629, guid: c7f61d2ad620b474f8de8a6098dffbc2, type: 3}
   PATags: 
   personalityStatus:
-    personalityName: "\u5510\u7A81\u306A\u7D42\u308F\u308A"
+    personalityName: "\u9B3C\u306E\u5F62\u76F8"
     personalityType: 5
 --- !u!212 &-3715555271002300972
 SpriteRenderer:

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: -4004047031679672429}
+  - component: {fileID: -4105412990324716295}
   - component: {fileID: -3715555271002300972}
   m_Layer: 0
-  m_Name: Per_DebuffRes
+  m_Name: PerM_maxHP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4004047031679672429
+--- !u!114 &-4105412990324716295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_madness_debuffRes
+  fileName: per_madness_maxHP
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 0
+    maxHP_mul: 100
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -73,11 +74,11 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChance: 0
     moveRes: 0
-    debuffRes: 15
+    debuffRes: 0
   AMods: []
   PATags: 
   personalityStatus:
-    personalityName: "\u4E0D\u52D5"
+    personalityName: "\u4E0D\u6EC5"
     personalityType: 5
 --- !u!212 &-3715555271002300972
 SpriteRenderer:
