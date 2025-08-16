@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
+  m_Name: Eq_bloodyMask
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: "\u30D6\u30E9\u30C3\u30C7\u30A3\u30DE\u30B9\u30AF"
+  specialInfo: 0
+  info: 
+  rarity: 4
+  sprite: {fileID: 21300000, guid: 4b218ef021947ac4c861ee11c2798134, type: 3}
+  amountPerStack: 1
+  dropAmountRange: {x: 0, y: 0}
+  materialTags: 00000000
+  price: 0
+  manager: {fileID: 9185327421234476493, guid: 130f94607a712df429b2c7e060fe7f6a, type: 3}

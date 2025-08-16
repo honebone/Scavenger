@@ -34,7 +34,7 @@ public class Eq_GauntletOfProsperity : PA_Equipment
             if (count < maxCount)
             {
                 count++;
-                Log($"カウント増加({count})");
+                Log($"カウント+1 ({count})");
                 character.AddMaxHP(0, maxHPPerCount,true);
             }
         }

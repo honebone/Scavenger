@@ -32,8 +32,8 @@ public class EqM_Storm : Eq_Magic
 
         if (Enqueue(action, true, targets,1))
         {
-            Log("ƒJƒEƒ“ƒg‘‰Á");
             castCount++;
+            Log($"‰r¥‰ñ”+1 ({castCount})");
             character.OnCast(this);
         }
             

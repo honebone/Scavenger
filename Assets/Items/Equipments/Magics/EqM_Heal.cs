@@ -31,7 +31,7 @@ public class EqM_Heal : Eq_Magic
 
     public override void OnSomeoneDamaged(Action.OnDamageParams onDamageParams)
     {
-        Character target = onDamageParams.target;
+        Character target = onDamageParams.ap.target;
 
         if (available && target.IsPlayer() && target.CharaStatus().GetHPPercent() <= TH)
         {

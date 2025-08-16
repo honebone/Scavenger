@@ -27,7 +27,7 @@ public class Eq_FuryAndAshes : PA_Equipment
         {
             if (remain > 0)
             {
-                if (onDamageParams.target.CheckHasStE(burn))
+                if (onDamageParams.ap.target.CheckHasStE(burn))
                 {
                     count++;
                     if (target.Count > 0 && count >= countGoal)

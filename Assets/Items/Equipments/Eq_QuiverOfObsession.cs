@@ -41,7 +41,7 @@ public class Eq_QuiverOfObsession : PA_Equipment
 
     void RefreshValue()
     {
-        if (hitCount > currentHit) { Log($"ACC増加({hitCount * ACCPerHit})"); }
+        if (hitCount > currentHit) { Log($"{"ACC".ToSpr_withName()}+{hitCount- currentHit} ({hitCount * ACCPerHit})"); }
         character.AddACC(currentHit * ACCPerHit * -1);
         character.AddACC(hitCount * ACCPerHit);
         currentHit = hitCount;
@@ -55,7 +55,7 @@ public class Eq_QuiverOfObsession : PA_Equipment
 
     public override string GetCurrentStateInfo()
     {
-        string info = $"攻撃命中回数：{hitCount}/{maxHit}(ACC+{hitCount * ACCPerHit})\n";
+        string info = $"攻撃命中回数：{hitCount}/{maxHit}({"ACC".ToSpr()}+{hitCount * ACCPerHit})\n";
         info += $"与ダメージ：+{Mathf.Clamp((character.CharaStatus().ACC - 100) * exDMGPerACC, 0, maxExDMG)}％(最大{maxExDMG}％)";
         return info;
     }

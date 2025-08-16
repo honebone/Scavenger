@@ -659,6 +659,7 @@ public class Action : MonoBehaviour
         public Action.ActionStatus actionStatus;
         public Character target;
         public Character owner;
+        public List<PassiveAbility> targetStEs_preResolve;
     }
 
     public class ActionResult
@@ -680,7 +681,7 @@ public class Action : MonoBehaviour
         public bool CRIT;
         public float toralCRITC;
         public Action.ActionStatus actionStatus;
-        public Character target;
+        public ActionParams actionParams;
     }
     public class OnDamageParams
     {
@@ -691,9 +692,7 @@ public class Action : MonoBehaviour
         public int INTDMG;
         public int shieldDMG;
         public bool CRIT;
-        public Action.ActionStatus actionStatus;
-        public Character owner;
-        public Character target;
+        public ActionParams ap;
     }
     public class OnKillParams
     {
@@ -897,6 +896,7 @@ public class Action : MonoBehaviour
             actionParams.actionStatus=actionsStatus[i];
             actionParams.target = target;
             actionParams.owner = actionOwner;
+            actionParams.targetStEs_preResolve = target.GetStEs();
 
             target.BecomeAbilityTarget(actionStatus.actionOwner);
 
@@ -958,7 +958,7 @@ public class Action : MonoBehaviour
                 {
                     OnAttackParams onAttackParams = new OnAttackParams();
                     onAttackParams.actionStatus = actionsStatus[i];
-                    onAttackParams.target = target;
+                    onAttackParams.actionParams = actionParams;
                     onAttackParams.toralCRITC = ownerStatus.CRITC + actionsStatus[i].CRITCMod;
                     bool CRIT = false;
                     int ATKDMG = 0;
@@ -1051,9 +1051,7 @@ public class Action : MonoBehaviour
                             onDamageParams.INTDMG = INTDMG;
                             onDamageParams.shieldDMG = shieldDMG;
                             onDamageParams.CRIT = CRIT;
-                            onDamageParams.owner = actionStatus.actionOwner;
-                            onDamageParams.target = target;
-                            onDamageParams.actionStatus = actionsStatus[i];
+                            onDamageParams.ap = actionParams;
 
                             result.damage = true;
                             result.onDamageParams = onDamageParams;

@@ -16,7 +16,8 @@ public class Eq_MilitiasArmband : PA_Equipment
         }
         currentValue = uncommons * valuePerEq;
         character.AddATKINT(0, currentValue);
-        Log($"ATK&INT+{currentValue}Åì");
+        Log($"{"ATK".ToSpr_withName()}+{currentValue}Åì");
+        Log($"{"INT".ToSpr_withName()}+{currentValue}Åì");
     }
     public override void OnBattleEnd()
     {

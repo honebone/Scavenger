@@ -40,7 +40,7 @@ public class Eq_ConquerorMace : PA_Equipment
                     int atk = Mathf.FloorToInt(status.ATK * ATKRatio / 100f);
                     atk = (ATK + atk >= maxATK) ? maxATK - ATK : atk;
 
-                    Log($"ATK増加(+{atk})");
+                    Log($"{"ATK".ToSpr_withName()}+{atk} ({ATK})");
                     character.AddATK(0, 0, atk);
 
                     ATK += atk;
@@ -51,7 +51,7 @@ public class Eq_ConquerorMace : PA_Equipment
                     int hp = Mathf.FloorToInt(status.maxHP * HPRatio / 100f);
                     hp = (HP + hp >= maxHP) ? maxHP - HP : hp;
 
-                    Log($"maxHP増加(+{hp})");
+                    Log($"{"maxHP".ToSpr_withName()}+{hp} ({HP})");
                     character.AddMaxHP(0, 0, true, hp);
 
                     HP += hp;
@@ -85,6 +85,6 @@ public class Eq_ConquerorMace : PA_Equipment
 
     public override string GetCurrentStateInfo()
     {
-        return $"ATK増加量：{ATK}/{maxATK}\nmaxHP増加量：{HP}/{maxHP}";
+        return $"{"ATK".ToSpr()}増加量：{ATK}/{maxATK}\n{"maxHP".ToSpr()}増加量：{HP}/{maxHP}";
     }
 }

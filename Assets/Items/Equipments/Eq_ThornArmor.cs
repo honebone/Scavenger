@@ -7,9 +7,9 @@ public class Eq_ThornArmor : PA_Equipment
     [SerializeField] Action.ActionStatus actionStatus;
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        if (onDamageParams.owner != null)
+        if (onDamageParams.ap.owner != null)
         {
-            Enqueue(actionStatus, true, new List<Character>() { onDamageParams.owner });
+            Enqueue(actionStatus, true, new List<Character>() { onDamageParams.ap.owner });
         }
     }
 

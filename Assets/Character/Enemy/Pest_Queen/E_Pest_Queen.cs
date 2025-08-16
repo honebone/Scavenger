@@ -13,7 +13,7 @@ public class E_Pest_Queen : PA_Personality
         if (!died.CharaStatus().position.IsPlayerPos() && !died.CharaStatus().Obstacle())
         {
             count++;
-            Log($"カウント増加({count})");
+            Log($"カウント+1 ({count})");
         }
     }
 

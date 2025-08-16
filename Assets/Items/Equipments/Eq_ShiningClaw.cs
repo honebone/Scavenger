@@ -18,10 +18,10 @@ public class Eq_ShiningClaw : PA_Equipment
     {
         foreach (Action.OnDamageParams onDamageParams in onDamageParamsList)
         {
-            if (onDamageParams.actionStatus.abilityEffect)
+            if (onDamageParams.ap.actionStatus.abilityEffect)
             {
-                Enqueue(claw, true, new List<Character> { onDamageParams.target });
-                Enqueue(claw, true, new List<Character> { onDamageParams.target });
+                Enqueue(claw, true, new List<Character> { onDamageParams.ap.target });
+                Enqueue(claw, true, new List<Character> { onDamageParams.ap.target });
             }
         }
     }

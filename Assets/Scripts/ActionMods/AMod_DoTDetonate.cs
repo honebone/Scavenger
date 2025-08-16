@@ -5,6 +5,7 @@ using UnityEngine;
 public class AMod_DoTDetonate : ActionMod
 {
     [SerializeField] bool ATKDMG;
+    public bool totalDMG = true;
     [SerializeField] List<GameObject> DoT;
     [SerializeField,Header("Ç»Ç∫Ç©Åìï\ãLÇ∂Ç·Ç»Ç¢")] float ratio;
 
@@ -15,7 +16,7 @@ public class AMod_DoTDetonate : ActionMod
             int DMG = 0;
             foreach(GameObject d in DoT)
             {
-                DMG += statusRef.actionTargets[i].GetDoTDMG(d, true);
+                DMG += statusRef.actionTargets[i].GetDoTDMG(d, totalDMG);
             }
 
             if (ATKDMG) { actionModStatus.trueATKDMG = (DMG * ratio).ToInt(); }

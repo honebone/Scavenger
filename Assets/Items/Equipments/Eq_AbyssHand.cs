@@ -30,9 +30,11 @@ public class Eq_AbyssHand : PA_Equipment
             }
             if (f)
             {
-                count++;
-                count = count.Limit(maxCount);
-                Log($"カウント増加({count}/{maxCount})");
+                if (count < maxCount)
+                {
+                    count++;
+                    Log($"カウント+1 ({count}/{maxCount})");
+                }
                 break;
             }
         }

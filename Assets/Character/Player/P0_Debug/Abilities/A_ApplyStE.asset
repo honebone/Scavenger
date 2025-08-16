@@ -16,6 +16,8 @@ MonoBehaviour:
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
+  noSimpleInfo: 0
+  simpleInfo: 
   abilityManager: {fileID: 0}
   dontChangeSprite: 1
   activateSprite: {fileID: 0}
@@ -40,6 +42,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []
@@ -80,6 +83,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -141,73 +145,10 @@ MonoBehaviour:
     shieldRemove_max: 0
     applySteParams:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
+      guaranteed: 0
+      applyChance: 100
       stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 1
+      value: 50
       refATK: 1
       DMGPerTurn: 0
     applyPEParams: []
@@ -269,6 +210,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     - LVL: 0
@@ -291,6 +233,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     - LVL: 0
@@ -313,6 +256,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     - LVL: 0
@@ -335,6 +279,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     - LVL: 0
@@ -357,6 +302,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     - LVL: 0
@@ -379,6 +325,7 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     - LVL: 0
@@ -401,13 +348,14 @@ MonoBehaviour:
       RHeal: 0
       StEResists: []
       StEApplyBonus: []
+      debuffChance: 0
       moveRes: 0
       debuffRes: 0
     dontChangeSprite: 1
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 13
+    targetCount: 12
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
@@ -421,5 +369,4 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 03000000040000000500000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
+    actionTargetsInt: 040000000500000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000

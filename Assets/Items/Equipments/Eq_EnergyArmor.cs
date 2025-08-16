@@ -21,7 +21,7 @@ public class Eq_EnergyArmor : PA_Equipment
         if (count < maxCount)
         {
             count++;
-            Log($"カウント増加({count})");
+            Log($"カウント+1 ({count})");
         }
     }
     public override void OnMoved(Action.OnMoveParams onMoveParams)
@@ -29,7 +29,7 @@ public class Eq_EnergyArmor : PA_Equipment
         if(count < maxCount)
         {
             count = Mathf.Min(count + onMoveParams.range, maxCount);
-            Log($"カウント増加({count})");
+            Log($"カウント+{onMoveParams.range} ({count})");
         }
     }
     public override void OnRoundEnd()

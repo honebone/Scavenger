@@ -26,7 +26,7 @@ public class Eq_Discharger : PA_Equipment
             {
                 if (onDamageParams.totalDMG > 0)
                 {
-                    List<Character> neigborsChara = charactersManager.GetCharactersWithPos(onDamageParams.target.CharaStatus().position.RelPosToAbs(neigbors));
+                    List<Character> neigborsChara = charactersManager.GetCharactersWithPos(onDamageParams.ap.target.CharaStatus().position.RelPosToAbs(neigbors));
                     //attackedChara.AddRangeWithNoOverlap(neigborsChara);
                     foreach (Character c in neigborsChara)
                     {
@@ -55,7 +55,7 @@ public class Eq_Discharger : PA_Equipment
         {
             charge += chargeOnTS;
             charge = charge.Limit(maxCharge);
-            Log($"チャージ増加({charge})");
+            Log($"チャージ+{chargeOnTS} ({charge})");
         }
     }
 

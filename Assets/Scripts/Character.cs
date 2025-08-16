@@ -583,6 +583,8 @@ public class Character : MonoBehaviour
         return passiveAbilities;
     }
 
+    public List<PassiveAbility> GetStEs() { return new List<PassiveAbility>(PA_StE); }
+
     public List<Eq_Magic> GetMagics(List<Eq_Magic> excludeList=null)
     {
         if (excludeList == null) excludeList = new List<Eq_Magic>();
@@ -1139,7 +1141,7 @@ public class Character : MonoBehaviour
                 if (charaStatus.surviveFatalWounds)
                 {
                     charaStatus.HP = 0;
-                    Die(0, onDamageParams.owner);
+                    Die(0, onDamageParams.ap.owner);
                 }
                 else { print("•m€‚Å‘Ï‚¦‚éƒLƒƒƒ‰o‚È‚¢‚Ì‚ÉHP0‚Å¶‚«‘±‚¯‚Ä‚¢‚Ü‚·"); }
             }
@@ -1168,7 +1170,7 @@ public class Character : MonoBehaviour
                 {
 
                     charaStatus.HP = 0;
-                    Die(0, onDamageParams.owner);
+                    Die(0, onDamageParams.ap.owner);
                 }
             }
         }
