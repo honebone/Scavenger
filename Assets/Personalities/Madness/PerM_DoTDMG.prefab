@@ -73,19 +73,19 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      exChance: 25
+      exChance: 40
       exStack: 0
-      exValue: 20
+      exValue: 25
       exDMGPerTurn: 0
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
-      exChance: 25
+      exChance: 40
       exStack: 0
-      exValue: 20
+      exValue: 25
       exDMGPerTurn: 0
     - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
-      exChance: 25
+      exChance: 40
       exStack: 0
-      exValue: 20
+      exValue: 25
       exDMGPerTurn: 0
     debuffChance: 0
     moveRes: 0

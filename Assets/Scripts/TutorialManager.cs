@@ -6,6 +6,8 @@ using TMPro;
 
 public class TutorialManager : MonoBehaviour
 {
+    public static TutorialManager inst;
+
     bool skipTutorial;
     [SerializeField] GameObject panel;
     [SerializeField] Transform guideObjP;
@@ -25,6 +27,11 @@ public class TutorialManager : MonoBehaviour
 
     int count;
     bool inTutorial;
+
+    private void Awake()
+    {
+        if(inst == null)inst = this;
+    }
 
     private void Start()
     {

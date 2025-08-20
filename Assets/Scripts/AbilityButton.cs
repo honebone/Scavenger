@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class AbilityButton : MonoBehaviour
@@ -14,7 +15,7 @@ public class AbilityButton : MonoBehaviour
     [SerializeField]
     Image locked;
     [SerializeField]
-    Text nameText;
+    TextMeshProUGUI nameText;
     [SerializeField]
     Text remainText;
     [SerializeField]

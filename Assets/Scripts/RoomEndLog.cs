@@ -28,7 +28,7 @@ public class RoomEndLog : MonoBehaviour
     {
 
     }
-    float move = 25f;
+    //float move = 25f;
 
     public void FadeIn()
     {

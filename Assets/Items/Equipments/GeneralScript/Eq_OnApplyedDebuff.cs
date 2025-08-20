@@ -1,0 +1,86 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Eq_OnApplyedDebuff : PA_Equipment
+{
+    public bool targetSelf;
+    [Header("trueなら付与されたデバフ1つにつき")]public bool foreachDebuff;
+    public int max_inBattle;
+    public int max_inRound;
+    public Action.ActionStatus actionStatus;
+    public CharactersManager.SearchCharaCondition condition;
+    public int targetCount;
+
+    int count_inBattle;
+    int count_inRound;
+    bool available;
+
+    public override void OnApplyedStE(Action.OnApplyStEParams onApplyStEParams)
+    {
+        if (available)
+        {
+            foreach(var applied in onApplyStEParams.appliedParams)
+            {
+                if (applied.GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)
+                {
+                    Activate();
+                    if (!foreachDebuff) break;
+                    if (!available) break;
+                }
+            }
+        }
+    }
+
+    void Activate()
+    {
+        if (targetSelf)
+        {
+            Enqueue_Self(actionStatus);
+            count_inBattle++;
+            count_inRound++;
+        }
+        else
+        {
+            if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
+            {
+                count_inBattle++;
+                count_inRound++;
+            }
+        }
+        available = (max_inBattle == 0 || count_inBattle < max_inBattle) && (max_inRound == 0 || count_inRound < max_inRound);
+    }
+
+    public override void OnBattleStart()
+    {
+        count_inBattle = 0;
+        count_inRound = 0;
+        available = true;
+    }
+
+    public override void OnRoundEnd()
+    {
+        count_inRound = 0;
+        available = (max_inBattle == 0 || count_inBattle < max_inBattle) && (max_inRound == 0 || count_inRound < max_inRound);
+    }
+
+    public override void OnBattleEnd()
+    {
+        count_inBattle = 0;
+        count_inRound = 0;
+        available = true;
+    }
+
+    public override string GetPAInfo_Base()
+    {
+        string s = equipmentStatus.GetInfo();
+        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        return s;
+    }
+    public override string GetCurrentStateInfo()
+    {
+        if (max_inBattle > 0) return $"残り発動回数：{max_inBattle - count_inBattle}回";
+        if (max_inRound > 0) return $"残り発動回数：{max_inRound - count_inRound}回";
+        return "";
+    }
+}

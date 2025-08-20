@@ -37,29 +37,32 @@ public class Eq_BloodCutlass : PA_Equipment
     public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
         PA_StatusEffect bleedPA = bleed.GetComponent<PA_StatusEffect>();
-        int heal = 0;
-        foreach (var list in onDamageParamsList)
+        if (onDamageParamsList[0].ap.actionStatus.abilityEffect)
         {
-            int value = 0;
-            List<PA_StatusEffect.StatusEffectStatus> bleeds = list.ap.targetStEs_preResolve.SampleStE(bleedPA);
-            infoText.AddDebugText(bleeds.Count.ToString());
-            foreach (var b in bleeds)
+            int heal = 0;
+            foreach (var list in onDamageParamsList)
             {
-                value += b.DMGPerTurn;
+                int value = 0;
+                List<PA_StatusEffect.StatusEffectStatus> bleeds = list.ap.targetStEs_preResolve.SampleStE(bleedPA);
+                infoText.AddDebugText(bleeds.Count.ToString());
+                foreach (var b in bleeds)
+                {
+                    value += b.DMGPerTurn;
+                }
+                if (value > 0)
+                {
+                    value = Mathf.Min((value * drainPercent / 100f).ToInt(), (character.CharaStatus().maxHP * drainLimitPercent / 100f).ToInt());
+                    heal += value;
+                }
             }
-            if(value > 0)
+            if (heal > 0)
             {
-                value = Mathf.Min((value * drainPercent / 100f).ToInt(), (character.CharaStatus().maxHP * drainLimitPercent / 100f).ToInt());
-                heal += value;
+                infoText.AddDebugText(heal.ToString());
+                Action.ActionStatus action = actionStatus;
+                action.healValue_min = heal;
+                action.healValue_max = heal;
+                Enqueue_Self(action);
             }
-        }
-        if (heal > 0)
-        {
-            infoText.AddDebugText(heal.ToString());
-            Action.ActionStatus action = actionStatus;
-            action.healValue_min = heal;
-            action.healValue_max = heal;
-            Enqueue_Self(action);
         }
     }
 }

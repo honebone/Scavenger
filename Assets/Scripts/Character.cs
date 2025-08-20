@@ -1212,25 +1212,36 @@ public class Character : MonoBehaviour
             charaObj.SetSANBar();
             if (charaStatus.SAN <= 0)
             {
-                if (!CheckAffricted())
-                {
-                    targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
-                    infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
-                    expeditionManager.AddMadness(1);
-                    //AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
-                    expeditionManager.SetPersonality(this, definer.GetAffrictionDataBase().Choice());
+                //if (!CheckAffricted())
+                //{
+                //    targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
+                //    infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
+                //    expeditionManager.AddMadness(1);
+                //    //AddPA_Personality(definer.GetAffrictionDataBase().Choice(), true);
+                //    expeditionManager.SetPersonality(this, definer.GetAffrictionDataBase().Choice());
 
-                    charaStatus.SAN = charaStatus.maxSAN;
-                    charaObj.Affrict();
-                    charaObj.SetSANBar();
-                }
-                else
-                {
-                    targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
-                    infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
-                    expeditionManager.AddMadness(1);
-                    charaStatus.SAN = charaStatus.maxSAN;
-                }
+                //    charaStatus.SAN = charaStatus.maxSAN;
+                //    charaObj.Affrict();
+                //    charaObj.SetSANBar();
+                //}
+                //else
+                //{
+                //    targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
+                //    infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
+                //    expeditionManager.AddMadness(1);
+                //    charaStatus.SAN = charaStatus.maxSAN;
+                //}
+
+                targetButton.SetDamageText("精神崩壊", Definer.colorRef.affricted);
+                infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
+                expeditionManager.AddMadness(1);
+
+                DecreaseHP((charaStatus.maxHP * expeditionManager.gameParams.HPDecOnAffrict / 100f).ToInt());
+
+                charaStatus.SAN = charaStatus.maxSAN;
+                charaObj.SetSANBar();
+
+                TutorialManager.inst.SetTutorial("affrict");
             }
         }
     }

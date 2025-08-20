@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_chaosRing
+  noSimpleInfo: 0
   simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u3059\u3079\u3066\u306E\u30AD\u30E3\u30E9\u306B\u69D8\u3005\u306A<sprite
     name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3059\u308B"
   PAInfo_start: 
@@ -57,9 +58,9 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 20
+    ATK_mul: 25
     ATK_int: 0
-    INT_mul: 20
+    INT_mul: 25
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 10ac2662eed97db4188796b8c3e0150f, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 20
-      ATK_int: 0
-      INT_mul: 20
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: -20
-    actionMods: []
   onBS: 1
   onBS_targetSelf: 0
   action_BS:
@@ -132,6 +108,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -196,49 +173,63 @@ MonoBehaviour:
       applyChance: 40
       stack: 1
       value: 25
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 3
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 25
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: f784c7dec8cd7644fa53b387f984165c, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 25
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 25
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
       guaranteed: 0
       applyChance: 40
       stack: 1
       value: 15
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
       guaranteed: 0
       applyChance: 15
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -298,6 +289,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []
@@ -334,6 +326,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -451,6 +444,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []

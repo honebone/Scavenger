@@ -41,7 +41,7 @@ public class PassiveAbility : MonoBehaviour
             {
                 if (f) { s += ", "; }
                 f = true;
-                if(tag.ToString()=="ñÇèp") s += "<link=U_ñÇèp><u>[ñÇèp]</u></link>";
+                if (tag.ToString() == "ñÇèp") s += "<link=U_ñÇèp><u>[ñÇèp]</u></link>";
                 else s += $"[{tag}]";
             }
             s += "\n";
@@ -57,12 +57,14 @@ public class PassiveAbility : MonoBehaviour
         else
         {
             if (statModInfo != "") s += statModInfo + "\n\n";
+            string amodInfo = "";
             foreach (GameObject actionMod in AMods)
             {
-                s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+                amodInfo += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
             }
+            if (amodInfo != "") s += amodInfo + "\n";
             if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
-            if (!skipGetInfo&& GetPAInfo_Base()!="") s += GetPAInfo_Base() + "\n\n";
+            if (!skipGetInfo && GetPAInfo_Base() != "") s += GetPAInfo_Base() + "\n\n";
             if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
             if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
         }

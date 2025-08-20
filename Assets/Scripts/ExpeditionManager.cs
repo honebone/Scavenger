@@ -268,14 +268,17 @@ public class ExpeditionManager : MonoBehaviour
             SetRandomPersonality_ToRandom();
         }
 
-        for (int i = 0; i < addedMadness; i++)
+        if (partyStatus.madness < partyStatus.maxMadness)
         {
-            GameObject add = MadnessPAPool.Choice();
-            MadnessPAPool.Remove(add);
-            madnessPAs.Add(add);
-            partyStatus.madness++;
-            relManager.Enqueue_Madness(partyStatus.madness, add);
-            if (partyStatus.madness == partyStatus.maxMadness) break;
+            for (int i = 0; i < addedMadness; i++)
+            {
+                GameObject add = MadnessPAPool.Choice();
+                MadnessPAPool.Remove(add);
+                madnessPAs.Add(add);
+                partyStatus.madness++;
+                relManager.Enqueue_Madness(partyStatus.madness, add);
+                if (partyStatus.madness == partyStatus.maxMadness) break;
+            }
         }
         addedMadness = 0;
 

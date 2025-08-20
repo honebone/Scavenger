@@ -151,6 +151,13 @@ MonoBehaviour:
       value: 50
       refATK: 1
       DMGPerTurn: 0
+    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 1
+      value: 0
+      refATK: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -355,7 +362,7 @@ MonoBehaviour:
     activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 12
+    targetCount: 9
     actionTargets:
     - {fileID: 0}
     - {fileID: 0}
@@ -366,7 +373,4 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 040000000500000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
+    actionTargetsInt: 090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000

@@ -49,8 +49,10 @@ public class PA_StatusEffect : PassiveAbility
         public int stack;
         public int value;
 
+        [Header("付与強化効果の影響を受けない")] public bool dontApplyBonus;
         [Header("DoT")]
         public bool refATK;
+        public bool refTargetMaxHP;
         [Header("以下は代入される")]
         public int DMGPerTurn;
         public string GetInfo()
@@ -59,9 +61,18 @@ public class PA_StatusEffect : PassiveAbility
             StatusEffectStatus status = applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
             string chanceText = guaranteed ? "確定" : $"{applyChance}％";
             s += $"・{status.ToLinkKey(false, value)}を付与\n({chanceText},{stack}スタック)\n";
+            if (dontApplyBonus) s += "(付与確率/スタック数/<color=#FFBF69><i>{効果量}</i></color>増加の影響を受けない)\n".ColorStr(Definer.colorRef.emphasize);
 
             return s;
         }
+
+        public string GetDoTInfo(bool regen = false)
+        {
+            string s = regen ? "回復" : "減少";
+            string maxHP = $"対象の{"maxHP".ToSpr_withName()}";
+            return $"{"HP".ToSpr_withName()}{s}量：{(refATK ? "ATK".ToSpr_withLink() : refTargetMaxHP ? maxHP : "INT".ToSpr_withLink())}の{value}％\n";
+        }
+
         public StatusEffectStatus GetStatusEffectStatus()
         {
             return applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();

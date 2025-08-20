@@ -349,8 +349,8 @@ public class Action : MonoBehaviour
                 string exText = "";
                 if (status.DoT)
                 {
-                    exText += $"{"HP".ToSpr_withName()}減少量：{(StEParams.refATK ? "ATK".ToSpr_withLink() : "INT".ToSpr_withLink())}の{StEParams.value}％\n";
-                    if (refCharaStatus)
+                    exText += StEParams.GetDoTInfo();
+                    if (refCharaStatus && !StEParams.refTargetMaxHP)
                     {
                         int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
                         int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
@@ -359,8 +359,8 @@ public class Action : MonoBehaviour
                 }
                 if (status.regen)
                 {
-                    exText += $"{"HP".ToSpr_withName("回復")}量：{(StEParams.refATK ? "ATK".ToSpr_withLink() : "INT".ToSpr_withLink())}の{StEParams.value}％\n";
-                    if (refCharaStatus)
+                    exText += StEParams.GetDoTInfo(true);
+                    if (refCharaStatus && !StEParams.refTargetMaxHP)
                     {
                         int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
                         int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
@@ -368,6 +368,7 @@ public class Action : MonoBehaviour
                     }
                 }
                 s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{exText}({chanceText},{StEParams.stack}スタック)\n";
+                if (StEParams.dontApplyBonus) s += "(付与確率/スタック数/<color=#FFBF69><i>{効果量}</i></color>増加の影響を受けない)\n".ColorStr(Definer.colorRef.emphasize);
             }
 
             CheckNewBlock();
@@ -1168,7 +1169,6 @@ public class Action : MonoBehaviour
 
                     if (actionsStatus[i].DoesHeal())//回復
                     {
-                        infoText.AddDebugText("heal");
                         OnHealParams onHealParams = new OnHealParams();
                         onHealParams.ability = actionStatus.abilityEffect;
                         onHealParams.target = target;
@@ -1285,10 +1285,13 @@ public class Action : MonoBehaviour
                         }
 
                         //applyBonus.Log("final bonus");
-                        StEParams.applyChance += applyBonus.exChance;//bonus等をparamsに反映
-                        StEParams.stack += applyBonus.exStack;
-                        StEParams.value += applyBonus.exValue;
-                        StEParams.DMGPerTurn += applyBonus.exDMGPerTurn;
+                        if (!StEParams.dontApplyBonus)
+                        {
+                            StEParams.applyChance += applyBonus.exChance;//bonus等をparamsに反映
+                            StEParams.stack += applyBonus.exStack;
+                            StEParams.value += applyBonus.exValue;
+                            StEParams.DMGPerTurn += applyBonus.exDMGPerTurn;
+                        }
 
                         if (StEParams.stack > 0)//付与スタック数が1以上なら付与処理
                         {
@@ -1300,12 +1303,12 @@ public class Action : MonoBehaviour
                             //if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
                             if (StEStaus.DoT)
                             {
-                                int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+                                int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : (StEParams.refTargetMaxHP) ? targetStatus.maxHP : ownerStatus.INT;
                                 StEParams.DMGPerTurn += (baseDMG * StEParams.value / 100f).ToInt();
                             }
                             if (StEStaus.regen)
                             {
-                                int baseValue = (StEParams.refATK) ? ownerStatus.ATK : ownerStatus.INT;
+                                int baseValue = (StEParams.refATK) ? ownerStatus.ATK : (StEParams.refTargetMaxHP) ? targetStatus.maxHP : ownerStatus.INT;
                                 StEParams.DMGPerTurn += (baseValue * StEParams.value / 100f).ToInt();
                             }
 

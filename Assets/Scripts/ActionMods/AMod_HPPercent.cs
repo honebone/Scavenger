@@ -8,7 +8,7 @@ public class AMod_HPPercent : ActionMod
     [SerializeField, Header("失った/残りHP[PercentPerCount]％毎に")] float percentPerCount;
     [SerializeField, Header("カウント開始の閾値")] float THPercent;
     [SerializeField, Header("0ならリミット無し")] int maxCount;
-    [SerializeField] bool checkOwner;
+    [SerializeField, Header("falseなら対象をチェック")] bool checkOwner;
 
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {

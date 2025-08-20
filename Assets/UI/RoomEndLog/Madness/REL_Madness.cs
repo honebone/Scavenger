@@ -69,6 +69,7 @@ public class REL_Madness : RoomEndLog
         infoCanvas.DOFade(1, infoFadeDur);
 
         yield return new WaitForSeconds(infoFadeDur + endDelay);
+        TutorialManager.inst.SetTutorial("madness");
 
         manager.LogEnd();
     }

@@ -9,7 +9,7 @@ using DG.Tweening;
 public class InfoText : MonoBehaviour
 {
     [SerializeField]
-    Text nameText;
+    TextMeshProUGUI nameText;
 
     [SerializeField]
     GameObject infoPanel;

@@ -120,11 +120,11 @@ public class ActionMod : MonoBehaviour
                     string exText = "";
                     if (status.DoT)
                     {
-                        exText += $"{"HP".ToSpr_withName()}減少量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                        exText += StEParams.GetDoTInfo();
                     }
                     if (status.regen)
                     {
-                        exText += $"{"HP".ToSpr_withName("回復")}量：{(StEParams.refATK ? "ATK".ColorStr(Definer.colorRef.damage) : "INT".ColorStr(Definer.colorRef.INTDamage))}の{StEParams.value}％\n";
+                        exText += StEParams.GetDoTInfo(true);
                     }
                     s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{exText}({chanceText},{StEParams.stack}スタック)\n";
                 }
