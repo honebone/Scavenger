@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_furyAndAshes
+  noSimpleInfo: 0
   simpleInfo: "<color=#C900FF><sprite name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u6301\u3064\u6575\u30922\u56DE\u653B\u6483\u3059\u308B\u3068\u3001<color=#C900FF><sprite
     name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4F34\u3046<sprite
     name=ATK><color=#C30000>\u7269\u7406</color><sprite name=INT><color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u3092\u3059\u308B\r\n\u3053\u306E\u653B\u6483\u306E\u4E0E\u30C0\u30E1\u30FC\u30B8\u306E\u4E00\u90E8\u3092<sprite
     name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B\r"
-  PAInfo_start: 
+  PAInfo_start: "<color=#C900FF><sprite name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u6301\u3064\u6575\u3092\u653B\u6483\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -81,32 +82,7 @@ MonoBehaviour:
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: e4dd2d2dd5fbbbe4c816833c8aa27868, type: 2}
-    equipmentInfo: "\u706B\u50B7\u3092\u6301\u3064\u6575\u3092\u653B\u6483\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 12
-      ATK_int: 0
-      INT_mul: 12
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
+    equipmentInfo: 
   burn: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
   attack:
     actionName: 
@@ -133,6 +109,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -197,7 +174,9 @@ MonoBehaviour:
       applyChance: 100
       stack: 3
       value: 30
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -257,6 +236,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []

@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u81EA\u8EAB\u9A0E\u4E57\u4E2D\u3067\u306A\u304F\u3001<sprite
+    conditionInfo: "\u81EA\u8EAB\u304C\u9A0E\u4E57\u4E2D\u3067\u306A\u304F\u3001<sprite
       name=HP><color=#87FF79>HP</color>\u304C50\uFF05\u4EE5\u4E0A\u306A\u3089"
     hideValues: 0
-    exInfo: "\u30FB<color=#C900FF><sprite name=debuff><link=S_\u30B9\u30BF\u30F3><u>\u30B9\u30BF\u30F3</u></link></color>\u4ED8\u4E0E\u78BA\u7387+1\uFF05"
+    exInfo: 
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
@@ -82,7 +82,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyStEBonus: []
     debuffChanceMod: 0
@@ -126,6 +128,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []
@@ -147,6 +150,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []

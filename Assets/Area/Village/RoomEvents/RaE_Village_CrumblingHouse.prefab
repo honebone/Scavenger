@@ -54,6 +54,7 @@ MonoBehaviour:
   mul: 1.5
   lootStatus:
     drawAttemptsRange: {x: 2, y: 4}
+    rarityWeightMod: 0
     uniqueDropPool: []
     includeTags:
     - tag: 8
@@ -63,4 +64,4 @@ MonoBehaviour:
     - tag: 1
       weight: 2
     excludeTags: 
-    dropEquipmentsRange: {x: 1, y: 2}
+    dropEquipmentsRange: {x: 2, y: 3}

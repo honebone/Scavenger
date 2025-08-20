@@ -49,26 +49,30 @@ MonoBehaviour:
   REInfo: "\u5B9D\u7BB1\u3060!\n\u4F55\u304C\u5165\u3063\u3066\u3044\u308B\u3060\u308D\u3046\u304B..."
   options:
   - optionName: "\u5B9D\u7BB1\u3092\u958B\u3051\u308B...?"
-    optionInfo: "\u30A2\u30A4\u30C6\u30E0\u3092\u5165\u624B\u3059\u308B\n???"
+    optionInfo: "\u88C5\u5099\u54C1\u30922-4\u500B\u5165\u624B\u3059\u308B\n???"
   - optionName: "\u4F55\u3082\u3057\u306A\u3044"
     optionInfo: 
   lootStatus:
     drawAttemptsRange: {x: 1, y: 3}
-    rarityWeightMod: []
+    rarityWeightMod: 0
     uniqueDropPool: []
-    dropEquipmentsRange: {x: 2, y: 4}
     includeTags:
     - tag: 1
       weight: 1
     excludeTags: 
+    dropEquipmentsRange: {x: 2, y: 4}
   mimic:
+    dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: f7f336972783cfe4986453cc621846a6, type: 2}
     lowerMid: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   umbushed: {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

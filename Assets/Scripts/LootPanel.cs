@@ -273,16 +273,23 @@ public class LootPanel : MonoBehaviour
     }
     public void AddItem(Definer.Item item, int amount)
     {
-        item.amount = amount;
-        loots.Add(item);
+        if (item.data.itemType == ItemData.ItemType.equipment)
+        {
+            item.amount = amount;
+            loots.Add(item);
+        }
+        
         //Sort();
     }
     public void AddItem(ItemData itemData, int amount)
     {
-        Definer.Item item = new Definer.Item();
-        item.Init(itemData);
-        item.amount = amount;
-        loots.Add(item);
+        if (itemData.itemType == ItemData.ItemType.equipment)
+        {
+            Definer.Item item = new Definer.Item();
+            item.Init(itemData);
+            item.amount = amount;
+            loots.Add(item);
+        }
         //Sort();
     }
     public void AddExp(int amount)

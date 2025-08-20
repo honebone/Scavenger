@@ -42,6 +42,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
       stack: 2
@@ -62,7 +63,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u6307\u4EE4"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u65751\u4F53(<color=#C900FF><sprite name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u7121\u8996)"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -84,6 +85,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -93,7 +95,7 @@ MonoBehaviour:
       HP_lessThan: 0
       HP_excludeEqual: 0
     neigborPos: []
-    ignoreMark: 0
+    ignoreMark: 1
     ignoreHide: 0
     moveValue: 
     skipAnim: 0
@@ -148,14 +150,18 @@ MonoBehaviour:
       applyChance: 100
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
       guaranteed: 0
       applyChance: 50
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -203,4 +209,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 0d000000
+    actionTargetsInt: 0c000000
