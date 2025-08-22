@@ -71,10 +71,6 @@ public class ExpeditionManager : MonoBehaviour
 
     [SerializeField] List<GameObject> MadnessPAPool;
 
-    public static float playerMaxHPGrowth = 1.15f;
-    public static float playerATKGrowth = 1.15f;
-    [SerializeField] float enemyMaxHPGrowth;
-    [SerializeField] float enemyATKGrowth;
     public StatusGrowth playerStatusGrowth;
     public StatusGrowth enemyStatusGrowth;
     //[SerializeField] Character.CharaStatusMod enemyStatusGrowth;
