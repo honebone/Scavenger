@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class LVLUpManager : MonoBehaviour
 {
+    public static LVLUpManager inst;
     [SerializeField] ExpeditionManager expeditionManager;
     [SerializeField] GameObject panel;
 
@@ -23,6 +24,11 @@ public class LVLUpManager : MonoBehaviour
     SoundManager soundManager;
 
     bool inLVLUp;
+
+    private void Awake()
+    {
+        if(inst == null) inst = this;
+    }
 
     public struct LVLUpParams
     {

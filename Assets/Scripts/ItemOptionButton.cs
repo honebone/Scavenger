@@ -183,7 +183,7 @@ public class ItemOptionButton : MonoBehaviour
         }
        
 
-        FindObjectOfType<CharaDetailUI>().EndSelectEquipment();
+        //FindObjectOfType<CharaDetailUI>().EndSelectEquipment();
         FindObjectOfType<CharaDetailUI>().Refresh();
         inventory.CloseInventory();
         CloseOptionnUI();

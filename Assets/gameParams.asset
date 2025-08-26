@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
   m_Name: gameParams
   m_EditorClassIdentifier: 
+  unlockEqSlotLVL: 0400000006000000080000000a000000
   madnessSpawnChance: 10
   madnessStatMod:
     LVL: 0

@@ -24,7 +24,6 @@ public class DeployCharacterManager : MonoBehaviour
     [SerializeField] AreaData area_tutorial;//test
     [SerializeField] AreaData area_cave;//test
 
-    [SerializeField] TutorialData tutroial_info;
     [SerializeField] TutorialData tutroial_deploy;
     [SerializeField] TutorialData tutroial_embark;
 
@@ -181,6 +180,7 @@ public class DeployCharacterManager : MonoBehaviour
                         {
                             result.gameObject.GetComponent<Deploy_PositionButton>().SetChara(draggingChara);
                             soundManager.PlaySE(setChara);
+                            tutorialManager.SetTutorial("deployTips");
                             break;
                         }
                     }
@@ -211,14 +211,15 @@ public class DeployCharacterManager : MonoBehaviour
         {
             if (button.GetCharacterStatus().characterData != null) { count++; }
         }
-        if (count > maxParty || count == 0)
+
+        if (count == maxParty) tutorialManager.SetTutorial("Embark");
+
+        if (count > maxParty || count == 0)//誰もいないor最大編成数を上回る
         {
             if (canEmbark) { anim.SetTrigger("Flip"); }
             canEmbark = false;
             embarkText.text = $"出撃({count}/{maxParty})".ColorStr(Color.red);
         }
-        //if (count > maxParty) { embarkText.text = $"出撃({count}/{maxParty})".ColorStr(Color.red); }
-        //else if (count == 0) { embarkText.text = "キャラを編成(0/4)".ColorStr(Color.red); }
         else
         {
             if (!canEmbark) { anim.SetTrigger("Flip"); }
@@ -231,33 +232,21 @@ public class DeployCharacterManager : MonoBehaviour
     {
         if (canEmbark)
         {
-            if (!gameManager.DoTutorial() || tutorialManager.CheckUnlocked(tutroial_info))
-            {
-                panel.SetActive(false);
-                deploy = false;
+            panel.SetActive(false);
+            deploy = false;
 
-                for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
+            {
+                if (positionButtons[i].GetCharacterStatus().characterData)
                 {
-                    if (positionButtons[i].GetCharacterStatus().characterData)
-                    {
-                        charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i, 1);
-                        expeditionManager.deployedChara.Add(positionButtons[i].GetCharacterStatus().characterData);
-                    }
+                    charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i, 1);
+                    expeditionManager.deployedChara.Add(positionButtons[i].GetCharacterStatus().characterData);
                 }
+            }
 
-                //if (tutorial) { expeditionManager.StartExpedition(area_tutorial); }
-                //else { expeditionManager.StartExpedition(area_cave); }
-                expeditionManager.StartExpedition(area_cave);//test
-            }
-            else
-            {
-                guideMessage.SetWaringText("まずはキャラクターの詳細をチェックしよう");
-            }
+            //if (tutorial) { expeditionManager.StartExpedition(area_tutorial); }
+            //else { expeditionManager.StartExpedition(area_cave); }
+            expeditionManager.StartExpedition(area_cave);//test
         }
-    }
-
-    public void StartTutorial_Info()
-    {
-        if (tutorialManager.CheckUnlocked(tutroial_deploy)) { tutorialManager.SetTutorial(tutroial_info); }
     }
 }

@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class GameParams : ScriptableObject
 {
-    public float madnessSpawnChance;
+    [Header("\n\n\nLevel Up")]
+    public List<int> unlockEqSlotLVL;
+    [Header("\n\n\nMadness")] public float madnessSpawnChance;
     public Character.CharaStatusMod madnessStatMod;
    [Header("¸_•ö‰ó‚ÉHP‚ª[HPDecOnAffrict]%Œ¸­")] public int HPDecOnAffrict;
 }

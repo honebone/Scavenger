@@ -7,6 +7,15 @@ using DG.Tweening;
 
 public class CharaDetail_LVLUp : MonoBehaviour
 {
+
+
+
+
+    //このスクリプトはもう使っていません
+
+
+
+
     [SerializeField] GameObject panel;
     [SerializeField] CharaDetail_ExpBar expBar;
     [SerializeField] TextMeshProUGUI expText;

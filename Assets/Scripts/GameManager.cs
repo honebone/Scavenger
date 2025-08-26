@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
    [SerializeField] bool doTutorial;//test
+    public GameParams gp;
+    public static GameParams gameParams;
 
     private void Start()
     {
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
     }
     void Awake()
     {
+        gameParams = gp;
         CheckInstance();
     }
 

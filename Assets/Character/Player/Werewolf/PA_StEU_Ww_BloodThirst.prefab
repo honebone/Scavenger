@@ -47,7 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: StEU_werewolf_bloodThirst
   noSimpleInfo: 0
-  simpleInfo: 
+  simpleInfo: "<color=#FFFFFF><link=S_\u4EBA\u72FC><u>\u4EBA\u72FC</u></link></color>\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570\u5897\u52A0\r\n\r\n<color=#C900FF><sprite
+    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u306E\u3042\u308B\u5BFE\u8C61\u3078\u306E\u653B\u6483\u304C\u8FFD\u52A0\u306E<sprite
+    name=INT><color=#256CC8>\u9B54\u6CD5</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -142,6 +144,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -153,6 +156,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0

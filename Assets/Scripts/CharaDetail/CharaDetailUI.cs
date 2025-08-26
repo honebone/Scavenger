@@ -7,39 +7,38 @@ using UnityEngine.EventSystems;
 
 public class CharaDetailUI : MonoBehaviour
 {
+    public static CharaDetailUI inst;
     [SerializeField]
     GameObject UIpanel;
 
     [SerializeField] int maxParty = 4;
     [SerializeField] int maxEquipments;
-    [Space(25), SerializeField]
-    Transform equipmentP;
-    [SerializeField]
-    GameObject equipmentButton;
-    [SerializeField]
-    GameObject newEquipmentButton;
+    //[Space(25), SerializeField]
+    //Transform equipmentP;
+    //[SerializeField]
+    //GameObject equipmentButton;
+    //[SerializeField]
+    //GameObject newEquipmentButton;
 
-    [SerializeField] GameObject inventoryEqPanel;
+    //[SerializeField] GameObject inventoryEqPanel;
     [SerializeField] CharaDetail_InventoryEq inventoryEq;
     [SerializeField] List<ChataDetail_CharaButton> charaButtons;
 
     [SerializeField] GameObject LVLUpPanel;
     [SerializeField] CharaDetail_LVLUp lvlup;
 
-    [Space(25), SerializeField]
-    Transform abilityP;
-    [SerializeField]
-    GameObject abilityButton;
-    [SerializeField]
-    TextMeshProUGUI abilityUpgradeInfo;
+    //[Space(25), SerializeField]
+    //Transform abilityP;
+    //[SerializeField]
+    //GameObject abilityButton;
+    //[SerializeField]
+    //TextMeshProUGUI abilityUpgradeInfo;
 
     [SerializeField] Definer.Item draggingItem;
     [SerializeField] Transform dragImageP;
     [SerializeField] GameObject dragImage;
 
-    [SerializeField]
-    TextMeshProUGUI expAmount;
-    [SerializeField] TutorialData tutorial_unlockAbility;
+    public TextMeshProUGUI expAmount;
     [SerializeField] TutorialData tutorial_equip;
 
     [SerializeField] GameObject warningPanel;
@@ -64,6 +63,10 @@ public class CharaDetailUI : MonoBehaviour
     Vector3 dragImagePos;
     GameObject draggingImage;
 
+    private void Awake()
+    {
+        if (inst == null) inst = this;
+    }
 
     void Start()
     {
@@ -125,7 +128,7 @@ public class CharaDetailUI : MonoBehaviour
 
         inventoryEq.SetButtons();//test
 
-        if (inventory.GetExp() > 0) { tutorialManager.SetTutorial(tutorial_unlockAbility); }
+        if (inventory.GetExp() > 0) { tutorialManager.SetTutorial("LVLUP"); }
         else if (inventory.GetEquipments().Count > 0) { tutorialManager.SetTutorial(tutorial_equip); }
 
        
@@ -138,7 +141,7 @@ public class CharaDetailUI : MonoBehaviour
     }
     public void ChangeChara(Character chara)
     {
-        EndSelectEquipment();
+        //EndSelectEquipment();
 
         displayingChara = chara;
         status = displayingChara.CharaStatus();
@@ -153,8 +156,8 @@ public class CharaDetailUI : MonoBehaviour
 
     public void ResetChara()
     {
-        EndSelectEquipment();
-        ToggleToEquipment();
+        //EndSelectEquipment();
+        //ToggleToEquipment();
 
         displayingChara = null;
         status = new Character.CharacterStatus();
@@ -178,9 +181,9 @@ public class CharaDetailUI : MonoBehaviour
         {
             status = displayingChara.CharaStatus();
 
-            SetEquipmnetButtons();
-            SetAbilityButtons();
-            abilityUpgradeInfo.text = "";
+            //SetEquipmnetButtons();
+            //SetAbilityButtons();
+            //abilityUpgradeInfo.text = "";
             displayingChara.DisplayInfo();
         }
 
@@ -204,93 +207,93 @@ public class CharaDetailUI : MonoBehaviour
             }
         }
 
-        expAmount.text = string.Format("経験のオーブ{0}個",inventory.GetExp());
+        expAmount.text = inventory.GetExp().ToString();
     }
-    public void SetEquipmnetButtons()
-    {
-        if (equipmentP.childCount != 0)
-        {
-            for (int i = 0; i < equipmentP.childCount; i++)
-            {
-                Destroy(equipmentP.GetChild(i).gameObject);
-            }
-        }
-        foreach (Definer.Item item in status.equipments)
-        {
-            var e = Instantiate(equipmentButton, equipmentP);
-            e.GetComponent<CharaDetail_EquipmentButton>().Init(item, infoText,this);
-        }
-        for (int i = 0; i < maxEquipments - status.equipments.Count; i++)
-        {
-            var n = Instantiate(newEquipmentButton, equipmentP);
-            n.GetComponent<CharaDetail_EquipmentButton>().Init(new Definer.Item(), infoText, this);
-        }
-       
-    }
+    //public void SetEquipmnetButtons()
+    //{
+    //    if (equipmentP.childCount != 0)
+    //    {
+    //        for (int i = 0; i < equipmentP.childCount; i++)
+    //        {
+    //            Destroy(equipmentP.GetChild(i).gameObject);
+    //        }
+    //    }
+    //    foreach (Definer.Item item in status.equipments)
+    //    {
+    //        var e = Instantiate(equipmentButton, equipmentP);
+    //        e.GetComponent<CharaDetail_EquipmentButton>().Init(item, infoText,this);
+    //    }
+    //    for (int i = 0; i < maxEquipments - status.equipments.Count; i++)
+    //    {
+    //        var n = Instantiate(newEquipmentButton, equipmentP);
+    //        n.GetComponent<CharaDetail_EquipmentButton>().Init(new Definer.Item(), infoText, this);
+    //    }
 
-    public void StartSelectEquipment(bool e,Definer.Item selected)
-    {
-        selectingEquipment = true;
-        empty = e;
-        selectedEq = selected;
+    //}
 
-        inventory.CloseOptionUI();
-        inventory.ChangeSort(2);
-        inventory.OpenInventory();
-    }
-    public void EndSelectEquipment()
-    {
-        selectingEquipment = false;
-        selectedEq = new Definer.Item();
-    }
+    //public void StartSelectEquipment(bool e,Definer.Item selected)
+    //{
+    //    selectingEquipment = true;
+    //    empty = e;
+    //    selectedEq = selected;
 
-    public void SetAbilityButtons()
-    {
-        if (abilityP.childCount != 0)
-        {
-            for (int i = 0; i < abilityP.childCount; i++)
-            {
-                Destroy(abilityP.GetChild(i).gameObject);
-            }
-        }
-        foreach (Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
-        {
-            if (abilityStatus.locked)
-            {
-                var a = Instantiate(abilityButton, abilityP);
-                a.GetComponent<CharaDetail_AbilityButton>().Init(abilityStatus, 0, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
-            }
-            else if (abilityStatus.abilityData.upgradeAbility != null)
-            {
-                Ability.AbilityStatus upgrade = new Ability.AbilityStatus(abilityStatus.abilityData.upgradeAbility, 0);
-                var a = Instantiate(abilityButton, abilityP);
-                a.GetComponent<CharaDetail_AbilityButton>().Init(upgrade, 1, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
-            }
-        }
-    }
+    //    inventory.CloseOptionUI();
+    //    inventory.ChangeSort(2);
+    //    inventory.OpenInventory();
+    //}
+    //public void EndSelectEquipment()
+    //{
+    //    selectingEquipment = false;
+    //    selectedEq = new Definer.Item();
+    //}
 
-    public void ToggleToEquipment()
-    {
-        warningPanel.SetActive(false);
-        lvlup.ClosePanel();
-        inventoryEq.SetButtons();
-    }
-    public void ToggleToLVLUp()
-    {
-        ResetDraggingItem();
-        inventoryEq.ClosePanel();
-        lvlup.OpenPanel();
-        if (!displayingChara) { warningPanel.SetActive(true); }
-    }
+    //public void SetAbilityButtons()
+    //{
+    //    if (abilityP.childCount != 0)
+    //    {
+    //        for (int i = 0; i < abilityP.childCount; i++)
+    //        {
+    //            Destroy(abilityP.GetChild(i).gameObject);
+    //        }
+    //    }
+    //    foreach (Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
+    //    {
+    //        if (abilityStatus.locked)
+    //        {
+    //            var a = Instantiate(abilityButton, abilityP);
+    //            a.GetComponent<CharaDetail_AbilityButton>().Init(abilityStatus, 0, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
+    //        }
+    //        else if (abilityStatus.abilityData.upgradeAbility != null)
+    //        {
+    //            Ability.AbilityStatus upgrade = new Ability.AbilityStatus(abilityStatus.abilityData.upgradeAbility, 0);
+    //            var a = Instantiate(abilityButton, abilityP);
+    //            a.GetComponent<CharaDetail_AbilityButton>().Init(upgrade, 1, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
+    //        }
+    //    }
+    //}
 
-    public void ToggleToPersonality()
-    {
-        guideMessage.SetWaringText("この機能は未実装です...");
-    }
+    //public void ToggleToEquipment()
+    //{
+    //    warningPanel.SetActive(false);
+    //    lvlup.ClosePanel();
+    //    inventoryEq.SetButtons();
+    //}
+    //public void ToggleToLVLUp()
+    //{
+    //    ResetDraggingItem();
+    //    inventoryEq.ClosePanel();
+    //    lvlup.OpenPanel();
+    //    if (!displayingChara) { warningPanel.SetActive(true); }
+    //}
+
+    //public void ToggleToPersonality()
+    //{
+    //    guideMessage.SetWaringText("この機能は未実装です...");
+    //}
 
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)
     {
-        ToggleToEquipment();
+        //ToggleToEquipment();
         draggingItem = item;
         draggFrom = draggChara;
         draggingImage = Instantiate(dragImage, dragImageP);

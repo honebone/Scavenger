@@ -45,9 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u81EA\u8EAB\u306EHP\u304C50\uFF05\u4EE5\u4E0B\u306E\u6642"
+    conditionInfo: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C50\uFF05\u4EE5\u4E0B\u306E\u6642"
     hideValues: 1
-    exInfo: "50\uFF05\u3092\u8D85\u3048\u3066\u6E1B\u5C11\u3057\u305FHP1\uFF05\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8\u306E1\uFF05\u3092\u56DE\u5FA9\u3059\u308B"
+    exInfo: "50\uFF05\u3092\u8D85\u3048\u3066\u6E1B\u5C11\u3057\u305F<sprite name=HP>1\uFF05\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8\u306E1\uFF05\u3092<sprite
+      name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -61,6 +63,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -70,11 +73,37 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   THPercent: 50

@@ -1552,8 +1552,8 @@ public class Character : MonoBehaviour
         AddEVD(next.EVD);
         AddACC(next.ACC);
 
-        List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
-        if (unlockEqSlotLVL.Contains(LVL + 1))
+        //List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
+        if (GameManager.gameParams.unlockEqSlotLVL.Contains(LVL + 1))
         {
             charaStatus.equipmentSlots++;
         }

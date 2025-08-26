@@ -9,17 +9,24 @@ public class CharaDetail_InventoryEq : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject equipmentButton;
 
-    [SerializeField] CharaDetailUI detailUI;
-    [SerializeField] InfoText infoText;
-    [SerializeField] MouseOverUI mouseOver;
-    [SerializeField] Inventory inventory;
+     CharaDetailUI detailUI;
+     InfoText infoText;
+    MouseOverUI mouseOver;
+    Inventory inventory;
 
     [SerializeField] ScrollRect scrollRect;
 
+    private void Start()
+    {
+        inventory = Inventory.inst;
+        infoText = InfoText.inst;
+        mouseOver=MouseOverUI.inst;
+        detailUI = CharaDetailUI.inst;
+    }
 
     public void SetButtons()
     {
-        panel.SetActive(true);
+        //panel.SetActive(true);
 
         if (content.childCount != 0)
         {

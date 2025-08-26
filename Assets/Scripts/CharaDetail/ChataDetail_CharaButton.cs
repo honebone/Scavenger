@@ -13,8 +13,21 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     [SerializeField] Transform equipmentsP;
     [SerializeField] GameObject eqButton;
+    public ParticleSystem canLVLUP;
 
     Character character;
+    Character.CharacterStatus status;
+    int expCount;
+    int expReq;
+
+    Inventory inventory;
+    LVLUpManager LVLUpManager;
+
+    private void Start()
+    {
+        inventory = Inventory.inst;
+        LVLUpManager = LVLUpManager.inst;
+    }
 
     public void SetChara(Character chara)
     {
@@ -39,7 +52,19 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     public void Refresh()
     {
-        Character.CharacterStatus status = character.CharaStatus();
+       status = character.CharaStatus();
+        expCount = Inventory.inst.GetExp();
+        expReq = status.GetNextExp() - status.exp;
+        if (expCount >= expReq)
+        {
+            frame.color = Definer.colorRef.expOrb;
+            canLVLUP.Play();
+        }
+        else
+        {
+            frame.color=Color.white;
+            canLVLUP.Stop();
+        }
 
         foreach (Definer.Item item in status.equipments)
         {
@@ -84,12 +109,41 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if(character != null) { SelectChara(); }
+        if (character != null)
+        {
+            if (Input.GetMouseButtonDown(1)) SelectChara();
+            if (Input.GetMouseButtonDown(0)&& expCount >= expReq)
+            {
+                if (!LVLUpManager.GetInLVLUp())
+                {
+                    if (inventory.GetExp() >= expReq)
+                    {
+                        inventory.AddExp(-expReq, false);
+                        character.GainEXP(expReq);
+                    }
+                    else
+                    {
+                        infoText.AddWarningText("経験のオーブ数の不一致");
+                    }
+                }
+            }
+        }
     }
 
     public void OnMouseEnter()
     {
-        mouseOver.SetUI("クリックでキャラ詳細", false);
+        string s = "右クリックでキャラ詳細\n\n";
+        s += $"次のLVL UPに必要なexp：{expReq}\n";
+        if (expCount >= expReq)
+        {
+            s += "LVL UP 可能\n右クリックでLVL UP!".ColorStr(Definer.colorRef.expOrb);
+        }
+        else
+        {
+            s += "経験のオーブが足りない\n".ColorStr(Color.red);
+
+        }
+        mouseOver.SetUI(s, false);
     }
     public void OnMouseExit()
     {

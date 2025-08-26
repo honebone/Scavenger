@@ -259,8 +259,8 @@ public class StatusGrowth
 
         if (player)
         {
-            List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
-            if (unlockEqSlotLVL.Contains(nextLVL))
+            //List<int> unlockEqSlotLVL = new List<int> { 4, 6, 8, 10 };
+            if (GameManager.gameParams.unlockEqSlotLVL.Contains(nextLVL))
             {
                 s += "装備品スロット+1\n";
             }

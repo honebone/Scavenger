@@ -15,7 +15,8 @@ MonoBehaviour:
   fileName: P_Commander
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6307\u63EE\u5B98"
-  introduction: "\u30D5\u30A9\u30FC\u30AB\u30B9\u306E\u4ED8\u4E0E\u306B\u9577\u3051\u305F\u706B\u529B\u30B5\u30DD\u30FC\u30BF\u30FC\n\u5473\u65B9\u304C\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u306B\u5FDC\u3058\u3066\u5473\u65B9\u5168\u4F53\u3092\u5F37\u5316\u3059\u308B"
+  introduction: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u306E\u4ED8\u4E0E\u306B\u9577\u3051\u305F\u706B\u529B\u30B5\u30DD\u30FC\u30BF\u30FC\n\u5473\u65B9\u304C<sprite
+    name=focus>\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u306B\u5FDC\u3058\u3066\u5473\u65B9\u5168\u4F53\u3092\u5F37\u5316\u3059\u308B\n\u56FA\u6709\u7279\u6027\u3092\u751F\u304B\u3057\u304D\u308B\u306B\u306F\u7DF4\u5EA6\u304C\u5FC5\u8981"
   difficulty: "\u9AD8"
   preferFront: 0
   preferMid: 1
@@ -26,10 +27,12 @@ MonoBehaviour:
   - "\u5F37\u5316"
   subRole:
   - "\u5F31\u4F53"
+  - "\u53EC\u559A"
   characterTags: 02000000
   immovable: 0
   notChara: 0
   player: 1
+  boss: 0
   playable: 1
   variableSprites:
   - {fileID: 8558952446933477945, guid: 46411515fc235514693a795ed2d40951, type: 3}

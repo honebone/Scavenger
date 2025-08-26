@@ -34,21 +34,9 @@ public class Deploy_CharaButton : MonoBehaviour
 
     public void SetDragChara()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            //string info = string.Format("\n\"{0}\"\n\n", charaStatus.characterData.introduction).ColorStr(Definer.colorRef.emphasize);
-            //info += string.Format("使用難易度：{0}\n得意なポジション：{1}\n\n", charaStatus.characterData.difficulty, charaStatus.characterData.preferredPos);
-            //info += charaStatus.GetInfo();
-            //info += "\n◇◇特性◇◇\n";
-            //foreach (GameObject obj in charaStatus.passiveAbilities)
-            //{
-            //    PassiveAbility pa = obj.GetComponent<PassiveAbility>();
-            //    info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
-            //}
-            infoText.SetText(charaStatus.charaName, charaStatus.characterData.GetInfo(false), charaStatus.characterData.GetInfo(true));
-            FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons_Deploy(charaStatus.abilitiesStatus);
-            deployCharacterManager.StartTutorial_Info();
-        }
+        infoText.SetText(charaStatus.charaName, charaStatus.characterData.GetInfo(false), charaStatus.characterData.GetInfo(true));
+        FindObjectOfType<AbilityButtonPanel>().SetAbilityButtons_Deploy(charaStatus.abilitiesStatus);
+
         if (Input.GetMouseButtonDown(0))
         {
             deployCharacterManager.SetDraggingChara(charaStatus);
