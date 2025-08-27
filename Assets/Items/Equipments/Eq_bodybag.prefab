@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1516991912851836257}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_bodyBag
+  m_Name: Eq_bodybag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Eq_bodybag
   noSimpleInfo: 0
-  simpleInfo: "\u6B7B\u4F53\u3092\u9664\u53BB\u3057\u305F\u3068\u304D\u3001\u524D\u30FB\u4E2D\u5217\u306E\u3069\u3053\u304B\u306B<link=C_S_Zombie><u>\u30BE\u30F3\u30D3</u></link>\u3092<sprite
+  simpleInfo: "[\u6B7B\u4F53]\u304C\u9664\u53BB\u3055\u308C\u305F\u3068\u304D\u3001\u524D\u30FB\u4E2D\u5217\u306E\u3069\u3053\u304B\u306B<link=C_S_Zombie><u>\u30BE\u30F3\u30D3</u></link>\u3092<sprite
     name=summon><color=#00F4FF>\u53EC\u559A</color>\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
@@ -83,10 +83,10 @@ MonoBehaviour:
     equipmentInfo: 
   actionStatus:
     actionName: "\u507D\u306E\u6B7B\u4F53\u888B"
-    conditionInfo: "[\u6B7B\u4F53]\u3092\u7834\u58CA\u3057\u305F\u3068\u304D"
+    conditionInfo: "[\u6B7B\u4F53]\u304C\u7834\u58CA\u3055\u308C\u305F\u3068\u304D\n(\u5404\u30E9\u30A6\u30F3\u30C91\u56DE)"
     targetInfo: "\u5473\u65B9\u5074\u306E\u524D\u30FB\u4E2D\u5217\u306E\u7A7A\u3044\u3066\u3044\u308B1\u30DE\u30B9"
     AModInfo: 
-    actionInfo: "\u3053\u306E\u80FD\u529B\u306F2\u30E9\u30A6\u30F3\u30C9\u306B1\u5EA6\u767A\u52D5\u53EF\u80FD"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -296,7 +296,6 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-  CDRound: 2
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -18,9 +18,10 @@ public class CharaDetail_CharaEqButton : MonoBehaviour
 
     bool empty = true;
     bool locked = true;
+    int unlockLvl;
     Definer.Item item;
 
-   public void Init_Empty(bool l, InfoText it, CharaDetailUI d, MouseOverUI m,ChataDetail_CharaButton cb)
+   public void Init_Empty(bool l, InfoText it, CharaDetailUI d, MouseOverUI m,ChataDetail_CharaButton cb,int ul=0)
     {
         infoText = it;
         detailUI = d;
@@ -28,6 +29,7 @@ public class CharaDetail_CharaEqButton : MonoBehaviour
         charaButton = cb;
         character = charaButton.GetCharacter();
         locked = l;
+        unlockLvl = ul;
 
         if (locked)
         {
@@ -91,6 +93,10 @@ public class CharaDetail_CharaEqButton : MonoBehaviour
         if (!empty)
         {
             mouseOver.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\n{item.GetInfo(true)}", true);
+        }
+        else if (locked)
+        {
+            mouseOver.SetUI($"LVL {unlockLvl}Ç≈ÉAÉìÉçÉbÉN", false);
         }
     }
     public void OnMouseExit()

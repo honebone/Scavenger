@@ -315,6 +315,7 @@ public class Action : MonoBehaviour
                 if (ignoreShield) { attack += $"{"shield".ToSpr_withLink()}を無視\n"; }
                 if (sureHit) { attack += "必中\n"; }
                 if (unevadable) { attack += $"対象の{"EVD".ToSpr_withLink()}を無視\n"; }
+                //if (exDMG_mul != 0) { attack += $"与ダメージ+{exDMG_mul}％\n"; }
                 s += attack.ColorStr(Color.gray);
             }
             CheckNewBlock();

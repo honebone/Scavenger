@@ -110,10 +110,10 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 35
-    ATKMod_max: 50
-    INTMod_min: 175
-    INTMod_max: 175
+    ATKMod_min: 25
+    ATKMod_max: 40
+    INTMod_min: 150
+    INTMod_max: 150
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -672,4 +672,4 @@ MonoBehaviour:
     targetCount: 1
     actionTargets:
     - {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargetsInt: 07000000

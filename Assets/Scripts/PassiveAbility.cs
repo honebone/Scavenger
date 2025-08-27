@@ -60,9 +60,11 @@ public class PassiveAbility : MonoBehaviour
             string amodInfo = "";
             foreach (GameObject actionMod in AMods)
             {
-                amodInfo += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+                amodInfo = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+                if(amodInfo != "") s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo()+"\n";
+
             }
-            if (amodInfo != "") s += amodInfo + "\n";
+            //if (amodInfo != "") s += amodInfo + "\n";
             if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
             if (!skipGetInfo && GetPAInfo_Base() != "") s += GetPAInfo_Base() + "\n\n";
             if (PAInfo_end != "") { s += PAInfo_end + "\n"; }

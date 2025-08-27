@@ -12645,6 +12645,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e3c828c09ce106644b0ef75b606cef87, type: 2}
   - {fileID: 11400000, guid: f15f5e610082bc14b9c783a159ca815f, type: 2}
   - {fileID: 11400000, guid: ab4fbf7fd4f869040a596af707198f3c, type: 2}
+  - {fileID: 11400000, guid: c271ebfc6ad29c2499911b9fd1f1846a, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}

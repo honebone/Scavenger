@@ -8,8 +8,6 @@ public class Eq_Bodybag : PA_Equipment
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] ActionMod.ActionModStatus actionModStatus;
 
-    [SerializeField] int CDRound;
-    int CD;
     bool available;
 
     //public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
@@ -33,36 +31,25 @@ public class Eq_Bodybag : PA_Equipment
     public override void OnBattleStart()
     {
         available = true;
-        CD = 0;
     }
     public override void OnRoundStart()
     {
-        if (CD > 0)
+        if (!available)
         {
-            CD--;
-            if (CD == 0)
-            {
-                Log("再発動可能");
-                available = true;
-            }
+            Log("再発動可能");
+            available = true;
         }
     }
 
-    public override void OnKill(List<Action.OnKillParams> onKillParamsList)
+    public override void OnSomeoneDied(Character died)
     {
         if (available)
         {
-            foreach (Action.OnKillParams onKillParams in onKillParamsList)
+            if (died.CharaStatus().characterTags.Contains(CharacterData.CharacterTag.corpse))
             {
-                if (onKillParams.target.CharaStatus().characterTags.Contains(CharacterData.CharacterTag.corpse))
+                if (Enqueue_SearchTarget(actionStatus, condition, 1))
                 {
-                    infoText.AddDebugText("corpseKilled");
-                    if(Enqueue_SearchTarget(actionStatus, condition, 1))
-                    {
-                        available = false;
-                        CD = CDRound;
-                    }
-                    break;
+                    available = false;
                 }
             }
         }
@@ -71,7 +58,6 @@ public class Eq_Bodybag : PA_Equipment
     public override void OnBattleEnd()
     {
         available = true;
-        CD = 0;
     }
     public override string GetPAInfo_Base()
     {
@@ -81,6 +67,6 @@ public class Eq_Bodybag : PA_Equipment
     }
     public override string GetCurrentStateInfo()
     {
-        return (available) ? "発動可能" : $"再発動まで{CD}ラウンド";
+        return (available) ? "発動可能" : $"発動不可";
     }
 }

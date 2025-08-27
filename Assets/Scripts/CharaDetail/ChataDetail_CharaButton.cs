@@ -52,7 +52,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     public void Refresh()
     {
-       status = character.CharaStatus();
+        status = character.CharaStatus();
         expCount = Inventory.inst.GetExp();
         expReq = status.GetNextExp() - status.exp;
         if (expCount >= expReq)
@@ -62,7 +62,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
         }
         else
         {
-            frame.color=Color.white;
+            frame.color = Color.white;
             canLVLUP.Stop();
         }
 
@@ -76,10 +76,12 @@ public class ChataDetail_CharaButton : MonoBehaviour
             var n = Instantiate(eqButton, equipmentsP);
             n.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(false, infoText, detailUI, mouseOver, this);
         }
-        for (int i = 0; i < 8 - status.equipmentSlots; i++)
+        List<int> unlickEqSlotLvl = GameManager.gameParams.unlockEqSlotLVL;
+
+        for (int i = status.equipmentSlots - 4; i < 4; i++)
         {
             var l = Instantiate(eqButton, equipmentsP);
-            l.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(true, infoText, detailUI, mouseOver, this);
+            l.GetComponent<CharaDetail_CharaEqButton>().Init_Empty(true, infoText, detailUI, mouseOver, this, unlickEqSlotLvl[i]);
         }
     }
     public void ResetValue()

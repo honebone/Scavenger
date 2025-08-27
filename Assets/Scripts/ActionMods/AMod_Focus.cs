@@ -7,6 +7,7 @@ public class AMod_Focus : ActionMod
     [SerializeField] bool onlyAttack;
     [SerializeField] bool onlyAbility;
     [SerializeField] bool onlyPassive;
+    public bool notFocus;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
         if (!statusRef.DoesAttack() && onlyAttack) return actionsStatus;
@@ -16,7 +17,7 @@ public class AMod_Focus : ActionMod
         //actionModStatus.consumeFocus = true;
         for (int i = 0; i < statusRef.actionTargets.Count; i++)
         {
-            if (statusRef.actionTargets[i].CharaStatus().focused > 0)
+            if (statusRef.actionTargets[i].CharaStatus().focused > 0 != notFocus)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
             }
