@@ -50,6 +50,12 @@ public static class Extentions
         return dice < chance;
     }
 
+    /// <summary>x~y-1‚Ü‚Å</summary>
+    public static int Range(this Vector2Int vector2)
+    {
+        return  Random.Range(vector2.x, vector2.y);
+    }
+
     public static int ChoiceWithWeight(this float[] weight)
     {
         float sum = 0;

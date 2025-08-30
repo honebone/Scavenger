@@ -165,8 +165,8 @@ public class Character : MonoBehaviour
             s += $"{"ACT".ToSpr_withLink()}：{ACT}\n";
             s += string.Format("ラウンド毎ターン数：{0}\n\n", turnPerRound);
 
-            if (GHeal != 100) { s += string.Format("与える回復量：{0}％\n", GHeal); }
-            if (RHeal != 100) { s += string.Format("受ける回復量：{0}％\n", RHeal); }
+            if (GHeal != 0) { s += $"与える回復量：{GHeal.Evaluate()}％\n"; }
+            if (RHeal != 0) { s += $"受ける回復量：{RHeal.Evaluate()}％\n"; }
 
             foreach (StEResist res in StEResists)
             {
@@ -1607,6 +1607,7 @@ public class Character : MonoBehaviour
     }
 
     public bool CheckAlive() { return !charaStatus.dead; }
+    /// <summary>player側かどうかを返す</summary>
     public bool PlayerPos() { return charaStatus.position.IsPlayerPos(); }
     /// <summary>playerかどうかを返す(player側のキャラかではない)</summary>
     public bool IsPlayer() { return charaStatus.playable; }
@@ -2006,6 +2007,15 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
+    public void OnSomeoneSummoned(Character summoner, List<Action.OnSummonParams> onSummonParamsList)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneSummoned(summoner, onSummonParamsList); }
+            RemovePA_Execute();
+        }
+    }
+
     public void OnSomeoneDied(Character died)
     {
         if (BattleManager.inBattle)

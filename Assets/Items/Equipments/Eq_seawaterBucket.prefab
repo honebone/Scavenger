@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_seawaterBucket
+  noSimpleInfo: 0
   simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#C900FF><sprite
     name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u306E\u3042\u308B\u6575\u5168\u3066\u306B<sprite
     name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B"
@@ -58,7 +59,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 10
+    ATK_mul: 25
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -81,31 +82,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 83ce021f65572e746bb591f3f9db0c91, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 10
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   attack:
     actionName: "\u6D77\u6C34\u30D0\u30B1\u30C4"
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
@@ -131,6 +107,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -212,6 +189,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -248,6 +227,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE:
     - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}

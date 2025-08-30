@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_ThornArmor
+  noSimpleInfo: 0
   simpleInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B\u306B<color=#C900FF><sprite
     name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3092\u4ED8\u4E0E"
   PAInfo_start: 
@@ -53,7 +54,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 20
+    maxHP_mul: 30
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: d3709688bae15a449bad55754f941236, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 20
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   actionStatus:
     actionName: "\u8328\u306E\u93A7"
     conditionInfo: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
@@ -130,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -194,7 +171,9 @@ MonoBehaviour:
       applyChance: 100
       stack: 2
       value: 35
+      dontApplyBonus: 0
       refATK: 1
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -218,6 +197,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

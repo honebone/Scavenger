@@ -15,15 +15,19 @@ MonoBehaviour:
   fileName: E_Mimic
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30DF\u30DF\u30C3\u30AF"
-  difficulty: 
   introduction: 
-  preferredPos: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 08000000
   immovable: 0
   notChara: 0
   player: 0
+  boss: 0
   playable: 0
-  obstacle: 0
   variableSprites:
   - {fileID: 7193129959554624370, guid: 9f9b46f2279322344b116ec760bfb62e, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -44,6 +48,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 0
   maxHP: 100
   maxSAN: 0
@@ -55,15 +60,8 @@ MonoBehaviour:
   ACC: 80
   ACT: 7
   turnPerRound: 3
-  GHeal: 100
-  RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
+  GHeal: 0
+  RHeal: 0
   debuffRes: 0
   StEResists:
   - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}

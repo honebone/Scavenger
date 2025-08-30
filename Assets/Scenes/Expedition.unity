@@ -282,7 +282,7 @@ MonoBehaviour:
     centerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
     lowerMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 2eb6072248bdf954c8f1512e6ff475f9, type: 2}
+    upperBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
     atRandom: []
@@ -12412,6 +12412,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -12646,6 +12648,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f15f5e610082bc14b9c783a159ca815f, type: 2}
   - {fileID: 11400000, guid: ab4fbf7fd4f869040a596af707198f3c, type: 2}
   - {fileID: 11400000, guid: c271ebfc6ad29c2499911b9fd1f1846a, type: 2}
+  - {fileID: 11400000, guid: d042bdfb2d7584c4396c7e1e49021cad, type: 2}
+  - {fileID: 11400000, guid: c4a5216f25d22a74793e280d3c951ec2, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -18694,6 +18698,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 200
     guaranteedMove: 0
     moveRandomDir: 0

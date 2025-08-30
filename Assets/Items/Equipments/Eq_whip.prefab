@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_whip
+  noSimpleInfo: 0
   simpleInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u304C\u306A\u3044\u6575\u3078\u306E\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
     CRITC: 0
     CRITD: 0
     EVD: 0
-    ACC: 5
+    ACC: 10
     ACT: 0
     turnPerRound: 0
     GHeal: 0
@@ -80,32 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 91d9f580a3c1ffa4dba23d2bdeeac59d, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 5
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods:
-    - {fileID: 5067205928035942080, guid: 7db7907066d8ec84dbdc7dc777c9ed8e, type: 3}
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

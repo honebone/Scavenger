@@ -47,8 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Eq_TokenOfFaith
   noSimpleInfo: 0
-  simpleInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u306E\u306A\u3044\u6575\u3078\u306E\u4E0E\u30C0\u30E1\u30FC\u30B8\u304C\u6E1B\u5C11\u3059\u308B\u304C\u3001<sprite
-    name=focus>\u306E\u3042\u308B\u6575\u3078\u306E\u653B\u6483\u304C\u5927\u5E45\u306B\u5F37\u5316\u3055\u308C\u308B"
+  simpleInfo: "\u3059\u3079\u3066\u306E\u653B\u6483\u304C\u5BFE\u8C61\u306E<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8\u304C\u5927\u5E45\u306B\u5897\u52A0\u3057\u3066<color=#00FFFF><sprite
+    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u7121\u8996\u3057\u3001\u5FC5\u4E2D\u3068\u306A\u308B\n\n<sprite
+    name=focus>\u306E\u306A\u3044\u6575\u3078\u306E\u653B\u6483\u306F\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8\u304C\u5927\u5E45\u306B\u6E1B\u5C11\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -124,7 +126,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aea97ca6eaf46714089dfddcadf86c9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

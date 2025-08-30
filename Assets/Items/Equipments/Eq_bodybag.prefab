@@ -54,7 +54,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 0
+    maxHP_mul: 20
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     CRITD: 0
     EVD: 0
     ACC: 0
-    ACT: 0
+    ACT: 4
     turnPerRound: 0
     GHeal: 0
     RHeal: 0
@@ -190,6 +190,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

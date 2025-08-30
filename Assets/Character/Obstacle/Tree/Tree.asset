@@ -15,15 +15,19 @@ MonoBehaviour:
   fileName: O_Tree_Forrest
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6728"
-  difficulty: 
   introduction: 
-  preferredPos: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 0900000007000000
   immovable: 1
   notChara: 0
   player: 0
+  boss: 0
   playable: 0
-  obstacle: 1
   variableSprites:
   - {fileID: 7928818958794649355, guid: 2ea0c9ca2f48e2d43ab3d464d69f8cc3, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -42,6 +46,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 0
   maxHP: 30
   maxSAN: 0
@@ -53,15 +58,8 @@ MonoBehaviour:
   ACC: 0
   ACT: 3
   turnPerRound: 1
-  GHeal: 100
-  RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
+  GHeal: 0
+  RHeal: 0
   debuffRes: 0
   StEResists:
   - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}

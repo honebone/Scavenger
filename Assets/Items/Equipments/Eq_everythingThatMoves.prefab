@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_everythingThatMoves
+  noSimpleInfo: 0
   simpleInfo: "\u6575\u304C\u79FB\u52D5\u3059\u308B\u3068\u3001\u305D\u306E\u6575\u306B<sprite
     name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B"
   PAInfo_start: 
@@ -57,7 +58,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 25
+    ATK_mul: 35
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -65,7 +66,7 @@ MonoBehaviour:
     CRITC: 0
     CRITD: 0
     EVD: 0
-    ACC: 20
+    ACC: 25
     ACT: 0
     turnPerRound: 0
     GHeal: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: e3519a02bdc15094abe28ff9ff8285b9, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 25
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 20
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   attack:
     actionName: "\u52D5\u304F\u3082\u306E\u5168\u3066"
     conditionInfo: "\u6575\u304C\u79FB\u52D5\u3057\u305F\u3068\u304D"
@@ -130,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -211,6 +188,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -247,6 +226,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []

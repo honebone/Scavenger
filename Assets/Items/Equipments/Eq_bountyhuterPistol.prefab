@@ -46,11 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_bountyhuterPistol
+  noSimpleInfo: 0
   simpleInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3059\u308B\u3068\u3001<color=#C30000><sprite
     name=ATK><link=T_ATK><u>ATK</u></link></color>\u304C\u5897\u52A0\r\n\r\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001<sprite
     name=focus>\u306E\u3042\u308B\u65751\u4F53\u306B<sprite name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3057\u3066\u3001\u5BFE\u8C61\u306E<sprite
     name=focus>\u3092\u6D88\u8CBB\u3059\u308B"
-  PAInfo_start: 
+  PAInfo_start: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B(\u6700\u592710)\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<color=#C30000><sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>+10\uFF05"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -81,33 +83,7 @@ MonoBehaviour:
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c43edcebdf78de54baa49c8cf78298a9, type: 2}
-    equipmentInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B(\u6700\u592710)\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<color=#C30000><sprite
-      name=ATK><link=T_ATK><u>ATK</u></link></color>+8\uFF05"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 7
-      CRITD: 15
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
+    equipmentInfo: 
   actionStatus:
     actionName: 
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
@@ -133,6 +109,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -214,6 +191,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -250,6 +229,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE:
     - {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
@@ -260,7 +240,7 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   maxCount: 10
-  ATKPerCOunt: 8
+  ATKPerCOunt: 10
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

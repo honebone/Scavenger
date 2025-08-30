@@ -29,6 +29,7 @@ MonoBehaviour:
   immovable: 0
   notChara: 0
   player: 1
+  boss: 0
   playable: 1
   variableSprites:
   - {fileID: 7582409335243652064, guid: 882f3d2cf383aa445ac4bdb246ed220b, type: 3}
@@ -67,8 +68,8 @@ MonoBehaviour:
   ACC: 98
   ACT: 10
   turnPerRound: 1
-  GHeal: 100
-  RHeal: 100
+  GHeal: 0
+  RHeal: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

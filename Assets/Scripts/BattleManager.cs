@@ -468,6 +468,13 @@ public class BattleManager : MonoBehaviour
         //    positionManager.OnBattleStart();
         //}
     }
+    public void Trigger_OnSomeoneSummoned(Character summoner, List<Action.OnSummonParams> onSummonParamsList)
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnSomeoneSummoned(summoner,onSummonParamsList);
+        }
+    }
     public void Trigger_OnSomeoneDied(Character died)
     {
         foreach (Character character in charactersManager.GetExistingCharacters_All())

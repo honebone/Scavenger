@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_calamityCane
+  noSimpleInfo: 0
   simpleInfo: "\u6575\u306B\u4ED8\u4E0E\u3057\u305F<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B\r\n\r\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u65751\u4F53\u306B<sprite
     name=INT><color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u3092\u3059\u308B\r\n\u3053\u308C\u3092\u30AB\u30A6\u30F3\u30C8\u306E\u6570\u3060\u3051\u7E70\u308A\u8FD4\u3059"
   PAInfo_start: 
@@ -59,7 +60,7 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 25
+    INT_mul: 40
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: f783378db0081e843b64d09979e3764c, type: 2}
     equipmentInfo: "\u4ED8\u4E0E\u3057\u305F<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 25
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   attack:
     actionName: "\u5384\u707D\u306E\u6756"
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
@@ -130,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -211,6 +188,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -247,6 +226,7 @@ MonoBehaviour:
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []

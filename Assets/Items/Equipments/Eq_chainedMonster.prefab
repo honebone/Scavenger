@@ -61,7 +61,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 15
+    ATK_mul: 20
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 25
-    ATKMod_max: 75
+    ATKMod_min: 100
+    ATKMod_max: 100
     INTMod_min: 0
     INTMod_max: 0
     trueATKDMG: 0
@@ -194,6 +194,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -297,8 +299,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 25
-    shieldPercent_max: 25
+    shieldPercent_min: 50
+    shieldPercent_max: 50
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -308,7 +310,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 50
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -332,6 +336,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

@@ -65,8 +65,8 @@ MonoBehaviour:
   ACC: 1000
   ACT: 100
   turnPerRound: 4
-  GHeal: 100
-  RHeal: 100
+  GHeal: 0
+  RHeal: 0
   debuffRes: 0
   StEResists:
   - ResStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}

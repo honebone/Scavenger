@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PA_StEU_Werewolf : PA_StatusEffect
 {
-    [SerializeField] int baseATK;
-    [SerializeField] int ACT;
     [SerializeField] float ATKPerStack;
     [SerializeField] float PROTPerStack;
     [SerializeField] Action.ActionStatus onTurnEnd;
@@ -21,8 +19,6 @@ public class PA_StEU_Werewolf : PA_StatusEffect
 
     public override void OnPAInit()
     {
-        character.AddATK(baseATK, 0);
-        character.AddACT(ACT);
         character.AddATK(0, StEStatus.stack * ATKPerStack);
         character.AddPROT(StEStatus.stack * PROTPerStack);
     }
@@ -36,8 +32,6 @@ public class PA_StEU_Werewolf : PA_StatusEffect
 
     public override void AtTheEnd()
     {
-        character.AddATK(-baseATK, 0);
-        character.AddACT(-ACT);
         character.AddATK(0, StEStatus.stack * ATKPerStack * -1);
         character.AddPROT(StEStatus.stack * PROTPerStack * -1);
     }

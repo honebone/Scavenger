@@ -15,15 +15,19 @@ MonoBehaviour:
   fileName: e_test
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u30C6\u30B9\u30C8\u7528\u30A8\u30CD\u30DF\u30FC"
-  difficulty: 
   introduction: 
-  preferredPos: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 
   immovable: 0
   notChara: 0
   player: 0
+  boss: 0
   playable: 0
-  obstacle: 0
   variableSprites:
   - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -40,6 +44,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 0
   maxHP: 100
   maxSAN: 0
@@ -51,15 +56,8 @@ MonoBehaviour:
   ACC: 0
   ACT: 10
   turnPerRound: 1
-  GHeal: 100
-  RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
+  GHeal: 0
+  RHeal: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

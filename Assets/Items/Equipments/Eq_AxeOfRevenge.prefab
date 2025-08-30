@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_AxeOfRevenge
+  noSimpleInfo: 0
   simpleInfo: "\u81EA\u8EAB\u3088\u308A<sprite name=HP><color=#87FF79>HP</color>\u5272\u5408\u304C\u5927\u304D\u3044\u6575\u3078\u306E\u653B\u6483\u306F\u5F37\u5316\u3055\u308C\u308B"
   PAInfo_start: 
   skipGetInfo: 0
@@ -56,7 +57,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 20
+    ATK_mul: 25
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -80,32 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 0e685522f30177942b2b61206b160967, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 20
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods:
-    - {fileID: 5134351097336060804, guid: 732852b6fe4ee154eb29b82f9d14ec34, type: 3}
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

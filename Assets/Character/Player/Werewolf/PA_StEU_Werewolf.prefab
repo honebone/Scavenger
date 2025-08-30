@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: StEU_werewolf
   noSimpleInfo: 0
-  simpleInfo: "<color=#FFFF00><sprite name=ACT><link=T_ACT><u>ACT</u></link></color>+3\r\n\u4ED6\u306E\u30AD\u30E3\u30E9\u304B\u3089\u53D7\u3051\u308B\u56DE\u5FA9\u91CF-50\uFF05\r\n\r\n\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306B\r\n<color=#C30000><sprite
+  simpleInfo: "\u4ED6\u306E\u30AD\u30E3\u30E9\u304B\u3089\u53D7\u3051\u308B\u56DE\u5FA9\u91CF-50\uFF05\r\n\r\n\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306B\r\n<color=#C30000><sprite
     name=ATK><link=T_ATK><u>ATK</u></link></color>+5\uFF05\r\n<color=#8DD1FF><sprite
-    name=PROT><link=T_PROT><u>PROT</u></link></color>-6\r\n\r\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#FFFFFF><sprite
+    name=PROT><link=T_PROT><u>PROT</u></link></color>-3\n\r\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#FFFFFF><sprite
     name=SAN><link=T_SAN><u>SAN</u></link></color>\u304C\u6E1B\u5C11\u3057\u3001<color=#C900FF><sprite
     name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u5F97\u3066\u3001\u78BA\u7387\u3067<color=#DD6300><sprite
     name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u5F97\u308B\r\n\r\n\u30AD\u30E3\u30E9\u306B<color=#C900FF><sprite
@@ -62,7 +62,7 @@ MonoBehaviour:
     maxHP_mul: 0
     maxHP_int: 0
     maxSAN_mul: 0
-    PROT: 0
+    PROT: -15
     ATK_mul: 0
     ATK_int: 0
     INT_mul: 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     CRITD: 0
     EVD: 0
     ACC: 0
-    ACT: 0
+    ACT: 3
     turnPerRound: 0
     GHeal: 0
     RHeal: 0
@@ -85,9 +85,9 @@ MonoBehaviour:
   PATags: 
   StEStatus:
     StEName: "\u4EBA\u72FC"
-    StEInfo: "<color=#FFFF00><sprite name=ACT><link=T_ACT><u>ACT</u></link></color>+3\r\n\u4ED6\u306E\u30AD\u30E3\u30E9\u304B\u3089\u53D7\u3051\u308B\u56DE\u5FA9\u91CF-50\uFF05\r\n\r\n\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306B\r\n<color=#C30000><sprite
+    StEInfo: "\u4ED6\u306E\u30AD\u30E3\u30E9\u304B\u3089\u53D7\u3051\u308B\u56DE\u5FA9\u91CF-50\uFF05\r\n\r\n\u30B9\u30BF\u30C3\u30AF\u3054\u3068\u306B\r\n<color=#C30000><sprite
       name=ATK><link=T_ATK><u>ATK</u></link></color>+5\uFF05\r\n<color=#8DD1FF><sprite
-      name=PROT><link=T_PROT><u>PROT</u></link></color>-6"
+      name=PROT><link=T_PROT><u>PROT</u></link></color>-3"
     StEIcon: {fileID: 21300000, guid: e3c290645d8151742a856ec84318685e, type: 3}
     StEType: 4
     maxStack: 20
@@ -100,10 +100,8 @@ MonoBehaviour:
     stack: 0
     value: 0
     DMGPerTurn: 0
-  baseATK: 0
-  ACT: 3
   ATKPerStack: 5
-  PROTPerStack: -6
+  PROTPerStack: -3
   onTurnEnd:
     actionName: "\u4EBA\u72FC"
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
@@ -129,6 +127,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -193,14 +192,18 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
       guaranteed: 0
       applyChance: 25
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -266,6 +269,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: -50
@@ -277,6 +281,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
@@ -325,6 +330,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -336,6 +342,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
@@ -394,6 +401,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -458,7 +466,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0

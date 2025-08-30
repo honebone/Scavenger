@@ -15,13 +15,18 @@ MonoBehaviour:
   fileName: O_Stalactite
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u937E\u4E73\u77F3"
-  difficulty: 
   introduction: 
-  preferredPos: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 09000000
   immovable: 1
   notChara: 0
   player: 0
+  boss: 0
   playable: 0
   variableSprites:
   - {fileID: 4077295475819443234, guid: 5d74ce756922c9c41b75f0715068709b, type: 3}
@@ -39,6 +44,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 0
   maxHP: 50
   maxSAN: 0
@@ -50,15 +56,8 @@ MonoBehaviour:
   ACC: 0
   ACT: 10
   turnPerRound: 1
-  GHeal: 100
-  RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
+  GHeal: 0
+  RHeal: 0
   debuffRes: 200
   StEResists: []
   StEApplyBonus: []

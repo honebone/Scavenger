@@ -29,6 +29,7 @@ public class Eq_Rasetu : PA_Equipment
     void ResetValue()
     {
         character.AddATK(0, currentValue * -1);
+        character.AddINT(0, currentValue * -1);
 
         stack = 0;
         currentValue = 0;
@@ -36,11 +37,13 @@ public class Eq_Rasetu : PA_Equipment
     void AddValue()
     {
         character.AddATK(0, currentValue * -1);
+        character.AddINT(0, currentValue * -1);
 
         stack = Mathf.Min(stack + 1, maxStack);
         character.AddATK(0, stack * valuePerStack);
+        character.AddINT(0, stack * valuePerStack);
         currentValue = stack * valuePerStack;
-        Log($"{"ATK".ToSpr_withName()}+{valuePerStack}Åì (+{currentValue}Åì)");
+        Log($"{"ATK".ToSpr()}{"INT".ToSpr()}+{valuePerStack}Åì (+{currentValue}Åì)");
     }
 
     public override string GetCurrentStateInfo()

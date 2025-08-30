@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ChataDetail_CharaButton : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
     [SerializeField] MouseOverUI mouseOver;
     [SerializeField] Image charaImage;
     [SerializeField] Image frame;
+    public TextMeshProUGUI lvlText;
 
     [SerializeField] Transform equipmentsP;
     [SerializeField] GameObject eqButton;
@@ -66,6 +68,8 @@ public class ChataDetail_CharaButton : MonoBehaviour
             canLVLUP.Stop();
         }
 
+        lvlText.text=$"LVL {status.level}";
+
         foreach (Definer.Item item in status.equipments)
         {
             var e = Instantiate(eqButton, equipmentsP);
@@ -114,9 +118,9 @@ public class ChataDetail_CharaButton : MonoBehaviour
         if (character != null)
         {
             if (Input.GetMouseButtonDown(1)) SelectChara();
-            if (Input.GetMouseButtonDown(0)&& expCount >= expReq)
+            if (Input.GetMouseButtonDown(0)&& expCount >= expReq&& !LVLUpManager.GetInLVLUp())
             {
-                if (!LVLUpManager.GetInLVLUp())
+                if (!ExpeditionManager.inst.CheckInRoomEvent())
                 {
                     if (inventory.GetExp() >= expReq)
                     {
@@ -127,6 +131,10 @@ public class ChataDetail_CharaButton : MonoBehaviour
                     {
                         infoText.AddWarningText("経験のオーブ数の不一致");
                     }
+                }
+                else
+                {
+                    GuideMessage.inst.SetWaringText("イベント中のLVL UP不可");
                 }
             }
         }

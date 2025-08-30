@@ -17,8 +17,6 @@ public class Eq_OnCast : PA_Equipment
 
     public override void OnCast(Eq_Magic cast)
     {
-        infoText.AddDebugText("ok");
-
         if (available)
         {
             if (targetSelf)

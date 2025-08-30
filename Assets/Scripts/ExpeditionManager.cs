@@ -389,6 +389,17 @@ public class ExpeditionManager : MonoBehaviour
 
         infoText.AddLogText(string.Format("==============<‘æ{0}ŠK‘w>==============", currentPos.x));
 
+        bool SANDMG=false;
+        foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        {
+            if (gameParams.SANDMGChanceOnRoom.Dice())
+            {
+                SANDMG = true;
+                chara.SANDamage(gameParams.SANDMGOnRoom.Range());
+            }
+        }
+        if(SANDMG) yield return new WaitForSeconds(1f);
+
         var r = Instantiate(currentRoom.roomEventManager, REManagerParent);
         r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
         currentRE = r.GetComponent<RoomEvent>();

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_shiningClaw
+  noSimpleInfo: 0
   simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D\u30012\u56DE\u8FFD\u52A0\u3067<sprite
     name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u3059\u308B"
   PAInfo_start: 
@@ -57,12 +58,12 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 10
+    ATK_mul: 20
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 5
+    CRITC: 10
     CRITD: 30
     EVD: 0
     ACC: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 10
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 5
-      CRITD: 30
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   claw:
     actionName: "\u714C\u5203"
     conditionInfo: "\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D(\u884C\u52D5\u6642\u306E\u307F)"
@@ -130,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -211,6 +188,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

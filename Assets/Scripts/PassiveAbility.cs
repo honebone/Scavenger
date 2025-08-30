@@ -262,6 +262,7 @@ public class PassiveAbility : MonoBehaviour
 
     public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }
     public virtual void OnSomeoneFocus(List<Action.OnFocusParams> focusParamsList) { }
+    public virtual void OnSomeoneSummoned(Character summoner,List<Action.OnSummonParams> onSummonParamsList) { }
 
     public virtual void OnSomeoneDied(Character died) { }
     public virtual void OnSomeoneApplyedStE(List<Action.OnApplyStEParams> onApplyStEParamsList) { }

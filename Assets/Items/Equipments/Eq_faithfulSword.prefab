@@ -46,7 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_faithfulSword
-  simpleInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u306E\u3042\u308B\u6575\u306B\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u653B\u6483\u3059\u308B\u3068\u304D\u3001\u653B\u6483\u304C\u5F37\u5316\u3055\u308C\u308B"
+  noSimpleInfo: 0
+  simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u304C\u5BFE\u8C61\u306E<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u3001\u8FFD\u52A0\u306E<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -56,7 +59,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 15
+    ATK_mul: 25
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -80,32 +83,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 0cdbbd5a4434fff4f8465574b4b7601b, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 15
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods:
-    - {fileID: 980131611971298319, guid: c97d96cdea4a31f499131aeadc6f4951, type: 3}
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

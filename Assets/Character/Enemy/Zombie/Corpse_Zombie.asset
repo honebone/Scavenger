@@ -15,15 +15,19 @@ MonoBehaviour:
   fileName: C_Zombie
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u6B7B\u4F53"
-  difficulty: 
   introduction: 
-  preferredPos: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
   characterTags: 0100000009000000
   immovable: 0
   notChara: 0
   player: 0
+  boss: 0
   playable: 0
-  obstacle: 1
   variableSprites:
   - {fileID: 5117224397878284121, guid: 5bda6c144caf604428393407bf05e10a, type: 3}
   spriteOffset: {x: 0, y: 0}
@@ -41,6 +45,7 @@ MonoBehaviour:
     includeTags: []
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
   surviveFatalWounds: 0
   maxHP: 15
   maxSAN: 0
@@ -52,15 +57,8 @@ MonoBehaviour:
   ACC: 0
   ACT: 5
   turnPerRound: 1
-  GHeal: 100
-  RHeal: 100
-  statusGrowth:
-    maxHP: 0
-    ATK: 0
-    INT: 0
-    ACT: 0
-    CRITC: 0
-    CRITD: 0
+  GHeal: 0
+  RHeal: 0
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

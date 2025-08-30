@@ -14,19 +14,19 @@ public class Eq_CommanderWhistle : PA_Equipment
     {
         string focusName = focus.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
         int stack = 0;
-        foreach(var paramsList  in onApplyStEParamsList)
+        foreach (var paramsList in onApplyStEParamsList)
         {
             foreach (var list in paramsList.appliedParams)
             {
-                if(list.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName== focusName)
+                if (list.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName == focusName)
                 {
                     stack += list.stack;
                 }
             }
         }
         count += stack;
-        Log($"カウント+{stack} ({count})");
-        while(count >= stackTH)
+        if (stack > 0) Log($"カウント+{stack} ({count})");
+        while (count >= stackTH)
         {
             Enqueue_Self(actionStatus);
             count -= stackTH;

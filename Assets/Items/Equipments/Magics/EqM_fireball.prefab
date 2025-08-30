@@ -61,7 +61,7 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 5
+    INT_mul: 15
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -172,7 +172,9 @@ MonoBehaviour:
       applyChance: 65
       stack: 2
       value: 15
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -196,6 +198,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

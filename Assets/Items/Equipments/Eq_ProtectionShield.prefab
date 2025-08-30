@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_ProtectionShield
+  noSimpleInfo: 0
   simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<color=#FAED8A><sprite name=buff><link=S_PROT\u4E0A\u6607><u>PROT\u4E0A\u6607</u></link></color>\u3068<color=#FAED8A><sprite
     name=buff><link=S_\u30C7\u30D0\u30D5\u8010\u6027\u4E0A\u6607><u>\u30C7\u30D0\u30D5\u8010\u6027\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
@@ -53,7 +54,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 20
+    maxHP_mul: 40
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: e743d1409bce463448bd93fdc2dc0d17, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 20
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   actionStatus:
     actionName: "\u52A0\u8B77\u306E\u76FE"
     conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
@@ -130,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -194,14 +171,18 @@ MonoBehaviour:
       applyChance: 0
       stack: 2
       value: 100
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 20849c6136550d04e9232dacd303cdfb, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 2
       value: 50
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -225,6 +206,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

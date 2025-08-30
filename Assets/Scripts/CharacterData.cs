@@ -99,8 +99,8 @@ public class CharacterData : ScriptableObject
     public int ACT = 10;
     public int turnPerRound = 1;
 
-    public float GHeal = 100f;
-    public float RHeal = 100f;
+    public float GHeal;
+    public float RHeal;
 
     public float debuffRes;
 

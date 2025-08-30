@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_spikeShield
+  noSimpleInfo: 0
   simpleInfo: "<link=U_\u8A98\u767A\u80FD\u529B><u>\u8A98\u767A\u80FD\u529B</u></link>\u306B\u3088\u308B\u3059\u3079\u3066\u306E\u653B\u6483\u304C<color=#C900FF><sprite
     name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B\r\n\n\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306B<color=#FAED8A><sprite
     name=buff><link=S_\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u3092\u4ED8\u4E0E"
@@ -54,7 +55,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 15
+    maxHP_mul: 25
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -82,32 +83,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c41ab1191e7368447b59f75de3777761, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 15
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods:
-    - {fileID: 4030113796962772151, guid: db6796d61296f1e42bfa781be7bda634, type: 3}
   actionStatus:
     actionName: "\u30B9\u30D1\u30A4\u30AF\u30B7\u30FC\u30EB\u30C9"
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642"
@@ -133,6 +108,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -197,7 +173,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 70
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -221,6 +199,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

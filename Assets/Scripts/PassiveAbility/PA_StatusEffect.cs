@@ -112,6 +112,7 @@ public class PA_StatusEffect : PassiveAbility
         s += $"{simpleInfo}\n";
         if (StEStatus.DoT) { s += $"\n減少HP：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
         if (StEStatus.regen) { s += $"\n回復量：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
+        if (StEStatus.undeletable) { s += "\n消去不可".ColorStr(Definer.colorRef.emphasize); }
         return s;
     }
 
@@ -136,7 +137,7 @@ public class PA_StatusEffect : PassiveAbility
         //if (statModInfo != "") s += statModInfo + "\n";
         if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
         if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }
-        if (StEStatus.undeletable) { s += "\n消去不可"; }
+        if (StEStatus.undeletable) { s += "\n消去不可".ColorStr(Definer.colorRef.emphasize); }
 
         return s;
     }
@@ -157,7 +158,7 @@ public class PA_StatusEffect : PassiveAbility
         }
         else s += $"{simpleInfo}\n";
 
-        if (StEStatus.undeletable) { s += "\n消去不可"; }
+        if (StEStatus.undeletable) { s += "\n消去不可".ColorStr(Definer.colorRef.emphasize); }
 
         return s;
     }

@@ -157,6 +157,9 @@ public class Action : MonoBehaviour
             public float ACT_TH;
             public float ACT;
 
+            public float GHeal_TH;
+            public float GHeal;
+
             public string GetInfo(bool refStatus=false, Character.CharacterStatus status=new Character.CharacterStatus())
             {
                 Character.CharaStatusMod mod = new Character.CharaStatusMod();
@@ -170,6 +173,7 @@ public class Action : MonoBehaviour
                 if (EVD > 0) { info += ToStr(EVD_TH, false, EVD, "EVD", refStatus, mod.EVD); }
                 if (ACC > 0) { info += ToStr(ACC_TH, false, ACC, "ACC", refStatus, mod.ACC); }
                 if (ACT > 0) { info += ToStr(ACT_TH, false, ACT, "ACT", refStatus, mod.ACT); }
+                if (GHeal > 0) { info += ToStr(GHeal_TH, false, GHeal, "—^‚¦‚é‰ñ•œ—Ê", refStatus, mod.GHeal); }
 
                 return info;
             }
@@ -188,6 +192,7 @@ public class Action : MonoBehaviour
                 if (status.EVD - EVD_TH > 0) { mod.EVD = (status.EVD - EVD_TH) * EVD / 100f; }
                 if (status.ACC - ACC_TH > 0) { mod.ACC = (status.ACC - ACC_TH) * ACC / 100f; }
                 if (status.ACT - ACT_TH > 0) { mod.ACT = Mathf.FloorToInt((status.ACT - ACT_TH) * ACT / 100f); }
+                if (status.GHeal - GHeal_TH > 0) { mod.GHeal = Mathf.FloorToInt((status.GHeal - GHeal_TH) * GHeal / 100f); }
                 return mod;
             }
 
@@ -246,7 +251,7 @@ public class Action : MonoBehaviour
         public List<int> actionTargetsInt;
 
         public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0; }
-        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
+        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
         public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
         public string GetTargetInfo()
@@ -737,6 +742,10 @@ public class Action : MonoBehaviour
     public class OnSummonParams
     {
         public ActionParams actionParams;
+        /// <summary>
+        /// null‚Æ‚È‚é‰Â”\«‚ª‚ ‚é‚±‚Æ‚É’ˆÓ!!
+        /// </summary>
+        public Character summoned;
     }
     protected Character actionOwner;
 
@@ -1102,8 +1111,8 @@ public class Action : MonoBehaviour
                                     float drainf = totalDMG * actionsStatus[i].drain / 100f;
 
                                     //drainf *= (100f + actionsStatus[i].exHeal_mul) / 100;
-                                    drainf *= ownerStatus.GHeal / 100;
-                                    drainf *= ownerStatus.RHeal / 100;
+                                    drainf *=(100f+ ownerStatus.GHeal) / 100;
+                                    drainf *= (100f+ownerStatus.RHeal) / 100;
 
                                     int drain = Mathf.Max(0, drainf.ToInt());
 
@@ -1176,14 +1185,14 @@ public class Action : MonoBehaviour
                         float fheal;
                         fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
                         fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
-                        if(actionsStatus[i].healRegain_max > 0)
+                        if (actionsStatus[i].healRegain_max > 0)
                         {
                             int decreasedHP = targetStatus.maxHP - targetStatus.HP;
                             fheal += decreasedHP * Random.Range(actionsStatus[i].healRegain_min, actionsStatus[i].healRegain_max) / 100f;
                         }
                         fheal *= (100f + actionsStatus[i].exHeal_mul) / 100;
-                        fheal *= ownerStatus.GHeal / 100;
-                        fheal *= targetStatus.RHeal / 100;
+                        fheal *= (100f + ownerStatus.GHeal) / 100;
+                        fheal *= (100f + targetStatus.RHeal) / 100;
                         int heal = Mathf.Max(0, fheal.ToInt());
                         heal += actionsStatus[i].trueHeal;
 
@@ -1194,7 +1203,7 @@ public class Action : MonoBehaviour
                         }
                         onHealParams.healValue = heal;
 
-                        if(!notChara) actionOwner.GetBattleReport().GHeal += heal;
+                        if (!notChara) actionOwner.GetBattleReport().GHeal += heal;
                         target.Heal(heal, actionStatus.actionOwner);
                         target.OnHealed(actionStatus.actionOwner, onHealParams);
                         onHealParamsList.Add(onHealParams);
@@ -1518,6 +1527,9 @@ public class Action : MonoBehaviour
                     else { summoned = characterManager.SpawnEnemy(summonCharaData, targetPos, false, ownerStatus.level, summonStatusParams); }
                     summoned.OnSummoned(onSummonParams);
                     if (BattleManager.inRound) { summoned.AddTurn(1); }
+
+                    onSummonParams.summoned = summoned;
+
                     onSummonParamsList.Add(onSummonParams);
                 }
                 else { infoText.AddDebugText("¢Š«”\—Í‚Ì‘ÅÁ‚µ"); }
@@ -1634,7 +1646,11 @@ public class Action : MonoBehaviour
                 battleManager.Trigger_OnSomeoneApplyedStE(onApplyStEParamsList);
             }
             if (onHealParamsList.Count > 0) { actionStatus.actionOwner.OnHeal(onHealParamsList); }//—^‰ñ•œ—U”­
-            if (onSummonParamsList.Count > 0) { actionStatus.actionOwner.OnSummon(onSummonParamsList); }//¢Š«—U”­
+            if (onSummonParamsList.Count > 0) //¢Š«—U”­
+            {
+                actionStatus.actionOwner.OnSummon(onSummonParamsList);
+                battleManager.Trigger_OnSomeoneSummoned(actionStatus.actionOwner, onSummonParamsList);
+            }
         }
 
         if (actionStatus.index == 0 && actionStatus.abilityEffect && actionStatus.abilityType != AbilityData.AbilityType.pass)

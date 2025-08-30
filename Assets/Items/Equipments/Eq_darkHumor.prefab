@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_darkHumor
+  noSimpleInfo: 0
   simpleInfo: "\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089\u3001\r\n\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u5F97\u3066\u3001<sprite
     name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u3001<color=#FAED8A><sprite
     name=buff><link=S_\u9B54\u6CD5\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u9B54\u6CD5\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u3092\u5F97\u308B"
@@ -54,13 +55,13 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 15
+    maxHP_mul: 30
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 10
+    INT_mul: 20
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -81,31 +82,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: bc08646ce1a30f346b56a425f914feeb, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 15
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 10
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   actionStatus:
     actionName: "\u30C0\u30FC\u30AF\u30FB\u30E6\u30FC\u30E2\u30A2"
     conditionInfo: "[\u6B7B\u4F53]\u3067\u306A\u3044\u6575\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u3001\u305D\u306E\u6575\u304C\u6B7B\u4EA1\u3057\u305F\u306A\u3089(\u5404\u30E9\u30A6\u30F3\u30C95\u56DE)"
@@ -131,6 +107,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -195,7 +172,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 2
       value: 50
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -219,6 +198,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

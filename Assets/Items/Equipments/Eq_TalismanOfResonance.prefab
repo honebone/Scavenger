@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_TalismanOfResonance
+  noSimpleInfo: 0
   simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u3063\u3066\u5473\u65B9\u3092<sprite
     name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u305F\u3068\u304D\u3001\u305D\u306E\u5473\u65B9\u3068\u96A3\u63A5\u3059\u308B\u5473\u65B91\u4F53\u3082<sprite
     name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B"
@@ -54,7 +55,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 10
+    maxHP_mul: 30
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -81,31 +82,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: fabdf2703504b4546a52f38fa2827293, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 10
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   neigbors:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
@@ -137,6 +113,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -218,6 +195,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

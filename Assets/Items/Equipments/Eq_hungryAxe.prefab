@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_hungryAxe
+  noSimpleInfo: 0
   simpleInfo: "\u88C5\u5099\u6642\u306E<color=#C30000><sprite name=ATK><link=T_ATK><u>ATK</u></link></color>\u5897\u52A0\u91CF\u306F\u5927\u304D\u3044\u304C\u3001\r\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u96A3\u63A5\u3059\u308B\u5473\u65B9\u306E<sprite
     name=HP><color=#87FF79>HP</color>\u3092\u6E1B\u5C11\u3055\u305B\u308B"
   PAInfo_start: 
@@ -57,7 +58,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 40
+    ATK_mul: 60
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -80,31 +81,6 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: d57614bb8779ae14fb1076a7f6474050, type: 2}
     equipmentInfo: 
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 40
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
   neigbor:
   - {x: -1, y: 0}
   - {x: 0, y: 1}
@@ -136,6 +112,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -217,6 +194,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

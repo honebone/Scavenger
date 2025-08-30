@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_unstableBlocks
+  noSimpleInfo: 0
   simpleInfo: "\u5404\u30AD\u30E3\u30E9\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306E<color=#C30000><sprite
     name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>\u304C\u5897\u52A0\u3057\u3066\u3044\u304F\r\n\r\n1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u52B9\u679C\u304C\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"
-  PAInfo_start: 
+  PAInfo_start: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642(\u30AD\u30E3\u30E9\u306F\u554F\u308F\u306A\u3044)\uFF1A\n\u81EA\u8EAB\u306E<color=#C30000><sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>+10\uFF05(110\uFF05\u307E\u3067\u7D2F\u7A4D)\n\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u52B9\u679C\u91CF\u304C\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -57,9 +59,9 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: -10
+    ATK_mul: -20
     ATK_int: 0
-    INT_mul: -10
+    INT_mul: -20
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -79,36 +81,9 @@ MonoBehaviour:
   PATags: 
   equipmentStatus:
     itemData: {fileID: 11400000, guid: b200bddda16f65c4394d143c3c0c0af0, type: 2}
-    equipmentInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642(\u30AD\u30E3\u30E9\u306F\u554F\u308F\u306A\u3044)\uFF1A\n\u81EA\u8EAB\u306E<color=#C30000><sprite
-      name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<color=#256CC8><sprite
-      name=INT><link=T_INT><u>INT</u></link></color>+5\uFF05(110\uFF05\u307E\u3067\u7D2F\u7A4D)\n\u81EA\u8EAB\u304C1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u52B9\u679C\u91CF\u304C\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: -10
-      ATK_int: 0
-      INT_mul: -10
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
-  maxStack: 22
-  valuePerStack: 5
+    equipmentInfo: 
+  maxStack: 11
+  valuePerStack: 10
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

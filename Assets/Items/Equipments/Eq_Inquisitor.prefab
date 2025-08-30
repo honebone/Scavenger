@@ -58,7 +58,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 15
+    ATK_mul: 25
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -118,7 +118,9 @@ MonoBehaviour:
       applyChance: 100
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyStEBonus: []
     debuffChanceMod: 0

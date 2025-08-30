@@ -61,8 +61,8 @@ MonoBehaviour:
   ACC: 70
   ACT: 3
   turnPerRound: 2
-  GHeal: 100
-  RHeal: 80
+  GHeal: 0
+  RHeal: -20
   debuffRes: 0
   StEResists: []
   StEApplyBonus: []

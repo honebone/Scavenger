@@ -60,9 +60,9 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 12
+    ATK_mul: 20
     ATK_int: 0
-    INT_mul: 12
+    INT_mul: 20
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -200,6 +200,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
