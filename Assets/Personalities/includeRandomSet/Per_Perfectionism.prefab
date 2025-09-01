@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: PA_Per_Perfectionism
   noSimpleInfo: 0
-  simpleInfo: "\u653B\u6483\u3092\u5916\u3059\u3068\u3001"
+  simpleInfo: "\u653B\u6483\u3092\u5916\u3059\u3068\u3001<color=#C900FF><sprite name=debuff><link=S_ATK\u30FBINT\u4F4E\u4E0B><u>ATK\u30FBINT\u4F4E\u4E0B</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -157,6 +157,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -221,7 +222,9 @@ MonoBehaviour:
       applyChance: 50
       stack: 1
       value: 25
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -245,6 +248,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

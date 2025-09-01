@@ -55,7 +55,7 @@ public class AreaManager : MonoBehaviour
     public struct Area_RoomEvent
     {
         public RoomEventData roomEvent;
-        public int weight;
+        public float weight;
     }
     [System.Serializable]
     public struct EnemySet

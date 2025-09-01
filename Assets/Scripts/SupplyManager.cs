@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Linq;
 
 public class SupplyManager : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class SupplyManager : MonoBehaviour
     [SerializeField]
     AudioClip SE_Equipment;
 
+    public TextMeshProUGUI picksText;
+
     bool revealing;
 
     InfoText infoText;
@@ -28,6 +32,9 @@ public class SupplyManager : MonoBehaviour
     ExpeditionManager expeditionManager;
     ExpeditionManager.PartyStatus partyStatus;
     SoundManager soundManager;
+
+    int pickAmount;
+    int pickCount;
 
     public static SupplyManager inst;
     private void Awake()
@@ -44,8 +51,11 @@ public class SupplyManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
     }
 
-    public void StartSupply()
+    public void AddPicks(int p) { pickAmount += p; }
+
+    public void StartSupply(int additionalPicks=1)
     {
+        pickAmount += additionalPicks;
         SetButtons();
         if (!supplyPanel.activeSelf)
         {
@@ -61,7 +71,7 @@ public class SupplyManager : MonoBehaviour
         //inventory.CloseInventory();
         expeditionManager.OnEndSupply();
     }
-    public void SetButtons()
+    public void SetButtons(bool defRevealed=false)
     {
         //CloseOptionUI();
         if (content.childCount != 0)
@@ -81,16 +91,19 @@ public class SupplyManager : MonoBehaviour
                 i.amount = Mathf.Min(i.data.amountPerStack, a);
 
                 var ib = Instantiate(itemButton, content);
-                ib.GetComponent<SupplyButton>().Init(i, infoText, this);
+                ib.GetComponent<SupplyButton>().Init(i, infoText, this, defRevealed);
 
                 a -= item.data.amountPerStack;
             }
         }
+
+        picksText.text = $"{pickAmount - pickCount}‚Â‘I‘ð";
     }
     IEnumerator Reveal()
     {
         yield return new WaitForSeconds(0.5f);
-        foreach (SupplyButton supplyButton in content.GetComponentsInChildren<SupplyButton>())
+        List<SupplyButton> buttons = content.GetComponentsInChildren<SupplyButton>().ToList();
+        foreach (SupplyButton supplyButton in buttons)
         {
             yield return new WaitForSeconds(0.25f);
             supplyButton.Reveal();
@@ -102,6 +115,10 @@ public class SupplyManager : MonoBehaviour
             else if (item.data.rarity == ItemData.Rarity.legendary) { yield return new WaitForSeconds(1f); }
         }
         revealing = false;
+        foreach (SupplyButton supplyButton in buttons)
+        {
+            supplyButton.Selectable();
+        }
     }
 
     //public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)
@@ -116,9 +133,14 @@ public class SupplyManager : MonoBehaviour
     public void SelectItem(Definer.Item item)
     {
         inventory.AddItem(item, item.amount, true);
+        RemoveItem(item, item.amount);
         soundManager.PlaySE(SE_Equipment);
-        //ŒJ‚è•Ô‚·‚©”»’è
-        EndSupply();
+        pickCount++;
+        if (pickCount == pickAmount || supplies.Count == 0)
+        {
+            EndSupply();
+        }
+        else SetButtons(true);
     }
 
     //public void CloseOptionUI()
@@ -133,7 +155,7 @@ public class SupplyManager : MonoBehaviour
     //    //inventory‚â”[•i“™‚ÌoptionUI‚à•Â‚¶‚é
     //}
 
-    public void SetSupply_Eq(int choices,ItemData.Rarity guarantee = ItemData.Rarity.common)
+    public void AddSupply_Eq(int choices,ItemData.Rarity guarantee = ItemData.Rarity.common)
     {
         for (int i = 0; i < choices; i++)
         {
@@ -177,6 +199,8 @@ public class SupplyManager : MonoBehaviour
         {
             CloseSupplyPanel();
             ResetSupplies();
+            pickAmount = 0;
+            pickCount = 0;
         }
     }
     public void ResetSupplies()

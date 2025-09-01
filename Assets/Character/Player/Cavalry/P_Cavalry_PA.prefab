@@ -157,6 +157,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -221,7 +222,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -245,6 +248,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

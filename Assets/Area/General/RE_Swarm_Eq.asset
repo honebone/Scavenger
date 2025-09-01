@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
+  m_Name: RE_Swarm_Eq
+  m_EditorClassIdentifier: 
+  eventName: "\u5927\u7FA4\uFF1A\u88C5\u5099\u54C1"
+  eventInfo: "\u6575\u306E\u8ECD\u52E2\u3068\u306E\u6226\u95D8\n\u30FB\u30A6\u30A7\u30FC\u30D6\u6570<color=#FF0000>+2</color>\n\u30FB\u88C5\u5099\u54C1\u306E\u9078\u629E\u80A2<color=#00FF00>+5</color>\n\u30FB\u88C5\u5099\u54C1\u306E\u9078\u629E\u53EF\u80FD\u6570<color=#00FF00>+3</color>"
+  noBlind: 0
+  randomEvent: 0
+  debug: 0
+  roomEventManager:
+  - {fileID: 4154373557521219498, guid: d28e4317f5e7f42449790e3ff2aa5ae3, type: 3}
+  eventIcon: {fileID: 21300000, guid: 9f079620dc1b300479d96fb3ec43a68c, type: 3}

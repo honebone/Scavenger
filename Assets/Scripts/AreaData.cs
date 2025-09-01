@@ -31,9 +31,9 @@ public class AreaData : ScriptableObject
     public List<GameObject> normalBattleFEPool;
     //nextArea
 
-    public List<int> GetREWeights()
+    public List<float> GetREWeights()
     {
-        List<int> weights = new List<int>();
+        List<float> weights = new List<float>();
         foreach (AreaManager.Area_RoomEvent roomEvent in roomEvents) { weights.Add(roomEvent.weight); }
         return weights;
     }

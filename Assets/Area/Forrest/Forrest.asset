@@ -21,11 +21,19 @@ MonoBehaviour:
   minLength: 8
   maxLength: 6
   branchChance: 30
-  blindChance: 20
+  blindChance: 15
   BGM: {fileID: 8300000, guid: d3501066994c2d142803e281cf326b62, type: 3}
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
-    weight: 50
+    weight: 38
+  - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
+    weight: 3
+  - roomEvent: {fileID: 11400000, guid: f1cf9196abdb07c448dd0f47afec67a5, type: 2}
+    weight: 3
+  - roomEvent: {fileID: 11400000, guid: 02c2f197afad8a54b8d5f122888ea228, type: 2}
+    weight: 3
+  - roomEvent: {fileID: 11400000, guid: 98d568785ebce4446a13c8202306d85b, type: 2}
+    weight: 3
   - roomEvent: {fileID: 11400000, guid: fa7a5305a52a2c34290bc2e05b2ff5a6, type: 2}
     weight: 30
   - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
@@ -35,6 +43,7 @@ MonoBehaviour:
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
     weight: 10
   start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
+  halfway: {fileID: 0}
   boss: {fileID: 11400000, guid: 9ef03810e91403e47a12536c4e32fca6, type: 2}
   endArea: {fileID: 11400000, guid: f49e2db89d4591446a8279247c444817, type: 2}
   normalBattlePool:

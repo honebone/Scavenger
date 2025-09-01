@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,8 @@ public class LootButton : MonoBehaviour
     [SerializeField]
     List<GameObject> revealVE;
 
+    public List<Sprite> frames;
+
 
     InfoText infoText;
     SoundManager soundManager;
@@ -28,7 +31,7 @@ public class LootButton : MonoBehaviour
     [SerializeField, TextArea(3, 10)] string expInfo;
     bool expOrb;
     int expAmount;
-    public void Init(Definer.Item i, InfoText it,SoundManager sm)
+    public void Init(Definer.Item i, InfoText it, SoundManager sm)
     {
         item = i;
         infoText = it;
@@ -50,6 +53,7 @@ public class LootButton : MonoBehaviour
             itemImage.sprite = expSprite;
             frame.color = expColor;
             amountText.text=expAmount.ToString();
+            frame.sprite = frames[2];
         }
         else
         {
@@ -57,6 +61,8 @@ public class LootButton : MonoBehaviour
             frame.color = item.data.rarity.ToColor();
             if (item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
             if (revealVE[(int)item.data.rarity] != null) { Instantiate(revealVE[(int)item.data.rarity], transform); }
+            int index = Mathf.Clamp((int)item.data.rarity, 1, 4);
+            frame.sprite = frames[index];
         }
     }
 

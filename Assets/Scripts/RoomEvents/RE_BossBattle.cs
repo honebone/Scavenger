@@ -35,8 +35,8 @@ public class RE_BossBattle : RoomEvent
                     infoText.AddLogText("");
                 }
                 lootPanel.AddExp(5);
-                if(fieldEffect != null) { expeditionManager.Battle(boss, fieldEffect, new ExpeditionManager.BattleParams()); }
-                else { expeditionManager.Battle(boss, null, battleParams); }
+                if(fieldEffect != null) { expeditionManager.Battle(new List<AreaManager.EnemySet> { boss }, fieldEffect, new ExpeditionManager.BattleParams()); }
+                else { expeditionManager.Battle(new List<AreaManager.EnemySet> { boss }, null, battleParams); }
                 break;
             case 1:
                 infoText.AddLogText("êÊÇ…êiÇÒÇæ");
@@ -49,7 +49,7 @@ public class RE_BossBattle : RoomEvent
 
     public override void OnEndBattle()
     {
-        supplyManager.SetSupply_Eq(partyStatus.supplyOptions,ItemData.Rarity.epic);
+        supplyManager.AddSupply_Eq(partyStatus.supplyOptions,ItemData.Rarity.epic);
         lootPanel.Loot();
     }
 }

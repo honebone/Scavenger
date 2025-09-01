@@ -490,15 +490,26 @@ public class ExpeditionManager : MonoBehaviour
     [System.Serializable]
     public struct BattleParams
     {
-       public AudioClip bgm;
+        public AudioClip bgm;
+        public int lvlMod;
+        public int additionalEq;
+        public int additionalEq_epic;
+        public int supplyPicksMod;
+        public int expMod;
     }
-    public void Battle(AreaManager.EnemySet enemySet, GameObject fieldEffect,BattleParams battleParams)
+    public void Battle(List<AreaManager.EnemySet> enemySet, GameObject fieldEffect,BattleParams battleParams)
     {
-        List<CharacterData> enemies = enemySet.GetEnemies();
-        for (int i = 0; i < 9; i++)
-        {
-            if (enemies[i] != null) { charactersManager.SpawnEnemy(enemies[i], i + 9, true,enemyLVL); }
-        }
+        //List<CharacterData> enemies = enemySet.GetEnemies();
+
+        supplyManager.AddSupply_Eq(battleParams.additionalEq);
+        supplyManager.AddSupply_Eq(battleParams.additionalEq_epic, ItemData.Rarity.epic);
+        if (battleParams.supplyPicksMod > 0) supplyManager.AddPicks(battleParams.supplyPicksMod);
+        if (battleParams.expMod > 0) lootPanel.AddExp(battleParams.expMod);
+
+        //for (int i = 0; i < 9; i++)
+        //{
+        //    if (enemies[i] != null) { charactersManager.SpawnEnemy(enemies[i], i + 9, true,enemyLVL+ battleParams.lvlMod); }
+        //}
         if (currentArea)
         {
             if (battleParams.bgm == null) { soundManager.StartBGM_Battle(currentArea.battleBGM.Choice()); }
@@ -509,7 +520,7 @@ public class ExpeditionManager : MonoBehaviour
             infoText.AddDebugText("ŒŸ’mFDebugMode‚Å‚Ìí“¬");
         }
        
-        battleManager.BattleStart(fieldEffect);
+        battleManager.BattleStart(enemySet,fieldEffect,battleParams);
     }
     
 
@@ -692,5 +703,6 @@ public class ExpeditionManager : MonoBehaviour
     public bool CheckInRoomEvent() { return inRoomEvent; }
     public bool CheckInExpedition() { return inExpedition; }
     public List<GameObject> GetMadnessPA() { return madnessPAs; }
+    public int EnemyLVL() { return enemyLVL; }  
 
 }

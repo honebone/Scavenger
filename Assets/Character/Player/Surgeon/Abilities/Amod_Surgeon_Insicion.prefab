@@ -47,7 +47,10 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: 
     hideValues: 1
-    exInfo: "INT\u306E30\uFF05\u3092\u51FA\u8840\u306EHP\u6E1B\u5C11\u91CF\u306B\u52A0\u7B97"
+    exInfo: "<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>\u306E30\uFF05\u3092<color=#C900FF><sprite
+      name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u306E<sprite
+      name=HP><color=#87FF79>HP</color>\u6E1B\u5C11\u91CF\u306B\u52A0\u7B97"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -61,6 +64,7 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -70,7 +74,9 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus:
     - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
@@ -82,4 +88,28 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   ratio: 0.3

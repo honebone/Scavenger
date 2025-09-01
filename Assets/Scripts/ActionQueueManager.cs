@@ -20,6 +20,8 @@ public class ActionQueueManager : MonoBehaviour
     float abilityPause;
     [SerializeField]
     float abilityPause_followthrough;
+    public float nextWaveDelay;
+    public float waveStartDelay;
     [SerializeField]
     Text abilityNameText_player;
     [SerializeField]
@@ -341,8 +343,10 @@ public class ActionQueueManager : MonoBehaviour
 
     IEnumerator EndResolve()
     {
+        bool battleEnd = false;
         if (resolveMode != 7 && (charactersManager.CheckVictory() || charactersManager.CheckDefeat()))
         {
+            battleEnd = true;
             totalDamageText.ResetText();
             if (charactersManager.CheckDefeat())
             {
@@ -350,12 +354,23 @@ public class ActionQueueManager : MonoBehaviour
             }
             else if (charactersManager.CheckVictory())
             {
-                resolveMode = -1;
-                battleManager.BattleEnd();
+                if (battleManager.CheckHasNextWave())
+                {
+                    yield return new WaitForSeconds(nextWaveDelay); 
+                    battleManager.NextWave();
+                    yield return new WaitForSeconds(waveStartDelay);
+                    MessageText.inst.ResetText();
+                    battleEnd = false;
+                }
+                else
+                {
+                    resolveMode = -1;
+                    battleManager.BattleEnd();
+                }
             }
-           
         }
-        else
+
+        if(!battleEnd)
         {
             switch (resolveMode)
             {
@@ -399,6 +414,9 @@ public class ActionQueueManager : MonoBehaviour
                     resolveMode = -1;
                     totalDamageText.ResetText();
                     battleManager.EndTrigger_BattleEnd();
+                    break;
+                default:
+                    infoText.AddErrorText($"resolve modeÇÃÉGÉâÅ[ÅF{resolveMode}");
                     break;
             }
         }

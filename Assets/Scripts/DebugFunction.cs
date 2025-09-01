@@ -107,7 +107,7 @@ public class DebugFunction : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                FindObjectOfType<ExpeditionManager>().Battle(enemySetTest, FE, new ExpeditionManager.BattleParams());
+                FindObjectOfType<ExpeditionManager>().Battle(new List<AreaManager.EnemySet> { enemySetTest }, FE, new ExpeditionManager.BattleParams());
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))

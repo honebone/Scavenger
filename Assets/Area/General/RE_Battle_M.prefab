@@ -44,3 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 284d515bbd27f004991de3de3a66d4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showREInfoOnStart: 0
+  REName: 
+  REInfo: 
+  battleParams:
+    bgm: {fileID: 0}
+    lvlMod: 0
+    additionalEq: 0
+    supplyPicksMod: 0
+    expMod: 0
+  waveMod: 0

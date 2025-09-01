@@ -53,14 +53,12 @@ MonoBehaviour:
   - optionName: "\u4F55\u3082\u3057\u306A\u3044"
     optionInfo: 
   lootStatus:
-    drawAttemptsRange: {x: 1, y: 3}
+    drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0
     uniqueDropPool: []
-    includeTags:
-    - tag: 1
-      weight: 1
+    includeTags: []
     excludeTags: 
-    dropEquipmentsRange: {x: 2, y: 4}
+    dropEquipmentsRange: {x: 3, y: 6}
   mimic:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}

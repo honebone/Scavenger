@@ -51,7 +51,7 @@ public class RoomEvent : MonoBehaviour
     /// <summary>デフォルトではルート開始</summary>
     public virtual void OnEndBattle()
     {
-        supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
+        supplyManager.AddSupply_Eq(partyStatus.supplyOptions);
         lootPanel.Loot();
     }
     /// <summary>デフォルトではイベント終了</summary>

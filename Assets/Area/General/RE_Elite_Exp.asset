@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
+  m_Name: RE_Elite_Exp
+  m_EditorClassIdentifier: 
+  eventName: "\u7CBE\u92ED\uFF1A\u7D4C\u9A13"
+  eventInfo: "\u9078\u308A\u3059\u3050\u308A\u306E\u6575\u3068\u306E\u6226\u95D8\n\u30FB\u6575\u306ELVL<color=#FF0000>+2</color>\n\u30FB\u7D4C\u9A13\u306E\u30AA\u30FC\u30D6\u53D6\u5F97\u6570<color=#00FF00>+200</color>\uFF05"
+  noBlind: 0
+  randomEvent: 0
+  debug: 0
+  roomEventManager:
+  - {fileID: 4154373557521219498, guid: c00060c8c01df274ca719caccffa61a5, type: 3}
+  eventIcon: {fileID: 21300000, guid: 74857cddfadc490468e0cccbe4de55e2, type: 3}

@@ -9,6 +9,8 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
     [SerializeField] Image frame;
     [SerializeField] Material glitched;
 
+    public List<Sprite> frames;
+
     InfoText infoText;
     CharaDetailUI detailUI;
     MouseOverUI mouseOver;
@@ -28,6 +30,9 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
         {
             itemImage.material = glitched;
         }
+
+        int index = Mathf.Clamp((int)item.data.rarity, 1, 4);
+        frame.sprite = frames[index];
     }
 
     [SerializeField]

@@ -187,8 +187,8 @@ public class Map_RoomButton : MonoBehaviour
         p = true;
         if (!room.empty)
         {
-            if (blind) { mouseOver.SetUI("ˆÃˆÅ", true); }
-            else { mouseOver.SetUI(room.eventName, true); }
+            if (blind) { mouseOver.SetUI("ˆÃˆÅ\n‰½‚ª‹N‚±‚é‚©•ª‚©‚ç‚È‚¢", false); }
+            else { mouseOver.SetUI($"{room.eventName}\n{room.eventInfo}", false); }
         }
     }
     public void OnMouseExit()

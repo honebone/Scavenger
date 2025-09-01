@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PA_StEU_Mount : PA_StatusEffect
 {
+    public GameObject human;
+    public GameObject horse;
     public Action.ActionStatus onApplied;
 
     public override void OnPAInit()
     {
         Enqueue_Self(onApplied);
+        character.SetCharaSprite(horse);
     }
 
     public override void OnDecreasedHP(int value)
@@ -21,7 +24,7 @@ public class PA_StEU_Mount : PA_StatusEffect
 
     public override void AtTheEnd()
     {
-        //character.SetCharaSprite()
+        character.SetCharaSprite(human);
     }
 
     public override string GetAdditionalInfo()

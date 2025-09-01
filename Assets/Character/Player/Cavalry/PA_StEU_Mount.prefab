@@ -84,7 +84,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u9A0E\u4E57"
     StEInfo: 
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: be70206a5cff71940a520fdb79e20f28, type: 3}
     StEType: 4
     maxStack: 1
     merge: 1
@@ -96,6 +96,8 @@ MonoBehaviour:
     stack: 0
     value: 0
     DMGPerTurn: 0
+  human: {fileID: 419639086043272188, guid: 9ff0a49cdeed7d94c833e5c4859fea7d, type: 3}
+  horse: {fileID: 5099856117685705023, guid: 41527ca0ee04995478d4493a6955008e, type: 3}
   onApplied:
     actionName: 
     conditionInfo: "\u3053\u308C\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D"
@@ -121,6 +123,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -185,14 +188,18 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 75
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -216,6 +223,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -281,7 +290,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be70206a5cff71940a520fdb79e20f28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

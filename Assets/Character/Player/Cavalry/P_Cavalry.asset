@@ -24,9 +24,9 @@ MonoBehaviour:
   mainRole:
   - "\u30BF\u30F3\u30AF"
   - "\u30B7\u30FC\u30EB\u30C9"
-  - "\u884C\u52D5\u963B\u5BB3"
-  subRole:
   - "\u653B\u6483"
+  subRole:
+  - "\u884C\u52D5\u963B\u5BB3"
   characterTags: 02000000
   immovable: 0
   notChara: 0
@@ -34,9 +34,9 @@ MonoBehaviour:
   boss: 0
   playable: 1
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 419639086043272188, guid: 9ff0a49cdeed7d94c833e5c4859fea7d, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  spriteForUI: {fileID: -75050611, guid: e1b88be89dbafdf40935ac8d5a2153db, type: 3}
   abilities:
   - {fileID: 11400000, guid: 159063c95ac5d5d48b61dcab9e71213e, type: 2}
   - {fileID: 11400000, guid: 18ba00464a0671d4d8562d4e9d436394, type: 2}

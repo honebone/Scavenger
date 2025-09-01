@@ -60,8 +60,8 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 0
-    INT_int: 20
+    INT_mul: 20
+    INT_int: 0
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0

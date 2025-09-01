@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_Tag_UndeadUp
-  simpleInfo: 
+  noSimpleInfo: 0
+  simpleInfo: "[\u4E0D\u6B7B\u8005]\u306B\u5BFE\u3059\u308B\u4E0E\u30C0\u30E1\u30FC\u30B8\u3068<color=#FF6CC1><sprite
+    name=ACC><link=T_ACC><u>ACC</u></link></color>\u88DC\u6B63\u304C\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 1
   PAInfo_end: 

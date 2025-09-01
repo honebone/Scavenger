@@ -14,19 +14,27 @@ public class SupplyButton : MonoBehaviour
     [SerializeField]
     List<GameObject> revealVE;
 
+    public List<Sprite> frames;
+
 
     InfoText infoText;
     SupplyManager supplyManager;
     MouseOverUI mouseOver;
 
     bool revealed = false;
+    bool selectable;
     Definer.Item item;
-    public void Init(Definer.Item i, InfoText it, SupplyManager sm)
+    public void Init(Definer.Item i, InfoText it, SupplyManager sm,bool defRevealed)
     {
         item = i;
         infoText = it;
         supplyManager = sm;
         mouseOver = FindObjectOfType<MouseOverUI>();
+        if (defRevealed)
+        {
+            Reveal();
+            selectable = true;
+        }
     }
     public void Reveal()
     {
@@ -35,6 +43,12 @@ public class SupplyButton : MonoBehaviour
         frame.color = item.data.rarity.ToColor();
         if (item.data.itemType != ItemData.ItemType.equipment) { amountText.text = item.amount.ToString(); }
         if (revealVE[(int)item.data.rarity] != null) { Instantiate(revealVE[(int)item.data.rarity], transform); }
+        int index = Mathf.Clamp((int)item.data.rarity, 1, 4);
+        frame.sprite = frames[index];
+    }
+    public void Selectable()
+    {
+        selectable = true;
     }
 
     public void OnMouseDown()
@@ -45,7 +59,7 @@ public class SupplyButton : MonoBehaviour
             {
                 infoText.SetText(item.data.itemName.ColorStr(item.data.rarity.ToColor()), item.GetInfo(false), item.GetInfo(true));
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0)&& selectable)
             {
                 mouseOver.ResetUI();
                 supplyManager.SelectItem(item);

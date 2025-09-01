@@ -23,6 +23,9 @@ public class LVLUpManager : MonoBehaviour
 
     SoundManager soundManager;
 
+    Sequence sequence;
+
+
     bool inLVLUp;
 
     private void Awake()
@@ -85,26 +88,38 @@ public class LVLUpManager : MonoBehaviour
         if (upgrades.Count == 2) { buttons[1].SetUpgrade(upgrades[1]); }
         else { buttons[1].SetUpgrade(upgrades[0]); }
 
-        StartCoroutine(SelectUpgradeC());
-    }
-    IEnumerator SelectUpgradeC()
-    {
         Character.CharacterStatus charaStatus = LVLUpQueue[0].CharaStatus();
         lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
         string growthStr = ExpeditionManager.inst.playerStatusGrowth.GetLVLUPInfo(charaStatus.level + 1, true, charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
-        //int HPGrowth = Mathf.CeilToInt(charaStatus.maxHP_base * (ExpeditionManager.playerMaxHPGrowth - 1));
-        //int ATKGrowth = Mathf.CeilToInt(charaStatus.ATK_base * (ExpeditionManager.playerATKGrowth - 1));
-        //int INTGrowth = Mathf.CeilToInt(charaStatus.INT_base * (ExpeditionManager.playerATKGrowth - 1));
-        //growthStr += $"Šî‘bHP+{HPGrowth}\nŠî‘bATK+{ATKGrowth}\nŠî‘bINT+{INTGrowth}\n";
-        //growthStr += LVLUpQueue[0].CharaStatus().statusGrowth.GetInfo(charaStatus.level);
 
         statusGrowthText.text = growthStr;
-        for (int i = 0; i < 3; i++)
-        {
-            panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f,RotateMode.WorldAxisAdd);
-            yield return new WaitForSeconds(0.15f);
-        }
+        if (sequence != null) sequence.Kill(true);
+        sequence = DOTween.Sequence();
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    sequence.Join(panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f, RotateMode.WorldAxisAdd).SetDelay(0.15f));
+        //}
+        sequence.Join(panelsTF[0].DORotate(new Vector3(0, -90, 0), 0.5f, RotateMode.WorldAxisAdd));
+        sequence.Join(panelsTF[1].DORotate(new Vector3(0, -90, 0), 0.5f, RotateMode.WorldAxisAdd).SetDelay(0.15f));
+        sequence.Join(panelsTF[2].DORotate(new Vector3(0, -90, 0), 0.5f, RotateMode.WorldAxisAdd).SetDelay(0.3f));
+        sequence.Play();
     }
+    //IEnumerator SelectUpgradeC()
+    //{
+    //    Character.CharacterStatus charaStatus = LVLUpQueue[0].CharaStatus();
+    //    lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
+    //    string growthStr = ExpeditionManager.inst.playerStatusGrowth.GetLVLUPInfo(charaStatus.level + 1, true, charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
+        
+    //    statusGrowthText.text = growthStr;
+    //    if (sequence != null) sequence.Kill(true);
+    //    sequence = DOTween.Sequence();
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        sequence.Append(panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f,RotateMode.WorldAxisAdd));
+    //        sequence.AppendInterval(0.15f);
+    //    }
+    //    sequence.Play();
+    //}
 
     public void EndSelectUpgrade()
     {
@@ -115,13 +130,22 @@ public class LVLUpManager : MonoBehaviour
     }
     IEnumerator EndSelectUpgradeC()
     {
-       
-        for (int i = 0; i < 3; i++)
-        {
-            panelsTF[i].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd);
-            yield return new WaitForSeconds(0.15f);
-        }
-        yield return new WaitForSeconds(0.5f);
+        if (sequence != null) sequence.Kill(true);
+        sequence = DOTween.Sequence();
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    sequence.Join(panelsTF[i].DORotate(new Vector3(0, -90, 0), 0.5f, RotateMode.WorldAxisAdd).SetDelay(0.15f));
+        //}
+        sequence.Join(panelsTF[0].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd));
+        sequence.Join(panelsTF[1].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd).SetDelay(0.15f));
+        sequence.Join(panelsTF[2].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd).SetDelay(0.3f));
+        sequence.Play();
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    panelsTF[i].DORotate(new Vector3(0, 90, 0), 0.5f, RotateMode.WorldAxisAdd);
+        //    yield return new WaitForSeconds(0.15f);
+        //}
+        yield return new WaitForSeconds(0.8f);
         lvlUpTitle.text = "";
         statusGrowthText.text = "";
         if (LVLUpQueue.Count > 0) { StartelectUpgrade(); }

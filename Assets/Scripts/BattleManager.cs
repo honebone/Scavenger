@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static AreaManager;
+using static ExpeditionManager;
+using TMPro;
 
 public class BattleManager : MonoBehaviour
 {
@@ -15,6 +18,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField]
     Text roundText;
+    public TextMeshProUGUI waveText;
 
     [SerializeField]
     AudioClip SE_FE;
@@ -81,8 +85,9 @@ public class BattleManager : MonoBehaviour
     //List<Battle_TurnOrderIcon> turnOrderIcons=new List<Battle_TurnOrderIcon>();
     Turn currentTurn;
     int currentTurnCount;
-    /// <summary>nextRoundButtonを押せるかどうか</summary>
-    //bool roundEnd;
+    int currentWave;
+    BattleParams battleParams;
+    List<EnemySet> waves;
 
     public static BattleManager inst;
 
@@ -111,8 +116,24 @@ public class BattleManager : MonoBehaviour
         turns = new List<Turn>();
     }
 
-    public void BattleStart(GameObject fieldEffectObj)
+    void SetEnemies(AreaManager.EnemySet enemySet)
     {
+        List<CharacterData> enemies = enemySet.GetEnemies();
+        for (int i = 0; i < 9; i++)
+        {
+            if (enemies[i] != null)
+            {
+                Character summoned = charactersManager.SpawnEnemy(enemies[i], i + 9, true, expeditionManager.EnemyLVL() + battleParams.lvlMod);
+                if (inRound) { summoned.AddTurn(1); }
+            }
+        }
+    }
+
+    public void BattleStart(List<EnemySet> w, GameObject fieldEffectObj, BattleParams bp)
+    {
+        battleParams = bp;
+        waves = new List<EnemySet>(w);
+        SetEnemies(waves[0]);
         if (fieldEffectObj != null)
         {
             var f = Instantiate(fieldEffectObj, fieldEffectP);
@@ -122,10 +143,17 @@ public class BattleManager : MonoBehaviour
         infoText.AddLogText("\n◇◇◇◇戦闘開始◇◇◇◇");
         inBattle = true;
         soundManager.PlaySE(SE_battleStart);
-        
+        if (waves.Count > 1)
+        {
+            infoText.AddLogText($"\n◇◇◇ウェーブ{currentWave + 1}/{waves.Count}◇◇◇");
+            waveText.text = $"ウェーブ {currentWave + 1}/{waves.Count}";
+        }
+        currentWave = 0;
         roundCount=0;
         StartCoroutine(BattleStartAnim());
     }
+    
+
     IEnumerator BattleStartAnim()
     {
         anim_battleIcon.SetTrigger("BattleStart");
@@ -363,12 +391,41 @@ public class BattleManager : MonoBehaviour
         //for (int i = 0; i < turnOrderIconParent.childCount; i++) { Destroy(turnOrderIconParent.GetChild(i).gameObject); }//tst
     }
 
+    //public void WaveEnd()
+    //{
+    //    if (currentWave == waves.Count - 1) { BattleEnd(); }
+    //    else NextWave();
+    //}
+
+    public void NextWave()
+    {
+        currentWave++;
+
+        if (waves.Count > 1) infoText.AddLogText($"\n◇◇◇ウェーブ終了◇◇◇\n");
+        if (waves.Count > 1) infoText.AddLogText($"\n◇◇◇ウェーブ{currentWave + 1}/{waves.Count}◇◇◇");
+        
+        messageText.SetText($"ウェーブ{currentWave + 1}/{waves.Count}");
+        waveText.text = $"ウェーブ {currentWave + 1}/{waves.Count}";
+
+        soundManager.PlaySE(SE_battleStart);
+        List<Character> deletes = new List<Character>(charactersManager.GetExistingCharacters_All());
+        foreach (Character chara in deletes)//敵キャラ全てを消去(実質的に、敵の障害物だけである)
+        {
+            if (!chara.PlayerPos())
+            {
+                chara.Retreat();
+            }
+        }
+        SetEnemies(waves[currentWave]);
+    }
+
     public void BattleEnd()
     {
         infoText.AddLogText("\n◇◇◇◇戦闘終了◇◇◇◇");
         currentTurnCount = 0;
         inRound = false;
         inBattle = false;
+        waveText.text = "";
         if (selectedAbility) { infoText.AddErrorText("アビリティ選択中に戦闘が終了しました"); }
         if (selectingTarget) { infoText.AddErrorText("対象選択中に戦闘が終了しました"); }
 
@@ -804,6 +861,7 @@ public class BattleManager : MonoBehaviour
     
     public Ability GetSelectedAbility() { return selectedAbility; }
     public Character GetCurrntTurnChara() { return (currentTurn == null) ? null : currentTurn.character; }
+    public  bool CheckHasNextWave() { return currentWave < waves.Count-1; }
 }
 
 [System.Serializable]
