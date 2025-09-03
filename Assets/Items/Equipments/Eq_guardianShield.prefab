@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: 4760157605100928349}
+  - component: {fileID: 2617997726575724584}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_ProtectionShield
+  m_Name: Eq_guardianShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4760157605100928349
+--- !u!114 &2617997726575724584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,19 +42,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee8f579e892b49246b00f4e661479a8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 51b207aa58ac7e943a592783d7176039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_ProtectionShield
+  fileName: Eq_guardianShield
   noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<color=#FAED8A><sprite name=buff><link=S_PROT\u4E0A\u6607><u>PROT\u4E0A\u6607</u></link></color>\u3068<color=#FAED8A><sprite
-    name=buff><link=S_\u30C7\u30D0\u30D5\u8010\u6027\u4E0A\u6607><u>\u30C7\u30D0\u30D5\u8010\u6027\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B"
+  simpleInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066<sprite
+    name=HP><color=#87FF79>HP</color>\u304C\u4E00\u5B9A\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D\u3001\u81EA\u8EAB\u304C\u524D\u9032\u3057\u3001<color=#C900FF><sprite
+    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3068<color=#00FFFF><sprite
+    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u308B\n\n\u305D\u306E\u5473\u65B9\u3082\u540C\u91CF\u306E<sprite
+    name=shield>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 35
+    maxHP_mul: 25
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -79,17 +82,163 @@ MonoBehaviour:
   AMods: []
   PATags: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: e743d1409bce463448bd93fdc2dc0d17, type: 2}
+    itemData: {fileID: 11400000, guid: 9f44de84a2f0daa4a9c010fbc3c88d77, type: 2}
     equipmentInfo: 
-  actionStatus:
-    actionName: "\u52A0\u8B77\u306E\u76FE"
-    conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
+  CD: 4
+  HPTH: 20
+  shieldPercent: 50
+  selfAction:
+    actionName: 
+    conditionInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066<sprite
+      name=HP><color=#87FF79>HP</color>\u304C20\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
+    AModInfo: 
+    actionInfo: "\u305D\u306E\u5473\u65B9\u306B\u3082\u540C\u91CF\u306E<sprite name=shield>\u3092\u4ED8\u4E0E\u3059\u308B\n\n\u3053\u306E\u80FD\u529B\u306F4\u30E9\u30A6\u30F3\u30C9\u5F8C\u306B\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B"
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 3497942893351335139, guid: 890f0bf015391fc4c861320172f8f322, type: 3}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 0
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      onlyPlayable: 0
+      front: 0
+      mid: 0
+      back: 0
+      excludeObstacle: 0
+      characterInclude: []
+      characterTags: 
+      characterTagsExclude: 
+      StEConditions: []
+      StE: []
+      StEExclude: []
+      PE: []
+      PEExclude: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+    neigborPos: []
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    skipAnim: 0
+    consumeFocus: 0
+    exTurn: 0
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healPercent_min: 0
+    healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 50
+    shieldPercent_max: 50
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams:
+    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    removePEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
+    moveChance: 0
+    guaranteedMove: 1
+    moveRandomDir: 0
+    moveForword: 2
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    changeSelfSprite: {fileID: 0}
+    abilityRemainControlls: []
+    abilityEffect: 0
+    freeAction: 0
+    abilityType: 0
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
+    removeStEs_additional: []
+    summonStatusMods: []
+    dontChangeSprite: 0
+    activateSprite: {fileID: 0}
+    actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
+    actionTargetsInt: 
+  allyAction:
+    actionName: 
+    conditionInfo: 
+    targetInfo: 
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 3497942893351335139, guid: 890f0bf015391fc4c861320172f8f322, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -165,25 +314,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: dc5637dedc4143b419ae68f32875179b, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 100
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 20849c6136550d04e9232dacd303cdfb, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 50
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -273,7 +404,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7017ba4759118a428cb1f10d6017a13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ea21c0d3cd80b54c8d1d16804661d05, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

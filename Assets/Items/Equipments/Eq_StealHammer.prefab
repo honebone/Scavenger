@@ -56,7 +56,7 @@ MonoBehaviour:
     name=maxHP><color=#87FF79>maxHP</color>15\uFF05\u5206\u306E<sprite name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u308B"
   statMod:
     LVL: 0
-    maxHP_mul: 30
+    maxHP_mul: 25
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0

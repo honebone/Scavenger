@@ -314,6 +314,7 @@ public class Character : MonoBehaviour
         public int BaseHP() { return maxHP_base + maxHP_baseByLVL; }
         public int BaseATK() { return ATK_base + ATK_baseByLVL; }
         public int BaseINT() { return INT_base + INT_baseByLVL; }
+        /// <summary>%‚Å•Ô‚·</summary>
         public float GetHPPercent() { return HP * 100f / maxHP; }
         public int GetNextExp() { return level; }
 

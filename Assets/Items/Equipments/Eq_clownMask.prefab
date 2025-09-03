@@ -55,7 +55,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 25
+    maxHP_mul: 20
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
