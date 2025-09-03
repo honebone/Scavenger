@@ -259,9 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
-  skipTutorial: 1
+  debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
   battleDebug: 0
   volume: {fileID: 1421441752}
   aberrationValueRange: {x: 0, y: 0.5}
@@ -18406,13 +18406,13 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: f08a39aeb9d1b9747b708726d6fef056, type: 3}
   - {fileID: 3170614222137734241, guid: 4972d7eef958660488e1830a34b73f8d, type: 3}
   playerStatusGrowth:
-    maxHP_mul: 25
+    maxHP_mul: 20
     ATKINT_mul: 25
     ACT: 0.5
     EVD: 1
     ACC: 1
   enemyStatusGrowth:
-    maxHP_mul: 40
+    maxHP_mul: 45
     ATKINT_mul: 30
     ACT: 0.5
     EVD: 1
@@ -27819,8 +27819,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -31.777, y: -36.25}
-  m_SizeDelta: {x: 118.553, y: 25}
+  m_AnchoredPosition: {x: -35.081, y: -36.25}
+  m_SizeDelta: {x: 125.162, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484865227
 MonoBehaviour:
