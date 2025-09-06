@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 2827770056505447516}
   - component: {fileID: 1369269651363133105}
   - component: {fileID: 7389862768196882727}
+  - component: {fileID: 4880955865652892572}
   m_Layer: 0
   m_Name: spider_idle
   m_TagString: Untagged
@@ -294,7 +295,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1595179045
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4aa5aff2229040946b5251b985ff4908, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -327,3 +328,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4880955865652892572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692830595080090428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.0679412, y: -2.0938616, z: 0}
+  - {x: -1.8040973, y: -1.7458415, z: 0}
+  - {x: -2.1811738, y: -0.88567305, z: 0}
+  - {x: 1.8537524, y: -0.83110285, z: 0}
+  - {x: 1.6027291, y: -1.8755804, z: 0}
+  m_ShapePathHash: 1939643466
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -253232

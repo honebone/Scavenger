@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3790690230964976493}
   - component: {fileID: 4113315921344195317}
+  - component: {fileID: 4586365994370721123}
   m_Layer: 0
   m_Name: zombie_corpse
   m_TagString: Untagged
@@ -84,3 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4586365994370721123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5117224397878284121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.0111645, y: -1.3407189, z: 0}
+  - {x: -1.3642582, y: -0.89554214, z: 0}
+  - {x: 1.8115103, y: -1.0367799, z: 0}
+  - {x: 1.8703593, y: -1.4231071, z: 0}
+  m_ShapePathHash: -867991782
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -258988

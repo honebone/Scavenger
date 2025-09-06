@@ -21,10 +21,13 @@ public class PA_StE_Belief : PA_StatusEffect
     }
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
-        Action.ActionStatus action = actionStatus;
-        character.Enqueue(action, true, charactersManager.SearchCharaWithCondition(condition));
+        if(actionResultsList[0].actionStatus.abilityType != AbilityData.AbilityType.move)
+        {
+            Action.ActionStatus action = actionStatus;
+            character.Enqueue(action, true, charactersManager.SearchCharaWithCondition(condition));
 
-        activateAbility = true;
+            activateAbility = true;
+        }
     }
 
     public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)

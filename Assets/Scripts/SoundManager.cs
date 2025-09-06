@@ -67,7 +67,7 @@ public class SoundManager : MonoBehaviour
     public void PlayBGM_Normal()
     {
         if (BGM_battle.isPlaying) { BGM_battle.Stop(); }
-        BGM_normal.Play();
+        if (!BGM_normal.isPlaying) BGM_normal.Play();
     }
     public void StartBGM_Battle(AudioClip bgm)
     {

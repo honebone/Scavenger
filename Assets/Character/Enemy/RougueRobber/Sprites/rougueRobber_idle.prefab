@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1026312498805100565}
   - component: {fileID: 1026312498805100566}
   - component: {fileID: 1026312498805100567}
+  - component: {fileID: 547264617764521346}
   m_Layer: 0
   m_Name: rougueRobber_idle
   m_TagString: Untagged
@@ -105,3 +106,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &547264617764521346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026312498805100584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -0.48152375, y: -1.9527478, z: 0}
+  - {x: -0.752229, y: -1.0603192, z: 0}
+  - {x: 0.76399875, y: -1.083859, z: 0}
+  - {x: 0.3638258, y: -1.9645178, z: 0}
+  m_ShapePathHash: -904472915
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -249370

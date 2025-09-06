@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2407771225794455107}
   - component: {fileID: 758661685225720414}
+  - component: {fileID: 9120080678447985728}
   m_Layer: 0
   m_Name: strayDog_corpse
   m_TagString: Untagged
@@ -84,3 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9120080678447985728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755397018768773350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.2818696, y: -2.105755, z: 0}
+  - {x: -1.9292082, y: -1.6841178, z: 0}
+  - {x: 2.0115967, y: -1.6134996, z: 0}
+  - {x: 1.1641718, y: -2.0704455, z: 0}
+  m_ShapePathHash: 233757273
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -256094

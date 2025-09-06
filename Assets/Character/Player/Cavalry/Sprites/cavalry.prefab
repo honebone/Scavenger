@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4294883123609279926}
   - component: {fileID: 401095289036893239}
   - component: {fileID: 4051544957614764208}
+  - component: {fileID: 2463958517615477025}
   m_Layer: 0
   m_Name: cavalry
   m_TagString: Untagged
@@ -105,3 +106,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2463958517615477025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419639086043272188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -0.030845461, y: -0.15925127, z: 0}
+  - {x: -0.059851505, y: -0.11013995, z: 0}
+  - {x: 0.050346736, y: -0.11066023, z: 0}
+  - {x: 0.029347993, y: -0.15962565, z: 0}
+  m_ShapePathHash: -1137868147
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 110360

@@ -10,10 +10,10 @@ public class P_Sister_PA : PA_Personality
     GameObject comeTrue;
     [SerializeField, TextArea(3, 10)]
     string comeTrueInfo;
-    
+
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
-        if (!character.CheckHasStE(comeTrue))
+        if (actionResultsList[0].actionStatus.abilityType != AbilityData.AbilityType.move && !character.CheckHasStE(comeTrue))
         {
             Action.ActionStatus action = actionStatus;
             character.Enqueue(action, true, new List<Character>() { character });

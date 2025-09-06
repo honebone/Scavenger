@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3956015297045797172}
   - component: {fileID: 814158956648530116}
+  - component: {fileID: 6544564078575569329}
   m_Layer: 0
   m_Name: goblinLeader_corpse
   m_TagString: Untagged
@@ -84,3 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6544564078575569329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2443225910016164631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -0.7479625, y: -2.247625, z: 0}
+  - {x: -1.2166069, y: -1.4211926, z: 0}
+  - {x: 1.8191502, y: -1.3810234, z: 0}
+  - {x: 0.8684709, y: -2.2074556, z: 0}
+  m_ShapePathHash: 70062625
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -234414

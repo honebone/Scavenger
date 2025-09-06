@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1355539894783648862}
   - component: {fileID: 4650106588226883767}
   - component: {fileID: 1339409926143679971}
+  - component: {fileID: 7982782708678075570}
   m_Layer: 0
   m_Name: pest_armor
   m_TagString: Untagged
@@ -105,3 +106,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7982782708678075570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856050556607614669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -3.221439, y: -1.7632775, z: 0}
+  - {x: -2.6325657, y: -0.83056736, z: 0}
+  - {x: 1.7071939, y: -0.7324219, z: 0}
+  - {x: 1.9735887, y: -1.791319, z: 0}
+  m_ShapePathHash: 1177460856
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -244102

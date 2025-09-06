@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RE_Swarm_Exp
   m_EditorClassIdentifier: 
   eventName: "\u5927\u7FA4\uFF1A\u7D4C\u9A13"
-  eventInfo: "\u6575\u306E\u8ECD\u52E2\u3068\u306E\u6226\u95D8\n\u30FB\u30A6\u30A7\u30FC\u30D6\u6570<color=#FF0000>+2</color>\n\u30FB\u7D4C\u9A13\u306E\u30AA\u30FC\u30D6\u53D6\u5F97\u6570<color=#00FF00>+200</color>"
+  eventInfo: "\u6575\u306E\u8ECD\u52E2\u3068\u306E\u6226\u95D8\n\u30FB\u30A6\u30A7\u30FC\u30D6\u6570<color=#FF0000>+2</color>\n\u30FB\u7D4C\u9A13\u306E\u30AA\u30FC\u30D6\u53D6\u5F97\u6570<color=#00FF00>+200</color>\uFF05"
   noBlind: 0
   randomEvent: 0
   debug: 0

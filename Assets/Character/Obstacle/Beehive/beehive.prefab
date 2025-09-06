@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8780962262966903727}
   - component: {fileID: 3917681422529033246}
+  - component: {fileID: 516679668399290784}
   m_Layer: 0
   m_Name: beehive
   m_TagString: Untagged
@@ -84,3 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &516679668399290784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132058756843111703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -0.31674647, y: -1.6702728, z: 0}
+  - {x: -1.081783, y: -0.9073119, z: 0}
+  - {x: 1.2583301, y: -0.84846306, z: 0}
+  - {x: 0.38736534, y: -1.6467333, z: 0}
+  m_ShapePathHash: -1866379563
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -260696

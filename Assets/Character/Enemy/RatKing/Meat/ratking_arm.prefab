@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4239447333405155382}
   - component: {fileID: 4239447333405155377}
   - component: {fileID: 4239447333405155376}
+  - component: {fileID: 5980477773585757750}
   m_Layer: 0
   m_Name: ratking_arm
   m_TagString: Untagged
@@ -105,3 +106,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5980477773585757750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4239447333405155379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.7644312, y: -0.6933799, z: 0}
+  - {x: -0.8228476, y: 0.46975398, z: 0}
+  - {x: 0.7993082, y: 0.35205603, z: 0}
+  - {x: 1.6467334, y: -1.7055821, z: 0}
+  - {x: 0.19420159, y: 0.2765901, z: 0}
+  m_ShapePathHash: 160312548
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -319146

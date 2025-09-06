@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 779880413140588318}
   - component: {fileID: 3654402974506733698}
   - component: {fileID: 2801235437934129256}
+  - component: {fileID: 2064067442891708748}
   m_Layer: 0
   m_Name: flower_sleep
   m_TagString: Untagged
@@ -105,3 +106,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2064067442891708748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9082514914790218892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.600092, y: -1.3618219, z: 0}
+  - {x: -1.1575902, y: -0.45073527, z: 0}
+  - {x: 1.0032842, y: -0.5142492, z: 0}
+  - {x: 1.4372768, y: -1.1865122, z: 0}
+  - {x: 0.45866618, y: -1.1780025, z: 0}
+  - {x: 0.43313646, y: -2.2076735, z: 0}
+  - {x: 0.06835407, y: -2.2547827, z: 0}
+  - {x: -0.63794756, y: -1.0469646, z: 0}
+  m_ShapePathHash: -1029284637
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -224286

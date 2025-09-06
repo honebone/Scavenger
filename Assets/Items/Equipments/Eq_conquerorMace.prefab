@@ -53,7 +53,7 @@ MonoBehaviour:
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: "\u307E\u305F\u3001\u6BBA\u5BB3\u3057\u305F\u6575\u306E<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E50\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u596A\u3044\u53D6\u308B<sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u306E20\uFF05\u3068<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E10\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u596A\u3044\u53D6\u308B<sprite
     name=ATK>/<sprite name=maxHP>\u306E\u4E0A\u9650\u306F\u81EA\u8EAB\u306E\u57FA\u790E<sprite
     name=ATK>/<sprite name=maxHP>\u306E400\uFF05\u307E\u3067"
   statMod:
@@ -232,9 +232,9 @@ MonoBehaviour:
   - {x: -1, y: 0}
   - {x: 0, y: 1}
   - {x: 0, y: -1}
-  ATKRatio: 50
+  ATKRatio: 20
   maxATKRatio: 400
-  HPRatio: 50
+  HPRatio: 10
   maxHPRatio: 400
 --- !u!212 &2102424110011888310
 SpriteRenderer:

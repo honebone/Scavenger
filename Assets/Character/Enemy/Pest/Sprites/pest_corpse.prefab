@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5590312754997174085}
   - component: {fileID: 1380391493934955877}
+  - component: {fileID: 8574219963328275527}
   m_Layer: 0
   m_Name: pest_corpse
   m_TagString: Untagged
@@ -84,3 +85,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8574219963328275527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9075536149933192710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -2.0822155, y: -1.5290354, z: 0}
+  - {x: -1.6585032, y: -0.6012974, z: 0}
+  - {x: 1.8703593, y: -0.81315374, z: 0}
+  - {x: 2.2116833, y: -1.7997406, z: 0}
+  - {x: -0.14712241, y: -2.1832967, z: 0}
+  m_ShapePathHash: -82130064
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 232238

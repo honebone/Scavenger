@@ -203,6 +203,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -229,7 +231,7 @@ MonoBehaviour:
     actionTargetsInt: 
   actionStatus:
     actionName: "\u6210\u5C31"
-    conditionInfo: "\u81EA\u8EAB\u304C\u884C\u52D5\u3057\u305F\u3068\u304D"
+    conditionInfo: "\u81EA\u8EAB\u304C\u79FB\u52D5\u4EE5\u5916\u306E\u884C\u52D5\u3057\u305F\u3068\u304D"
     targetInfo: "\u5168\u3066\u306E\u5473\u65B9"
     AModInfo: 
     actionInfo: 
@@ -334,6 +336,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0

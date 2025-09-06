@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6757054100256552370}
   - component: {fileID: 6757054100256552371}
   - component: {fileID: 6757054100256552380}
+  - component: {fileID: 1511136129937278254}
   m_Layer: 0
   m_Name: pest_idle
   m_TagString: Untagged
@@ -105,3 +106,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1511136129937278254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757054100256552381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.9292084, y: -1.6820426, z: 0}
+  - {x: -1.9645176, y: -0.95439124, z: 0}
+  - {x: 1.9292083, y: -0.80138373, z: 0}
+  - {x: 1.8703592, y: -1.7644311, z: 0}
+  - {x: -0.28835994, y: -1.0416267, z: 0}
+  m_ShapePathHash: 1836110578
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -241156

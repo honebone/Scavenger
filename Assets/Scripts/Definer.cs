@@ -280,7 +280,7 @@ public class Definer : MonoBehaviour
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
     {AbilityData.AbilityType.other,"特殊"}, {AbilityData.AbilityType.attack,"攻撃"},{AbilityData.AbilityType.heal,"回復"},
     {AbilityData.AbilityType.buff,"強化"},{AbilityData.AbilityType.debuff,"弱体化"},{AbilityData.AbilityType.summon,"召喚"}
-    ,{AbilityData.AbilityType.pass,"パス"}
+    ,{AbilityData.AbilityType.pass,"パス"},{AbilityData.AbilityType.move,"移動"}
 };
     public static Dictionary<CharacterData.CharacterTag, string> CharacterTagName = new Dictionary<CharacterData.CharacterTag, string>(){
         {CharacterData.CharacterTag.other,"特殊" },{CharacterData.CharacterTag.corpse,"死体" },{CharacterData.CharacterTag.human,"人間" },{CharacterData.CharacterTag.beast,"獣"  }

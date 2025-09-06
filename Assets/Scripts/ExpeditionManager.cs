@@ -512,8 +512,8 @@ public class ExpeditionManager : MonoBehaviour
         //}
         if (currentArea)
         {
-            if (battleParams.bgm == null) { soundManager.StartBGM_Battle(currentArea.battleBGM.Choice()); }
-            else { soundManager.StartBGM_Battle(battleParams.bgm); }
+            if (battleParams.bgm != null) soundManager.StartBGM_Battle(battleParams.bgm);
+            else if (currentArea.battleBGM.Count > 0) soundManager.StartBGM_Battle(currentArea.battleBGM.Choice());
         }
         else
         {

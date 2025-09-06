@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2251189363123558415}
   - component: {fileID: 3099332309293775586}
+  - component: {fileID: 1882385766024953277}
   m_Layer: 0
   m_Name: spider_corpse
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1595179045
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 861a4c86d5d92734a84ddae36dd1b40b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -84,3 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1882385766024953277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809527472060186479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.6986415, y: -2.5154223, z: 0}
+  - {x: -2.1890466, y: -1.8381404, z: 0}
+  - {x: 2.281286, y: -1.810616, z: 0}
+  - {x: 2.1003368, y: -2.5288122, z: 0}
+  m_ShapePathHash: -768953894
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -254820

@@ -1095,6 +1095,7 @@ public class Character : MonoBehaviour
     public bool Damage(Action.OnDamageParams onDamageParams)
     {
         charaStatus.shield -= onDamageParams.shieldDMG;//ƒV[ƒ‹ƒhŒ¸­ 
+        OnDecreasedShield(onDamageParams.shieldDMG);
         if (onDamageParams.shieldDMG > 0)
         {
             targetButton.SetDamageText($"{"shieldDMGL".ToSpr()}{onDamageParams.shieldDMG}", Definer.colorRef.shieldDecrease);

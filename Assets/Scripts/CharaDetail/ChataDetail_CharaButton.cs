@@ -146,7 +146,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
         s += $"次のLVL UPに必要なexp：{expReq}\n";
         if (expCount >= expReq)
         {
-            s += "LVL UP 可能\n右クリックでLVL UP!".ColorStr(Definer.colorRef.expOrb);
+            s += "LVL UP 可能\n左クリックでLVL UP!".ColorStr(Definer.colorRef.expOrb);
         }
         else
         {

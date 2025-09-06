@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3385596286471807442}
   - component: {fileID: 2388854901174535598}
+  - component: {fileID: 5441880280508603289}
   m_Layer: 0
   m_Name: goblin_corpse
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1595179045
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c4b60227ace36fa418f424092c4f7aed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -84,3 +85,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5441880280508603289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7847713589474647375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -1.1721228, y: -1.8116422, z: 0}
+  - {x: -1.2062305, y: -1.1983626, z: 0}
+  - {x: 0.43027997, y: -1.2239432, z: 0}
+  - {x: 0.67756104, y: -1.6837382, z: 0}
+  m_ShapePathHash: 819406639
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -226666
