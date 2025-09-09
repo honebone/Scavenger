@@ -16,6 +16,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField]
     Transform fieldEffectP;
 
+    public CanvasGroup roundTextCanvas;
     [SerializeField]
     Text roundText;
     public TextMeshProUGUI waveText;
@@ -149,6 +150,7 @@ public class BattleManager : MonoBehaviour
             waveText.text = $"ウェーブ {currentWave + 1}/{waves.Count}";
         }
         currentWave = 0;
+        roundTextCanvas.alpha = 1;
         roundCount=0;
         StartCoroutine(BattleStartAnim());
     }
@@ -441,6 +443,8 @@ public class BattleManager : MonoBehaviour
                 chara.ResetBattleReport();
             }
         }
+
+        roundTextCanvas.alpha = 0;
 
         if (fieldEffect != null)
         {
