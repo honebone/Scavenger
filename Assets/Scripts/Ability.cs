@@ -12,8 +12,8 @@ public class Ability : MonoBehaviour
         public GameObject abilityManager;
         public Ability instantiatedManager;
 
-        public bool dontChangeSprite;
-        public GameObject activateSprite;
+        //public bool dontChangeSprite;
+        //public GameObject activateSprite;
 
         //public AudioClip SE;
 
@@ -132,8 +132,8 @@ public class Ability : MonoBehaviour
 
             abilityManager = data.abilityManager;
 
-            dontChangeSprite = data.dontChangeSprite;
-            activateSprite = data.activateSprite;
+            //dontChangeSprite = data.dontChangeSprite;
+            //activateSprite = data.activateSprite;
 
             //SE=data.SE;
 
@@ -168,8 +168,8 @@ public class Ability : MonoBehaviour
                 actionsStatus[i].actionName = abilityName;
                 actionsStatus[i].abilityEffect = true;
                 actionsStatus[i].abilityType = abilityType;
-                actionsStatus[i].dontChangeSprite = dontChangeSprite;
-                actionsStatus[i].activateSprite=activateSprite;
+                //actionsStatus[i].dontChangeSprite = dontChangeSprite;
+                //actionsStatus[i].activateSprite=activateSprite;
             }
 
             locked = data.lockedDefault;

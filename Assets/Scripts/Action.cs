@@ -235,9 +235,9 @@ public class Action : MonoBehaviour
 
         public List<Character.CharaStatusMod> summonStatusMods;
 
-        public bool dontChangeSprite;
-        [Header("スプライトの直接指定")]
-        public GameObject activateSprite;
+        //public bool dontChangeSprite;
+        //[Header("スプライトの直接指定")]
+        //public GameObject activateSprite;
 
         public Character actionOwner;
         /// <summary>アクションの引き金となった原因</summary>

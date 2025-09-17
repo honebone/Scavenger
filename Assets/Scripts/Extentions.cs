@@ -22,9 +22,9 @@ public static class Extentions
     {
         return Definer.colorRef.personalityColors[(int)type];
     }
-    public static Color ToColor(this PA_StatusEffect.StatusEffectStatus.StatusEffectType type)
+    public static Color ToColor(this PA_StatusEffect.StatusEffectStatus status)
     {
-        return Definer.colorRef.statusEffectColors[(int)type];
+        return status.overideColor ? status.colorOveride : Definer.colorRef.statusEffectColors[(int)status.StEType];
     }
     public static Color ToColor(this PositionEffect.PositionEffectStatus.PositionEffectType type)
     {
@@ -422,7 +422,7 @@ public static class Extentions
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff) sprite = "debuff".ToSpr();
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus) sprite = "focus".ToSpr();
         string text = (!status.refValue || ignoreValue) ? $"{status.StEName}" : $"{status.StEName} {valueText}";
-        return $"{sprite}<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.StEType.ToColor());
+        return $"{sprite}<link=S_{status.StEName}><u>{text}</u></link>".ColorStr(status.ToColor());
     }
 
     public static string ToLinkKey(this PositionEffect.PositionEffectStatus status, bool ignoreValue = true, int value = 0)

@@ -13,6 +13,8 @@ public class PA_StatusEffect : PassiveAbility
         public Sprite StEIcon;
         public enum StatusEffectType { neutral, buff, debuff, focus, unique }
         public StatusEffectType StEType;
+        public bool overideColor;
+        public Color colorOveride;
         [Header("0ならスタック制限なし")]
         public int maxStack;
         [Tooltip("同種の状態異常がすでにある場合、そのスタックを増加させるか")]
@@ -34,7 +36,7 @@ public class PA_StatusEffect : PassiveAbility
         {
             string s = StEName;
             //if (refValue) { s += value.ToString(); }
-            return s.ColorStr(StEType.ToColor());
+            return s.ColorStr(this.ToColor());
         }
     }
     public StatusEffectStatus GetStatusEffectStatus() { return StEStatus; }

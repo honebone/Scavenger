@@ -17,9 +17,9 @@ public class AbilityData : ScriptableObject
     [Header("設定しなければ汎用的なオブジェクトになる")]
     public GameObject abilityManager;
 
-    public bool dontChangeSprite;
-    [Header("スプライトの直接指定")]
-    public GameObject activateSprite;
+    //public bool dontChangeSprite;
+    //[Header("スプライトの直接指定")]
+    //public GameObject activateSprite;
 
     //public AudioClip SE;
 

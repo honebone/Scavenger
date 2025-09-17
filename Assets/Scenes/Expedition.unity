@@ -299,17 +299,17 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
-    centerFront: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
-    lowerFront: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
+    upperFront: {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
-    centerMid: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    lowerMid: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
+    lowerMid: {fileID: 0}
     dontShuffleBack: 0
-    upperBack: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
-    centerBack: {fileID: 11400000, guid: e6ee0369d956c304ea7837e8e03803af, type: 2}
-    lowerBack: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
@@ -12374,8 +12374,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -18672,8 +18670,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

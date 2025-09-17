@@ -188,18 +188,18 @@ public class Character_TargetButton : MonoBehaviour
             string s = status.charaName + "\n";
             if (status.shield > 0)
             {
-                s += string.Format("HP：{0}+{1} ({2}％)", status.HP, status.shield.ToString().ColorStr(Definer.colorRef.shield), status.GetHPPercent().ToString("0.0"));
+                s += $"{"HP".ToSpr_withName()}：{status.HP}+{"shield".ToSpr()}{status.shield.ToString().ColorStr(Definer.colorRef.shield)} ({status.GetHPPercent():0.0}％)";
             }
-            else { s += string.Format("HP：{0} ({1}％)", status.HP, status.GetHPPercent().ToString("0.0")); }
+            else { s += $"{"HP".ToSpr_withName()}：{status.HP} ({status.GetHPPercent():0.0}％)"; }
             if (status.player)
             {
-                s += string.Format("\nSAN：{0}", status.SAN);
+                s += $"\n{"SAN".ToSpr_withName()}：{status.SAN}";
             }
 
             if (status.lifetime > 0)
             {
                 int lifetimeDMG = Mathf.CeilToInt(1f*status.BaseHP() / status.lifetime);
-                s += "\n寿命によるHP減少：" + $"{lifetimeDMG}/ラウンド".ColorStr(Definer.colorRef.decreaseHP);
+                s += $"\n寿命による{"HP".ToSpr_withName()}減少：" + $"{lifetimeDMG}/ラウンド".ColorStr(Definer.colorRef.decreaseHP);
             }
 
             foreach (GameObject DoT in Definer.DoTDataBase)
@@ -208,7 +208,7 @@ public class Character_TargetButton : MonoBehaviour
                 int DMGTotal = character.GetDoTDMG(DoT, true);
                 if (DMGTotal > 0)
                 {
-                    string StEName = DoT.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName;
+                    string StEName = DoT.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
                     s += $"\n{StEName}：次ターン{DMGNextTurn.ToString().ColorStr(Definer.colorRef.decreaseHP)}(計{DMGTotal.ToString().ColorStr(Definer.colorRef.decreaseHP)})";
                 }
             }

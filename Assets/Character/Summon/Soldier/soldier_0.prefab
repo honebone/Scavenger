@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1744702625394678010}
   - component: {fileID: 3070232079508042841}
   - component: {fileID: 1614151264748012731}
+  - component: {fileID: 8171643065201264462}
   m_Layer: 0
   m_Name: soldier_0
   m_TagString: Untagged
@@ -105,3 +106,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8171643065201264462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820303296396893962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d9953adc45
+  m_ShapePath:
+  - {x: -0.02880378, y: -0.118840404, z: 0}
+  - {x: -0.042523652, y: -0.070665255, z: 0}
+  - {x: 0.04423863, y: -0.07323772, z: 0}
+  - {x: 0.030518755, y: -0.119697876, z: 0}
+  m_ShapePathHash: 279215442
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -71488
