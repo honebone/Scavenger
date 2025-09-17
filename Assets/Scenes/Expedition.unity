@@ -300,7 +300,7 @@ MonoBehaviour:
   enemySetTest:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
-    centerFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 0}
@@ -38578,7 +38578,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

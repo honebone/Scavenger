@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7416407499899449687}
-  - component: {fileID: -7146820611243028230}
+  - component: {fileID: 2308459914545465374}
   - component: {fileID: 6391350165293048886}
   m_Layer: 0
   m_Name: PA_StEU_Stardust
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7146820611243028230
+--- !u!114 &2308459914545465374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5164891664867224302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62628413d671de84f9d879944a9da783, type: 3}
+  m_Script: {fileID: 11500000, guid: 92a19bc8320b1a744ac64f911b7d6f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StEU_stardust
@@ -79,7 +79,7 @@ MonoBehaviour:
   PATags: 
   StEStatus:
     StEName: "\u661F\u5C51"
-    StEInfo: "<color=#3473ca>\u661F\u3005\u306E\u529B\u3092\u5F97\u3066\u3044\u308B</color>"
+    StEInfo: 
     StEIcon: {fileID: 21300000, guid: 0ad23aba1e6e4d84a8534eb160fe6766, type: 3}
     StEType: 4
     overideColor: 1
@@ -94,6 +94,30 @@ MonoBehaviour:
     stack: 0
     value: 0
     DMGPerTurn: 0
+  statModPerStack:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 10
+    ATK_int: 0
+    INT_mul: 10
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

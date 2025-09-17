@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
-  m_Name: Enemy_StarMissionary
+  m_Name: Enemy_StarBeliever
   m_EditorClassIdentifier: 
-  fileName: E_StarMissionary
+  fileName: E_StarBeliever
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
-  charaName: "\u661F\u96F2\u306E\u5BA3\u6559\u8005"
+  charaName: "\u661F\u306E\u4FE1\u5949\u8005"
   introduction: 
   difficulty: 
   preferFront: 0
@@ -33,15 +33,14 @@ MonoBehaviour:
   spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
-  - {fileID: 11400000, guid: d7a92dfa684858644a389eb3faee99af, type: 2}
-  - {fileID: 11400000, guid: ca439c5f07b48dd48922b797d83723f4, type: 2}
-  - {fileID: 11400000, guid: 10603d7973d46f242b992ab4a2cc55af, type: 2}
-  - {fileID: 11400000, guid: b3056b71860ca614599606bc60a5cc3c, type: 2}
+  - {fileID: 11400000, guid: 90fcd36dc2426bf46981e10e81791d13, type: 2}
+  - {fileID: 11400000, guid: 774ed4286bcda3d4f9fdf6d4df75374d, type: 2}
+  - {fileID: 11400000, guid: 2057d66a62a16f644a8c83b199c0c2a8, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
-  - {fileID: 1808138132528202961, guid: b7402641734feb145906b6aed11925ae, type: 3}
+  - {fileID: 1808138132528202961, guid: 01e5b891ece514642a70e58299d1e5e7, type: 3}
   actionMods: []
-  corpse: {fileID: 11400000, guid: ff40b764def0cd148a80fd4e8bfae22a, type: 2}
+  corpse: {fileID: 0}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0
@@ -50,16 +49,16 @@ MonoBehaviour:
     excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
   lifetime: 0
-  surviveFatalWounds: 1
-  maxHP: 75
+  surviveFatalWounds: 0
+  maxHP: 50
   maxSAN: 0
-  ATK: 7
+  ATK: 5
   INT: 13
   CRITC: 5
   CRITD: 200
-  EVD: 5
-  ACC: 100
-  ACT: 6
+  EVD: 4
+  ACC: 93
+  ACT: 13
   turnPerRound: 1
   GHeal: 0
   RHeal: 0
