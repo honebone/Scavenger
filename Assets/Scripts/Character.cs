@@ -953,6 +953,20 @@ public class Character : MonoBehaviour
         return false;
     }
 
+    public bool Enqueue_Int(Action.ActionStatus actionStatus, bool setTargets, List<int> actionTargetsInt, int targetCount = 0, bool nullOwner = false)
+    {
+        if (!nullOwner) { actionStatus.actionOwner = this; }
+        else { actionStatus.actionOwner = null; }
+        if (setTargets) { actionStatus.actionTargetsInt = actionTargetsInt; }
+
+        if ((actionStatus.actionTargets != null && actionStatus.actionTargets.Count > 0) || (actionStatus.actionTargetsInt != null && actionStatus.actionTargetsInt.Count > 0))
+        {
+            actionQueue.Enqueue(actionStatus, targetCount);
+            return true;
+        }
+        return false;
+    }
+
     public void SetTurnIcon() { charaObj.SetTurnIcons(charaStatus.turnPerRound+ charaStatus.exTurn); }
     public void SetActionInvolvedIcon(bool owner) { targetButton.SetActionInvolvedIcon(owner); }
 
@@ -1502,6 +1516,11 @@ public class Character : MonoBehaviour
                     int maxRemain = ability.maxRemain;
                     if (ability.maxRemain == 0) { maxRemain = 999; }
                     ability.remain = Mathf.Clamp(ability.remain + remainControll.value, 0, maxRemain);
+                }
+                if (remainControll.set_CD) { ability.cooldown = remainControll.value_CD; }
+                else
+                {
+                    ability.cooldown += remainControll.value_CD;
                 }
                 infoText.AddLogText(string.Format("{0}ÇÃ<{1}>ÇÃégópâÒêîÇ™{2}Ç…Ç»Ç¡ÇΩ", charaStatus.charaName, ability.abilityName.ColorStr(ability.abilityType.ToColor()), ability.remain));
             }

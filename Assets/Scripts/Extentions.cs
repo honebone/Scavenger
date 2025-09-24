@@ -131,6 +131,7 @@ public static class Extentions
             return -1;
         }
     }
+    /// <summary>0~length-1‚Ü‚Å‚Ì—”</summary>
     public static int RandIndex(this int length)
     {
         return Random.Range(0, length);

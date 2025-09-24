@@ -299,12 +299,12 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
-    centerFront: {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
+    upperFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: c81a66a62e848ad44b3e023e4dd9c94a, type: 2}
-    centerMid: {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
@@ -12655,6 +12655,7 @@ MonoBehaviour:
   - {fileID: 8496128596371283057, guid: 8472ac4e778ebbf438b64ea9158bfecc, type: 3}
   - {fileID: 8496128596371283057, guid: a46bedd159d8d424c8fd59216fbab8c8, type: 3}
   - {fileID: 8496128596371283057, guid: 4271be2e25fc6224d8d0e44e72bd7db7, type: 3}
+  - {fileID: 8496128596371283057, guid: 4a2e6f550e916724498123ebc24bcdbe, type: 3}
   cp: {fileID: 11400000, guid: d28646969fe51c24a8dda9af1df426d0, type: 2}
   uniqueLinkInfos:
   - linkKey: "\u30B7\u30FC\u30EB\u30C9"

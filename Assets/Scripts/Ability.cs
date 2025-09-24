@@ -185,8 +185,8 @@ public class Ability : MonoBehaviour
         {
             for (int i = 0; i < actionsStatus.Length; i++)
             {
-                actionsStatus[i].actionTargets = null;
-                actionsStatus[i].actionTargetsInt = null;
+                actionsStatus[i].actionTargets = new List<Character>();
+                actionsStatus[i].actionTargetsInt = new List<int>();
             }
         }
        
@@ -768,7 +768,6 @@ public class Ability : MonoBehaviour
             //character.OnActivateAbility();
 
             ResetValue();
-            status.ResetTargetPrams();
             battleManager.ResetSelectedAbility();
 
             actionQueue.StartResolve(3);
@@ -781,5 +780,6 @@ public class Ability : MonoBehaviour
         counter = 0;
         targetPool = new List<List<int>>();
         targetGroups = new List<List<int>>();
+        status.ResetTargetPrams();
     }
 }

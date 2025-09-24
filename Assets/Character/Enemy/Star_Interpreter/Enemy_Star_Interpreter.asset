@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_Star_Interpreter
+  m_EditorClassIdentifier: 
+  fileName: E_Star_Interpreter
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u661F\u3005\u306E\u4EE3\u5F01\u8005"
+  introduction: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
+  characterTags: 0a00000002000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  boss: 1
+  playable: 0
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 25fbdd3ac3d185744a3fa72eec76fa29, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  - {fileID: 11400000, guid: 4fee9caf8097c2f48aeab6c476dfcf9d, type: 2}
+  - {fileID: 11400000, guid: e5e6ab5be49715245982ef294e87ccaa, type: 2}
+  passiveAbilities:
+  - {fileID: 1808138132528202961, guid: acfc2a0a698333540ac5ad21622d4d3c, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
+  surviveFatalWounds: 1
+  maxHP: 400
+  maxSAN: 0
+  ATK: 12
+  INT: 12
+  CRITC: 5
+  CRITD: 200
+  EVD: 5
+  ACC: 100
+  ACT: 9
+  turnPerRound: 3
+  GHeal: 0
+  RHeal: 0
+  debuffRes: 0
+  StEResists:
+  - ResStE: {fileID: 5164891664867224302, guid: d08bedc1903785f4eb96bcca54f2257c, type: 3}
+    value: 50
+  StEApplyBonus: []
+  moveRes: 200

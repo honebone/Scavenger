@@ -481,13 +481,23 @@ public class Action : MonoBehaviour
             }
             CheckNewBlock();
 
-            foreach (ActionData.AbilityRemainControll remainControll in abilityRemainControlls)
+            foreach (ActionData.AbilityRemainControll rc in abilityRemainControlls)
             {
-                s += string.Format("・<{0}>の使用回数を", remainControll.abilityData.abilityName.ColorStr(remainControll.abilityData.abilityType.ToColor()));
-                if (remainControll.set) { s += string.Format("{0}にする\n", remainControll.value); }
-                else
+                if (rc.value > 0)
                 {
-                    s += string.Format("{0}増加\n", remainControll.value);
+                    s += string.Format("・<{0}>の使用回数を", rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor()));
+                    if (rc.set) { s += string.Format("{0}にする\n", rc.value); }
+                    else
+                    {
+                        s += string.Format("{0}増加\n", rc.value);
+                    }
+                }
+                if (rc.value_CD != 0)
+                {
+                    s += $"・<{rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor())}> のクールダウンを";
+                    if (rc.set_CD) { s += $"{rc.set_CD}にする\n"; }
+                    else if (rc.value_CD < 0) s += $"{-rc.value_CD}減少\n";
+                    else s += $"{rc.value_CD}増加\n";
                 }
             }
             CheckNewBlock();

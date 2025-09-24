@@ -94,6 +94,9 @@ public class ActionData : ScriptableObject
         [Header("true:使用回数をvalueにする false:使用回数にvalueを足す")]
         public bool set;
         public int value;
+
+        public bool set_CD;
+        public int value_CD;
     }
     public List<AbilityRemainControll> abilityRemainControlls;
 

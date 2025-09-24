@@ -172,6 +172,23 @@ public class PassiveAbility : MonoBehaviour
        return character.Enqueue(action, setTargets, actionTargets, targetCount, nullOwner);
     }
 
+    /// <summary>自身のスプライトを代入してEnqueue</summary>
+    public bool Enqueue_Int(Action.ActionStatus actionStatus, bool setTargets, List<int> actionTargetsInt, int targetCount = 0, bool nullOwner = false)
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            actionStatus.sprite = sr.sprite;
+        }
+        else
+        {
+            infoText.AddDebugText(string.Format("{0}にSpriteRendererなし", GetPAName()));
+        }
+        Action.ActionStatus action = actionStatus;
+        action.source = this;
+        return character.Enqueue_Int(action, setTargets, actionTargetsInt, targetCount, nullOwner);
+    }
+
     /// <summary>自身を対象にEunqueue</summary>
     public void Enqueue_Self(Action.ActionStatus actionStatus)
     {

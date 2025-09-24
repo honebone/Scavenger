@@ -490,6 +490,45 @@ public class CharactersManager : MonoBehaviour
         return list;
     }
 
+    /// <summary>
+    /// Å‚àHP(‚Ü‚½‚ÍHPŠ„‡)‚Ì‘å‚«‚¢ƒLƒƒƒ‰
+    /// </summary>
+    /// <param name="condition"></param>
+    /// <param name="percent"></param>
+    /// <returns></returns>
+    public List<Character> SearchChara_Strongest(SearchCharaCondition condition, bool percent)
+    {
+        List<Character> pool = new List<Character>(SearchCharaWithCondition(condition));
+        float maxValue = 0;
+        for (int i = 0; i < pool.Count; i++)
+        {
+            if (percent)
+            {
+                if (i == 0 || pool[i].CharaStatus().GetHPPercent() >= maxValue) { maxValue = pool[i].CharaStatus().GetHPPercent(); }
+            }
+            else
+            {
+                if (i == 0 || pool[i].CharaStatus().HP >= maxValue) { maxValue = pool[i].CharaStatus().HP; }
+            }
+        }
+
+        List<Character> list = new List<Character>();
+
+        foreach (Character chara in pool)
+        {
+            if (percent)
+            {
+                if (chara.CharaStatus().GetHPPercent() == maxValue) { list.Add(chara); }
+            }
+            else
+            {
+                if (chara.CharaStatus().HP == maxValue) { list.Add(chara); }
+            }
+        }
+
+        return list;
+    }
+
     /// <summary>‚¢‚¸‚ê‚©‚Ìw‰c‚ÌƒLƒƒƒ‰‚·‚×‚Ä‚ğ•Ô‚·</summary>
     public List<Character> SearchChara_AllInOneSide(bool player)
     {
