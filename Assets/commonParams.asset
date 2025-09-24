@@ -243,6 +243,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
   - {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
   - {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+  - {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
+  - {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
+  - {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
+  - {fileID: 11400000, guid: c81a66a62e848ad44b3e023e4dd9c94a, type: 2}
   obstacleDataBase:
   - {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
   - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}

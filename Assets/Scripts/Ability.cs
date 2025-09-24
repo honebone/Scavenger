@@ -180,6 +180,15 @@ public class Ability : MonoBehaviour
             abilityData = data;
             //character = owner;
         }
+
+        public void ResetTargetPrams()
+        {
+            for (int i = 0; i < actionsStatus.Length; i++)
+            {
+                actionsStatus[i].actionTargets = null;
+                actionsStatus[i].actionTargetsInt = null;
+            }
+        }
        
         public void SetManager(Ability m) { instantiatedManager = m; }
 
@@ -384,6 +393,12 @@ public class Ability : MonoBehaviour
     {
         character = chara;
         this.status = status;
+
+        //for (int i = 0;  i< this.status.actionsStatus.Length; i++)
+        //{
+        //    InfoText.inst.AddDebugText(this.status.actionsStatus[i].summon.ToString());
+        //    InfoText.inst.AddDebugText(this.status.actionsStatus[i].actionTargets.Count.ToString());
+        //}
 
         charactersManager = FindObjectOfType<CharactersManager>();
         battleManager = FindObjectOfType<BattleManager>();
@@ -717,218 +732,6 @@ public class Ability : MonoBehaviour
         else { return tp_noMark; }//そうでないならマークを含まない対象群を返す
     }
 
-    //public virtual void StartSelectTarget()
-    //{
-    //    charactersManager.ResetAllTargetIcons();
-    //    Character.CharacterStatus charaStatus = character.GetCharacterStatus();
-    //    Character.CharacterStatus targetStatus;
-    //    Action.ActionStatus actionStatus = ModifyTargetParams(abilityStatus.actionsStatus[counter]);
-    //    bool playable = charaStatus.playable;
-
-    //    targetIconPos = new List<Vector2Int>();
-    //    targetPool = new List<List<int>>();
-    //    if (!actionStatus.condition.searchAsPos)//キャラ選択のアビリティ
-    //    {
-    //        switch (actionStatus.targetType)
-    //        {
-    //            case Action.ActionStatus.TargetType.other:
-    //                print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
-    //                break;
-    //            case Action.ActionStatus.TargetType.single://単体対象
-    //                //targetEmpty = false;
-                    
-    //                foreach(Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-    //                {
-    //                    targetStatus= target.GetCharacterStatus();
-    //                    int pos = targetStatus.position;
-    //                    if (targetStatus.hide == 0||actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
-    //                    {
-    //                        if (targetStatus.marked > 0 && !actionStatus.friendly) 
-    //                        { targetIconPos.Add(new Vector2Int(pos, 1)); }
-    //                        else { targetIconPos.Add(new Vector2Int(pos, 0)); }
-    //                        targetPool.Add(new List<int>() { pos });
-    //                    }
-    //                }
-    //                break;
-    //            case Action.ActionStatus.TargetType.column:
-    //                //targetEmpty = false;
-    //                List<int> tp_column = new List<int>();
-    //                int includeMarked_column = 0;
-    //                for (int i = 0; i < 3; i++)//各列に対して行う
-    //                {
-    //                    tp_column = new List<int>();
-    //                    includeMarked_column = 0;
-    //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-    //                    {
-    //                        targetStatus = target.GetCharacterStatus();
-    //                        int pos = targetStatus.position;
-    //                        if (pos < 9 && pos.GetColumn() == i)//プレイヤー側で列がiと等しい
-    //                        {
-    //                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
-    //                            {
-    //                                if (targetStatus.marked > 0 && !actionStatus.friendly) { includeMarked_column = 1; }
-    //                                tp_column.Add(pos);
-    //                            }
-    //                        }
-    //                    }
-    //                    foreach (int p in tp_column) { targetIconPos.Add(new Vector2Int(p, includeMarked_column)); }
-    //                    for (int j = 0; j < tp_column.Count; j++) { targetPool.Add(tp_column); }
-    //                }
-    //                for (int i = 0; i < 3; i++)//各列に対して行う
-    //                {
-    //                    tp_column = new List<int>();
-    //                    includeMarked_column = 0;
-    //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-    //                    {
-    //                        targetStatus = target.GetCharacterStatus();
-    //                        int pos = targetStatus.position;
-    //                        if (pos >= 9 && pos.GetColumn() == i)//エネミー側で列がiと等しい
-    //                        {
-    //                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
-    //                            {
-    //                                if (targetStatus.marked > 0 && !actionStatus.friendly) { includeMarked_column = 1; }
-    //                                tp_column.Add(pos);
-    //                            }
-    //                        }
-    //                    }
-    //                    foreach (int p in tp_column) { targetIconPos.Add(new Vector2Int(p, includeMarked_column)); }
-    //                    for (int j = 0; j < tp_column.Count; j++) { targetPool.Add(tp_column); }
-    //                }
-    //                break;
-    //            case Action.ActionStatus.TargetType.all:
-    //                //targetEmpty = true;
-    //                List<int> tp = new List<int>();
-    //                //int iconPos = charaStatus.position;
-    //                foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-    //                {
-    //                    targetStatus = target.GetCharacterStatus();
-    //                    if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-    //                    {
-    //                        int pos = targetStatus.position;
-    //                        tp.Add(targetStatus.position);
-    //                        targetIconPos.Add(new Vector2Int(pos, 0));
-    //                    }
-    //                }
-    //                for(int i = 0; i < tp.Count; i++) { targetPool.Add(tp); }
-
-    //                break;
-    //            case Action.ActionStatus.TargetType.singleWoSelf:
-    //                //targetEmpty = false;
-
-    //                foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-    //                {
-    //                    targetStatus = target.GetCharacterStatus();
-    //                    int pos = targetStatus.position;
-
-    //                    if (target != character)//自分自身を除く
-    //                    {
-    //                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)//対象が潜伏じゃないor潜伏無視or友好アビリティ
-    //                        {
-    //                            if (targetStatus.marked > 0 && !actionStatus.friendly)
-    //                            { targetIconPos.Add(new Vector2Int(pos, 1)); }
-    //                            else { targetIconPos.Add(new Vector2Int(pos, 0)); }
-    //                            targetPool.Add(new List<int>() { pos });
-    //                        }
-    //                    }
-    //                }
-    //                break;
-    //            case Action.ActionStatus.TargetType.allWoSelf:
-    //                //targetEmpty = true;
-    //                List<int> tp_allWoself = new List<int>();
-    //                //int iconPos = charaStatus.position;
-    //                foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-    //                {
-    //                    if (target != character)//自分自身を除く
-    //                    {
-    //                        targetStatus = target.GetCharacterStatus();
-    //                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-    //                        {
-    //                            int pos = targetStatus.position;
-    //                            tp_allWoself.Add(targetStatus.position);
-    //                            targetIconPos.Add(new Vector2Int(pos, 0));
-    //                        }
-    //                    }
-    //                }
-    //                for (int i = 0; i < tp_allWoself.Count; i++) { targetPool.Add(tp_allWoself); }
-    //                break;
-    //            case Action.ActionStatus.TargetType.self:
-    //                //targetEmpty = false;
-
-    //                targetIconPos.Add(new Vector2Int(charaStatus.position, 0));
-    //                targetPool.Add(new List<int> { charaStatus.position});
-    //                break;
-
-    //            case Action.ActionStatus.TargetType.move://操作可能キャラのみ
-    //                //targetEmpty = true;
-    //                if (!playable) { FindObjectOfType<InfoText>().AddDebugText("error:操作不可のキャラが移動アビリティ使おうとしてるぞ"); }
-    //                foreach (int target in charactersManager.GetMoveTargets(charaStatus.position, actionStatus.moveValue))
-    //                {
-    //                    //charactersManager.SetTargetIcon(target, true, charaStatus.size, new List<int>() { target });
-    //                    targetIconPos.Add(new Vector2Int(target, 0));
-    //                    targetPool.Add(new List<int>() { target });
-    //                }
-    //                break;
-    //            default:
-    //                print("そのtargetTypeの処理は未実装");
-    //                break;
-    //        }
-    //    }
-    //    else//ポジション選択のアビリティ
-    //    {
-    //        //targetEmpty = true;
-    //        switch (actionStatus.targetType)
-    //        {
-    //            case Action.ActionStatus.TargetType.other:
-    //                print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
-    //                break;
-    //            case Action.ActionStatus.TargetType.single:
-    //                foreach(int i in charactersManager.SearchPosWithCondition(actionStatus.condition))
-    //                {
-    //                    targetIconPos.Add(new Vector2Int(i, 0));
-    //                    targetPool.Add(new List<int>() { i });
-    //                }
-    //                break;
-    //        }
-    //    }
-       
-
-    //    //マークの処理
-    //    List<Vector2Int> targetPos = new List<Vector2Int>();//x:pos y:posのindex
-    //    if (!abilityStatus.actionsStatus[counter].ignoreMark)//マークを考慮するなら
-    //    {
-    //        for (int i = 0; i < targetIconPos.Count; i++)//y==1(マークが付与されている)対象がいるなら　それらのみを抽出
-    //        {
-    //            if (targetIconPos[i].y == 1) { targetPos.Add(new Vector2Int(targetIconPos[i].x, i)); }
-    //        }
-    //        if (targetPos.Count == 0)//マークが付与されている対象がいないなら、全ての対称を候補に
-    //        {
-    //            for (int i = 0; i < targetIconPos.Count; i++)
-    //            {
-    //                targetPos.Add(new Vector2Int(targetIconPos[i].x, i));
-    //            }
-
-    //        }
-    //    }
-    //    else//マークを無視するなら全ての対称を候補に
-    //    {
-    //        for (int i = 0; i < targetIconPos.Count; i++)
-    //        {
-    //            targetPos.Add(new Vector2Int(targetIconPos[i].x, i));
-    //        }
-    //    }
-
-    //    if (playable && (targetPos.Count > 1 || counter == 0))
-    //    {
-    //        for (int i = 0; i < targetPos.Count; i++)//test
-    //        {
-    //            charactersManager.SetTargetIcon(targetPos[i].x, targetPool[targetPos[i].y]);//, targetEmpty
-    //        }
-    //    }
-    //    else { SelectTarget(targetPool[targetPos[Random.Range(0, targetPos.Count)].y]); }
-    //}
-
-   
-
     public virtual void SelectTarget(List<int> targetGroup) {
         counter++;
         targetGroups.Add(new List<int>(targetGroup));
@@ -954,15 +757,18 @@ public class Ability : MonoBehaviour
                 {
                     status.actionsStatus[i].actionTargets = new List<Character>(charactersManager.GetExistingCharacters(targetGroups[i], true));
                 }//そうでない場合actionTargetsがnullとなるが、そのケアはActionのReaolve内で行っている
-
-                //対象にとる数をactionTargetsIntの数と一致させる→対象リストのすべてを対象に決定する(手動で対象を選ぶためランダム要素がない)
-                status.actionsStatus[i].targetCount = status.actionsStatus[i].actionTargetsInt.Count;
+                
+                    //対象にとる数をactionTargetsIntの数と一致させる→対象リストのすべてを対象に決定する(手動で対象を選ぶためランダム要素がない)
+                    status.actionsStatus[i].targetCount = status.actionsStatus[i].actionTargetsInt.Count;
 
                 actionQueue.Enqueue(status.actionsStatus[i],0);
+
+                
             }
             //character.OnActivateAbility();
 
             ResetValue();
+            status.ResetTargetPrams();
             battleManager.ResetSelectedAbility();
 
             actionQueue.StartResolve(3);

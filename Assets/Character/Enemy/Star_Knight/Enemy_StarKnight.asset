@@ -29,9 +29,9 @@ MonoBehaviour:
   boss: 0
   playable: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 4797723282708017479, guid: 12a232ede70f9a3439687d61c2000a0d, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  spriteForUI: {fileID: 1519044896, guid: a340261a9611dd745912d0f0f3a0c662, type: 3}
   abilities:
   - {fileID: 11400000, guid: 21552ef3f1ab0c74ca18aa1e039082bb, type: 2}
   - {fileID: 11400000, guid: 674741664d94e7c4bbc6c00aab4b2dd6, type: 2}
@@ -59,7 +59,7 @@ MonoBehaviour:
   EVD: 2
   ACC: 93
   ACT: 5
-  turnPerRound: 1
+  turnPerRound: 2
   GHeal: 0
   RHeal: 0
   debuffRes: 0

@@ -48,7 +48,7 @@ MonoBehaviour:
   fileName: Eq_sageWand
   noSimpleInfo: 1
   simpleInfo: 
-  PAInfo_start: "\u30E9\u30A6\u30F3\u30C9\u306E\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306E[\u9B54\u8853]2\u3064\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u5531\u3048\u308B"
+  PAInfo_start: "\u30E9\u30A6\u30F3\u30C9\u306E\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306E<link=U_\u9B54\u8853><u>[\u9B54\u8853]</u></link>2\u3064\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u5531\u3048\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:

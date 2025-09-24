@@ -778,6 +778,7 @@ public class Action : MonoBehaviour
         soundManager = sm;
         cameraManager = cam;
         battleManager = bm;
+
     }
     public ActionStatus GetActionStatus() { return actionStatus; }
 
@@ -796,7 +797,6 @@ public class Action : MonoBehaviour
             ownerStatus = Definer.nonCharaStatus;
             ownerStatus.level = ExpeditionManager.inst.enemyLVL;
         }
-
         if (actionStatus.targetCount == 0)
         {
             //infoText.AddWarningText($"{actionStatus.actionName}の対象指定方法が旧形式の可能性あり");

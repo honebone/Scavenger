@@ -19,27 +19,6 @@ public class PA_Per_OnSomeoneFocus : PA_Personality
     int count_inBattle;
     int count_inRound;
     bool available;
-    public override void OnSomeoneDied(Character died)
-    {
-        if (available && died.PlayerPos() == character.PlayerPos())
-        {
-            if (targetSelf)
-            {
-                Enqueue_Self(actionStatus);
-                count_inBattle++;
-                count_inRound++;
-            }
-            else
-            {
-                if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
-                {
-                    count_inBattle++;
-                    count_inRound++;
-                }
-            }
-            SetAvailable();
-        }
-    }
 
     public override void OnSomeoneFocus(List<Action.OnFocusParams> focusParamsList)
     {

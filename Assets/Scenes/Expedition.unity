@@ -303,7 +303,7 @@ MonoBehaviour:
     centerFront: {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: c81a66a62e848ad44b3e023e4dd9c94a, type: 2}
     centerMid: {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
@@ -12592,6 +12592,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d042bdfb2d7584c4396c7e1e49021cad, type: 2}
   - {fileID: 11400000, guid: c4a5216f25d22a74793e280d3c951ec2, type: 2}
   - {fileID: 11400000, guid: 9f44de84a2f0daa4a9c010fbc3c88d77, type: 2}
+  - {fileID: 11400000, guid: 3c2229104d5a5e44f985c324837ccfd5, type: 2}
+  - {fileID: 11400000, guid: e4e3bc9cae168c843a420cabc3e772c4, type: 2}
+  - {fileID: 11400000, guid: 6151f53aad37f1640b072e45ec846271, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -17962,7 +17965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23409,7 +23412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1171697980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24056,7 +24059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1197886041
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32469,7 +32472,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -35318,7 +35321,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -38578,7 +38581,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1467752436}
   m_HandleRect: {fileID: 1467752435}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

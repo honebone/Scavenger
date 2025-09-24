@@ -46,13 +46,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_P_werewolf
+  noSimpleInfo: 0
   simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u306B\u884C\u52D5\u3057\u306A\u304B\u3063\u305F\u306A\u3089\u3001<color=#FFFFFF><link=S_\u4EBA\u72FC><u>\u4EBA\u72FC</u></link></color>\u72B6\u614B\u3068\u4EBA\u9593\u72B6\u614B\u3092\u5207\u308A\u66FF\u3048\u308B\r\n\r\n\r<color=#FFFFFF><link=S_\u4EBA\u72FC><u>\u4EBA\u72FC</u></link></color>\u306B\u306A\u308B\u3068\u304D\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u3068<color=#C900FF><sprite
     name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u5F97\u308B\r\n\r\n\u4EBA\u9593\u306B\u623B\u308B\u3068\u304D\u3001<color=#C900FF><sprite
     name=debuff><link=S_\u6050\u6016><u>\u6050\u6016</u></link></color>\u3092\u5F97\u3066<color=#C900FF><sprite
-    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u6D88\u53BB"
+    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u6D88\u53BB\n"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
   PATags: 
   personalityStatus:
     personalityName: "\u65E5\u6CA1/\u591C\u660E\u3051"
@@ -82,6 +108,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -146,14 +173,18 @@ MonoBehaviour:
       applyChance: 0
       stack: 5
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 2
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -177,6 +208,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 1
     moveRandomDir: 0
@@ -194,8 +227,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -226,6 +257,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -290,7 +322,9 @@ MonoBehaviour:
       applyChance: 100
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -323,6 +357,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -340,8 +376,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

@@ -6,12 +6,14 @@ public class RE_Battle : RoomEvent
 {
     public ExpeditionManager.BattleParams battleParams;
     public int waveMod;
+    public bool overrideEnemySet;
+    public AreaManager.EnemySet enemySet;
     public override void StartRoomEvent()
     {
-        List<AreaManager.EnemySet> waves = new List<AreaManager.EnemySet>();    
-        for (int i = 0; i < 1+waveMod; i++)
+        List<AreaManager.EnemySet> waves = new List<AreaManager.EnemySet>();
+        for (int i = 0; i < 1 + waveMod; i++)
         {
-            waves.Add(currentArea.GetRandomEnemySet());
+            waves.Add(overrideEnemySet ? enemySet : currentArea.GetRandomEnemySet());
         }
         expeditionManager.Battle(waves, currentArea.GetRandomFE(), battleParams);
     }
@@ -20,5 +22,4 @@ public class RE_Battle : RoomEvent
         supplyManager.AddSupply_Eq(partyStatus.supplyOptions);
         lootPanel.Loot();
     }
-
 }

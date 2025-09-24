@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: Enemy_StarServant
+  m_EditorClassIdentifier: 
+  fileName: E_StarServant
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u661F\u306E\u7737\u5C5E"
+  introduction: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
+  characterTags: 030000000a000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  boss: 0
+  playable: 0
+  variableSprites:
+  - {fileID: 7354587764328200299, guid: f1c36f7580d03ca46b4aabe01188c18c, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 646698917, guid: 8c5fd536b799b634c810329e0ad2be22, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 912e1b12a5fb16d419873ec16552db3e, type: 2}
+  - {fileID: 11400000, guid: b37872fc7ff597e41aedbed4f328fe4e, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 1808138132528202961, guid: eac815bc010b27b408c1d31e9b135d2d, type: 3}
+  actionMods: []
+  corpse: {fileID: 11400000, guid: baa6eeea583dffa4a878ddba1cd0fcdd, type: 2}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
+  surviveFatalWounds: 0
+  maxHP: 30
+  maxSAN: 0
+  ATK: 8
+  INT: 8
+  CRITC: 5
+  CRITD: 200
+  EVD: 15
+  ACC: 90
+  ACT: 10
+  turnPerRound: 1
+  GHeal: 0
+  RHeal: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0
