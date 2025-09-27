@@ -250,6 +250,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
   - {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
   - {fileID: 11400000, guid: c81a66a62e848ad44b3e023e4dd9c94a, type: 2}
+  - {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+  - {fileID: 11400000, guid: 292e579668a17814ea5e6439a76642cf, type: 2}
   obstacleDataBase:
   - {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
   - {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}

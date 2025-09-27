@@ -86,7 +86,7 @@ MonoBehaviour:
     overideColor: 0
     colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 0
-    merge: 1
+    merge: 0
     refValue: 0
     undeletable: 1
     DoT: 0

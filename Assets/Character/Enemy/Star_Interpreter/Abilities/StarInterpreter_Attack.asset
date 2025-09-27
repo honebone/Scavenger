@@ -56,9 +56,9 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 0
+  - actionName: 
     conditionInfo: 
-    targetInfo: "\u4E88\u5146\u306E\u3042\u308B\u30DE\u30B9\u4E0A\u306B\u3042\u308B\u3059\u3079\u3066\u306E\u6575"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
