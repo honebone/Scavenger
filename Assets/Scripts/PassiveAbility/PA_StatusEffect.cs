@@ -208,7 +208,7 @@ public class PA_StatusEffect : PassiveAbility
 
     public override void OnBattleEnd()
     {
-        Disable();
+        Disable(false);
     }
 
     [SerializeField]

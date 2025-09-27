@@ -147,6 +147,9 @@ MonoBehaviour:
   - {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
   - {fileID: 1489497368108049143, guid: eb6aac35887015a48a0534680fe0d81d, type: 3}
   - {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
+  - {fileID: 3904089656222173935, guid: 51334d58f60ebf34dafb749a88569b5b, type: 3}
+  - {fileID: 3904089656222173935, guid: 8d4c2b61b4bedc94487325e5dd33b14e, type: 3}
+  - {fileID: 3904089656222173935, guid: c9c3b91b98d8e9348ac68bcbbc8744a0, type: 3}
   colorRef:
     debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     player: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}

@@ -143,10 +143,10 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 8ed583e08393a3445b99e63968b1a817, type: 3}
+    - applyStE: {fileID: 3904089656222173935, guid: 8d4c2b61b4bedc94487325e5dd33b14e, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 1
+      stack: 2
       value: 0
       dontApplyBonus: 0
       refATK: 0
@@ -285,10 +285,10 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: eb6aac35887015a48a0534680fe0d81d, type: 3}
+    - applyStE: {fileID: 3904089656222173935, guid: 51334d58f60ebf34dafb749a88569b5b, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 1
+      stack: 2
       value: 0
       dontApplyBonus: 0
       refATK: 0
