@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class E_StarInterpreter : PA_Personality
 {
@@ -23,7 +24,7 @@ public class E_StarInterpreter : PA_Personality
         }
         else if (stack >= TH1)
         {
-            targets = list.Where(m => m.GetColumn() == center.GetColumn()).ToList();
+            targets = list.Where(m => m.GetRow() == center.GetRow()).ToList();
         }
         else
         {
@@ -32,5 +33,13 @@ public class E_StarInterpreter : PA_Personality
 
         Enqueue_Int(omen, true, targets);
         Enqueue_Self(onRS_self);
+    }
+
+    public override string GetPAInfo_Base()
+    {
+        string s = omen.GetInfo() + "\n";
+        s += onRS_self.GetInfo();
+
+        return s;
     }
 }

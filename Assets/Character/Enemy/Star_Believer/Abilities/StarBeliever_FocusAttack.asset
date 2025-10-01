@@ -56,14 +56,14 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5727\u6BBA"
+  - actionName: "\u71B1\u5FC3\u306A\u5E03\u6559"
     conditionInfo: 
     targetInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u306E\u3042\u308B\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: 537bd61c7c22a57469a444c81cebda96, type: 3}
+    VE_OnTargets: {fileID: 440364055008985749, guid: 53f61d66f6b3fc24c83fcfbc02ee3019, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -185,17 +185,16 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 08000000
-  - actionName: "\u5727\u6BBA"
+    actionTargets: []
+    actionTargetsInt: 
+  - actionName: "\u71B1\u5FC3\u306A\u5E03\u6559"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
@@ -325,6 +324,5 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 0e000000
+    actionTargets: []
+    actionTargetsInt: 

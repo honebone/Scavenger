@@ -51,7 +51,7 @@ MonoBehaviour:
     HP_excludeEqual: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 8
+  cooldownOnUse: 12
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
     - applyStE: {fileID: 3904089656222173935, guid: c9c3b91b98d8e9348ac68bcbbc8744a0, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 5
+      stack: 8
       value: 0
       dontApplyBonus: 0
       refATK: 0

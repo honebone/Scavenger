@@ -58,7 +58,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u8D85\u65B0\u661F"
     conditionInfo: 
-    targetInfo: "\u4E88\u5146\u306E\u3042\u308B\u30DE\u30B9\u4E0A\u306B\u3042\u308B\u3059\u3079\u3066\u306E\u6575"
+    targetInfo: "\u4E88\u5146\u306E\u3042\u308B\u30DE\u30B9\u4E0A\u306B\u3042\u308B\u3059\u3079\u3066\u306E\u30D7\u30EC\u30A4\u30E4\u30FC"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}

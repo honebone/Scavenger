@@ -495,7 +495,7 @@ public class Action : MonoBehaviour
                 if (rc.value_CD != 0)
                 {
                     s += $"・<{rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor())}> のクールダウンを";
-                    if (rc.set_CD) { s += $"{rc.set_CD}にする\n"; }
+                    if (rc.set_CD) { s += $"{rc.value_CD}にする\n"; }
                     else if (rc.value_CD < 0) s += $"{-rc.value_CD}減少\n";
                     else s += $"{rc.value_CD}増加\n";
                 }

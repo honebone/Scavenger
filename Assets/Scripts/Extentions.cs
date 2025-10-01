@@ -26,9 +26,9 @@ public static class Extentions
     {
         return status.overideColor ? status.colorOveride : Definer.colorRef.statusEffectColors[(int)status.StEType];
     }
-    public static Color ToColor(this PositionEffect.PositionEffectStatus.PositionEffectType type)
+    public static Color ToColor(this PositionEffect.PositionEffectStatus status)
     {
-        return Definer.colorRef.positionEffectColors[(int)type];
+        return Definer.colorRef.positionEffectColors[(int)status.PEType];
     }
     public static Color ToColor(this ItemData.Rarity rarity)
     {
@@ -429,7 +429,7 @@ public static class Extentions
     public static string ToLinkKey(this PositionEffect.PositionEffectStatus status, bool ignoreValue = true, int value = 0)
     {
         string text = (!status.refValue || ignoreValue) ? $"{status.PEName}" : $"{status.PEName}{value}";
-        return $"<link=P_{status.PEName}><u>{text}</u></link>".ColorStr(status.PEType.ToColor());
+        return $"<link=P_{status.PEName}><u>{text}</u></link>".ColorStr(status.ToColor());
     }
     public static string ToLinkKey(this CharacterData data)
     {

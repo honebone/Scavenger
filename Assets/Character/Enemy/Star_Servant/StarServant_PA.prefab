@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Per_E_starservant
   noSimpleInfo: 0
-  simpleInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u76F8\u624B\u5074\u306E\u540C\u3058\u6BB5\u306B\u3042\u308B\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306E\u6570\u3060\u3051<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u5F97\u308B"
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u76F8\u624B\u5074\u306E\u540C\u3058\u6BB5\u306B\u3042\u308B\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306E\u6570\u3060\u3051<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -82,13 +82,13 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: 
-    conditionInfo: "\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: "\u4ED8\u4E0E\u3059\u308B\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u76F8\u624B\u5074\u306E\u81EA\u8EAB\u3068\u540C\u3058\u6BB5\u306B\u3042\u308B\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306E\u6570\u306B\u7B49\u3057\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0

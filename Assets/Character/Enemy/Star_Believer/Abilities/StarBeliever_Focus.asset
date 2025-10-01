@@ -50,8 +50,8 @@ MonoBehaviour:
     HP_lessThan: 0
     HP_excludeEqual: 0
   freeAction: 0
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 2
+  cooldownOnBattleStart: 2
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -193,6 +193,5 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 08000000
+    actionTargets: []
+    actionTargetsInt: 

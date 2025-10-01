@@ -41,7 +41,7 @@ public class PositionManager : MonoBehaviour
                 {
                     pe.GetComponent<PositionEffect>().AddStack(PEParams.stack);
 
-                    infoText.AddLogText(string.Format("ポジション{0}に{1}が付与された", pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.PEType.ToColor())));
+                    infoText.AddLogText(string.Format("ポジション{0}に{1}が付与された", pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.ToColor())));
 
                     f = true;
                 }
@@ -57,13 +57,13 @@ public class PositionManager : MonoBehaviour
             s.GetComponent<PositionEffect>().Init(character,this,PEParams,ownerStatus,icon.GetComponent<PEIcon>());
             if (PEStatus.refValue)
             {
-                targetButton.SetDamageText(string.Format("+{0}{1}", PEStatus.PEName, PEParams.stack), PEStatus.PEType.ToColor());
-                infoText.AddLogText(string.Format("ポジション{0}に{1}{2}が付与された", pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.PEType.ToColor()), PEParams.value));
+                targetButton.SetDamageText(string.Format("+{0}{1}", PEStatus.PEName, PEParams.stack), PEStatus.ToColor());
+                infoText.AddLogText(string.Format("ポジション{0}に{1}{2}が付与された", pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.ToColor()), PEParams.value));
             }
             else
             {
-                targetButton.SetDamageText(string.Format("+{0}", PEStatus.PEName), PEStatus.PEType.ToColor());
-                infoText.AddLogText(string.Format("ポジション{0}に{1}が付与された",pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.PEType.ToColor())));
+                targetButton.SetDamageText(string.Format("+{0}", PEStatus.PEName), PEStatus.ToColor());
+                infoText.AddLogText(string.Format("ポジション{0}に{1}が付与された",pos.PosIntToStr(), PEStatus.PEName.ColorStr(PEStatus.ToColor())));
             }
         }
     }

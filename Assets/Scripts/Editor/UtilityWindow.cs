@@ -156,6 +156,10 @@ public class UtilityWindow : EditorWindow
         {
             StELink();
         }
+        if (GUILayout.Button("PE Link"))
+        {
+            PELink();
+        }
 
         GUILayout.Space(10);
         charaData = (CharacterData)EditorGUILayout.ObjectField("chara data", charaData, typeof(CharacterData), false);
@@ -277,6 +281,20 @@ public class UtilityWindow : EditorWindow
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus) sprite = "focus".ToSpr();
 
         output = $"{sprite}<link=S_{status.StEName}><u>{status.StEName}</u></link>".ColorStr(c);
+        EditorGUIUtility.systemCopyBuffer = output;
+        Debug.Log($"Copied: {output}");
+        ShowNotification(new GUIContent($"Copied: {output}"));
+    }
+    void PELink()
+    {
+        string output = "error";
+        PositionEffect.PositionEffectStatus status = obj.GetComponent<PositionEffect>().GetPositionEffectStatus();
+        Color c = cp.colorRef.positionEffectColors[(int)status.PEType];
+        string sprite = "";
+        if (status.PEType == PositionEffect.PositionEffectStatus.PositionEffectType.buff) sprite = "buff".ToSpr();
+        else if (status.PEType == PositionEffect.PositionEffectStatus.PositionEffectType.debuff) sprite = "debuff".ToSpr();
+
+        output = $"{sprite}<link=P_{status.PEName}><u>{status.PEName}</u></link>".ColorStr(c);
         EditorGUIUtility.systemCopyBuffer = output;
         Debug.Log($"Copied: {output}");
         ShowNotification(new GUIContent($"Copied: {output}"));

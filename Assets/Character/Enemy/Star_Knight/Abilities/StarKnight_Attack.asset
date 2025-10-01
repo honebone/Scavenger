@@ -56,14 +56,14 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u91CD\u529B\u65AC"
+  - actionName: "\u865A\u7A7A"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
-    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    SE: {fileID: 8300000, guid: 537bd61c7c22a57469a444c81cebda96, type: 3}
+    VE_OnTargets: {fileID: 5747712776408323241, guid: 099f508d65004074f96618f6eaa44792, type: 3}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 858481555055242439, guid: d9f66715d22b56241b249358dd1e53b8, type: 3}
@@ -194,6 +194,5 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargets: []
+    actionTargetsInt: 

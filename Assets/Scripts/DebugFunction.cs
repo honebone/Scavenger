@@ -102,7 +102,7 @@ public class DebugFunction : MonoBehaviour
                 List<CharacterData> playerList = players.GetEnemies();
                 for (int i = 0; i < 9; i++)
                 {
-                    if (playerList[i] != null) { charactersManager.SpawnPlayer(playerList[i], i,1); }
+                    if (playerList[i] != null) { charactersManager.SpawnPlayer(playerList[i], i, 1); }
                 }
             }
             if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -134,11 +134,14 @@ public class DebugFunction : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                ExpeditionManager.inst.AddMadness(1);
+                for (int i = 0; i < 5; i++)
+                {
+                    expeditionManager.EnemyLVLUP();
+                }
             }
-            if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
+                if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
+            }
         }
-    }
 
     IEnumerator TestC()
     {

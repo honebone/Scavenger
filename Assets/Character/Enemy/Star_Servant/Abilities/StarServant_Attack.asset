@@ -56,14 +56,14 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u30B3\u30BA\u30DF\u30C3\u30AF\u30D0\u30A4\u30C8"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
+    SE: {fileID: 8300000, guid: 537bd61c7c22a57469a444c81cebda96, type: 3}
+    VE_OnTargets: {fileID: 6299294134471765988, guid: b01b99fa12becac448a3ad7c5494793f, type: 3}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 980131611971298319, guid: 510e58370a8bf144f8760c01edff4ce5, type: 3}
@@ -185,10 +185,9 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 03000000
-  - actionName: 
+    actionTargets: []
+    actionTargetsInt: 
+  - actionName: "\u30B3\u30BA\u30DF\u30C3\u30AF\u30D0\u30A4\u30C8"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -308,7 +307,7 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 1
-    index: 0
+    index: 1
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
@@ -316,6 +315,5 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 03000000
+    actionTargets: []
+    actionTargetsInt: 
