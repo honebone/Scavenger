@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameParams : ScriptableObject
 {
+    [Header("\n\n\nStatus")]
+    public int maxLVL = 10;
     [Header("\n\n\nLevel Up")]
     public List<int> unlockEqSlotLVL;
     [Header("\n\n\nMadness")] public float madnessSpawnChance;

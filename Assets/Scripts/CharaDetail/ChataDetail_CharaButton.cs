@@ -57,7 +57,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
         status = character.CharaStatus();
         expCount = Inventory.inst.GetExp();
         expReq = status.GetNextExp() - status.exp;
-        if (expCount >= expReq)
+        if (status.level < GameManager.gameParams.maxLVL && expCount >= expReq)
         {
             frame.color = Definer.colorRef.expOrb;
             canLVLUP.Play();
@@ -118,7 +118,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
         if (character != null)
         {
             if (Input.GetMouseButtonDown(1)) SelectChara();
-            if (Input.GetMouseButtonDown(0)&& expCount >= expReq&& !LVLUpManager.GetInLVLUp())
+            if (Input.GetMouseButtonDown(0)&& status.level < GameManager.gameParams.maxLVL && expCount >= expReq&& !LVLUpManager.GetInLVLUp())
             {
                 if (!ExpeditionManager.inst.CheckInRoomEvent())
                 {
@@ -143,16 +143,24 @@ public class ChataDetail_CharaButton : MonoBehaviour
     public void OnMouseEnter()
     {
         string s = "右クリックでキャラ詳細\n\n";
-        s += $"次のLVL UPに必要なexp：{expReq}\n";
-        if (expCount >= expReq)
+        if (status.level >= GameManager.gameParams.maxLVL)
         {
-            s += "LVL UP 可能\n左クリックでLVL UP!".ColorStr(Definer.colorRef.expOrb);
+            s += "LVL 最大".ColorStr(Definer.colorRef.emphasize);
         }
         else
         {
-            s += "経験のオーブが足りない\n".ColorStr(Color.red);
+            s += $"次のLVL UPに必要なexp：{expReq}\n";
+            if (expCount >= expReq)
+            {
+                s += "LVL UP 可能\n左クリックでLVL UP!".ColorStr(Definer.colorRef.expOrb);
+            }
+            else
+            {
+                s += "経験のオーブが足りない\n".ColorStr(Color.red);
 
+            }
         }
+            
         mouseOver.SetUI(s, false);
     }
     public void OnMouseExit()
