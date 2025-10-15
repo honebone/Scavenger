@@ -18,5 +18,5 @@ MonoBehaviour:
   randomEvent: 0
   debug: 0
   roomEventManager:
-  - {fileID: 6930255402659783700, guid: 4f20c24809e5690429212d03224e2510, type: 3}
+  - {fileID: 6930255402659783700, guid: d9dc8b3363517c44f83046299caecc50, type: 3}
   eventIcon: {fileID: 21300000, guid: e1c9d94609670e54e89edf43cdeb26e6, type: 3}

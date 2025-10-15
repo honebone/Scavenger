@@ -108,6 +108,8 @@ public class ExpeditionManager : MonoBehaviour
     [SerializeField]
     Transform REManagerParent;
 
+    public SpriteRenderer blackBack;
+
 
     [SerializeField] GameObject nextRoomButton;
 
@@ -189,10 +191,7 @@ public class ExpeditionManager : MonoBehaviour
         infoText.AddDebugText("íTçıäJén");
         currentArea = area;
 
-        for (int i = 0; i < backgroundP.transform.childCount; i++) { Destroy(backgroundP.transform.GetChild(i).gameObject); }//îwåiê∂ê¨
-        Instantiate(currentArea.background, backgroundP);
-        globalLight.intensity = currentArea.GLightIntensity;
-        globalLight.color = currentArea.GLightColor;
+        SetBackground(currentArea.backgroundParams);
 
         soundManager.SetBGM_Normal(currentArea.BGM);
 
@@ -215,6 +214,14 @@ public class ExpeditionManager : MonoBehaviour
 
         yield return new WaitForSeconds(1.25f);
         CheckRoomEndEvent();
+    }
+
+    public void SetBackground(BackgroundParams backgroundParams)
+    {
+        for (int i = 0; i < backgroundP.transform.childCount; i++) { Destroy(backgroundP.transform.GetChild(i).gameObject); }//îwåiê∂ê¨
+        Instantiate(backgroundParams.obj, backgroundP);
+        globalLight.intensity = backgroundParams.lightIntensity;
+        globalLight.color = backgroundParams.lightColor;
     }
 
     public void NextArea(AreaData next)
@@ -496,6 +503,7 @@ public class ExpeditionManager : MonoBehaviour
         public int additionalEq_epic;
         public int supplyPicksMod;
         public int expMod;
+        public bool dontPlayBGMOnEnd;
     }
     public void Battle(List<AreaManager.EnemySet> enemySet, GameObject fieldEffect,BattleParams battleParams)
     {
@@ -624,10 +632,11 @@ public class ExpeditionManager : MonoBehaviour
     }
 
 
-    public void OnEndBattle()
+    public void OnEndBattle(bool playBGM)
     {
-       if(setting_ResetPos) charactersManager.ResetPlayerPos();
-        soundManager.PlayBGM_Normal();
+        if (setting_ResetPos) charactersManager.ResetPlayerPos();
+        if (playBGM) soundManager.PlayBGM_Normal();
+        else soundManager.StopBGMs();
         if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
         //supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
         currentRE.OnEndBattle();
@@ -705,4 +714,12 @@ public class ExpeditionManager : MonoBehaviour
     public List<GameObject> GetMadnessPA() { return madnessPAs; }
     public int EnemyLVL() { return enemyLVL; }  
 
+}
+
+[System.Serializable]
+public class BackgroundParams
+{
+    public GameObject obj;
+    public Color lightColor;
+    public float lightIntensity;
 }

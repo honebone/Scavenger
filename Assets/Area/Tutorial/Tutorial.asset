@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaName: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
   areaInfo: 
-  background: {fileID: 636018300112182328, guid: ef952657bc8bca342a484d515da47819, type: 3}
-  GLightColor: {r: 1, g: 1, b: 1, a: 1}
-  GLightIntensity: 0.15
+  backgroundParams:
+    obj: {fileID: 636018300112182328, guid: ef952657bc8bca342a484d515da47819, type: 3}
+    lightColor: {r: 1, g: 1, b: 1, a: 1}
+    lightIntensity: 0.15
   areaManager: {fileID: 8067357777361135097, guid: 7bf4d82c5a1041c4a883d44f714c1078, type: 3}
   minLength: 0
   maxLength: 0
@@ -25,18 +26,23 @@ MonoBehaviour:
   BGM: {fileID: 8300000, guid: 657325930132a6c4680a685a0cbf7406, type: 3}
   roomEvents: []
   start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
+  halfway: {fileID: 0}
   boss: {fileID: 11400000, guid: 716ae309d3ae76b4f8d8446da7ab1b25, type: 2}
   endArea: {fileID: 0}
   normalBattlePool:
-  - upperFront: {fileID: 0}
+  - dontShuffleFront: 0
+    upperFront: {fileID: 0}
     centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     lowerFront: {fileID: 0}
+    dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
+    dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
+    atRandom: []
   battleBGM:
   - {fileID: 8300000, guid: 8e8ab15f0f49c014f8e38dd03475351a, type: 3}
   applyFEChance: 0

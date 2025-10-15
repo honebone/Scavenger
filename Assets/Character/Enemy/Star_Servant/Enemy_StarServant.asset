@@ -22,7 +22,7 @@ MonoBehaviour:
   preferBack: 0
   mainRole: []
   subRole: []
-  characterTags: 030000000a000000
+  characterTags: 0300000008000000
   immovable: 0
   notChara: 0
   player: 0

@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaName: "\u679C\u3066"
   areaInfo: "\u65C5\u306E\u884C\u304D\u7740\u304F\u5148\n\u7F8E\u3057\u3044\u591C\u7A7A\u306E\u5148\u304B\u3089\u3084\u3063\u3066\u304D\u305F\u3001\u661F\u3005\u306E\u4FE1\u8005\u9054\u304C\u5F85\u3061\u53D7\u3051\u3066\u3044\u308B"
-  background: {fileID: 6149864221171856953, guid: f46f7cf3fc21d254aa61fdfa5d3bb228, type: 3}
-  GLightColor: {r: 0.9490196, g: 0.61960787, b: 1, a: 1}
-  GLightIntensity: 0.25
+  backgroundParams:
+    obj: {fileID: 6149864221171856953, guid: f46f7cf3fc21d254aa61fdfa5d3bb228, type: 3}
+    lightColor: {r: 0.9490196, g: 0.61960787, b: 1, a: 1}
+    lightIntensity: 0.25
   areaManager: {fileID: 8067357777361135097, guid: 2d6eded04a15dd3489fbbc3a195198ed, type: 3}
   minLength: 8
   maxLength: 6

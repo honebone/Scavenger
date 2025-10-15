@@ -57,7 +57,7 @@ public class RE_AreaEnd : RoomEvent
             option.optionInfo = string.Format("次のエリア「{0}」に移動する\n\n{1}", area.areaName, area.areaInfo.ColorStr(Color.gray));
             list.Add(option);
         }
-        list.Add(endExpedition);
+        //list.Add(endExpedition);
         expeditionManager.SetREOptionButtons(list);
     }
     public override void OnRClick(int index)

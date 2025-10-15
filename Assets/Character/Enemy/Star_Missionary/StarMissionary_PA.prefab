@@ -140,7 +140,7 @@ MonoBehaviour:
   max_inRound: 0
   targetSelf: 1
   actionStatus:
-    actionName: 
+    actionName: "\u5C0E\u304D\u306E\u661F\u5149"
     conditionInfo: "\u5473\u65B9\u304C<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>1\u3064\u3092\u6D88\u8CBB\u3057\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 

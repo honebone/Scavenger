@@ -154,7 +154,49 @@ public class BattleManager : MonoBehaviour
         roundCount=0;
         StartCoroutine(BattleStartAnim());
     }
-    
+
+
+    //==========================================[特殊な戦闘時のみ]=======================================
+    /// <summary>
+    /// ウェーブの生成・敵のスポーン飲みして戦闘開始はしない
+    /// 生成から戦闘開始までに演出などを挟みたい時のため
+    /// </summary>
+    /// <param name="w"></param>
+    public void SetWave(List<EnemySet> w)
+    {
+        waves = new List<EnemySet>(w);
+        SetEnemies(waves[0]);
+    }
+
+    /// <summary>
+    /// SetWaveをした後に戦闘を開始する用
+    /// </summary>
+    /// <param name="fieldEffectObj"></param>
+    /// <param name="bp"></param>
+    public void BattleStart_WithoutSetEnemy(GameObject fieldEffectObj, BattleParams bp)
+    {
+        battleParams = bp;
+        if (fieldEffectObj != null)
+        {
+            var f = Instantiate(fieldEffectObj, fieldEffectP);
+            fieldEffect = f.GetComponent<FieldEffect>();
+            fieldEffect.Init(charactersManager, actionQueue, infoText);
+        }
+        infoText.AddLogText("\n◇◇◇◇戦闘開始◇◇◇◇");
+        inBattle = true;
+        soundManager.PlaySE(SE_battleStart);
+        if (waves.Count > 1)
+        {
+            infoText.AddLogText($"\n◇◇◇ウェーブ{currentWave + 1}/{waves.Count}◇◇◇");
+            waveText.text = $"ウェーブ {currentWave + 1}/{waves.Count}";
+        }
+        currentWave = 0;
+        roundTextCanvas.alpha = 1;
+        roundCount = 0;
+        StartCoroutine(BattleStartAnim());
+    }
+    //==========================================[ここまで特殊な戦闘時のみ]=======================================
+
 
     IEnumerator BattleStartAnim()
     {
@@ -490,7 +532,7 @@ public class BattleManager : MonoBehaviour
         battleText.text = "";
 
 
-        expeditionManager.OnEndBattle();
+        expeditionManager.OnEndBattle(!battleParams.dontPlayBGMOnEnd);
     }
 
     public void Trigger_OnSomeoneDamaged(Action.OnDamageParams onDamageParams)

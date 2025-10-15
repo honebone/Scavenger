@@ -97,7 +97,7 @@ public class Ability : MonoBehaviour
             {
                 s += "ターンをパスする(行動したとはみなされない)\n";
             }
-            if (freeAction) { s += "使用してもターンが終了しない\n"; }
+            if (freeAction) { s += "使用してもターンが終了しない\n".ColorStr(Definer.colorRef.emphasize); }
 
             if (simple&&!abilityData.noSimpleInfo&&false)//test
             {

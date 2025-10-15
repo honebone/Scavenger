@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6930255402659783700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3738759409012451003}
+  - component: {fileID: 749948183757204396}
+  m_Layer: 0
+  m_Name: RE_End_LastBoss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3738759409012451003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930255402659783700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749948183757204396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6930255402659783700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b26724d8913d8243b865c0acf0e0007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u679C\u3066\u306E\u679C\u3066"
+  REInfo: "\u3053\u306E\u30A8\u30EA\u30A2\u3092\u652F\u914D\u3059\u308B\u5F37\u6575\"\u661F\u3005\u306E\u4EE3\u5F01\u8005\"\u306E\u3082\u3068\u3078\u3068\u305F\u3069\u308A\u7740\u3044\u305F"
+  options:
+  - optionName: "\u6226\u3046"
+    optionInfo: "\u661F\u3005\u306E\u4EE3\u5F01\u8005\u306B\u6226\u3044\u3092\u6311\u3080"
+  boss:
+    dontShuffleFront: 1
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []
+  battleParams:
+    bgm: {fileID: 8300000, guid: b275770d51ae98f4090575b262ed8e52, type: 3}
+    lvlMod: 0
+    additionalEq: 0
+    additionalEq_epic: 0
+    supplyPicksMod: 0
+    expMod: 0
+    dontPlayBGMOnEnd: 1
+  lastBoss:
+    dontShuffleFront: 1
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []
+  lastBack:
+    obj: {fileID: 5025424652579141083, guid: 15dff9401d9498840a66bea080e065ab, type: 3}
+    lightColor: {r: 0.015686275, g: 0.18039216, b: 0.42352942, a: 1}
+    lightIntensity: 1
+  lastBGM: {fileID: 8300000, guid: 01e3aed11ac56a34dab2b098befc1d6b, type: 3}
+  lastParticle: {fileID: 7633311505586100419, guid: 91587a0eac5fe45429625fd9dc34fec0, type: 3}
+  SEOnSpawn:
+  - {fileID: 8300000, guid: 537bd61c7c22a57469a444c81cebda96, type: 3}
+  - {fileID: 8300000, guid: e9deeff50a142ba4f949ce691a5f2099, type: 3}
+  - {fileID: 8300000, guid: c05b23991daa1224a81bf9aace6739b5, type: 3}
+  blackoutDelay: 1
+  blackoutDur: 4
+  spawnDelay: 4
+  spawnDur: 3

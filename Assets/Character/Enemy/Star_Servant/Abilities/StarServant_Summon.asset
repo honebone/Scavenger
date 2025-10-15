@@ -336,7 +336,7 @@ MonoBehaviour:
     moveUpper: 0
     moveLower: 0
     moveBackword: 0
-    changeSelfSprite: {fileID: 0}
+    changeSelfSprite: {fileID: 968993255178847525, guid: ce2f285893e57d64d8099294970d9899, type: 3}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7354587764328200299
+--- !u!1 &968993255178847525
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7354587764328200300}
-  - component: {fileID: 7354587764328200301}
-  - component: {fileID: 7354587764328200298}
-  - component: {fileID: 6113901281075133306}
+  - component: {fileID: 968993255178847522}
+  - component: {fileID: 968993255178847523}
+  - component: {fileID: 968993255178847524}
   m_Layer: 0
-  m_Name: star_servant
+  m_Name: star_servant2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7354587764328200300
+--- !u!4 &968993255178847522
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354587764328200299}
+  m_GameObject: {fileID: 968993255178847525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 15, y: 15, z: 1}
@@ -34,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7354587764328200301
+--- !u!212 &968993255178847523
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354587764328200299}
+  m_GameObject: {fileID: 968993255178847525}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -54,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b80a6ea52b312064fa20c2e0c2c293b3, type: 2}
+  - {fileID: 2100000, guid: 3865fc0b101dae84e9db18b42f5134fd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1595179045
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 646698917, guid: 8c5fd536b799b634c810329e0ad2be22, type: 3}
+  m_Sprite: {fileID: -655083532, guid: f8d203334d3d78f49921b59d63e8f08c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,17 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7354587764328200298
+--- !u!95 &968993255178847524
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354587764328200299}
+  m_GameObject: {fileID: 968993255178847525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9cd7955745de71a4ca74bee77970aab5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7e17f359a2ba3664f83c3c96bf948da5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -106,31 +105,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6113901281075133306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7354587764328200299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShadowGroup: 0
-  m_ComponentVersion: 1
-  m_HasRenderer: 1
-  m_UseRendererSilhouette: 1
-  m_CastsShadows: 1
-  m_SelfShadows: 0
-  m_ApplyToSortingLayers: 0000000051ace5b00fa673d92580145f
-  m_ShapePath:
-  - {x: -0.029654054, y: -0.15039925, z: 0}
-  - {x: -0.044933163, y: -0.12028442, z: 0}
-  - {x: -0.029554604, y: -0.0996705, z: 0}
-  - {x: 0.05910069, y: -0.10020713, z: 0}
-  - {x: 0.0276361, y: -0.14871898, z: 0}
-  m_ShapePathHash: 1642430288
-  m_Mesh: {fileID: 0}
-  m_InstanceId: 45402

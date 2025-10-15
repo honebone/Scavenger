@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 
 public class AbilityButton : MonoBehaviour
@@ -14,6 +15,7 @@ public class AbilityButton : MonoBehaviour
     Image frame;
     [SerializeField]
     Image locked;
+    public Image freeAction;
     [SerializeField]
     TextMeshProUGUI nameText;
     [SerializeField]
@@ -42,6 +44,7 @@ public class AbilityButton : MonoBehaviour
 
         nameText.text = abilityStatus.abilityName;
         available = abilityStatus.instantiatedManager.CheckAvailable();
+        freeAction.enabled = abilityStatus.freeAction;
         if (abilityStatus.locked) { locked.enabled = true; }
         if (!available) { nameText.color = Color.red; }
         if (abilityStatus.cooldown > 0) { 
