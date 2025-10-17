@@ -299,7 +299,7 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    upperFront: {fileID: 11400000, guid: 13932f2d6a33833419410195789a0708, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0

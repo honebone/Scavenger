@@ -100,9 +100,9 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 10
+    ATK_mul: 5
     ATK_int: 0
-    INT_mul: 10
+    INT_mul: 5
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
