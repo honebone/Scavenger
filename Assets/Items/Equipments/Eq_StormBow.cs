@@ -15,7 +15,7 @@ public class Eq_StormBow : PA_Equipment
         {
             if (onAttackParams.hit)
             {
-                if (onAttackParams.actionStatus.abilityEffect || onAttackParams.actionStatus.source == this)
+                if (onAttackParams.actionParams.actionStatus.abilityEffect || onAttackParams.actionParams.actionStatus.source == this)
                 {
                     Action.ActionStatus action = actionStatus;
                     action.ACCMod += ACCMod;

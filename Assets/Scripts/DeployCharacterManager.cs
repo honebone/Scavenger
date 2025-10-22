@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class DeployCharacterManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class DeployCharacterManager : MonoBehaviour
 
     [SerializeField] List<Deploy_PositionButton> positionButtons;
     [SerializeField] TextMeshProUGUI embarkText;
+
+    public CanvasGroup warningPanel;
+    public TextMeshProUGUI warningText;
 
     [SerializeField] GraphicRaycaster raycaster;
 
@@ -52,6 +56,8 @@ public class DeployCharacterManager : MonoBehaviour
 
     bool tutorial;
     bool deploy;
+    bool hasWarning;
+    string warningInfo;
     bool canEmbark;
     void Start()
     {
@@ -119,7 +125,7 @@ public class DeployCharacterManager : MonoBehaviour
 
     IEnumerator CharaButtonAnim()
     {
-        foreach(Deploy_CharaButton button in charaButtons)
+        foreach (Deploy_CharaButton button in charaButtons)
         {
             button.Anim();
             yield return new WaitForSeconds(animSpeed);
@@ -142,7 +148,7 @@ public class DeployCharacterManager : MonoBehaviour
         if (character.characterData.preferMid) i.AddRange(new List<int>() { 3, 4, 5 });
         if (character.characterData.preferFront) i.AddRange(new List<int>() { 6, 7, 8 });
 
-        foreach(int index in i) { positionButtons[index].SetAnim(true); }
+        foreach (int index in i) { positionButtons[index].SetAnim(true); }
 
         draggingChara = character;
         draggingImage = Instantiate(dragImage, dragImageP);
@@ -151,7 +157,7 @@ public class DeployCharacterManager : MonoBehaviour
 
     void ResetGrid()
     {
-        foreach(Deploy_PositionButton grid in positionButtons) { grid.SetAnim(false); }
+        foreach (Deploy_PositionButton grid in positionButtons) { grid.SetAnim(false); }
     }
 
     // Update is called once per frame
@@ -222,31 +228,114 @@ public class DeployCharacterManager : MonoBehaviour
         }
         else
         {
+            bool emptyFront = true;
+            bool emptyMid = true;
+            bool noTank = true;
+            bool noDPS = true;
+            bool noHealer = true;
+            string preferColWarningText = "";
+            for (int i = 0; i < 9; i++)
+            {
+                int col = i.GetColumn();
+                CharacterData data = positionButtons[i].GetCharacterStatus().characterData;
+                if (data)
+                {
+                    if (col == 0) emptyFront = false;
+                    if (col == 1) emptyMid = false;
+
+                    List<string> role = new List<string>(data.mainRole);
+                    if (role.Contains("タンク")) noTank = false;
+                    if (role.Contains("攻撃")) noDPS = false;
+                    if (role.Contains("回復")) noHealer = false;
+
+                    if ((col == 0 && !data.preferFront) || (col == 1 && !data.preferMid) || (col == 2 && !data.preferBack))
+                    {
+                        string preferCol = "";
+                        bool f = false;
+                        if (data.preferFront)
+                        {
+                            preferCol += "前";
+                            f = true;
+                        }
+                        if (data.preferMid)
+                        {
+                            preferCol += f ? ",中" : "中";
+                            f = true;
+                        }
+                        if (data.preferBack)
+                        {
+                            preferCol += f ? ",後" : "後";
+                        }
+
+                        string currentCol = col == 0 ? "前" : col == 1 ? "中" : "後";
+                        preferColWarningText += $"・{data.charaName}が{currentCol}列にいる(得意な列：{preferCol}列)\n";
+                    }
+                }
+            }
+
+            warningInfo = "";
+            hasWarning = false;
+
+            if (emptyFront) { warningInfo += "・前列に誰もいない\n"; hasWarning = true; }
+            if (emptyMid) { warningInfo += "・中列に誰もいない\n"; hasWarning = true; }
+            if (count < maxParty) { warningInfo += $"・編成人数が{maxParty}人未満\n"; hasWarning = true; }
+            if (noTank) { warningInfo += "・タンク役がいない\n"; hasWarning = true; }
+            if (noDPS) { warningInfo += "・攻撃役がいない\n"; hasWarning = true; }
+            if (noHealer) { warningInfo += "・回復役がいない\n"; hasWarning = true; }
+            if (preferColWarningText != "") { warningInfo += preferColWarningText; hasWarning = true; }
+
             if (!canEmbark) { anim.SetTrigger("Flip"); }
             canEmbark = true;
-            embarkText.text = string.Format("出撃({0}/{1})", count, maxParty);
+            embarkText.text = hasWarning ? $"! 出撃({count}/{maxParty})".ColorStr(Color.yellow) : string.Format("出撃({0}/{1})", count, maxParty);
         }
+    }
+    public void TryEmbark()
+    {
+        if(canEmbark)
+        {
+            if (hasWarning)
+            {
+                warningPanel.alpha = 1;
+                warningPanel.interactable = true;
+                warningPanel.blocksRaycasts = true;
+
+                warningText.text = $"この編成には問題があります！\n{warningInfo}";
+            }
+            else { Embark(); }
+        }
+    }
+
+    public void CancelEmbark()
+    {
+        warningPanel.alpha = 0;
+        warningPanel.interactable = false;
+        warningPanel.blocksRaycasts = false;
+
+        warningText.text = "";
     }
 
     public void Embark()
     {
-        if (canEmbark)
+        panel.SetActive(false);
+        deploy = false;
+
+        warningPanel.alpha = 0;
+        warningPanel.interactable = false;
+        warningPanel.blocksRaycasts = false;
+
+        warningText.text = "";
+
+        for (int i = 0; i < 9; i++)
         {
-            panel.SetActive(false);
-            deploy = false;
-
-            for (int i = 0; i < 9; i++)
+            if (positionButtons[i].GetCharacterStatus().characterData)
             {
-                if (positionButtons[i].GetCharacterStatus().characterData)
-                {
-                    charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i, 1);
-                    expeditionManager.deployedChara.Add(positionButtons[i].GetCharacterStatus().characterData);
-                }
+                charactersManager.SpawnPlayer(positionButtons[i].GetCharacterStatus().characterData, i, 1);
+                expeditionManager.deployedChara.Add(positionButtons[i].GetCharacterStatus().characterData);
             }
-
-            //if (tutorial) { expeditionManager.StartExpedition(area_tutorial); }
-            //else { expeditionManager.StartExpedition(area_cave); }
-            expeditionManager.StartExpedition(area_cave);//test
         }
+
+        //if (tutorial) { expeditionManager.StartExpedition(area_tutorial); }
+        //else { expeditionManager.StartExpedition(area_cave); }
+        expeditionManager.StartExpedition(area_cave);//test
     }
 }

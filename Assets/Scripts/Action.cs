@@ -91,6 +91,7 @@ public class Action : MonoBehaviour
         [Header("\n\n‰ñ•œ")]
         public int healValue_min;
         public int healValue_max;
+        public Vector2 healINT;
         public float healPercent_min;
         public float healPercent_max;
         [Header("Œ¸­‘Ì—Í‚ÌŠ„‡‰ñ•œ")]
@@ -252,7 +253,7 @@ public class Action : MonoBehaviour
 
         public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0; }
         public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
-        public bool DoesHeal() { return healPercent_max > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
+        public bool DoesHeal() { return healPercent_max > 0 || healINT.y > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
         public string GetTargetInfo()
         {
@@ -328,6 +329,15 @@ public class Action : MonoBehaviour
             if (DoesHeal())//‰ñ•œ
             {
                 if (healValue_max > 0) { s += $"E{"HP".ToSpr_withName()}‚ð{ GetValueRange(healValue_min, healValue_max)}‰ñ•œ\n"; }
+                if (healINT.y > 0)
+                {
+                    s += $"E{"HP".ToSpr_withName()}‚ð{"INT".ToSpr_withLink()}‚Ì{GetValueRange(healINT.x, healINT.y)}“•ª‰ñ•œ";
+                    if (refCharaStatus)
+                    {
+                        s += $"({GetValueRange(Mathf.RoundToInt(characterStatus.INT * healINT.x / 100), Mathf.RoundToInt(characterStatus.INT * healINT.y / 100))})";
+                    }
+                    s += "\n";
+                }
                 if (healPercent_max > 0) { s += $"E{"HP".ToSpr_withName()}‚ðÅ‘å’l‚Ì{ GetValueRange(healPercent_min, healPercent_max)}“‰ñ•œ\n"; }
                 if (healRegain_max > 0) { s += $"EŒ¸­‚µ‚½{"HP".ToSpr_withName()}‚Ì{GetValueRange(healRegain_min, healRegain_max)}“‚ð‰ñ•œ\n"; }
                 if (trueHeal > 0) { s += $"E{"HP".ToSpr_withName()}‚ð{trueHeal}ŒÅ’è—Ê‰ñ•œ\n"; }
@@ -697,7 +707,6 @@ public class Action : MonoBehaviour
         public bool evaded;
         public bool CRIT;
         public float toralCRITC;
-        public Action.ActionStatus actionStatus;
         public ActionParams actionParams;
     }
     public class OnDamageParams
@@ -979,7 +988,6 @@ public class Action : MonoBehaviour
                 if (actionsStatus[i].DoesAttack() && target.CheckAlive())//UŒ‚
                 {
                     OnAttackParams onAttackParams = new OnAttackParams();
-                    onAttackParams.actionStatus = actionsStatus[i];
                     onAttackParams.actionParams = actionParams;
                     onAttackParams.toralCRITC = ownerStatus.CRITC + actionsStatus[i].CRITCMod;
                     bool CRIT = false;
@@ -1078,7 +1086,7 @@ public class Action : MonoBehaviour
                             result.damage = true;
                             result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
-                            target.OnAttacked(actionStatus.actionOwner, false, false);//”íUŒ‚Žž—U”­
+                            target.OnAttacked(onAttackParams);//”íUŒ‚Žž—U”­
 
                             bool kill = target.Damage(onDamageParams);
 
@@ -1153,7 +1161,7 @@ public class Action : MonoBehaviour
                                 onAttackParams.evaded = true;
                             }
                             onAttackParamsList.Add(onAttackParams);
-                            target.OnAttacked(actionStatus.actionOwner, true, false);//”íUŒ‚Žž—U”­
+                            target.OnAttacked(onAttackParams);//”íUŒ‚Žž—U”­
 
                         }
                     }
@@ -1166,7 +1174,7 @@ public class Action : MonoBehaviour
                             onAttackParams.missed = true;
                         }
                         onAttackParamsList.Add(onAttackParams);
-                        target.OnAttacked(actionStatus.actionOwner, false, true);//”íUŒ‚Žž—U”­
+                        target.OnAttacked(onAttackParams);//”íUŒ‚Žž—U”­
                         soundManager.PlaySE(Definer.soundRef.miss);
                         attackHit = false;
                     }
@@ -1194,6 +1202,7 @@ public class Action : MonoBehaviour
                         onHealParams.target = target;
                         float fheal;
                         fheal = Random.Range(actionsStatus[i].healValue_min, actionsStatus[i].healValue_max + 1);
+                        fheal += ownerStatus.INT * actionsStatus[i].healINT.Range() / 100f;
                         fheal += targetStatus.maxHP * Random.Range(actionsStatus[i].healPercent_min, actionsStatus[i].healPercent_max) / 100;
                         if (actionsStatus[i].healRegain_max > 0)
                         {

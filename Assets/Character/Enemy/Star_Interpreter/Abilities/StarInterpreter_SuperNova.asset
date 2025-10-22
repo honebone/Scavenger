@@ -62,8 +62,8 @@ MonoBehaviour:
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: e9deeff50a142ba4f949ce691a5f2099, type: 3}
+    VE_OnTargets: {fileID: 440364055008985749, guid: 53f61d66f6b3fc24c83fcfbc02ee3019, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 2
@@ -123,6 +123,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -140,7 +141,25 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 413872c257cee5a4985eea40067a6f82, type: 3}
+      guaranteed: 0
+      applyChance: 70
+      stack: 1
+      value: 20
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
+      guaranteed: 0
+      applyChance: 70
+      stack: 1
+      value: 30
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -184,7 +203,7 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 4
+    targetCount: 3
     actionTargets: []
     actionTargetsInt: 
   - actionName: "\u8D85\u65B0\u661F"
@@ -254,6 +273,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0

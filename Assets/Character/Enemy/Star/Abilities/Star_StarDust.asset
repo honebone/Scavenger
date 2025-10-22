@@ -56,7 +56,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u9858\u3044\u306E\u6210\u5C31"
     conditionInfo: 
     targetInfo: "<\u661F\u3005\u306E\u4EE3\u5F01\u8005>"
     AModInfo: 
@@ -123,6 +123,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -146,6 +147,24 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 25
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: c081015b5a0ef344091ae6bd4ceac824, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 50
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -185,7 +204,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

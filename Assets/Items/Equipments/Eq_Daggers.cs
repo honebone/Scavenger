@@ -24,7 +24,7 @@ public class Eq_Daggers : PA_Equipment
 
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
     {
-        if (!onAttackParamsList[0].actionStatus.abilityEffect && remain > 0)
+        if (!onAttackParamsList[0].actionParams.actionStatus.abilityEffect && remain > 0)
         {
             count++;
             if (count == targetValue)

@@ -232,7 +232,16 @@ public class AreaManager : MonoBehaviour
         layer[4].empty = true;
         SetLayer();
 
-        for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length‘w–Ú
+        for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length‘w–Ú ‹xŒe
+        layer[2].empty = false;
+        layer[2] = SetRoom(false, true);
+        layer[2].up = -1;
+        layer[2].straight = 2;
+        layer[2].down = -1;
+        layer[2].SetRoomEvent(Definer.inst.cp.roomRef.rest);
+        SetLayer();
+
+        for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+1‘w–Ú ƒ{ƒX
         layer[2].empty = false;
         layer[2] = SetRoom(false, true);
         layer[2].up = -1;
@@ -241,7 +250,7 @@ public class AreaManager : MonoBehaviour
         layer[2].SetRoomEvent(areaData.boss);
         SetLayer();
 
-        for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+1‘w–Ú(ƒGƒŠƒA‚ÌI’[)
+        for (int i = 0; i < 5; i++) { layer[i].empty = true; }//length+2‘w–Ú(ƒGƒŠƒA‚ÌI’[)
         layer[2].empty = false;
         layer[2].up = -1;
         layer[2].straight = -1;

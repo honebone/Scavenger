@@ -1917,11 +1917,11 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-    public void OnAttacked(Character attacker, bool evaded, bool missed)
+    public void OnAttacked(Action.OnAttackParams onAttackParams)
     {
         if (BattleManager.inBattle)
         {
-            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttacked(attacker, evaded, missed); }
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAttacked(onAttackParams); }
             RemovePA_Execute();
         }
     }

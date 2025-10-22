@@ -12,7 +12,7 @@ public class Eq_CounterMagicCloak : PA_Equipment
         remain = maxUses;
     }
 
-    public override void OnAttacked(Character attacker, bool evaded, bool missed)
+    public override void OnAttacked(Action.OnAttackParams onAttackParams)
     {
         if (remain > 0)
         {

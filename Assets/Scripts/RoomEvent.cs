@@ -23,6 +23,7 @@ public class RoomEvent : MonoBehaviour
         public string optionName;
         [TextArea(3, 10)]
         public string optionInfo;
+        public bool available = true;
     }
     public void Init(AreaData area)
     {

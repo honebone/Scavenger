@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class RE_AreaEnd : RoomEvent
 {
@@ -8,6 +9,7 @@ public class RE_AreaEnd : RoomEvent
     [SerializeField] REOptionParams endExpedition;
     [SerializeField] REOptionParams skipDeploy;
     [SerializeField] List<AreaData> nextAreas;
+    public List<AreaData> teaserAreas;
 
     protected int choice = 0;
     /// <summary> 0:deploy 1:selectArea </summary>
@@ -57,6 +59,14 @@ public class RE_AreaEnd : RoomEvent
             option.optionInfo = string.Format("次のエリア「{0}」に移動する\n\n{1}", area.areaName, area.areaInfo.ColorStr(Color.gray));
             list.Add(option);
         }
+        teaserAreas.ForEach(x =>
+        {
+            REOptionParams option = new REOptionParams();
+            option.optionName = $"{x.areaName}に移動";
+            option.optionInfo = $"次のエリア「{x.areaName}」に移動する\n\n{x.areaInfo.ColorStr(Color.gray)}\n\n{"Coming Soon...".ColorStr(Definer.colorRef.emphasize)}";
+            option.available = false;
+            list.Add(option);
+        });
         //list.Add(endExpedition);
         expeditionManager.SetREOptionButtons(list);
     }

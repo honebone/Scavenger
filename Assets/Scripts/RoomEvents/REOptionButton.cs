@@ -18,7 +18,7 @@ public class REOptionButton : MonoBehaviour
         optionParams = op;
         index = id;
         infoText = i;
-        optionNameText.text = optionParams.optionName;
+        optionNameText.text = optionParams.available ? optionParams.optionName : optionParams.optionName.ColorStr(Color.red);
         expeditionManager = e;
         mouseOver = FindObjectOfType<MouseOverUI>();
 
@@ -30,7 +30,7 @@ public class REOptionButton : MonoBehaviour
             infoText.SetText_Old(optionParams.optionName, optionParams.optionInfo);
             expeditionManager.REOption_OnRClick(index);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && optionParams.available)
         {
             mouseOver.ResetUI();
             expeditionManager.REOption_Select(index);

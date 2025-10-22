@@ -11,4 +11,16 @@ public class CommonParams : ScriptableObject
     public List<CharacterData> enemyDataBase;
     public List<CharacterData> obstacleDataBase;
     public List<CharacterData> summonDataBase;
+    public RoomRef roomRef;
+
+    public Color StEColor( PA_StatusEffect.StatusEffectStatus status)
+    {
+        return status.overideColor ? status.colorOveride : colorRef.statusEffectColors[(int)status.StEType];
+    }
+}
+
+[System.Serializable]
+public class RoomRef
+{
+    public RoomEventData rest;
 }

@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -17,6 +20,8 @@ public class TutorialManager : MonoBehaviour
     List<TutorialData> unlockedTutorial = new List<TutorialData>();
 
     public List<TutorialData> tutorials;
+    public List<TutorialData> tips;
+    [Header("これらがアンロックされると、最低限のチュートリアルが完了したとみなされる")]public List<TutorialData> essentialTutorials;
     [SerializeField] TutorialData T_deathsDoor;
     [SerializeField] TutorialData T_redeploy;
 
@@ -39,8 +44,12 @@ public class TutorialManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void SetTutorial(TutorialData tutorial)
+    public void SetTutorial(TutorialData tutorial, bool phase2 = false)
     {
+        if (phase2 && !CompleteEssentials())
+        {
+            return;
+        }
         if (gameManager.DoTutorial() && !unlockedTutorial.Contains(tutorial))
         {
             unlockedTutorial.Add(tutorial);
@@ -48,21 +57,27 @@ public class TutorialManager : MonoBehaviour
 
             if (!inTutorial)
             {
-                StartTutorial();   
+                StartTutorial();
             }
         }
     }
-    public void SetTutorial(string key)
+    public void SetTutorial(string key,bool phase2 = false)
     {
         foreach (TutorialData tutorial in tutorials)
         {
             if (tutorial.key == key)
             {
-                SetTutorial(tutorial);
+                SetTutorial(tutorial, phase2);
                 return;
             }
         }
         InfoText.inst.AddErrorText("tutorialが発見できませんでした");
+    }
+
+    public void SetTips()
+    {
+        List<TutorialData> list = tips.Where(x => !unlockedTutorial.Contains(x)).ToList();
+        if (list.Count > 0) SetTutorial(list.Choice());
     }
 
     public void StartTutorial()
@@ -122,4 +137,5 @@ public class TutorialManager : MonoBehaviour
     }
 
     public bool CheckUnlocked(TutorialData tutorial) { return skipTutorial || unlockedTutorial.Contains(tutorial); }
+    public bool CompleteEssentials() { return essentialTutorials.Where(x => !CheckUnlocked(x)).Count() == 0; }
 }

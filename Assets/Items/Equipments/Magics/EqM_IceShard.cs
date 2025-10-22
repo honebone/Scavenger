@@ -27,7 +27,7 @@ public class EqM_IceShard : Eq_Magic
 
     public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
     {
-        if (onAttackParamsList[0].actionStatus.source != this)
+        if (onAttackParamsList[0].actionParams.actionStatus.source != this)
         {
             foreach(Action.OnAttackParams onAttackParams in onAttackParamsList)
             {

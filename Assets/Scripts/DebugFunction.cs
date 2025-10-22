@@ -118,10 +118,7 @@ public class DebugFunction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                List<GameObject> list = new List<GameObject>(Definer.inst.GetPersonalityDataBase());
-                list.AddRange(Definer.inst.mutationDataBase);
-                list.AddRange(Definer.inst.GetAffrictionDataBase());
-                charactersManager.GetExistingCharacters_All()[0].AddPA_Personality(list.Choice(), false);
+                TutorialManager.inst.SetTutorial(tutorial);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha6))

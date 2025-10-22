@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: StarInterpreter_Attack
   m_EditorClassIdentifier: 
-  abilityName: 
+  abilityName: "\u30D7\u30E9\u30BA\u30DE"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
@@ -56,14 +56,14 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u30D7\u30E9\u30BA\u30DE"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 3315130784292785652, guid: 425518f9c6dbc0b48ab67fed0b954a08, type: 3}
+    SE: {fileID: 8300000, guid: 233b8a3a580706245a110cebaba01ec1, type: 3}
+    VE_OnTargets: {fileID: 3096756954055524911, guid: b3fcb33840e66c346bb4412269ea3eec, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -104,10 +104,10 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
-    INTMod_min: 0
-    INTMod_max: 0
+    ATKMod_min: 40
+    ATKMod_max: 60
+    INTMod_min: 40
+    INTMod_max: 60
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -122,6 +122,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0

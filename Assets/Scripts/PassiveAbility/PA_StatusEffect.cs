@@ -147,7 +147,7 @@ public class PA_StatusEffect : PassiveAbility
     public string GetInfo_ForLink()
     {
         string rv = StEStatus.refValue ? " <color=#FFBF69><i>{X}</i></color>" : "";
-        string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>\n";
+        string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>  ó‘ÔˆÙí‚Ìˆêí\n";
         string statModInfo = statMod.GetInfo();
         if (statModInfo != "") s += statModInfo + "\n";
         //s += StEStatus.StEInfo;

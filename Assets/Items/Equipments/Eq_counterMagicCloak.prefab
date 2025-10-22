@@ -48,7 +48,7 @@ MonoBehaviour:
   fileName: Eq_counterMagicCLloak
   noSimpleInfo: 0
   simpleInfo: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306E<link=U_\u9B54\u8853><u>[\u9B54\u8853]</u></link>1\u3064\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u5531\u3048\u308B"
-  PAInfo_start: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306E<link=U_\u9B54\u8853><u>[\u9B54\u8853]</u></link>1\u3064\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u5531\u3048\u308B\n\u5404\u30E9\u30A6\u30F3\u30C93\u56DE\u307E\u3067\u767A\u52D5\u53EF\u80FD"
+  PAInfo_start: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306E<link=U_\u9B54\u8853><u>[\u9B54\u8853]</u></link>1\u3064\u3092\u30E9\u30F3\u30C0\u30E0\u306B\u5531\u3048\u308B\n\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067\u767A\u52D5\u53EF\u80FD"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -80,7 +80,7 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 6151f53aad37f1640b072e45ec846271, type: 2}
     equipmentInfo: 
-  maxUses: 3
+  maxUses: 5
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

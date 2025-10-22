@@ -9,7 +9,7 @@ public class PA_StE_Flying : PA_StatusEffect
     {
         character.AddEVD(value);
     }
-    public override void OnAttacked(Character attacker, bool evaded, bool missed)
+    public override void OnAttacked(Action.OnAttackParams onAttackParams)
     {
         AddStack(-1);
     }

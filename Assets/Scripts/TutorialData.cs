@@ -9,7 +9,7 @@ public class TutorialData : ScriptableObject
     public class Tutorial
     {
         public string title;
-        [TextArea(3, 10)] public string tutorialText;
+        [TextArea(10, 20)] public string tutorialText;
         public bool left;
         public GameObject guideObj;
     }

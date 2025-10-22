@@ -7,9 +7,9 @@ public class Eq_BrawlerBuckle : PA_Equipment
     [SerializeField]
     Action.ActionStatus actionStatus;
 
-    public override void OnAttacked(Character attacker, bool evaded, bool missed)
+    public override void OnAttacked(Action.OnAttackParams onAttackParams)
     {
-        Enqueue(actionStatus, true, new List<Character>() { attacker });
+        Enqueue(actionStatus, true, new List<Character>() { onAttackParams.actionParams.owner });
     }
 
     public override string GetPAInfo_Base()

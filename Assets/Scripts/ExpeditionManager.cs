@@ -356,7 +356,7 @@ public class ExpeditionManager : MonoBehaviour
         {
             foreach (Map_LayerPanel layer in layers)
             {
-                foreach(Map_RoomButton button in layer.GetRoomButtons()) { button.SetState_Selectable(); }
+                foreach (Map_RoomButton button in layer.GetRoomButtons()) { button.SetState_Selectable(); }
             }
         }
         else
@@ -368,8 +368,10 @@ public class ExpeditionManager : MonoBehaviour
         tutorialManager.SetTutorial(tutorial_expedition);
         guideMessage.SetGuideText("ƒ}ƒbƒv‚©‚çŽŸ‚ÌŠK‘w‚ÖˆÚ“®‰Â”\");
         nextRoomButton.SetActive(true);
-        if (inventory.GetExp() > 0&&!tutorialManager.CheckUnlocked(tutorial_exp)) { tutorialManager.SetTutorial(tutorial_exp); }
-        else if (inventory.GetEquipments().Count > 0) { tutorialManager.SetTutorial(tutorial_equipment); }
+
+        if(tutorialManager.CompleteEssentials()) tutorialManager.SetTips();
+        else if(inventory.GetExp() > 0 && !tutorialManager.CheckUnlocked(tutorial_exp)) tutorialManager.SetTutorial(tutorial_exp);
+        else if(inventory.GetEquipments().Count > 0 && !tutorialManager.CheckUnlocked(tutorial_equipment)) tutorialManager.SetTutorial(tutorial_equipment);
     }
     public void GoToNextRoom(Vector2Int pos)
     {

@@ -83,8 +83,8 @@ MonoBehaviour:
     personalityName: "\u9280\u6CB3\u306E\u610F\u601D"
     personalityType: 1
   stardust: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
-  TH1: 4
-  TH2: 8
+  TH1: 0
+  TH2: 0
   onRS_self:
     actionName: 
     conditionInfo: 
@@ -152,6 +152,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -288,6 +289,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0

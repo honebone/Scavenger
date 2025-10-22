@@ -258,7 +258,7 @@ public class PassiveAbility : MonoBehaviour
     //public virtual void OnRemoveStE() { }
 
     public virtual void BecomeAbilityTarget(Character actor) { }
-    public virtual void OnAttacked(Character attacker, bool evaded, bool missed) { }
+    public virtual void OnAttacked(Action.OnAttackParams onAttackParams) { }
 
     /// <summary>DMG=0‚ÌŽž‚à</summary>
     public virtual void OnDamaged(Action.OnDamageParams onDamageParams) { }

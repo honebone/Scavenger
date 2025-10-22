@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Action;
 
 public class Eq_FoldingFan : PA_Equipment
 {
@@ -17,9 +18,9 @@ public class Eq_FoldingFan : PA_Equipment
         return s;
     }
 
-    public override void OnAttacked(Character attacker, bool evaded, bool missed)
+    public override void OnAttacked(Action.OnAttackParams onAttackParams)
     {
-        if (evaded)
+        if (onAttackParams.evaded)
         {
             Action.ActionStatus action = actionStatus;
             List<Character> targets = new List<Character>(charactersManager.SearchCharaWithCondition(condition));

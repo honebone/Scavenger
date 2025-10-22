@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
   m_Name: gameParams
   m_EditorClassIdentifier: 
+  maxLVL: 10
   unlockEqSlotLVL: 0400000006000000080000000a000000
   madnessSpawnChance: 10
   madnessStatMod:
@@ -38,6 +39,6 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
-  HPDecOnAffrict: 75
+  HPDecOnAffrict: 60
   SANDMGChanceOnRoom: 25
   SANDMGOnRoom: {x: 2, y: 8}

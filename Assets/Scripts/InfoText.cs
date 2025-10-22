@@ -86,6 +86,8 @@ public class InfoText : MonoBehaviour
         infoText.text = showSimple ? simpleInfo : detailInfo;
 
         SwitchToInfo();
+
+        if (simple != null && detailed != simple && tutorialManager.CompleteEssentials()) tutorialManager.SetTutorial("tips_simpleInfo", true);
     }
 
     public void ResetText()
@@ -118,6 +120,8 @@ public class InfoText : MonoBehaviour
         nameText.text = name;
         infoText.text = showSimple ? simpleInfo : detailInfo;
         infoTextScrollBar.value = 1;
+
+        if (simple != null && info != simple && tutorialManager.CompleteEssentials()) tutorialManager.SetTutorial("tips_simpleInfo", true);
     }
 
     public void ToggleInfoType()

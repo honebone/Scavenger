@@ -55,6 +55,10 @@ public static class Extentions
     {
         return  Random.Range(vector2.x, vector2.y);
     }
+    public static float Range(this Vector2 vector2)
+    {
+        return Random.Range(vector2.x, vector2.y);
+    }
 
     public static int ChoiceWithWeight(this float[] weight)
     {

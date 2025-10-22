@@ -70,6 +70,10 @@ public class UtilityWindow : EditorWindow
         {
             ColorText();
         }
+        if (GUILayout.Button("Emphasize Text"))
+        {
+            EmphasizeText();
+        }
 
         GUILayout.Space(10);
         GUILayout.Label("Create Link Text", EditorStyles.boldLabel);
@@ -227,6 +231,16 @@ public class UtilityWindow : EditorWindow
             ShowNotification(new GUIContent($"Copied: {output}"));
         }
     }
+    private void EmphasizeText()
+    {
+        if (!string.IsNullOrEmpty(color_input))
+        {
+            string output = color_input.ColorStr(cp.colorRef.emphasize);
+            EditorGUIUtility.systemCopyBuffer = output;
+            Debug.Log($"Copied: {output}");
+            ShowNotification(new GUIContent($"Copied: {output}"));
+        }
+    }
 
     void LinkText()
     {
@@ -274,7 +288,7 @@ public class UtilityWindow : EditorWindow
     {
         string output = "error";
         PA_StatusEffect.StatusEffectStatus status = obj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-        Color c = status.ToColor();
+        Color c = cp.StEColor(status);
         string sprite = "";
         if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff) sprite = "buff".ToSpr();
         else if (status.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff) sprite = "debuff".ToSpr();
