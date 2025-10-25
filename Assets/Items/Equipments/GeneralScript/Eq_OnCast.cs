@@ -15,7 +15,7 @@ public class Eq_OnCast : PA_Equipment
     int count_inRound;
     bool available;
 
-    public override void OnCast(Eq_Magic cast)
+    public override void OnCast(PassiveAbility cast)
     {
         if (available)
         {

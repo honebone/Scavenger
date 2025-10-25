@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: 6001225443967295111}
+  - component: {fileID: 6800272991164564710}
   - component: {fileID: 3238141386940741765}
+  - component: {fileID: 817743148432582622}
   m_Layer: 0
-  m_Name: Eq_bloomingCrimson
+  m_Name: Eq_blankGrimoire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6001225443967295111
+--- !u!114 &6800272991164564710
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +43,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 721ec5f91ba884249936512149e20026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_bloomingCrimson
+  fileName: Eq_blankGrimoire
   noSimpleInfo: 0
-  simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u306A\u304F\u306A\u308B\u4EE3\u308F\u308A\u306B\u3001\u5927\u91CF\u306E<color=#C900FF><sprite
-    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u306A\u308B"
-  PAInfo_start: 
+  simpleInfo: 
+  PAInfo_start: "\u5531\u3048\u305F<link=U_\u9B54\u8853><u>[\u9B54\u8853]</u></link>\u306E\u7A2E\u985E\u3092\u8A18\u9332\u3059\u308B\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u8A18\u9332\u306B\u3042\u308B\u5168\u3066\u306E<link=U_\u9B54\u8853><u>[\u9B54\u8853]</u></link>\u30922\u56DE\u305A\u3064\u5531\u3048\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -58,9 +58,9 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 30
+    ATK_mul: 0
     ATK_int: 0
-    INT_mul: 0
+    INT_mul: 30
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -76,11 +76,10 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
-  AMods:
-  - {fileID: 8271471462192671866, guid: f42f329d667f76948972dd2b08321137, type: 3}
+  AMods: []
   PATags: 
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 380a9ab664d7135438170cd328cb1902, type: 2}
+    itemData: {fileID: 11400000, guid: 90ff8d6735c0a7942ab885bacbe1e922, type: 2}
     equipmentInfo: 
 --- !u!212 &3238141386940741765
 SpriteRenderer:
@@ -123,7 +122,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2372f40f6a2d34d41a18199c8c41b328, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ba3d863f60d4d464d85ac7283db7a7a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,3 +133,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &817743148432582622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185327421234476493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 721ec5f91ba884249936512149e20026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: 
+  noSimpleInfo: 0
+  simpleInfo: 
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+  AMods: []
+  PATags: 
+  equipmentStatus:
+    itemData: {fileID: 0}
+    equipmentInfo: 

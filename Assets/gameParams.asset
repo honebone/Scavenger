@@ -41,4 +41,4 @@ MonoBehaviour:
     debuffRes: 0
   HPDecOnAffrict: 60
   SANDMGChanceOnRoom: 25
-  SANDMGOnRoom: {x: 2, y: 8}
+  SANDMGOnRoom: {x: 3, y: 10}

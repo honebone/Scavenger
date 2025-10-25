@@ -130,8 +130,8 @@ MonoBehaviour:
   AMods: []
   PATags: 
   personalityStatus:
-    personalityName: 
-    personalityType: 0
+    personalityName: "\u5C0E\u304D\u306E\u661F\u5149"
+    personalityType: 1
   foreachTarget: 0
   excludeSelf: 0
   onlyAlly: 1
@@ -206,6 +206,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0

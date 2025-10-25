@@ -269,7 +269,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnDie(Character killer) { }
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
 
-    public virtual void OnCast(Eq_Magic cast) { }
+    public virtual void OnCast(PassiveAbility cast) { }
 
     public virtual void OnSummon(List<Action.OnSummonParams> onSummonParamsList) { }
 

@@ -7,7 +7,7 @@ public class EqM_Missile : Eq_Magic
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;
 
-    public override void OnCast(Eq_Magic cast)
+    public override void OnCast(PassiveAbility cast)
     {
         if (cast != this) Cast();
     }

@@ -14,8 +14,14 @@ public class PA_StE_Fear : PA_StatusEffect
     {
         if (myTurn && applyFlag)
         {
-            Enqueue_Self(actionStatus);
             AddStack(-1);
+        }
+    }
+    public override void OnTurnStart(bool myTurn, int turnCount)
+    {
+        if (myTurn)
+        {
+            Enqueue_Self(actionStatus);
         }
     }
 

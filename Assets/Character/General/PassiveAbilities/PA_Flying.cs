@@ -14,6 +14,11 @@ public class PA_Flying : PA_Personality
         character.Enqueue(action, true, new List<Character> { character },0);
     }
 
+    public override void OnSummoned(Action.OnSummonParams onSummonParams)
+    {
+        Enqueue_Self(actionStatus);
+    }
+
     public override string GetPAInfo_Base()
     {
         return actionStatus.GetInfo(true, character.CharaStatus());

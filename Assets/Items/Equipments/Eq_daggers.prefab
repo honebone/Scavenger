@@ -59,13 +59,13 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 30
+    ATK_mul: 25
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
-    CRITD: 25
+    CRITD: 20
     EVD: 0
     ACC: 0
     ACT: 0
@@ -150,6 +150,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -218,8 +219,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

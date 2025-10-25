@@ -56,7 +56,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 35
+    maxHP_mul: 25
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -211,8 +212,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

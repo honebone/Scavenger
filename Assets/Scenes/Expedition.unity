@@ -5971,7 +5971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
+  m_AnchoredPosition: {x: 63.53369, y: -48.100006}
   m_SizeDelta: {x: -579.7155, y: -431.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -12836,6 +12836,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ad1fe88a976cd749ba08133db38f3b8, type: 2}
   - {fileID: 11400000, guid: 4df765ede8bbece4797637f2c68d3896, type: 2}
   - {fileID: 11400000, guid: 4506e7261c1d5ff45a0216c820d9ac8d, type: 2}
+  - {fileID: 11400000, guid: 1ad39f71ca350a641a5f4da23fd6d501, type: 2}
+  - {fileID: 11400000, guid: 90ff8d6735c0a7942ab885bacbe1e922, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -12922,7 +12924,7 @@ MonoBehaviour:
   - linkKey: "\u8A98\u767A\u80FD\u529B"
     linkInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u306F\u306A\u304F\u3001\u7279\u6027\u3084\u88C5\u5099\u54C1\u3001\u72B6\u614B\u7570\u5E38\u306A\u3069\u306B\u3088\u3063\u3066\u81EA\u52D5\u3067\u767A\u52D5\u3057\u305F\u80FD\u529B\u306E\u3053\u3068"
   - linkKey: "\u9B54\u8853"
-    linkInfo: "\u9B54\u8853\u306F\u7279\u5B9A\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3068\u5531\u3048\u3089\u308C\u3001\u69D8\u3005\u306A\u52B9\u679C\u3092\u3082\u305F\u3089\u3059"
+    linkInfo: "\u88C5\u5099\u54C1\u3084\u7279\u6027\u306E\u4E00\u7A2E\n\u9B54\u8853\u306F\u7279\u5B9A\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3068\u5531\u3048\u3089\u308C\u3001\u69D8\u3005\u306A\u52B9\u679C\u3092\u3082\u305F\u3089\u3059"
 --- !u!224 &625201172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3004905254552023635, guid: 9fa3ad89b44a5a546a0eaaa71bf2a072, type: 3}
@@ -18801,7 +18803,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: f08a39aeb9d1b9747b708726d6fef056, type: 3}
   - {fileID: 3170614222137734241, guid: 4972d7eef958660488e1830a34b73f8d, type: 3}
   playerStatusGrowth:
-    maxHP_mul: 25
+    maxHP_mul: 22.5
     ATKINT_mul: 25
     ACT: 0.5
     EVD: 1

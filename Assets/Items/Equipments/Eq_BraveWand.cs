@@ -17,7 +17,7 @@ public class Eq_BraveWand : PA_Equipment
             {
                 character.AddINT(0, INT);
                 count++;
-                Log($"{"INT".ToSpr_withName(null, true)}+{INT}Åì(+{INT * count}Åì)");
+                Log($"{"INT".ToSpr_withName()}+{INT}Åì(+{INT * count}Åì)");
             }
         });
     }

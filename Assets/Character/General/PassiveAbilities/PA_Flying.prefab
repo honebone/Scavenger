@@ -83,7 +83,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u98DB\u884C"
-    conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
+    conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u3042\u308B\u3044\u306F\u53EC\u559A\u3055\u308C\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -106,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -147,6 +148,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -170,7 +172,9 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -194,6 +198,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -211,8 +217,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

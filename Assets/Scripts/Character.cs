@@ -1900,7 +1900,7 @@ public class Character : MonoBehaviour
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 
-    public virtual void OnCast(Eq_Magic cast)
+    public virtual void OnCast(PassiveAbility cast)
     {
         if (BattleManager.inBattle)
         {
