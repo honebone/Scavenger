@@ -1021,8 +1021,8 @@ public class Action : MonoBehaviour
                                 shakeCamera = true;
                                 CRIT = true;
                                 onAttackParams.CRIT = true;
-                                ATKDMGf *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
-                                INTDMGf *= (ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                ATKDMGf *= (100 + ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                INTDMGf *= (100 + ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
                                 target.SpawnVisualEffect(Definer.VERef.CRIT);
                             }
 
@@ -1087,6 +1087,7 @@ public class Action : MonoBehaviour
                             result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(onAttackParams);//îÌçUåÇéûóUî≠
+                            if (ownerStatus.characterData.player) { GameManager.instance.SendScoreborad(2, totalDMG); }
 
                             bool kill = target.Damage(onDamageParams);
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using unityroom.Api;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SendScoreborad(int index, float score)
+    {
+        if (index == 1) { UnityroomApiClient.Instance.SendScore(index, score, ScoreboardWriteMode.HighScoreDesc); }
+        else if (index == 2) { UnityroomApiClient.Instance.SendScore(index, score, ScoreboardWriteMode.HighScoreDesc); }
+    }
+
     //=================================[testÅ®title]=============================================
     public void GoTotitleScene()
     {

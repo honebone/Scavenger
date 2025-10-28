@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.ShaderData;
 
 public class Eq_CounterMagicCloak : PA_Equipment
 {

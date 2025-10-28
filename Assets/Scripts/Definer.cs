@@ -435,7 +435,7 @@ public class TextSpriteParams
     public string key;
     public string defaultName;
     public Color color;
-    [TextArea(3, 10)] public string info;
+    [TextArea(10, 20)] public string info;
     public string GetTextSprite(SpriteTextMode mode, bool outline, string nameOverride = null)
     {
         switch (mode)

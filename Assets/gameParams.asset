@@ -42,3 +42,4 @@ MonoBehaviour:
   HPDecOnAffrict: 60
   SANDMGChanceOnRoom: 25
   SANDMGOnRoom: {x: 3, y: 10}
+  RegenPercentOnRoomEnd: 20

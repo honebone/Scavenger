@@ -40,6 +40,8 @@ public class CharaDetailUI : MonoBehaviour
 
     public TextMeshProUGUI expAmount;
     [SerializeField] TutorialData tutorial_equip;
+    [SerializeField] TutorialData tutorial_exp;
+    [SerializeField] TutorialData tutorial_equipment;
 
     [SerializeField] GameObject warningPanel;
 
@@ -128,10 +130,10 @@ public class CharaDetailUI : MonoBehaviour
 
         inventoryEq.SetButtons();//test
 
-        if (inventory.GetExp() > 0) { tutorialManager.SetTutorial("LVLUP"); }
-        else if (inventory.GetEquipments().Count > 0) { tutorialManager.SetTutorial(tutorial_equip); }
+        if (inventory.GetExp() > 0 && tutorialManager.CheckUnlocked(tutorial_exp)) { tutorialManager.SetTutorial("LVLUP"); }
+        else if (inventory.GetEquipments().Count > 0 && tutorialManager.CheckUnlocked(tutorial_equipment)) { tutorialManager.SetTutorial(tutorial_equip); }
 
-       
+
     }
     public void CloseUI()
     {

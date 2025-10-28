@@ -155,6 +155,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0

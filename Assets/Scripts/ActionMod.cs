@@ -160,8 +160,8 @@ public class ActionMod : MonoBehaviour
         {
             if (value == 0) { return ""; }
             string s = start;
-            if (value < 0) { s += value.ToString(); }
-            else { s += "+" + value.ToString(); }
+            if (value < 0) { s += value.ToString().ColorStr(Color.red); }
+            else { s += ("+" + value.ToString()).ColorStr(Color.green); }
             s += end + "\n";
             return s;
         }

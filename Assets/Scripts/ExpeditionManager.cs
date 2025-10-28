@@ -206,6 +206,7 @@ public class ExpeditionManager : MonoBehaviour
     {
         fadeOutUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
+        GameManager.instance.SendScoreborad(1, areaCount);
         mainMessage.SetMessage(string.Format("第{0}エリア  {1}", areaCount, currentArea.areaName));
         infoText.AddLogText(string.Format("△▽△▽△<<第{0}エリア {1}>>△▽△▽△", areaCount, currentArea.areaName));
 
@@ -661,7 +662,7 @@ public class ExpeditionManager : MonoBehaviour
         {
             Character.CharacterStatus status = chara.CharaStatus();
             int decreasedHP = status.maxHP - status.HP;
-            chara.Heal(Mathf.RoundToInt(decreasedHP * 0.25f), null);
+            chara.Heal((decreasedHP * GameManager.gameParams.RegenPercentOnRoomEnd / 100f).ToInt(), null);
         }
         yield return new WaitForSeconds(0.75f);
         

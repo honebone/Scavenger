@@ -14,4 +14,5 @@ public class GameParams : ScriptableObject
    [Header("¸_•ö‰ó‚ÉHP‚ª[HPDecOnAffrict]%Œ¸­")] public int HPDecOnAffrict;
     public int SANDMGChanceOnRoom;
     public Vector2Int SANDMGOnRoom;
+    public int RegenPercentOnRoomEnd;
 }

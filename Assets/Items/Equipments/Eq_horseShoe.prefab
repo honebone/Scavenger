@@ -148,6 +148,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -207,8 +208,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -226,7 +225,7 @@ MonoBehaviour:
     refATK: 0
     refTargetMaxHP: 0
     DMGPerTurn: 0
-  exInfo: "\u3053\u306E\u52B9\u679C\u91CF\u306F\u3001\u3053\u306E\u30E9\u30A6\u30F3\u30C9\u4E2D\u306B\u7D4C\u904E\u3057\u305F\u30BF\u30FC\u30F31\u306B\u3064\u304D10\u6E1B\u5C11\u3059\u308B\n(\u30DE\u30A4\u30CA\u30B9\u306B\u306F\u306A\u3089\u306A\u3044)"
+  exInfo: "\u3053\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>\u306F\u3001\u3053\u306E\u30E9\u30A6\u30F3\u30C9\u4E2D\u306B\u7D4C\u904E\u3057\u305F\u30BF\u30FC\u30F31\u306B\u3064\u304D10\u6E1B\u5C11\u3059\u308B\n(\u30DE\u30A4\u30CA\u30B9\u306B\u306F\u306A\u3089\u306A\u3044)"
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

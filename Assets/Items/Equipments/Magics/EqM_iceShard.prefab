@@ -87,7 +87,7 @@ MonoBehaviour:
   actionStatus:
     actionName: "\u9B54\u8853\uFF1A\u6C37\u67F1"
     conditionInfo: "\u5531\u3048\u3089\u308C\u305F\u3068\u304D"
-    targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65751\u4F53\n\u305F\u3060\u3057\u3001\u81EA\u8EAB\u306E150\uFF05\u3092\u8D85\u3048\u3066\u4E0A\u6607\u3057\u305F<sprite
+    targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65751\u4F53\n\u305F\u3060\u3057\u3001\u81EA\u8EAB\u306E50\uFF05\u3092\u8D85\u3048\u3066\u4E0A\u6607\u3057\u305F<sprite
       name=CRIT>\u30C0\u30E1\u30FC\u30B825\uFF05\u306B\u3064\u304D\u5BFE\u8C61\u306E\u6570\u304C1\u5897\u3048\u308B(\u6700\u59273\u5897\u52A0)\n"
     AModInfo: 
     actionInfo: 
@@ -152,6 +152,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -220,8 +221,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

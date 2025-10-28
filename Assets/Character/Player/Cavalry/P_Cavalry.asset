@@ -64,7 +64,7 @@ MonoBehaviour:
   ATK: 9
   INT: 5
   CRITC: 5
-  CRITD: 150
+  CRITD: 50
   EVD: 0
   ACC: 95
   ACT: 3
