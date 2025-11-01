@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
+  m_Name: Eq_divergeMask
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: "\u4E56\u96E2\u306E\u4EEE\u9762"
+  specialInfo: 0
+  info: 
+  rarity: 2
+  sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  amountPerStack: 1
+  dropAmountRange: {x: 0, y: 0}
+  materialTags: 00000000
+  price: 0
+  manager: {fileID: 5667121962493394942, guid: ec2d768bf44cb924abf5da224c94ff7f, type: 3}

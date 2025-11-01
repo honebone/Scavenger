@@ -616,7 +616,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7730258257278074328, guid: 65e3e71ae810fd14f80aa5bcb13d6169, type: 3}
   m_PrefabInstance: {fileID: 718257503}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &174062067
+--- !u!1 &176167508
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -624,9 +624,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 174062070}
-  - component: {fileID: 174062069}
-  - component: {fileID: 174062068}
+  - component: {fileID: 176167511}
+  - component: {fileID: 176167510}
+  - component: {fileID: 176167509}
   m_Layer: 0
   m_Name: GeneralManager
   m_TagString: Untagged
@@ -634,13 +634,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &174062068
+--- !u!114 &176167509
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174062067}
+  m_GameObject: {fileID: 176167508}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: babd3870ecf20f6418635758a34e9e6b, type: 3}
@@ -1000,6 +1000,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ad39f71ca350a641a5f4da23fd6d501, type: 2}
   - {fileID: 11400000, guid: 90ff8d6735c0a7942ab885bacbe1e922, type: 2}
   - {fileID: 11400000, guid: 6151f53aad37f1640b072e45ec846271, type: 2}
+  - {fileID: 11400000, guid: 825be5a2d13178d45a3453f51c425d1f, type: 2}
+  - {fileID: 11400000, guid: cc05fe723bb1e1942858f453009212c8, type: 2}
+  - {fileID: 11400000, guid: 5f926fc6433cc794ab31a3b163fce005, type: 2}
+  - {fileID: 11400000, guid: a66403afa72869f4594ed6ab8340012f, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -1087,13 +1091,13 @@ MonoBehaviour:
     linkInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u306F\u306A\u304F\u3001\u7279\u6027\u3084\u88C5\u5099\u54C1\u3001\u72B6\u614B\u7570\u5E38\u306A\u3069\u306B\u3088\u3063\u3066\u81EA\u52D5\u3067\u767A\u52D5\u3057\u305F\u80FD\u529B\u306E\u3053\u3068"
   - linkKey: "\u9B54\u8853"
     linkInfo: "\u88C5\u5099\u54C1\u3084\u7279\u6027\u306E\u4E00\u7A2E\n\u9B54\u8853\u306F\u7279\u5B9A\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3068\u5531\u3048\u3089\u308C\u3001\u69D8\u3005\u306A\u52B9\u679C\u3092\u3082\u305F\u3089\u3059"
---- !u!114 &174062069
+--- !u!114 &176167510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174062067}
+  m_GameObject: {fileID: 176167508}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 314976142b623e041aab62c11ac7d9ea, type: 3}
@@ -1102,13 +1106,13 @@ MonoBehaviour:
   text: "\u821E\u8E0F"
   textColor: {r: 1, g: 0.7490196, b: 0.4117647, a: 1}
   coloredText: "<color=#FFBF69>\u821E\u8E0F</color>"
---- !u!4 &174062070
+--- !u!4 &176167511
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 174062067}
+  m_GameObject: {fileID: 176167508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}

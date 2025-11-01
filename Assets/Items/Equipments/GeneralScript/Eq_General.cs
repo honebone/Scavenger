@@ -16,6 +16,13 @@ public class Eq_General : PA_Equipment
     [SerializeField] CharactersManager.SearchCharaCondition condition_RS;
     [SerializeField] int targetCount_RS;
 
+    [SerializeField, Header("\n\nTunrStart")] bool onTS;
+    public bool TS_onlyMyTurn;
+    [SerializeField] bool onTS_targetSelf;
+    [SerializeField] Action.ActionStatus action_TS;
+    [SerializeField] CharactersManager.SearchCharaCondition condition_TS;
+    [SerializeField] int targetCount_TS;
+
 
     public override void OnBattleStart()
     {
@@ -35,11 +42,22 @@ public class Eq_General : PA_Equipment
         }
     }
 
+    public override void OnTurnStart(bool myTurn, int turnCount)
+    {
+        if (TS_onlyMyTurn && !myTurn) return;
+        if (onTS)
+        {
+            if (onTS_targetSelf) { Enqueue_Self(action_TS); }
+            else { Enqueue_SearchTarget(action_TS, condition_TS, targetCount_TS); }
+        }
+    }
+
     public override string GetPAInfo_Base()
     {
         string s = equipmentStatus.GetInfo();
         s += onBS ? action_BS.GetInfo() + "\n" : "";
         s += onRS ? action_RS.GetInfo() + "\n" : "";
+        s += onTS ? action_TS.GetInfo() + "\n" : "";
         return s;
     }
 }

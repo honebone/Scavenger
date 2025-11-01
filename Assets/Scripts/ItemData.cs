@@ -69,5 +69,56 @@ public class ItemData : ScriptableObject
 
     [Header("tool,equipment用")]
     public GameObject manager;
-   
+
+    public string GetInfo(bool simple)
+    {
+        string s = "";
+
+        if (!specialInfo)
+        {
+            s += string.Format("{0}\n", Definer.rarityName[rarity].ColorStr(rarity.ToColor()));
+            bool f = false;
+
+            switch (itemType)
+            {
+                case ItemData.ItemType.material:
+                    s += "<<素材>>\n\n";
+                    s += "タグ：";
+                    foreach (ItemData.MaterialTag tag in materialTags)
+                    {
+                        if (f) { s += ", "; }
+                        f = true;
+                        s += $"[{Definer.materialTagName[tag]}]";
+                    }
+                    s += "\n";
+                    s += "現在素材の使い道は実装されていません...\n".ColorStr(Color.red);
+                    s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
+                    s += string.Format("価値：{0}G\n", price.ToString());
+                    s += string.Format("スロット単価：{0}G\n", (price * amountPerStack).ToString());
+                    break;
+
+
+                case ItemData.ItemType.equipment:
+                    s += "<<装備品>>\n";
+                    //if (data.equipmentTag != ItemData.EquipmentTag.none)
+                    //{
+                    //    s += string.Format("[{0}]\n", Definer.equipmentTagName[data.equipmentTag]);
+                    //}
+                    //s += "\n";
+                    s += manager.GetComponent<PassiveAbility>().GetPAInfo(simple);
+                    break;
+
+
+                case ItemData.ItemType.tool:
+                    s += "<<道具>>\n\n";
+                    s += string.Format("スロットあたりの所持数：{0}\n", amountPerStack.ToString());
+                    s += manager.GetComponent<PassiveAbility>().GetPAInfo();
+                    break;
+            }
+            s += info;
+        }
+
+        return s;
+    }
+
 }

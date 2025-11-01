@@ -39,6 +39,33 @@ public class GameManager : MonoBehaviour
         else if (index == 2) { UnityroomApiClient.Instance.SendScore(index, score, ScoreboardWriteMode.HighScoreDesc); }
     }
 
+    // 更新が必要かどうかのフラグ
+    private bool isDirty = false;
+
+    // 更新頻度を制限するためのタイマー
+    private float updateTimer = 0f;
+    private const float UPDATE_INTERVAL = 0.1f;
+    public void SetSaveData(string key,float value)
+    {
+        PlayerPrefs.SetFloat(key, value);
+        isDirty = true;
+    }
+
+    private void Update()
+    {
+        // 更新が必要で、かつ更新間隔を過ぎている場合のみ更新
+        if (isDirty)
+        {
+            updateTimer += Time.deltaTime;
+            if (updateTimer >= UPDATE_INTERVAL)
+            {
+                PlayerPrefs.Save();
+                updateTimer = 0f;
+                isDirty = false;
+            }
+        }
+    }
+
     //=================================[test→title]=============================================
     public void GoTotitleScene()
     {

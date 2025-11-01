@@ -21,7 +21,7 @@ public class Eq_AcademyHat : PA_Equipment
             if (count == maxCount)
             {
                 Log($"カウント最大!!");
-                INT_base= (character.CharaStatus().BaseINT() * INT_base_mul / 100f).ToInt();
+                INT_base = (character.CharaStatus().BaseINT() * INT_base_mul / 100f).ToInt();
                 character.AddINT(INT_base, 0);
             }
         }
@@ -31,11 +31,12 @@ public class Eq_AcademyHat : PA_Equipment
     {
         character.AddINT(-INT_base, -INT * count);
         count = 0;
+        INT_base = 0;
     }
 
     public override string GetCurrentStateInfo()
     {
-        string s= $"カウント：{count}/{maxCount}({"INT".ToSpr_withName()}+{INT * count}％)";
+        string s = $"カウント：{count}/{maxCount}({"INT".ToSpr_withName()}+{INT * count}％)";
         if (count == maxCount) s += $"\nカウント最大ボーナス：{"INT".ToSpr_withName()}基礎値+{INT_base}";
         return s;
     }

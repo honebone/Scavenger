@@ -42,21 +42,25 @@ public class PassiveAbility : MonoBehaviour
                 if (f) { s += ", "; }
                 f = true;
                 if (tag.ToString() == "魔術") s += "<link=U_魔術><u>[魔術]</u></link>";
+                else if (tag.ToString() == "ルーン") s += "<link=U_ルーン><u>[ルーン]</u></link>";
                 else s += $"[{tag}]";
             }
             s += "\n";
         }
 
         string statModInfo = statMod.GetInfo();
+        string runeChargeInfo = PATags.Contains(PATag.ルーン) ? $"初期チャージ：{rune_initialCharge}" : "";
 
         if (simple && !noSimpleInfo)
         {
-            if (statModInfo != "") s += $"{statModInfo}\n\n{GetSimpleInfo()}";
-            else s += GetSimpleInfo();
+            if (statModInfo != "") s += $"{statModInfo}\n\n";
+            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n\n";
+            s += GetSimpleInfo();
         }
         else
         {
             if (statModInfo != "") s += statModInfo + "\n\n";
+            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n\n";
             string amodInfo = "";
             foreach (GameObject actionMod in AMods)
             {
@@ -142,7 +146,7 @@ public class PassiveAbility : MonoBehaviour
         }
         else
         {
-            target = charactersManager.SearchCharaWithCondition(condition);
+            target = charactersManager.SearchCharaWithCondition(condition, character);
             action.actionTargets = target;
         }
 
@@ -222,8 +226,25 @@ public class PassiveAbility : MonoBehaviour
 
     public virtual void Cast() { infoText.AddErrorText($"効果のない詠唱をしています！：{GetPAName()}"); }
 
-    /// <summary>このターンに付与されたかのチェック</summary>
-    public void StE_ApplyFlag() { applyFlag = true; }
+    public int rune_initialCharge;
+    protected int runeCharge;
+    public void ChargeRune(int add)
+    {
+        runeCharge += add;
+        Log($"チャージ+{add} ({runeCharge})");
+    }
+    /// <summary>
+    /// 活性化効果処理はそれぞれのスクリプトに書くこと！
+    /// </summary>
+    public void RuneActivate() {
+        Log("活性化！");
+        runeCharge--;
+        if (runeCharge < 0) infoText.AddErrorText($"ルーンのチャージ数が負になっています：{GetPAName()}");
+        character.OnRuneActivate(this);
+    }
+
+/// <summary>このターンに付与されたかのチェック</summary>
+public void StE_ApplyFlag() { applyFlag = true; }
 
 
     public virtual void OnPAInit() { }
@@ -270,6 +291,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnHealed(Character healer, Action.OnHealParams onHealParams) { }
 
     public virtual void OnCast(PassiveAbility cast) { }
+    public virtual void OnRuneActivate(PassiveAbility rune) { }
 
     public virtual void OnSummon(List<Action.OnSummonParams> onSummonParamsList) { }
 

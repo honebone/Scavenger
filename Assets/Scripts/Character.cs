@@ -586,12 +586,18 @@ public class Character : MonoBehaviour
 
     public List<PA_StatusEffect> GetStEs() { return new List<PA_StatusEffect>(PA_StE); }
 
-    public List<Eq_Magic> GetMagics(List<Eq_Magic> excludeList=null)
+    public List<PassiveAbility> GetMagics(List<PassiveAbility> excludeList = null)
     {
-        if (excludeList == null) excludeList = new List<Eq_Magic>();
+        if (excludeList == null) excludeList = new List<PassiveAbility>();
         return GetPassiveAbilities()
-            .OfType<Eq_Magic>()
-            .Where(m => !excludeList.Contains(m))
+            .Where(m => !excludeList.Contains(m) && m.PATags.Contains(PassiveAbility.PATag.ñÇèp))
+            .ToList();
+    }
+    public List<PassiveAbility> GetRunes(List<PassiveAbility> excludeList = null)
+    {
+        if (excludeList == null) excludeList = new List<PassiveAbility>();
+        return GetPassiveAbilities()
+            .Where(m => !excludeList.Contains(m) && m.PATags.Contains(PassiveAbility.PATag.ÉãÅ[Éì))
             .ToList();
     }
 
@@ -1905,6 +1911,14 @@ public class Character : MonoBehaviour
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnCast(cast); }
+            RemovePA_Execute();
+        }
+    }
+    public  void OnRuneActivate(PassiveAbility rune)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnRuneActivate(rune); }
             RemovePA_Execute();
         }
     }

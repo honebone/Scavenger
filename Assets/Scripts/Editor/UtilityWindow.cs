@@ -74,6 +74,10 @@ public class UtilityWindow : EditorWindow
         {
             EmphasizeText();
         }
+        if (GUILayout.Button("Formula Text"))
+        {
+            FormulaText();
+        }
 
         GUILayout.Space(10);
         GUILayout.Label("Create Link Text", EditorStyles.boldLabel);
@@ -236,6 +240,17 @@ public class UtilityWindow : EditorWindow
         if (!string.IsNullOrEmpty(color_input))
         {
             string output = color_input.ColorStr(cp.colorRef.emphasize);
+            EditorGUIUtility.systemCopyBuffer = output;
+            Debug.Log($"Copied: {output}");
+            ShowNotification(new GUIContent($"Copied: {output}"));
+        }
+    }
+
+    private void FormulaText()
+    {
+        if (!string.IsNullOrEmpty(color_input))
+        {
+            string output = $"<i>{{{color_input}}}</i>".ColorStr(cp.colorRef.emphasize);
             EditorGUIUtility.systemCopyBuffer = output;
             Debug.Log($"Copied: {output}");
             ShowNotification(new GUIContent($"Copied: {output}"));

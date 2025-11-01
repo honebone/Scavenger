@@ -186,9 +186,13 @@ public class CharactersManager : MonoBehaviour
         public bool HP_lessThan;
         public bool HP_excludeEqual;
 
+        [Header("\n\n\n<参照のキャラとの比較>")]
+        public List<Vector2Int> neighbor;
+        public bool sameColmn;
+        public bool sameRow;
     }
 
-    public bool ExamineCharacter(Character character, SearchCharaCondition condition)
+    public bool ExamineCharacter(Character character, SearchCharaCondition condition ,Character refChara=null)
     {
         if (condition.searchAsPos)
         {
@@ -307,10 +311,18 @@ public class CharactersManager : MonoBehaviour
             if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { return false; }//HP% >= 条件値 のみ通す
         }
 
+        if (refChara != null)
+        {
+            Character.CharacterStatus refStat = refChara.CharaStatus();
+
+            matched = condition.neighbor.Count == 0 || condition.neighbor.Any(x => refStat.position.PosIntToVector() + x == status.position.PosIntToVector());
+            if (!matched) { return false; }
+        }
+
         return true;
     }
 
-    public List<Character> SearchCharaWithCondition(SearchCharaCondition condition)
+    public List<Character> SearchCharaWithCondition(SearchCharaCondition condition, Character refChara = null)
     {
         if (condition.searchAsPos)
         {
@@ -320,130 +332,7 @@ public class CharactersManager : MonoBehaviour
         List<Character> list = new List<Character>();
         foreach (Character character in existingCharacters)
         {
-            //Character.CharacterStatus status = character.CharaStatus();
-            //if (!condition.player && status.position < 9) { continue; }
-            //if (!condition.enemy && status.position >= 9) { continue; }
-            //if (condition.onlyPlayable && !status.playable) { continue; }
-            //if (!condition.front && status.position.GetColumn() == 0) { continue; }
-            //if (!condition.mid && status.position.GetColumn() == 1) { continue; }
-            //if (!condition.back && status.position.GetColumn() == 2) { continue; }
-            //if (condition.excludeObstacle && status.Obstacle()) { continue; }
-
-
-
-            //bool matched = condition.characterTags.Count == 0;
-            //foreach (CharacterData.CharacterTag tag in condition.characterTags)
-            //{
-            //    if (status.characterTags.Contains(tag))
-            //    {
-            //        matched = true;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-
-            //matched = condition.characterInclude.Count == 0 || condition.characterInclude.Contains(status.characterData);
-            //if (!matched) { continue; }
-
-            //matched = true;
-            //foreach (CharacterData.CharacterTag tag in condition.characterTagsExclude)
-            //{
-            //    if (status.characterTags.Contains(tag))
-            //    {
-            //        infoText.AddDebugText(tag.ToString());
-            //        matched = false;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-            //matched = condition.StEConditions.Count == 0;
-            //foreach (SearchCharaCondition.StECondition cond in condition.StEConditions)
-            //{
-            //    int stack = character.GetStEStack_Sum(cond.StE);
-            //    if (cond.stack_lessThan&& stack <= cond.stack)
-            //    {
-            //        matched = true;
-            //        break;
-            //    }
-            //    else if(!cond.stack_lessThan && stack >= cond.stack)
-            //    {
-            //        matched = true;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-
-            //matched = condition.StE.Count == 0;
-            //foreach (GameObject s in condition.StE)
-            //{
-            //    if (character.CheckHasStE(s))
-            //    {
-            //        matched = true;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-
-            //matched = true;
-            //foreach (GameObject s in condition.StEExclude)
-            //{
-            //    if (character.CheckHasStE(s))
-            //    {
-            //        matched = false;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-
-            //matched = condition.PE.Count == 0;
-            //foreach (GameObject s in condition.PE)
-            //{
-            //    if (character.CheckHasPE(s))
-            //    {
-            //        matched = true;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-
-            //matched = true;
-            //foreach (GameObject s in condition.PEExclude)
-            //{
-            //    if (character.CheckHasPE(s))
-            //    {
-            //        matched = false;
-            //        break;
-            //    }
-            //}
-            //if (!matched) { continue; }
-
-
-
-            //float HPPercent = status.HP.GetPercent(status.maxHP);
-            //if (condition.HP_lessThan)
-            //{
-            //    if (condition.HP_excludeEqual && HPPercent >= condition.HPPercent) { continue; }//HP% < 条件値 のみ通す
-            //    if (!condition.HP_excludeEqual && HPPercent > condition.HPPercent) { continue; }//HP% <= 条件値 のみ通す
-            //}
-            //else
-            //{
-            //    if (condition.HP_excludeEqual && HPPercent <= condition.HPPercent) { continue; }//HP% > 条件値 のみ通す
-            //    if (!condition.HP_excludeEqual && HPPercent < condition.HPPercent) { continue; }//HP% >= 条件値 のみ通す
-            //}
-
-            if (ExamineCharacter(character, condition)) list.Add(character);
+            if (ExamineCharacter(character, condition, refChara)) list.Add(character);
 
         }
 
