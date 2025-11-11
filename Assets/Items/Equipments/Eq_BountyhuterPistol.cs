@@ -39,8 +39,7 @@ public class Eq_BountyhuterPistol : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += "\n" + actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
     public override string GetCurrentStateInfo()

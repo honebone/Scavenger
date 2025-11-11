@@ -53,24 +53,24 @@ public class PassiveAbility : MonoBehaviour
 
         if (simple && !noSimpleInfo)
         {
-            if (statModInfo != "") s += $"{statModInfo}\n\n";
-            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n\n";
-            s += GetSimpleInfo();
+            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n";
+            if (statModInfo != "") s += $"\n{statModInfo}\n";
+            if (GetSimpleInfo() != "") s += "\n" + GetSimpleInfo();
         }
         else
         {
-            if (statModInfo != "") s += statModInfo + "\n\n";
-            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n\n";
+            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n";
+            if (statModInfo != "") s += $"\n{statModInfo}\n";
             string amodInfo = "";
             foreach (GameObject actionMod in AMods)
             {
-                amodInfo = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
-                if(amodInfo != "") s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo()+"\n";
+                string af = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
+                if(af != "") amodInfo += $"{af}\n";
 
             }
-            //if (amodInfo != "") s += amodInfo + "\n";
-            if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
-            if (!skipGetInfo && GetPAInfo_Base() != "") s += GetPAInfo_Base() + "\n\n";
+            if (amodInfo != "") s += $"\n{amodInfo}\n";
+            if (PAInfo_start != "") s += $"\n{PAInfo_start}\n";
+            if (!skipGetInfo && GetPAInfo_Base() != "") s += $"\n{GetPAInfo_Base()}\n";
             if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
             if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
         }
@@ -255,7 +255,7 @@ public void StE_ApplyFlag() { applyFlag = true; }
     public virtual void OnTurnOrderDecide() { }
 
     public virtual void OnTurnStart(bool myTurn, int turnCount) { }
-    public virtual void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara) { }
+    public virtual void OnTurnEnd(TurnEndParams tep) { }
     public virtual void OnRoundEnd() { }
 
     /// <summary> ‚±‚±‚ÅEnqueue‚µ‚È‚¢!! </summary>

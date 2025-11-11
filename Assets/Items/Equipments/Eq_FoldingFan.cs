@@ -13,8 +13,7 @@ public class Eq_FoldingFan : PA_Equipment
     public override string GetPAInfo_Base()
     {
         string s = "";
-        s += equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        s += actionStatus.GetInfo();
         return s;
     }
 

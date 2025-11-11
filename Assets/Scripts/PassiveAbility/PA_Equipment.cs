@@ -10,33 +10,12 @@ public class PA_Equipment : PassiveAbility
         public ItemData itemData;
         //[TextArea(3, 10)]
         //public string info_start;
-        [Header("Ç±Ç±Ç…èëÇ≠Ç»")]
-        public string equipmentInfo;
         //public Character.CharaStatusMod statusMod;
         //public List<GameObject> actionMods;
-
         
-
         public string GetName()
         {
             return itemData.itemName.ColorStr(itemData.rarity.ToColor());
-        }
-        public string GetInfo()
-        {
-            string s = "";
-            //if (info_start != "") { s = info_start.ColorStr(Color.red) + "\n"; }
-            //if (statusMod.GetInfo() != "")
-            //{
-            //    s += s += statusMod.GetInfo() + "\n\n";
-            //}
-
-            //foreach (GameObject actionMod in actionMods)
-            //{
-            //    s += actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
-            //}
-            if (equipmentInfo != "") { s += equipmentInfo + "\n\n"; }
-
-            return s;
         }
     }
     //public override string GetSimpleInfo()
@@ -50,7 +29,7 @@ public class PA_Equipment : PassiveAbility
     }
     public override string GetPAInfo_Base()
     {
-        return equipmentStatus.GetInfo();
+        return "";
     }
     [SerializeField]
     protected EquipmentStatus equipmentStatus;

@@ -7,28 +7,22 @@ public class Eq_DelayCertificate : PA_Equipment
     [SerializeField] Action.ActionStatus actionStatus;
 
     bool activated;
-    bool act;
     public override void OnBattleStart()
     {
         activated = false;
-        act = false;
     }
     public override void OnRoundStart()
     {
         activated = false;
     }
-    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
+
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        act = true;
-    }
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
-    {
-        if (!act&&!activated&&myTurn)
+        if (!tep.actThisTurn&&!activated&&tep.myTurn)
         {
             activated = true;
             Enqueue_Self(actionStatus);
         }
-        act = false;
     }
 
     public override string GetPAInfo_Base()

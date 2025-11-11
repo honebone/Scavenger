@@ -10,9 +10,9 @@ public class PA_StE_Fear : PA_StatusEffect
     {
         character.AddExDMG_Mul(exDMG);
     }
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && applyFlag)
+        if (tep.myTurn && applyFlag)
         {
             AddStack(-1);
         }

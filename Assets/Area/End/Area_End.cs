@@ -73,6 +73,8 @@ public class Area_End : AreaManager
 
         map.SetLayerPanel(layer, layerCount);
 
+        areaLength = 5;
+
         map.EndGenerateMap();
     }
 }

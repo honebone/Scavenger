@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+using static LVLUpManager;
 
 public class Character : MonoBehaviour
 {
@@ -78,6 +79,10 @@ public class Character : MonoBehaviour
 
         /// <summary>このラウンドで終了した自身のターン数</summary>
         public int spendTurn;
+        /// <summary>
+        /// 行動時、ターン終了時までこの値がtrueに
+        /// </summary>
+        public bool actThisTurn;
 
         public float GHeal;
         public float RHeal;
@@ -1270,16 +1275,19 @@ public class Character : MonoBehaviour
 
     public void AddTurn(int turns)
     {
-        targetButton.SetDamageText($"{"ACT".ToSpr(true)}追加ターン {turns}", Definer.colorRef.emphasize);
-        infoText.AddLogText($"{charaStatus.charaName}は{"ACT".ToSpr()}追加ターンを{turns}得た");
-        if (BattleManager.inRound)
+        if (turns > 0)
         {
-            battleManager.AddTurn(this, false, turns);
-            charaObj.AddTurnIcons(turns);
-        }
-        else
-        {
-            charaStatus.exTurn += turns;
+            targetButton.SetDamageText($"{"ACT".ToSpr(true)}追加ターン {turns}", Definer.colorRef.emphasize);
+            infoText.AddLogText($"{charaStatus.charaName}は{"ACT".ToSpr()}追加ターンを{turns}得た");
+            if (BattleManager.inRound)
+            {
+                battleManager.AddTurn(this, false, turns);
+                charaObj.AddTurnIcons(turns);
+            }
+            else
+            {
+                charaStatus.exTurn += turns;
+            }
         }
     }
 
@@ -1556,6 +1564,48 @@ public class Character : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// デバッグ用
+    /// </summary>
+    /// <param name="addLVL"></param>
+    public void LVLUp_Auto(int addLVL)
+    {
+        for(int i = 0; i < addLVL; i++)
+        {
+            List<LVLUpManager.LVLUpParams> pool = new List<LVLUpManager.LVLUpParams>();
+            foreach (Ability.AbilityStatus status in charaStatus.abilitiesStatus)
+            {
+                if (status.locked || status.abilityData.upgradeAbility != null)
+                {
+                    LVLUpManager.LVLUpParams lvlUpParams = new LVLUpManager.LVLUpParams();
+                    lvlUpParams.character = this;
+                    if (status.locked)
+                    {
+                        lvlUpParams.abilityStatus = status;
+                    }
+                    else if (status.abilityData.upgradeAbility != null)
+                    {
+                        Ability.AbilityStatus upgrade = new Ability.AbilityStatus(status.abilityData.upgradeAbility, 0);
+                        lvlUpParams.abilityStatus = upgrade;
+                    }
+                    lvlUpParams.upgrade = !status.locked;
+                    pool.Add(lvlUpParams);
+                }
+            }
+
+            if(pool.Count > 0)
+            {
+                LVLUpManager.LVLUpParams chosen = pool.Choice();
+                if (!chosen.upgrade) { chosen.abilityStatus.Unlock(); }
+                else { UpgradeAbility(chosen.abilityStatus.abilityData); }
+            }
+
+            LVLUp();
+        }
+        charaStatus.exp = 0;
+    }
+
     public void LVLUp()
     {
         charaStatus.exp -= charaStatus.GetNextExp();
@@ -1772,17 +1822,18 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(myTurn, turnCount); }
         RemovePA_Execute();
     }
-    public void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public void OnTurnEnd(TurnEndParams tep)
     {
         if (charaStatus.shield > 0 && battleManager.GetCurrntTurnChara().CharaStatus().position.IsPlayerPos() != charaStatus.position.IsPlayerPos())
         {
             RemoveShield(false, Mathf.CeilToInt(charaStatus.shield * 0.25f));
         }
-        if (myTurn)
+        if (tep.myTurn)
         {
             charaStatus.spendTurn++;
+            charaStatus.actThisTurn = false;
         }
-        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(myTurn, turnCount, deadTurnChara); }
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnEnd(tep); }
         //targetButton.GetPositionManager().OnTurnEnd();
         RemovePA_Execute();
     }
@@ -1845,6 +1896,7 @@ public class Character : MonoBehaviour
 
     public void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
+        charaStatus.actThisTurn = true;
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnActivateAbility(actionResultsList); }

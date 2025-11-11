@@ -34,7 +34,7 @@ public class Eq_StormBow : PA_Equipment
         }
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
         ACCMod = 0;
     }
@@ -46,8 +46,7 @@ public class Eq_StormBow : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo();
+        string s = actionStatus.GetInfo();
         return s;
     }
 }

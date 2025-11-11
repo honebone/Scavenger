@@ -61,9 +61,7 @@ public class Eq_Bodybag : PA_Equipment
     }
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo();
-        return s;
+        return actionStatus.GetInfo();
     }
     public override string GetCurrentStateInfo()
     {

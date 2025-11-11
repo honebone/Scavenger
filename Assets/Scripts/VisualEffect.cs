@@ -6,10 +6,12 @@ public class VisualEffect : MonoBehaviour
 {
     [SerializeField] Vector2 offset;
     [SerializeField] bool checkParticle;
+    public float lifetime;
     ParticleSystem particle;
     void Start()
     {
         if (checkParticle) { particle = GetComponent<ParticleSystem>(); }
+        if(lifetime > 0) {Destroy(gameObject,lifetime); }
     }
 
     void Update()

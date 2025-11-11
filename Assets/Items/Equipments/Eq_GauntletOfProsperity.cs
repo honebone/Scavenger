@@ -48,8 +48,7 @@ public class Eq_GauntletOfProsperity : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += "\n" + actionModStatus.GetModInfo();
+        string s = actionModStatus.GetModInfo();
         return s;
     }
 

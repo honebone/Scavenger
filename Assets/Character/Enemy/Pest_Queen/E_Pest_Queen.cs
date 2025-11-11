@@ -17,9 +17,9 @@ public class E_Pest_Queen : PA_Personality
         }
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn)
+        if (tep.myTurn)
         {
             Action.ActionStatus action = actionStatus;
             while (count >= countPerExTurn)

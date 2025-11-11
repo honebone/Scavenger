@@ -17,9 +17,9 @@ public class PA_StEU_Star_Wish : PA_StatusEffect
         if (currentDMG >= (character.CharaStatus().maxHP*removeTH / 100f).ToInt()) { Disable(); }
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && applyFlag)
+        if (tep.myTurn && applyFlag)
         {
             AddStack(-1);
         }

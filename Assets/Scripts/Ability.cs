@@ -84,8 +84,10 @@ public class Ability : MonoBehaviour
             s += s1 + s2;
             if (conditionInfo != "") { s += string.Format("発動条件：{0}\n",conditionInfo); }
 
-            if (cooldownOnBattleStart > 0) { s += string.Format("初期クールダウン：{0}ターン\n", cooldownOnBattleStart); }
-            if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
+            //if (cooldownOnBattleStart > 0) { s += string.Format("初期クールダウン：{0}ターン\n", cooldownOnBattleStart); }
+            //if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
+            if (cooldownOnBattleStart > 0) { s += $"{"初期クールダウン".ToLinkKey()}：{cooldownOnBattleStart}ターン\n"; }
+            if (cooldownOnUse > 0) { s += $"{"クールダウン".ToLinkKey()}：{cooldownOnUse}ターン\n"; }
             if (refCharaStatus) { }
             if (hasRemain)
             {

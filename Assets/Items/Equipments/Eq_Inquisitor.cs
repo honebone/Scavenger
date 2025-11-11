@@ -42,8 +42,7 @@ public class Eq_Inquisitor : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionModStatus.GetModInfo();
+        string s = actionModStatus.GetModInfo();
         return s;
     }
 

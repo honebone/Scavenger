@@ -59,6 +59,9 @@ TagManager:
   - name: UI
     uniqueID: 2357306711
     locked: 0
+  - name: Effect_lit
+    uniqueID: 3348689387
+    locked: 0
   - name: UIParticle
     uniqueID: 1206412759
     locked: 0

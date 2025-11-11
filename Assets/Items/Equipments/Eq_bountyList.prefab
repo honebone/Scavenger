@@ -48,7 +48,7 @@ MonoBehaviour:
   fileName: Eq_bountyList
   noSimpleInfo: 0
   simpleInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u653B\u6483\u3067\u6575\u3092\u6BBA\u5BB3\u3059\u308B\u3068\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u5F97\u308B"
-  PAInfo_start: 
+  PAInfo_start: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u653B\u6483\u3067\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u30921\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u8FFD\u52A0\u30BF\u30FC\u30F3\u306F\u3001\u5404\u30E9\u30A6\u30F3\u30C93\u30BF\u30FC\u30F3\u307E\u3067"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -77,9 +77,10 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 4466dc117c7a8cb44915cc35d046c2c6, type: 2}
-    equipmentInfo: "<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u8CBB\u3057\u305F\u653B\u6483\u3067\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u30921\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u8FFD\u52A0\u30BF\u30FC\u30F3\u306F\u3001\u5404\u30E9\u30A6\u30F3\u30C93\u30BF\u30FC\u30F3\u307E\u3067"
+    equipmentInfo: 
   actionStatus:
     actionName: "\u8CDE\u91D1\u9996\u30EA\u30B9\u30C8"
     conditionInfo: "\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
@@ -105,6 +106,7 @@ MonoBehaviour:
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -113,6 +115,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -146,6 +151,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -186,6 +192,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -203,8 +211,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

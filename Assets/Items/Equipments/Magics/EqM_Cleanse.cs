@@ -26,8 +26,7 @@ public class EqM_Cleanse : Eq_Magic
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += "\n" + actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo();
         return s;
     }
 }

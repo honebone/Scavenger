@@ -679,10 +679,16 @@ public class BattleManager : MonoBehaviour
 
     public void Trigger_TurnEnd()
     {
+        TurnEndParams turnEndParams = new TurnEndParams();
+        turnEndParams.turnChara = currentTurn.character;
+        turnEndParams.actThisTurn = currentTurn.character.CharaStatus().actThisTurn;
+        turnEndParams.turnCount = currentTurnCount + 1;
+        turnEndParams.deadTurnChara = !CheckCurrentTurnAlive();
         //if (!CheckCurrentTurnAlive()) infoText.AddDebugText("Triggerチェック：ターン中のキャラの死亡を確認");
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
-            character.OnTurnEnd(checkIfMyTurn(character), currentTurnCount + 1, !CheckCurrentTurnAlive());
+            turnEndParams.myTurn = checkIfMyTurn(character);
+            character.OnTurnEnd(turnEndParams);
         }
         foreach (PositionManager positionManager in positionManagers)
         {
@@ -919,4 +925,13 @@ public class BattleReport
     public int playerAveMaxHP;
     public float playerAveLVL;
     public float enemyAveLVL;
+}
+
+public struct TurnEndParams
+{
+    public bool myTurn;
+    public int turnCount;
+    public bool deadTurnChara;
+    public bool actThisTurn;
+    public Character turnChara;
 }

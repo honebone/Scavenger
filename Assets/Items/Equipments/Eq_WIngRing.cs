@@ -16,9 +16,9 @@ public class Eq_WIngRing : PA_Equipment
         }
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && active)
+        if (tep.myTurn && active)
         {
             active = false;
             character.AddPROT(-PROT);

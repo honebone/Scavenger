@@ -49,6 +49,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 6
   cooldownOnUse: 6
@@ -90,6 +93,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 1
@@ -123,6 +129,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -131,8 +138,8 @@ MonoBehaviour:
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
+    SANDamage_min: 5
+    SANDamage_max: 8
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -169,7 +176,7 @@ MonoBehaviour:
       refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
-    removeStE_buff: 0
+    removeStE_buff: 1
     removeStE_debuff: 0
     removeStEs: []
     removePEs: []

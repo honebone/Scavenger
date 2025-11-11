@@ -8,9 +8,9 @@ public class EqM_Arrow : Eq_Magic
     [SerializeField] CharactersManager.SearchCharaCondition condition_focus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn&& charactersManager.SearchCharaWithCondition(condition_focus).Count>0)Cast();
+        if (tep.myTurn && charactersManager.SearchCharaWithCondition(condition_focus).Count>0)Cast();
     }
 
     public override void Cast()
@@ -23,8 +23,7 @@ public class EqM_Arrow : Eq_Magic
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo();
+        string s = actionStatus.GetInfo();
         return s;
     }
 }

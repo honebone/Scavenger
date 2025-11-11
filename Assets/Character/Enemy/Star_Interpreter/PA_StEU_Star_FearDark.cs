@@ -12,9 +12,9 @@ public class PA_StEU_Star_FearDark : PA_StatusEffect
 
     int count;
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && applyFlag)
+        if (tep.myTurn && applyFlag)
         {
             AddStack(-1);
         }

@@ -43,8 +43,7 @@ public class Eq_Busket : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += attack.GetInfo(false, new Character.CharacterStatus());
+        string s = attack.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
     public override string GetCurrentStateInfo()

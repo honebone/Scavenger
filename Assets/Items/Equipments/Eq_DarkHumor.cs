@@ -29,8 +29,7 @@ public class Eq_DarkHumor : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 

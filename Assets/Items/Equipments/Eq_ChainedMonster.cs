@@ -47,8 +47,7 @@ public class Eq_ChainedMonster : PA_Equipment
     }
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus_self.GetInfo();
+        string s = actionStatus_self.GetInfo();
         s += "\n"+actionStatus.GetInfo();
         return s;
     }

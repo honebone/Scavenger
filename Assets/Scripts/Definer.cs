@@ -166,7 +166,7 @@ public class Definer : MonoBehaviour
                     PositionEffect.PositionEffectStatus status = PA.GetPositionEffectStatus();
                     if ($"P_{status.PEName}" == key)
                     {
-                        s += PA.GetPEInfo(true) + "\n";
+                        s += PA.GetInfo_ForLink() + "\n";
                         if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
                         return s;
                     }

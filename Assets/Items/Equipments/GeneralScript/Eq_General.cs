@@ -54,7 +54,7 @@ public class Eq_General : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
+        string s = "";
         s += onBS ? action_BS.GetInfo() + "\n" : "";
         s += onRS ? action_RS.GetInfo() + "\n" : "";
         s += onTS ? action_TS.GetInfo() + "\n" : "";

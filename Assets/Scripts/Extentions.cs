@@ -409,6 +409,13 @@ public static class Extentions
         else return "";
     }
 
+    public static string ToSpr(this PositionEffect.PositionEffectStatus.PositionEffectType type, bool outline = false)
+    {
+        if (type == PositionEffect.PositionEffectStatus.PositionEffectType.buff) return "buff".ToSpr();
+        else if (type == PositionEffect.PositionEffectStatus.PositionEffectType.debuff) return "debuff".ToSpr();
+        else return "";
+    }
+
     public static string ToSpr_withName(this string key,string nameOverride=null, bool outline = false)
     {
         return Definer.inst.GetTS_withName(key, nameOverride, outline);

@@ -8,8 +8,7 @@ public class Eq_UnderSleeve : PA_Equipment
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo();
         return s;
     }
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)

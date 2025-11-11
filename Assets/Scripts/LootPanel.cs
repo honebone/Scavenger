@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class LootPanel : MonoBehaviour
 {
@@ -96,6 +97,10 @@ public class LootPanel : MonoBehaviour
     public void Loot()
     {
         SetButtons();
+        loots.ForEach(x =>
+        {
+            if (x.data && x.data.itemType == ItemData.ItemType.equipment) Compendium.inst.UnllickEq(x.data);
+        });
         if (!lootPanel.activeSelf)
         {
             lootPanel.SetActive(true);

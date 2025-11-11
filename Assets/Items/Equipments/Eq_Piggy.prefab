@@ -98,9 +98,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: Eq_Piggy
+  noSimpleInfo: 0
   simpleInfo: "\u653B\u6483\u3067<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3057\u306A\u304B\u3063\u305F\u3068\u304D\u3001\u6B21\u306B<sprite
     name=CRIT>\u304C\u767A\u751F\u3059\u308B\u307E\u3067\u78BA\u7387\u304C\u5897\u52A0\u3059\u308B"
-  PAInfo_start: 
+  PAInfo_start: "\u81EA\u8EAB\u306E\u547D\u4E2D\u3057\u305F\u653B\u6483\u3067<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3057\u306A\u304B\u3063\u305F\u6642\u3001\n\u81EA\u8EAB\u306E<sprite
+    name=CRIT>\u7387\u304C\u305D\u306E\u653B\u6483\u306E<sprite name=CRIT>\u7387\u5206\u4E0A\u6607\n<sprite
+    name=CRIT>\u304C\u767A\u751F\u3057\u305F\u3068\u304D\u3001\u3053\u306E\u52B9\u679C\u306F\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -129,34 +133,7 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1eb169af8c2d3244aad650ad8ed13354, type: 2}
-    equipmentInfo: "\u81EA\u8EAB\u306E\u547D\u4E2D\u3057\u305F\u653B\u6483\u3067<color=#FF8B00><sprite
-      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u304C\u767A\u751F\u3057\u306A\u304B\u3063\u305F\u6642\u3001\n\u81EA\u8EAB\u306E<sprite
-      name=CRIT>\u7387\u304C\u305D\u306E\u653B\u6483\u306E<sprite name=CRIT>\u7387\u5206\u4E0A\u6607\n<sprite
-      name=CRIT>\u304C\u767A\u751F\u3057\u305F\u3068\u304D\u3001\u3053\u306E\u52B9\u679C\u306F\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"
-    statusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 5
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
-    actionMods: []
+    equipmentInfo: 

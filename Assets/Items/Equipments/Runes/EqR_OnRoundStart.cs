@@ -37,8 +37,7 @@ public class EqR_OnRoundStart : Eq_Rune
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo();
         return s;
     }
     public override string GetCurrentStateInfo()

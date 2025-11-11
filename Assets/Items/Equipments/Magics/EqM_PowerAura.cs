@@ -26,14 +26,12 @@ public class EqM_PowerAura : Eq_Magic
     public override void Cast()
     {
         List<Character> targets = charactersManager.SearchCharaWithCondition(condition);
-        targets.Remove(character);
         if (Enqueue(actionStatus, true, targets)) character.OnCast(this);
     }
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo();
         return s;
     }
 

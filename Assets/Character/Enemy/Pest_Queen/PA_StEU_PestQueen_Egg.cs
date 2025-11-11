@@ -9,9 +9,9 @@ public class PA_StEU_PestQueen_Egg : PA_StatusEffect
     List<int> list = new List<int>() { 9, 10, 11, 12, 13, 14, 15, 16, 17 };
     List<int> empty = new List<int>();
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn)
+        if (tep.myTurn)
         {
             Action.ActionStatus action = actionStatus;
             empty = charactersManager.GetEmptyPos(list);

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using System.Linq;
+using TMPro;
+using UnityEditor;
+using UnityEngine;
 
 public class SupplyManager : MonoBehaviour
 {
@@ -57,6 +58,12 @@ public class SupplyManager : MonoBehaviour
     {
         pickAmount += additionalPicks;
         SetButtons();
+
+        supplies.ForEach(x =>
+        {
+            if (x.data&&x.data.itemType == ItemData.ItemType.equipment) Compendium.inst.UnllickEq(x.data);
+        });
+
         if (!supplyPanel.activeSelf)
         {
             supplyPanel.SetActive(true);

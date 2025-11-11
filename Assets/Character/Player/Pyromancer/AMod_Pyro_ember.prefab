@@ -47,7 +47,8 @@ MonoBehaviour:
   actionModStatus:
     conditionInfo: "\u81EA\u8EAB\u306B\u706B\u7A2E\u304C\u3042\u308B"
     hideValues: 1
-    exInfo: "\u706B\u7A2E1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001\u706B\u50B7\u306E\u52B9\u679C\u91CF+2"
+    exInfo: "\u706B\u7A2E1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\u3001\u706B\u50B7\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+2"
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
     ATKMod: 0
@@ -61,24 +62,53 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
+    exHeal_mul: 0
     healValue: 0
     healPercent: 0
     healRegain: 0
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus:
     - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       exChance: 0
       exStack: 0
       exValue: 2
+      exDMGPerTurn: 0
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
   checkStE: {fileID: 5164891664867224302, guid: 14621f1735101844186999a6d52eb27b, type: 3}
   checkOwner: 1

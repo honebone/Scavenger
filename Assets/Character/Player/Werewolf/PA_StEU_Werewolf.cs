@@ -36,9 +36,9 @@ public class PA_StEU_Werewolf : PA_StatusEffect
         character.AddPROT(StEStatus.stack * PROTPerStack * -1);
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-       if(myTurn) Enqueue_Self(onTurnEnd);
+       if(tep.myTurn) Enqueue_Self(onTurnEnd);
     }
 
     public override Action.ActionStatus ModifyAction_Targeted(Action.ActionStatus statusRef, bool forCalcDMG)

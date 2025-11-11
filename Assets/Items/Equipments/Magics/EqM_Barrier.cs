@@ -17,9 +17,9 @@ public class EqM_Barrier : Eq_Magic
     {
         act = true;
     }
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (!act && myTurn)
+        if (!act && tep.myTurn)
         {
             Cast();
         }
@@ -34,8 +34,7 @@ public class EqM_Barrier : Eq_Magic
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo();
         return s;
     }
 }

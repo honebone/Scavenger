@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Per_E_starservant
   noSimpleInfo: 0
-  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u76F8\u624B\u5074\u306E\u540C\u3058\u6BB5\u306B\u3042\u308B\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306E\u6570\u3060\u3051<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u5F97\u308B"
+  simpleInfo: "\u81EA\u8EAB\u3068\u540C\u3058\u6BB5\u306B\u3044\u308B\u6575\u304B\u3089\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -77,15 +77,16 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u81A8\u5F35\u3059\u308B\u5B87\u5B99"
     personalityType: 1
   actionStatus:
     actionName: 
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
+    conditionInfo: "\u81EA\u8EAB\u3068\u540C\u3058\u6BB5\u306B\u3044\u308B\u6575\u304B\u3089\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u4ED8\u4E0E\u3059\u308B\u30B9\u30BF\u30C3\u30AF\u6570\u306F\u3001\u76F8\u624B\u5074\u306E\u81EA\u8EAB\u3068\u540C\u3058\u6BB5\u306B\u3042\u308B\u7A7A\u304D\u30B9\u30DA\u30FC\u30B9\u306E\u6570\u306B\u7B49\u3057\u3044"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
@@ -114,6 +115,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -147,6 +151,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -168,7 +173,7 @@ MonoBehaviour:
     - applyStE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 0
+      stack: 1
       value: 0
       dontApplyBonus: 0
       refATK: 0
@@ -220,72 +225,30 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  mod:
-    conditionInfo: 
-    hideValues: 0
-    exInfo: 
-    exTurn: 0
-    consumeFocus: 0
-    decreaseHP: 0
-    ATKMod: 0
-    INTMod: 0
-    trueATKDMG: 0
-    trueINTDMG: 0
-    exDMG_mul: 0
-    exATKDMG_int: 0
-    exINTDMG_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    drain: 0
-    ignoreShield: 0
-    sureHit: 0
-    unevadable: 0
-    exHeal_mul: 0
-    healValue: 0
-    healPercent: 0
-    healRegain: 0
-    SANHeal: 0
-    SANDamage: 0
-    shieldAdd: 0
-    shieldAdd_percent: 0
-    shieldRemove: 0
-    shieldRemove_all: 0
-    applySteParams: []
-    applyStEBonus:
-    - applyStE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
-      exChance: 0
-      exStack: 1
-      exValue: 0
-      exDMGPerTurn: 0
-    debuffChanceMod: 0
-    removeStE_buff: 0
-    removeStE_debuff: 0
-    removeStEs: []
-    summonStatusMod:
-      LVL: 0
-      maxHP_mul: 0
-      maxHP_int: 0
-      maxSAN_mul: 0
-      PROT: 0
-      ATK_mul: 0
-      ATK_int: 0
-      INT_mul: 0
-      INT_int: 0
-      exDMG_mul: 0
-      CRITC: 0
-      CRITD: 0
-      EVD: 0
-      ACC: 0
-      ACT: 0
-      turnPerRound: 0
-      GHeal: 0
-      RHeal: 0
-      StEResists: []
-      StEApplyBonus: []
-      debuffChance: 0
-      moveRes: 0
-      debuffRes: 0
+  condition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 1
+    enemy: 0
+    onlyPlayable: 0
+    front: 1
+    mid: 1
+    back: 1
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 1
 --- !u!212 &6512924034425719198
 SpriteRenderer:
   m_ObjectHideFlags: 0

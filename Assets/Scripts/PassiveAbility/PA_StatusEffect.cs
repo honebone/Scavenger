@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Character;
 
 public class PA_StatusEffect : PassiveAbility
 {
@@ -57,12 +58,39 @@ public class PA_StatusEffect : PassiveAbility
         public bool refTargetMaxHP;
         [Header("以下は代入される")]
         public int DMGPerTurn;
-        public string GetInfo()
+        public string GetInfo(bool refCharaStatus = false, Character.CharacterStatus characterStatus = new Character.CharacterStatus())
         {
             string s = "";
-            StatusEffectStatus status = applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+            //StatusEffectStatus status = applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+            //string chanceText = guaranteed ? "確定" : $"{applyChance}％";
+            //s += $"・{status.ToLinkKey(false, value)}を付与\n({chanceText},{stack}スタック)\n";
+            //if (dontApplyBonus) s += "(付与確率/スタック数/<color=#FFBF69><i>{効果量}</i></color>増加の影響を受けない)\n".ColorStr(Definer.colorRef.emphasize);
+
+            PA_StatusEffect.StatusEffectStatus status = applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
+
             string chanceText = guaranteed ? "確定" : $"{applyChance}％";
-            s += $"・{status.ToLinkKey(false, value)}を付与\n({chanceText},{stack}スタック)\n";
+            string exText = "";
+            if (status.DoT)
+            {
+                exText += $"  {GetDoTInfo()}";
+                if (refCharaStatus && !refTargetMaxHP)
+                {
+                    int baseDMG = (refATK) ? characterStatus.ATK : characterStatus.INT;
+                    int DMGPerTurn = (baseDMG * value / 100f).ToInt();
+                    exText += $"  ({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
+                }
+            }
+            if (status.regen)
+            {
+                exText += $"  {GetDoTInfo(true)}";
+                if (refCharaStatus && !refTargetMaxHP)
+                {
+                    int baseDMG = (refATK) ? characterStatus.ATK : characterStatus.INT;
+                    int DMGPerTurn = (baseDMG * value / 100f).ToInt();
+                    exText += $"  ({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.heal);
+                }
+            }
+            s += $"・{status.ToLinkKey(false, value)}を付与\n{exText}  ({chanceText},{stack}スタック)\n";
             if (dontApplyBonus) s += "(付与確率/スタック数/<color=#FFBF69><i>{効果量}</i></color>増加の影響を受けない)\n".ColorStr(Definer.colorRef.emphasize);
 
             return s;
@@ -70,9 +98,9 @@ public class PA_StatusEffect : PassiveAbility
 
         public string GetDoTInfo(bool regen = false)
         {
-            string s = regen ? "回復" : "減少";
+            string s = regen ? $"{"HP".ToSpr_withName("回復")}" : $"{"HP".ToSpr_withName()}減少";
             string maxHP = $"対象の{"maxHP".ToSpr_withName()}";
-            return $"{"HP".ToSpr_withName()}{s}量：{(refATK ? "ATK".ToSpr_withLink() : refTargetMaxHP ? maxHP : "INT".ToSpr_withLink())}の{value}％\n";
+            return $"{s}量：{(refATK ? "ATK".ToSpr_withLink() : refTargetMaxHP ? maxHP : "INT".ToSpr_withLink())}の<color=#FFBF69><i>{{{value}}}</i></color>％\n";
         }
 
         public StatusEffectStatus GetStatusEffectStatus()

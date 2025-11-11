@@ -37,6 +37,13 @@ public class CPD_EqButton : MonoBehaviour
         return this;
     }
 
+    public void Unlock()
+    {
+        unlocked = true;
+         itemImage.color = Color.white;
+        frame.color = item.rarity.ToColor();
+    }
+
     [SerializeField]
     float scrollSpeed = 0.1f;
     ScrollRect scroll;
@@ -75,7 +82,7 @@ public class CPD_EqButton : MonoBehaviour
         //    }
         //}
         if(unlocked) infoText.SetText(item.itemName.ColorStr(item.rarity.ToColor()), item.GetInfo(false), item.GetInfo(true));
-        else infoText.SetText("???".ColorStr(Color.gray), "プレイ中に発見するとアンロック\n(取得する必要はない)".ColorStr(Color.gray));
+        else infoText.SetText_Old("???".ColorStr(Color.gray), "プレイ中に発見するとアンロック\n(取得する必要はない)".ColorStr(Color.gray));
     }
 
     public void OnMouseEnter()

@@ -13,9 +13,9 @@ public class Eq_BloodyMask : PA_Equipment
         Log($"ƒJƒEƒ“ƒg+{value} ({count})");
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (count > 0 && myTurn) {
+        if (count > 0 && tep.myTurn) {
             Action.ActionStatus action = actionStatus;
             action.trueHeal = (count * healPercent / 100f).ToInt();
             Enqueue_Self(action);

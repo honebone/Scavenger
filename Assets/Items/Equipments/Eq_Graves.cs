@@ -33,8 +33,7 @@ public class Eq_Graves : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo();
+        string s = actionStatus.GetInfo();
         return s;
     }
 

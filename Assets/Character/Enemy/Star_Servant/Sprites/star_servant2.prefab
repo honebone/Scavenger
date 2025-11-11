@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 968993255178847522}
   - component: {fileID: 968993255178847523}
   - component: {fileID: 968993255178847524}
+  - component: {fileID: 3816739011780186310}
   m_Layer: 0
   m_Name: star_servant2
   m_TagString: Untagged
@@ -105,3 +106,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3816739011780186310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968993255178847525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 0000000051ace5b00fa673d92580145f
+  m_ShapePath:
+  - {x: -0.064272344, y: -0.15058416, z: 0}
+  - {x: -0.11292081, y: -0.10521268, z: 0}
+  - {x: 0.13881439, y: -0.10364337, z: 0}
+  - {x: 0.08859659, y: -0.14823021, z: 0}
+  m_ShapePathHash: 682635551
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 46336

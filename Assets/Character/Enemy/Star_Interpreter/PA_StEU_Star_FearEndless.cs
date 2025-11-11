@@ -8,10 +8,10 @@ public class PA_StEU_Star_FearEndless : PA_StatusEffect
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
         if (character.CharaStatus().GetHPPercent().ToInt() >= removeTH) { Disable(); }
-        else if (myTurn && applyFlag)
+        else if (tep.myTurn && applyFlag)
         {
             AddStack(-1);
         }

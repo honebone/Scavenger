@@ -12,8 +12,7 @@ public class Eq_EnergyArmor : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
     public override void OnDamaged(Action.OnDamageParams onDamageParams)

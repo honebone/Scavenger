@@ -77,12 +77,15 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u706B\u7A2E"
     StEInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B<color=#C900FF><sprite
-      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E\u52B9\u679C\u91CF\u3092\u5897\u52A0\u3055\u305B\u308B"
+      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>\u3092\u5897\u52A0\u3055\u305B\u308B"
     StEIcon: {fileID: 21300000, guid: 547a567d5b368aa4f8423d8b36ba2e2c, type: 3}
     StEType: 4
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 50
     merge: 1
     refValue: 0

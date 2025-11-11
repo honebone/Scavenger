@@ -10,8 +10,7 @@ public class Eq_DreamCatcher : PA_Equipment
     bool act;
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 
@@ -24,9 +23,9 @@ public class Eq_DreamCatcher : PA_Equipment
     {
         act = true;
     }
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (!act&&myTurn)
+        if (!act&&tep.myTurn)
         {
             Enqueue_Self(actionStatus);
         }

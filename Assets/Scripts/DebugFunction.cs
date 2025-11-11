@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine;
+using System.Linq;
 
 public class DebugFunction : MonoBehaviour
 {
     [SerializeField] bool debug;
     [SerializeField] bool skipDeployPhase;
     [SerializeField] bool skipTutorial;
+
+    public int autoset_playerLVL;
+    public int autoset_enemyLVL;
+
     public bool battleDebug;
 
     [SerializeField] Volume volume;
@@ -224,6 +229,20 @@ public class DebugFunction : MonoBehaviour
         {
             character.UpgradeAbility_All();
         }
+    }
+
+    public void AutoSetPartyStat()
+    {
+        charactersManager.GetExistingCharacters_All().ForEach(chara =>
+        {
+            chara.LVLUp_Auto(autoset_playerLVL-1);
+        });
+        for (int i = 0; i < autoset_enemyLVL-1; i++) { expeditionManager.EnemyLVLUP(); }
+
+        GetAllEquipments();
+
+        if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(areaData); }
+        else { expeditionManager.GetAreaManager().GenerateMap(); }
     }
 
     public void ToggleGlitch()

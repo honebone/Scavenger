@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -196,6 +198,29 @@ public class StEApplyBonus
         this.exChance = copy.exChance;
         this.exStack = copy.exStack;
         this.exValue = copy.exValue;
+    }
+
+    public string GetInfo()
+    {
+        string s = "";
+        string StEName = GetPA().GetStatusEffectStatus().ToLinkKey();
+        if (exChance != 0) { s += ValueToStr(string.Format("・{0}付与確率", StEName), exChance, "％",s); }
+        if (exStack != 0) { s += ValueToStr(string.Format("・{0}付与スタック数", StEName), exStack, "", s); }
+        //if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の<color=#FFBF69><i>{効果量}</i></color>", StEName), bonus.exValue, ""); }
+        if (exValue != 0) { s += ValueToStr($"・付与する{StEName}の<color=#FFBF69><i>{{効果量}}</i></color>", exValue, "", s); }
+
+        return s;
+    }
+
+    public string ValueToStr(string start, float value, string end,string prevStr)
+    {
+        if (value == 0) { return ""; }
+        string s = prevStr == "" ? "" : "\n";
+        s += start;
+        if (value < 0) { s += value.ToString().ColorStr(Color.red); }
+        else { s += ("+" + value.ToString()).ColorStr(Color.green); }
+        s += end;
+        return s;
     }
 
     public  void Log(string note)

@@ -7,9 +7,9 @@ public class PA_StE_Regenation : PA_StatusEffect
     [SerializeField]
     Action.ActionStatus actionStatus;
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn)
+        if (tep.myTurn)
         {
             Action.ActionStatus action = actionStatus;
             action.trueHeal = StEStatus.DMGPerTurn;

@@ -7,9 +7,9 @@ public class Eq_Shovel : PA_Equipment
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn)
+        if (tep.myTurn)
         {
             List<Character> target = charactersManager.SearchCharaWithCondition(condition);
             if (target.Count > 0)
@@ -21,8 +21,7 @@ public class Eq_Shovel : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus.GetInfo();
         return s;
     }
 }

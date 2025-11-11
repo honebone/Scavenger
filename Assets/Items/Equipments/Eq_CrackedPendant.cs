@@ -33,12 +33,4 @@ public class Eq_CrackedPendant : PA_Equipment
     {
         return $"—^ƒ_ƒ[ƒW+{exDMG[row]}“";
     }
-
-    public override string GetPAInfo_Base()
-    {
-        string s = equipmentStatus.GetInfo();
-        //s += actionStatus_self.GetInfo();
-        //s += "\n" + actionStatus.GetInfo();
-        return s;
-    }
 }

@@ -12,7 +12,6 @@ public class Eq_CapriciousOrb : PA_Equipment
     public override string GetPAInfo_Base()
     {
         string s = "";
-        s += equipmentStatus.GetInfo();
         s += actionStatus_forRef.GetInfo(false, new Character.CharacterStatus());
         return s;
     }

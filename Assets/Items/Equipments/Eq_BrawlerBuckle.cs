@@ -15,7 +15,6 @@ public class Eq_BrawlerBuckle : PA_Equipment
     public override string GetPAInfo_Base()
     {
         string s = "";
-        s += equipmentStatus.GetInfo();
         s += actionStatus.GetInfo(false, new Character.CharacterStatus());
         return s;
     }

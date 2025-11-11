@@ -50,6 +50,7 @@ MonoBehaviour:
   options:
   - optionName: "\u6226\u3046"
     optionInfo: "\u661F\u3005\u306E\u4EE3\u5F01\u8005\u306B\u6226\u3044\u3092\u6311\u3080"
+    available: 1
   boss:
     dontShuffleFront: 1
     upperFront: {fileID: 0}
@@ -75,7 +76,7 @@ MonoBehaviour:
   lastBoss:
     dontShuffleFront: 1
     upperFront: {fileID: 0}
-    centerFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    centerFront: {fileID: 11400000, guid: 13932f2d6a33833419410195789a0708, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 0}

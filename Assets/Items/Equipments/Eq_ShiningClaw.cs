@@ -9,8 +9,7 @@ public class Eq_ShiningClaw : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += claw.GetInfo(false, new Character.CharacterStatus());
+        string s = claw.GetInfo();
         s += "‚±‚ê‚ğ2‰ñs‚¤";
         return s;
     }

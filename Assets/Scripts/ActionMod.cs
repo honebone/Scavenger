@@ -72,7 +72,7 @@ public class ActionMod : MonoBehaviour
         public string GetModInfo()
         {
             string s = "";
-            bool f = false;
+            //bool f = false;
             if (conditionInfo != "") { s += string.Format("○{0}\n", conditionInfo); }
             if (!hideValues)
             {
@@ -109,35 +109,18 @@ public class ActionMod : MonoBehaviour
                 if (shieldRemove != 0) { s += ValueToStr($"・{shield}除去量", shieldRemove, ""); }
                 if (shieldRemove_all) { s += $"・{shield}をすべて除去する\n"; }
 
-                f = false;
+                //f = false;
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
                 {
-                    PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-
-                    if (f) { s += "\n"; }
-                    f = true;
-                    string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
-                    string exText = "";
-                    if (status.DoT)
-                    {
-                        exText += StEParams.GetDoTInfo();
-                    }
-                    if (status.regen)
-                    {
-                        exText += StEParams.GetDoTInfo(true);
-                    }
-                    s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{exText}({chanceText},{StEParams.stack}スタック)\n";
+                    s += StEParams.GetInfo();
                 }
                 foreach (StEApplyBonus bonus in applyStEBonus)
                 {
-                    string StEName = "・"+bonus.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
-                    if (bonus.exChance != 0) { s += ValueToStr(string.Format("{0}付与確率", StEName), bonus.exChance, "％"); }
-                    if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
-                    if (bonus.exValue != 0) { s += ValueToStr(string.Format("付与する{0}の効果量", StEName), bonus.exValue, ""); }
+                    s+= bonus.GetInfo();
                 }
                 if (debuffChanceMod != 0) { s += ValueToStr($"・{"debuff".ToSpr_withName()}付与確率", debuffChanceMod, "％"); }
 
-                if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n",  "buff".ToSpr_withName(), removeStE_buff); }
+                if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "buff".ToSpr_withName(), removeStE_buff); }
                 if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "debuff".ToSpr_withName(), removeStE_debuff); }
                 //if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
 
@@ -149,10 +132,10 @@ public class ActionMod : MonoBehaviour
                     else { s += ValueToStr("のスタック", remove.addAmount, ""); }
                 }
                 string summonMod = summonStatusMod.GetInfo();
-                if (summonMod != "") { s += $"・{"summon".ToSpr_withName("召喚体")}のステータスが増加：\n{summonMod}\n\n"; }
+                if (summonMod != "") { s += $"・{"summon".ToSpr_withName("召喚体")}のステータスが増加：\n{summonMod}\n"; }
             }
 
-            if (exInfo != "") { s += exInfo+"\n"; }
+            if (exInfo != "") { s += exInfo + "\n"; }
 
             return s;//.ColorStr(Definer.colorRef.AMod)
         }

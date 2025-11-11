@@ -12,9 +12,9 @@ public class E_StarBeliever : PA_Personality
     {
         Enqueue_Self(onBS);
     }
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && character.GetStEStack_Sum(stardust) > 0) { Enqueue_Self(onTE); }
+        if (tep.myTurn && character.GetStEStack_Sum(stardust) > 0) { Enqueue_Self(onTE); }
     }
 
     public override string GetPAInfo_Base()

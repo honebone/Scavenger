@@ -166,14 +166,14 @@ public class Action : MonoBehaviour
                 Character.CharaStatusMod mod = new Character.CharaStatusMod();
                if (refStatus) mod = ToStatuMod(status);
                 string info = "";
-                if (maxHP > 0) { info += $"・maxHPの{(maxHP + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.maxHP_int})" : "")}\n"; }
-                if (ATK > 0) { info+=$"・ATKの{(ATK + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.ATK_int})" : "")}\n"; }
-                if (INT > 0) { info+=$"・INTの{(INT + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.INT_int})" : "")}\n"; }
-                if (CRITC > 0) { info += ToStr(CRITC_TH, true, CRITC, "CRITC",refStatus,mod.CRITC); }
-                if (CRITD > 0) { info += ToStr(CRITD_TH, true, CRITD, "CRITダメージ", refStatus, mod.CRITD); }
-                if (EVD > 0) { info += ToStr(EVD_TH, false, EVD, "EVD", refStatus, mod.EVD); }
-                if (ACC > 0) { info += ToStr(ACC_TH, false, ACC, "ACC", refStatus, mod.ACC); }
-                if (ACT > 0) { info += ToStr(ACT_TH, false, ACT, "ACT", refStatus, mod.ACT); }
+                if (maxHP > 0) { info += $"・{"maxHP".ToSpr_withName()}の{(maxHP + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.maxHP_int})" : "")}\n"; }
+                if (ATK > 0) { info+=$"・{"ATK".ToSpr_withLink()}の{(ATK + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.ATK_int})" : "")}\n"; }
+                if (INT > 0) { info+=$"・{"INT".ToSpr_withLink()}の{(INT + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.INT_int})" : "")}\n"; }
+                if (CRITC > 0) { info += ToStr(CRITC_TH, true, CRITC, $"{"CRIT".ToSpr_withLink()}率",refStatus,mod.CRITC); }
+                if (CRITD > 0) { info += ToStr(CRITD_TH, true, CRITD, $"{"CRIT".ToSpr_withLink()}ダメージ", refStatus, mod.CRITD); }
+                if (EVD > 0) { info += ToStr(EVD_TH, false, EVD, "EVD".ToSpr_withLink(), refStatus, mod.EVD); }
+                if (ACC > 0) { info += ToStr(ACC_TH, false, ACC, "ACC".ToSpr_withLink(), refStatus, mod.ACC); }
+                if (ACT > 0) { info += ToStr(ACT_TH, false, ACT, "ACT".ToSpr_withLink(), refStatus, mod.ACT); }
                 if (GHeal > 0) { info += ToStr(GHeal_TH, false, GHeal, "与える回復量", refStatus, mod.GHeal); }
 
                 return info;
@@ -295,7 +295,7 @@ public class Action : MonoBehaviour
                 if (ATKMod_max > 0)
                 {
                     s += $"・{"ATK".ToSpr_withName("物理")}攻撃を行う\n";
-                    s += $"{"ATK".ToSpr_withLink()}の{GetValueRange(ATKMod_min, ATKMod_max)}％ダメージ";
+                    s += $"  {"ATK".ToSpr_withLink()}の{GetValueRange(ATKMod_min, ATKMod_max)}％ダメージ";
                     if (refCharaStatus)
                     {
                         s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
@@ -305,7 +305,7 @@ public class Action : MonoBehaviour
                 if (INTMod_max > 0)
                 {
                     s += $"・{"INT".ToSpr_withName("魔法")}攻撃を行う\n";
-                    s += $"{"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
+                    s += $"  {"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
                     if (refCharaStatus)
                     {
                         s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
@@ -314,13 +314,13 @@ public class Action : MonoBehaviour
                 }
 
                 string attack = "";
-                if (ACCMod != 0) { attack += $"{"ACC".ToSpr_withLink()}補正：{GetValueWithSign(ACCMod)}\n"; }
-                if (CRITCMod != 0) { attack += $"{"CRIT".ToSpr_withLink()}率補正：{GetValueWithSign(CRITCMod)}％\n"; }
-                if (CRITDMod != 0) { attack += $"{"CRIT".ToSpr_withLink()}ダメージ補正：{GetValueWithSign(CRITDMod)}％\n"; }
-                if (drain > 0) { attack += $"与ダメージの{drain}％を{"HP".ToSpr_withName("回復")}\n"; }
-                if (ignoreShield) { attack += $"{"shield".ToSpr_withLink()}を無視\n"; }
-                if (sureHit) { attack += "必中\n"; }
-                if (unevadable) { attack += $"対象の{"EVD".ToSpr_withLink()}を無視\n"; }
+                if (ACCMod != 0) { attack += $"  {"ACC".ToSpr_withLink()}補正：{GetValueWithSign(ACCMod)}\n"; }
+                if (CRITCMod != 0) { attack += $"  {"CRIT".ToSpr_withLink()}率補正：{GetValueWithSign(CRITCMod)}％\n"; }
+                if (CRITDMod != 0) { attack += $"   {"CRIT".ToSpr_withLink()}ダメージ補正：{GetValueWithSign(CRITDMod)}％\n"; }
+                if (drain > 0) { attack += $"  与ダメージの{drain}％を{"HP".ToSpr_withName("回復")}\n"; }
+                if (ignoreShield) { attack += $"  {"shield".ToSpr_withLink()}を無視\n"; }
+                if (sureHit) { attack += "  必中\n"; }
+                if (unevadable) { attack += $"  対象の{"EVD".ToSpr_withLink()}を無視\n"; }
                 //if (exDMG_mul != 0) { attack += $"与ダメージ+{exDMG_mul}％\n"; }
                 s += attack.ColorStr(Color.gray);
             }
@@ -357,34 +357,7 @@ public class Action : MonoBehaviour
             f = false;
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
-                PA_StatusEffect.StatusEffectStatus status = StEParams.applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                if (f) { s += "\n"; }
-                f = true;
-
-                string chanceText = StEParams.guaranteed ? "確定" : $"{StEParams.applyChance}％";
-                string exText = "";
-                if (status.DoT)
-                {
-                    exText += StEParams.GetDoTInfo();
-                    if (refCharaStatus && !StEParams.refTargetMaxHP)
-                    {
-                        int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
-                        int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
-                        exText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.decreaseHP);
-                    }
-                }
-                if (status.regen)
-                {
-                    exText += StEParams.GetDoTInfo(true);
-                    if (refCharaStatus && !StEParams.refTargetMaxHP)
-                    {
-                        int baseDMG = (StEParams.refATK) ? characterStatus.ATK : characterStatus.INT;
-                        int DMGPerTurn = (baseDMG * StEParams.value / 100f).ToInt();
-                        exText += $"({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.heal);
-                    }
-                }
-                s += $"・{status.ToLinkKey(false, StEParams.value)}を付与\n{exText}({chanceText},{StEParams.stack}スタック)\n";
-                if (StEParams.dontApplyBonus) s += "(付与確率/スタック数/<color=#FFBF69><i>{効果量}</i></color>増加の影響を受けない)\n".ColorStr(Definer.colorRef.emphasize);
+                s += StEParams.GetInfo(refCharaStatus,characterStatus);
             }
 
             CheckNewBlock();
@@ -1546,7 +1519,7 @@ public class Action : MonoBehaviour
                     if (actionStatus.actionTargetsInt[i] < 9) { summoned = characterManager.SpawnPlayer(summonCharaData, targetPos, ownerStatus.level, summonStatusParams); }
                     else { summoned = characterManager.SpawnEnemy(summonCharaData, targetPos, false, ownerStatus.level, summonStatusParams); }
                     summoned.OnSummoned(onSummonParams);
-                    if (BattleManager.inRound) { summoned.AddTurn(1); }
+                    if (BattleManager.inRound) { summoned.AddTurn(summoned.CharaStatus().turnPerRound); }
 
                     onSummonParams.summoned = summoned;
 

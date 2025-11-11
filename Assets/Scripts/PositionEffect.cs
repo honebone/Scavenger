@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class PositionEffect : MonoBehaviour
@@ -27,6 +28,13 @@ public class PositionEffect : MonoBehaviour
         public int value;
 
         public int DMGPerTurn;
+
+        public string GetName()
+        {
+            string s = PEName;
+            //if (refValue) { s += value.ToString(); }
+            return s.ColorStr(this.ToColor());
+        }
     }
     [SerializeField]
     protected PositionEffectStatus PEStatus;
@@ -95,6 +103,28 @@ public class PositionEffect : MonoBehaviour
         if (PEStatus.regen) { info += $"\n回復量：{PEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
         return info;
     }
+
+    public string GetInfo_ForLink()
+    {
+        string rv = PEStatus.refValue ? " <color=#FFBF69><i>{X}</i></color>" : "";
+        string s = $"<{PEStatus.PEType.ToSpr()}{PEStatus.GetName()}{rv}>  ポジション効果の一種\n";
+        //string statModInfo = statMod.GetInfo();
+        //if (statModInfo != "") s += statModInfo + "\n";
+        //if (noSimpleInfo)
+        //{
+        //    if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
+        //    if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
+        //    if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }
+        //    if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
+        //}
+        //else s += $"{simpleInfo}\n";
+
+        if (PEStatus.PEInfo != "") { s += PEStatus.PEInfo + "\n"; }
+        s += GetAdditionalInfo();
+
+        return s;
+    }
+
     public virtual string GetAdditionalInfo()
     {
         return "";

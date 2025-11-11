@@ -35,8 +35,8 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 4fee9caf8097c2f48aeab6c476dfcf9d, type: 2}
   - {fileID: 11400000, guid: deeec541d5bb6ea40a73ccfecaa986b6, type: 2}
-  - {fileID: 11400000, guid: 5362480b9789c5245bce229fe5cf6836, type: 2}
-  - {fileID: 11400000, guid: 25fbdd3ac3d185744a3fa72eec76fa29, type: 2}
+  - {fileID: 11400000, guid: 1f12eb5022f8d364e818d9537dd05467, type: 2}
+  - {fileID: 11400000, guid: d5cf560eb575a6c40bc40be53c7bd4f2, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 1808138132528202961, guid: f63518ca297c0d74895d0e40e461e01e, type: 3}
@@ -51,7 +51,7 @@ MonoBehaviour:
     dropEquipmentsRange: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 1
-  maxHP: 1000
+  maxHP: 750
   maxSAN: 0
   ATK: 10
   INT: 10

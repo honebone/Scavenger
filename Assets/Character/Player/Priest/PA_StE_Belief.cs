@@ -30,9 +30,9 @@ public class PA_StE_Belief : PA_StatusEffect
         }
     }
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (activateAbility&&myTurn) { Disable(); }
+        if (activateAbility&&tep.myTurn) { Disable(); }
     }
 
     public override string GetAdditionalInfo()

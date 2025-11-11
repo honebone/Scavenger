@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: PA_StE_Flying
-  noSimpleInfo: 1
-  simpleInfo: "\u653B\u6483\u3055\u308C\u308B\u307E\u3067\u3001<color=#55B075><sprite
-    name=EVD><link=T_EVD><u>EVD</u></link></color>+50"
+  noSimpleInfo: 0
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
   PAInfo_end: 
@@ -65,7 +64,7 @@ MonoBehaviour:
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: 0
+    EVD: 50
     ACC: 0
     ACT: 0
     turnPerRound: 0
@@ -78,9 +77,10 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u98DB\u884C"
-    StEInfo: "<color=#55B075><sprite name=EVD><link=T_EVD><u>EVD</u></link></color>+50\n\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
+    StEInfo: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 2fbbff00462b9f44a994b528a0001af6, type: 3}
     StEType: 1
     overideColor: 0
@@ -95,7 +95,6 @@ MonoBehaviour:
     stack: 0
     value: 0
     DMGPerTurn: 0
-  value: 50
 --- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0

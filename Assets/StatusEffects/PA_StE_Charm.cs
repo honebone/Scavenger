@@ -5,9 +5,9 @@ using UnityEngine;
 public class PA_StE_Charm : PA_StatusEffect
 {
     [SerializeField] Action.ActionStatus actionStatus;
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && applyFlag)
+        if (tep.myTurn && applyFlag)
         {
             AddStack(-1);
         }

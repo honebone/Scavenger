@@ -32,8 +32,7 @@ public class Eq_EverythingThatMoves : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += attack.GetInfo(false, new Character.CharacterStatus());
+        string s = attack.GetInfo(false, new Character.CharacterStatus());
         return s;
     }
 

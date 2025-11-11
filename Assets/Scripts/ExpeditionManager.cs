@@ -264,6 +264,7 @@ public class ExpeditionManager : MonoBehaviour
         if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))//enemyLVLUP
         {
             //StartCoroutine(EnemyLVLUpC());
+            Debug.Log(currentPos.x);
             relManager.Enqueue_EnemyLVL();
         }
 

@@ -77,9 +77,7 @@ public class Eq_ConquerorMace : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += "\n" + actionStatus.GetInfo(false, new Character.CharacterStatus());
-        return s;
+        return actionStatus.GetInfo(false, new Character.CharacterStatus());
     }
 
     public override string GetCurrentStateInfo()

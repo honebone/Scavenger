@@ -138,7 +138,7 @@ public class AreaManager : MonoBehaviour
     protected InfoText infoText;
     protected Map_MapPanel map;
 
-    int areaLength;
+  protected  int areaLength;
     //private void Start()
     //{
     //    expeditionManager = FindObjectOfType<ExpeditionManager>();

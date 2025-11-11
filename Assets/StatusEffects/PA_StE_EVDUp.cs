@@ -13,9 +13,9 @@ public class PA_StE_EVDUp : PA_StatusEffect
     //    AddStack(-1);
     //}
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (myTurn && applyFlag) { AddStack(-1); }
+        if (tep.myTurn && applyFlag) { AddStack(-1); }
     }
 
     public override void AtTheEnd()

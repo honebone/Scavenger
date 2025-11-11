@@ -317,6 +317,9 @@ public class CharactersManager : MonoBehaviour
 
             matched = condition.neighbor.Count == 0 || condition.neighbor.Any(x => refStat.position.PosIntToVector() + x == status.position.PosIntToVector());
             if (!matched) { return false; }
+
+            if (condition.sameColmn && refStat.position.GetColumn() != status.position.GetColumn()) { return false; }
+            if (condition.sameRow && refStat.position.GetRow() != status.position.GetRow()) { return false; }
         }
 
         return true;

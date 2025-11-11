@@ -39,9 +39,8 @@ public class Eq_FeedThePest : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus_self.GetInfo(false, new Character.CharacterStatus()) + "\n";
-        s += actionStatus.GetInfo(false, new Character.CharacterStatus());
+        string s = actionStatus_self.GetInfo() + "\n";
+        s += actionStatus.GetInfo();
         return s;
     }
     public override string GetCurrentStateInfo()

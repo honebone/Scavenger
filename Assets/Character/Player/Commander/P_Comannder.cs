@@ -31,9 +31,9 @@ public class P_Comannder : PA_Personality
     //    }
     //}
 
-    public override void OnTurnEnd(bool myTurn, int turnCount, bool deadTurnChara)
+    public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (BattleManager.inst.GetCurrntTurnChara().PlayerPos() == character.PlayerPos() && !myTurn)
+        if (BattleManager.inst.GetCurrntTurnChara().PlayerPos() == character.PlayerPos() && !tep.myTurn)
         {
             if (charactersManager.SearchCharaWithCondition(focusSearch).Count == 0)
             {

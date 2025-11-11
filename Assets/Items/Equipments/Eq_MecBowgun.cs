@@ -41,8 +41,7 @@ public class Eq_MecBowgun : PA_Equipment
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += attack.GetInfo();
+        string s = attack.GetInfo();
         return s;
     }
 

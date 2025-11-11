@@ -27,8 +27,7 @@ public class EqM_Meteor : Eq_Magic
 
     public override string GetPAInfo_Base()
     {
-        string s = equipmentStatus.GetInfo();
-        s += actionStatus.GetInfo();
+        string s = actionStatus.GetInfo();
         return s;
     }
 }

@@ -49,7 +49,7 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: "\u6575\u306B\u4ED8\u4E0E\u3057\u305F<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B\r\n\r\n\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u65751\u4F53\u306B<sprite
     name=INT><color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u3092\u3059\u308B\r\n\u3053\u308C\u3092\u30AB\u30A6\u30F3\u30C8\u306E\u6570\u3060\u3051\u7E70\u308A\u8FD4\u3059"
-  PAInfo_start: 
+  PAInfo_start: "\u4ED8\u4E0E\u3057\u305F<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -78,9 +78,10 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: f783378db0081e843b64d09979e3764c, type: 2}
-    equipmentInfo: "\u4ED8\u4E0E\u3057\u305F<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
+    equipmentInfo: 
   attack:
     actionName: "\u5384\u707D\u306E\u6756"
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
@@ -115,6 +116,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -234,6 +238,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
