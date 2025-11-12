@@ -1090,11 +1090,11 @@ public class Action : MonoBehaviour
                                 {
                                     totalDamage += totalDMG;
                                 }
-                                actionOwner.GetBattleReport().ATKDMG += ATKDMG;
-                                actionOwner.GetBattleReport().INTDMG += INTDMG;
+                                battleManager.GetPBR(actionOwner).ATKDMG += ATKDMG;
+                                battleManager.GetPBR(actionOwner).INTDMG += INTDMG;
 
-                                target.GetBattleReport().RDMG += totalDMG;
-                                target.GetBattleReport().RShieldDMG += shieldDMG;
+                                battleManager.GetPBR(target).RDMG += totalDMG;
+                                battleManager.GetPBR(target).RShieldDMG += shieldDMG;
 
                                 onDamageParamsList.Add(onDamageParams);
                                 if (totalDMG > 0 && actionsStatus[i].drain > 0&&!notChara)//吸血処理
@@ -1119,7 +1119,7 @@ public class Action : MonoBehaviour
 
                                     actionStatus.actionOwner.Heal(drain, actionStatus.actionOwner);
                                     actionStatus.actionOwner.OnHealed(actionStatus.actionOwner, onHealParams);
-                                    actionOwner.GetBattleReport().GHeal += drain;
+                                    battleManager.GetPBR(actionOwner).GHeal += drain;
                                     onHealParamsList.Add(onHealParams);
                                 }
                             }
@@ -1196,7 +1196,7 @@ public class Action : MonoBehaviour
                         }
                         onHealParams.healValue = heal;
 
-                        if (!notChara) actionOwner.GetBattleReport().GHeal += heal;
+                        if (!notChara) battleManager.GetPBR(actionOwner).GHeal += heal;
                         target.Heal(heal, actionStatus.actionOwner);
                         target.OnHealed(actionStatus.actionOwner, onHealParams);
                         onHealParamsList.Add(onHealParams);
@@ -1215,14 +1215,14 @@ public class Action : MonoBehaviour
                     if (actionsStatus[i].shieldAdd_max > 0)//シールド
                     {
                         int shield = Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1);
-                        if (!notChara) actionOwner.GetBattleReport().GShield += shield;
+                        if (!notChara) battleManager.GetPBR(actionOwner).GShield += shield;
                         target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
                     {
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
                         int shield = Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
-                        if (!notChara) actionOwner.GetBattleReport().GShield += shield;
+                        if (!notChara) battleManager.GetPBR(actionOwner).GShield += shield;
                         target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去

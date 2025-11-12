@@ -434,39 +434,15 @@ public class Character : MonoBehaviour
         //}
     }
 
-    public class PersonalBattleReport
-    {
-        public int ATKDMG;
-        public int INTDMG;
-        public int decreaseHP;
-
-        public int RDMG;
-        public int RShieldDMG;
-
-        public int GHeal;
-        public int GShield;
-
-        public string Report()
-        {
-            string s = "";
-
-            s += $"与ダメージ：{ATKDMG + INTDMG + decreaseHP}({"ATK".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INT".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
-                $"+{decreaseHP.ColorStr(Definer.colorRef.decreaseHP)})";
-            s += $"\n被ダメージ：{RDMG + RShieldDMG}({RDMG.ColorStr(Definer.colorRef.damage)}+{"shieldDMG".ToSpr()}{RShieldDMG.ColorStr(Definer.colorRef.shieldDecrease)})";
-            s += $"\n与えた回復/シールド：{GHeal + GShield}({"HP".ToSpr()}{GHeal.ColorStr(Definer.colorRef.heal)},{"shield".ToSpr()}{GShield.ColorStr(Definer.colorRef.shield)})";
-
-            return s;
-        }
-    }
+    
 
     protected CharacterStatus charaStatus;
-    PersonalBattleReport battleReport = new PersonalBattleReport();
 
     //[SerializeField]
     //protected Action.ActionStatus[] actionsStatusTest;
     public CharacterStatus CharaStatus() { return charaStatus; }
-    public PersonalBattleReport GetBattleReport() { return battleReport; }
-    public void ResetBattleReport() { battleReport = new PersonalBattleReport(); }
+    //public PersonalBattleReport GetBattleReport() { return battleReport; }
+    //public void ResetBattleReport() { battleReport = new PersonalBattleReport(); }
 
     Character_Object charaObj;
     Character_TargetButton targetButton;
@@ -570,6 +546,8 @@ public class Character : MonoBehaviour
         }
         if (!hasPass) { infoText.AddWarningText($"{charaStatus.fileName}にはパスを行うアビリティがありません"); }
         //TurnIconはラウンド開始時にセット
+
+        battleManager.AddPBR(this);
     }
     public List<PA_Equipment> GetEquipments()
     {
@@ -1688,6 +1666,11 @@ public class Character : MonoBehaviour
     public bool PlayerPos() { return charaStatus.position.IsPlayerPos(); }
     /// <summary>playerかどうかを返す(player側のキャラかではない)</summary>
     public bool IsPlayer() { return charaStatus.playable; }
+    public Character GetRootChara()
+    {
+        if (charaStatus.summoner != null) return charaStatus.summoner.GetRootChara();
+        else return this;
+    }
 
     public List<Character> GetNeigbor(List<Vector2Int> neigbor)
     {

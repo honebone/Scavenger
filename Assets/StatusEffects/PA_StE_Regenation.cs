@@ -14,7 +14,7 @@ public class PA_StE_Regenation : PA_StatusEffect
             Action.ActionStatus action = actionStatus;
             action.trueHeal = StEStatus.DMGPerTurn;
             Enqueue(action, true, new List<Character>() { character });
-            if (StEStatus.applyer != null) { StEStatus.applyer.GetBattleReport().GHeal += StEStatus.DMGPerTurn; }
+            if (StEStatus.applyer != null) { BattleManager.inst.GetPBR(StEStatus.applyer).GHeal += StEStatus.DMGPerTurn; }
             AddStack(-1);
         }
     }

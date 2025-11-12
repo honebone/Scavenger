@@ -200,6 +200,8 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator BattleStartAnim()
     {
+        SetPBR();
+
         anim_battleIcon.SetTrigger("BattleStart");
         battleText.text = "<color=#890000>Battle!</color>";
         yield return new WaitForSeconds(1.5f);
@@ -480,9 +482,9 @@ public class BattleManager : MonoBehaviour
             if (chara.CharaStatus().player)
             {
                 string s = chara.CharaStatus().charaName + "\n";
-                s += chara.GetBattleReport().Report();
+                s += GetPBR(chara).Report();
                 infoText.AddLogText(s+"\n");
-                chara.ResetBattleReport();
+                ResetPBR();
             }
         }
 
@@ -808,6 +810,38 @@ public class BattleManager : MonoBehaviour
     }
 
     //======================================[戦闘レポート関連]===============================
+    public List<PersonalBattleReport> personalBattleReports = new List<PersonalBattleReport>();
+    void ResetPBR()
+    {
+        personalBattleReports.Clear();
+    }
+    void SetPBR()
+    {
+        personalBattleReports.Clear();
+        charactersManager.GetExistingCharacters_All().ForEach(x =>
+        {
+            if (GetPBR(x)==null) personalBattleReports.Add(new PersonalBattleReport(x));
+        });
+    }
+   public void AddPBR(Character add)
+    {
+        if (GetPBR(add) == null) personalBattleReports.Add(new PersonalBattleReport(add));
+    }
+
+    public PersonalBattleReport GetPBR(Character chara)
+    {
+        PersonalBattleReport found = null;
+        personalBattleReports.ForEach(x =>
+        {
+            if (x.chara == chara)
+            {
+                found = x;
+            }
+        });
+        if (found == null) { infoText.AddDebugText($"{chara.CharaStatus().characterData.charaName}のバトルレポートが存在しません"); }
+        return found;
+    }
+
     [SerializeField] List<BattleReport> battleReports=new List<BattleReport>();
 
     public void AddBattleReport()
@@ -925,6 +959,38 @@ public class BattleReport
     public int playerAveMaxHP;
     public float playerAveLVL;
     public float enemyAveLVL;
+}
+
+[System.Serializable]
+public class PersonalBattleReport
+{
+    public Character chara;
+    public int ATKDMG;
+    public int INTDMG;
+    public int decreaseHP;
+
+    public int RDMG;
+    public int RShieldDMG;
+
+    public int GHeal;
+    public int GShield;
+
+    public string Report()
+    {
+        string s = "";
+
+        s += $"与ダメージ：{ATKDMG + INTDMG + decreaseHP}({"ATK".ToSpr()}{ATKDMG.ColorStr(Definer.colorRef.damage)}+{"INT".ToSpr()}{INTDMG.ColorStr(Definer.colorRef.INTDamage)}" +
+            $"+{decreaseHP.ColorStr(Definer.colorRef.decreaseHP)})";
+        s += $"\n被ダメージ：{RDMG + RShieldDMG}({RDMG.ColorStr(Definer.colorRef.damage)}+{"shieldDMG".ToSpr()}{RShieldDMG.ColorStr(Definer.colorRef.shieldDecrease)})";
+        s += $"\n与えた回復/シールド：{GHeal + GShield}({"HP".ToSpr()}{GHeal.ColorStr(Definer.colorRef.heal)},{"shield".ToSpr()}{GShield.ColorStr(Definer.colorRef.shield)})";
+
+        return s;
+    }
+
+    public PersonalBattleReport(Character c)
+    {
+        chara = c;
+    }
 }
 
 public struct TurnEndParams
