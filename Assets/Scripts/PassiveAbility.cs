@@ -243,6 +243,8 @@ public class PassiveAbility : MonoBehaviour
         character.OnRuneActivate(this);
     }
 
+    public Character.CharacterStatus CharaStatus() { return character.CharaStatus(); }
+
 /// <summary>このターンに付与されたかのチェック</summary>
 public void StE_ApplyFlag() { applyFlag = true; }
 

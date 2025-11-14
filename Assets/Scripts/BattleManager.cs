@@ -200,7 +200,7 @@ public class BattleManager : MonoBehaviour
 
     IEnumerator BattleStartAnim()
     {
-        SetPBR();
+        //SetPBR();
 
         anim_battleIcon.SetTrigger("BattleStart");
         battleText.text = "<color=#890000>Battle!</color>";
@@ -484,10 +484,9 @@ public class BattleManager : MonoBehaviour
                 string s = chara.CharaStatus().charaName + "\n";
                 s += GetPBR(chara).Report();
                 infoText.AddLogText(s+"\n");
-                ResetPBR();
             }
         }
-
+        ResetPBR();
         roundTextCanvas.alpha = 0;
 
         if (fieldEffect != null)
@@ -814,18 +813,22 @@ public class BattleManager : MonoBehaviour
     void ResetPBR()
     {
         personalBattleReports.Clear();
-    }
-    void SetPBR()
-    {
-        personalBattleReports.Clear();
         charactersManager.GetExistingCharacters_All().ForEach(x =>
         {
-            if (GetPBR(x)==null) personalBattleReports.Add(new PersonalBattleReport(x));
+            if (x.IsPlayer()) personalBattleReports.Add(new PersonalBattleReport(x));
         });
     }
+    //void SetPBR()
+    //{
+    //    personalBattleReports.Clear();
+    //    charactersManager.GetExistingCharacters_All().ForEach(x =>
+    //    {
+    //        if (GetPBR(x)==null) personalBattleReports.Add(new PersonalBattleReport(x));
+    //    });
+    //}
    public void AddPBR(Character add)
     {
-        if (GetPBR(add) == null) personalBattleReports.Add(new PersonalBattleReport(add));
+        personalBattleReports.Add(new PersonalBattleReport(add));
     }
 
     public PersonalBattleReport GetPBR(Character chara)

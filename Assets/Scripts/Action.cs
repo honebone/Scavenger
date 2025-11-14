@@ -78,6 +78,9 @@ public class Action : MonoBehaviour
         public float exDMG_mul;
         public int exATKDMG_int;
         public int exINTDMG_int;
+        /// <summary>この値を対象数で割った物理ダメージ</summary>
+        public int ATKDMG_divide_int;
+        public int INTDMG_divide_int;
 
         public float ACCMod;
         public float CRITCMod;
@@ -252,7 +255,8 @@ public class Action : MonoBehaviour
         public List<int> actionTargetsInt;
 
         public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0; }
-        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0; }
+        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0
+                                       || ATKDMG_divide_int > 0 || INTDMG_divide_int > 0; }
         public bool DoesHeal() { return healPercent_max > 0 || healINT.y > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
         public string GetTargetInfo()
@@ -988,16 +992,8 @@ public class Action : MonoBehaviour
                             ATKDMGf += ownerStatus.ATK * ATKMod;
                             INTDMGf += ownerStatus.INT * INTMod;
 
-
-                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Dice())//クリティカル判定
-                            {
-                                shakeCamera = true;
-                                CRIT = true;
-                                onAttackParams.CRIT = true;
-                                ATKDMGf *= (100 + ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
-                                INTDMGf *= (100 + ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
-                                target.SpawnVisualEffect(Definer.VERef.CRIT);
-                            }
+                            ATKDMGf += (float)actionsStatus[i].ATKDMG_divide_int / actionStatus.actionTargets.Count;
+                            ATKDMGf += (float)actionsStatus[i].INTDMG_divide_int / actionStatus.actionTargets.Count;
 
                             float PROT = Mathf.Min(targetStatus.PROT, 75);//PROTの最大値を75に制限
                             float RDMG = Mathf.Max((PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
@@ -1008,7 +1004,17 @@ public class Action : MonoBehaviour
                             ATKDMGf *= (100f + actionsStatus[i].exDMG_mul + ownerStatus.exDMG_mul) / 100f;
 
                             INTDMGf += actionsStatus[i].exINTDMG_int;//与ダメージ上昇効果
-                            INTDMGf *= (100f + actionsStatus[i].exDMG_mul) / 100f;
+                            INTDMGf *= (100f + actionsStatus[i].exDMG_mul + ownerStatus.exDMG_mul) / 100f;
+
+                            if ((ownerStatus.CRITC + actionsStatus[i].CRITCMod).Dice())//クリティカル判定
+                            {
+                                shakeCamera = true;
+                                CRIT = true;
+                                onAttackParams.CRIT = true;
+                                ATKDMGf *= (100 + ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                INTDMGf *= (100 + ownerStatus.CRITD + actionsStatus[i].CRITDMod) / 100f;
+                                target.SpawnVisualEffect(Definer.VERef.CRIT);
+                            }
 
                             ATKDMG = Mathf.Max(0, Mathf.RoundToInt(ATKDMGf));
                             INTDMG = Mathf.Max(0, Mathf.RoundToInt(INTDMGf));
@@ -1090,11 +1096,11 @@ public class Action : MonoBehaviour
                                 {
                                     totalDamage += totalDMG;
                                 }
-                                battleManager.GetPBR(actionOwner).ATKDMG += ATKDMG;
-                                battleManager.GetPBR(actionOwner).INTDMG += INTDMG;
+                                battleManager.GetPBR(actionOwner.GetRootChara()).ATKDMG += ATKDMG;
+                                battleManager.GetPBR(actionOwner.GetRootChara()).INTDMG += INTDMG;
 
-                                battleManager.GetPBR(target).RDMG += totalDMG;
-                                battleManager.GetPBR(target).RShieldDMG += shieldDMG;
+                                battleManager.GetPBR(target.GetRootChara()).RDMG += totalDMG;
+                                battleManager.GetPBR(target.GetRootChara()).RShieldDMG += shieldDMG;
 
                                 onDamageParamsList.Add(onDamageParams);
                                 if (totalDMG > 0 && actionsStatus[i].drain > 0&&!notChara)//吸血処理
@@ -1119,7 +1125,7 @@ public class Action : MonoBehaviour
 
                                     actionStatus.actionOwner.Heal(drain, actionStatus.actionOwner);
                                     actionStatus.actionOwner.OnHealed(actionStatus.actionOwner, onHealParams);
-                                    battleManager.GetPBR(actionOwner).GHeal += drain;
+                                    battleManager.GetPBR(actionOwner.GetRootChara()).GHeal += drain;
                                     onHealParamsList.Add(onHealParams);
                                 }
                             }
@@ -1196,7 +1202,7 @@ public class Action : MonoBehaviour
                         }
                         onHealParams.healValue = heal;
 
-                        if (!notChara) battleManager.GetPBR(actionOwner).GHeal += heal;
+                        if (!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).GHeal += heal;
                         target.Heal(heal, actionStatus.actionOwner);
                         target.OnHealed(actionStatus.actionOwner, onHealParams);
                         onHealParamsList.Add(onHealParams);
@@ -1215,14 +1221,14 @@ public class Action : MonoBehaviour
                     if (actionsStatus[i].shieldAdd_max > 0)//シールド
                     {
                         int shield = Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1);
-                        if (!notChara) battleManager.GetPBR(actionOwner).GShield += shield;
+                        if (!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).GShield += shield;
                         target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
                     {
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
                         int shield = Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
-                        if (!notChara) battleManager.GetPBR(actionOwner).GShield += shield;
+                        if (!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).GShield += shield;
                         target.AddShield(shield);
                     }
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去

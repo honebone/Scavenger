@@ -63,8 +63,8 @@ MonoBehaviour:
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 20
-    CRITD: 35
+    CRITC: 0
+    CRITD: 40
     EVD: 0
     ACC: 0
     ACT: 0
@@ -78,9 +78,9 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 8da498511067d4e47af6f0f98206e7df, type: 2}
-    equipmentInfo: 
   actionStatus:
     actionName: "\u8896\u4E0B\u306E\u30CA\u30A4\u30D5"
     conditionInfo: "\u653B\u6483\u30A2\u30D3\u30EA\u30C6\u30A3\u4EE5\u5916\u306E\u884C\u52D5\u3092\u3057\u305F\u3068\u304D"
@@ -115,6 +115,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -139,6 +142,8 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 5
     CRITDMod: 0
@@ -148,6 +153,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -207,8 +213,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -235,6 +239,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

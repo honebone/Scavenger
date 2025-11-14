@@ -14,7 +14,7 @@ public class PA_StE_Burn : PA_StatusEffect
             action.decreaseHP_min = StEStatus.DMGPerTurn;
             action.decreaseHP_max = StEStatus.DMGPerTurn;
             Enqueue(action, true, new List<Character>() { character });
-            if (StEStatus.applyer != null) { BattleManager.inst.GetPBR(StEStatus.applyer).decreaseHP += StEStatus.DMGPerTurn; }
+            if (StEStatus.applyer != null) { BattleManager.inst.GetPBR(StEStatus.applyer.GetRootChara()).decreaseHP += StEStatus.DMGPerTurn; }
             AddStack(-1);
         }
     }

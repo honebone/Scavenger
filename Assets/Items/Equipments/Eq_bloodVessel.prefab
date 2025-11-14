@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: -5606911846672628859}
+  - component: {fileID: 7845102633263666932}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_reapersFinger
+  m_Name: Eq_bloodVessel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5606911846672628859
+--- !u!114 &7845102633263666932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee5717969baa793498f5ed1ab6b8a777, type: 3}
+  m_Script: {fileID: 11500000, guid: e8e43ef83d5322c4b847291855569082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_reapersFinger
+  fileName: Eq_bloodVessel
   noSimpleInfo: 0
-  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u4E00\u5B9A\u78BA\u7387\u3067<sprite
-    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u3001<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u5F97\u308B\r\n\u3053\u306E\u78BA\u7387\u306F<color=#FF8B00><sprite
-    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
-  PAInfo_start: 
+  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<sprite name=maxHP><color=#87FF79>maxHP</color>\u3092\u5F97\u308B\n(<sprite
+    name=HP><color=#87FF79>HP</color>\u306F\u5897\u52A0\u3057\u306A\u3044)\n\n\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306E<sprite
+    name=HP>\u304C\u4E00\u5B9A\u5272\u5408\u306B\u306A\u308B\u3088\u3046\u306B\u6E1B\u5C11\u3059\u308B\n\n\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u306E\u4E0E\u30C0\u30E1\u30FC\u30B8\u304C\u3001\u5931\u3063\u305F<sprite
+    name=HP>\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
+  PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\u3001<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E100\uFF05\u306B\u7B49\u3057\u3044<sprite
+    name=maxHP>\u3092\u5F97\u308B\n(<sprite name=HP><color=#87FF79>HP</color>\u306F\u5897\u52A0\u3057\u306A\u3044)\n\n\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306E<sprite
+    name=HP>\u304C50\uFF05\u3092\u4E0A\u56DE\u3063\u3066\u3044\u308B\u306A\u3089\u300150\uFF05\u306B\u306A\u308B\u3088\u3046\u306B<sprite
+    name=HP>\u304C\u6E1B\u5C11\u3059\u308B\n\n\u25CB\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\n\u30FB\u5931\u3063\u305F<sprite
+    name=HP>1\uFF05\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8+0.25\uFF05"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -58,13 +63,13 @@ MonoBehaviour:
     maxHP_mul: 0
     maxHP_int: 0
     maxSAN_mul: 0
-    PROT: 0
+    PROT: -20
     ATK_mul: 0
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 15
+    CRITC: 0
     CRITD: 0
     EVD: 0
     ACC: 0
@@ -81,15 +86,17 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 878337f1a2de769429c206e9c63fc46c, type: 2}
+    itemData: {fileID: 11400000, guid: 9c07402a9f3a6a0489c810116e21b399, type: 2}
+  gainMaxHPPercent: 100
+  HPTH: 50
+  exDMGPerHPLoss: 0.25
   action:
-    actionName: "\u6B7B\u795E\u306E\u6307"
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642([\u81EA\u8EAB\u306E<color=#FF8B00><sprite
-      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387]x2\u306E\u78BA\u7387)"
-    targetInfo: "\u81EA\u8EAB"
+    actionName: 
+    conditionInfo: 
+    targetInfo: 
     AModInfo: 
     actionInfo: 
-    sprite: {fileID: 21300000, guid: a0ccf47b4cfc3d442a5f2d1123167dd1, type: 3}
+    sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
     actionObject: {fileID: 0}
@@ -144,8 +151,6 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
-    ATKDMG_divide_int: 0
-    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -156,8 +161,8 @@ MonoBehaviour:
     healValue_min: 0
     healValue_max: 0
     healINT: {x: 0, y: 0}
-    healPercent_min: 20
-    healPercent_max: 20
+    healPercent_min: 0
+    healPercent_max: 0
     healRegain_min: 0
     healRegain_max: 0
     trueHeal: 0
@@ -173,16 +178,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 50
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -270,7 +266,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0ccf47b4cfc3d442a5f2d1123167dd1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 510a6907ca7fe6146ae394ab43518e58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

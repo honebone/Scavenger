@@ -6066,7 +6066,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
+  m_AnchoredPosition: {x: 63.53369, y: -48.100006}
   m_SizeDelta: {x: -579.7155, y: -431.1413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -12929,6 +12929,8 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -13234,7 +13236,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4ada556eecb900744b6adcdd9bbc859b, type: 2}
   - {fileID: 11400000, guid: cefff76781c46e349ad0fe60db1681ed, type: 2}
   - {fileID: 11400000, guid: a3089a8d00c580d4ebef3ad12137b1f3, type: 2}
-  - {fileID: 11400000, guid: cf3b55e691be2ad45a1123e8f2c0c474, type: 2}
+  - {fileID: 11400000, guid: 9c07402a9f3a6a0489c810116e21b399, type: 2}
+  - {fileID: 11400000, guid: 52fca222ccd64e74589658146d7ca530, type: 2}
+  - {fileID: 11400000, guid: 1c7affb2c2344d843bdcc0f7b1f69fe3, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -19498,6 +19502,8 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -19603,6 +19609,7 @@ MonoBehaviour:
   tutorial_frontLine: {fileID: 11400000, guid: 0b15d84612d734b47a6ba321c5183a8d, type: 2}
   totalDamageText: {fileID: 108737983}
   turns: []
+  personalBattleReports: []
   battleReports: []
 --- !u!114 &914944173
 MonoBehaviour:
