@@ -30,6 +30,7 @@ public class Action : MonoBehaviour
 
         public AudioClip SE;
         public GameObject VE_OnTargets;
+        public GameObject VE_OnOwner;
 
         [Header("設定しなければ汎用的なオブジェクトになる")]
         public GameObject actionObject;
@@ -71,6 +72,9 @@ public class Action : MonoBehaviour
         public float ATKMod_max;
         public float INTMod_min;
         public float INTMod_max;
+
+        public float ATKMod_divide;
+        public float INTMod_divide;
 
         public int trueATKDMG;
         public int trueINTDMG;
@@ -255,8 +259,11 @@ public class Action : MonoBehaviour
         public List<int> actionTargetsInt;
 
         public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0; }
-        public bool DoesAttack() { return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0
-                                       || ATKDMG_divide_int > 0 || INTDMG_divide_int > 0; }
+        public bool DoesAttack()
+        {
+            return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0
+                || ATKDMG_divide_int > 0 || INTDMG_divide_int > 0 || ATKMod_divide > 0 || INTMod_divide > 0;
+        }
         public bool DoesHeal() { return healPercent_max > 0 || healINT.y > 0 || healValue_max > 0 || healRegain_max > 0 || trueHeal > 0; }
 
         public string GetTargetInfo()
@@ -296,25 +303,50 @@ public class Action : MonoBehaviour
             if (DoesAttack()||attackInfo!="")//攻撃
             {
                 s += (attackInfo != "") ? $"・{attackInfo}\n" : "";
-                if (ATKMod_max > 0)
+                if (ATKMod_max > 0 || ATKMod_divide > 0)
                 {
                     s += $"・{"ATK".ToSpr_withName("物理")}攻撃を行う\n";
-                    s += $"  {"ATK".ToSpr_withLink()}の{GetValueRange(ATKMod_min, ATKMod_max)}％ダメージ";
-                    if (refCharaStatus)
+                    if (ATKMod_max > 0)
                     {
-                        s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
+                        s += $"  {"ATK".ToSpr_withLink()}の{GetValueRange(ATKMod_min, ATKMod_max)}％ダメージ";
+                        if (refCharaStatus)
+                        {
+                            s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
+                        }
+                        s += "\n";
                     }
-                    s += "\n";
+                    if (ATKMod_divide > 0)
+                    {
+                        s += $"  {"ATK".ToSpr_withLink()}の{ATKMod_divide}％を均等に割り振る";
+                        if (refCharaStatus)
+                        {
+                            s += string.Format("({0})", (characterStatus.ATK * ATKMod_divide / 100).ToInt());
+                        }
+                        s += "\n";
+                    }
                 }
-                if (INTMod_max > 0)
+                if (INTMod_max > 0 || INTMod_divide > 0)
                 {
                     s += $"・{"INT".ToSpr_withName("魔法")}攻撃を行う\n";
-                    s += $"  {"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
-                    if (refCharaStatus)
+                    if (INTMod_max > 0)
                     {
-                        s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
+                        s += $"  {"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
+                        if (refCharaStatus)
+                        {
+                            s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
+                        }
+                        s += "\n";
+                    } 
+                    if (INTMod_divide > 0)
+                    {
+                        s += $"  {"INT".ToSpr_withLink()}の{INTMod_divide}％を均等に割り振る";
+                        if (refCharaStatus)
+                        {
+                            s += string.Format("({0})", (characterStatus.INT * INTMod_divide / 100).ToInt());
+                        }
+                        s += "\n";
                     }
-                    s += "\n";
+                    
                 }
 
                 string attack = "";
@@ -908,15 +940,8 @@ public class Action : MonoBehaviour
 
             target.BecomeAbilityTarget(actionStatus.actionOwner);
 
-            if (actionStatus.VE_OnTargets)
-            {
-                //Vector2 VEPos = characterManager.GetCharacterWorldPos(targetStatus.position);
-                //Vector2 VEOffset = actionStatus.VE_OnTargets.GetComponent<VisualEffect>().GetOffset();
-                //if (targetStatus.position < 9) { VEOffset.x *= -1; }
-                //var v = Instantiate(actionStatus.VE_OnTargets, VEPos + VEOffset, actionStatus.VE_OnTargets.transform.rotation);
-                //if (targetStatus.position < 9) { v.transform.Rotate(new Vector3(0, 180, 0)); }//プレイヤー対象の時左右反転
-                target.SpawnVisualEffect(actionStatus.VE_OnTargets);
-            }
+            if (actionStatus.VE_OnTargets) { target.SpawnVisualEffect(actionStatus.VE_OnTargets); }
+            if (actionStatus.VE_OnOwner) { actionOwner.SpawnVisualEffect(actionStatus.VE_OnOwner); }
             if (!targetStatus.dead)//対象が生きているときのみ、効果発動
             {
 
@@ -989,6 +1014,8 @@ public class Action : MonoBehaviour
                             float INTDMGf = 0;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             float INTMod = Random.Range(actionsStatus[i].INTMod_min, actionsStatus[i].INTMod_max) / 100;
+                            if (actionsStatus[i].ATKMod_divide > 0) ATKMod += actionsStatus[i].ATKMod_divide / actionStatus.actionTargets.Count / 100;
+                            if (actionsStatus[i].INTMod_divide > 0) INTMod += actionsStatus[i].INTMod_divide / actionStatus.actionTargets.Count / 100;
                             ATKDMGf += ownerStatus.ATK * ATKMod;
                             INTDMGf += ownerStatus.INT * INTMod;
 
