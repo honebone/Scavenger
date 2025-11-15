@@ -308,8 +308,8 @@ MonoBehaviour:
     healValue_min: 0
     healValue_max: 0
     healINT: {x: 0, y: 0}
-    healPercent_min: 10
-    healPercent_max: 15
+    healPercent_min: 5
+    healPercent_max: 10
     healRegain_min: 0
     healRegain_max: 0
     trueHeal: 0

@@ -14,13 +14,12 @@ public class EqR_Inguz : Eq_Rune
     }
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        if (runeCharge > 0) { Activate(); }
+        RuneActivate();
     }
 
-    void Activate()
+    public override void RuneActivation()
     {
         Enqueue_Self(heal);
-        RuneActivate();
     }
 
     public override void OnHealed(Character healer, Action.OnHealParams onHealParams)

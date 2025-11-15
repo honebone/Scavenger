@@ -16,21 +16,20 @@ public class EqR_OnRoundStart : Eq_Rune
     }
     public override void OnRoundStart()
     {
-        if (runeCharge > 0) { Activate(); }
+        RuneActivate();
     }
 
-    void Activate()
+    public override void RuneActivation()
     {
         if (targetSelf)
         {
             Enqueue_Self(actionStatus);
-            RuneActivate();
         }
         else
         {
             if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
             {
-                RuneActivate();
+
             }
         }
     }

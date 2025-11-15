@@ -19,15 +19,14 @@ public class EqR_Sowelu : Eq_Rune
         {
             if (x.CRIT && runeCharge > 0)
             {
-                Activate();
+                RuneActivate();
                 return;
             }
         });
     }
 
-    void Activate()
+    public override void RuneActivation()
     {
-        RuneActivate();
         count++;
         character.AddCRITD(CRITD);
         Log($"{"CRIT".ToSpr_withName()}É_ÉÅÅ[ÉW+{CRITD}Åì ({count * CRITD}Åì)");

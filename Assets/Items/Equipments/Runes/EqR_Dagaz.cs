@@ -18,12 +18,11 @@ public class EqR_Dagaz : Eq_Rune
     }
     public override void OnRoundStart()
     {
-        if (runeCharge > 0) { Activate(); }
+        RuneActivate();
     }
 
-    void Activate()
+    public override void RuneActivation()
     {
-        RuneActivate();
         int add = (CharaStatus().maxHP * countPercentOnActivate / 100f).ToInt();
         count += add;
         Log($"ƒJƒEƒ“ƒg+{add} ({count})");

@@ -244,11 +244,16 @@ public class PassiveAbility : MonoBehaviour
     /// 活性化効果処理はそれぞれのスクリプトに書くこと！
     /// </summary>
     public void RuneActivate() {
-        Log("活性化！");
-        runeCharge--;
-        if (runeCharge < 0) infoText.AddErrorText($"ルーンのチャージ数が負になっています：{GetPAName()}");
-        character.OnRuneActivate(this);
+        if (runeCharge > 0)
+        {
+            Log("活性化！");
+            runeCharge--;
+            if (runeCharge < 0) infoText.AddErrorText($"ルーンのチャージ数が負になっています：{GetPAName()}");
+            RuneActivation();
+            character.OnRuneActivate(this);
+        }
     }
+    public virtual void RuneActivation() { infoText.AddErrorText($"効果のない活性化をしています！：{GetPAName()}"); }
 
     public Character.CharacterStatus CharaStatus() { return character.CharaStatus(); }
 
