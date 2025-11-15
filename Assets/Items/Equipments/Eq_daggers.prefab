@@ -65,7 +65,7 @@ MonoBehaviour:
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
-    CRITD: 20
+    CRITD: 45
     EVD: 0
     ACC: 0
     ACT: 0
@@ -83,7 +83,6 @@ MonoBehaviour:
   rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c711c1ac6564f4d4683ac6be684dfa87, type: 2}
-    equipmentInfo: 
   attack:
     actionName: "\u9023\u306A\u308B\u5203"
     conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C3\u306B\u306A\u3063\u305F\u3068\u304D"
@@ -93,6 +92,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 2619064900569293486, guid: 71f827f9624434c4a9bebd41d4b06736, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -140,11 +140,15 @@ MonoBehaviour:
     ATKMod_max: 50
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

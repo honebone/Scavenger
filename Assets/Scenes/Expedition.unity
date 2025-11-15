@@ -12877,6 +12877,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -13242,6 +13243,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52fca222ccd64e74589658146d7ca530, type: 2}
   - {fileID: 11400000, guid: 1c7affb2c2344d843bdcc0f7b1f69fe3, type: 2}
   - {fileID: 11400000, guid: efc049c6b9080b24897499048388e2e2, type: 2}
+  - {fileID: 11400000, guid: 71a91b8937456774caca9d5625929f3e, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -19453,6 +19455,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0

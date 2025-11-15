@@ -228,6 +228,13 @@ public class PassiveAbility : MonoBehaviour
 
     public int rune_initialCharge;
     protected int runeCharge;
+    /// <summary>
+    /// ルーンは必ず戦闘開始時に呼ぶこと！
+    /// </summary>
+    public void RuneInitialCharge()
+    {
+        runeCharge = rune_initialCharge;
+    }
     public void ChargeRune(int add)
     {
         runeCharge += add;

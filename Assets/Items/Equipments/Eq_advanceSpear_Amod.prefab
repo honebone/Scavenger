@@ -59,7 +59,7 @@ MonoBehaviour:
     exATKDMG_int: 0
     exINTDMG_int: 0
     ACCMod: 0
-    CRITCMod: 15
+    CRITCMod: 20
     CRITDMod: 0
     drain: 0
     ignoreShield: 0

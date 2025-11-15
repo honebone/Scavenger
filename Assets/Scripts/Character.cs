@@ -315,7 +315,6 @@ public class Character : MonoBehaviour
             s += end + "\n";
             return s;
         }
-        /// <summary>“•\‹L‚Å•Ô‚·</summary>
         public int BaseHP() { return maxHP_base + maxHP_baseByLVL; }
         public int BaseATK() { return ATK_base + ATK_baseByLVL; }
         public int BaseINT() { return INT_base + INT_baseByLVL; }

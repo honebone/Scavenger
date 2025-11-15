@@ -63,8 +63,8 @@ MonoBehaviour:
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 10
-    CRITD: 20
+    CRITC: 12
+    CRITD: 30
     EVD: 0
     ACC: 0
     ACT: 0
@@ -78,9 +78,9 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 9f9c71f6123583b4f9fafe9f24d57197, type: 2}
-    equipmentInfo: 
   attack:
     actionName: "\u5DE5\u623F\u306E\u77F3\u5F13"
     conditionInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u767A\u751F\u6642"
@@ -90,6 +90,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 2680953895617298183, guid: 060056c101d9b0446bf6652bc3598730, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -115,6 +116,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -134,11 +138,15 @@ MonoBehaviour:
     ATKMod_max: 70
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 25
     CRITDMod: 0
@@ -148,6 +156,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -207,8 +216,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -235,6 +242,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   maxRemain: 3
 --- !u!212 &2102424110011888310
 SpriteRenderer:

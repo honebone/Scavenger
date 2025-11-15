@@ -64,7 +64,7 @@ MonoBehaviour:
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 15
+    CRITC: 20
     CRITD: 0
     EVD: 0
     ACC: 0
@@ -92,6 +92,7 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: a0ccf47b4cfc3d442a5f2d1123167dd1, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -139,6 +140,8 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0

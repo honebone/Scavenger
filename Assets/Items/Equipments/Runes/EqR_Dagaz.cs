@@ -14,7 +14,7 @@ public class EqR_Dagaz : Eq_Rune
 
     public override void OnBattleStart()
     {
-        ChargeRune(rune_initialCharge);
+        RuneInitialCharge();
     }
     public override void OnRoundStart()
     {

@@ -64,8 +64,8 @@ MonoBehaviour:
     INT_mul: 20
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 5
-    CRITD: 10
+    CRITC: 10
+    CRITD: 30
     EVD: 0
     ACC: 10
     ACT: 4
@@ -79,9 +79,9 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 2e171eb96cc36424f8b8244061495e5d, type: 2}
-    equipmentInfo: 
   PROT: -30
 --- !u!212 &3238141386940741765
 SpriteRenderer:

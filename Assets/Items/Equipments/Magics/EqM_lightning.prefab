@@ -78,9 +78,9 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 04000000
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 3ad1fe88a976cd749ba08133db38f3b8, type: 2}
-    equipmentInfo: 
   actionStatus:
     actionName: 
     conditionInfo: "\u5531\u3048\u3089\u308C\u305F\u3068\u304D"
@@ -90,6 +90,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 233b8a3a580706245a110cebaba01ec1, type: 3}
     VE_OnTargets: {fileID: 6695063782243598986, guid: f9ef51dc3ff19294a8105cd62c042d4b, type: 3}
+    VE_OnOwner: {fileID: 5580654164928617180, guid: 92f8830ee099ae94591f59c197bcb883, type: 3}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -115,6 +116,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -134,11 +138,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 60
     INTMod_max: 100
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -234,6 +242,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   maxRemain: 8
 --- !u!212 &2102424110011888310
 SpriteRenderer:

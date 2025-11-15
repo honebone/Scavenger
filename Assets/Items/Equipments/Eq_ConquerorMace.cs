@@ -7,12 +7,17 @@ public class Eq_ConquerorMace : PA_Equipment
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] List<Vector2Int> neigbors;
     [SerializeField] int ATKRatio;
+    public int maxATKGrowthRatio;
     [SerializeField] int maxATKRatio;
     [SerializeField] int HPRatio;
+    public int maxHPGrowthRatio;
     [SerializeField] int maxHPRatio;
 
     int maxATK;
     int maxHP;
+
+    int maxATKGrowth;
+    int maxHPGrowth;
 
     int ATK;
     int HP;
@@ -21,6 +26,8 @@ public class Eq_ConquerorMace : PA_Equipment
     {
         maxATK = Mathf.FloorToInt(character.CharaStatus().BaseATK() * maxATKRatio / 100f);
         maxHP = Mathf.FloorToInt(character.CharaStatus().BaseHP() * maxHPRatio / 100f);
+        maxATKGrowth = Mathf.FloorToInt(character.CharaStatus().BaseATK() * maxATKGrowthRatio / 100f);
+        maxHPGrowth = Mathf.FloorToInt(character.CharaStatus().BaseHP() * maxHPGrowthRatio / 100f);
     }
 
 
@@ -38,6 +45,7 @@ public class Eq_ConquerorMace : PA_Equipment
                 if (ATK < maxATK)
                 {
                     int atk = Mathf.FloorToInt(status.ATK * ATKRatio / 100f);
+                    atk = Mathf.Min(atk, maxATKGrowth);
                     atk = (ATK + atk >= maxATK) ? maxATK - ATK : atk;
 
                     ATK += atk;
@@ -48,6 +56,7 @@ public class Eq_ConquerorMace : PA_Equipment
                 if (HP < maxHP)
                 {
                     int hp = Mathf.FloorToInt(status.maxHP * HPRatio / 100f);
+                    hp = Mathf.Min(hp, maxHPGrowth);
                     hp = (HP + hp >= maxHP) ? maxHP - HP : hp;
 
                     HP += hp;
@@ -70,6 +79,9 @@ public class Eq_ConquerorMace : PA_Equipment
 
         maxATK = 0;
         maxHP = 0;
+
+        maxATKGrowth = 0;
+        maxHPGrowth = 0;
 
         ATK = 0;
         HP = 0;

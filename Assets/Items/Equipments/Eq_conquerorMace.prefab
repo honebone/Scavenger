@@ -53,9 +53,11 @@ MonoBehaviour:
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: "\u307E\u305F\u3001\u6BBA\u5BB3\u3057\u305F\u6575\u306E<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u306E20\uFF05\u3068<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E10\uFF05\u3092\u596A\u3044\u53D6\u308B\n\u596A\u3044\u53D6\u308B<sprite
+    name=ATK><link=T_ATK><u>ATK</u></link></color>\u3068<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E50\uFF05\u3092\u596A\u3044\u53D6\u308B\r\n\r\n\u4E00\u5EA6\u306B\u596A\u3044\u53D6\u308B<sprite
     name=ATK>/<sprite name=maxHP>\u306E\u4E0A\u9650\u306F\u81EA\u8EAB\u306E\u57FA\u790E<sprite
-    name=ATK>/<sprite name=maxHP>\u306E400\uFF05\u307E\u3067"
+    name=ATK>/<sprite name=maxHP>\u306E25\uFF05\u307E\u3067\r\n\r\n\u5408\u8A08\u3067\u596A\u3044\u53D6\u308B<sprite
+    name=ATK>/<sprite name=maxHP>\u306E\u4E0A\u9650\u306F\u81EA\u8EAB\u306E\u57FA\u790E<sprite
+    name=ATK>/<sprite name=maxHP>\u306E125\uFF05\u307E\u3067"
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -82,9 +84,9 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1065c86294934304793c76715fc43456, type: 2}
-    equipmentInfo: 
   actionStatus:
     actionName: "\u5F81\u670D\u8005\u306E\u5927\u69CC"
     conditionInfo: "[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u6575\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D"
@@ -94,6 +96,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -119,6 +122,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -138,11 +144,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -152,6 +162,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -220,8 +231,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -232,10 +241,12 @@ MonoBehaviour:
   - {x: -1, y: 0}
   - {x: 0, y: 1}
   - {x: 0, y: -1}
-  ATKRatio: 20
-  maxATKRatio: 400
-  HPRatio: 10
-  maxHPRatio: 400
+  ATKRatio: 50
+  maxATKGrowthRatio: 25
+  maxATKRatio: 125
+  HPRatio: 50
+  maxHPGrowthRatio: 25
+  maxHPRatio: 125
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

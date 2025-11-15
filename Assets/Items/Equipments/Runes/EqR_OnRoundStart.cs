@@ -12,7 +12,7 @@ public class EqR_OnRoundStart : Eq_Rune
 
     public override void OnBattleStart()
     {
-        ChargeRune(rune_initialCharge);
+        RuneInitialCharge();
     }
     public override void OnRoundStart()
     {

@@ -10,7 +10,7 @@ public class EqR_Sowelu : Eq_Rune
     int count;
     public override void OnBattleStart()
     {
-        ChargeRune(rune_initialCharge);
+        RuneInitialCharge();
     }
 
     public override void OnDamage(List<OnDamageParams> onDamageParamsList)
