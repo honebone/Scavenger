@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: EqM_spear
+  m_Name: EqR_blank
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u9B54\u8853\u306E\u69CD"
+  itemName: "\u7A7A\u767D\u306E\u30EB\u30FC\u30F3"
   specialInfo: 0
   info: 
-  rarity: 2
-  sprite: {fileID: 21300000, guid: 196f78e63743bf64d931de1d65be1792, type: 3}
+  rarity: 4
+  sprite: {fileID: 21300000, guid: 6c43b2c16335fc941a04fd5f3ef18af8, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 5667121962493394942, guid: e2a1c4f38824b7a49926ea2e7a45878a, type: 3}
+  manager: {fileID: 5667121962493394942, guid: 4a5dded6f4d0359408baddca11b799ae, type: 3}

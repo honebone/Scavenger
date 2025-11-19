@@ -233,12 +233,16 @@ public class PassiveAbility : MonoBehaviour
     /// </summary>
     public void RuneInitialCharge()
     {
-        runeCharge = rune_initialCharge;
+        runeCharge += rune_initialCharge;
     }
     public void ChargeRune(int add)
     {
         runeCharge += add;
         Log($"チャージ+{add} ({runeCharge})");
+    }
+    public void ResetRuneCharge()
+    {
+        runeCharge = 0;
     }
     /// <summary>
     /// 活性化効果処理はそれぞれのスクリプトに書くこと！

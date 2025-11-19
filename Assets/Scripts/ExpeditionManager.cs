@@ -64,6 +64,9 @@ public class ExpeditionManager : MonoBehaviour
 
         public int maxMadness = 5;
         public int madness;
+
+        public int killCount;
+        public List<PersonalBattleReport> totalBattleReports = new List<PersonalBattleReport>();
     }
     [SerializeField]
     PartyStatus partyStatus;

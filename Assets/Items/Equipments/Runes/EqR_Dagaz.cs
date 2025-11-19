@@ -50,6 +50,7 @@ public class EqR_Dagaz : Eq_Rune
     public override void OnBattleEnd()
     {
         count = 0;
+        ResetRuneCharge();
     }
 
     public override string GetPAInfo_Base()

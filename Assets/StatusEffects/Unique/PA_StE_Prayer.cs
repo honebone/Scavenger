@@ -13,12 +13,11 @@ public class PA_StE_Prayer : PA_StatusEffect
     {
         if (StEStatus.stack >= stackThreshold)
         {
-            Action.ActionStatus action = actionStatus;
-            character.Enqueue(action, true, new List<Character>() { character });
+            Enqueue_Self(actionStatus);
         }
     }
-    //public override string GetAdditionalInfo()
-    //{
-    //    return actionStatus.GetInfo(true, character.GetCharacterStatus());
-    //}
+    public override string GetAdditionalInfo()
+    {
+        return actionStatus.GetInfo();
+    }
 }

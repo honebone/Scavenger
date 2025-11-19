@@ -20,14 +20,16 @@ public class Character_Object : MonoBehaviour
     Image HPBarColor;    
     [SerializeField]
     Image SANFill;
-    [SerializeField]
-    Image DMGBarFill;
+    
 
     [SerializeField] GameObject SANBarObj;
 
     [SerializeField] Slider HPBar;
+    public Image HPBarFill;
     [SerializeField] Slider DMGBar;
+    [SerializeField] Image DMGBarFill;
     [SerializeField] Slider ShieldBar;
+    public Image ShieldBarFill;
     [SerializeField] Slider SANBar;
 
     [SerializeField]
@@ -131,10 +133,38 @@ public class Character_Object : MonoBehaviour
 
     public void DisableSANBar() { SANBarObj.SetActive(false); }
 
-    //Coroutine barAnim;
+    float barLength = 0;
+    public Sprite spr_bar;
+    public Sprite spr_bar2;
+    public int sprSwapTH = 200;
     public void SetHPandShieldBar()
     {
         Character.CharacterStatus status = character.CharaStatus();
+        if (barLength != status.maxHP + status.shield)
+        {
+            if(status.maxHP + status.shield >= sprSwapTH)
+            {
+                barLength = (status.maxHP + status.shield) / 5f;
+                HPBarFill.sprite=spr_bar2;
+                DMGBarFill.sprite=spr_bar2;
+                HPBarFill.sprite=spr_bar2;
+            }
+            else
+            {
+                barLength= status.maxHP + status.shield;
+                HPBarFill.sprite = spr_bar;
+                DMGBarFill.sprite = spr_bar;
+                HPBarFill.sprite = spr_bar;
+            }
+            Vector2 width = new Vector2(barLength * 0.8f, 10);
+            Vector2 scale = new Vector2(5f / barLength, 0.08f);
+            HPBar.GetComponent<RectTransform>().sizeDelta = width;
+            HPBar.GetComponent<RectTransform>().localScale = scale;
+            DMGBar.GetComponent<RectTransform>().sizeDelta = width;
+            DMGBar.GetComponent<RectTransform>().localScale = scale;
+            ShieldBar.GetComponent<RectTransform>().sizeDelta = width;
+            ShieldBar.GetComponent<RectTransform>().localScale = scale;
+        }
         ShieldBar.maxValue = status.maxHP + status.shield;
         ShieldBar.value = status.HP + status.shield;
 

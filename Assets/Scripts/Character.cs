@@ -1835,6 +1835,7 @@ public class Character : MonoBehaviour
     {
         charaStatus.shield = 0;//シールド量リセット
         charaStatus.exTurn = 0;//追加ターンリセット
+        charaStatus.actThisTurn = false;
         continueTurn = false;
         charaObj.SetHPandShieldBar();
         charaStatus.spendTurn = 0;

@@ -36,6 +36,7 @@ public class EqR_Sowelu : Eq_Rune
     {
         character.AddCRITD(-count * CRITD);
         count = 0;
+        ResetRuneCharge();
     }
 
     public override string GetCurrentStateInfo()

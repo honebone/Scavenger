@@ -148,7 +148,7 @@ public class Definer : MonoBehaviour
                     PA_StatusEffect.StatusEffectStatus status = PA.GetStatusEffectStatus();
                     if ($"S_{status.StEName}" == key)
                     {
-                        s += PA.GetInfo_ForLink() + "\n";
+                        s += PA.GetInfo_ForLink(InfoText.inst.IsSimple()) + "\n";
                         //s += StE.GetComponent<PassiveAbility>().GetPAInfo() + "\n";
                         if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
                         return s;

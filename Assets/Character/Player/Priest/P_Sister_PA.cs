@@ -6,37 +6,25 @@ public class P_Sister_PA : PA_Personality
 {
     [SerializeField]
     Action.ActionStatus actionStatus;
-    [SerializeField]
-    GameObject comeTrue;
     [SerializeField, TextArea(3, 10)]
     string comeTrueInfo;
 
     public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
-        if (actionResultsList[0].actionStatus.abilityType != AbilityData.AbilityType.move && !character.CheckHasStE(comeTrue))
+        if (actionResultsList[0].actionStatus.abilityType != AbilityData.AbilityType.move)
         {
-            Action.ActionStatus action = actionStatus;
-            character.Enqueue(action, true, new List<Character>() { character });
+            Enqueue_Self(actionStatus);
         }
     }
 
     public override void OnHeal(List<Action.OnHealParams> onHealParamsList)
     {
-        bool f = false;
-        if (!character.CheckHasStE(comeTrue))
+        foreach (Action.OnHealParams onHealParams in onHealParamsList)
         {
-            foreach(Action.OnHealParams onHealParams in onHealParamsList)
+            if (onHealParams.target != character)
             {
-                if (onHealParams.target != character)
-                {
-                    f = true;
-                    break;
-                }
-            }
-            if (f)
-            {
-                Action.ActionStatus action = actionStatus;
-                character.Enqueue(action, true, new List<Character>() { character });
+                Enqueue_Self(actionStatus);
+                break;
             }
         }
     }

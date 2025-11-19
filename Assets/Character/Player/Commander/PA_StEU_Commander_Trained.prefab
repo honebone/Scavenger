@@ -78,10 +78,11 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u8A13\u7DF4"
     StEInfo: 
-    StEIcon: {fileID: 21300000, guid: de43fc6bd7417034d83da6fe9b49224a, type: 3}
+    StEIcon: {fileID: 21300000, guid: 6e4b22b36d3a90147832017e179732cb, type: 3}
     StEType: 1
     overideColor: 0
     colorOveride: {r: 0, g: 0, b: 0, a: 0}

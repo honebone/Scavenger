@@ -34,6 +34,11 @@ public class EqR_OnRoundStart : Eq_Rune
         }
     }
 
+    public override void OnBattleEnd()
+    {
+        ResetRuneCharge();
+    }
+
     public override string GetPAInfo_Base()
     {
         string s = actionStatus.GetInfo();

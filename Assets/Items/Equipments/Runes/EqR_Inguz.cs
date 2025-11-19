@@ -27,6 +27,11 @@ public class EqR_Inguz : Eq_Rune
         Enqueue_SearchTarget(attack, condition,1);
     }
 
+    public override void OnBattleEnd()
+    {
+        ResetRuneCharge();
+    }
+
     public override string GetPAInfo_Base()
     {
         string s = attack.GetInfo() + "\n" + heal.GetInfo();

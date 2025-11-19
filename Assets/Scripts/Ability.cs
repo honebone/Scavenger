@@ -97,7 +97,7 @@ public class Ability : MonoBehaviour
             s += "\n";
             if (abilityType == AbilityData.AbilityType.pass)
             {
-                s += "ターンをパスする(行動したとはみなされない)\n";
+                s += "・ターンをパスする\n　(行動したとはみなされない)\n";
             }
             if (freeAction) { s += "使用してもターンが終了しない\n".ColorStr(Definer.colorRef.emphasize); }
 

@@ -54,7 +54,7 @@ MonoBehaviour:
   maxHP: 75
   maxSAN: 0
   ATK: 7
-  INT: 13
+  INT: 10
   CRITC: 5
   CRITD: 100
   EVD: 5

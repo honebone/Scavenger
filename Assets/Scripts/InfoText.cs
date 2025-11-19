@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class InfoText : MonoBehaviour
 {
@@ -290,4 +291,6 @@ public class InfoText : MonoBehaviour
         AddLogText(string.Format("\n##warning!ÅF{0}\n{1}##", errorLog, message).ColorStr(Color.yellow));
         print(errorLog);
     }
+
+    public bool IsSimple() { return showSimple; }
 }

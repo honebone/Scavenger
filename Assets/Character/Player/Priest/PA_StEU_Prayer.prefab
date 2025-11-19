@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StEU_priest_prayer
-  noSimpleInfo: 1
-  simpleInfo: 
+  noSimpleInfo: 0
+  simpleInfo: "\u30B9\u30BF\u30C3\u30AF\u304C4\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D\u30014\u30B9\u30BF\u30C3\u30AF\u6D88\u8CBB\u3057\u3066<color=#FFFFFF><link=S_\u6210\u5C31><u>\u6210\u5C31</u></link></color>\u30921\u30B9\u30BF\u30C3\u30AF\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -77,11 +77,14 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u7948\u308A"
-    StEInfo: "\u30B9\u30BF\u30C3\u30AF\u304C4\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306B<color=#FFFFFF><link=S_\u6210\u5C31><u>\u6210\u5C31</u></link></color>\u30921\u4ED8\u4E0E\u3057\u3066\u3053\u308C\u3092\u9664\u53BB\u3059\u308B"
+    StEInfo: 
     StEIcon: {fileID: 21300000, guid: eaea8b63b4fe3ad44942432d0fc39edb, type: 3}
     StEType: 4
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 0
     merge: 1
     refValue: 0
@@ -94,15 +97,14 @@ MonoBehaviour:
     DMGPerTurn: 0
   actionStatus:
     actionName: "\u6210\u5C31"
-    conditionInfo: '
-
-'
+    conditionInfo: "\u3053\u308C\u304C4\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: eaea8b63b4fe3ad44942432d0fc39edb, type: 3}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -128,6 +130,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -147,11 +152,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -161,6 +170,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -184,12 +194,17 @@ MonoBehaviour:
       applyChance: 0
       stack: 1
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 5164891664867224302}
+      removeAll: 0
+      addAmount: -4
     removePEs: []
     summon: 0
     summonChara: []
@@ -208,6 +223,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -225,8 +242,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

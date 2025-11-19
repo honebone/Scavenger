@@ -172,7 +172,7 @@ public class PA_StatusEffect : PassiveAbility
         return s;
     }
 
-    public string GetInfo_ForLink()
+    public string GetInfo_ForLink(bool simple)
     {
         string rv = StEStatus.refValue ? " <color=#FFBF69><i>{X}</i></color>" : "";
         string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>  èÛë‘àŸèÌÇÃàÍéÌ\n";
@@ -180,7 +180,7 @@ public class PA_StatusEffect : PassiveAbility
         if (statModInfo != "") s += statModInfo + "\n";
         //s += StEStatus.StEInfo;
         //if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
-        if (noSimpleInfo) {
+        if (!simple || noSimpleInfo) {
             if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
             if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
             if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }

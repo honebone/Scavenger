@@ -41,6 +41,7 @@ public class UtilityWindow : EditorWindow
         {"INT補正","<sprite name=INT><link=U_ATK(INT)補正><u><color=#256CC8>INT</color>補正</u></link>" },
         {"フォーカス","<color=#DD6300><sprite name=focus><link=S_フォーカス><u>フォーカス</u></link></color>" },
         {"[魔術]","<link=U_魔術><u>[魔術]</u></link>" },
+        {"[ルーン]","<link=U_ルーン><u>[ルーン]</u></link>" },
         {"マーク","<color=#C900FF><sprite name=debuff><link=S_マーク><u>マーク</u></link></color>" },
         {"潜伏","<color=#FAED8A><sprite name=buff><link=S_潜伏><u>潜伏</u></link></color>" },
         {"星屑","<color=#3473CA><link=S_星屑><u>星屑</u></link></color>" },
