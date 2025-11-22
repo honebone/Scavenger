@@ -825,7 +825,7 @@ public class Character : MonoBehaviour
 
     public int GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType StEType)
     {
-        return PA_StE.Where(s => s.GetStatusEffectStatus().StEType == StEType).Distinct().Count();
+        return PA_StE.Where(s => s.GetStatusEffectStatus().StEType == StEType).Select(s => s.GetStatusEffectStatus().StEPrefab).Distinct().Count();
     }
 
     public bool CheckHasPE(GameObject PEObj)

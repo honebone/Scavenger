@@ -11,6 +11,11 @@ public class P_SpiritArcher : PA_Personality
     [SerializeField] PA_StatusEffect.StatusEffectParams StEParams;
     [SerializeField] ActionMod.ActionModStatus actionModStatus;
 
+    [SerializeField] GameObject trick;
+    [SerializeField] Action.ActionStatus action_trick;
+    [SerializeField] PA_StatusEffect.StatusEffectParams TrickParams;
+    [SerializeField] CharactersManager.SearchCharaCondition condition;
+
     public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
         List<GameObject> list = new List<GameObject>();
@@ -26,6 +31,7 @@ public class P_SpiritArcher : PA_Personality
         Action.ActionStatus action = actionStatus;
         PA_StatusEffect.StatusEffectParams status = StEParams;
         status.stack = list.Count;
+        action.applySteParams = new List<PA_StatusEffect.StatusEffectParams>();
         action.applySteParams.Add(status);
 
         if(list.Count > 0)
@@ -46,6 +52,20 @@ public class P_SpiritArcher : PA_Personality
             }
         }
         return actionsStatus;
+    }
+
+    public override void OnSomeoneDied(Character died)
+    {
+        if (died.GetStEStack_Sum(trick) > 0)
+        {
+            Action.ActionStatus action = action_trick;
+            action.applySteParams = new List<PA_StatusEffect.StatusEffectParams>();
+            PA_StatusEffect.StatusEffectParams status = TrickParams;
+            status.stack = died.GetStEStack_Sum(trick);
+            action.applySteParams.Add(status);
+
+            Enqueue_SearchTarget(action, condition, 1);
+        }
     }
 
     public override string GetPAInfo_Base()
