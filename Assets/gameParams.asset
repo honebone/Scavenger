@@ -43,3 +43,4 @@ MonoBehaviour:
   SANDMGChanceOnRoom: 25
   SANDMGOnRoom: {x: 3, y: 10}
   RegenPercentOnRoomEnd: 20
+  SANPenaltyOnDie: 15

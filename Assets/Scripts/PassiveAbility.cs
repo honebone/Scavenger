@@ -70,8 +70,8 @@ public class PassiveAbility : MonoBehaviour
             }
             if (amodInfo != "") s += $"\n{amodInfo}\n";
             if (PAInfo_start != "") s += $"\n{PAInfo_start}\n";
-            if (!skipGetInfo && GetPAInfo_Base() != "") s += $"\n{GetPAInfo_Base()}\n";
-            if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
+            if (!skipGetInfo && GetPAInfo_Base() != "") s += $"\n{GetPAInfo_Base()}";
+            if (PAInfo_end != "") { s += $"\n{PAInfo_end}\n"; }
             if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
         }
         return s;

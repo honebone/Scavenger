@@ -10,38 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P1_KillAlliy
+  m_Name: A_SpiritArcher_Buff
   m_EditorClassIdentifier: 
-  abilityName: "\u5473\u65B9\u6BBA\u5BB3"
+  abilityName: "\u9727\u96A0\u308C"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 0
+  abilityType: 3
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "<color=#FFFFFF><link=S_\u7CBE\u970A\u306E\u52A9\u8A00><u>\u7CBE\u970A\u306E\u52A9\u8A00</u></link></color>\u304C5\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u3042\u308B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 0
+    player: 1
     enemy: 0
     onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
-    StEConditions: []
+    StEConditions:
+    - StE: {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
+      stack: 5
+      stack_lessThan: 0
     StE: []
     StEExclude: []
     PE: []
@@ -54,14 +57,14 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5473\u65B9\u6BBA\u5BB3"
+  - actionName: "\u9727\u96A0\u308C"
     conditionInfo: 
-    targetInfo: 
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -70,17 +73,17 @@ MonoBehaviour:
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 3
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
+      player: 0
       enemy: 0
       onlyPlayable: 0
-      front: 1
-      mid: 1
-      back: 1
+      front: 0
+      mid: 0
+      back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -97,8 +100,8 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
     neigborPos: []
-    ignoreMark: 1
-    ignoreHide: 1
+    ignoreMark: 0
+    ignoreHide: 0
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
@@ -111,8 +114,8 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 999
-    ATKMod_max: 999
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -129,8 +132,8 @@ MonoBehaviour:
     CRITDMod: 0
     drain: 0
     ignoreShield: 0
-    sureHit: 1
-    unevadable: 1
+    sureHit: 0
+    unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healINT: {x: 0, y: 0}
@@ -151,11 +154,32 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: f3031c37ce778ac458fdac04d880c657, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 12
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 1
+      DMGPerTurn: 0
+    - applyStE: {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
+      removeAll: 0
+      addAmount: -5
     removePEs: []
     summon: 0
     summonChara: []
@@ -177,17 +201,17 @@ MonoBehaviour:
       GHeal_TH: 0
       GHeal: 0
     moveChance: 0
-    guaranteedMove: 0
+    guaranteedMove: 1
     moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 0
+    moveBackword: 2
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 0
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

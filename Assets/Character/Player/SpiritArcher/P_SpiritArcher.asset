@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: P_SpiritArcher
+  m_EditorClassIdentifier: 
+  fileName: P_SpiritArcher
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u7CBE\u970A\u8853\u5E2B"
+  introduction: "<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u4ED8\u4E0E\u3092\u5F97\u610F\u3068\u3059\u308B\u653B\u6483\u30AD\u30E3\u30E9\n\u653B\u6483\u306E\u969B\u3001\u5BFE\u8C61\u306E<sprite
+    name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u6570\u306B\u5FDC\u3058\u3066<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u304C\u5897\u52A0\u3059\u308B"
+  difficulty: "\u4E2D"
+  preferFront: 0
+  preferMid: 1
+  preferBack: 1
+  mainRole:
+  - "\u653B\u6483"
+  - "\u5F31\u4F53\u5316"
+  subRole: []
+  characterTags: 0a000000
+  immovable: 0
+  notChara: 0
+  player: 1
+  boss: 0
+  playable: 1
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: 341c37c403b417a44855c985ed8c2960, type: 2}
+  - {fileID: 11400000, guid: 5351211497acd9a44bbda288dbc8b774, type: 2}
+  - {fileID: 11400000, guid: 3b5ce1af8deb98649992820d1a3c3c09, type: 2}
+  - {fileID: 11400000, guid: 6e641e7af50e9274f920715453306783, type: 2}
+  - {fileID: 11400000, guid: cb282c5be9e5be446a3e9ca8849190a9, type: 2}
+  - {fileID: 11400000, guid: c09631b6123ee9b43904b7712c2f4bee, type: 2}
+  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 4283910244092387297, guid: e1046a40ea644d6488bb4e15f3462c57, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    drawAttemptsRange: {x: 0, y: 0}
+    rarityWeightMod: 0
+    uniqueDropPool: []
+    includeTags: []
+    excludeTags: 
+    dropEquipmentsRange: {x: 0, y: 0}
+  lifetime: 0
+  surviveFatalWounds: 1
+  maxHP: 40
+  maxSAN: 50
+  ATK: 4
+  INT: 10
+  CRITC: 5
+  CRITD: 50
+  EVD: 5
+  ACC: 100
+  ACT: 80
+  turnPerRound: 3
+  GHeal: 0
+  RHeal: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

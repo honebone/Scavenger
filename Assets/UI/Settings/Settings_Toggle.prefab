@@ -172,9 +172,9 @@ MonoBehaviour:
   m_fontSize: 10
   m_fontSizeBase: 10
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 10
-  m_fontSizeMax: 40
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 5
+  m_fontSizeMax: 10
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 9183552217494621218}
   - component: {fileID: 9183552217494621220}
   - component: {fileID: 2194209372846715269}
+  - component: {fileID: 5274007807467238343}
   - component: {fileID: 8818176493548851207}
   m_Layer: 5
   m_Name: Settings_Toggle
@@ -527,6 +528,21 @@ MonoBehaviour:
   info: 
   defaultValue: 0
   toggle: {fileID: 9183552217245363934}
+--- !u!114 &5274007807467238343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9183552217494621217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c9223f75292f24d9faee12a716e479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scroll: {fileID: 0}
+  scrollSpeed: 25
+  alwaysScroll: 1
 --- !u!114 &8818176493548851207
 MonoBehaviour:
   m_ObjectHideFlags: 0

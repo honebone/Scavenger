@@ -85,12 +85,13 @@ MonoBehaviour:
     StEType: 4
     overideColor: 0
     colorOveride: {r: 1, g: 1, b: 1, a: 1}
-    maxStack: 0
+    maxStack: 20
     merge: 1
     refValue: 0
     undeletable: 1
     DoT: 0
     regen: 0
+    StEPrefab: {fileID: 0}
     applyer: {fileID: 0}
     stack: 0
     value: 0
@@ -103,11 +104,11 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 0
+    INT_mul: 3
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
-    CRITD: 1
+    CRITD: 0
     EVD: 0
     ACC: 0
     ACT: 0

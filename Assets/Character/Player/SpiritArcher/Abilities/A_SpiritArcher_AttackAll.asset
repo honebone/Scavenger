@@ -10,38 +10,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_P1_KillAlliy
+  m_Name: A_SpiritArcher_AttackAll
   m_EditorClassIdentifier: 
-  abilityName: "\u5473\u65B9\u6BBA\u5BB3"
+  abilityName: "\u30A8\u30EC\u30E1\u30F3\u30BF\u30EB\u30D0\u30E9\u30FC\u30B8"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 0
+  abilityType: 1
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
-  availableFront: 1
+  availableFront: 0
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "<color=#FFFFFF><link=S_\u7CBE\u970A\u306E\u52A9\u8A00><u>\u7CBE\u970A\u306E\u52A9\u8A00</u></link></color>\u304C10\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u3042\u308B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 0
+    player: 1
     enemy: 0
     onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
-    StEConditions: []
+    StEConditions:
+    - StE: {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
+      stack: 10
+      stack_lessThan: 0
     StE: []
     StEExclude: []
     PE: []
@@ -54,29 +57,29 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5473\u65B9\u6BBA\u5BB3"
+  - actionName: "\u30A8\u30EC\u30E1\u30F3\u30BF\u30EB\u30D0\u30E9\u30FC\u30B8"
     conditionInfo: 
-    targetInfo: 
+    targetInfo: "\u6575\u5168\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
+    VE_OnTargets: {fileID: 4158323115027654249, guid: c3e35d737abe8614abe8e530650e13d1, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
-      enemy: 0
+      player: 0
+      enemy: 1
       onlyPlayable: 0
       front: 1
       mid: 1
@@ -97,8 +100,8 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
     neigborPos: []
-    ignoreMark: 1
-    ignoreHide: 1
+    ignoreMark: 0
+    ignoreHide: 0
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
@@ -111,12 +114,12 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 999
-    ATKMod_max: 999
-    INTMod_min: 0
-    INTMod_max: 0
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 40
+    INTMod_max: 60
     ATKMod_divide: 0
-    INTMod_divide: 0
+    INTMod_divide: 150
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -124,13 +127,13 @@ MonoBehaviour:
     exINTDMG_int: 0
     ATKDMG_divide_int: 0
     INTDMG_divide_int: 0
-    ACCMod: 0
+    ACCMod: 15
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
     ignoreShield: 0
-    sureHit: 1
-    unevadable: 1
+    sureHit: 0
+    unevadable: 0
     healValue_min: 0
     healValue_max: 0
     healINT: {x: 0, y: 0}
@@ -187,7 +190,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 0
+    abilityType: 1
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

@@ -10,7 +10,13 @@ public class RE_Rest : RoomEvent
 
     [SerializeField]
     GameObject umbushed;
-  
+
+    [SerializeField] float healRatio_rest = 0.2f;
+    [SerializeField] int SANHeal_rest = 10;
+    [SerializeField] int SANHeal_banquet = 20;
+    [SerializeField] float healRatio_sleep = 0.5f;
+    [SerializeField] int SANHeal_sleep = 15;
+
     public override void OnEndREInfo()
     {
         expeditionManager.SetREOptionButtons(options);
@@ -28,17 +34,15 @@ public class RE_Rest : RoomEvent
                 foreach (Character chara in characterManager.GetExistingCharacters_All())
                 {
                     int maxHP = chara.CharaStatus().maxHP;
-                    chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
-                    chara.SANHeal(10);
+                    chara.Heal(Mathf.RoundToInt(maxHP * healRatio_rest), null);
+                    chara.SANHeal(SANHeal_rest);
                 }
                 EndRoomEvent();
                 break;
             case 1:
                 foreach (Character chara in characterManager.GetExistingCharacters_All())
                 {
-                    //int maxHP = chara.GetCharacterStatus().maxHP;
-                    //chara.Heal(Mathf.RoundToInt(maxHP * 0.25f), null);
-                    chara.SANHeal(20);
+                    chara.SANHeal(SANHeal_banquet);
                 }
                 EndRoomEvent();
                 break;
@@ -57,8 +61,8 @@ public class RE_Rest : RoomEvent
                     foreach (Character chara in characterManager.GetExistingCharacters_All())
                     {
                         int maxHP = chara.CharaStatus().maxHP;
-                        chara.Heal(Mathf.RoundToInt(maxHP * 0.5f), null);
-                        chara.SANHeal(15);
+                        chara.Heal(Mathf.RoundToInt(maxHP * healRatio_sleep), null);
+                        chara.SANHeal(SANHeal_sleep);
                     }
                     EndRoomEvent();
                 }

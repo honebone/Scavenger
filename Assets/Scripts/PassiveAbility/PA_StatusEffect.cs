@@ -27,6 +27,8 @@ public class PA_StatusEffect : PassiveAbility
         public bool regen;
 
         [Header("以下は代入される")]
+        ///種類を特定するためのStEの大元のプレハブデータ///
+        public GameObject StEPrefab;
         public Character applyer;
         public int stack;
         public int value;
@@ -109,8 +111,9 @@ public class PA_StatusEffect : PassiveAbility
         }
     }
 
-    public void Init_StE(int stack, int value,int DMGPerTurn,StEIcon icon,Character applyer)
+    public void Init_StE(int stack, int value,int DMGPerTurn,StEIcon icon,Character applyer,GameObject prefab)
     {
+        StEStatus.StEPrefab = prefab;
         StEStatus.stack = stack;
         StEStatus.value = value;
         StEStatus.DMGPerTurn = DMGPerTurn;
@@ -142,7 +145,7 @@ public class PA_StatusEffect : PassiveAbility
         s += $"{simpleInfo}\n";
         if (StEStatus.DoT) { s += $"\n減少HP：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
         if (StEStatus.regen) { s += $"\n回復量：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
-        if (StEStatus.undeletable) { s += "\n消去不可".ColorStr(Definer.colorRef.emphasize); }
+        if (StEStatus.undeletable) { s += "\n消去不可\n".ColorStr(Definer.colorRef.emphasize); }
         return s;
     }
 
@@ -155,6 +158,7 @@ public class PA_StatusEffect : PassiveAbility
         s += GetStEInfo_forRef();
         if (StEStatus.DoT) { s += $"\n減少HP：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.decreaseHP); }
         if (StEStatus.regen) { s += $"\n回復量：{StEStatus.DMGPerTurn}/ターン\n".ColorStr(Definer.colorRef.heal); }
+        if (StEStatus.undeletable) { s += "\n消去不可\n".ColorStr(Definer.colorRef.emphasize); }
         return s;
     }
     public string GetStEInfo_forRef()
@@ -167,7 +171,7 @@ public class PA_StatusEffect : PassiveAbility
         //if (statModInfo != "") s += statModInfo + "\n";
         if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
         if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }
-        if (StEStatus.undeletable) { s += "\n消去不可".ColorStr(Definer.colorRef.emphasize); }
+        //if (StEStatus.undeletable) { s += "\n消去不可".ColorStr(Definer.colorRef.emphasize); }
 
         return s;
     }

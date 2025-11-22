@@ -12,7 +12,7 @@ public class Eq_StealHammer : PA_Equipment
    
     public override void OnDamaged(Action.OnDamageParams onDamageParams)
     {
-        if (onDamageParams.totalDMG > 0&&count<maxCount) {
+        if (count<maxCount) {
             count++;
             Log($"ƒJƒEƒ“ƒg+1 (+{count})");
         }
@@ -30,7 +30,6 @@ public class Eq_StealHammer : PA_Equipment
             ActionMod.ActionModStatus mod = actionModStatus;
             float DMGF = character.CharaStatus().maxHP * HPRatio * count;
             mod.exATKDMG_int = (DMGF / actionsStatus.Length).ToInt();
-            infoText.AddDebugText($"exDMG:{mod.exATKDMG_int}");
 
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {

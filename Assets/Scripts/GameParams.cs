@@ -15,4 +15,5 @@ public class GameParams : ScriptableObject
     public int SANDMGChanceOnRoom;
     public Vector2Int SANDMGOnRoom;
     public int RegenPercentOnRoomEnd;
+    public int SANPenaltyOnDie;
 }

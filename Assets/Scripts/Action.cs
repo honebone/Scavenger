@@ -605,6 +605,8 @@ public class Action : MonoBehaviour
             modifiedStatus.exDMG_mul += mod.exDMG_mul;
             modifiedStatus.exATKDMG_int += mod.exATKDMG_int;
             modifiedStatus.exINTDMG_int += mod.exINTDMG_int;
+            modifiedStatus.ATKDMG_divide_int += mod.ATKDMG_divide_int;
+            modifiedStatus.INTDMG_divide_int += mod.INTDMG_divide_int;
             modifiedStatus.ACCMod += mod.ACCMod;
             modifiedStatus.CRITCMod += mod.CRITCMod;
             modifiedStatus.CRITDMod += mod.CRITDMod;
@@ -1159,7 +1161,7 @@ public class Action : MonoBehaviour
                         }
                         else//âÒî
                         {
-                            target.GetTargetButton().SetDamageText("Evade", Definer.colorRef.evade);
+                            target.GetTargetButton().SetDamageText($"{"EVD".ToSpr()}Evade", Definer.colorRef.evade);
                             infoText.AddLogText(string.Format("{0}ÇÕçUåÇÇâÒîÇµÇΩ", targetStatus.charaName).ColorStr(Definer.colorRef.evade));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;

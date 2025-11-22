@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using static LVLUpManager;
 
 public class Character : MonoBehaviour
@@ -480,7 +482,7 @@ public class Character : MonoBehaviour
 
         charaStatus = spawnParams.generatedCharaStatus;
         charaObj = obj;
-        targetButton = spawnParams.targetButton;
+        SetTargetButton(spawnParams.targetButton);
 
         charaStatus.HP = charaStatus.maxHP;
         charaStatus.SAN = charaStatus.maxSAN;
@@ -524,8 +526,6 @@ public class Character : MonoBehaviour
         charaObj.SetHPandShieldBar();
         charaObj.SetSANBar();
 
-        targetButton.SetCharacter(this);
-
         //if (charaStatus.position >= 9) { ModifyStatus(expeditionManager.GetEnemyStatusMod(), true, true); }
 
         if (!charaStatus.playable)
@@ -548,6 +548,13 @@ public class Character : MonoBehaviour
 
         battleManager.AddPBR(this);
     }
+
+    public void SetTargetButton(Character_TargetButton tb)
+    {
+        targetButton = tb;
+        targetButton.SetCharacter(this);
+    }
+
     public List<PA_Equipment> GetEquipments()
     {
         List<PA_Equipment> equipments = new List<PA_Equipment>();
@@ -683,8 +690,8 @@ public class Character : MonoBehaviour
             var s = Instantiate(StEParams.applyStE, transform);
             PA_StatusEffect pa = s.GetComponent<PA_StatusEffect>();
             PA_StE.Add(pa);
-           
-            pa.Init_StE(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer);
+
+            pa.Init_StE(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer, StEParams.applyStE);
             pa.Init(this, 0, infoText);
 
             if (StEStatus.refValue)
@@ -755,30 +762,7 @@ public class Character : MonoBehaviour
             }
         }
     }
-    ///// <summary>StE自身がこれを呼んでスタック消費or消去する</summary>
-    //public void RemoveStE_BySelf(ActionData.RemoveStE removeStE)
-    //{
-    //    foreach (PassiveAbility pa in GetPassiveAbilities())
-    //    {
-    //        if (pa.gameObject == removeStE.removeStE)
-    //        {
-    //            PA_StatusEffect.StatusEffectStatus StEStatus = pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-    //            if (removeStE.removeAll)
-    //            {
-    //                pa.GetComponent<PA_StatusEffect>().Disable();
-    //                charaObj.SetDamageText(string.Format("-{0}", StEStatus.StEName), StEStatus.StEType.ToColor());
-    //                infoText.AddLogText(string.Format("{0}の{1}が消去された", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName()));
-    //            }
-    //            else
-    //            {
-    //                pa.GetComponent<PA_StatusEffect>().AddStack(removeStE.addAmount);
-    //                charaObj.SetDamageText(string.Format("{0}{1}", StEStatus.StEName, removeStE.addAmount.GetValueWithSign()), Definer.colorRef.failed_unavailable);
-    //                infoText.AddLogText(string.Format("{0}の{1}のスタック{2}", charaStatus.charaName, pa.GetComponent<PA_StatusEffect>().GetPAName(), removeStE.addAmount.GetValueWithSign()));
-    //            }
-    //        }
-    //    }
-    //    //メッセージ
-    //}
+    
     /// <summary>各スタックのリストを返す</summary>
     public List<int> GetStEStacks(GameObject StEObj)
     {
@@ -838,6 +822,12 @@ public class Character : MonoBehaviour
         }
         return false;
     }
+
+    public int GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType StEType)
+    {
+        return PA_StE.Where(s => s.GetStatusEffectStatus().StEType == StEType).Distinct().Count();
+    }
+
     public bool CheckHasPE(GameObject PEObj)
     {
         return targetButton.GetPositionManager().CheckHasPE(PEObj);
@@ -870,24 +860,25 @@ public class Character : MonoBehaviour
     public string GetInfo(bool simple)
     {
         string info = charaStatus.GetInfo();
-        info += "\n◇◇状態異常◇◇\n";
+        info += "\n◇◇状態異常◇◇";
         foreach (PassiveAbility pa in PA_StE)
         {
-            if (pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().refValue)
+            PA_StatusEffect StE = pa.GetComponent<PA_StatusEffect>();
+            if (StE.GetStatusEffectStatus().refValue)
             {
-                info += string.Format("<{0}>\n{1}\n", pa.GetComponent<PA_StatusEffect>().GetPANameWithValue(), pa.GetPAInfo(simple));
+                info += $"\n<{StE.GetStatusEffectStatus().StEType.ToSpr()}{StE.GetPANameWithValue()}>{pa.GetPAInfo(simple)}";
             }
             else
             {
-                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
+                info += $"\n<{StE.GetStatusEffectStatus().StEType.ToSpr()}{pa.GetPAName()}>{pa.GetPAInfo(simple)}";
             }
 
         }
 
-        info += "\n◇◇特性◇◇\n";
+        info += "\n◇◇特性◇◇";
         foreach (PassiveAbility pa in PA_Per)
         {
-            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
+            info += string.Format("\n<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
         }
 
         if (charaStatus.player)
@@ -1701,20 +1692,21 @@ public class Character : MonoBehaviour
         battleManager.RemoveTurn(this);
 
         loot.DropItem_Loot(charaStatus.characterData.loot);
-        foreach(var eq in charaStatus.equipments)
-        {
-            loot.AddItem(eq.data, 1);
-        }
+        //foreach(var eq in charaStatus.equipments)
+        //{
+        //    loot.AddItem(eq.data, 1);
+        //}
 
         OnDie(killer);
         battleManager.Trigger_OnSomeoneDied(this);
+        OnBattleEnd();
 
         targetButton.ResetCharacter();
         charaObj.HideCharacterObj();
-        foreach (PassiveAbility pa in PA_StE)
-        {
-            pa.GetComponent<PA_StatusEffect>().DestroyIcon();
-        }
+        //foreach (PassiveAbility pa in PA_StE)
+        //{
+        //    pa.GetComponent<PA_StatusEffect>().DestroyIcon();
+        //}
 
         if (charaStatus.player)
         {
@@ -1738,6 +1730,15 @@ public class Character : MonoBehaviour
         charaObj.HideCharacterObj();
     }
 
+    public void Respawn(int pos)
+    {
+        charaStatus.position= pos;
+        charaStatus.dead = false;
+        SetTargetButton(charactersManager.GetTargetButton(pos));
+        charactersManager.AddCharacter(this);
+        charaObj.Respawn(pos);
+        infoText.AddLogText($"{charaStatus.charaName}は復活した！");
+    }
 
     /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる
     /// 発動可能なアビリティのうち、優先度が最も高いアビリティの重みを考慮して選ぶ</summary>

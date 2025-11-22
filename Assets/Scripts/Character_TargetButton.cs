@@ -213,6 +213,15 @@ public class Character_TargetButton : MonoBehaviour
                 }
             }
 
+            if (BattleManager.MO_buffKinds)
+            {
+                s += $"\n{"buff".ToSpr_withName()}í—Ş”F{character.GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff)}";
+            }
+            if (BattleManager.MO_debuffKinds)
+            {
+                s += $"\n{"debuff".ToSpr_withName()}í—Ş”F{character.GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)}";
+            }
+
             if (character.GetPACurrentStateInfo() != "")
             {
                 s += "\n\n" + character.GetPACurrentStateInfo().ColorStr(Definer.colorRef.emphasize);

@@ -151,6 +151,8 @@ MonoBehaviour:
   - {fileID: 3904089656222173935, guid: 8d4c2b61b4bedc94487325e5dd33b14e, type: 3}
   - {fileID: 3904089656222173935, guid: c9c3b91b98d8e9348ac68bcbbc8744a0, type: 3}
   - {fileID: 1489497368108049143, guid: 2f38d614892d4784683b7f5814f8cbd6, type: 3}
+  - {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
+  - {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
   colorRef:
     debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     player: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
@@ -217,6 +219,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
   - {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
   - {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+  - {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
   - {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}

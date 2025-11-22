@@ -519,7 +519,7 @@ public class BattleManager : MonoBehaviour
 
     public void EndTrigger_BattleEnd()
     {
-        charactersManager.DestroyDead();
+        charactersManager.DestroyOrRespawnDead();
         StartCoroutine(BattleEndAnim());
     }
 
@@ -896,8 +896,12 @@ public class BattleManager : MonoBehaviour
 
     //===============================================================[Settings]=================================================================
     public static bool displayInfoOnTS;
+    public static bool MO_buffKinds;
+    public static bool MO_debuffKinds;
 
     public void Settings_DisplayInfoOnTS(bool value) { displayInfoOnTS = value; }
+    public void Settings_MO_BuffKinds(bool value) { MO_buffKinds = value; }
+    public void Settings_MO_DebuffKinds(bool value) { MO_debuffKinds = value; }
 
     public void StartTutorial_Ability() { tutorialManager.SetTutorial(tutorial_ability); }
     public void StartTutorial_Corpse() { tutorialManager.SetTutorial(tutorial_corpse); }
@@ -993,6 +997,28 @@ public class PersonalBattleReport
     public PersonalBattleReport(Character c)
     {
         chara = c;
+    }
+
+    public PersonalBattleReport(PersonalBattleReport copy)
+    {
+        chara=copy.chara;
+        ATKDMG = copy.ATKDMG;
+        INTDMG = copy.INTDMG;
+        decreaseHP=copy.decreaseHP;
+        RDMG = copy.RDMG;
+        RShieldDMG = copy.RShieldDMG;
+        GHeal = copy.GHeal;
+        GShield = copy.GShield;
+    }
+    public void Add(PersonalBattleReport add)
+    {
+        ATKDMG += add.ATKDMG;
+        INTDMG += add.INTDMG;
+        decreaseHP += add.decreaseHP;
+        RDMG += add.RDMG;
+        RShieldDMG += add.RShieldDMG;
+        GHeal += add.GHeal;
+        GShield += add.GShield;
     }
 }
 

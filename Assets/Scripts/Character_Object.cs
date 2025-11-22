@@ -105,6 +105,16 @@ public class Character_Object : MonoBehaviour
         selectedIcon.enabled = false;
     }
 
+    /// <summary>
+    /// 戦闘後、プレイヤーかつ死んでいたなら呼ばれる
+    /// </summary>
+    public void Respawn(int pos)
+    {
+        transform.position = charactersManager.GetCharacterWorldPos(pos);
+        canvasGroup.alpha = 1;
+        SetCharaSprite(character.CharaStatus().variableSprites[0]);
+    }
+
     public void SetCharaSprite(GameObject sprite)
     {
         Character.CharacterStatus status = character.CharaStatus();

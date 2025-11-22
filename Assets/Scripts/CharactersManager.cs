@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
 public class CharactersManager : MonoBehaviour
 {
@@ -614,15 +615,25 @@ public class CharactersManager : MonoBehaviour
         foreach (Character_TargetButton targetButton in targetButtons_size1) { targetButton.SetSelectedIcon(false); }
     }
 
-
-    public void DestroyDead()
+    /// <summary>
+    /// プレイヤーを復活させ、それ以外は破壊
+    /// </summary>
+    public void DestroyOrRespawnDead()
     {
         List<Character> remove = new List<Character>();
+        List<Character> respawn = new List<Character>();
         foreach (Character c in generatedCharacters)
         {
             if (c.CharaStatus().dead)
             {
-                remove.Add(c);
+                if (c.IsPlayer())//プレイヤーの場合は復活
+                {
+                    respawn.Add(c);
+                }
+                else//プレイヤーでない場合は削除予定に追加
+                {
+                    remove.Add(c);
+                }
             }
         }
 
@@ -632,6 +643,17 @@ public class CharactersManager : MonoBehaviour
             Destroy(c.GetCharacter_Object().gameObject);
         }
 
+        List<int> playerPos = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+        List<int> emptyPlayerPos = GetEmptyPos(playerPos);
+        respawn.ForEach(c =>
+        {
+            generatedCharacters.Remove(c);
+            if (emptyPlayerPos.Count == 0) infoText.AddErrorText("プレイヤーの空きスペースがありません");
+            int pos = emptyPlayerPos[0];
+            emptyPlayerPos.Remove(pos);
+            c.Respawn(pos);
+            if (GameManager.gameParams.SANPenaltyOnDie > 0) c.SANDamage(GameManager.gameParams.SANPenaltyOnDie);
+        });
     }
 
     public Character SpawnPlayer(CharacterData characterData, int pos, int LVL, Character.SummonCharaStatusParams summonCharaParams = null)

@@ -5,14 +5,6 @@ using UnityEngine.UI;
 public class SettingManager : MonoBehaviour
 {
     [SerializeField] GameObject panel;
-    //[SerializeField,Header("\n\n")] float SEVolume_default;
-    //[SerializeField] Settings_Slider SEVolume;
-    //[SerializeField, Header("\n\n")] float BGMVolume_default;
-    //[SerializeField] Settings_Slider BGMVolume;
-    //[SerializeField, Header("\n\n")] float resolveSpeed_default;
-    //[SerializeField] Settings_Slider resolveSpeed;
-    //[SerializeField, Header("\n\n1:true 0:false")] int infoOnMouseover_default;
-    //[SerializeField] Setting_Toggle toggle_infoOnMouseover;
 
     [SerializeField] ActionQueueManager actionQueue;
 
@@ -53,6 +45,8 @@ public class SettingManager : MonoBehaviour
         actionQueue.SetResolveSpeed(settings[2].setting.GetValue());
         expeditionManager.Setting_ResetPos(settings[3].setting.GetValue() == 1);
         BattleManager.inst.Settings_DisplayInfoOnTS(settings[4].setting.GetValue() == 1);
+        BattleManager.inst.Settings_MO_BuffKinds(settings[5].setting.GetValue() == 1);
+        BattleManager.inst.Settings_MO_DebuffKinds(settings[6].setting.GetValue() == 1);
     }
 
     public void SettingsButton()
@@ -67,33 +61,6 @@ public class SettingManager : MonoBehaviour
             if (!panel.activeSelf) { PlayerPrefs.Save(); }
         }
     }
-
-    //public void ApplySEVolume()
-    //{
-    //    soundManager.SetSEVolume(SEVolume.GetValue());
-    //    SEVolume.SetValueText();
-    //    PlayerPrefs.SetFloat("Settings_SEVolume", SEVolume.GetValue());
-    //}
-    //public void ApplyBGMVolume()
-    //{
-    //    soundManager.SetBGMVolume(BGMVolume.GetValue());
-    //    BGMVolume.SetValueText();
-    //    PlayerPrefs.SetFloat("Settings_BGMVolume", BGMVolume.GetValue());
-    //    PlayerPrefs.Save();
-    //}
-    //public void ApplyResolveSpeed()
-    //{
-    //    actionQueue.SetResolveSpeed(resolveSpeed.GetValue());
-    //    resolveSpeed.SetValueText();
-    //    PlayerPrefs.SetFloat("Settings_resolveSpeed", resolveSpeed.GetValue());
-    //    PlayerPrefs.Save();
-    //}
-    //public void ApplyInfoOnMouseOver()
-    //{
-    //    infoOnMouseover = toggle_infoOnMouseover.GetValue();
-    //    PlayerPrefs.SetInt("Settings_infoOnMouseover", (infoOnMouseover) ? 1 : 0);
-    //    PlayerPrefs.Save();
-    //}
 
     /// <summary>valueはsliderでなく実際の値</summary>
     public void SetValue(float value, string key)
@@ -124,7 +91,16 @@ public class SettingManager : MonoBehaviour
             setting = settings[4];
             BattleManager.inst.Settings_DisplayInfoOnTS(value == 1);
         }
-
+        else if (key == settings[5].key)//バフの種類数表示
+        {
+            setting = settings[5];
+            BattleManager.inst.Settings_MO_BuffKinds(value == 1);
+        }
+        else if (key == settings[6].key)//デバフの種類数表示
+        {
+            setting = settings[6];
+            BattleManager.inst.Settings_MO_DebuffKinds(value == 1);
+        }
 
         else
         {

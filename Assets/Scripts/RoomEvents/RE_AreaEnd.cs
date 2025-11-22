@@ -20,16 +20,18 @@ public class RE_AreaEnd : RoomEvent
 
     public override void OnEndREInfo()
     {
-        if (characterManager.GetExistingCharacters_All().Count < 4)
-        {
-            phase = 0;
-            StartDeploy();
-        }
-        else
-        {
-            phase = 1;
-            StartSelecrNextArea();
-        }
+        //if (characterManager.GetExistingCharacters_All().Count < 4)
+        //{
+        //    phase = 0;
+        //    StartDeploy();
+        //}
+        //else
+        //{
+        //    phase = 1;
+        //    StartSelecrNextArea();
+        //}
+        phase = 1;
+        StartSelecrNextArea();
     }
     void StartDeploy()
     {

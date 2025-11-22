@@ -50,7 +50,7 @@ MonoBehaviour:
     dropEquipmentsRange: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 1
-  maxHP: 125
+  maxHP: 50
   maxSAN: 0
   ATK: 10
   INT: 10

@@ -28,6 +28,8 @@ public class ActionMod : MonoBehaviour
         public float exDMG_mul;
         public int exATKDMG_int;
         public int exINTDMG_int;
+        public int ATKDMG_divide_int;
+        public int INTDMG_divide_int;
         public float ACCMod;
         public float CRITCMod;
         public float CRITDMod;
@@ -90,6 +92,8 @@ public class ActionMod : MonoBehaviour
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
                 if (exATKDMG_int != 0) { s += ValueToStr($"・与{"ATK".ToSpr_withName("物理")}ダメージ", exATKDMG_int, ""); }
                 if (exINTDMG_int != 0) { s += ValueToStr($"・与{"INT".ToSpr_withName("魔法")}ダメージ", exINTDMG_int, ""); }
+                //if (ATKDMG_divide_int != 0) { s+= }
+                //if (INTDMG_divide_int != 0) { s += ValueToStr($"・与{"INT".ToSpr_withName("魔法")}ダメージ", INTDMG_divide_int, ""); }
                 if (ACCMod != 0) { s += ValueToStr($"・{"ACC".ToSpr_withLink()}補正", ACCMod, ""); }
                 if (CRITCMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}率補正", CRITCMod, "％"); }
                 if (CRITDMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}ダメージ補正", CRITDMod, "倍"); }
