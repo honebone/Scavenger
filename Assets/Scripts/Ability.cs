@@ -99,7 +99,7 @@ public class Ability : MonoBehaviour
             {
                 s += "・ターンをパスする\n　(行動したとはみなされない)\n";
             }
-            if (freeAction) { s += "使用してもターンが終了しない\n".ColorStr(Definer.colorRef.emphasize); }
+            if (freeAction) { s += $"・{"クイックアビリティ".ToLinkKey()}\n".ColorStr(Definer.colorRef.emphasize); }
 
             if (simple&&!abilityData.noSimpleInfo&&false)//test
             {
@@ -195,186 +195,21 @@ public class Ability : MonoBehaviour
         public void SetManager(Ability m) { instantiatedManager = m; }
 
         public void Unlock() { locked = false; }
-        public void AddRemain(int value) { remain = Mathf.Clamp(remain + value, 0, maxRemain); }
-        public void SetRemain(int value) { remain = Mathf.Clamp(value, 0, maxRemain); }
+        public void AddRemain(int value)
+        {
+            int max = maxRemain == 0 ? 999 : maxRemain;
+            remain = Mathf.Clamp(remain + value, 0, max);
+        }
+        public void SetRemain(int value)
+        {
+            int max = maxRemain == 0 ? 999 : maxRemain;
+            remain = Mathf.Clamp(value, 0, max);
+        }
         public void CoolDown_OnBattleStart() { cooldown = cooldownOnBattleStart; }
         public void CoolDown_OnUse() { cooldown = cooldownOnUse; }
         public void SetCoolDown(int value) { cooldown = Mathf.Max(0, value); }
 
         public void AddCoolDown(int value) { cooldown = Mathf.Max(0, cooldown + value); }
-        //public bool CheckAvailable(Character owner,CharactersManager cm) {
-        //    bool atProperPos = false;
-        //    bool hasProperTarget = true;
-        //    bool properCondition = false; ;
-        //    Character.CharacterStatus ownerStatus = owner.GetCharacterStatus();
-        //    int column = ownerStatus.position.GetColumn();
-        //    if (availableFront && column == 0) { atProperPos = true; }
-        //    if (availableMid && column == 1) { atProperPos = true; }
-        //    if (availableBack && column == 2) { atProperPos = true; }
-        //    //if (BattleManager.inBattle)
-        //    //{
-        //    //    Ability ability = abilityManager.GetComponent<Ability>();
-        //    //    ability.SetRefs(owner, this, cm);
-        //    //    for (int i = 0; i < actionsStatus.Length; i++)
-        //    //    {
-        //    //        if (ability.GetTargetPool(i).Count == 0)
-        //    //        {
-        //    //            hasProperTarget = false;
-        //    //            break;
-        //    //        }
-        //    //    }
-        //    //}
-        //    properCondition = !hasSelfCondition || cm.CheckIfMatchCondition(owner, selfCondition);
-        //    return !locked && (!hasRemain || remain > 0) && cooldown == 0 && unavailable == 0 && atProperPos && hasProperTarget && properCondition;
-        //}
-
-        //public List<string> GetUnavailabeInfo(Character owner, CharactersManager cm,BattleManager bm)
-        //{
-        //    List<string> info = new List<string>();
-        //    Character.CharacterStatus ownerStatus = owner.GetCharacterStatus();
-        //    if (!BattleManager.inBattle || !ownerStatus.playable) { return info; }
-
-        //    bool atProperPos = false;
-        //    bool hasProperTarget = true;
-        //    bool properCondition = false;
-
-           
-        //    int column = ownerStatus.position.GetColumn();
-        //    if (availableFront && column == 0) { atProperPos = true; }
-        //    if (availableMid && column == 1) { atProperPos = true; }
-        //    if (availableBack && column == 2) { atProperPos = true; }
-        //    //Ability ability = abilityManager.GetComponent<Ability>();
-        //    //ability.SetRefs(owner, this, cm);
-        //    //for (int i = 0; i < actionsStatus.Length; i++)
-        //    //{
-        //    //    if (ability.GetTargetPool(i).Count == 0)
-        //    //    {
-        //    //        hasProperTarget = false;
-        //    //        break;
-        //    //    }
-        //    //}
-        //    properCondition = !hasSelfCondition || cm.CheckIfMatchCondition(owner, selfCondition);
-
-        //    if (locked) { info.Add("未解放のアビリティ"); }
-        //    if (!bm.checkIfMyTurn(owner)) { info.Add("自身のターンでない"); }
-        //    if (hasRemain && remain <= 0) { info.Add("使用可能数0"); }
-        //    if (cooldown>0) { info.Add("クールダウン中"); }
-        //    if (!atProperPos) { info.Add("発動可能列にいない"); }
-        //    if (!hasProperTarget) { info.Add("対象なし"); }
-        //    if (!properCondition || unavailable > 0) { info.Add("発動条件を満たしていない"); }
-
-
-        //    return info;
-        //}
-        //public bool HasProperTarget(CharactersManager charactersManager,Character actionOwner)//Initせずに使う
-        //{
-        //    Character.CharacterStatus targetStatus;
-        //    bool found = false;
-        //    foreach (Action.ActionStatus actionStatus in actionsStatus)
-        //    {
-        //        found = false;
-        //        if (!actionStatus.condition.searchAsPos)//キャラ選択のアビリティ
-        //        {
-        //            switch (actionStatus.targetType)
-        //            {
-        //                case Action.ActionStatus.TargetType.other:
-        //                    print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
-        //                    break;
-        //                case Action.ActionStatus.TargetType.single://単体対象
-
-        //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-        //                    {
-        //                        targetStatus = target.GetCharacterStatus();
-        //                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-        //                        {
-        //                            found = true;
-        //                            break;
-        //                        }
-        //                    }
-        //                    if (found) { continue; }
-        //                    return false;
-        //                case Action.ActionStatus.TargetType.column:
-
-        //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-        //                    {
-        //                        targetStatus = target.GetCharacterStatus();
-        //                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-        //                        {
-        //                            found = true;
-        //                            break;
-        //                        }
-        //                    }
-        //                    if (found) { continue; }
-        //                    return false;
-        //                case Action.ActionStatus.TargetType.all:
-        //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-        //                    {
-        //                        targetStatus = target.GetCharacterStatus();
-        //                        if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-        //                        {
-        //                            found = true;
-        //                            break;
-        //                        }
-        //                    }
-        //                    if (found) { continue; }
-        //                    return false;
-        //                case Action.ActionStatus.TargetType.singleWoSelf:
-        //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-        //                    {
-        //                        if (target != actionOwner)
-        //                        {
-        //                            targetStatus = target.GetCharacterStatus();
-        //                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-        //                            {
-        //                                found = true;
-        //                                break;
-        //                            }
-        //                        }
-        //                    }
-        //                    if (found) { continue; }
-        //                    return false;
-        //                case Action.ActionStatus.TargetType.allWoSelf:
-        //                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
-        //                    {
-        //                        if (target != actionOwner)
-        //                        {
-        //                            targetStatus = target.GetCharacterStatus();
-        //                            if (targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
-        //                            {
-        //                                found = true;
-        //                                break;
-        //                            }
-        //                        }
-        //                    }
-        //                    if (found) { continue; }
-        //                    return false;
-        //                case Action.ActionStatus.TargetType.self:
-        //                    continue;
-        //                case Action.ActionStatus.TargetType.move://操作可能キャラのみ
-        //                    continue;
-        //                default:
-        //                    FindObjectOfType<InfoText>().AddErrorText("そのtargetTypeの処理は未実装");
-        //                    break;
-        //            }
-        //        }
-        //        else//ポジション選択のアビリティ
-        //        {
-        //            switch (actionStatus.targetType)
-        //            {
-        //                case Action.ActionStatus.TargetType.other:
-        //                    print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
-        //                    break;
-        //                case Action.ActionStatus.TargetType.single:
-        //                    if (charactersManager.SearchPosWithCondition(actionStatus.condition).Count > 0) { continue; }
-        //                    return false;
-        //                default:
-        //                    FindObjectOfType<InfoText>().AddErrorText("そのtargetTypeの処理は未実装");
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //    return true;
-        //}
     }
 
    protected Character character;

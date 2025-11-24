@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Zombie_Scratch
+  m_Name: A_Farmer_Debuff
   m_EditorClassIdentifier: 
-  abilityName: "\u5F15\u3063\u304B\u304D"
+  abilityName: "\u53B3\u51AC"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 1
+  abilityType: 4
   excludeRandomPool: 0
   priority: 1
-  selectWeight: 2
+  selectWeight: 1
   availableFront: 1
-  availableMid: 1
-  availableBack: 1
+  availableMid: 0
+  availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -54,29 +54,30 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u5F15\u3063\u304B\u304D"
+  - actionName: "\u53B3\u51AC"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u6575\u5168\u4F53(<color=#FAED8A><sprite name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u30FB<color=#C900FF><sprite
+      name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u7121\u8996)"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
-    VE_OnTargets: {fileID: 4366905902945979247, guid: 06ec826725d92e64e8c32875f5906e4e, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
-      enemy: 0
+      player: 0
+      enemy: 1
       onlyPlayable: 0
       front: 1
       mid: 1
@@ -97,8 +98,8 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
     neigborPos: []
-    ignoreMark: 0
-    ignoreHide: 0
+    ignoreMark: 1
+    ignoreHide: 1
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
@@ -111,8 +112,8 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -152,11 +153,20 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+    - applyStE: {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
       guaranteed: 0
-      applyChance: 80
-      stack: 4
-      value: 15
+      applyChance: 85
+      stack: 2
+      value: 30
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
+      guaranteed: 0
+      applyChance: 85
+      stack: 2
+      value: 3
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -196,7 +206,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 4
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -204,6 +214,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 6
     actionTargets: []
     actionTargetsInt: 

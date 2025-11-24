@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System.Linq;
 using UnityEditor.SceneManagement;
 using UnityEditor.Experimental.SceneManagement;
 
@@ -46,6 +47,12 @@ public class UtilityWindow : EditorWindow
         {"潜伏","<color=#FAED8A><sprite name=buff><link=S_潜伏><u>潜伏</u></link></color>" },
         {"星屑","<color=#3473CA><link=S_星屑><u>星屑</u></link></color>" },
 
+    };
+    Dictionary<string, string> commonPhrases = new Dictionary<string, string>()
+    {
+        {"(マークを無視)","(<color=#C900FF><sprite name=debuff><link=S_マーク><u>マーク</u></link></color>を無視)" },
+        {"(潜伏を無視)","(<color=#FAED8A><sprite name=buff><link=S_潜伏><u>潜伏</u></link></color>を無視)" },
+        {"(潜伏・マークを無視)","(<color=#FAED8A><sprite name=buff><link=S_潜伏><u>潜伏</u></link></color>・<color=#C900FF><sprite name=debuff><link=S_マーク><u>マーク</u></link></color>を無視)" },
     };
 
 
@@ -156,7 +163,32 @@ public class UtilityWindow : EditorWindow
                 }
                 i++;
             }
-            
+        }
+
+        GUILayout.Space(10);
+        GUILayout.Label("common phrases", EditorStyles.boldLabel);
+        int columns_cp = 3;
+        if (cp != null)
+        {
+            int i = 0;
+            foreach (var key in commonPhrases.Keys)
+            {
+                if (i % columns_cp == 0)
+                {
+                    GUILayout.BeginHorizontal();
+                }
+
+                if (GUILayout.Button(key, GUILayout.Height(30), GUILayout.Width(300)))
+                {
+                    CopyCommonPhrase(key);
+                }
+
+                if (i % columns_cp == columns_cp - 1 || i == commonPhrases.Count - 1)
+                {
+                    GUILayout.EndHorizontal();
+                }
+                i++;
+            }
         }
 
         GUILayout.Space(10);
@@ -295,6 +327,14 @@ public class UtilityWindow : EditorWindow
     {
         string output = commonText[key];
        
+        EditorGUIUtility.systemCopyBuffer = output;
+        Debug.Log($"Copied: {output}");
+        ShowNotification(new GUIContent($"Copied: {output}"));
+    }
+    void CopyCommonPhrase(string key)
+    {
+        string output = commonPhrases[key];
+
         EditorGUIUtility.systemCopyBuffer = output;
         Debug.Log($"Copied: {output}");
         ShowNotification(new GUIContent($"Copied: {output}"));

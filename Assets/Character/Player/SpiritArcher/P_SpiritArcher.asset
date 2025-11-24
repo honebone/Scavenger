@@ -66,8 +66,8 @@ MonoBehaviour:
   CRITD: 50
   EVD: 5
   ACC: 100
-  ACT: 80
-  turnPerRound: 3
+  ACT: 8
+  turnPerRound: 1
   GHeal: 0
   RHeal: 0
   debuffRes: 0

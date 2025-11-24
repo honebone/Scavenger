@@ -22,7 +22,7 @@ public class AMod_HPPercent_TH : ActionMod
         {
             if (!checkOwner) status = statusRef.actionTargets[i].CharaStatus();
             percent = status.GetHPPercent();
-            if ((!greater && percent > THPercent) || (greater && percent < THPercent)) { break; }
+            if ((!greater && percent > THPercent) || (greater && percent < THPercent)) { continue; }
             actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
         }
         return actionsStatus;

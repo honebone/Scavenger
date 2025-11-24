@@ -1,86 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
+--- !u!1 &980131611971298319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5954328460363848495}
+  - component: {fileID: 1068779590259627959}
+  m_Layer: 0
+  m_Name: A_Farmer_AttackColmun_Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5954328460363848495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980131611971298319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1068779590259627959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 980131611971298319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Zombie_Scratch
+  m_Script: {fileID: 11500000, guid: df0b59b77cca6ad43a70438015642d59, type: 3}
+  m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: "\u5F15\u3063\u304B\u304D"
-  lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 0}
-  noSimpleInfo: 0
-  simpleInfo: 
-  abilityManager: {fileID: 0}
-  abilityType: 1
-  excludeRandomPool: 0
-  priority: 1
-  selectWeight: 2
-  availableFront: 1
-  availableMid: 1
-  availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
-  selfCondition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-  freeAction: 0
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
-  actionsStaus:
-  - actionName: "\u5F15\u3063\u304B\u304D"
-    conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+  maxActivate: 3
+  excludeObstacle: 0
+  targetSelf: 1
+  secondAction:
+    actionName: 
+    conditionInfo: "\u3053\u308C\u3067[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u6575\u30921\u4F53\u5012\u3059\u305F\u3073"
+    targetInfo: 
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
-    VE_OnTargets: {fileID: 4366905902945979247, guid: 06ec826725d92e64e8c32875f5906e4e, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 0
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
+      player: 0
       enemy: 0
       onlyPlayable: 0
-      front: 1
-      mid: 1
-      back: 1
+      front: 0
+      mid: 0
+      back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -111,8 +100,8 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -151,16 +140,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
-      guaranteed: 0
-      applyChance: 80
-      stack: 4
-      value: 15
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -193,10 +173,15 @@ MonoBehaviour:
     moveLower: 0
     moveBackword: 0
     changeSelfSprite: {fileID: 0}
-    abilityRemainControlls: []
-    abilityEffect: 1
+    abilityRemainControlls:
+    - abilityData: {fileID: 11400000, guid: c617dd0288b048b4fb6d73d09ffc8152, type: 2}
+      set: 0
+      value: 1
+      set_CD: 0
+      value_CD: 0
+    abilityEffect: 0
     freeAction: 0
-    abilityType: 1
+    abilityType: 0
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -204,6 +189,31 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 0
     actionTargets: []
     actionTargetsInt: 
+  condition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+  targetCount: 0

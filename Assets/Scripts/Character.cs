@@ -1492,33 +1492,42 @@ public class Character : MonoBehaviour
             if (remainControll.abilityData.upgradeAbility != null && ability.abilityData == remainControll.abilityData.upgradeAbility) { f = true; }
             if (f)
             {
-                if (remainControll.set) { ability.remain = remainControll.value; }
-                else
+                string abilityName = $"<{ability.abilityName.ColorStr(ability.abilityType.ToColor())}>";
+
+                if (remainControll.set)//使用回数セット
+                {
+                    ability.remain = remainControll.value;
+
+                    SetDamageText($"{abilityName}の使用回数→{remainControll.value}", Color.white);
+                    infoText.AddLogText($"{charaStatus.charaName}の{abilityName}の使用回数が{remainControll.value}になった");
+                }
+                else if (remainControll.value != 0)//使用回数増減
                 {
                     int maxRemain = ability.maxRemain;
                     if (ability.maxRemain == 0) { maxRemain = 999; }
                     ability.remain = Mathf.Clamp(ability.remain + remainControll.value, 0, maxRemain);
+
+                    SetDamageText($"{abilityName}の使用回数+{remainControll.value} ({ability.remain})", Color.white);
+                    infoText.AddLogText($"{charaStatus.charaName}の{abilityName}の使用回数が{ability.remain}になった");
                 }
-                if (remainControll.set_CD) { ability.cooldown = remainControll.value_CD; }
-                else
+
+
+                if (remainControll.set_CD)//クールダウンセット
+                {
+                    ability.cooldown = remainControll.value_CD;
+
+                    SetDamageText($"{abilityName}のクールダウン→{remainControll.value_CD}", Color.white);
+                    infoText.AddLogText($"{charaStatus.charaName}の{abilityName}のクールダウンが{ability.cooldown}になった");
+                }
+                else if (remainControll.value_CD != 0)//クールダウン増減
                 {
                     ability.cooldown += remainControll.value_CD;
+
+                    SetDamageText($"{abilityName}のクールダウン+{remainControll.value_CD} ({ability.cooldown})", Color.white);
+                    infoText.AddLogText($"{charaStatus.charaName}の{abilityName}のクールダウンが{ability.cooldown}になった");
                 }
-                infoText.AddLogText(string.Format("{0}の<{1}>の使用回数が{2}になった", charaStatus.charaName, ability.abilityName.ColorStr(ability.abilityType.ToColor()), ability.remain));
             }
         }
-        //for(int i=0; i<charaStatus.abilitiesStatus.Length;i++)
-        //{
-        //    if (charaStatus.abilitiesStatus[i].abilityData == remainControll.abilityData)
-        //    {
-        //        infoText.AddDebugText("ok");
-        //        if (remainControll.set) { charaStatus.abilitiesStatus[i].remain = remainControll.value; }
-        //        else
-        //        {
-        //            charaStatus.abilitiesStatus[i].remain = Mathf.Clamp(charaStatus.abilitiesStatus[i].remain + remainControll.value, 0, charaStatus.abilitiesStatus[i].maxRemain);
-        //        }
-        //    }
-        //}
     }
 
     public void GainEXP(int amount)

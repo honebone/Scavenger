@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class Action : MonoBehaviour
 {
@@ -896,7 +897,6 @@ public class Action : MonoBehaviour
         if (actionStatus.freeAction)
         {
             if (!actionStatus.abilityEffect) { infoText.AddErrorText("アビリティじゃないのにフリーアクション"); }
-            infoText.AddDebugText("FreeAction");
             actionStatus.actionOwner.ContinueTurn();
         }
 
@@ -1697,10 +1697,10 @@ public class Action : MonoBehaviour
     }
 
     //=====================================================[以下SecondEffect関連]=================================================
-    /// <summary>自身のスプライトを代入してEnqueue</summary>
     public void Enqueue(ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
     {
-        actionStatus.actionOwner.Enqueue(actionStatus, setTargets, actionTargets, targetCount, nullOwner);
+        ActionStatus action = actionStatus;
+        actionStatus.actionOwner.Enqueue(action, setTargets, actionTargets, targetCount, nullOwner);
     }
 
     /// <summary>自身を対象にEunqueue</summary>
@@ -1708,6 +1708,30 @@ public class Action : MonoBehaviour
     {
         ActionStatus action = act;
         actionStatus.actionOwner.Enqueue(action, true, new List<Character>() { actionStatus.actionOwner }, 0);
+    }
+
+    public bool Enqueue_SearchTarget(Action.ActionStatus actionStatus, CharactersManager.SearchCharaCondition condition, int targetCount = 0)
+    {
+        Action.ActionStatus action = actionStatus;
+        List<Character> target = new List<Character>();
+        List<int> targetPos = new List<int>();
+        if (condition.searchAsPos)
+        {
+            targetPos = CharactersManager.inst.SearchPosWithCondition(condition);
+            action.actionTargetsInt = targetPos;
+        }
+        else
+        {
+            target = CharactersManager.inst.SearchCharaWithCondition(condition, actionStatus.actionOwner);
+            action.actionTargets = target;
+        }
+
+        if (target.Count > 0 || targetPos.Count > 0)
+        {
+            Enqueue(action, false, target, targetCount);
+            return true;
+        }
+        return false;
     }
 
     public bool CheckIfAbilityEffect() { return actionStatus.abilityEffect; }
