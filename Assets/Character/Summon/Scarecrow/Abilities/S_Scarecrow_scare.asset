@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Farmer_Attack
+  m_Name: S_Scarecrow_scare
   m_EditorClassIdentifier: 
-  abilityName: "\u92E4\u306E\u523A\u7A81"
+  abilityName: "\u30D0\u30A1\uFF01"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 1
+  abilityType: 4
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -59,18 +59,17 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u92E4\u306E\u523A\u7A81"
+  - actionName: "\u30D0\u30A1\uFF01"
     conditionInfo: 
     targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
-    VE_OnTargets: {fileID: 8600094244076860655, guid: 9764dfd0591cd5d4ca5bee2ad2b0b8f2, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 980131611971298319, guid: 44fbb48ef2e97074bb299b598c07de70, type: 3}
+    actionMods: []
     targetType: 1
     friendly: 0
     condition:
@@ -112,8 +111,8 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 0
+    ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -152,7 +151,16 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 8ed583e08393a3445b99e63968b1a817, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 2
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -177,18 +185,18 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-    moveChance: 67
+    moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 1
+    moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 4
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

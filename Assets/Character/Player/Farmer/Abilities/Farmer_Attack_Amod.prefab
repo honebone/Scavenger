@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5954328460363848495}
-  - component: {fileID: 2704225780601090803}
+  - component: {fileID: 3404417727636778070}
   m_Layer: 0
-  m_Name: A_Farmer_AttackColmun_Amod
+  m_Name: Farmer_Attack_Amod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2704225780601090803
+--- !u!114 &3404417727636778070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 980131611971298319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d3d5bb0fea1ea419f728b14d8535d9, type: 3}
+  m_Script: {fileID: 11500000, guid: fe7ec6b33314dea4ea83c5eecb7896af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u5BFE\u8C61\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C25\uFF05\u4EE5\u4E0B\u306A\u3089"
+    conditionInfo: "\u5BFE\u8C61\u306B<color=#DD6300><sprite name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u304C\u3042\u308B"
     hideValues: 0
     exInfo: 
     exTurn: 0
-    consumeFocus: 0
+    consumeFocus: 1
     decreaseHP: 0
-    ATKMod: 65
+    ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
@@ -60,11 +60,11 @@ MonoBehaviour:
     exINTDMG_int: 0
     ATKDMG_divide_int: 0
     INTDMG_divide_int: 0
-    ACCMod: 0
+    ACCMod: 25
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
-    ignoreShield: 1
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -77,7 +77,16 @@ MonoBehaviour:
     shieldAdd_percent: 0
     shieldRemove: 0
     shieldRemove_all: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 2
+      value: 25
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyStEBonus: []
     debuffChanceMod: 0
     removeStE_buff: 0
@@ -107,7 +116,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-  greater: 0
-  THPercent: 25
-  checkOwner: 0
   onlyAttack: 0
+  onlyAbility: 0
+  onlyPassive: 0
+  notFocus: 0

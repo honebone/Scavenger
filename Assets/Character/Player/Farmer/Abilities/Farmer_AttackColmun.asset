@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Farmer_AttackColmun
+  m_Name: Farmer_AttackColmun
   m_EditorClassIdentifier: 
   abilityName: "\u53CE\u7A6B\u306E\u938C"
   lockedDefault: 0
