@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5954328460363848495}
   - component: {fileID: 2704225780601090803}
   m_Layer: 0
-  m_Name: Farmer_AttackColmun_Amod
+  m_Name: Farmer_AttackColmun_Amod2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
-    ATKMod: 60
+    ATKMod: 80
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     CRITDMod: 0
     drain: 0
     ignoreShield: 1
-    sureHit: 0
+    sureHit: 1
     unevadable: 0
     exHeal_mul: 0
     healValue: 0

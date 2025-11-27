@@ -30,6 +30,11 @@ public class PA_StEU_Commander_Trained : PA_StatusEffect
         return actionsStatus;
     }
 
+    public override void OnTurnEnd(TurnEndParams tep)
+    {
+        if (tep.myTurn && applyFlag) { AddStack(-1); }
+    }
+
     public override string GetAdditionalInfo()
     {
         string s = "";

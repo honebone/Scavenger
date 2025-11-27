@@ -36,6 +36,7 @@ public class UtilityWindow : EditorWindow
         {"魔法","<sprite name=INT><color=#256CC8>魔法</color>" },
         {"回復","<sprite name=HP><color=#87FF79>回復</color>" },
         {"誘発能力","<link=U_誘発能力><u>誘発能力</u></link>" },
+        {"クイックアビリティ","<color=#FFBF69><link=U_クイックアビリティ><u>クイックアビリティ</u></link></color>" },
         {"{X}","<color=#FFBF69><i>{X}</i></color>" },
         {"{効果量}","<color=#FFBF69><i>{効果量}</i></color>" },
         {"ATK補正","<sprite name=ATK><link=U_ATK(INT)補正><u><color=#C30000>ATK</color>補正</u></link>" },

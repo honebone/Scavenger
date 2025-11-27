@@ -77,19 +77,21 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u518D\u751F"
-    StEInfo: "\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#87FF79><sprite name=HP><link=T_HP><u>HP</u></link></color>\u304C\u56DE\u5FA9\u3059\u308B\r\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1\r\n\u56DE\u5FA9\u91CF\u306F\u4ED8\u4E0E\u8005\u306E<color=#C30000><sprite
-      name=ATK><link=T_ATK><u>ATK</u></link></color>\u307E\u305F\u306F<color=#256CC8><sprite
-      name=INT><link=T_INT><u>INT</u></link></color>\u306EX\uFF05\u306B\u7B49\u3057\u304F\u3001\u4E0E\u56DE\u5FA9\u91CF\u3084\u88AB\u56DE\u5FA9\u91CF\u306B\u4F9D\u5B58\u3057\u306A\u3044"
+    StEInfo: "\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#87FF79><sprite name=HP><link=T_HP><u>HP</u></link></color>\u304C\u56DE\u5FA9\u3059\u308B\r\n\u305D\u306E\u5F8C\u3001\u30B9\u30BF\u30C3\u30AF-1\r\n\u56DE\u5FA9\u91CF\u306F\u3001\u4ED8\u4E0E\u3057\u305F\u30AD\u30E3\u30E9\u306E\u4E0E\u56DE\u5FA9\u91CF\u3084\u4ED8\u4E0E\u3055\u308C\u305F\u30AD\u30E3\u30E9\u306E\u88AB\u56DE\u5FA9\u91CF\u306B\u4F9D\u5B58\u3057\u306A\u3044"
     StEIcon: {fileID: 21300000, guid: 7f8853132fe95dc479c0bca2e54b33c0, type: 3}
     StEType: 1
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 0
     merge: 0
     refValue: 0
     undeletable: 0
     DoT: 0
     regen: 1
+    StEPrefab: {fileID: 0}
     applyer: {fileID: 0}
     stack: 0
     value: 0
@@ -103,6 +105,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -113,12 +116,14 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -127,6 +132,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -146,11 +154,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -160,6 +172,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -200,6 +213,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -217,8 +232,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

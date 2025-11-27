@@ -15,7 +15,7 @@ MonoBehaviour:
   fileName: P_Farmer
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u8FB2\u6C11"
-  introduction: 
+  introduction: "\u30AA\u30FC\u30EB\u30E9\u30A6\u30F3\u30C9\u3067\u30B7\u30F3\u30D7\u30EB\u306A\u653B\u6483\u30AD\u30E3\u30E9\n<<color=#C00700>\u53CE\u7A6B\u306E\u938C</color>>\u3067\u6575\u3092\u5012\u3059\u3068\u3001\u30BF\u30FC\u30F3\u3092\u6D88\u8CBB\u3057\u306A\u3044\u56DE\u5FA9\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u3042\u308B<<color=#87FF79>\u8C4A\u4F5C</color>>\u304C\u4F7F\u7528\u53EF\u80FD\u3068\u306A\u308B"
   difficulty: "\u4F4E"
   preferFront: 1
   preferMid: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c617dd0288b048b4fb6d73d09ffc8152, type: 2}
   - {fileID: 11400000, guid: b2ad5b520f3356b4e850fdf057aed1b8, type: 2}
   - {fileID: 11400000, guid: a8fefb137591724449c85a0b91d8fdf4, type: 2}
-  - {fileID: 11400000, guid: 3c11b77a0a06ece4fa38f01ce3c0cff1, type: 2}
+  - {fileID: 11400000, guid: 3449ed405f368064db2010c8d7266633, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
@@ -66,8 +66,8 @@ MonoBehaviour:
   CRITD: 50
   EVD: 5
   ACC: 98
-  ACT: 50
-  turnPerRound: 8
+  ACT: 5
+  turnPerRound: 1
   GHeal: 0
   RHeal: 0
   debuffRes: 0

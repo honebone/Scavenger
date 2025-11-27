@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Farmer_Summon
   m_EditorClassIdentifier: 
   abilityName: "\u4F5C\u7269\u306E\u4FDD\u8B77"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 5b6189cd3585fd74184ade404fdf9f82, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -34,6 +34,7 @@ MonoBehaviour:
     player: 1
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -81,6 +82,7 @@ MonoBehaviour:
       player: 1
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1

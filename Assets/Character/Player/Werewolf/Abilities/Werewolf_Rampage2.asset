@@ -27,13 +27,14 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 1
-  conditionInfo: "\u81EA\u8EAB\u306B\u4EBA\u72FC\u304C\u3042\u308B"
+  conditionInfo: "<color=#FFFFFF><link=S_\u4EBA\u72FC><u>\u4EBA\u72FC</u></link></color>\u72B6\u614B\u3067\u3042\u308B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 1
     enemy: 1
     onlyPlayable: 1
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -81,6 +82,7 @@ MonoBehaviour:
       player: 0
       enemy: 1
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 0
@@ -231,6 +233,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0

@@ -159,6 +159,7 @@ public class CharactersManager : MonoBehaviour
         public bool player;
         public bool enemy;
         public bool onlyPlayable;
+        public bool onlyNonplayable;
         [Space]
         public bool front;
         public bool mid;
@@ -204,6 +205,7 @@ public class CharactersManager : MonoBehaviour
         if (!condition.player && status.position < 9) { return false; }
         if (!condition.enemy && status.position >= 9) { return false; }
         if (condition.onlyPlayable && !status.playable) { return false; }
+        if (condition.onlyNonplayable && status.playable) { return false; }
         if (!condition.front && status.position.GetColumn() == 0) { return false; }
         if (!condition.mid && status.position.GetColumn() == 1) { return false; }
         if (!condition.back && status.position.GetColumn() == 2) { return false; }

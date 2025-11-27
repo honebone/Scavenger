@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u8C4A\u4F5C"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: b37d00d33b56ac14db888ce674ab4d22, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -34,6 +34,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -78,6 +79,7 @@ MonoBehaviour:
       player: 1
       enemy: 0
       onlyPlayable: 1
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1

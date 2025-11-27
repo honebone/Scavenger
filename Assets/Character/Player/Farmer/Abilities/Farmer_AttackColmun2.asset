@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Werewolf_ExtractCurse2
+  m_Name: Farmer_AttackColmun2
   m_EditorClassIdentifier: 
-  abilityName: "\u546A\u3044\u306E\u62BD\u51FA+"
+  abilityName: "\u53CE\u7A6B\u306E\u938C+"
   lockedDefault: 0
-  upgradeInfo: "INT\u88DC\u6B63+30\uFF05"
+  upgradeInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C25\uFF05\u4EE5\u4E0B\u306E\u6575\u306B\u5BFE\u3057\u3066\n<sprite
+    name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+20\uFF05\n\u5FC5\u4E2D\u3068\u306A\u308B"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -24,28 +25,27 @@ MonoBehaviour:
   priority: 1
   selectWeight: 1
   availableFront: 1
-  availableMid: 1
-  availableBack: 1
-  hasSelfCondition: 1
-  conditionInfo: "<color=#FFFFFF><link=S_\u4EBA\u72FC><u>\u4EBA\u72FC</u></link></color>\u72B6\u614B\u3067\u306A\u3044"
+  availableMid: 0
+  availableBack: 0
+  hasSelfCondition: 0
+  conditionInfo: 
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 1
-    enemy: 1
-    onlyPlayable: 1
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
     onlyNonplayable: 0
-    front: 1
-    mid: 1
-    back: 1
+    front: 0
+    mid: 0
+    back: 0
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
     StEConditions: []
     StE: []
-    StEExclude:
-    - {fileID: 1489497368108049143, guid: c25334058e17c0c43b959b6468050a4c, type: 3}
+    StEExclude: []
     PE: []
     PEExclude: []
     HPPercent: 0
@@ -61,18 +61,19 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u546A\u3044\u306E\u62BD\u51FA+"
+  - actionName: "\u53CE\u7A6B\u306E\u938C"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u524D\u30FB\u4E2D\u5217\u3044\u305A\u308C\u304B1\u5217\u306E\u6575\u3059\u3079\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
+    VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
     VE_OnOwner: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 1
+    actionObject: {fileID: 980131611971298319, guid: c550f87bcd7eb0d46aab8d93d9775a6a, type: 3}
+    actionMods:
+    - {fileID: 980131611971298319, guid: 8028a08c7447876448b7ef393209dc68, type: 3}
+    targetType: 5
     friendly: 0
     condition:
       searchAsPos: 0
@@ -83,7 +84,7 @@ MonoBehaviour:
       onlyNonplayable: 0
       front: 1
       mid: 1
-      back: 1
+      back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -114,10 +115,10 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
-    INTMod_min: 80
-    INTMod_max: 120
+    ATKMod_min: 30
+    ATKMod_max: 50
+    INTMod_min: 0
+    INTMod_max: 0
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -198,7 +199,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
-    actionTargets:
-    - {fileID: 0}
-    actionTargetsInt: 0a000000
+    targetCount: 2
+    actionTargets: []
+    actionTargetsInt: 
