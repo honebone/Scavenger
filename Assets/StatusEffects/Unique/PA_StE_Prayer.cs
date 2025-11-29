@@ -14,8 +14,10 @@ public class PA_StE_Prayer : PA_StatusEffect
         if (StEStatus.stack >= stackThreshold)
         {
             Enqueue_Self(actionStatus);
+            AddStack(-stackThreshold);
         }
     }
+
     public override string GetAdditionalInfo()
     {
         return actionStatus.GetInfo();

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u8840\u72C2\u3044+"
   lockedDefault: 0
-  upgradeInfo: "\u88AB\u56DE\u5FA9\u91CF\u5897\u52A0\u3092\u8FFD\u52A0\u3067\u4ED8\u4E0E"
+  upgradeInfo: "<color=#FAED8A><sprite name=buff><link=S_\u88AB\u56DE\u5FA9\u91CF\u5897\u52A0><u>\u88AB\u56DE\u5FA9\u91CF\u5897\u52A0</u></link></color>\u3092\u8FFD\u52A0\u3067\u4ED8\u4E0E"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 

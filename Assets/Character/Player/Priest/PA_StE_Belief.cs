@@ -22,7 +22,7 @@ public class PA_StE_Belief : PA_StatusEffect
         if (actionResultsList[0].actionStatus.abilityType != AbilityData.AbilityType.move)
         {
             Enqueue_SearchTarget(actionStatus,condition);
-            Disable();
+            AddStack(-1);
         }
     }
 
@@ -35,7 +35,6 @@ public class PA_StE_Belief : PA_StatusEffect
     {
         string s = "";
         s += actionStatus.GetInfo(false, new Character.CharacterStatus());
-        s += "自身が行動したターンの終了時、これを消去";
         return s;
     }
 }

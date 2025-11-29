@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2556461229746964366}
   - component: {fileID: 2556461229746964355}
   - component: {fileID: 338391885104503402}
+  - component: {fileID: 2493263412120482643}
   - component: {fileID: 2556461229746964352}
   - component: {fileID: 2556461229746964353}
   - component: {fileID: 2507174858685718016}
@@ -63,7 +64,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charaImage: {fileID: 2556461230428566190}
-  scrollSpeed: 0.1
+--- !u!114 &2493263412120482643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556461229746964367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c9223f75292f24d9faee12a716e479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scroll: {fileID: 0}
+  scrollSpeed: -15
+  alwaysScroll: 0
+  horizontal: 1
 --- !u!114 &2556461229746964352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,12 +199,36 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 2493263412120482643}
+          m_TargetAssemblyTypeName: ScrollManager, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 338391885104503402}
           m_TargetAssemblyTypeName: Deploy_CharaButton, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2493263412120482643}
+          m_TargetAssemblyTypeName: ScrollManager, Assembly-CSharp
           m_MethodName: OnMouseExit
           m_Mode: 1
           m_Arguments:

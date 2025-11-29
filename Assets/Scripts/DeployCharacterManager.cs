@@ -116,7 +116,8 @@ public class DeployCharacterManager : MonoBehaviour
             var c = Instantiate(deployCharaButton, deployCharaP);
             Deploy_CharaButton button = c.GetComponent<Deploy_CharaButton>();
             charaButtons.Add(button);
-            button.Init(status, infoText, this, mouseOver, scroll);
+            button.Init(status, infoText, this, mouseOver);
+            c.GetComponent<ScrollManager>().SetScroll(scroll);
         }
         StartCoroutine(CharaButtonAnim());
         CheckParty();

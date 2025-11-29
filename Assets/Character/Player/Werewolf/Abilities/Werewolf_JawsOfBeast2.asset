@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u7363\u306E\u5927\u984E+"
   lockedDefault: 0
-  upgradeInfo: "ATk\u88DC\u6B63+20\uFF05\n\u51FA\u8840\u4ED8\u4E0E\u78BA\u7387+40\uFF05\n\u51FA\u8840\u306E\u52B9\u679C\u91CF+15\uFF05"
+  upgradeInfo: "<sprite name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+20\uFF05\r\n<color=#C900FF><sprite
+    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u4ED8\u4E0E\u78BA\u7387+40\uFF05\u3001\r\n<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+15\uFF05"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 

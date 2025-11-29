@@ -26,17 +26,18 @@ MonoBehaviour:
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C20\uFF05\u4EE5\u4E0B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 0
+    player: 1
     enemy: 0
     onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    onlyNonplayable: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
@@ -46,8 +47,8 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
-    HPPercent: 0
-    HP_lessThan: 0
+    HPPercent: 20
+    HP_lessThan: 1
     HP_excludeEqual: 0
     neighbor: []
     sameColmn: 0
@@ -67,6 +68,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
@@ -77,6 +79,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -114,11 +117,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u5C06\u6821\u306E\u62F3\u9283+"
   lockedDefault: 0
-  upgradeInfo: "\u524D\u5217\u306E\u6575\u3082\u9078\u629E\u53EF\u80FD\u306B\n\u5BFE\u8C61\u306B\u30D5\u30A9\u30FC\u30AB\u30B9\u304C\u3042\u308B\u3068\u304D\u306EATK\u88DC\u6B63+25\uFF05"
+  upgradeInfo: "\u524D\u5217\u306E\u6575\u3082\u9078\u629E\u53EF\u80FD\u306B\n\u5BFE\u8C61\u306B<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u304C\u3042\u308B\u3068\u304D\u306E<sprite
+    name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+25\uFF05"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  dontChangeSprite: 0
-  activateSprite: {fileID: 0}
   abilityType: 1
   excludeRandomPool: 0
   priority: 1
@@ -36,12 +36,14 @@ MonoBehaviour:
     player: 1
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: f16766671941529418e5b0914c0a9f79, type: 3}
       stack: 1
@@ -53,6 +55,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
@@ -68,6 +73,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 980131611971298319, guid: 44f2c96ce6b5fac4c8e3880d22b851b4, type: 3}
@@ -79,12 +85,14 @@ MonoBehaviour:
       player: 0
       enemy: 1
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
@@ -93,6 +101,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -112,11 +123,15 @@ MonoBehaviour:
     ATKMod_max: 100
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -126,6 +141,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -166,6 +182,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -183,8 +201,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1

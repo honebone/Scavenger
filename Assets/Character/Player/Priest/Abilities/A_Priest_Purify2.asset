@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u6D44\u5316\u306E\u5149+"
   lockedDefault: 0
-  upgradeInfo: "\u6210\u5C31\u304C\u3042\u308B\u3068\u304D\uFF1A\nINT\u88DC\u6B63+40\uFF05\n\u653B\u6483\u304C\u5FC5\u4E2D\u3068\u306A\u308B\n\u706B\u50B7\u4ED8\u4E0E\u78BA\u7387+20\uFF05\n\u4ED8\u4E0E\u3059\u308B\u706B\u50B7\u306E\u52B9\u679C\u91CF+30\uFF05\n\u30D0\u30D5\u30921\u3064\u6D88\u53BB\u3059\u308B\u3088\u3046\u306B"
+  upgradeInfo: "\u6210\u5C31\u304C\u3042\u308B\u3068\u304D\uFF1A\r\n<sprite name=INT><link=U_ATK(INT)\u88DC\u6B63><u><color=#256CC8>INT</color>\u88DC\u6B63</u></link>+40\uFF05\r\n\u653B\u6483\u304C\u5FC5\u4E2D\u3068\u306A\u308B\r\n<color=#C900FF><sprite
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u4ED8\u4E0E\u78BA\u7387+20\uFF05\r\n\u4ED8\u4E0E\u3059\u308B<color=#C900FF><sprite
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+30\r\n<sprite
+    name=buff><color=#FAED8A>\u30D0\u30D5</color>\u30921\u3064\u6D88\u53BB\u3059\u308B\u3088\u3046\u306B"
   upgradeAbility: {fileID: 0}
+  noSimpleInfo: 0
+  simpleInfo: 
   abilityManager: {fileID: 1682909745843474664, guid: 1515fb4b3e3576f4682c5d26f8d373d5, type: 3}
-  dontChangeSprite: 0
-  activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
   abilityType: 1
   excludeRandomPool: 0
   priority: 1
@@ -34,12 +37,15 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
     StE: []
     StEExclude: []
     PE: []
@@ -47,6 +53,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
@@ -62,6 +71,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 233b8a3a580706245a110cebaba01ec1, type: 3}
     VE_OnTargets: {fileID: 6695063782243598986, guid: f9ef51dc3ff19294a8105cd62c042d4b, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods:
     - {fileID: 7922638166886946676, guid: 6a795d8888a9a8545838a42feb97d701, type: 3}
@@ -73,12 +83,15 @@ MonoBehaviour:
       player: 0
       enemy: 1
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
@@ -86,6 +99,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -105,11 +121,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 60
     INTMod_max: 80
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -119,6 +139,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -145,8 +166,25 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -160,8 +198,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 7609518741227850389, guid: cad3051715ec85a4da489425dd5089d5, type: 3}
+    summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

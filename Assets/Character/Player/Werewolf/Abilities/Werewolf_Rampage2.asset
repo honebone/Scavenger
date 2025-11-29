@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u5927\u66B4\u308C+"
   lockedDefault: 0
-  upgradeInfo: "\u521D\u671F\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3-2\nATK\u88DC\u6B63+20\uFF05"
+  upgradeInfo: "\u521D\u671F\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3-2\n<sprite name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+20\uFF05"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u6FC0\u6602+"
   lockedDefault: 0
-  upgradeInfo: "\u88AB\u30C0\u30E1\u30FC\u30B8\u4E0A\u6607\u306E\u52B9\u679C\u91CF-20\uFF05\n\u30D5\u30A9\u30FC\u30AB\u30B9\u3092\u78BA\u5B9A\u4ED8\u4E0E\u304B\u308950\uFF05\u3067\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u7DE9\u548C"
+  upgradeInfo: "<color=#C900FF><sprite name=debuff><link=S_PROT\u4F4E\u4E0B><u>PROT\u4F4E\u4E0B</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>-20\uFF05\r\n<color=#DD6300><sprite
+    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u78BA\u5B9A\u4ED8\u4E0E\u304B\u308950\uFF05\u3067\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B\u7DE9\u548C"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -34,6 +35,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -49,6 +51,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   freeAction: 1
   cooldownOnBattleStart: 0
   cooldownOnUse: 3
@@ -64,6 +69,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 5830458523862770580, guid: 2afecd525f7167349b816490d29bbda7, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
@@ -74,6 +80,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -89,6 +96,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -108,11 +118,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

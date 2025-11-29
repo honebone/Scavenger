@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ScrollManager : MonoBehaviour
 {
     public ScrollRect scroll;
-    public float scrollSpeed = 100f;
-    public bool alwaysScroll;
+    [Header("Scroll Sensitivityと一致させるべき")] public float scrollSpeed = 100f;
+    [Header("カーソルを合わせて居なくてもスクロールするか")] public bool alwaysScroll;
+    public bool horizontal;
 
     RectTransform content;
     float wheel;
@@ -35,7 +36,8 @@ public class ScrollManager : MonoBehaviour
             if (wheel != 0)
             {
                 Vector2 pos = content.anchoredPosition;
-                pos.y -= wheel * scrollSpeed;
+                if (horizontal) pos.x -= wheel * scrollSpeed;
+                else pos.y -= wheel * scrollSpeed;
                 content.anchoredPosition = pos;
                 wheel = 0;
             }

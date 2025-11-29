@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 4339044422948569039}
   - component: {fileID: 3410546151245514243}
   - component: {fileID: 4339044422948569038}
+  - component: {fileID: 1111683058578775906}
   - component: {fileID: 4339044422948569073}
   - component: {fileID: 6238156837250602787}
   m_Layer: 5
@@ -147,7 +148,6 @@ MonoBehaviour:
   - {fileID: -909654239, guid: 09d900a0f6ac2034db63379b8e243da4, type: 3}
   - {fileID: 997525382, guid: 09d900a0f6ac2034db63379b8e243da4, type: 3}
   - {fileID: -1709277567, guid: 09d900a0f6ac2034db63379b8e243da4, type: 3}
-  scrollSpeed: 0.1
 --- !u!114 &4339044422948569038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +178,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1111683058578775906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4339044422948569075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c9223f75292f24d9faee12a716e479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scroll: {fileID: 0}
+  scrollSpeed: 20
+  alwaysScroll: 0
 --- !u!114 &4339044422948569073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,12 +282,36 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1111683058578775906}
+          m_TargetAssemblyTypeName: ScrollManager, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 3410546151245514243}
           m_TargetAssemblyTypeName: CharaDetail_InventoryEqButton, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1111683058578775906}
+          m_TargetAssemblyTypeName: ScrollManager, Assembly-CSharp
           m_MethodName: OnMouseExit
           m_Mode: 1
           m_Arguments:

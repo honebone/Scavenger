@@ -16,7 +16,7 @@ public class Deploy_CharaButton : MonoBehaviour
     MouseOverUI mouseOver;
 
     Character.CharacterStatus charaStatus;
-    public void Init(Character.CharacterStatus status,InfoText it,DeployCharacterManager dc,MouseOverUI mo, ScrollRect s)
+    public void Init(Character.CharacterStatus status,InfoText it,DeployCharacterManager dc,MouseOverUI mo)
     {
         charaStatus = status;
         infoText = it;

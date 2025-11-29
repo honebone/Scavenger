@@ -31,8 +31,8 @@ public class P_Sister_PA : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        string s= actionStatus.GetInfo(false, new Character.CharacterStatus());
-        s += comeTrueInfo;
+        string s = actionStatus.GetInfo(false, new Character.CharacterStatus());
+        s += "\n"+comeTrueInfo;
         return s;
     }
 }

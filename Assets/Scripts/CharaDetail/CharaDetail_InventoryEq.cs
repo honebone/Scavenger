@@ -45,7 +45,8 @@ public class CharaDetail_InventoryEq : MonoBehaviour
                 i.amount = 1;
 
                 var eb = Instantiate(equipmentButton, content);
-                eb.GetComponent<CharaDetail_InventoryEqButton>().Init(i, infoText, detailUI, mouseOver, scrollRect);
+                eb.GetComponent<CharaDetail_InventoryEqButton>().Init(i, infoText, detailUI, mouseOver);
+                eb.GetComponent<ScrollManager>().SetScroll(scrollRect);
             }
         }
     }

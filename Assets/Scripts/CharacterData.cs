@@ -275,12 +275,12 @@ public class StatusGrowth
         current.SetStatus(baseHP, baseATK, baseINT);
         next.SetStatus(baseHP, baseATK, baseINT);
 
-        s += ValueToStr("Šî‘bmaxHP", next.maxHP - current.maxHP, "");
-        s += ValueToStr("Šî‘bATK", next.ATK - current.ATK,"");
-        s += ValueToStr("Šî‘bINT", next.INT - current.INT, "");
-        s += ValueToStr("ACT", next.ACT - current.ACT, "");
-        s += ValueToStr("EVD", next.EVD - current.EVD, "");
-        s += ValueToStr("ACC", next.ACC - current.ACC, "");
+        s += ValueToStr($"Šî‘b{"maxHP".ToSpr_withName()}", next.maxHP - current.maxHP, "");
+        s += ValueToStr($"Šî‘b{"ATK".ToSpr_withLink()}", next.ATK - current.ATK,"");
+        s += ValueToStr($"Šî‘b{"INT".ToSpr_withLink()}", next.INT - current.INT, "");
+        s += ValueToStr("ACT".ToSpr_withLink(), next.ACT - current.ACT, "");
+        s += ValueToStr("EVD".ToSpr_withLink(), next.EVD - current.EVD, "");
+        s += ValueToStr("ACC".ToSpr_withLink(), next.ACC - current.ACC, "");
 
         if (player)
         {

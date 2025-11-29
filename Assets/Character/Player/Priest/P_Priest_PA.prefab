@@ -85,7 +85,7 @@ MonoBehaviour:
     personalityType: 1
   actionStatus:
     actionName: "\u656C\u8654\u306A\u7948\u308A"
-    conditionInfo: "\u81EA\u8EAB\u304C\u79FB\u52D5\u4EE5\u5916\u306E\u884C\u52D5\u3092\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092<sprite
+    conditionInfo: "\u81EA\u8EAB\u304C<<color=#009EFF>\u79FB\u52D5</color>>\u4EE5\u5916\u306E\u884C\u52D5\u3092\u3057\u305F\u3068\u304D\u3001\u307E\u305F\u306F\u81EA\u8EAB\u4EE5\u5916\u306E\u30AD\u30E3\u30E9\u3092<sprite
       name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3057\u305F\u3068\u304D(\u81EA\u8EAB\u306B\u6210\u5C31\u304C\u306A\u3044\u3068\u304D\u306E\u307F)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -104,6 +104,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  comeTrueInfo: "\u6210\u5C31\u306F\u6B21\u306E\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u5F37\u5316\u3057\u3001\u30A2\u30D3\u30EA\u30C6\u30A3\u4F7F\u7528\u6642\u306B\u5473\u65B9\u5168\u4F53\u306EHP\u309215\uFF05\u56DE\u5FA9\u3059\u308B"
+  comeTrueInfo: "<color=#FFFFFF><link=S_\u7948\u308A><u>\u7948\u308A</u></link></color>\u306F4\u30B9\u30BF\u30C3\u30AF\u6E9C\u307E\u308B\u3068<color=#FFFFFF><link=S_\u6210\u5C31><u>\u6210\u5C31</u></link></color>1\u30B9\u30BF\u30C3\u30AF\u306B\u5909\u63DB\u3055\u308C\u308B"
 --- !u!212 &8483728386356586883
 SpriteRenderer:
   m_ObjectHideFlags: 0

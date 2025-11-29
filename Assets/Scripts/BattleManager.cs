@@ -486,7 +486,6 @@ public class BattleManager : MonoBehaviour
                 infoText.AddLogText(s+"\n");
             }
         }
-        ResetPBR();
         roundTextCanvas.alpha = 0;
 
         if (fieldEffect != null)
@@ -520,6 +519,7 @@ public class BattleManager : MonoBehaviour
     public void EndTrigger_BattleEnd()
     {
         charactersManager.DestroyOrRespawnDead();
+        ResetPBR();
         StartCoroutine(BattleEndAnim());
     }
 

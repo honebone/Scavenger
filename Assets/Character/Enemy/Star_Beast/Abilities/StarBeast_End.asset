@@ -26,22 +26,26 @@ MonoBehaviour:
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u304C100\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
-    enemy: 0
+    enemy: 1
     onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    onlyNonplayable: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
-    StEConditions: []
+    StEConditions:
+    - StE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
+      stack: 100
+      stack_lessThan: 0
     StE: []
     StEExclude: []
     PE: []
@@ -68,6 +72,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 537bd61c7c22a57469a444c81cebda96, type: 3}
     VE_OnTargets: {fileID: 6969968999820969716, guid: 5212adce84b224843b26f1fa06451d7a, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 2
@@ -78,6 +83,7 @@ MonoBehaviour:
       player: 1
       enemy: 0
       onlyPlayable: 1
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
@@ -115,11 +121,15 @@ MonoBehaviour:
     ATKMod_max: 150
     INTMod_min: 150
     INTMod_max: 150
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -191,6 +201,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 4
+    targetCount: 3
     actionTargets: []
     actionTargetsInt: 
