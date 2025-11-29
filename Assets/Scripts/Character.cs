@@ -1665,6 +1665,7 @@ public class Character : MonoBehaviour
     public bool PlayerPos() { return charaStatus.position.IsPlayerPos(); }
     /// <summary>player‚©‚Ç‚¤‚©‚ð•Ô‚·(player‘¤‚ÌƒLƒƒƒ‰‚©‚Å‚Í‚È‚¢)</summary>
     public bool IsPlayer() { return charaStatus.playable; }
+    public bool IsObstacle() { return charaStatus.characterTags.Contains(CharacterData.CharacterTag.obstacle); }
     public Character GetRootChara()
     {
         if (charaStatus.summoner != null) return charaStatus.summoner.GetRootChara();

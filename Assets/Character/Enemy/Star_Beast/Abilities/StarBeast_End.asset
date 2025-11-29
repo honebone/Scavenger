@@ -27,7 +27,7 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 1
-  conditionInfo: "<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u304C100\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A"
+  conditionInfo: "<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u304C50\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
     characterTagsExclude: 
     StEConditions:
     - StE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
-      stack: 100
+      stack: 50
       stack_lessThan: 0
     StE: []
     StEExclude: []

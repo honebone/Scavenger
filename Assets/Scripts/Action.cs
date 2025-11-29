@@ -737,6 +737,7 @@ public class Action : MonoBehaviour
         public bool obstacle;
         public bool CRIT;
         public Character target;
+        public ActionParams ap;
     }
     public class OnHealParams
     {
@@ -958,6 +959,7 @@ public class Action : MonoBehaviour
               
 
                 OnKillParams onKillParams = new OnKillParams();
+                onKillParams.ap = actionParams;
 
                 if (actionsStatus[i].kill)
                 {
