@@ -51,7 +51,7 @@ public class ExpeditionManager : MonoBehaviour
     public class PartyStatus
     {
         public float materialWeightMod;
-        public float[] equipmentDropWeights= new float[] { 50, 35, 10, 4, 1 };
+        public float[] equipmentDropWeights = new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
 
         public int dropExpChance = 50;
@@ -65,11 +65,20 @@ public class ExpeditionManager : MonoBehaviour
         public int maxMadness = 5;
         public int madness;
 
+        public float startTime;
+        public float endTime;
+        public int areaCount;
+        public Vector2Int currentPos = new Vector2Int();
         public int killCount;
         public List<PersonalBattleReport> totalBattleReports = new List<PersonalBattleReport>();
+
+        public void AddTBR(PersonalBattleReport add)
+        {
+            totalBattleReports.AddBR(add);
+        }
     }
     [SerializeField]
-    PartyStatus partyStatus;
+    public PartyStatus partyStatus;
     public GameParams gameParams;
 
     [SerializeField] List<GameObject> MadnessPAPool;
@@ -142,15 +151,12 @@ public class ExpeditionManager : MonoBehaviour
     bool inRoomEvent;
 
     public List<CharacterData> deployedChara = new List<CharacterData>();
-    int areaCount;
     AreaData currentArea;
 
     int addedMadness;
     List<GameObject> madnessPAs = new List<GameObject>();
 
     /// <summary>x:現在のレイヤー y:上下</summary>
-    [SerializeField]
-    Vector2Int currentPos;
     Room currentRoom;
     List<Map_LayerPanel> layers;
 
@@ -185,12 +191,22 @@ public class ExpeditionManager : MonoBehaviour
     public void StartExpedition(AreaData firstArea)
     {
         inExpedition = true;
+
+        //初期値設定
         enemyLVL = 1;
+        partyStatus.startTime = Time.time;
+        charactersManager.GetExistingCharacters_All().ForEach(x =>
+        {
+            partyStatus.AddTBR(new PersonalBattleReport(x));
+        });
+        GameResultManager.inst.SetPartyStatus(partyStatus);
+
+        //最初のエリアスタート
         StartArea(firstArea);
     }
     public void StartArea(AreaData area)
     {
-        areaCount++;
+        partyStatus.areaCount++;
         infoText.AddDebugText("探索開始");
         currentArea = area;
 
@@ -209,9 +225,9 @@ public class ExpeditionManager : MonoBehaviour
     {
         fadeOutUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
-        GameManager.instance.SendScoreborad(1, areaCount);
-        mainMessage.SetMessage(string.Format("第{0}エリア  {1}", areaCount, currentArea.areaName));
-        infoText.AddLogText(string.Format("△▽△▽△<<第{0}エリア {1}>>△▽△▽△", areaCount, currentArea.areaName));
+        GameManager.instance.SendScoreborad(1, partyStatus.areaCount);
+        mainMessage.SetMessage(string.Format("第{0}エリア  {1}", partyStatus.areaCount, currentArea.areaName));
+        infoText.AddLogText(string.Format("△▽△▽△<<第{0}エリア {1}>>△▽△▽△", partyStatus.areaCount, currentArea.areaName));
 
         yield return new WaitForSeconds(2f);
         mainMessage.ResetMessage();
@@ -244,10 +260,10 @@ public class ExpeditionManager : MonoBehaviour
     {
         layers = l;
 
-        currentPos = new Vector2Int(0, 2);
-        currentRoom = GetRoom(currentPos);
+        partyStatus.currentPos = new Vector2Int(0, 2);
+        currentRoom = GetRoom(partyStatus.currentPos);
 
-        GetRoomButton(currentPos).SetState_currentPos();
+        GetRoomButton(partyStatus.currentPos).SetState_currentPos();
         //SelectNextRoom();
     }
 
@@ -264,10 +280,10 @@ public class ExpeditionManager : MonoBehaviour
 
     void CheckRoomEndEvent()
     {
-        if((areaCount > 1 && currentPos.x == 0) || currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))//enemyLVLUP
+        if((partyStatus.areaCount > 1 && partyStatus.currentPos.x == 0) || partyStatus.currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))//enemyLVLUP
         {
             //StartCoroutine(EnemyLVLUpC());
-            Debug.Log(currentPos.x);
+            Debug.Log(partyStatus.currentPos.x);
             relManager.Enqueue_EnemyLVL();
         }
 
@@ -366,9 +382,9 @@ public class ExpeditionManager : MonoBehaviour
         }
         else
         {
-            if (currentRoom.up > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y + 1)).SetState_Selectable(); }
-            if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y)).SetState_Selectable(); }
-            if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(currentPos.x + 1, currentPos.y - 1)).SetState_Selectable(); }
+            if (currentRoom.up > 0) { GetRoomButton(new Vector2Int(partyStatus.currentPos.x + 1, partyStatus.currentPos.y + 1)).SetState_Selectable(); }
+            if (currentRoom.straight > 0) { GetRoomButton(new Vector2Int(partyStatus.currentPos.x + 1, partyStatus.currentPos.y)).SetState_Selectable(); }
+            if (currentRoom.down > 0) { GetRoomButton(new Vector2Int(partyStatus.currentPos.x + 1, partyStatus.currentPos.y - 1)).SetState_Selectable(); }
         }
         tutorialManager.SetTutorial(tutorial_expedition);
         guideMessage.SetGuideText("マップから次の階層へ移動可能");
@@ -382,8 +398,8 @@ public class ExpeditionManager : MonoBehaviour
     {
         if (moveMode) { ToggleMoveMode(); }
         mapPanel.CloseMap();
-        currentPos = pos;
-        currentRoom = GetRoom(currentPos);
+        partyStatus.currentPos = pos;
+        currentRoom = GetRoom(partyStatus.currentPos);
         soundManager.PlaySE(SE_nextRoom);
 
         nextRoomButton.SetActive(false);
@@ -399,9 +415,9 @@ public class ExpeditionManager : MonoBehaviour
         fadeOutUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
         foreach (Map_LayerPanel layer in layers) { layer.ResetButtonsState(); }
-        GetRoomButton(currentPos).SetState_currentPos();
+        GetRoomButton(partyStatus.currentPos).SetState_currentPos();
 
-        infoText.AddLogText(string.Format("==============<第{0}階層>==============", currentPos.x));
+        infoText.AddLogText(string.Format("==============<第{0}階層>==============", partyStatus.currentPos.x));
 
         bool SANDMG=false;
         foreach (Character chara in charactersManager.GetExistingCharacters_All())
@@ -437,7 +453,7 @@ public class ExpeditionManager : MonoBehaviour
     //public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
 
     //エリアの進行度に応じた経験値量を返す
-    public int GetExpAmount() { return areaCount; }//test
+    public int GetExpAmount() { return partyStatus.areaCount; }//test
 
     bool moveMode;
     Character moveChara;
@@ -713,7 +729,7 @@ public class ExpeditionManager : MonoBehaviour
     public Room GetRoom(Vector2Int pos) { return layers[pos.x].GetRoom(pos.y); }
     public List<Map_LayerPanel> GetLayers() { return layers; }
     public RoomEvent GetCurrentRE() { return currentRE; }
-    public Vector2Int GetCurrentPos() { return currentPos; }
+    public Vector2Int GetCurrentPos() { return partyStatus.currentPos; }
     public AreaManager GetAreaManager() { return currentAreaManger; }
 
     public bool CheckInRoomEvent() { return inRoomEvent; }

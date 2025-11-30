@@ -375,19 +375,19 @@ public static class Extentions
         return currentPos.PosIntToVector().y;
     }
 
-    //public  static int DotTotalDMG(this int stack)
-    //{
-    //    int DMG = 0;
-    //    int i = stack;
-
-    //    while (i > 0)
-    //    {
-    //        DMG += i;
-    //        i -= 2;
-    //    }
-
-    //    return DMG;
-    //}
+    public static void AddBR(this List<PersonalBattleReport> list, PersonalBattleReport add)
+    {
+        bool found = false;
+        new List<PersonalBattleReport>(list).ForEach(x =>
+        {
+            if (x.chara == add.chara)
+            {
+                x.Add(add);
+                found = true;
+            }
+        });
+        if (!found) list.Add(new PersonalBattleReport(add));
+    }
 
     public static List<PA_StatusEffect.StatusEffectStatus> SampleStE(this List<PA_StatusEffect.StatusEffectStatus> list, PA_StatusEffect StE)
     {

@@ -103,8 +103,8 @@ MonoBehaviour:
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: 435fbb85167e67c4d9fd0a0d842a59be, type: 3}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
+    VE_OnTargets: {fileID: 5076524591303786172, guid: 157cab6d45a09e443b66df38b4993195, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []

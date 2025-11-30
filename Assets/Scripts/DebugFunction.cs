@@ -117,7 +117,7 @@ public class DebugFunction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(areaData); }
+                if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartExpedition(areaData); }
                 else { expeditionManager.GetAreaManager().GenerateMap(); }
             }
             if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }

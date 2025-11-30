@@ -50,7 +50,7 @@ MonoBehaviour:
   simpleInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u767A\u751F\u6642\u3001\u3053\u308C\u306F\u6D3B\u6027\u5316\u3059\u308B\n\n\u6D3B\u6027\u5316\u6642\uFF1A<sprite
     name=CRIT>\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0\u3059\u308B"
   PAInfo_start: "1\u4F53\u4EE5\u4E0A\u306E\u6575\u306B<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u3092\u767A\u751F\u3055\u305B\u305F\u6642\u3001\u3053\u308C\u306F\u6D3B\u6027\u5316\u3059\u308B\n\n\u6D3B\u6027\u5316\u6642\uFF1A<sprite
-    name=CRIT>\u30C0\u30E1\u30FC\u30B8+25\uFF05"
+    name=CRIT>\u30C0\u30E1\u30FC\u30B8+15\uFF05"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -82,7 +82,7 @@ MonoBehaviour:
   rune_initialCharge: 5
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1c7affb2c2344d843bdcc0f7b1f69fe3, type: 2}
-  CRITD: 25
+  CRITD: 15
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

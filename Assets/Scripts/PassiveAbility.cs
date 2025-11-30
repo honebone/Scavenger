@@ -252,7 +252,6 @@ public class PassiveAbility : MonoBehaviour
         {
             Log("活性化！");
             runeCharge--;
-            if (runeCharge < 0) infoText.AddErrorText($"ルーンのチャージ数が負になっています：{GetPAName()}");
             RuneActivation();
             character.OnRuneActivate(this);
         }

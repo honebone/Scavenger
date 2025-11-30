@@ -469,6 +469,7 @@ public class BattleManager : MonoBehaviour
     {
         infoText.AddLogText("\ní“¬I—¹");
         currentTurnCount = 0;
+        currentWave = 0;
         inRound = false;
         inBattle = false;
         waveText.text = "";
@@ -484,8 +485,11 @@ public class BattleManager : MonoBehaviour
                 string s = chara.CharaStatus().charaName + "\n";
                 s += GetPBR(chara).Report();
                 infoText.AddLogText(s+"\n");
+                expeditionManager.partyStatus.AddTBR(GetPBR(chara));
             }
         }
+        
+
         roundTextCanvas.alpha = 0;
 
         if (fieldEffect != null)
@@ -1001,10 +1005,10 @@ public class PersonalBattleReport
 
     public PersonalBattleReport(PersonalBattleReport copy)
     {
-        chara=copy.chara;
+        chara = copy.chara;
         ATKDMG = copy.ATKDMG;
         INTDMG = copy.INTDMG;
-        decreaseHP=copy.decreaseHP;
+        decreaseHP = copy.decreaseHP;
         RDMG = copy.RDMG;
         RShieldDMG = copy.RShieldDMG;
         GHeal = copy.GHeal;
