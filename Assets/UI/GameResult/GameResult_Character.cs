@@ -14,6 +14,8 @@ public class GameResult_Character : MonoBehaviour
     public List<Slider> RHeal;
     public List<TextMeshProUGUI> reportTexts;
     public List<Image> crowns;
+    public Transform eqsP;
+    public GameObject eq;
     public void Init(PersonalBattleReport report,List<int> best)
     {
         charaImage.sprite = report.chara.CharaStatus().characterData.spriteForUI;
@@ -51,5 +53,10 @@ public class GameResult_Character : MonoBehaviour
         reportTexts[2].text = (report.GHeal + report.GShield).ToString();
         crowns[2].enabled = report.GHeal + report.GShield == best[2];
 
+        report.chara.CharaStatus().equipments.ForEach(x =>
+        {
+            var e = Instantiate(eq, eqsP);
+            e.GetComponent<GameResult_Eq>().Init(x);
+        });
     }
 }
