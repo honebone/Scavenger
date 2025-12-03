@@ -76,6 +76,10 @@ public class ExpeditionManager : MonoBehaviour
         {
             totalBattleReports.AddBR(add);
         }
+        public void AddKillCount()
+        {
+            killCount++;
+        }
     }
     [SerializeField]
     public PartyStatus partyStatus;

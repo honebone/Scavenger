@@ -1722,6 +1722,10 @@ public class Character : MonoBehaviour
         {
             tutorialManager.SetTutorial("playerDeath");
         }
+        if (!PlayerPos() && !IsObstacle())
+        {
+            expeditionManager.partyStatus.AddKillCount();
+        }
 
         if (charaStatus.corpse != null)
         {

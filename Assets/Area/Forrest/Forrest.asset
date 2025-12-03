@@ -26,15 +26,15 @@ MonoBehaviour:
   BGM: {fileID: 8300000, guid: d3501066994c2d142803e281cf326b62, type: 3}
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
-    weight: 42
+    weight: 46
   - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
-    weight: 2
+    weight: 1
   - roomEvent: {fileID: 11400000, guid: f1cf9196abdb07c448dd0f47afec67a5, type: 2}
-    weight: 2
+    weight: 1
   - roomEvent: {fileID: 11400000, guid: 02c2f197afad8a54b8d5f122888ea228, type: 2}
-    weight: 2
+    weight: 1
   - roomEvent: {fileID: 11400000, guid: 98d568785ebce4446a13c8202306d85b, type: 2}
-    weight: 2
+    weight: 1
   - roomEvent: {fileID: 11400000, guid: fa7a5305a52a2c34290bc2e05b2ff5a6, type: 2}
     weight: 30
   - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
