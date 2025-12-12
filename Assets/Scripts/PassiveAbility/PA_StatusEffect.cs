@@ -109,6 +109,7 @@ public class PA_StatusEffect : PassiveAbility
         {
             return applyStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
         }
+        public StatusEffectStatus.StatusEffectType GetStEType() { return GetStatusEffectStatus().StEType; }
     }
 
     public void Init_StE(int stack, int value,int DMGPerTurn,StEIcon icon,Character applyer,GameObject prefab)

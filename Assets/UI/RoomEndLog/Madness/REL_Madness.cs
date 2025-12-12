@@ -48,16 +48,18 @@ public class REL_Madness : RoomEndLog
 
     IEnumerator EnemyLVLUpC()
     {
+        soundManager.StopBGMs();
         yield return new WaitForSeconds(startDelay);
 
         PA_Personality pa = madnessPA.GetComponent<PA_Personality>();
         string info = ExpeditionManager.inst.GetMadnessInfo(pa);
         DOTween.To(() => fill.fillAmount, (x) => fill.fillAmount = x, fillAmount[madnessCount - 1], fillDur);
 
-        yield return new WaitForSeconds(fillDur+eyeDelay);
+        yield return new WaitForSeconds(fillDur + eyeDelay);
+        soundManager.PlaySE(SE);
 
         var eyeWait = new WaitForSeconds(eyeDur / 4f);
-        for(int i = 1; i < 5; i++)
+        for (int i = 1; i < 5; i++)
         {
             eyes[madnessCount - 1].sprite = eye_sprites[i];
             yield return eyeWait;
@@ -69,6 +71,7 @@ public class REL_Madness : RoomEndLog
         infoCanvas.DOFade(1, infoFadeDur);
 
         yield return new WaitForSeconds(infoFadeDur + endDelay);
+        soundManager.PlayBGM_Normal();
         TutorialManager.inst.SetTutorial("madness");
 
         manager.LogEnd();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -894,6 +895,68 @@ public class Character : MonoBehaviour
 
         return info;
     }
+
+    public void SetMouseOver()
+    {
+        string s = charaStatus.charaName + "\n";
+        if (charaStatus.shield > 0)
+        {
+            s += $"{"HP".ToSpr_withName()}：{charaStatus.HP}+{"shield".ToSpr()}{charaStatus.shield.ToString().ColorStr(Definer.colorRef.shield)} ({charaStatus.GetHPPercent():0.0}％)";
+        }
+        else { s += $"{"HP".ToSpr_withName()}：{charaStatus.HP} ({charaStatus.GetHPPercent():0.0}％)"; }
+        if (charaStatus.player)
+        {
+            s += $"\n{"SAN".ToSpr_withName()}：{charaStatus.SAN}";
+        }   
+
+        if (charaStatus.lifetime > 0)
+        {
+            int lifetimeDMG = Mathf.CeilToInt(1f * charaStatus.BaseHP() / charaStatus.lifetime);
+            s += $"\n寿命による{"HP".ToSpr_withName()}減少：" + $"{lifetimeDMG}/ラウンド".ColorStr(Definer.colorRef.decreaseHP);
+        }
+
+        foreach (GameObject DoT in Definer.DoTDataBase)
+        {
+            int DMGNextTurn = GetDoTDMG(DoT, false);
+            int DMGTotal = GetDoTDMG(DoT, true);
+            if (DMGTotal > 0)
+            {
+                string StEName = DoT.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
+                s += $"\n{StEName}：次ターン{DMGNextTurn.ToString().ColorStr(Definer.colorRef.decreaseHP)}(計{DMGTotal.ToString().ColorStr(Definer.colorRef.decreaseHP)})";
+            }
+        }
+
+        if (BattleManager.MO_buffKinds)
+        {
+            s += $"\n{"buff".ToSpr_withName()}種類数：{GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff)}";
+        }
+        if (BattleManager.MO_debuffKinds)
+        {
+            s += $"\n{"debuff".ToSpr_withName()}種類数：{GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)}";
+        }
+
+        if (GetPACurrentStateInfo() != "")
+        {
+            s += "\n\n" + GetPACurrentStateInfo().ColorStr(Definer.colorRef.emphasize);
+        }
+
+        MouseOverUI.inst.SetUI(s, true);
+
+        string side = "";
+        if (BattleManager.MO_pers)
+        {
+            side += $"◇特性◇";
+            PA_Per.ForEach(x => side += $"\n<{x.GetPAName()}>");
+        }
+
+        if (side != "") MouseOverUI.inst.SetSideUI(side);
+
+        if (SettingManager.infoOnMouseover)
+        {
+            DisplayInfo();
+        }
+    }
+
     public void ResetCharaSprite()
     {
         if (!charaStatus.dead) { charaObj.SetCharaSprite(charaStatus.variableSprites[0]); }

@@ -10,10 +10,15 @@ public class MouseOverUI : MonoBehaviour
     [SerializeField] RectTransform rt;
     [SerializeField] float baseOffset_x;
     [SerializeField] float baseOffset_y;
+    [SerializeField] GameObject sidePanel;
+    [SerializeField] TextMeshProUGUI sideText;
+    [SerializeField] RectTransform sideRT;
+    [SerializeField] Vector2 baseSideOffset;
 
-    Vector3 offset;
     Vector3 pos;
 
+    Vector3 offset;
+    Vector3 sideOffset;
     public static MouseOverUI inst;
     private void Awake()
     {
@@ -26,23 +31,9 @@ public class MouseOverUI : MonoBehaviour
         if (rightClickGuide && !SettingManager.infoOnMouseover) { text.text += "右クリックで詳細表示\n"; }
         text.text += s;
         if (text.text != "")
-        {
-            //Vector3 offset = new Vector3(0, 0, -10);
-            //if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
-            //else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
-            //panel.transform.position = Input.mousePosition + offset;
-
-            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset_x; }
-            else { offset.x = -1 * baseOffset_x; }
-            if (Input.mousePosition.y / Camera.main.pixelHeight < 0.5f) { offset.y = baseOffset_y; }
-            else { offset.y = -1 * baseOffset_y; }
-
-            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + offset);
-            pos.z = 0;
-            panel.transform.position = pos + offset;
-
-
+        {            
             panel.SetActive(true);
+            SetUIPos();
         }
     }
     public void SetUI_Simple(string s)
@@ -50,21 +41,41 @@ public class MouseOverUI : MonoBehaviour
         SetUI(s, false);
     }
 
+    public void SetSideUI(string s)
+    {
+        sideText.text = s;
+        if(sideText.text != "")
+        {
+            sidePanel.SetActive(true);
+            SetSideUIPos();
+        }
+    }
+
     public void ResetUI()
     {
         text.text = "";
         panel.SetActive(false);
+
+        sideText.text = "";
+        sidePanel.SetActive(false);
     }
 
     private void Update()
     {
+        if(panel.activeSelf|| sidePanel.activeSelf)
+        {
+            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            pos.z = 0;
+        }
+
+        SetUIPos();
+        SetSideUIPos();
+    }
+
+    void SetUIPos()
+    {
         if (panel.activeSelf)
         {
-            //Vector3 offset = new Vector3(0, 0, -10);
-            //if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset * Camera.main.pixelWidth; }
-            //else { offset.x = -1 * baseOffset * Camera.main.pixelWidth; }
-            //panel.transform.position = Input.mousePosition + offset;
-
             offset = Vector3.zero;
 
             if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { offset.x = baseOffset_x; }
@@ -74,9 +85,23 @@ public class MouseOverUI : MonoBehaviour
             else if (Input.mousePosition.y / Camera.main.pixelHeight > 0.75f) { rt.pivot = new Vector2(0.5f, 1); }
             else { rt.pivot = new Vector2(0.5f, 0.5f); }
 
-            pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + offset);
-            pos.z = 0;
             panel.transform.position = pos + offset;
+        }
+    }
+    void SetSideUIPos()
+    {
+        if (sidePanel.activeSelf)
+        {
+            sideOffset = Vector3.zero;
+
+            if (Input.mousePosition.x / Camera.main.pixelWidth < 0.5f) { sideOffset.x = baseOffset_x + baseSideOffset.x; }
+            else { sideOffset.x = -1 * (baseOffset_x + baseSideOffset.x); }
+
+            if (Input.mousePosition.y / Camera.main.pixelHeight < 0.25f) { sideRT.pivot = new Vector2(0.5f, 0); }
+            else if (Input.mousePosition.y / Camera.main.pixelHeight > 0.75f) { sideRT.pivot = new Vector2(0.5f, 1); }
+            else { sideRT.pivot = new Vector2(0.5f, 0.5f); }
+
+            sidePanel.transform.position = pos + sideOffset;
         }
     }
 }

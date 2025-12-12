@@ -21,6 +21,9 @@ public class RE_LastBoss : RoomEvent
     public float blackoutDur;
     public float spawnDelay;
     public float spawnDur;
+
+    [Header("\nƒ‰ƒXƒ{ƒXŒ‚”jŒã")]
+    public float fadeOutDur;
     //public float battleDelay;
 
     protected int choice = 0;
@@ -48,13 +51,21 @@ public class RE_LastBoss : RoomEvent
     {
         if (!last)
         {
+            last = true;
             StartCoroutine(LastBattleDelay());
         }
         else
         {
-            supplyManager.AddSupply_Eq(partyStatus.supplyOptions, ItemData.Rarity.epic);
-            lootPanel.Loot();
+            //supplyManager.AddSupply_Eq(partyStatus.supplyOptions, ItemData.Rarity.epic);
+            //lootPanel.Loot();
+            StartCoroutine(GameClearC());
         }
+    }
+
+    public override void OnEnterEndless()
+    {
+        supplyManager.AddSupply_Eq(partyStatus.supplyOptions, ItemData.Rarity.epic);
+        lootPanel.Loot();
     }
 
     IEnumerator LastBattleDelay()
@@ -85,5 +96,12 @@ public class RE_LastBoss : RoomEvent
             expeditionManager.blackBack.color = new Color(0, 0, 0, alpha);
             yield return wait;
         }
+    }
+
+    IEnumerator GameClearC()
+    {
+        FadeOutUI.inst.FadeOut();
+        yield return new WaitForSeconds(fadeOutDur);
+        GameResultManager.inst.SetResult(1);
     }
 }

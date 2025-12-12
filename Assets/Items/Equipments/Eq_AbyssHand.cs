@@ -71,8 +71,8 @@ public class Eq_AbyssHand : PA_Equipment
         {
             if (!forCalcDMG)
             {
-                activated = false;
                 count -= 4;
+                activated = count >= countGoal;
             }
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {

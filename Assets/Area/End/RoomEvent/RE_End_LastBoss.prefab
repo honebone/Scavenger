@@ -101,3 +101,4 @@ MonoBehaviour:
   blackoutDur: 4
   spawnDelay: 4
   spawnDur: 3
+  fadeOutDur: 0.6

@@ -58,10 +58,15 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -73,12 +78,13 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus:
     - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
       exChance: 0
       exStack: 0
-      exValue: 20
+      exValue: 12
       exDMGPerTurn: 0
     debuffChanceMod: 0
     removeStE_buff: 0

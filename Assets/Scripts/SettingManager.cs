@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 public class SettingManager : MonoBehaviour
 {
     [SerializeField] GameObject panel;
@@ -23,30 +24,31 @@ public class SettingManager : MonoBehaviour
     public static bool infoOnMouseover;
     void Start()
     {
-        soundManager = FindObjectOfType<SoundManager>();
+        soundManager = SoundManager.instance;
         infoText = InfoText.inst;
         expeditionManager = ExpeditionManager.inst;
 
-        //SEVolume.SetValue(PlayerPrefs.GetFloat("Settings_SEVolume", SEVolume_default));
-        //ApplySEVolume();
-
-        //BGMVolume.SetValue(PlayerPrefs.GetFloat("Settings_BGMVolume", BGMVolume_default));
-        //ApplyBGMVolume();
-
-        //resolveSpeed.SetValue(PlayerPrefs.GetFloat("Settings_resolveSpeed", resolveSpeed_default));
-        //ApplyResolveSpeed();
         foreach (var setting in settings)
         {
             setting.setting.Init(setting.key,SetValue);
         }
 
-        soundManager.SetBGMVolume(settings[0].setting.GetValue());
-        soundManager.SetSEVolume(settings[1].setting.GetValue());
-        actionQueue.SetResolveSpeed(settings[2].setting.GetValue());
-        expeditionManager.Setting_ResetPos(settings[3].setting.GetValue() == 1);
-        BattleManager.inst.Settings_DisplayInfoOnTS(settings[4].setting.GetValue() == 1);
-        BattleManager.inst.Settings_MO_BuffKinds(settings[5].setting.GetValue() == 1);
-        BattleManager.inst.Settings_MO_DebuffKinds(settings[6].setting.GetValue() == 1);
+        int i = 0;//設定項目の順番を入れ替えやすいようにするため
+        soundManager.SetBGMVolume(settings[i].setting.GetValue());
+        i++;
+        soundManager.SetSEVolume(settings[i].setting.GetValue());
+        i++;
+        actionQueue.SetResolveSpeed(settings[i].setting.GetValue());
+        i++;
+        expeditionManager.Setting_ResetPos(settings[i].setting.GetValue() == 1);
+        i++;
+        BattleManager.inst.Settings_DisplayInfoOnTS(settings[i].setting.GetValue() == 1);
+        i++;
+        BattleManager.inst.Settings_MO_BuffKinds(settings[i].setting.GetValue() == 1);
+        i++;
+        BattleManager.inst.Settings_MO_DebuffKinds(settings[i].setting.GetValue() == 1);
+        i++;
+        BattleManager.inst.Settings_MO_Personalities(settings[i].setting.GetValue() == 1);
     }
 
     public void SettingsButton()
@@ -66,43 +68,58 @@ public class SettingManager : MonoBehaviour
     public void SetValue(float value, string key)
     {
         SettingParams setting = new SettingParams();
-        if (key == settings[0].key)//BGMVolume
+        int i = 0;
+        if (key == settings[i].key)//BGMVolume
         {
-            setting = settings[0];
+            setting = settings[i];
             soundManager.SetBGMVolume(value);
         }
-        else if (key == settings[1].key)//SEVolume
+        i++;
+        if (key == settings[i].key)//SEVolume
         {
-            setting = settings[1];
+            setting = settings[i];
             soundManager.SetSEVolume(value);
         }
-        else if (key == settings[2].key)//resolveSpeed
+        i++;
+        if (key == settings[i].key)//resolveSpeed
         {
-            setting = settings[2];
+            setting = settings[i];
             actionQueue.SetResolveSpeed(value);
         }
-        else if (key == settings[3].key)//resetPos
+        i++;
+        if (key == settings[i].key)//resetPos
         {
-            setting = settings[3];
+            setting = settings[i];
             expeditionManager.Setting_ResetPos(value == 1);
         }
-        else if (key == settings[4].key)//displayInfoOnTS
+        i++;
+        if (key == settings[i].key)//displayInfoOnTS
         {
-            setting = settings[4];
+            setting = settings[i];
             BattleManager.inst.Settings_DisplayInfoOnTS(value == 1);
         }
-        else if (key == settings[5].key)//バフの種類数表示
+        i++;
+        if (key == settings[i].key)//バフの種類数表示
         {
-            setting = settings[5];
+            setting = settings[i];
             BattleManager.inst.Settings_MO_BuffKinds(value == 1);
         }
-        else if (key == settings[6].key)//デバフの種類数表示
+        i++;
+        if (key == settings[i].key)//デバフの種類数表示
         {
-            setting = settings[6];
+            setting = settings[i];
             BattleManager.inst.Settings_MO_DebuffKinds(value == 1);
         }
+        i++;
+        if (key == settings[i].key)//特性表示
+        {
+            setting = settings[i];
+            BattleManager.inst.Settings_MO_Personalities(value == 1);
+        }
 
-        else
+
+
+        if (!settings.Any(x => x.key == key))
         {
             infoText.AddErrorText("設定のkeyが間違っています");
             return;

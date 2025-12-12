@@ -606,6 +606,8 @@ public class Action : MonoBehaviour
             modifiedStatus.exDMG_mul += mod.exDMG_mul;
             modifiedStatus.exATKDMG_int += mod.exATKDMG_int;
             modifiedStatus.exINTDMG_int += mod.exINTDMG_int;
+            modifiedStatus.ATKMod_divide += mod.ATKDMG_divide_mul;
+            modifiedStatus.INTMod_divide += mod.INTDMG_divide_mul;
             modifiedStatus.ATKDMG_divide_int += mod.ATKDMG_divide_int;
             modifiedStatus.INTDMG_divide_int += mod.INTDMG_divide_int;
             modifiedStatus.ACCMod += mod.ACCMod;

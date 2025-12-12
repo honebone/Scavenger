@@ -902,10 +902,12 @@ public class BattleManager : MonoBehaviour
     public static bool displayInfoOnTS;
     public static bool MO_buffKinds;
     public static bool MO_debuffKinds;
+    public static bool MO_pers;
 
     public void Settings_DisplayInfoOnTS(bool value) { displayInfoOnTS = value; }
     public void Settings_MO_BuffKinds(bool value) { MO_buffKinds = value; }
     public void Settings_MO_DebuffKinds(bool value) { MO_debuffKinds = value; }
+    public void Settings_MO_Personalities(bool value) { MO_pers = value; }
 
     public void StartTutorial_Ability() { tutorialManager.SetTutorial(tutorial_ability); }
     public void StartTutorial_Corpse() { tutorialManager.SetTutorial(tutorial_corpse); }

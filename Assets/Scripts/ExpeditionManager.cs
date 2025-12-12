@@ -670,6 +670,7 @@ public class ExpeditionManager : MonoBehaviour
     }
     public void OnEndLoot() { currentRE.OnEndLoot(); }
     public void OnEndSupply() { currentRE.OnEndSupply(); }
+    public void EnterEndless() { currentRE.OnEnterEndless(); }
 
     //Ç±Ç±Ç‹Ç≈room event Ç≈åƒÇŒÇÍÇÈä÷êî
     public void EndRoomEvent()
@@ -701,8 +702,8 @@ public class ExpeditionManager : MonoBehaviour
     IEnumerator DefeatC()
     {
         fadeOutUI.FadeOut_SetDuration(1f);
-        yield return new WaitForSeconds(1f);
-        gameManager.GoToResultScene(false);//
+        yield return new WaitForSeconds(2f);
+        GameResultManager.inst.SetResult(2);
     }
     public void EndExpediton()
     {

@@ -1135,7 +1135,7 @@ MonoBehaviour:
   - {fileID: 579649940, guid: dbe3bf0e1d403df4895381b0b0037dee, type: 3}
   infoText: {fileID: 3924681592274994051}
   infoCanvas: {fileID: 3265862882185530411}
-  SE: {fileID: 0}
+  SE: {fileID: 8300000, guid: f2b0e3e619bf59e4aa61b2b245c4ffa7, type: 3}
 --- !u!114 &8657369087425248862
 MonoBehaviour:
   m_ObjectHideFlags: 0

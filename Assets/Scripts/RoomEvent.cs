@@ -61,6 +61,10 @@ public class RoomEvent : MonoBehaviour
         if (supplyManager.CheckHasSupply()) { supplyManager.StartSupply(); }
         else { EndRoomEvent(); }
     }
+    public virtual void OnEnterEndless()
+    {
+
+    }
     public virtual void OnEndSupply() { EndRoomEvent(); }
 
     public  void EndRoomEvent()

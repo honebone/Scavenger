@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class FadeOutUI : MonoBehaviour
 {
+    public static FadeOutUI inst;
+
     [SerializeField] bool blockOnAwake=true;
 
 [SerializeField] CanvasGroup canvas;
     private void Awake()
     {
+        if(inst == null)inst = this;
         if (blockOnAwake)
         {
             canvas.alpha = 1;

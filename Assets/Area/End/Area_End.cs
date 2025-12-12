@@ -72,8 +72,18 @@ public class Area_End : AreaManager
         layer[2].SetRoomEvent(areaData.boss);
 
         map.SetLayerPanel(layer, layerCount);
+        layerCount++;
 
-        areaLength = 5;
+        //<<6‘w–Ú>>
+        layer[2] = new ExpeditionManager.Room();
+        layer[2].up = -1;
+        layer[2].straight = 2;
+        layer[2].down = -1;
+        layer[2].SetRoomEvent(areaData.endArea);
+
+        map.SetLayerPanel(layer, layerCount);
+
+        areaLength = 6;
 
         map.EndGenerateMap();
     }
