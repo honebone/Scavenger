@@ -56,7 +56,7 @@ public class ChataDetail_CharaButton : MonoBehaviour
     {
         status = character.CharaStatus();
         expCount = Inventory.inst.GetExp();
-        expReq = status.GetNextExp() - status.exp;
+        expReq = Mathf.Max(status.GetNextExp() - status.exp, 0);
         if (status.level < GameManager.gameParams.maxLVL && expCount >= expReq)
         {
             frame.color = Definer.colorRef.expOrb;
@@ -118,14 +118,19 @@ public class ChataDetail_CharaButton : MonoBehaviour
         if (character != null)
         {
             if (Input.GetMouseButtonDown(1)) SelectChara();
-            if (Input.GetMouseButtonDown(0)&& status.level < GameManager.gameParams.maxLVL && expCount >= expReq&& !LVLUpManager.GetInLVLUp())
+            if (Input.GetMouseButtonDown(0) && status.level < GameManager.gameParams.maxLVL && expCount >= expReq && !LVLUpManager.GetInLVLUp())
             {
                 if (!ExpeditionManager.inst.CheckInRoomEvent())
                 {
                     if (inventory.GetExp() >= expReq)
                     {
-                        inventory.AddExp(-expReq, false);
-                        character.GainEXP(expReq);
+                        if (expReq > 0)
+                        {
+                            inventory.AddExp(-expReq, false);
+                            character.GainEXP(expReq);
+                        }
+                        
+                        LVLUpManager.inst.LVLUp(character);
                     }
                     else
                     {

@@ -10,6 +10,6 @@ public class FE_MeaingfulBattle : FieldEffect
     }
     public override void OnBattleStart()
     {
-        FindObjectOfType<LootPanel>().AddExp(2);
+        FindObjectOfType<LootPanel>().AddExp(1);
     }
 }

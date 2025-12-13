@@ -31,67 +31,67 @@ public class CharaDetail_LVLUp : MonoBehaviour
     [SerializeField] GuideMessage guideMessage;
     [SerializeField] LVLUpManager lvlUpManager;
 
-    Character character;
+    //Character character;
 
-    public void OpenPanel()
-    {
-        panel.SetActive(true);
+    //public void OpenPanel()
+    //{
+    //    panel.SetActive(true);
 
-        SetValue();
-    }
-    public void ClosePanel()
-    {
-        panel.SetActive(false);
-    }
+    //    SetValue();
+    //}
+    //public void ClosePanel()
+    //{
+    //    panel.SetActive(false);
+    //}
 
-    public void GainEXP()
-    {
-        if (!lvlUpManager.GetInLVLUp())
-        {
-            if (inventory.GetExp() > 0)
-            {
-                inventory.AddExp(-1, false);
-                character.GainEXP(1);
-                SetValue(false);
-            }
-            else
-            {
-                guideMessage.SetWaringText("経験のオーブが足りない");
-            }
-        }
-    }
+    //public void GainEXP()
+    //{
+    //    if (!lvlUpManager.GetInLVLUp())
+    //    {
+    //        if (inventory.GetExp() > 0)
+    //        {
+    //            inventory.AddExp(-1, false);
+    //            character.GainEXP(1);
+    //            SetValue(false);
+    //        }
+    //        else
+    //        {
+    //            guideMessage.SetWaringText("経験のオーブが足りない");
+    //        }
+    //    }
+    //}
 
-    public void SetValue(bool fromOrigin = true)
-    {
-        expText.text = string.Format("x{0}", inventory.GetExp());
-        if (detailUI.GetDisplayingChara())
-        {
-            character = detailUI.GetDisplayingChara();
-            Character.CharacterStatus status = character.CharaStatus();
-            currentLVLText.text = status.level.ToString();
-            nextLVLText.text = string.Format("次のLVLまで：{0}/{1}", status.exp, status.GetNextExp());
+    //public void SetValue(bool fromOrigin = true)
+    //{
+    //    expText.text = string.Format("x{0}", inventory.GetExp());
+    //    if (detailUI.GetDisplayingChara())
+    //    {
+    //        character = detailUI.GetDisplayingChara();
+    //        Character.CharacterStatus status = character.CharaStatus();
+    //        currentLVLText.text = status.level.ToString();
+    //        nextLVLText.text = string.Format("次のLVLまで：{0}/{1}", status.exp, status.GetNextExp());
 
-            lvlMaxPanel.SetActive(status.level == 10);
+    //        lvlMaxPanel.SetActive(status.level == 10);
 
-            if (fromOrigin) { expBar_fill.fillAmount = 0; }
-            float to = status.exp / (1f * status.GetNextExp());
-            DOTween.To(() => expBar_fill.fillAmount, (x) => expBar_fill.fillAmount = x, to, 0.1f);
-        }
-    }
+    //        if (fromOrigin) { expBar_fill.fillAmount = 0; }
+    //        float to = status.exp / (1f * status.GetNextExp());
+    //        DOTween.To(() => expBar_fill.fillAmount, (x) => expBar_fill.fillAmount = x, to, 0.1f);
+    //    }
+    //}
 
-    public void ResetValue()
-    {
-        lvlMaxPanel.SetActive(false);
-        expText.text = "";
-        if (detailUI.GetDisplayingChara())
-        {
-            character = null;
-            currentLVLText.text = "";
-            nextLVLText.text = "";
+    //public void ResetValue()
+    //{
+    //    lvlMaxPanel.SetActive(false);
+    //    expText.text = "";
+    //    if (detailUI.GetDisplayingChara())
+    //    {
+    //        character = null;
+    //        currentLVLText.text = "";
+    //        nextLVLText.text = "";
 
-            expBar_fill.fillAmount = 0;
-        }
-    }
+    //        expBar_fill.fillAmount = 0;
+    //    }
+    //}
 
     //public void SetChara(Character chara)
     //{

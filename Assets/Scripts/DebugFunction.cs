@@ -123,7 +123,7 @@ public class DebugFunction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                TutorialManager.inst.SetTutorial(tutorial);
+                charactersManager.GetExistingCharacters_All().ForEach(x => x.GainEXP(10));
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha6))

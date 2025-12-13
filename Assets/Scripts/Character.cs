@@ -1609,10 +1609,10 @@ public class Character : MonoBehaviour
         if (charaStatus.level < 10)
         {
             charaStatus.exp += amount;
-            if (charaStatus.exp >= charaStatus.GetNextExp())
-            {
-                FindObjectOfType<LVLUpManager>().LVLUp(this);
-            }
+            //if (charaStatus.exp >= charaStatus.GetNextExp())
+            //{
+            //    FindObjectOfType<LVLUpManager>().LVLUp(this);
+            //}
         }
     }
 

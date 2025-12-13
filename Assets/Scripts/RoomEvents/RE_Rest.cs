@@ -20,8 +20,10 @@ public class RE_Rest : RoomEvent
     [SerializeField] int SANHeal_sleep = 15;
     [SerializeField] int SANHeal_meditate = 20;
     [SerializeField, Header("x,y-1の範囲")] Vector2Int RemovePer;
+    [SerializeField] float AddExp_train;
 
     int phase;
+    int mode = 0;
     List<Character> pool = new List<Character>();
 
     public override void OnEndREInfo()
@@ -32,7 +34,12 @@ public class RE_Rest : RoomEvent
             if (c.CharaStatus().playable) { pool.Add(c); }
         }
 
-        expeditionManager.SetREOptionButtons(options);
+        List<REOptionParams> ops = new List<REOptionParams>(options);
+        REOptionParams train = new REOptionParams();
+        train.optionName = "訓練する";
+        train.optionInfo = $"キャラを1体選ぶ\nそのキャラは{"EXP".ColorStr(Definer.colorRef.expOrb)}を{(AddExp_train * expeditionManager.GetExpAmount()).ToInt()}得る";
+        ops.Add(train);
+        expeditionManager.SetREOptionButtons(ops);
     }
     public override void SelectOption(int index)
     {
@@ -46,12 +53,17 @@ public class RE_Rest : RoomEvent
         {
             if (index >= pool.Count) InfoText.inst.AddErrorText($"選択したインデックスが想定外です:{index}");
             Character selected = pool[index];
-            selected.RemovePer_Random(RemovePer.Range(), PA_Personality.PersonalityStatus.PersonalityType.bad);
-            selected.SANHeal(SANHeal_meditate);
+            if (mode == 1)
+            {
+                Meditate(selected);
+            } else if (mode == 2)
+            {
+                Train(selected);
+            }
+            else InfoText.inst.AddErrorText($"選択したモードが想定外です:{mode}");
+
             EndRoomEvent();
         }
-
-
     }
     IEnumerator Consequence()
     {
@@ -95,20 +107,41 @@ public class RE_Rest : RoomEvent
                 }
                 break;
             case 3:
-
-
+                mode = 1;
                 options2 = new List<REOptionParams>();
                 foreach (Character character in pool)
                 {
                     Character.CharacterStatus status = character.CharaStatus();
                     REOptionParams option = new REOptionParams();
                     option.optionName = $"{status.charaName}に瞑想させる";
-                    //option.optionInfo = "ランダムな1-3個の特性を得る";
+                    options2.Add(option);
+                }
+
+                expeditionManager.SetREOptionButtons(options2);
+                break;
+            case 4:
+                mode = 2;
+                options2 = new List<REOptionParams>();
+                foreach (Character character in pool)
+                {
+                    Character.CharacterStatus status = character.CharaStatus();
+                    REOptionParams option = new REOptionParams();
+                    option.optionName = $"{status.charaName}に訓練させる";
                     options2.Add(option);
                 }
 
                 expeditionManager.SetREOptionButtons(options2);
                 break;
         }
+    }
+
+   void Meditate(Character chara)
+    {
+        chara.RemovePer_Random(RemovePer.Range(), PA_Personality.PersonalityStatus.PersonalityType.bad);
+        chara.SANHeal(SANHeal_meditate);
+    }
+    void Train(Character chara)
+    {
+        chara.GainEXP((AddExp_train * expeditionManager.GetExpAmount()).ToInt());
     }
 }
