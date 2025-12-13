@@ -59,9 +59,15 @@ MonoBehaviour:
     optionInfo: "\u5168\u54E1\u306E<sprite name=HP><color=#87FF79>HP</color>\u309250\uFF05\u56DE\u5FA9\n\u5168\u54E1\u306E<color=#FFFFFF><sprite
       name=SAN><link=T_SAN><u>SAN</u></link></color>\u309215\u56DE\u5FA9\n???"
     available: 1
+  - optionName: "\u7791\u60F3\u3059\u308B"
+    optionInfo: "1\u4F53\u306E<sprite name=debuff><color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u30921-2\u500B\u6D88\u53BB\u3057\u3001<color=#FFFFFF><sprite
+      name=SAN><link=T_SAN><u>SAN</u></link></color>\u309220\u56DE\u5FA9"
+    available: 1
   umbushed: {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}
   healRatio_rest: 0.2
   SANHeal_rest: 10
   SANHeal_banquet: 20
   healRatio_sleep: 0.5
   SANHeal_sleep: 15
+  SANHeal_meditate: 20
+  RemovePer: {x: 1, y: 3}

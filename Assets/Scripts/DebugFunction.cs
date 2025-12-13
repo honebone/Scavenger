@@ -128,11 +128,7 @@ public class DebugFunction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                for (int i = 0; i < 100; i++)
-                {
-                    SupplyManager.inst.AddItem(expeditionManager.GetRandomEquipment_WithGuarantee(ItemData.Rarity.rare), 1);
-                }
-                SupplyManager.inst.StartSupply();
+                charactersManager.GetExistingCharacters_All().ForEach(x => x.AddPA_Personality(Definer.inst.GetPersonalityDataBase().Choice(), true));
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {

@@ -88,44 +88,44 @@ public class Inventory : MonoBehaviour
     }
     public void SetButtons()
     {
-        //CloseOptionUI();
-        if (content.childCount != 0)
-        {
-            for (int i = 0; i < content.childCount; i++)
-            {
-                Destroy(content.GetChild(i).gameObject);
-            }
-        }
-        ItemData.ItemType sortType=ItemData.ItemType.material;
-        switch (sort)
-        {
-            case 2:
-                sortType = ItemData.ItemType.equipment;
-                break;
-            case 3:
-                sortType = ItemData.ItemType.tool;
-                break;
-        }
-        foreach(Definer.Item item in inventory)
-        {
-            if (sort == 0 || item.data.itemType == sortType)
-            {
-                int a = item.amount;
-                while (a > 0)
-                {
-                    Definer.Item i = new Definer.Item();
-                    i.Init(item.data);
-                    i.amount = Mathf.Min(i.data.amountPerStack, a);
+        infoText.AddErrorText("本来呼ばれないはずの関数です");
+        //if (content.childCount != 0)
+        //{
+        //    for (int i = 0; i < content.childCount; i++)
+        //    {
+        //        Destroy(content.GetChild(i).gameObject);
+        //    }
+        //}
+        //ItemData.ItemType sortType=ItemData.ItemType.material;
+        //switch (sort)
+        //{
+        //    case 2:
+        //        sortType = ItemData.ItemType.equipment;
+        //        break;
+        //    case 3:
+        //        sortType = ItemData.ItemType.tool;
+        //        break;
+        //}
+        //foreach(Definer.Item item in inventory)
+        //{
+        //    if (sort == 0 || item.data.itemType == sortType)
+        //    {
+        //        int a = item.amount;
+        //        while (a > 0)
+        //        {
+        //            Definer.Item i = new Definer.Item();
+        //            i.Init(item.data);
+        //            i.amount = Mathf.Min(i.data.amountPerStack, a);
 
-                    var ib = Instantiate(inventoryButton, content);
-                    ib.GetComponent<InventoryButton>().Init(i, infoText, detailUI,scrollRect);
+        //            var ib = Instantiate(inventoryButton, content);
+        //            ib.GetComponent<InventoryButton>().Init(i, infoText, detailUI,scrollRect);
 
-                    a -= item.data.amountPerStack;
-                }
-            }
-        }
+        //            a -= item.data.amountPerStack;
+        //        }
+        //    }
+        //}
 
-        expOrbText.text = string.Format("経験のオーブ x{0}", expOrbs);
+        //expOrbText.text = string.Format("経験のオーブ x{0}", expOrbs);
     }
 
     public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)
@@ -176,16 +176,30 @@ public class Inventory : MonoBehaviour
                 replace = inventory[i];
                 replace.amount += amount;
                 inventory.RemoveAt(i);
-                inventory.Add(replace);
+                inventory.Insert(i,replace);
 
-                SortInventory();
+                //SetButtons();
                 return;
             }
         }
         replace.Init(item.data);
         replace.amount = amount;
-        inventory.Add(replace);
-        SortInventory();
+        InsertItem(replace);
+        //SetButtons();
+    }
+
+    void InsertItem(Definer.Item insert)
+    {
+        int rarity = (int)insert.data.rarity;
+        for (int i = 0; i < inventory.Count; i++)
+        {
+            if ((int)inventory[i].data.rarity<= rarity)
+            {
+                inventory.Insert(i, insert);
+                return;
+            }
+        }
+        inventory.Add(insert);
     }
    
     public void RemoveItem(Definer.Item remove,int amount,bool note = true)
@@ -220,7 +234,8 @@ public class Inventory : MonoBehaviour
                     inventory.Add(replace);
                 }
 
-                SortInventory();
+                //SortInventory();
+                //SetButtons();
                 return;
             }
         }
@@ -251,7 +266,8 @@ public class Inventory : MonoBehaviour
                     inventory.Add(replace);
                 }
 
-                SortInventory();
+                //SortInventory();
+                //SetButtons();
                 return;
             }
         }
@@ -288,11 +304,11 @@ public class Inventory : MonoBehaviour
         expOrbs -= amount;
     }
 
-    void SortInventory()
-    {
-        inventory.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
-        SetButtons();
-    }
+    //void SortInventory()
+    //{
+    //    inventory.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
+    //    SetButtons();
+    //}
 
     public int GetItemAmount(ItemData itemData)
     {

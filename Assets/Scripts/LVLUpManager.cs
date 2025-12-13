@@ -16,7 +16,7 @@ public class LVLUpManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI statusGrowthText;
     [SerializeField] List<Transform> panelsTF;
     [SerializeField] CharaDetailUI charaDetail;
-    [SerializeField] CharaDetail_LVLUp charaDetail_lvlUp;
+    //[SerializeField] CharaDetail_LVLUp charaDetail_lvlUp;
 
     [SerializeField] AudioClip jingle_LVLUp;
     List<Character> LVLUpQueue = new List<Character>();
@@ -123,7 +123,7 @@ public class LVLUpManager : MonoBehaviour
 
     public void EndSelectUpgrade()
     {
-        charaDetail_lvlUp.SetValue();
+        //charaDetail_lvlUp.SetValue();
         LVLUpQueue[0].DisplayInfo();
         LVLUpQueue.RemoveAt(0);
         StartCoroutine(EndSelectUpgradeC());

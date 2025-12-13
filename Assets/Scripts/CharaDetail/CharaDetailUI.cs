@@ -24,8 +24,8 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField] CharaDetail_InventoryEq inventoryEq;
     [SerializeField] List<ChataDetail_CharaButton> charaButtons;
 
-    [SerializeField] GameObject LVLUpPanel;
-    [SerializeField] CharaDetail_LVLUp lvlup;
+    //[SerializeField] GameObject LVLUpPanel;
+    //[SerializeField] CharaDetail_LVLUp lvlup;
 
     //[Space(25), SerializeField]
     //Transform abilityP;
@@ -43,7 +43,7 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField] TutorialData tutorial_exp;
     [SerializeField] TutorialData tutorial_equipment;
 
-    [SerializeField] GameObject warningPanel;
+    //[SerializeField] GameObject warningPanel;
 
     [SerializeField] GraphicRaycaster raycaster;
 
@@ -128,7 +128,7 @@ public class CharaDetailUI : MonoBehaviour
             charaButtons[0].SelectChara();
         }
 
-        inventoryEq.SetButtons();//test
+        inventoryEq.SetButtons();
 
         if (inventory.GetExp() > 0 && tutorialManager.CheckUnlocked(tutorial_exp)) { tutorialManager.SetTutorial("LVLUP"); }
         else if (inventory.GetEquipments().Count > 0 && tutorialManager.CheckUnlocked(tutorial_equipment)) { tutorialManager.SetTutorial(tutorial_equip); }
@@ -150,7 +150,7 @@ public class CharaDetailUI : MonoBehaviour
 
         displayingChara.DisplayInfo();
 
-        lvlup.SetValue();
+        //lvlup.SetValue();
         inventory.CloseOptionUI();
 
         //ToggleToLVLUp();
@@ -165,7 +165,7 @@ public class CharaDetailUI : MonoBehaviour
         status = new Character.CharacterStatus();
 
 
-        lvlup.ResetValue();
+        //lvlup.ResetValue();
         inventory.CloseOptionUI();
     }
 

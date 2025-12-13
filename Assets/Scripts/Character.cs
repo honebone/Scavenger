@@ -603,6 +603,17 @@ public class Character : MonoBehaviour
             infoText.AddLogText(string.Format("{0}‚ÍV‚½‚È“Á«{1}‚ğ“¾‚½", charaStatus.charaName, personality.GetName()));
         }
     }
+
+    public void RemovePer_Random(int amount,PA_Personality.PersonalityStatus.PersonalityType type)
+    {
+        List<PassiveAbility> list=PA_Per.Where(x => x.GetComponent<PA_Personality>().CheckPerType(type)).ToList();
+        list.Sample(amount).ForEach(x =>
+        {
+            targetButton.SetDamageText($"Á‹F{x.GetPAName()}", Color.gray);
+            infoText.AddLogText($"{charaStatus.charaName}‚Í“Á«{x.GetPAName()}‚ğ¸‚Á‚½");
+            RemovePA(x);
+        });
+    }
     public void EquipItem(Definer.Item item)
     {
         var p = Instantiate(item.data.manager, transform);

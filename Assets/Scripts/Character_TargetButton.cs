@@ -184,55 +184,6 @@ public class Character_TargetButton : MonoBehaviour
         }
         else
         {
-            //Character.CharacterStatus status = character.CharaStatus();
-            //string s = status.charaName + "\n";
-            //if (status.shield > 0)
-            //{
-            //    s += $"{"HP".ToSpr_withName()}：{status.HP}+{"shield".ToSpr()}{status.shield.ToString().ColorStr(Definer.colorRef.shield)} ({status.GetHPPercent():0.0}％)";
-            //}
-            //else { s += $"{"HP".ToSpr_withName()}：{status.HP} ({status.GetHPPercent():0.0}％)"; }
-            //if (status.player)
-            //{
-            //    s += $"\n{"SAN".ToSpr_withName()}：{status.SAN}";
-            //}
-
-            //if (status.lifetime > 0)
-            //{
-            //    int lifetimeDMG = Mathf.CeilToInt(1f*status.BaseHP() / status.lifetime);
-            //    s += $"\n寿命による{"HP".ToSpr_withName()}減少：" + $"{lifetimeDMG}/ラウンド".ColorStr(Definer.colorRef.decreaseHP);
-            //}
-
-            //foreach (GameObject DoT in Definer.DoTDataBase)
-            //{
-            //    int DMGNextTurn = character.GetDoTDMG(DoT, false);
-            //    int DMGTotal = character.GetDoTDMG(DoT, true);
-            //    if (DMGTotal > 0)
-            //    {
-            //        string StEName = DoT.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().ToLinkKey();
-            //        s += $"\n{StEName}：次ターン{DMGNextTurn.ToString().ColorStr(Definer.colorRef.decreaseHP)}(計{DMGTotal.ToString().ColorStr(Definer.colorRef.decreaseHP)})";
-            //    }
-            //}
-
-            //if (BattleManager.MO_buffKinds)
-            //{
-            //    s += $"\n{"buff".ToSpr_withName()}種類数：{character.GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff)}";
-            //}
-            //if (BattleManager.MO_debuffKinds)
-            //{
-            //    s += $"\n{"debuff".ToSpr_withName()}種類数：{character.GetStEKinds(PA_StatusEffect.StatusEffectStatus.StatusEffectType.debuff)}";
-            //}
-
-            //if (character.GetPACurrentStateInfo() != "")
-            //{
-            //    s += "\n\n" + character.GetPACurrentStateInfo().ColorStr(Definer.colorRef.emphasize);
-            //}
-
-            //mouseOver.SetUI(s, true);
-
-            //if (SettingManager.infoOnMouseover)
-            //{
-            //    character.DisplayInfo();
-            //}
             character.SetMouseOver();
         }
     }
