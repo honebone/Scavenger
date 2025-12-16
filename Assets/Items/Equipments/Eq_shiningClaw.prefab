@@ -64,7 +64,7 @@ MonoBehaviour:
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
-    CRITD: 60
+    CRITD: 50
     EVD: 0
     ACC: 0
     ACT: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0

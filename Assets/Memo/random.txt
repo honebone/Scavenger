@@ -9,3 +9,12 @@ HP+50%
 ATK/INT+30%
 
 汎用スクリプト最新：Eq_OnDamage
+AMod最新：AMod_DebuffKinds
+
+◇装備品　レアリティ毎ステータス増加量
+uncommon/rare/epic
+ATK 20/25/30
+INT 20/25/30
+maxHP 15/20/25
+CRITC 10/15/20
+CRITD 25/35/50

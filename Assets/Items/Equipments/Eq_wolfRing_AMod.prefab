@@ -55,13 +55,18 @@ MonoBehaviour:
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
-    exDMG_mul: 60
+    exDMG_mul: 40
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 30
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -73,6 +78,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
@@ -106,3 +112,4 @@ MonoBehaviour:
   onlyAttack: 1
   onlyAbility: 1
   onlyPassive: 0
+  notFocus: 0

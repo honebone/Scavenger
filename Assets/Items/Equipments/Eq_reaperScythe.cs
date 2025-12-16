@@ -6,35 +6,33 @@ using System.Linq;
 public class Eq_reaperScythe : PA_Equipment
 {
     public int exTurnTH;
-    public Action.ActionStatus heal;
+    public int CRITC;
+    public int maxCRITCCount;
     public Action.ActionStatus exTurn;
     int count;
     public override void OnKill(List<Action.OnKillParams> onKillParamsList)
     {
         onKillParamsList.ForEach(x =>
         {
-            if (!x.target.IsObstacle())
+            if (!x.target.IsObstacle()&&count< maxCRITCCount)
             {
                 count++;
-                Enqueue_Self(heal);
                 if (count == exTurnTH) Enqueue_Self(exTurn);
-                else if(count < exTurnTH) Log($"カウント+1 ({count})");
+                character.AddCRITC(CRITC);
+                Log($"{"CRIT".ToSpr_withName()}率+{CRITC}％ (+{CRITC * count}％)");
             }
         });
     }
 
     public override void OnBattleEnd()
     {
+        character.AddCRITC(-CRITC * count);
         count = 0;
-    }
-
-    public override string GetPAInfo_Base()
-    {
-        return $"{heal.GetInfo()}\n{exTurn.GetInfo()}";
     }
 
     public override string GetCurrentStateInfo()
     {
-        return count >= exTurnTH ? "追加ターン取得済み" : $"カウント：{count}/{exTurnTH}";
+        string s= count >= exTurnTH ? "(追加ターン取得済み)" : "(追加ターン未取得)";
+        return $"カウント：{count}/{maxCRITCCount} ({"CRIT".ToSpr_withName()}率+{CRITC * count}％)\n{s}";
     }
 }

@@ -77,22 +77,26 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "CRIT\u7387\u4F4E\u4E0B"
     StEInfo: "<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387-<color=#FFBF69><i>{X}</i></color>\uFF05\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF-1"
     StEIcon: {fileID: 21300000, guid: 105080f34c9c0d44d8a4caad6862dd64, type: 3}
     StEType: 2
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 0
     merge: 0
     refValue: 1
     undeletable: 0
     DoT: 0
     regen: 0
+    StEPrefab: {fileID: 0}
     applyer: {fileID: 0}
     stack: 0
     value: 0
     DMGPerTurn: 0
-  up: 1
+  up: 0
 --- !u!212 &7692293271465632286
 SpriteRenderer:
   m_ObjectHideFlags: 0

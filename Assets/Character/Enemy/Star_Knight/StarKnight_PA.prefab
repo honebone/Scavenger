@@ -78,6 +78,7 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u661F\u306E\u52A0\u8B77"
     personalityType: 1
@@ -92,6 +93,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -102,6 +104,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -117,6 +120,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -136,11 +142,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -150,6 +160,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -225,7 +236,7 @@ MonoBehaviour:
     actionTargetsInt: 
   onDying:
     actionName: 
-    conditionInfo: "\u7015\u6B7B\u306B\u306A\u3063\u305F\u3068\u304D\u3001<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u304C\u3042\u308B\u306A\u3089"
+    conditionInfo: "\u7015\u6B7B\u306B\u306A\u3063\u305F\u3068\u304D\u3001<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u304C\u3042\u308B\u306A\u3089(\u5404\u30E9\u30A6\u30F3\u30C91\u56DE)"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: "\u30FB<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D<sprite
@@ -234,6 +245,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -244,6 +256,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -259,6 +272,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -278,11 +294,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -292,6 +312,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0

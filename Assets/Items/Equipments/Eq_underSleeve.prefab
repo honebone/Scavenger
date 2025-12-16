@@ -58,13 +58,13 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 10
+    ATK_mul: 0
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
-    CRITD: 60
+    CRITD: 50
     EVD: 0
     ACC: 0
     ACT: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -148,7 +149,7 @@ MonoBehaviour:
     ATKDMG_divide_int: 0
     INTDMG_divide_int: 0
     ACCMod: 0
-    CRITCMod: 5
+    CRITCMod: 50
     CRITDMod: 0
     drain: 0
     ignoreShield: 0
@@ -227,6 +228,7 @@ MonoBehaviour:
     player: 0
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1

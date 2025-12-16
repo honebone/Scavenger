@@ -10,9 +10,25 @@ public class E_StarKnight : PA_Personality
     public Action.ActionStatus onDMG;
     public Action.ActionStatus onDying;
 
+    bool available;
+
+    public override void OnBattleStart()
+    {
+        available = true;
+    }
+    public override void OnSummoned(Action.OnSummonParams onSummonParams)
+    {
+        available = true;
+    }
+    public override void OnRoundStart()
+    {
+        if (!available) Log("Ä”­“®‰Â”\");
+        available = true;
+    }
+
     public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
-        var enemyDMG=onDamageParamsList.Where(m => m.ap.target.PlayerPos()!=character.PlayerPos());
+        var enemyDMG = onDamageParamsList.Where(m => m.ap.target.PlayerPos() != character.PlayerPos());
         if (enemyDMG.Count() > 0)
         {
             Enqueue_Self(onDMG);
@@ -20,10 +36,12 @@ public class E_StarKnight : PA_Personality
     }
     public override void OnDecreasedHP(int value)
     {
-        if (character.CharaStatus().HP == 0)
+        int dusts = character.GetStEStack_Sum(stardust);
+        if (character.CharaStatus().HP == 0 && available && dusts > 0)
         {
-            int dusts=character.GetStEStack_Sum(stardust);
-            if (dusts > 0) {
+            available = false;
+            if (dusts > 0)
+            {
                 Action.ActionStatus action = onDying;
                 action.healPercent_min = dusts * healPerStardust;
                 action.healPercent_max = dusts * healPerStardust;
@@ -34,8 +52,13 @@ public class E_StarKnight : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        string s = onDMG.GetInfo()+"\n";
+        string s = onDMG.GetInfo() + "\n";
         s += onDying.GetInfo();
         return s;
+    }
+
+    public override string GetCurrentStateInfo()
+    {
+        return available ? "”­“®‰Â”\" : "”­“®•s‰Â".ColorStr(Color.gray);
     }
 }

@@ -245,6 +245,7 @@ public class PassiveAbility : MonoBehaviour
         runeCharge = 0;
     }
     /// <summary>
+    /// ルーンを活性化
     /// 活性化効果処理はそれぞれのスクリプトに書くこと！
     /// </summary>
     public void RuneActivate() {
@@ -256,6 +257,9 @@ public class PassiveAbility : MonoBehaviour
             character.OnRuneActivate(this);
         }
     }
+    /// <summary>
+    /// ルーン活性時効果
+    /// </summary>
     public virtual void RuneActivation() { infoText.AddErrorText($"効果のない活性化をしています！：{GetPAName()}"); }
 
     public Character.CharacterStatus CharaStatus() { return character.CharaStatus(); }

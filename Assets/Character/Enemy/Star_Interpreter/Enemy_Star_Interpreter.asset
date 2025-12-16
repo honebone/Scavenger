@@ -43,7 +43,7 @@ MonoBehaviour:
   passiveAbilities:
   - {fileID: 1808138132528202961, guid: acfc2a0a698333540ac5ad21622d4d3c, type: 3}
   actionMods: []
-  corpse: {fileID: 0}
+  corpse: {fileID: 11400000, guid: 346549fd8ab6cfa449cb42c3c7eb8ff2, type: 2}
   loot:
     drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0

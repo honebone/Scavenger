@@ -75,6 +75,7 @@ public class Definer : MonoBehaviour
         public GameObject heal;
         /// <summary>0:other 1:buff 2:debuff 3:focus</summary>
         public GameObject[] applyStE;
+        public GameObject shieldDMG;
     }
 
     public static Character.CharacterStatus nonCharaStatus;

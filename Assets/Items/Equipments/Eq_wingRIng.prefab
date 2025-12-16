@@ -65,7 +65,7 @@ MonoBehaviour:
     INT_int: 0
     exDMG_mul: 0
     CRITC: 10
-    CRITD: 30
+    CRITD: 25
     EVD: 0
     ACC: 10
     ACT: 4

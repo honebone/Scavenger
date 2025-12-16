@@ -41,6 +41,6 @@ public class EqR_Sowelu : Eq_Rune
 
     public override string GetCurrentStateInfo()
     {
-        return $"{"CRIT".ToSpr_withName()}ダメージ+{count * CRITD}％";
+        return $"チャージ：{runeCharge}\n{"CRIT".ToSpr_withName()}ダメージ+{count * CRITD}％";
     }
 }

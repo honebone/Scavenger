@@ -1170,7 +1170,9 @@ public class Character : MonoBehaviour
             soundManager.PlaySE(Definer.soundRef.shieldDMG);
         }
 
-        SpawnVisualEffect(Definer.VERef.damage);
+        
+        if(onDamageParams.totalDMG>0) SpawnVisualEffect(Definer.VERef.damage);
+        if(onDamageParams.shieldDMG>0) SpawnVisualEffect(Definer.VERef.shieldDMG);
         if (onDamageParams.CRIT)//テキストの表示
         {
             targetButton.SetDamageText("Critical!!", Definer.colorRef.CRIT);
