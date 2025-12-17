@@ -233,12 +233,14 @@ public class DebugFunction : MonoBehaviour
         {
             chara.LVLUp_Auto(autoset_playerLVL-1);
         });
-        for (int i = 0; i < autoset_enemyLVL-1; i++) { expeditionManager.EnemyLVLUP(); }
 
         GetAllEquipments();
 
-        if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartArea(areaData); }
+        if (expeditionManager.GetAreaManager() == null) { expeditionManager.StartExpedition(areaData); }
         else { expeditionManager.GetAreaManager().GenerateMap(); }
+
+        for (int i = 0; i < autoset_enemyLVL - 1; i++) { expeditionManager.EnemyLVLUP(); }
+
     }
 
     public void ToggleGlitch()

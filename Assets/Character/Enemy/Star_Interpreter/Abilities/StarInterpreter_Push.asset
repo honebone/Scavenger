@@ -22,7 +22,7 @@ MonoBehaviour:
   abilityType: 1
   excludeRandomPool: 0
   priority: 1
-  selectWeight: 1
+  selectWeight: 2
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -34,6 +34,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -67,6 +68,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 537bd61c7c22a57469a444c81cebda96, type: 3}
     VE_OnTargets: {fileID: 440364055008985749, guid: 53f61d66f6b3fc24c83fcfbc02ee3019, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 1
@@ -77,6 +79,7 @@ MonoBehaviour:
       player: 1
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 0
@@ -114,11 +117,15 @@ MonoBehaviour:
     ATKMod_max: 30
     INTMod_min: 20
     INTMod_max: 30
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0

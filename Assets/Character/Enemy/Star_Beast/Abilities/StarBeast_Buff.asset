@@ -27,7 +27,7 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 1
-  conditionInfo: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C25\uFF05\u4EE5\u4E0B"
+  conditionInfo: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C30\uFF05\u4EE5\u4E0B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
-    HPPercent: 25
+    HPPercent: 30
     HP_lessThan: 1
     HP_excludeEqual: 0
     neighbor: []

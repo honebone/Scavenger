@@ -16,4 +16,8 @@ public class GameParams : ScriptableObject
     public Vector2Int SANDMGOnRoom;
     public int RegenPercentOnRoomEnd;
     public int SANPenaltyOnDie;
+    [Header("\n\n\nÉ}ÉbÉvê∂ê¨")]
+    public int areaLength;
+    public int branchChance;
+    public int blindChance;
 }

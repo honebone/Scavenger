@@ -114,10 +114,10 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 40
-    ATKMod_max: 60
-    INTMod_min: 40
-    INTMod_max: 60
+    ATKMod_min: 60
+    ATKMod_max: 80
+    INTMod_min: 60
+    INTMod_max: 80
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 0
     actionTargets: []
     actionTargetsInt: 
   - actionName: "\u8D85\u65B0\u661F"
@@ -360,6 +360,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 5
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 
