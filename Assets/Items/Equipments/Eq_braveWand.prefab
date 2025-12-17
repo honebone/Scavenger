@@ -49,7 +49,8 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: "\u30AD\u30E3\u30E9\u306B<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3059\u308B\u305F\u3073\u3001<color=#256CC8><sprite
     name=INT><link=T_INT><u>INT</u></link></color>\u304C\u5897\u52A0"
-  PAInfo_start: "\u30AD\u30E3\u30E91\u4F53\u306B<sprite name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3059\u308B\u305F\u3073\u3001<color=#256CC8><sprite
+  PAInfo_start: "\u30AD\u30E3\u30E91\u4F53\u306B1\u3064\u4EE5\u4E0A\u306E<sprite
+    name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u4ED8\u4E0E\u3059\u308B\u305F\u3073\u3001<color=#256CC8><sprite
     name=INT><link=T_INT><u>INT</u></link></color>+8\uFF05\n(\u6700\u5927+64\uFF05)"
   skipGetInfo: 0
   PAInfo_end: 
@@ -79,9 +80,9 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 4df765ede8bbece4797637f2c68d3896, type: 2}
-    equipmentInfo: 
   INT: 8
   maxCount: 8
 --- !u!212 &3238141386940741765
