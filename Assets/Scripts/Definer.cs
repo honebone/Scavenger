@@ -137,7 +137,7 @@ public class Definer : MonoBehaviour
     public List<UniqueLinkInfo> uniqueLinkInfos = new List<UniqueLinkInfo>();
 
     /// <summary>埋め込んだリンク -> 説明文</summary>
-    public string LinkKeyToStr(string key)
+    public List<string> LinkKeyToStr(string key)
     {
         string s = "";
         switch (key[0])//keyの頭文字がタグの役割を果たす
@@ -152,11 +152,11 @@ public class Definer : MonoBehaviour
                         s += PA.GetInfo_ForLink(InfoText.inst.IsSimple()) + "\n";
                         //s += StE.GetComponent<PassiveAbility>().GetPAInfo() + "\n";
                         if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
-                        return s;
+                        return new List<string> { s };
                     }
                 }
                 Debug.Log("error:状態異常が見つかりませんでした");
-                return "error:状態異常が見つかりませんでした";
+                return new List<string> { "error:状態異常が見つかりませんでした" };
 
 
 
@@ -169,11 +169,11 @@ public class Definer : MonoBehaviour
                     {
                         s += PA.GetInfo_ForLink() + "\n";
                         if (status.maxStack > 0) { s += string.Format("(最大{0}スタック)\n", status.maxStack).ColorStr(Color.gray); }
-                        return s;
+                        return new List<string> { s };
                     }
                 }
                 Debug.Log("error:ポジション効果が見つかりませんでした");
-                return "error:ポジション効果が見つかりませんでした";
+                return new List<string>{ "error:ポジション効果が見つかりませんでした" };
 
 
 
@@ -195,7 +195,7 @@ public class Definer : MonoBehaviour
                         break;
                     default:
                         Debug.Log($"error:キャラの分類が不適切です：{key[2]}");
-                        return $"error:キャラの分類が不適切です：{key[2]}";
+                        return new List<string>{ $"error:キャラの分類が不適切です：{key[2]}" };
                 }
                 foreach (CharacterData data in database)
                 {
@@ -204,30 +204,31 @@ public class Definer : MonoBehaviour
                         Character.CharacterStatus status = new Character.CharacterStatus();
                         status.Init(data);
                         string info = "";
+                        string sub = "";
                         if (data.introduction != "") { info += $"\"{data.introduction}\"\n\n".ColorStr(colorRef.emphasize); }
                         info += status.GetInfo();
-                        info += "\n◇◇特性◇◇\n";
+                        sub += "\n◇◇特性◇◇\n";
                         foreach (GameObject obj in status.passiveAbilities)
                         {
                             PassiveAbility pa = obj.GetComponent<PassiveAbility>();
-                            info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                            sub += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
                         }
-                        return info;
+                        return new List<string> { info, sub };
                     }
                 }
                 Debug.Log($"error:キャラが見つかりませんでした：{key}");
-                return $"error:キャラが見つかりませんでした：{key}";
+                return new List<string> { $"error:キャラが見つかりませんでした：{key}" };
 
             case 'T':
                 foreach (var info in cp.textSpriteParamsList)
                 {
                     if ($"T_{info.key}" == key)
                     {
-                        return info.GetInfo();
+                        return new List<string> { info.GetInfo() };
                     }
                 }
                 Debug.Log("error:keyに合う説明文が見つかりませんでした");
-                return "error:keyに合う説明文が見つかりませんでした";
+                return new List<string> { "error:keyに合う説明文が見つかりませんでした" };
 
 
             case 'U'://その他
@@ -235,14 +236,14 @@ public class Definer : MonoBehaviour
                 {
                     if ($"U_{linkInfo.linkKey}" == key)
                     {
-                        return $"<{linkInfo.linkKey}>\n\n{linkInfo.linkInfo}";
+                        return new List<string> { $"<{linkInfo.linkKey}>\n\n{linkInfo.linkInfo}" };
                     }
                 }
                 Debug.Log("error:keyに合う説明文が見つかりませんでした");
-                return "error:keyに合う説明文が見つかりませんでした";
+                return new List<string> { "error:keyに合う説明文が見つかりませんでした" };
             default:
                 Debug.Log("error:頭文字のタグが一致しません");
-                return "error:頭文字のタグが一致しません";
+                return new List<string> { "error:頭文字のタグが一致しません" };
         }
     }
 

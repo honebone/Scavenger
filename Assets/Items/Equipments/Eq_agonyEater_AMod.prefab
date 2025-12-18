@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u6642\u3001\u5BFE\u8C61\u306B\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u308B<sprite
-      name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>1\u7A2E\u985E\u306B\u3064\u304D(5\u7A2E\u985E\u307E\u3067\u30AB\u30A6\u30F3\u30C8)"
+      name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>1\u7A2E\u985E\u306B\u3064\u304D(10\u7A2E\u985E\u307E\u3067\u30AB\u30A6\u30F3\u30C8)"
     hideValues: 0
     exInfo: 
     exTurn: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    drain: 5
+    drain: 2
     ignoreShield: 0
     sureHit: 0
     unevadable: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-  maxCount: 5
+  maxCount: 10
   checkSelf: 0
   onlyAttack: 1
   onlyAlly: 0

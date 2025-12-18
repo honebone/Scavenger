@@ -495,7 +495,9 @@ public class Character : MonoBehaviour
             charaStatus.summoner = spawnParams.summonCharaParams.summoner;
             if (spawnParams.summonCharaParams.LVL > 1)
             {
-                StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
+                StatusGrowth SG = new StatusGrowth();
+                if (spawnParams.summonCharaParams.summoner != null) SG = (spawnParams.summonCharaParams.summoner.PlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
+                else SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
                 StatusMod_ByLVL mod = SG.GetStatusMod(spawnParams.summonCharaParams.LVL);
                 mod.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
 

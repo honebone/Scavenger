@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -455,7 +455,7 @@ MonoBehaviour:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     centerFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
-    lowerFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+    lowerFront: {fileID: 11400000, guid: c4107f3da7e0cb148abf20683380da92, type: 2}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
     centerMid: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
@@ -16918,6 +16918,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a99e5a64f0ec2749a5eda25039ed7bb, type: 2}
   - {fileID: 11400000, guid: 6e84d024e7aadd54f8f6756410861b8c, type: 2}
   - {fileID: 11400000, guid: 2b25649b91d040042b949bf99efb7246, type: 2}
+  - {fileID: 11400000, guid: 691ff2604e79da240bd30f4f3528dbce, type: 2}
   personalityDataBase:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
@@ -23804,7 +23805,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1605753869}
   m_HandleRect: {fileID: 1605753868}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

@@ -41,6 +41,17 @@ public class MouseOverUI : MonoBehaviour
         SetUI(s, false);
     }
 
+    public void SetUI(List<string> s)
+    {
+        if (s.Count == 0 || s.Count > 2)
+        {
+            InfoText.inst.AddErrorText("mouse over UI ‚É“n‚·string ‚Ì”‚ªˆÙí‚Å‚·");
+            return;
+        }
+        SetUI(s[0]);
+        if (s.Count == 2 && s[1] != "") SetSideUI(s[1]);
+    }
+
     public void SetSideUI(string s)
     {
         sideText.text = s;
