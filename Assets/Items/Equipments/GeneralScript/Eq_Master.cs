@@ -22,6 +22,7 @@ public class Eq_Master : PA_Equipment
         if (available)
         {
             count++;
+            if (countReq > 1) Log($"ƒJƒEƒ“ƒg+1 ({count})");
             if (count >= countReq)
             {
                 if (targetSelf)

@@ -9,7 +9,7 @@ public class Eq_RunicBlade : PA_Equipment
     public CharactersManager.SearchCharaCondition condition;
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if(myTurn && character.GetRunes().Count>0)
+        if (myTurn && character.GetRunes().Count > 0)
         {
             character.GetRunes().Choice().ChargeRune(1);
         }
