@@ -100,7 +100,7 @@ public class ActionMod : MonoBehaviour
                 //if (INTDMG_divide_int != 0) { s += ValueToStr($"・与{"INT".ToSpr_withName("魔法")}ダメージ", INTDMG_divide_int, ""); }
                 if (ACCMod != 0) { s += ValueToStr($"・{"ACC".ToSpr_withLink()}補正", ACCMod, ""); }
                 if (CRITCMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}率補正", CRITCMod, "％"); }
-                if (CRITDMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}ダメージ補正", CRITDMod, "倍"); }
+                if (CRITDMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}ダメージ補正", CRITDMod, "％"); }
                 if (drain != 0) { s += ValueToStr("・与ダメージの", drain, $"％を{"HP".ToSpr_withName("回復")}"); }
                 if (ignoreShield) s += $"・{"shield".ToSpr_withLink()}を無視するようになる\n";
                 if (sureHit) { s += "・攻撃が必中となる\n"; }

@@ -5,15 +5,15 @@ using UnityEngine;
 public class S_SoulOfWish : PA_Personality
 {
     public int countOnMyTurn;
-    [SerializeField] Action.ActionStatus exTurn;
-    [SerializeField] CharactersManager.SearchCharaCondition players;
+    //[SerializeField] Action.ActionStatus exTurn;
+    //[SerializeField] CharactersManager.SearchCharaCondition players;
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] CharactersManager.SearchCharaCondition enemies;
     int count;
-    public override void OnSummoned(Action.OnSummonParams onSummonParams)
-    {
-        Enqueue_SearchTarget(exTurn, players);    
-    }
+    //public override void OnSummoned(Action.OnSummonParams onSummonParams)
+    //{
+    //    Enqueue_SearchTarget(exTurn, players);    
+    //}
 
     public override void OnTurnEnd(TurnEndParams tep)
     {
@@ -37,7 +37,7 @@ public class S_SoulOfWish : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        return $"{exTurn.GetInfo()}\n{attack.GetInfo()}";
+        return $"{attack.GetInfo()}";
     }
 
     public override string GetCurrentStateInfo()

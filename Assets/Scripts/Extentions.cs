@@ -35,6 +35,15 @@ public static class Extentions
         return Definer.colorRef.rarityColors[(int)rarity];
     }
 
+    /// <summary>New Line ‚·‚Å‚É•¶š‚ª‚ ‚é‚È‚ç‰üs‚ğA‰½‚à‚È‚¢‚È‚ç–³‚ğ•Ô‚·</summary>
+    public static string NL(string current, int lines = 1)
+    {
+        if (string.IsNullOrEmpty(current)) return "";
+        string s = "";
+        for (int i = 0; i < lines; i++) s += "\n";
+        return s;
+    }
+
     public static int ToInt(this float value) { return Mathf.FloorToInt(value); }
     public static int Limit(this int value, int max) { return Mathf.Min(value, max); }
 

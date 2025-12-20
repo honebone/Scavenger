@@ -8,7 +8,7 @@ UIサイズ -> ピクセル数：x0.4
 HP+50%
 ATK/INT+30%
 
-汎用スクリプト最新：Eq_OnDamage
+汎用スクリプト最新：Eq_OnDamage !!!Eq_Masterを作成！
 AMod最新：AMod_DebuffKinds
 
 ◇装備品　レアリティ毎ステータス増加量

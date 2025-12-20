@@ -81,7 +81,7 @@ MonoBehaviour:
   rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u304B\u306A\u3048\u3089\u308C\u305F\u9858\u3044"
-    personalityType: 0
+    personalityType: 1
   countOnMyTurn: 4
   exTurn:
     actionName: 
@@ -92,6 +92,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -102,6 +103,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -139,11 +141,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -224,6 +230,7 @@ MonoBehaviour:
     player: 1
     enemy: 0
     onlyPlayable: 1
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -251,6 +258,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -261,6 +269,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -298,11 +307,15 @@ MonoBehaviour:
     ATKMod_max: 120
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -383,6 +396,7 @@ MonoBehaviour:
     player: 0
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1

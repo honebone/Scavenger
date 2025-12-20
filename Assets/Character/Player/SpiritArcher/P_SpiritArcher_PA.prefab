@@ -102,11 +102,12 @@ MonoBehaviour:
   simpleInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u653B\u6483\u3057\u305F\u3068\u304D\u3001\u5BFE\u8C61\u306B\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u305F<sprite
     name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>1\u7A2E\u985E\u306B\u3064\u304D<color=#FFFFFF><link=S_\u7CBE\u970A\u306E\u52A9\u8A00><u>\u7CBE\u970A\u306E\u52A9\u8A00</u></link></color>\u3092\u5F97\u308B\n\n\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u306F\u3001\u5BFE\u8C61\u306B\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u308B<sprite
     name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u7A2E\u985E\u6570\u306B\u5FDC\u3058\u3066<color=#FF8B00><sprite
-    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u88DC\u6B63\u304C\u5897\u52A0\u3059\u308B"
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u88DC\u6B63\u304C\u5897\u52A0\u3059\u308B\n\n<color=#C900FF><sprite
+    name=debuff><link=S_\u7CBE\u970A\u306E\u30A4\u30BF\u30BA\u30E9><u>\u7CBE\u970A\u306E\u30A4\u30BF\u30BA\u30E9</u></link></color>\u3092\u6301\u3064\u30AD\u30E3\u30E9\u304C\u6B7B\u4EA1\u3057\u305F\u3068\u304D\u3001\u5225\u306E\u6575\u306B\u4ED8\u4E0E\u3057\u306A\u304A\u3059"
   PAInfo_start: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u653B\u6483\u3057\u305F\u3068\u304D\u3001\u5BFE\u8C61\u306B\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u305F<sprite
     name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>1\u7A2E\u985E\u306B\u3064\u304D<color=#FFFFFF><link=S_\u7CBE\u970A\u306E\u52A9\u8A00><u>\u7CBE\u970A\u306E\u52A9\u8A00</u></link></color>\u30921\u30B9\u30BF\u30C3\u30AF\u5F97\u308B"
   skipGetInfo: 0
-  PAInfo_end: 
+  PAInfo_end: "<color=#C900FF><sprite name=debuff><link=S_\u7CBE\u970A\u306E\u30A4\u30BF\u30BA\u30E9><u>\u7CBE\u970A\u306E\u30A4\u30BF\u30BA\u30E9</u></link></color>\u3092\u6301\u3064\u30AD\u30E3\u30E9\u304C\u6B7B\u4EA1\u3057\u305F\u3068\u304D\u3001[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u65751\u4F53\u306B\u4ED8\u4E0E\u3057\u306A\u304A\u3059"
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: 
+    personalityName: "\u7CBE\u970A\u306E\u52A0\u8B77"
     personalityType: 1
   CRITCPerDebuff: 20
   actionStatus:
@@ -158,6 +159,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -304,6 +306,8 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
     ATKDMG_divide_int: 0
     INTDMG_divide_int: 0
     ACCMod: 0
@@ -354,6 +358,147 @@ MonoBehaviour:
       moveRes: 0
       debuffRes: 0
   trick: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
+  action_trick:
+    actionName: 
+    conditionInfo: 
+    targetInfo: 
+    AModInfo: 
+    actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 0
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      onlyPlayable: 0
+      onlyNonplayable: 0
+      front: 0
+      mid: 0
+      back: 0
+      excludeObstacle: 0
+      characterInclude: []
+      characterTags: 
+      characterTagsExclude: 
+      StEConditions: []
+      StE: []
+      StEExclude: []
+      PE: []
+      PEExclude: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
+    neigborPos: []
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    skipAnim: 0
+    consumeFocus: 0
+    exTurn: 0
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    attackInfo: 
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healINT: {x: 0, y: 0}
+    healPercent_min: 0
+    healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    removePEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
+    moveChance: 0
+    guaranteedMove: 0
+    moveRandomDir: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    changeSelfSprite: {fileID: 0}
+    abilityRemainControlls: []
+    abilityEffect: 0
+    freeAction: 0
+    abilityType: 0
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
+    removeStEs_additional: []
+    summonStatusMods: []
+    actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
+    actionTargetsInt: 
   TrickParams:
     applyStE: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
     guaranteed: 1
@@ -370,6 +515,7 @@ MonoBehaviour:
     player: 0
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1

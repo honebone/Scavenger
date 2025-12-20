@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_SpiritArcher_Burn
+  m_Name: SpiritArcher_Burn2
   m_EditorClassIdentifier: 
-  abilityName: "\u708E\u306E\u7CBE\u970A"
+  abilityName: "\u624B\u52A9\u3051+"
   lockedDefault: 0
-  upgradeInfo: 
+  upgradeInfo: "\u4ED8\u4E0E\u78BA\u7387+50\uFF05\n\u8FFD\u52A0\u3067<color=#C900FF><sprite
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -34,6 +35,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -54,12 +56,12 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 1
   cooldownOnBattleStart: 0
-  cooldownOnUse: 1
+  cooldownOnUse: 2
   hasRemain: 0
-  remainOnBattleStart: 3
-  maxRemain: 3
+  remainOnBattleStart: 0
+  maxRemain: 0
   actionsStaus:
-  - actionName: "\u708E\u306E\u7CBE\u970A"
+  - actionName: "\u624B\u52A9\u3051"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -78,6 +80,7 @@ MonoBehaviour:
       player: 0
       enemy: 1
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
@@ -152,20 +155,20 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+    - applyStE: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
       guaranteed: 0
-      applyChance: 100
-      stack: 2
-      value: 15
+      applyChance: 150
+      stack: 1
+      value: 0
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
       DMGPerTurn: 0
-    - applyStE: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
       guaranteed: 0
-      applyChance: 100
-      stack: 1
-      value: 0
+      applyChance: 150
+      stack: 2
+      value: 15
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0

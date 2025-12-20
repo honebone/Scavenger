@@ -39,10 +39,10 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 341c37c403b417a44855c985ed8c2960, type: 2}
   - {fileID: 11400000, guid: 5351211497acd9a44bbda288dbc8b774, type: 2}
+  - {fileID: 11400000, guid: 7d86d170d19734a4083320d9e9a14a5f, type: 2}
   - {fileID: 11400000, guid: 3b5ce1af8deb98649992820d1a3c3c09, type: 2}
-  - {fileID: 11400000, guid: 6e641e7af50e9274f920715453306783, type: 2}
+  - {fileID: 11400000, guid: 0e4501e3ffa6b4946b5c155408a527f4, type: 2}
   - {fileID: 11400000, guid: cb282c5be9e5be446a3e9ca8849190a9, type: 2}
-  - {fileID: 11400000, guid: c09631b6123ee9b43904b7712c2f4bee, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:

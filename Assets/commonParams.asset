@@ -153,6 +153,7 @@ MonoBehaviour:
   - {fileID: 1489497368108049143, guid: 2f38d614892d4784683b7f5814f8cbd6, type: 3}
   - {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
   - {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
+  - {fileID: 5164891664867224302, guid: e38dd904080a5ed438e05ceec214f142, type: 3}
   colorRef:
     debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     player: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
@@ -270,5 +271,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8df8a87f14b7dc549bd0d1d448b473c7, type: 2}
   - {fileID: 11400000, guid: 5783ae1ab2b372244bd2e9e88441ac5c, type: 2}
   - {fileID: 11400000, guid: c4107f3da7e0cb148abf20683380da92, type: 2}
+  - {fileID: 11400000, guid: 5f7a79483a150644f87205afb790ced5, type: 2}
   roomRef:
     rest: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
