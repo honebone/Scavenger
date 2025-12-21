@@ -94,8 +94,8 @@ public class ActionMod : MonoBehaviour
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
                 if (exATKDMG_int != 0) { s += ValueToStr($"・与{"ATK".ToSpr_withName("物理")}ダメージ", exATKDMG_int, ""); }
                 if (exINTDMG_int != 0) { s += ValueToStr($"・与{"INT".ToSpr_withName("魔法")}ダメージ", exINTDMG_int, ""); }
-                if (ATKDMG_divide_mul != 0) { s += ValueToStr($"・{"ATK".ToSpr_withLink()}", ATKDMG_divide_mul, $"％分の{"ATK".ToSpr_withName("物理")}ダメージを割り振る"); }
-                if (INTDMG_divide_mul != 0) { s += ValueToStr($"・{"INT".ToSpr_withLink()}", INTDMG_divide_mul, $"％分の{"INT".ToSpr_withName("魔法")}ダメージを割り振る"); }
+                if (ATKDMG_divide_mul != 0) { s += ValueToStr($"・{"ATK".ToSpr_withLink()}", ATKDMG_divide_mul, $"％の{"ATK".ToSpr()}{"分配ダメージ".ToLinkKey()}"); }
+                if (INTDMG_divide_mul != 0) { s += ValueToStr($"・{"INT".ToSpr_withLink()}", INTDMG_divide_mul, $"％の{"INT".ToSpr()}{"分配ダメージ".ToLinkKey()}"); }
                 //if (ATKDMG_divide_int != 0) { s+= }
                 //if (INTDMG_divide_int != 0) { s += ValueToStr($"・与{"INT".ToSpr_withName("魔法")}ダメージ", INTDMG_divide_int, ""); }
                 if (ACCMod != 0) { s += ValueToStr($"・{"ACC".ToSpr_withLink()}補正", ACCMod, ""); }

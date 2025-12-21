@@ -47,6 +47,8 @@ public class UtilityWindow : EditorWindow
         {"マーク","<color=#C900FF><sprite name=debuff><link=S_マーク><u>マーク</u></link></color>" },
         {"潜伏","<color=#FAED8A><sprite name=buff><link=S_潜伏><u>潜伏</u></link></color>" },
         {"星屑","<color=#3473CA><link=S_星屑><u>星屑</u></link></color>" },
+        {"分配","<link=U_分配ダメージ><u>分配</u></link>" },
+        {"分配ダメージ","<link=U_分配ダメージ><u>分配ダメージ</u></link>" },
 
     };
     Dictionary<string, string> commonPhrases = new Dictionary<string, string>()

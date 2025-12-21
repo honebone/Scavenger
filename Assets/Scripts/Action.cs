@@ -318,7 +318,7 @@ public class Action : MonoBehaviour
                     }
                     if (ATKMod_divide > 0)
                     {
-                        s += $"  {"ATK".ToSpr_withLink()}の{ATKMod_divide}％を均等に割り振る";
+                        s += $"  {"ATK".ToSpr_withLink()}{ATKMod_divide}％の{"分配ダメージ".ToSpr_withLink()}";
                         if (refCharaStatus)
                         {
                             s += string.Format("({0})", (characterStatus.ATK * ATKMod_divide / 100).ToInt());
@@ -340,7 +340,7 @@ public class Action : MonoBehaviour
                     } 
                     if (INTMod_divide > 0)
                     {
-                        s += $"  {"INT".ToSpr_withLink()}の{INTMod_divide}％を均等に割り振る";
+                        s += $"  {"INT".ToSpr_withLink()}{INTMod_divide}％の{"分配ダメージ".ToLinkKey()}";
                         if (refCharaStatus)
                         {
                             s += string.Format("({0})", (characterStatus.INT * INTMod_divide / 100).ToInt());

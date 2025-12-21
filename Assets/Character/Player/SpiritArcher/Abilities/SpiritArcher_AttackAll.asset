@@ -70,7 +70,7 @@ MonoBehaviour:
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 77d44cac59936814981a348b8cdd33a5, type: 3}
-    VE_OnTargets: {fileID: 4158323115027654249, guid: c3e35d737abe8614abe8e530650e13d1, type: 3}
+    VE_OnTargets: {fileID: 8893531562545945883, guid: 9dff4fdd59adff04999ce6ad11d51352, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -121,7 +121,7 @@ MonoBehaviour:
     INTMod_min: 40
     INTMod_max: 60
     ATKMod_divide: 0
-    INTMod_divide: 200
+    INTMod_divide: 250
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
@@ -200,6 +200,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 2
     actionTargets: []
     actionTargetsInt: 

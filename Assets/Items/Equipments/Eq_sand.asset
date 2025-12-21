@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_salve
+  m_Name: Eq_sand
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u8EDF\u818F"
+  itemName: "\u4E00\u63E1\u308A\u306E\u7802"
   specialInfo: 0
   info: 
-  rarity: 1
-  sprite: {fileID: 21300000, guid: ea83c2cf89366f54e89bff0740cedd02, type: 3}
+  rarity: 2
+  sprite: {fileID: 21300000, guid: b3f6e6095b6d153429dccf9ee45e9222, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 9185327421234476493, guid: 7410020403d225c4991c20574d4c47e4, type: 3}
+  manager: {fileID: 9185327421234476493, guid: 52e4a1fae7a40294b9332e3df3ea37a2, type: 3}

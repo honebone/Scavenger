@@ -34,6 +34,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -78,6 +79,7 @@ MonoBehaviour:
       player: 0
       enemy: 1
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
@@ -151,7 +153,16 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 5164891664867224302, guid: 1d046bb12a7e96541867bb517a0b4af1, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

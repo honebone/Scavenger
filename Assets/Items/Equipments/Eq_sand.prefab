@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: -7334655370950707859}
+  - component: {fileID: 2863504463457938009}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_featherMant
+  m_Name: Eq_sand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7334655370950707859
+--- !u!114 &2863504463457938009
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +42,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94cd0025dfeda894eac62f0774762316, type: 3}
+  m_Script: {fileID: 11500000, guid: 28cdf001296b7f040afbd0f0860ce824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_featherMant
+  fileName: Eq_sand
   noSimpleInfo: 0
-  simpleInfo: "\u4E00\u5B9A\u56DE\u6570\u79FB\u52D5\u3059\u308B\u305F\u3073\u3001<color=#FAED8A><sprite
-    name=buff><link=S_EVD\u4E0A\u6607><u>EVD\u4E0A\u6607</u></link></color>\u3092\u5F97\u308B"
-  PAInfo_start: "\u81EA\u8EAB\u304C\u79FB\u52D5\u3057\u305F\u56DE\u6570\u3092\u30AB\u30A6\u30F3\u30C8\u3059\u308B"
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u65751\u4F53\u306B<color=#C900FF><sprite
+    name=debuff><link=S_ACC\u4F4E\u4E0B><u>ACC\u4F4E\u4E0B</u></link></color>\u3092\u4ED8\u4E0E"
+  PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -65,30 +65,30 @@ MonoBehaviour:
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: 0
+    EVD: 6
     ACC: 0
-    ACT: 5
+    ACT: 0
     turnPerRound: 0
     GHeal: 0
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
-    debuffChance: 0
+    debuffChance: 10
     moveRes: 0
     debuffRes: 0
   AMods: []
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: b21ce2f7abaa25a46857d549307978e3, type: 2}
+    itemData: {fileID: 11400000, guid: 3d4b49067583458468012775526b7de2, type: 2}
   max_inBattle: 0
   max_inRound: 0
-  countReq: 2
-  targetSelf: 1
+  countReq: 1
+  targetSelf: 0
   actionStatus:
     actionName: 
-    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C2\u306B\u306A\u308B\u305F\u3073(\u30AB\u30A6\u30F3\u30C8\u30922\u6D88\u8CBB)"
-    targetInfo: "\u81EA\u8EAB"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -180,11 +180,11 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
-      guaranteed: 1
-      applyChance: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
+      guaranteed: 0
+      applyChance: 60
       stack: 1
-      value: 20
+      value: 15
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -239,6 +239,35 @@ MonoBehaviour:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
+    enemy: 1
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 1
+    mid: 1
+    back: 1
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+  targetCount: 1
+  me: 1
+  myServant: 0
+  otherChara: 0
+  otherCharaCond:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
     enemy: 0
     onlyPlayable: 0
     onlyNonplayable: 0
@@ -260,8 +289,6 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
-  targetCount: 0
-  eachRange: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -303,12 +330,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3f6e6095b6d153429dccf9ee45e9222, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 4.8, y: 4.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -60,7 +60,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u653B\u6483"
+  - actionName: "\u30A4\u30BF\u30BA\u30E9"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -154,9 +154,18 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
+    - applyStE: {fileID: 5164891664867224302, guid: 1d046bb12a7e96541867bb517a0b4af1, type: 3}
       guaranteed: 0
       applyChance: 150
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
+      guaranteed: 0
+      applyChance: 75
       stack: 1
       value: 0
       dontApplyBonus: 0
@@ -206,6 +215,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 

@@ -90,7 +90,7 @@ MonoBehaviour:
     maxStack: 10
     merge: 1
     refValue: 0
-    undeletable: 0
+    undeletable: 1
     DoT: 0
     regen: 0
     StEPrefab: {fileID: 0}

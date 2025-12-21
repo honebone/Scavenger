@@ -103,6 +103,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -180,7 +181,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 25
       dontApplyBonus: 0
       refATK: 0
@@ -189,7 +190,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 644cce118a16cc44b9b2c76e57553436, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 3
       dontApplyBonus: 0
       refATK: 0
@@ -198,7 +199,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: adb01a02dfb8e124abb3f73364d66537, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 25
       dontApplyBonus: 0
       refATK: 0
@@ -207,7 +208,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: f784c7dec8cd7644fa53b387f984165c, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 25
       dontApplyBonus: 0
       refATK: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 25
       dontApplyBonus: 0
       refATK: 0
@@ -225,7 +226,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 15
       dontApplyBonus: 0
       refATK: 0
@@ -234,7 +235,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
       guaranteed: 0
       applyChance: 40
-      stack: 1
+      stack: 3
       value: 25
       dontApplyBonus: 0
       refATK: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
     player: 1
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -333,6 +335,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -459,6 +462,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -501,6 +505,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -627,6 +632,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
