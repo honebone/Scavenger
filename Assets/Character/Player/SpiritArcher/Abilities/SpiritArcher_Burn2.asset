@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u624B\u52A9\u3051+"
   lockedDefault: 0
-  upgradeInfo: "\u4ED8\u4E0E\u78BA\u7387+50\uFF05\n\u8FFD\u52A0\u3067<color=#C900FF><sprite
-    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E"
+  upgradeInfo: "\u4ED8\u4E0E\u78BA\u7387+50\uFF05\n\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3-1"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -55,7 +54,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
   freeAction: 1
-  cooldownOnBattleStart: 0
+  cooldownOnBattleStart: 2
   cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
@@ -166,18 +165,9 @@ MonoBehaviour:
       DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: 1d046bb12a7e96541867bb517a0b4af1, type: 3}
       guaranteed: 0
-      applyChance: 50
+      applyChance: 75
       stack: 1
       value: 0
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
-      guaranteed: 0
-      applyChance: 150
-      stack: 2
-      value: 15
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0

@@ -61,7 +61,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u7CBE\u970A\u3068\u306E\u5BFE\u8A71"
+  - actionName: "\u7CBE\u970A\u3068\u306E\u5BFE\u8A71+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -169,6 +169,15 @@ MonoBehaviour:
       applyChance: 0
       stack: 2
       value: 30
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 0
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0

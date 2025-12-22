@@ -14,12 +14,12 @@ public class AreaData : ScriptableObject
     public BackgroundParams backgroundParams;
     public GameObject areaManager;
 
-    [Header("ランダム生成される層の数(スタート地点,ボス後を除く)")]
-    public int minLength;
-    public int maxLength;
+    //[Header("ランダム生成される層の数(スタート地点,ボス後を除く)")]
+    //public int minLength;
+    //public int maxLength;
 
-    public int branchChance;
-    public int blindChance;
+    //public int branchChance;
+    //public int blindChance;
     public AudioClip BGM;
     public List<AreaManager.Area_RoomEvent> roomEvents;
     public RoomEventData start;

@@ -168,7 +168,7 @@ public class AreaManager : MonoBehaviour
     {
         map.ResetMap();
 
-        areaLength = Random.Range(areaData.minLength, areaData.maxLength + 1);
+        areaLength = GameManager.gameParams.areaLength;
         layerCount = 0;
 
         for (int i = 0; i < 5; i++) { layer[i].empty = true; }//0‘w–Ú
@@ -276,10 +276,10 @@ public class AreaManager : MonoBehaviour
     public ExpeditionManager.Room SetRoom(bool setEventRandomly,bool noBlind=false)
     {
         ExpeditionManager.Room room = new ExpeditionManager.Room();
-        if (areaData.branchChance.Dice()){ room.up = 1; }
+        if (GameManager.gameParams.branchChance.Dice()){ room.up = 1; }
         room.straight = 1;
-        if (areaData.branchChance.Dice()) { room.down = 1; }
-        room.blind = !noBlind && areaData.blindChance.Dice();
+        if (GameManager.gameParams.branchChance.Dice()) { room.down = 1; }
+        room.blind = !noBlind && GameManager.gameParams.blindChance.Dice();
         if (setEventRandomly)
         {
             room.SetRoomEvent(areaData.roomEvents[areaData.GetREWeights().ChoiceWithWeight()].roomEvent);

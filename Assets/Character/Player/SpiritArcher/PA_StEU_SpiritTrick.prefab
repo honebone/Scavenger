@@ -118,7 +118,7 @@ MonoBehaviour:
     INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
-    CRITDMod: 10
+    CRITDMod: 8
     drain: 0
     ignoreShield: 0
     sureHit: 0

@@ -54,8 +54,8 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
   freeAction: 1
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 2
+  cooldownOnBattleStart: 2
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
       DMGPerTurn: 0
     - applyStE: {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
       guaranteed: 0
-      applyChance: 50
+      applyChance: 25
       stack: 1
       value: 0
       dontApplyBonus: 0
