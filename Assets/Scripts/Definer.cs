@@ -211,7 +211,7 @@ public class Definer : MonoBehaviour
                         foreach (GameObject obj in status.passiveAbilities)
                         {
                             PassiveAbility pa = obj.GetComponent<PassiveAbility>();
-                            sub += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo());
+                            sub += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(InfoText.inst.IsSimple()));
                         }
                         return new List<string> { info, sub };
                     }

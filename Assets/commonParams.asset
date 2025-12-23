@@ -273,5 +273,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5783ae1ab2b372244bd2e9e88441ac5c, type: 2}
   - {fileID: 11400000, guid: c4107f3da7e0cb148abf20683380da92, type: 2}
   - {fileID: 11400000, guid: 5f7a79483a150644f87205afb790ced5, type: 2}
+  - {fileID: 11400000, guid: 1a3cf9c9514f7e84bbf2a9afd861d9e0, type: 2}
   roomRef:
     rest: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}

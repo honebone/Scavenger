@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: Farmer_AttackColmun
   m_EditorClassIdentifier: 
-  abilityName: "\u53CE\u7A6B\u306E\u938C"
+  abilityName: "\u53CE\u7A6B\u796D"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: 14075a38dda6bec4497161ddfdde5168, type: 2}

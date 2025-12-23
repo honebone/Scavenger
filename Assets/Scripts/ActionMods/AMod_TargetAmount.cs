@@ -5,14 +5,19 @@ using UnityEngine;
 public class AMod_TargetAmount : ActionMod
 {
     public bool onlyAttack;
-    [Header("TH‚ð’´‚¦‚½1l‚É‚Â‚«")] public int TH = 0;
+    [SerializeField] bool onlyActive;
+    [Header("‘ÎÛ”‚±‚ê‚æ‚è‘½‚©‚Á‚½‚ç")] public int TH = 0;
+    [SerializeField] bool foreachTarget = true;
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus)
     {
+        if (!statusRef.abilityEffect && onlyActive) return actionsStatus;
+
         if (statusRef.actionTargets.Count > TH && (statusRef.DoesAttack() || !onlyAttack))
         {
+            int count = foreachTarget ? statusRef.actionTargets.Count - TH : 1;
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
-                for (int j = TH; j < statusRef.actionTargets.Count; j++)
+                for (int j = 0; j < count; j++)
                 {
                     actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);
                 }

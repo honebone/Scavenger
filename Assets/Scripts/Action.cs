@@ -318,7 +318,7 @@ public class Action : MonoBehaviour
                     }
                     if (ATKMod_divide > 0)
                     {
-                        s += $"  {"ATK".ToSpr_withLink()}{ATKMod_divide}％の{"分配ダメージ".ToSpr_withLink()}";
+                        s += $"  {"ATK".ToSpr_withLink()}{ATKMod_divide}％の{"分配ダメージ".ToLinkKey()}";
                         if (refCharaStatus)
                         {
                             s += string.Format("({0})", (characterStatus.ATK * ATKMod_divide / 100).ToInt());

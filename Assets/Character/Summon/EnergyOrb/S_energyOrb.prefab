@@ -137,7 +137,7 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: "\u81EA\u8EAB\u306E<sprite name=maxHP><color=#87FF79>maxHP</color>\u306B\u7B49\u3057\u3044<sprite
-      name=INT><color=#256CC8>\u9B54\u6CD5</color>\u30C0\u30E1\u30FC\u30B8\u3092\u5747\u7B49\u306B\u5272\u308A\u632F\u308B"
+      name=INT><color=#256CC8>\u9B54\u6CD5</color><link=U_\u5206\u914D\u30C0\u30E1\u30FC\u30B8><u>\u5206\u914D\u30C0\u30E1\u30FC\u30B8</u></link>\u3092\u4E0E\u3048\u308B"
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
