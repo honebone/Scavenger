@@ -457,7 +457,7 @@ public class ExpeditionManager : MonoBehaviour
     //public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
 
     //エリアの進行度に応じた経験値量を返す
-    public int GetExpAmount() { return partyStatus.areaCount; }//test
+    public int GetExpAmount(float _base) { return ((gameManager.gp.EXPBase * partyStatus.areaCount).ToInt() * _base).ToInt(); }
 
     bool moveMode;
     Character moveChara;

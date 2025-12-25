@@ -37,7 +37,7 @@ public class RE_Rest : RoomEvent
         List<REOptionParams> ops = new List<REOptionParams>(options);
         REOptionParams train = new REOptionParams();
         train.optionName = "訓練する";
-        train.optionInfo = $"キャラを1体選ぶ\nそのキャラは{"EXP".ColorStr(Definer.colorRef.expOrb)}を{(AddExp_train * expeditionManager.GetExpAmount()).ToInt()}得る";
+        train.optionInfo = $"キャラを1体選ぶ\nそのキャラは{"EXP".ColorStr(Definer.colorRef.expOrb)}を{expeditionManager.GetExpAmount(AddExp_train)}得る";
         ops.Add(train);
         expeditionManager.SetREOptionButtons(ops);
     }
@@ -127,6 +127,7 @@ public class RE_Rest : RoomEvent
                     Character.CharacterStatus status = character.CharaStatus();
                     REOptionParams option = new REOptionParams();
                     option.optionName = $"{status.charaName}に訓練させる";
+                    option.optionInfo = $"取得{"EXP".ToSpr_withLink()}：{expeditionManager.GetExpAmount(AddExp_train)}\n現在の{character.CharaStatus().GetExpInfo()}";
                     options2.Add(option);
                 }
 
@@ -142,6 +143,6 @@ public class RE_Rest : RoomEvent
     }
     void Train(Character chara)
     {
-        chara.GainEXP((AddExp_train * expeditionManager.GetExpAmount()).ToInt());
+        chara.GainEXP(expeditionManager.GetExpAmount(AddExp_train));
     }
 }

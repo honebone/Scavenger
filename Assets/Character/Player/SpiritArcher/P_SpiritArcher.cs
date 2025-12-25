@@ -42,7 +42,7 @@ public class P_SpiritArcher : PA_Personality
 
     public override Action.ActionStatus[] ModifyAction(Action.ActionStatus statusRef, Action.ActionStatus[] actionsStatus, bool forCalcDMG)
     {
-        if (statusRef.DoesAttack())
+        if (statusRef.DoesAttack() && statusRef.abilityEffect)
         {
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {

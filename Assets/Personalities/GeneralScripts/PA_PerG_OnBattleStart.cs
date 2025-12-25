@@ -5,6 +5,7 @@ using static PA_Equipment;
 
 public class PA_PerG_OnBattleStart : PA_Personality
 {
+    [Header("‚±‚ê‚Í‹Œ®(Per_OnBattleStart‚ªVŒ^)")]
     public bool targetSelf;
     public bool excludeSelf;
     public Action.ActionStatus actionStatus;

@@ -141,7 +141,8 @@ public class Character : MonoBehaviour
             if (immovable) { s += "移動不可\n"; }
             if (player)
             {
-                s += string.Format("LVL：{0}(次のLVLまで{1}/{2})\n", level, exp, GetNextExp());
+                //s += string.Format("LVL：{0}(次のLVLまで{1}/{2})\n", level, exp, GetNextExp());
+                s += $"LVL：{level}\n{GetExpInfo()}\n";
             }
             else
             {
@@ -323,6 +324,7 @@ public class Character : MonoBehaviour
         public int BaseINT() { return INT_base + INT_baseByLVL; }
         /// <summary>%で返す</summary>
         public float GetHPPercent() { return HP * 100f / maxHP; }
+        public string GetExpInfo() { return $"{"EXP".ToSpr_withLink()}：{exp}/{GetNextExp()}"; }
         public int GetNextExp() { return level; }
 
         public bool Obstacle() { return characterTags.Contains(CharacterData.CharacterTag.obstacle); }
@@ -1613,10 +1615,9 @@ public class Character : MonoBehaviour
         if (charaStatus.level < 10)
         {
             charaStatus.exp += amount;
-            //if (charaStatus.exp >= charaStatus.GetNextExp())
-            //{
-            //    FindObjectOfType<LVLUpManager>().LVLUp(this);
-            //}
+            SetDamageText($"{"EXP".ToSpr_withName("EXP", true)}+{amount}", Color.white);
+            infoText.AddLogText($"{charaStatus.charaName}は{"EXP".ToSpr_withLink()}を{amount}得た");
+            if (charaStatus.exp>=charaStatus.GetNextExp()) SetDamageText("LVL UP 可能！", Definer.colorRef.expOrb);
         }
     }
 

@@ -178,10 +178,7 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs:
-    - removeStE: {fileID: 5164891664867224302, guid: 70a7d79210757c949875697128afa499, type: 3}
-      removeAll: 0
-      addAmount: -5
+    removeStEs: []
     removePEs: []
     summon: 0
     summonChara: []

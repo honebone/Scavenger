@@ -1165,7 +1165,7 @@ public class Action : MonoBehaviour
                         }
                         else//‰ñ”ğ
                         {
-                            target.GetTargetButton().SetDamageText($"{"EVD".ToSpr()}Evade", Definer.colorRef.evade);
+                            target.GetTargetButton().SetDamageText($"{"EVD".ToSpr(true)}Evade", Definer.colorRef.evade);
                             infoText.AddLogText(string.Format("{0}‚ÍUŒ‚‚ğ‰ñ”ğ‚µ‚½", targetStatus.charaName).ColorStr(Definer.colorRef.evade));
                             soundManager.PlaySE(Definer.soundRef.evade);
                             attackHit = false;

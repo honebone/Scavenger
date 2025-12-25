@@ -11,6 +11,8 @@ public class Per_Master : PA_Personality
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] int targetCount;
+    [SerializeField, Header("\n能力発動に必要な[条件を満たすキャラ]の必要人数")] int activeCond_req;
+    [SerializeField, Header("能力発動に必要なキャラの条件")] CharactersManager.SearchCharaCondition activeCond;
 
     int count;
     int count_inBattle;
@@ -19,7 +21,7 @@ public class Per_Master : PA_Personality
 
     protected void Activate()
     {
-        if (available)
+        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count > 0))
         {
             count++;
             if (countReq > 1) Log($"カウント+1 ({count})");
@@ -61,7 +63,7 @@ public class Per_Master : PA_Personality
         ResetParams();
     }
 
-    void ResetParams()
+    protected void ResetParams()
     {
         count = 0; ;
         count_inBattle = 0;

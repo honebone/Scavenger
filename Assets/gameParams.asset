@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: gameParams
   m_EditorClassIdentifier: 
   maxLVL: 10
+  EXPBase: 1.5
   unlockEqSlotLVL: 0400000006000000080000000a000000
   madnessSpawnChance: 10
   madnessStatMod:
@@ -44,6 +45,6 @@ MonoBehaviour:
   SANDMGOnRoom: {x: 3, y: 10}
   RegenPercentOnRoomEnd: 20
   SANPenaltyOnDie: 15
-  areaLength: 8
+  areaLength: 6
   branchChance: 8
   blindChance: 15
