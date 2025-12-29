@@ -43,7 +43,7 @@ public class RE_LastBoss : RoomEvent
     IEnumerator Consequence()
     {
         yield return new WaitForSeconds(1.5f);
-        lootPanel.AddExp(5);
+        lootPanel.AddExp(GameManager.gameParams.EXP_Boss-1);
         expeditionManager.Battle(new List<AreaManager.EnemySet> { boss }, null, battleParams);
     }
 

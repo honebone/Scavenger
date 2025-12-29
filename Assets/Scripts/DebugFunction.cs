@@ -170,7 +170,7 @@ public class DebugFunction : MonoBehaviour
 
     public void GainExp()
     {
-        FindObjectOfType<Inventory>().AddExp(99, true);
+        FindObjectOfType<Inventory>().AddExp(100, true);
     }
     public void GetAllEquipments()
     {

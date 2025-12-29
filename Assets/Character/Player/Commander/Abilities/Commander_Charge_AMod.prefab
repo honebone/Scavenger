@@ -84,7 +84,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
       exChance: 0
       exStack: 0
-      exValue: 8
+      exValue: 3
       exDMGPerTurn: 0
     debuffChanceMod: 0
     removeStE_buff: 0
@@ -115,4 +115,6 @@ MonoBehaviour:
       moveRes: 0
       debuffRes: 0
   onlyAttack: 0
+  onlyActive: 0
   TH: 1
+  foreachTarget: 1

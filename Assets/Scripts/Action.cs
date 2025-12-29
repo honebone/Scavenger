@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using System.Linq;
 
 public class Action : MonoBehaviour
 {
@@ -1020,13 +1021,13 @@ public class Action : MonoBehaviour
                             float INTDMGf = 0;
                             float ATKMod = Random.Range(actionsStatus[i].ATKMod_min, actionsStatus[i].ATKMod_max) / 100;
                             float INTMod = Random.Range(actionsStatus[i].INTMod_min, actionsStatus[i].INTMod_max) / 100;
-                            if (actionsStatus[i].ATKMod_divide > 0) ATKMod += actionsStatus[i].ATKMod_divide / actionStatus.actionTargets.Count / 100;
+                            if (actionsStatus[i].ATKMod_divide > 0) ATKMod += actionsStatus[i].ATKMod_divide / actionStatus.actionTargets.Count / 100;//分配ダメージ
                             if (actionsStatus[i].INTMod_divide > 0) INTMod += actionsStatus[i].INTMod_divide / actionStatus.actionTargets.Count / 100;
                             ATKDMGf += ownerStatus.ATK * ATKMod;
                             INTDMGf += ownerStatus.INT * INTMod;
 
-                            ATKDMGf += (float)actionsStatus[i].ATKDMG_divide_int / actionStatus.actionTargets.Count;
-                            ATKDMGf += (float)actionsStatus[i].INTDMG_divide_int / actionStatus.actionTargets.Count;
+                            ATKDMGf += (float)actionsStatus[i].ATKDMG_divide_int / actionStatus.actionTargets.Count;//追加分配ダメージ
+                            INTDMGf += (float)actionsStatus[i].INTDMG_divide_int / actionStatus.actionTargets.Count;
 
                             float PROT = Mathf.Min(targetStatus.PROT, 75);//PROTの最大値を75に制限
                             float RDMG = Mathf.Max((PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
@@ -1114,7 +1115,7 @@ public class Action : MonoBehaviour
                                 result.onKillParams = onKillParams;
                             }
 
-                            if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                            if (actionsStatus[i].consumeFocus && actionParams.targetStEs_preResolve.Any(p => p.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus))//フォーカスの消費
                             {
                                 target.ConsumeFocus();
                                 OnFocusParams onFocusParams = new OnFocusParams();
@@ -1199,7 +1200,7 @@ public class Action : MonoBehaviour
                 {
                     if (!attackHit)//攻撃時のフォーカス消費は上で
                     {
-                        if (actionsStatus[i].consumeFocus)//フォーカスの消費
+                        if (actionsStatus[i].consumeFocus && actionParams.targetStEs_preResolve.Any(p => p.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus))//フォーカスの消費
                         {
                             target.ConsumeFocus();
                             OnFocusParams onFocusParams = new OnFocusParams();
@@ -1662,6 +1663,7 @@ public class Action : MonoBehaviour
         }
         EndResolve();
     }
+
 
     void EndResolve()
     {

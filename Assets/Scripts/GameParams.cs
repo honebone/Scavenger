@@ -8,7 +8,9 @@ public class GameParams : ScriptableObject
     [Header("\n\n\nStatus")]
     public int maxLVL = 10;
     [Header("\n\n\nLevel Up\nEXPBase x ƒGƒŠƒA”‚ªŠî–{‚ÌEXP—Ê")]
+    public List<int> EXP_reqs;
     public float EXPBase;
+    public float EXP_Boss = 5;
     public List<int> unlockEqSlotLVL;
     [Header("\n\n\nMadness")] public float madnessSpawnChance;
     public Character.CharaStatusMod madnessStatMod;

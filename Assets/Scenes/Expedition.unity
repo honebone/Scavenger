@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -434,10 +434,10 @@ MonoBehaviour:
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
     centerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
-    lowerMid: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
-    centerBack: {fileID: 11400000, guid: 2eb6072248bdf954c8f1512e6ff475f9, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:

@@ -297,7 +297,7 @@ public class LootPanel : MonoBehaviour
         }
         //Sort();
     }
-    public void AddExp(int amount)
+    public void AddExp(float amount)
     {
         expOrbs += expeditionManager.GetExpAmount(amount);
     }

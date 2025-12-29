@@ -34,7 +34,7 @@ public class RE_BossBattle : RoomEvent
                     yield return new WaitForSeconds(0.5f);
                     infoText.AddLogText("");
                 }
-                lootPanel.AddExp(5);
+                lootPanel.AddExp(GameManager.gameParams.EXP_Boss - 1);
                 if(fieldEffect != null) { expeditionManager.Battle(new List<AreaManager.EnemySet> { boss }, fieldEffect, new ExpeditionManager.BattleParams()); }
                 else { expeditionManager.Battle(new List<AreaManager.EnemySet> { boss }, null, battleParams); }
                 break;

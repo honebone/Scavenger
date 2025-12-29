@@ -12,11 +12,6 @@ public class PA_StE_CRITDUp : PA_StatusEffect
         n = up ? 1 : -1;
         character.AddCRITD(StEStatus.value* n);
     }
-    public override void OnAttack(List<Action.OnAttackParams> onAttackParamsList)
-    {
-        AddStack(-1);
-    }
-
     public override void OnTurnEnd(TurnEndParams tep)
     {
         if (tep.myTurn && applyFlag) { AddStack(-1); }

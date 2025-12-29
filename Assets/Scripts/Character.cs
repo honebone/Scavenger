@@ -325,7 +325,13 @@ public class Character : MonoBehaviour
         /// <summary>%で返す</summary>
         public float GetHPPercent() { return HP * 100f / maxHP; }
         public string GetExpInfo() { return $"{"EXP".ToSpr_withLink()}：{exp}/{GetNextExp()}"; }
-        public int GetNextExp() { return level; }
+        public int GetNextExp() { 
+            if(GameManager.gameParams.EXP_reqs.Count< level)
+            {
+                InfoText.inst.AddErrorText($"EXP_reqs index out of range level:{level}");
+                return 0;
+            }
+            return GameManager.gameParams.EXP_reqs[level - 1]; }
 
         public bool Obstacle() { return characterTags.Contains(CharacterData.CharacterTag.obstacle); }
     }
@@ -768,13 +774,14 @@ public class Character : MonoBehaviour
     }
     public void ConsumeFocus()
     {
+        targetButton.SetDamageText("☆フォーカス!!☆", Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus]);
+        soundManager.PlaySE(Definer.soundRef.consumeFocus);
+
         foreach (PassiveAbility pa in GetPassiveAbilities())
         {
             if (pa.GetPAType() == 0 && pa.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus)
             {
                 pa.GetComponent<PA_StatusEffect>().AddStack(-1, false);
-                targetButton.SetDamageText("☆フォーカス!!☆", Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.focus]);
-                soundManager.PlaySE(Definer.soundRef.consumeFocus);
             }
         }
     }
@@ -1612,7 +1619,7 @@ public class Character : MonoBehaviour
 
     public void GainEXP(int amount)
     {
-        if (charaStatus.level < 10)
+        if (charaStatus.level < GameManager.gameParams.maxLVL)
         {
             charaStatus.exp += amount;
             SetDamageText($"{"EXP".ToSpr_withName("EXP", true)}+{amount}", Color.white);
@@ -1692,7 +1699,7 @@ public class Character : MonoBehaviour
         }
 
         charaStatus.level++;
-        if (charaStatus.exp >= charaStatus.GetNextExp())
+        if (charaStatus.level < GameManager.gameParams.maxLVL && charaStatus.exp >= charaStatus.GetNextExp())
         {
             FindObjectOfType<LVLUpManager>().LVLUp(this);
         }

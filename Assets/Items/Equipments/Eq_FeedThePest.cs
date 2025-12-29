@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Eq_FeedThePest : PA_Equipment
 {
+    [SerializeField] int countTH;
     public int usePerRound;
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;
