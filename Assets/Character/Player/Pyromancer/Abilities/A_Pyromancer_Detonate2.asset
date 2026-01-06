@@ -16,7 +16,7 @@ MonoBehaviour:
   lockedDefault: 0
   upgradeInfo: "\u4E0E\u3048\u308B\u30C0\u30E1\u30FC\u30B8\u304C<color=#C900FF><sprite
     name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306B\u3088\u308A\u5931\u3046<sprite
-    name=HP><color=#87FF79>HP</color>\u306E100\uFF05\u306B\u306A\u308B"
+    name=HP><color=#87FF79>HP</color>\u306E125\uFF05\u306B\u306A\u308B"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -57,7 +57,7 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
@@ -66,7 +66,9 @@ MonoBehaviour:
     conditionInfo: 
     targetInfo: "\u706B\u50B7\u306E\u3042\u308B\u6575\u5168\u3066(\u6F5C\u4F0F\u30FB\u30DE\u30FC\u30AF\u3092\u7121\u8996)"
     AModInfo: 
-    actionInfo: "\u305D\u306E\u5F8C\u3001\u4E0E\u3048\u305F\u30C0\u30E1\u30FC\u30B8\u306E50\uFF05\u306B\u7B49\u3057\u3044\u30B7\u30FC\u30EB\u30C9\u3092\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B\u30B7\u30FC\u30EB\u30C9\u91CF\u306F\u81EA\u8EAB\u306EmaxHP\u3092\u8D85\u3048\u306A\u3044"
+    actionInfo: "\u305D\u306E\u5F8C\u3001\u4E0E\u3048\u305F\u30C0\u30E1\u30FC\u30B8\u306E50\uFF05\u306B\u7B49\u3057\u3044<color=#00FFFF><sprite
+      name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u308B\n\u3053\u308C\u306B\u3088\u308B<sprite
+      name=shield>\u306F\u81EA\u8EAB\u306E<sprite name=maxHP><color=#87FF79>maxHP</color>\u3092\u8D85\u3048\u306A\u3044"
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 7df3e93b528d18146acadfa8516317b5, type: 3}
     VE_OnTargets: {fileID: 5647168121093442190, guid: 1c1259acbd1d4cb4a898727097f570c6, type: 3}
@@ -116,7 +118,9 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    attackInfo: "\u706B\u50B7\u306B\u3088\u308A\u5931\u3046HP\u306B\u7B49\u3057\u3044\u56FA\u5B9A\u9B54\u6CD5\u30C0\u30E1\u30FC\u30B8\u3092\u5373\u5EA7\u306B\u4E0E\u3048\u308B"
+    attackInfo: "<color=#C900FF><sprite name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306B\u3088\u308A\u5931\u3046<sprite
+      name=HP><color=#87FF79>HP</color>\u306E125\uFF05\u306B\u7B49\u3057\u3044\u56FA\u5B9A<sprite
+      name=INT><color=#256CC8>\u9B54\u6CD5</color>\u30C0\u30E1\u30FC\u30B8\u3092\u5373\u5EA7\u306B\u4E0E\u3048\u308B"
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
@@ -205,7 +209,5 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 2
-    actionTargets:
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 0c0000000d000000
+    actionTargets: []
+    actionTargetsInt: 

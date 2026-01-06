@@ -142,6 +142,7 @@ MonoBehaviour:
   itemImage: {fileID: 4339044422688787754}
   frame: {fileID: 4339044422948569038}
   glitched: {fileID: 2100000, guid: 311f116a077dadd459b8462579242ad6, type: 2}
+  VE_grab: {fileID: 642389407380560171, guid: 570c5eff8a98609469c63c90b0952662, type: 3}
   frames:
   - {fileID: 0}
   - {fileID: -1962300907, guid: 09d900a0f6ac2034db63379b8e243da4, type: 3}
@@ -193,6 +194,7 @@ MonoBehaviour:
   scroll: {fileID: 0}
   scrollSpeed: 20
   alwaysScroll: 0
+  horizontal: 0
 --- !u!114 &4339044422948569073
 MonoBehaviour:
   m_ObjectHideFlags: 0

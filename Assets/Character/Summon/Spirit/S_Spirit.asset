@@ -29,9 +29,9 @@ MonoBehaviour:
   boss: 0
   playable: 0
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 5653786406427300796, guid: bb80696f14927744ca0d038f79bf7abc, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  spriteForUI: {fileID: 1613070652, guid: 631eedaa5ee79a140bae7e667420cc4d, type: 3}
   abilities:
   - {fileID: 11400000, guid: c7c71d92c3247fe429822869dbfbb2e0, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}

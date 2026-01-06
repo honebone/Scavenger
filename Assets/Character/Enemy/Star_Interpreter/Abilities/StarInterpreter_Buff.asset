@@ -53,7 +53,7 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
-  freeAction: 0
+  freeAction: 1
   cooldownOnBattleStart: 0
   cooldownOnUse: 12
   hasRemain: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
-    freeAction: 0
+    freeAction: 1
     abilityType: 3
     index: 0
     StEApplyBonus: []

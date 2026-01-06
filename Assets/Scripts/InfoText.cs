@@ -127,6 +127,7 @@ public class InfoText : MonoBehaviour
 
     public void ToggleInfoType()
     {
+        SoundManager.instance.PlaySE_Select();
         if (sequence != null) sequence.Kill();
         sequence = DOTween.Sequence();
         if (showSimple)
@@ -162,6 +163,7 @@ public class InfoText : MonoBehaviour
 
     public void TogglePanel()
     {
+        SoundManager.instance.PlaySE_Select();
         if (infoPanel.activeSelf)
         {
             infoPanel.SetActive(false);

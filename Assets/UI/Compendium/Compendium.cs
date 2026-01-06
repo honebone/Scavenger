@@ -44,6 +44,7 @@ public class Compendium : MonoBehaviour
     {
         if (active)  Close();
         else Open();
+        SoundManager.instance.PlaySE_Select();
     }
     public void Open()
     {

@@ -89,8 +89,8 @@ MonoBehaviour:
     atRandom: []
   lastBack:
     obj: {fileID: 5025424652579141083, guid: 15dff9401d9498840a66bea080e065ab, type: 3}
-    lightColor: {r: 0.015686275, g: 0.18039216, b: 0.42352942, a: 1}
-    lightIntensity: 1
+    lightColor: {r: 0, g: 0.59607846, b: 1, a: 1}
+    lightIntensity: 0.25
   lastBGM: {fileID: 8300000, guid: 01e3aed11ac56a34dab2b098befc1d6b, type: 3}
   lastParticle: {fileID: 7633311505586100419, guid: 91587a0eac5fe45429625fd9dc34fec0, type: 3}
   SEOnSpawn:

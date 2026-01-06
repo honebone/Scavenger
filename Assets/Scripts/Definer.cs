@@ -65,6 +65,10 @@ public class Definer : MonoBehaviour
         public AudioClip die1;
         public AudioClip die2;
         public AudioClip[] getItem;
+
+        public AudioClip select;
+        public AudioClip mouseover;
+        public AudioClip info;
     }
     [System.Serializable]
     public class VisualEffectRef
@@ -76,6 +80,8 @@ public class Definer : MonoBehaviour
         /// <summary>0:other 1:buff 2:debuff 3:focus</summary>
         public GameObject[] applyStE;
         public GameObject shieldDMG;
+
+        public GameObject UI_smoke;
     }
 
     public static Character.CharacterStatus nonCharaStatus;
@@ -91,8 +97,8 @@ public class Definer : MonoBehaviour
     [SerializeField] Action.ActionStatus actionRef_Inspector;
     //[SerializeField]
     //ColorRef colorRef_Inspector;
-    [SerializeField]
-    SoundRef soundRef_Inspector;
+    //[SerializeField]
+    //SoundRef soundRef_Inspector;
     [SerializeField]
     VisualEffectRef VERef_Inspector;
     [SerializeField]
@@ -389,7 +395,7 @@ public class Definer : MonoBehaviour
         actionRef = actionRef_Inspector;
 
         colorRef = cp.colorRef;
-        soundRef = soundRef_Inspector;
+        soundRef = cp.soundRef;
         VERef = VERef_Inspector;
         abilityManager_General = abilityManager_General_Inspector;
         actionManager_General = actionManager_General_Inspector;

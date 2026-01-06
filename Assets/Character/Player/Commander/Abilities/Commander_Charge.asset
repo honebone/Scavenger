@@ -162,16 +162,7 @@ MonoBehaviour:
       guaranteed: 1
       applyChance: 0
       stack: 1
-      value: 20
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 25
+      value: 10
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -179,10 +170,7 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs:
-    - removeStE: {fileID: 1489497368108049143, guid: 10500e3f1dcfaf9488bdeb2a8b8771a1, type: 3}
-      removeAll: 1
-      addAmount: 0
+    removeStEs: []
     removePEs: []
     summon: 0
     summonChara: []
@@ -2890,6 +2878,6 @@ MonoBehaviour:
       debuffRes: 0
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 6
+    targetCount: 7
     actionTargets: []
     actionTargetsInt: 

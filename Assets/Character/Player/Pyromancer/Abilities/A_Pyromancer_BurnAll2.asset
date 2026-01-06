@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u713C\u304D\u6255\u3044+"
   lockedDefault: 0
-  upgradeInfo: "<sprite name=INT><link=U_ATK(INT)\u88DC\u6B63><u><color=#256CC8>INT</color>\u88DC\u6B63</u></link>+10\uFF05\r\n<color=#C900FF><sprite
-    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+15"
+  upgradeInfo: "<color=#C900FF><sprite name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+15"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -118,8 +117,8 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 30
-    INTMod_max: 40
+    INTMod_min: 10
+    INTMod_max: 20
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -209,6 +208,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
-    actionTargetsInt: 0c000000
+    actionTargetsInt: 

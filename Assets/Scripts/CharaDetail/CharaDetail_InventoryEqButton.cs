@@ -8,6 +8,7 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
     [SerializeField] Image itemImage;
     [SerializeField] Image frame;
     [SerializeField] Material glitched;
+    [SerializeField] GameObject VE_grab;
 
     public List<Sprite> frames;
 
@@ -66,6 +67,7 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
             {
                 mouseOver.ResetUI();
                 detailUI.SetDraggingItem(item, null);
+                Utils_VE.inst.SpawnVE_UISmoke();
             }
             else
             {
@@ -76,6 +78,8 @@ public class CharaDetail_InventoryEqButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        SoundManager.instance.PlaySE_MO();
+
         //p = true;
         mouseOver.SetUI($"{item.data.itemName.ColorStr(item.data.rarity.ToColor())}\nƒhƒ‰ƒbƒO‚Å‘•”õ\n{item.GetInfo(true)}", true);
     }

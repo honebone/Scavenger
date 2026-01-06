@@ -79,6 +79,7 @@ public class CharaDetail_CharaEqButton : MonoBehaviour
                 {
                     mouseOver.ResetUI();
                     detailUI.SetDraggingItem(item, charaButton);
+                    Utils_VE.inst.SpawnVE_UISmoke();
                 }
                 else
                 {

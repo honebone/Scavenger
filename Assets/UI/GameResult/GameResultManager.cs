@@ -51,6 +51,7 @@ public class GameResultManager : MonoBehaviour
             panel.SetActive(true);
 
             titleText.text = mode == 0 ? "" : mode == 1 ? "GAME CLEAR!!".ColorStr(Color.yellow) : "GAME OVER".ColorStr(Definer.colorRef.damage);
+            if (mode == 0) SoundManager.instance.PlaySE_Select();
             if (mode == 1) SoundManager.instance.PlaySE(SE_gameclear);
             if (mode == 2) SoundManager.instance.PlaySE(SE_gameover);
             if (mode == 2) par_gameover.Play();
@@ -78,6 +79,7 @@ public class GameResultManager : MonoBehaviour
 
     public void Close()
     {
+        SoundManager.instance.PlaySE_Select();
         panel.SetActive(false);
     }
     public void ToTitle()

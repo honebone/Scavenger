@@ -50,7 +50,7 @@ MonoBehaviour:
   simpleInfo: "\u6575\u3092\u6BBA\u5BB3\u3059\u308B\u305F\u3073\u3001<color=#FF8B00><sprite
     name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u304C\u5897\u52A0\u3059\u308B\n\n\u3053\u306E\u80FD\u529B\u304C\u4E00\u5B9A\u56DE\u6570\u767A\u52D5\u3059\u308B\u3068\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u5F97\u308B"
   PAInfo_start: "\u65751\u4F53\u3092\u6BBA\u5BB3\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1(\u6700\u59275)\n\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<color=#FF8B00><sprite
-    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+10\uFF05"
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+10\uFF05\n\n\u30AB\u30A6\u30F3\u30C8\u304C3\u306B\u5230\u9054\u3057\u305F\u3068\u304D\u3001\u8FFD\u52A0\u30BF\u30FC\u30F3\u30923\u5F97\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:

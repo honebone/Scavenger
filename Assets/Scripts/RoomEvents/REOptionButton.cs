@@ -27,11 +27,13 @@ public class REOptionButton : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
+            SoundManager.instance.PlaySE_Info();
             infoText.SetText_Old(optionParams.optionName, optionParams.optionInfo);
             expeditionManager.REOption_OnRClick(index);
         }
         if (Input.GetMouseButtonDown(0) && optionParams.available)
         {
+            SoundManager.instance.PlaySE_Select();
             mouseOver.ResetUI();
             expeditionManager.REOption_Select(index);
         }

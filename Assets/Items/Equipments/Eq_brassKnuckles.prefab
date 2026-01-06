@@ -75,21 +75,21 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
       exChance: 0
       exStack: 0
-      exValue: 25
+      exValue: 75
       exDMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
       exChance: 0
       exStack: 0
-      exValue: 25
+      exValue: 75
       exDMGPerTurn: 0
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 1055ae7c848691e4dbb70b8676179670, type: 2}
-    equipmentInfo: 
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

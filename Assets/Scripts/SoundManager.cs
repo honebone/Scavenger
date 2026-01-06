@@ -47,6 +47,18 @@ public class SoundManager : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
     }
+    public void PlaySE_Select()
+    {
+        PlaySE(Definer.soundRef.select);
+    }
+    public void PlaySE_MO()
+    {
+        PlaySE(Definer.soundRef.mouseover);
+    }
+    public void PlaySE_Info()
+    {
+        PlaySE(Definer.soundRef.info);
+    }
     private void Start()
     {
         DontDestroyOnLoad(gameObject);

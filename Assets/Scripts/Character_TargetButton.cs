@@ -139,9 +139,9 @@ public class Character_TargetButton : MonoBehaviour
 
     public void OnMouseDown()
     {
-
         if (Input.GetMouseButtonDown(1))
         {
+            SoundManager.instance.PlaySE_Info();
             if (character != null) {character.DisplayInfo(); }
             else { infoText.SetCharaInfo("空きスペース", positionManager.GetPEInfo()); }
             //SetSelectedIcon(true);
@@ -155,6 +155,7 @@ public class Character_TargetButton : MonoBehaviour
     }
     public void OnMouseOver()
     {
+
         if (selectableAsTarget)
         {
             foreach (int pos in targetGroup)

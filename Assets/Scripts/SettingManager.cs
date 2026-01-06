@@ -59,6 +59,7 @@ public class SettingManager : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            SoundManager.instance.PlaySE_Select();
             panel.SetActive(!panel.activeSelf);
             if (!panel.activeSelf) { PlayerPrefs.Save(); }
         }

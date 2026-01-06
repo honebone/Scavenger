@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
-  REName: "\u7D42\u7AEF"
+  REName: "\u7D42\u308F\u308A\u306A\u304D\u59CB\u307E\u308A"
   REInfo: "\u30A8\u30EA\u30A2\u306E\u7D42\u7AEF\u306B\u305F\u3069\u308A\u7740\u3044\u305F"
   endExpedition:
     optionName: "\u5E30\u9084\u3059\u308B"

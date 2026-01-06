@@ -87,6 +87,8 @@ public class CPD_EqButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
+        SoundManager.instance.PlaySE_MO();
+
         p = true;
         if(unlocked) mouseOver.SetUI($"{item.itemName.ColorStr(item.rarity.ToColor())}\n{item.GetInfo(true)}");
         else mouseOver.SetUI("???".ColorStr(Color.gray));

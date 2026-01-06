@@ -86,6 +86,10 @@ public class ExpeditionManager : MonoBehaviour
     public GameParams gameParams;
 
     [SerializeField] List<GameObject> MadnessPAPool;
+    //[SerializeField] List<GameObject> RaE_epic;
+    //[SerializeField] List<GameObject> RaE_good;
+    //[SerializeField] List<GameObject> RaE_normal;
+    //[SerializeField] List<GameObject> RaE_bad;
 
     public StatusGrowth playerStatusGrowth;
     public StatusGrowth enemyStatusGrowth;

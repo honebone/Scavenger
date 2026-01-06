@@ -49,7 +49,7 @@ public class PassiveAbility : MonoBehaviour
         }
 
         string statModInfo = statMod.GetInfo();
-        string runeChargeInfo = PATags.Contains(PATag.ルーン) ? $"初期チャージ：{rune_initialCharge}" : "";
+        string runeChargeInfo = PATags.Contains(PATag.ルーン) ? $"ルーン初期チャージ：{rune_initialCharge}" : "";
 
         if (simple && !noSimpleInfo)
         {

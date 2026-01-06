@@ -324,16 +324,17 @@ public class Character : MonoBehaviour
         public int BaseINT() { return INT_base + INT_baseByLVL; }
         /// <summary>%Ç≈ï‘Ç∑</summary>
         public float GetHPPercent() { return HP * 100f / maxHP; }
-        public string GetExpInfo() { return $"{"EXP".ToSpr_withLink()}ÅF{exp}/{GetNextExp()}"; }
+        public string GetExpInfo() { return IsMaxLVL() ? $"{"EXP".ToSpr_withLink()}ÅF{exp}" : $"{"EXP".ToSpr_withLink()}ÅF{exp}/{GetNextExp()}"; }
         public int GetNextExp() { 
-            if(GameManager.gameParams.EXP_reqs.Count< level)
+            if(IsMaxLVL())
             {
-                InfoText.inst.AddErrorText($"EXP_reqs index out of range level:{level}");
-                return 0;
+                return 99;
             }
             return GameManager.gameParams.EXP_reqs[level - 1]; }
 
         public bool Obstacle() { return characterTags.Contains(CharacterData.CharacterTag.obstacle); }
+
+        public bool IsMaxLVL() { return level >= GameManager.gameParams.EXP_reqs.Count; }
     }
     [System.Serializable]
     public struct CharaStatusMod

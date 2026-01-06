@@ -348,6 +348,7 @@ public class LootPanel : MonoBehaviour
     {
         if (!revealing)
         {
+            SoundManager.instance.PlaySE_Select();
             foreach (Definer.Item item in loots)
             {
                 inventory.AddItem(item, item.amount, true);

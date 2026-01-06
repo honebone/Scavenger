@@ -47,7 +47,8 @@ public class Map_MapPanel : MonoBehaviour
     }
     public void OpenMap()
     {
-        if (!mapPanel.activeSelf) { 
+        if (!mapPanel.activeSelf) {
+            SoundManager.instance.PlaySE_Select();
             mapPanel.SetActive(true);
             if (tutorialManager.CheckUnlocked(tutorial_expedition))
             {
@@ -57,7 +58,11 @@ public class Map_MapPanel : MonoBehaviour
     }
     public void CloseMap()
     {
-        if (mapPanel.activeSelf) { mapPanel.SetActive(false); }
+        if (mapPanel.activeSelf)
+        {
+            SoundManager.instance.PlaySE_Select();
+            mapPanel.SetActive(false);
+        }
     }
 
     public void ResetMap()
@@ -75,5 +80,6 @@ public class Map_MapPanel : MonoBehaviour
     public void EndGenerateMap()
     {
         expeditionManager.SetLayers(layers);
+        mapScroll.horizontalNormalizedPosition = 0;
     }
 }

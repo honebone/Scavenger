@@ -7,6 +7,7 @@ public class CommonParams : ScriptableObject
     public List<TextSpriteParams> textSpriteParamsList = new List<TextSpriteParams>();
     public List<GameObject> statusEffectDataBase;
     public Definer.ColorRef colorRef;
+    public Definer.SoundRef soundRef;
     public List<CharacterData> playerDataBase;
     public List<CharacterData> enemyDataBase;
     public List<CharacterData> obstacleDataBase;

@@ -37,6 +37,7 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField] Definer.Item draggingItem;
     [SerializeField] Transform dragImageP;
     [SerializeField] GameObject dragImage;
+    [SerializeField] List<GameObject> VE_rarity;
 
     public TextMeshProUGUI expAmount;
     [SerializeField] TutorialData tutorial_equip;
@@ -101,6 +102,8 @@ public class CharaDetailUI : MonoBehaviour
     }
     public void OpenUI()
     {
+        SoundManager.instance.PlaySE_Select();
+
         UIpanel.SetActive(true);
 
         List<Character> characters = new List<Character>();
@@ -137,6 +140,7 @@ public class CharaDetailUI : MonoBehaviour
     }
     public void CloseUI()
     {
+        SoundManager.instance.PlaySE_Select();
         UIpanel.SetActive(false);
 
         ResetChara();
@@ -211,87 +215,6 @@ public class CharaDetailUI : MonoBehaviour
 
         expAmount.text = inventory.GetExp().ToString();
     }
-    //public void SetEquipmnetButtons()
-    //{
-    //    if (equipmentP.childCount != 0)
-    //    {
-    //        for (int i = 0; i < equipmentP.childCount; i++)
-    //        {
-    //            Destroy(equipmentP.GetChild(i).gameObject);
-    //        }
-    //    }
-    //    foreach (Definer.Item item in status.equipments)
-    //    {
-    //        var e = Instantiate(equipmentButton, equipmentP);
-    //        e.GetComponent<CharaDetail_EquipmentButton>().Init(item, infoText,this);
-    //    }
-    //    for (int i = 0; i < maxEquipments - status.equipments.Count; i++)
-    //    {
-    //        var n = Instantiate(newEquipmentButton, equipmentP);
-    //        n.GetComponent<CharaDetail_EquipmentButton>().Init(new Definer.Item(), infoText, this);
-    //    }
-
-    //}
-
-    //public void StartSelectEquipment(bool e,Definer.Item selected)
-    //{
-    //    selectingEquipment = true;
-    //    empty = e;
-    //    selectedEq = selected;
-
-    //    inventory.CloseOptionUI();
-    //    inventory.ChangeSort(2);
-    //    inventory.OpenInventory();
-    //}
-    //public void EndSelectEquipment()
-    //{
-    //    selectingEquipment = false;
-    //    selectedEq = new Definer.Item();
-    //}
-
-    //public void SetAbilityButtons()
-    //{
-    //    if (abilityP.childCount != 0)
-    //    {
-    //        for (int i = 0; i < abilityP.childCount; i++)
-    //        {
-    //            Destroy(abilityP.GetChild(i).gameObject);
-    //        }
-    //    }
-    //    foreach (Ability.AbilityStatus abilityStatus in status.abilitiesStatus)
-    //    {
-    //        if (abilityStatus.locked)
-    //        {
-    //            var a = Instantiate(abilityButton, abilityP);
-    //            a.GetComponent<CharaDetail_AbilityButton>().Init(abilityStatus, 0, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
-    //        }
-    //        else if (abilityStatus.abilityData.upgradeAbility != null)
-    //        {
-    //            Ability.AbilityStatus upgrade = new Ability.AbilityStatus(abilityStatus.abilityData.upgradeAbility, 0);
-    //            var a = Instantiate(abilityButton, abilityP);
-    //            a.GetComponent<CharaDetail_AbilityButton>().Init(upgrade, 1, displayingChara, guideMessage, infoText, this, abilityUpgradeInfo);
-    //        }
-    //    }
-    //}
-
-    //public void ToggleToEquipment()
-    //{
-    //    warningPanel.SetActive(false);
-    //    lvlup.ClosePanel();
-    //    inventoryEq.SetButtons();
-    //}
-    //public void ToggleToLVLUp()
-    //{
-    //    ResetDraggingItem();
-    //    inventoryEq.ClosePanel();
-    //    lvlup.OpenPanel();
-    //    if (!displayingChara) { warningPanel.SetActive(true); }
-    //}
-
-    //public void ToggleToPersonality()
-    //{
-    //    guideMessage.SetWaringText("‚±‚Ì‹@”\‚Í–¢ŽÀ‘•‚Å‚·...");
-    //}
 
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)
     {
@@ -351,7 +274,7 @@ public class CharaDetailUI : MonoBehaviour
                                     draggFrom.GetCharacter().UnequipItem(draggingItem, false);
                                     draggFrom.SetButtons();
                                 }
-
+                                Utils_VE.inst.SpawnVE_MousePos(VE_rarity[(int)draggingItem.data.rarity]);
                                 charaEqButton.Equip(draggingItem);
                             }
                             
