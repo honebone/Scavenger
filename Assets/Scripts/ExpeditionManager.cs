@@ -157,6 +157,7 @@ public class ExpeditionManager : MonoBehaviour
 
     bool inExpedition;
     bool inRoomEvent;
+    bool endlessMode;
 
     public List<CharacterData> deployedChara = new List<CharacterData>();
     AreaData currentArea;

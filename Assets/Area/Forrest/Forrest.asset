@@ -14,15 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaName: "\u68EE\u6797"
   areaInfo: "\u82D4\u3068\u80DE\u5B50\u306B\u307E\u307F\u308C\u305F\u68EE\n\u304A\u3073\u305F\u3060\u3057\u3044\u6570\u306E\u5BB3\u866B\u304C\u6B7B\u4F53\u3092\u98DF\u3044\u6F01\u308A\u3001\u7E41\u6B96\u3092\u7E70\u308A\u8FD4\u3057\u3066\u3044\u308B"
+  tier: 3
   backgroundParams:
     obj: {fileID: 3757956418339782287, guid: 54e64d82de1ef424d947fd8256602e52, type: 3}
     lightColor: {r: 0.56078434, g: 1, b: 0.6509804, a: 1}
     lightIntensity: 0.5
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
-  minLength: 6
-  maxLength: 6
-  branchChance: 30
-  blindChance: 15
   BGM: {fileID: 8300000, guid: d3501066994c2d142803e281cf326b62, type: 3}
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}

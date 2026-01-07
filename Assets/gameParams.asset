@@ -47,6 +47,13 @@ MonoBehaviour:
   SANDMGOnRoom: {x: 3, y: 10}
   RegenPercentOnRoomEnd: 20
   SANPenaltyOnDie: 15
+  areaDataBase_tier1:
+  - {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
+  areaDataBase_tier2:
+  - {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
+  areaDataBase_tier3:
+  - {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
+  areaData_end: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
   areaLength: 6
   branchChance: 8
   blindChance: 15
