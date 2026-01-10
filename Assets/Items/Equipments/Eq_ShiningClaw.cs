@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Action;
 
 public class Eq_ShiningClaw : PA_Equipment
 {
@@ -15,13 +16,15 @@ public class Eq_ShiningClaw : PA_Equipment
     }
     public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
+        List<Character> targets = new List<Character>();
         foreach (Action.OnDamageParams onDamageParams in onDamageParamsList)
         {
             if (onDamageParams.ap.actionStatus.abilityEffect)
             {
-                Enqueue(claw, true, new List<Character> { onDamageParams.ap.target });
-                Enqueue(claw, true, new List<Character> { onDamageParams.ap.target });
+                targets.Add(onDamageParams.ap.target);
             }
         }
+        Enqueue(claw, true, targets);
+        Enqueue(claw, true, targets);
     }
 }

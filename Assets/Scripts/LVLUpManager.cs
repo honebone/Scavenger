@@ -90,7 +90,7 @@ public class LVLUpManager : MonoBehaviour
 
         Character.CharacterStatus charaStatus = LVLUpQueue[0].CharaStatus();
         lvlUpTitle.text = string.Format("{0} LVLUP!! {1}->{2}", charaStatus.charaName, charaStatus.level, charaStatus.level + 1);
-        string growthStr = ExpeditionManager.inst.playerStatusGrowth.GetLVLUPInfo(charaStatus.level + 1, true, charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
+        string growthStr = GameManager.gameParams.playerStatusGrowth.GetLVLUPInfo(charaStatus.level + 1, true, charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
 
         statusGrowthText.text = growthStr;
         if (sequence != null) sequence.Kill(true);

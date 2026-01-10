@@ -1100,7 +1100,6 @@ public class Action : MonoBehaviour
                             result.onDamageParams = onDamageParams;
                             onAttackParamsList.Add(onAttackParams);
                             target.OnAttacked(onAttackParams);//”íUŒ‚—U”­
-                            if (ownerStatus.characterData.player) { GameManager.instance.SendScoreborad(2, totalDMG); }
 
                             bool kill = target.Damage(onDamageParams);
 

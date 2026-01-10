@@ -53,5 +53,21 @@ MonoBehaviour:
     additionalEq: 0
     additionalEq_epic: 0
     supplyPicksMod: 0
-    expMod: 2
+    expMod: 1
+    dontPlayBGMOnEnd: 0
   waveMod: 0
+  overrideEnemySet: 0
+  enemySet:
+    dontShuffleFront: 0
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []

@@ -8,7 +8,7 @@ public class RE_AreaEnd : RoomEvent
   
     [SerializeField] REOptionParams endExpedition;
     [SerializeField] REOptionParams skipDeploy;
-    [SerializeField] List<AreaData> nextAreas;
+    //[SerializeField] List<AreaData> nextAreas;
     public List<AreaData> teaserAreas;
 
     protected int choice = 0;
@@ -17,6 +17,7 @@ public class RE_AreaEnd : RoomEvent
     //GameObject eventManager;
     List<CharacterData> deployPool = new List<CharacterData>();
 
+    List<AreaData> nextAreas;
 
     public override void OnEndREInfo()
     {
@@ -54,6 +55,14 @@ public class RE_AreaEnd : RoomEvent
     void StartSelecrNextArea()
     {
         List<REOptionParams> list = new List<REOptionParams>();
+        GameParams gp = GameManager.gameParams;
+        nextAreas = new List<AreaData>();
+        int currentTier = currentArea.tier;
+        if (currentTier == 1) nextAreas = new List<AreaData>(gp.areaDataBase_tier2);
+        if (currentTier == 2) nextAreas = new List<AreaData>(gp.areaDataBase_tier3);
+        if (currentTier == 3) nextAreas = expeditionManager.endlessMode ? new List<AreaData>(gp.areaDataBase_tier1) : new List<AreaData> { gp.areaData_end };
+        if (currentTier == 4) nextAreas = new List<AreaData>(gp.areaDataBase_tier1);
+
         foreach (AreaData area in nextAreas)
         {
             REOptionParams option = new REOptionParams();

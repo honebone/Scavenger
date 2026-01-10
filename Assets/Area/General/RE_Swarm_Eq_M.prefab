@@ -50,8 +50,24 @@ MonoBehaviour:
   battleParams:
     bgm: {fileID: 0}
     lvlMod: 0
-    additionalEq: 5
+    additionalEq: 3
     additionalEq_epic: 0
-    supplyPicksMod: 3
+    supplyPicksMod: 2
     expMod: 0
-  waveMod: 2
+    dontPlayBGMOnEnd: 0
+  waveMod: 1
+  overrideEnemySet: 0
+  enemySet:
+    dontShuffleFront: 0
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class P_Blader_PA : PA_Personality
 {
-    [SerializeField] int attackChance_increased;
-    [SerializeField] int attackChance;
+    //[SerializeField] int attackChance_increased;
+    //[SerializeField] int attackChance;
     [SerializeField] int danceOnMovedAll;
     [SerializeField] Action.ActionStatus attack;
-    [SerializeField] CharactersManager.SearchCharaCondition condition_focus;
+    [SerializeField] ActionMod.ActionModStatus mod;
+    //[SerializeField] CharactersManager.SearchCharaCondition condition_focus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] Action.ActionStatus combo;
 
@@ -19,10 +20,11 @@ public class P_Blader_PA : PA_Personality
 
     public override void OnMoved(Action.OnMoveParams onMoveParams)
     {
-        if ((movedDir[onMoveParams.dir] ? attackChance : attackChance_increased).Dice())
-        {
-            Dance();
-        }
+        //if ((movedDir[onMoveParams.dir] ? attackChance : attackChance_increased).Dice())
+        //{
+        //    Dance(movedDir[onMoveParams.dir]);
+        //}
+        Dance(!movedDir[onMoveParams.dir]);
 
         if (!movedDir[onMoveParams.dir])
         {
@@ -43,7 +45,7 @@ public class P_Blader_PA : PA_Personality
         {
             Log($"ëSï˚å¸íBê¨");
             movedDir = new bool[4];
-            for (int i = 0; i < danceOnMovedAll; i++) { Dance(); }
+            for (int i = 0; i < danceOnMovedAll; i++) { Dance(true); }
         }
     }
 
@@ -59,15 +61,18 @@ public class P_Blader_PA : PA_Personality
         }
     }
 
-    void Dance(bool second = false)
+    void Dance(bool enpowered, bool second = false)
     {
-        List<Character> target_focus = charactersManager.SearchCharaWithCondition(condition_focus);
-        List<Character> target = charactersManager.SearchCharaWithCondition(condition);
-        if (target_focus.Count > 0) { Enqueue(attack, true, target_focus, 1); }
-        else if (target.Count > 0) { Enqueue(attack, true, target, 1); }
+        infoText.AddDebugText($"ã≠âª:{enpowered}");
+        //List<Character> target_focus = charactersManager.SearchCharaWithCondition(condition_focus);
+        //List<Character> target = charactersManager.SearchCharaWithCondition(condition);
+        //if (target_focus.Count > 0) { Enqueue(attack, true, target_focus, 1); }
+        //else if (target.Count > 0) { Enqueue(attack, true, target, 1); }
+        if (enpowered) Enqueue_SearchTarget(attack.Modify(mod), condition, 1);
+        else Enqueue_SearchTarget(attack, condition, 1);
         if (!second && character.CheckHasStE(bladestorm))
         {
-            Dance(true);
+            Dance(true, true);
             character.AddStEStack(bladestorm, -1);
         }
     }
@@ -104,8 +109,9 @@ public class P_Blader_PA : PA_Personality
 
     public override string GetPAInfo_Base()
     {
-        string s = attack.GetInfo(false, new Character.CharacterStatus());
-        s += "\n" + combo.GetInfo(false, new Character.CharacterStatus());
+        string s = attack.GetInfo();
+        s += "\n" + mod.GetModInfo();
+        s += "\n" + combo.GetInfo();
         return s;
     }
 

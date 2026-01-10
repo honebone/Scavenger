@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: StEU_bladeStorm
-  noSimpleInfo: 1
-  simpleInfo: 
-  PAInfo_start: 
+  noSimpleInfo: 0
+  simpleInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B<color=#FFBF69>\u821E\u8E0F</color>\u3092\u3059\u308B\u3068\u304D\u3001\u3053\u308C\u306E\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u3066\u3082\u3046\u4E00\u5EA6<color=#FFBF69>\u821E\u8E0F</color>\u3059\u308B"
+  PAInfo_start: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B<color=#FFBF69>\u821E\u8E0F</color>\u3092\u3059\u308B\u3068\u304D\u3001\u3053\u308C\u306E\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u3066<color=#FF0074>\u5F37\u5316\u3055\u308C\u305F\u821E\u8E0F</color>\u3092\u8FFD\u52A0\u30671\u5EA6\u884C\u3046"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -77,17 +77,21 @@ MonoBehaviour:
     debuffRes: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u5203\u306E\u5D50"
-    StEInfo: "\u7279\u6027<\u30D6\u30EC\u30FC\u30C9\u30C0\u30F3\u30B9>\u306B\u3088\u308B\u821E\u8E0F\u3092\u3059\u308B\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u3066\u3082\u3046\u4E00\u5EA6\u821E\u8E0F\u3059\u308B"
+    StEInfo: 
     StEIcon: {fileID: 21300000, guid: ef5ab13ad5819f949b6c5e0bdc74bc87, type: 3}
     StEType: 4
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 0
     merge: 1
     refValue: 0
     undeletable: 1
     DoT: 0
     regen: 0
+    StEPrefab: {fileID: 0}
     applyer: {fileID: 0}
     stack: 0
     value: 0
@@ -101,6 +105,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
     VE_OnTargets: {fileID: 4550799408295298728, guid: 84ed8d0cbe261a442a36f0d2dcead763, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -111,6 +116,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -126,6 +132,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -145,11 +154,15 @@ MonoBehaviour:
     ATKMod_max: 140
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -159,6 +172,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -199,6 +213,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -216,8 +232,6 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -229,6 +243,7 @@ MonoBehaviour:
     player: 0
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -245,12 +260,16 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   condition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -266,6 +285,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

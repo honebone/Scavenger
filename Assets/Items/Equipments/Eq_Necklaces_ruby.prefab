@@ -58,7 +58,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 0
+    ATK_mul: 15
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -79,9 +79,9 @@ MonoBehaviour:
   AMods:
   - {fileID: 980131611971298319, guid: 529a16be1ec17b1449e40a4fe7d49873, type: 3}
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 825be5a2d13178d45a3453f51c425d1f, type: 2}
-    equipmentInfo: 
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

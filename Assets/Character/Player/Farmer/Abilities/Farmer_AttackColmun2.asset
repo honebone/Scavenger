@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u53CE\u7A6B\u796D+"
   lockedDefault: 0
-  upgradeInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C25\uFF05\u4EE5\u4E0B\u306E\u6575\u306B\u5BFE\u3057\u3066\n<sprite
+  upgradeInfo: "\u5BFE\u8C61\u304C\u524D\u30FB\u4E2D\u5217\u306E\u6575\u3059\u3079\u3066\u3068\u306A\u308B\n<sprite
+    name=HP><color=#87FF79>HP</color>\u304C25\uFF05\u4EE5\u4E0B\u306E\u6575\u306B\u5BFE\u3057\u3066\n<sprite
     name=ATK><link=U_ATK(INT)\u88DC\u6B63><u><color=#C30000>ATK</color>\u88DC\u6B63</u></link>+20\uFF05\n\u5FC5\u4E2D\u3068\u306A\u308B"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
@@ -63,7 +64,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u53CE\u7A6B\u306E\u938C+"
     conditionInfo: 
-    targetInfo: "\u524D\u30FB\u4E2D\u5217\u3044\u305A\u308C\u304B1\u5217\u306E\u6575\u3059\u3079\u3066"
+    targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u6575\u3059\u3079\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -73,7 +74,7 @@ MonoBehaviour:
     actionObject: {fileID: 980131611971298319, guid: c550f87bcd7eb0d46aab8d93d9775a6a, type: 3}
     actionMods:
     - {fileID: 980131611971298319, guid: 8028a08c7447876448b7ef393209dc68, type: 3}
-    targetType: 5
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0

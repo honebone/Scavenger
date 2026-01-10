@@ -54,7 +54,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 0
+    maxHP_mul: 10
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -79,9 +79,9 @@ MonoBehaviour:
   AMods:
   - {fileID: 980131611971298319, guid: 9b5011bf3a9df4a44be91dce8cf3c7a0, type: 3}
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: cc05fe723bb1e1942858f453009212c8, type: 2}
-    equipmentInfo: 
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 using static LVLUpManager;
 
 public class Character : MonoBehaviour
@@ -505,8 +502,8 @@ public class Character : MonoBehaviour
             if (spawnParams.summonCharaParams.LVL > 1)
             {
                 StatusGrowth SG = new StatusGrowth();
-                if (spawnParams.summonCharaParams.summoner != null) SG = (spawnParams.summonCharaParams.summoner.PlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
-                else SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
+                if (spawnParams.summonCharaParams.summoner != null) SG = (spawnParams.summonCharaParams.summoner.PlayerPos()) ? GameManager.gameParams.playerStatusGrowth : GameManager.gameParams.enemyStatusGrowth;
+                else SG = (charaStatus.position.IsPlayerPos()) ? GameManager.gameParams.playerStatusGrowth : GameManager.gameParams.enemyStatusGrowth;
                 StatusMod_ByLVL mod = SG.GetStatusMod(spawnParams.summonCharaParams.LVL);
                 mod.SetStatus(charaStatus.maxHP_base, charaStatus.ATK_base, charaStatus.INT_base);
 
@@ -1673,7 +1670,7 @@ public class Character : MonoBehaviour
     public void LVLUp()
     {
         charaStatus.exp -= charaStatus.GetNextExp();
-        StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? ExpeditionManager.inst.playerStatusGrowth : ExpeditionManager.inst.enemyStatusGrowth;
+        StatusGrowth SG = (charaStatus.position.IsPlayerPos()) ? GameManager.gameParams.playerStatusGrowth : GameManager.gameParams.enemyStatusGrowth;
         int LVL = charaStatus.level;
 
         StatusMod_ByLVL prev = SG.GetStatusMod(LVL);

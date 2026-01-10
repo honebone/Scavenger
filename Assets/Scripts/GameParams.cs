@@ -12,6 +12,8 @@ public class GameParams : ScriptableObject
     public float EXPBase;
     public float EXP_Boss = 5;
     public List<int> unlockEqSlotLVL;
+    public StatusGrowth playerStatusGrowth;
+    public StatusGrowth enemyStatusGrowth;
     [Header("\n\n\nMadness")] public float madnessSpawnChance;
     public Character.CharaStatusMod madnessStatMod;
    [Header("¸_•ö‰ó‚ÉHP‚ª[HPDecOnAffrict]%Œ¸­")] public int HPDecOnAffrict;

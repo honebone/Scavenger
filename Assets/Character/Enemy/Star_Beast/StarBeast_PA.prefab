@@ -79,7 +79,7 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: 
+    personalityName: "\u7834\u6EC5\u3078\u5411\u304B\u3046\u9280\u6CB3"
     personalityType: 1
   actionStatus:
     actionName: 

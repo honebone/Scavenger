@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
-  skipTutorial: 1
+  debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -433,10 +433,10 @@ MonoBehaviour:
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
-    centerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
-    lowerMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
     dontShuffleBack: 1
-    upperBack: {fileID: 0}
+    upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
     centerBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
@@ -4998,7 +4998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4336439062694548224, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: HmacKey
-      value: 0xD5A+RodVa1HmsYZ2SoZF8qc1PsgjbaL6iTLGsR68910LAK4LC4qtCrU2tnXF8xKkUMX0u3eHOQegmzjNrimA==
+      value: +XEmgW/52Ns/SSMT8qu3mOyYqDsdf5pQupatWtuqJClrfczL8vIJvt3zyZ4Xi0W6biO7hKS6rSRTn8YscoU/5w==
       objectReference: {fileID: 0}
     - target: {fileID: 5323818951622561360, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: m_Name
@@ -5398,7 +5398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.586, y: -48.099976}
+  m_AnchoredPosition: {x: 279.586, y: -48.09999}
   m_SizeDelta: {x: -620.544, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218159761
@@ -8621,7 +8621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
+  m_AnchoredPosition: {x: 63.53369, y: -48.09999}
   m_SizeDelta: {x: -579.7155, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -23800,7 +23800,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1605753869}
   m_HandleRect: {fileID: 1605753868}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -24323,7 +24323,7 @@ MonoBehaviour:
     ACC: 1
   enemyStatusGrowth:
     maxHP_mul: 45
-    ATKINT_mul: 30
+    ATKINT_mul: 26
     ACT: 0.5
     EVD: 1
     ACC: 1
@@ -24348,6 +24348,7 @@ MonoBehaviour:
   tutorial_equipment: {fileID: 11400000, guid: 04f307a436b202a4c8cbca99ef7fac77, type: 2}
   tutorial_passive: {fileID: 11400000, guid: 24ec07efb35d7054f84e9bbd45540c3e, type: 2}
   tutorial_personality: {fileID: 11400000, guid: 0c36ea985df2c984a9db6e9de6b53b8d, type: 2}
+  endlessMode: 0
   deployedChara: []
 --- !u!114 &914944171
 MonoBehaviour:

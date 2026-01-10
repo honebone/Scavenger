@@ -15,12 +15,24 @@ MonoBehaviour:
   maxLVL: 10
   EXP_reqs: 010000000200000003000000050000000600000007000000090000000c0000000f000000
   EXPBase: 1.5
-  EXP_Boss: 5
+  EXP_Boss: 6
   unlockEqSlotLVL: 0400000006000000080000000a000000
+  playerStatusGrowth:
+    maxHP_mul: 26.5
+    ATKINT_mul: 25
+    ACT: 0.5
+    EVD: 1
+    ACC: 1
+  enemyStatusGrowth:
+    maxHP_mul: 45
+    ATKINT_mul: 26
+    ACT: 0.5
+    EVD: 1
+    ACC: 1
   madnessSpawnChance: 10
   madnessStatMod:
     LVL: 0
-    maxHP_mul: 150
+    maxHP_mul: 75
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0

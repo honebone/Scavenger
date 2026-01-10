@@ -15,7 +15,8 @@ MonoBehaviour:
   abilityName: "\u93AE\u9759\u5264+"
   lockedDefault: 0
   upgradeInfo: "\u5BFE\u8C61\u304C\u5473\u65B9\u306E\u6642\u306E\u307F<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u3092\u6D88\u53BB\r\n\u5BFE\u8C61\u304C\u6575\u306E\u6642\u306E\u307F<sprite
-    name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u6D88\u53BB"
+    name=buff><color=#FAED8A>\u30D0\u30D5</color>\u3092\u6D88\u53BB\n\u6D88\u53BB\u3059\u308B<sprite
+    name=buff><color=#FAED8A>\u30D0\u30D5</color>\u30FB<sprite name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u306E\u6570+3"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 

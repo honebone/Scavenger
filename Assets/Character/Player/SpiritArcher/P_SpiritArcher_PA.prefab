@@ -138,7 +138,7 @@ MonoBehaviour:
   personalityStatus:
     personalityName: "\u7CBE\u970A\u306E\u52A0\u8B77"
     personalityType: 1
-  CRITCPerDebuff: 20
+  CRITCPerDebuff: 15
   actionStatus:
     actionName: 
     conditionInfo: 
@@ -295,7 +295,7 @@ MonoBehaviour:
     hideValues: 0
     exInfo: "\u30FB\u5BFE\u8C61\u306B\u4ED8\u4E0E\u3055\u308C\u3066\u3044\u308B<sprite
       name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>1\u7A2E\u985E\u306B\u3064\u304D\u3001<color=#FF8B00><sprite
-      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u88DC\u6B63+20\uFF05"
+      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u88DC\u6B63+15\uFF05"
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0

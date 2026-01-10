@@ -55,12 +55,12 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 1
   cooldownOnBattleStart: 0
-  cooldownOnUse: 1
+  cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u8C4A\u4F5C"
+  - actionName: "\u8C4A\u4F5C+"
     conditionInfo: 
     targetInfo: "\u30D7\u30EC\u30A4\u30E4\u30FC1\u4F53"
     AModInfo: 

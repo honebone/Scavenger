@@ -83,8 +83,8 @@ MonoBehaviour:
     itemData: {fileID: 11400000, guid: 26a6c181dca369b44b10653cde45a3f6, type: 2}
   claw:
     actionName: "\u714C\u5203"
-    conditionInfo: "\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D(\u884C\u52D5\u6642\u306E\u307F)"
-    targetInfo: "\u653B\u6483\u3057\u305F\u76F8\u624B"
+    conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u304C\u547D\u4E2D\u3057\u305F\u3068\u304D"
+    targetInfo: "\u653B\u6483\u3057\u305F\u76F8\u624B\u5168\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 21300000, guid: 2f7111b937afd554a9904d8202d67af0, type: 3}

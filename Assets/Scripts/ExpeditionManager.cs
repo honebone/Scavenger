@@ -91,8 +91,8 @@ public class ExpeditionManager : MonoBehaviour
     //[SerializeField] List<GameObject> RaE_normal;
     //[SerializeField] List<GameObject> RaE_bad;
 
-    public StatusGrowth playerStatusGrowth;
-    public StatusGrowth enemyStatusGrowth;
+    //public StatusGrowth playerStatusGrowth;
+    //public StatusGrowth enemyStatusGrowth;
     //[SerializeField] Character.CharaStatusMod enemyStatusGrowth;
     public int enemyLVL = 1;
 
@@ -157,7 +157,7 @@ public class ExpeditionManager : MonoBehaviour
 
     bool inExpedition;
     bool inRoomEvent;
-    bool endlessMode;
+   public bool endlessMode;
 
     public List<CharacterData> deployedChara = new List<CharacterData>();
     AreaData currentArea;
@@ -234,7 +234,6 @@ public class ExpeditionManager : MonoBehaviour
     {
         fadeOutUI.FadeIn();
         yield return new WaitForSeconds(0.5f);
-        GameManager.instance.SendScoreborad(1, partyStatus.areaCount);
         mainMessage.SetMessage(string.Format("第{0}エリア  {1}", partyStatus.areaCount, currentArea.areaName));
         infoText.AddLogText(string.Format("△▽△▽△<<第{0}エリア {1}>>△▽△▽△", partyStatus.areaCount, currentArea.areaName));
 
@@ -330,56 +329,11 @@ public class ExpeditionManager : MonoBehaviour
         }
     }
 
-    //IEnumerator EnemyLVLUpC()
-    //{
-    //    enemyLVL++;
-    //    string info = enemyStatusGrowth.GetInfo(enemyLVL);
-
-    //    soundManager.StopBGMs();
-    //    soundManager.PlaySE(jingle_EnemyLVLUp);
-
-    //    mainMessage.SetMessage("敵のLVLが上昇".ColorStr(Definer.colorRef.abilityColors[1]));
-    //    yield return new WaitForSeconds(1.5f);
-    //    mainMessage.SetInfo(info.ColorStr(Definer.colorRef.abilityColors[1]));
-    //    yield return new WaitForSeconds(3f);
-    //    mainMessage.ResetMessage();
-    //    yield return new WaitForSeconds(1.25f);
-
-    //    soundManager.PlayBGM_Normal();
-    //    CheckMadness();
-    //}
-
     public string EnemyLVLUP()
     {
         enemyLVL++;
-        return enemyStatusGrowth.GetInfo(enemyLVL);
+        return GameManager.gameParams.enemyStatusGrowth.GetInfo(enemyLVL);
     }
-
-    //void CheckMadness()
-    //{
-    //    SelectNextRoom();
-    //    //if (addedMadness == 0) { SelectNextRoom(); }
-    //    //else if (addedMadness > 0) { StartCoroutine(AddMandessC()); } 次回アップデートで戻そう
-    //}
-
-    //IEnumerator AddMandessC()
-    //{
-    //    for (int i = 0; i < addedMadness; i++)
-    //    {
-    //        GameObject add = MadnessPAPool.Choice();
-    //        MadnessPAPool.Remove(add);
-    //        madnessPAs.Add(add);
-    //        infoText.AddDebugText($"新たな狂気：{add.GetComponent<PA_Personality>().GetPersonalityStatus().personalityName}");
-    //        partyStatus.madness++;
-    //        if (partyStatus.madness == partyStatus.maxMadness) break;
-    //    }
-    //    addedMadness = 0;
-    //    infoText.AddDebugText("狂気が増加");
-    //    yield return new WaitForSeconds(1f);
-    //    SelectNextRoom();
-    //}
-
-
     public void SelectNextRoom()
     {
         if (teleport)
@@ -443,23 +397,18 @@ public class ExpeditionManager : MonoBehaviour
         r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
         currentRE = r.GetComponent<RoomEvent>();
     }
+
+    public void EnterEndless()
+    {
+        endlessMode = true;
+        currentRE.OnEnterEndless();
+    }
+
     public void LogREName(string REName)
     {
         infoText.AddLogText(string.Format("～～{0}～～", REName));
         infoText.SwitchToLog();
     }
-
-    //public void EnemyLVLUp()
-    //{
-    //    enemyStatusGrowth.LVL++;
-    //    enemyStatusGrowth.ACC++;
-    //    enemyStatusGrowth.EVD++;
-    //    enemyStatusGrowth.ACT++;
-    //    enemyStatusGrowth.maxHP_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.maxHP_mul) * enemyMaxHPGrowth - 100);
-    //    enemyStatusGrowth.ATK_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.ATK_mul) * enemyATKGrowth - 100);
-    //    enemyStatusGrowth.INT_mul = Mathf.CeilToInt((100 + enemyStatusGrowth.INT_mul) * enemyATKGrowth - 100);
-    //}
-    //public Character.CharaStatusMod GetEnemyStatusMod() { return enemyStatusGrowth; }
 
     //エリアの進行度に応じた経験値量を返す
     public int GetExpAmount(float _base) { return ((gameManager.gp.EXPBase * partyStatus.areaCount).ToInt() * _base).ToInt(); }
@@ -675,7 +624,6 @@ public class ExpeditionManager : MonoBehaviour
     }
     public void OnEndLoot() { currentRE.OnEndLoot(); }
     public void OnEndSupply() { currentRE.OnEndSupply(); }
-    public void EnterEndless() { currentRE.OnEnterEndless(); }
 
     //ここまでroom event で呼ばれる関数
     public void EndRoomEvent()

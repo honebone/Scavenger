@@ -80,6 +80,8 @@ public class Compendium : MonoBehaviour
             GameManager.instance.SetSaveData($"unlock_{unlock.name}", 1);
             eqUnlockStates[index] = 1;
             eqButtons[index].Unlock();
+
+            GameManager.instance.SendScoreborad(2, eqUnlockStates.Count(x => x != 0));
         }
 
         unlocksText.text = $"{eqUnlockStates.Count(x => x != 0)}/{eqUnlockStates.Count()}";

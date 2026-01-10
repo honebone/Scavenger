@@ -55,7 +55,7 @@ MonoBehaviour:
     sameRow: 0
   freeAction: 1
   cooldownOnBattleStart: 0
-  cooldownOnUse: 1
+  cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 0
   maxRemain: 0

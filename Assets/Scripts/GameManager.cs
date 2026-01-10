@@ -33,6 +33,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 1:クリアタイム
+    /// 2:図関数
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="score"></param>
     public void SendScoreborad(int index, float score)
     {
         if (index == 1) { UnityroomApiClient.Instance.SendScore(index, score, ScoreboardWriteMode.HighScoreDesc); }

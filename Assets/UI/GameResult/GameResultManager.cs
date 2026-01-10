@@ -61,6 +61,7 @@ public class GameResultManager : MonoBehaviour
             frame.color = mode == 2 ? Definer.colorRef.damage : Color.white;
 
             int time = (partyStatus.endTime == 0 ? Time.time - partyStatus.startTime : partyStatus.endTime - partyStatus.startTime).ToInt();
+            if(mode==1)GameManager.instance.SendScoreborad(1, time);    
             text.text = $"“’B‚µ‚½ŠK‘wF‘æ{partyStatus.areaCount}ƒGƒŠƒA/‘æ{partyStatus.currentPos.x}ŠK‘w\n“|‚µ‚½“GF{partyStatus.killCount}‘Ì\nƒvƒŒƒCŠÔF{(time / 60):00}:{time % 60:00}";
             for (int i = 0; i < charasP.childCount; i++) { Destroy(charasP.GetChild(i).gameObject); }
             List<int> best = new List<int>();
