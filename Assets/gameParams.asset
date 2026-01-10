@@ -18,7 +18,7 @@ MonoBehaviour:
   EXP_Boss: 6
   unlockEqSlotLVL: 0400000006000000080000000a000000
   playerStatusGrowth:
-    maxHP_mul: 26.5
+    maxHP_mul: 23.5
     ATKINT_mul: 25
     ACT: 0.5
     EVD: 1
