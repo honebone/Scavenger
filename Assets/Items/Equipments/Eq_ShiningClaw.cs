@@ -24,7 +24,10 @@ public class Eq_ShiningClaw : PA_Equipment
                 targets.Add(onDamageParams.ap.target);
             }
         }
-        Enqueue(claw, true, targets);
-        Enqueue(claw, true, targets);
+        if(targets.Count > 0)
+        {
+            Enqueue(claw, true, targets);
+            Enqueue(claw, true, targets);
+        }
     }
 }

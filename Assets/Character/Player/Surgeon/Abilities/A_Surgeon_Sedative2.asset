@@ -210,6 +210,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
-    actionTargetsInt: 08000000
+    actionTargetsInt: 

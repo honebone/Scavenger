@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
-  skipDeployPhase: 0
-  skipTutorial: 0
+  debug: 1
+  skipDeployPhase: 1
+  skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -434,10 +434,10 @@ MonoBehaviour:
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
     centerMid: {fileID: 0}
-    lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+    lowerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
-    centerBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
+    upperBack: {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
+    centerBack: {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
@@ -454,7 +454,7 @@ MonoBehaviour:
   enemySetTest:
     dontShuffleFront: 1
     upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: c4107f3da7e0cb148abf20683380da92, type: 2}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
@@ -466,7 +466,7 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}
-  areaData: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
+  areaData: {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   REP: {fileID: 1877823637}
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
@@ -4998,7 +4998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4336439062694548224, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: HmacKey
-      value: +XEmgW/52Ns/SSMT8qu3mOyYqDsdf5pQupatWtuqJClrfczL8vIJvt3zyZ4Xi0W6biO7hKS6rSRTn8YscoU/5w==
+      value: 0xD5A+RodVa1HmsYZ2SoZF8qc1PsgjbaL6iTLGsR68910LAK4LC4qtCrU2tnXF8xKkUMX0u3eHOQegmzjNrimA==
       objectReference: {fileID: 0}
     - target: {fileID: 5323818951622561360, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: m_Name
@@ -5398,7 +5398,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.586, y: -48.09999}
+  m_AnchoredPosition: {x: 279.586, y: -48.099976}
   m_SizeDelta: {x: -620.544, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218159761
@@ -8621,7 +8621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.09999}
+  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
   m_SizeDelta: {x: -579.7155, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -24302,7 +24302,6 @@ MonoBehaviour:
     currentPos: {x: 0, y: 0}
     killCount: 0
     totalBattleReports: []
-  gameParams: {fileID: 11400000, guid: 0f7346c8799cef74aaebbb3c365f1d54, type: 2}
   MadnessPAPool:
   - {fileID: 3170614222137734241, guid: a46870ce1059d614bb9d60519fb6fad0, type: 3}
   - {fileID: 3170614222137734241, guid: f3bf43bb93e9eab4ab4c8bdd3df198ac, type: 3}
@@ -24315,18 +24314,6 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 55b09bac68f0a39499f55f461bdac529, type: 3}
   - {fileID: 3170614222137734241, guid: f08a39aeb9d1b9747b708726d6fef056, type: 3}
   - {fileID: 3170614222137734241, guid: 4972d7eef958660488e1830a34b73f8d, type: 3}
-  playerStatusGrowth:
-    maxHP_mul: 22.5
-    ATKINT_mul: 25
-    ACT: 0.5
-    EVD: 1
-    ACC: 1
-  enemyStatusGrowth:
-    maxHP_mul: 45
-    ATKINT_mul: 26
-    ACT: 0.5
-    EVD: 1
-    ACC: 1
   enemyLVL: 1
   areaDataForDebug: {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   backgroundP: {fileID: 833599005}
@@ -30739,6 +30726,13 @@ MonoBehaviour:
   - {fileID: 6129233796141590907, guid: 50039041e568ffa4e8068732ea0c462d, type: 3}
   - {fileID: 6129233796141590907, guid: 5c850acea41f82b4da02fb43dc1fc212, type: 3}
   - {fileID: 6129233796141590907, guid: b0358a2d3a92df24fa20b590969dd599, type: 3}
+  SE_grab:
+  - {fileID: 8300000, guid: 9db96a6fc214b4c668e55b68bd1f749a, type: 3}
+  - {fileID: 8300000, guid: 887527ca823ee4cefb250bbaa3453e1d, type: 3}
+  SE_equip:
+  - {fileID: 8300000, guid: a72456ff9a1742d439705b8f342acc21, type: 3}
+  - {fileID: 8300000, guid: 780229b7350b84e65a71bd0b1df17e4f, type: 3}
+  - {fileID: 8300000, guid: 5de08077ead22b84d96b755099898928, type: 3}
   expAmount: {fileID: 2107206773}
   tutorial_equip: {fileID: 11400000, guid: 0241f4e5f82e603499e372456b4c95a7, type: 2}
   tutorial_exp: {fileID: 11400000, guid: 69888e52480162941a4fd5380bada135, type: 2}

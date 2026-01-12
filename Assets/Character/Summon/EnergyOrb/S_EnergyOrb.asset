@@ -35,6 +35,7 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
+  - {fileID: 1808138132528202961, guid: 002d87cfce03da44cb3d8c408d9b56c6, type: 3}
   - {fileID: 5626464818293590775, guid: 5c473cfdec753244b93d646261c385da, type: 3}
   actionMods: []
   corpse: {fileID: 0}

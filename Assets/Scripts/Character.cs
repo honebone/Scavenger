@@ -15,6 +15,10 @@ public class Character : MonoBehaviour
         public string charaName;
         //public int size;
         public bool immovable;
+        /// <summary>
+        /// 勝敗に関係ない
+        /// </summary>
+        public bool minion;
 
         public bool notChara;
         public bool player;
@@ -331,7 +335,7 @@ public class Character : MonoBehaviour
 
         public bool Obstacle() { return characterTags.Contains(CharacterData.CharacterTag.obstacle); }
 
-        public bool IsMaxLVL() { return level >= GameManager.gameParams.EXP_reqs.Count; }
+        public bool IsMaxLVL() { return level > GameManager.gameParams.EXP_reqs.Count; }
     }
     [System.Serializable]
     public struct CharaStatusMod
@@ -377,10 +381,13 @@ public class Character : MonoBehaviour
         public float debuffChance;
         public float moveRes;
         public float debuffRes;
+
+        public bool minion;
         public string GetInfo()
         {
             string info = "";
             bool f = false;
+            if (minion) info += $"{Extentions.NL(info)}自身の存在は戦闘の勝敗に関係ない";
             info += ValueToStr("maxHP".ToSpr_withName(), maxHP_mul, "％");
             info += ValueToStr("maxHP".ToSpr_withName(), maxHP_int, "");
             info += ValueToStr("SAN".ToSpr_withName("maxSAN"), maxSAN_mul, "％");
@@ -1316,7 +1323,7 @@ public class Character : MonoBehaviour
                 infoText.AddLogText(string.Format("{0}は精神崩壊した!", charaStatus.charaName).ColorStr(Definer.colorRef.affricted));
                 expeditionManager.AddMadness(1);
 
-                DecreaseHP((charaStatus.maxHP * expeditionManager.gameParams.HPDecOnAffrict / 100f).ToInt());
+                DecreaseHP((charaStatus.maxHP * GameManager.gameParams.HPDecOnAffrict / 100f).ToInt());
 
                 charaStatus.SAN = charaStatus.maxSAN;
                 charaObj.SetSANBar();
@@ -1378,6 +1385,10 @@ public class Character : MonoBehaviour
         if (mod.debuffChance != 0) { AddDebuffChance(mod.debuffChance * n); }
         if (mod.moveRes != 0) { AddMoveRes(mod.moveRes * n); }
         if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes * n); }
+
+
+        //特殊ステータス
+        if (mod.minion) charaStatus.minion = true;
     }
     public void AddMaxHP(int value_base, float value_mul, bool heal, int value_int = 0)
     {

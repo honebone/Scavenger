@@ -30,4 +30,7 @@ public class GameParams : ScriptableObject
     public int areaLength;
     public int branchChance;
     public int blindChance;
+    [Header("\n\n\n“Á«")]
+    public List<GameObject> perDataBase;
+    public List<int> perWeights;
 }

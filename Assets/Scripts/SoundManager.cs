@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class SoundManager : MonoBehaviour
 {
@@ -46,6 +47,14 @@ public class SoundManager : MonoBehaviour
             clipList.Add(clip);
             audioSource.PlayOneShot(clip);
         }
+    }
+    public void PlaySE(List<AudioClip> clips)
+    {
+        clips.ForEach(clip => {PlaySE(clip);});
+    }
+    public void PlaySE_Random(List<AudioClip> clips,int choice = 1)
+    {
+        clips.Sample(choice).ForEach(clip => { PlaySE(clip); });
     }
     public void PlaySE_Select()
     {

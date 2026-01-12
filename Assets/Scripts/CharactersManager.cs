@@ -573,7 +573,7 @@ public class CharactersManager : MonoBehaviour
     {
         foreach (Character chara in existingCharacters)
         {
-            if (chara.CharaStatus().position >= 9 && !chara.CharaStatus().Obstacle()) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
+            if (chara.CharaStatus().position >= 9 && !chara.CharaStatus().Obstacle() && !chara.CharaStatus().minion) { return false; }//“G‘¤‚ÉáŠQ•¨‚Å‚È‚¢ƒLƒƒƒ‰‚ª‚¢‚é‚È‚çŸ—˜‚µ‚Ä‚È‚¢
         }
         return true;
     }
@@ -692,7 +692,7 @@ public class CharactersManager : MonoBehaviour
 
         SpawnCharaParams spawnParams = new SpawnCharaParams();
 
-        GameParams gp = ExpeditionManager.inst.gameParams;
+        GameParams gp = GameManager.gameParams;
         if (!characterData.boss&&!characterData.characterTags.Contains(CharacterData.CharacterTag.obstacle))
         {
             foreach (GameObject PA in expeditionManager.GetMadnessPA().Shuffle())

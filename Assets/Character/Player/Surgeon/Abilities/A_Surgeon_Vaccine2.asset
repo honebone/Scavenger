@@ -158,7 +158,7 @@ MonoBehaviour:
       guaranteed: 1
       applyChance: 0
       stack: 1
-      value: 60
+      value: 80
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -206,6 +206,6 @@ MonoBehaviour:
     summonStatusMods: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 5
     actionTargets: []
-    actionTargetsInt: 040000000500000006000000
+    actionTargetsInt: 

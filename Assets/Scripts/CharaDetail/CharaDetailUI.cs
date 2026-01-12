@@ -38,6 +38,8 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField] Transform dragImageP;
     [SerializeField] GameObject dragImage;
     [SerializeField] List<GameObject> VE_rarity;
+    [SerializeField] List<AudioClip> SE_grab;
+    [SerializeField] List<AudioClip> SE_equip;
 
     public TextMeshProUGUI expAmount;
     [SerializeField] TutorialData tutorial_equip;
@@ -218,11 +220,11 @@ public class CharaDetailUI : MonoBehaviour
 
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)
     {
-        //ToggleToEquipment();
         draggingItem = item;
         draggFrom = draggChara;
         draggingImage = Instantiate(dragImage, dragImageP);
         draggingImage.GetComponent<Image>().sprite = item.data.sprite;
+        SoundManager.instance.PlaySE_Random(SE_grab);
     }
     public void ResetDraggingItem()
     {
@@ -275,6 +277,7 @@ public class CharaDetailUI : MonoBehaviour
                                     draggFrom.SetButtons();
                                 }
                                 Utils_VE.inst.SpawnVE_MousePos(VE_rarity[(int)draggingItem.data.rarity]);
+                                SoundManager.instance.PlaySE(SE_equip);
                                 charaEqButton.Equip(draggingItem);
                             }
                             

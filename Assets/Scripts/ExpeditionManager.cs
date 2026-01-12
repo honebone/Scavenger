@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering.Universal;
+using System;
 
 public class ExpeditionManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class ExpeditionManager : MonoBehaviour
                 {
                     eventM.AddRange(Definer.generalRaEDataBase);
                 }
-                roomEventManager = eventM[Random.Range(0, eventM.Count)];
+                roomEventManager = eventM[UnityEngine.Random.Range(0, eventM.Count)];
             }
             eventIcon = data.eventIcon;
         }
@@ -83,7 +84,6 @@ public class ExpeditionManager : MonoBehaviour
     }
     [SerializeField]
     public PartyStatus partyStatus;
-    public GameParams gameParams;
 
     [SerializeField] List<GameObject> MadnessPAPool;
     //[SerializeField] List<GameObject> RaE_epic;
@@ -155,6 +155,8 @@ public class ExpeditionManager : MonoBehaviour
     Inventory inventory;
     RoomEndLogManager relManager;
 
+    GameParams gp;
+
     bool inExpedition;
     bool inRoomEvent;
    public bool endlessMode;
@@ -193,7 +195,17 @@ public class ExpeditionManager : MonoBehaviour
         inventory = FindObjectOfType<Inventory>();
         relManager = RoomEndLogManager.inst;
 
-        //StartArea(areaDataForDebug);//test
+        gp = GameManager.gameParams;
+
+        for (int i = 0; i < Enum.GetNames(typeof(PA_Personality.PersonalityStatus.PersonalityType)).Length; i++)
+        {
+            pers.Add(new List<GameObject>());
+        }
+        foreach (GameObject per in gp.perDataBase)
+        {
+            PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
+            pers[(int)status.personalityType].Add(per);
+        }
     }
 
     //========================[探索開始]==============================
@@ -283,7 +295,7 @@ public class ExpeditionManager : MonoBehaviour
 
     public string GetMadnessInfo(PA_Personality mad)
     {
-        return $"{mad.GetPAName()}\n敵は{gameParams.madnessSpawnChance}％の確率で以下の能力を得る：\n{gameParams.madnessStatMod.GetInfo()}\n\nさらに、\n{mad.GetPAInfo(false)}\n";
+        return $"{mad.GetPAName()}\n敵は{gp.madnessSpawnChance}％の確率で以下の能力を得る：\n{gp.madnessStatMod.GetInfo()}\n\nさらに、\n{mad.GetPAInfo(false)}\n";
     }
 
     void CheckRoomEndEvent()
@@ -385,10 +397,10 @@ public class ExpeditionManager : MonoBehaviour
         bool SANDMG=false;
         foreach (Character chara in charactersManager.GetExistingCharacters_All())
         {
-            if (gameParams.SANDMGChanceOnRoom.Dice())
+            if (gp.SANDMGChanceOnRoom.Dice())
             {
                 SANDMG = true;
-                chara.SANDamage(gameParams.SANDMGOnRoom.Range());
+                chara.SANDamage(gp.SANDMGOnRoom.Range());
             }
         }
         if(SANDMG) yield return new WaitForSeconds(1f);
@@ -583,6 +595,12 @@ public class ExpeditionManager : MonoBehaviour
         equipment.Init(Definer.equipments[weight.ChoiceWithWeight()].Choice());
         return equipment;
     }
+
+    //==========================================================================[Per]======================================================================
+    List<List<GameObject>> pers= new List<List<GameObject>>();
+    //ランダム取得の際に使用
+    List<PA_Personality.PersonalityStatus.PersonalityType> perTypeList = new List<PA_Personality.PersonalityStatus.PersonalityType> { PA_Personality.PersonalityStatus.PersonalityType.bad,
+    PA_Personality.PersonalityStatus.PersonalityType.good,PA_Personality.PersonalityStatus.PersonalityType.awoken};
     public void SetRandomPersonality(Character target) { 
         SetPersonality(target, definer.GetPersonalityDataBase().Choice());
     }
@@ -612,6 +630,15 @@ public class ExpeditionManager : MonoBehaviour
         relManager.Enqueue_AddPer(target, personality);
     }
 
+    public GameObject GetPer_Random(PA_Personality.PersonalityStatus.PersonalityType perType)
+    {
+        return pers[(int)perType].Choice();
+    }
+    public GameObject GetPer_Random()
+    {
+        PA_Personality.PersonalityStatus.PersonalityType perType = perTypeList[gp.perWeights.ChoiceWithWeight()];
+        return pers[(int)perType].Choice();
+    }
 
     public void OnEndBattle(bool playBGM)
     {
