@@ -43,7 +43,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0c2140d072d9d549bfbf5c93b08f8ef, type: 2}
   - {fileID: 11400000, guid: 4f22d023fd71247469bf5646aa50ced5, type: 2}
   passiveAbilities:
-  - {fileID: 3170614222137734241, guid: f8b42ddd9a5cd3d40a86c93e2b55fd64, type: 3}
+  - {fileID: 3170614222137734241, guid: 707e01ac9849f2c45b3ea0c0c2e35d29, type: 3}
   - {fileID: 3170614222137734241, guid: 74a3b8096531ea243a114d72ea7c6fa4, type: 3}
   actionMods: []
   corpse: {fileID: 0}
@@ -64,8 +64,8 @@ MonoBehaviour:
   CRITD: 150
   EVD: 3
   ACC: 1000
-  ACT: 8
-  turnPerRound: 2
+  ACT: 800
+  turnPerRound: 3
   GHeal: 0
   RHeal: 0
   debuffRes: 0

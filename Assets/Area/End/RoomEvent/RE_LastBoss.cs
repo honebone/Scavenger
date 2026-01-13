@@ -84,7 +84,7 @@ public class RE_LastBoss : RoomEvent
         expeditionManager.SetBackground(lastBack);
         BattleManager.inst.SetWave(new List<AreaManager.EnemySet> { lastBoss });
         Instantiate(lastParticle);
-        SEOnSpawn.ForEach(x => SoundManager.instance.PlaySE(x));
+        SoundManager.instance.PlaySE(SEOnSpawn);
         SoundManager.instance.StartBGM_Battle(lastBGM);
 
         yield return new WaitForSeconds(spawnDur);

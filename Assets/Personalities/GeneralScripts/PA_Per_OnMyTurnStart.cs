@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PA_Per_OnMyTurnStart : PA_Personality
 {
+    [Header("旧式のスクリプト")]
     public bool targetSelf;
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;

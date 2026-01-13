@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using static LVLUpManager;
 
 public class Character : MonoBehaviour
@@ -2053,6 +2054,8 @@ public class Character : MonoBehaviour
 
     public virtual void OnCast(PassiveAbility cast)
     {
+        infoText.AddLogText($"{CharaStatus().charaName}Ç™{cast.GetPAName()}Çârè•");
+        SetDamageText($"ârè•ÅF{cast.GetPAName()}", Definer.colorRef.currentState);
         if (BattleManager.inBattle)
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnCast(cast); }

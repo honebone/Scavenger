@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1302728616666040916}
-  - component: {fileID: -7350483970429502625}
+  - component: {fileID: 5836137491968782715}
   m_Layer: 0
   m_Name: AMod_debug
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7350483970429502625
+--- !u!114 &5836137491968782715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 491992989292504568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121c6b505f62c8144966a56ac292b137, type: 3}
+  m_Script: {fileID: 11500000, guid: af3ba26a448995c498962e15b0548d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: 
     hideValues: 0
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
-    decreaseHP: 1
+    decreaseHP: 0
     ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
@@ -57,10 +58,15 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -70,15 +76,47 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
-    applySteParams: []
+    shieldRemove_all: 0
+    applySteParams:
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 100
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyStEBonus: []
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
-  HPLoss: 0
-  percentPerCount: 3
-  THPercent: 50
-  maxCount: 0
-  checkOwner: 1
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
+      minion: 0
+  amount: 100

@@ -263,6 +263,8 @@ public class PassiveAbility : MonoBehaviour
     public virtual void RuneActivation() { infoText.AddErrorText($"効果のない活性化をしています！：{GetPAName()}"); }
 
     public Character.CharacterStatus CharaStatus() { return character.CharaStatus(); }
+    public int GetRuneCharge() { return runeCharge; }
+    public int GetRuneInitialCharge() { return rune_initialCharge; }
 
 /// <summary>このターンに付与されたかのチェック</summary>
 public void StE_ApplyFlag() { applyFlag = true; }

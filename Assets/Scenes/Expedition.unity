@@ -432,11 +432,11 @@ MonoBehaviour:
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
+    upperMid: {fileID: 0}
     centerMid: {fileID: 0}
-    lowerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
+    lowerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
+    upperBack: {fileID: 0}
     centerBack: {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
@@ -453,20 +453,20 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 1
-    upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: c4107f3da7e0cb148abf20683380da92, type: 2}
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
-    centerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
+    centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}
-  areaData: {fileID: 11400000, guid: 54ae9bc8dcc2d9c4089fd4c212f7aabe, type: 2}
+  areaData: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
   RE: {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
   REP: {fileID: 1877823637}
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}

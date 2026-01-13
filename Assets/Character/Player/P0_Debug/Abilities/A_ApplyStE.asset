@@ -19,8 +19,6 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  dontChangeSprite: 1
-  activateSprite: {fileID: 0}
   abilityType: 0
   excludeRandomPool: 0
   priority: 1
@@ -36,6 +34,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -51,6 +50,9 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
@@ -66,17 +68,19 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods:
-    - {fileID: 980131611971298319, guid: 539b0820e1e758543a92e37f4978e18c, type: 3}
-    targetType: 7
+    - {fileID: 491992989292504568, guid: 378617f8978e35946b0307f3f79a216c, type: 3}
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
+      player: 0
       enemy: 1
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
@@ -92,6 +96,9 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
     neigborPos:
     - {x: -1, y: 0}
     ignoreMark: 0
@@ -112,11 +119,15 @@ MonoBehaviour:
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -126,6 +137,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -143,21 +155,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 0
-      applyChance: 100
-      stack: 1
-      value: 50
-      refATK: 1
-      DMGPerTurn: 0
-    - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      guaranteed: 0
-      applyChance: 100
-      stack: 1
-      value: 0
-      refATK: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -180,6 +178,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -243,6 +244,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -266,6 +268,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -289,6 +292,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -312,6 +316,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -335,6 +340,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -358,19 +364,9 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-    dontChangeSprite: 1
-    activateSprite: {fileID: 0}
+      minion: 0
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 9
-    actionTargets:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    actionTargetsInt: 090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000
+    targetCount: 2
+    actionTargets: []
+    actionTargetsInt: 

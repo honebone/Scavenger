@@ -9,8 +9,11 @@ public class Eq_BloodyMask : PA_Equipment
     public Action.ActionStatus actionStatus;
     public override void OnDecreasedHP(int value)
     {
-        count += value;
-        Log($"カウント+{value} ({count})");
+        if (BattleManager.inst.checkIfMyTurn(character))
+        {
+            count += value;
+            Log($"カウント+{value} ({count})");
+        }
     }
 
     public override void OnTurnEnd(TurnEndParams tep)

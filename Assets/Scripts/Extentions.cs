@@ -36,11 +36,11 @@ public static class Extentions
     }
 
     /// <summary>New Line ‚·‚Å‚É•¶š‚ª‚ ‚é‚È‚ç‰üs‚ğA‰½‚à‚È‚¢‚È‚ç–³‚ğ•Ô‚·</summary>
-    public static string NL(string current, int lines = 1)
+    public static string NL(string current, int lines = 1,string lineStr="\n")
     {
         if (string.IsNullOrEmpty(current)) return "";
         string s = "";
-        for (int i = 0; i < lines; i++) s += "\n";
+        for (int i = 0; i < lines; i++) s += lineStr;
         return s;
     }
 

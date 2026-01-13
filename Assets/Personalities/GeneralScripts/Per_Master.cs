@@ -21,7 +21,7 @@ public class Per_Master : PA_Personality
 
     protected void Activate()
     {
-        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count > 0))
+        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count >= activeCond_req))
         {
             count++;
             if (countReq > 1) Log($"ƒJƒEƒ“ƒg+1 ({count})");
