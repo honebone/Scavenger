@@ -75,6 +75,7 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
   rune_initialCharge: 0
@@ -82,7 +83,7 @@ MonoBehaviour:
     StEName: "\u7CBE\u970A\u306E\u52A9\u8A00"
     StEInfo: 
     StEIcon: {fileID: 21300000, guid: 83958e273b721734f9ba3b23283cb6b5, type: 3}
-    StEType: 4
+    StEType: 1
     overideColor: 0
     colorOveride: {r: 1, g: 1, b: 1, a: 1}
     maxStack: 20
@@ -120,6 +121,7 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -155,7 +155,16 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: ae2e27961bff20141aeb44d418d0490c, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -367,6 +376,6 @@ MonoBehaviour:
       minion: 0
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 2
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 
