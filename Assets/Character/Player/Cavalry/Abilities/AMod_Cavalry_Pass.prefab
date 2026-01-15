@@ -59,6 +59,10 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -115,28 +119,34 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
-  hasCondition_owner: 0
+      minion: 0
+  hasCondition_owner: 1
   condition_owner:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 0
+    player: 1
     enemy: 0
     onlyPlayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    onlyNonplayable: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
     StEConditions: []
     StE: []
-    StEExclude: []
+    StEExclude:
+    - {fileID: 5164891664867224302, guid: be3722c745a7f4941914fc1d5a6dd9fa, type: 3}
     PE: []
     PEExclude: []
-    HPPercent: 0
+    HPPercent: 50
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
   hasCondition_target: 0
   condition_target:
     searchAsPos: 0
@@ -144,6 +154,7 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
@@ -159,3 +170,6 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0

@@ -105,7 +105,7 @@ MonoBehaviour:
     skipAnim: 0
     consumeFocus: 0
     exTurn: 0
-    kill: 1
+    kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
     decreaseHPPer_min: 0
@@ -113,8 +113,8 @@ MonoBehaviour:
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
     attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 10000
+    ATKMod_max: 10000
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0

@@ -100,7 +100,7 @@ public class BattleManager : MonoBehaviour
 
     private void Awake()
     {
-        inst = this;
+        if(inst == null) inst = this;
     }
     private void Start()
     {
@@ -950,7 +950,7 @@ public class BattleManager : MonoBehaviour
     public void SetSelectingTarget(bool f) { selectingTarget = f; }
     public bool checkIfMyTurn(Character character)
     {
-        if (inBattle && inRound && currentTurn.character == character) { return true; }
+        if (inBattle && inRound && currentTurn != null && currentTurn.character == character) { return true; }
         return false;
     }
     public bool CheckCurrentTurnAlive()

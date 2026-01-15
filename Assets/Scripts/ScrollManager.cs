@@ -30,7 +30,7 @@ public class ScrollManager : MonoBehaviour
     }
     private void Update()
     {
-        if (p || alwaysScroll)
+        if ((p || alwaysScroll) && content != null)
         {
             wheel += Input.mouseScrollDelta.y;
             if (wheel != 0)

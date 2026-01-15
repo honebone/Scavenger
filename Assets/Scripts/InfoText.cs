@@ -23,6 +23,7 @@ public class InfoText : MonoBehaviour
     GameObject logPanel;
     [SerializeField]
     TextMeshProUGUI logText;
+    [SerializeField] GameObject errorNote;
 
     // Character displayingChara;
 
@@ -63,11 +64,6 @@ public class InfoText : MonoBehaviour
 
     public void SetText_Old(string name, string info)
     {
-        //if (displayingChara != null)
-        //{
-        //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
-        //    displayingChara = null;
-        //}
         charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
 
@@ -93,11 +89,6 @@ public class InfoText : MonoBehaviour
 
     public void ResetText()
     {
-        //if (displayingChara != null)
-        //{
-        //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
-        //    displayingChara = null;
-        //}
         charactersManager.ReseAlltSelectedIcons();
         nameText.text = "";
         infoText.text = "";
@@ -106,14 +97,8 @@ public class InfoText : MonoBehaviour
 
     public void SetCharaInfo(string name, string info, string simple = null)
     {
-        //if (displayingChara != null)
-        //{
-        //    displayingChara.GetCharacter_Object().SetSelectedIcon(false);
-        //    displayingChara = null;
-        //}
         charactersManager.ReseAlltSelectedIcons();
         SwitchToInfo();
-        //displayingChara = chara;
 
         detailInfo = info;
         simpleInfo = simple == null ? info : simple;
@@ -195,29 +180,6 @@ public class InfoText : MonoBehaviour
     // 更新頻度を制限するためのタイマー
     private float updateTimer = 0f;
     private const float UPDATE_INTERVAL = 0.1f;
-
-    //public void AddLogText(string log)
-    //{
-    //    logs.Add(log);
-    //    logCount++;
-    //    if (logCount >= maxLogs)
-    //    {
-    //        for (int i = 0; i < deleteLogs; i++)
-    //        {
-    //            logs.RemoveAt(0);
-    //        }
-    //        logCount -= deleteLogs;
-    //    }
-
-    //    string totalLog = "";
-    //    foreach (string l in logs)
-    //    {
-    //        totalLog += "\n" + l;
-    //    }
-
-    //    logText.text = totalLog;
-    //}
-
     public void AddLogText(string log)
     {
         // ログを追加
@@ -281,8 +243,15 @@ public class InfoText : MonoBehaviour
     {
         SwitchToLog();
         //nameText.text = "ログ";
-        AddLogText(string.Format("\n##error!!：{0}##", errorLog).ColorStr(Color.red));
+        AddLogText(string.Format("\n##error!!：{0}##\nこのエラー文と、現在の状況をコメント欄で報告していただけると非常にありがたいです", errorLog).ColorStr(Color.red));
         print(errorLog);
+        StartCoroutine(ErrorNoteC());
+    }
+    IEnumerator ErrorNoteC()
+    {
+        errorNote.SetActive(true);
+        yield return new WaitForSeconds(2);
+        errorNote.SetActive(false);
     }
     public void AddWarningText(string errorLog)
     {

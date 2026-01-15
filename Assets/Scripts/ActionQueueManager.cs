@@ -111,26 +111,6 @@ public class ActionQueueManager : MonoBehaviour
         a.GetComponent<Action>().Init(this, status, p.GetComponent<ActionInfoPanel>(), infoText, util, soundManager, cameraMnager,battleManager);
 
         inQueueActions.Add(a.GetComponent<Action>());
-
-        //if (status.abilityEffect)
-        //{
-        //    bool found = false;
-        //    for (int i = inQueueActions.Count - 1; i >= 0; i--)
-        //    {
-        //        if (inQueueActions[i].GetActionStatus().abilityEffect)
-        //        {
-        //            found = true;
-        //            inQueueActions.Insert(i + 1, a.GetComponent<Action>());
-        //            break;
-        //        }
-        //    }
-        //    if (!found) { inQueueActions.Insert(0, a.GetComponent<Action>()); }
-
-        //}
-        //else
-        //{
-        //    inQueueActions.Add(a.GetComponent<Action>());
-        //}
     }
 
     /// <summary>
@@ -420,9 +400,5 @@ public class ActionQueueManager : MonoBehaviour
                     break;
             }
         }
-    }
-
- 
-    
-   
+    }   
 }

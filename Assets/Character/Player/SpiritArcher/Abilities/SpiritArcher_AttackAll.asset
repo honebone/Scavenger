@@ -27,7 +27,7 @@ MonoBehaviour:
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 1
-  conditionInfo: "<color=#FFFFFF><link=S_\u7CBE\u970A\u306E\u52A9\u8A00><u>\u7CBE\u970A\u306E\u52A9\u8A00</u></link></color>\u304C10\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u3042\u308B"
+  conditionInfo: "<color=#FAED8A><sprite name=buff><link=S_\u7CBE\u970A\u306E\u52A9\u8A00><u>\u7CBE\u970A\u306E\u52A9\u8A00</u></link></color>\u304C10\u30B9\u30BF\u30C3\u30AF\u4EE5\u4E0A\u3042\u308B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0

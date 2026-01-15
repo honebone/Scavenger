@@ -148,7 +148,15 @@ public class Character_TargetButton : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            if (selectableAsTarget) { battleManager.GetSelectedAbility().SelectTarget(targetGroup); }
+            if (selectableAsTarget)
+            {
+                if (battleManager.GetSelectedAbility() == null)
+                {
+                    infoText.AddErrorText("アビリティが選択されていない状態で、対象が指定できてしまっています");
+                    return;
+                }
+                battleManager.GetSelectedAbility().SelectTarget(targetGroup);
+            }
             else if (selectableAsMoveTarget) { expeditionManager.MoveMode_SelectChara(character); }
             else if (selectableAsMoveToPos) { expeditionManager.MoveMode_SelectPos(position); }
         }
