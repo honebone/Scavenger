@@ -627,7 +627,8 @@ public class Character : MonoBehaviour
         {
             targetButton.SetDamageText($"è¡ãéÅF{x.GetPAName()}", Color.gray);
             infoText.AddLogText($"{charaStatus.charaName}ÇÕì¡ê´{x.GetPAName()}Çé∏Ç¡ÇΩ");
-            RemovePA(x);
+            //RemovePA(x);
+            x.Disable();
         });
     }
     public void EquipItem(Definer.Item item)
@@ -657,6 +658,10 @@ public class Character : MonoBehaviour
         }
         return false;
     }
+    /// <summary>
+    /// Ç±ÇÍÇÕäÓñ{ìIÇ…åƒÇŒÇ»Ç¢ -> PAÇè¡ÇµÇΩÇ¢Ç»ÇÁÇªÇÃPAÇÃDisable()
+    /// </summary>
+    /// <param name="passiveAbility"></param>
     public void RemovePA(PassiveAbility passiveAbility)
     {
         switch (passiveAbility.GetPAType())

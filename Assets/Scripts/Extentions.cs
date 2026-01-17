@@ -46,6 +46,10 @@ public static class Extentions
 
     public static int ToInt(this float value) { return Mathf.FloorToInt(value); }
     public static int Limit(this int value, int max) { return Mathf.Min(value, max); }
+    public static int Mul(this int value,float percent)
+    {
+        return (value * percent / 100f).ToInt();
+    }
 
     public static bool Dice(this float fPercent)
     {

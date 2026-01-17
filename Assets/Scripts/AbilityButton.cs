@@ -76,11 +76,11 @@ public class AbilityButton : MonoBehaviour
     {
         if (!deployMode)
         {
-            battleManager.SetSelectedAbility(abilityStatus, character);
-            FindObjectOfType<InfoText>().SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo(false), abilityStatus.instantiatedManager.GetInfo(true));
+            InfoText.inst.SetText(abilityStatus.abilityName.ColorStr(Definer.colorRef.abilityColors[(int)abilityStatus.abilityType]), abilityStatus.instantiatedManager.GetInfo(false), abilityStatus.instantiatedManager.GetInfo(true));
             charactersManager.ResetAllTargetIcons();
             if (battleManager.checkIfMyTurn(character) && BattleManager.selectingAbility && available) //自分のターン中かつアビリティ選択中なら、対象選択開始      
             {
+                battleManager.SetSelectedAbility(abilityStatus, character);
                 abilityStatus.instantiatedManager.StartSelectTarget();
             }
             else if (Input.GetMouseButtonUp(0))

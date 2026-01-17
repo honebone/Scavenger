@@ -128,6 +128,7 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
   rune_initialCharge: 0
@@ -341,6 +342,7 @@ MonoBehaviour:
       debuffChance: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
   condition:
     searchAsPos: 0
     onlyEmpty: 0
