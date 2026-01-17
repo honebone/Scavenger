@@ -27,5 +27,6 @@ public class PA_Personality : PassiveAbility
     [SerializeField]
     public PersonalityStatus personalityStatus;
     public PersonalityStatus GetPersonalityStatus() { return personalityStatus; }
+    public PersonalityStatus.PersonalityType GetPerType() { return personalityStatus.personalityType; }
     public bool CheckPerType(PersonalityStatus.PersonalityType type) { return personalityStatus.personalityType == type; }
 }
