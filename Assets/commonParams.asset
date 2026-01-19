@@ -250,6 +250,14 @@ MonoBehaviour:
     select: {fileID: 8300000, guid: 03bc833bbba470547874e6de009752b6, type: 3}
     mouseover: {fileID: 0}
     info: {fileID: 0}
+  perIcons:
+  - {fileID: 21300000, guid: 4326ffef5d09e774a9e126b6373f2de8, type: 3}
+  - {fileID: 21300000, guid: 4326ffef5d09e774a9e126b6373f2de8, type: 3}
+  - {fileID: 21300000, guid: 12bcc5ca699c132409519be037d9ade1, type: 3}
+  - {fileID: 21300000, guid: 04f7106c24b45984e956cb6be7a82416, type: 3}
+  - {fileID: 21300000, guid: 515f7661e09151d47aef86d8b1ff1a36, type: 3}
+  - {fileID: 21300000, guid: 40665cb94030a6d4481880c9e02e9ca6, type: 3}
+  - {fileID: 21300000, guid: 019ef28216cc1f84385c9e001f638500, type: 3}
   playerDataBase:
   - {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
   - {fileID: 11400000, guid: b09dac6058876a545baf16caf4760ba0, type: 2}

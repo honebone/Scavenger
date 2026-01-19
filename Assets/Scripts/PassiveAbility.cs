@@ -35,17 +35,15 @@ public class PassiveAbility : MonoBehaviour
         string s = "";
         if (PATags.Count > 0)
         {
-            bool f = false;
-            s += "タグ：";
+            s += $"{Extentions.NL(s)}タグ：";
+            string tagS = "";
             foreach (PATag tag in PATags)
             {
-                if (f) { s += ", "; }
-                f = true;
-                if (tag.ToString() == "魔術") s += "<link=U_魔術><u>[魔術]</u></link>";
-                else if (tag.ToString() == "ルーン") s += "<link=U_ルーン><u>[ルーン]</u></link>";
-                else s += $"[{tag}]";
+                if (tag.ToString() == "魔術") tagS += $"{Extentions.NL(tagS, lineStr: ", ")}<link=U_魔術><u>[魔術]</u></link>";
+                else if (tag.ToString() == "ルーン") tagS += $"{Extentions.NL(tagS, lineStr: ", ")}<link=U_ルーン><u>[ルーン]</u></link>";
+                else tagS += $"{Extentions.NL(tagS, lineStr: ", ")}[{tag}]";
             }
-            s += "\n";
+            s += tagS;
         }
 
         string statModInfo = statMod.GetInfo();
@@ -53,26 +51,26 @@ public class PassiveAbility : MonoBehaviour
 
         if (simple && !noSimpleInfo)
         {
-            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n";
-            if (statModInfo != "") s += $"\n{statModInfo}\n";
-            if (GetSimpleInfo() != "") s += "\n" + GetSimpleInfo();
+            if (runeChargeInfo != "") s += $"{Extentions.NL(s)}{runeChargeInfo}";
+            if (statModInfo != "") s += $"{Extentions.NL(s, 2)}{statModInfo}";
+            if (GetSimpleInfo() != "") s += $"{Extentions.NL(s,2)}{GetSimpleInfo()}";
         }
         else
         {
-            if (runeChargeInfo != "") s += $"{runeChargeInfo}\n";
-            if (statModInfo != "") s += $"\n{statModInfo}\n";
+            if (runeChargeInfo != "") s += $"{Extentions.NL(s)}{runeChargeInfo}";
+            if (statModInfo != "") s += $"{Extentions.NL(s, 2)}{statModInfo}";
             string amodInfo = "";
             foreach (GameObject actionMod in AMods)
             {
                 string af = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
-                if(af != "") amodInfo += $"{af}\n";
+                if(af != "") amodInfo += $"{Extentions.NL(s)}{af}";
 
             }
-            if (amodInfo != "") s += $"\n{amodInfo}\n";
-            if (PAInfo_start != "") s += $"\n{PAInfo_start}\n";
-            if (!skipGetInfo && GetPAInfo_Base() != "") s += $"\n{GetPAInfo_Base()}";
-            if (PAInfo_end != "") { s += $"\n{PAInfo_end}\n"; }
-            if (instantiated) { s += GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState); }
+            if (amodInfo != "") s += $"{Extentions.NL(s, 2)}{amodInfo}";
+            if (PAInfo_start != "") s += $"{Extentions.NL(s, 2)}{PAInfo_start}";
+            if (!skipGetInfo && GetPAInfo_Base() != "") s += $"{Extentions.NL(s, 2)}{GetPAInfo_Base()}";
+            if (PAInfo_end != "") { s += $"{Extentions.NL(s, 2)}{PAInfo_end}"; }
+            if (instantiated) { s += $"{Extentions.NL(s, 2)}{GetCurrentStateInfo().ColorStr(Definer.colorRef.currentState)}"; }
         }
         return s;
     }

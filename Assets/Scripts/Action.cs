@@ -944,7 +944,7 @@ public class Action : MonoBehaviour
             actionParams.targetStEs_preResolve = new List<PA_StatusEffect.StatusEffectStatus>();
             foreach(var stat in target.GetStEs()) { actionParams.targetStEs_preResolve.Add(stat.GetStatusEffectStatus()); }
 
-            target.BecomeAbilityTarget(actionStatus.actionOwner);
+           if(actionStatus.abilityEffect) target.BecomeAbilityTarget(actionStatus.actionOwner);
 
             if (actionStatus.VE_OnTargets) { target.SpawnVisualEffect(actionStatus.VE_OnTargets); }
             if (actionStatus.VE_OnOwner) { actionOwner.SpawnVisualEffect(actionStatus.VE_OnOwner); }

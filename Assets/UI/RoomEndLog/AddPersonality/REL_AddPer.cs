@@ -14,7 +14,6 @@ public class REL_AddPer : RoomEndLog
 
     public Image charaIcon;
     public Image perIcon;
-    public List<Sprite> perImage;
 
     Character character;
     GameObject personality;
@@ -27,7 +26,7 @@ public class REL_AddPer : RoomEndLog
         PA_Personality perS = personality.GetComponent<PA_Personality>();
 
         charaIcon.sprite = character.CharaStatus().characterData.spriteForUI;
-        perIcon.sprite = perImage[(int)perS.GetPersonalityStatus().personalityType];
+        perIcon.sprite = Definer.inst.cp.perIcons[(int)perS.GetPersonalityStatus().personalityType];
 
         titleText.text = $"êVÇΩÇ»ì¡ê´<{perS.GetPAName()}>";
         infoText.text = perS.GetPAInfo();

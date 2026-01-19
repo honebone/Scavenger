@@ -16,7 +16,7 @@ public class GameParams : ScriptableObject
     public StatusGrowth enemyStatusGrowth;
     [Header("\n\n\nMadness")] public float madnessSpawnChance;
     public Character.CharaStatusMod madnessStatMod;
-   [Header("精神崩壊時にHPが[HPDecOnAffrict]%減少")] public int HPDecOnAffrict;
+    [Header("精神崩壊時にHPが[HPDecOnAffrict]%減少")] public int HPDecOnAffrict;
     public int SANDMGChanceOnRoom;
     public Vector2Int SANDMGOnRoom;
     public int RegenPercentOnRoomEnd;
@@ -30,7 +30,9 @@ public class GameParams : ScriptableObject
     public int areaLength;
     public int branchChance;
     public int blindChance;
-    [Header("\n\n\n特性")]
+    [Header("\n\n\n特性\nランダム取得可能な特性のみ")]
     public List<GameObject> perDataBase;
     public List<int> perWeights;
+    public int maxPer_good = 4;
+    public int maxPer_bad = 4;
 }

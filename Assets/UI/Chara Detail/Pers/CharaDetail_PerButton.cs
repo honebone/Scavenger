@@ -22,10 +22,19 @@ public class CharaDetail_PerButton : MonoBehaviour
         perName.text = per.GetPAName();
         lockButton.SetActive(canLockTypes.Contains(per.GetPerType()));
         removeButton.SetActive(canRemoveTypes.Contains(per.GetPerType()));
+        icon.sprite = Definer.inst.cp.perIcons[(int)per.GetPersonalityStatus().personalityType];
     }
 
     public void OnMouseDown()
     {
         InfoText.inst.SetText(per.GetPAName(),per.GetPAInfo(false), per.GetPAInfo(true));
+    }
+    public void OnMouseEnter()
+    {
+        MouseOverUI.inst.SetUI(per.GetPAInfo(true));
+    }
+    public void OnMouseExit()
+    {
+        MouseOverUI.inst.ResetUI();
     }
 }

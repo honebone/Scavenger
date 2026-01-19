@@ -123,12 +123,12 @@ public class DebugFunction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha4)) { FindObjectOfType<ExpeditionManager>().SelectNextRoom(); }
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
-                charactersManager.GetExistingCharacters_All().ForEach(x => x.GainEXP(10));
+                expeditionManager.Debug_StartRE(areaData, RE);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                charactersManager.GetExistingCharacters_All().ForEach(x => x.AddPA_Personality(Definer.inst.GetPersonalityDataBase().Choice(), true));
+                charactersManager.GetExistingCharacters_All().ForEach(x => expeditionManager.SetRandomPer(x,10));
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {

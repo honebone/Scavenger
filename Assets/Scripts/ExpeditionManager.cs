@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Rendering.Universal;
 using System;
+using System.Linq;
 
 public class ExpeditionManager : MonoBehaviour
 {
@@ -197,14 +198,22 @@ public class ExpeditionManager : MonoBehaviour
 
         gp = GameManager.gameParams;
 
-        for (int i = 0; i < Enum.GetNames(typeof(PA_Personality.PersonalityStatus.PersonalityType)).Length; i++)
+        //for (int i = 0; i < Enum.GetNames(typeof(PA_Personality.PersonalityStatus.PersonalityType)).Length; i++)
+        //{
+        //    pers_pool.Add(new List<GameObject>());
+        //}
+        for (int i = 0; i < 3; i++)
         {
-            pers.Add(new List<GameObject>());
+            pers_pool.Add(new List<GameObject>());
         }
         foreach (GameObject per in gp.perDataBase)
         {
             PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
-            pers[(int)status.personalityType].Add(per);
+            PA_Personality.PersonalityStatus.PersonalityType perType = status.personalityType;
+            int index = perTypeList.IndexOf(perType);
+            if (index == -1) infoText.AddErrorText($"予期せぬ種類の特性がデータベースに存在{status.personalityName}");
+
+            pers_pool[index].Add(per);
         }
     }
 
@@ -309,7 +318,7 @@ public class ExpeditionManager : MonoBehaviour
 
         if (partyStatus.getPerChance_endRE.Dice())//特性追加
         {
-            SetRandomPersonality_ToRandom();
+            SetRandomPer_ToRandom();
         }
 
         if (partyStatus.madness < partyStatus.maxMadness)
@@ -409,6 +418,8 @@ public class ExpeditionManager : MonoBehaviour
         r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
         currentRE = r.GetComponent<RoomEvent>();
     }
+
+  
 
     public void EnterEndless()
     {
@@ -597,47 +608,123 @@ public class ExpeditionManager : MonoBehaviour
     }
 
     //==========================================================================[Per]======================================================================
-    List<List<GameObject>> pers= new List<List<GameObject>>();
+    /// <summary>
+    /// ランダム取得時に含まれる特性(bad,good,awokenのみ)
+    /// </summary>
+    List<List<GameObject>> pers_pool= new List<List<GameObject>>();
     //ランダム取得の際に使用
     List<PA_Personality.PersonalityStatus.PersonalityType> perTypeList = new List<PA_Personality.PersonalityStatus.PersonalityType> { PA_Personality.PersonalityStatus.PersonalityType.bad,
     PA_Personality.PersonalityStatus.PersonalityType.good,PA_Personality.PersonalityStatus.PersonalityType.awoken};
-    public void SetRandomPersonality(Character target) { 
-        SetPersonality(target, definer.GetPersonalityDataBase().Choice());
-    }
-    public void SetPersonality_ToRandom(GameObject personality)
+
+    public void SetRandomPer_ToRandom(int amount = 1)
     {
         List<Character> pool = new List<Character>();
         foreach (Character c in charactersManager.GetExistingCharacters_All())
         {
             if (c.CharaStatus().playable) { pool.Add(c); }
         }
+        Character chara = pool.Choice();
 
-        SetPersonality(pool.Choice(), personality);
+        SetPersonality(chara, GetPer_Random(chara, amount));
     }
-    public void SetRandomPersonality_ToRandom()
+    public void SetRandomPer_ToRandom_WithType(PA_Personality.PersonalityStatus.PersonalityType perType, int amount = 1)
     {
         List<Character> pool = new List<Character>();
-        foreach(Character c in charactersManager.GetExistingCharacters_All())
+        foreach (Character c in charactersManager.GetExistingCharacters_All())
         {
             if (c.CharaStatus().playable) { pool.Add(c); }
         }
+        Character chara = pool.Choice();
 
-        SetPersonality(pool.Choice(), definer.GetPersonalityDataBase().Choice());
+        SetPersonality(chara, GetPer_Random_CertainType(chara, perType, amount));
     }
+    public void SetRandomPer(Character chara, int amount = 1)
+    {
+        SetPersonality(chara, GetPer_Random(chara, amount));
+    }
+    public void SetRandomPer_WithType(Character chara, PA_Personality.PersonalityStatus.PersonalityType perType, int amount = 1)
+    {
+        SetPersonality(chara, GetPer_Random_CertainType(chara, perType, amount));
+    }
+
+    /// <summary>
+    /// 指定したタイプのper
+    /// </summary>
+    /// <returns></returns>
+    public List<GameObject> GetPer_Random_CertainType(PA_Personality.PersonalityStatus.PersonalityType perType,int amount=1)
+    {
+        int index=perTypeList.IndexOf(perType);
+        if (index == -1) infoText.AddErrorText($"予期しないタイプの特性を取得しようとしています");
+
+        return pers_pool[index].Sample(amount);
+    }
+    /// <summary>
+    /// 指定したキャラが持っていない、指定したタイプのランダムなper
+    /// </summary>
+    /// <returns></returns>
+    public List<GameObject> GetPer_Random_CertainType(Character chara,PA_Personality.PersonalityStatus.PersonalityType perType, int amount = 1)
+    {
+        int index = perTypeList.IndexOf(perType);
+        if (index == -1) infoText.AddErrorText($"予期しないタイプの特性を取得しようとしています");
+
+        return GetPerPool(chara)[index].Sample(amount);
+    }
+    public List<GameObject> GetPer_Random(int amount = 1)
+    {
+        return GetRandomPerFromPool(pers_pool,amount);
+    }
+    /// <summary>
+    /// 指定したキャラが持っていない、ランダムなper
+    /// </summary>
+    /// <returns></returns>
+    public List<GameObject> GetPer_Random(Character chara, int amount = 1)
+    {
+        return GetRandomPerFromPool(GetPerPool(chara),amount);
+    }
+
+    List<List<GameObject>> GetPerPool(Character chara)
+    {
+        List<List<GameObject>> pool = new List<List<GameObject>>();
+        List<string> names = new List<string>();
+        for(int i = 0; i < perTypeList.Count; i++)
+        {
+            names = chara.GetPers(perTypeList[i]).Select(p => p.GetPAName()).ToList();
+            pool.Add(pers_pool[i].Where(p => !names.Contains(p.GetComponent<PA_Personality>().GetPAName())).ToList());
+        }
+
+        return pool;
+    }
+    /// <summary>
+    /// 指定した数のランダムなperを重複なしで取得
+    /// </summary>
+    /// <param name="pool"></param>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    List<GameObject> GetRandomPerFromPool(List<List<GameObject>> pool,int amount=1)
+    {
+        List<GameObject> list= new List<GameObject>();
+        for(int i = 0; i < amount; i++)
+        {
+            int index = GameManager.gameParams.perWeights.ChoiceWithWeight();
+            GameObject add = pool[index].Choice();
+            if (add != null)
+            {
+                list.Add(add);
+                pool[index].Remove(add);
+            }
+        }
+        return list;
+    }
+
 
     public void SetPersonality(Character target, GameObject personality)
     {
         relManager.Enqueue_AddPer(target, personality);
     }
-
-    public GameObject GetPer_Random(PA_Personality.PersonalityStatus.PersonalityType perType)
+    public void SetPersonality(Character target, List<GameObject> pers,bool immediate = false)
     {
-        return pers[(int)perType].Choice();
-    }
-    public GameObject GetPer_Random()
-    {
-        PA_Personality.PersonalityStatus.PersonalityType perType = perTypeList[gp.perWeights.ChoiceWithWeight()];
-        return pers[(int)perType].Choice();
+       if(immediate) pers.ForEach(p=> target.AddPA_Personality(p,true));
+       else pers.ForEach(p=> relManager.Enqueue_AddPer(target,p));
     }
 
     public void OnEndBattle(bool playBGM)
@@ -698,6 +785,23 @@ public class ExpeditionManager : MonoBehaviour
         if (teleport) { infoText.AddDebugText("テレポート：オン"); }
         else { infoText.AddDebugText("テレポート：オフ"); }
     }
+
+    public void Debug_StartRE(AreaData area,GameObject room)
+    {
+        partyStatus.areaCount++;
+        currentArea = area;
+
+        SetBackground(currentArea.backgroundParams);
+
+        var a = Instantiate(currentArea.areaManager, AreaManagerP);//managerの生成
+        a.GetComponent<AreaManager>().Init(area);
+        currentAreaManger = a.GetComponent<AreaManager>();
+
+        var r = Instantiate(room, REManagerParent);
+        r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
+        currentRE = r.GetComponent<RoomEvent>();
+    }
+
     //================================[チュートリアル]=======================================
     public void StartTutorial_Passive()
     {

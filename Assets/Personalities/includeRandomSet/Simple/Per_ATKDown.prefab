@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_ATKDown
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
@@ -73,8 +74,10 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u8CA7\u5F31"
+    personalityName: "\u8131\u529B"
     personalityType: 4

@@ -8,6 +8,7 @@ public class CommonParams : ScriptableObject
     public List<GameObject> statusEffectDataBase;
     public Definer.ColorRef colorRef;
     public Definer.SoundRef soundRef;
+    public List<Sprite> perIcons;
     public List<CharacterData> playerDataBase;
     public List<CharacterData> enemyDataBase;
     public List<CharacterData> obstacleDataBase;

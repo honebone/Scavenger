@@ -28,7 +28,7 @@ public class RaE_DangerousDeal : RE_RandomEvents
                 {
                     if (c.CharaStatus().playable)
                     {
-                        expeditionManager.SetPersonality(c, Definer.personalities[(int)PA_Personality.PersonalityStatus.PersonalityType.bad].Choice());
+                        expeditionManager.SetRandomPer_WithType(c, PA_Personality.PersonalityStatus.PersonalityType.bad);
                     }
                 }
                 yield return new WaitForSeconds(1f);
@@ -40,8 +40,7 @@ public class RaE_DangerousDeal : RE_RandomEvents
                 {
                     if (c.CharaStatus().playable)
                     {
-                        expeditionManager.SetPersonality(c, Definer.personalities[(int)PA_Personality.PersonalityStatus.PersonalityType.bad].Choice());
-                        expeditionManager.SetPersonality(c, Definer.personalities[(int)PA_Personality.PersonalityStatus.PersonalityType.bad].Choice());
+                        expeditionManager.SetRandomPer_WithType(c, PA_Personality.PersonalityStatus.PersonalityType.bad,2);
                     }
                 }
                 yield return new WaitForSeconds(1f);

@@ -467,7 +467,7 @@ public class Character : MonoBehaviour
 
     //protected List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
     protected List<PA_StatusEffect> PA_StE = new List<PA_StatusEffect>();
-    protected List<PassiveAbility> PA_Per = new List<PassiveAbility>();
+    protected List<PA_Personality> PA_Per = new List<PA_Personality>();
     protected List<PassiveAbility> PA_Eq = new List<PassiveAbility>();
     //List<PassiveAbility> deletePAs = new List<PassiveAbility>();
 
@@ -581,6 +581,31 @@ public class Character : MonoBehaviour
         }
         return equipments;
     }
+    public List<PA_Personality> GetPers()
+    {
+        return PA_Per;
+    }
+    public List<PA_Personality> GetPers(PA_Personality.PersonalityStatus.PersonalityType perType) 
+    {
+        return PA_Per.Where(p=>p.GetPerType()==perType).ToList();
+    }
+    public List<PA_Personality> GetPers(List<PA_Personality.PersonalityStatus.PersonalityType> perTypes)
+    {
+        return PA_Per.Where(p =>   perTypes.Contains(p.GetPerType())).ToList();
+    }
+    List<PA_Personality.PersonalityStatus.PersonalityType> goodPers = new List<PA_Personality.PersonalityStatus.PersonalityType>() { PA_Personality.PersonalityStatus.PersonalityType.awoken
+        , PA_Personality.PersonalityStatus.PersonalityType.good };
+    public bool CheckSamePer(GameObject paObj)
+    {
+        PA_Personality per = paObj.GetComponent<PA_Personality>();
+        string perName = per.GetPersonalityStatus().personalityName;
+        PA_Personality.PersonalityStatus.PersonalityType perType = per.GetPerType();
+
+        if (PA_Per.Any(p => per.GetPersonalityStatus().personalityName == perName)) return false;//ìØñºÇÃì¡ê´
+        //if (goodPers.Contains(perType) && GetPers(goodPers).Count >= GameManager.gameParams.maxPer_good) return false;//ó«Ç¢ì¡ê´ÇÃêî
+        //if (perType == PA_Personality.PersonalityStatus.PersonalityType.bad && GetPers(PA_Personality.PersonalityStatus.PersonalityType.bad).Count >= GameManager.gameParams.maxPer_bad) return false;//à´Ç¢ì¡ê´ÇÃêî
+        return true;
+    }
     public List<PassiveAbility> GetPassiveAbilities()
     {
         List<PassiveAbility> passiveAbilities = new List<PassiveAbility>();
@@ -610,11 +635,12 @@ public class Character : MonoBehaviour
     public void AddPA_Personality(GameObject paObj, bool note)
     {
         var p = Instantiate(paObj, transform);
-        PA_Per.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this, 1, infoText);
+        PA_Personality added = p.GetComponent<PA_Personality>();
+        PA_Per.Add(added);
+        added.Init(this, 1, infoText);
         if (note)
         {
-            PA_Personality.PersonalityStatus personality = p.GetComponent<PA_Personality>().GetPersonalityStatus();
+            PA_Personality.PersonalityStatus personality = added.GetPersonalityStatus();
             targetButton.SetDamageText(string.Format("+ì¡ê´ÅF{0}", personality.personalityName), Definer.colorRef.personalityColors[(int)personality.personalityType]);
             infoText.AddLogText(string.Format("{0}ÇÕêVÇΩÇ»ì¡ê´{1}ÇìæÇΩ", charaStatus.charaName, personality.GetName()));
         }
@@ -622,7 +648,7 @@ public class Character : MonoBehaviour
 
     public void RemovePer_Random(int amount,PA_Personality.PersonalityStatus.PersonalityType type)
     {
-        List<PassiveAbility> list=PA_Per.Where(x => x.GetComponent<PA_Personality>().CheckPerType(type)).ToList();
+        List<PA_Personality> list=PA_Per.Where(x => x.GetComponent<PA_Personality>().CheckPerType(type)).ToList();
         list.Sample(amount).ForEach(x =>
         {
             targetButton.SetDamageText($"è¡ãéÅF{x.GetPAName()}", Color.gray);
@@ -670,7 +696,7 @@ public class Character : MonoBehaviour
                 PA_StE.Remove((PA_StatusEffect)passiveAbility);
                 break;
             case 1:
-                PA_Per.Remove(passiveAbility);
+                PA_Per.Remove((PA_Personality)passiveAbility);
                 break;
             case 2:
                 PA_Eq.Remove(passiveAbility);

@@ -15,7 +15,7 @@ public class RaE_Tutorial : RE_RandomEvents
     {
         foreach (Character c in characterManager.GetExistingCharacters_All())
         {
-            if (c.CharaStatus().playable) { expeditionManager.SetRandomPersonality(c); }
+            if (c.CharaStatus().playable) { expeditionManager.SetRandomPer(c); }
         }
 
         yield return new WaitForSeconds(1.5f);

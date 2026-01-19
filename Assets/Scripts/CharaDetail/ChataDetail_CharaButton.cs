@@ -108,8 +108,8 @@ public class ChataDetail_CharaButton : MonoBehaviour
 
     public void SelectChara()
     {
-        detailUI.RestCharaButtonFrame();
-        frame.color = Color.green;
+        //detailUI.RestCharaButtonFrame();
+        //frame.color = Color.green;
         detailUI.ChangeChara(character);
     }
 

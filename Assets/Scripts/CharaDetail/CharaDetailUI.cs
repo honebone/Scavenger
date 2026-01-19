@@ -13,30 +13,16 @@ public class CharaDetailUI : MonoBehaviour
 
     [SerializeField] int maxParty = 4;
     [SerializeField] int maxEquipments;
-    //[Space(25), SerializeField]
-    //Transform equipmentP;
-    //[SerializeField]
-    //GameObject equipmentButton;
-    //[SerializeField]
-    //GameObject newEquipmentButton;
 
-    //[SerializeField] GameObject inventoryEqPanel;
     [SerializeField] CharaDetail_InventoryEq inventoryEq;
     [SerializeField] List<ChataDetail_CharaButton> charaButtons;
-
-    //[SerializeField] GameObject LVLUpPanel;
-    //[SerializeField] CharaDetail_LVLUp lvlup;
-
-    //[Space(25), SerializeField]
-    //Transform abilityP;
-    //[SerializeField]
-    //GameObject abilityButton;
-    //[SerializeField]
-    //TextMeshProUGUI abilityUpgradeInfo;
 
     [SerializeField] Definer.Item draggingItem;
     [SerializeField] Transform dragImageP;
     [SerializeField] GameObject dragImage;
+
+    [SerializeField] List<CanvasGroup> canvasList_right;
+
     [SerializeField] List<GameObject> VE_rarity;
     [SerializeField] List<AudioClip> SE_grab;
     [SerializeField] List<AudioClip> SE_equip;
@@ -108,30 +94,36 @@ public class CharaDetailUI : MonoBehaviour
 
         UIpanel.SetActive(true);
 
-        List<Character> characters = new List<Character>();
-        foreach (Character chara in charactersManager.GetExistingCharacters_All())
-        {
-            Character.CharacterStatus status = chara.CharaStatus();
-            if (status.player && chara.CheckAlive()) { characters.Add(chara); }
-        }
+        //List<Character> characters = new List<Character>();
+        //foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        //{
+        //    Character.CharacterStatus status = chara.CharaStatus();
+        //    if (status.player && chara.CheckAlive()) { characters.Add(chara); }
+        //}
 
-        for (int i = 0; i < characters.Count; i++)
-        {
-            charaButtons[i].SetChara(characters[i]);
-        }
+        //for (int i = 0; i < characters.Count; i++)
+        //{
+        //    charaButtons[i].SetChara(characters[i]);
+        //}
 
-        if (characters.Count < maxParty)
-        {
-            for (int i = characters.Count; i < maxParty; i++)
-            {
-                charaButtons[i].ResetValue();
-            }
-        }
+        //if (characters.Count < maxParty)
+        //{
+        //    for (int i = characters.Count; i < maxParty; i++)
+        //    {
+        //        charaButtons[i].ResetValue();
+        //    }
+        //}
 
-        if (!displayingChara || !displayingChara.CheckAlive())
-        {
-            charaButtons[0].SelectChara();
-        }
+
+
+        //expAmount.text = inventory.GetExp().ToString();
+        Refresh();
+
+        //if (!displayingChara || !displayingChara.CheckAlive())
+        //{
+        //    charaButtons[0].SelectChara();
+        //}
+        ChangeChara(charaButtons[0].GetCharacter());
 
         inventoryEq.SetButtons();
 
@@ -145,35 +137,71 @@ public class CharaDetailUI : MonoBehaviour
         SoundManager.instance.PlaySE_Select();
         UIpanel.SetActive(false);
 
-        ResetChara();
+        //ResetChara();
     }
+
+    public void NextChara()
+    {
+        SoundManager.instance.PlaySE_Select();
+
+        for (int i=0;i<charaButtons.Count;i++)
+        {
+            if (CheckButton(i) && charaButtons[i].GetCharacter() == displayingChara)
+            {
+                if(i< charaButtons.Count - 1 && CheckButton(i + 1))
+                {
+                    ChangeChara(charaButtons[i + 1].GetCharacter());
+                    return;
+                }
+            } 
+        }
+        ChangeChara(charaButtons[0].GetCharacter());
+    }
+    public void PrevChara()
+    {
+        SoundManager.instance.PlaySE_Select();
+        int last = -1;
+        for (int i = charaButtons.Count-1; i >= 0; i--)
+        {
+            if (CheckButton(i))
+            {
+                if (last == -1) last = i;
+                if (charaButtons[i].GetCharacter() == displayingChara)
+                {
+                    if (i > 0 && CheckButton(i - 1))
+                    {
+                        ChangeChara(charaButtons[i - 1].GetCharacter());
+                        return;
+                    }
+                }
+            }
+        }
+        ChangeChara(charaButtons[last].GetCharacter());
+    }
+    bool CheckButton(int i) { return charaButtons[i] != null && charaButtons[i].GetCharacter() != null; }
+
     public void ChangeChara(Character chara)
     {
-        //EndSelectEquipment();
-
         displayingChara = chara;
         status = displayingChara.CharaStatus();
-
         displayingChara.DisplayInfo();
 
-        //lvlup.SetValue();
-        inventory.CloseOptionUI();
-
-        //ToggleToLVLUp();
+        CharaDetail_Pers.inst.SetChara(chara);
+        //inventory.CloseOptionUI();
     }
 
-    public void ResetChara()
-    {
-        //EndSelectEquipment();
-        //ToggleToEquipment();
+    //public void ResetChara()
+    //{
+    //    //EndSelectEquipment();
+    //    //ToggleToEquipment();
 
-        displayingChara = null;
-        status = new Character.CharacterStatus();
+    //    displayingChara = null;
+    //    status = new Character.CharacterStatus();
 
 
-        //lvlup.ResetValue();
-        inventory.CloseOptionUI();
-    }
+    //    //lvlup.ResetValue();
+    //    inventory.CloseOptionUI();
+    //}
 
     public void RestCharaButtonFrame()
     {
@@ -188,10 +216,6 @@ public class CharaDetailUI : MonoBehaviour
         if(displayingChara != null)
         {
             status = displayingChara.CharaStatus();
-
-            //SetEquipmnetButtons();
-            //SetAbilityButtons();
-            //abilityUpgradeInfo.text = "";
             displayingChara.DisplayInfo();
         }
 
@@ -231,6 +255,24 @@ public class CharaDetailUI : MonoBehaviour
         draggingItem = new Definer.Item();
         draggFrom = null;
         Destroy(draggingImage);
+    }
+
+    public void SwapRightUI(int index)
+    {
+        for(int i = 0;i< canvasList_right.Count; i++)
+        {
+            if (i != index)
+            {
+                canvasList_right[i].alpha = 0;
+                canvasList_right[i].interactable = false;
+                canvasList_right[i].blocksRaycasts = false;
+            }
+        }
+        canvasList_right[index].alpha = 1;
+        canvasList_right[index].interactable = true;
+        canvasList_right[index].blocksRaycasts = true;
+
+        SoundManager.instance.PlaySE_Select();
     }
 
     // Update is called once per frame

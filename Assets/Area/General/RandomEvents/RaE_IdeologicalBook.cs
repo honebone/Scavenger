@@ -44,10 +44,7 @@ public class RaE_IdeologicalBook : RE_RandomEvents
         yield return new WaitForSeconds(1.0f);
 
         int amount = Random.Range(1, 4);
-        for (int i = 0; i < amount; i++)
-        {
-            expeditionManager.SetRandomPersonality(pool[choice]);
-        }
+        expeditionManager.SetRandomPer(pool[choice],amount);
 
         yield return new WaitForSeconds(0.5f);
         EndRoomEvent();
