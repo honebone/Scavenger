@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 613165614781689432}
+  - component: {fileID: 6086557504647104139}
   - component: {fileID: -4090635681871681786}
   m_Layer: 0
-  m_Name: Per_PitFighter
+  m_Name: Per_RotEcho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &613165614781689432
+--- !u!114 &6086557504647104139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,10 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883438bdc3de9d04596fb6031e32e4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_pitfighter
+  fileName: per_rotEcho
   noSimpleInfo: 0
-  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#FAED8A><sprite
-    name=buff><link=S_\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u3092\u5F97\u308B"
+  simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -81,16 +80,18 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u30D4\u30C3\u30C8\u30D5\u30A1\u30A4\u30BF\u30FC"
+    personalityName: "\u53CD\u97FF\u3059\u308B\u8150\u6557"
     personalityType: 2
   max_inBattle: 0
   max_inRound: 0
   countReq: 1
-  targetSelf: 1
+  targetSelf: 0
   actionStatus:
     actionName: 
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
-    targetInfo: "\u81EA\u8EAB"
+    targetInfo: "<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3001<color=#C900FF><sprite
+      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3001<color=#C900FF><sprite
+      name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u306E\u3044\u305A\u308C\u304B\u304C\u3042\u308B\u6575\u5168\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -98,7 +99,8 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 5609525547997163743, guid: a1ba4b7e002300b488f41890f4793198, type: 3}
     targetType: 0
     friendly: 0
     condition:
@@ -140,7 +142,11 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    attackInfo: 
+    attackInfo: "\u5BFE\u8C61\u304C<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3001<color=#C900FF><sprite
+      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3001<color=#C900FF><sprite
+      name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u306B\u3088\u3063\u3066\u6B21\u306E\u30BF\u30FC\u30F3\u5931\u3046<sprite
+      name=HP><color=#87FF79>HP</color>\u306B\u7B49\u3057\u3044\u56FA\u5B9A<sprite
+      name=INT><color=#256CC8>\u9B54\u6CD5</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
@@ -158,8 +164,8 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
-    ignoreShield: 0
-    sureHit: 0
+    ignoreShield: 1
+    sureHit: 1
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
@@ -181,16 +187,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 100
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -241,17 +238,26 @@ MonoBehaviour:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
-    enemy: 0
+    enemy: 1
     onlyPlayable: 0
     onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
-    StEConditions: []
+    StEConditions:
+    - StE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      stack: 1
+      stack_lessThan: 0
+    - StE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      stack: 1
+      stack_lessThan: 0
+    - StE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      stack: 1
+      stack_lessThan: 0
     StE: []
     StEExclude: []
     PE: []

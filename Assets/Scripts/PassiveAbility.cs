@@ -222,6 +222,8 @@ public class PassiveAbility : MonoBehaviour
         return statusRef;
     }
 
+    //====================================================[一部PAのみ関係]=========================================================================
+
     public virtual void Cast() { infoText.AddErrorText($"効果のない詠唱をしています！：{GetPAName()}"); }
 
     public int rune_initialCharge;
@@ -267,6 +269,11 @@ public class PassiveAbility : MonoBehaviour
 /// <summary>このターンに付与されたかのチェック</summary>
 public void StE_ApplyFlag() { applyFlag = true; }
 
+    public virtual void EchoDoT(bool echoAllStack, bool consumeStack,float ratio=100)
+    {
+
+    }
+    //====================================================[誘発]=========================================================================
 
     public virtual void OnPAInit() { }
     public virtual void AtTheEnd() { }
