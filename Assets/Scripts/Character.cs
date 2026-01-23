@@ -860,6 +860,11 @@ public class Character : MonoBehaviour
         return DMG;
     }
 
+    public void EchoDoT(EchoDoTParams echoParams)
+    {
+
+    }
+
     public void AddStEStack(GameObject StEObj, int add)
     {
         PA_StatusEffect.StatusEffectStatus StE = StEObj.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();

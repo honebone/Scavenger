@@ -269,10 +269,7 @@ public class PassiveAbility : MonoBehaviour
 /// <summary>このターンに付与されたかのチェック</summary>
 public void StE_ApplyFlag() { applyFlag = true; }
 
-    public virtual void EchoDoT(bool echoAllStack, bool consumeStack,float ratio=100)
-    {
-
-    }
+  
     //====================================================[誘発]=========================================================================
 
     public virtual void OnPAInit() { }

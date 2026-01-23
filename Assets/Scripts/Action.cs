@@ -1743,3 +1743,14 @@ public class Action : MonoBehaviour
 
     public virtual string GetAdditionalInfo() { return ""; }
 }
+
+[System.Serializable]
+public class EchoDoTParams
+{
+    public List<GameObject> targetStE;
+    public bool echoAllStack;
+    public bool consumeStack;
+    public float ratio = 100;
+
+    public Action.ActionParams ap;
+}

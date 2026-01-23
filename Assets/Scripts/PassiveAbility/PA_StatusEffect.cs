@@ -244,6 +244,11 @@ public class PA_StatusEffect : PassiveAbility
         Disable(false);
     }
 
+    public virtual void EchoDoT(EchoDoTParams echoParams)
+    {
+        infoText.AddErrorText($"echo error:{GetPAName()}");
+    }
+
     [SerializeField]
     protected StatusEffectStatus StEStatus;
     StEIcon StEIcon;
