@@ -433,7 +433,7 @@ MonoBehaviour:
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
-    centerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
+    centerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
@@ -454,7 +454,7 @@ MonoBehaviour:
   enemySetTest:
     dontShuffleFront: 1
     upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    centerFront: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
@@ -2398,7 +2398,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <mark=#FFFFFF50><color=#000000>+12345</color></mark>
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
   m_sharedMaterial: {fileID: 1749331179072275075, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
@@ -5533,7 +5533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.586, y: -48.09999}
+  m_AnchoredPosition: {x: 279.586, y: -48.099976}
   m_SizeDelta: {x: -620.544, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218159761
@@ -8756,7 +8756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.09999}
+  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
   m_SizeDelta: {x: -579.7155, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -16698,6 +16698,8 @@ MonoBehaviour:
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -16718,6 +16720,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -17105,18 +17108,24 @@ MonoBehaviour:
   cp: {fileID: 11400000, guid: d28646969fe51c24a8dda9af1df426d0, type: 2}
   uniqueLinkInfos:
   - linkKey: ACC
+    linkName: 
     linkInfo: "\u653B\u6483\u306E\u547D\u4E2D\u7387\n\n\u653B\u6483\u306F\u3001\n{[\u653B\u6483\u8005\u306EACC]
       - [\u5BFE\u8C61\u306EEVD]}\uFF05\n\u306E\u78BA\u7387\u3067\u547D\u4E2D\u3059\u308B"
   - linkKey: EVD
+    linkName: 
     linkInfo: "\u653B\u6483\u306E\u56DE\u907F\u7387\n\n\u653B\u6483\u306F\u3001\n{[\u653B\u6483\u8005\u306EACC]
       - [\u5BFE\u8C61\u306EEVD]}\uFF05\n\u306E\u78BA\u7387\u3067\u547D\u4E2D\u3059\u308B\n\nEVD\u306E\u4E0A\u9650\u306F75"
   - linkKey: ACT
+    linkName: 
     linkInfo: "\u30BF\u30FC\u30F3\u306E\u56DE\u3063\u3066\u304F\u308B\u30B9\u30D4\u30FC\u30C9\n\nACT\u306E\u9AD8\u3044\u9806\u306B\u30BF\u30FC\u30F3\u304C\u56DE\u3063\u3066\u304F\u308B"
   - linkKey: PROT
+    linkName: 
     linkInfo: "\u88AB\u30C0\u30E1\u30FC\u30B8\u6E1B\u5C11\u91CF\n\nPROT1\u306B\u3064\u304D\u88AB\u30C0\u30E1\u30FC\u30B8-1\uFF05\nPROT\u304C\u30DE\u30A4\u30CA\u30B9\u306E\u6642\u306F\u88AB\u30C0\u30E1\u30FC\u30B8\u304C\u305D\u306E\u5206\u4E0A\u6607\u3059\u308B\n\n\u4E0A\u9650\u306F75\u3001\u4E0B\u9650\u306F\u7121\u3057"
   - linkKey: "\u5BFF\u547D"
+    linkName: 
     linkInfo: "\u5BFF\u547D\u306E\u3042\u308B\u30AD\u30E3\u30E9\u306F\u3001\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u306B\u81EA\u8EAB\u306E\u57FA\u790EmaxHP\u306E1/[\u5BFF\u547D]\u306B\u7B49\u3057\u3044HP\u3092\u5931\u3046(\u7AEF\u6570\u5207\u308A\u4E0A\u3052)"
   - linkKey: "ATK(INT)\u88DC\u6B63"
+    linkName: 
     linkInfo: "<sprite name=ATK><color=#C30000>ATK</color>\u88DC\u6B63\u5024\u3068\u306F\u3001\u30AD\u30E3\u30E9\u306E<sprite
       name=ATK><color=#C30000>ATK</color>\u306E\u4F55\uFF05\u3092\u30C0\u30E1\u30FC\u30B8\u306B\u53CD\u6620\u3055\u305B\u308B\u304B\u3092\u793A\u3059\u5024\r\n\r\n\u80FD\u529B\u306B\u3042\u308B\r\n\"<sprite
       name=ATK><color=#C30000>ATK</color>\u306E80-120\uFF05\u30C0\u30E1\u30FC\u30B8\"\u306E80-120\uFF05\u304C<sprite
@@ -17124,19 +17133,33 @@ MonoBehaviour:
       name=ATK><color=#C30000>ATK</color>\u88DC\u6B63\u5024\u3092+50\uFF05\u3057\u305F\u3068\u304D\u3001\u6700\u7D42\u7684\u306A\u88DC\u6B63\u5024\u306F130-170\uFF05\u3068\u306A\u308B\r\n\r\n<sprite
       name=INT><color=#256CC8>INT</color>\u88DC\u6B63\u3082\u540C\u69D8"
   - linkKey: "\u8A98\u767A\u80FD\u529B"
+    linkName: 
     linkInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u306F\u306A\u304F\u3001\u7279\u6027\u3084\u88C5\u5099\u54C1\u3001\u72B6\u614B\u7570\u5E38\u306A\u3069\u306B\u3088\u3063\u3066\u81EA\u52D5\u3067\u767A\u52D5\u3057\u305F\u80FD\u529B\u306E\u3053\u3068"
   - linkKey: "\u9B54\u8853"
+    linkName: 
     linkInfo: "\u88C5\u5099\u54C1\u3084\u7279\u6027\u306E\u4E00\u7A2E\n\n\u9B54\u8853\u306F\u7279\u5B9A\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3068\u5531\u3048\u3089\u308C\u3001\u69D8\u3005\u306A\u52B9\u679C\u3092\u3082\u305F\u3089\u3059"
   - linkKey: "\u30EB\u30FC\u30F3"
+    linkName: 
     linkInfo: "\u88C5\u5099\u54C1\u3084\u7279\u6027\u306E\u4E00\u7A2E\n\n\u30EB\u30FC\u30F3\u306F\u6226\u95D8\u958B\u59CB\u6642\u306B\u30C1\u30E3\u30FC\u30B8\u3092\u5F97\u308B\n\u7279\u5B9A\u306E\u6761\u4EF6\u3092\u6E80\u305F\u3059\u3068\u30C1\u30E3\u30FC\u30B8\u3092\u6D88\u8CBB\u3057\u3066\u6D3B\u6027\u5316\u3055\u308C\u3001\u69D8\u3005\u306A\u52B9\u679C\u3092\u3082\u305F\u3089\u3059"
   - linkKey: "\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3"
+    linkName: 
     linkInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u5F8C\u3001\u518D\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B\u307E\u3067\u306E\u30BF\u30FC\u30F3\u6570"
   - linkKey: "\u521D\u671F\u30AF\u30FC\u30EB\u30C0\u30A6\u30F3"
+    linkName: 
     linkInfo: "\u6226\u95D8\u304C\u958B\u59CB\u3057\u3066\u304B\u3089\u30A2\u30D3\u30EA\u30C6\u30A3\u304C\u767A\u52D5\u53EF\u80FD\u306B\u306A\u308B\u307E\u3067\u306E\u30BF\u30FC\u30F3\u6570"
   - linkKey: "\u30AF\u30A4\u30C3\u30AF\u30A2\u30D3\u30EA\u30C6\u30A3"
+    linkName: 
     linkInfo: "\u3053\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306F\u3001\u4F7F\u7528\u3057\u3066\u3082\u30BF\u30FC\u30F3\u304C\u7D42\u4E86\u3057\u306A\u3044"
   - linkKey: "\u5206\u914D\u30C0\u30E1\u30FC\u30B8"
+    linkName: 
     linkInfo: "\u653B\u6483\u5BFE\u8C61\u304C\u8907\u6570\u3044\u308B\u5834\u5408\u3001\u30C0\u30E1\u30FC\u30B8\u91CF\u304C\u5BFE\u8C61\u306E\u6570\u3067\u5272\u3063\u305F\u5024\u3068\u306A\u308B"
+  - linkKey: "\u53CD\u97FF"
+    linkName: "<color=#96FFD6>\u53CD\u97FF <i>{X}</i></color>"
+    linkInfo: "<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3084<color=#C900FF><sprite
+      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3068\u3044\u3063\u305F<sprite
+      name=debuff><color=#C900FF>HP\u6E1B\u5C11\u30C7\u30D0\u30D5</color>\u306E\u52B9\u679C\u3092\u5373\u5EA7\u306B\u767A\u52D5\u3055\u305B\u308B\r\n\r\n<sprite
+      name=HP><color=#87FF79>HP</color>\u6E1B\u5C11\u91CF\u306F\u3001\u6B21\u306E\u30BF\u30FC\u30F3\u5931\u3046<sprite
+      name=HP>\u306E<color=#96FFD6><i>{X}</i></color>\uFF05"
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24905,6 +24928,8 @@ MonoBehaviour:
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -24925,6 +24950,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -25032,6 +25058,8 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 0
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

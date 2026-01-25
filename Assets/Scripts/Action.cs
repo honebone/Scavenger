@@ -67,6 +67,7 @@ public class Action : MonoBehaviour
         public float decreaseHPPer_max;
         public Vector2 decreaseHP_ATK;
         public Vector2 decreaseHP_INT;
+        public List<EchoDoTParams> echoDoT;
 
         [Header("\n\n攻撃")]
         [TextArea(3, 10)] public string attackInfo;
@@ -260,7 +261,7 @@ public class Action : MonoBehaviour
         /// <summary>移動や召喚の際に使用 移動の際は移動先のposが入る</summary>
         public List<int> actionTargetsInt;
 
-        public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0; }
+        public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0||echoDoT.Count>0; }
         public bool DoesAttack()
         {
             return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0
@@ -301,6 +302,10 @@ public class Action : MonoBehaviour
             {
                 s += $"・{"HP".ToSpr_withName()}が{"INT".ToSpr_withLink()}の{GetValueRange(decreaseHP_INT)}％分減少\n";
             }
+            echoDoT.ForEach(e =>
+            {
+                s += $"{Extentions.NL(s)}・{e.GetInfo()}";
+            });
 
             if (DoesAttack()||attackInfo!="")//攻撃
             {
@@ -990,7 +995,10 @@ public class Action : MonoBehaviour
                     percent = Random.Range(actionsStatus[i].decreaseHP_INT.x, actionsStatus[i].decreaseHP_INT.y) / 100f;
                     decrease += (ownerStatus.INT * percent).ToInt();
 
-                    target.DecreaseHP(decrease);
+                    int echoDMG = actionsStatus[i].echoDoT.Select(e => target.GetEchoDMG(e)).Sum();
+                    if(!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).decreaseHP += echoDMG;
+
+                    target.DecreaseHP(decrease, echoDMG);
                 }
 
 
@@ -1753,4 +1761,18 @@ public class EchoDoTParams
     public float ratio = 100;
 
     public Action.ActionParams ap;
+
+    public string GetInfo()
+    {
+        string s = "";
+        if (targetStE.Count > 0)
+        {
+            string names = "";
+            targetStE.ForEach(t => names += $"{Extentions.NL(names, lineStr: ",")}{"debuff".ToSpr_withName()}{t.GetComponent<PA_StatusEffect>().GetPAName()}");
+            s += $"{names}を";
+        }
+        s += $"{$"反響 <i>{{{ratio}}}</i>".ToLinkKey("反響")}".ColorStr(Definer.colorRef.echo);
+
+        return s;
+    }
 }

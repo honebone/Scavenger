@@ -49,6 +49,7 @@ public class UtilityWindow : EditorWindow
         {"星屑","<color=#3473CA><link=S_星屑><u>星屑</u></link></color>" },
         {"分配","<link=U_分配ダメージ><u>分配</u></link>" },
         {"分配ダメージ","<link=U_分配ダメージ><u>分配ダメージ</u></link>" },
+        {"反響","<color=#96FFD6><link=U_反響><u>反響</u></link></color>" },
 
     };
     Dictionary<string, string> commonPhrases = new Dictionary<string, string>()

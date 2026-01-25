@@ -246,7 +246,7 @@ public class PA_StatusEffect : PassiveAbility
 
     public virtual void EchoDoT(EchoDoTParams echoParams)
     {
-        infoText.AddErrorText($"echo error:{GetPAName()}");
+        infoText.AddErrorText($"echo error:{GetPAName()}\nDoT:{StEStatus.DoT}");
     }
 
     [SerializeField]

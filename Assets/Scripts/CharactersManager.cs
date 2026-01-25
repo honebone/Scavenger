@@ -183,6 +183,9 @@ public class CharactersManager : MonoBehaviour
         public List<GameObject> StEExclude;
         public List<GameObject> PE;
         public List<GameObject> PEExclude;
+        public bool canEcho;
+        [Header("”½‹¿‚Ì‘ÎÛ‚Æ‚È‚éStE(‚È‚µ‚Å‚à‰Â)")]
+        public List<GameObject> echoTargets;
 
         public float HPPercent;
         public bool HP_lessThan;
@@ -301,6 +304,8 @@ public class CharactersManager : MonoBehaviour
             }
         }
         if (!matched) { return false; }
+
+        if (condition.canEcho && !character.CanEcho(condition.echoTargets)) { return false; }
 
         float HPPercent = status.HP.GetPercent(status.maxHP);
         if (condition.HP_lessThan)

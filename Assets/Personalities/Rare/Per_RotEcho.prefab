@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: per_rotEcho
   noSimpleInfo: 0
-  simpleInfo: 
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u6575\u5168\u3066\u3092<color=#96FFD6><link=U_\u53CD\u97FF><u>\u53CD\u97FF</u></link></color>\u3055\u305B\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -89,9 +89,7 @@ MonoBehaviour:
   actionStatus:
     actionName: 
     conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
-    targetInfo: "<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3001<color=#C900FF><sprite
-      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3001<color=#C900FF><sprite
-      name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u306E\u3044\u305A\u308C\u304B\u304C\u3042\u308B\u6575\u5168\u3066"
+    targetInfo: "<color=#96FFD6><link=U_\u53CD\u97FF><u>\u53CD\u97FF</u></link></color>\u53EF\u80FD\u306A\u6575\u5168\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -99,8 +97,7 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods:
-    - {fileID: 5609525547997163743, guid: a1ba4b7e002300b488f41890f4793198, type: 3}
+    actionMods: []
     targetType: 0
     friendly: 0
     condition:
@@ -122,6 +119,8 @@ MonoBehaviour:
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -142,11 +141,12 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    attackInfo: "\u5BFE\u8C61\u304C<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u3001<color=#C900FF><sprite
-      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3001<color=#C900FF><sprite
-      name=debuff><link=S_\u6BD2><u>\u6BD2</u></link></color>\u306B\u3088\u3063\u3066\u6B21\u306E\u30BF\u30FC\u30F3\u5931\u3046<sprite
-      name=HP><color=#87FF79>HP</color>\u306B\u7B49\u3057\u3044\u56FA\u5B9A<sprite
-      name=INT><color=#256CC8>\u9B54\u6CD5</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
+    echoDoT:
+    - targetStE: []
+      echoAllStack: 0
+      consumeStack: 0
+      ratio: 100
+    attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
@@ -164,8 +164,8 @@ MonoBehaviour:
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
-    ignoreShield: 1
-    sureHit: 1
+    ignoreShield: 0
+    sureHit: 0
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
@@ -248,20 +248,13 @@ MonoBehaviour:
     characterInclude: []
     characterTags: 
     characterTagsExclude: 
-    StEConditions:
-    - StE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      stack: 1
-      stack_lessThan: 0
-    - StE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
-      stack: 1
-      stack_lessThan: 0
-    - StE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
-      stack: 1
-      stack_lessThan: 0
+    StEConditions: []
     StE: []
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 1
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -289,6 +282,8 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 0
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
@@ -317,6 +312,8 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 0
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

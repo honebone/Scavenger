@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static LVLUpManager;
+using static Unity.Burst.Intrinsics.X86;
 
 public class Character : MonoBehaviour
 {
@@ -860,9 +861,43 @@ public class Character : MonoBehaviour
         return DMG;
     }
 
-    public void EchoDoT(EchoDoTParams echoParams)
+    public bool CanEcho(List<GameObject> DoTs)
     {
+        if(DoTs.Count == 0)
+        {
+            foreach (PA_StatusEffect pa in PA_StE)
+            {
+                if (pa.GetStatusEffectStatus().DoT) { return true; }
+            }
+        }
+        else
+        {
+            foreach (GameObject pa in DoTs)
+            {
+                if (CheckHasStE(pa)) { return true; }
+            }
+        }
+        return false;
+    }
+    public int GetEchoDMG(EchoDoTParams echoParams)
+    {
+        //List<PA_StatusEffect> list = new List<PA_StatusEffect>();
+        if (echoParams.targetStE.Count == 0)
+        {
+            //list = PA_StE.Where(p => p.GetStatusEffectStatus().DoT).ToList();
+            return Definer.DoTDataBase.Select(d=>GetDoTDMG(d, echoParams.echoAllStack)).Sum().Mul(echoParams.ratio);
+        }
+        else
+        {
+            //List<string> names = echoParams.targetStE.Select(t => t.GetComponent<PA_StatusEffect>().GetStatusEffectStatus().StEName).ToList();
+            //list = PA_StE.Where(p => names.Contains(p.GetStatusEffectStatus().StEName)).ToList();
+            return echoParams.targetStE.Select(d => GetDoTDMG(d, echoParams.echoAllStack)).Sum().Mul(echoParams.ratio);
+        }
 
+        //list.ForEach(p =>
+        //{
+        //    p.EchoDoT(echoParams);
+        //});
     }
 
     public void AddStEStack(GameObject StEObj, int add)
@@ -1177,14 +1212,28 @@ public class Character : MonoBehaviour
     {
         Die(0, attacker);
     }
-    public void DecreaseHP(int value)
+    public void DecreaseHP(int value,int echo=0)
     {
         if (!charaStatus.dead)
         {
-            charaStatus.HP -= value;
+            charaStatus.HP -= value+echo;
             charaObj.SetHPandShieldBar();
-            targetButton.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
-            infoText.AddLogText(string.Format("{0}ÇÕHPÇ{1}é∏Ç¡ÇΩ", charaStatus.charaName, value.ToString().ColorStr(Definer.colorRef.decreaseHP)));
+
+
+            if (value > 0)
+            {
+                targetButton.SetDamageText(value.ToString(), Definer.colorRef.decreaseHP);
+                infoText.AddLogText($"{charaStatus.charaName}ÇÕHPÇ{value.ToString().ColorStr(Definer.colorRef.decreaseHP)}é∏Ç¡ÇΩ");
+            }
+
+            if(echo> 0)
+            {
+                targetButton.SetDamageText("îΩãøÅI", Definer.colorRef.echo);
+                targetButton.SetDamageText(echo.ToString(), Definer.colorRef.echo);
+                infoText.AddLogText($"{charaStatus.charaName}ÇÕHPÇ{echo.ToString().ColorStr(Definer.colorRef.echo)}é∏Ç¡ÇΩ");
+            }
+
+
             soundManager.PlaySE(Definer.soundRef.damage);
             if (charaStatus.HP <= 0)
             {
@@ -1196,7 +1245,7 @@ public class Character : MonoBehaviour
                     soundManager.PlaySE(Definer.soundRef.dying);
                     tutorialManager.Tutorial_dethsDoor();
                     charaObj.SetHPandShieldBar();
-                    OnDecreasedHP(value);
+                    OnDecreasedHP(value+echo);
                 }
                 else
                 {

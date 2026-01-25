@@ -9,10 +9,20 @@ public class CommonParams : ScriptableObject
     public Definer.ColorRef colorRef;
     public Definer.SoundRef soundRef;
     public List<Sprite> perIcons;
+    [Header("\n\n\nキャラクターデータベース")]
     public List<CharacterData> playerDataBase;
     public List<CharacterData> enemyDataBase;
     public List<CharacterData> obstacleDataBase;
     public List<CharacterData> summonDataBase;
+    [Header("\n\n\n特性データベース")]
+    public List<GameObject> perDataBase_randPool;
+
+    [Header("\n\n\nエリア")]
+    public List<AreaData> areaDataBase_tier1;
+    public List<AreaData> areaDataBase_tier2;
+    public List<AreaData> areaDataBase_tier3;
+    public AreaData areaData_end;
+    public RaEDataBase RaEDataBase;
     public RoomRef roomRef;
 
     public Color StEColor( PA_StatusEffect.StatusEffectStatus status)
@@ -25,4 +35,14 @@ public class CommonParams : ScriptableObject
 public class RoomRef
 {
     public RoomEventData rest;
+}
+
+[System.Serializable]
+public class RaEDataBase
+{
+    public List<GameObject> nagative;
+    public List<GameObject> normal;
+    public List<GameObject> rare;
+    public List<GameObject> epic;
+    public List<GameObject> legendary;
 }

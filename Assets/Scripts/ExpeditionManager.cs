@@ -157,6 +157,7 @@ public class ExpeditionManager : MonoBehaviour
     RoomEndLogManager relManager;
 
     GameParams gp;
+    CommonParams cp;
 
     bool inExpedition;
     bool inRoomEvent;
@@ -197,6 +198,7 @@ public class ExpeditionManager : MonoBehaviour
         relManager = RoomEndLogManager.inst;
 
         gp = GameManager.gameParams;
+        cp = Definer.inst.cp;
 
         //for (int i = 0; i < Enum.GetNames(typeof(PA_Personality.PersonalityStatus.PersonalityType)).Length; i++)
         //{
@@ -206,7 +208,7 @@ public class ExpeditionManager : MonoBehaviour
         {
             pers_pool.Add(new List<GameObject>());
         }
-        foreach (GameObject per in gp.perDataBase)
+        foreach (GameObject per in cp.perDataBase_randPool)
         {
             PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
             PA_Personality.PersonalityStatus.PersonalityType perType = status.personalityType;

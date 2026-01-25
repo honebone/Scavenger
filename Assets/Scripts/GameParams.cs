@@ -30,8 +30,7 @@ public class GameParams : ScriptableObject
     public int areaLength;
     public int branchChance;
     public int blindChance;
-    [Header("\n\n\n“Á«\nƒ‰ƒ“ƒ_ƒ€æ“¾‰Â”\‚È“Á«‚Ì‚İ")]
-    public List<GameObject> perDataBase;
+    [Header("\n\n\n“Á«")]
     public List<int> perWeights;
     public int maxPer_good = 4;
     public int maxPer_bad = 4;

@@ -37,6 +37,7 @@ public class Definer : MonoBehaviour
         public Color shieldDecrease;
         public Color SANHeal;
         public Color SANDecrease;
+        public Color echo;
 
         public Color failed_unavailable;
         public Color currentState;
@@ -136,6 +137,7 @@ public class Definer : MonoBehaviour
     public class UniqueLinkInfo
     {
         public string linkKey;
+        public string linkName;
        [TextArea(3,10)] public string linkInfo;
     }
 
@@ -242,7 +244,8 @@ public class Definer : MonoBehaviour
                 {
                     if ($"U_{linkInfo.linkKey}" == key)
                     {
-                        return new List<string> { $"<{linkInfo.linkKey}>\n\n{linkInfo.linkInfo}" };
+                        if(linkInfo.linkName=="") return new List<string> { $"<{linkInfo.linkKey}>\n{linkInfo.linkInfo}" };
+                        else return new List<string> { $"<{linkInfo.linkName}>\n{linkInfo.linkInfo}" };
                     }
                 }
                 Debug.Log("error:keyÇ…çáÇ§ê‡ñæï∂Ç™å©Ç¬Ç©ÇËÇ‹ÇπÇÒÇ≈ÇµÇΩ");
