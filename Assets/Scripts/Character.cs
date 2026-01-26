@@ -602,10 +602,18 @@ public class Character : MonoBehaviour
         string perName = per.GetPersonalityStatus().personalityName;
         PA_Personality.PersonalityStatus.PersonalityType perType = per.GetPerType();
 
-        if (PA_Per.Any(p => per.GetPersonalityStatus().personalityName == perName)) return false;//“¯–¼‚Ì“Á«
+        if (PA_Per.Any(p => p.GetPersonalityStatus().personalityName == perName)) return true;//“¯–¼‚Ì“Á«
         //if (goodPers.Contains(perType) && GetPers(goodPers).Count >= GameManager.gameParams.maxPer_good) return false;//—Ç‚¢“Á«‚Ì”
         //if (perType == PA_Personality.PersonalityStatus.PersonalityType.bad && GetPers(PA_Personality.PersonalityStatus.PersonalityType.bad).Count >= GameManager.gameParams.maxPer_bad) return false;//ˆ«‚¢“Á«‚Ì”
-        return true;
+        return false;
+    }
+    public bool CheckGoodPersMax()
+    {
+      return  GetPers(goodPers).Count >= GameManager.gameParams.maxPer_good;
+    }
+    public bool CheckBadPersMax()
+    {
+        return GetPers(PA_Personality.PersonalityStatus.PersonalityType.bad).Count >= GameManager.gameParams.maxPer_bad;
     }
     public List<PassiveAbility> GetPassiveAbilities()
     {

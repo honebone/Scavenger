@@ -20,8 +20,8 @@ public class CharaDetail_PerButton : MonoBehaviour
         per = p;
         if (per == null) InfoText.inst.AddErrorText("per is null");
         perName.text = per.GetPAName();
-        lockButton.SetActive(canLockTypes.Contains(per.GetPerType()));
-        removeButton.SetActive(canRemoveTypes.Contains(per.GetPerType()));
+        //lockButton.SetActive(canLockTypes.Contains(per.GetPerType()));
+        //removeButton.SetActive(canRemoveTypes.Contains(per.GetPerType()));
         icon.sprite = Definer.inst.cp.perIcons[(int)per.GetPersonalityStatus().personalityType];
     }
 

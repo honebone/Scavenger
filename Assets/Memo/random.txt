@@ -1,12 +1,14 @@
 <UIのピクセル数>
 ピクセル数 -> UIサイズ：x2.5
 UIサイズ -> ピクセル数：x0.4
-　
-狂気
-1-5まで
-5％の確率で敵が狂気状態でスポーン
-HP+50%
-ATK/INT+30%
+
+RE
+REの種類確率はgameParamsに
+
+共通RaEはcommonParamsに
+固有はaraeDataに
+
+
 
 汎用スクリプト最新：Eq_OnDamage !!!Eq_Masterを作成！
 AMod最新：AMod_DebuffKinds

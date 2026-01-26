@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
-  skipTutorial: 1
+  debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -432,12 +432,12 @@ MonoBehaviour:
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
+    upperMid: {fileID: 0}
     centerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
-    centerBack: {fileID: 11400000, guid: 2eb6072248bdf954c8f1512e6ff475f9, type: 2}
+    upperBack: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
+    centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
@@ -453,13 +453,13 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 1
-    upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerFront: {fileID: 11400000, guid: 0bbaaa93beb3fa74d805dc666eb30a83, type: 2}
+    upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
-    centerMid: {fileID: 0}
-    lowerMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    centerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    lowerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
@@ -18507,7 +18507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0.6938923, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

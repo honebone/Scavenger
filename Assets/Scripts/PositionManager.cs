@@ -67,9 +67,15 @@ public class PositionManager : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// PEÇ™è¡ãéÇ≥ÇÍÇΩå„Ç…åƒÇŒÇÍÇÈ (PEÇ…ÇÊÇ¡Çƒ)
+    /// </summary>
+    /// <param name="positionEffect"></param>
     public void DisablePE(PositionEffect positionEffect)
     {
-        deletePEs.Add(positionEffect);
+        //deletePEs.Add(positionEffect);
+        positionEffects.Remove(positionEffect);
         infoText.AddLogText(string.Format("É|ÉWÉVÉáÉì{0}Ç©ÇÁ{1}Ç™è¡ãé", pos.PosIntToStr(), positionEffect.GetPEName(true)));
     }
 
@@ -107,7 +113,7 @@ public class PositionManager : MonoBehaviour
         //    }   
         //}
         character = chara;
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.SetCharacter(character); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.SetCharacter(character); }//new List<PositionEffect>(positionEffects)
         RemovePE_Execute();
         //if (f)
         //{
@@ -121,7 +127,7 @@ public class PositionManager : MonoBehaviour
         if (character != null)
         {
             //FindObjectOfType<InfoText>().AddDebugText(string.Format("pm(reset):{0}Ç™{1}Ç©ÇÁëﬁãé", character.GetCharacterStatus().charaName, character.GetCharacterStatus().position.ToString()));
-            foreach (PositionEffect positionEffect in positionEffects) { positionEffect.SetCharacter(null); }
+            foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.SetCharacter(null); }
             RemovePE_Execute();
         }
         character = null;
@@ -160,36 +166,37 @@ public class PositionManager : MonoBehaviour
 
     public void OnBattleStart()
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnBattleStart(); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnBattleStart(); }
         RemovePE_Execute();
     }
     public void OnRoundStart()
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnRoundStart(); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnRoundStart(); }
         RemovePE_Execute();
     }
     public void OnTurnOrderDecide()
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnOrderDecide(); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnTurnOrderDecide(); }
         RemovePE_Execute();
     }
     public void OnTurnStart(Character currentTurnChara,int turnCount)
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnStart(currentTurnChara, turnCount); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnTurnStart(currentTurnChara, turnCount); }
         RemovePE_Execute();
     }
     public void OnTurnEnd(Character currentTurnChara, int turnCount,bool deadTurnChara)
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnTurnEnd(currentTurnChara, turnCount, deadTurnChara); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnTurnEnd(currentTurnChara, turnCount, deadTurnChara); }
         RemovePE_Execute();
     }
     public void OnRoundEnd() {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnRoundEnd(); }
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnRoundEnd(); }
         RemovePE_Execute();
     }
     public void OnBattleEnd()
     {
-        foreach (PositionEffect positionEffect in positionEffects) { positionEffect.OnBattleEnd(); }
+        infoText.AddDebugText($"PEs:{positionEffects.Count}");
+        foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnBattleEnd(); }
         RemovePE_Execute();
     }
 }

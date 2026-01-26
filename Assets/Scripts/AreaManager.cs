@@ -131,7 +131,7 @@ public class AreaManager : MonoBehaviour
     //[SerializeField] GameObject layerPanel;
 
     protected ExpeditionManager.Room[] layer;
-    protected List<List<ExpeditionManager.Room>> areaRooms = new List<List<ExpeditionManager.Room>>();
+    protected List<List<ExpeditionManager.Room>> layers = new List<List<ExpeditionManager.Room>>();
 
     //List<Map_LayerPanel> layers;
     protected ExpeditionManager expeditionManager;
@@ -261,11 +261,16 @@ public class AreaManager : MonoBehaviour
 
         map.EndGenerateMap();
     }
+
+    //void MakeLayer(int x)
+    //{
+    //    List<>
+    //}
    
     void SetLayer()
     {
         map.SetLayerPanel(layer, layerCount);
-        areaRooms.Add(new List<ExpeditionManager.Room>(layer));
+        layers.Add(new List<ExpeditionManager.Room>(layer));
         layerCount++;
         for (int i = 0; i < layer.Length; i++)
         {

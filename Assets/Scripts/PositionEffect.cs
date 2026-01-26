@@ -173,7 +173,8 @@ public class PositionEffect : MonoBehaviour
         AtTheEnd();
         positionManager.DisablePE(this);
         if (PEIcon != null) { Destroy(PEIcon.gameObject); }
-        Destroy(gameObject);
+        if (gameObject == null) InfoText.inst.AddErrorText("ポジション効果を消去する効果が2度呼ばれています");
+        else Destroy(gameObject);
     }
 
     public void Enqueue(Action.ActionStatus actionStatus, bool setTargets, List<Character> actionTargets,int targetCount=0, bool nullOwner = false)

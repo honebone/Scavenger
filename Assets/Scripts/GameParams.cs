@@ -21,11 +21,6 @@ public class GameParams : ScriptableObject
     public Vector2Int SANDMGOnRoom;
     public int RegenPercentOnRoomEnd;
     public int SANPenaltyOnDie;
-    [Header("\n\n\nエリア")]
-    public List<AreaData> areaDataBase_tier1;
-    public List<AreaData> areaDataBase_tier2;
-    public List<AreaData> areaDataBase_tier3;
-    public AreaData areaData_end;
     [Header("\n\n\nマップ生成")]
     public int areaLength;
     public int branchChance;
