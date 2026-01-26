@@ -47,6 +47,10 @@ MonoBehaviour:
   showREInfoOnStart: 0
   REName: 
   REInfo: 
+  overrideMapName: 1
+  mapName: "\u7CBE\u92ED\uFF1A\u88C5\u5099\u54C1"
+  overrideMapInfo: 1
+  mapInfo: "\u9078\u308A\u3059\u3050\u308A\u306E\u6575\u3068\u306E\u6226\u95D8\n\u30FB\u6575\u306ELVL<color=#FF0000>+1</color>\n\u30FB\u88C5\u5099\u54C1\u306E\u9078\u629E\u80A2<color=#00FF00>+2</color>\n\u30FB\u5C11\u306A\u304F\u3068\u30821\u3064\u306F<color=#9933FF>\u30A8\u30D4\u30C3\u30AF</color>\u4EE5\u4E0A\u306B\u306A\u308B\n\u30FB\u88C5\u5099\u54C1\u306E\u9078\u629E\u53EF\u80FD\u6570<color=#00FF00>+1</color>"
   battleParams:
     bgm: {fileID: 0}
     lvlMod: 1
@@ -54,4 +58,20 @@ MonoBehaviour:
     additionalEq_epic: 1
     supplyPicksMod: 1
     expMod: 0
+    dontPlayBGMOnEnd: 0
   waveMod: 0
+  overrideEnemySet: 0
+  enemySet:
+    dontShuffleFront: 0
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []

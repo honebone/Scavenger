@@ -61,8 +61,27 @@ MonoBehaviour:
   RegenPercentOnRoomEnd: 20
   SANPenaltyOnDie: 15
   areaLength: 6
-  branchChance: 8
-  blindChance: 15
+  branchChance: 30
+  blindChance: 20
+  roomEvents:
+  - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
+    weight: 60
+    garanteed: 4
+  - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
+    weight: 0
+    garanteed: 2
+  - roomEvent: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
+    weight: 40
+    garanteed: 3
+  - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
+    weight: 0
+    garanteed: 2
+  - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
+    weight: 0
+    garanteed: 1
+  - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
+    weight: 0
+    garanteed: 2
   perWeights: 2d0000003700000000000000
   maxPer_good: 4
   maxPer_bad: 4

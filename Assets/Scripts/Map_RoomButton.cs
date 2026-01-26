@@ -45,66 +45,18 @@ public class Map_RoomButton : MonoBehaviour
         if (room.empty)
         {
             roomEventIcon.enabled = false;
-            //roomEventIcon.color = Color.gray;
         }
         else
         {
             if (blind)
             {
                 roomEventIcon.sprite = blindIcon;
-                //frame.color = Color.gray;
             }
             else { roomEventIcon.sprite = room.eventIcon; }
             if (room.up >= 1) { up.enabled = true; }
             if (room.straight >= 1) { straight.enabled = true; }
             if (room.down >= 1) { down.enabled = true; }
-        }
-
-        //if (!room.empty)
-        //{
-        //    up.enabled = true;
-        //    switch (room.up)
-        //    {
-        //        case -1:
-        //            up.color = Color.red;
-        //            break;
-        //        case 0:
-        //            up.color = Color.gray;
-        //            break;
-        //        case 2:
-        //            up.color = Color.green;
-        //            break;
-        //    }
-
-        //    straight.enabled = true;
-        //    switch (room.straight)
-        //    {
-        //        case -1:
-        //            straight.color = Color.red;
-        //            break;
-        //        case 0:
-        //            straight.color = Color.gray;
-        //            break;
-        //        case 2:
-        //            straight.color = Color.green;
-        //            break;
-        //    }
-
-        //    down.enabled = true;
-        //    switch (room.down)
-        //    {
-        //        case -1:
-        //            down.color = Color.red;
-        //            break;
-        //        case 0:
-        //            down.color = Color.gray;
-        //            break;
-        //        case 2:
-        //            down.color = Color.green;
-        //            break;
-        //    }
-        //}
-       
+        }        
     }
 
     public void SetState_Selectable()
@@ -119,7 +71,6 @@ public class Map_RoomButton : MonoBehaviour
     {
         currentPosText.enabled = true;
         currentRoomImage.enabled = true;
-        //frame.color = Color.green;
     }
     public void ResetState()
     {
@@ -127,19 +78,17 @@ public class Map_RoomButton : MonoBehaviour
         selectable = false;
         frame.color = Color.clear;
         currentRoomImage.enabled = false;
-        //if (blind) { frame.color = Color.gray; }
-        //else { frame.color = Color.white; }
     }
 
     public void SetBranchUp(int value)
     {
-        room.up = value;
+        room.SetBranch_Up(value);
         if (value >= 1) { up.enabled = true; }
         else { up.enabled = false; }
     }
     public void SetBranchDown(int value)
     {
-        room.down = value;
+        room.SetBranch_Down(value);
         if (value >= 1) { down.enabled = true; }
         else { down.enabled = false; }
     }

@@ -195,7 +195,6 @@ public class PositionManager : MonoBehaviour
     }
     public void OnBattleEnd()
     {
-        infoText.AddDebugText($"PEs:{positionEffects.Count}");
         foreach (PositionEffect positionEffect in new List<PositionEffect>(positionEffects)) { positionEffect.OnBattleEnd(); }
         RemovePE_Execute();
     }

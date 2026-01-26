@@ -71,7 +71,15 @@ public class Map_MapPanel : MonoBehaviour
         layers = new List<Map_LayerPanel>();
     }
 
-    public void SetLayerPanel(ExpeditionManager.Room[] l, int lc)
+    public void SetMap(List<List<ExpeditionManager.Room>> map)
+    {
+        for(int i=0; i<map.Count; i++)
+        {
+            SetLayerPanel(map[i], i);
+        }
+    }
+
+    public void SetLayerPanel(List<ExpeditionManager.Room> l, int lc)
     {
         var lp = Instantiate(layerPanel, content.transform);
         lp.GetComponent<Map_LayerPanel>().Init(l, lc, expeditionManager, infoText, mapScroll, mouseOver);

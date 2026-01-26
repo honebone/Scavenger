@@ -47,6 +47,10 @@ MonoBehaviour:
   showREInfoOnStart: 0
   REName: 
   REInfo: 
+  overrideMapName: 1
+  mapName: "\u7CBE\u92ED\uFF1A\u7D4C\u9A13"
+  overrideMapInfo: 1
+  mapInfo: "\u9078\u308A\u3059\u3050\u308A\u306E\u6575\u3068\u306E\u6226\u95D8\n\u30FB\u6575\u306ELVL<color=#FF0000>+1</color>\n\u30FB\u7D4C\u9A13\u306E\u30AA\u30FC\u30D6\u53D6\u5F97\u6570<color=#00FF00>+100</color>\uFF05"
   battleParams:
     bgm: {fileID: 0}
     lvlMod: 1

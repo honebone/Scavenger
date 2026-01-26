@@ -12,7 +12,7 @@ public class Map_LayerPanel : MonoBehaviour
 
     int layerCount;
 
-    public void Init(ExpeditionManager.Room[] r,int lc,ExpeditionManager em,InfoText it,ScrollRect scroll,MouseOverUI mo)
+    public void Init(List<ExpeditionManager.Room> r,int lc,ExpeditionManager em,InfoText it,ScrollRect scroll,MouseOverUI mo)
     {
         layerCount = lc;
         layerText.text = layerCount.ToString();

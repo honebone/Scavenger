@@ -25,6 +25,7 @@ public class GameParams : ScriptableObject
     public int areaLength;
     public int branchChance;
     public int blindChance;
+    public List<AreaManager.Area_RoomEvent> roomEvents;
     [Header("\n\n\n“Á«")]
     public List<int> perWeights;
     public int maxPer_good = 4;

@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
-  skipDeployPhase: 0
-  skipTutorial: 0
+  debug: 1
+  skipDeployPhase: 1
+  skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}
-  areaData: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
+  areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
   RE: {fileID: 8180078169205948270, guid: 835183b549fec20448c2994c589491ba, type: 3}
   REP: {fileID: 1877823637}
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}

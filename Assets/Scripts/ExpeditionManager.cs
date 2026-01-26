@@ -31,11 +31,16 @@ public class ExpeditionManager : MonoBehaviour
         public int down;
 
         public Vector2Int roomPos;
+        /// <summary>-1:false(locked) 0:false 1:true 2:true(locked)</summary>
+        public void SetBranch_OnInit(int u,int s,int d)
+        {
+            up = u;
+            straight = s;
+            down = d;
+        }
         public void SetRoomEvent(RoomEventData data)
         {
             eventData = data;
-            eventName = data.eventName;
-            eventInfo = data.eventInfo;
             List<GameObject> eventM = new List<GameObject>(data.roomEventManager);
             if (data.debug) { roomEventManager = data.roomEventManager[0]; }
             else
@@ -46,7 +51,20 @@ public class ExpeditionManager : MonoBehaviour
                 }
                 roomEventManager = eventM[UnityEngine.Random.Range(0, eventM.Count)];
             }
+
+            eventName = roomEventManager.GetComponent<RoomEvent>().OverrideMapName(data.eventName);
+            eventInfo = roomEventManager.GetComponent<RoomEvent>().OverrideMapInfo(data.eventInfo);
+
             eventIcon = data.eventIcon;
+        }
+
+        public void SetBranch_Up(int value)
+        {
+            if (!empty&&(up == 0 || up == 1)) { up = value; }
+        }
+        public void SetBranch_Down(int value)
+        {
+            if (!empty&&(down == 0 || down == 1)) { down = value; }
         }
     }
     [System.Serializable]

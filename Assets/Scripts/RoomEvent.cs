@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,12 @@ public class RoomEvent : MonoBehaviour
     string REName;
     [SerializeField, TextArea(3, 10)]
     string REInfo;
+
+    [SerializeField,Header("\n\nマップ上の情報上書き")] bool overrideMapName;
+    [SerializeField] string mapName;
+    [SerializeField] bool overrideMapInfo;
+    [SerializeField,TextArea(5,15)] string mapInfo;
+
     protected AreaData currentArea;
     protected ExpeditionManager expeditionManager;
     protected ExpeditionManager.PartyStatus partyStatus;
@@ -44,6 +51,15 @@ public class RoomEvent : MonoBehaviour
 
         StartRoomEvent();
     }
+    public string OverrideMapName(string _name)
+    {
+        return overrideMapName ? mapName : _name;
+    }
+    public string OverrideMapInfo(string _info)
+    {
+        return overrideMapInfo ? mapInfo : _info;
+    }
+
     public virtual void StartRoomEvent() { }
     public virtual void OnEndREInfo() { }
     /// <summary>optionを右クリック時に呼ばれる</summary>
