@@ -23,6 +23,7 @@ public class CommonParams : ScriptableObject
     public List<AreaData> areaDataBase_tier3;
     public AreaData areaData_end;
     public RaEDataBase RaEDataBase;
+    public List<float> RaEWeights;
     public RoomRef roomRef;
 
     public Color StEColor( PA_StatusEffect.StatusEffectStatus status)

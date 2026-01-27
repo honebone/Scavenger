@@ -467,7 +467,7 @@ MonoBehaviour:
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
-  RE: {fileID: 8180078169205948270, guid: 835183b549fec20448c2994c589491ba, type: 3}
+  RE: {fileID: 5582952330690734101, guid: 277d1d21903f4dd46879a5ff8451f0d7, type: 3}
   REP: {fileID: 1877823637}
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
@@ -24222,7 +24222,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1605753869}
   m_HandleRect: {fileID: 1605753868}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

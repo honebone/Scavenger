@@ -82,6 +82,6 @@ MonoBehaviour:
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
     weight: 0
     garanteed: 2
-  perWeights: 2d0000003700000000000000
+  perWeights: 2d0000003400000003000000
   maxPer_good: 4
   maxPer_bad: 4

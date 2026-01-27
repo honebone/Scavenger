@@ -384,10 +384,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
   areaData_end: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
   RaEDataBase:
-    nagative: []
-    normal: []
-    rare: []
+    nagative:
+    - {fileID: 5582952330690734101, guid: 277d1d21903f4dd46879a5ff8451f0d7, type: 3}
+    normal:
+    - {fileID: 8180078169205948270, guid: 835183b549fec20448c2994c589491ba, type: 3}
+    - {fileID: 8180078169205948270, guid: 0e8a0858415b82d46b072d2b304601cc, type: 3}
+    - {fileID: 8180078169205948270, guid: e298cd9b66907724889a0e0174f6bdbd, type: 3}
+    - {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
+    - {fileID: 8180078169205948270, guid: c2ab6244e21822c4fb8dc220311955b8, type: 3}
+    rare:
+    - {fileID: 8180078169205948270, guid: b5857a50d2ab9a540ad9d12d879151d6, type: 3}
+    - {fileID: 8180078169205948270, guid: 48aac2d4e0acb8946bd5b4a7e3c6ba20, type: 3}
+    - {fileID: 8180078169205948270, guid: 02728e33f97f3fc4da21b88a9044016c, type: 3}
     epic: []
     legendary: []
+  RaEWeights:
+  - 20
+  - 55
+  - 20
+  - 4.99
+  - 0.01
   roomRef:
     rest: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
