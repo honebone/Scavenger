@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245495364145880639}
-  - component: {fileID: 1752783872308284416}
+  - component: {fileID: 434863101326755863}
   m_Layer: 0
-  m_Name: RaE_TowerOfGreatMage
+  m_Name: RaE_TrapRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1752783872308284416
+--- !u!114 &434863101326755863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,26 +41,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180078169205948270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd6d695b960ca164f8505dfecd8ca403, type: 3}
+  m_Script: {fileID: 11500000, guid: ff3d1670739946b4b85c6293233229d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
-  REName: "\u5927\u9B54\u8853\u5E2B\u306E\u66F8\u5EAB"
-  REInfo: "\u7D50\u754C\u306B\u8986\u308F\u308C\u305F\u7A7A\u9593\u304C\u4E00\u77AC\u63FA\u3089\u304E\u8F2A\u90ED\u3092\u73FE\u3059\n\u4E0D\u53EF\u8996\u306E\u66F8\u5EAB\u304C\u57C3\u3068\u5171\u306B\u9759\u304B\u306B\u59FF\u3092\u7D50\u3076\n\u68DA\u306B\u306F\u7981\u3058\u3089\u308C\u305F\u9B54\u8853\u66F8\u304C\u5E7E\u91CD\u306B\u3082\u7720\u308B"
+  REName: "\u7F60\u3060\u3089\u3051\u306E\u90E8\u5C4B"
+  REInfo: "\u90E8\u5C4B\u306E\u4E2D\u592E\u307E\u3067\u9032\u3093\u3067\u3088\u3046\u3084\u304F\u3001\u7F60\u306B\u56F2\u307E\u308C\u3066\u3044\u308B\u3053\u3068\u306B\u6C17\u3065\u3044\u305F\n\u8AB0\u304B\u304C\u7F60\u3092\u89E3\u9664\u3057\u306A\u3051\u308C\u3070\u306A\u3089\u306A\u3044"
   overrideMapName: 0
   mapName: 
   overrideMapInfo: 0
   mapInfo: 
-  rarity: 4
+  rarity: 0
   charaSelectInfo:
     option:
       optionName: 
-      optionInfo: 
-      expMul: 0
-      optionInfo_suffix: 
+      optionInfo: "\u81EA\u8EAB\u306E<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u306B\u7B49\u3057\u3044\u78BA\u7387\u3067\u6210\u529F\u3059\u308B\r\n\u6210\u529F\u3059\u308B\u3068\u3001<color=#FAF696><sprite
+        name=EXP><link=T_EXP><u>EXP</u></link></color>+"
+      expMul: 1
+      optionInfo_suffix: "\n\u5931\u6557\u3059\u308B\u3068\u3001<sprite name=HP><color=#87FF79>HP</color>\u309230\uFF05\u5931\u3046"
       available: 1
-    showExp: 0
-  eqs:
-  - {fileID: 11400000, guid: 90ff8d6735c0a7942ab885bacbe1e922, type: 2}
-  - {fileID: 11400000, guid: 1ad39f71ca350a641a5f4da23fd6d501, type: 2}
-  - {fileID: 11400000, guid: 3cb04664f6c49c94ab3001a7f2aec3bf, type: 2}
+    showExp: 1
+  HPDec: 30
+  EXP: 1

@@ -1267,6 +1267,15 @@ public class Character : MonoBehaviour
             }
         }
     }
+    /// <summary>
+    /// í“¬’†‚ÍŒÄ‚Î‚ê‚È‚¢
+    /// </summary>
+    /// <param name="percent"></param>
+    public void DecreaseHP_Per(float percent)
+    {
+        int dec = charaStatus.maxHP.Mul(percent);
+        DecreaseHP(dec);
+    }
 
     /// <summary>return:EŠQ‚µ‚½‚©</summary>
     public bool Damage(Action.OnDamageParams onDamageParams)
