@@ -155,7 +155,10 @@ MonoBehaviour:
   expSprite: {fileID: 21300000, guid: c95b4a6fae64ab74eb9d50c98dea1ac5, type: 3}
   expColor: {r: 0.9811321, g: 0.96370393, b: 0.58775365, a: 1}
   expName: "\u7D4C\u9A13\u306E\u30AA\u30FC\u30D6"
-  expInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306E\u89E3\u653E\u3084\u5F37\u5316\u3092\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
+  expInfo: "\u597D\u304D\u306A\u30AD\u30E3\u30E9\u306E<color=#FAF696><sprite name=EXP><link=T_EXP><u>EXP</u></link></color>\u306B\u5909\u63DB\u3067\u304D\u308B"
+  coinSprite: {fileID: 21300000, guid: 48b88d3e4833b0e48ba5cd3dcf05cb52, type: 3}
+  coinName: "\u30B3\u30A4\u30F3"
+  coinInfo: "\u30B7\u30E7\u30C3\u30D7\u3067\u88C5\u5099\u54C1\u3068\u4EA4\u63DB\u3067\u304D\u308B"
 --- !u!114 &8645042545267623208
 MonoBehaviour:
   m_ObjectHideFlags: 0

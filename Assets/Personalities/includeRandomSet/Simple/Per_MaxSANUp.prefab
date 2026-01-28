@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_maxSANUp
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
@@ -53,7 +54,7 @@ MonoBehaviour:
     LVL: 0
     maxHP_mul: 0
     maxHP_int: 0
-    maxSAN_mul: 20
+    maxSAN_mul: 25
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
@@ -73,8 +74,10 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u52C7\u6562"
     personalityType: 3

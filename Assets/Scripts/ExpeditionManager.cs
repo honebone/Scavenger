@@ -47,9 +47,12 @@ public class ExpeditionManager : MonoBehaviour
             {
                 if (data.randomEvent)
                 {
-                    eventM.AddRange(Definer.generalRaEDataBase);
+                    //eventM.AddRange(Definer.generalRaEDataBase);
+
+                    //ToDo å≈óLRaEí«â¡
+                    roomEventManager = Definer.RaEDataBase[Definer.inst.cp.RaEWeights.ChoiceWithWeight()].Choice();
                 }
-                roomEventManager = eventM[UnityEngine.Random.Range(0, eventM.Count)];
+               else roomEventManager = eventM[UnityEngine.Random.Range(0, eventM.Count)];
             }
 
             eventName = roomEventManager.GetComponent<RoomEvent>().OverrideMapName(data.eventName);
@@ -74,7 +77,7 @@ public class ExpeditionManager : MonoBehaviour
         public float[] equipmentDropWeights = new float[] { 50, 35, 10, 4, 1 };
         public int turnOrderReveal = 3;
 
-        public int dropExpChance = 50;
+        //public int dropExpChance = 50;
 
         /// <summary>roomEventèIóπéûÇ…ì¡ê´í«â¡ämó¶</summary>
         public int getPerChance_endRE = 10;
@@ -331,8 +334,6 @@ public class ExpeditionManager : MonoBehaviour
     {
         if((partyStatus.areaCount > 1 && partyStatus.currentPos.x == 0) || partyStatus.currentPos.x == Mathf.FloorToInt(currentAreaManger.GetAreaLength() / 2f))//enemyLVLUP
         {
-            //StartCoroutine(EnemyLVLUpC());
-            Debug.Log(partyStatus.currentPos.x);
             relManager.Enqueue_EnemyLVL();
         }
 
@@ -423,16 +424,16 @@ public class ExpeditionManager : MonoBehaviour
 
         infoText.AddLogText(string.Format("==============<ëÊ{0}äKëw>==============", partyStatus.currentPos.x));
 
-        bool SANDMG=false;
-        foreach (Character chara in charactersManager.GetExistingCharacters_All())
-        {
-            if (gp.SANDMGChanceOnRoom.Dice())
-            {
-                SANDMG = true;
-                chara.SANDamage(gp.SANDMGOnRoom.Range());
-            }
-        }
-        if(SANDMG) yield return new WaitForSeconds(1f);
+        //bool SANDMG=false;
+        //foreach (Character chara in charactersManager.GetExistingCharacters_All())
+        //{
+        //    if (gp.SANDMGChanceOnRoom.Dice())
+        //    {
+        //        SANDMG = true;
+        //        chara.SANDamage(gp.SANDMGOnRoom.Range());
+        //    }
+        //}
+        //if(SANDMG) yield return new WaitForSeconds(1f);
 
         var r = Instantiate(currentRoom.roomEventManager, REManagerParent);
         r.GetComponent<RoomEvent>().Init(currentAreaManger.GetArea());
@@ -535,8 +536,10 @@ public class ExpeditionManager : MonoBehaviour
 
         supplyManager.AddSupply_Eq(battleParams.additionalEq);
         supplyManager.AddSupply_Eq(battleParams.additionalEq_epic, ItemData.Rarity.epic);
+
         if (battleParams.supplyPicksMod > 0) supplyManager.AddPicks(battleParams.supplyPicksMod);
-        if (battleParams.expMod > 0) lootPanel.AddExp(battleParams.expMod);
+        lootPanel.AddExp(1+ battleParams.expMod);
+        lootPanel.AddCoin(gp.coinPerBattle_base.Range());
 
         //for (int i = 0; i < 9; i++)
         //{
@@ -752,7 +755,6 @@ public class ExpeditionManager : MonoBehaviour
         if (setting_ResetPos) charactersManager.ResetPlayerPos();
         if (playBGM) soundManager.PlayBGM_Normal();
         else soundManager.StopBGMs();
-        if (partyStatus.dropExpChance.Dice()) { lootPanel.AddExp(1); }
         //supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
         currentRE.OnEndBattle();
     }
@@ -772,7 +774,12 @@ public class ExpeditionManager : MonoBehaviour
 
         foreach (Character chara in ExpeditionRef.charactersManager.GetExistingCharacters_All())
         {
-            Character.CharacterStatus status = chara.CharaStatus();
+            if (gp.SANDMGChanceOnRoom.Dice())//SAN
+            {
+                chara.SANDamage(gp.SANDMGOnRoom.Range());
+            }
+
+            Character.CharacterStatus status = chara.CharaStatus();//âÒïú
             int decreasedHP = status.maxHP - status.HP;
             chara.Heal((decreasedHP * GameManager.gameParams.RegenPercentOnRoomEnd / 100f).ToInt(), null);
         }

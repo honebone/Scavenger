@@ -46,10 +46,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_Forrest_Root
-  PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\u3001PROT+20\u3001\u79FB\u52D5\u8010\u6027+25\uFF05\u3001\u30C7\u30D0\u30D5\u8010\u6027+50\uFF05\n\u81EA\u8EAB\u304C\u79FB\u52D5\u3057\u305F\u3068\u304D\u3001\u4E0A\u8A18\u52B9\u679C\u3092\u5931\u3044\u3001\u3055\u3089\u306BPROT-30\u3001\u79FB\u52D5\u8010\u6027-30\uFF05\u3001\u30C7\u30D0\u30D5\u8010\u6027-30\uFF05"
+  noSimpleInfo: 0
+  simpleInfo: 
+  PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\r\n<color=#8DD1FF><sprite name=PROT><link=T_PROT><u>PROT</u></link></color>+20\r\n\u79FB\u52D5\u8010\u6027+25\uFF05\r\n<sprite
+    name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u8010\u6027+50\uFF05\r\n\r\n\u81EA\u8EAB\u304C\u79FB\u52D5\u3057\u305F\u3068\u304D\u3001\u4E0A\u8A18\u52B9\u679C\u3092\u5931\u3044\u3001\u3055\u3089\u306B\r\n<color=#8DD1FF><sprite
+    name=PROT><link=T_PROT><u>PROT</u></link></color>-30\r\n\u79FB\u52D5\u8010\u6027-30\uFF05\r\n<sprite
+    name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u8010\u6027-30\uFF05"
   skipGetInfo: 1
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
+  AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u68EE\u306E\u6075\u307F\uFF1A\u6839\u6DF1\u3044\u610F\u601D"
     personalityType: 6
@@ -74,8 +106,10 @@ MonoBehaviour:
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
+    debuffChance: 0
     moveRes: 25
     debuffRes: 50
+    minion: 0
   statusMod2:
     LVL: 0
     maxHP_mul: 0
@@ -97,8 +131,10 @@ MonoBehaviour:
     RHeal: 0
     StEResists: []
     StEApplyBonus: []
+    debuffChance: 0
     moveRes: -30
     debuffRes: -30
+    minion: 0
 --- !u!212 &-2250003201101246345
 SpriteRenderer:
   m_ObjectHideFlags: 0

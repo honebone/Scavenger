@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaE_Forrest_Mutation : RoomEvent
+public class RaE_Forrest_Mutation : RE_RandomEvents
 {
     [SerializeField] List<GameObject> mutations;
 
-    protected int choice = 0;
     /// <summary> 0:deploy 1:selectArea </summary>
     int phase;
-    //GameObject eventManager;
-    List<CharacterData> deployPool = new List<CharacterData>();
 
     GameObject selectedMutation;
     List<Character> characters = new List<Character>();

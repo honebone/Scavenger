@@ -29,7 +29,34 @@ public class RoomEvent : MonoBehaviour
         public string optionName;
         [TextArea(3, 10)]
         public string optionInfo;
+        [Header("expを自動計算")]
+        public float expMul;
+        [TextArea(3, 10)]
+        public string optionInfo_suffix;
+
         public bool available = true;
+
+        public string GetInfo()
+        {
+            string expInfo = expMul == 0 ? "" : ExpeditionManager.inst.GetExpAmount(expMul).ToString();
+            return $"{optionInfo}{expInfo}{optionInfo_suffix}";
+        }
+        public REOptionParams()
+        {
+            optionName = "";
+            optionInfo = "";
+            expMul = 0;
+            optionInfo_suffix = "";
+            available = true;
+        }
+        public REOptionParams(REOptionParams copy)
+        {
+            optionName = copy.optionName;
+            optionInfo = copy.optionInfo;
+            expMul = copy.expMul;
+            optionInfo_suffix = copy.optionInfo_suffix;
+            available = copy.available;
+        }
     }
     public void Init(AreaData area)
     {
@@ -41,11 +68,23 @@ public class RoomEvent : MonoBehaviour
         characterManager=FindObjectOfType<CharactersManager>();
         infoText = FindObjectOfType<InfoText>();
 
-        if (REName != "") { expeditionManager.LogREName(REName); }
-        if (REInfo != "") { infoText.AddLogText(REInfo + "\n"); }
+        string _name = REName;
+        string info = "";
+        if (this as RE_RandomEvents != null)//醜いダウンキャスト　致し方なし
+        {
+            RE_RandomEvents rae=this as RE_RandomEvents;
+            info += $"{rae.GetRarityStr()}イベント";
+            if (rae.GetRarity() == RE_RandomEvents.Rarity.legendary) info += $"({Definer.inst.cp.RaEWeights[(int)RE_RandomEvents.Rarity.legendary]}％！)";
+
+            _name= _name.ColorStr(rae.GetRarity().ToColor());
+        }
+        info += $"{Extentions.NL(info, 2)}{REInfo}";
+
+        if (_name != "") { expeditionManager.LogREName(_name); }
+        if (REInfo != "") { infoText.AddLogText(info + "\n"); }
         if (showREInfoOnStart)
         {
-            expeditionManager.SetREInfo(REName, REInfo);
+            expeditionManager.SetREInfo(_name, info);
         }
 
         StartRoomEvent();

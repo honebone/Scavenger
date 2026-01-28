@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Definer : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Definer : MonoBehaviour
         public Color[] positionEffectColors;
         /// <summary>0:common 1:uncommon 2:rare 3:epic 4:legendary</summary>
         public Color[] rarityColors;
+        /// <summary>0:negative 1:common 2:rare 3:epic 4:legendary</summary>
+        public Color[] RaERarityColors;
 
         public Color affricted;
 
@@ -45,6 +48,7 @@ public class Definer : MonoBehaviour
 
         public Color AMod;
         public Color expOrb;
+        public Color coin;
     }
     [System.Serializable]
     public class SoundRef
@@ -66,6 +70,9 @@ public class Definer : MonoBehaviour
         public AudioClip die1;
         public AudioClip die2;
         public AudioClip[] getItem;
+
+        public AudioClip expOrb;
+        public AudioClip coin;
 
         public AudioClip select;
         public AudioClip mouseover;
@@ -285,6 +292,7 @@ public class Definer : MonoBehaviour
     public static List<ItemData> lootDataBase = new List<ItemData>();
     public static List<List<ItemData>> equipments = new List<List<ItemData>>();
     public static List<GameObject> generalRaEDataBase;
+    public static List<List<GameObject>> RaEDataBase = new List<List<GameObject>>();
     public static List<List<GameObject>> personalities = new List<List<GameObject>>();
 
 
@@ -433,6 +441,16 @@ public class Definer : MonoBehaviour
         }
 
         generalRaEDataBase = new List<GameObject>(generalRaEDataBase_Inspector);
+
+        for (int i = 0; i < Enum.GetNames(typeof(RE_RandomEvents.Rarity)).Length; i++)
+        {
+            RaEDataBase.Add(new List<GameObject>());
+        }
+        foreach(GameObject RaE in cp.RaEDataBase)
+        {
+            RaEDataBase[(int)RaE.GetComponent<RE_RandomEvents>().GetRarity()].Add(RaE);
+        }
+        //cp.RaEDataBase.ForEach(r => RaEDataBase[(int)r.GetComponent<RE_RandomEvents>().GetRarity()].Add(r));
     }
 
 

@@ -94,6 +94,14 @@ MonoBehaviour:
     color: {r: 0.98039216, g: 0.9647059, b: 0.5882353, a: 1}
     info: "\u7D4C\u9A13\u5024\n\n\u4E00\u5B9A\u91CF\u305F\u3081\u308B\u3068\u3001<sprite
       name=EXP>\u3092\u6D88\u8CBB\u3057\u3066LVL UP\u304C\u3067\u304D\u308B"
+  - key: move
+    defaultName: "\u79FB\u52D5"
+    color: {r: 0, g: 0.61960787, b: 1, a: 1}
+    info: 
+  - key: coin
+    defaultName: "\u30B3\u30A4\u30F3"
+    color: {r: 0.84705883, g: 0.24313726, b: 0.80784315, a: 1}
+    info: 
   statusEffectDataBase:
   - {fileID: 5164891664867224302, guid: 94e71c2364f158341a1b9d262fad6880, type: 3}
   - {fileID: 5164891664867224302, guid: 309c170d3decafc418eb9799c90a59b2, type: 3}
@@ -200,6 +208,12 @@ MonoBehaviour:
     - {r: 0.6, g: 0.2, b: 1, a: 1}
     - {r: 1, g: 0.5019608, b: 0, a: 1}
     - {r: 0.7921569, g: 0, b: 0, a: 1}
+    RaERarityColors:
+    - {r: 0.7921569, g: 0, b: 0, a: 1}
+    - {r: 1, g: 1, b: 1, a: 1}
+    - {r: 0, g: 1, b: 1, a: 1}
+    - {r: 0.6, g: 0.2, b: 1, a: 1}
+    - {r: 1, g: 0.5019608, b: 0, a: 1}
     affricted: {r: 0.7921569, g: 0, b: 0, a: 1}
     decreaseHP: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
     damage: {r: 0.764151, g: 0, b: 0, a: 1}
@@ -219,6 +233,7 @@ MonoBehaviour:
     emphasize: {r: 1, g: 0.7490196, b: 0.4117647, a: 1}
     AMod: {r: 0.39498475, g: 0.6981132, b: 0.2206301, a: 1}
     expOrb: {r: 0.98039216, g: 0.9647059, b: 0.5882353, a: 1}
+    coin: {r: 0.84705883, g: 0.24313726, b: 0.80784315, a: 1}
   soundRef:
     miss: {fileID: 8300000, guid: 03c3949a8c191454f9f199ed035496f2, type: 3}
     evade: {fileID: 8300000, guid: f2d5becfdc5cd1249ba72c3e3bd47605, type: 3}
@@ -248,6 +263,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c3ab8901045ac3c4bacf36254f6d69a5, type: 3}
     - {fileID: 8300000, guid: 243e61339f8b69a418a7768338e21241, type: 3}
     - {fileID: 8300000, guid: a99fe82ed2f4be042854de8ac98ff63e, type: 3}
+    expOrb: {fileID: 0}
+    coin: {fileID: 0}
     select: {fileID: 8300000, guid: 03bc833bbba470547874e6de009752b6, type: 3}
     mouseover: {fileID: 0}
     info: {fileID: 0}
@@ -384,20 +401,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
   areaData_end: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
   RaEDataBase:
-    nagative:
-    - {fileID: 5582952330690734101, guid: 277d1d21903f4dd46879a5ff8451f0d7, type: 3}
-    normal:
-    - {fileID: 8180078169205948270, guid: 835183b549fec20448c2994c589491ba, type: 3}
-    - {fileID: 8180078169205948270, guid: 0e8a0858415b82d46b072d2b304601cc, type: 3}
-    - {fileID: 8180078169205948270, guid: e298cd9b66907724889a0e0174f6bdbd, type: 3}
-    - {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
-    - {fileID: 8180078169205948270, guid: c2ab6244e21822c4fb8dc220311955b8, type: 3}
-    rare:
-    - {fileID: 8180078169205948270, guid: b5857a50d2ab9a540ad9d12d879151d6, type: 3}
-    - {fileID: 8180078169205948270, guid: 48aac2d4e0acb8946bd5b4a7e3c6ba20, type: 3}
-    - {fileID: 8180078169205948270, guid: 02728e33f97f3fc4da21b88a9044016c, type: 3}
-    epic: []
-    legendary: []
+  - {fileID: 8180078169205948270, guid: 98265843c4702eb49b794608a87ff1ec, type: 3}
+  - {fileID: 8180078169205948270, guid: b5857a50d2ab9a540ad9d12d879151d6, type: 3}
+  - {fileID: 8180078169205948270, guid: 48aac2d4e0acb8946bd5b4a7e3c6ba20, type: 3}
+  - {fileID: 8180078169205948270, guid: 02728e33f97f3fc4da21b88a9044016c, type: 3}
+  - {fileID: 8180078169205948270, guid: 835183b549fec20448c2994c589491ba, type: 3}
+  - {fileID: 8180078169205948270, guid: 0e8a0858415b82d46b072d2b304601cc, type: 3}
+  - {fileID: 8180078169205948270, guid: e298cd9b66907724889a0e0174f6bdbd, type: 3}
+  - {fileID: 8180078169205948270, guid: 7341027b6732b844682e7b6c9dd67490, type: 3}
+  - {fileID: 8180078169205948270, guid: c2ab6244e21822c4fb8dc220311955b8, type: 3}
+  - {fileID: 5582952330690734101, guid: 277d1d21903f4dd46879a5ff8451f0d7, type: 3}
+  - {fileID: 8180078169205948270, guid: e67aea6917537c54790fe43625d4dd3a, type: 3}
+  - {fileID: 8180078169205948270, guid: 152f46b235835674db4f06fd8f2d0f09, type: 3}
   RaEWeights:
   - 20
   - 55

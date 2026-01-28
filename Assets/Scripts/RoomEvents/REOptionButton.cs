@@ -28,7 +28,7 @@ public class REOptionButton : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             SoundManager.instance.PlaySE_Info();
-            infoText.SetText_Old(optionParams.optionName, optionParams.optionInfo);
+            infoText.SetText_Old(optionParams.optionName, optionParams.GetInfo());
             expeditionManager.REOption_OnRClick(index);
         }
         if (Input.GetMouseButtonDown(0) && optionParams.available)
@@ -41,7 +41,7 @@ public class REOptionButton : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        infoText.SetText_Old(optionParams.optionName, optionParams.optionInfo);
+        infoText.SetText_Old(optionParams.optionName, optionParams.GetInfo());
         //mouseOver.SetUI("");
     }
     public void OnMouseExit()

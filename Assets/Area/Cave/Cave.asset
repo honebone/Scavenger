@@ -21,25 +21,6 @@ MonoBehaviour:
     lightIntensity: 0.15
   areaManager: {fileID: 8067357777361135097, guid: 6e3d5cccf75312e40b331183ae5a10f1, type: 3}
   BGM: {fileID: 8300000, guid: 852e508e581db8e4c9b45cf896ae5a79, type: 3}
-  roomEvents:
-  - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
-    weight: 46
-  - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
-    weight: 1
-  - roomEvent: {fileID: 11400000, guid: f1cf9196abdb07c448dd0f47afec67a5, type: 2}
-    weight: 1
-  - roomEvent: {fileID: 11400000, guid: 02c2f197afad8a54b8d5f122888ea228, type: 2}
-    weight: 1
-  - roomEvent: {fileID: 11400000, guid: 98d568785ebce4446a13c8202306d85b, type: 2}
-    weight: 1
-  - roomEvent: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
-    weight: 30
-  - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
-    weight: 5
-  - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
-    weight: 5
-  - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
-    weight: 10
   start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
   halfway: {fileID: 11400000, guid: afcf3f6e3c2b4564eaf62145b1476b8b, type: 2}
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
@@ -125,6 +106,9 @@ MonoBehaviour:
     atRandom: []
   battleBGM:
   - {fileID: 8300000, guid: 9a4a128792e5ec841a714764b5974091, type: 3}
+  uniqueRaE:
+  - {fileID: 4154373557521219498, guid: c2c66b4ea6134cc49882137f45baf921, type: 3}
+  - {fileID: 4154373557521219498, guid: 5ed9c00d98d4fc24cb58b38a36f3c8f9, type: 3}
   applyFEChance: 20
   normalBattleFEPool:
   - {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

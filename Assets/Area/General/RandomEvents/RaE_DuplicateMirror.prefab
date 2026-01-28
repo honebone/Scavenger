@@ -47,8 +47,23 @@ MonoBehaviour:
   showREInfoOnStart: 1
   REName: "\u8907\u88FD\u306E\u5408\u308F\u305B\u93E1"
   REInfo: "\u5D29\u308C\u305F\u5EC3\u5802\u306B\u3001\u7121\u6570\u306E\u93E1\u304C\u7ACB\u3066\u304B\u3051\u3089\u308C\u3066\u3044\u308B\n\u6620\u50CF\u306F\u6B6A\u307F\u3001\u88C5\u5099\u3060\u3051\u304C\u9BAE\u660E\u306B\u6620\u308B\n\u3069\u308C\u304B\u3092\u9078\u3079\u3070\u3001\u540C\u3058\u54C1\u304C\u3082\u3046\u4E00\u3064\u73FE\u308C\u305D\u3046\u3060"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 1
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
   skip:
     optionName: "\u30B9\u30AD\u30C3\u30D7"
     optionInfo: 
+    expMul: 0
+    optionInfo_suffix: 
     available: 1
   optionsAmount: 4

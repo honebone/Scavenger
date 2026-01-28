@@ -46,7 +46,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
   REName: "\u68EE\u306E\u6075\u307F"
-  REInfo: "\u4EFB\u610F\u306E\u30AD\u30E3\u30E91\u4F53\u304C\u3001\u9078\u3093\u3060\u68EE\u306E\u6075\u307F\u3092\u5F97\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
+  REInfo: "\u30AD\u30E3\u30E91\u4F53\u304C\u3001\u9078\u3093\u3060\u68EE\u306E\u6075\u307F\u3092\u5F97\u308B\u3053\u3068\u304C\u3067\u304D\u308B"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 2
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
   mutations:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}

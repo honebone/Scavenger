@@ -486,22 +486,22 @@ public class Action : MonoBehaviour
                 if (moveRandomDir > 0)
                 {
                     string dir = "";
-                    if(moveForword > 0 && moveUpper > 0 && moveLower > 0 && moveBackword > 0) { s += $"ランダムな方向に{moveRandomDir}マス移動\n"; }
+                    if(moveForword > 0 && moveUpper > 0 && moveLower > 0 && moveBackword > 0) { s += $"ランダムな方向に{moveRandomDir}マス{"move".ToSpr_withName("移動")}\n"; }
                     else
                     {
                         if (moveForword > 0) { dir += $"{(dir == "" ? "" : ",")}前"; }
                         if (moveUpper > 0) { dir += $"{(dir == "" ? "" : ",")}上"; }
                         if (moveLower > 0) { dir += $"{(dir == "" ? "" : ",")}下"; }
                         if (moveBackword > 0) { dir += $"{(dir == "" ? "" : ",")}後ろ"; }
-                        s += $"ランダムな{dir}方向に{moveRandomDir}マス移動\n";
+                        s += $"ランダムな{dir}方向に{moveRandomDir}マス{"move".ToSpr_withName("移動")}\n";
                     }                                       
                 }
                 else
                 {
-                    if (moveForword > 0) { s += string.Format("{0}マス前進\n", moveForword); }
-                    if (moveUpper > 0) { s += string.Format("{0}マス上昇\n", moveUpper); }
-                    if (moveLower > 0) { s += string.Format("{0}マス下降\n", moveLower); }
-                    if (moveBackword > 0) { s += string.Format("{0}マス後退\n", moveBackword); }
+                    if (moveForword > 0) { s += $"{moveForword}マス{"move".ToSpr_withName("前進")}"; }
+                    if (moveUpper > 0) { s += $"{moveUpper}マス{"move".ToSpr_withName("上昇")}"; }
+                    if (moveLower > 0) { s += $"{moveLower}マス{"move".ToSpr_withName("下降")}"; }
+                    if (moveBackword > 0) { s += $"{moveBackword}マス{"move".ToSpr_withName("後退")}"; }
                 }
                 
             }

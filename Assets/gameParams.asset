@@ -29,6 +29,9 @@ MonoBehaviour:
     ACT: 0.5
     EVD: 1
     ACC: 1
+  initialCoin: 10
+  coinPerBattle_base: {x: 8, y: 13}
+  eqPrice: 000000000a000000140000002800000032000000
   madnessSpawnChance: 10
   madnessStatMod:
     LVL: 0
@@ -62,7 +65,7 @@ MonoBehaviour:
   SANPenaltyOnDie: 15
   areaLength: 6
   branchChance: 30
-  blindChance: 20
+  blindChance: 15
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
     weight: 60

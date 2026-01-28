@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_moveResUp
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
@@ -71,10 +72,12 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
-    moveRes: 20
+    moveRes: 35
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u5B89\u5B9A"
     personalityType: 3

@@ -11,6 +11,7 @@ public class LootPanel : MonoBehaviour
     [SerializeField]//test
     List<Definer.Item> loots = new List<Definer.Item>();
     int expOrbs;
+    int coins;
     [SerializeField]
     GameObject lootPanel;
     [SerializeField]
@@ -145,6 +146,11 @@ public class LootPanel : MonoBehaviour
             var eb = Instantiate(itemButton, content);
             eb.GetComponent<LootButton>().Init_AsExp(expOrbs, infoText, soundManager);
         }
+        if (coins > 0)
+        {
+            var eb = Instantiate(itemButton, content);
+            eb.GetComponent<LootButton>().Init_AsCoin(coins, infoText, soundManager);
+        }
     }
     IEnumerator Reveal()
     {
@@ -156,7 +162,11 @@ public class LootPanel : MonoBehaviour
 
             if (lootButton.GetIfExp())
             {
-                soundManager.PlaySE(SE_Exp);
+                soundManager.PlaySE(Definer.soundRef.expOrb);
+            }
+            else if (lootButton.GetIfCoin())
+            {
+                soundManager.PlaySE(Definer.soundRef.coin);
             }
             else
             {
@@ -286,7 +296,7 @@ public class LootPanel : MonoBehaviour
         
         //Sort();
     }
-    public void AddItem(ItemData itemData, int amount)
+    public void AddItem(ItemData itemData, int amount = 1)
     {
         if (itemData.itemType == ItemData.ItemType.equipment)
         {
@@ -297,6 +307,11 @@ public class LootPanel : MonoBehaviour
         }
         //Sort();
     }
+
+    public void AddItem(List<ItemData> items)
+    {
+        items.ForEach(item => { AddItem(item); });
+    }
     public void AddExp(float amount)
     {
         expOrbs += expeditionManager.GetExpAmount(amount);
@@ -304,6 +319,14 @@ public class LootPanel : MonoBehaviour
     public void RemoveExp()
     {
         expOrbs = 0;
+    }
+    public void AddCoin(int amount)
+    {
+        coins += amount;
+    }
+    public void RemoveCoin()
+    {
+        coins = 0;
     }
     public void RemoveItem(Definer.Item remove, int amount)
     {
@@ -357,6 +380,10 @@ public class LootPanel : MonoBehaviour
             {
                 inventory.AddExp(expOrbs, true);
             }
+            if (coins > 0)
+            {
+                inventory.AddCoin(coins, true);
+            }
             EndLoot();
         }
     }
@@ -372,6 +399,7 @@ public class LootPanel : MonoBehaviour
     {
         loots = new List<Definer.Item>();
         expOrbs = 0;
+        coins = 0;
         SetButtons();
     }
 

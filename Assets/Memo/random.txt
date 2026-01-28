@@ -2,14 +2,13 @@
 ピクセル数 -> UIサイズ：x2.5
 UIサイズ -> ピクセル数：x0.4
 
-RE
-REの種類確率はgameParamsに
-
-共通RaEはcommonParamsに
-固有はaraeDataに
-
-◇エピック
-
+◇コイン
+初期コイン
+勝利時コイン
+ボス、精鋭の倍率
+値段
+セール確率
+セール量
 
 汎用スクリプト最新：Eq_OnDamage !!!Eq_Masterを作成！
 AMod最新：AMod_DebuffKinds

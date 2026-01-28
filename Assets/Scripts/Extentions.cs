@@ -14,27 +14,6 @@ public static class Extentions
         return "<color=#" + ColorUtility.ToHtmlStringRGB(color) + ">" + value.ToString() + "</color>";
     }
 
-    public static Color ToColor(this AbilityData.AbilityType abilityType)
-    {
-        return Definer.colorRef.abilityColors[(int)abilityType];
-    }
-    public static Color ToColor(this PA_Personality.PersonalityStatus.PersonalityType type)
-    {
-        return Definer.colorRef.personalityColors[(int)type];
-    }
-    public static Color ToColor(this PA_StatusEffect.StatusEffectStatus status)
-    {
-        return status.overideColor ? status.colorOveride : Definer.colorRef.statusEffectColors[(int)status.StEType];
-    }
-    public static Color ToColor(this PositionEffect.PositionEffectStatus status)
-    {
-        return Definer.colorRef.positionEffectColors[(int)status.PEType];
-    }
-    public static Color ToColor(this ItemData.Rarity rarity)
-    {
-        return Definer.colorRef.rarityColors[(int)rarity];
-    }
-
     /// <summary>New Line Ç∑Ç≈Ç…ï∂éöÇ™Ç†ÇÈÇ»ÇÁâ¸çsÇÅAâΩÇ‡Ç»Ç¢Ç»ÇÁñ≥Çï‘Ç∑</summary>
     public static string NL(string current, int lines = 1,string lineStr="\n")
     {
@@ -464,5 +443,31 @@ public static class Extentions
     {
         string k = (key == "") ? text : key;
         return $"<link=U_{k}><u>{text}</u></link>";
+    }
+
+    public static Color ToColor(this AbilityData.AbilityType abilityType)
+    {
+        return Definer.colorRef.abilityColors[(int)abilityType];
+    }
+    public static Color ToColor(this PA_Personality.PersonalityStatus.PersonalityType type)
+    {
+        return Definer.colorRef.personalityColors[(int)type];
+    }
+    public static Color ToColor(this PA_StatusEffect.StatusEffectStatus status)
+    {
+        return status.overideColor ? status.colorOveride : Definer.colorRef.statusEffectColors[(int)status.StEType];
+    }
+    public static Color ToColor(this PositionEffect.PositionEffectStatus status)
+    {
+        return Definer.colorRef.positionEffectColors[(int)status.PEType];
+    }
+    public static Color ToColor(this ItemData.Rarity rarity)
+    {
+        return Definer.colorRef.rarityColors[(int)rarity];
+    }
+
+    public static Color ToColor(this RE_RandomEvents.Rarity rarity)
+    {
+        return Definer.colorRef.RaERarityColors[(int)rarity];
     }
 }

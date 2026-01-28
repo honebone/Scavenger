@@ -47,9 +47,25 @@ MonoBehaviour:
   showREInfoOnStart: 1
   REName: "\u5012\u58CA\u5BF8\u524D\u306E\u7D0D\u5C4B"
   REInfo: "\u5D29\u308C\u304B\u3051\u305F\u7D0D\u5C4B\u3092\u898B\u3064\u3051\u305F\n\u4E2D\u306B\u306F\u4F7F\u3048\u305D\u3046\u306A\u3082\u306E\u304C\u3042\u308A\u305D\u3046\u3060\u304C\u3001\u3044\u3064\u5012\u58CA\u3057\u3066\u3082\u304A\u304B\u3057\u304F\u306A\u3044"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 2
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
   exit:
     optionName: "\u5148\u3078\u9032\u3080"
     optionInfo: "\u5148\u3078\u9032\u3080"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1
   defaultChance: 25
   mul: 1.5
   lootStatus:
@@ -64,4 +80,4 @@ MonoBehaviour:
     - tag: 1
       weight: 2
     excludeTags: 
-    dropEquipmentsRange: {x: 2, y: 3}
+    dropEquipmentsRange: {x: 2, y: 4}

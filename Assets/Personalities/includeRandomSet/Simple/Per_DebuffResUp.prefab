@@ -74,9 +74,11 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChance: 0
     moveRes: 0
-    debuffRes: 20
+    debuffRes: 30
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u5065\u5EB7"
     personalityType: 3

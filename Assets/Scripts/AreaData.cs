@@ -17,6 +17,7 @@ public class AreaData : ScriptableObject
     public RoomEventData endArea;
     public List<AreaManager.EnemySet> normalBattlePool;
     public List<AudioClip> battleBGM;
+    public List<GameObject> uniqueRaE;
     public int applyFEChance;
     public List<GameObject> normalBattleFEPool;
 

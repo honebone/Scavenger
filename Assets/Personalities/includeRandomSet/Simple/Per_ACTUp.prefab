@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_ACTUp
+  noSimpleInfo: 0
   simpleInfo: 
   PAInfo_start: 
   skipGetInfo: 1
@@ -64,7 +65,7 @@ MonoBehaviour:
     CRITD: 0
     EVD: 0
     ACC: 0
-    ACT: 3
+    ACT: 5
     turnPerRound: 0
     GHeal: 0
     RHeal: 0
@@ -73,8 +74,10 @@ MonoBehaviour:
     debuffChance: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u6D3B\u767A"
     personalityType: 3

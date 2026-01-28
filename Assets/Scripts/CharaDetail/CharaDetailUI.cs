@@ -27,7 +27,8 @@ public class CharaDetailUI : MonoBehaviour
     [SerializeField] List<AudioClip> SE_grab;
     [SerializeField] List<AudioClip> SE_equip;
 
-    public TextMeshProUGUI expAmount;
+    [SerializeField] TextMeshProUGUI expAmount;
+    [SerializeField] TextMeshProUGUI coinAmount;
     [SerializeField] TutorialData tutorial_equip;
     [SerializeField] TutorialData tutorial_exp;
     [SerializeField] TutorialData tutorial_equipment;
@@ -239,7 +240,8 @@ public class CharaDetailUI : MonoBehaviour
             }
         }
 
-        expAmount.text = inventory.GetExp().ToString();
+        expAmount.text = $"{"EXP".ToSpr()}{inventory.GetExp()}";
+        coinAmount.text = $"{"coin".ToSpr()}{inventory.GetCoin()}";
     }
 
     public void SetDraggingItem(Definer.Item item, ChataDetail_CharaButton draggChara)

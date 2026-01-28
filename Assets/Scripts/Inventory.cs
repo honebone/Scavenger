@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]//test
     List<Definer.Item> inventory=new List<Definer.Item> ();
     int expOrbs;
+    int coins;
 
 
     [SerializeField]
@@ -304,6 +305,24 @@ public class Inventory : MonoBehaviour
         expOrbs -= amount;
     }
 
+    public void AddCoin(int amount, bool note)
+    {
+        if (note)
+        {
+            infoText.AddLogText($"œ{"coin".ToSpr_withName()}x{amount}‚ð“üŽè");
+        }
+        coins += amount;
+    }
+    public void RemoveCoin(int amount, bool note)
+    {
+        if (amount > coins) { infoText.AddErrorText("Œ¸‚ç‚·”ŠŽ”‚æ‚è‘½‚¢‚Å‚·"); }
+        if (note)
+        {
+            infoText.AddLogText($"›{"coin".ToSpr_withName()}x{amount}‚ðŽ¸‚Á‚½");
+        }
+        coins -= amount;
+    }
+
     //void SortInventory()
     //{
     //    inventory.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);
@@ -378,4 +397,5 @@ public class Inventory : MonoBehaviour
     //}
 
     public int GetExp() { return expOrbs; }
+    public int GetCoin() { return coins; }
 }

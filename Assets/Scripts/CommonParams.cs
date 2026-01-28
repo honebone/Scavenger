@@ -22,7 +22,7 @@ public class CommonParams : ScriptableObject
     public List<AreaData> areaDataBase_tier2;
     public List<AreaData> areaDataBase_tier3;
     public AreaData areaData_end;
-    public RaEDataBase RaEDataBase;
+    public List<GameObject> RaEDataBase;
     public List<float> RaEWeights;
     public RoomRef roomRef;
 
@@ -36,14 +36,4 @@ public class CommonParams : ScriptableObject
 public class RoomRef
 {
     public RoomEventData rest;
-}
-
-[System.Serializable]
-public class RaEDataBase
-{
-    public List<GameObject> nagative;
-    public List<GameObject> normal;
-    public List<GameObject> rare;
-    public List<GameObject> epic;
-    public List<GameObject> legendary;
 }

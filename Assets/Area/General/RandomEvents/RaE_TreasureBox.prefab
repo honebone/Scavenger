@@ -47,11 +47,30 @@ MonoBehaviour:
   showREInfoOnStart: 1
   REName: "\u5B9D\u7BB1"
   REInfo: "\u5B9D\u7BB1\u3060!\n\u4F55\u304C\u5165\u3063\u3066\u3044\u308B\u3060\u308D\u3046\u304B..."
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 1
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
   options:
   - optionName: "\u5B9D\u7BB1\u3092\u958B\u3051\u308B...?"
     optionInfo: "\u88C5\u5099\u54C1\u30922-4\u500B\u5165\u624B\u3059\u308B\n???"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1
   - optionName: "\u4F55\u3082\u3057\u306A\u3044"
     optionInfo: 
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1
   lootStatus:
     drawAttemptsRange: {x: 0, y: 0}
     rarityWeightMod: 0
