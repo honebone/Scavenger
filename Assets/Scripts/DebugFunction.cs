@@ -47,6 +47,7 @@ public class DebugFunction : MonoBehaviour
     GameObject RE;
     [SerializeField]
     Transform REP;
+    [SerializeField] ShopParams shopParams;
 
     [SerializeField] TutorialData tutorial;
 
@@ -128,16 +129,14 @@ public class DebugFunction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                List<GameObject> per = expeditionManager.GetPer_Random_CertainType(PA_Personality.PersonalityStatus.PersonalityType.bad,5);
-                expeditionManager.SetPersonality(charactersManager.GetExistingCharacters_All()[0], per);
+                List<GameObject> per = expeditionManager.GetPer_Random_CertainType(PA_Personality.PersonalityStatus.PersonalityType.bad,3);
+                expeditionManager.SetPersonality(charactersManager.GetExistingCharacters_All()[0], per,true);
                 //charactersManager.GetExistingCharacters_All().ForEach(x => expeditionManager.SetRandomPer(x,10));
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    expeditionManager.EnemyLVLUP();
-                }
+                Inventory.inst.AddCoin(40);
+               Shop.inst.StartShop(shopParams);
             }
                 if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
             }

@@ -263,8 +263,8 @@ MonoBehaviour:
     - {fileID: 8300000, guid: c3ab8901045ac3c4bacf36254f6d69a5, type: 3}
     - {fileID: 8300000, guid: 243e61339f8b69a418a7768338e21241, type: 3}
     - {fileID: 8300000, guid: a99fe82ed2f4be042854de8ac98ff63e, type: 3}
-    expOrb: {fileID: 0}
-    coin: {fileID: 0}
+    expOrb: {fileID: 8300000, guid: cbee6f96ca7702343964225ea5950cc4, type: 3}
+    coin: {fileID: 8300000, guid: c7d12649435ed459a97468d401216557, type: 3}
     select: {fileID: 8300000, guid: 03bc833bbba470547874e6de009752b6, type: 3}
     mouseover: {fileID: 0}
     info: {fileID: 0}
@@ -414,6 +414,9 @@ MonoBehaviour:
   - {fileID: 8180078169205948270, guid: e67aea6917537c54790fe43625d4dd3a, type: 3}
   - {fileID: 8180078169205948270, guid: 152f46b235835674db4f06fd8f2d0f09, type: 3}
   - {fileID: 8180078169205948270, guid: 730d5d3206480f841905fe7662246442, type: 3}
+  - {fileID: 8180078169205948270, guid: b1b385504890cc246862e6d827b7fae5, type: 3}
+  - {fileID: 8180078169205948270, guid: e7c6e3280f640bc4c84065badf528554, type: 3}
+  - {fileID: 8180078169205948270, guid: bd0c5a8c3801df84e8ca714b42337e6d, type: 3}
   RaEWeights:
   - 20
   - 55

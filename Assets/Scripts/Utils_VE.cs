@@ -24,4 +24,12 @@ public class Utils_VE : MonoBehaviour
         pos.z = 0;
         Instantiate(Definer.VERef.UI_smoke, pos, Quaternion.identity);
     }
+
+    public void SpawnVE(GameObject VE,Vector3 pos)
+    {
+        if (VE != null)
+        {
+            Instantiate(VE, pos, Quaternion.identity);
+        }
+    }
 }

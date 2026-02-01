@@ -29,9 +29,12 @@ MonoBehaviour:
     ACT: 0.5
     EVD: 1
     ACC: 1
-  initialCoin: 10
+  initialCoin: 15
   coinPerBattle_base: {x: 8, y: 13}
   eqPrice: 000000000a000000140000002800000032000000
+  priceMul: {x: 75, y: 125}
+  salePerShop: 2
+  saleMul: 67
   madnessSpawnChance: 10
   madnessStatMod:
     LVL: 0
@@ -68,15 +71,15 @@ MonoBehaviour:
   blindChance: 15
   roomEvents:
   - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
-    weight: 60
+    weight: 55
     garanteed: 4
   - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
     weight: 0
     garanteed: 2
   - roomEvent: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
-    weight: 40
+    weight: 45
     garanteed: 3
-  - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
+  - roomEvent: {fileID: 11400000, guid: 4ba29e65157e9c74a8b44aec1e71a1ec, type: 2}
     weight: 0
     garanteed: 2
   - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}

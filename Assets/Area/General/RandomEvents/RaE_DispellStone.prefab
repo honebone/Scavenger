@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: -1303540172875908678}
+  m_Layer: 0
+  m_Name: RaE_DispellStone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1303540172875908678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb1a42c65e3d10c4888a22e1c4320e9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u89E3\u546A\u306E\u77F3\u76E4"
+  REInfo: "\u98A8\u5316\u3057\u305F\u77F3\u76E4\u306B\u7121\u6570\u306E\u546A\u7B26\u304C\u523B\u307E\u308C\u3066\u3044\u308B\n\u89E6\u308C\u305F\u8005\u306E\u5F71\u304B\u3089\u9ED2\u3044\u6587\u5B57\u304C\u5265\u304C\u308C\u843D\u3061\u308B\n\u624B\u3092\u304B\u3056\u3059\u3068\u3001\u307E\u3068\u308F\u308A\u3064\u304F\u546A\u3044\u304C\u5438\u3044\u8FBC\u307E\u308C\u3066\u3044\u304F\u3060\u308D\u3046"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 2
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: "<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3092\u3059\u3079\u3066\u5931\u3046"
+      available: 1
+    showExp: 0
+    showBadPers: 1

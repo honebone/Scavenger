@@ -247,6 +247,7 @@ public class ExpeditionManager : MonoBehaviour
 
         //‰Šú’lÝ’è
         enemyLVL = 1;
+        inventory.AddCoin(gp.initialCoin);
         partyStatus.startTime = Time.time;
         charactersManager.GetExistingCharacters_All().ForEach(x =>
         {
@@ -342,7 +343,7 @@ public class ExpeditionManager : MonoBehaviour
             SetRandomPer_ToRandom();
         }
 
-        if (partyStatus.madness < partyStatus.maxMadness)
+        if (partyStatus.madness < partyStatus.maxMadness)//‹¶‹C
         {
             for (int i = 0; i < addedMadness; i++)
             {
@@ -758,6 +759,8 @@ public class ExpeditionManager : MonoBehaviour
         //supplyManager.SetSupply_Eq(partyStatus.supplyOptions);
         currentRE.OnEndBattle();
     }
+    public void OnEndShop() { currentRE.OnEndShop(); }
+
     public void OnEndLoot() { currentRE.OnEndLoot(); }
     public void OnEndSupply() { currentRE.OnEndSupply(); }
 

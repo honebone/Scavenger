@@ -305,7 +305,7 @@ public class Inventory : MonoBehaviour
         expOrbs -= amount;
     }
 
-    public void AddCoin(int amount, bool note)
+    public void AddCoin(int amount, bool note=true)
     {
         if (note)
         {
@@ -313,7 +313,7 @@ public class Inventory : MonoBehaviour
         }
         coins += amount;
     }
-    public void RemoveCoin(int amount, bool note)
+    public void RemoveCoin(int amount, bool note=true)
     {
         if (amount > coins) { infoText.AddErrorText("Œ¸‚ç‚·”Š”‚æ‚è‘½‚¢‚Å‚·"); }
         if (note)

@@ -83,13 +83,13 @@ public class Map_RoomButton : MonoBehaviour
     public void SetBranchUp(int value)
     {
         room.SetBranch_Up(value);
-        if (value >= 1) { up.enabled = true; }
+        if (room.up >= 1) { up.enabled = true; }
         else { up.enabled = false; }
     }
     public void SetBranchDown(int value)
     {
         room.SetBranch_Down(value);
-        if (value >= 1) { down.enabled = true; }
+        if (room.down >= 1) { down.enabled = true; }
         else { down.enabled = false; }
     }
     public void SetBlind(bool set)

@@ -13,7 +13,8 @@ public class RE_RandomEvents : RoomEvent
     [SerializeField,Header("キャラ選択があるもののみ関連")] CharaSelectInfo charaSelectInfo;
 
     protected int choice = 0;
-    protected List<Character> players= new List<Character>();   
+    protected List<Character> players= new List<Character>();
+    protected REOptionParams option_exit;
     //GameObject eventManager;
     public override void StartRoomEvent()
     {
@@ -25,6 +26,11 @@ public class RE_RandomEvents : RoomEvent
         {
             if (c.CharaStatus().playable) { players.Add(c); }
         }
+
+        option_exit = new REOptionParams();
+        option_exit.optionName = "立ち去る";
+        option_exit.optionInfo = "イベントを修了する";
+
         StartRandomEvent();
     }
     public virtual void StartRandomEvent()
@@ -47,6 +53,13 @@ public class RE_RandomEvents : RoomEvent
 
             string s = "";
             if (charaSelectInfo.showExp) s += $"{Extentions.NL(s,2)}現在の{p.CharaStatus().GetExpInfo()}";
+            if (charaSelectInfo.showBadPers)
+            {
+                string badPer = "";
+                p.GetPers(PA_Personality.PersonalityStatus.PersonalityType.bad).ForEach(b => { badPer += $"\n{b.GetPAName()}"; });
+                if (badPer == "") badPer = "無し";
+                s += $"{Extentions.NL(s, 2)}所持中の<color=#C900FF>悪い特性</color>{badPer}";
+            }
 
             if (s != "") option.optionInfo_suffix += $"\n\n{s}";
 
@@ -61,6 +74,7 @@ public class RE_RandomEvents : RoomEvent
     {
         public REOptionParams option;
         public bool showExp;
+        public bool showBadPers;
     }
 
     public static Dictionary<Rarity, string> rarityName = new Dictionary<Rarity, string>(){

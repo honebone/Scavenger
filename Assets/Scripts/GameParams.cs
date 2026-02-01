@@ -19,11 +19,13 @@ public class GameParams : ScriptableObject
     public StatusGrowth enemyStatusGrowth;
 
 
-    [Header("\n\n\nコイン")]
+    [Header("\n\n\nコイン,ショップ")]
     public int initialCoin;
     public Vector2Int coinPerBattle_base;
     public List<int> eqPrice;
-
+    public Vector2 priceMul;
+    public int salePerShop;
+    public int saleMul;
 
 
     [Header("\n\n\nMadness")] public float madnessSpawnChance;

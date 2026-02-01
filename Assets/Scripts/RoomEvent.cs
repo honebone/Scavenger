@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomEvent : MonoBehaviour
 {
     [SerializeField]
-    bool showREInfoOnStart;
+    bool showREInfoOnStart=true;
     [SerializeField]
     string REName;
     [SerializeField, TextArea(3, 10)]
@@ -108,6 +108,13 @@ public class RoomEvent : MonoBehaviour
     {
         supplyManager.AddSupply_Eq(partyStatus.supplyOptions);
         lootPanel.Loot();
+    }
+    /// <summary>デフォルトではイベント終了</summary>
+    public virtual void OnEndShop()
+    {
+        if (lootPanel.CheckHasLoot()) { lootPanel.Loot(); }
+        else if (supplyManager.CheckHasSupply()) { supplyManager.StartSupply(); }
+        else { EndRoomEvent(); }
     }
     /// <summary>デフォルトではイベント終了</summary>
     public virtual void OnEndLoot()

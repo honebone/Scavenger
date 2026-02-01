@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using static LVLUpManager;
@@ -195,7 +196,7 @@ public class Character : MonoBehaviour
                 if (bonus.exValue != 0) { s += ValueToStr($"付与する{StEName}の<color=#FFBF69><i>{{効果量}}</i></color>", bonus.exValue, ""); }
             }
             if (debuffChance != 0) { s += $"{"debuff".ToSpr_withName()}付与確率{debuffChance}％\n"; }
-            if (moveRes != 0) { s += string.Format("移動耐性{0}％\n", moveRes); }
+            if (moveRes != 0) { s += $"{"move".ToSpr_withName()}耐性{moveRes}％"; }
             if (debuffRes != 0) { s += $"{"debuff".ToSpr_withName()}耐性{debuffRes}％\n"; }
 
             //foreach (GameObject actionMod in actionMods)
@@ -420,7 +421,7 @@ public class Character : MonoBehaviour
                 if (bonus.exDMGPerTurn != 0) { info += ValueToStr(string.Format("{0}のHP減少量", StEName), bonus.exDMGPerTurn, "/ターン"); }
             }
             info += ValueToStr($"{"debuff".ToSpr_withName()}付与確率", debuffChance, "％");
-            info += ValueToStr("移動耐性", moveRes, "％");
+            info += ValueToStr($"{"move".ToSpr_withName()}耐性", moveRes, "％");
             info += ValueToStr($"{"debuff".ToSpr_withName()}耐性", debuffRes, "％");
 
             return info;
@@ -684,6 +685,17 @@ public class Character : MonoBehaviour
         {
             FindObjectOfType<Inventory>().AddItem(remove, 1, false);
         }
+    }
+    public void UnequipItem(PA_Equipment remove, bool returnToInventory = true)
+    {
+        string EqName = remove.GetPAName();
+        new List<Definer.Item>(charaStatus.equipments).ForEach(item =>
+        {
+            if (item.createdManager.GetComponent<PassiveAbility>().GetPAName() == EqName)
+            {
+                UnequipItem(item,returnToInventory);
+            }
+        });
     }
     public bool CheckSameEquipment(ItemData eq)
     {

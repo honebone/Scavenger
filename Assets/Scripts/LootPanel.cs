@@ -403,6 +403,11 @@ public class LootPanel : MonoBehaviour
         SetButtons();
     }
 
+    public bool CheckHasLoot()
+    {
+        return loots.Count > 0 || expOrbs > 0 || coins > 0;
+    }
+
     void Sort()
     {
         //loots.Sort((a, b) => (int)b.data.rarity - (int)a.data.rarity);

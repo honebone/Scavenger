@@ -48,4 +48,4 @@ MonoBehaviour:
   battle1: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
   battle2: {fileID: 11400000, guid: aaa298d4edc81584aa335647f3bd36c9, type: 2}
   rest: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
-  treasure: {fileID: 11400000, guid: afcf3f6e3c2b4564eaf62145b1476b8b, type: 2}
+  treasure: {fileID: 11400000, guid: 4ba29e65157e9c74a8b44aec1e71a1ec, type: 2}
