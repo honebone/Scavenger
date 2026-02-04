@@ -531,6 +531,10 @@ public class ExpeditionManager : MonoBehaviour
         public int expMod;
         public bool dontPlayBGMOnEnd;
     }
+    public void Battle(List<AreaManager.EnemySet> w, GameObject fieldEffect)
+    {
+        Battle(w, fieldEffect, new BattleParams());
+    }
     public void Battle(List<AreaManager.EnemySet> enemySet, GameObject fieldEffect,BattleParams battleParams)
     {
         //List<CharacterData> enemies = enemySet.GetEnemies();

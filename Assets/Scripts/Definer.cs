@@ -395,6 +395,12 @@ public class Definer : MonoBehaviour
 
             return s;
         }
+
+        public string GetName()
+        {
+            if (data.manager != null && data.manager.GetComponent<PassiveAbility>()) return data.manager.GetComponent<PassiveAbility>().GetPAName();
+            else return $"error:{data.itemName}";
+        }
     }
 
     private void Awake()

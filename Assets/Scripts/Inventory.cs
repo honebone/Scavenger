@@ -161,7 +161,12 @@ public class Inventory : MonoBehaviour
         detailUI.Refresh();
         //loot‚â”[•i“™‚ÌoptionUI‚à•Â‚¶‚é
     }
-
+    public void AddItem(ItemData data,bool note=true)
+    {
+        Definer.Item item = new Definer.Item();
+        item.Init(data);
+        AddItem(item, 1, note);
+    }
     public void AddItem(Definer.Item item,int amount,bool note)
     {
         Definer.Item replace = new Definer.Item();

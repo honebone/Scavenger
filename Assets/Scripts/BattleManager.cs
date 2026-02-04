@@ -129,7 +129,7 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
-
+   
     public void BattleStart(List<EnemySet> w, GameObject fieldEffectObj, BattleParams bp)
     {
         battleParams = bp;

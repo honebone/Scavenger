@@ -43,25 +43,13 @@ public class LootPanel : MonoBehaviour
     [System.Serializable]
     public class LootStatus
     {
-        [Header("x:min y:max")]
-        public Vector2Int drawAttemptsRange;
-        public float rarityWeightMod;
-
-        public List<ItemData> uniqueDropPool;
-        public List<IncludeTag> includeTags;
-        public List<ItemData.MaterialTag> excludeTags;
-
         [Header("\n\n確定で落とす個数の範囲")]
         public Vector2Int dropEquipmentsRange;
+        public int guarantee_rare;
+        public int guarantee_epic;
+        public int guarantee_legendary;
 
-        [System.Serializable]
-        public class IncludeTag
-        {
-            public ItemData.MaterialTag tag;
-            public int weight;
-        }
-
-       
+        public Vector2Int coin;
     }
     private void Awake()
     {
@@ -205,86 +193,25 @@ public class LootPanel : MonoBehaviour
     }
     public void DropItem_Loot(LootStatus status)
     {
-        if (status.uniqueDropPool.Count > 0 || status.includeTags.Count > 0)
-        {
-            List<ItemData> lootDataBase = Definer.lootDataBase;
-            //試行回数の決定
-            int attempts = Random.Range(status.drawAttemptsRange.x, status.drawAttemptsRange.y + 1);
-
-            for (int i = 0; i < attempts; i++)
-            {
-                List<ItemData> pool = new List<ItemData>(status.uniqueDropPool);
-
-                if (status.includeTags.Count > 0)
-                {
-                    //ドロップするタグの決定
-                    List<float> tagWeight = new List<float>();
-                    foreach (LootStatus.IncludeTag include in status.includeTags)
-                    {
-                        tagWeight.Add(include.weight);
-                    }
-
-                    ItemData.MaterialTag tag = status.includeTags[tagWeight.ChoiceWithWeight()].tag;
-
-                    //プールからexcludeを除外
-                    foreach (ItemData dataBase in lootDataBase)
-                    {
-                        if (dataBase.materialTags.Contains(tag)) { pool.Add(dataBase); }//データベースから今回ドロップするタグを持つもののみを抽出
-                    }
-
-                    foreach (ItemData item in pool)
-                    {
-                        foreach (ItemData.MaterialTag materialTag in item.materialTags)
-                        {
-                            if (status.excludeTags.Contains(materialTag))//プールに除外するタグを含むアイテムがあるならそれを除外
-                            {
-                                pool.Remove(item);
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                if (pool.Count > 0)
-                {
-                    //レアリティの決定
-                    List<float> rarityWeight = GetMaterialRarityWeight(status.rarityWeightMod);
-                    ItemData.Rarity rarity = (ItemData.Rarity)rarityWeight.ChoiceWithWeight();
-
-                    //ドロップアイテムの決定
-                    ItemData drop = pool[0];
-                    bool found = false;
-                    pool = pool.Shuffle();
-
-                    for (int j = (int)rarity; j >= 0; j--)//決定されたレアリティのアイテムがpoolになかったら、レアリティを1つ下げる
-                    {
-                        foreach (ItemData item in pool)//シャッフルされたpoolの手前から見て、決定されたレアリティと同じものを見つける
-                        {
-                            if (item.rarity == (ItemData.Rarity)j)
-                            {
-                                drop = item;
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (found) { break; }
-                    }
-
-                    if (found)
-                    {
-                        //ドロップ量の決定
-                        Definer.Item item = new Definer.Item();
-                        item.Init(drop);
-                        AddItem(item, Random.Range(drop.dropAmountRange.x, drop.dropAmountRange.y + 1));
-                    }
-                }
-            }
-        }
         int equipments = Random.Range(status.dropEquipmentsRange.x, status.dropEquipmentsRange.y + 1);//装備品ドロップ
         for (int i = 0; i < equipments; i++)
         {
             AddItem(expeditionManager.GetRandomEquipment(), 1);
         }
+
+        for(int i = 0; i < status.guarantee_rare;i++)
+        {
+            AddItem(expeditionManager.GetRandomEquipment_WithRarity(ItemData.Rarity.rare), 1);
+        }
+        for (int i = 0; i < status.guarantee_epic; i++)
+        {
+            AddItem(expeditionManager.GetRandomEquipment_WithRarity(ItemData.Rarity.epic), 1);
+        }
+        for (int i = 0; i < status.guarantee_legendary; i++)
+        {
+            AddItem(expeditionManager.GetRandomEquipment_WithRarity(ItemData.Rarity.legendary), 1);
+        }
+        if (status.coin.y > 0) { AddCoin(status.coin.Range()); }
     }
     public void AddItem(Definer.Item item, int amount)
     {

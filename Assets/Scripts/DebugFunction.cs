@@ -30,10 +30,9 @@ public class DebugFunction : MonoBehaviour
     [SerializeField] AreaManager.EnemySet players;
 
     [SerializeField]
-    ItemData[] itemData;
+    List<ItemData> itemData;
     [SerializeField]
     int[] amount;
-    Definer.Item[] items;
     [SerializeField]
     List<ItemData> eq_exclusive;
     [SerializeField]
@@ -82,15 +81,8 @@ public class DebugFunction : MonoBehaviour
         battleManager = FindObjectOfType<BattleManager>();
         inventory = FindObjectOfType<Inventory>();
         infoText = FindObjectOfType<InfoText>();
-        items = new Definer.Item[itemData.Length];
 
         if (debug) { FindObjectOfType<GameManager>().SetTutorialMode(!skipTutorial); }
-
-        for (int i = 0; i < itemData.Length; i++)
-        {
-            items[i].Init(itemData[i]);
-            items[i].amount = amount[i];
-        }
         
     }
     // Update is called once per frame
@@ -226,6 +218,19 @@ public class DebugFunction : MonoBehaviour
         {
             character.UpgradeAbility_All();
         }
+    }
+
+    public void GetEq()
+    {
+        itemData.ForEach(i =>
+        {
+            inventory.AddItem(i);
+        });
+    }
+
+    public void GetRandomEq()
+    {
+        inventory.AddItem(expeditionManager.GetRandomEquipment(), 1, true);
     }
 
     public void AutoSetPartyStat()
