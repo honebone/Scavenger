@@ -125,6 +125,7 @@ public class Definer : MonoBehaviour
     //[SerializeField] List<CharacterData> summonDataBase;
     [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
+    [SerializeField] List<ItemData> eqDataBase_excludeRandomPool;
     [SerializeField] List<GameObject> personalityDataBase;
     public List<GameObject> mutationDataBase;
     [SerializeField] List<GameObject> affrictionDataBase;
@@ -136,7 +137,13 @@ public class Definer : MonoBehaviour
     public List<CharacterData> GetPlayerDataBase() { return cp.playerDataBase; }
     public List<ItemData> GetAllLoots() { return lootDataBase_Inspector; }
 
-    public List<ItemData> GetAllEquipments() { return equipmentDataBase; }
+    /// <summary>ランダムプール外も含むので注意！</summary>
+    public List<ItemData> GetAllEquipments()
+    {
+        List<ItemData> list = new List<ItemData>(equipmentDataBase);
+        list.AddRange(eqDataBase_excludeRandomPool);
+        return list;
+    }
     public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
 
@@ -390,8 +397,9 @@ public class Definer : MonoBehaviour
                         s += data.manager.GetComponent<PassiveAbility>().GetPAInfo();
                         break;
                 }
-                s += data.info;
             }
+
+            if (data.info != "") s += $"{Extentions.NL(s, 3)}<i>{data.info}</i>".ColorStr(Color.grey);
 
             return s;
         }

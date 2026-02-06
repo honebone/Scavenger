@@ -115,8 +115,9 @@ public class ItemData : ScriptableObject
                     s += manager.GetComponent<PassiveAbility>().GetPAInfo();
                     break;
             }
-            s += info;
         }
+
+        if (info != "") s += $"{Extentions.NL(s, 3)}<i>{info}</i>".ColorStr(Color.grey);
 
         return s;
     }

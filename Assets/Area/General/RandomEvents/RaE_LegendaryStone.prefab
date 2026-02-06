@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: 2941113055076312359}
+  m_Layer: 0
+  m_Name: RaE_LegendaryStone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2941113055076312359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32cbc32908b69349b60f08935341993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u4F1D\u8AAC\u306E\u77F3\u76E4"
+  REInfo: "\"\u305D\u3053\u306E\u30A2\u30F3\u30BF\uFF01\"\r\n\u9732\u5E97\u3092\u958B\u3044\u3066\u3044\u308B\u7537\u306B\u547C\u3073\u6B62\u3081\u3089\u308C\u308B\r\n\"\u4F1D\u8AAC\u306E\u77F3\u76E4\u304C\u4ECA\u306A\u3089<sprite
+    name=coin><color=#D83ECE>15</color>\u307D\u3063\u304D\u308A\u3060\uFF01\u3000\u8CB7\u3046\u3060\u308D\uFF1F\""
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 2
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
+    showBadPers: 0
+  stone: {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
+  price: 15
+  option:
+    optionName: "<sprite name=coin><color=#D83ECE>15</color>\u6D88\u8CBB\uFF1A\u8CFC\u5165\u3059\u308B"
+    optionInfo: "<color=#FF8000>\u30EC\u30B8\u30A7\u30F3\u30C0\u30EA\u30FC</color>\u88C5\u5099\u54C1\u3092\u5F97\u308B...?"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1

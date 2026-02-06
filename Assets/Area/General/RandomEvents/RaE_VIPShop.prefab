@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: -3913292250659225411}
+  m_Layer: 0
+  m_Name: RaE_VIPShop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-3913292250659225411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d18a27161b2b2439be88729c438602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u30CD\u30BA\u30DF\u5546\u4F1A\u306E\u88CF\u53E3"
+  REInfo: "\u77F3\u58C1\u306E\u9699\u9593\u304B\u3089\u5C0F\u3055\u306A\u6249\u304C\u73FE\u308C\u308B\r\n\u4E2D\u3067\u306F\u30CD\u30BA\u30DF\u306E\u5546\u4EBA\u304C\u5FD9\u3057\u304F\u5E33\u7C3F\u3092\u5F3E\u3044\u3066\u3044\u308B\r\n\u5BFE\u4FA1\u3092\u6255\u3046\u304B\u3001<color=#9933FF>\u4F1A\u54E1\u306E\u8A3C</color>\u304C\u3042\u308C\u3070<color=#9933FF>\u7279\u5225\u306A\u53D6\u5F15</color>\u306B\u8E0F\u307F\u8FBC\u3080\u3053\u3068\u304C\u3067\u304D\u308B"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 3
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
+    showBadPers: 0
+  memberPlate: {fileID: 11400000, guid: c65f7405d54315f4d862f39409d473d0, type: 2}
+  price: 30
+  option_pay:
+    optionName: "<sprite name=coin><color=#D83ECE>30</color>\u6D88\u8CBB\uFF1A\u5165\u5834\u6599\u3092\u652F\u6255\u3046"
+    optionInfo: "<color=#9933FF>\u7279\u5225\u306A\u5546\u5E97</color>\u306B\u5165\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 0
+  option_member:
+    optionName: "\u304A\u5F97\u610F\u69D8\u3067\u3042\u308B\u3053\u3068\u3092\u8A3C\u660E\u3059\u308B"
+    optionInfo: "<color=#9933FF>\u7279\u5225\u306A\u5546\u5E97</color>\u306B\u5165\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 0
+  shopParams:
+    shopOwnerIcon: {fileID: 21300000, guid: 8660d0d119cd0d14d9aa160f8247ab59, type: 3}
+    shopMessage: "\u51B7\u3084\u304B\u3057\u306A\u3089\u5E30\u308A\u306A\u3002"
+    bgm: {fileID: 8300000, guid: 7e2c5bf1e1d0b9b4ab8cb8e1feb3f772, type: 3}
+    lineups: 0400000003000000030000000300000003000000020000000200000002000000
+    priceMul: 50

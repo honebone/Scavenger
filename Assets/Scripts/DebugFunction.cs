@@ -165,6 +165,10 @@ public class DebugFunction : MonoBehaviour
     {
         FindObjectOfType<Inventory>().AddExp(100, true);
     }
+    public void GetCoin()
+    {
+        inventory.AddCoin(100, true);
+    }
     public void GetAllEquipments()
     {
         foreach (ItemData eqData in FindObjectOfType<Definer>().GetAllEquipments())

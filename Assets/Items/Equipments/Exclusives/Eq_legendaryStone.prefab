@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
+  - component: {fileID: 7764414768746391884}
   - component: {fileID: 3238141386940741765}
-  - component: {fileID: -5991674955221069791}
   m_Layer: 0
-  m_Name: Eq_TreasureBox
+  m_Name: Eq_legendaryStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,6 +33,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7764414768746391884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185327421234476493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: Eq_legendaryStone
+  noSimpleInfo: 1
+  simpleInfo: 
+  PAInfo_start: 
+  skipGetInfo: 1
+  PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 5
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
+  AMods: []
+  PATags: 
+  rune_initialCharge: 0
+  equipmentStatus:
+    itemData: {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,7 +122,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c3b7dfaf45e7e34459f09350be7faf69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 434fd4d4963e1e349ba7fdf780cc26ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,60 +133,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5991674955221069791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9185327421234476493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fa0db355b01da45aea4933e4393d6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: Eq_treasureBox
-  noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u4E00\u5B9A\u78BA\u7387\u3067\u3053\u308C\u3092\u3044\u304F\u3064\u304B\u306E\u88C5\u5099\u54C1\u3068<sprite
-    name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u306B\u5909\u63DB\u3059\u308B"
-  PAInfo_start: "\u6226\u95D8\u7D42\u4E86\u6642\u300115\uFF05\u306E\u78BA\u7387\u3067\u3053\u308C\u3092\u7834\u58CA\u3059\u308B\n\u305D\u306E\u5F8C\u3001\u88C5\u5099\u54C14\u3064\u3068<sprite
-    name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>10-20\u3092\u5F97\u308B\n\u5FC5\u305A1\u3064\u306F<color=#9933FF>\u30A8\u30D4\u30C3\u30AF</color>\u3068\u306A\u308B"
-  skipGetInfo: 0
-  PAInfo_end: 
-  statMod:
-    LVL: 0
-    maxHP_mul: -10
-    maxHP_int: 0
-    maxSAN_mul: 0
-    PROT: 0
-    ATK_mul: 0
-    ATK_int: 0
-    INT_mul: 0
-    INT_int: 0
-    exDMG_mul: 0
-    CRITC: 0
-    CRITD: 0
-    EVD: -30
-    ACC: 0
-    ACT: 0
-    turnPerRound: 0
-    GHeal: 0
-    RHeal: 0
-    StEResists: []
-    StEApplyBonus: []
-    debuffChance: 0
-    moveRes: 0
-    debuffRes: 0
-    minion: 0
-  AMods: []
-  PATags: 
-  rune_initialCharge: 0
-  equipmentStatus:
-    itemData: {fileID: 11400000, guid: ffab801ccece2034797f963754c8901a, type: 2}
-  openChance: 15
-  loot:
-    dropEquipmentsRange: {x: 3, y: 3}
-    guarantee_rare: 0
-    guarantee_epic: 1
-    guarantee_legendary: 0
-    coin: {x: 10, y: 20}

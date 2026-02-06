@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Linq;
 using UnityEditor.SceneManagement;
 using UnityEditor.Experimental.SceneManagement;
+using System;
 
 
 public class UtilityWindow : EditorWindow
@@ -93,6 +94,10 @@ public class UtilityWindow : EditorWindow
         {
             FormulaText();
         }
+        if (GUILayout.Button("Price Text"))
+        {
+            PriceText();
+        }
 
         GUILayout.Space(10);
         GUILayout.Label("Create Link Text", EditorStyles.boldLabel);
@@ -165,6 +170,33 @@ public class UtilityWindow : EditorWindow
                 }
 
                 if (i % columns_ct == columns_ct - 1 || i == commonText.Count - 1)
+                {
+                    GUILayout.EndHorizontal();
+                }
+                i++;
+            }
+        }
+
+        GUILayout.Space(10);
+        GUILayout.Label("rarity texts", EditorStyles.boldLabel);
+
+        int columns_rarity = 6;
+        if (cp != null)
+        {
+            int i = 0;
+            foreach (ItemData.Rarity key in Enum.GetValues(typeof(ItemData.Rarity)))
+            {
+                if (i % columns_rarity == 0)
+                {
+                    GUILayout.BeginHorizontal();
+                }
+
+                if (GUILayout.Button(key.ToString(), GUILayout.Height(30), GUILayout.Width(150)))
+                {
+                    CopyRarityText(key);
+                }
+
+                if (i % columns_rarity == columns_rarity - 1 || i == Enum.GetNames(typeof(ItemData.Rarity)).Count() - 1)
                 {
                     GUILayout.EndHorizontal();
                 }
@@ -296,6 +328,16 @@ public class UtilityWindow : EditorWindow
             ShowNotification(new GUIContent($"Copied: {output}"));
         }
     }
+    private void PriceText()
+    {
+        if (!string.IsNullOrEmpty(color_input))
+        {
+            string output = $"<sprite name=coin><color=#D83ECE>{color_input}</color>";
+            EditorGUIUtility.systemCopyBuffer = output;
+            Debug.Log($"Copied: {output}");
+            ShowNotification(new GUIContent($"Copied: {output}"));
+        }
+    }
 
     void LinkText()
     {
@@ -334,6 +376,15 @@ public class UtilityWindow : EditorWindow
     {
         string output = commonText[key];
        
+        EditorGUIUtility.systemCopyBuffer = output;
+        Debug.Log($"Copied: {output}");
+        ShowNotification(new GUIContent($"Copied: {output}"));
+    }
+    void CopyRarityText(ItemData.Rarity rarity)
+    {
+        List<string> list= new List<string>() { "コモン","アンコモン","レア", "エピック", "レジェンダリー", "狂気" };
+        string output = list[(int)rarity].ColorStr(cp.colorRef.rarityColors[(int)rarity]);
+
         EditorGUIUtility.systemCopyBuffer = output;
         Debug.Log($"Copied: {output}");
         ShowNotification(new GUIContent($"Copied: {output}"));

@@ -15,14 +15,15 @@ public class Shop : MonoBehaviour
     }
 
     [SerializeField] GameObject panel;
+    [SerializeField] Image shopOwnerIcon;
     [SerializeField] TextMeshProUGUI coinsText;
+    [SerializeField] TextMeshProUGUI messageText;
     [SerializeField] List<ShopItemButton> buttons;
     [SerializeField] List<AudioClip> SE_purchase;
     ShopParams shopParams;
     public  void StartShop(ShopParams _params)
     {
         panel.SetActive(true);
-
         shopParams = _params;
         if (shopParams.lineups.Count > buttons.Count)
         {
@@ -32,13 +33,20 @@ public class Shop : MonoBehaviour
 
         GameParams gp=GameManager.gameParams;
 
+        shopOwnerIcon.sprite=shopParams.shopOwnerIcon;
+        messageText.text=shopParams.shopMessage;
+        if (shopParams.bgm != null) SoundManager.instance.StartBGM_Battle(shopParams.bgm);
+
         List<int> saleIndex= Enumerable.Range(0, shopParams.lineups.Count).ToList().Sample(gp.salePerShop);
         for(int i = 0;i< shopParams.lineups.Count;i++)
         {
-            int price = gp.eqPrice[(int)shopParams.lineups[i]].Mul(gp.priceMul.Range()).Mul(shopParams.priceMul);
+            Definer.Item eq = ExpeditionManager.inst.GetRandomEquipment_WithGuarantee(shopParams.lineups[i]);
+            int price = gp.eqPrice[(int)eq.data.rarity].Mul(gp.priceMul.Range()).Mul(shopParams.priceMul);
             bool sale = saleIndex.Contains(i);
             int salePrice = price.Mul(gp.saleMul);
-            buttons[i].SetItem(ExpeditionManager.inst.GetRandomEquipment_WithGuarantee(shopParams.lineups[i]),price,sale,salePrice);
+            buttons[i].SetItem(eq, price, sale, salePrice);
+
+            Compendium.inst.UnllickEq(eq.data);
         }
 
         Refresh();
@@ -61,12 +69,16 @@ public class Shop : MonoBehaviour
         panel.SetActive(false);
         ExpeditionManager.inst.OnEndShop();
         SoundManager.instance.PlaySE_Select();
+        SoundManager.instance.PlayBGM_Normal();
     }
 }
 
 [System.Serializable]
 public class ShopParams
 {
+    public Sprite shopOwnerIcon;
+    public string shopMessage;
+    public AudioClip bgm;
     public List<ItemData.Rarity> lineups;
     public float priceMul = 100f;
 }

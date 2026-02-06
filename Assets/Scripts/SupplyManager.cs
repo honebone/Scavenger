@@ -169,6 +169,12 @@ public class SupplyManager : MonoBehaviour
             AddItem(expeditionManager.GetRandomEquipment_WithGuarantee(guarantee), 1);
         }
     }
+    public void AddItem(ItemData data)
+    {
+        Definer.Item item= new Definer.Item();
+        item.Init(data);
+        AddItem(item, 1);
+    }
     public void AddItem(Definer.Item item, int amount)
     {
         item.amount = amount;

@@ -417,6 +417,12 @@ public static class Extentions
         return Definer.inst.GetTS_withLink(key, nameOverride, outline);
     }
 
+    public static string ToStr(this ItemData.Rarity rarity)
+    {
+        return Definer.rarityName[rarity].ColorStr(rarity.ToColor());
+    }
+
+
     /// <summary>状態異常のストラクト -> リンク付きテキスト</summary>
     public static string ToLinkKey(this PA_StatusEffect.StatusEffectStatus status, bool ignoreValue = true, int value = 0)
     {

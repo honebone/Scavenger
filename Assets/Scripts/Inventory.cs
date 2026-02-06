@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class Inventory : MonoBehaviour
 {
@@ -320,12 +321,19 @@ public class Inventory : MonoBehaviour
     }
     public void RemoveCoin(int amount, bool note=true)
     {
-        if (amount > coins) { infoText.AddErrorText("Œ¸‚ç‚·”Š”‚æ‚è‘½‚¢‚Å‚·"); }
-        if (note)
+        if (amount > coins)
         {
-            infoText.AddLogText($"›{"coin".ToSpr_withName()}x{amount}‚ğ¸‚Á‚½");
+            infoText.AddWarningText("Œ¸‚ç‚·coin‚ªŠ”‚æ‚è‘½‚¢‚Å‚·");
+            coins = 0;
         }
-        coins -= amount;
+        else
+        {
+            if (note)
+            {
+                infoText.AddLogText($"›{"coin".ToSpr_withName()}x{amount}‚ğ¸‚Á‚½");
+            }
+            coins -= amount;
+        }
     }
 
     //void SortInventory()
@@ -396,11 +404,15 @@ public class Inventory : MonoBehaviour
 
         return list;
     }
-    //public List<List<Definer.Item>> GetEquipments_ByRarity(bool includeEquipped = false)
-    //{
-
-    //}
 
     public int GetExp() { return expOrbs; }
     public int GetCoin() { return coins; }
+    //ƒRƒCƒ“‚ª\•ª‚É‚ ‚é‚©
+    public  bool CheckCoin(int price) { return coins>= price; }
+
+    public bool CheckEq(ItemData data,bool includeEquipped)
+    {
+        List<Definer.Item> list = includeEquipped ? GetEquipments_WithEquipped() : GetEquipments();
+        return list.Any(i => i.data == data);
+    }
 }
