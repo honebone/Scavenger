@@ -49,10 +49,17 @@ public class RE_RandomEvents : RoomEvent
         players.ForEach(p =>
         {
             REOptionParams option = new REOptionParams(charaSelectInfo.option);
-            option.optionName = p.CharaStatus().charaName;
+            option.optionName += p.CharaStatus().charaName;
 
             string s = "";
             if (charaSelectInfo.showExp) s += $"{Extentions.NL(s,2)}Œ»İ‚Ì{p.CharaStatus().GetExpInfo()}";
+            if (charaSelectInfo.showGoodPers)
+            {
+                string goodPer = "";
+                p.GetPers(PA_Personality.PersonalityStatus.PersonalityType.good).ForEach(b => { goodPer += $"\n{b.GetPAName()}"; });
+                if (goodPer == "") goodPer = "–³‚µ";
+                s += $"{Extentions.NL(s, 2)}Š’†‚Ì<color=#FAED8A>—Ç‚¢“Á«</color>{goodPer}";
+            }
             if (charaSelectInfo.showBadPers)
             {
                 string badPer = "";
@@ -74,6 +81,7 @@ public class RE_RandomEvents : RoomEvent
     {
         public REOptionParams option;
         public bool showExp;
+        [Header("ƒŒƒAœ‚­")]public bool showGoodPers;
         public bool showBadPers;
     }
 

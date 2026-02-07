@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: 239066592421438489}
+  m_Layer: 0
+  m_Name: RaE_TravelingPriest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &239066592421438489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29211650887b7cb499fced89bfd44530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u65C5\u306E\u50E7\u4FB6"
+  REInfo: "\u8352\u308C\u305F\u9053\u306E\u508D\u3089\u3067\u50E7\u4FB6\u304C\u9759\u304B\u306B\u7948\u308A\u3092\u6367\u3052\u3066\u3044\u308B\n\u5DEE\u3057\u51FA\u3055\u308C\u305F\u624B\u306B\u306F\u65BD\u3057\u3092\u6C42\u3081\u308B\u76BF\u304C\u3042\u308B"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 1
+  charaSelectInfo:
+    option:
+      optionName: "<sprite name=coin><color=#D83ECE>10</color>\u6D88\u8CBB\uFF1A"
+      optionInfo: "<color=#FAED8A>\u826F\u3044\u7279\u6027</color>\u30921\u3064\u5F97\u308B"
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
+    showGoodPers: 1
+    showBadPers: 0
+  price: 10

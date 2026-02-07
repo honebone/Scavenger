@@ -65,7 +65,7 @@ MonoBehaviour:
     CRITC: 0
     CRITD: 0
     EVD: 0
-    ACC: 20
+    ACC: 15
     ACT: 0
     turnPerRound: 0
     GHeal: 0

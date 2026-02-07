@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class RaE_LegendaryStone : RE_RandomEvents
 {
@@ -10,8 +9,8 @@ public class RaE_LegendaryStone : RE_RandomEvents
     [SerializeField] REOptionParams option;
     public override void StartRandomEvent()
     {
-        REOptionParams o=new REOptionParams(option);
-        o.available=Inventory.inst.GetCoin()>=price;
+        REOptionParams o = new REOptionParams(option);
+        o.available = Inventory.inst.GetCoin() >= price;
         expeditionManager.SetREOptionButtons(new List<REOptionParams>() { o, option_exit });
     }
 

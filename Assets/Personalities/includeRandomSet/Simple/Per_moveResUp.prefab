@@ -72,7 +72,7 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
-    moveRes: 35
+    moveRes: 30
     debuffRes: 0
     minion: 0
   AMods: []

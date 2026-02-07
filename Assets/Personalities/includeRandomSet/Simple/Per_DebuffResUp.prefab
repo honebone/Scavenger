@@ -74,7 +74,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChance: 0
     moveRes: 0
-    debuffRes: 30
+    debuffRes: 25
     minion: 0
   AMods: []
   PATags: 
