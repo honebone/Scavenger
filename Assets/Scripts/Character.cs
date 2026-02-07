@@ -595,6 +595,13 @@ public class Character : MonoBehaviour
     {
         return PA_Per.Where(p =>   perTypes.Contains(p.GetPerType())).ToList();
     }
+    /// <summary>
+    /// ƒŒƒAA—Ç‚¢Aˆ«‚¢‚ğ‚·‚×‚Ä•Ô‚·
+    /// </summary>
+    /// <returns></returns>
+    public List<PA_Personality> GetPers_Rand() { return GetPers(randPers); }
+    List<PA_Personality.PersonalityStatus.PersonalityType> randPers = new List<PA_Personality.PersonalityStatus.PersonalityType>() { PA_Personality.PersonalityStatus.PersonalityType.awoken
+        , PA_Personality.PersonalityStatus.PersonalityType.good,PA_Personality.PersonalityStatus.PersonalityType.bad };
     List<PA_Personality.PersonalityStatus.PersonalityType> goodPers = new List<PA_Personality.PersonalityStatus.PersonalityType>() { PA_Personality.PersonalityStatus.PersonalityType.awoken
         , PA_Personality.PersonalityStatus.PersonalityType.good };
     public bool CheckSamePer(GameObject paObj)

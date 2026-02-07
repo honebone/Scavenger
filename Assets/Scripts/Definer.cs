@@ -464,6 +464,10 @@ public class Definer : MonoBehaviour
         {
             RaEDataBase[(int)RaE.GetComponent<RE_RandomEvents>().GetRarity()].Add(RaE);
         }
+
+        string log = "RaE";
+        RaEDataBase.ForEach(r => log += $"\n{r.Count}");
+        Debug.Log(log);
         //cp.RaEDataBase.ForEach(r => RaEDataBase[(int)r.GetComponent<RE_RandomEvents>().GetRarity()].Add(r));
     }
 

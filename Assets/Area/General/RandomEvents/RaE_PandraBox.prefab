@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: 8833009158735660680}
+  m_Layer: 0
+  m_Name: RaE_PandraBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8833009158735660680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928d007502c191e468a6d73f32b081f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u30D1\u30F3\u30C9\u30E9\u306E\u7BB1"
+  REInfo: "\u5C01\u5370\u3055\u308C\u305F\u7BB1\u304C\u4F4E\u304F\u8ECB\u307F\u3001\u4E0D\u7A4F\u306A\u6C17\u914D\u3092\u653E\u3063\u3066\u3044\u308B\n\u958B\u3051\u3070\u707D\u5384\u3068\u795D\u798F\u304C\u4E00\u6589\u306B\u6EA2\u308C\u51FA\u3059\u4E88\u611F\u304C\u3059\u308B\n\u89E3\u304D\u653E\u3064\u304B\u3001\u7BB1\u305D\u306E\u3082\u306E\u3092\u529B\u3068\u3057\u3066\u643A\u3048\u308B\u9053\u3082\u3042\u308B"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 3
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
+    showGoodPers: 0
+    showBadPers: 0
+  pandora: {fileID: 11400000, guid: d721a7cf134e36442a41953063bd9c33, type: 2}
+  perAdd: 4
+  options:
+  - optionName: "\u7BB1\u3092\u958B\u3051\u308B"
+    optionInfo: "\u5168\u54E1\u304C\u30E9\u30F3\u30C0\u30E0\u306A\u7279\u6027\u30924\u3064\u5F97\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1
+  - optionName: "\u6301\u3061\u53BB\u308B"
+    optionInfo: "\u88C5\u5099\u54C1<<color=#FF8000>\u30D1\u30F3\u30C9\u30E9\u306E\u7BB1</color>>\u3092\u5F97\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1

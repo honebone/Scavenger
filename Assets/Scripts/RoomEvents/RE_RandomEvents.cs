@@ -53,6 +53,13 @@ public class RE_RandomEvents : RoomEvent
 
             string s = "";
             if (charaSelectInfo.showExp) s += $"{Extentions.NL(s,2)}Œ»İ‚Ì{p.CharaStatus().GetExpInfo()}";
+            if (charaSelectInfo.showRarePers)
+            {
+                string pers = "";
+                p.GetPers(PA_Personality.PersonalityStatus.PersonalityType.awoken).ForEach(b => { pers += $"\n{b.GetPAName()}"; });
+                if (pers == "") pers = "–³‚µ";
+                s += $"{Extentions.NL(s, 2)}Š’†‚Ì<color=#00BBFF>ƒŒƒA“Á«</color>{pers}";
+            }
             if (charaSelectInfo.showGoodPers)
             {
                 string goodPer = "";
@@ -81,6 +88,7 @@ public class RE_RandomEvents : RoomEvent
     {
         public REOptionParams option;
         public bool showExp;
+        public bool showRarePers;
         [Header("ƒŒƒAœ‚­")]public bool showGoodPers;
         public bool showBadPers;
     }

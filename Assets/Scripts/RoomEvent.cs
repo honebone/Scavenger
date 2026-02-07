@@ -21,6 +21,7 @@ public class RoomEvent : MonoBehaviour
     protected ExpeditionManager.PartyStatus partyStatus;
     protected LootPanel lootPanel;
     protected SupplyManager supplyManager;
+    protected Inventory inventory;
     protected CharactersManager characterManager;
     protected InfoText infoText;
     [System.Serializable]
@@ -57,16 +58,25 @@ public class RoomEvent : MonoBehaviour
             optionInfo_suffix = copy.optionInfo_suffix;
             available = copy.available;
         }
+
+        public void AddEqInfo(ItemData eq)
+        {
+            if (eq != null)
+            {
+                optionInfo += $"{Extentions.NL(optionInfo, 2)}<{eq.manager.GetComponent<PassiveAbility>().GetPAName()}>\n{eq.GetInfo(false)}";
+            }
+        }
     }
     public void Init(AreaData area)
     {
         currentArea = area;
-        expeditionManager=FindObjectOfType<ExpeditionManager>();
+        expeditionManager = ExpeditionManager.inst;
         partyStatus = expeditionManager.GetPartyStatus();
-        lootPanel = FindObjectOfType<LootPanel>();
-        supplyManager = FindObjectOfType<SupplyManager>();
-        characterManager=FindObjectOfType<CharactersManager>();
-        infoText = FindObjectOfType<InfoText>();
+        lootPanel = LootPanel.inst;
+        supplyManager = SupplyManager.inst;
+        characterManager = CharactersManager.inst;
+        inventory = Inventory.inst;
+        infoText = InfoText.inst;
 
         string _name = REName;
         string info = "";

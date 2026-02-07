@@ -121,7 +121,7 @@ public class DebugFunction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                List<GameObject> per = expeditionManager.GetPer_Random_CertainType(PA_Personality.PersonalityStatus.PersonalityType.bad,3);
+                List<GameObject> per = expeditionManager.GetPer_Random(3);
                 expeditionManager.SetPersonality(charactersManager.GetExistingCharacters_All()[0], per,true);
                 //charactersManager.GetExistingCharacters_All().ForEach(x => expeditionManager.SetRandomPer(x,10));
             }
