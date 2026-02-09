@@ -7,6 +7,8 @@ public class GameParams : ScriptableObject
 {
     [Header("\n\n\nStatus")]
     public int maxLVL = 10;
+    public int maxEVD = 75;
+    public int maxPROT = 75;
 
 
 

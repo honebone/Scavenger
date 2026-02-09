@@ -50,22 +50,21 @@ MonoBehaviour:
   - {fileID: 7922638166886946676, guid: 879d6a1b04e3fc94688562d265d32002, type: 3}
   corpse: {fileID: 0}
   loot:
-    drawAttemptsRange: {x: 0, y: 0}
-    rarityWeightMod: 0
-    uniqueDropPool: []
-    includeTags: []
-    excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+    guarantee_rare: 0
+    guarantee_epic: 0
+    guarantee_legendary: 0
+    coin: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 1
   maxHP: 40
   maxSAN: 50
   ATK: 15
   INT: 7
-  CRITC: 10
+  CRITC: 5
   CRITD: 50
-  EVD: 10
-  ACC: 98
+  EVD: 5
+  ACC: 95
   ACT: 10
   turnPerRound: 1
   GHeal: 0

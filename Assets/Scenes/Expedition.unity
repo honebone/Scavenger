@@ -470,7 +470,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
+  personality: {fileID: 3170614222137734241, guid: 1ae04ba4835ed0245a07adcfe1520033, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17525,6 +17525,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d721a7cf134e36442a41953063bd9c33, type: 2}
   - {fileID: 11400000, guid: ffab801ccece2034797f963754c8901a, type: 2}
   - {fileID: 11400000, guid: c65f7405d54315f4d862f39409d473d0, type: 2}
+  - {fileID: 11400000, guid: 13f03c25d259f0b4b9f3073f3ee33468, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase:

@@ -50,12 +50,11 @@ MonoBehaviour:
   actionMods: []
   corpse: {fileID: 0}
   loot:
-    drawAttemptsRange: {x: 0, y: 0}
-    rarityWeightMod: 0
-    uniqueDropPool: []
-    includeTags: []
-    excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+    guarantee_rare: 0
+    guarantee_epic: 0
+    guarantee_legendary: 0
+    coin: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 1
   maxHP: 45
@@ -65,7 +64,7 @@ MonoBehaviour:
   CRITC: 5
   CRITD: 50
   EVD: 5
-  ACC: 98
+  ACC: 95
   ACT: 5
   turnPerRound: 1
   GHeal: 0

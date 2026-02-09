@@ -13,6 +13,8 @@ public class Per_Master : PA_Personality
     [SerializeField] int targetCount;
     [SerializeField, Header("\n能力発動に必要な[条件を満たすキャラ]の必要人数")] int activeCond_req;
     [SerializeField, Header("能力発動に必要なキャラの条件")] CharactersManager.SearchCharaCondition activeCond;
+    [SerializeField, Header("コイン取得やステータス強化モード")] bool altMode;
+    [SerializeField] Vector2Int coin;
 
     int count;
     int count_inBattle;
@@ -27,7 +29,15 @@ public class Per_Master : PA_Personality
             if (countReq > 1) Log($"カウント+1 ({count})");
             if (count >= countReq)
             {
-                if (targetSelf)
+                if (altMode)
+                {
+                    int c = coin.Range();
+                    LootPanel.inst.AddCoin(c);
+                    Log($"{"coin".ToSpr_withName()}+{c}");
+                    count_inBattle++;
+                    count_inRound++;
+                }
+                else if (targetSelf)
                 {
                     Enqueue_Self(actionStatus);
                     count_inBattle++;

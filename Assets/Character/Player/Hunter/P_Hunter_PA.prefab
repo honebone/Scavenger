@@ -45,11 +45,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_P_hunter
+  noSimpleInfo: 0
   simpleInfo: "[\u7363]\u306B\u5BFE\u3059\u308B\u4E0E\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 5
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
+  AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u7363\u72E9\u308A\u306E\u4F5C\u6CD5"
     personalityType: 1

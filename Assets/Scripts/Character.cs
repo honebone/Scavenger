@@ -171,8 +171,8 @@ public class Character : MonoBehaviour
             s += ValueToStr("与ダメージ", exDMG_mul, "％\n");
             s += "\n";
 
-            if (PROT != 0) { s += $"{"PROT".ToSpr_withLink()}：{PROT} {"(上限75)\n".ColorStr(Color.gray)}"; }
-            s += $"{"EVD".ToSpr_withLink()}：{EVD} {"(上限75)".ColorStr(Color.gray)}\n";
+            if (PROT != 0) { s += $"{"PROT".ToSpr_withLink()}：{PROT} {$"(上限{GameManager.gameParams.maxPROT})\n".ColorStr(Color.gray)}"; }
+            s += $"{"EVD".ToSpr_withLink()}：{EVD} {$"(上限{GameManager.gameParams.maxEVD})".ColorStr(Color.gray)}\n";
             s += $"{"ACC".ToSpr_withLink()}：{ACC}\n\n";
 
             s += $"{"ACT".ToSpr_withLink()}：{ACT}\n";

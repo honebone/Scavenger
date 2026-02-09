@@ -826,6 +826,7 @@ public class Action : MonoBehaviour
     {
         DebugFunction.int1++;
         Character.CharacterStatus ownerStatus = new Character.CharacterStatus();
+        GameParams gp = GameManager.gameParams;
         bool notChara = false;//フィールド効果やポジション効果などによるアクション
         if (actionStatus.actionOwner != null) {
             actionOwner = actionStatus.actionOwner;
@@ -1014,10 +1015,10 @@ public class Action : MonoBehaviour
 
 
                     float ACC = ownerStatus.ACC + actionsStatus[i].ACCMod;
-                    float EVD = Mathf.Clamp(targetStatus.EVD, 0, 75);
+                    float EVD = Mathf.Clamp(targetStatus.EVD, 0, gp.maxEVD);
                     float dice = Random.value * 100f;
 
-                    if (actionsStatus[i].sureHit || dice <= ownerStatus.ACC + actionsStatus[i].ACCMod)//ミス判定
+                    if (actionsStatus[i].sureHit || dice <= ACC)//ミス判定
                     {
                         if (actionsStatus[i].sureHit || actionsStatus[i].unevadable || dice <= ACC - EVD)//回避判定
                         {
@@ -1037,7 +1038,7 @@ public class Action : MonoBehaviour
                             ATKDMGf += (float)actionsStatus[i].ATKDMG_divide_int / actionStatus.actionTargets.Count;//追加分配ダメージ
                             INTDMGf += (float)actionsStatus[i].INTDMG_divide_int / actionStatus.actionTargets.Count;
 
-                            float PROT = Mathf.Min(targetStatus.PROT, 75);//PROTの最大値を75に制限
+                            float PROT = Mathf.Min(targetStatus.PROT, gp.maxPROT);//PROTの最大値を75に制限
                             float RDMG = Mathf.Max((PROT * -1 + 100f) / 100f, 0);//対象の被ダメージ上昇効果
                             ATKDMGf *= RDMG;
                             INTDMGf *= RDMG;
