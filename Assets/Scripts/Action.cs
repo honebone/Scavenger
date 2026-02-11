@@ -304,7 +304,7 @@ public class Action : MonoBehaviour
             }
             echoDoT.ForEach(e =>
             {
-                s += $"{Extentions.NL(s)}E{e.GetInfo()}";
+                s += $"{NL()}E{e.GetInfo()}";
             });
 
             if (DoesAttack()||attackInfo!="")//UŒ‚
@@ -552,6 +552,11 @@ public class Action : MonoBehaviour
             {
                 //s += nb ? "\n" : "";
                 //nb=true;
+            }
+
+            string NL(int lines=1,string lineStr="\n")
+            {
+                return Extentions.NL(s, lines, lineStr);
             }
         }
         public string GetValueWithSign(float value)
@@ -1769,7 +1774,7 @@ public class EchoDoTParams
         if (targetStE.Count > 0)
         {
             string names = "";
-            targetStE.ForEach(t => names += $"{Extentions.NL(names, lineStr: ",")}{"debuff".ToSpr_withName()}{t.GetComponent<PA_StatusEffect>().GetPAName()}");
+            targetStE.ForEach(t => names += $"{Extentions.NL(names, lineStr: ",")}{"debuff".ToSpr_withName(t.GetComponent<PA_StatusEffect>().GetPAName())}");
             s += $"{names}‚ð";
         }
         s += $"{$"”½‹¿ <i>{{{ratio}}}</i>".ToLinkKey("”½‹¿")}".ColorStr(Definer.colorRef.echo);

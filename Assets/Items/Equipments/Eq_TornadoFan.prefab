@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: 5196525549137311438}
+  - component: {fileID: 860691921243645089}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_NightCloak
+  m_Name: Eq_TornadoFan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5196525549137311438
+--- !u!114 &860691921243645089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c4028b7f7363f458fc5f120484f5ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 28cdf001296b7f040afbd0f0860ce824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_NightCloak
+  fileName: Eq_tornadoFan
   noSimpleInfo: 0
-  simpleInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u4E00\u5B9A\u5272\u5408\u4EE5\u4E0B\u306B\u306A\u308B\u3068\u3001<color=#FAED8A><sprite
-    name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u3092\u5F97\u3066<sprite
-    name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u3068<color=#DD6300><sprite
-    name=focus><link=S_\u30D5\u30A9\u30FC\u30AB\u30B9><u>\u30D5\u30A9\u30FC\u30AB\u30B9</u></link></color>\u3092\u6D88\u53BB\u3059\u308B"
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642\u3001\u524D\u5217\u306E\u65751\u4F53\u3092<sprite
+    name=move><color=#009EFF>\u5F8C\u9000</color>\u3055\u305B\u3001<color=#C900FF><sprite
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092<color=#96FFD6><link=U_\u53CD\u97FF><u>\u53CD\u97FF</u></link></color>\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -67,7 +66,7 @@ MonoBehaviour:
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: 10
+    EVD: 7
     ACC: 0
     ACT: 0
     turnPerRound: 0
@@ -83,15 +82,17 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: aa6bade2a9a9b134f9c7272ddae354b3, type: 2}
-  threshold: 30
+    itemData: {fileID: 11400000, guid: eb300e794bcea2741a44c719c808c277, type: 2}
+  max_inBattle: 0
+  max_inRound: 0
+  countReq: 1
+  targetSelf: 0
   actionStatus:
-    actionName: "\u95C7\u591C\u306E\u30AF\u30ED\u30FC\u30AF"
-    conditionInfo: "\u81EA\u8EAB\u304C\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u3066<sprite
-      name=HP><color=#87FF79>HP</color>\u304C30\uFF05\u4EE5\u4E0B\u306B\u306A\u3063\u305F\u3068\u304D"
-    targetInfo: "\u81EA\u8EAB"
+    actionName: 
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u958B\u59CB\u6642"
+    targetInfo: "\u524D\u5217\u306E\u65751\u4F53"
     AModInfo: 
-    actionInfo: "\u3053\u306E\u80FD\u529B\u306F3\u30E9\u30A6\u30F3\u30C9\u5F8C\u306B\u518D\u767A\u52D5\u53EF\u80FD"
+    actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -141,7 +142,12 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    echoDoT: []
+    echoDoT:
+    - targetStE:
+      - {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      echoAllStack: 0
+      consumeStack: 0
+      ratio: 100
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -183,26 +189,11 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 6086145301006173142, guid: a96d824ba314b004eb331b3b9f3db1a2, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 0
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 1
-    removeStEs:
-    - removeStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
-      removeAll: 1
-      addAmount: 0
-    - removeStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
-      removeAll: 0
-      addAmount: -1
+    removeStE_debuff: 0
+    removeStEs: []
     removePEs: []
     summon: 0
     summonChara: []
@@ -223,13 +214,13 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-    moveChance: 0
+    moveChance: 100
     guaranteedMove: 0
     moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 0
+    moveBackword: 1
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
@@ -245,7 +236,92 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  CDRound: 3
+  condition:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 1
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 1
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    canEcho: 0
+    echoTargets: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+  targetCount: 1
+  activeCond_req: 0
+  activeCond:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    canEcho: 0
+    echoTargets: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+  me: 1
+  myServant: 0
+  otherChara: 0
+  otherCharaCond:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    canEcho: 0
+    echoTargets: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -287,7 +363,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 31c707b9a66bd8f448c72f339e373270, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
