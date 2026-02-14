@@ -276,51 +276,49 @@ public class Action : MonoBehaviour
 
         public string GetInfo(bool refCharaStatus=false, Character.CharacterStatus characterStatus=new Character.CharacterStatus())
         {
+            string info = "";
             string s = "";
-           // bool nb = false;
-            bool f = false;
 
-            //if (friendly) { s += "友好アクション\n"; }
-            if (conditionInfo != "") { s += string.Format("{0}：\n", conditionInfo); }
-            if (targetInfo != "") s += string.Format("対象：{0}\n", targetInfo);
-            if (consumeFocus) { s += $"・対象の<color=#DD6300><sprite name=focus><link=S_フォーカス><u>フォーカス</u></link></color>を消費する\n".ColorStr(Definer.colorRef.statusEffectColors[3]); }
-            if (exTurn > 0) { s += $"・追加ターンを{exTurn}ターン得る\n"; }
-            if (kill) { s += "・殺害する\n"; }
+            if (conditionInfo != "") { s += $"{NL()}{conditionInfo}"; }
+            if (targetInfo != "") s += $"{NL()}対象：{targetInfo}";
+            if (consumeFocus) { s += $"{NL()}・対象の<color=#DD6300><sprite name=focus><link=S_フォーカス><u>フォーカス</u></link></color>を消費する".ColorStr(Definer.colorRef.statusEffectColors[3]); }
+            if (exTurn > 0) { s += $"{NL()}・追加ターンを{exTurn}ターン得る"; }
+            if (kill) { s += $"{NL()}・殺害する"; }
             if (decreaseHP_max > 0)
             {
-                s += $"・{"HP".ToSpr_withName()}が{GetValueRange(decreaseHP_min, decreaseHP_max)}減少\n";
+                s += $"{NL()}・{"HP".ToSpr_withName()}が{GetValueRange(decreaseHP_min, decreaseHP_max)}減少";
             }
             if (decreaseHPPer_max > 0)
             {
-                s += $"・{"HP".ToSpr_withName()}が{GetValueRange(decreaseHPPer_min, decreaseHPPer_max)}％減少\n";
+                s += $"{NL()}・{"HP".ToSpr_withName()}が{GetValueRange(decreaseHPPer_min, decreaseHPPer_max)}％減少";
             }
             if (decreaseHP_ATK.y > 0)
             {
-                s += $"・{"HP".ToSpr_withName()}が{"ATK".ToSpr_withLink()}の{GetValueRange(decreaseHP_ATK)}％分減少\n";
+                s += $"{NL()}・{"HP".ToSpr_withName()}が{"ATK".ToSpr_withLink()}の{GetValueRange(decreaseHP_ATK)}％分減少";
             }
             if (decreaseHP_INT.y > 0)
             {
-                s += $"・{"HP".ToSpr_withName()}が{"INT".ToSpr_withLink()}の{GetValueRange(decreaseHP_INT)}％分減少\n";
+                s += $"{NL()}・{"HP".ToSpr_withName()}が{"INT".ToSpr_withLink()}の{GetValueRange(decreaseHP_INT)}％分減少";
             }
             echoDoT.ForEach(e =>
             {
                 s += $"{NL()}・{e.GetInfo()}";
             });
+            //NewBlock();
 
             if (DoesAttack()||attackInfo!="")//攻撃
             {
-                s += (attackInfo != "") ? $"・{attackInfo}\n" : "";
+                s += (attackInfo != "") ? $"{NL()}・{attackInfo}" : "";
                 if (ATKMod_max > 0 || ATKMod_divide > 0)
                 {
-                    s += $"・{"ATK".ToSpr_withName("物理")}攻撃を行う\n";
+                    s += $"{NL()}・{"ATK".ToSpr_withName("物理")}攻撃を行う\n";
                     if (ATKMod_max > 0)
                     {
                         s += $"  {"ATK".ToSpr_withLink()}の{GetValueRange(ATKMod_min, ATKMod_max)}％ダメージ";
                         if (refCharaStatus)
                         {
-                            s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100)));
+                            s += $"({GetValueRange(Mathf.RoundToInt(characterStatus.ATK * ATKMod_min / 100), Mathf.RoundToInt(characterStatus.ATK * ATKMod_max / 100))})";
                         }
-                        s += "\n";
                     }
                     if (ATKMod_divide > 0)
                     {
@@ -329,12 +327,11 @@ public class Action : MonoBehaviour
                         {
                             s += string.Format("({0})", (characterStatus.ATK * ATKMod_divide / 100).ToInt());
                         }
-                        s += "\n";
                     }
                 }
                 if (INTMod_max > 0 || INTMod_divide > 0)
                 {
-                    s += $"・{"INT".ToSpr_withName("魔法")}攻撃を行う\n";
+                    s += $"{NL()}・{"INT".ToSpr_withName("魔法")}攻撃を行う\n";
                     if (INTMod_max > 0)
                     {
                         s += $"  {"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
@@ -342,7 +339,6 @@ public class Action : MonoBehaviour
                         {
                             s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
                         }
-                        s += "\n";
                     } 
                     if (INTMod_divide > 0)
                     {
@@ -351,65 +347,58 @@ public class Action : MonoBehaviour
                         {
                             s += string.Format("({0})", (characterStatus.INT * INTMod_divide / 100).ToInt());
                         }
-                        s += "\n";
                     }
-                    
                 }
 
                 string attack = "";
-                if (ACCMod != 0) { attack += $"  {"ACC".ToSpr_withLink()}補正：{GetValueWithSign(ACCMod)}\n"; }
-                if (CRITCMod != 0) { attack += $"  {"CRIT".ToSpr_withLink()}率補正：{GetValueWithSign(CRITCMod)}％\n"; }
-                if (CRITDMod != 0) { attack += $"   {"CRIT".ToSpr_withLink()}ダメージ補正：{GetValueWithSign(CRITDMod)}％\n"; }
-                if (drain > 0) { attack += $"  与ダメージの{drain}％を{"HP".ToSpr_withName("回復")}\n"; }
-                if (ignoreShield) { attack += $"  {"shield".ToSpr_withLink()}を無視\n"; }
-                if (sureHit) { attack += "  必中\n"; }
-                if (unevadable) { attack += $"  対象の{"EVD".ToSpr_withLink()}を無視\n"; }
-                //if (exDMG_mul != 0) { attack += $"与ダメージ+{exDMG_mul}％\n"; }
-                s += attack.ColorStr(Color.gray);
+                if (ACCMod != 0) { attack += $"{Extentions.NL(attack)}  {"ACC".ToSpr_withLink()}補正：{GetValueWithSign(ACCMod)}"; }
+                if (CRITCMod != 0) { attack += $"{Extentions.NL(attack)}  {"CRIT".ToSpr_withLink()}率補正：{GetValueWithSign(CRITCMod)}％"; }
+                if (CRITDMod != 0) { attack += $"{Extentions.NL(attack)}   {"CRIT".ToSpr_withLink()}ダメージ補正：{GetValueWithSign(CRITDMod)}％"; }
+                if (drain > 0) { attack += $"{Extentions.NL(attack)}  与ダメージの{drain}％を{"HP".ToSpr_withName("回復")}"; }
+                if (ignoreShield) { attack += $"{Extentions.NL(attack)}  {"shield".ToSpr_withLink()}を無視"; }
+                if (sureHit) { attack += $"{Extentions.NL(attack)}  必中"; }
+                if (unevadable) { attack += $"{Extentions.NL(attack)}  対象の{"EVD".ToSpr_withLink()}を無視"; }
+                if (attack != "") s += $"{NL()}{attack.ColorStr(Color.gray)}";
             }
-            CheckNewBlock();
+            //NewBlock();
 
             if (DoesHeal())//回復
             {
-                if (healValue_max > 0) { s += $"・{"HP".ToSpr_withName()}を{ GetValueRange(healValue_min, healValue_max)}回復\n"; }
+                if (healValue_max > 0) { s += $"{NL()}・{"HP".ToSpr_withName()}を{ GetValueRange(healValue_min, healValue_max)}回復"; }
                 if (healINT.y > 0)
                 {
-                    s += $"・{"HP".ToSpr_withName()}を{"INT".ToSpr_withLink()}の{GetValueRange(healINT.x, healINT.y)}％分回復";
+                    s += $"{NL()}・{"HP".ToSpr_withName()}を{"INT".ToSpr_withLink()}の{GetValueRange(healINT.x, healINT.y)}％分回復";
                     if (refCharaStatus)
                     {
                         s += $"({GetValueRange(Mathf.RoundToInt(characterStatus.INT * healINT.x / 100), Mathf.RoundToInt(characterStatus.INT * healINT.y / 100))})";
                     }
-                    s += "\n";
                 }
-                if (healPercent_max > 0) { s += $"・{"HP".ToSpr_withName()}を最大値の{ GetValueRange(healPercent_min, healPercent_max)}％回復\n"; }
-                if (healRegain_max > 0) { s += $"・減少した{"HP".ToSpr_withName()}の{GetValueRange(healRegain_min, healRegain_max)}％を回復\n"; }
-                if (trueHeal > 0) { s += $"・{"HP".ToSpr_withName()}を{trueHeal}固定量回復\n"; }
+                if (healPercent_max > 0) { s += $"{NL()}・{"HP".ToSpr_withName()}を最大値の{ GetValueRange(healPercent_min, healPercent_max)}％回復"; }
+                if (healRegain_max > 0) { s += $"{NL()}・減少した{"HP".ToSpr_withName()}の{GetValueRange(healRegain_min, healRegain_max)}％を回復"; }
+                if (trueHeal > 0) { s += $"{NL()}・{"HP".ToSpr_withName()}を{trueHeal}固定量回復"; }
             }
-            CheckNewBlock();
+            //NewBlock();
 
-            if (SANHeal_max > 0) { s += $"・{"SAN".ToSpr_withLink()}を{GetValueRange(SANHeal_min, SANHeal_max)}回復\n"; }
-            if (SANDamage_max > 0) { s += $"・{"SAN".ToSpr_withLink()}が{GetValueRange(SANDamage_min, SANDamage_max)}減少\n"; }
+            if (SANHeal_max > 0) { s += $"{NL()}・{"SAN".ToSpr_withLink()}を{GetValueRange(SANHeal_min, SANHeal_max)}回復"; }
+            if (SANDamage_max > 0) { s += $"{NL()}・{"SAN".ToSpr_withLink()}が{GetValueRange(SANDamage_min, SANDamage_max)}減少"; }
+            //NewBlock();
 
             string shield = "shield".ToSpr_withLink();
-            if (shieldAdd_max > 0) { s += string.Format("・{0}を{1}付与\n", shield, GetValueRange(shieldAdd_min, shieldAdd_max)); }
-            if (shieldPercent_max > 0) { s += $"・{"maxHP".ToSpr_withName()}の{GetValueRange(shieldPercent_min, shieldPercent_max)}％に等しい{shield}を付与\n"; }
-            if (shieldRemove_all) { s += $"・{shield}を0にする\n"; }
-            else if (shieldRemove_max > 0) { s += $"・{shield}を{ GetValueRange(shieldRemove_min, shieldRemove_max)}除去\n"; }
-            CheckNewBlock();
+            if (shieldAdd_max > 0) { s += $"{NL()}・{shield}を{GetValueRange(shieldAdd_min, shieldAdd_max)}付与"; }
+            if (shieldPercent_max > 0) { s += $"{NL()}・{"maxHP".ToSpr_withName()}の{GetValueRange(shieldPercent_min, shieldPercent_max)}％に等しい{shield}を付与"; }
+            if (shieldRemove_all) { s += $"・{NL()}{shield}を0にする"; }
+            else if (shieldRemove_max > 0) { s += $"{NL()}・{shield}を{ GetValueRange(shieldRemove_min, shieldRemove_max)}除去"; }
+            //NewBlock();
 
-            f = false;
             foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
             {
-                s += StEParams.GetInfo(refCharaStatus,characterStatus);
+                s += $"{NL()}{StEParams.GetInfo(refCharaStatus,characterStatus)}";
             }
 
-            CheckNewBlock();
-            f = false;
+            //NewBlock();
             foreach (PositionEffect.PositionEffectParams PEParams in applyPEParams)//PE付与
             {
                 PositionEffect.PositionEffectStatus status = PEParams.applyPE.GetComponent<PositionEffect>().GetPositionEffectStatus();
-                if (f) { s += "\n"; }
-                f = true;
 
                 string chanceText = PEParams.guaranteed ? "確定" : $"{PEParams.applyChance}％";
                 string exText = "";
@@ -434,66 +423,66 @@ public class Action : MonoBehaviour
                     }
                 }
 
-                s += $"・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n{exText}({chanceText},{PEParams.stack}スタック)\n";
+                s += $"{NL()}・対象の地点に{status.ToLinkKey(false, PEParams.value)}を付与\n{exText}({chanceText},{PEParams.stack}スタック)\n";
             }
+            //NewBlock();
 
-            CheckNewBlock();
-            if (removeStE_buff > 0) { s += $"・{"buff".ToSpr_withName()}を{removeStE_buff}個消去\n"; }
-            if (removeStE_debuff > 0) { s += $"・{"debuff".ToSpr_withName()}を{removeStE_debuff}個消去\n"; }
+            if (removeStE_buff > 0) { s += $"{NL()}・{"buff".ToSpr_withName()}を{removeStE_buff}個消去"; }
+            if (removeStE_debuff > 0) { s += $"{NL()}・{"debuff".ToSpr_withName()}を{removeStE_debuff}個消去"; }
             foreach (ActionData.RemoveStE remove in removeStEs)
             {
                 PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                s += string.Format("・{0}", status.ToLinkKey());
-                if (remove.removeAll) { s += "を全て除去\n"; }
-                else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
+                s += $"{NL()}・{status.ToLinkKey()}";
+                if (remove.removeAll) { s += "を全て除去"; }
+                else { s += string.Format("のスタック{0}", GetValueWithSign(remove.addAmount)); }
             }
             foreach (ActionData.RemovePE remove in removePEs)
             {
                 PositionEffect.PositionEffectStatus status = remove.removePE.GetComponent<PositionEffect>().GetPositionEffectStatus();
-                s += string.Format("・{0}", status.ToLinkKey());
-                if (remove.removeAll) { s += "を全て除去\n"; }
-                else { s += string.Format("のスタック{0}\n", GetValueWithSign(remove.addAmount)); }
+                s += $"{NL()}・{status.ToLinkKey()}";
+                if (remove.removeAll) { s += "を全て除去"; }
+                else { s += string.Format("のスタック{0}", GetValueWithSign(remove.addAmount)); }
             }
-            CheckNewBlock();
+            //NewBlock();
 
             if (summon)
             {
                 if (summonChara.Count == 1)
                 {
-                    s += $"・{summonChara[0].ToLinkKey()}を{"summon".ToSpr_withName()}\n";
+                    s += $"{NL()}・{summonChara[0].ToLinkKey()}を{"summon".ToSpr_withName()}";
                 }
                 else
                 {
-                    s += $"・以下からランダムに{"summon".ToSpr_withName()}\n";
+                    s += $"{NL()}・以下からランダムに{"summon".ToSpr_withName()}";
                     float p = 0;
                     foreach (int r in summonChanceWeight) { p += r; }
                     for (int i = 0; i < summonChanceWeight.Count; i++)
                     {
-                        s += string.Format("{0}({1})\n", summonChara[i].ToLinkKey(), (summonChanceWeight[i] / p).ToString("#0.0%"));
+                        s += $"{NL()}{summonChara[i].ToLinkKey()}({summonChanceWeight[i] / p:#0.0%})";
                     }
                 }
                 if (summonStatusInherit.GetInfo() != "")
                 {
-                    s += $"召喚されたキャラはステータスの一部を受け継ぐ：\n{summonStatusInherit.GetInfo(refCharaStatus, characterStatus)}\n";
+                    s += $"{NL()}召喚されたキャラはステータスの一部を受け継ぐ：\n{summonStatusInherit.GetInfo(refCharaStatus, characterStatus)}";
                 }
             }
-            CheckNewBlock();
+            //NewBlock();
 
             if (guaranteedMove || moveChance > 0)
             {
-                if (guaranteedMove) { s += "・"; }
-                else { s += string.Format("・{0}％の確率で", moveChance); }
+                if (guaranteedMove) { s += $"{NL()}・"; }
+                else { s += $"{NL()}・{moveChance}％の確率で"; }
                 if (moveRandomDir > 0)
                 {
                     string dir = "";
-                    if(moveForword > 0 && moveUpper > 0 && moveLower > 0 && moveBackword > 0) { s += $"ランダムな方向に{moveRandomDir}マス{"move".ToSpr_withName("移動")}\n"; }
+                    if(moveForword > 0 && moveUpper > 0 && moveLower > 0 && moveBackword > 0) { s += $"ランダムな方向に{moveRandomDir}マス{"move".ToSpr_withName("移動")}"; }
                     else
                     {
                         if (moveForword > 0) { dir += $"{(dir == "" ? "" : ",")}前"; }
                         if (moveUpper > 0) { dir += $"{(dir == "" ? "" : ",")}上"; }
                         if (moveLower > 0) { dir += $"{(dir == "" ? "" : ",")}下"; }
                         if (moveBackword > 0) { dir += $"{(dir == "" ? "" : ",")}後ろ"; }
-                        s += $"ランダムな{dir}方向に{moveRandomDir}マス{"move".ToSpr_withName("移動")}\n";
+                        s += $"ランダムな{dir}方向に{moveRandomDir}マス{"move".ToSpr_withName("移動")}";
                     }                                       
                 }
                 else
@@ -505,53 +494,59 @@ public class Action : MonoBehaviour
                 }
                 
             }
-            CheckNewBlock();
+            //NewBlock();
 
             foreach (ActionData.AbilityRemainControll rc in abilityRemainControlls)
             {
                 if (rc.value > 0)
                 {
-                    s += string.Format("・<{0}>の使用回数を", rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor()));
-                    if (rc.set) { s += string.Format("{0}にする\n", rc.value); }
+                    s += $"{NL()}・<{rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor())}>の使用回数を";
+                    if (rc.set) { s += string.Format("{0}にする", rc.value); }
                     else
                     {
-                        s += string.Format("{0}増加\n", rc.value);
+                        s += string.Format("{0}増加", rc.value);
                     }
                 }
                 if (rc.value_CD != 0)
                 {
-                    s += $"・<{rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor())}> のクールダウンを";
-                    if (rc.set_CD) { s += $"{rc.value_CD}にする\n"; }
-                    else if (rc.value_CD < 0) s += $"{-rc.value_CD}減少\n";
-                    else s += $"{rc.value_CD}増加\n";
+                    s += $"{NL()}・<{rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor())}> のクールダウンを";
+                    if (rc.set_CD) { s += $"{rc.value_CD}にする"; }
+                    else if (rc.value_CD < 0) s += $"{-rc.value_CD}減少";
+                    else s += $"{rc.value_CD}増加";
                 }
             }
-            CheckNewBlock();
+            NewBlock();
 
-            if (actionMods.Count > 0) { s += "\n"; }
             foreach (GameObject actionMod in actionMods)
             {
                 string modInfo = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
-                if (modInfo != "") { s += modInfo + "\n"; }
+                if (modInfo != "") { s +=$"{NL()}{modInfo}"; }
             }
             if (AModInfo != "")
             {
-                s += string.Format("\n○{0}", AModInfo);//.ColorStr(Definer.colorRef.AMod)
+                s += $"{NL()}○{AModInfo}";
             }
-            CheckNewBlock();
+            NewBlock();
 
-            if (actionInfo != "") { s +="\n"+ actionInfo + "\n"; }
+            if (actionInfo != "") { s +=$"{NL()}{actionInfo}"; }
+            NewBlock();
+
             if (actionObject != null)
             {
                 string ex = actionObject.GetComponent<Action>().GetAdditionalInfo();
-                if (ex != "") { s += ex + "\n"; }
+                if (ex != "") { s += $"{NL()}{ex}"; }
             }
-            return s;
+            NewBlock();
 
-            void CheckNewBlock()
+            return info;
+
+            void NewBlock()
             {
-                //s += nb ? "\n" : "";
-                //nb=true;
+                if (s != "")
+                {
+                    info += $"{Extentions.NL(info, 2)}{s}";
+                    s = "";
+                }
             }
 
             string NL(int lines=1,string lineStr="\n")

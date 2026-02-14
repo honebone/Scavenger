@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class Ability : MonoBehaviour
@@ -53,8 +54,8 @@ public class Ability : MonoBehaviour
         public string GetInfo(bool refCharaStatus, Character.CharacterStatus characterStatus,bool simple)
         {
             string s = "";
-            if (locked) { s += "(未開放のアビリティ)\n".ColorStr(Definer.colorRef.failed_unavailable); }
-                s+= string.Format("種類：{0}\n", Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType]));
+            if (locked) { s += $"{NL()}(未開放のアビリティ)".ColorStr(Definer.colorRef.failed_unavailable); }
+            s += $"{NL()}{Definer.AbiltyTypeName[abilityType].ColorStr(Definer.colorRef.abilityColors[(int)abilityType])}アビリティ";
             string s1 = "";
             string s2 = "";
             string available = "○".ColorStr(Color.green);
@@ -67,8 +68,8 @@ public class Ability : MonoBehaviour
                 else { s2 += $"{unavailable}-"; }
                 if (availableMid) { s2 += $"{available}-"; }
                 else { s2 += $"{unavailable}-"; }
-                if (availableFront) { s2 +=$"{available}\n"; }
-                else { s2 += $"{unavailable}\n"; }
+                if (availableFront) { s2 +=$"{available}"; }
+                else { s2 += $"{unavailable}"; }
             }
             else
             {
@@ -78,54 +79,53 @@ public class Ability : MonoBehaviour
                 else { s2 += $"{unavailable}-"; }
                 if (availableMid) { s2 += $"{available}-"; }
                 else { s2 += $"{unavailable}-"; }
-                if (availableBack) { s2 += $"{available}\n"; }
-                else { s2 += $"{unavailable}\n"; }
+                if (availableBack) { s2 += $"{available}"; }
+                else { s2 += $"{unavailable}"; }
             }
-            s += s1 + s2;
-            if (conditionInfo != "") { s += string.Format("発動条件：{0}\n",conditionInfo); }
-
-            //if (cooldownOnBattleStart > 0) { s += string.Format("初期クールダウン：{0}ターン\n", cooldownOnBattleStart); }
-            //if (cooldownOnUse > 0) { s += string.Format("クールダウン：{0}ターン\n", cooldownOnUse); }
-            if (cooldownOnBattleStart > 0) { s += $"{"初期クールダウン".ToLinkKey()}：{cooldownOnBattleStart}ターン\n"; }
-            if (cooldownOnUse > 0) { s += $"{"クールダウン".ToLinkKey()}：{cooldownOnUse}ターン\n"; }
+            s += $"{NL()}{s1 + s2}";
+            if (conditionInfo != "") s += $"{NL()}発動条件：{conditionInfo}"; 
+            if (cooldownOnBattleStart > 0) { s += $"{NL()}{"初期クールダウン".ToLinkKey()}：{cooldownOnBattleStart}ターン"; }
+            if (cooldownOnUse > 0) { s += $"{NL()}{"クールダウン".ToLinkKey()}：{cooldownOnUse}ターン"; }
             if (refCharaStatus) { }
             if (hasRemain)
             {
-                if (refCharaStatus) { s += string.Format("残り使用回数：{0}回\n", remain); }
-                else { s += string.Format("使用回数(戦闘開始時)：{0}回\n", remainOnBattleStart); }
+                if (refCharaStatus) { s += $"{NL()}残り使用回数：{remain}回"; }
+                else { s += $"{NL()}使用回数(戦闘開始時)：{remainOnBattleStart}回"; }
             }
-            s += "\n";
             if (abilityType == AbilityData.AbilityType.pass)
             {
-                s += "・ターンをパスする\n　(行動したとはみなされない)\n";
+                s += $"{NL()}・ターンをパスする(行動したとはみなされない)";
             }
-            if (freeAction) { s += $"・{"クイックアビリティ".ToLinkKey()}\n".ColorStr(Definer.colorRef.emphasize); }
+            if (freeAction) s += $"{NL()}・{"クイックアビリティ".ToLinkKey()}".ColorStr(Definer.colorRef.emphasize);
 
-            if (simple&&!abilityData.noSimpleInfo&&false)//test
+            if (simple && !abilityData.noSimpleInfo && false)//test
             {
-                s += $"{abilityData.simpleInfo}\n";
+                s += $"{NL()}{abilityData.simpleInfo}";
                 if (abilityData.upgradeInfo != "")
                 {
-                    s += $"\n{"+アビリティ強化済み+".ColorStr(Definer.colorRef.emphasize)}\n{abilityData.upgradeInfo}";
+                    s += $"{NL()}{"+アビリティ強化済み+".ColorStr(Definer.colorRef.emphasize)}\n{abilityData.upgradeInfo}";
                 }
             }
             else
             {
-                if (actionsStatus.Length == 1) { s += actionsStatus[0].GetInfo(refCharaStatus, characterStatus); }
+                if (actionsStatus.Length == 1) { s += $"{NL(2)}{actionsStatus[0].GetInfo(refCharaStatus, characterStatus)}"; }
                 else if (actionsStatus.Length > 1)
                 {
                     int couter = 1;
                     foreach (Action.ActionStatus actionStatus in actionsStatus)
                     {
-                        s += string.Format("<効果{0}>\n", couter);
-                        s += actionStatus.GetInfo(refCharaStatus, characterStatus);
-                        s += "\n";
+                        s += $"{NL(2)}<効果{couter}>\n{actionStatus.GetInfo(refCharaStatus, characterStatus)}";
                         couter++;
                     }
                 }
             }
 
             return s;
+
+            string NL(int lines = 1, string lineStr = "\n")
+            {
+                return Extentions.NL(s, lines, lineStr);
+            }
         }
 
         public AbilityStatus(AbilityData data,int idx)

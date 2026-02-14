@@ -987,39 +987,51 @@ public class Character : MonoBehaviour
     public string GetInfo(bool simple)
     {
         string info = charaStatus.GetInfo();
-        info += "\nó‘ÔˆÙí";
+        string temp = "";
         foreach (PassiveAbility pa in PA_StE)
         {
             PA_StatusEffect StE = pa.GetComponent<PA_StatusEffect>();
             if (StE.GetStatusEffectStatus().refValue)
             {
-                info += $"\n<{StE.GetStatusEffectStatus().StEType.ToSpr()}{StE.GetPANameWithValue()}>{pa.GetPAInfo(simple)}";
+                temp += $"{NL()}<{StE.GetStatusEffectStatus().StEType.ToSpr()}{StE.GetPANameWithValue()}>{pa.GetPAInfo(simple)}";
             }
             else
             {
-                info += $"\n<{StE.GetStatusEffectStatus().StEType.ToSpr()}{pa.GetPAName()}>{pa.GetPAInfo(simple)}";
+                temp += $"{NL()}<{StE.GetStatusEffectStatus().StEType.ToSpr()}{pa.GetPAName()}>{pa.GetPAInfo(simple)}";
             }
 
         }
+        if (temp == "") temp = "‚È‚µ";
+        info += $"\nó‘ÔˆÙí\n{temp}";
+        temp = "";
 
-        info += "\n“Á«";
         foreach (PassiveAbility pa in PA_Per)
         {
-            info += string.Format("\n<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
+            temp += $"{NL()}<{pa.GetPAName()}>\n{pa.GetPAInfo(simple)}";
         }
+        if (temp == "") temp = "‚È‚µ";
+        info += $"\n“Á«\n{temp}";
+        temp = "";
 
         if (charaStatus.player)
         {
-            info += "\n‘•”õ•i\n";
             foreach (PassiveAbility pa in PA_Eq)
             {
-                info += string.Format("<{0}>\n{1}\n", pa.GetPAName(), pa.GetPAInfo(simple));
+                temp += $"{NL()}<{pa.GetPAName()}>\n{pa.GetPAInfo(simple)}";
             }
+            if (temp == "") temp = "‚È‚µ";
+            info += $"\n‘•”õ•i\n{temp}";
+            temp = "";
         }
 
         info += "\n" + targetButton.GetPositionManager().GetPEInfo();
 
         return info;
+
+        string NL(int lines = 1, string lineStr = "\n")
+        {
+            return Extentions.NL(temp, lines, lineStr);
+        }
     }
 
     public void SetMouseOver()

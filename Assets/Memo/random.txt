@@ -7,13 +7,9 @@ using System.Linq;
 ピクセル数 -> UIサイズ：x2.5
 UIサイズ -> ピクセル数：x0.4
 
-◇コイン
-初期コイン
-勝利時コイン
-ボス、精鋭の倍率
-値段
-セール確率
-セール量
+エリア長6->8
+ボス撃破時exp減少
+餞別でexpを与えないように
 
 汎用スクリプト最新：Eq_OnDamage !!!Eq_Masterを作成！
 AMod最新：AMod_DebuffKinds

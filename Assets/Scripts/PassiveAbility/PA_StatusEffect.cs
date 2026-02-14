@@ -92,8 +92,8 @@ public class PA_StatusEffect : PassiveAbility
                     exText += $"  ({DMGPerTurn}/ターン)\n".ColorStr(Definer.colorRef.heal);
                 }
             }
-            s += $"・{status.ToLinkKey(false, value)}を付与\n{exText}  ({chanceText},{stack}スタック)\n";
-            if (dontApplyBonus) s += "(付与確率/スタック数/<color=#FFBF69><i>{効果量}</i></color>増加の影響を受けない)\n".ColorStr(Definer.colorRef.emphasize);
+            s += $"{Extentions.NL(s)}・{status.ToLinkKey(false, value)}を付与\n{exText}  ({chanceText},{stack}スタック)";
+            if (dontApplyBonus) s += $"{Extentions.NL(s)}(付与確率/スタック数/<color=#FFBF69><i>{{効果量}}</i></color>増加の影響を受けない)".ColorStr(Definer.colorRef.emphasize);
 
             return s;
         }
