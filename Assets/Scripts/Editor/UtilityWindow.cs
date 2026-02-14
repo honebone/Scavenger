@@ -54,6 +54,7 @@ public class UtilityWindow : EditorWindow
         {"悪い特性","<color=#C900FF>悪い特性</color>" },
         {"良い特性","<color=#FAED8A>良い特性</color>" },
         {"レア特性","<color=#00BBFF>レア特性</color>" },
+        {"ランダム特性","<link=U_ランダム特性><u>ランダム特性</u></link>" },
 
     };
     Dictionary<string, string> commonPhrases = new Dictionary<string, string>()

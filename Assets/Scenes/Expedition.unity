@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -470,7 +470,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: 02ade81ee7b97b44fa458a33a3af70f9, type: 3}
+  personality: {fileID: 3170614222137734241, guid: e2a1354a5be82c4489f628386fbbe96f, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -5797,7 +5797,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.586, y: -48.099976}
+  m_AnchoredPosition: {x: 279.586, y: -48.09999}
   m_SizeDelta: {x: -620.544, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218159761
@@ -9224,7 +9224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
+  m_AnchoredPosition: {x: 63.53369, y: -48.09999}
   m_SizeDelta: {x: -579.7155, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -17528,6 +17528,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 13f03c25d259f0b4b9f3073f3ee33468, type: 2}
   - {fileID: 11400000, guid: eb300e794bcea2741a44c719c808c277, type: 2}
   - {fileID: 11400000, guid: 3e7f142980bcfe64c941a6e52a058ed6, type: 2}
+  - {fileID: 11400000, guid: 281953ff974d6ff4f8500cba1e15ae97, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase:
@@ -17654,6 +17655,9 @@ MonoBehaviour:
       name=debuff><color=#C900FF>HP\u6E1B\u5C11\u30C7\u30D0\u30D5</color>\u306E\u52B9\u679C\u3092\u5373\u5EA7\u306B\u767A\u52D5\u3055\u305B\u308B\r\n\r\n<sprite
       name=HP><color=#87FF79>HP</color>\u6E1B\u5C11\u91CF\u306F\u3001\u6B21\u306E\u30BF\u30FC\u30F3\u5931\u3046<sprite
       name=HP>\u306E<color=#96FFD6><i>{X}</i></color>\uFF05"
+  - linkKey: "\u30E9\u30F3\u30C0\u30E0\u7279\u6027"
+    linkName: 
+    linkInfo: "\u30B2\u30FC\u30E0\u4E2D\u3001\u6642\u6298\u30AD\u30E3\u30E9\u306B\u4ED8\u4E0E\u3055\u308C\u308B\u30E9\u30F3\u30C0\u30E0\u306A\u7279\u6027\r\n\r\n<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3001<color=#FAED8A>\u826F\u3044\u7279\u6027</color>\u3001<color=#00BBFF>\u30EC\u30A2\u7279\u6027</color>\u304C\u3042\u308B"
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
