@@ -396,6 +396,9 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 1ae04ba4835ed0245a07adcfe1520033, type: 3}
   - {fileID: 3170614222137734241, guid: 02ade81ee7b97b44fa458a33a3af70f9, type: 3}
   - {fileID: 3170614222137734241, guid: e2a1354a5be82c4489f628386fbbe96f, type: 3}
+  - {fileID: 3170614222137734241, guid: 7d7e0b4cfbf3fd64e901207d3ea0d083, type: 3}
+  - {fileID: 3170614222137734241, guid: 0fbed46e1b00d384d9c1459c5556d4fa, type: 3}
+  - {fileID: 3170614222137734241, guid: 5605dac3c7841dd4293889640ad7e2dd, type: 3}
   areaDataBase_tier1:
   - {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   areaDataBase_tier2:

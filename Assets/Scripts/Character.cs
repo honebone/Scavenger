@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using UnityEngine.UIElements;
 using static LVLUpManager;
 using static Unity.Burst.Intrinsics.X86;
 
@@ -426,7 +427,7 @@ public class Character : MonoBehaviour
 
             return info;
 
-            string ValueToStr(string start, float value, string end,bool invert=false)
+            string ValueToStr(string start, float value, string end, bool invert = false)
             {
                 if (value == 0) { return ""; }
                 string s = f ? "\n" : "";
@@ -436,6 +437,48 @@ public class Character : MonoBehaviour
                 s += end;
                 return s;
             }
+        }
+        public static CharaStatusMod operator *(CharaStatusMod mod, int n)
+        {
+            mod.LVL *= n;
+
+            mod.maxHP_mul *= n;
+            mod.maxHP_int *= n;
+
+            mod.maxSAN_mul *= n;
+
+            mod.PROT *= n;
+
+            mod.ATK_mul *= n;
+            mod.ATK_int *= n;
+
+            mod.INT_mul *= n;
+            mod.INT_int *= n;
+
+            mod.exDMG_mul *= n;
+
+            mod.CRITC *= n;
+            mod.CRITD *= n;
+
+            mod.EVD *= n;
+            mod.ACC *= n;
+
+            mod.ACT *= n;
+            mod.turnPerRound *= n;
+
+            mod.GHeal *= n;
+            mod.RHeal *= n;
+
+            ////リスト追加時は絶対にInitに追記しろ！！
+            //public List<StEResist> StEResists;
+            //public List<StEApplyBonus> StEApplyBonus;
+
+            if (mod.StEResists != null && mod.StEResists.Count > 0) InfoText.inst.AddErrorText("デバフ耐性の乗算は対応していません");
+            if (mod.StEApplyBonus != null && mod.StEApplyBonus.Count > 0) InfoText.inst.AddErrorText("デバフボーナスの乗算は対応していません");
+
+            //public bool minion;
+
+            return mod;
         }
     }
 

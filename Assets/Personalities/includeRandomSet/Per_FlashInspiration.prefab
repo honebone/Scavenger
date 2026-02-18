@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: -6559000755423560906}
+  - component: {fileID: 5624420653135790961}
   - component: {fileID: -4090635681871681786}
   m_Layer: 0
-  m_Name: Per_SlySmile
+  m_Name: Per_FlashInspiration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6559000755423560906
+--- !u!114 &5624420653135790961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +42,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc0f8e50a1d573439a62acbe30eada0, type: 3}
+  m_Script: {fileID: 11500000, guid: 883438bdc3de9d04596fb6031e32e4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_slySmile
+  fileName: per_flashInspiration
   noSimpleInfo: 0
-  simpleInfo: "\u30BF\u30FC\u30F3\u3092\u30D1\u30B9\u3057\u305F\u3068\u304D\u3001\u6575\u5168\u4F53\u306B<color=#C900FF><sprite
-    name=debuff><link=S_\u4F01\u307F><u>\u4F01\u307F</u></link></color>\u3092\u4ED8\u4E0E"
-  PAInfo_start: 
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#256CC8><sprite
+    name=INT><link=T_INT><u>INT</u></link></color>\u304C\u6E1B\u5C11\u3059\u308B"
+  PAInfo_start: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30AB\u30A6\u30F3\u30C8+1(\u6700\u59275)\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -60,7 +60,7 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 0
+    INT_mul: 40
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -81,16 +81,16 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u542B\u307F\u7B11\u3044"
+    personalityName: "\u4E00\u77AC\u306E\u9583\u304D"
     personalityType: 3
-  max_inBattle: 0
+  max_inBattle: 5
   max_inRound: 0
   countReq: 1
   targetSelf: 0
   actionStatus:
     actionName: 
-    conditionInfo: "\u30BF\u30FC\u30F3\u3092\u30D1\u30B9\u3057\u305F\u3068\u304D"
-    targetInfo: "\u6575\u5168\u4F53"
+    conditionInfo: 
+    targetInfo: 
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -184,16 +184,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: e38dd904080a5ed438e05ceec214f142, type: 3}
-      guaranteed: 0
-      applyChance: 120
-      stack: 2
-      value: 0
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -244,12 +235,12 @@ MonoBehaviour:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
-    enemy: 1
+    enemy: 0
     onlyPlayable: 0
     onlyNonplayable: 0
-    front: 1
-    mid: 1
-    back: 1
+    front: 0
+    mid: 0
+    back: 0
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
@@ -297,7 +288,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
   coin: {x: 0, y: 0}
-  modifyStatus: 0
+  modifyStatus: 1
   statusMod:
     LVL: 0
     maxHP_mul: 0
@@ -306,7 +297,7 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 0
+    INT_mul: -8
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -323,6 +314,36 @@ MonoBehaviour:
     moveRes: 0
     debuffRes: 0
     minion: 0
+  me: 1
+  myServant: 0
+  otherChara: 0
+  otherCharaCond:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    canEcho: 0
+    echoTargets: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
 --- !u!212 &-4090635681871681786
 SpriteRenderer:
   m_ObjectHideFlags: 0
