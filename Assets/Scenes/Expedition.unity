@@ -17529,6 +17529,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb300e794bcea2741a44c719c808c277, type: 2}
   - {fileID: 11400000, guid: 3e7f142980bcfe64c941a6e52a058ed6, type: 2}
   - {fileID: 11400000, guid: 281953ff974d6ff4f8500cba1e15ae97, type: 2}
+  - {fileID: 11400000, guid: 9041d5d38d343974893dee6cf7a4d1f9, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase:
