@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: 6854490397528369440}
+  m_Layer: 0
+  m_Name: RaE_GustOfWind
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6854490397528369440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7733fa817a27da6439fb03cafc33f0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u7A81\u98A8"
+  REInfo: "\u7A81\u5982\u3068\u3057\u3066\u5538\u308B\u7A81\u98A8\u304C\u5439\u304D\u8352\u308C\u308B\n\u9784\u306E\u53E3\u304C\u88C2\u3051\u3001\u4E2D\u8EAB\u304C\u7A7A\u3078\u3068\u5DFB\u304D\u4E0A\u3052\u3089\u308C\u3066\u3044\u304F!"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 0
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
+    showRarePers: 0
+    showGoodPers: 0
+    showBadPers: 0
+  coin: {x: 5, y: 20}
+  eq: {x: 3, y: 6}
+  options:
+  - optionName: "\u6B66\u5668\u3092\u3064\u304B\u3080"
+    optionInfo: "<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u30925-20\u5931\u3046"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1
+  - optionName: "\u8CA1\u5E03\u3092\u3064\u304B\u3080"
+    optionInfo: "\u88C5\u5099\u3057\u3066\u3044\u306A\u3044\u88C5\u5099\u54C1\u30923-6\u500B\u5931\u3046"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1

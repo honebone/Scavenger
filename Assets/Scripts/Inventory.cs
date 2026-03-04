@@ -321,19 +321,12 @@ public class Inventory : MonoBehaviour
     }
     public void RemoveCoin(int amount, bool note=true)
     {
-        if (amount > coins)
+        int remove = Mathf.Min(amount, coins);
+        if (note)
         {
-            infoText.AddWarningText("Œ¸‚ç‚·coin‚ªŠ”‚æ‚è‘½‚¢‚Å‚·");
-            coins = 0;
+            infoText.AddLogText($"›{"coin".ToSpr_withName()}x{remove}‚ğ¸‚Á‚½");
         }
-        else
-        {
-            if (note)
-            {
-                infoText.AddLogText($"›{"coin".ToSpr_withName()}x{amount}‚ğ¸‚Á‚½");
-            }
-            coins -= amount;
-        }
+        coins -= remove;
     }
 
     //void SortInventory()

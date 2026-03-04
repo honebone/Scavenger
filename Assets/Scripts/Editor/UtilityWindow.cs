@@ -51,6 +51,7 @@ public class UtilityWindow : EditorWindow
         {"分配","<link=U_分配ダメージ><u>分配</u></link>" },
         {"分配ダメージ","<link=U_分配ダメージ><u>分配ダメージ</u></link>" },
         {"反響","<color=#96FFD6><link=U_反響><u>反響</u></link></color>" },
+        {"回避","<sprite name=EVD><color=#55B075>回避</color>" },
         {"悪い特性","<color=#C900FF>悪い特性</color>" },
         {"良い特性","<color=#FAED8A>良い特性</color>" },
         {"レア特性","<color=#00BBFF>レア特性</color>" },

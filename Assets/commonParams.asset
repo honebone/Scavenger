@@ -399,6 +399,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 7d7e0b4cfbf3fd64e901207d3ea0d083, type: 3}
   - {fileID: 3170614222137734241, guid: 0fbed46e1b00d384d9c1459c5556d4fa, type: 3}
   - {fileID: 3170614222137734241, guid: 5605dac3c7841dd4293889640ad7e2dd, type: 3}
+  - {fileID: 3170614222137734241, guid: 8a79e91a5950d2c4eaea20652f9b0bc7, type: 3}
   areaDataBase_tier1:
   - {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   areaDataBase_tier2:
@@ -431,6 +432,7 @@ MonoBehaviour:
   - {fileID: 8180078169205948270, guid: 0c56a852a365eb146a65b2b564cfc4e7, type: 3}
   - {fileID: 8180078169205948270, guid: 9e095fc5aaaa3e64f945f78f5735fafe, type: 3}
   - {fileID: 8180078169205948270, guid: 3daf4f59fc892ef41be5ecfe14fdaeeb, type: 3}
+  - {fileID: 8180078169205948270, guid: 564a0781041e44c40a210c59b01b5aaf, type: 3}
   RaEWeights:
   - 20
   - 45

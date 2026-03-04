@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -437,7 +437,7 @@ MonoBehaviour:
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
-    centerBack: {fileID: 11400000, guid: 2eb6072248bdf954c8f1512e6ff475f9, type: 2}
+    centerBack: {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
@@ -460,7 +460,7 @@ MonoBehaviour:
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
-  RE: {fileID: 8180078169205948270, guid: 3daf4f59fc892ef41be5ecfe14fdaeeb, type: 3}
+  RE: {fileID: 8180078169205948270, guid: 82b6b801a82eb8243b3c18e991aadc09, type: 3}
   REP: {fileID: 1877823637}
   shopParams:
     shopOwnerIcon: {fileID: 0}
@@ -470,7 +470,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: 5605dac3c7841dd4293889640ad7e2dd, type: 3}
+  personality: {fileID: 3170614222137734241, guid: 8a79e91a5950d2c4eaea20652f9b0bc7, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17530,6 +17530,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3e7f142980bcfe64c941a6e52a058ed6, type: 2}
   - {fileID: 11400000, guid: 281953ff974d6ff4f8500cba1e15ae97, type: 2}
   - {fileID: 11400000, guid: 9041d5d38d343974893dee6cf7a4d1f9, type: 2}
+  - {fileID: 11400000, guid: 3caf15b0c316e874ca85294e556ff4fd, type: 2}
+  - {fileID: 11400000, guid: 2b23ccbb58eaf524fb675fd1bf6d1808, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase:

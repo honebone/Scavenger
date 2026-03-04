@@ -8,7 +8,7 @@ public class P_Debug : PA_Personality
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     public override void OnApplyedStE(Action.OnApplyStEParams onApplyStEParams)
     {
-        Enqueue_SearchTarget(actionStatus, condition);
+        //Enqueue_SearchTarget(actionStatus, condition);
     }
 
     public override string GetPAInfo_Base()
