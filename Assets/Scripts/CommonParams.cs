@@ -14,8 +14,6 @@ public class CommonParams : ScriptableObject
     public List<CharacterData> enemyDataBase;
     public List<CharacterData> obstacleDataBase;
     public List<CharacterData> summonDataBase;
-    [Header("\n\n\n特性データベース")]
-    public List<GameObject> perDataBase_randPool;
 
     [Header("\n\n\nエリア")]
     public List<AreaData> areaDataBase_tier1;

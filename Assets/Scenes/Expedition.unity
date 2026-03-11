@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -433,7 +433,7 @@ MonoBehaviour:
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
-    centerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
+    centerMid: {fileID: 11400000, guid: 0d2b09fcc13e3264ea39bbf6f525c0bd, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
@@ -441,12 +441,13 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
-  - {fileID: 11400000, guid: d721a7cf134e36442a41953063bd9c33, type: 2}
+  - {fileID: 11400000, guid: f2d1472f6f412274fb7b0dfc65cf73af, type: 2}
+  - {fileID: 11400000, guid: 4107a6b3861178941be8aa5a63d2b7c0, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 1
-    upperFront: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    upperFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
     centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
@@ -470,7 +471,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: 8a79e91a5950d2c4eaea20652f9b0bc7, type: 3}
+  personality: {fileID: 3170614222137734241, guid: a8b1b50686550e240a85a03892ebadaf, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17532,9 +17533,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9041d5d38d343974893dee6cf7a4d1f9, type: 2}
   - {fileID: 11400000, guid: 3caf15b0c316e874ca85294e556ff4fd, type: 2}
   - {fileID: 11400000, guid: 2b23ccbb58eaf524fb675fd1bf6d1808, type: 2}
+  - {fileID: 11400000, guid: e8f39b58e8d04234fb1d48a0829776fc, type: 2}
+  - {fileID: 11400000, guid: f2d1472f6f412274fb7b0dfc65cf73af, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
-  personalityDataBase:
+  personalityDataBase_randPool:
   - {fileID: 3170614222137734241, guid: 86a89cbac18214646b3a251e6bc93d6d, type: 3}
   - {fileID: 3170614222137734241, guid: eabaa55a98185ac4eb3722e697ccaaa9, type: 3}
   - {fileID: 3170614222137734241, guid: 7993b7bc118abf64493a083dc792cfee, type: 3}
@@ -17585,7 +17588,21 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 3539bde73e68fc648b355140a2e0d9c5, type: 3}
   - {fileID: 3170614222137734241, guid: 74a3b8096531ea243a114d72ea7c6fa4, type: 3}
   - {fileID: 3170614222137734241, guid: f8b42ddd9a5cd3d40a86c93e2b55fd64, type: 3}
-  mutationDataBase:
+  - {fileID: 3170614222137734241, guid: 826e3c0f8db1a4e47b875ffed3bdeea3, type: 3}
+  - {fileID: 3170614222137734241, guid: d53d5f01cf8254349ae20db2f33c3592, type: 3}
+  - {fileID: 3170614222137734241, guid: 707e01ac9849f2c45b3ea0c0c2e35d29, type: 3}
+  - {fileID: 3170614222137734241, guid: 24a2f2c2236348345bc16636bed80ce2, type: 3}
+  - {fileID: 3170614222137734241, guid: da0309e2f3f25164aad8d6e1281be947, type: 3}
+  - {fileID: 3170614222137734241, guid: 1ae04ba4835ed0245a07adcfe1520033, type: 3}
+  - {fileID: 3170614222137734241, guid: 02ade81ee7b97b44fa458a33a3af70f9, type: 3}
+  - {fileID: 3170614222137734241, guid: e2a1354a5be82c4489f628386fbbe96f, type: 3}
+  - {fileID: 3170614222137734241, guid: 7d7e0b4cfbf3fd64e901207d3ea0d083, type: 3}
+  - {fileID: 3170614222137734241, guid: 0fbed46e1b00d384d9c1459c5556d4fa, type: 3}
+  - {fileID: 3170614222137734241, guid: 5605dac3c7841dd4293889640ad7e2dd, type: 3}
+  - {fileID: 3170614222137734241, guid: 8a79e91a5950d2c4eaea20652f9b0bc7, type: 3}
+  - {fileID: 3170614222137734241, guid: d1cab6358d2ea1245869b90bb1b99ede, type: 3}
+  - {fileID: 3170614222137734241, guid: a8b1b50686550e240a85a03892ebadaf, type: 3}
+  personalityDataBase_exclusive:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}
   - {fileID: 3170614222137734241, guid: fddaabc2efaedc44489cc1e53f251de1, type: 3}

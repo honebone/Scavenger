@@ -126,8 +126,8 @@ public class Definer : MonoBehaviour
     [SerializeField] List<ItemData> lootDataBase_Inspector;
     [SerializeField] List<ItemData> equipmentDataBase;
     [SerializeField] List<ItemData> eqDataBase_excludeRandomPool;
-    [SerializeField] List<GameObject> personalityDataBase;
-    public List<GameObject> mutationDataBase;
+    [SerializeField] List<GameObject> personalityDataBase_randPool;
+    [SerializeField] List<GameObject> personalityDataBase_exclusive;
     [SerializeField] List<GameObject> affrictionDataBase;
     //[SerializeField] List<GameObject> statusEffectDataBase;
     [SerializeField] List<GameObject> positionEffectDataBase;
@@ -144,7 +144,7 @@ public class Definer : MonoBehaviour
         list.AddRange(eqDataBase_excludeRandomPool);
         return list;
     }
-    public List<GameObject> GetPersonalityDataBase() { return personalityDataBase; }
+    public List<GameObject> GetPersonalityDataBase() { return personalityDataBase_randPool; }
     public List<GameObject> GetAffrictionDataBase() { return affrictionDataBase; }
 
     [System.Serializable]
@@ -300,7 +300,15 @@ public class Definer : MonoBehaviour
     public static List<List<ItemData>> equipments = new List<List<ItemData>>();
     public static List<GameObject> generalRaEDataBase;
     public static List<List<GameObject>> RaEDataBase = new List<List<GameObject>>();
-    public static List<List<GameObject>> personalities = new List<List<GameObject>>();
+    /// <summary全ての(固有除く)per</summary>
+    public static List<List<GameObject>> personalitiesDataBase = new List<List<GameObject>>();
+    /// <summary>
+    /// ランダム取得時に含まれる特性(bad,good,awokenのみ)
+    /// </summary>
+    public static List<List<GameObject>> pers_pool = new List<List<GameObject>>();
+    //ランダム取得の際に使用
+    List<PA_Personality.PersonalityStatus.PersonalityType> perTypeList = new List<PA_Personality.PersonalityStatus.PersonalityType> { PA_Personality.PersonalityStatus.PersonalityType.bad,
+    PA_Personality.PersonalityStatus.PersonalityType.good,PA_Personality.PersonalityStatus.PersonalityType.awoken};
 
 
     public static Dictionary<AbilityData.AbilityType, string> AbiltyTypeName = new Dictionary<AbilityData.AbilityType, string>(){
@@ -438,14 +446,33 @@ public class Definer : MonoBehaviour
             equipments[(int)equipment.rarity].Add(equipment);
         }
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < Enum.GetNames(typeof(PA_Personality.PersonalityStatus.PersonalityType)).Length; i++)
         {
-            personalities.Add(new List<GameObject>());
+            personalitiesDataBase.Add(new List<GameObject>());
         }
-        foreach (GameObject per in personalityDataBase)
+        foreach (GameObject per in personalityDataBase_randPool)
         {
             PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
-            personalities[(int)status.personalityType].Add(per);
+            personalitiesDataBase[(int)status.personalityType].Add(per);
+        }
+        foreach (GameObject per in personalityDataBase_exclusive)
+        {
+            PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
+            personalitiesDataBase[(int)status.personalityType].Add(per);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            pers_pool.Add(new List<GameObject>());
+        }
+        foreach (GameObject per in personalityDataBase_randPool)
+        {
+            PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
+            PA_Personality.PersonalityStatus.PersonalityType perType = status.personalityType;
+            int index = perTypeList.IndexOf(perType);
+            if (index == -1) InfoText.inst.AddErrorText($"予期せぬ種類の特性がデータベースに存在{status.personalityName}");
+
+            pers_pool[index].Add(per);
         }
 
         DoTDataBase = new List<GameObject>();

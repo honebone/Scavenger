@@ -98,6 +98,9 @@ public class Character : MonoBehaviour
         public List<StEResist> StEResists;
         public List<StEApplyBonus> StEApplyBonus;
         public float debuffChance;
+        public int debuffStacks;
+
+        public int buffStacks;
 
         public float moveRes;
         public float debuffRes;
@@ -196,7 +199,16 @@ public class Character : MonoBehaviour
                 if (bonus.exStack != 0) { s += ValueToStr(string.Format("{0}付与スタック数", StEName), bonus.exStack, ""); }
                 if (bonus.exValue != 0) { s += ValueToStr($"付与する{StEName}の<color=#FFBF69><i>{{効果量}}</i></color>", bonus.exValue, ""); }
             }
-            if (debuffChance != 0) { s += $"{"debuff".ToSpr_withName()}付与確率{debuffChance}％\n"; }
+            //if (debuffChance != 0) { s += $"{"debuff".ToSpr_withName()}付与確率{debuffChance}％\n"; }
+            //if (debuffStacks != 0) { s += $"{"debuff".ToSpr_withName()}付与スタック数{debuffStacks}\n"; }
+
+            //if (buffStacks != 0) { s += $"{"buff".ToSpr_withName()}付与スタック数{buffStacks}\n"; }
+
+            if (debuffChance != 0) { s += ValueToStr($"{"debuff".ToSpr_withName()}付与確率", debuffChance, "％"); }
+            if (debuffStacks != 0) { s += ValueToStr($"{"debuff".ToSpr_withName()}付与スタック数", debuffChance, ""); }
+
+            if (buffStacks != 0) { s += ValueToStr($"{"buff".ToSpr_withName()}付与スタック数", buffStacks, ""); }
+
             if (moveRes != 0) { s += $"{"move".ToSpr_withName()}耐性{moveRes}％"; }
             if (debuffRes != 0) { s += $"{"debuff".ToSpr_withName()}耐性{debuffRes}％\n"; }
 

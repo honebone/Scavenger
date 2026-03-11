@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_PandoraBox
+  m_Name: Eq_carvingKnife
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u30D1\u30F3\u30C9\u30E9\u306E\u7BB1"
+  itemName: "\u5265\u304E\u53D6\u308A\u30CA\u30A4\u30D5"
   specialInfo: 0
   info: 
-  rarity: 4
-  sprite: {fileID: 21300000, guid: ae20fd8b9b9ec0d4dacb86bae153a62a, type: 3}
+  rarity: 2
+  sprite: {fileID: 21300000, guid: 9bcff2ab0ab49d542ba58f04f4a76998, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 9185327421234476493, guid: a6017066c49383245909c8f4bd727ff7, type: 3}
+  manager: {fileID: 9185327421234476493, guid: 3d72acf6ad9769a4fb6f8764dc45b4f3, type: 3}

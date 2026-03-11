@@ -225,19 +225,19 @@ public class ExpeditionManager : MonoBehaviour
         //{
         //    pers_pool.Add(new List<GameObject>());
         //}
-        for (int i = 0; i < 3; i++)
-        {
-            pers_pool.Add(new List<GameObject>());
-        }
-        foreach (GameObject per in cp.perDataBase_randPool)
-        {
-            PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
-            PA_Personality.PersonalityStatus.PersonalityType perType = status.personalityType;
-            int index = perTypeList.IndexOf(perType);
-            if (index == -1) infoText.AddErrorText($"予期せぬ種類の特性がデータベースに存在{status.personalityName}");
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    pers_pool.Add(new List<GameObject>());
+        //}
+        //foreach (GameObject per in cp.perDataBase_randPool)
+        //{
+        //    PA_Personality.PersonalityStatus status = per.GetComponent<PA_Personality>().GetPersonalityStatus();
+        //    PA_Personality.PersonalityStatus.PersonalityType perType = status.personalityType;
+        //    int index = perTypeList.IndexOf(perType);
+        //    if (index == -1) infoText.AddErrorText($"予期せぬ種類の特性がデータベースに存在{status.personalityName}");
 
-            pers_pool[index].Add(per);
-        }
+        //    pers_pool[index].Add(per);
+        //}
     }
 
     //========================[探索開始]==============================
@@ -636,10 +636,10 @@ public class ExpeditionManager : MonoBehaviour
     }
 
     //==========================================================================[Per]======================================================================
-    /// <summary>
-    /// ランダム取得時に含まれる特性(bad,good,awokenのみ)
-    /// </summary>
-    List<List<GameObject>> pers_pool= new List<List<GameObject>>();
+    ///// <summary>
+    ///// ランダム取得時に含まれる特性(bad,good,awokenのみ)
+    ///// </summary>
+    //List<List<GameObject>> pers_pool= new List<List<GameObject>>();
     //ランダム取得の際に使用
     List<PA_Personality.PersonalityStatus.PersonalityType> perTypeList = new List<PA_Personality.PersonalityStatus.PersonalityType> { PA_Personality.PersonalityStatus.PersonalityType.bad,
     PA_Personality.PersonalityStatus.PersonalityType.good,PA_Personality.PersonalityStatus.PersonalityType.awoken};
@@ -684,7 +684,7 @@ public class ExpeditionManager : MonoBehaviour
         int index=perTypeList.IndexOf(perType);
         if (index == -1) infoText.AddErrorText($"予期しないタイプの特性を取得しようとしています");
 
-        return pers_pool[index].Sample(amount);
+        return Definer.pers_pool[index].Sample(amount);
     }
     /// <summary>
     /// 指定したキャラが持っていない、指定したタイプのランダムなper
@@ -699,7 +699,7 @@ public class ExpeditionManager : MonoBehaviour
     }
     public List<GameObject> GetPer_Random(int amount = 1)
     {
-        return GetRandomPerFromPool(pers_pool,amount);
+        return GetRandomPerFromPool(Definer.pers_pool,amount);
     }
     /// <summary>
     /// 指定したキャラが持っていない、ランダムなper
@@ -717,7 +717,7 @@ public class ExpeditionManager : MonoBehaviour
         for(int i = 0; i < perTypeList.Count; i++)
         {
             names = chara.GetPers(perTypeList[i]).Select(p => p.GetPAName()).ToList();
-            pool.Add(pers_pool[i].Where(p => !names.Contains(p.GetComponent<PA_Personality>().GetPAName())).ToList());
+            pool.Add(Definer.pers_pool[i].Where(p => !names.Contains(p.GetComponent<PA_Personality>().GetPAName())).ToList());
         }
 
         return pool;
