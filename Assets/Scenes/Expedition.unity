@@ -461,7 +461,7 @@ MonoBehaviour:
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
-  RE: {fileID: 8180078169205948270, guid: 82b6b801a82eb8243b3c18e991aadc09, type: 3}
+  RE: {fileID: 8180078169205948270, guid: c5d5645598bceca49a15a3c32537f4a2, type: 3}
   REP: {fileID: 1877823637}
   shopParams:
     shopOwnerIcon: {fileID: 0}
@@ -471,7 +471,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: a8b1b50686550e240a85a03892ebadaf, type: 3}
+  personality: {fileID: 3170614222137734241, guid: 3abaed46e7b02bd44a8115cbcb704a4c, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17602,6 +17602,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 8a79e91a5950d2c4eaea20652f9b0bc7, type: 3}
   - {fileID: 3170614222137734241, guid: d1cab6358d2ea1245869b90bb1b99ede, type: 3}
   - {fileID: 3170614222137734241, guid: a8b1b50686550e240a85a03892ebadaf, type: 3}
+  - {fileID: 3170614222137734241, guid: 3abaed46e7b02bd44a8115cbcb704a4c, type: 3}
   personalityDataBase_exclusive:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}

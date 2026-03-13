@@ -67,11 +67,12 @@ public class ActionMod : MonoBehaviour
 
         public Character.CharaStatusMod summonStatusMod;
 
-        //public float moveChance;
-        //public int moveForword;
-        //public int moveUpper;
-        //public int moveLower;
-        //public int moveBackword;
+        //public void Init()
+        //{
+        //    applySteParams = new List<PA_StatusEffect.StatusEffectParams>();
+        //    applyStEBonus = new List<StEApplyBonus>();
+        //    removeStEs=new List<ActionData.RemoveStE>();
+        //}
 
         public string GetModInfo()
         {

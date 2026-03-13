@@ -239,6 +239,10 @@ public class LootPanel : MonoBehaviour
     {
         items.ForEach(item => { AddItem(item); });
     }
+    /// <summary>
+    /// ƒGƒŠƒA‚²‚Æ‚Ì—Ê‚ğ©“®ŒvZ
+    /// </summary>
+    /// <param name="amount"></param>
     public void AddExp(float amount)
     {
         expOrbs += expeditionManager.GetExpAmount(amount);

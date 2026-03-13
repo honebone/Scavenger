@@ -19,7 +19,7 @@ public class RE_Rest : RoomEvent
     [SerializeField] float healRatio_sleep = 0.5f;
     [SerializeField] int SANHeal_sleep = 15;
     [SerializeField] int SANHeal_meditate = 20;
-    [SerializeField, Header("x,y-1‚Ì”ÍˆÍ")] Vector2Int RemovePer;
+    [SerializeField, Header("x,y‚Ì”ÍˆÍ")] Vector2Int RemovePer;
     [SerializeField] float AddExp_train;
 
     int phase;

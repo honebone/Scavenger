@@ -16,6 +16,9 @@ public class RE_RandomEvents : RoomEvent
     protected List<Character> players= new List<Character>();
     protected REOptionParams option_exit;
     //GameObject eventManager;
+
+    protected delegate void Result(int index);
+    protected Result result;
     public override void StartRoomEvent()
     {
         infoText.SwitchToLog();
@@ -29,7 +32,7 @@ public class RE_RandomEvents : RoomEvent
 
         option_exit = new REOptionParams();
         option_exit.optionName = "立ち去る";
-        option_exit.optionInfo = "イベントを修了する";
+        option_exit.optionInfo = "イベントを終了する";
 
         StartRandomEvent();
     }
@@ -38,6 +41,10 @@ public class RE_RandomEvents : RoomEvent
 
     }
 
+    public override void SelectOption(int index)
+    {
+        result(index);
+    }
 
     /// <summary>
     /// プレイヤー選択の選択肢を作成

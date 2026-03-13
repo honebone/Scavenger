@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 5493599450765428698}
+  - component: {fileID: -3540194507057132510}
   - component: {fileID: -4090635681871681786}
   m_Layer: 0
-  m_Name: Per_AtAStroke
+  m_Name: Per_HuntersInstinct
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5493599450765428698
+--- !u!114 &-3540194507057132510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,16 +42,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39abf60b5707dee45be588266ea85561, type: 3}
+  m_Script: {fileID: 11500000, guid: e337cb380b96a5e4292f11b11b890122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_atAStroke
+  fileName: per_huntersInstinct
   noSimpleInfo: 0
-  simpleInfo: "1\u30E9\u30A6\u30F3\u30C9\u3067\u4E00\u5B9A\u56DE\u6570\u653B\u6483\u3059\u308B\u3068\u3001<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u304C\u5897\u52A0"
-  PAInfo_start: "\u653B\u6483\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1\n\u30AB\u30A6\u30F3\u30C8\u304C5\u306B\u306A\u3063\u305F\u3068\u304D\u3001<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>+30\uFF05\n\n\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642\u3001\u30AB\u30A6\u30F3\u30C8\u306F\u30EA\u30BB\u30C3\u30C8\u3055\u308C\u308B"
-  skipGetInfo: 1
+  simpleInfo: "\u81EA\u8EAB\u306E<color=#FF6CC1><sprite name=ACC><link=T_ACC><u>ACC</u></link></color>\u304C100\u3092\u8D85\u3048\u3066\u3044\u308B\u306A\u3089\u3001\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u306E<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u6027\u80FD\u304C\u5897\u52A0\u3059\u308B"
+  PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
   statMod:
     LVL: 0
@@ -82,10 +81,80 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u4E00\u6C17\u5475\u6210"
+    personalityName: "\u72E9\u731F\u672C\u80FD"
     personalityType: 2
-  countReq: 5
-  ATK: 30
+  ACCTH: 100
+  CRITCPerACC: 1
+  CRITDPerACC: 2.5
+  actionModStatus:
+    conditionInfo: "\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483"
+    hideValues: 0
+    exInfo: "\u81EA\u8EAB\u306E100\u3092\u8D85\u3048\u305F<color=#FF6CC1><sprite
+      name=ACC><link=T_ACC><u>ACC</u></link></color>1\u306B\u3064\u304D\u3001\n<color=#FF8B00><sprite
+      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u88DC\u6B63+1\uFF05\n<color=#FF8B00><sprite
+      name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u30C0\u30E1\u30FC\u30B8\u88DC\u6B63+2.5\uFF05"
+    exTurn: 0
+    consumeFocus: 0
+    decreaseHP: 0
+    ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    exHeal_mul: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldAdd_percent: 0
+    shieldRemove: 0
+    shieldRemove_all: 0
+    applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      moveRes: 0
+      debuffRes: 0
+      minion: 0
 --- !u!212 &-4090635681871681786
 SpriteRenderer:
   m_ObjectHideFlags: 0

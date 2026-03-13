@@ -6,48 +6,35 @@ using UnityEngine;
 
 public class RaE_MilitaryAcademy : RE_RandomEvents
 {
-    [SerializeField] int price;
     [SerializeField] int badPers;
+    [SerializeField] int exp;
     [SerializeField] REOptionParams option_rarePer;
     [SerializeField] REOptionParams option_exp;
-    [SerializeField] REOptionParams course_normal;
-    [SerializeField] REOptionParams course_speed;
-    int phase;
     int curriculum;
 
     GameObject per;
     PassiveAbility PA;
-     public override void StartRandomEvent()
+    public override void StartRandomEvent()
     {
         result = SelectCurriculum;
 
         per = expeditionManager.GetPer_Random_CertainType(PA_Personality.PersonalityStatus.PersonalityType.awoken)[0];
         PA = per.GetComponent<PassiveAbility>();
         REOptionParams rarePer = new REOptionParams(option_rarePer);
-        rarePer.optionInfo += $"キャラ1体が{PA.GetPAName()}を得る\n{PA.GetPAName()}：{PA.GetPAInfo()}";
+        rarePer.optionInfo += $"キャラ1体が{PA.GetPAName()}と{badPers}つの<color=#C900FF>悪い特性</color>を得る\n{PA.GetPAName()}：\n{PA.GetPAInfo()}";
 
         expeditionManager.SetREOptionButtons(new List<REOptionParams>() { rarePer, option_exp, option_exit });
     }
 
-    delegate void Result(int index);
-    Result result;
-
-    public override void SelectOption(int index)
-    {
-        result(index);
-    }
-
     void SelectCurriculum(int index)
     {
-        if (index == 0||index==1)
+        if (index == 0 || index == 1)
         {
             curriculum = index;
 
-            REOptionParams normal = new REOptionParams(course_normal);
-            normal.available = inventory.CheckCoin(price);
-            expeditionManager.SetREOptionButtons(new List<REOptionParams>() { normal, course_speed});
+            expeditionManager.SetREOptionButtons(GenPlayerSelects());
 
-            //result=...
+            result = SelectChara;
         }
         else
         {
@@ -55,15 +42,21 @@ public class RaE_MilitaryAcademy : RE_RandomEvents
         }
     }
 
-    //void SelectCourse(int index)
-    //{
-    //    if (index == 0)
-    //    {
-    //        inventory.RemoveCoin(price);
-    //    }
-    //    else
-    //    {
-    //        EndRoomEvent();
-    //    }
-    //}
+    void SelectChara(int index)
+    {
+        if (index < players.Count)
+        {
+            Character selected = players[index];
+            expeditionManager.SetRandomPer_WithType(selected, PA_Personality.PersonalityStatus.PersonalityType.bad, badPers);
+            if (curriculum == 0)
+            {
+                expeditionManager.SetPersonality(selected, per);
+            }
+            else
+            {
+                selected.GainEXP(expeditionManager.GetExpAmount(exp));
+            }
+        }
+        EndRoomEvent();
+    }
 }

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245495364145880639}
-  - component: {fileID: -8297540855159698461}
+  - component: {fileID: -2350250237013785453}
   m_Layer: 0
-  m_Name: RaE_CursedVault
+  m_Name: RaE_PoisonSwamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8297540855159698461
+--- !u!114 &-2350250237013785453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180078169205948270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5983153f0a7adc940870bac4eb661a19, type: 3}
+  m_Script: {fileID: 11500000, guid: 5959a81e994273f499d46f5b87a26f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
-  REName: "\u546A\u308F\u308C\u305F\u5B9D\u7269\u5EAB"
-  REInfo: "\u5C01\u3058\u3089\u308C\u305F\u5B9D\u7269\u5EAB\u304B\u3089\u4E0D\u5409\u306A\u8F1D\u304D\u304C\u6F0F\u308C\u51FA\u3057\u3066\u3044\u308B\n\u91D1\u8CA8\u306F\u5C71\u3068\u7A4D\u307E\u308C\u3066\u3044\u308B\u304C\u7A7A\u6C17\u304C\u91CD\u304F\u6DC0\u3080\n\u5BCC\u3092\u5F97\u308B\u306B\u306F\u3001\u5C01\u3058\u3089\u308C\u305F\u546A\u3044\u3092\u89E3\u304D\u653E\u3064\u5FC5\u8981\u304C\u3042\u308B"
+  REName: "\u6BD2\u6CBC\u306B\u6C88\u3093\u3060\u91D1\u8CA8"
+  REInfo: "\u8150\u81ED\u306E\u6F02\u3046\u6CBC\u306B\u51FA\u4F1A\u3063\u305F\n\u3088\u304F\u898B\u308B\u3068\u3001\u6C88\u307F\u3086\u304F\u5B9D\u7BB1\u304C\u898B\u3048\u308B"
   overrideMapName: 0
   mapName: 
   overrideMapInfo: 0
@@ -63,10 +63,13 @@ MonoBehaviour:
     showRarePers: 0
     showGoodPers: 0
     showBadPers: 0
-  coin: {x: 15, y: 40}
+  HPLose: {x: 5, y: 50}
+  coin: {x: 1, y: 30}
   option:
-    optionName: "\u5B9D\u7269\u5EAB\u3092\u958B\u3051\u308B"
-    optionInfo: "<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u309215-40\u5F97\u308B\r\n\u30E9\u30F3\u30C0\u30E0\u306A\u30AD\u30E3\u30E91\u4F53\u304C<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3092\u5F97\u308B"
+    optionName: "\u3064\u304B\u307F\u53D6\u308B"
+    optionInfo: "\u6761\u4EF6\uFF1A\u7015\u6B7B\u72B6\u614B\u306E\u5473\u65B9\u304C\u3044\u306A\u3044\n\n\u5168\u54E1\u304C<sprite
+      name=HP><color=#87FF79>HP</color>\u30925-25\uFF05\u5931\u3044\u3001<sprite
+      name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u30921-30\u5F97\u308B"
     expMul: 0
     optionInfo_suffix: 
     available: 1

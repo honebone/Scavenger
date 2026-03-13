@@ -42,15 +42,27 @@ public static class Extentions
         return dice < chance;
     }
 
-    /// <summary>x~y-1‚Ü‚Å</summary>
+    /// <summary>x~y‚Ü‚Å</summary>
     public static int Range(this Vector2Int vector2)
     {
-        return  Random.Range(vector2.x, vector2.y);
+        return  Random.Range(vector2.x, vector2.y+1);
     }
     public static float Range(this Vector2 vector2)
     {
         return Random.Range(vector2.x, vector2.y);
     }
+
+    public static int Range_ND(this Vector2Int vector2, int strength = 6)
+    {
+        float f = 0;
+        for (int i = 0; i < strength; i++) f += Random.value;
+        f /= strength;
+        return vector2.x + (vector2.y * f).ToInt();
+    }
+    //public static int Range_ND(this Vector3Int vector3)
+    //{
+    //    return 
+    //}
 
     public static int ChoiceWithWeight(this float[] weight)
     {

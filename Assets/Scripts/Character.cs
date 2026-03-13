@@ -1827,6 +1827,15 @@ public class Character : MonoBehaviour
     }
 
     /// <summary>
+    /// エリアによるexpを勝手に計算
+    /// </summary>
+    /// <param name="amount"></param>
+    public void GainEXP_AutoCalc(int amount)
+    {
+        GainEXP(expeditionManager.GetExpAmount(amount));
+    }
+
+    /// <summary>
     /// デバッグ用
     /// </summary>
     /// <param name="addLVL"></param>

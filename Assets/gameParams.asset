@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: gameParams
   m_EditorClassIdentifier: 
   maxLVL: 10
+  maxEVD: 75
+  maxPROT: 75
   EXP_reqs: 010000000200000003000000050000000600000007000000090000000c0000000f000000
   EXPBase: 1.5
   EXP_Boss: 6
@@ -30,7 +32,7 @@ MonoBehaviour:
     EVD: 1
     ACC: 1
   initialCoin: 15
-  coinPerBattle_base: {x: 8, y: 13}
+  coinPerBattle_base: {x: 8, y: 12}
   eqPrice: 000000000a000000140000002800000032000000
   priceMul: {x: 75, y: 125}
   salePerShop: 2

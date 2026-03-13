@@ -19,7 +19,6 @@ public class Eq_StormBow : PA_Equipment
                 {
                     Action.ActionStatus action = actionStatus;
                     action.ACCMod += ACCMod;
-                    infoText.AddDebugText(action.ACCMod.ToString());
                     List<Character> target = charactersManager.SearchCharaWithCondition(condition);
 
                    if(target.Count>0) Enqueue(action, true, target, 1);
