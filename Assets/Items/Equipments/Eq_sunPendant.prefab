@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2731747101393116504}
-  - component: {fileID: 4000320516162198705}
+  - component: {fileID: 6001225443967295111}
   - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_carvingKnife
+  m_Name: Eq_sunPendant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4000320516162198705
+--- !u!114 &6001225443967295111
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +42,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3af771a509daefd40b0d0709dd16ebb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: eq_carvingKinife
+  fileName: Eq_sunPendant
   noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u7D42\u4E86\u6642\u306E\u88C5\u5099\u54C1\u306E\u9078\u629E\u80A2\u304C\u5897\u3048\u308B"
-  PAInfo_start: "\u6226\u95D8\u7D42\u4E86\u6642\u306E\u88C5\u5099\u54C1\u306E\u9078\u629E\u80A2\u304C1\u5897\u3048\u308B"
-  skipGetInfo: 1
+  simpleInfo: 
+  PAInfo_start: 
+  skipGetInfo: 0
   PAInfo_end: 
   statMod:
     LVL: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
     INT_mul: 0
     INT_int: 0
     exDMG_mul: 0
-    CRITC: 5
+    CRITC: 0
     CRITD: 0
     EVD: 0
     ACC: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChance: 0
     debuffStacks: 0
-    buffStacks: 0
+    buffStacks: 1
     moveRes: 0
     debuffRes: 0
     minion: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: e8f39b58e8d04234fb1d48a0829776fc, type: 2}
+    itemData: {fileID: 11400000, guid: 0772c9d6f4eb2f145b473e755c930090, type: 2}
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9bcff2ab0ab49d542ba58f04f4a76998, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4492863dabafec4b930351100920d15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

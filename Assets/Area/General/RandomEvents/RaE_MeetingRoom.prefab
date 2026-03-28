@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245495364145880639}
-  - component: {fileID: 1136207738258681265}
+  - component: {fileID: 6788906183274555999}
   m_Layer: 0
-  m_Name: RaE_TreasureBox
+  m_Name: RaE_MeetingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1136207738258681265
+--- !u!114 &6788906183274555999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,17 +41,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180078169205948270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae414393924c7a946a65134b263da3ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f8ad0ca9a3115343ab22679e0307b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
-  REName: "\u5B9D\u7BB1"
-  REInfo: "\u5B9D\u7BB1\u3060!\n\u4F55\u304C\u5165\u3063\u3066\u3044\u308B\u3060\u308D\u3046\u304B..."
+  REName: "\u4F1A\u8B70\u5BA4"
+  REInfo: "\u5927\u304D\u306A\u9577\u673A\u3068\u3001\u5EA7\u308A\u5FC3\u5730\u306E\u3088\u3055\u305D\u3046\u306A\u6905\u5B50\u304C\u7F6E\u304B\u308C\u305F\u90E8\u5C4B\u3092\u898B\u3064\u3051\u305F\r\n\u8A71\u3057\u5408\u3044\u3092\u3059\u308B\u306B\u306F\u3061\u3087\u3046\u3069\u3088\u3055\u305D\u3046\u306A\u5834\u6240\u3060"
   overrideMapName: 0
   mapName: 
   overrideMapInfo: 0
   mapInfo: 
-  rarity: 1
+  rarity: 2
   charaSelectInfo:
     option:
       optionName: 
@@ -60,38 +60,24 @@ MonoBehaviour:
       optionInfo_suffix: 
       available: 1
     showExp: 0
-    showRarePers: 0
-    showGoodPers: 0
-    showBadPers: 0
+    showRarePers: 1
+    showGoodPers: 1
+    showBadPers: 1
+  heal: {x: 30, y: 30}
+  SANHeal: {x: 15, y: 30}
   options:
-  - optionName: "\u5B9D\u7BB1\u3092\u958B\u3051\u308B...?"
-    optionInfo: "\u88C5\u5099\u54C1\u30922-5\u500B\u5F97\u308B\n<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u30925-15\u5F97\u308B\n???"
+  - optionName: "\u77E5\u898B\u5171\u6709\u3059\u308B"
+    optionInfo: "\u30AD\u30E3\u30E91\u4F53\u3092\u9078\u3073\u3001\u305D\u308C\u304C\u6301\u3063\u3066\u3044\u308B<link=U_\u30E9\u30F3\u30C0\u30E0\u7279\u6027><u>\u30E9\u30F3\u30C0\u30E0\u7279\u6027</u></link>1\u3064\u3092\u307B\u304B\u306E\u5168\u54E1\u306B\u3082\u4E0E\u3048\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 0
+  - optionName: "\u5C45\u7720\u308A\u3092\u3059\u308B"
+    optionInfo: "\u5168\u54E1\u304C<sprite name=HP><color=#87FF79>HP</color>\u309230\uFF05\u56DE\u5FA9\u3059\u308B"
     expMul: 0
     optionInfo_suffix: 
     available: 1
-  - optionName: "\u4F55\u3082\u3057\u306A\u3044"
-    optionInfo: 
+  - optionName: "\u8AC7\u7B11\u3059\u308B"
+    optionInfo: "\u5168\u54E1\u304C<color=#FFFFFF><sprite name=SAN><link=T_SAN><u>SAN</u></link></color>\u309215-30\u56DE\u5FA9\u3059\u308B"
     expMul: 0
     optionInfo_suffix: 
     available: 1
-  lootStatus:
-    dropEquipmentsRange: {x: 2, y: 5}
-    guarantee_rare: 0
-    guarantee_epic: 0
-    guarantee_legendary: 0
-    coin: {x: 5, y: 15}
-  mimic:
-    dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 0}
-    dontShuffleMid: 0
-    upperMid: {fileID: 0}
-    centerMid: {fileID: 11400000, guid: f7f336972783cfe4986453cc621846a6, type: 2}
-    lowerMid: {fileID: 11400000, guid: 26123d43ff690684ea4e7a8101993311, type: 2}
-    dontShuffleBack: 0
-    upperBack: {fileID: 0}
-    centerBack: {fileID: 0}
-    lowerBack: {fileID: 0}
-    atRandom: []
-  umbushed: {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

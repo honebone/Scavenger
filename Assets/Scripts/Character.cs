@@ -205,7 +205,7 @@ public class Character : MonoBehaviour
             //if (buffStacks != 0) { s += $"{"buff".ToSpr_withName()}付与スタック数{buffStacks}\n"; }
 
             if (debuffChance != 0) { s += ValueToStr($"{"debuff".ToSpr_withName()}付与確率", debuffChance, "％"); }
-            if (debuffStacks != 0) { s += ValueToStr($"{"debuff".ToSpr_withName()}付与スタック数", debuffChance, ""); }
+            if (debuffStacks != 0) { s += ValueToStr($"{"debuff".ToSpr_withName()}付与スタック数", debuffStacks, ""); }
 
             if (buffStacks != 0) { s += ValueToStr($"{"buff".ToSpr_withName()}付与スタック数", buffStacks, ""); }
 
@@ -395,6 +395,10 @@ public class Character : MonoBehaviour
             StEApplyBonus = new List<StEApplyBonus>();
         }
         public float debuffChance;
+        public int debuffStacks;
+
+        public int buffStacks;
+
         public float moveRes;
         public float debuffRes;
 
@@ -434,6 +438,8 @@ public class Character : MonoBehaviour
                 if (bonus.exDMGPerTurn != 0) { info += ValueToStr(string.Format("{0}のHP減少量", StEName), bonus.exDMGPerTurn, "/ターン"); }
             }
             info += ValueToStr($"{"debuff".ToSpr_withName()}付与確率", debuffChance, "％");
+            info += ValueToStr($"{"debuff".ToSpr_withName()}付与スタック数", debuffStacks, "");
+            info += ValueToStr($"{"buff".ToSpr_withName()}付与スタック数", buffStacks, "");
             info += ValueToStr($"{"move".ToSpr_withName()}耐性", moveRes, "％");
             info += ValueToStr($"{"debuff".ToSpr_withName()}耐性", debuffRes, "％");
 
@@ -487,6 +493,11 @@ public class Character : MonoBehaviour
 
             if (mod.StEResists != null && mod.StEResists.Count > 0) InfoText.inst.AddErrorText("デバフ耐性の乗算は対応していません");
             if (mod.StEApplyBonus != null && mod.StEApplyBonus.Count > 0) InfoText.inst.AddErrorText("デバフボーナスの乗算は対応していません");
+
+            mod.debuffChance *= n;
+            mod.debuffRes *= n;
+            mod.debuffStacks *= n;
+            mod.buffStacks *= n;
 
             //public bool minion;
 
@@ -709,7 +720,7 @@ public class Character : MonoBehaviour
         var p = Instantiate(paObj, transform);
         PA_Personality added = p.GetComponent<PA_Personality>();
         PA_Per.Add(added);
-        added.Init(this, 1, infoText);
+        added.Init(this, 1, infoText, paObj);
         if (note)
         {
             PA_Personality.PersonalityStatus personality = added.GetPersonalityStatus();
@@ -733,7 +744,7 @@ public class Character : MonoBehaviour
     {
         var p = Instantiate(item.data.manager, transform);
         PA_Eq.Add(p.GetComponent<PassiveAbility>());
-        p.GetComponent<PassiveAbility>().Init(this, 2, infoText);
+        p.GetComponent<PassiveAbility>().Init(this, 2, infoText, item.data.manager);
         item.createdManager = p;
         charaStatus.equipments.Add(item);
     }
@@ -834,7 +845,7 @@ public class Character : MonoBehaviour
             PA_StE.Add(pa);
 
             pa.Init_StE(finalStack, finalValue, StEParams.DMGPerTurn, charaObj.SetStEIcon().GetComponent<StEIcon>(), applyer, StEParams.applyStE);
-            pa.Init(this, 0, infoText);
+            pa.Init(this, 0, infoText, StEParams.applyStE);
 
             if (StEStatus.refValue)
             {
@@ -1362,6 +1373,15 @@ public class Character : MonoBehaviour
         int dec = charaStatus.maxHP.Mul(percent);
         DecreaseHP(dec);
     }
+    /// <summary>
+    /// 戦闘中は呼ばれない
+    /// </summary>
+    /// <param name="percent"></param>
+    public void Heal_Per(float percent)
+    {
+        int dec = charaStatus.maxHP.Mul(percent);
+        Heal(dec, null);
+    }
 
     /// <summary>return:殺害したか</summary>
     public bool Damage(Action.OnDamageParams onDamageParams)
@@ -1572,6 +1592,8 @@ public class Character : MonoBehaviour
             AddStEBonus(bonus, set);
         }
         if (mod.debuffChance != 0) { AddDebuffChance(mod.debuffChance * n); }
+        if (mod.debuffStacks != 0) { AddDebuffStack(mod.debuffStacks * n); }
+        if (mod.buffStacks != 0) { AddBuffStack(mod.buffStacks * n); }
         if (mod.moveRes != 0) { AddMoveRes(mod.moveRes * n); }
         if (mod.debuffRes != 0) { AddDebuffRes(mod.debuffRes * n); }
 
@@ -1725,6 +1747,14 @@ public class Character : MonoBehaviour
     public void AddDebuffChance(float value)
     {
         charaStatus.debuffChance += value;
+    }
+    public void AddDebuffStack(int value)
+    {
+        charaStatus.debuffStacks+= value;
+    }
+    public void AddBuffStack(int value)
+    {
+        charaStatus.buffStacks += value;
     }
     public void AddMoveRes(float value)
     {

@@ -37,8 +37,16 @@ public class Per_Master : PA_Personality
                     if (coin != Vector2Int.zero)
                     {
                         int c = coin.Range();
-                        LootPanel.inst.AddCoin(c);
-                        Log($"{"coin".ToSpr_withName()}+{c}");
+                        if (c > 0)
+                        {
+                            LootPanel.inst.AddCoin(c);
+                            Log($"{"coin".ToSpr_withName()}+{c}");
+                        }
+                        else if (c < 0)
+                        {
+                            Inventory.inst.RemoveCoin(-c);
+                            Log($"{"coin".ToSpr_withName()}-{c}");
+                        }
                     }
                     if (modifyStatus)
                     {

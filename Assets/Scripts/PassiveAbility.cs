@@ -24,12 +24,15 @@ public class PassiveAbility : MonoBehaviour
     protected bool instantiated;
     protected bool applyFlag;
 
+    GameObject myPrefab;
+
     public string FileName() { return fileName; }
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     int PAType;
     /// <summary>0:StE 1:Personality 2:Equipment</summary>
     public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
+    public GameObject GetPrefab() => myPrefab;
     public string GetPAInfo(bool simple = false)
     {
         string s = "";
@@ -91,12 +94,15 @@ public class PassiveAbility : MonoBehaviour
         return "";
     }
 
-    public void Init(Character c, int type, InfoText it)
+    public void Init(Character c, int type, InfoText it,GameObject prefab)
     {
         instantiated = true;
+
         character = c;
         PAType = type;
         infoText = it;
+        myPrefab = prefab;
+
         charactersManager = CharactersManager.inst;
         if (fileName == "") { infoText.AddWarningText($"{GetPAName()}‚ÌfileName‚ª‚ ‚è‚Ü‚¹‚ñ"); }
 

@@ -331,10 +331,10 @@ public class Action : MonoBehaviour
                 }
                 if (INTMod_max > 0 || INTMod_divide > 0)
                 {
-                    s += $"{NL()}・{"INT".ToSpr_withName("魔法")}攻撃を行う\n";
+                    s += $"{NL()}・{"INT".ToSpr_withName("魔法")}攻撃を行う";
                     if (INTMod_max > 0)
                     {
-                        s += $"  {"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
+                        s += $"{NL()}  {"INT".ToSpr_withLink()}の{GetValueRange(INTMod_min, INTMod_max)}％ダメージ";
                         if (refCharaStatus)
                         {
                             s += string.Format("({0})", GetValueRange(Mathf.RoundToInt(characterStatus.INT * INTMod_min / 100), Mathf.RoundToInt(characterStatus.INT * INTMod_max / 100)));
@@ -342,7 +342,7 @@ public class Action : MonoBehaviour
                     } 
                     if (INTMod_divide > 0)
                     {
-                        s += $"  {"INT".ToSpr_withLink()}{INTMod_divide}％の{"分配ダメージ".ToLinkKey()}";
+                        s += $"{NL()}  {"INT".ToSpr_withLink()}{INTMod_divide}％の{"分配ダメージ".ToLinkKey()}";
                         if (refCharaStatus)
                         {
                             s += string.Format("({0})", (characterStatus.INT * INTMod_divide / 100).ToInt());
@@ -1350,8 +1350,15 @@ public class Action : MonoBehaviour
                             {
                                 StEParams.applyChance += actionsStatus[i].debuffChanceMod;
                                 StEParams.applyChance += ownerStatus.debuffChance;
+
+                                StEParams.stack += ownerStatus.debuffStacks;
                             }
-                            //if (StEStaus.scaleStackByLVL) { StEParams.stack += Mathf.Max(0, Mathf.FloorToInt((ownerStatus.level - 1) / 2f)); }
+
+                            if (StEStaus.StEType == PA_StatusEffect.StatusEffectStatus.StatusEffectType.buff)
+                            {
+                                StEParams.stack += ownerStatus.buffStacks;
+                            }
+
                             if (StEStaus.DoT)
                             {
                                 int baseDMG = (StEParams.refATK) ? ownerStatus.ATK : (StEParams.refTargetMaxHP) ? targetStatus.maxHP : ownerStatus.INT;

@@ -338,10 +338,10 @@ public class ExpeditionManager : MonoBehaviour
             relManager.Enqueue_EnemyLVL();
         }
 
-        if (partyStatus.getPerChance_endRE.Dice())//“Á«’Ç‰Á
-        {
-            SetRandomPer_ToRandom();
-        }
+        //if (partyStatus.getPerChance_endRE.Dice())//“Á«’Ç‰Á
+        //{
+        //    SetRandomPer_ToRandom();
+        //}
 
         if (partyStatus.madness < partyStatus.maxMadness)//‹¶‹C
         {

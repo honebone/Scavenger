@@ -52,14 +52,19 @@ public class RE_RandomEvents : RoomEvent
     /// <returns></returns>
     public List<REOptionParams> GenPlayerSelects()
     {
-        List<REOptionParams > result = new List<REOptionParams>();
-        players.ForEach(p =>
+        return GenPlayerSelects_CertainChara(players);
+    }
+
+    public List<REOptionParams> GenPlayerSelects_CertainChara(List<Character> list)
+    {
+        List<REOptionParams> result = new List<REOptionParams>();
+        list.ForEach(p =>
         {
             REOptionParams option = new REOptionParams(charaSelectInfo.option);
             option.optionName += p.CharaStatus().charaName;
 
             string s = "";
-            if (charaSelectInfo.showExp) s += $"{Extentions.NL(s,2)}åªç›ÇÃ{p.CharaStatus().GetExpInfo()}";
+            if (charaSelectInfo.showExp) s += $"{Extentions.NL(s, 2)}åªç›ÇÃ{p.CharaStatus().GetExpInfo()}";
             if (charaSelectInfo.showRarePers)
             {
                 string pers = "";
@@ -88,6 +93,18 @@ public class RE_RandomEvents : RoomEvent
         });
 
         return result;
+    }
+
+    /// <summary>
+    /// ì¡ê´ÅF<ì¡ê´ñº>ÇìæÇÈ
+    /// Ç©ÇÁénÇ‹ÇÈ
+    /// </summary>
+    /// <param name="per"></param>
+    /// <param name="affix"></param>
+    /// <returns></returns>
+    protected string GenPerOptionInfo(PA_Personality per,string affix="",string suffix="")
+    {
+        return $"{affix}ì¡ê´<{per.GetPAName()}>ÇìæÇÈ\n\n{per.GetPAName()}ÅF\n{per.GetPAInfo()}{suffix}";
     }
 
     [System.Serializable]

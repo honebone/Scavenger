@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8180078169205948270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7245495364145880639}
+  - component: {fileID: 5194112889007838203}
+  m_Layer: 0
+  m_Name: RaE_Thugs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7245495364145880639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5194112889007838203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8180078169205948270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de19b322e9fe4743b9c549ae73e0c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showREInfoOnStart: 1
+  REName: "\u30B4\u30ED\u30C4\u30AD"
+  REInfo: "\u6B69\u3044\u3066\u3044\u308B\u3068\u3001\u76D7\u8CCA\u306E\u4E00\u56E3\u306B\u884C\u304F\u624B\u3092\u585E\u304C\u308C\u305F\n\u901A\u884C\u6599\u3092\u652F\u6255\u3048\u3070\u3001\u7A4F\u4FBF\u306B\u3053\u3068\u3092\u9032\u3081\u308B\u3053\u3068\u304C\u3067\u304D\u308B\n\u5F53\u7136\u3060\u304C\u3001\u6B7B\u4F53\u306B\u91D1\u306A\u3069\u6255\u3046\u5FC5\u8981\u306F\u306A\u3044"
+  overrideMapName: 0
+  mapName: 
+  overrideMapInfo: 0
+  mapInfo: 
+  rarity: 0
+  charaSelectInfo:
+    option:
+      optionName: 
+      optionInfo: 
+      expMul: 0
+      optionInfo_suffix: 
+      available: 1
+    showExp: 0
+    showRarePers: 0
+    showGoodPers: 0
+    showBadPers: 0
+  battleParams:
+    bgm: {fileID: 0}
+    lvlMod: 0
+    additionalEq: 0
+    additionalEq_epic: 0
+    supplyPicksMod: 0
+    expMod: 0
+    dontPlayBGMOnEnd: 0
+  enemySet:
+  - dontShuffleFront: 0
+    upperFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
+    centerMid: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 11400000, guid: 34039c041659b634cad6dbffeae0d89d, type: 2}
+    lowerBack: {fileID: 0}
+    atRandom:
+    - {fileID: 11400000, guid: a8232614263915a45a611a4b9868fa48, type: 2}
+  fee: 25
+  options:
+  - optionName: "<sprite name=coin><color=#D83ECE>25</color>\uFF1A\u901A\u884C\u6599\u3092\u652F\u6255\u3046"
+    optionInfo: "\u305D\u306E\u5834\u3092\u7ACB\u3061\u53BB\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 0
+  - optionName: "\u6226\u3046"
+    optionInfo: "\u6575\u3068\u6226\u95D8\u306B\u306A\u308B"
+    expMul: 0
+    optionInfo_suffix: 
+    available: 1
