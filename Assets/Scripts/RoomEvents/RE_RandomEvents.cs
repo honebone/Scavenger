@@ -96,15 +96,26 @@ public class RE_RandomEvents : RoomEvent
     }
 
     /// <summary>
-    /// 特性：<特性名>を得る
+    /// {affix}特性：<特性名>{suffix(デフォルトは"を得る")}
     /// から始まる
     /// </summary>
     /// <param name="per"></param>
     /// <param name="affix"></param>
     /// <returns></returns>
-    protected string GenPerOptionInfo(PA_Personality per,string affix="",string suffix="")
+    protected string GenPerOptionInfo(PA_Personality per,string affix="",string suffix="を得る")
     {
-        return $"{affix}特性<{per.GetPAName()}>を得る\n\n{per.GetPAName()}：\n{per.GetPAInfo()}{suffix}";
+        return $"{affix}特性<{per.GetPAName()}>{suffix}\n\n{per.GetPAName()}：\n{per.GetPAInfo()}";
+    }
+    /// <summary>
+    /// {affix}特性：<特性名>{suffix(デフォルトは"を得る")}
+    /// から始まる
+    /// </summary>
+    /// <param name="per"></param>
+    /// <param name="affix"></param>
+    /// <returns></returns>
+    protected string GenPerOptionInfo(GameObject per, string affix = "", string suffix = "を得る")
+    {
+        return GenPerOptionInfo(per.GetComponent<PA_Personality>(), affix, suffix);
     }
 
     [System.Serializable]

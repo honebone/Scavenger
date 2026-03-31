@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7245495364145880639}
-  - component: {fileID: -781255628519215255}
+  - component: {fileID: 2429017334503400187}
   m_Layer: 0
-  m_Name: RaE_GuidingLight
+  m_Name: RaE_Bookshelf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-781255628519215255
+--- !u!114 &2429017334503400187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8180078169205948270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cb2182cc725bd74cafbcee23b7f1f0e, type: 3}
+  m_Script: {fileID: 11500000, guid: c289b769d9889fd408a08489ff6c29c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   showREInfoOnStart: 1
-  REName: "\u5C0E\u304D\u306E\u5149"
-  REInfo: "\u74E6\u792B\u306E\u9699\u9593\u304B\u3089\u67D4\u3089\u304B\u306A\u5149\u304C\u5DEE\u3057\u8FBC\u3093\u3067\u3044\u308B\n\u5149\u306F\u305D\u308C\u305E\u308C\u306B\u7570\u306A\u308B\u5F62\u3067\u964D\u308A\u6CE8\u3050\n\u7ACB\u3061\u6B62\u308A\u3001\u6075\u307F\u304C\u523B\u307E\u308C\u308B\u3053\u3068\u3092\u7948\u3063\u305F"
+  REName: "\u672C\u68DA"
+  REInfo: "\u30DC\u30ED\u30DC\u30ED\u306E\u672C\u68DA\u3092\u898B\u3064\u3051\u305F\n\u6570\u518A\u306E\u672C\u304C\u4FDD\u7BA1\u3055\u308C\u3066\u3044\u308B\u304C\u3001\u4FDD\u5B58\u72B6\u614B\u304C\u826F\u3044\u3068\u306F\u8A00\u3048\u306A\u3044"
   overrideMapName: 0
   mapName: 
   overrideMapInfo: 0
@@ -63,4 +63,7 @@ MonoBehaviour:
     showRarePers: 0
     showGoodPers: 0
     showBadPers: 0
-  chance: 50
+  bookNames:
+  - "\u8D64\u3044\u672C"
+  - "\u7DBA\u9E97\u306A\u672C"
+  - "\u5206\u539A\u3044\u672C"

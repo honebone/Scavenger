@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5667121962493394942
+--- !u!1 &9185327421234476493
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1455896857616258923}
-  - component: {fileID: -8948629108701297110}
-  - component: {fileID: 2102424110011888310}
+  - component: {fileID: 2731747101393116504}
+  - component: {fileID: -6086793767237120540}
+  - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: Eq_militiasArmband
+  m_Name: Eq_guarantee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1455896857616258923
+--- !u!4 &2731747101393116504
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 9185327421234476493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.43982, y: 44.00264, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8948629108701297110
+--- !u!114 &-6086793767237120540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 096ae31feecd69548bb425ae50f82254, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cc8787165e4ad744855a5e32561f0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_militiasArmband
+  fileName: eq_guarantee
   noSimpleInfo: 0
-  simpleInfo: "\u81EA\u8EAB\u304C\u88C5\u5099\u4E2D\u306E<color=#40CC40>\u30A2\u30F3\u30B3\u30E2\u30F3</color>\u306E\u88C5\u50991\u3064\u306B\u3064\u304D<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>\u30FB<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>\u304C\u5897\u52A0"
-  PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\uFF1A\u88C5\u5099\u3057\u3066\u3044\u308B<color=#40CC40>\u30A2\u30F3\u30B3\u30E2\u30F3</color>\u306E\u88C5\u50991\u3064\u306B\u3064\u304D<color=#C30000><sprite
-    name=ATK><link=T_ATK><u>ATK</u></link></color>/<color=#256CC8><sprite name=INT><link=T_INT><u>INT</u></link></color>+20\uFF05"
+  simpleInfo: "\u5358\u4F53\u3092\u5BFE\u8C61\u3068\u3059\u308B\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u306E<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387\u304C\u5897\u52A0"
+  PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -59,7 +58,7 @@ MonoBehaviour:
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
-    ATK_mul: 0
+    ATK_mul: 25
     ATK_int: 0
     INT_mul: 0
     INT_int: 0
@@ -80,19 +79,19 @@ MonoBehaviour:
     moveRes: 0
     debuffRes: 0
     minion: 0
-  AMods: []
+  AMods:
+  - {fileID: 980131611971298319, guid: 802e4faadf571bd4c8c284aafad7edab, type: 3}
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: 5321050e0ffc372438670bc181ed5138, type: 2}
-  valuePerEq: 20
---- !u!212 &2102424110011888310
+    itemData: {fileID: 11400000, guid: 1ceaa75e46cb6f74e9b213b308222456, type: 2}
+--- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667121962493394942}
+  m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -127,12 +126,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73cb47a3c25212e4cac0e39fa8613b4b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 82a95d8af07e0214a9f8c7753dc69fab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.4, y: 2.4}
+  m_Size: {x: 4.8, y: 4.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

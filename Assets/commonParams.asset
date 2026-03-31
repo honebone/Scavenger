@@ -375,10 +375,11 @@ MonoBehaviour:
   - {fileID: 8180078169205948270, guid: c5d5645598bceca49a15a3c32537f4a2, type: 3}
   - {fileID: 8180078169205948270, guid: 6ca5c8dd2844f8e4d9e71554211788c4, type: 3}
   - {fileID: 8180078169205948270, guid: c791b91eace2d974eb552cc72fc0d447, type: 3}
+  - {fileID: 8180078169205948270, guid: f3259a6a24f8e2a4a84be4addb0cf8b8, type: 3}
   RaEWeights:
   - 20
-  - 50
-  - 25
+  - 45
+  - 30
   - 4.99
   - 0.01
   roomRef:

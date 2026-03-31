@@ -51,7 +51,7 @@ MonoBehaviour:
   mapName: 
   overrideMapInfo: 0
   mapInfo: 
-  rarity: 2
+  rarity: 1
   charaSelectInfo:
     option:
       optionName: 
