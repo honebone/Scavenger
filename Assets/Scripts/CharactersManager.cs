@@ -440,6 +440,25 @@ public class CharactersManager : MonoBehaviour
         return list;
     }
 
+    /// <summary>
+    /// パーティ全体のアビリティの数を返す
+    /// </summary>
+    /// <param name="abilityType"></param>
+    /// <returns></returns>
+    public int GetPartyAbilityAmount(AbilityData.AbilityType abilityType,bool allowLocked=false)
+    {
+        int count = 0;
+        SearchChara_AllInOneSide(true).ForEach(p =>
+        {
+            Character.CharacterStatus status = p.CharaStatus();
+            status.abilitiesStatus.ToList().ForEach(a=> {
+                if (a.abilityType == abilityType && (allowLocked || !a.locked)) count++;
+            });
+        });
+
+        return count;
+    }
+
     public List<int> SearchPosWithCondition(SearchCharaCondition condition)
     {
         if (!condition.searchAsPos)

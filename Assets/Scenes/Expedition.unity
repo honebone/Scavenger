@@ -460,7 +460,7 @@ MonoBehaviour:
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
-  RE: {fileID: 8180078169205948270, guid: f3259a6a24f8e2a4a84be4addb0cf8b8, type: 3}
+  RE: {fileID: 8180078169205948270, guid: 671ccd86f01b0594bb2faa0ddf6c66d1, type: 3}
   REP: {fileID: 1877823637}
   shopParams:
     shopOwnerIcon: {fileID: 0}
