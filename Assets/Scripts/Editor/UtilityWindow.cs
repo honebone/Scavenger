@@ -56,6 +56,9 @@ public class UtilityWindow : EditorWindow
         {"—Ç‚¢“Á«","<color=#FAED8A>—Ç‚¢“Á«</color>" },
         {"ƒŒƒA“Á«","<color=#00BBFF>ƒŒƒA“Á«</color>" },
         {"ƒ‰ƒ“ƒ_ƒ€“Á«","<link=U_ƒ‰ƒ“ƒ_ƒ€“Á«><u>ƒ‰ƒ“ƒ_ƒ€“Á«</u></link>" },
+        {"ATK”{—¦","<sprite name=ATK><link=U_ATK”{—¦><u><color=#C30000>ATK</color>”{—¦</u></link>" },
+        {"INT”{—¦","<sprite name=INT><link=U_ATK”{—¦><u><color=#256CC8>INT</color>”{—¦</u></link>" },
+        {"maxHP”{—¦","<sprite name=maxHP><link=U_ATK”{—¦><u><color=#87FF79>maxHP</color>”{—¦</u></link>" },
 
     };
     Dictionary<string, string> commonPhrases = new Dictionary<string, string>()

@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -2204,7 +2204,7 @@ RectTransform:
   m_Father: {fileID: 1383679258}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.19266677}
+  m_AnchorMin: {x: 0, y: 0.19266665}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -2397,9 +2397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<sprite name=coin><color=#D83ECE>coin</color>
-
-    <sprite name=ATK><color=#C30000>ATK</color>'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
   m_sharedMaterial: {fileID: 1749331179072275075, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
@@ -17259,6 +17257,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -17288,6 +17292,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -17539,6 +17544,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ceaa75e46cb6f74e9b213b308222456, type: 2}
   - {fileID: 11400000, guid: a5089d74712534b4bb2a224e469dd41c, type: 2}
   - {fileID: 11400000, guid: be98895f28a05204e94bc46e6bf1a6d7, type: 2}
+  - {fileID: 11400000, guid: 165d1a2178c9c8e429b6a66899a7afb7, type: 2}
+  - {fileID: 11400000, guid: 9e43ac3a05a9e074fb92b56bcce931dd, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase_randPool:
@@ -17687,6 +17694,11 @@ MonoBehaviour:
   - linkKey: "\u30E9\u30F3\u30C0\u30E0\u7279\u6027"
     linkName: 
     linkInfo: "\u30B2\u30FC\u30E0\u4E2D\u3001\u6642\u6298\u30AD\u30E3\u30E9\u306B\u4ED8\u4E0E\u3055\u308C\u308B\u30E9\u30F3\u30C0\u30E0\u306A\u7279\u6027\r\n\r\n<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3001<color=#FAED8A>\u826F\u3044\u7279\u6027</color>\u3001<color=#00BBFF>\u30EC\u30A2\u7279\u6027</color>\u304C\u3042\u308B"
+  - linkKey: "ATK\u500D\u7387"
+    linkName: "<sprite name=ATK><color=#C30000>ATK</color>\u500D\u7387"
+    linkInfo: "<sprite name=ATK><color=#C30000>ATK</color>\u306E\u57FA\u790E\u5024\u306B\u304B\u3051\u5408\u308F\u305B\u3089\u308C\u308B\u5024\n\r(\uFF05\u8868\u8A18)\n\r\n{\u6700\u7D42\u7684\u306A<sprite
+      name=ATK>} = {\u57FA\u790E\u5024} x {\u500D\u7387} + {\u5B9F\u6570\u5897\u52A0\u91CF}\r\n\r\n<sprite
+      name=INT><color=#256CC8>INT</color>\u500D\u7387\u3001<sprite name=HP><color=#87FF79>HP</color>\u500D\u7387\u3082\u540C\u69D8"
 --- !u!114 &613893885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26022,6 +26034,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -26051,6 +26069,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -54568,8 +54587,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 83358802}
   m_HandleRect: {fileID: 83358801}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.80733323
+  m_Value: 1.0000004
+  m_Size: 0.80733335
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

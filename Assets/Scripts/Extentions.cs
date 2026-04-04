@@ -29,6 +29,10 @@ public static class Extentions
     {
         return (value * percent / 100f).ToInt();
     }
+    public static float Mul(this float value, float percent)
+    {
+        return (value * percent / 100f);
+    }
 
     public static bool Dice(this float fPercent)
     {

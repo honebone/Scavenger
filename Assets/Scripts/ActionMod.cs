@@ -66,6 +66,8 @@ public class ActionMod : MonoBehaviour
         public List<ActionData.RemoveStE> removeStEs;
 
         public Character.CharaStatusMod summonStatusMod;
+        public bool doesInherit;
+        public Action.ActionStatus.SummonStatusInherit inheritMod;
 
         //public void Init()
         //{
@@ -141,7 +143,15 @@ public class ActionMod : MonoBehaviour
                     else { s += ValueToStr("のスタック", remove.addAmount, ""); }
                 }
                 string summonMod = summonStatusMod.GetInfo();
-                if (summonMod != "") { s += $"・{"summon".ToSpr_withName("召喚体")}のステータスが増加：\n{summonMod}\n"; }
+                if (summonMod != "") { s += $"{"summon".ToSpr_withName("召喚体")}のステータスが増加：\n{summonMod}\n"; }
+
+                if (doesInherit)
+                {
+                    string inherit = inheritMod.GetInfo();
+                    if (inherit == "") s += $"inherit info error\n";
+                    s += $"{"summon".ToSpr_withName("召喚体")}は自身のステータスを一部受け継ぐ：\n{inherit}\n";
+                }
+                
             }
 
             if (exInfo != "") { s += exInfo + "\n"; }

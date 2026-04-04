@@ -155,6 +155,14 @@ public class Action : MonoBehaviour
             public float maxHP;
             public float ATK;
             public float INT;
+
+            public float maxHP_mul_TH;
+            public float maxHP_mul;
+            public float ATK_mul_TH;
+            public float ATK_mul;
+            public float INT_mul_TH;
+            public float INT_mul;
+
             public float CRITC_TH;
             public float CRITC;
             public float CRITD_TH;
@@ -179,6 +187,11 @@ public class Action : MonoBehaviour
                 if (maxHP > 0) { info += $"・{"maxHP".ToSpr_withName()}の{(maxHP + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.maxHP_int})" : "")}\n"; }
                 if (ATK > 0) { info+=$"・{"ATK".ToSpr_withLink()}の{(ATK + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.ATK_int})" : "")}\n"; }
                 if (INT > 0) { info+=$"・{"INT".ToSpr_withLink()}の{(INT + "％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.INT_int})" : "")}\n"; }
+
+                if (maxHP_mul > 0) info += ToStr(maxHP_mul_TH, true, maxHP_mul, $"{"maxHP".ToSpr()}{"<color=#87FF79>maxHP</color>倍率".ToLinkKey("ATK倍率")}", refStatus, mod.maxHP_mul);
+                if (ATK_mul > 0) info += ToStr(ATK_mul_TH, true, ATK_mul, $"{"ATK".ToSpr()}{"<color=#C30000>ATK</color>倍率".ToLinkKey("ATK倍率")}", refStatus, mod.ATK_mul);
+                if (INT_mul > 0) info += ToStr(INT_mul_TH, true, INT_mul, $"{"INT".ToSpr()}{"<color=#256CC8>INT</color>倍率".ToLinkKey("ATK倍率")}", refStatus, mod.INT_mul);
+                
                 if (CRITC > 0) { info += ToStr(CRITC_TH, true, CRITC, $"{"CRIT".ToSpr_withLink()}率",refStatus,mod.CRITC); }
                 if (CRITD > 0) { info += ToStr(CRITD_TH, true, CRITD, $"{"CRIT".ToSpr_withLink()}ダメージ", refStatus, mod.CRITD); }
                 if (EVD > 0) { info += ToStr(EVD_TH, false, EVD, "EVD".ToSpr_withLink(), refStatus, mod.EVD); }
@@ -198,8 +211,12 @@ public class Action : MonoBehaviour
                 mod.ATK_int = Mathf.FloorToInt(status.ATK * ATK / 100f);
                 mod.INT_int = Mathf.FloorToInt(status.INT * INT / 100f);
 
-                if (status.CRITC - CRITC_TH > 0) { mod.CRITC = status.CRITC * CRITC / 100f; }
-                if (status.CRITD - CRITD_TH > 0) { mod.CRITD = status.CRITD * CRITD / 100f; }
+                if (status.maxHP_mul - 100 - maxHP_mul_TH > 0) mod.maxHP_mul = (status.maxHP_mul - 100 - maxHP_mul_TH).Mul(maxHP_mul);
+                if (status.ATK_mul - 100 - ATK_mul_TH > 0) mod.ATK_mul = (status.ATK_mul - 100 - ATK_mul_TH).Mul(ATK_mul);
+                if (status.INT_mul - 100 - INT_mul_TH > 0) mod.INT_mul = (status.INT_mul - 100 - INT_mul_TH).Mul(INT_mul);
+
+                if (status.CRITC - CRITC_TH > 0) { mod.CRITC = (status.CRITC - CRITC_TH) * CRITC / 100f; }
+                if (status.CRITD - CRITD_TH > 0) { mod.CRITD = (status.CRITD - CRITD_TH) * CRITD / 100f; }
                 if (status.EVD - EVD_TH > 0) { mod.EVD = (status.EVD - EVD_TH) * EVD / 100f; }
                 if (status.ACC - ACC_TH > 0) { mod.ACC = (status.ACC - ACC_TH) * ACC / 100f; }
                 if (status.ACT - ACT_TH > 0) { mod.ACT = Mathf.FloorToInt((status.ACT - ACT_TH) * ACT / 100f); }
@@ -214,6 +231,34 @@ public class Action : MonoBehaviour
                 str += $"{statName}の{(ratio+"％").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({value}{(THPercent ? "％" : "")})" : "")}\n";
                 return str;
             }
+
+            //public static SummonStatusInherit operator +(SummonStatusInherit mod, SummonStatusInherit add)
+            //{
+            //    SummonStatusInherit s = new SummonStatusInherit();
+            //    s.maxHP = mod.maxHP + add.maxHP;
+            //    s.ATK = mod.ATK + add.ATK;
+            //    s.INT = mod.INT + add.INT;
+            //    s.maxHP_mul_TH = mod.maxHP_mul_TH + add.maxHP_mul_TH;
+            //    s.maxHP_mul = mod.maxHP_mul + add.maxHP_mul;
+            //    s.ATK_mul_TH = mod.ATK_mul_TH + add.ATK_mul_TH;
+            //    s.ATK_mul = mod.ATK_mul + add.ATK_mul;
+            //    s.INT_mul_TH = mod.INT_mul_TH + add.INT_mul_TH;
+            //    s.INT_mul = mod.INT_mul + add.INT_mul;
+            //    s.CRITC_TH = mod.CRITC_TH + add.CRITC_TH;
+            //    s.CRITC = mod.CRITC + add.CRITC;
+            //    s.CRITD_TH = mod.CRITD_TH + add.CRITD_TH;
+            //    s.CRITD = mod.CRITD + add.CRITD;
+            //    s.EVD_TH = mod.EVD_TH + add.EVD_TH;
+            //    s.EVD = mod.EVD + add.EVD;
+            //    s.ACC_TH = mod.ACC_TH + add.ACC_TH;
+            //    s.ACC = mod.ACC + add.ACC;
+            //    s.ACT_TH = mod.ACT_TH + add.ACT_TH;
+            //    s.ACT = mod.ACT + add.ACT;
+            //    s.GHeal_TH = mod.GHeal_TH + add.GHeal_TH;
+            //    s.GHeal = mod.GHeal + add.GHeal;
+
+            //    return s;
+            //}
         }
         public SummonStatusInherit summonStatusInherit;
 
@@ -245,6 +290,7 @@ public class Action : MonoBehaviour
         public List<ActionData.RemoveStE> removeStEs_additional;
 
         public List<Character.CharaStatusMod> summonStatusMods;
+        public List<SummonStatusInherit> exInherits;
 
         //public bool dontChangeSprite;
         //[Header("スプライトの直接指定")]
@@ -386,7 +432,7 @@ public class Action : MonoBehaviour
             string shield = "shield".ToSpr_withLink();
             if (shieldAdd_max > 0) { s += $"{NL()}・{shield}を{GetValueRange(shieldAdd_min, shieldAdd_max)}付与"; }
             if (shieldPercent_max > 0) { s += $"{NL()}・{"maxHP".ToSpr_withName()}の{GetValueRange(shieldPercent_min, shieldPercent_max)}％に等しい{shield}を付与"; }
-            if (shieldRemove_all) { s += $"・{NL()}{shield}を0にする"; }
+            if (shieldRemove_all) { s += $"{NL()}・{shield}を0にする"; }
             else if (shieldRemove_max > 0) { s += $"{NL()}・{shield}を{ GetValueRange(shieldRemove_min, shieldRemove_max)}除去"; }
             //NewBlock();
 
@@ -688,6 +734,12 @@ public class Action : MonoBehaviour
             List<Character.CharaStatusMod> summonModsTemp = new List<Character.CharaStatusMod>(modifiedStatus.summonStatusMods);
             summonModsTemp.Add(mod.summonStatusMod);
             modifiedStatus.summonStatusMods = new List<Character.CharaStatusMod>(summonModsTemp);
+
+            if (mod.doesInherit)
+            {
+                modifiedStatus.exInherits = new List<SummonStatusInherit>(modifiedStatus.exInherits);
+                modifiedStatus.exInherits.Add(mod.inheritMod);
+            }
             //move
 
             return modifiedStatus;
@@ -1570,6 +1622,10 @@ public class Action : MonoBehaviour
                     if (!notChara) { summonStatusParams.summoner = actionOwner; }
                     summonStatusParams.statusMods = new List<Character.CharaStatusMod>(actionsStatus[i].summonStatusMods);
                     summonStatusParams.statusMods.Add(actionsStatus[i].summonStatusInherit.ToStatuMod(ownerStatus));
+                    actionsStatus[i].exInherits.ForEach(e =>
+                    {
+                        summonStatusParams.statusMods.Add(e.ToStatuMod(ownerStatus));
+                    });
 
                     if (actionStatus.actionTargetsInt[i] < 9) { summoned = characterManager.SpawnPlayer(summonCharaData, targetPos, ownerStatus.level, summonStatusParams); }
                     else { summoned = characterManager.SpawnEnemy(summonCharaData, targetPos, false, ownerStatus.level, summonStatusParams); }
