@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -441,7 +441,10 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
-  - {fileID: 11400000, guid: be98895f28a05204e94bc46e6bf1a6d7, type: 2}
+  - {fileID: 11400000, guid: f94243927aa6a294d8fd0b47f485f5c6, type: 2}
+  - {fileID: 11400000, guid: 32d4fbbd9791cef4995d4251a7f86906, type: 2}
+  - {fileID: 11400000, guid: 19784fcd3f752a04a9fd024df0fc1d76, type: 2}
+  - {fileID: 11400000, guid: 5f9b9983894eb2e478ccce382ea51c09, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   eq_exclusive: []
   enemySetTest:
@@ -460,7 +463,7 @@ MonoBehaviour:
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
-  RE: {fileID: 8180078169205948270, guid: 671ccd86f01b0594bb2faa0ddf6c66d1, type: 3}
+  RE: {fileID: 8180078169205948270, guid: 0c56a852a365eb146a65b2b564cfc4e7, type: 3}
   REP: {fileID: 1877823637}
   shopParams:
     shopOwnerIcon: {fileID: 0}
@@ -470,7 +473,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: 5e0de09fc9716a7498114201b6b52ef2, type: 3}
+  personality: {fileID: 3170614222137734241, guid: c2a104d25bd88f542a2f10ea8f1aa560, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17546,6 +17549,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be98895f28a05204e94bc46e6bf1a6d7, type: 2}
   - {fileID: 11400000, guid: 165d1a2178c9c8e429b6a66899a7afb7, type: 2}
   - {fileID: 11400000, guid: 9e43ac3a05a9e074fb92b56bcce931dd, type: 2}
+  - {fileID: 11400000, guid: 14be587692d9cbf4dab613cfb9a8b428, type: 2}
+  - {fileID: 11400000, guid: ccd4173b685ab7342aa76e9f48c40bf3, type: 2}
+  - {fileID: 11400000, guid: 6048b55f75564de44bfdf468393242a2, type: 2}
+  - {fileID: 11400000, guid: 486b605a2cb2cb749963404079581379, type: 2}
+  - {fileID: 11400000, guid: cc079b174c94f27419b7481981dc59c9, type: 2}
+  - {fileID: 11400000, guid: 962259d93d9f7fa44b6264b5bc2a013a, type: 2}
+  - {fileID: 11400000, guid: cf3b55e691be2ad45a1123e8f2c0c474, type: 2}
+  - {fileID: 11400000, guid: f94243927aa6a294d8fd0b47f485f5c6, type: 2}
+  - {fileID: 11400000, guid: 32d4fbbd9791cef4995d4251a7f86906, type: 2}
+  - {fileID: 11400000, guid: 19784fcd3f752a04a9fd024df0fc1d76, type: 2}
+  - {fileID: 11400000, guid: 5f9b9983894eb2e478ccce382ea51c09, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase_randPool:
@@ -17617,6 +17631,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: b5ef7e0eab2ff604b9bc2cb10062fbfd, type: 3}
   - {fileID: 3170614222137734241, guid: 84dae65589b85254c969d2102d283881, type: 3}
   - {fileID: 3170614222137734241, guid: 5e0de09fc9716a7498114201b6b52ef2, type: 3}
+  - {fileID: 3170614222137734241, guid: c2a104d25bd88f542a2f10ea8f1aa560, type: 3}
   personalityDataBase_exclusive:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}
@@ -17693,10 +17708,11 @@ MonoBehaviour:
       name=HP>\u306E<color=#96FFD6><i>{X}</i></color>\uFF05"
   - linkKey: "\u30E9\u30F3\u30C0\u30E0\u7279\u6027"
     linkName: 
-    linkInfo: "\u30B2\u30FC\u30E0\u4E2D\u3001\u6642\u6298\u30AD\u30E3\u30E9\u306B\u4ED8\u4E0E\u3055\u308C\u308B\u30E9\u30F3\u30C0\u30E0\u306A\u7279\u6027\r\n\r\n<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3001<color=#FAED8A>\u826F\u3044\u7279\u6027</color>\u3001<color=#00BBFF>\u30EC\u30A2\u7279\u6027</color>\u304C\u3042\u308B"
+    linkInfo: "\u30B2\u30FC\u30E0\u4E2D\u3001\u6642\u6298\u30AD\u30E3\u30E9\u306B\u4ED8\u4E0E\u3055\u308C\u308B\u30E9\u30F3\u30C0\u30E0\u306A\u7279\u6027\r\n\r\n<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3001<color=#FAED8A>\u826F\u3044\u7279\u6027</color>\u3001<color=#00BBFF>\u30EC\u30A2\u7279\u6027</color>\u304C\u3042\u308B\n\n<color=#808080>\u30E9\u30F3\u30C0\u30E0\u306B\u5F97\u308B\u969B\u306E\u78BA\u7387\u306F\u3001\n<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\uFF1A35\uFF05\n<color=#FAED8A>\u826F\u3044\u7279\u6027</color>\uFF1A62\uFF05\n<color=#00BBFF>\u30EC\u30A2\u7279\u6027</color>\uFF1A3\uFF05</color>"
   - linkKey: "ATK\u500D\u7387"
     linkName: "<sprite name=ATK><color=#C30000>ATK</color>\u500D\u7387"
-    linkInfo: "<sprite name=ATK><color=#C30000>ATK</color>\u306E\u57FA\u790E\u5024\u306B\u304B\u3051\u5408\u308F\u305B\u3089\u308C\u308B\u5024\n\r(\uFF05\u8868\u8A18)\n\r\n{\u6700\u7D42\u7684\u306A<sprite
+    linkInfo: "<sprite name=ATK><color=#C30000>ATK</color>\u306E\u57FA\u790E\u5024\u306B\u304B\u3051\u5408\u308F\u305B\u3089\u308C\u308B\u5024\n\r(\uFF05\u8868\u8A18)\n\u4E3B\u306B\u88C5\u5099\u54C1\u3084<sprite
+      name=buff><color=#FAED8A>\u30D0\u30D5</color>\u306B\u3088\u3063\u3066\u5897\u52A0\u3059\u308B\n\r\n{\u6700\u7D42\u7684\u306A<sprite
       name=ATK>} = {\u57FA\u790E\u5024} x {\u500D\u7387} + {\u5B9F\u6570\u5897\u52A0\u91CF}\r\n\r\n<sprite
       name=INT><color=#256CC8>INT</color>\u500D\u7387\u3001<sprite name=HP><color=#87FF79>HP</color>\u500D\u7387\u3082\u540C\u69D8"
 --- !u!114 &613893885

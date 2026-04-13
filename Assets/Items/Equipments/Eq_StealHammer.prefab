@@ -52,7 +52,7 @@ MonoBehaviour:
     name=maxHP><color=#87FF79>maxHP</color>\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
-  PAInfo_end: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1(\u6700\u5927\u30AB\u30A6\u30F3\u30C83)\r\n\n\u653B\u6483\u3059\u308B\u3068\u304D\u3001\u81EA\u8EAB\u306E<sprite
+  PAInfo_end: "\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1(\u6700\u5927\u30AB\u30A6\u30F3\u30C810)\r\n\n\u653B\u6483\u3059\u308B\u3068\u304D\u3001\u81EA\u8EAB\u306E<sprite
     name=maxHP><color=#87FF79>maxHP</color>\u306E<color=#FFBF69><i>{20x\u30AB\u30A6\u30F3\u30C8}</i></color>\uFF05\u306B\u7B49\u3057\u3044<sprite
     name=ATK><color=#C30000>\u7269\u7406</color><link=U_\u5206\u914D\u30C0\u30E1\u30FC\u30B8><u>\u5206\u914D\u30C0\u30E1\u30FC\u30B8</u></link>\u3092\u8FFD\u52A0\u3067\u4E0E\u3048\u3066\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8\u3059\u308B\r"
   statMod:
@@ -77,8 +77,11 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
   rune_initialCharge: 0
@@ -147,10 +150,36 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
+    doesInherit: 0
+    inheritMod:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
   HPRatio: 0.2
-  maxCount: 3
+  maxCount: 10
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

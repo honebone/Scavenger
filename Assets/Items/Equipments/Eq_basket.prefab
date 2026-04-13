@@ -74,8 +74,11 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
   rune_initialCharge: 0
@@ -83,7 +86,7 @@ MonoBehaviour:
     itemData: {fileID: 11400000, guid: 86b79af53c1debd40b57b938d54def09, type: 2}
   attack:
     actionName: "\u8C4A\u7A63\u306E\u30D0\u30B9\u30B1\u30C3\u30C8"
-    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E20\uFF05\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D(\u5404\u30E9\u30A6\u30F3\u30C95\u56DE\u307E\u3067)"
+    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E20\uFF05\u4EE5\u4E0A\u306B\u306A\u3063\u305F\u3068\u304D(\u5404\u30E9\u30A6\u30F3\u30C910\u56DE\u307E\u3067)"
     targetInfo: "\u30E9\u30F3\u30C0\u30E0\u306A\u65752\u4F53"
     AModInfo: 
     actionInfo: 
@@ -101,6 +104,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -113,6 +117,8 @@ MonoBehaviour:
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
@@ -133,6 +139,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 100
     ATKMod_max: 140
@@ -187,6 +194,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -216,6 +229,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -227,6 +241,7 @@ MonoBehaviour:
     player: 0
     enemy: 1
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 1
     mid: 1
     back: 1
@@ -239,6 +254,8 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 0
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0

@@ -105,6 +105,7 @@ public class PassiveAbility : MonoBehaviour
 
         charactersManager = CharactersManager.inst;
         if (fileName == "") { infoText.AddWarningText($"{GetPAName()}‚ÌfileName‚ª‚ ‚è‚Ü‚¹‚ñ"); }
+        if(this as PA_Equipment&&GetComponent<PA_Equipment>().GetEquipmentStatus().itemData==null) infoText.AddWarningText($"{GetPAName()}‚Ìitemdata‚ª‚ ‚è‚Ü‚¹‚ñ");
 
         character.ModifyStatus(statMod, true);
         foreach (GameObject mod in AMods) { character.AddActionMod(mod, true); }

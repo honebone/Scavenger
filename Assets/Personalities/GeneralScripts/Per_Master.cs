@@ -24,8 +24,10 @@ public class Per_Master : PA_Personality
 
     int activateCount;
 
-    protected void Activate()
+    protected void Activate(List<Character> targets = null)
     {
+        if (targets != null && (CheckAltMode() || targetSelf)) { infoText.AddWarningText("Per_Master error"); }
+
         if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count >= activeCond_req))
         {
             count++;
@@ -37,16 +39,8 @@ public class Per_Master : PA_Personality
                     if (coin != Vector2Int.zero)
                     {
                         int c = coin.Range();
-                        if (c > 0)
-                        {
-                            LootPanel.inst.AddCoin(c);
-                            Log($"{"coin".ToSpr_withName()}+{c}");
-                        }
-                        else if (c < 0)
-                        {
-                            Inventory.inst.RemoveCoin(-c);
-                            Log($"{"coin".ToSpr_withName()}-{c}");
-                        }
+                        LootPanel.inst.AddCoin(c);
+                        Log($"{"coin".ToSpr_withName()}+{c}");
                     }
                     if (modifyStatus)
                     {
@@ -66,7 +60,15 @@ public class Per_Master : PA_Personality
                     }
                     else
                     {
-                        if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
+                        if (targets != null)
+                        {
+                            if (Enqueue(actionStatus, true, targets))
+                            {
+                                count_inBattle++;
+                                count_inRound++;
+                            }
+                        }
+                        else if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
                         {
                             count_inBattle++;
                             count_inRound++;

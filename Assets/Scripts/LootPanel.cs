@@ -213,7 +213,7 @@ public class LootPanel : MonoBehaviour
         }
         if (status.coin.y > 0) { AddCoin(status.coin.Range()); }
     }
-    public void AddItem(Definer.Item item, int amount)
+    public void AddItem(Definer.Item item, int amount=1)
     {
         if (item.data.itemType == ItemData.ItemType.equipment)
         {

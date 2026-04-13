@@ -24,8 +24,10 @@ public class Eq_Master : PA_Equipment
 
     int activateCount;
 
-    protected void Activate()
+    protected void Activate(List<Character> targets = null)
     {
+        if (targets != null && (CheckAltMode() || targetSelf)) { infoText.AddWarningText("Eq_Master error"); }
+
         if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count >= activeCond_req))
         {
             count++;
@@ -58,7 +60,15 @@ public class Eq_Master : PA_Equipment
                     }
                     else
                     {
-                        if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
+                        if(targets != null)
+                        {
+                            if (Enqueue(actionStatus, true, targets))
+                            {
+                                count_inBattle++;
+                                count_inRound++;
+                            }
+                        }
+                        else if (Enqueue_SearchTarget(actionStatus, condition, targetCount))
                         {
                             count_inBattle++;
                             count_inRound++;

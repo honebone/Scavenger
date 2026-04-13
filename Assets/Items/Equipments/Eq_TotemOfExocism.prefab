@@ -74,6 +74,8 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
     minion: 0
@@ -94,7 +96,7 @@ MonoBehaviour:
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 2116447196874732219, guid: 9ac3d4af8c985304788ea075b3b3fbb1, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -196,6 +198,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -225,6 +233,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

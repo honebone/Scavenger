@@ -60,13 +60,14 @@ MonoBehaviour:
       optionInfo_suffix: 
       available: 1
     showExp: 0
+    showRarePers: 0
     showGoodPers: 0
     showBadPers: 0
   pandora: {fileID: 11400000, guid: d721a7cf134e36442a41953063bd9c33, type: 2}
   perAdd: 4
   options:
   - optionName: "\u7BB1\u3092\u958B\u3051\u308B"
-    optionInfo: "\u5168\u54E1\u304C\u30E9\u30F3\u30C0\u30E0\u306A\u7279\u6027\u30924\u3064\u5F97\u308B"
+    optionInfo: "\u5168\u54E1\u304C<link=U_\u30E9\u30F3\u30C0\u30E0\u7279\u6027><u>\u30E9\u30F3\u30C0\u30E0\u7279\u6027</u></link>\u30924\u3064\u5F97\u308B"
     expMul: 0
     optionInfo_suffix: 
     available: 1

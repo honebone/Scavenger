@@ -7,12 +7,17 @@ public class Eq_Busket : PA_Equipment
     [SerializeField] Action.ActionStatus attack;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] int thPercent;
+    [SerializeField] int maxRemain = 10;
     int count;
-    int remain = 5;
+    int remain;
 
+    public override void OnBattleStart()
+    {
+        remain = maxRemain;
+    }
     public override void OnRoundStart()
     {
-        remain = 5;
+        remain = maxRemain;
     }
 
     public override void OnHealed(Character healer, Action.OnHealParams onHealParams)
@@ -37,7 +42,7 @@ public class Eq_Busket : PA_Equipment
     }
     public override void OnBattleEnd()
     {
-        remain = 5;
+        remain = maxRemain;
         count = 0;
     }
 

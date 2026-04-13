@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: S_Goblin
+  m_EditorClassIdentifier: 
+  fileName: S_Goblin
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u30B4\u30D6\u30EA\u30F3"
+  introduction: 
+  difficulty: 
+  preferFront: 0
+  preferMid: 0
+  preferBack: 0
+  mainRole: []
+  subRole: []
+  characterTags: 0a000000
+  immovable: 0
+  notChara: 0
+  player: 0
+  boss: 0
+  playable: 0
+  variableSprites:
+  - {fileID: 4201827558276250882, guid: 8e40dbc362a228248a6b3ecfcd44214f, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 7b3c4e4243ad8c349bdbe28edf171e68, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: cb8a9f0476d18614089e7df9b31bde2d, type: 2}
+  - {fileID: 11400000, guid: bfe9531abb3499a4684d2e7b3875725f, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 1808138132528202961, guid: 4a2a701533909824d8330178ec3bd4e3, type: 3}
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    dropEquipmentsRange: {x: 0, y: 0}
+    guarantee_rare: 0
+    guarantee_epic: 0
+    guarantee_legendary: 0
+    coin: {x: 0, y: 0}
+  lifetime: 2
+  surviveFatalWounds: 0
+  maxHP: 15
+  maxSAN: 50
+  ATK: 5
+  INT: 5
+  CRITC: 5
+  CRITD: 50
+  EVD: 5
+  ACC: 95
+  ACT: 3
+  turnPerRound: 1
+  GHeal: 0
+  RHeal: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

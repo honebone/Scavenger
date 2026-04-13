@@ -18,11 +18,7 @@ public class PA_Equipment : PassiveAbility
             return itemData.itemName.ColorStr(itemData.rarity.ToColor());
         }
     }
-    //public override string GetSimpleInfo()
-    //{
-    //    string s = equipmentStatus.statusMod.GetInfo() != "" ? equipmentStatus.statusMod.GetInfo()+ "\n\n" : "";
-    //    return $"{s}{simpleInfo}";
-    //}
+
     public override string GetPAName()
     {
         return equipmentStatus.GetName();
@@ -34,15 +30,4 @@ public class PA_Equipment : PassiveAbility
     [SerializeField]
     protected EquipmentStatus equipmentStatus;
     public EquipmentStatus GetEquipmentStatus() { return equipmentStatus; }
-  
-    //public override void OnPAInit()
-    //{
-    //    character.ModifyStatus(equipmentStatus.statusMod, true);
-    //    foreach(GameObject mod in equipmentStatus.actionMods) { character.AddActionMod(mod, true); }
-    //}
-    //public override void AtTheEnd()
-    //{
-    //    character.ModifyStatus(equipmentStatus.statusMod, false);
-    //    foreach (GameObject mod in equipmentStatus.actionMods) { character.AddActionMod(mod, false); }
-    //}
 }

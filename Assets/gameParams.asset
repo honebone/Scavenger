@@ -33,7 +33,7 @@ MonoBehaviour:
     ACC: 1
   initialCoin: 15
   coinPerBattle_base: {x: 8, y: 12}
-  eqPrice: 000000000a000000140000002800000032000000
+  eqPrice: 000000000a00000014000000320000003c000000
   priceMul: {x: 75, y: 125}
   salePerShop: 2
   saleMul: 67
@@ -92,6 +92,6 @@ MonoBehaviour:
   - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
     weight: 0
     garanteed: 2
-  perWeights: 2d0000003400000003000000
+  perWeights: 230000003e00000003000000
   maxPer_good: 4
   maxPer_bad: 4

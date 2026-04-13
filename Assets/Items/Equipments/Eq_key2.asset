@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
+  m_Name: Eq_key2
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemName: "\u5B9D\u7269\u5EAB\u306E\u9375"
+  specialInfo: 0
+  info: 
+  rarity: 3
+  sprite: {fileID: 21300000, guid: b08ebbe4290d9464eb0f073c74cd05b8, type: 3}
+  amountPerStack: 1
+  dropAmountRange: {x: 0, y: 0}
+  materialTags: 00000000
+  price: 0
+  manager: {fileID: 9185327421234476493, guid: 555a58f8cf0f0cf409776a4bfe57d49e, type: 3}

@@ -75,6 +75,8 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
     minion: 0
@@ -82,7 +84,7 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 0}
+    itemData: {fileID: 11400000, guid: 281953ff974d6ff4f8500cba1e15ae97, type: 2}
   max_inBattle: 0
   max_inRound: 0
   countReq: 1
@@ -197,6 +199,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -226,6 +234,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -287,6 +296,35 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+  coin: {x: 0, y: 0}
+  modifyStatus: 0
+  statusMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
   me: 1
   myServant: 0
   otherChara: 0

@@ -192,7 +192,6 @@ public class Inventory : MonoBehaviour
         replace.Init(item.data);
         replace.amount = amount;
         InsertItem(replace);
-        //SetButtons();
     }
 
     void InsertItem(Definer.Item insert)

@@ -24,7 +24,7 @@ public class RaE_IdeologicalBook : RE_RandomEvents
             Character.CharacterStatus status = character.CharaStatus();
             REOptionParams option = new REOptionParams();
             option.optionName = string.Format("{0}‚É“Ç‚Ü‚¹‚é", status.charaName);
-            option.optionInfo = "ƒ‰ƒ“ƒ_ƒ€‚È1-3ŒÂ‚Ì“Á«‚ğ“¾‚é";
+            option.optionInfo = "<link=U_ƒ‰ƒ“ƒ_ƒ€“Á«><u>ƒ‰ƒ“ƒ_ƒ€“Á«</u></link>‚ğ1-3‚Â“¾‚é";
             options.Add(option);
         }
 

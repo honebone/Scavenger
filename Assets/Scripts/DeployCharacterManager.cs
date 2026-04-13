@@ -88,17 +88,8 @@ public class DeployCharacterManager : MonoBehaviour
 
         if (tutorial)
         {
-            //Character.CharacterStatus inf = new Character.CharacterStatus();
-            //Character.CharacterStatus hun = new Character.CharacterStatus();
-            //inf.Init(infantry, 0);
-            //hun.Init(hunter, 0);
-            //positionButtons[4].SetChara(hun);
-            //positionButtons[6].SetChara(inf);
-
             yield return new WaitForSeconds(1f);
             tutorialManager.SetTutorial(tutroial_deploy);
-            //yield return new WaitForSeconds(0.5f);
-            //tutorialManager.StartTutorial(tutroial_embark);
             CheckParty();
         }
     }
@@ -290,6 +281,17 @@ public class DeployCharacterManager : MonoBehaviour
             embarkText.text = hasWarning ? $"! oŒ‚({count}/{maxParty})".ColorStr(Color.yellow) : string.Format("oŒ‚({0}/{1})", count, maxParty);
         }
     }
+
+    public void AutoDeploy()
+    {
+
+    }
+
+    void ClearParty()
+    {
+        positionButtons.ForEach(b => b.ResetChara());
+    }
+
     public void TryEmbark()
     {
         if(canEmbark)

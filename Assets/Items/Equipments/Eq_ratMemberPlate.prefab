@@ -49,7 +49,7 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u6240\u6301<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u306E\u4E00\u5B9A\u5272\u5408\u306B\u7B49\u3057\u3044<sprite
     name=coin>\u3092\u5F97\u308B"
-  PAInfo_start: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u6240\u6301<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u306E10\uFF05\u306B\u7B49\u3057\u3044<sprite
+  PAInfo_start: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u6240\u6301<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u306E20\uFF05\u306B\u7B49\u3057\u3044<sprite
     name=coin>\u3092\u5F97\u308B"
   skipGetInfo: 0
   PAInfo_end: 
@@ -75,6 +75,8 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
     minion: 0
@@ -83,7 +85,7 @@ MonoBehaviour:
   rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: c65f7405d54315f4d862f39409d473d0, type: 2}
-  coinMul: 10
+  coinMul: 20
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
