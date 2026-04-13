@@ -18,6 +18,7 @@ public class ActionMod : MonoBehaviour
 
         public bool consumeFocus;
         public int decreaseHP;
+        public List<EchoDoTParams> echo;
 
         public float ATKMod;
         public float INTMod;
@@ -80,18 +81,21 @@ public class ActionMod : MonoBehaviour
         {
             string s = "";
             //bool f = false;
-            if (conditionInfo != "") { s += string.Format("○{0}\n", conditionInfo); }
+            if (conditionInfo != "") { s += string.Format("○{0}", conditionInfo); }
             if (!hideValues)
             {
-                if (exTurn > 0) { s += $"追加ターンを{exTurn}得る\n"; }
-                if (consumeFocus) { s += $"・対象の{"focus".ToSpr()}を消費する\n"; }
+                if (exTurn > 0) { s += $"{NL()}・追加ターンを{exTurn}得る"; }
+                if (consumeFocus) { s += $"{NL()}・対象の{"focus".ToSpr()}を消費する"; }
                 if (decreaseHP != 0) { s += ValueToStr($"・{"HP".ToSpr_withName()}減少量", decreaseHP, ""); }
+                if (echo.Count > 0)
+                {
+                    echo.ForEach(e =>
+                    {
+                        s += $"{NL()}・{e.GetInfo()}";
+                    });
+                }
                 if (ATKMod != 0) { s += ValueToStr($"・{"ATK".ToSpr()}{"<color=#C30000>ATK</color>補正".ToLinkKey("ATK(INT)補正")}", ATKMod, "％"); }
                 if (INTMod != 0) { s += ValueToStr($"・{"INT".ToSpr()}{"<color=#256CC8>INT</color>補正".ToLinkKey("ATK(INT)補正")}", INTMod, "％"); }
-                //if (ATKMod > 0) { s += $"・ATK{ATKMod}％分の物理ダメージを追加で与える\n"; }
-                //else if (ATKMod < 0) { s += $"・ATK補正{ATKMod}％\n"; }
-                //if (INTMod > 0) { s += $"・INT{INTMod}％分の魔法ダメージを追加で与える\n"; }
-                //else if (INTMod < 0) { s += $"・INT補正{INTMod}％\n"; }
                 if (trueATKDMG != 0) { s += ValueToStr($"・固定{"ATK".ToSpr_withName("物理")}ダメージ", trueATKDMG, ""); }
                 if (trueINTDMG != 0) { s += ValueToStr($"・固定{"INT".ToSpr_withName("魔法")}ダメージ", trueINTDMG, ""); }
                 if (exDMG_mul != 0) { s += ValueToStr("・与ダメージ", exDMG_mul, "％"); }
@@ -105,9 +109,9 @@ public class ActionMod : MonoBehaviour
                 if (CRITCMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}率補正", CRITCMod, "％"); }
                 if (CRITDMod != 0) { s += ValueToStr($"・{"CRIT".ToSpr_withLink()}ダメージ補正", CRITDMod, "％"); }
                 if (drain != 0) { s += ValueToStr("・与ダメージの", drain, $"％を{"HP".ToSpr_withName("回復")}"); }
-                if (ignoreShield) s += $"・{"shield".ToSpr_withLink()}を無視するようになる\n";
-                if (sureHit) { s += "・攻撃が必中となる\n"; }
-                if (unevadable) { s += $"・対象の{"EVD".ToSpr_withLink()}を無視\n"; }
+                if (ignoreShield) s += $"{NL()}・{"shield".ToSpr_withLink()}を無視するようになる";
+                if (sureHit) { s += $"{NL()}・攻撃が必中となる"; }
+                if (unevadable) { s += $"{NL()}・対象の{"EVD".ToSpr_withLink()}を無視"; }
                 if (exHeal_mul != 0) { s += ValueToStr($"・{"HP".ToSpr_withName("回復")}量", exHeal_mul, "％"); }
                 if (healValue != 0) { s += ValueToStr($"・{"HP".ToSpr_withName("回復")}量", healValue, ""); }
                 if (healPercent != 0) { s += ValueToStr($"・割合{"HP".ToSpr_withName("回復")}量", healPercent, "％"); }
@@ -118,7 +122,7 @@ public class ActionMod : MonoBehaviour
                 if (shieldAdd != 0) { s += ValueToStr($"・{shield}を", shieldAdd, "付与"); }
                 if (shieldAdd_percent != 0) { s += ValueToStr($"・{"maxHP".ToSpr_withName()}の", shieldAdd_percent, $"％に等しい{shield}を付与"); }
                 if (shieldRemove != 0) { s += ValueToStr($"・{shield}除去量", shieldRemove, ""); }
-                if (shieldRemove_all) { s += $"・{shield}をすべて除去する\n"; }
+                if (shieldRemove_all) { s += $"{NL()}・{shield}をすべて除去する"; }
 
                 //f = false;
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StE付与
@@ -131,41 +135,42 @@ public class ActionMod : MonoBehaviour
                 }
                 if (debuffChanceMod != 0) { s += ValueToStr($"・{"debuff".ToSpr_withName()}付与確率", debuffChanceMod, "％"); }
 
-                if (removeStE_buff > 0) { s += string.Format("・{0}を{1}個消去\n", "buff".ToSpr_withName(), removeStE_buff); }
-                if (removeStE_debuff > 0) { s += string.Format("・{0}を{1}個消去\n", "debuff".ToSpr_withName(), removeStE_debuff); }
-                //if (removeStE_DoT > 0) { s += string.Format("・{0}を{1}個消去\n", "ダメージ効果".ColorStr(Definer.colorRef.statusEffectColors[(int)PA_StatusEffect.StatusEffectStatus.StatusEffectType.DoT]), removeStE_DoT); }
+                if (removeStE_buff > 0) { s += $"{NL()}・{"buff".ToSpr_withName()}を{removeStE_buff}個消去"; }
+                if (removeStE_debuff > 0) { s += $"{NL()}・{"debuff".ToSpr_withName()}を{removeStE_debuff}個消去"; }
 
                 foreach (ActionData.RemoveStE remove in removeStEs)
                 {
                     PA_StatusEffect.StatusEffectStatus status = remove.removeStE.GetComponent<PA_StatusEffect>().GetStatusEffectStatus();
-                    s += string.Format("・{0}", status.ToLinkKey());
-                    if (remove.removeAll) { s += "を全て除去\n"; }
+                    s += $"{NL()}・{status.ToLinkKey()}";
+                    if (remove.removeAll) { s += "を全て除去"; }
                     else { s += ValueToStr("のスタック", remove.addAmount, ""); }
                 }
                 string summonMod = summonStatusMod.GetInfo();
-                if (summonMod != "") { s += $"{"summon".ToSpr_withName("召喚体")}のステータスが増加：\n{summonMod}\n"; }
+                if (summonMod != "") { s += $"{NL()}{"summon".ToSpr_withName("召喚体")}のステータスが増加：\n{summonMod}"; }
 
                 if (doesInherit)
                 {
                     string inherit = inheritMod.GetInfo();
                     if (inherit == "") s += $"inherit info error\n";
-                    s += $"{"summon".ToSpr_withName("召喚体")}は自身のステータスを一部受け継ぐ：\n{inherit}\n";
+                    s += $"{NL()}{"summon".ToSpr_withName("召喚体")}は自身のステータスを一部受け継ぐ：\n{inherit}";
                 }
                 
             }
 
-            if (exInfo != "") { s += exInfo + "\n"; }
+            if (exInfo != "") { s += NL() + exInfo; }
 
             return s;//.ColorStr(Definer.colorRef.AMod)
-        }
-        public string ValueToStr(string start, float value, string end)
-        {
-            if (value == 0) { return ""; }
-            string s = start;
-            if (value < 0) { s += value.ToString().ColorStr(Color.red); }
-            else { s += ("+" + value.ToString()).ColorStr(Color.green); }
-            s += end + "\n";
-            return s;
+
+            string NL(int lines = 1, string lineStr = "\n")
+            {
+                return Extentions.NL(s, lines, lineStr);
+            }
+
+            string ValueToStr(string start, float value, string end)
+            {
+                if (value == 0) { return ""; }
+                return $"{NL()}{start}{value.Evaluate()}{end}";
+            }
         }
     }
     

@@ -118,6 +118,8 @@ public class RE_RandomEvents : RoomEvent
         return GenPerOptionInfo(per.GetComponent<PA_Personality>(), affix, suffix);
     }
 
+    protected bool CheckCoin(int check) { return inventory.CheckCoin(check); }
+
     [System.Serializable]
     public class CharaSelectInfo
     {

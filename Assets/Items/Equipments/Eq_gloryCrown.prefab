@@ -87,12 +87,12 @@ MonoBehaviour:
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 486b605a2cb2cb749963404079581379, type: 2}
   max_inBattle: 0
-  max_inRound: 0
+  max_inRound: 2
   countReq: 1
   targetSelf: 0
   actionStatus:
     actionName: 
-    conditionInfo: "\u30AD\u30E3\u30E9\u3092<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3057\u305F\u3068\u304D"
+    conditionInfo: "\u30AD\u30E3\u30E9\u3092<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3057\u305F\u3068\u304D\n(\u5404\u30E9\u30A6\u30F3\u30C92\u56DE\u307E\u3067)"
     targetInfo: "<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3057\u305F\u30AD\u30E3\u30E9"
     AModInfo: 
     actionInfo: 

@@ -1054,16 +1054,19 @@ public class Character : MonoBehaviour
     {
         string info = charaStatus.GetInfo();
         string temp = "";
+
+
+        //StE
         foreach (PassiveAbility pa in PA_StE)
         {
             PA_StatusEffect StE = pa.GetComponent<PA_StatusEffect>();
             if (StE.GetStatusEffectStatus().refValue)
             {
-                temp += $"{NL()}<{StE.GetStatusEffectStatus().StEType.ToSpr()}{StE.GetPANameWithValue()}>{pa.GetPAInfo(simple)}";
+                temp += $"{NL(3)}<{StE.GetStatusEffectStatus().StEType.ToSpr()}{StE.GetPANameWithValue()}>{pa.GetPAInfo(simple)}";
             }
             else
             {
-                temp += $"{NL()}<{StE.GetStatusEffectStatus().StEType.ToSpr()}{pa.GetPAName()}>{pa.GetPAInfo(simple)}";
+                temp += $"{NL(3)}<{StE.GetStatusEffectStatus().StEType.ToSpr()}{pa.GetPAName()}>{pa.GetPAInfo(simple)}";
             }
 
         }
@@ -1071,26 +1074,30 @@ public class Character : MonoBehaviour
         info += $"\nó‘ÔˆÙí\n{temp}";
         temp = "";
 
+
+        //Per
         foreach (PassiveAbility pa in PA_Per)
         {
-            temp += $"{NL()}<{pa.GetPAName()}>\n{pa.GetPAInfo(simple)}";
+            temp += $"{NL(3)}<{pa.GetPAName()}>\n{pa.GetPAInfo(simple)}";
         }
         if (temp == "") temp = "‚È‚µ";
-        info += $"\n“Á«\n{temp}";
+        info += $"\n\n\n“Á«\n{temp}";
         temp = "";
 
+
+        //Eq
         if (charaStatus.player)
         {
             foreach (PassiveAbility pa in PA_Eq)
             {
-                temp += $"{NL()}<{pa.GetPAName()}>\n{pa.GetPAInfo(simple)}";
+                temp += $"{NL(3)}<{pa.GetPAName()}>\n{pa.GetPAInfo(simple)}";
             }
             if (temp == "") temp = "‚È‚µ";
-            info += $"\n‘•”õ•i\n{temp}";
+            info += $"\n\n\n‘•”õ•i\n{temp}";
             temp = "";
         }
 
-        info += "\n" + targetButton.GetPositionManager().GetPEInfo();
+        info += NL(3) + targetButton.GetPositionManager().GetPEInfo();
 
         return info;
 

@@ -184,9 +184,9 @@ public class Action : MonoBehaviour
                 Character.CharaStatusMod mod = new Character.CharaStatusMod();
                if (refStatus) mod = ToStatuMod(status);
                 string info = "";
-                if (maxHP > 0) { info += $"E{"maxHP".ToSpr_withName()}‚Ì{(maxHP + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.maxHP_int})" : "")}\n"; }
-                if (ATK > 0) { info+=$"E{"ATK".ToSpr_withLink()}‚Ì{(ATK + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.ATK_int})" : "")}\n"; }
-                if (INT > 0) { info+=$"E{"INT".ToSpr_withLink()}‚Ì{(INT + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.INT_int})" : "")}\n"; }
+                if (maxHP > 0) { info += $"{NL()}E{"maxHP".ToSpr_withName()}‚Ì{(maxHP + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.maxHP_int})" : "")}"; }
+                if (ATK > 0) { info+=$"{NL()}E{"ATK".ToSpr_withLink()}‚Ì{(ATK + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.ATK_int})" : "")}"; }
+                if (INT > 0) { info+=$"{NL()}E{"INT".ToSpr_withLink()}‚Ì{(INT + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({mod.INT_int})" : "")}"; }
 
                 if (maxHP_mul > 0) info += ToStr(maxHP_mul_TH, true, maxHP_mul, $"{"maxHP".ToSpr()}{"<color=#87FF79>maxHP</color>”{—¦".ToLinkKey("ATK”{—¦")}", refStatus, mod.maxHP_mul);
                 if (ATK_mul > 0) info += ToStr(ATK_mul_TH, true, ATK_mul, $"{"ATK".ToSpr()}{"<color=#C30000>ATK</color>”{—¦".ToLinkKey("ATK”{—¦")}", refStatus, mod.ATK_mul);
@@ -200,6 +200,19 @@ public class Action : MonoBehaviour
                 if (GHeal > 0) { info += ToStr(GHeal_TH, false, GHeal, "—^‚¦‚é‰ñ•œ—Ê", refStatus, mod.GHeal); }
 
                 return info;
+
+                string ToStr(float TH, bool THPercent, float ratio, string statName, bool refStatus, float value)
+                {
+                    string str = $"{NL()}E";
+                    if (TH > 0) str += $"{(TH + (THPercent ? "“" : "")).ColorStr(Definer.colorRef.emphasize)}‚ð’´‚¦‚½";
+                    str += $"{statName}‚Ì{(ratio + "“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({value}{(THPercent ? "“" : "")})" : "")}";
+                    return str;
+                }
+
+                string NL(int lines = 1, string lineStr = "\n")
+                {
+                    return Extentions.NL(info, lines, lineStr);
+                }
             }
 
             public Character.CharaStatusMod ToStatuMod(Character.CharacterStatus status)
@@ -224,13 +237,7 @@ public class Action : MonoBehaviour
                 return mod;
             }
 
-            string ToStr(float TH,bool THPercent,float ratio,string statName,bool refStatus,float value)
-            {
-                string str = "E";
-                if (TH > 0) str += $"{(TH+(THPercent ? "“" : "")).ColorStr(Definer.colorRef.emphasize)}‚ð’´‚¦‚½";
-                str += $"{statName}‚Ì{(ratio+"“").ColorStr(Definer.colorRef.emphasize)}{(refStatus ? $"({value}{(THPercent ? "“" : "")})" : "")}\n";
-                return str;
-            }
+            
 
             //public static SummonStatusInherit operator +(SummonStatusInherit mod, SummonStatusInherit add)
             //{
@@ -646,6 +653,12 @@ public class Action : MonoBehaviour
 
             modifiedStatus.decreaseHP_min += mod.decreaseHP;
             modifiedStatus.decreaseHP_max += mod.decreaseHP;
+            if (mod.echo != null && mod.echo.Count > 0)
+            {
+                List<EchoDoTParams> echoTemp=new List<EchoDoTParams>(modifiedStatus.echoDoT);
+                echoTemp.AddRange(mod.echo);
+                modifiedStatus.echoDoT = new List<EchoDoTParams>(echoTemp);
+            }
 
             modifiedStatus.ATKMod_min += mod.ATKMod;
             modifiedStatus.ATKMod_max += mod.ATKMod;
