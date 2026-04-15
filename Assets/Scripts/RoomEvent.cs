@@ -29,6 +29,8 @@ public class RoomEvent : MonoBehaviour
     {
         public string optionName;
         [TextArea(3, 10)]
+        public string conditionInfo;
+        [TextArea(3, 10)]
         public string optionInfo;
         [Header("expÇé©ìÆåvéZ")]
         public float expMul;
@@ -40,11 +42,17 @@ public class RoomEvent : MonoBehaviour
         public string GetInfo()
         {
             string expInfo = expMul == 0 ? "" : ExpeditionManager.inst.GetExpAmount(expMul).ToString();
-            return $"{optionInfo}{expInfo}{optionInfo_suffix}";
+
+            string s = "";
+            if (conditionInfo != "") s += $"{Extentions.NL(s)}èåèÅF{conditionInfo}";
+            s += $"{Extentions.NL(s, 2)}{optionInfo}{expInfo}{optionInfo_suffix}";
+
+            return s;
         }
         public REOptionParams()
         {
             optionName = "";
+            conditionInfo = "";
             optionInfo = "";
             expMul = 0;
             optionInfo_suffix = "";
@@ -53,6 +61,7 @@ public class RoomEvent : MonoBehaviour
         public REOptionParams(REOptionParams copy)
         {
             optionName = copy.optionName;
+            conditionInfo = copy.conditionInfo;
             optionInfo = copy.optionInfo;
             expMul = copy.expMul;
             optionInfo_suffix = copy.optionInfo_suffix;

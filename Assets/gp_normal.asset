@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
+  m_Name: gp_normal
+  m_EditorClassIdentifier: 
+  maxLVL: 10
+  maxEVD: 75
+  maxPROT: 75
+  EXP_reqs: 010000000200000003000000050000000600000007000000090000000c0000000f000000
+  EXPBase: 1.5
+  EXP_Boss: 5
+  unlockEqSlotLVL: 0400000006000000080000000a000000
+  playerStatusGrowth:
+    maxHP_mul: 24
+    ATKINT_mul: 25
+    ACT: 0.5
+    EVD: 1
+    ACC: 1
+  enemyStatusGrowth:
+    maxHP_mul: 45
+    ATKINT_mul: 26
+    ACT: 0.5
+    EVD: 1
+    ACC: 1
+  initialCoin: 15
+  coinPerBattle_base: {x: 8, y: 12}
+  eqPrice: 000000000a00000014000000320000003c000000
+  priceMul: {x: 75, y: 125}
+  salePerShop: 2
+  saleMul: 67
+  madnessSpawnChance: 10
+  madnessStatMod:
+    LVL: 0
+    maxHP_mul: 75
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 30
+    ATK_int: 0
+    INT_mul: 30
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
+  HPDecOnAffrict: 60
+  SANDMGChanceOnRoom: 25
+  SANDMGOnRoom: {x: 3, y: 10}
+  RegenPercentOnRoomEnd: 20
+  SANPenaltyOnDie: 15
+  areaLength: 7
+  branchChance: 30
+  blindChance: 15
+  roomEvents:
+  - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
+    weight: 55
+    garanteed: 4
+  - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
+    weight: 0
+    garanteed: 2
+  - roomEvent: {fileID: 11400000, guid: 9cc928cb9a89e8b42a909207ba56a870, type: 2}
+    weight: 45
+    garanteed: 3
+  - roomEvent: {fileID: 11400000, guid: 4ba29e65157e9c74a8b44aec1e71a1ec, type: 2}
+    weight: 0
+    garanteed: 2
+  - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
+    weight: 0
+    garanteed: 1
+  - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
+    weight: 0
+    garanteed: 2
+  perWeights: 230000003e00000003000000
+  maxPer_good: 4
+  maxPer_bad: 4

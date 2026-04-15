@@ -168,6 +168,11 @@ MonoBehaviour:
   - {fileID: 5164891664867224302, guid: 9a52cd9fb089d4c4e8aaf8e17ba24ade, type: 3}
   - {fileID: 5164891664867224302, guid: e38dd904080a5ed438e05ceec214f142, type: 3}
   - {fileID: 5164891664867224302, guid: 1d046bb12a7e96541867bb517a0b4af1, type: 3}
+  - {fileID: 1489497368108049143, guid: 0eeced459f44539408281ca8ffbdcf7a, type: 3}
+  - {fileID: 1489497368108049143, guid: c458860e6f5da0c49b4ec78066f6fe47, type: 3}
+  - {fileID: 1489497368108049143, guid: 667736eda00905d46aafcbad172dd873, type: 3}
+  - {fileID: 1489497368108049143, guid: 6aece8c23c9bf6343aa3d97d5b318487, type: 3}
+  - {fileID: 1489497368108049143, guid: bbd265d7696fc554baeceaca250f154b, type: 3}
   colorRef:
     debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     player: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
@@ -382,6 +387,7 @@ MonoBehaviour:
   - {fileID: 8180078169205948270, guid: 671ccd86f01b0594bb2faa0ddf6c66d1, type: 3}
   - {fileID: 8180078169205948270, guid: ed1007f83b196114a9078aed2b1c8fb0, type: 3}
   - {fileID: 8180078169205948270, guid: e16bff7a58b26484ba984ecbca96e139, type: 3}
+  - {fileID: 8180078169205948270, guid: 87c708854d7259f44b75ac95f298ef24, type: 3}
   RaEWeights:
   - 20
   - 45

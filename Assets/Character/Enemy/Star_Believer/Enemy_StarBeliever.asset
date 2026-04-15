@@ -43,12 +43,11 @@ MonoBehaviour:
   actionMods: []
   corpse: {fileID: 11400000, guid: 346549fd8ab6cfa449cb42c3c7eb8ff2, type: 2}
   loot:
-    drawAttemptsRange: {x: 0, y: 0}
-    rarityWeightMod: 0
-    uniqueDropPool: []
-    includeTags: []
-    excludeTags: 
     dropEquipmentsRange: {x: 0, y: 0}
+    guarantee_rare: 0
+    guarantee_epic: 0
+    guarantee_legendary: 0
+    coin: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 0
   maxHP: 40
@@ -56,7 +55,7 @@ MonoBehaviour:
   ATK: 5
   INT: 10
   CRITC: 5
-  CRITD: 100
+  CRITD: 50
   EVD: 4
   ACC: 93
   ACT: 13

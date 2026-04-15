@@ -463,7 +463,7 @@ MonoBehaviour:
     atRandom: []
   FE: {fileID: 0}
   areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
-  RE: {fileID: 8180078169205948270, guid: e16bff7a58b26484ba984ecbca96e139, type: 3}
+  RE: {fileID: 8180078169205948270, guid: 87c708854d7259f44b75ac95f298ef24, type: 3}
   REP: {fileID: 1877823637}
   shopParams:
     shopOwnerIcon: {fileID: 0}
@@ -61440,7 +61440,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doTutorial: 0
-  gp: {fileID: 11400000, guid: 0f7346c8799cef74aaebbb3c365f1d54, type: 2}
+  gps:
+  - {fileID: 11400000, guid: 0f7346c8799cef74aaebbb3c365f1d54, type: 2}
+  - {fileID: 11400000, guid: 4184db88d1fc5534ea4152b3ee85f4cf, type: 2}
 --- !u!4 &2045868028
 Transform:
   m_ObjectHideFlags: 0

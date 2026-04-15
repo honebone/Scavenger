@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
    [SerializeField] bool doTutorial;//test
-    public GameParams gp;
+    [SerializeField] List<GameParams> gps;
     public static GameParams gameParams;
 
     private void Start()
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
     void Awake()
     {
-        gameParams = gp;
+        gameParams = gps[0];
         CheckInstance();
     }
 
@@ -72,6 +72,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetDifficulty(Difficulty difficulty)
+    {
+        gameParams = gps[(int)difficulty];
+    }
+
     //=================================[testÅ®title]=============================================
     public void GoTotitleScene()
     {
@@ -107,3 +112,5 @@ public class GameManager : MonoBehaviour
     public void SetTutorialMode(bool f) { doTutorial = f; }
     public bool DoTutorial() { return doTutorial; }
 }
+
+public enum Difficulty { normal, hard }

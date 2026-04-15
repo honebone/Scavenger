@@ -127,11 +127,11 @@ public class ActionMod : MonoBehaviour
                 //f = false;
                 foreach (PA_StatusEffect.StatusEffectParams StEParams in applySteParams)//StEïtó^
                 {
-                    s += StEParams.GetInfo();
+                    s += $"{NL()}{StEParams.GetInfo()}";
                 }
                 foreach (StEApplyBonus bonus in applyStEBonus)
                 {
-                    s+= bonus.GetInfo();
+                    s+= $"{NL()}{bonus.GetInfo()}";
                 }
                 if (debuffChanceMod != 0) { s += ValueToStr($"ÅE{"debuff".ToSpr_withName()}ïtó^ämó¶", debuffChanceMod, "Åì"); }
 

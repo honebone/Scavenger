@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class GameParams : ScriptableObject
 {
+    public bool hardMode;
+
+
+
     [Header("\n\n\nStatus")]
     public int maxLVL = 10;
     public int maxEVD = 75;

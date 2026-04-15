@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
-  m_Name: gameParams
+  m_Name: gp_hard
   m_EditorClassIdentifier: 
+  hardMode: 1
   maxLVL: 10
   maxEVD: 75
   maxPROT: 75
   EXP_reqs: 010000000200000003000000050000000600000007000000090000000c0000000f000000
   EXPBase: 1.5
-  EXP_Boss: 6
+  EXP_Boss: 5
   unlockEqSlotLVL: 0400000006000000080000000a000000
   playerStatusGrowth:
     maxHP_mul: 24
@@ -26,8 +27,8 @@ MonoBehaviour:
     EVD: 1
     ACC: 1
   enemyStatusGrowth:
-    maxHP_mul: 45
-    ATKINT_mul: 26
+    maxHP_mul: 55
+    ATKINT_mul: 30
     ACT: 0.5
     EVD: 1
     ACC: 1

@@ -55,6 +55,7 @@ MonoBehaviour:
   charaSelectInfo:
     option:
       optionName: 
+      conditionInfo: 
       optionInfo: 
       expMul: 0
       optionInfo_suffix: 
@@ -63,10 +64,11 @@ MonoBehaviour:
     showRarePers: 0
     showGoodPers: 0
     showBadPers: 0
-  coin: {x: 15, y: 40}
+  coin: {x: 10, y: 20}
   option:
     optionName: "\u5B9D\u7269\u5EAB\u3092\u958B\u3051\u308B"
-    optionInfo: "<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u309215-40\u5F97\u308B\r\n\u30E9\u30F3\u30C0\u30E0\u306A\u30AD\u30E3\u30E91\u4F53\u304C<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3092\u5F97\u308B"
+    conditionInfo: 
+    optionInfo: "<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u309210-20\u5F97\u308B\r\n\u30E9\u30F3\u30C0\u30E0\u306A\u30AD\u30E3\u30E91\u4F53\u304C<color=#C900FF>\u60AA\u3044\u7279\u6027</color>\u3092\u5F97\u308B"
     expMul: 0
     optionInfo_suffix: 
     available: 1
