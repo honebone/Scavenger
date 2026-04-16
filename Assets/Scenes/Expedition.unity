@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
@@ -441,10 +441,8 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
-  - {fileID: 11400000, guid: f94243927aa6a294d8fd0b47f485f5c6, type: 2}
-  - {fileID: 11400000, guid: 32d4fbbd9791cef4995d4251a7f86906, type: 2}
-  - {fileID: 11400000, guid: 19784fcd3f752a04a9fd024df0fc1d76, type: 2}
-  - {fileID: 11400000, guid: 5f9b9983894eb2e478ccce382ea51c09, type: 2}
+  - {fileID: 11400000, guid: 486b605a2cb2cb749963404079581379, type: 2}
+  - {fileID: 11400000, guid: 6048b55f75564de44bfdf468393242a2, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   eq_exclusive: []
   enemySetTest:
@@ -2402,8 +2400,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
-  m_sharedMaterial: {fileID: 1749331179072275075, guid: 5b58a3c93f58862488a5678e92c7e1b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89ff8fe189443fe4e9f3385a23552c74, type: 2}
+  m_sharedMaterial: {fileID: 1749331179072275075, guid: 89ff8fe189443fe4e9f3385a23552c74, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5798,7 +5796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 279.58606, y: -48.09996}
+  m_AnchoredPosition: {x: 279.58606, y: -48.099976}
   m_SizeDelta: {x: -620.544, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &218159761
@@ -9225,7 +9223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 63.53369, y: -48.09996}
+  m_AnchoredPosition: {x: 63.53369, y: -48.099976}
   m_SizeDelta: {x: -579.7155, y: -431.7169}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &346755979
@@ -54605,8 +54603,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 83358802}
   m_HandleRect: {fileID: 83358801}
   m_Direction: 2
-  m_Value: 1.0000004
-  m_Size: 0.80733335
+  m_Value: 1
+  m_Size: 0.80733323
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

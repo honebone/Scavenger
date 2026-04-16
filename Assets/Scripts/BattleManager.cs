@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using static AreaManager;
 using static ExpeditionManager;
 using TMPro;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
@@ -392,6 +393,20 @@ public class BattleManager : MonoBehaviour
         //foreach(Battle_TurnOrderIcon turnOrderIcon in turnOrderIcons) { turnOrderIcon.RemoveTurnOrderIcon(chara); }
     }
 
+    public void SetIntent()
+    {
+        charactersManager.GetExistingCharacters_All().ForEach(p =>
+        {
+            if (!p.IsPlayer()) p.GetTargetButton().SetIntent();
+        });
+    }
+    public void ResetIntentText()
+    {
+        charactersManager.GetExistingCharacters_All().ForEach(p =>
+        {
+            p.GetTargetButton().ResetIntentText();
+        });
+    }
 
     public void EndTrigger_TurnOrderDecide() { StartCoroutine(RoundStartEffect()); }
     IEnumerator RoundStartEffect()

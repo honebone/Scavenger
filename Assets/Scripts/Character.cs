@@ -133,6 +133,8 @@ public class Character : MonoBehaviour
         public bool dead;
         //ここに状態異常入れれるといいね 
 
+        public Ability.AbilityStatus intent;
+
         public string GetInfo()
         {
             string s = "";
@@ -1107,7 +1109,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void SetMouseOver()
+    public void SetMouseOver(bool showIntent)
     {
         string s = charaStatus.charaName + "\n";
         if (charaStatus.shield > 0)
@@ -1154,10 +1156,17 @@ public class Character : MonoBehaviour
         MouseOverUI.inst.SetUI(s, true);
 
         string side = "";
+        if (showIntent)
+        {
+            if (charaStatus.intent != null)
+            {
+                side += $"{Extentions.NL(side)}<{charaStatus.intent.GetAbilityName()}>を準備\n{charaStatus.intent.GetEffectInfo(true, charaStatus, false)}";
+            }
+        }
         if (BattleManager.MO_pers)
         {
-            side += $"◇特性◇";
-            PA_Per.ForEach(x => side += $"\n<{x.GetPAName()}>");
+            side += $"{Extentions.NL(side,2)}◇特性◇";
+            PA_Per.ForEach(x => side += $"{Extentions.NL(side)}<{x.GetPAName()}>");
         }
 
         if (side != "") MouseOverUI.inst.SetSideUI(side);
@@ -1259,10 +1268,12 @@ public class Character : MonoBehaviour
                 if (charaStatus.playable)
                 {
                     if (BattleManager.displayInfoOnTS) DisplayInfo();
+                    battleManager.SetIntent();
+
                     battleManager.SetSelectingAbility(true);
                     battleManager.StartTutorial_Ability();
                 }
-                else { StartCoroutine(Test()); }
+                else { StartCoroutine(AutoSelectAbility()); }
             }
         }
         else
@@ -1279,13 +1290,12 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(1f);
         EndPhase();
     }
-    IEnumerator Test()
+    IEnumerator AutoSelectAbility()
     {
         yield return new WaitForSeconds(0.5f);
 
-        battleManager.SetSelectedAbility(SelectAbility_Random(), this);
-        //charaStatus.omenSet = false;
-        //charaStatus.omen = new Ability.AbilityStatus();
+        if(charaStatus.intent != null && charaStatus.intent.Available()) battleManager.SetSelectedAbility(charaStatus.intent, this);
+        else battleManager.SetSelectedAbility(SelectAbility_Random(false), this);
         battleManager.GetSelectedAbility().StartSelectTarget();
     }
     IEnumerator DeleyOnDeath()
@@ -1298,6 +1308,7 @@ public class Character : MonoBehaviour
     {
         if (CheckAlive())
         {
+            charaStatus.intent = null;
             if (continueTurn)
             {
                 continueTurn = false;
@@ -2086,28 +2097,51 @@ public class Character : MonoBehaviour
 
     /// <summary>操作不可キャラがアビリティの選択をする際に呼ばれる
     /// 発動可能なアビリティのうち、優先度が最も高いアビリティの重みを考慮して選ぶ</summary>
-    public virtual Ability.AbilityStatus SelectAbility_Random()
+    public virtual Ability.AbilityStatus SelectAbility_Random(bool allowCD1)
     {
-        int priority = -999;
-        foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
-        {
-            if (!ability.excludeRandomPool && ability.instantiatedManager.CheckAvailable())
-            {
-                if (ability.priority >= priority) { priority = ability.priority; }
-            }
-        }
+        int priority = MaxAvailablePriority(allowCD1);
+        //foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
+        //{
+        //    if (!ability.excludeRandomPool && ability.instantiatedManager.CheckAvailable())
+        //    {
+        //        if (ability.priority >= priority) { priority = ability.priority; }
+        //    }
+        //}
         //infoText.AddDebugText($"priority:{priority}");
 
         List<Ability.AbilityStatus> list = new List<Ability.AbilityStatus>();
         foreach (Ability.AbilityStatus ability in charaStatus.abilitiesStatus)
         {
-            if (!ability.excludeRandomPool && ability.instantiatedManager.CheckAvailable() && ability.priority == priority) { list.Add(ability); }
+            if (!ability.excludeRandomPool && ability.instantiatedManager.CheckAvailable(allowCD1) && ability.priority == priority) { list.Add(ability); }
         }
         return ChoiceAbilityWithWeight(list);
     }
+
+    public Ability.AbilityStatus SetIntent()
+    {
+        if (charaStatus.playable)
+        {
+            infoText.AddWarningText("プレイヤーにアビリティ予告を設定しようとしています");
+            return charaStatus.abilitiesStatus[0];
+        }
+
+        //予告が存在しない | 予告が使用不能 | 予告より優先度の高いアビリティが使用可能 
+        if (charaStatus.intent == null || !charaStatus.intent.Available(true) || MaxAvailablePriority(true) > charaStatus.intent.priority)
+        {
+            charaStatus.intent = SelectAbility_Random(true);
+        }
+
+        return charaStatus.intent;
+    }
+
+    int MaxAvailablePriority(bool allowCD1)
+    {
+        return charaStatus.abilitiesStatus.Where(a => a.instantiatedManager.CheckAvailable(allowCD1)).Max(a => a.priority);
+    }
+
     public Ability.AbilityStatus ChoiceAbilityWithWeight(List<Ability.AbilityStatus> abilitiesStatus)
     {
-        if (abilitiesStatus.Count == 0) { infoText.AddErrorText("アビリティの選択肢がありません"); }
+        if (abilitiesStatus.Count == 0) { infoText.AddErrorText($"{charaStatus.charaName}にはアビリティの選択肢がありません"); }
         List<int> weight = new List<int>();
         foreach (Ability.AbilityStatus ability in abilitiesStatus) { weight.Add(ability.selectWeight); }
         return abilitiesStatus[weight.ChoiceWithWeight()];

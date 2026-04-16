@@ -352,47 +352,41 @@ public class ActionQueueManager : MonoBehaviour
 
         if(!battleEnd)
         {
+            totalDamageText.ResetText();
+
             switch (resolveMode)
             {
                 case 0:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.RoundStart();
                     break;
                 case 1:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.DicideTurnOrder();
                     break;
                 case 2:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.GetCurrntTurnChara().MainPhase(true);
                     break;
                 case 3:
                     resolveMode = -1;
                     yield return new WaitForSeconds(abilityPause_followthrough);
-                    totalDamageText.ResetText();
                     battleManager.GetCurrntTurnChara().EndPhase();
                     break;
                 case 4:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.NextTurn();
                     break;
                 case 5:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.RoundStart();
                     break;
                 case 6:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.EndTrigger_TurnOrderDecide();
                     break;
                 case 7:
                     resolveMode = -1;
-                    totalDamageText.ResetText();
                     battleManager.EndTrigger_BattleEnd();
                     break;
                 default:

@@ -250,12 +250,6 @@ public class Character_Object : MonoBehaviour
         selectedIcon.enabled = set;
     }
 
-    //public void SetDamageText(string text, Color color)
-    //{
-    //    //var d = Instantiate(damagText, damageTextParent);
-    //    //d.GetComponent<DamageText>().Init(text, color);
-    //}
-
     public GameObject SetStEIcon()
     {
         var s=Instantiate(Definer.statusEffectIcon,StEIconParent);

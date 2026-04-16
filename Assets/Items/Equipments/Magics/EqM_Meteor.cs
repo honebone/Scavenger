@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EqM_Meteor : Eq_Magic
 {
-    public int ACCTH;
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        if (myTurn && character.CharaStatus().ACC >= ACCTH)
+        if (myTurn)
         {
             Cast();
         }

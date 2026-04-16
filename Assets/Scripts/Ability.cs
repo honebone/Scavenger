@@ -92,6 +92,22 @@ public class Ability : MonoBehaviour
                 if (refCharaStatus) { s += $"{NL()}残り使用回数：{remain}回"; }
                 else { s += $"{NL()}使用回数(戦闘開始時)：{remainOnBattleStart}回"; }
             }
+
+            string effectInfo = GetEffectInfo(refCharaStatus, characterStatus, simple);
+            if (effectInfo != "") s += $"{NL()}{effectInfo}";
+
+            return s;
+
+            string NL(int lines = 1, string lineStr = "\n")
+            {
+                return Extentions.NL(s, lines, lineStr);
+            }
+        }
+
+        public string GetEffectInfo(bool refCharaStatus, Character.CharacterStatus characterStatus, bool simple)
+        {
+            string s = "";
+
             if (abilityType == AbilityData.AbilityType.pass)
             {
                 s += $"{NL()}・ターンをパスする(行動したとはみなされない)";
@@ -123,7 +139,7 @@ public class Ability : MonoBehaviour
             return s;
 
             string NL(int lines = 1, string lineStr = "\n")
-            {
+            {                
                 return Extentions.NL(s, lines, lineStr);
             }
         }
@@ -210,9 +226,12 @@ public class Ability : MonoBehaviour
         public void SetCoolDown(int value) { cooldown = Mathf.Max(0, value); }
 
         public void AddCoolDown(int value) { cooldown = Mathf.Max(0, cooldown + value); }
+
+        public bool Available(bool allowCD1 = false) => instantiatedManager.CheckAvailable(allowCD1);
+        public string GetAbilityName() => abilityName.ColorStr(abilityType.ToColor());
     }
 
-   protected Character character;
+    protected Character character;
     protected CharactersManager charactersManager;
     BattleManager battleManager;
     ActionQueueManager actionQueue;
@@ -245,12 +264,17 @@ public class Ability : MonoBehaviour
 
     public virtual string GetInfo(bool simple) { return status.GetInfo(true, character.CharaStatus(),simple); }
     public virtual Action.ActionStatus ModifyTargetParams(Action.ActionStatus actionStatus) { return actionStatus; }
-
-    public bool CheckAvailable()
+    /// <summary>
+    /// allowCD1:次ターンにCD解消するやつも含めるか
+    /// </summary>
+    /// <param name="allowCD1"></param>
+    /// <returns></returns>
+    public bool CheckAvailable(bool allowCD1=false)
     {
         bool atProperPos = false;
         bool hasProperTarget = true;
-        bool properCondition = false; ;
+        bool properCondition = false;
+        bool CD = status.cooldown == 0 || (status.cooldown == 1 && allowCD1);
         Character.CharacterStatus ownerStatus = character.CharaStatus();
         int column = ownerStatus.position.GetColumn();
         if (status.availableFront && column == 0) { atProperPos = true; }
@@ -268,7 +292,7 @@ public class Ability : MonoBehaviour
             }
         }
         properCondition = !status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition);
-        return !status.locked && (!status.hasRemain || status.remain > 0) && status.cooldown == 0 && status.unavailable == 0 && atProperPos && hasProperTarget && properCondition;
+        return !status.locked && (!status.hasRemain || status.remain > 0) && CD && status.unavailable == 0 && atProperPos && hasProperTarget && properCondition;
     }
     public List<string> GetUnavailabeInfo()
     {
@@ -606,6 +630,7 @@ public class Ability : MonoBehaviour
 
             ResetValue();
             battleManager.ResetSelectedAbility();
+            battleManager.ResetIntentText();
 
             actionQueue.StartResolve(3);
         }

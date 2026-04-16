@@ -335,7 +335,7 @@ MonoBehaviour:
     moveRes: 0
     debuffRes: 0
     minion: 0
-  forEachSummon: 0
+  forEachSummon: 1
   toSummon: 1
 --- !u!212 &3238141386940741765
 SpriteRenderer:

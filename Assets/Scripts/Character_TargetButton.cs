@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class Character_TargetButton : MonoBehaviour
 {
     [SerializeField]
@@ -25,6 +26,7 @@ public class Character_TargetButton : MonoBehaviour
 
     [SerializeField] Transform damageTextP;
     [SerializeField] GameObject damageText;
+    [SerializeField] TextMeshProUGUI intentText;
 
     Character character;
     CharactersManager charactersManager;
@@ -43,6 +45,8 @@ public class Character_TargetButton : MonoBehaviour
     bool selectableAsMoveToPos;
 
     List<int> targetGroup = new List<int>();
+
+    bool revealIntent;
 
     private void Start()
     {
@@ -67,6 +71,7 @@ public class Character_TargetButton : MonoBehaviour
         character = null;
         positionManager.ResetCharacter();
         emptyIcon.enabled = true;
+        revealIntent = false;
     }
 
     public void SetTargetIcon(List<int> tg)
@@ -124,6 +129,42 @@ public class Character_TargetButton : MonoBehaviour
     public void SetSelectedIcon(bool set)
     {
         selectedIcon.enabled = set;
+    }
+
+    public void SetIntent()
+    {
+        Ability.AbilityStatus intent = character.SetIntent();
+        intentText.text = $"{GetSuffix(intent.abilityType)}{intent.abilityName.ColorStr(intent.abilityType.ToColor())}";
+
+        string GetSuffix(AbilityData.AbilityType type)
+        {
+            switch (intent.abilityType)
+            {
+                case AbilityData.AbilityType.attack:
+                    return "ATK".ToSpr();
+                case AbilityData.AbilityType.buff:
+                    return "buff".ToSpr();
+                case AbilityData.AbilityType.debuff:
+                    return "debuff".ToSpr();
+                case AbilityData.AbilityType.heal:
+                    return "heal".ToSpr();
+                case AbilityData.AbilityType.summon:
+                    return "summon".ToSpr();
+                case AbilityData.AbilityType.move:
+                    return "move".ToSpr();
+                case AbilityData.AbilityType.pass:
+                    return "Å~".ColorStr(AbilityData.AbilityType.pass.ToColor());
+                default:
+                    return "";
+            }
+        }
+
+        revealIntent = true;
+    }
+    public void ResetIntentText()
+    {
+        intentText.text = "";
+        revealIntent = false;
     }
 
     public PositionManager GetPositionManager() { return positionManager; }
@@ -193,7 +234,7 @@ public class Character_TargetButton : MonoBehaviour
         }
         else
         {
-            character.SetMouseOver();
+            character.SetMouseOver(revealIntent);
         }
     }
     public void OnMouseExit()
