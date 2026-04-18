@@ -28,7 +28,7 @@ public class Eq_Master : PA_Equipment
     {
         if (targets != null && (CheckAltMode() || targetSelf)) { infoText.AddWarningText("Eq_Master error"); }
 
-        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count >= activeCond_req))
+        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond, character).Count >= activeCond_req))
         {
             count++;
             if (countReq > 1) Log($"ƒJƒEƒ“ƒg+1 ({count})");

@@ -55,6 +55,7 @@ MonoBehaviour:
   charaSelectInfo:
     option:
       optionName: 
+      conditionInfo: 
       optionInfo: "\u30E9\u30F3\u30C0\u30E0\u7279\u6027\u3092\u5168\u3066\u5931\u3044\u3001\u305D\u306E\u6570\u3060\u3051\u5225\u306E\u30E9\u30F3\u30C0\u30E0\u7279\u6027\u3092\u5F97\u308B"
       expMul: 0
       optionInfo_suffix: 
@@ -66,11 +67,13 @@ MonoBehaviour:
   coinMul: {x: 0, y: 250}
   options:
   - optionName: "\u6CC9\u306B\u5165\u308B"
-    optionInfo: "\u30AD\u30E3\u30E91\u4F53\u304C\u30E9\u30F3\u30C0\u30E0\u7279\u6027\u3092\u5168\u3066\u5931\u3044\u3001\u305D\u306E\u6570\u3060\u3051\u5225\u306E\u30E9\u30F3\u30C0\u30E0\u7279\u6027\u3092\u5F97\u308B"
+    conditionInfo: 
+    optionInfo: "\u30AD\u30E3\u30E91\u4F53\u304C<link=U_\u30E9\u30F3\u30C0\u30E0\u7279\u6027><u>\u30E9\u30F3\u30C0\u30E0\u7279\u6027</u></link>\u3092\u5168\u3066\u5931\u3044\u3001\u305D\u306E\u6570\u3060\u3051\u5225\u306E<link=U_\u30E9\u30F3\u30C0\u30E0\u7279\u6027><u>\u30E9\u30F3\u30C0\u30E0\u7279\u6027</u></link>\u3092\u5F97\u308B"
     expMul: 0
     optionInfo_suffix: 
     available: 1
   - optionName: "<sprite name=coin><color=#D83ECE>\u30B3\u30A4\u30F3</color>\u3092\u6295\u3052\u5165\u308C\u308B"
+    conditionInfo: 
     optionInfo: "<sprite name=coin>\u304C\u73FE\u5728\u306E0-250\uFF05\u306B\u306A\u308B"
     expMul: 0
     optionInfo_suffix: 

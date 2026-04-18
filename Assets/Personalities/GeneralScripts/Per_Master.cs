@@ -28,7 +28,7 @@ public class Per_Master : PA_Personality
     {
         if (targets != null && (CheckAltMode() || targetSelf)) { infoText.AddWarningText("Per_Master error"); }
 
-        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond).Count >= activeCond_req))
+        if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond, character).Count >= activeCond_req))
         {
             count++;
             if (countReq > 1) Log($"ƒJƒEƒ“ƒg+1 ({count})");
@@ -88,6 +88,10 @@ public class Per_Master : PA_Personality
     }
 
     public override void OnRoundEnd()
+    {
+        ResetParamsOnRoundEnd();
+    }
+    protected void ResetParamsOnRoundEnd()
     {
         count_inRound = 0;
         available = (max_inBattle == 0 || count_inBattle < max_inBattle) && (max_inRound == 0 || count_inRound < max_inRound);

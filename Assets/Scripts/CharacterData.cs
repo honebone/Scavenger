@@ -73,6 +73,9 @@ public class CharacterData : ScriptableObject
     public AbilityData[] abilities;
 
     public List<GameObject> passiveAbilities;
+    [Header("hard mode‚Å‚Ì‚Ý—LŒø‚ÈPA")]
+    public List<GameObject> PA_hard;
+
     public List<GameObject> actionMods;
 
     public CharacterData corpse;

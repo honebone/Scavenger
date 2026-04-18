@@ -180,22 +180,25 @@ public class PA_StatusEffect : PassiveAbility
     public string GetInfo_ForLink(bool simple)
     {
         string rv = StEStatus.refValue ? " <color=#FFBF69><i>{X}</i></color>" : "";
-        string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>  èÛë‘àŸèÌÇÃàÍéÌ\n";
+        string s = $"<{StEStatus.StEType.ToSpr()}{GetPAName()}{rv}>  èÛë‘àŸèÌÇÃàÍéÌ";
         string statModInfo = statMod.GetInfo();
-        if (statModInfo != "") s += statModInfo + "\n";
-        //s += StEStatus.StEInfo;
-        //if (GetAdditionalInfo() != "") { s += "\n\n" + GetAdditionalInfo(); }
+        if (statModInfo != "") s += $"{NL()}{statModInfo}";
         if (!simple || noSimpleInfo) {
-            if (PAInfo_start != "") { s += PAInfo_start + "\n\n"; }
-            if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
-            if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }
-            if (PAInfo_end != "") { s += PAInfo_end + "\n"; }
+            if (PAInfo_start != "") { s += $"{NL()}{PAInfo_start}"; }
+            if (StEStatus.StEInfo != "") s += $"{NL()}{StEStatus.StEInfo}";
+            if (GetAdditionalInfo() != "") { s += $"{NL()}{GetAdditionalInfo()}"; }
+            if (PAInfo_end != "") s += $"{NL()}{PAInfo_end}";
         }
-        else s += $"{simpleInfo}\n";
+        else s += $"{NL()}{simpleInfo}";
 
-        if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬".ColorStr(Definer.colorRef.emphasize); }
+        if (StEStatus.undeletable) { s += NL()+"è¡ãéïsâ¬".ColorStr(Definer.colorRef.emphasize); }
 
         return s;
+
+        string NL(int lines = 1, string lineStr = "\n")
+        {
+            return Extentions.NL(s, lines, lineStr);
+        }
     }
   
     public virtual string GetAdditionalInfo()

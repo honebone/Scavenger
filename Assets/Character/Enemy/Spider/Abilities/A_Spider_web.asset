@@ -55,8 +55,9 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
   freeAction: 0
-  cooldownOnBattleStart: 2
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
@@ -102,6 +103,7 @@ MonoBehaviour:
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0

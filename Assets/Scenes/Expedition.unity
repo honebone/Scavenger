@@ -414,6 +414,7 @@ MonoBehaviour:
   debug: 1
   skipDeployPhase: 0
   skipTutorial: 1
+  hardMode: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -447,13 +448,13 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 1
-    upperFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
-    centerFront: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    centerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
-    lowerMid: {fileID: 11400000, guid: 254a8bcf0d853ba44a767d5cea585766, type: 2}
+    upperMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    centerMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
@@ -17189,6 +17190,7 @@ MonoBehaviour:
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -25981,6 +25983,7 @@ MonoBehaviour:
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -26118,6 +26121,7 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
   battleEnd: {fileID: 8300000, guid: 9f7193b142b9d9146b95a5988c7d5a12, type: 3}
   tutorial_Battle: {fileID: 11400000, guid: ed9d5cb10d45b504aaf85965fe6c9c00, type: 2}
   tutorial_ability: {fileID: 11400000, guid: 3ecb1693bbf8e374e9948bfe19a3a210, type: 2}

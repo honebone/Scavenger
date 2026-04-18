@@ -9,8 +9,12 @@ public class A_GobLeader_Summon : Ability
 
     public override List<List<int>> GetTargetPool(int index)
     {
-       
-        empty = charactersManager.GetEmptyPos(list);
-        return new List<List<int>>() { new List<int>(empty.Sample(3)) };
+
+        if (index == 0)
+        {
+            empty = charactersManager.GetEmptyPos(list);
+            return new List<List<int>>() { new List<int>(empty.Sample(3)) };
+        }
+        else return base.GetTargetPool(index);
     }
 }

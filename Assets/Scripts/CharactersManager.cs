@@ -195,6 +195,7 @@ public class CharactersManager : MonoBehaviour
         public List<Vector2Int> neighbor;
         public bool sameColmn;
         public bool sameRow;
+        public bool sameChara;
     }
 
     public bool ExamineCharacter(Character character, SearchCharaCondition condition ,Character refChara=null)
@@ -328,6 +329,7 @@ public class CharactersManager : MonoBehaviour
 
             if (condition.sameColmn && refStat.position.GetColumn() != status.position.GetColumn()) { return false; }
             if (condition.sameRow && refStat.position.GetRow() != status.position.GetRow()) { return false; }
+            if (condition.sameChara && refChara != character) { return false; }
         }
 
         return true;
@@ -736,6 +738,18 @@ public class CharactersManager : MonoBehaviour
 
         generatedCharaStatus.Init(characterData);
         generatedCharaStatus.position = pos;
+
+        if (GameManager.gameParams.hardMode)
+        {
+            generatedCharaStatus.passiveAbilities.AddRange(characterData.PA_hard);
+            for (int i = 0; i < generatedCharaStatus.abilitiesStatus.Length; i++)
+            {
+                Ability.AbilityStatus ability = generatedCharaStatus.abilitiesStatus[i];
+                if (ability != null && ability.locked) ability.locked = false;
+                if (ability.abilityData.upgradeAbility != null) generatedCharaStatus.abilitiesStatus[i] = new Ability.AbilityStatus(ability.abilityData.upgradeAbility, i);
+            }
+        }
+
         spawnParams.generatedCharaStatus = generatedCharaStatus;
         spawnParams.manager = characterData.manager;
 

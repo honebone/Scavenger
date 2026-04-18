@@ -10,6 +10,7 @@ public class DebugFunction : MonoBehaviour
     [SerializeField] bool debug;
     [SerializeField] bool skipDeployPhase;
     [SerializeField] bool skipTutorial;
+    [SerializeField] bool hardMode;
 
     public int autoset_playerLVL;
     public int autoset_enemyLVL;
@@ -83,7 +84,7 @@ public class DebugFunction : MonoBehaviour
         infoText = FindObjectOfType<InfoText>();
 
         if (debug) { FindObjectOfType<GameManager>().SetTutorialMode(!skipTutorial); }
-        
+        if (hardMode) {GameManager.instance.SetDifficulty(Difficulty.hard); }
     }
     // Update is called once per frame
     void Update()

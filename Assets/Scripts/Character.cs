@@ -605,6 +605,11 @@ public class Character : MonoBehaviour
         }
 
         foreach (GameObject pa in charaStatus.passiveAbilities) { AddPA_Personality(pa, false); }
+        //if (GameManager.gameParams.hardMode&&!PlayerPos())
+        //{
+        //    UnlockAbility_All();
+        //    UpgradeAbility_All();
+        //}
 
         charaStatus.HP = charaStatus.maxHP;
 
@@ -1099,7 +1104,7 @@ public class Character : MonoBehaviour
             temp = "";
         }
 
-        info += NL(3) + targetButton.GetPositionManager().GetPEInfo();
+        info += Extentions.NL(info, 3) + targetButton.GetPositionManager().GetPEInfo();
 
         return info;
 

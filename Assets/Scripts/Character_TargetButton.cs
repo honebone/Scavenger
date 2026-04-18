@@ -147,7 +147,7 @@ public class Character_TargetButton : MonoBehaviour
                 case AbilityData.AbilityType.debuff:
                     return "debuff".ToSpr();
                 case AbilityData.AbilityType.heal:
-                    return "heal".ToSpr();
+                    return "HP".ToSpr();
                 case AbilityData.AbilityType.summon:
                     return "summon".ToSpr();
                 case AbilityData.AbilityType.move:

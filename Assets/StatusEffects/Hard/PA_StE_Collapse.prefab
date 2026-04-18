@@ -89,7 +89,7 @@ MonoBehaviour:
     overideColor: 0
     colorOveride: {r: 0.93333334, g: 0.20392157, b: 0.6313726, a: 1}
     maxStack: 0
-    merge: 0
+    merge: 1
     refValue: 0
     undeletable: 1
     DoT: 0
@@ -116,8 +116,8 @@ MonoBehaviour:
     ACC: 0
     ACT: 0
     turnPerRound: 0
-    GHeal: -5
-    RHeal: 0
+    GHeal: 0
+    RHeal: -5
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
