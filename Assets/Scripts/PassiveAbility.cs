@@ -273,8 +273,9 @@ public class PassiveAbility : MonoBehaviour
     public int GetRuneCharge() { return runeCharge; }
     public int GetRuneInitialCharge() { return rune_initialCharge; }
 
-/// <summary>このターンに付与されたかのチェック</summary>
-public void StE_ApplyFlag() { applyFlag = true; }
+    /// <summary>このターンに付与されたかのチェック</summary>
+    public void StE_ApplyFlag() { applyFlag = true; }
+
 
   
     //====================================================[誘発]=========================================================================
