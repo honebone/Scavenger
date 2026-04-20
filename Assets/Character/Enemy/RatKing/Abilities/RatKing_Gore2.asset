@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: RatKing_Gore
+  m_Name: RatKing_Gore2
   m_EditorClassIdentifier: 
-  abilityName: "\u30B4\u30A2"
+  abilityName: "\u30B4\u30A2+"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 64d24f83c14e3934eaa67716eb45c73d, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -63,7 +63,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u30B4\u30A2"
+  - actionName: 
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -120,8 +120,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 120
+    ATKMod_max: 150
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -211,6 +211,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 0
     actionTargets: []
-    actionTargetsInt: 
+    actionTargetsInt: 06000000

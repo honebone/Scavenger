@@ -291,7 +291,7 @@ public class Ability : MonoBehaviour
                 }
             }
         }
-        properCondition = !status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition);
+        properCondition = (!status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition))&&CheckSpecialCondition();
         return !status.locked && (!status.hasRemain || status.remain > 0) && CD && status.unavailable == 0 && atProperPos && hasProperTarget && properCondition;
     }
     public List<string> GetUnavailabeInfo()
@@ -317,7 +317,7 @@ public class Ability : MonoBehaviour
                 break;
             }
         }
-        properCondition = !status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition);
+        properCondition = (!status.hasSelfCondition || charactersManager.ExamineCharacter(character, status.selfCondition)) && CheckSpecialCondition();
 
         if (status.locked) { info.Add("未解放のアビリティ"); }
         if (!battleManager.checkIfMyTurn(character)) { info.Add("自身のターンでない"); }
@@ -635,6 +635,11 @@ public class Ability : MonoBehaviour
             actionQueue.StartResolve(3);
         }
         else { StartSelectTarget(); }//まだ選択が残ってるなら
+    }
+
+    public virtual bool CheckSpecialCondition()
+    {
+        return true;
     }
 
     public void ResetValue()

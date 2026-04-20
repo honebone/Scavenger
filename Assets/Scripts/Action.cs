@@ -826,6 +826,7 @@ public class Action : MonoBehaviour
         public List<PA_StatusEffect.StatusEffectParams> appliedParams;
         public List<PA_StatusEffect.StatusEffectParams> resistedParams;
         public Character taget;
+        public ActionParams actionParams;
     }
     public class OnFocusParams
     {
@@ -1374,6 +1375,7 @@ public class Action : MonoBehaviour
                     onApplyStEParams.appliedParams = new List<PA_StatusEffect.StatusEffectParams>();
                     onApplyStEParams.resistedParams = new List<PA_StatusEffect.StatusEffectParams>();
                     onApplyStEParams.taget = target;
+                    onApplyStEParams.actionParams = actionParams;
 
 
                     //========================================================================================[StE•t—^]==============================================================================

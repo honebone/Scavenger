@@ -37,9 +37,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 044ddd179e31ac143b175e906b500adc, type: 2}
   - {fileID: 11400000, guid: 0bb9e9a5720dc5643893c8b2974dcd90, type: 2}
   - {fileID: 11400000, guid: 725c747da75523648a48cde31f506b11, type: 2}
+  - {fileID: 11400000, guid: 236bb72112003034eb68b4c202947b0f, type: 2}
+  - {fileID: 11400000, guid: 304f2baedf3a46443afa52c45ec3a4b0, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 5551348220021876505, guid: 5cb4f7b72a8ed1443a6fe1eb846a6eff, type: 3}
+  PA_hard: []
   actionMods: []
   corpse: {fileID: 0}
   loot:

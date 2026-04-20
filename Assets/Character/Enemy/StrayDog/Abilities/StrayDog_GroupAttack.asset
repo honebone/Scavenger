@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: RatKing_Gore
+  m_Name: StrayDog_GroupAttack
   m_EditorClassIdentifier: 
-  abilityName: "\u30B4\u30A2"
-  lockedDefault: 0
+  abilityName: "\u7FA4\u308C\u306E\u4E00\u6483"
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 64d24f83c14e3934eaa67716eb45c73d, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
-  abilityManager: {fileID: 0}
+  abilityManager: {fileID: 2777955916371899271, guid: a92e6e2d376fbf348a579058f6d5e237, type: 3}
   abilityType: 1
   excludeRandomPool: 0
-  priority: 1
-  selectWeight: 3
+  priority: 2
+  selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
   hasSelfCondition: 0
-  conditionInfo: 
+  conditionInfo: "\u5473\u65B9\u306E[\u7363]\u304C4\u4F53\u4EE5\u4E0A\u3044\u308B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
@@ -57,20 +57,20 @@ MonoBehaviour:
     sameRow: 0
     sameChara: 0
   freeAction: 0
-  cooldownOnBattleStart: 0
+  cooldownOnBattleStart: 4
   cooldownOnUse: 0
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u30B4\u30A2"
+  - actionName: "\u7FA4\u308C\u306E\u4E00\u6483"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
-    VE_OnTargets: {fileID: 9026872467518674270, guid: 59e6d3a9232a004489cb89d2000a008d, type: 3}
+    VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -120,8 +120,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 160
+    ATKMod_max: 240
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
     exINTDMG_int: 0
     ATKDMG_divide_int: 0
     INTDMG_divide_int: 0
-    ACCMod: 0
+    ACCMod: 20
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
@@ -191,13 +191,13 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-    moveChance: 15
+    moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 1
+    moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1

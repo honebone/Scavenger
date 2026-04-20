@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: RatKing_Gore
+  m_Name: A_Pest_Bite2
   m_EditorClassIdentifier: 
-  abilityName: "\u30B4\u30A2"
+  abilityName: "\u565B\u307F\u3064\u304D+"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 64d24f83c14e3934eaa67716eb45c73d, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -25,7 +25,7 @@ MonoBehaviour:
   selectWeight: 3
   availableFront: 1
   availableMid: 1
-  availableBack: 1
+  availableBack: 0
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -63,17 +63,18 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u30B4\u30A2"
+  - actionName: "\u565B\u307F\u3064\u304D"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "\u524D\u30FB\u4E2D\u5217\u306E\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: f7108dd3e2eb40f4a8adb2ba63757a88, type: 3}
-    VE_OnTargets: {fileID: 9026872467518674270, guid: 59e6d3a9232a004489cb89d2000a008d, type: 3}
+    VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 6532284353846998303, guid: 98634375f61558047a70ff77a75d9b00, type: 3}
     targetType: 1
     friendly: 0
     condition:
@@ -85,7 +86,7 @@ MonoBehaviour:
       onlyNonplayable: 0
       front: 1
       mid: 1
-      back: 1
+      back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -191,13 +192,13 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-    moveChance: 15
+    moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 1
+    moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
@@ -212,5 +213,6 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets: []
-    actionTargetsInt: 
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 06000000

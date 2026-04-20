@@ -83,8 +83,8 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: 
-    personalityType: 0
+    personalityName: "\u5FD8\u308C\u304B\u3051\u305F\u8A93\u3044"
+    personalityType: 1
   max_inBattle: 1
   max_inRound: 0
   countReq: 1
