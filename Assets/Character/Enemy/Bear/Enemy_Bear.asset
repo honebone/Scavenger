@@ -36,9 +36,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88348b85f82b628429e24757edd3c372, type: 2}
   - {fileID: 11400000, guid: 7961793375f757443a8eab8df6ccd821, type: 2}
   - {fileID: 11400000, guid: 63757f6d262a2dd4fa061c7c4a92ef71, type: 2}
-  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  - {fileID: 11400000, guid: 7f6f5f99066cefb4e9e58f662bb3b97a, type: 2}
   - {fileID: 11400000, guid: 2128bc6fc2b938740a8d7dc05bc3d38a, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities: []
+  PA_hard:
+  - {fileID: 5626464818293590775, guid: b3dbad3ec1efc504ba757f37b0f904b5, type: 3}
   actionMods: []
   corpse: {fileID: 11400000, guid: ff2200c854c6ec7428bae7cdf9cf6ead, type: 2}
   loot:
@@ -49,14 +52,14 @@ MonoBehaviour:
     coin: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 1
-  maxHP: 120
+  maxHP: 180
   maxSAN: 0
-  ATK: 10
+  ATK: 15
   INT: 6
   CRITC: 5
   CRITD: 50
   EVD: 5
-  ACC: 93
+  ACC: 95
   ACT: 5
   turnPerRound: 2
   GHeal: 0

@@ -55,6 +55,7 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
@@ -62,7 +63,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u3053\u3063\u3061\u30C0\uFF01"
+  - actionName: "\u3053\u3063\u3061\u30C0\uFF01+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -102,6 +103,7 @@ MonoBehaviour:
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -171,7 +173,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: bbd265d7696fc554baeceaca250f154b, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 6
+      stack: 4
       value: 0
       dontApplyBonus: 0
       refATK: 0

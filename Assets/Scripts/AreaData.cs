@@ -15,17 +15,14 @@ public class AreaData : ScriptableObject
     public RoomEventData halfway;
     public RoomEventData boss;
     public RoomEventData endArea;
-    public List<AreaManager.EnemySet> normalBattlePool;
+    public List<AreaManager.EnemySet> normalBattlePool_tier1;
+    public List<AreaManager.EnemySet> normalBattlePool_tier2;
+
     public List<AudioClip> battleBGM;
     public List<GameObject> uniqueRaE;
     public int applyFEChance;
     public List<GameObject> normalBattleFEPool;
 
-    public AreaManager.EnemySet GetRandomEnemySet()
-    {
-       
-        return normalBattlePool.Choice();
-    }
     public GameObject GetRandomFE()
     {
         if (applyFEChance.Dice())

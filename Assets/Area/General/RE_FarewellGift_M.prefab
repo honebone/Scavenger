@@ -51,6 +51,6 @@ MonoBehaviour:
   mapName: 
   overrideMapInfo: 0
   mapInfo: 
-  expOrbs: 1
-  rareEqs: 1
-  eqs: 2
+  expOrbs: 0
+  rareEqs: 2
+  eqs: 0

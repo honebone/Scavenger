@@ -412,9 +412,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
-  hardMode: 0
+  hardMode: 1
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -448,16 +448,16 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 1
-    upperFront: {fileID: 11400000, guid: 50518d6df07f5c5428c208c47423cd8f, type: 2}
-    centerFront: {fileID: 11400000, guid: 43d139cb98f72d24bbe3032953fe77f5, type: 2}
+    upperFront: {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
+    centerFront: {fileID: 0}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 11400000, guid: cbace9f8502e0d4418a44dd0f090e6a2, type: 2}
-    centerMid: {fileID: 11400000, guid: ac1e75ba5a4c26c439fba3aae48bae59, type: 2}
-    lowerMid: {fileID: 11400000, guid: f84e3a0d2fa2857409b845c5e3412c89, type: 2}
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
+    centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}

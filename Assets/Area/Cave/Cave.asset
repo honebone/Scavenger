@@ -25,7 +25,34 @@ MonoBehaviour:
   halfway: {fileID: 11400000, guid: afcf3f6e3c2b4564eaf62145b1476b8b, type: 2}
   boss: {fileID: 11400000, guid: 3ec80bd60b4dcfa4384e86ef88734fae, type: 2}
   endArea: {fileID: 11400000, guid: 4a6855ff5aead334095c21599972eef8, type: 2}
-  normalBattlePool:
+  normalBattlePool_tier1:
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 11400000, guid: 6fc27d9d010c97044b08e50ae6262735, type: 2}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
+    centerMid: {fileID: 0}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom: []
+  normalBattlePool_tier2:
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
     centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}

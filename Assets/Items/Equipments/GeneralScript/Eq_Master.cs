@@ -6,14 +6,16 @@ public class Eq_Master : PA_Equipment
 {
     [SerializeField] int max_inBattle;
     [SerializeField] int max_inRound;
-    [SerializeField,Header("能力発動までに必要なアクティブ回数")] int countReq=1;
-    [SerializeField] bool targetSelf;
+    [SerializeField, Header("能力発動までに必要なアクティブ回数")] int countReq = 1;
+    [SerializeField, Header("\n\n\n自分の条件 ")] bool hasSelfCond;
+    [SerializeField] CharactersManager.SearchCharaCondition selfCond;
+    [SerializeField, Header("\n\n\n対象情報")] bool targetSelf;
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     [SerializeField] int targetCount;
-    [SerializeField, Header("\n能力発動に必要な[条件を満たすキャラ]の必要人数")] int activeCond_req;
+    [SerializeField, Header("\n\n\n能力発動に必要な[条件を満たすキャラ]の必要人数")] int activeCond_req;
     [SerializeField, Header("能力発動に必要なキャラの条件")] CharactersManager.SearchCharaCondition activeCond;
-    [SerializeField] Vector2Int coin;
+    [SerializeField, Header("\n\n\nAlt Mode")] Vector2Int coin;
     [SerializeField] bool modifyStatus;
     [SerializeField] Character.CharaStatusMod statusMod;
 
@@ -27,6 +29,7 @@ public class Eq_Master : PA_Equipment
     protected void Activate(List<Character> targets = null)
     {
         if (targets != null && (CheckAltMode() || targetSelf)) { infoText.AddWarningText("Eq_Master error"); }
+        if (hasSelfCond && !charactersManager.ExamineCharacter(character, selfCond)) return;
 
         if (available && (activeCond_req == 0 || charactersManager.SearchCharaWithCondition(activeCond, character).Count >= activeCond_req))
         {

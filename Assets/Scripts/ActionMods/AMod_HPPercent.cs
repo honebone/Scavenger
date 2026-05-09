@@ -24,7 +24,7 @@ public class AMod_HPPercent : ActionMod
             if ((HPLoss && percent >= THPercent) || (!HPLoss && percent <= THPercent)) { break; }//減少HP参照でHPが閾値以上　または　残HP参照でHPが閾値以下の場合はスキップ
             percentDelta = Mathf.Abs(THPercent - percent);//閾値と現在HPの差分の絶対値
             count = Mathf.FloorToInt(percentDelta / percentPerCount);
-            if(maxCount!=0) count =  count.Limit(maxCount);//最大カウントをリミットに
+            if (maxCount != 0) count = count.Limit(maxCount);//最大カウントをリミットに
             for (int j = 0; j < count; j++)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);

@@ -45,22 +45,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u81EA\u8EAB\u306E\u5931\u3063\u305FHP2\uFF05\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8+1\uFF05"
+    conditionInfo: "\u81EA\u8EAB\u306E\u5931\u3063\u305F<sprite name=HP><color=#87FF79>HP</color>2\uFF05\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8+1\uFF05"
     hideValues: 1
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
+    echo: []
     ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
-    exDMG_mul: 0
+    exDMG_mul: 1
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -70,13 +77,65 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
+      moveRes: 0
+      debuffRes: 0
+      minion: 0
+    doesInherit: 0
+    inheritMod:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
   HPLoss: 1
   percentPerCount: 2
   THPercent: 100

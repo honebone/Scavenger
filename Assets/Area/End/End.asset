@@ -21,30 +21,11 @@ MonoBehaviour:
     lightIntensity: 0.25
   areaManager: {fileID: 8067357777361135097, guid: 2d6eded04a15dd3489fbbc3a195198ed, type: 3}
   BGM: {fileID: 8300000, guid: 68527d3bbf96e3744acf56bbc3fc7aed, type: 3}
-  roomEvents:
-  - roomEvent: {fileID: 11400000, guid: 97b8b38dc96f60d458a0b2e3e23889fd, type: 2}
-    weight: 38
-  - roomEvent: {fileID: 11400000, guid: 3e76513ac68609e44b413d1b064cb3fa, type: 2}
-    weight: 3
-  - roomEvent: {fileID: 11400000, guid: f1cf9196abdb07c448dd0f47afec67a5, type: 2}
-    weight: 3
-  - roomEvent: {fileID: 11400000, guid: 02c2f197afad8a54b8d5f122888ea228, type: 2}
-    weight: 3
-  - roomEvent: {fileID: 11400000, guid: 98d568785ebce4446a13c8202306d85b, type: 2}
-    weight: 3
-  - roomEvent: {fileID: 11400000, guid: fa7a5305a52a2c34290bc2e05b2ff5a6, type: 2}
-    weight: 30
-  - roomEvent: {fileID: 11400000, guid: e996b352c9c29284ca17b033500fb51d, type: 2}
-    weight: 5
-  - roomEvent: {fileID: 11400000, guid: a619b66680b1d124b9cb362eff162bf8, type: 2}
-    weight: 5
-  - roomEvent: {fileID: 11400000, guid: 6cb150df8b881b640b174b2a3fc2e794, type: 2}
-    weight: 10
   start: {fileID: 11400000, guid: 7e19dbba0e272574f8d7fde27a26d171, type: 2}
   halfway: {fileID: 0}
   boss: {fileID: 11400000, guid: fdcba30e451f0ec4d9ac056ab4b2e0f2, type: 2}
   endArea: {fileID: 11400000, guid: 63b3b4f46dad4724b9f84536faeccc54, type: 2}
-  normalBattlePool:
+  normalBattlePool_tier1:
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
     centerFront: {fileID: 0}
@@ -75,7 +56,23 @@ MonoBehaviour:
     atRandom:
     - {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
     - {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
+  normalBattlePool_tier2:
+  - dontShuffleFront: 0
+    upperFront: {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
+    centerFront: {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
+    lowerFront: {fileID: 0}
+    dontShuffleMid: 0
+    upperMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
+    lowerMid: {fileID: 0}
+    dontShuffleBack: 0
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 0}
+    lowerBack: {fileID: 0}
+    atRandom:
+    - {fileID: 11400000, guid: c81a66a62e848ad44b3e023e4dd9c94a, type: 2}
   battleBGM: []
+  uniqueRaE: []
   applyFEChance: 0
   normalBattleFEPool:
   - {fileID: 471706018376148968, guid: d853d35eabdc19649bb704f15b9f9d70, type: 3}

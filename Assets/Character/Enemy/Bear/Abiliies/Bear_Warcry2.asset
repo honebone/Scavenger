@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Bear_Warcry
+  m_Name: Bear_Warcry2
   m_EditorClassIdentifier: 
-  abilityName: "\u91CE\u751F\u306E\u5486\u54EE"
+  abilityName: "\u91CE\u751F\u306E\u5486\u54EE+"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 20f2c9f5faf0ab14184685bccdfc228c, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -171,6 +171,15 @@ MonoBehaviour:
       refATK: 0
       refTargetMaxHP: 0
       DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: c7698ac96c65d8a4f8032e6f1a733fdd, type: 3}
+      guaranteed: 0
+      applyChance: 25
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -201,13 +210,13 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-    moveChance: 0
+    moveChance: 50
     guaranteedMove: 0
     moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
-    moveBackword: 0
+    moveBackword: 1
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 1
@@ -222,8 +231,10 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 2
-    actionTargets: []
-    actionTargetsInt: 
+    actionTargets:
+    - {fileID: 0}
+    - {fileID: 0}
+    actionTargetsInt: 0600000007000000
   - actionName: "\u91CE\u751F\u306E\u5486\u54EE"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
@@ -373,5 +384,6 @@ MonoBehaviour:
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1
-    actionTargets: []
-    actionTargetsInt: 
+    actionTargets:
+    - {fileID: 0}
+    actionTargetsInt: 09000000

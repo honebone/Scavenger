@@ -13,7 +13,7 @@ public class RE_Battle : RoomEvent
         List<AreaManager.EnemySet> waves = new List<AreaManager.EnemySet>();
         for (int i = 0; i < 1 + waveMod; i++)
         {
-            waves.Add(overrideEnemySet ? enemySet : currentArea.GetRandomEnemySet());
+            waves.Add(overrideEnemySet ? enemySet : expeditionManager.GetNormalBattleEnemySet());
         }
         expeditionManager.Battle(waves, currentArea.GetRandomFE(), battleParams);
     }

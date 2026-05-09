@@ -25,7 +25,8 @@ MonoBehaviour:
   halfway: {fileID: 0}
   boss: {fileID: 11400000, guid: a2f099821f1bc974b95073b8e990f441, type: 2}
   endArea: {fileID: 11400000, guid: ccbef681c6466094984d1de7cc13dd8a, type: 2}
-  normalBattlePool:
+  normalBattlePool_tier1: []
+  normalBattlePool_tier2:
   - dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 2c4a8bbf1434e5043b57888b71e9c3c1, type: 2}
     centerFront: {fileID: 0}

@@ -11,7 +11,7 @@ public class E_PestArmor : PA_Personality
         if (statusRef.DoesAttack() && character.CharaStatus().shield > 0)
         {
             int exDMG = (character.CharaStatus().shield * shieldRatio).ToInt();
-            actionModStatus.exATKDMG_int = exDMG;
+            actionModStatus.ATKDMG_divide_int = exDMG;
             for (int i = 0; i < statusRef.actionTargets.Count; i++)
             {
                 actionsStatus[i] = actionsStatus[i].Modify(actionModStatus);

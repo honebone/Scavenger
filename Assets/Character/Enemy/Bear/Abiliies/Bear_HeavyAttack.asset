@@ -10,34 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Flower_Sleep_Debuff
+  m_Name: Bear_HeavyAttack
   m_EditorClassIdentifier: 
-  abilityName: "\u6BD2\u6027\u306E\u8449"
+  abilityName: "\u6012\u308A\u306E\u4E00\u6483"
   lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 4
+  abilityType: 1
   excludeRandomPool: 0
-  priority: 1
+  priority: 2
   selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C30\uFF05\u4EE5\u4E0B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
-    enemy: 0
+    enemy: 1
     onlyPlayable: 0
     onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
@@ -49,8 +49,8 @@ MonoBehaviour:
     PEExclude: []
     canEcho: 0
     echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
+    HPPercent: 30
+    HP_lessThan: 1
     HP_excludeEqual: 0
     neighbor: []
     sameColmn: 0
@@ -63,17 +63,18 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u6BD2\u6027\u306E\u8449"
+  - actionName: "\u6012\u308A\u306E\u4E00\u6483"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 4366905902945979247, guid: f9e2bccca01141b43acf812a533015db, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 2387339138951462637, guid: 892d3fa23661441479dbe6ff09933a38, type: 3}
     targetType: 1
     friendly: 0
     condition:
@@ -120,8 +121,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 100
+    ATKMod_max: 140
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -160,16 +161,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
-      guaranteed: 0
-      applyChance: 100
-      stack: 3
-      value: 30
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -211,7 +203,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 4
+    abilityType: 1
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

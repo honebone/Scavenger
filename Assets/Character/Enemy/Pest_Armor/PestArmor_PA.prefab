@@ -74,10 +74,14 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u786C\u3044\u76AE\u819A"
     personalityType: 1
@@ -85,10 +89,11 @@ MonoBehaviour:
     conditionInfo: "\u81EA\u8EAB\u306E\u653B\u6483\u5168\u3066"
     hideValues: 1
     exInfo: "\u81EA\u8EAB\u306E<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u306E50\uFF05\u306B\u7B49\u3057\u3044\u8FFD\u52A0<sprite
-      name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
+      name=ATK><color=#C30000>\u7269\u7406</color><link=U_\u5206\u914D\u30C0\u30E1\u30FC\u30B8><u>\u5206\u914D\u30C0\u30E1\u30FC\u30B8</u></link>\u3092\u4E0E\u3048\u308B"
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
+    echo: []
     ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
@@ -96,10 +101,15 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -111,6 +121,7 @@ MonoBehaviour:
     shieldAdd: 0
     shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus: []
     debuffChanceMod: 0
@@ -139,8 +150,34 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
+    doesInherit: 0
+    inheritMod:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
   shieldRatio: 0.5
 --- !u!212 &-8906143573783088983
 SpriteRenderer:

@@ -93,7 +93,7 @@ public class RE_Rest : RoomEvent
                 }
                 if (20.Dice())
                 {
-                    expeditionManager.Battle(new List<AreaManager.EnemySet> { currentArea.GetRandomEnemySet() }, umbushed, new ExpeditionManager.BattleParams());
+                    expeditionManager.Battle(new List<AreaManager.EnemySet> { expeditionManager.GetNormalBattleEnemySet() }, umbushed, new ExpeditionManager.BattleParams());
                 }
                 else
                 {

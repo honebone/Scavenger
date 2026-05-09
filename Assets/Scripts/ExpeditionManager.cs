@@ -189,7 +189,7 @@ public class ExpeditionManager : MonoBehaviour
 
     int addedMadness;
     List<GameObject> madnessPAs = new List<GameObject>();
-
+    List<AreaManager.EnemySet> battlePool;
     /// <summary>x:現在のレイヤー y:上下</summary>
     Room currentRoom;
     List<Map_LayerPanel> layers;
@@ -265,12 +265,13 @@ public class ExpeditionManager : MonoBehaviour
         currentArea = area;
 
         SetBackground(currentArea.backgroundParams);
-
         soundManager.SetBGM_Normal(currentArea.BGM);
 
         var a = Instantiate(currentArea.areaManager, AreaManagerP);//managerの生成
         a.GetComponent<AreaManager>().Init(area);
         currentAreaManger = a.GetComponent<AreaManager>();
+
+        battlePool = new List<AreaManager.EnemySet>(currentArea.normalBattlePool_tier1);
 
         StartCoroutine(StartAreaAnim());
     }
@@ -329,6 +330,18 @@ public class ExpeditionManager : MonoBehaviour
     public string GetMadnessInfo(PA_Personality mad)
     {
         return $"{mad.GetPAName()}\n敵は{gp.madnessSpawnChance}％の確率で以下の能力を得る：\n{gp.madnessStatMod.GetInfo()}\n\nさらに、\n{mad.GetPAInfo(false)}\n";
+    }
+
+    public AreaManager.EnemySet GetNormalBattleEnemySet()
+    {
+        if (battlePool.Count == 0)
+        {
+            battlePool.AddRange(currentArea.normalBattlePool_tier2);
+        }
+
+        AreaManager.EnemySet selected = battlePool.Choice();
+        battlePool.Remove(selected);
+        return selected;
     }
 
     void CheckRoomEndEvent()
