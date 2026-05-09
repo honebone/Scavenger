@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: A_Flower_Sleep_Heal
+  m_Name: A_Flower_Sleep_Debuff
   m_EditorClassIdentifier: 
-  abilityName: "\u518D\u751F\u306E\u871C"
-  lockedDefault: 0
+  abilityName: "\u6BD2\u6027\u306E\u8449"
+  lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 2
+  abilityType: 4
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
@@ -63,9 +63,9 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u518D\u751F\u306E\u871C"
+  - actionName: "\u6BD2\u6027\u306E\u8449"
     conditionInfo: 
-    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u5473\u65B91\u4F53"
+    targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -74,8 +74,8 @@ MonoBehaviour:
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 6
-    friendly: 1
+    targetType: 1
+    friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
@@ -161,14 +161,14 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: f3031c37ce778ac458fdac04d880c657, type: 3}
-      guaranteed: 1
-      applyChance: 0
+    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      guaranteed: 0
+      applyChance: 100
       stack: 3
       value: 30
       dontApplyBonus: 0
       refATK: 0
-      refTargetMaxHP: 1
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 2
+    abilityType: 4
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

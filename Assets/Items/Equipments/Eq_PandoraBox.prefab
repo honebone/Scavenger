@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: Eq_pandoraBox
   noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u672A\u88C5\u5099\u306E\u88C5\u5099\u54C1\u3092\u5909\u5316\u3055\u305B\u308B"
+  simpleInfo: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u672A\u88C5\u5099\u306E\u88C5\u5099\u54C1\u3092\u540C\u30EC\u30A2\u30EA\u30C6\u30A3\u306E\u3082\u306E\u306B\u5909\u5316\u3055\u305B\u308B"
   PAInfo_start: "\u6226\u95D8\u7D42\u4E86\u6642\u3001\u672A\u88C5\u5099\u306E\u88C5\u5099\u54C1\u3092\u5168\u3066\u7834\u58CA\u3057\u3001\u540C\u3058\u30EC\u30A2\u30EA\u30C6\u30A3\u306E\u88C5\u5099\u54C1\u3092\u5F97\u308B"
   skipGetInfo: 0
   PAInfo_end: 
@@ -73,6 +73,8 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
     minion: 0

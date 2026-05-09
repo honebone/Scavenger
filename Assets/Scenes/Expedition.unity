@@ -414,7 +414,7 @@ MonoBehaviour:
   debug: 1
   skipDeployPhase: 1
   skipTutorial: 1
-  hardMode: 1
+  hardMode: 0
   autoset_playerLVL: 6
   autoset_enemyLVL: 7
   battleDebug: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: c2a104d25bd88f542a2f10ea8f1aa560, type: 3}
+  personality: {fileID: 3170614222137734241, guid: 63d9799887952d542affb9b6dfd0521f, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17634,6 +17634,8 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 84dae65589b85254c969d2102d283881, type: 3}
   - {fileID: 3170614222137734241, guid: 5e0de09fc9716a7498114201b6b52ef2, type: 3}
   - {fileID: 3170614222137734241, guid: c2a104d25bd88f542a2f10ea8f1aa560, type: 3}
+  - {fileID: 3170614222137734241, guid: 895ac7a9b1f322343b2595b8cfbd87dd, type: 3}
+  - {fileID: 3170614222137734241, guid: 63d9799887952d542affb9b6dfd0521f, type: 3}
   personalityDataBase_exclusive:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}

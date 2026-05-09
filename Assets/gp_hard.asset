@@ -71,7 +71,7 @@ MonoBehaviour:
   SANDMGOnRoom: {x: 3, y: 10}
   RegenPercentOnRoomEnd: 20
   SANPenaltyOnDie: 15
-  areaLength: 7
+  areaLength: 8
   branchChance: 30
   blindChance: 15
   roomEvents:

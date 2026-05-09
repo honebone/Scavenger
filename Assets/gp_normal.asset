@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
   m_Name: gp_normal
   m_EditorClassIdentifier: 
+  hardMode: 0
   maxLVL: 10
   maxEVD: 75
   maxPROT: 75
@@ -70,7 +71,7 @@ MonoBehaviour:
   SANDMGOnRoom: {x: 3, y: 10}
   RegenPercentOnRoomEnd: 20
   SANPenaltyOnDie: 15
-  areaLength: 7
+  areaLength: 8
   branchChance: 30
   blindChance: 15
   roomEvents:

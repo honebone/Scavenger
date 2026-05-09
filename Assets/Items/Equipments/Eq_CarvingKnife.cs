@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Eq_CarvingKnife : PA_Equipment
 {
+    [SerializeField] int chance;
     public override void OnBattleEnd()
     {
-        SupplyManager.inst.AddSupply_Eq(1);
+        if(chance.Dice()) SupplyManager.inst.AddSupply_Eq(1);
     }
 }

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: 613165614781689432}
+  - component: {fileID: 4717229650251953548}
   - component: {fileID: -4090635681871681786}
   m_Layer: 0
-  m_Name: Per_PitFighter
+  m_Name: Per_FirstStrike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &613165614781689432
+--- !u!114 &4717229650251953548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,13 +42,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 883438bdc3de9d04596fb6031e32e4c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 12a1d3b4a081ca24cb600fc3dc2a3df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_pitfighter
+  fileName: per_firstStrike
   noSimpleInfo: 0
-  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001<color=#FAED8A><sprite
-    name=buff><link=S_\u30AB\u30A6\u30F3\u30BF\u30FC><u>\u30AB\u30A6\u30F3\u30BF\u30FC</u></link></color>\u3092\u5F97\u308B"
+  simpleInfo: "\u6700\u521D\u306E\u30E9\u30A6\u30F3\u30C9\u3067\u8FFD\u52A0\u30BF\u30FC\u30F3\u3092\u5F97\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -72,17 +71,7 @@ MonoBehaviour:
     GHeal: 0
     RHeal: 0
     StEResists: []
-    StEApplyBonus:
-    - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
-      exChance: 0
-      exStack: 0
-      exValue: 75
-      exDMGPerTurn: 0
-    - applyStE: {fileID: 1489497368108049143, guid: 2a3eec3dd7fbdb34595389eefe7c9498, type: 3}
-      exChance: 0
-      exStack: 0
-      exValue: 75
-      exDMGPerTurn: 0
+    StEApplyBonus: []
     debuffChance: 0
     debuffStacks: 0
     buffStacks: 0
@@ -93,15 +82,15 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u30D4\u30C3\u30C8\u30D5\u30A1\u30A4\u30BF\u30FC"
+    personalityName: "\u71B1\u3044\u3046\u3061\u306B\u6253\u3066"
     personalityType: 2
-  max_inBattle: 0
+  max_inBattle: 1
   max_inRound: 0
   countReq: 1
   targetSelf: 1
   actionStatus:
     actionName: 
-    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
+    conditionInfo: "1\u30E9\u30A6\u30F3\u30C9\u76EE\u306E\u958B\u59CB\u6642"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
@@ -147,7 +136,7 @@ MonoBehaviour:
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
-    exTurn: 0
+    exTurn: 3
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -197,16 +186,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 2a9d549e1ec5542438d384dba6a66b52, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 25
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -347,37 +327,6 @@ MonoBehaviour:
     moveRes: 0
     debuffRes: 0
     minion: 0
-  me: 1
-  myServant: 0
-  otherChara: 0
-  otherCharaCond:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
 --- !u!212 &-4090635681871681786
 SpriteRenderer:
   m_ObjectHideFlags: 0
