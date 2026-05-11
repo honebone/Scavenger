@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1455896857616258923}
-  - component: {fileID: -5360259137111747807}
+  - component: {fileID: -516038682295654870}
   - component: {fileID: 2102424110011888310}
   m_Layer: 0
-  m_Name: Eq_arcaneShield
+  m_Name: Eq_shieldOfHope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5360259137111747807
+--- !u!114 &-516038682295654870
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,19 +42,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5667121962493394942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f9492f332b0fc42bf5e7e66b43c2fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 3af4a0b821420f144bdedb34b1c8f9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Eq_arcaneShield
+  fileName: eq_shieldOfHope
   noSimpleInfo: 0
-  simpleInfo: "[\u9B54\u8853]\u3092\u5531\u3048\u305F\u6642\u3001<color=#00FFFF><sprite
-    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u308B"
-  PAInfo_start: 
+  simpleInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u305F\u3068\u304D\u3001\u81EA\u8EAB\u306E\u5F8C\u308D\u306B\u96A3\u63A5\u3059\u308B\u5473\u65B9\u306B\u3082<sprite
+    name=shield>\u3092\u4ED8\u4E0E\u3059\u308B"
+  PAInfo_start: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u305F\u3068\u304D\u3001\u5F97\u305F\u91CF\u306E50\uFF05\u306B\u7B49\u3057\u3044\u91CF\u306E<sprite
+    name=shield>\u3092\u81EA\u8EAB\u306E\u5F8C\u308D\u306B\u96A3\u63A5\u3059\u308B\u5473\u65B9\u306B\u4ED8\u4E0E\u3059\u308B"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 25
+    maxHP_mul: 20
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -83,14 +84,12 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: ba137fd5ad1d11c41812f90a160f3c9d, type: 2}
-  targetSelf: 1
-  max_inBattle: 0
-  max_inRound: 0
+    itemData: {fileID: 11400000, guid: 573ae02560a5913438139b47bfc7b6d4, type: 2}
+  shieldMul: 50
   actionStatus:
     actionName: 
-    conditionInfo: "[\u9B54\u8853]\u3092\u5531\u3048\u305F\u6642"
-    targetInfo: "\u81EA\u8EAB"
+    conditionInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u5F97\u305F\u3068\u304D"
+    targetInfo: "\u81EA\u8EAB\u306E\u5F8C\u308D\u306B\u96A3\u63A5\u3059\u308B\u5473\u65B9"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -181,8 +180,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 10
-    shieldPercent_max: 15
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -243,13 +242,13 @@ MonoBehaviour:
   condition:
     searchAsPos: 0
     onlyEmpty: 0
-    player: 0
+    player: 1
     enemy: 0
     onlyPlayable: 0
     onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
@@ -264,12 +263,12 @@ MonoBehaviour:
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
-    neighbor: []
+    neighbor:
+    - {x: -1, y: 0}
     sameColmn: 0
     sameRow: 0
     sameChara: 0
     excludeSelf: 0
-  targetCount: 0
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +310,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a8de53012052084e8c2024ce0c65ecc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

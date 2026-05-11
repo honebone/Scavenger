@@ -2322,6 +2322,14 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
+    public void OnAddedShield(int value,Action.ActionParams actionParams)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnAddedShield(value,actionParams); }
+            RemovePA_Execute();
+        }
+    }
     //public virtual void OnApplyStE() { }
     //public virtual void OnRemoveStE() { }
 

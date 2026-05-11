@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_arcaneShield
+  m_Name: Eq_shieldOfHope
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u30A2\u30FC\u30B1\u30A4\u30F3\u30B7\u30FC\u30EB\u30C9"
+  itemName: "\u5E0C\u671B\u306E\u76FE"
   specialInfo: 0
   info: 
-  rarity: 3
-  sprite: {fileID: 21300000, guid: 4a8de53012052084e8c2024ce0c65ecc, type: 3}
+  rarity: 2
+  sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 5667121962493394942, guid: 4d7e5edaa742e99429f79302d531cf47, type: 3}
+  manager: {fileID: 5667121962493394942, guid: 6ea2b0a2c25eef145bc6d9fb6c7a98d7, type: 3}

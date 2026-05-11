@@ -59,7 +59,7 @@ MonoBehaviour:
     PROT: 0
     ATK_mul: 0
     ATK_int: 0
-    INT_mul: 30
+    INT_mul: 25
     INT_int: 0
     exDMG_mul: 0
     CRITC: 0
@@ -73,13 +73,16 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 3cb04664f6c49c94ab3001a7f2aec3bf, type: 2}
-    equipmentInfo: 
   casts: 2
 --- !u!212 &3238141386940741765
 SpriteRenderer:

@@ -315,6 +315,7 @@ public class Action : MonoBehaviour
         public List<int> actionTargetsInt;
 
         public bool DoesDecreaseHP() { return decreaseHPPer_max > 0 || decreaseHP_max > 0 || decreaseHP_ATK.y > 0 || decreaseHP_INT.y > 0||echoDoT.Count>0; }
+        public bool DoesAddShield() { return shieldAdd_max > 0 || shieldPercent_max > 0; }
         public bool DoesAttack()
         {
             return ATKMod_max > 0 || INTMod_max > 0 || exATKDMG_int > 0 || exINTDMG_int > 0 || trueATKDMG > 0 || trueINTDMG > 0
@@ -1325,20 +1326,18 @@ public class Action : MonoBehaviour
                         target.SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
                     }
 
-
-                    if (actionsStatus[i].shieldAdd_max > 0)//シールド
+                    if (actionsStatus[i].DoesAddShield())
                     {
                         int shield = Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1);
-                        if (!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).GShield += shield;
-                        target.AddShield(shield);
-                    }
-                    if (actionsStatus[i].shieldPercent_max > 0)//割合シールド
-                    {
+
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
-                        int shield = Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
+                        shield += Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
+
                         if (!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).GShield += shield;
                         target.AddShield(shield);
+                        target.OnAddedShield(shield, actionParams);
                     }
+
                     if (actionsStatus[i].shieldRemove_all)//シールド全消去
                     {
                         target.RemoveShield(true, 0);

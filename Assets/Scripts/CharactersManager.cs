@@ -196,6 +196,7 @@ public class CharactersManager : MonoBehaviour
         public bool sameColmn;
         public bool sameRow;
         public bool sameChara;
+        public bool excludeSelf;
     }
 
     public bool ExamineCharacter(Character character, SearchCharaCondition condition ,Character refChara=null)
@@ -330,6 +331,7 @@ public class CharactersManager : MonoBehaviour
             if (condition.sameColmn && refStat.position.GetColumn() != status.position.GetColumn()) { return false; }
             if (condition.sameRow && refStat.position.GetRow() != status.position.GetRow()) { return false; }
             if (condition.sameChara && refChara != character) { return false; }
+            if (condition.excludeSelf && refChara == character) { return false; }
         }
 
         return true;
