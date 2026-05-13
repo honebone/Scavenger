@@ -434,7 +434,7 @@ MonoBehaviour:
     lowerFront: {fileID: 0}
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
-    centerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
+    centerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
     upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
@@ -449,8 +449,8 @@ MonoBehaviour:
   enemySetTest:
     dontShuffleFront: 1
     upperFront: {fileID: 11400000, guid: 0ff45f0e4e1550a469bcc83af0e3c38b, type: 2}
-    centerFront: {fileID: 0}
-    lowerFront: {fileID: 0}
+    centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
+    lowerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     dontShuffleMid: 0
     upperMid: {fileID: 0}
     centerMid: {fileID: 0}
@@ -472,7 +472,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: d53d5f01cf8254349ae20db2f33c3592, type: 3}
+  personality: {fileID: 3170614222137734241, guid: ed71613eb84216246908df673d074813, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17643,6 +17643,7 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 895ac7a9b1f322343b2595b8cfbd87dd, type: 3}
   - {fileID: 3170614222137734241, guid: 63d9799887952d542affb9b6dfd0521f, type: 3}
   - {fileID: 3170614222137734241, guid: 8f94f669aa0dd7d4b89e992427fc2771, type: 3}
+  - {fileID: 3170614222137734241, guid: ed71613eb84216246908df673d074813, type: 3}
   personalityDataBase_exclusive:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}

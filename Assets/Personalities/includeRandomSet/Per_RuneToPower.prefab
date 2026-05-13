@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5942741952113959475}
-  - component: {fileID: -7383669514299992736}
+  - component: {fileID: 3119576924338803904}
   - component: {fileID: -4090635681871681786}
   m_Layer: 0
-  m_Name: Per_Complexed
+  m_Name: Per_RuneToPower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7383669514299992736
+--- !u!114 &3119576924338803904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 578f8fd9ff02ed44e92fb4169f032812, type: 3}
+  m_Script: {fileID: 11500000, guid: aba3ab0e47b9feb459cf52394cef1256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: per_complexed
+  fileName: per_runeToPaoer
   noSimpleInfo: 0
-  simpleInfo: "\u81EA\u8EAB\u306E\u6301\u3064<link=U_\u30E9\u30F3\u30C0\u30E0\u7279\u6027><u>\u30E9\u30F3\u30C0\u30E0\u7279\u6027</u></link>\u306E\u6570\u306B\u5FDC\u3058\u3066\u4E0E\u30C0\u30E1\u30FC\u30B8\u4E0A\u6607"
-  PAInfo_start: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306E\u6301\u3064<link=U_\u30E9\u30F3\u30C0\u30E0\u7279\u6027><u>\u30E9\u30F3\u30C0\u30E0\u7279\u6027</u></link>1\u3064\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8+10\uFF05\n(\u3053\u308C\u81EA\u8EAB\u3082\u542B\u3080)"
-  skipGetInfo: 1
-  PAInfo_end: 
+  simpleInfo: "<link=U_\u30EB\u30FC\u30F3><u>[\u30EB\u30FC\u30F3]</u></link>\u304C\u6D3B\u6027\u5316\u3059\u308B\u305F\u3073\u3001\u6B21\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483\u306F\u8FFD\u52A0\u306E<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
+  PAInfo_start: "<link=U_\u30EB\u30FC\u30F3><u>[\u30EB\u30FC\u30F3]</u></link>\u304C\u6D3B\u6027\u5316\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1\n"
+  skipGetInfo: 0
+  PAInfo_end: "\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u3066\u305F\u3068\u304D\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8\u3059\u308B"
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -82,9 +83,102 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u8907\u96D1\u306A\u4EBA\u9593"
+    personalityName: "\u7D0B\u7AE0\u3092\u529B\u306B"
     personalityType: 3
-  exDMGPerPer: 10
+  ATKModPerActivate: 30
+  actionMod:
+    conditionInfo: "\u81EA\u8EAB\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u306B\u3088\u308B\u653B\u6483"
+    hideValues: 0
+    exInfo: "\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<color=#C30000><sprite
+      name=ATK><link=T_ATK><u>ATK</u></link></color>30\uFF05\u5206\u306E<sprite name=ATK><color=#C30000>\u7269\u7406</color><link=U_\u5206\u914D\u30C0\u30E1\u30FC\u30B8><u>\u5206\u914D\u30C0\u30E1\u30FC\u30B8</u></link>\u3092\u4E0E\u3048\u308B"
+    exTurn: 0
+    consumeFocus: 0
+    decreaseHP: 0
+    echo: []
+    ATKMod: 0
+    INTMod: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    exHeal_mul: 0
+    healValue: 0
+    healPercent: 0
+    healRegain: 0
+    SANHeal: 0
+    SANDamage: 0
+    shieldAdd: 0
+    shieldAdd_percent: 0
+    shieldRemove: 0
+    shieldRemove_all: 0
+    applySteParams: []
+    applyStEBonus: []
+    debuffChanceMod: 0
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
+      moveRes: 0
+      debuffRes: 0
+      minion: 0
+    doesInherit: 0
+    inheritMod:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
 --- !u!212 &-4090635681871681786
 SpriteRenderer:
   m_ObjectHideFlags: 0

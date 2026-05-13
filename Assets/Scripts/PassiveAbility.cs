@@ -136,6 +136,7 @@ public class PassiveAbility : MonoBehaviour
         infoText.AddLogText($"<{character.CharaStatus().charaName}の{GetPAName()}>：{str}");
         character.SetDamageText($"{GetPAName()}：{str}", Definer.colorRef.currentState);
     }
+    protected void LogCount(int count,int add = 1) { Log($"カウント+{add} ({count})"); } 
 
     /// <summary>指定した条件に合致する対象を探してEnqueue 実際にEnqueueしたかを返す</summary>
 
