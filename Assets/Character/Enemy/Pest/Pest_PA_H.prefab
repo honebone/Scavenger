@@ -84,11 +84,41 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u6ECB\u990A\u5F37\u58EE"
+    personalityName: "\u8D85\u518D\u751F"
     personalityType: 1
   max_inBattle: 0
   max_inRound: 0
   countReq: 2
+  hasSelfCond: 0
+  selfCond:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    canEcho: 0
+    echoTargets: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
   targetSelf: 1
   actionStatus:
     actionName: 
@@ -132,6 +162,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -279,6 +310,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   targetCount: 0
   activeCond_req: 0
   activeCond:
@@ -309,6 +341,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   coin: {x: 0, y: 0}
   modifyStatus: 0
   statusMod:

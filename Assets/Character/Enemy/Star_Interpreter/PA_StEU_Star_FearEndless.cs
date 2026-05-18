@@ -4,30 +4,22 @@ using UnityEngine;
 
 public class PA_StEU_Star_FearEndless : PA_StatusEffect
 {
-    public int removeTH;
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;
 
-    public override void OnTurnEnd(TurnEndParams tep)
+    public override void OnRoundEnd()
     {
-        if (character.CharaStatus().GetHPPercent().ToInt() >= removeTH) { Disable(); }
-        else if (tep.myTurn && applyFlag)
-        {
-            AddStack(-1);
-        }
+        Enqueue_SearchTarget(actionStatus, condition);
     }
 
-    public override void AtTheEnd()
+    public override void OnActivateAbility(List<Action.ActionResult> actionResultsList)
     {
-        if (BattleManager.inBattle && StEStatus.stack == 0)
-        {
-            Enqueue_SearchTarget(actionStatus, condition);
-        }
+        AddStack(-1);
     }
 
     public override string GetCurrentStateInfo()
     {
-        return $"解除に必要な{"HP".ToSpr_withName()}：{(character.CharaStatus().maxHP * removeTH / 100f).ToInt()}";
+        return "アビリティを発動するとスタックを減少できる";
     }
 
     public override string GetAdditionalInfo()

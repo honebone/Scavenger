@@ -46,13 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   secondAction:
     actionName: 
-    conditionInfo: "\u3053\u306E\u52B9\u679C\u30671\u4F53\u4EE5\u4E0A\u306E\u30AD\u30E3\u30E9\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D"
+    conditionInfo: "\u3053\u306E\u52B9\u679C\u30671\u4F53\u4EE5\u4E0A\u306E[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u30AD\u30E3\u30E9\u3092\u6BBA\u5BB3\u3057\u305F\u3068\u304D"
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: "\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E92\u4F53\u306B\u3064\u304D\u3001\u5375\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E91\u4F53\u306B\u3064\u304D\u3001ATK\u30FBINT\u4E0A\u6607\u306E\u52B9\u679C\u91CF+5"
+    actionInfo: "\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E92\u4F53\u306B\u3064\u304D\u3001<color=#FFFFFF><link=S_\u5375><u>\u5375</u></link></color>\u306E\u4ED8\u4E0E\u30B9\u30BF\u30C3\u30AF\u6570+1\n\u6BBA\u5BB3\u3057\u305F\u30AD\u30E3\u30E91\u4F53\u306B\u3064\u304D\u3001<color=#FAED8A><sprite
+      name=buff><link=S_ATK\u30FBINT\u4E0A\u6607><u>ATK\u30FBINT\u4E0A\u6607</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+5"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -63,19 +65,29 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
+      StEConditions: []
       StE: []
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -90,16 +102,21 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -109,6 +126,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -132,14 +150,27 @@ MonoBehaviour:
       applyChance: 0
       stack: 0
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 044c3c33e2fd31d459f32cc0408f81e2, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 4
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: bbd265d7696fc554baeceaca250f154b, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -149,8 +180,31 @@ MonoBehaviour:
     summon: 0
     summonChara: []
     summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
+    moveRandomDir: 0
     moveForword: 0
     moveUpper: 0
     moveLower: 0
@@ -164,8 +218,8 @@ MonoBehaviour:
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
+    summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -175,8 +229,10 @@ MonoBehaviour:
     conditionInfo: 
     hideValues: 0
     exInfo: 
+    exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
+    echo: []
     ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
@@ -184,10 +240,15 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
     drain: 0
+    ignoreShield: 0
     sureHit: 0
     unevadable: 0
     exHeal_mul: 0
@@ -197,7 +258,9 @@ MonoBehaviour:
     SANHeal: 0
     SANDamage: 0
     shieldAdd: 0
+    shieldAdd_percent: 0
     shieldRemove: 0
+    shieldRemove_all: 0
     applySteParams: []
     applyStEBonus:
     - applyStE: {fileID: 3904089656222173935, guid: 283ec298289e38b439fecf95cd91f530, type: 3}
@@ -214,5 +277,55 @@ MonoBehaviour:
     removeStE_buff: 0
     removeStE_debuff: 0
     removeStEs: []
+    summonStatusMod:
+      LVL: 0
+      maxHP_mul: 0
+      maxHP_int: 0
+      maxSAN_mul: 0
+      PROT: 0
+      ATK_mul: 0
+      ATK_int: 0
+      INT_mul: 0
+      INT_int: 0
+      exDMG_mul: 0
+      CRITC: 0
+      CRITD: 0
+      EVD: 0
+      ACC: 0
+      ACT: 0
+      turnPerRound: 0
+      GHeal: 0
+      RHeal: 0
+      StEResists: []
+      StEApplyBonus: []
+      debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
+      moveRes: 0
+      debuffRes: 0
+      minion: 0
+    doesInherit: 0
+    inheritMod:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
   killPerEggStack: 2
   valuePerKill: 5

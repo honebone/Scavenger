@@ -8,33 +8,50 @@ public class E_Pest_Queen : PA_Personality
     [SerializeField] int countPerExTurn;
     int count;
 
-    public override void OnSomeoneDied(Character died)
-    {
-        if (!died.CharaStatus().position.IsPlayerPos() && !died.CharaStatus().Obstacle())
-        {
-            count++;
-            Log($"カウント+1 ({count})");
-        }
-    }
+    //public override void OnSomeoneDied(Character died)
+    //{
+    //    if (!died.CharaStatus().position.IsPlayerPos() && !died.CharaStatus().Obstacle())
+    //    {
+    //        count++;
+    //        Log($"カウント+1 ({count})");
+    //    }
+    //}
 
-    public override void OnTurnEnd(TurnEndParams tep)
+    public override void OnKill(List<Action.OnKillParams> onKillParamsList)
     {
-        if (tep.myTurn)
+        onKillParamsList.ForEach(k =>
         {
-            Action.ActionStatus action = actionStatus;
-            while (count >= countPerExTurn)
+            if (!k.obstacle)
             {
-                action.exTurn++;
-                count -= countPerExTurn;
+                count++;
+                LogCount(count);
+                if (count == countPerExTurn)
+                {
+                    Enqueue_Self(actionStatus);
+                    count = 0;
+                }
             }
-
-
-            if(action.exTurn>0) Enqueue_Self(action);
-        }
+        });
     }
+
+    //public override void OnTurnEnd(TurnEndParams tep)
+    //{
+    //    if (tep.myTurn)
+    //    {
+    //        Action.ActionStatus action = actionStatus;
+    //        while (count >= countPerExTurn)
+    //        {
+    //            action.exTurn++;
+    //            count -= countPerExTurn;
+    //        }
+
+
+    //        if(action.exTurn>0) Enqueue_Self(action);
+    //    }
+    //}
 
     public override string GetCurrentStateInfo()
     {
-        return $"現在カウント：{count}";
+        return $"カウント：{count}/{countPerExTurn}";
     }
 }

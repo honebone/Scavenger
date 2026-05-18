@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243369ddabf785d4f9d1c0de00235b88, type: 3}
+  m_Name: P_Blader
+  m_EditorClassIdentifier: 
+  fileName: P_Dancer
+  manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
+  charaName: "\u8E0A\u308A\u5B50"
+  introduction: 
+  difficulty: "\u9AD8"
+  preferFront: 1
+  preferMid: 0
+  preferBack: 0
+  mainRole:
+  - "\u30BF\u30F3\u30AF"
+  - "\u56DE\u907F"
+  subRole:
+  - "\u5F31\u4F53"
+  - "\u5F37\u5316"
+  characterTags: 0a000000
+  immovable: 0
+  notChara: 0
+  player: 1
+  boss: 0
+  playable: 1
+  variableSprites:
+  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  spriteOffset: {x: 0, y: 0}
+  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  abilities:
+  - {fileID: 11400000, guid: a454ab955b6558e449e3327786d62113, type: 2}
+  - {fileID: 11400000, guid: af78fe2933878a742a9b58743c39e4fc, type: 2}
+  - {fileID: 11400000, guid: a005860a641d32b49953cc02bee6e819, type: 2}
+  - {fileID: 11400000, guid: bb585d2784edf25439882ae1082105d8, type: 2}
+  - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
+  - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
+  passiveAbilities:
+  - {fileID: 5626464818293590775, guid: c7892cead6db2544d8701849b6a09cd5, type: 3}
+  PA_hard: []
+  actionMods: []
+  corpse: {fileID: 0}
+  loot:
+    dropEquipmentsRange: {x: 0, y: 0}
+    guarantee_rare: 0
+    guarantee_epic: 0
+    guarantee_legendary: 0
+    coin: {x: 0, y: 0}
+  lifetime: 0
+  surviveFatalWounds: 1
+  maxHP: 40
+  maxSAN: 50
+  ATK: 5
+  INT: 5
+  CRITC: 5
+  CRITD: 50
+  EVD: 5
+  ACC: 95
+  ACT: 9
+  turnPerRound: 1
+  GHeal: 0
+  RHeal: 0
+  debuffRes: 0
+  StEResists: []
+  StEApplyBonus: []
+  moveRes: 0

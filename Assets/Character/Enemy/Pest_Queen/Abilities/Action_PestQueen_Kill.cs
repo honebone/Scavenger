@@ -13,7 +13,7 @@ public class Action_PestQueen_Kill : Action
         int kill = 0;
         foreach (ActionResult result in actionResults)
         {
-            if (result.kill) { kill++; }
+            if (result.kill && !result.target.IsObstacle()) { kill++; }
         }
         ActionStatus action = secondAction;
         ActionMod.ActionModStatus mod = actionModStatus;

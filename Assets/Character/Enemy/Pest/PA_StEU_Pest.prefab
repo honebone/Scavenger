@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7416407499899449687}
-  - component: {fileID: 3948745990687073337}
   - component: {fileID: 6391350165293048886}
+  - component: {fileID: 586200467245201097}
   m_Layer: 0
   m_Name: PA_StEU_Pest
   m_TagString: Untagged
@@ -33,38 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3948745990687073337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164891664867224302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62628413d671de84f9d879944a9da783, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: StEU_pest
-  PAInfo_start: 
-  skipGetInfo: 0
-  PAInfo_end: 
-  PATags: 
-  StEStatus:
-    StEName: "\u904E\u5270\u5206\u6CCC"
-    StEInfo: "\u5929\u6575\u306E\u5B58\u5728\u3092\u691C\u77E5\u3057\u305F\uFF01"
-    StEIcon: {fileID: 21300000, guid: 49074dc8bb146744880618ea674c9d6e, type: 3}
-    StEType: 4
-    maxStack: 0
-    merge: 1
-    refValue: 0
-    undeletable: 1
-    DoT: 0
-    regen: 0
-    applyer: {fileID: 0}
-    stack: 0
-    value: 0
-    DMGPerTurn: 0
 --- !u!212 &6391350165293048886
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -117,3 +85,96 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &586200467245201097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5164891664867224302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a19bc8320b1a744ac64f911b7d6f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: StEU_pest
+  noSimpleInfo: 1
+  simpleInfo: 
+  PAInfo_start: 
+  skipGetInfo: 0
+  PAInfo_end: 
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
+  AMods: []
+  PATags: 
+  rune_initialCharge: 0
+  StEStatus:
+    StEName: "\u904E\u5270\u5206\u6CCC"
+    StEInfo: 
+    StEIcon: {fileID: 21300000, guid: 49074dc8bb146744880618ea674c9d6e, type: 3}
+    StEType: 4
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
+    maxStack: 0
+    merge: 1
+    refValue: 0
+    undeletable: 1
+    DoT: 0
+    regen: 0
+    StEPrefab: {fileID: 0}
+    applyer: {fileID: 0}
+    stack: 0
+    value: 0
+    DMGPerTurn: 0
+  statModPerStack:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 15
+    ATK_int: 0
+    INT_mul: 15
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0

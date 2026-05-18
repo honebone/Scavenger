@@ -359,13 +359,14 @@ public class Ability : MonoBehaviour
 
         if (!actionStatus.condition.searchAsPos)//キャラ選択のアビリティ
         {
+            List<Character> targets = charactersManager.SearchCharaWithCondition(actionStatus.condition, character);
             switch (actionStatus.targetType)
             {
                 case Action.ActionStatus.TargetType.other:
                     print("特殊な対象の撮り方をするアビリティは、独自のscriptを作ってください!");
                     break;
                 case Action.ActionStatus.TargetType.single://単体対象
-                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    foreach (Character target in targets)
                     {
                         targetStatus = target.CharaStatus();
                         int pos = targetStatus.position;
@@ -383,7 +384,7 @@ public class Ability : MonoBehaviour
                     {
                         tp_row = new List<int>();
                         includeMarked_row = false;
-                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        foreach (Character target in targets)
                         {
                             targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
@@ -406,7 +407,7 @@ public class Ability : MonoBehaviour
                     {
                         tp_row = new List<int>();
                         includeMarked_row = false;
-                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        foreach (Character target in targets)
                         {
                             targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
@@ -433,7 +434,7 @@ public class Ability : MonoBehaviour
                     {
                         tp_column = new List<int>();
                         includeMarked_column = false;
-                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        foreach (Character target in targets)
                         {
                             targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
@@ -456,7 +457,7 @@ public class Ability : MonoBehaviour
                     {
                         tp_column = new List<int>();
                         includeMarked_column = false;
-                        foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                        foreach (Character target in targets)
                         {
                             targetStatus = target.CharaStatus();
                             int pos = targetStatus.position;
@@ -479,7 +480,7 @@ public class Ability : MonoBehaviour
                     break;
                 case Action.ActionStatus.TargetType.all:
                     List<int> tp_all = new List<int>();
-                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    foreach (Character target in targets)
                     {
                         targetStatus = target.CharaStatus();
                         if (targetStatus.marked > 0 || targetStatus.hide == 0 || actionStatus.ignoreHide || actionStatus.friendly)
@@ -491,7 +492,7 @@ public class Ability : MonoBehaviour
 
                     break;
                 case Action.ActionStatus.TargetType.singleWoSelf:
-                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    foreach (Character target in targets)
                     {
                         if (target != character)
                         {
@@ -507,7 +508,7 @@ public class Ability : MonoBehaviour
                     break;
                 case Action.ActionStatus.TargetType.allWoSelf:
                     List<int> tp_allWoSelf = new List<int>();
-                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    foreach (Character target in targets)
                     {
                         if (target != character)
                         {
@@ -539,7 +540,7 @@ public class Ability : MonoBehaviour
                         for (int i = 0; i < neigborVector.Count; i++) { neigborVector[i] = new Vector2Int(-neigborVector[i].x, neigborVector[i].y); }
                     }
                     List<int> neigborPos = charaStatus.position.RelPosToAbs(neigborVector);
-                    foreach (Character target in charactersManager.SearchCharaWithCondition(actionStatus.condition))
+                    foreach (Character target in targets)
                     {
                         targetStatus = target.CharaStatus();
                         int pos = targetStatus.position;

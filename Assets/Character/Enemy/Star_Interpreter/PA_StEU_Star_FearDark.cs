@@ -6,37 +6,25 @@ using System.Linq;
 
 public class PA_StEU_Star_FearDark : PA_StatusEffect
 {
-    public int removeTH;
     public Action.ActionStatus actionStatus;
     public CharactersManager.SearchCharaCondition condition;
 
-    int count;
-
     public override void OnTurnEnd(TurnEndParams tep)
     {
-        if (tep.myTurn && applyFlag)
+        if (tep.myTurn && !tep.actThisTurn)
         {
             AddStack(-1);
         }
     }
 
-    public override void OnApplyedStE(OnApplyStEParams onApplyStEParams)
+    public override void OnRoundEnd()
     {
-        count += onApplyStEParams.appliedParams.Where(m => m.GetStatusEffectStatus().StEType == StatusEffectStatus.StatusEffectType.buff).Count();
-        if (count >= removeTH) Disable();
-    }
-
-    public override void AtTheEnd()
-    {
-        if (BattleManager.inBattle && StEStatus.stack == 0)
-        {
-            Enqueue_SearchTarget(actionStatus, condition);
-        }
+        Enqueue_SearchTarget(actionStatus,condition);
     }
 
     public override string GetCurrentStateInfo()
     {
-        return $"解除に必要な{"buff".ToSpr_withName()}回数：{count}/{removeTH}";
+        return "ターンをパスするとスタックを減少できる";
     }
 
     public override string GetAdditionalInfo()

@@ -6,7 +6,7 @@ public class PassiveAbility : MonoBehaviour
 {
     public string fileName;
     public bool noSimpleInfo;
-    [TextArea(3, 10)] public string simpleInfo;
+    [TextArea(5, 10)] public string simpleInfo;
     [TextArea(3, 10)] public string PAInfo_start;
     public bool skipGetInfo;
     [TextArea(3, 10)] public string PAInfo_end;
@@ -295,7 +295,9 @@ public class PassiveAbility : MonoBehaviour
     /// <summary> ‚±‚±‚ÅEnqueue‚µ‚È‚¢!! </summary>
     public virtual void OnBattleEnd() { }
 
-
+    /// <summary>
+    /// ƒpƒX‚ÌÛ‚ÍŒÄ‚Î‚ê‚È‚¢
+    /// </summary>
     public virtual void OnActivateAbility(List<Action.ActionResult> actionResultsList) { }
     /// <summary>UŒ‚A–½’†‚µ‚½‚©‚ÉŠÖ‚í‚ç‚¸—U”­</summary>
     public virtual void OnAttack(List<Action.OnAttackParams> onAttackParamsList) { }

@@ -56,6 +56,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
@@ -105,6 +106,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -182,8 +184,8 @@ MonoBehaviour:
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: c458860e6f5da0c49b4ec78066f6fe47, type: 3}
       guaranteed: 0
-      applyChance: 150
-      stack: 2
+      applyChance: 80
+      stack: 1
       value: 0
       dontApplyBonus: 0
       refATK: 0
