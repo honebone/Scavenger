@@ -17,8 +17,8 @@ public class E_StarInterpreter2 : PA_Personality
         if(count <= 0)
         {
             count = interval;
-            if (f) Enqueue_SearchTarget(darkness, condition);
-            else Enqueue_SearchTarget(endless, condition);
+            if (f) Enqueue_SearchTarget(darkness, condition,2);
+            else Enqueue_SearchTarget(endless, condition,2);
             f = !f;
         }
     }

@@ -52,7 +52,7 @@ MonoBehaviour:
     name=ACC>\u304C100\u3092\u8D85\u3048\u308B\u3068\u3001\u8D85\u3048\u305F<sprite
     name=ACC>\u306B\u5FDC\u3058\u3066\u4E0E\u30C0\u30E1\u30FC\u30B8\u5897\u52A0"
   PAInfo_start: "\u81EA\u8EAB\u306E\u653B\u6483\u304C\u30AD\u30E3\u30E91\u4F53\u306B\u547D\u4E2D\u3059\u308B\u305F\u3073\u3001\u81EA\u8EAB\u306E<color=#FF6CC1><sprite
-    name=ACC><link=T_ACC><u>ACC</u></link></color>+3\n20\u56DE\u307E\u3067\u7D2F\u7A4D\n\n100\u3092\u8D85\u3048\u305F<sprite
+    name=ACC><link=T_ACC><u>ACC</u></link></color>+5\n20\u56DE\u307E\u3067\u7D2F\u7A4D\n\n100\u3092\u8D85\u3048\u305F<sprite
     name=ACC>1\u306B\u3064\u304D\u3001\u4E0E\u30C0\u30E1\u30FC\u30B8+0.75\uFF05(\u6700\u5927+150\uFF05)"
   skipGetInfo: 0
   PAInfo_end: 
@@ -78,14 +78,17 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 3a5384d72efe8ed4ea1aafa66254a29f, type: 2}
-    equipmentInfo: 
-  ACCPerHit: 3
+  ACCPerHit: 5
   maxHit: 20
   exDMGPerACC: 0.75
   maxExDMG: 150
@@ -96,6 +99,7 @@ MonoBehaviour:
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
+    echo: []
     ATKMod: 0
     INTMod: 0
     trueATKDMG: 0
@@ -103,6 +107,10 @@ MonoBehaviour:
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_mul: 0
+    INTDMG_divide_mul: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -148,8 +156,34 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
+    doesInherit: 0
+    inheritMod:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
