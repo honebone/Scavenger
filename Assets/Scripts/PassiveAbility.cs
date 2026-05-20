@@ -33,6 +33,7 @@ public class PassiveAbility : MonoBehaviour
     public int GetPAType() { return PAType; }
     public virtual string GetPAName() { return ""; }
     public GameObject GetPrefab() => myPrefab;
+    public bool SamePA(GameObject prefab) => prefab == myPrefab;
     public string GetPAInfo(bool simple = false)
     {
         string s = "";
