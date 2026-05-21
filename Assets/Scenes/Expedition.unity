@@ -431,19 +431,33 @@ MonoBehaviour:
     dontShuffleFront: 1
     upperFront: {fileID: 0}
     centerFront: {fileID: 0}
-    lowerFront: {fileID: 0}
+    lowerFront: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
-    centerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
+    upperMid: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
+    centerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
-    upperBack: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
-    centerBack: {fileID: 11400000, guid: 51e645703683b4d40a6205d4b982b416, type: 2}
+    upperBack: {fileID: 0}
+    centerBack: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
-  - {fileID: 11400000, guid: 486b605a2cb2cb749963404079581379, type: 2}
-  - {fileID: 11400000, guid: 6048b55f75564de44bfdf468393242a2, type: 2}
+  - {fileID: 11400000, guid: e8ae6d7d6c6d9e245abb3599a1103ff5, type: 2}
+  - {fileID: 11400000, guid: 703a1844ce587f3449edf6e1bf0cbb41, type: 2}
+  - {fileID: 11400000, guid: 6e84d024e7aadd54f8f6756410861b8c, type: 2}
+  - {fileID: 11400000, guid: be98895f28a05204e94bc46e6bf1a6d7, type: 2}
+  - {fileID: 11400000, guid: dfcca0d32e1caaa4ba0d2a56cff52473, type: 2}
+  - {fileID: 11400000, guid: da1e6f6741ab8bc4da7e836e9e916dc6, type: 2}
+  - {fileID: 11400000, guid: 281953ff974d6ff4f8500cba1e15ae97, type: 2}
+  - {fileID: 11400000, guid: 289e5032e44ea1045a23262e8af33ba7, type: 2}
+  - {fileID: 11400000, guid: 1a15f4f8967430d479589373e59315b4, type: 2}
+  - {fileID: 11400000, guid: 562f328682a535543be3871061d94eae, type: 2}
+  - {fileID: 11400000, guid: 3a753b4da3c60ee4fba0d0be99f89058, type: 2}
+  - {fileID: 11400000, guid: a66403afa72869f4594ed6ab8340012f, type: 2}
+  - {fileID: 11400000, guid: d5afa2c8ed9f3eb4a874fefe286601cb, type: 2}
+  - {fileID: 11400000, guid: 1a99e5a64f0ec2749a5eda25039ed7bb, type: 2}
+  - {fileID: 11400000, guid: 92c2359f14efbd24dbdadb0ec5b083a7, type: 2}
+  - {fileID: 11400000, guid: d3709688bae15a449bad55754f941236, type: 2}
   amount: 7e00000005000000010000000200000007000000030000001500000006000000
   eq_exclusive: []
   enemySetTest:
@@ -461,7 +475,7 @@ MonoBehaviour:
     lowerBack: {fileID: 0}
     atRandom: []
   FE: {fileID: 0}
-  areaData: {fileID: 11400000, guid: 0ba8a3dd4ad9c144584eabca472ce5d6, type: 2}
+  areaData: {fileID: 11400000, guid: 392eec1409fa2804581b479c3c8f9aff, type: 2}
   RE: {fileID: 8180078169205948270, guid: 87c708854d7259f44b75ac95f298ef24, type: 3}
   REP: {fileID: 1877823637}
   shopParams:
