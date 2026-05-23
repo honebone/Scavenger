@@ -33,13 +33,15 @@ MonoBehaviour:
   spriteOffset: {x: 0, y: 0}
   spriteForUI: {fileID: -1661447925, guid: 6d247aed9fd822b41a2edf57949722f1, type: 3}
   abilities:
-  - {fileID: 11400000, guid: 4fee9caf8097c2f48aeab6c476dfcf9d, type: 2}
+  - {fileID: 11400000, guid: e07dcdf1427420f438772ca1c41a8dba, type: 2}
   - {fileID: 11400000, guid: deeec541d5bb6ea40a73ccfecaa986b6, type: 2}
   - {fileID: 11400000, guid: 1f12eb5022f8d364e818d9537dd05467, type: 2}
   - {fileID: 11400000, guid: d5cf560eb575a6c40bc40be53c7bd4f2, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 1808138132528202961, guid: f63518ca297c0d74895d0e40e461e01e, type: 3}
+  PA_hard:
+  - {fileID: 1808138132528202961, guid: 927ff3b3ff67cc940940b86e038308c3, type: 3}
   actionMods: []
   corpse: {fileID: 11400000, guid: 346549fd8ab6cfa449cb42c3c7eb8ff2, type: 2}
   loot:

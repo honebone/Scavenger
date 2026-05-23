@@ -10,7 +10,7 @@ public class E_StarBeliever : PA_Personality
 
     public override void OnTurnStart(bool myTurn, int turnCount)
     {
-        Enqueue_Self(onBS);
+       if(myTurn) Enqueue_Self(onBS);
     }
     public override void OnTurnEnd(TurnEndParams tep)
     {

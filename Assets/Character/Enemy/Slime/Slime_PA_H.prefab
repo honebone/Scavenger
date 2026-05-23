@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5723529154042359159}
-  - component: {fileID: 5215641129722162324}
+  - component: {fileID: 8968246267910123011}
   - component: {fileID: 6512924034425719198}
   m_Layer: 0
   m_Name: Slime_PA_H
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5215641129722162324
+--- !u!114 &8968246267910123011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1808138132528202961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4685b269c6d6a484bbef687fa2969ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c5b98f5a178afb498278b4a0d91568a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: per_slime_h
   noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001\u81EA\u8EAB\u306B<color=#FAED8A><sprite
-    name=buff><link=S_\u3079\u3068\u3079\u3068><u>\u3079\u3068\u3079\u3068</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B"
+  simpleInfo: "\u81EA\u8EAB\u304C<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3059\u308B\u30AD\u30E3\u30E9\u306F\u3001\u81EA\u8EAB\u306E<sprite
+    name=maxHP><color=#87FF79>maxHP</color>\u3068<color=#C30000><sprite name=ATK><link=T_ATK><u>ATK</u></link></color>\u3092\u53D7\u3051\u7D99\u3050"
   PAInfo_start: 
-  skipGetInfo: 0
+  skipGetInfo: 1
   PAInfo_end: 
   statMod:
     LVL: 0
@@ -79,297 +79,13 @@ MonoBehaviour:
     moveRes: 0
     debuffRes: 0
     minion: 0
-  AMods: []
+  AMods:
+  - {fileID: 980131611971298319, guid: fa4772a3b16f858429d93e0d153ff9f6, type: 3}
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: "\u3079\u3068\u3079\u3068\u306E\u7C98\u6DB2"
+    personalityName: "\u6B62\u307E\u3089\u306A\u3044\u6210\u9577"
     personalityType: 1
-  max_inBattle: 0
-  max_inRound: 0
-  countReq: 1
-  hasSelfCond: 0
-  selfCond:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  targetSelf: 1
-  actionStatus:
-    actionName: 
-    conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
-    targetInfo: "\u81EA\u8EAB"
-    AModInfo: 
-    actionInfo: 
-    sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
-    VE_OnOwner: {fileID: 0}
-    actionObject: {fileID: 0}
-    actionMods: []
-    targetType: 0
-    friendly: 0
-    condition:
-      searchAsPos: 0
-      onlyEmpty: 0
-      player: 0
-      enemy: 0
-      onlyPlayable: 0
-      onlyNonplayable: 0
-      front: 0
-      mid: 0
-      back: 0
-      excludeObstacle: 0
-      characterInclude: []
-      characterTags: 
-      characterTagsExclude: 
-      StEConditions: []
-      StE: []
-      StEExclude: []
-      PE: []
-      PEExclude: []
-      canEcho: 0
-      echoTargets: []
-      HPPercent: 0
-      HP_lessThan: 0
-      HP_excludeEqual: 0
-      neighbor: []
-      sameColmn: 0
-      sameRow: 0
-      sameChara: 0
-      excludeSelf: 0
-    neigborPos: []
-    ignoreMark: 0
-    ignoreHide: 0
-    moveValue: 
-    skipAnim: 0
-    consumeFocus: 0
-    exTurn: 0
-    kill: 0
-    decreaseHP_min: 0
-    decreaseHP_max: 0
-    decreaseHPPer_min: 0
-    decreaseHPPer_max: 0
-    decreaseHP_ATK: {x: 0, y: 0}
-    decreaseHP_INT: {x: 0, y: 0}
-    echoDoT: []
-    attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
-    INTMod_min: 0
-    INTMod_max: 0
-    ATKMod_divide: 0
-    INTMod_divide: 0
-    trueATKDMG: 0
-    trueINTDMG: 0
-    exDMG_mul: 0
-    exATKDMG_int: 0
-    exINTDMG_int: 0
-    ATKDMG_divide_int: 0
-    INTDMG_divide_int: 0
-    ACCMod: 0
-    CRITCMod: 0
-    CRITDMod: 0
-    drain: 0
-    ignoreShield: 0
-    sureHit: 0
-    unevadable: 0
-    healValue_min: 0
-    healValue_max: 0
-    healINT: {x: 0, y: 0}
-    healPercent_min: 0
-    healPercent_max: 0
-    healRegain_min: 0
-    healRegain_max: 0
-    trueHeal: 0
-    exHeal_mul: 0
-    SANHeal_min: 0
-    SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
-    shieldPercent_min: 0
-    shieldPercent_max: 0
-    shieldRemove_all: 0
-    shieldRemove_min: 0
-    shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 57ea28bc9ff2a584197c4a9271ed4bcc, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 4
-      value: 0
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
-    applyPEParams: []
-    removeStE_buff: 0
-    removeStE_debuff: 0
-    removeStEs: []
-    removePEs: []
-    summon: 0
-    summonChara: []
-    summonChanceWeight: []
-    summonStatusInherit:
-      maxHP: 0
-      ATK: 0
-      INT: 0
-      maxHP_mul_TH: 0
-      maxHP_mul: 0
-      ATK_mul_TH: 0
-      ATK_mul: 0
-      INT_mul_TH: 0
-      INT_mul: 0
-      CRITC_TH: 0
-      CRITC: 0
-      CRITD_TH: 0
-      CRITD: 0
-      EVD_TH: 0
-      EVD: 0
-      ACC_TH: 0
-      ACC: 0
-      ACT_TH: 0
-      ACT: 0
-      GHeal_TH: 0
-      GHeal: 0
-    moveChance: 0
-    guaranteedMove: 0
-    moveRandomDir: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
-    changeSelfSprite: {fileID: 0}
-    abilityRemainControlls: []
-    abilityEffect: 0
-    freeAction: 0
-    abilityType: 0
-    index: 0
-    StEApplyBonus: []
-    debuffChanceMod: 0
-    removeStEs_additional: []
-    summonStatusMods: []
-    exInherits: []
-    actionOwner: {fileID: 0}
-    source: {fileID: 0}
-    targetCount: 0
-    actionTargets: []
-    actionTargetsInt: 
-  condition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  targetCount: 0
-  activeCond_req: 0
-  activeCond:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  coin: {x: 0, y: 0}
-  modifyStatus: 0
-  statusMod:
-    LVL: 0
-    maxHP_mul: 0
-    maxHP_int: 0
-    maxSAN_mul: 0
-    PROT: 0
-    ATK_mul: 0
-    ATK_int: 0
-    INT_mul: 0
-    INT_int: 0
-    exDMG_mul: 0
-    CRITC: 0
-    CRITD: 0
-    EVD: 0
-    ACC: 0
-    ACT: 0
-    turnPerRound: 0
-    GHeal: 0
-    RHeal: 0
-    StEResists: []
-    StEApplyBonus: []
-    debuffChance: 0
-    debuffStacks: 0
-    buffStacks: 0
-    moveRes: 0
-    debuffRes: 0
-    minion: 0
 --- !u!212 &6512924034425719198
 SpriteRenderer:
   m_ObjectHideFlags: 0

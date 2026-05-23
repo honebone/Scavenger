@@ -89,9 +89,8 @@ public class RoomEvent : MonoBehaviour
 
         string _name = REName;
         string info = "";
-        if (this as RE_RandomEvents != null)//醜いダウンキャスト　致し方なし
+        if (this is RE_RandomEvents rae)//醜いダウンキャスト　致し方なし
         {
-            RE_RandomEvents rae=this as RE_RandomEvents;
             info += $"{rae.GetRarityStr()}イベント";
             if (rae.GetRarity() == RE_RandomEvents.Rarity.legendary) info += $"({Definer.inst.cp.RaEWeights[(int)RE_RandomEvents.Rarity.legendary]}％！)";
 

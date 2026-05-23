@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Star_Attack
+  m_Name: Star_StarDust2
   m_EditorClassIdentifier: 
-  abilityName: "\u661F\u5149\u306E\u3064\u3076\u3066"
+  abilityName: "\u9858\u3044\u306E\u6210\u5C31+"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 1
+  abilityType: 3
   excludeRandomPool: 0
-  priority: 1
+  priority: 2
   selectWeight: 1
   availableFront: 1
   availableMid: 1
@@ -58,20 +58,20 @@ MonoBehaviour:
     sameChara: 0
     excludeSelf: 0
   freeAction: 0
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnBattleStart: 3
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u661F\u5149\u306E\u3064\u3076\u3066"
+  - actionName: "\u9858\u3044\u306E\u6210\u5C31"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "<\u661F\u3005\u306E\u4EE3\u5F01\u8005>"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 8300000, guid: 233b8a3a580706245a110cebaba01ec1, type: 3}
-    VE_OnTargets: {fileID: 3096756954055524911, guid: b3fcb33840e66c346bb4412269ea3eec, type: 3}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -80,15 +80,16 @@ MonoBehaviour:
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 1
-      enemy: 0
+      player: 0
+      enemy: 1
       onlyPlayable: 0
       onlyNonplayable: 0
       front: 1
       mid: 1
       back: 1
       excludeObstacle: 0
-      characterInclude: []
+      characterInclude:
+      - {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
       characterTags: 
       characterTagsExclude: 
       StEConditions: []
@@ -122,10 +123,10 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 40
-    ATKMod_max: 60
-    INTMod_min: 40
-    INTMod_max: 60
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -162,10 +163,37 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 50
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: c081015b5a0ef344091ae6bd4ceac824, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 50
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 0
+    removeStE_debuff: 2
     removeStEs: []
     removePEs: []
     summon: 0
@@ -204,7 +232,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0

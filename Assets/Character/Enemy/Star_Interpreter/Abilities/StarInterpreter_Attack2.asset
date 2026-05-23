@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Star_Attack
+  m_Name: StarInterpreter_Attack2
   m_EditorClassIdentifier: 
-  abilityName: "\u661F\u5149\u306E\u3064\u3076\u3066"
+  abilityName: "\u30D7\u30E9\u30BA\u30DE+"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
@@ -22,7 +22,7 @@ MonoBehaviour:
   abilityType: 1
   excludeRandomPool: 0
   priority: 1
-  selectWeight: 1
+  selectWeight: 4
   availableFront: 1
   availableMid: 1
   availableBack: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u661F\u5149\u306E\u3064\u3076\u3066"
+  - actionName: "\u30D7\u30E9\u30BA\u30DE"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -74,7 +74,8 @@ MonoBehaviour:
     VE_OnTargets: {fileID: 3096756954055524911, guid: b3fcb33840e66c346bb4412269ea3eec, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
-    actionMods: []
+    actionMods:
+    - {fileID: 3317782549646854010, guid: 37c872ccdacb56040b6ce24fef6f6826, type: 3}
     targetType: 1
     friendly: 0
     condition:

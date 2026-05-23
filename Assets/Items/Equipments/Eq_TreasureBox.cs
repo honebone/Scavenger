@@ -12,7 +12,7 @@ public class Eq_TreasureBox : PA_Equipment
         {
             Log("ŠJù¬Œ÷I".ColorStr(Definer.colorRef.emphasize));
             LootPanel.inst.DropItem_Loot(loot);
-            character.UnequipItem(this);
+            character.UnequipItem(this, false);
         }
         else
         {

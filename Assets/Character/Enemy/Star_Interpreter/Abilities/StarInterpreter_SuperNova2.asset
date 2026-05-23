@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: StarInterpreter_SuperNova
+  m_Name: StarInterpreter_SuperNova2
   m_EditorClassIdentifier: 
-  abilityName: "\u8D85\u65B0\u661F"
+  abilityName: "\u8D85\u65B0\u661F+"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: be42c405468eb7c4393868f97d8f9327, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -64,7 +64,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 1
   actionsStaus:
-  - actionName: "\u8D85\u65B0\u661F"
+  - actionName: "\u8D85\u65B0\u661F+"
     conditionInfo: 
     targetInfo: "\u4E88\u5146\u306E\u3042\u308B\u30DE\u30B9\u4E0A\u306B\u3042\u308B\u3059\u3079\u3066\u306E\u30D7\u30EC\u30A4\u30E4\u30FC"
     AModInfo: 
@@ -123,10 +123,10 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 60
-    ATKMod_max: 80
-    INTMod_min: 60
-    INTMod_max: 80
+    ATKMod_min: 80
+    ATKMod_max: 100
+    INTMod_min: 80
+    INTMod_max: 100
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -178,6 +178,15 @@ MonoBehaviour:
       applyChance: 70
       stack: 1
       value: 30
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 667736eda00905d46aafcbad172dd873, type: 3}
+      guaranteed: 0
+      applyChance: 120
+      stack: 2
+      value: 0
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -235,7 +244,7 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  - actionName: "\u8D85\u65B0\u661F"
+  - actionName: "\u8D85\u65B0\u661F+"
     conditionInfo: 
     targetInfo: "\u6575\u5074\u306E\u3001\u4E88\u5146\u306E\u3042\u308B\u5168\u3066\u306E\u30DE\u30B9"
     AModInfo: 

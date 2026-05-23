@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fcf698ee91a33446a45691ca021e604, type: 3}
   m_Name: RE_Elite
   m_EditorClassIdentifier: 
-  eventName: 
-  eventInfo: 
+  eventName: "\u7CBE\u92ED"
+  eventInfo: "\u5F37\u6575\u3068\u6226\u95D8\u3057\u3001\u8C6A\u83EF\u306A\u5831\u916C\u3092\u5F97\u308B\n\n\u30FB\u6575\u306ELVL+1\n\u30FB<color=#00BBFF>\u30EC\u30A2\u7279\u6027</color>\u3092\u7372\u5F97\u3057\u3001\u30AD\u30E3\u30E91\u4F53\u306B\u4ED8\u4E0E\u3067\u304D\u308B"
   noBlind: 1
   randomEvent: 0
   debug: 0
   roomEventManager:
-  - {fileID: 4154373557521219498, guid: 6214094ddc66c304c8c58f9139757e25, type: 3}
-  - {fileID: 4154373557521219498, guid: c00060c8c01df274ca719caccffa61a5, type: 3}
+  - {fileID: 4154373557521219498, guid: ecfb4aa8836687440a913d12cb0ea1d0, type: 3}
   eventIcon: {fileID: 21300000, guid: 74857cddfadc490468e0cccbe4de55e2, type: 3}
