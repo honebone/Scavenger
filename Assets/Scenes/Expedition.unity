@@ -463,7 +463,7 @@ MonoBehaviour:
   enemySetTest:
     dontShuffleFront: 0
     upperFront: {fileID: 11400000, guid: 7cf3df8b763f9e24c959a201c1064c51, type: 2}
-    centerFront: {fileID: 11400000, guid: 479fbffd14ab6e04f9a06f028d52cc78, type: 2}
+    centerFront: {fileID: 11400000, guid: c81a66a62e848ad44b3e023e4dd9c94a, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 11400000, guid: 3a452d19d2df6a146843c4cbd338fe8d, type: 2}
