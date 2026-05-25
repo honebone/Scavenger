@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   hardMode: 1
   autoset_playerLVL: 7
@@ -433,12 +433,12 @@ MonoBehaviour:
     centerFront: {fileID: 0}
     lowerFront: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
     dontShuffleMid: 1
-    upperMid: {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
-    centerMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
+    upperMid: {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
+    centerMid: {fileID: 11400000, guid: 9b10bd39827695b498dcda442ca72143, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: 2b8babcc4c32be940885532dff6c73cb, type: 2}
+    centerBack: {fileID: 11400000, guid: 813bc9744bed24340888eb20d04a6b88, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
@@ -486,7 +486,7 @@ MonoBehaviour:
     priceMul: 100
   tutorial: {fileID: 11400000, guid: e6d016f579affee41965bfe4b1312d91, type: 2}
   tutorialArea: {fileID: 11400000, guid: 3eda24bc0a9dfb545bc3bff4cedf06bb, type: 2}
-  personality: {fileID: 3170614222137734241, guid: fd462913be1700a408312e10655361be, type: 3}
+  personality: {fileID: 3170614222137734241, guid: 99bdd0b30558e78479291fce4ec0a4b6, type: 3}
   debugPanel: {fileID: 1112393169}
   rel:
   - {x: -1, y: -1}
@@ -17660,6 +17660,9 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: ed71613eb84216246908df673d074813, type: 3}
   - {fileID: 3170614222137734241, guid: 4ba89d551326e43449cb8376c0de062c, type: 3}
   - {fileID: 3170614222137734241, guid: fd462913be1700a408312e10655361be, type: 3}
+  - {fileID: 3170614222137734241, guid: 29a957ee1406ad2469e648a793072964, type: 3}
+  - {fileID: 3170614222137734241, guid: 7ba3571cea1165f49af34294b2d67587, type: 3}
+  - {fileID: 3170614222137734241, guid: 99bdd0b30558e78479291fce4ec0a4b6, type: 3}
   personalityDataBase_exclusive:
   - {fileID: 3170614222137734241, guid: 64b7e79b1d49f704a8f45879077db678, type: 3}
   - {fileID: 3170614222137734241, guid: e8774e5186a6893438201cb11debf035, type: 3}

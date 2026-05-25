@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5164891664867224302
+--- !u!1 &3170614222137734241
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7416407499899449687}
-  - component: {fileID: 3618295930640854771}
-  - component: {fileID: 6391350165293048886}
+  - component: {fileID: 5942741952113959475}
+  - component: {fileID: -6907491796242840391}
+  - component: {fileID: -4090635681871681786}
   m_Layer: 0
-  m_Name: PA_StEU_Mount
+  m_Name: Per_ComboAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7416407499899449687
+--- !u!4 &5942741952113959475
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164891664867224302}
+  m_GameObject: {fileID: 3170614222137734241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.208153, y: -18.60653, z: 0}
+  m_LocalPosition: {x: -0.9166363, y: 0.43062896, z: 395.7958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3618295930640854771
+--- !u!114 &-6907491796242840391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164891664867224302}
+  m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c21ba51dcea144f8911b36b0db9e23, type: 3}
+  m_Script: {fileID: 11500000, guid: e449305198570a2479f4582eaca393c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: StEU_mount
+  fileName: per_comboAttack
   noSimpleInfo: 0
-  simpleInfo: "\u3053\u308C\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D\u3001<color=#00FFFF><sprite
-    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3068<color=#FAED8A><sprite
-    name=buff><link=S_ATK\u4E0A\u6607><u>ATK\u4E0A\u6607</u></link></color>\u3068<color=#FAED8A><sprite
-    name=buff><link=S_\u30AC\u30FC\u30C9><u>\u30AC\u30FC\u30C9</u></link></color>\u3092\u5F97\u308B\r\n\r\n<sprite
-    name=HP><color=#87FF79>HP</color>\u304C50\uFF05\u3092\u4E0B\u56DE\u308B\u3068\u6D88\u53BB"
+  simpleInfo: "\u81EA\u8EAB\u304C<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3057\u305F\u30AD\u30E3\u30E9\u304C\u6575\u5358\u4F53\u306B\u653B\u6483\u3057\u305F\u3068\u304D\u3001\u81EA\u8EAB\u3082\u305D\u306E\u6575\u306B<sprite
+    name=ATK><color=#C30000>\u7269\u7406</color>\u653B\u6483\u3092\u884C\u3046"
   PAInfo_start: 
   skipGetInfo: 0
-  PAInfo_end: "<sprite name=HP><color=#87FF79>HP</color>\u304C50\uFF05\u3092\u4E0B\u56DE\u308B\u3068\u6D88\u53BB"
+  PAInfo_end: 
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -68,9 +65,9 @@ MonoBehaviour:
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: 5
+    EVD: 0
     ACC: 0
-    ACT: 10
+    ACT: 0
     turnPerRound: 0
     GHeal: 0
     RHeal: 0
@@ -85,30 +82,13 @@ MonoBehaviour:
   AMods: []
   PATags: 
   rune_initialCharge: 0
-  StEStatus:
-    StEName: "\u9A0E\u4E57"
-    StEInfo: 
-    StEIcon: {fileID: 21300000, guid: be70206a5cff71940a520fdb79e20f28, type: 3}
-    StEType: 4
-    overideColor: 0
-    colorOveride: {r: 0, g: 0, b: 0, a: 0}
-    maxStack: 1
-    merge: 1
-    refValue: 0
-    undeletable: 1
-    DoT: 0
-    regen: 0
-    StEPrefab: {fileID: 0}
-    applyer: {fileID: 0}
-    stack: 0
-    value: 0
-    DMGPerTurn: 0
-  human: {fileID: 419639086043272188, guid: 9ff0a49cdeed7d94c833e5c4859fea7d, type: 3}
-  horse: {fileID: 5099856117685705023, guid: 41527ca0ee04995478d4493a6955008e, type: 3}
-  onApplied:
+  personalityStatus:
+    personalityName: "\u9023\u643A\u653B\u6483"
+    personalityType: 2
+  actionStatus:
     actionName: 
-    conditionInfo: "\u3053\u308C\u304C\u4ED8\u4E0E\u3055\u308C\u305F\u3068\u304D"
-    targetInfo: "\u81EA\u8EAB"
+    conditionInfo: "\u81EA\u8EAB\u304C<sprite name=summon><color=#00F4FF>\u53EC\u559A</color>\u3057\u305F\u30AD\u30E3\u30E9\u304C\u5358\u4F53\u306B\u653B\u6483\u3057\u305F\u3068\u304D"
+    targetInfo: "\u653B\u6483\u3057\u305F\u5BFE\u8C61"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -164,8 +144,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 80
+    ATKMod_max: 120
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -199,30 +179,12 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 50
-    shieldPercent_max: 50
+    shieldPercent_min: 0
+    shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 721f3331bfe41134683a809d4000022b, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 1
-      value: 75
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
-    - applyStE: {fileID: 6086145301006173142, guid: d37fa652893f2fe48906277658d62269, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 0
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -276,13 +238,13 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
---- !u!212 &6391350165293048886
+--- !u!212 &-4090635681871681786
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5164891664867224302}
+  m_GameObject: {fileID: 3170614222137734241}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -317,12 +279,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: be70206a5cff71940a520fdb79e20f28, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12bcc5ca699c132409519be037d9ade1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16, y: 16}
+  m_Size: {x: 2.4, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

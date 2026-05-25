@@ -335,6 +335,7 @@ public class PassiveAbility : MonoBehaviour
 
     public virtual void OnSummoned(Action.OnSummonParams onSummonParams) {  }
 
+    public virtual void OnSomeoneDamage(List<Action.OnDamageParams> onDamageParamsList) { }
     public virtual void OnSomeoneDamaged(Action.OnDamageParams onDamageParams) { }
 
     public virtual void OnSomeoneMove(Action.OnMoveParams onMoveParams) { }

@@ -85,13 +85,13 @@ MonoBehaviour:
   rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: be98895f28a05204e94bc46e6bf1a6d7, type: 2}
-  INTModPerCount: 15
+  INTModPerCount: 25
   actionStatus:
     actionName: 
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
     targetInfo: "\u6700\u3082<sprite name=HP><color=#87FF79>HP</color>\u306E\u9AD8\u3044\u65751\u4F53"
     AModInfo: 
-    actionInfo: "\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<sprite name=INT><link=U_ATK(INT)\u88DC\u6B63><u><color=#256CC8>INT</color>\u88DC\u6B63</u></link>+15\uFF05"
+    actionInfo: "\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<sprite name=INT><link=U_ATK(INT)\u88DC\u6B63><u><color=#256CC8>INT</color>\u88DC\u6B63</u></link>+25\uFF05"
     sprite: {fileID: 0}
     SE: {fileID: 8300000, guid: 233b8a3a580706245a110cebaba01ec1, type: 3}
     VE_OnTargets: {fileID: 3096756954055524911, guid: b3fcb33840e66c346bb4412269ea3eec, type: 3}
@@ -127,6 +127,8 @@ MonoBehaviour:
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -196,6 +198,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -225,6 +233,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0
@@ -257,6 +266,8 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
 --- !u!212 &2102424110011888310
 SpriteRenderer:
   m_ObjectHideFlags: 0

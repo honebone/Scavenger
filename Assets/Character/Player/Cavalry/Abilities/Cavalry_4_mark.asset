@@ -50,12 +50,16 @@ MonoBehaviour:
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 0
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 3
@@ -95,12 +99,16 @@ MonoBehaviour:
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -115,6 +123,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -157,7 +166,7 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+    - applyStE: {fileID: 6086145301006173142, guid: d37fa652893f2fe48906277658d62269, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 1
@@ -170,7 +179,7 @@ MonoBehaviour:
       guaranteed: 1
       applyChance: 0
       stack: 2
-      value: 200
+      value: 150
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -187,6 +196,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -237,8 +252,11 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -260,8 +278,11 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -283,8 +304,11 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -306,8 +330,11 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -329,8 +356,11 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -352,8 +382,11 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
     - LVL: 0
       maxHP_mul: 0
       maxHP_int: 0
@@ -375,8 +408,12 @@ MonoBehaviour:
       StEResists: []
       StEApplyBonus: []
       debuffChance: 0
+      debuffStacks: 0
+      buffStacks: 0
       moveRes: 0
       debuffRes: 0
+      minion: 0
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1

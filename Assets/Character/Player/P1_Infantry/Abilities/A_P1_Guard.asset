@@ -20,8 +20,6 @@ MonoBehaviour:
   simpleInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3068<color=#C900FF><sprite
     name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u5F97\u308B"
   abilityManager: {fileID: 8516769385180834714, guid: 2b476614d7f98ae4799276644ee6ef39, type: 3}
-  dontChangeSprite: 0
-  activateSprite: {fileID: 4119418044249080708, guid: 6b7dcab8d0619d6448fcb942b3ac98c0, type: 3}
   abilityType: 3
   excludeRandomPool: 0
   priority: 1
@@ -37,20 +35,29 @@ MonoBehaviour:
     player: 0
     enemy: 0
     onlyPlayable: 0
+    onlyNonplayable: 0
     front: 0
     mid: 0
     back: 0
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
+    characterTagsExclude: 
     StEConditions: []
     StE: []
     StEExclude: []
     PE: []
     PEExclude: []
+    canEcho: 0
+    echoTargets: []
     HPPercent: 0
     HP_lessThan: 0
     HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 3
@@ -66,6 +73,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 3497942893351335139, guid: 890f0bf015391fc4c861320172f8f322, type: 3}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 3
@@ -76,20 +84,29 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 1
@@ -104,16 +121,21 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -123,6 +145,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -141,12 +164,14 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+    - applyStE: {fileID: 6086145301006173142, guid: d37fa652893f2fe48906277658d62269, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 1
+      stack: 2
       value: 0
+      dontApplyBonus: 0
       refATK: 0
+      refTargetMaxHP: 0
       DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
@@ -160,6 +185,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -170,6 +201,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -187,8 +220,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 4119418044249080708, guid: 6b7dcab8d0619d6448fcb942b3ac98c0, type: 3}
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 1

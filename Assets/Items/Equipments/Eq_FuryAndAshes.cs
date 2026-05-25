@@ -15,10 +15,12 @@ public class Eq_FuryAndAshes : PA_Equipment
     {
         remain = defRemain;
     }
+
     public override void OnRoundStart()
     {
         remain = defRemain;
     }
+
     public override void OnDamage(List<Action.OnDamageParams> onDamageParamsList)
     {
         List<Character> target = charactersManager.SearchCharaWithCondition(condition);
@@ -38,10 +40,9 @@ public class Eq_FuryAndAshes : PA_Equipment
                     }
                 }
             }
-        }
-       
-        
+        }        
     }
+
     public override void OnBattleEnd()
     {
         remain = defRemain;

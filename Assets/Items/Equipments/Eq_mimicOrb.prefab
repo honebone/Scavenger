@@ -73,6 +73,8 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
     minion: 0
@@ -122,7 +124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d023e121e84d9b74fa311baf9e90411f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

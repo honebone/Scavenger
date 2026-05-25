@@ -74,13 +74,16 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 97fa1b18ee1234a4db58b07fdb332587, type: 2}
-    equipmentInfo: 
   actionStatus:
     actionName: "\u55A7\u5629\u5C4B\u306E\u30D0\u30C3\u30AF\u30EB"
     conditionInfo: "\u653B\u6483\u3055\u308C\u305F\u3068\u304D"
@@ -90,6 +93,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -100,6 +104,7 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
@@ -112,9 +117,16 @@ MonoBehaviour:
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -129,16 +141,21 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -148,6 +165,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -168,7 +186,7 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 5040736204731481028, guid: 21b8bd9475165034488a5ff7e312297c, type: 3}
       guaranteed: 0
-      applyChance: 60
+      applyChance: 80
       stack: 1
       value: 0
       dontApplyBonus: 0
@@ -187,6 +205,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -216,8 +240,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Action;
 using static AreaManager;
 using static ExpeditionManager;
-using TMPro;
-using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
@@ -557,15 +558,17 @@ public class BattleManager : MonoBehaviour
 
     public void Trigger_OnSomeoneDamaged(Action.OnDamageParams onDamageParams)
     {
-        //if (fieldEffect != null) { fieldEffect.OnBattleStart(); }
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnSomeoneDamaged(onDamageParams);
         }
-        //foreach (PositionManager positionManager in positionManagers)
-        //{
-        //    positionManager.OnBattleStart();
-        //}
+    }
+    public  void Trigger_OnSomeoneDamage(List<Action.OnDamageParams> onDamageParamsList)
+    {
+        foreach (Character character in charactersManager.GetExistingCharacters_All())
+        {
+            character.OnSomeoneDamage(onDamageParamsList);
+        }
     }
     public void Trigger_OnSomeoneMove(Action.OnMoveParams onMoveParams)
     {

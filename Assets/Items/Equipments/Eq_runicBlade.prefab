@@ -126,6 +126,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
     echoDoT: []
     attackInfo: 
     ATKMod_min: 50
-    ATKMod_max: 70
+    ATKMod_max: 100
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -264,6 +265,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

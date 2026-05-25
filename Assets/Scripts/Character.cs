@@ -1373,7 +1373,7 @@ public class Character : MonoBehaviour
                     soundManager.PlaySE(Definer.soundRef.dying);
                     tutorialManager.Tutorial_dethsDoor();
                     charaObj.SetHPandShieldBar();
-                    OnDecreasedHP(value+echo);
+                    OnDecreasedHP(value + echo);
                 }
                 else
                 {
@@ -1383,7 +1383,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                OnDecreasedHP(value);
+                OnDecreasedHP(value + echo);
             }
         }
     }
@@ -2302,6 +2302,7 @@ public class Character : MonoBehaviour
         {
             foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnDamage(onDamageParamsList); }
             RemovePA_Execute();
+            battleManager.Trigger_OnSomeoneDamage(onDamageParamsList);
         }
     }
     public void OnCRIT(int ID) { }
@@ -2445,7 +2446,14 @@ public class Character : MonoBehaviour
             RemovePA_Execute();
         }
     }
-
+    public void OnSomeoneDamage(List<Action.OnDamageParams> onDamageParamsList)
+    {
+        if (BattleManager.inBattle)
+        {
+            foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnSomeoneDamage(onDamageParamsList); }
+            RemovePA_Execute();
+        }
+    }
     public void OnSomeoneDamaged(Action.OnDamageParams onDamageParams)
     {
         if (BattleManager.inBattle)
