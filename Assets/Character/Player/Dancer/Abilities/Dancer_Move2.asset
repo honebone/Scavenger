@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Dancer_Echo
+  m_Name: Dancer_Move2
   m_EditorClassIdentifier: 
-  abilityName: "\u821E\u6247"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 93e232f1088e5dd4ebebb860ebde3183, type: 2}
+  abilityName: "\u98A8\u6E21\u308A\u306E\u821E+"
+  lockedDefault: 0
+  upgradeInfo: "<color=#FAED8A><sprite name=buff><link=S_CRIT\u30C0\u30E1\u30FC\u30B8\u4E0A\u6607><u>CRIT\u30C0\u30E1\u30FC\u30B8\u4E0A\u6607</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+15\r\n\u3059\u308C\u9055\u3063\u305F\u5473\u65B9\u306E<sprite
+    name=debuff><color=#C900FF>\u30C7\u30D0\u30D5</color>\u3092\u89E3\u9664\u3059\u308B\u3088\u3046\u306B"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 1
+  abilityType: 7
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -59,29 +60,30 @@ MonoBehaviour:
     excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u821E\u6247"
+  - actionName: "\u98A8\u6E21\u308A\u306E\u821E+"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u30FB\u4EFB\u610F\u306E\u65B9\u5411\u306B\u6700\u59272\u30DE\u30B9<sprite
+      name=move><color=#009EFF>\u79FB\u52D5</color>"
     sprite: {fileID: 0}
-    SE: {fileID: 0}
+    SE: {fileID: 8300000, guid: d561ba97ef404e246b980d8e012ff34f, type: 3}
     VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
-    actionObject: {fileID: 0}
+    actionObject: {fileID: 980131611971298319, guid: ea316923d29dc3a4aa21b8f11e3f66c5, type: 3}
     actionMods: []
-    targetType: 5
+    targetType: 9
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 0
-      enemy: 1
+      player: 1
+      enemy: 0
       onlyPlayable: 0
       onlyNonplayable: 0
       front: 1
@@ -101,7 +103,12 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
-      neighbor: []
+      neighbor:
+      - {x: 0, y: 0}
+      - {x: 1, y: 0}
+      - {x: -1, y: 0}
+      - {x: 0, y: 1}
+      - {x: 0, y: -1}
       sameColmn: 0
       sameRow: 0
       sameChara: 0
@@ -109,7 +116,7 @@ MonoBehaviour:
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
-    moveValue: 
+    moveValue: 02000000020000000200000002000000
     skipAnim: 0
     consumeFocus: 0
     exTurn: 0
@@ -120,11 +127,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    echoDoT:
-    - targetStE: []
-      echoAllStack: 0
-      consumeStack: 0
-      ratio: 100
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -208,7 +211,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 7
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -217,6 +220,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 

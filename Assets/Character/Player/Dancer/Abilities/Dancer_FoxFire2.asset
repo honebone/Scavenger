@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Dancer_Echo
+  m_Name: Dancer_FoxFire2
   m_EditorClassIdentifier: 
-  abilityName: "\u821E\u6247"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 93e232f1088e5dd4ebebb860ebde3183, type: 2}
+  abilityName: "\u72D0\u706B\u306E\u821E+"
+  lockedDefault: 0
+  upgradeInfo: "<color=#FAED8A><sprite name=buff><link=S_\u30AC\u30FC\u30C9><u>\u30AC\u30FC\u30C9</u></link></color>\u3068<color=#FAED8A><sprite
+    name=buff><link=S_EVD\u4E0A\u6607><u>EVD\u4E0A\u6607</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\u3088\u3046\u306B"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 1
+  abilityType: 3
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -59,14 +60,14 @@ MonoBehaviour:
     excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
+  cooldownOnUse: 3
+  hasRemain: 1
+  remainOnBattleStart: 2
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u821E\u6247"
+  - actionName: "\u72D0\u706B\u306E\u821E+"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -75,13 +76,13 @@ MonoBehaviour:
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 5
+    targetType: 3
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 0
-      enemy: 1
+      player: 1
+      enemy: 0
       onlyPlayable: 0
       onlyNonplayable: 0
       front: 1
@@ -101,7 +102,12 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
-      neighbor: []
+      neighbor:
+      - {x: 0, y: 0}
+      - {x: 1, y: 0}
+      - {x: -1, y: 0}
+      - {x: 0, y: 1}
+      - {x: 0, y: -1}
       sameColmn: 0
       sameRow: 0
       sameChara: 0
@@ -120,11 +126,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    echoDoT:
-    - targetStE: []
-      echoAllStack: 0
-      consumeStack: 0
-      ratio: 100
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -166,7 +168,34 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 5164891664867224302, guid: a59ec3ba96303894f95e140995d71362, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 6086145301006173142, guid: d37fa652893f2fe48906277658d62269, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 10
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -208,7 +237,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -217,6 +246,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 

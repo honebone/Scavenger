@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
-using System.Linq;
+using static Action;
 
 public class Action : MonoBehaviour
 {
@@ -782,14 +783,18 @@ public class Action : MonoBehaviour
 
         public bool damage;
         public OnDamageParams onDamageParams;
+
         public bool kill;
         public OnKillParams onKillParams;
+
+        public bool move;
+        public OnMoveParams onMoveParams;
     }
     public class OnAttackParams
     {
         /// <summary> = !(missed||evaded)</summary>
         public bool hit;
-        public bool missed;
+        //public bool missed;
         public bool evaded;
         public bool CRIT;
         public float toralCRITC;
@@ -843,6 +848,8 @@ public class Action : MonoBehaviour
         public int dir;
         public int range;
         public bool secondaryMove;
+
+        public List<Character> passedBy = new List<Character>();
 
         public Character target;
     }
@@ -1256,16 +1263,27 @@ public class Action : MonoBehaviour
                     }
                     else//É~ÉX
                     {
+                        //if (!notChara)
+                        //{
+                        //    target.GetTargetButton().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
+                        //    infoText.AddLogText(string.Format("{0}ÇÕçUåÇÇäOÇµÇΩ", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
+                        //    onAttackParams.missed = true;
+                        //}
+                        //onAttackParamsList.Add(onAttackParams);
+                        //target.OnAttacked(onAttackParams);//îÌçUåÇéûóUî≠
+                        //soundManager.PlaySE(Definer.soundRef.miss);
+                        //attackHit = false;
+
+                        target.GetTargetButton().SetDamageText($"{"EVD".ToSpr(true)}Evade", Definer.colorRef.evade);
+                        infoText.AddLogText(string.Format("{0}ÇÕçUåÇÇâÒîÇµÇΩ", targetStatus.charaName).ColorStr(Definer.colorRef.evade));
+                        soundManager.PlaySE(Definer.soundRef.evade);
+                        attackHit = false;
                         if (!notChara)
                         {
-                            target.GetTargetButton().SetDamageText("Miss", Definer.colorRef.failed_unavailable);
-                            infoText.AddLogText(string.Format("{0}ÇÕçUåÇÇäOÇµÇΩ", ownerStatus.charaName).ColorStr(Definer.colorRef.failed_unavailable));
-                            onAttackParams.missed = true;
+                            onAttackParams.evaded = true;
                         }
                         onAttackParamsList.Add(onAttackParams);
                         target.OnAttacked(onAttackParams);//îÌçUåÇéûóUî≠
-                        soundManager.PlaySE(Definer.soundRef.miss);
-                        attackHit = false;
                     }
 
                     
@@ -1326,12 +1344,12 @@ public class Action : MonoBehaviour
                         target.SANDamage(Random.Range(actionsStatus[i].SANDamage_min, actionsStatus[i].SANDamage_max + 1));
                     }
 
-                    if (actionsStatus[i].DoesAddShield())
+                    if (actionsStatus[i].DoesAddShield())//ÉVÅ[ÉãÉh
                     {
                         int shield = Random.Range(actionsStatus[i].shieldAdd_min, actionsStatus[i].shieldAdd_max + 1);
 
                         int percent = Random.Range(actionsStatus[i].shieldPercent_min, actionsStatus[i].shieldPercent_max + 1);
-                        shield += Mathf.RoundToInt(targetStatus.maxHP * percent * 0.01f);
+                        shield += targetStatus.maxHP.Mul(percent);
 
                         if (!notChara) battleManager.GetPBR(actionOwner.GetRootChara()).GShield += shield;
                         target.AddShield(shield);
@@ -1533,8 +1551,6 @@ public class Action : MonoBehaviour
 
                             onMoveParams.prevPos = targetStatus.position;
                             onMoveParams.currentPos = moveToPos;
-                            //test += string.Format("é¿ç€ÇÃà⁄ìÆãóó£:{0} à⁄ìÆå„ÇÃpos:{1}", moveRange, moveToPos);
-                            //infoText.AddDebugText(test);
                             if (moveRange > 0)
                             {
                                 bool movable = true;
@@ -1549,6 +1565,7 @@ public class Action : MonoBehaviour
 
                                 if (movable)
                                 {
+                                    onMoveParams.passedBy = charasOnTravelingDir;
                                     target.GetTargetButton().ResetCharacter();//É^Å[ÉQÉbÉgÉ{É^ÉìÇÃéQè∆ÇÃâèú
                                     foreach (Character c in charasOnTravelingDir)
                                     {
@@ -1567,6 +1584,7 @@ public class Action : MonoBehaviour
                                         onSwapParams.range = 1;
                                         onSwapParams.prevPos = c.CharaStatus().position;
                                         onSwapParams.currentPos = swapToPos;
+                                        onSwapParams.passedBy = new List<Character> { actionOwner };
                                         onSwapParams.secondaryMove = true;
                                         c.ChangePos(swapToPos);
                                         c.OnMoved(onSwapParams);
@@ -1721,6 +1739,10 @@ public class Action : MonoBehaviour
                 onMoveParams.dir = ownerMoveDir;
                 onMoveParams.range = ownerMoveRange;
                 onMoveParams.currentPos = moveToPos;
+                onMoveParams.passedBy = new List<Character>(charasOnTravelingDir);
+
+                result.move = true;
+                result.onMoveParams = onMoveParams;
 
                 actionStatus.actionOwner.ChangePos(moveToPos);//à⁄ìÆèàóù
                 actionStatus.actionOwner.OnMoved(onMoveParams);
@@ -1733,6 +1755,7 @@ public class Action : MonoBehaviour
                     onSwapParams.range = 1;
                     onSwapParams.prevPos = c.CharaStatus().position;
                     onSwapParams.currentPos = swapToPos;
+                    onSwapParams.passedBy.Add(actionStatus.actionOwner);
                     onSwapParams.secondaryMove = true;
                     c.ChangePos(swapToPos);
                     c.OnMoved(onSwapParams);
@@ -1788,9 +1811,9 @@ public class Action : MonoBehaviour
     }
 
     //=====================================================[à»â∫SecondEffectä÷òA]=================================================
-    public void Enqueue(ActionStatus actionStatus, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
+    public void Enqueue(ActionStatus act, bool setTargets, List<Character> actionTargets, int targetCount = 0, bool nullOwner = false)
     {
-        ActionStatus action = actionStatus;
+        ActionStatus action = act;
         actionStatus.actionOwner.Enqueue(action, setTargets, actionTargets, targetCount, nullOwner);
     }
 

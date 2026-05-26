@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class StEU_FoxFire : PA_StatusEffect
 {
+    [SerializeField] int countReq;
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
+    int count;
 
     public override void OnRoundEnd()
     {
@@ -15,10 +17,24 @@ public class StEU_FoxFire : PA_StatusEffect
 
     public override void OnAttacked(Action.OnAttackParams onAttackParams)
     {
-        if (onAttackParams.evaded) AddStack(1);
+        if (onAttackParams.evaded)
+        {
+            count++;
+            LogCount(count);
+            if (count == countReq)
+            {
+                AddStack(1);
+                count = 0;
+            }
+        }
     }
     public override string GetAdditionalInfo()
     {
         return actionStatus.GetInfo();
+    }
+
+    public override string GetCurrentStateInfo()
+    {
+        return $"カウント：{count}/{countReq}";
     }
 }

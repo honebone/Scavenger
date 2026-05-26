@@ -12,7 +12,7 @@ public class Eq_Piggy : PA_Equipment
         float value = 0;
         foreach(Action.OnAttackParams p in onAttackParamsList)
         {
-            if (!p.missed && !p.evaded)
+            if (p.hit)
             {
                 if (p.CRIT)
                 {

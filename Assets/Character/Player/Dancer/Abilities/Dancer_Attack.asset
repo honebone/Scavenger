@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Dancer_Echo
+  m_Name: Dancer_Attack
   m_EditorClassIdentifier: 
-  abilityName: "\u821E\u6247"
-  lockedDefault: 1
+  abilityName: "\u79C1\u306B\u5922\u4E2D"
+  lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 93e232f1088e5dd4ebebb860ebde3183, type: 2}
+  upgradeAbility: {fileID: 11400000, guid: ac892aab15c65e1479852be1dcdc8f8b, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -59,14 +59,14 @@ MonoBehaviour:
     excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 3
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u821E\u6247"
+  - actionName: "\u79C1\u306B\u5922\u4E2D"
     conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066"
+    targetInfo: "<color=#C900FF><sprite name=debuff><link=S_\u9B45\u4E86><u>\u9B45\u4E86</u></link></color>\u72B6\u614B\u306E\u6575\u5168\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 5
+    targetType: 2
     friendly: 0
     condition:
       searchAsPos: 0
@@ -92,7 +92,8 @@ MonoBehaviour:
       characterTags: 
       characterTagsExclude: 
       StEConditions: []
-      StE: []
+      StE:
+      - {fileID: 1489497368108049143, guid: eb6aac35887015a48a0534680fe0d81d, type: 3}
       StEExclude: []
       PE: []
       PEExclude: []
@@ -120,16 +121,12 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    echoDoT:
-    - targetStE: []
-      echoAllStack: 0
-      consumeStack: 0
-      ratio: 100
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 0
-    INTMod_max: 0
+    INTMod_min: 150
+    INTMod_max: 150
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -166,7 +163,16 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
+      guaranteed: 0
+      applyChance: 150
+      stack: 3
+      value: 70
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -217,6 +223,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 2
     actionTargets: []
     actionTargetsInt: 

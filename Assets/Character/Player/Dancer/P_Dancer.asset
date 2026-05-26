@@ -15,10 +15,12 @@ MonoBehaviour:
   fileName: P_Dancer
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u8E0A\u308A\u5B50"
-  introduction: 
+  introduction: "<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3092\u8EF8\u306B\u5473\u65B9\u3092\u5B88\u308B\u30BF\u30F3\u30AF\n\n<sprite
+    name=maxHP><color=#87FF79>maxHP</color>\u306F\u4F4E\u3044\u305F\u3081\u3001<sprite
+    name=EVD><color=#55B075>\u56DE\u907F</color>\u304C\u51FA\u6765\u306A\u3051\u308C\u3070\u3059\u3050\u306B\u6B7B\u3093\u3067\u3057\u307E\u3046"
   difficulty: "\u9AD8"
   preferFront: 1
-  preferMid: 0
+  preferMid: 1
   preferBack: 0
   mainRole:
   - "\u30BF\u30F3\u30AF"
@@ -39,8 +41,10 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: a454ab955b6558e449e3327786d62113, type: 2}
   - {fileID: 11400000, guid: af78fe2933878a742a9b58743c39e4fc, type: 2}
+  - {fileID: 11400000, guid: 62d54f4d8aee97f48a66b38f9ac2f228, type: 2}
+  - {fileID: 11400000, guid: b932ac7281855a148baa89e51afdaf8c, type: 2}
   - {fileID: 11400000, guid: a005860a641d32b49953cc02bee6e819, type: 2}
-  - {fileID: 11400000, guid: bb585d2784edf25439882ae1082105d8, type: 2}
+  - {fileID: 11400000, guid: e3ad0a0999f82c7428b36e61b359d98b, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dancer_FoxFire
   m_EditorClassIdentifier: 
   abilityName: "\u72D0\u706B\u306E\u821E"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: bb585d2784edf25439882ae1082105d8, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}

@@ -1,72 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
+--- !u!1 &980131611971298319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5954328460363848495}
+  - component: {fileID: -6233114652835094204}
+  m_Layer: 0
+  m_Name: Dancer_Move_A
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5954328460363848495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980131611971298319}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6233114652835094204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 980131611971298319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Dancer_Echo
+  m_Script: {fileID: 11500000, guid: e0cbc92ebb1818e4da660e2ead7ddd2a, type: 3}
+  m_Name: 
   m_EditorClassIdentifier: 
-  abilityName: "\u821E\u6247"
-  lockedDefault: 1
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 93e232f1088e5dd4ebebb860ebde3183, type: 2}
-  noSimpleInfo: 0
-  simpleInfo: 
-  abilityManager: {fileID: 0}
-  abilityType: 1
-  excludeRandomPool: 0
-  priority: 1
-  selectWeight: 1
-  availableFront: 1
-  availableMid: 1
-  availableBack: 0
-  hasSelfCondition: 0
-  conditionInfo: 
-  selfCondition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  freeAction: 0
-  cooldownOnBattleStart: 0
-  cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
-  actionsStaus:
-  - actionName: "\u821E\u6247"
-    conditionInfo: 
-    targetInfo: "1\u5217\u306E\u6575\u5168\u3066"
+  secondAction:
+    actionName: 
+    conditionInfo: "\u3053\u306E\u80FD\u529B\u3067\u5473\u65B9\u3068\u3059\u308C\u9055\u3063\u305F\u306A\u3089"
+    targetInfo: "\u3059\u308C\u9055\u3063\u305F\u5473\u65B9"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -75,18 +56,18 @@ MonoBehaviour:
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 5
+    targetType: 0
     friendly: 0
     condition:
       searchAsPos: 0
       onlyEmpty: 0
       player: 0
-      enemy: 1
+      enemy: 0
       onlyPlayable: 0
       onlyNonplayable: 0
-      front: 1
-      mid: 1
-      back: 1
+      front: 0
+      mid: 0
+      back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -120,11 +101,7 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
-    echoDoT:
-    - targetStE: []
-      echoAllStack: 0
-      consumeStack: 0
-      ratio: 100
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
@@ -166,7 +143,25 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 15
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: c081015b5a0ef344091ae6bd4ceac824, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 35
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -206,9 +201,9 @@ MonoBehaviour:
     moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    abilityEffect: 1
+    abilityEffect: 0
     freeAction: 0
-    abilityType: 1
+    abilityType: 0
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -217,6 +212,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 0
     actionTargets: []
     actionTargetsInt: 

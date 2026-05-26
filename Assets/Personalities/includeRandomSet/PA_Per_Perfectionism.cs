@@ -18,7 +18,7 @@ public class PA_Per_Perfectionism : PA_Personality
     {
         foreach (Action.OnAttackParams param in onAttackParamsList)
         {
-            if (param.missed && chance.Dice())
+            if (param.evaded && chance.Dice())
             {
                 Action.ActionStatus action = actionStatus;
                 actionStatus.actionOwner = character;

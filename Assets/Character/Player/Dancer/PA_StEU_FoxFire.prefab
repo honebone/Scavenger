@@ -100,11 +100,11 @@ MonoBehaviour:
   fileName: StEU_foxFire
   noSimpleInfo: 0
   simpleInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u3066\u6575\u5168\u4F53\u306B<color=#C900FF><sprite
-    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E\n\n\u653B\u6483\u3092<sprite
-    name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF+1"
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E\n\n\u653B\u6483\u30922\u56DE<sprite
+    name=EVD><color=#55B075>\u56DE\u907F</color>\u3059\u308B\u305F\u3073\u3001\u30B9\u30BF\u30C3\u30AF+1"
   PAInfo_start: 
   skipGetInfo: 0
-  PAInfo_end: "\u653B\u6483\u3092<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D\u3001\u30B9\u30BF\u30C3\u30AF+1"
+  PAInfo_end: "\u653B\u6483\u3092<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D\u3001\u30AB\u30A6\u30F3\u30C8+1\n\u30AB\u30A6\u30F3\u30C8\u304C2\u306B\u306A\u308B\u3068\u30B9\u30BF\u30C3\u30AF+1\u3057\u3066\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8"
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
     stack: 0
     value: 0
     DMGPerTurn: 0
+  countReq: 2
   actionStatus:
     actionName: 
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
