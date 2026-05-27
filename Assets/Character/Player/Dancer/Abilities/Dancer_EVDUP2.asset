@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Dancer_Attack
+  m_Name: Dancer_EVDUP2
   m_EditorClassIdentifier: 
-  abilityName: "\u79C1\u306B\u5922\u4E2D"
+  abilityName: "\u5171\u6F14+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: ac892aab15c65e1479852be1dcdc8f8b, type: 2}
+  upgradeInfo: "\u5BFE\u8C61\u3068\u3059\u308B\u7BC4\u56F2\u304C\u5897\u52A0\n<color=#00FFFF><sprite
+    name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u8FFD\u52A0\u3067\u4ED8\u4E0E"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 1
+  abilityType: 3
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
   availableFront: 1
   availableMid: 1
-  availableBack: 0
+  availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
   selfCondition:
@@ -64,9 +65,9 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u79C1\u306B\u5922\u4E2D"
+  - actionName: "\u5171\u6F14+"
     conditionInfo: 
-    targetInfo: "<color=#C900FF><sprite name=debuff><link=S_\u9B45\u4E86><u>\u9B45\u4E86</u></link></color>\u72B6\u614B\u306E\u6575\u5168\u3066"
+    targetInfo: "\u81EA\u8EAB\u53CA\u3073\u81EA\u8EAB\u3068\u540C\u3058\u5217\u307E\u305F\u306F\u6BB5\u306B\u3044\u308B\u5473\u65B9\u5168\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -76,12 +77,12 @@ MonoBehaviour:
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 2
-    friendly: 0
+    friendly: 1
     condition:
       searchAsPos: 0
       onlyEmpty: 0
-      player: 0
-      enemy: 1
+      player: 1
+      enemy: 0
       onlyPlayable: 0
       onlyNonplayable: 0
       front: 1
@@ -92,8 +93,7 @@ MonoBehaviour:
       characterTags: 
       characterTagsExclude: 
       StEConditions: []
-      StE:
-      - {fileID: 1489497368108049143, guid: eb6aac35887015a48a0534680fe0d81d, type: 3}
+      StE: []
       StEExclude: []
       PE: []
       PEExclude: []
@@ -102,7 +102,16 @@ MonoBehaviour:
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
-      neighbor: []
+      neighbor:
+      - {x: 0, y: 0}
+      - {x: 1, y: 0}
+      - {x: -1, y: 0}
+      - {x: 0, y: 1}
+      - {x: 0, y: -1}
+      - {x: 2, y: 0}
+      - {x: -2, y: 0}
+      - {x: 0, y: 2}
+      - {x: 0, y: -2}
       sameColmn: 0
       sameRow: 0
       sameChara: 0
@@ -125,8 +134,8 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 150
-    INTMod_max: 250
+    INTMod_min: 0
+    INTMod_max: 0
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -156,19 +165,19 @@ MonoBehaviour:
     SANHeal_max: 0
     SANDamage_min: 0
     SANDamage_max: 0
-    shieldAdd_min: 0
-    shieldAdd_max: 0
+    shieldAdd_min: 5
+    shieldAdd_max: 10
     shieldPercent_min: 0
     shieldPercent_max: 0
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: a57247041d649744d8d2f6959f19fef2, type: 3}
-      guaranteed: 0
-      applyChance: 150
-      stack: 3
-      value: 70
+    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 20
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -214,7 +223,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 1
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -223,6 +232,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 4
     actionTargets: []
     actionTargetsInt: 

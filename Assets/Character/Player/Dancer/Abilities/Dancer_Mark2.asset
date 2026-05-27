@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: Dancer_Mark
+  m_Name: Dancer_Mark2
   m_EditorClassIdentifier: 
-  abilityName: "\u79C1\u3092\u898B\u3066"
+  abilityName: "\u79C1\u3092\u898B\u3066+"
   lockedDefault: 0
-  upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 011166605a53ef04a82bf721ff529ce9, type: 2}
+  upgradeInfo: "<color=#C900FF><sprite name=debuff><link=S_ACC\u4F4E\u4E0B><u>ACC\u4F4E\u4E0B</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+15\n\n\u81EA\u8EAB\u306E<color=#C900FF><sprite
+    name=debuff><link=S_EVD\u4F4E\u4E0B><u>EVD\u4F4E\u4E0B</u></link></color>\u3092\u9664\u53BB\u3059\u308B\u3088\u3046\u306B"
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -64,7 +65,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u79C1\u3092\u898B\u3066"
+  - actionName: "\u79C1\u3092\u898B\u3066+"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -176,7 +177,7 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 85
       stack: 1
-      value: 20
+      value: 35
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
@@ -234,7 +235,7 @@ MonoBehaviour:
     targetCount: 1
     actionTargets: []
     actionTargetsInt: 
-  - actionName: "\u79C1\u3092\u898B\u3066"
+  - actionName: "\u79C1\u3092\u898B\u3066+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -345,7 +346,10 @@ MonoBehaviour:
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
-    removeStEs: []
+    removeStEs:
+    - removeStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
+      removeAll: 1
+      addAmount: 0
     removePEs: []
     summon: 0
     summonChara: []
