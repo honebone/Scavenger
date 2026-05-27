@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898f8dc5a49c060438948965b64c4d0e, type: 3}
-  m_Name: Eq_LeatherVest
+  m_Name: Eq_LeatherCloak
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: "\u9769\u306E\u93A7"
+  itemName: "\u9769\u306E\u30DE\u30F3\u30C8"
   specialInfo: 0
   info: 
   rarity: 1
-  sprite: {fileID: 21300000, guid: 041b8999f44fe0444969c9654ddc7730, type: 3}
+  sprite: {fileID: 21300000, guid: 97e310a3389f4d446bbb3125829ae8b8, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
   materialTags: 00000000
   price: 0
-  manager: {fileID: 8643157695430726828, guid: d0e5840597a81ae4080fab72d21fe972, type: 3}
+  manager: {fileID: 8643157695430726828, guid: 9ac581e81e247ae4d819c2efb6c5cabb, type: 3}

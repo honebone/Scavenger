@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   hardMode: 1
   autoset_playerLVL: 7
@@ -17582,6 +17582,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92c2359f14efbd24dbdadb0ec5b083a7, type: 2}
   - {fileID: 11400000, guid: 466d17086e3bca64f835bea2c7826ded, type: 2}
   - {fileID: 11400000, guid: 8e4c84a780ed23d4fb4ccb1ecc62ce46, type: 2}
+  - {fileID: 11400000, guid: d7a2eb57ba27202448c3b8a7b9f14c3b, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase_randPool:
