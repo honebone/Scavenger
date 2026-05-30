@@ -5,6 +5,7 @@ using UnityEngine;
 public class RE_Elite : RoomEvent
 {
     public ExpeditionManager.BattleParams battleParams;
+    [SerializeField] int rareChance;
     public override void StartRoomEvent()
     {
         List<AreaManager.EnemySet> waves = new List<AreaManager.EnemySet>();
@@ -22,7 +23,8 @@ public class RE_Elite : RoomEvent
     PassiveAbility PA;
     public override void OnEndSupply()
     {
-        per = expeditionManager.GetPer_Random_CertainType(PA_Personality.PersonalityStatus.PersonalityType.awoken)[0];
+        PA_Personality.PersonalityStatus.PersonalityType type = rareChance.Dice() ? PA_Personality.PersonalityStatus.PersonalityType.awoken : PA_Personality.PersonalityStatus.PersonalityType.good;
+        per = expeditionManager.GetPer_Random_CertainType(type)[0];
         PA = per.GetComponent<PassiveAbility>();
         string info = $"“Á«<{PA.GetPAName()}>‚ğè‚É“ü‚ê‚½I\nƒLƒƒƒ‰1‘Ì‚É•t—^‚·‚é‚±‚Æ‚ª‚Å‚«‚é";
         expeditionManager.SetREInfo("•ñV", info);

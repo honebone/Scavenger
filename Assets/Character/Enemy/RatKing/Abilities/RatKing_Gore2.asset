@@ -56,6 +56,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
@@ -63,7 +64,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u30B4\u30A2+"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -104,6 +105,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -120,8 +122,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 120
-    ATKMod_max: 150
+    ATKMod_min: 80
+    ATKMod_max: 120
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -191,7 +193,7 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-    moveChance: 15
+    moveChance: 40
     guaranteedMove: 0
     moveRandomDir: 0
     moveForword: 0
@@ -211,6 +213,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
-    actionTargetsInt: 06000000
+    actionTargetsInt: 

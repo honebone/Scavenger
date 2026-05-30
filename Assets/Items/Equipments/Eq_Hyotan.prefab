@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3904089656222173935
+--- !u!1 &9185327421234476493
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 441803717096610718}
-  - component: {fileID: 8913604892327803961}
-  - component: {fileID: -874316378701495368}
+  - component: {fileID: 2731747101393116504}
+  - component: {fileID: -2717720283474768771}
+  - component: {fileID: 3238141386940741765}
   m_Layer: 0
-  m_Name: PA_StEU_Star_FearEndless
+  m_Name: Eq_Hyotan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &441803717096610718
+--- !u!4 &2731747101393116504
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904089656222173935}
+  m_GameObject: {fileID: 9185327421234476493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,24 +33,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8913604892327803961
+--- !u!114 &-2717720283474768771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904089656222173935}
+  m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3089e2867cb80874aae8f2c083740749, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f981152df520c7489ee22827041860a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: StEU_Star_FearEndless
+  fileName: eq_hyotan
   noSimpleInfo: 0
-  simpleInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001<\u661F\u3005\u306E\u4EE3\u5F01\u8005>\u306B<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\n\n\u884C\u52D5\u3059\u308B\u305F\u3073\u3001\u30B9\u30BF\u30C3\u30AF-1"
-  PAInfo_start: 
+  simpleInfo: "<sprite name=move><color=#009EFF>\u79FB\u52D5</color>\u3059\u308B\u305F\u3073\u3001<color=#55B075><sprite
+    name=EVD><link=T_EVD><u>EVD</u></link></color>\u304C\u5897\u52A0\u3059\u308B\n\n\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u30E9\u30F3\u30C0\u30E0\u306A\u65B9\u5411\u306B<sprite
+    name=move><color=#009EFF>\u79FB\u52D5</color>\u3059\u308B"
+  PAInfo_start: "\u81EA\u8EAB\u304C<sprite name=move><color=#009EFF>\u79FB\u52D5</color>\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1\n(\u6700\u592710)\n\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D\u3001<color=#55B075><sprite
+    name=EVD><link=T_EVD><u>EVD</u></link></color>+3"
   skipGetInfo: 0
-  PAInfo_end: "\u884C\u52D5\u3059\u308B\u305F\u3073\u3001\u30B9\u30BF\u30C3\u30AF-1"
+  PAInfo_end: 
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -75,39 +78,25 @@ MonoBehaviour:
     debuffChance: 0
     debuffStacks: 0
     buffStacks: 0
-    moveRes: 0
+    moveRes: -50
     debuffRes: 0
     minion: 0
   AMods: []
   PATags: 
   rune_initialCharge: 0
-  StEStatus:
-    StEName: "\u679C\u3066\u306A\u304D\u6050\u6016"
-    StEInfo: 
-    StEIcon: {fileID: 21300000, guid: eb39f44b28877c0419e2ffd2ba78aba1, type: 3}
-    StEType: 2
-    overideColor: 0
-    colorOveride: {r: 0, g: 0, b: 0, a: 0}
-    maxStack: 0
-    merge: 0
-    refValue: 0
-    undeletable: 1
-    DoT: 0
-    regen: 0
-    StEPrefab: {fileID: 0}
-    applyer: {fileID: 0}
-    stack: 0
-    value: 0
-    DMGPerTurn: 0
+  equipmentStatus:
+    itemData: {fileID: 11400000, guid: 581e32ece0c2d90499b8920f9697ca03, type: 2}
+  EVDPerMove: 3
+  maxCount: 10
   actionStatus:
     actionName: 
-    conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
-    targetInfo: "\u6575\u306E<\u661F\u3005\u306E\u4EE3\u5F01\u8005>"
+    conditionInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
+    VE_OnTargets: {fileID: 0}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -198,16 +187,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
-      guaranteed: 1
-      applyChance: 0
-      stack: 2
-      value: 0
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -239,12 +219,12 @@ MonoBehaviour:
       GHeal_TH: 0
       GHeal: 0
     moveChance: 0
-    guaranteedMove: 0
-    moveRandomDir: 0
-    moveForword: 0
-    moveUpper: 0
-    moveLower: 0
-    moveBackword: 0
+    guaranteedMove: 1
+    moveRandomDir: 1
+    moveForword: 1
+    moveUpper: 1
+    moveLower: 1
+    moveBackword: 1
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
     abilityEffect: 0
@@ -261,43 +241,13 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  condition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 1
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 1
-    mid: 1
-    back: 1
-    excludeObstacle: 0
-    characterInclude:
-    - {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
---- !u!212 &-874316378701495368
+--- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3904089656222173935}
+  m_GameObject: {fileID: 9185327421234476493}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -332,7 +282,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb39f44b28877c0419e2ffd2ba78aba1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a35132dfd30de8b4ba263f4247b3401a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

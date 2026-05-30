@@ -56,14 +56,15 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   freeAction: 0
-  cooldownOnBattleStart: 3
+  cooldownOnBattleStart: 4
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 1
   maxRemain: 1
   actionsStaus:
-  - actionName: "\u9060\u5420\u3048"
+  - actionName: "\u9060\u5420\u3048+"
     conditionInfo: 
     targetInfo: "\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B91\u3064"
     AModInfo: 
@@ -104,6 +105,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -215,8 +217,8 @@ MonoBehaviour:
     source: {fileID: 0}
     targetCount: 1
     actionTargets: []
-    actionTargetsInt: 10000000
-  - actionName: "\u9060\u5420\u3048"
+    actionTargetsInt: 
+  - actionName: "\u9060\u5420\u3048+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -257,6 +259,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -365,7 +368,7 @@ MonoBehaviour:
     abilityEffect: 1
     freeAction: 0
     abilityType: 5
-    index: 0
+    index: 1
     StEApplyBonus: []
     debuffChanceMod: 0
     removeStEs_additional: []
@@ -375,4 +378,4 @@ MonoBehaviour:
     source: {fileID: 0}
     targetCount: 1
     actionTargets: []
-    actionTargetsInt: 10000000
+    actionTargetsInt: 

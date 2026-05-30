@@ -53,7 +53,7 @@ MonoBehaviour:
   PAInfo_end: 
   statMod:
     LVL: 0
-    maxHP_mul: 20
+    maxHP_mul: 0
     maxHP_int: 0
     maxSAN_mul: 0
     PROT: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: 0
+    EVD: 7
     ACC: 0
     ACT: 0
     turnPerRound: 0
@@ -73,13 +73,16 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   equipmentStatus:
     itemData: {fileID: 11400000, guid: 6151f53aad37f1640b072e45ec846271, type: 2}
-    equipmentInfo: 
   maxUses: 5
 --- !u!212 &2102424110011888310
 SpriteRenderer:

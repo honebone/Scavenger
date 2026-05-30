@@ -1584,7 +1584,7 @@ public class Action : MonoBehaviour
                                         onSwapParams.range = 1;
                                         onSwapParams.prevPos = c.CharaStatus().position;
                                         onSwapParams.currentPos = swapToPos;
-                                        onSwapParams.passedBy = new List<Character> { actionOwner };
+                                        onSwapParams.passedBy = new List<Character> { target };
                                         onSwapParams.secondaryMove = true;
                                         c.ChangePos(swapToPos);
                                         c.OnMoved(onSwapParams);

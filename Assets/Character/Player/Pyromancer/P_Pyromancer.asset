@@ -46,6 +46,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:
   - {fileID: 4283910244092387297, guid: 245b0d76d75de4342b5ce66b9883140a, type: 3}
+  PA_hard: []
   actionMods: []
   corpse: {fileID: 0}
   loot:
@@ -59,7 +60,7 @@ MonoBehaviour:
   maxHP: 45
   maxSAN: 50
   ATK: 5
-  INT: 13
+  INT: 12
   CRITC: 5
   CRITD: 50
   EVD: 5

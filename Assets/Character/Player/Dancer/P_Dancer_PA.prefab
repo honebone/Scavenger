@@ -48,7 +48,8 @@ MonoBehaviour:
   fileName: P_dancer
   noSimpleInfo: 0
   simpleInfo: "\u653B\u6483\u3092<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D\u3001\u653B\u6483\u3092\u3057\u3066\u304D\u305F\u76F8\u624B\u306B<color=#C900FF><sprite
-    name=debuff><link=S_\u9B45\u4E86><u>\u9B45\u4E86</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\r\n\r\n<sprite
+    name=debuff><link=S_\u9B45\u4E86><u>\u9B45\u4E86</u></link></color>\u3068<color=#C900FF><sprite
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\r\n\r\n<sprite
     name=move><color=#009EFF>\u79FB\u52D5</color>\u6642\u306B\u5473\u65B9\u3068\u3059\u308C\u9055\u3063\u305F\u306A\u3089\u3001\u305D\u306E\u5473\u65B9\u306B<color=#00FFFF><sprite
     name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B\r\n<sprite
     name=shield>\u91CF\u306F\u81EA\u8EAB\u306E<color=#55B075><sprite name=EVD><link=T_EVD><u>EVD</u></link></color>\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B"
@@ -68,7 +69,7 @@ MonoBehaviour:
     exDMG_mul: 0
     CRITC: 0
     CRITD: 0
-    EVD: 15
+    EVD: 10
     ACC: 0
     ACT: 0
     turnPerRound: 0
@@ -88,8 +89,8 @@ MonoBehaviour:
   personalityStatus:
     personalityName: "\u6D41\u9E97\u306A\u821E\u3044"
     personalityType: 1
-  EVDPerShield: 10
-  maxEVD: 70
+  EVDPerShield: 15
+  maxEVD: 75
   onEvaded:
     actionName: 
     conditionInfo: "\u653B\u6483\u3092<sprite name=EVD><color=#55B075>\u56DE\u907F</color>\u3057\u305F\u3068\u304D"
@@ -199,6 +200,15 @@ MonoBehaviour:
       refATK: 0
       refTargetMaxHP: 0
       DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      guaranteed: 0
+      applyChance: 120
+      stack: 2
+      value: 50
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -257,8 +267,8 @@ MonoBehaviour:
     conditionInfo: "<sprite name=move><color=#009EFF>\u79FB\u52D5</color>\u3057\u305F\u3068\u304D"
     targetInfo: "\u3059\u308C\u9055\u3063\u305F\u5473\u65B9\u5168\u3066"
     AModInfo: 
-    actionInfo: "\u81EA\u8EAB\u306E<color=#55B075><sprite name=EVD><link=T_EVD><u>EVD</u></link></color>10\u306B\u3064\u304D\u4ED8\u4E0E\u3059\u308B<sprite
-      name=shield>\u306E\u5272\u5408+1\uFF05(\u6700\u5927\u3067+7\uFF05)"
+    actionInfo: "\u81EA\u8EAB\u306E<color=#55B075><sprite name=EVD><link=T_EVD><u>EVD</u></link></color>15\u306B\u3064\u304D\u4ED8\u4E0E\u3059\u308B<sprite
+      name=shield>\u306E\u5272\u5408+1\uFF05(\u6700\u5927\u3067+5\uFF05)"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -347,8 +357,8 @@ MonoBehaviour:
     SANDamage_max: 0
     shieldAdd_min: 0
     shieldAdd_max: 0
-    shieldPercent_min: 8
-    shieldPercent_max: 8
+    shieldPercent_min: 5
+    shieldPercent_max: 5
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0

@@ -10,34 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: StrayDog_Howl
+  m_Name: StarBeast_Buff2
   m_EditorClassIdentifier: 
-  abilityName: "\u9060\u5420\u3048"
+  abilityName: "\u660E\u661F\u306E\u8A66\u7DF4+"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 60feaaec917a5c947a9021d9488e069e, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 5
+  abilityType: 3
   excludeRandomPool: 0
-  priority: 1
+  priority: 3
   selectWeight: 1
   availableFront: 1
   availableMid: 1
   availableBack: 1
-  hasSelfCondition: 0
-  conditionInfo: 
+  hasSelfCondition: 1
+  conditionInfo: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u304C30\uFF05\u4EE5\u4E0B"
   selfCondition:
     searchAsPos: 0
     onlyEmpty: 0
     player: 0
-    enemy: 0
+    enemy: 1
     onlyPlayable: 0
     onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
+    front: 1
+    mid: 1
+    back: 1
     excludeObstacle: 0
     characterInclude: []
     characterTags: 
@@ -49,8 +49,8 @@ MonoBehaviour:
     PEExclude: []
     canEcho: 0
     echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
+    HPPercent: 30
+    HP_lessThan: 1
     HP_excludeEqual: 0
     neighbor: []
     sameColmn: 0
@@ -58,35 +58,35 @@ MonoBehaviour:
     sameChara: 0
     excludeSelf: 0
   freeAction: 0
-  cooldownOnBattleStart: 4
+  cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 1
   remainOnBattleStart: 1
   maxRemain: 1
   actionsStaus:
-  - actionName: "\u9060\u5420\u3048"
+  - actionName: "\u660E\u661F\u306E\u8A66\u7DF4"
     conditionInfo: 
-    targetInfo: "\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B91\u3064"
+    targetInfo: "\u81EA\u8EAB"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 7633311505586100419, guid: a81de20f9ae33c24f8ff4532d347276a, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 3
     friendly: 0
     condition:
-      searchAsPos: 1
-      onlyEmpty: 1
+      searchAsPos: 0
+      onlyEmpty: 0
       player: 0
-      enemy: 1
+      enemy: 0
       onlyPlayable: 0
       onlyNonplayable: 0
-      front: 1
-      mid: 1
-      back: 1
+      front: 0
+      mid: 0
+      back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
@@ -112,7 +112,7 @@ MonoBehaviour:
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
-    exTurn: 0
+    exTurn: 2
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0
@@ -162,17 +162,24 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 2f38d614892d4784683b7f5814f8cbd6, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 0
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
-    removeStE_debuff: 0
+    removeStE_debuff: 10
     removeStEs: []
     removePEs: []
-    summon: 1
-    summonChara:
-    - {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    summonChanceWeight:
-    - 1
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
     summonStatusInherit:
       maxHP: 0
       ATK: 0
@@ -206,7 +213,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 5
+    abilityType: 3
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -217,4 +224,4 @@ MonoBehaviour:
     source: {fileID: 0}
     targetCount: 1
     actionTargets: []
-    actionTargetsInt: 10000000
+    actionTargetsInt: 

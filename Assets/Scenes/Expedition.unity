@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 1
+  skipDeployPhase: 0
   skipTutorial: 1
   hardMode: 1
   autoset_playerLVL: 7
@@ -462,12 +462,12 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    centerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
-    lowerFront: {fileID: 11400000, guid: f0300a239371a9d4b82b0bc72767e0b9, type: 2}
+    upperFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
+    centerFront: {fileID: 0}
+    lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 0}
-    centerMid: {fileID: 0}
+    centerMid: {fileID: 11400000, guid: 13932f2d6a33833419410195789a0708, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
@@ -17570,7 +17570,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 486b605a2cb2cb749963404079581379, type: 2}
   - {fileID: 11400000, guid: cc079b174c94f27419b7481981dc59c9, type: 2}
   - {fileID: 11400000, guid: 962259d93d9f7fa44b6264b5bc2a013a, type: 2}
-  - {fileID: 11400000, guid: cf3b55e691be2ad45a1123e8f2c0c474, type: 2}
   - {fileID: 11400000, guid: f94243927aa6a294d8fd0b47f485f5c6, type: 2}
   - {fileID: 11400000, guid: 32d4fbbd9791cef4995d4251a7f86906, type: 2}
   - {fileID: 11400000, guid: 19784fcd3f752a04a9fd024df0fc1d76, type: 2}
@@ -17583,6 +17582,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 466d17086e3bca64f835bea2c7826ded, type: 2}
   - {fileID: 11400000, guid: 8e4c84a780ed23d4fb4ccb1ecc62ce46, type: 2}
   - {fileID: 11400000, guid: d7a2eb57ba27202448c3b8a7b9f14c3b, type: 2}
+  - {fileID: 11400000, guid: 581e32ece0c2d90499b8920f9697ca03, type: 2}
+  - {fileID: 11400000, guid: a3c286822ca983d4085612992c11a466, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase_randPool:

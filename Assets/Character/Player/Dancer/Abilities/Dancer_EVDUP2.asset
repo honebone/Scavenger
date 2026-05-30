@@ -165,10 +165,10 @@ MonoBehaviour:
     SANHeal_max: 0
     SANDamage_min: 0
     SANDamage_max: 0
-    shieldAdd_min: 5
-    shieldAdd_max: 10
-    shieldPercent_min: 0
-    shieldPercent_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 5
+    shieldPercent_max: 10
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
@@ -232,6 +232,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 4
+    targetCount: 3
     actionTargets: []
     actionTargetsInt: 

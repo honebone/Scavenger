@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u79C1\u3092\u898B\u3066+"
   lockedDefault: 0
-  upgradeInfo: "<color=#C900FF><sprite name=debuff><link=S_ACC\u4F4E\u4E0B><u>ACC\u4F4E\u4E0B</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+15\n\n\u81EA\u8EAB\u306E<color=#C900FF><sprite
+  upgradeInfo: "<color=#C900FF><sprite name=debuff><link=S_ACC\u4F4E\u4E0B><u>ACC\u4F4E\u4E0B</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+10\n\n\u81EA\u8EAB\u306E<color=#C900FF><sprite
     name=debuff><link=S_EVD\u4F4E\u4E0B><u>EVD\u4F4E\u4E0B</u></link></color>\u3092\u9664\u53BB\u3059\u308B\u3088\u3046\u306B"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 85
       stack: 1
-      value: 35
+      value: 25
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0

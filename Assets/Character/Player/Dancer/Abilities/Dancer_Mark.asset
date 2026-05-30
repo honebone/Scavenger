@@ -176,7 +176,7 @@ MonoBehaviour:
       guaranteed: 0
       applyChance: 85
       stack: 1
-      value: 20
+      value: 15
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0

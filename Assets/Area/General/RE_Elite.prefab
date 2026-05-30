@@ -59,3 +59,4 @@ MonoBehaviour:
     supplyPicksMod: 0
     expMod: 0
     dontPlayBGMOnEnd: 0
+  rareChance: 33

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
-  m_Name: StrayDog_Howl
+  m_Name: StarBeast_AttackAll2
   m_EditorClassIdentifier: 
-  abilityName: "\u9060\u5420\u3048"
+  abilityName: "\u6D41\u661F\u306E\u8A66\u7DF4+"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 11400000, guid: 60feaaec917a5c947a9021d9488e069e, type: 2}
+  upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
-  abilityType: 5
+  abilityType: 1
   excludeRandomPool: 0
-  priority: 1
+  priority: 2
   selectWeight: 1
   availableFront: 1
   availableMid: 1
@@ -58,31 +58,32 @@ MonoBehaviour:
     sameChara: 0
     excludeSelf: 0
   freeAction: 0
-  cooldownOnBattleStart: 4
-  cooldownOnUse: 0
-  hasRemain: 1
-  remainOnBattleStart: 1
-  maxRemain: 1
+  cooldownOnBattleStart: 6
+  cooldownOnUse: 6
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
   actionsStaus:
-  - actionName: "\u9060\u5420\u3048"
+  - actionName: "\u6D41\u661F\u306E\u8A66\u7DF4"
     conditionInfo: 
-    targetInfo: "\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B91\u3064"
+    targetInfo: "\u30D7\u30EC\u30A4\u30E4\u30FC\u5168\u3066(<color=#FAED8A><sprite
+      name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u3092\u7121\u8996)"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 3315130784292785652, guid: 425518f9c6dbc0b48ab67fed0b954a08, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 2
     friendly: 0
     condition:
-      searchAsPos: 1
-      onlyEmpty: 1
-      player: 0
-      enemy: 1
-      onlyPlayable: 0
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 1
+      enemy: 0
+      onlyPlayable: 1
       onlyNonplayable: 0
       front: 1
       mid: 1
@@ -108,7 +109,7 @@ MonoBehaviour:
       excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
-    ignoreHide: 0
+    ignoreHide: 1
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
@@ -122,8 +123,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 0
-    ATKMod_max: 0
+    ATKMod_min: 100
+    ATKMod_max: 150
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -153,8 +154,8 @@ MonoBehaviour:
     exHeal_mul: 0
     SANHeal_min: 0
     SANHeal_max: 0
-    SANDamage_min: 0
-    SANDamage_max: 0
+    SANDamage_min: 5
+    SANDamage_max: 8
     shieldAdd_min: 0
     shieldAdd_max: 0
     shieldPercent_min: 0
@@ -162,17 +163,42 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+      guaranteed: 0
+      applyChance: 70
+      stack: 2
+      value: 15
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 8492015112257644605, guid: 02422eb91f143c84a94b74a2bef4c9b5, type: 3}
+      guaranteed: 0
+      applyChance: 70
+      stack: 2
+      value: 15
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 7270025996679623257, guid: ce850cb9d609ef4419ff7b3fd1876448, type: 3}
+      guaranteed: 0
+      applyChance: 70
+      stack: 2
+      value: 15
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
-    removeStE_buff: 0
+    removeStE_buff: 2
     removeStE_debuff: 0
     removeStEs: []
     removePEs: []
-    summon: 1
-    summonChara:
-    - {fileID: 11400000, guid: 8f78e9c6a374cbf46b46f29a43d6ffbe, type: 2}
-    summonChanceWeight:
-    - 1
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
     summonStatusInherit:
       maxHP: 0
       ATK: 0
@@ -206,7 +232,7 @@ MonoBehaviour:
     abilityRemainControlls: []
     abilityEffect: 1
     freeAction: 0
-    abilityType: 5
+    abilityType: 1
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -215,6 +241,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 1
+    targetCount: 4
     actionTargets: []
-    actionTargetsInt: 10000000
+    actionTargetsInt: 

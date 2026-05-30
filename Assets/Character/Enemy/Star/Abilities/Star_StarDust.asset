@@ -167,7 +167,7 @@ MonoBehaviour:
     - applyStE: {fileID: 5164891664867224302, guid: 9f48bcb0bd986574fbd88a2e78e4c125, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 1
+      stack: 2
       value: 0
       dontApplyBonus: 0
       refATK: 0

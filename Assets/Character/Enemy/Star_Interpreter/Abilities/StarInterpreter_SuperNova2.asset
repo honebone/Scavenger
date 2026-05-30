@@ -139,7 +139,7 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    drain: 0
+    drain: 150
     ignoreShield: 0
     sureHit: 0
     unevadable: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
     applySteParams:
     - applyStE: {fileID: 1489497368108049143, guid: 413872c257cee5a4985eea40067a6f82, type: 3}
       guaranteed: 0
-      applyChance: 70
+      applyChance: 100
       stack: 1
       value: 20
       dontApplyBonus: 0
@@ -175,9 +175,9 @@ MonoBehaviour:
       DMGPerTurn: 0
     - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
       guaranteed: 0
-      applyChance: 70
+      applyChance: 100
       stack: 1
-      value: 30
+      value: 50
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0
