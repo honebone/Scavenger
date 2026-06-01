@@ -73,27 +73,34 @@ MonoBehaviour:
     StEResists: []
     StEApplyBonus: []
     debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
     moveRes: 0
     debuffRes: 0
+    minion: 0
   AMods: []
   PATags: 
+  rune_initialCharge: 0
   StEStatus:
     StEName: "\u982D"
     StEInfo: "1\u30B9\u30BF\u30C3\u30AF\u306B\u3064\u304D\n<color=#FF6CC1><sprite
-      name=ACC><link=T_ACC><u>ACC</u></link></color>+20\n<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+5\uFF05"
+      name=ACC><link=T_ACC><u>ACC</u></link></color>+10\n<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+5\uFF05"
     StEIcon: {fileID: 21300000, guid: ba04c50e1fa04044db46fd6bbbbb05b0, type: 3}
     StEType: 4
+    overideColor: 0
+    colorOveride: {r: 0, g: 0, b: 0, a: 0}
     maxStack: 0
     merge: 1
     refValue: 0
     undeletable: 1
     DoT: 0
     regen: 0
+    StEPrefab: {fileID: 0}
     applyer: {fileID: 0}
     stack: 0
     value: 0
     DMGPerTurn: 0
-  ACCPerStack: 20
+  ACCPerStack: 10
   CRITCPerStack: 5
 --- !u!212 &6391350165293048886
 SpriteRenderer:

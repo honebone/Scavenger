@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  skipDeployPhase: 0
+  skipDeployPhase: 1
   skipTutorial: 1
   hardMode: 1
   autoset_playerLVL: 7
@@ -462,12 +462,12 @@ MonoBehaviour:
   eq_exclusive: []
   enemySetTest:
     dontShuffleFront: 0
-    upperFront: {fileID: 11400000, guid: c87482929cdfce24eade0a5492b8d15f, type: 2}
-    centerFront: {fileID: 0}
+    upperFront: {fileID: 11400000, guid: 5d83bba54843b234f8bf475ac825503c, type: 2}
+    centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
     upperMid: {fileID: 0}
-    centerMid: {fileID: 11400000, guid: 13932f2d6a33833419410195789a0708, type: 2}
+    centerMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
     upperBack: {fileID: 0}
@@ -5472,7 +5472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4336439062694548224, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: HmacKey
-      value: 0xD5A+RodVa1HmsYZ2SoZF8qc1PsgjbaL6iTLGsR68910LAK4LC4qtCrU2tnXF8xKkUMX0u3eHOQegmzjNrimA==
+      value: +XEmgW/52Ns/SSMT8qu3mOyYqDsdf5pQupatWtuqJClrfczL8vIJvt3zyZ4Xi0W6biO7hKS6rSRTn8YscoU/5w==
       objectReference: {fileID: 0}
     - target: {fileID: 5323818951622561360, guid: 00ae2bf8c8a624ed38161cab9eeda7f7, type: 3}
       propertyPath: m_Name

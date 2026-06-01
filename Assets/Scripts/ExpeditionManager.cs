@@ -177,7 +177,7 @@ public class ExpeditionManager : MonoBehaviour
     Inventory inventory;
     RoomEndLogManager relManager;
 
-    GameParams gp;
+    GameParams gp => GameManager.gameParams;
     CommonParams cp;
 
     bool inExpedition;
@@ -218,7 +218,6 @@ public class ExpeditionManager : MonoBehaviour
         inventory = FindObjectOfType<Inventory>();
         relManager = RoomEndLogManager.inst;
 
-        gp = GameManager.gameParams;
         cp = Definer.inst.cp;
 
         //for (int i = 0; i < Enum.GetNames(typeof(PA_Personality.PersonalityStatus.PersonalityType)).Length; i++)

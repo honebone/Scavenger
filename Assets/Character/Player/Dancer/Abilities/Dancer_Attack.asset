@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dancer_Attack
   m_EditorClassIdentifier: 
   abilityName: "\u79C1\u306B\u5922\u4E2D"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: ac892aab15c65e1479852be1dcdc8f8b, type: 2}
   noSimpleInfo: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 3
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0

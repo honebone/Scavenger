@@ -82,7 +82,7 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   equipmentStatus:
-    itemData: {fileID: 11400000, guid: b5960120eaaeeea4ca4b394ce7945a19, type: 2}
+    itemData: {fileID: 11400000, guid: fcf3b3d29e42d9246b7db05f4c60bbcd, type: 2}
   countReq: 2
 --- !u!212 &3238141386940741765
 SpriteRenderer:

@@ -1,17 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Action;
 
 public class StEU_FoxFire : PA_StatusEffect
 {
     [SerializeField] int countReq;
+    [SerializeField] int maxEVD;
+    [SerializeField] int burnPerEVD;
     [SerializeField] Action.ActionStatus actionStatus;
     [SerializeField] CharactersManager.SearchCharaCondition condition;
     int count;
 
     public override void OnRoundEnd()
     {
-        Enqueue_SearchTarget(actionStatus, condition);
+        ActionStatus action = actionStatus;
+        List<StatusEffectParams> list= new List<StatusEffectParams>(action.applySteParams);
+        StatusEffectParams burn = list[0];
+        int EVD = Mathf.Min(maxEVD, character.CharaStatus().EVD).ToInt();
+        burn.value += EVD * burnPerEVD;
+
+        list[0] = burn;
+        action.applySteParams = new List<StatusEffectParams>(list);
+
+        Enqueue_SearchTarget(action, condition);
         AddStack(-1);
     }
 

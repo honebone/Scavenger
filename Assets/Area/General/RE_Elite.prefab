@@ -54,7 +54,7 @@ MonoBehaviour:
   battleParams:
     bgm: {fileID: 0}
     lvlMod: 1
-    additionalEq: 0
+    additionalEq: 2
     additionalEq_epic: 0
     supplyPicksMod: 0
     expMod: 0

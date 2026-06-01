@@ -91,43 +91,6 @@ public class Inventory : MonoBehaviour
     public void SetButtons()
     {
         infoText.AddErrorText("本来呼ばれないはずの関数です");
-        //if (content.childCount != 0)
-        //{
-        //    for (int i = 0; i < content.childCount; i++)
-        //    {
-        //        Destroy(content.GetChild(i).gameObject);
-        //    }
-        //}
-        //ItemData.ItemType sortType=ItemData.ItemType.material;
-        //switch (sort)
-        //{
-        //    case 2:
-        //        sortType = ItemData.ItemType.equipment;
-        //        break;
-        //    case 3:
-        //        sortType = ItemData.ItemType.tool;
-        //        break;
-        //}
-        //foreach(Definer.Item item in inventory)
-        //{
-        //    if (sort == 0 || item.data.itemType == sortType)
-        //    {
-        //        int a = item.amount;
-        //        while (a > 0)
-        //        {
-        //            Definer.Item i = new Definer.Item();
-        //            i.Init(item.data);
-        //            i.amount = Mathf.Min(i.data.amountPerStack, a);
-
-        //            var ib = Instantiate(inventoryButton, content);
-        //            ib.GetComponent<InventoryButton>().Init(i, infoText, detailUI,scrollRect);
-
-        //            a -= item.data.amountPerStack;
-        //        }
-        //    }
-        //}
-
-        //expOrbText.text = string.Format("経験のオーブ x{0}", expOrbs);
     }
 
     public void CreateOptionUI_Normal(Vector3 pos, Definer.Item item)
@@ -317,6 +280,8 @@ public class Inventory : MonoBehaviour
             infoText.AddLogText($"●{"coin".ToSpr_withName()}x{amount}を入手");
         }
         coins += amount;
+
+        if (!ExpeditionManager.inst.endlessMode) GameManager.instance.SendScoreborad(1, amount);
     }
     public void RemoveCoin(int amount, bool note=true)
     {

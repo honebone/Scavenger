@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dancer_Echo
   m_EditorClassIdentifier: 
   abilityName: "\u821E\u6247"
-  lockedDefault: 1
+  lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 11400000, guid: 93e232f1088e5dd4ebebb860ebde3183, type: 2}
   noSimpleInfo: 0
@@ -217,6 +217,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 2
     actionTargets: []
     actionTargetsInt: 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1980d7cc8acb2a544ad8006b34b84a67, type: 3}
   m_Name: gp_hard
   m_EditorClassIdentifier: 
+  info: "\u904B\u3068\u5B9F\u529B\u306E\u4E21\u65B9\u304C\u8A66\u3055\u308C\u308B\n\u7D4C\u9A13\u8005\u5411\u3051\n\n\u6575\u306ELVL\u6BCE\u306E\u30B9\u30C6\u30FC\u30BF\u30B9\u304C\u5897\u52A0\n\u6575\u306E\u4E00\u90E8\u30A2\u30D3\u30EA\u30C6\u30A3\u304C\u5F37\u5316\u3055\u308C\u3001\u65B0\u898F\u306E\u30A2\u30D3\u30EA\u30C6\u30A3\u30FB\u7279\u6027\u3092\u5F97\u308B"
   hardMode: 1
   maxLVL: 10
   maxEVD: 75
@@ -28,7 +29,7 @@ MonoBehaviour:
     ACC: 1
   enemyStatusGrowth:
     maxHP_mul: 55
-    ATKINT_mul: 30
+    ATKINT_mul: 28
     ACT: 0.5
     EVD: 1
     ACC: 1

@@ -46,22 +46,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: perU_O_beehive
-  PAInfo_start: 
+  noSimpleInfo: 0
+  simpleInfo: "1\u30E9\u30A6\u30F3\u30C9\u306B\u8907\u6570\u56DE\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u308B\u3068\u3001<link=C_E_Bee><u>\u30CF\u30C1</u></link>\u3092<sprite
+    name=summon><color=#00F4FF>\u53EC\u559A</color>"
+  PAInfo_start: "1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642\u3001\u30AB\u30A6\u30F3\u30C8+1"
   skipGetInfo: 0
-  PAInfo_end: 
+  PAInfo_end: "\u30E9\u30A6\u30F3\u30C9\u958B\u59CB\u6642\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8"
+  statMod:
+    LVL: 0
+    maxHP_mul: 0
+    maxHP_int: 0
+    maxSAN_mul: 0
+    PROT: 0
+    ATK_mul: 0
+    ATK_int: 0
+    INT_mul: 0
+    INT_int: 0
+    exDMG_mul: 0
+    CRITC: 0
+    CRITD: 0
+    EVD: 0
+    ACC: 0
+    ACT: 0
+    turnPerRound: 0
+    GHeal: 0
+    RHeal: 0
+    StEResists: []
+    StEApplyBonus: []
+    debuffChance: 0
+    debuffStacks: 0
+    buffStacks: 0
+    moveRes: 0
+    debuffRes: 0
+    minion: 0
+  AMods: []
   PATags: 
+  rune_initialCharge: 0
   personalityStatus:
     personalityName: "\u5DE3\u306E\u9632\u885B"
     personalityType: 1
+  countReq: 2
   actionStatus:
     actionName: "\u5DE3\u306E\u9632\u885B"
-    conditionInfo: "1\u4EE5\u4E0A\u306E\u30C0\u30E1\u30FC\u30B8\u3092\u53D7\u3051\u305F\u6642"
+    conditionInfo: "\u30AB\u30A6\u30F3\u30C8\u304C2\u306B\u306A\u3063\u305F\u3068\u304D"
     targetInfo: "\u5473\u65B9\u5074\u306E\u7A7A\u304D\u30B9\u30DA\u30FC\u30B91-2\u3064"
     AModInfo: 
-    actionInfo: 
+    actionInfo: "\u30FB\u30AB\u30A6\u30F3\u30C8\u3092\u30EA\u30BB\u30C3\u30C8"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
     targetType: 0
@@ -72,20 +106,29 @@ MonoBehaviour:
       player: 0
       enemy: 0
       onlyPlayable: 0
+      onlyNonplayable: 0
       front: 0
       mid: 0
       back: 0
       excludeObstacle: 0
       characterInclude: []
       characterTags: 
+      characterTagsExclude: 
       StEConditions: []
       StE: []
       StEExclude: []
       PE: []
       PEExclude: []
+      canEcho: 0
+      echoTargets: []
       HPPercent: 0
       HP_lessThan: 0
       HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -100,16 +143,21 @@ MonoBehaviour:
     decreaseHPPer_max: 0
     decreaseHP_ATK: {x: 0, y: 0}
     decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
     INTMod_min: 0
     INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
     trueATKDMG: 0
     trueINTDMG: 0
     exDMG_mul: 0
     exATKDMG_int: 0
     exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
@@ -119,6 +167,7 @@ MonoBehaviour:
     unevadable: 0
     healValue_min: 0
     healValue_max: 0
+    healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
     healRegain_min: 0
@@ -151,6 +200,12 @@ MonoBehaviour:
       maxHP: 0
       ATK: 0
       INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
       CRITC_TH: 0
       CRITC: 0
       CRITD_TH: 0
@@ -161,6 +216,8 @@ MonoBehaviour:
       ACC: 0
       ACT_TH: 0
       ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
     moveChance: 0
     guaranteedMove: 0
     moveRandomDir: 0
@@ -178,8 +235,7 @@ MonoBehaviour:
     debuffChanceMod: 0
     removeStEs_additional: []
     summonStatusMods: []
-    dontChangeSprite: 0
-    activateSprite: {fileID: 0}
+    exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
     targetCount: 0

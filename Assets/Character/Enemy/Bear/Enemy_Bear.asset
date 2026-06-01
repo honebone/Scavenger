@@ -52,7 +52,7 @@ MonoBehaviour:
     coin: {x: 0, y: 0}
   lifetime: 0
   surviveFatalWounds: 1
-  maxHP: 180
+  maxHP: 150
   maxSAN: 0
   ATK: 15
   INT: 6

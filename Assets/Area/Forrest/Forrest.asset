@@ -98,8 +98,7 @@ MonoBehaviour:
     upperBack: {fileID: 0}
     centerBack: {fileID: 0}
     lowerBack: {fileID: 0}
-    atRandom:
-    - {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
+    atRandom: []
   battleBGM:
   - {fileID: 8300000, guid: 965e2c01e89da934ba9bacee8cfc5dee, type: 3}
   uniqueRaE:

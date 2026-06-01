@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        if(gameParams==null) gameParams = gps[0];
     }
     void Awake()
     {
-        gameParams = gps[0];
         CheckInstance();
     }
 
@@ -33,15 +33,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    int coinCount;//2026/6月のスコアボード用
     /// <summary>
-    /// 1:クリアタイム
-    /// 2:図関数
+    /// 1:累計取得コイン
+    /// 2:図鑑数
     /// </summary>
     /// <param name="index"></param>
     /// <param name="score"></param>
     public void SendScoreborad(int index, float score)
     {
-        if (index == 1) { UnityroomApiClient.Instance.SendScore(index, score, ScoreboardWriteMode.HighScoreDesc); }
+        if (index == 1)
+        {
+            coinCount += score.ToInt();
+            UnityroomApiClient.Instance.SendScore(index, coinCount, ScoreboardWriteMode.HighScoreDesc);
+        }
         else if (index == 2) { UnityroomApiClient.Instance.SendScore(index, score, ScoreboardWriteMode.HighScoreDesc); }
     }
 
@@ -72,9 +77,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetDifficulty(Difficulty difficulty)
+    public GameParams SetDifficulty(Difficulty difficulty)
     {
         gameParams = gps[(int)difficulty];
+
+        return gps[(int)difficulty];
     }
 
     //=================================[test→title]=============================================
@@ -85,6 +92,8 @@ public class GameManager : MonoBehaviour
     //=================================[title→expedition]=============================================
     public void  GoToExpeditionScene(bool tutorial)
     {
+        coinCount = 0;
+
         doTutorial = tutorial;
 
         SceneManager.LoadScene("Expedition");

@@ -1,9 +1,10 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class TtileSceneManager : MonoBehaviour
 {
@@ -11,6 +12,12 @@ public class TtileSceneManager : MonoBehaviour
     [SerializeField] Light2D sunLight;
     [SerializeField] AudioClip BGM;
     [SerializeField] GameObject settingsPanel;
+
+    [SerializeField] UIPanel gameStartCanvas;
+    [SerializeField] UIPanel gameModeCanvas;
+
+    [SerializeField] TextMeshProUGUI difficultyInfo;
+    [SerializeField] List<GameModeSelectButton> gameModeSelectButtons;
     //[SerializeField] Toggle skipTutorial;
 
     public static bool skipTutorial_bool;
@@ -25,7 +32,7 @@ public class TtileSceneManager : MonoBehaviour
     public void CanStart()
     {
         canStart = true;
-        textMask.alpha = 1;
+        gameStartCanvas.SetPanelActive(true);
     }
 
     private void Start()
@@ -101,5 +108,25 @@ public class TtileSceneManager : MonoBehaviour
             canStart = false;
             StartCoroutine(StartExpedition());
         }
+    }
+
+    public void ToDifficultySelect()
+    {
+        if (canStart)
+        {
+            gameStartCanvas.SetPanelActive(false);
+            gameModeCanvas.SetPanelActive(true);
+
+            SetDifficulty(0);
+        }
+    }
+
+    public void SetDifficulty(int value)
+    {
+        SoundManager.instance.PlaySE_Select();
+        difficultyInfo.text = gameManager.SetDifficulty((Difficulty)value).info;
+
+        gameModeSelectButtons.ForEach(b=>b.Deactivate());
+        gameModeSelectButtons[value].Activate();
     }
 }

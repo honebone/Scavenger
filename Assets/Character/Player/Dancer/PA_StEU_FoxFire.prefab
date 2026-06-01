@@ -48,7 +48,8 @@ MonoBehaviour:
   fileName: StEU_foxFire
   noSimpleInfo: 0
   simpleInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642\u3001\u30B9\u30BF\u30C3\u30AF\u3092\u6D88\u8CBB\u3057\u3066\u6575\u5168\u4F53\u306B<color=#C900FF><sprite
-    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E\n\n\u653B\u6483\u30922\u56DE<sprite
+    name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u3092\u4ED8\u4E0E\n<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>\u306F\u81EA\u8EAB\u306E<color=#55B075><sprite
+    name=EVD><link=T_EVD><u>EVD</u></link></color>\u306B\u5FDC\u3058\u3066\u5897\u52A0\u3059\u308B\n\n\u653B\u6483\u30922\u56DE<sprite
     name=EVD><color=#55B075>\u56DE\u907F</color>\u3059\u308B\u305F\u3073\u3001\u30B9\u30BF\u30C3\u30AF+1"
   PAInfo_start: 
   skipGetInfo: 0
@@ -86,7 +87,7 @@ MonoBehaviour:
   StEStatus:
     StEName: "\u72D0\u706B"
     StEInfo: 
-    StEIcon: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+    StEIcon: {fileID: 21300000, guid: 02693a1272f954c44ab0c0b6fbb4bd0b, type: 3}
     StEType: 1
     overideColor: 0
     colorOveride: {r: 0, g: 0, b: 0, a: 0}
@@ -102,12 +103,15 @@ MonoBehaviour:
     value: 0
     DMGPerTurn: 0
   countReq: 2
+  maxEVD: 75
+  burnPerEVD: 3
   actionStatus:
     actionName: 
     conditionInfo: "\u30E9\u30A6\u30F3\u30C9\u7D42\u4E86\u6642"
     targetInfo: "\u6575\u5168\u3066"
     AModInfo: 
-    actionInfo: "\u30FB\u30B9\u30BF\u30C3\u30AF-1"
+    actionInfo: "\u81EA\u8EAB\u306E<color=#55B075><sprite name=EVD><link=T_EVD><u>EVD</u></link></color>1\u306B\u3064\u304D<color=#C900FF><sprite
+      name=debuff><link=S_\u706B\u50B7><u>\u706B\u50B7</u></link></color>\u306E<color=#FFBF69><i>{\u52B9\u679C\u91CF}</i></color>+3\uFF05(\u6700\u5927\u3067+225)\n\u30FB\u30B9\u30BF\u30C3\u30AF-1"
     sprite: {fileID: 0}
     SE: {fileID: 0}
     VE_OnTargets: {fileID: 0}
@@ -334,7 +338,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 02693a1272f954c44ab0c0b6fbb4bd0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -125,12 +125,7 @@ MonoBehaviour:
     GHeal: 0
     RHeal: 0
     StEResists: []
-    StEApplyBonus:
-    - applyStE: {fileID: 1489497368108049143, guid: b0088dd5e73ffc54dabec8ae5a9cbd6e, type: 3}
-      exChance: 0
-      exStack: 1
-      exValue: 0
-      exDMGPerTurn: 0
+    StEApplyBonus: []
     debuffChance: 0
     debuffStacks: 0
     buffStacks: 0
@@ -175,6 +170,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   targetSelf: 0
   actionStatus:
     actionName: 
@@ -219,6 +215,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -366,6 +363,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   targetCount: 0
   activeCond_req: 1
   activeCond:
@@ -397,6 +395,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 1
+    excludeSelf: 0
   coin: {x: 0, y: 0}
   modifyStatus: 0
   statusMod:

@@ -250,6 +250,9 @@ public class ActionQueueManager : MonoBehaviour
     [SerializeField]
     float autoResolveInterval;
     public void SetResolveSpeed(float value) { autoResolveInterval = value; }
+
+
+
     IEnumerator ResolveFirstActionEffect()
     {
         yield return new WaitForSeconds(0.2f);

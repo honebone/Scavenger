@@ -35,16 +35,16 @@ MonoBehaviour:
   boss: 0
   playable: 1
   variableSprites:
-  - {fileID: 2075382187472153549, guid: fcf2b52e258ca7e4d83e4c802e0015f8, type: 3}
+  - {fileID: 8858538713776600312, guid: 9beb4efd2a9043d4dbbca120f77eb3c5, type: 3}
   spriteOffset: {x: 0, y: 0}
-  spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
+  spriteForUI: {fileID: 1629002581, guid: 624df7a937acd964da4f99882cb23799, type: 3}
   abilities:
   - {fileID: 11400000, guid: a454ab955b6558e449e3327786d62113, type: 2}
+  - {fileID: 11400000, guid: a005860a641d32b49953cc02bee6e819, type: 2}
+  - {fileID: 11400000, guid: e3ad0a0999f82c7428b36e61b359d98b, type: 2}
   - {fileID: 11400000, guid: af78fe2933878a742a9b58743c39e4fc, type: 2}
   - {fileID: 11400000, guid: 62d54f4d8aee97f48a66b38f9ac2f228, type: 2}
   - {fileID: 11400000, guid: b932ac7281855a148baa89e51afdaf8c, type: 2}
-  - {fileID: 11400000, guid: a005860a641d32b49953cc02bee6e819, type: 2}
-  - {fileID: 11400000, guid: e3ad0a0999f82c7428b36e61b359d98b, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
   passiveAbilities:

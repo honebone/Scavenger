@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GameParams : ScriptableObject
 {
+    [TextArea(3,10)]
+    public string info;
     public bool hardMode;
 
 
