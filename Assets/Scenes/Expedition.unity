@@ -411,10 +411,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
-  skipDeployPhase: 1
-  skipTutorial: 1
-  hardMode: 1
+  debug: 0
+  skipDeployPhase: 0
+  skipTutorial: 0
+  hardMode: 0
   autoset_playerLVL: 7
   autoset_enemyLVL: 8
   battleDebug: 0
@@ -17612,21 +17612,13 @@ MonoBehaviour:
   - {fileID: 3170614222137734241, guid: 188cfb2e58b910d4a82e81d07902bce8, type: 3}
   - {fileID: 3170614222137734241, guid: ed19181613c50f54299431704d98dd00, type: 3}
   - {fileID: 3170614222137734241, guid: ee95d134750b6a648bd8f6c88f4d09c6, type: 3}
-  - {fileID: 3170614222137734241, guid: 3b48ec758efc47f4eb383f11049f0c5c, type: 3}
   - {fileID: 3170614222137734241, guid: b27c9ba613e7381458e37e30a124db43, type: 3}
-  - {fileID: 3170614222137734241, guid: c9e2ef1f2ee06bc43b1db3b53ff41a40, type: 3}
   - {fileID: 3170614222137734241, guid: fe04b6847a2537e45be1bbc13f16156d, type: 3}
-  - {fileID: 3170614222137734241, guid: 7078e29ecb7ada94a9654a1b395fd567, type: 3}
   - {fileID: 3170614222137734241, guid: dad0865b648fd8d40b1c568c96033fe7, type: 3}
-  - {fileID: 3170614222137734241, guid: 83a5f4517552a0e48b40e8e96f71b127, type: 3}
   - {fileID: 3170614222137734241, guid: 172f83c3b8df34e4cb0a7f397c8d660c, type: 3}
-  - {fileID: 3170614222137734241, guid: 6958e333f887456488516931e6c10da1, type: 3}
   - {fileID: 3170614222137734241, guid: 512b9d7d2dcf40246a517389ca037a00, type: 3}
-  - {fileID: 3170614222137734241, guid: 79683d4a8013c4e4fbc2bbe523acb1bd, type: 3}
   - {fileID: 3170614222137734241, guid: b027813525cde7943a324975c60f4920, type: 3}
-  - {fileID: 3170614222137734241, guid: d44b379b25cf2754c89a631229b3f465, type: 3}
   - {fileID: 3170614222137734241, guid: 9f6e85490132af14c8530ff2ddd52117, type: 3}
-  - {fileID: 3170614222137734241, guid: bd6a522c8c1749347858679dc08c9bba, type: 3}
   - {fileID: 3170614222137734241, guid: 2aca624430ed5b74f90537c145a3d5ed, type: 3}
   - {fileID: 3170614222137734241, guid: fe748f979cb1283438518f69ba1bd4f4, type: 3}
   - {fileID: 3170614222137734241, guid: 37d16a4ec3e9fe345b614d71735b17e6, type: 3}

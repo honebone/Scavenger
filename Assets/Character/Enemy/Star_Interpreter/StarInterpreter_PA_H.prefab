@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: perU_E_StarInterpreter_h
   noSimpleInfo: 0
-  simpleInfo: "<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u5F97\u308B\u305F\u3073\u3001\u30D7\u30EC\u30A4\u30E4\u30FC1\u4F53\u306B<sprite
+  simpleInfo: "<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u3092\u5F97\u308B\u305F\u3073\u3001\u30D7\u30EC\u30A4\u30E4\u30FC2\u4F53\u306B<sprite
     name=ATK><color=#C30000>\u7269\u7406</color><sprite name=INT><color=#256CC8>\u9B54\u6CD5</color>\u653B\u6483\u3092\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   actionStatus:
     actionName: 
     conditionInfo: "<color=#3473CA><link=S_\u661F\u5C51><u>\u661F\u5C51</u></link></color>\u30921\u30B9\u30BF\u30C3\u30AF\u5F97\u308B\u305F\u3073"
-    targetInfo: "\u30D7\u30EC\u30A4\u30E4\u30FC1\u4F53"
+    targetInfo: "\u30D7\u30EC\u30A4\u30E4\u30FC2\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -178,10 +178,10 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 40
-    ATKMod_max: 70
-    INTMod_min: 40
-    INTMod_max: 70
+    ATKMod_min: 20
+    ATKMod_max: 40
+    INTMod_min: 20
+    INTMod_max: 40
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
     sameRow: 0
     sameChara: 0
     excludeSelf: 0
-  targetCount: 0
+  targetCount: 2
   activeCond_req: 0
   activeCond:
     searchAsPos: 0
