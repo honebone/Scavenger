@@ -172,6 +172,15 @@ MonoBehaviour:
       refATK: 0
       refTargetMaxHP: 0
       DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 20849c6136550d04e9232dacd303cdfb, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 1
+      value: 50
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0
@@ -228,6 +237,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
-    actionTargetsInt: 08000000
+    actionTargetsInt: 

@@ -64,7 +64,7 @@ MonoBehaviour:
   remainOnBattleStart: 1
   maxRemain: 1
   actionsStaus:
-  - actionName: "\u660E\u661F\u306E\u8A66\u7DF4"
+  - actionName: "\u660E\u661F\u306E\u8A66\u7DF4+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
@@ -112,7 +112,7 @@ MonoBehaviour:
     moveValue: 
     skipAnim: 0
     consumeFocus: 0
-    exTurn: 2
+    exTurn: 1
     kill: 0
     decreaseHP_min: 0
     decreaseHP_max: 0

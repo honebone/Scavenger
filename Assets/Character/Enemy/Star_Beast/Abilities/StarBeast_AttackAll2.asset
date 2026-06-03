@@ -64,7 +64,7 @@ MonoBehaviour:
   remainOnBattleStart: 0
   maxRemain: 0
   actionsStaus:
-  - actionName: "\u6D41\u661F\u306E\u8A66\u7DF4"
+  - actionName: "\u6D41\u661F\u306E\u8A66\u7DF4+"
     conditionInfo: 
     targetInfo: "\u30D7\u30EC\u30A4\u30E4\u30FC\u5168\u3066(<color=#FAED8A><sprite
       name=buff><link=S_\u6F5C\u4F0F><u>\u6F5C\u4F0F</u></link></color>\u3092\u7121\u8996)"
@@ -124,7 +124,7 @@ MonoBehaviour:
     echoDoT: []
     attackInfo: 
     ATKMod_min: 100
-    ATKMod_max: 150
+    ATKMod_max: 120
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -241,6 +241,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 4
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 

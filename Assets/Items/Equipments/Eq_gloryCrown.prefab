@@ -48,8 +48,8 @@ MonoBehaviour:
   fileName: Eq_gloryCrown
   noSimpleInfo: 0
   simpleInfo: "\u81EA\u8EAB\u304C\u53EC\u559A\u3059\u308B\u30AD\u30E3\u30E9\u306E<sprite
-    name=maxHP><color=#87FF79>maxHP</color>\u304C\u5897\u52A0\n\n\u81EA\u8EAB\u304C\u53EC\u559A\u3057\u305F\u30AD\u30E3\u30E9\u306B<color=#C900FF><sprite
-    name=debuff><link=S_\u30DE\u30FC\u30AF><u>\u30DE\u30FC\u30AF</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B"
+    name=maxHP><color=#87FF79>maxHP</color>\u304C\u5897\u52A0\n\n\u81EA\u8EAB\u304C\u53EC\u559A\u3057\u305F\u30AD\u30E3\u30E9\u306B<color=#FAED8A><sprite
+    name=buff><link=S_\u30AC\u30FC\u30C9><u>\u30AC\u30FC\u30C9</u></link></color>\u3092\u4ED8\u4E0E\u3059\u308B"
   PAInfo_start: 
   skipGetInfo: 0
   PAInfo_end: 
@@ -89,6 +89,36 @@ MonoBehaviour:
   max_inBattle: 0
   max_inRound: 2
   countReq: 1
+  hasSelfCond: 0
+  selfCond:
+    searchAsPos: 0
+    onlyEmpty: 0
+    player: 0
+    enemy: 0
+    onlyPlayable: 0
+    onlyNonplayable: 0
+    front: 0
+    mid: 0
+    back: 0
+    excludeObstacle: 0
+    characterInclude: []
+    characterTags: 
+    characterTagsExclude: 
+    StEConditions: []
+    StE: []
+    StEExclude: []
+    PE: []
+    PEExclude: []
+    canEcho: 0
+    echoTargets: []
+    HPPercent: 0
+    HP_lessThan: 0
+    HP_excludeEqual: 0
+    neighbor: []
+    sameColmn: 0
+    sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
   targetSelf: 0
   actionStatus:
     actionName: 
@@ -131,6 +161,8 @@ MonoBehaviour:
       neighbor: []
       sameColmn: 0
       sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -188,7 +220,7 @@ MonoBehaviour:
     shieldRemove_min: 0
     shieldRemove_max: 0
     applySteParams:
-    - applyStE: {fileID: 6086145301006173142, guid: 10b61f9200dc2e044982c0bd8d11dc99, type: 3}
+    - applyStE: {fileID: 6086145301006173142, guid: d37fa652893f2fe48906277658d62269, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 1
@@ -277,6 +309,8 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
   targetCount: 0
   activeCond_req: 0
   activeCond:
@@ -306,6 +340,8 @@ MonoBehaviour:
     neighbor: []
     sameColmn: 0
     sameRow: 0
+    sameChara: 0
+    excludeSelf: 0
   coin: {x: 0, y: 0}
   modifyStatus: 0
   statusMod:
