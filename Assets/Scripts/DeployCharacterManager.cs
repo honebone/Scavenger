@@ -31,8 +31,8 @@ public class DeployCharacterManager : MonoBehaviour
     [SerializeField] TutorialData tutroial_deploy;
     [SerializeField] TutorialData tutroial_embark;
 
-    [SerializeField] CharacterData infantry;
-    [SerializeField] CharacterData hunter;
+    [SerializeField] List<CharacterData> autoDeployChara;
+    [SerializeField] List<int> autoDeployPos;
 
     [SerializeField] Animator anim;
 
@@ -284,7 +284,17 @@ public class DeployCharacterManager : MonoBehaviour
 
     public void AutoDeploy()
     {
+        ClearParty();
+        for(int i = 0; i < autoDeployChara.Count; i++)
+        {
+            Character.CharacterStatus status = new Character.CharacterStatus();
+            status.Init(autoDeployChara[i]);
 
+            positionButtons[autoDeployPos[i]].SetChara(status);
+        }
+
+        soundManager.PlaySE(setChara);
+        CheckParty();
     }
 
     void ClearParty()
