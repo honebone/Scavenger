@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "\u5BCC\u306E\u738B\u7B0F"
   specialInfo: 0
   info: 
-  rarity: 3
+  rarity: 4
   sprite: {fileID: 21300000, guid: 2aed15e401ecba44e807c197a5212591, type: 3}
   amountPerStack: 1
   dropAmountRange: {x: 0, y: 0}
