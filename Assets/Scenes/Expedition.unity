@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851ea1a2dea64f74b8f98159f05054e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
-  skipDeployPhase: 0
-  skipTutorial: 0
+  debug: 1
+  skipDeployPhase: 1
+  skipTutorial: 1
   hardMode: 0
   autoset_playerLVL: 7
   autoset_enemyLVL: 8
@@ -431,14 +431,14 @@ MonoBehaviour:
     dontShuffleFront: 1
     upperFront: {fileID: 0}
     centerFront: {fileID: 0}
-    lowerFront: {fileID: 11400000, guid: c2bc2a8ca1411324289877eaea1b4c2d, type: 2}
+    lowerFront: {fileID: 0}
     dontShuffleMid: 1
     upperMid: {fileID: 11400000, guid: 328db8c7d7f906a43981ed8a981f5c8c, type: 2}
     centerMid: {fileID: 11400000, guid: fd3770c1ad0b7f04a8570a1a0abcc576, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 1
     upperBack: {fileID: 0}
-    centerBack: {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
+    centerBack: {fileID: 11400000, guid: 1bd3fb37b6a28ba40b38cb79d6426bce, type: 2}
     lowerBack: {fileID: 0}
     atRandom: []
   itemData:
@@ -466,7 +466,7 @@ MonoBehaviour:
     centerFront: {fileID: 11400000, guid: 4ad4cee9297fb754095542f9fc1ce68e, type: 2}
     lowerFront: {fileID: 0}
     dontShuffleMid: 0
-    upperMid: {fileID: 0}
+    upperMid: {fileID: 11400000, guid: edab57bbf8086d4489df14aa6533892e, type: 2}
     centerMid: {fileID: 11400000, guid: 68972220a6f5991408a0087af5959f2f, type: 2}
     lowerMid: {fileID: 0}
     dontShuffleBack: 0
