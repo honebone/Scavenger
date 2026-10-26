@@ -47,10 +47,14 @@ public class AbilityData : ScriptableObject
     [Header("使用してもターンが終了しない")] public bool freeAction;
     public int cooldownOnBattleStart;
     public int cooldownOnUse;
+    [Header("\n")]
     public bool hasRemain;
     public int remainOnBattleStart;
     public int maxRemain;
 
+    [Header("\n毎ターン[regenRemainAmount]回復するように")]
+    public bool doesRegenRemain;
+    public int regenRemainAmount;
    
 
     //public ActionData[] actions;

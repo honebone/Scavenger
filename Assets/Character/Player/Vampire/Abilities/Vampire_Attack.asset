@@ -60,9 +60,11 @@ MonoBehaviour:
   freeAction: 1
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
+  hasRemain: 1
+  remainOnBattleStart: 5
+  maxRemain: 5
+  doesRegenRemain: 1
+  regenRemainAmount: 5
   actionsStaus:
   - actionName: "\u30D6\u30E9\u30C3\u30C9\u30FB\u30C0\u30AC\u30FC"
     conditionInfo: 

@@ -1249,6 +1249,10 @@ public class Character : MonoBehaviour
             {
                 charaStatus.abilitiesStatus[i].AddCoolDown(-1);
             }
+            if (charaStatus.abilitiesStatus[i].abilityData.doesRegenRemain)
+            {
+                charaStatus.abilitiesStatus[i].AddRemain(charaStatus.abilitiesStatus[i].abilityData.regenRemainAmount);
+            }
         }
         battleManager.Trigger_TurnStart();
     }

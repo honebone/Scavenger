@@ -89,8 +89,13 @@ public class Ability : MonoBehaviour
             if (refCharaStatus) { }
             if (hasRemain)
             {
-                if (refCharaStatus) { s += $"{NL()}残り使用回数：{remain}回"; }
+                if (refCharaStatus)
+                {
+                    string maxStr = abilityData.maxRemain > 0 ? $"/{abilityData.maxRemain}" : "";
+                    s += $"{NL()}残り使用回数：{remain}{maxStr}回";
+                }
                 else { s += $"{NL()}使用回数(戦闘開始時)：{remainOnBattleStart}回"; }
+                if(abilityData.doesRegenRemain) { s += $"{NL()}(毎ターン{abilityData.regenRemainAmount}回復)"; }
             }
 
             string effectInfo = GetEffectInfo(refCharaStatus, characterStatus, simple);
