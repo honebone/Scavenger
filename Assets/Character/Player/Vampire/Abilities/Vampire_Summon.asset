@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Vampire_Summon
   m_EditorClassIdentifier: 
   abilityName: "\u7737\u5C5E\u53EC\u559A"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 26b98c5a0f3da0a46a31a4cce090e78b, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -72,8 +72,8 @@ MonoBehaviour:
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
-    SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    SE: {fileID: 8300000, guid: 17680db48fb5db846a2c10e5effdd764, type: 3}
+    VE_OnTargets: {fileID: 8885251123404196513, guid: a5b7a639259c0f84ea363fa502c89cb1, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []

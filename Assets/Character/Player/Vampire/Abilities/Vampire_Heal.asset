@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u6DF1\u7D05\u306E\u6069\u5BF5"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: fb576ad5feeee854d83b4cb9b1c78d22, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}

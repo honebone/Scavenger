@@ -81,7 +81,16 @@ MonoBehaviour:
     shieldRemove: 0
     shieldRemove_all: 0
     applySteParams:
-    - applyStE: {fileID: 1489497368108049143, guid: 50559f1221c6b7747a23fb2243415761, type: 3}
+    - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
+      guaranteed: 1
+      applyChance: 0
+      stack: 2
+      value: 25
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 34d82879fee3a324592159a4ceabd589, type: 3}
       guaranteed: 1
       applyChance: 0
       stack: 2

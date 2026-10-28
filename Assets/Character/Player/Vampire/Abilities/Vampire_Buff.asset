@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Vampire_Buff
   m_EditorClassIdentifier: 
   abilityName: "\u8840\u306E\u5951\u7D04"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 16f71ea304a6ea845baeec9dd57ae3e5, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -63,6 +63,8 @@ MonoBehaviour:
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
+  doesRegenRemain: 0
+  regenRemainAmount: 0
   actionsStaus:
   - actionName: "\u8840\u306E\u5951\u7D04"
     conditionInfo: 

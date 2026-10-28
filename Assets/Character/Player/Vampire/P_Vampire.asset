@@ -15,7 +15,8 @@ MonoBehaviour:
   fileName: P_Vampire
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u5438\u8840\u9B3C"
-  introduction: 
+  introduction: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u3092\u72A0\u7272\u306B\u3057\u3064\u3064\u3001\u5F37\u529B\u306A\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3067\u304D\u308B\u30AD\u30E3\u30E9\n\n<sprite
+    name=HP><color=#87FF79>HP</color>\u306E\u78BA\u4FDD\u624B\u6BB5\u3092\u5F97\u308B\u3053\u3068\u304C\u91CD\u8981\u3068\u306A\u308B"
   difficulty: "\u4E2D"
   preferFront: 1
   preferMid: 0
@@ -38,9 +39,9 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: ed1808c9919ab334f8be3347b561b6ae, type: 2}
   - {fileID: 11400000, guid: 05f2486d68ae4ba4c839214b16717510, type: 2}
-  - {fileID: 11400000, guid: 8ba9a53394bfff340b86d707db040f03, type: 2}
-  - {fileID: 11400000, guid: e6675f12c63cab64e910ced9ad413319, type: 2}
   - {fileID: 11400000, guid: 1b6d0edd52e56834daa9d47dc1b73398, type: 2}
+  - {fileID: 11400000, guid: e6675f12c63cab64e910ced9ad413319, type: 2}
+  - {fileID: 11400000, guid: 8ba9a53394bfff340b86d707db040f03, type: 2}
   - {fileID: 11400000, guid: b974d0570566d4f47b428f443bb45d9b, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}

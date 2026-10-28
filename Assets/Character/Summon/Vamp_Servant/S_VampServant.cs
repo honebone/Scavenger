@@ -12,4 +12,9 @@ public class S_VampServant : PA_Personality
         action.trueHeal = CharaStatus().summoner.CharaStatus().maxHP.Mul(healPercent);
         Enqueue(action, true, new List<Character> { CharaStatus().summoner });
     }
+
+    public override string GetPAInfo_Base()
+    {
+        return actionStatus.GetInfo();
+    }
 }

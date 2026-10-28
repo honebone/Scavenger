@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u7009\u8840"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 24d9893af0d80294a88b3df7f01196aa, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -63,6 +63,8 @@ MonoBehaviour:
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
+  doesRegenRemain: 0
+  regenRemainAmount: 0
   actionsStaus:
   - actionName: "\u7009\u8840"
     conditionInfo: 

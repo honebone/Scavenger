@@ -66,14 +66,14 @@ MonoBehaviour:
   doesRegenRemain: 0
   regenRemainAmount: 0
   actionsStaus:
-  - actionName: 
+  - actionName: "\u6355\u98DF"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
     SE: {fileID: 0}
-    VE_OnTargets: {fileID: 0}
+    VE_OnTargets: {fileID: 6299294134471765988, guid: 5de3466daf100cb47b444ecabedb6735, type: 3}
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
@@ -213,9 +213,9 @@ MonoBehaviour:
     moveBackword: 0
     changeSelfSprite: {fileID: 0}
     abilityRemainControlls: []
-    abilityEffect: 0
+    abilityEffect: 1
     freeAction: 0
-    abilityType: 0
+    abilityType: 1
     index: 0
     StEApplyBonus: []
     debuffChanceMod: 0
@@ -224,6 +224,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 

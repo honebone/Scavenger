@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Vampire_HealAll
   m_EditorClassIdentifier: 
   abilityName: "\u8840\u306E\u6D77"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 324b3fdd60008ff4b95952f38e432659, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -60,9 +60,11 @@ MonoBehaviour:
   freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 3
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
+  hasRemain: 1
+  remainOnBattleStart: 2
+  maxRemain: 2
+  doesRegenRemain: 0
+  regenRemainAmount: 0
   actionsStaus:
   - actionName: "\u8840\u306E\u6D77"
     conditionInfo: 
@@ -148,8 +150,8 @@ MonoBehaviour:
     healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 30
-    healRegain_max: 40
+    healRegain_min: 15
+    healRegain_max: 25
     trueHeal: 0
     exHeal_mul: 0
     SANHeal_min: 0
@@ -214,6 +216,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 3
+    targetCount: 4
     actionTargets: []
     actionTargetsInt: 

@@ -298,6 +298,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b88fbb1bee1da84aba2cb48bc47d401, type: 2}
   - {fileID: 11400000, guid: a78843f184a62b94da09d1ef8ba14879, type: 2}
   - {fileID: 11400000, guid: 542fcafe684be514ea4e8ba909479b0f, type: 2}
+  - {fileID: 11400000, guid: 1bd3fb37b6a28ba40b38cb79d6426bce, type: 2}
   - {fileID: 11400000, guid: 0e3f56d2f7f78fa4190e7176f9c763a4, type: 2}
   enemyDataBase:
   - {fileID: 11400000, guid: d7f89a251fe79784e80b8a5b5713b171, type: 2}
@@ -349,6 +350,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1a3cf9c9514f7e84bbf2a9afd861d9e0, type: 2}
   - {fileID: 11400000, guid: 05091d51103f74247b8ba4ddeb0a60b9, type: 2}
   - {fileID: 11400000, guid: b2633409c85728947afa1d2c310a87b6, type: 2}
+  - {fileID: 11400000, guid: d05fbcef63f4c3a4fb94a1b7fa772d32, type: 2}
   areaDataBase_tier1:
   - {fileID: 11400000, guid: e27aa644713d9ac4cac5b6a590fa85bb, type: 2}
   areaDataBase_tier2:
