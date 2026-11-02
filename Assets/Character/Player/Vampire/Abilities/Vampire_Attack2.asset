@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u30D6\u30E9\u30C3\u30C9\u30FB\u30C0\u30AC\u30FC+"
   lockedDefault: 0
   upgradeInfo: "\u5931\u3046<sprite name=HP><color=#87FF79>HP</color>\u304A\u3088\u3073\u5FC5\u8981\u306A<sprite
-    name=HP>\u5272\u5408+5\uFF05"
+    name=HP>\u5272\u5408-5\uFF05"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -67,7 +67,7 @@ MonoBehaviour:
   doesRegenRemain: 1
   regenRemainAmount: 5
   actionsStaus:
-  - actionName: "\u30D6\u30E9\u30C3\u30C9\u30FB\u30C0\u30AC\u30FC"
+  - actionName: "\u30D6\u30E9\u30C3\u30C9\u30FB\u30C0\u30AC\u30FC+"
     conditionInfo: 
     targetInfo: "\u65751\u4F53"
     AModInfo: 
@@ -228,7 +228,7 @@ MonoBehaviour:
     targetCount: 1
     actionTargets: []
     actionTargetsInt: 
-  - actionName: "\u30D6\u30E9\u30C3\u30C9\u30FB\u30C0\u30AC\u30FC"
+  - actionName: "\u30D6\u30E9\u30C3\u30C9\u30FB\u30C0\u30AC\u30FC+"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 

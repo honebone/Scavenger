@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: "\u5BFE\u8C61\u306B<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u304C\u3042\u308B\u306A\u3089"
+    conditionInfo: 
     hideValues: 1
     exInfo: "\u5BFE\u8C61\u304C<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u306B\u3088\u3063\u3066\u6B21\u306E\u30BF\u30FC\u30F3\u5931\u3046<sprite
-      name=HP><color=#87FF79>HP</color>\u306B\u7B49\u3057\u3044<sprite name=INT><color=#256CC8>\u9B54\u6CD5</color>\u56FA\u5B9A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
+      name=HP><color=#87FF79>HP</color>\u306E200\uFF05\u306B\u7B49\u3057\u3044<sprite
+      name=INT><color=#256CC8>\u9B54\u6CD5</color>\u56FA\u5B9A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
     exTurn: 0
     consumeFocus: 0
     decreaseHP: 0
@@ -141,4 +142,4 @@ MonoBehaviour:
   totalDMG: 0
   DoT:
   - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-  ratio: 1
+  ratio: 2

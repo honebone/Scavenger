@@ -68,7 +68,7 @@ MonoBehaviour:
   actionsStaus:
   - actionName: "\u7009\u8840"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u72B6\u614B\u306E\u65751\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -94,7 +94,10 @@ MonoBehaviour:
       characterInclude: []
       characterTags: 
       characterTagsExclude: 
-      StEConditions: []
+      StEConditions:
+      - StE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
+        stack: 1
+        stack_lessThan: 0
       StE: []
       StEExclude: []
       PE: []
@@ -127,8 +130,8 @@ MonoBehaviour:
     attackInfo: 
     ATKMod_min: 0
     ATKMod_max: 0
-    INTMod_min: 60
-    INTMod_max: 80
+    INTMod_min: 0
+    INTMod_max: 0
     ATKMod_divide: 0
     INTMod_divide: 0
     trueATKDMG: 0
@@ -165,16 +168,7 @@ MonoBehaviour:
     shieldRemove_all: 0
     shieldRemove_min: 0
     shieldRemove_max: 0
-    applySteParams:
-    - applyStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-      guaranteed: 0
-      applyChance: 85
-      stack: 3
-      value: 20
-      dontApplyBonus: 0
-      refATK: 0
-      refTargetMaxHP: 0
-      DMGPerTurn: 0
+    applySteParams: []
     applyPEParams: []
     removeStE_buff: 0
     removeStE_debuff: 0

@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u6DF1\u7D05\u306E\u6069\u5BF5+"
   lockedDefault: 0
-  upgradeInfo: "\u81EA\u8EAB\u3092\u5BFE\u8C61\u306B\u3067\u304D\u308B\u3088\u3046\u306B\n\u6700\u4F4E<sprite
-    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u91CF+10\uFF05"
+  upgradeInfo: "<color=#FFBF69><link=U_\u30AF\u30A4\u30C3\u30AF\u30A2\u30D3\u30EA\u30C6\u30A3><u>\u30AF\u30A4\u30C3\u30AF\u30A2\u30D3\u30EA\u30C6\u30A3</u></link></color>\u306B\n(\u5404\u30BF\u30FC\u30F32\u56DE\u307E\u3067)"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -58,18 +57,18 @@ MonoBehaviour:
     sameRow: 0
     sameChara: 0
     excludeSelf: 0
-  freeAction: 0
+  freeAction: 1
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
-  hasRemain: 0
-  remainOnBattleStart: 0
-  maxRemain: 0
+  hasRemain: 1
+  remainOnBattleStart: 2
+  maxRemain: 2
   doesRegenRemain: 0
-  regenRemainAmount: 0
+  regenRemainAmount: 2
   actionsStaus:
   - actionName: "\u6DF1\u7D05\u306E\u6069\u5BF5"
     conditionInfo: 
-    targetInfo: "HP\u304C40\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
+    targetInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u3001<sprite name=HP><color=#87FF79>HP</color>\u304C40\uFF05\u4EE5\u4E0B\u306E\u5473\u65B91\u4F53"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -78,7 +77,7 @@ MonoBehaviour:
     VE_OnOwner: {fileID: 0}
     actionObject: {fileID: 0}
     actionMods: []
-    targetType: 1
+    targetType: 6
     friendly: 1
     condition:
       searchAsPos: 0
@@ -148,7 +147,7 @@ MonoBehaviour:
     healValue_min: 0
     healValue_max: 0
     healINT: {x: 0, y: 0}
-    healPercent_min: 35
+    healPercent_min: 25
     healPercent_max: 50
     healRegain_min: 0
     healRegain_max: 0

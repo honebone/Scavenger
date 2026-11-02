@@ -47,10 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: P_Vampire
   noSimpleInfo: 0
-  simpleInfo: "<sprite name=HP><color=#87FF79>HP</color>\u304C\u7D2F\u8A08\u3067\u4E00\u5B9A\u5272\u5408\u6E1B\u5C11\u3059\u308B\u305F\u3073\u3001<color=#55B075><sprite
-    name=EVD><link=T_EVD><u>EVD</u></link></color>\u304C\u5897\u52A0"
-  PAInfo_start: "\u5931\u3063\u305F<sprite name=maxHP><color=#87FF79>maxHP</color>\u306E25\uFF05\u306B\u9054\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8\u3092\u6D88\u8CBB\u3057\u3066<color=#55B075><sprite
-    name=EVD><link=T_EVD><u>EVD</u></link></color>+3\n(\u6700\u5927\u3067+45)"
+  simpleInfo: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u4E2D\u306B\u5931\u3063\u305F<sprite
+    name=HP><color=#87FF79>HP</color>\u306E\u4E00\u90E8\u3092\u56DE\u5FA9\u3059\u308B"
+  PAInfo_start: "\u81EA\u8EAB\u306E\u30BF\u30FC\u30F3\u7D42\u4E86\u6642\u3001\u3053\u306E\u30BF\u30FC\u30F3\u306B\u81EA\u8EAB\u304C\u5931\u3063\u305F<sprite
+    name=HP><color=#87FF79>HP</color>\u306E50\uFF05\u306B\u7B49\u3057\u3044\u56FA\u5B9A\u91CF\u3092<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u3059\u308B"
   skipGetInfo: 1
   PAInfo_end: 
   statMod:
@@ -86,9 +87,160 @@ MonoBehaviour:
   personalityStatus:
     personalityName: "\u4E0D\u6EC5\u306E\u8840\u65CF"
     personalityType: 1
-  HPPercentTH: 25
-  EVDPerActivate: 3
-  maxActivate: 15
+  healPercent: 50
+  actionStatus:
+    actionName: 
+    conditionInfo: 
+    targetInfo: 
+    AModInfo: 
+    actionInfo: 
+    sprite: {fileID: 0}
+    SE: {fileID: 0}
+    VE_OnTargets: {fileID: 0}
+    VE_OnOwner: {fileID: 0}
+    actionObject: {fileID: 0}
+    actionMods: []
+    targetType: 0
+    friendly: 0
+    condition:
+      searchAsPos: 0
+      onlyEmpty: 0
+      player: 0
+      enemy: 0
+      onlyPlayable: 0
+      onlyNonplayable: 0
+      front: 0
+      mid: 0
+      back: 0
+      excludeObstacle: 0
+      characterInclude: []
+      characterTags: 
+      characterTagsExclude: 
+      StEConditions: []
+      StE: []
+      StEExclude: []
+      PE: []
+      PEExclude: []
+      canEcho: 0
+      echoTargets: []
+      HPPercent: 0
+      HP_lessThan: 0
+      HP_excludeEqual: 0
+      neighbor: []
+      sameColmn: 0
+      sameRow: 0
+      sameChara: 0
+      excludeSelf: 0
+    neigborPos: []
+    ignoreMark: 0
+    ignoreHide: 0
+    moveValue: 
+    skipAnim: 0
+    consumeFocus: 0
+    exTurn: 0
+    kill: 0
+    decreaseHP_min: 0
+    decreaseHP_max: 0
+    decreaseHPPer_min: 0
+    decreaseHPPer_max: 0
+    decreaseHP_ATK: {x: 0, y: 0}
+    decreaseHP_INT: {x: 0, y: 0}
+    echoDoT: []
+    attackInfo: 
+    ATKMod_min: 0
+    ATKMod_max: 0
+    INTMod_min: 0
+    INTMod_max: 0
+    ATKMod_divide: 0
+    INTMod_divide: 0
+    trueATKDMG: 0
+    trueINTDMG: 0
+    exDMG_mul: 0
+    exATKDMG_int: 0
+    exINTDMG_int: 0
+    ATKDMG_divide_int: 0
+    INTDMG_divide_int: 0
+    ACCMod: 0
+    CRITCMod: 0
+    CRITDMod: 0
+    drain: 0
+    ignoreShield: 0
+    sureHit: 0
+    unevadable: 0
+    healValue_min: 0
+    healValue_max: 0
+    healINT: {x: 0, y: 0}
+    healPercent_min: 0
+    healPercent_max: 0
+    healRegain_min: 0
+    healRegain_max: 0
+    trueHeal: 0
+    exHeal_mul: 0
+    SANHeal_min: 0
+    SANHeal_max: 0
+    SANDamage_min: 0
+    SANDamage_max: 0
+    shieldAdd_min: 0
+    shieldAdd_max: 0
+    shieldPercent_min: 0
+    shieldPercent_max: 0
+    shieldRemove_all: 0
+    shieldRemove_min: 0
+    shieldRemove_max: 0
+    applySteParams: []
+    applyPEParams: []
+    removeStE_buff: 0
+    removeStE_debuff: 0
+    removeStEs: []
+    removePEs: []
+    summon: 0
+    summonChara: []
+    summonChanceWeight: []
+    summonStatusInherit:
+      maxHP: 0
+      ATK: 0
+      INT: 0
+      maxHP_mul_TH: 0
+      maxHP_mul: 0
+      ATK_mul_TH: 0
+      ATK_mul: 0
+      INT_mul_TH: 0
+      INT_mul: 0
+      CRITC_TH: 0
+      CRITC: 0
+      CRITD_TH: 0
+      CRITD: 0
+      EVD_TH: 0
+      EVD: 0
+      ACC_TH: 0
+      ACC: 0
+      ACT_TH: 0
+      ACT: 0
+      GHeal_TH: 0
+      GHeal: 0
+    moveChance: 0
+    guaranteedMove: 0
+    moveRandomDir: 0
+    moveForword: 0
+    moveUpper: 0
+    moveLower: 0
+    moveBackword: 0
+    changeSelfSprite: {fileID: 0}
+    abilityRemainControlls: []
+    abilityEffect: 0
+    freeAction: 0
+    abilityType: 0
+    index: 0
+    StEApplyBonus: []
+    debuffChanceMod: 0
+    removeStEs_additional: []
+    summonStatusMods: []
+    exInherits: []
+    actionOwner: {fileID: 0}
+    source: {fileID: 0}
+    targetCount: 0
+    actionTargets: []
+    actionTargetsInt: 
 --- !u!212 &8483728386356586883
 SpriteRenderer:
   m_ObjectHideFlags: 0
