@@ -562,7 +562,7 @@ public class Action : MonoBehaviour
                         s += string.Format("{0}増加", rc.value);
                     }
                 }
-                if (rc.value_CD != 0)
+                if (rc.value_CD != 0 || rc.set_CD)
                 {
                     s += $"{NL()}・<{rc.abilityData.abilityName.ColorStr(rc.abilityData.abilityType.ToColor())}> のクールダウンを";
                     if (rc.set_CD) { s += $"{rc.value_CD}にする"; }

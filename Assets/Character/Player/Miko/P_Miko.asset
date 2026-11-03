@@ -38,14 +38,15 @@ MonoBehaviour:
   spriteForUI: {fileID: 21300000, guid: 96bb526c35f617d4eb7784a7ae1187cf, type: 3}
   abilities:
   - {fileID: 11400000, guid: 6cffe8821144c5b43bbd7f8a9ae00585, type: 2}
-  - {fileID: 11400000, guid: 05f2486d68ae4ba4c839214b16717510, type: 2}
-  - {fileID: 11400000, guid: 1b6d0edd52e56834daa9d47dc1b73398, type: 2}
-  - {fileID: 11400000, guid: e6675f12c63cab64e910ced9ad413319, type: 2}
-  - {fileID: 11400000, guid: 8ba9a53394bfff340b86d707db040f03, type: 2}
-  - {fileID: 11400000, guid: b974d0570566d4f47b428f443bb45d9b, type: 2}
+  - {fileID: 11400000, guid: 372bdcdd7e18dfb4abb639507b88d92e, type: 2}
+  - {fileID: 11400000, guid: 8aaf919750f207e49890017276354824, type: 2}
+  - {fileID: 11400000, guid: 0a96a3861a7933e47bab318900cb21b4, type: 2}
+  - {fileID: 11400000, guid: bbefbfaebcf867541883eaab2de48e20, type: 2}
+  - {fileID: 11400000, guid: d9a8346fbbcbd8d41adba3a6622e24e1, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
   - {fileID: 11400000, guid: 3d42d46c467b91d49984f77a432ed38d, type: 2}
-  passiveAbilities: []
+  passiveAbilities:
+  - {fileID: 5626464818293590775, guid: 9670137c906153d49ab8c9b649925d6d, type: 3}
   PA_hard: []
   actionMods: []
   corpse: {fileID: 0}
@@ -65,7 +66,7 @@ MonoBehaviour:
   CRITD: 50
   EVD: 5
   ACC: 95
-  ACT: 6
+  ACT: 600
   turnPerRound: 1
   GHeal: 0
   RHeal: 0

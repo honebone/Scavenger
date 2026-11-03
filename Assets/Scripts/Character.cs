@@ -2192,6 +2192,11 @@ public class Character : MonoBehaviour
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(myTurn, turnCount); }
         RemovePA_Execute();
     }
+    public void OnTurnStart2(TurnStartParams tsp)
+    {
+        foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart2(tsp); }
+        RemovePA_Execute();
+    }
     public void OnTurnEnd(TurnEndParams tep)
     {
         if (charaStatus.shield > 0 && battleManager.GetCurrntTurnChara().CharaStatus().position.IsPlayerPos() != charaStatus.position.IsPlayerPos())

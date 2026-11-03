@@ -290,6 +290,7 @@ public class PassiveAbility : MonoBehaviour
     public virtual void OnTurnOrderDecide() { }
 
     public virtual void OnTurnStart(bool myTurn, int turnCount) { }
+    public virtual void OnTurnStart2(TurnStartParams tsp) { }
     public virtual void OnTurnEnd(TurnEndParams tep) { }
     public virtual void OnRoundEnd() { }
 

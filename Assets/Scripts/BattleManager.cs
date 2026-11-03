@@ -670,9 +670,15 @@ public class BattleManager : MonoBehaviour
         }
 
         if (fieldEffect != null) { fieldEffect.OnTurnStart(currentTurnCount + 1); }
+
+        TurnStartParams turnStartParams=new TurnStartParams();
+        turnStartParams.turnChara = currentTurn.character;
+        turnStartParams.turnCount = currentTurnCount + 1;
         foreach (Character character in charactersManager.GetExistingCharacters_All())
         {
             character.OnTurnStart(checkIfMyTurn(character), currentTurnCount + 1);
+            turnStartParams.myTurn = checkIfMyTurn(character);
+            character.OnTurnStart2(turnStartParams);
         }
         foreach (PositionManager positionManager in positionManagers)
         {
@@ -1046,6 +1052,12 @@ public class PersonalBattleReport
     }
 }
 
+public struct TurnStartParams
+{
+    public bool myTurn;
+    public int turnCount;
+    public Character turnChara;
+}
 public struct TurnEndParams
 {
     public bool myTurn;
