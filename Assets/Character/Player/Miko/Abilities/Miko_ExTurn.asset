@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u795E\u5A01\u9855\u73FE"
   lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 0bda631442e3aae4990b6e5bf00c49d9, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
       guaranteed: 1
       applyChance: 0
       stack: 4
-      value: 40
+      value: 30
       dontApplyBonus: 0
       refATK: 0
       refTargetMaxHP: 0

@@ -15,8 +15,8 @@ MonoBehaviour:
   fileName: P_Miko
   manager: {fileID: 9015277368715593050, guid: 05c01fef1d4490641a9abc29b6918368, type: 3}
   charaName: "\u5DEB\u5973"
-  introduction: "\u81EA\u8EAB\u306E<sprite name=HP><color=#87FF79>HP</color>\u3092\u72A0\u7272\u306B\u3057\u3064\u3064\u3001\u5F37\u529B\u306A\u30A2\u30D3\u30EA\u30C6\u30A3\u3092\u767A\u52D5\u3067\u304D\u308B\u30AD\u30E3\u30E9\n\n<sprite
-    name=HP><color=#87FF79>HP</color>\u306E\u78BA\u4FDD\u624B\u6BB5\u3092\u5F97\u308B\u3053\u3068\u304C\u91CD\u8981\u3068\u306A\u308B"
+  introduction: "\u5473\u65B91\u4F53\u306B\u7D99\u7D9A\u7684\u306A\u652F\u63F4\u3092\u3001\u65751\u4F53\u306B\u7D99\u7D9A\u7684\u306A\u59A8\u5BB3\u304C\u3067\u304D\u308B\u56DE\u5FA9\u30AD\u30E3\u30E9\n\n\u80FD\u52D5\u7684\u306A<sprite
+    name=HP><color=#87FF79>\u56DE\u5FA9</color>\u306F\u3067\u304D\u306A\u3044\u305F\u3081\u3001\u9577\u671F\u7684\u306A\u8A08\u753B\u3092\u7ACB\u3066\u308B\u3053\u3068\u304C\u5FC5\u8981\u3068\u306A\u308B"
   difficulty: "\u4E2D"
   preferFront: 0
   preferMid: 1
@@ -66,7 +66,7 @@ MonoBehaviour:
   CRITD: 50
   EVD: 5
   ACC: 95
-  ACT: 600
+  ACT: 6
   turnPerRound: 1
   GHeal: 0
   RHeal: 0
