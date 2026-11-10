@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: "\u7009\u8840+"
   lockedDefault: 0
-  upgradeInfo: "\u5FC5\u4E2D\u306B\u306A\u308B\n<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u91CF\u306B\u5FDC\u3058\u305F\u30C0\u30E1\u30FC\u30B8\u5272\u5408+50\uFF05"
+  upgradeInfo: "<color=#00FFFF><sprite name=shield><link=T_shield><u>\u30B7\u30FC\u30EB\u30C9</u></link></color>\u3092\u7121\u8996\u3059\u308B\u3088\u3046\u306B\n<color=#C900FF><sprite
+    name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u91CF\u306B\u5FDC\u3058\u305F\u30C0\u30E1\u30FC\u30B8\u5272\u5408+50\uFF05"
   upgradeAbility: {fileID: 0}
   noSimpleInfo: 0
   simpleInfo: 
@@ -144,8 +145,8 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    drain: 80
-    ignoreShield: 0
+    drain: 100
+    ignoreShield: 1
     sureHit: 1
     unevadable: 0
     healValue_min: 0

@@ -144,9 +144,9 @@ MonoBehaviour:
     ACCMod: 0
     CRITCMod: 0
     CRITDMod: 0
-    drain: 80
+    drain: 100
     ignoreShield: 0
-    sureHit: 0
+    sureHit: 1
     unevadable: 0
     healValue_min: 0
     healValue_max: 0

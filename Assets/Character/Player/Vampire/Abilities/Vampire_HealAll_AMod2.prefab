@@ -72,7 +72,7 @@ MonoBehaviour:
     unevadable: 0
     exHeal_mul: 0
     healValue: 0
-    healPercent: 35
+    healPercent: 30
     healRegain: 0
     SANHeal: 0
     SANDamage: 0

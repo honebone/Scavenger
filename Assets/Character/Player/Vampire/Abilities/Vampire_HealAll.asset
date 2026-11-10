@@ -60,9 +60,9 @@ MonoBehaviour:
   freeAction: 0
   cooldownOnBattleStart: 2
   cooldownOnUse: 3
-  hasRemain: 1
-  remainOnBattleStart: 2
-  maxRemain: 2
+  hasRemain: 0
+  remainOnBattleStart: 0
+  maxRemain: 0
   doesRegenRemain: 0
   regenRemainAmount: 0
   actionsStaus:
@@ -150,8 +150,8 @@ MonoBehaviour:
     healINT: {x: 0, y: 0}
     healPercent_min: 0
     healPercent_max: 0
-    healRegain_min: 15
-    healRegain_max: 25
+    healRegain_min: 10
+    healRegain_max: 15
     trueHeal: 0
     exHeal_mul: 0
     SANHeal_min: 0
