@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99ef91b46802dba498b490d2db2d9df0, type: 3}
   m_Name: Sniper_AP
   m_EditorClassIdentifier: 
-  abilityName: "\u72D9\u6483"
+  abilityName: "\u5FB9\u7532\u5F3E"
   lockedDefault: 0
   upgradeInfo: 
   upgradeAbility: {fileID: 0}
@@ -63,16 +63,16 @@ MonoBehaviour:
     excludeSelf: 0
   freeAction: 0
   cooldownOnBattleStart: 0
-  cooldownOnUse: 0
+  cooldownOnUse: 2
   hasRemain: 0
   remainOnBattleStart: 0
   maxRemain: 0
   doesRegenRemain: 0
   regenRemainAmount: 0
   actionsStaus:
-  - actionName: "\u72D9\u6483"
+  - actionName: "\u5FB9\u7532\u5F3E"
     conditionInfo: 
-    targetInfo: "\u65751\u4F53"
+    targetInfo: "1\u6BB5\u306E\u6575\u3059\u3079\u3066"
     AModInfo: 
     actionInfo: 
     sprite: {fileID: 0}
@@ -130,8 +130,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 25
+    ATKMod_max: 40
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     targetCount: 1
     actionTargets: []
     actionTargetsInt: 
-  - actionName: "\u72D9\u6483"
+  - actionName: "\u5FB9\u7532\u5F3E"
     conditionInfo: 
     targetInfo: "\u81EA\u8EAB"
     AModInfo: 
