@@ -165,14 +165,8 @@ public class PA_StatusEffect : PassiveAbility
     public string GetStEInfo_forRef()
     {
         string s = "";
-        //string s = StEStatus.StEName;
-        //if (StEStatus.refValue) { s += "X"; }
-        //s += "ÅF";
-        //string statModInfo = statMod.GetInfo();
-        //if (statModInfo != "") s += statModInfo + "\n";
         if (StEStatus.StEInfo != "") s += StEStatus.StEInfo + "\n";
         if (GetAdditionalInfo() != "") { s += "\n" + GetAdditionalInfo(); }
-        //if (StEStatus.undeletable) { s += "\nè¡ãéïsâ¬".ColorStr(Definer.colorRef.emphasize); }
 
         return s;
     }

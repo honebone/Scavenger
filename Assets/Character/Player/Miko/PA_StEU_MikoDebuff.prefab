@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: StEU_mikoDebuff
   noSimpleInfo: 0
-  simpleInfo: 
+  simpleInfo: "\u53D7\u3051\u308B<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+10\uFF05\n\n(\u540C\u6642\u306B\u8907\u6570\u4F53\u304C\u5C01\u9B54\u306E\u672D\u3092\u5F97\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044)"
   PAInfo_start: "\u53D7\u3051\u308B<color=#FF8B00><sprite name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u7387+10\uFF05\n\n(\u540C\u6642\u306B\u8907\u6570\u4F53\u304C\u5C01\u9B54\u306E\u672D\u3092\u5F97\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044)"
   skipGetInfo: 0
   PAInfo_end: 

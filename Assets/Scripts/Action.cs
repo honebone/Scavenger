@@ -571,16 +571,17 @@ public class Action : MonoBehaviour
                 }
             }
             NewBlock();
-
+            string temp = "";
             foreach (GameObject actionMod in actionMods)
             {
                 string modInfo = actionMod.GetComponent<ActionMod>().GetActionModStatus().GetModInfo();
-                if (modInfo != "") { s +=$"{NL()}{modInfo}"; }
+                if (modInfo != "") { temp += $"{Extentions.NL(temp, 2)}{modInfo}"; }
             }
             if (AModInfo != "")
             {
-                s += $"{NL()}Åõ{AModInfo}";
+                temp += $"{Extentions.NL(temp)}Åõ{AModInfo}";
             }
+            s += temp;
             NewBlock();
 
             if (actionInfo != "") { s +=$"{NL()}{actionInfo}"; }

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: StEU_mikoBuff
   noSimpleInfo: 0
-  simpleInfo: 
+  simpleInfo: "(\u540C\u6642\u306B\u8907\u6570\u4F53\u304C\u8B77\u7B26\u3092\u5F97\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044)"
   PAInfo_start: "\n(\u540C\u6642\u306B\u8907\u6570\u4F53\u304C\u8B77\u7B26\u3092\u5F97\u308B\u3053\u3068\u306F\u3067\u304D\u306A\u3044)"
   skipGetInfo: 0
   PAInfo_end: 

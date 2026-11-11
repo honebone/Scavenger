@@ -177,6 +177,7 @@ public class CharactersManager : MonoBehaviour
             public GameObject StE;
             [Header("“¯”‚à‹–‰Â")] public int stack = 1;
             public bool stack_lessThan;
+            public bool stack_equal;
         }
         public List<StECondition> StEConditions;
         [Header("‚±‚ê‚Í‹Œ®‚ÌStEğŒ‚Å‚·")] public List<GameObject> StE;
@@ -244,16 +245,14 @@ public class CharactersManager : MonoBehaviour
         foreach (SearchCharaCondition.StECondition cond in condition.StEConditions)
         {
             int stack = character.GetStEStack_Sum(cond.StE);
-            if (cond.stack_lessThan && stack <= cond.stack)
+            int mode = cond.stack_equal ? 2 : cond.stack_lessThan ? 1 : 0;
+            switch (mode)
             {
-                matched = true;
-                break;
+                case 0:  matched = stack >= cond.stack; break;
+                case 1:  matched = stack <= cond.stack; break;
+                default: matched = stack == cond.stack; break;
             }
-            else if (!cond.stack_lessThan && stack >= cond.stack)
-            {
-                matched = true;
-                break;
-            }
+            if (matched) break;
         }
         if (!matched) { return false; }
 
