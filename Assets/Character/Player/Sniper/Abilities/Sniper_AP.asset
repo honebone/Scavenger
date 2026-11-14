@@ -83,7 +83,7 @@ MonoBehaviour:
     actionMods:
     - {fileID: 980131611971298319, guid: 66124fcd661075f4c9216f3c5466138d, type: 3}
     - {fileID: 980131611971298319, guid: 488607b457c4348409f9b89ea3f00e4a, type: 3}
-    targetType: 1
+    targetType: 4
     friendly: 0
     condition:
       searchAsPos: 0
@@ -130,8 +130,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 25
-    ATKMod_max: 40
+    ATKMod_min: 30
+    ATKMod_max: 50
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0

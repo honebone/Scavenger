@@ -37,8 +37,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 67205ca01a06b5447bd19a6c15355ec3, type: 2}
   - {fileID: 11400000, guid: e8a2285b43812024db42c30c94ef8481, type: 2}
   - {fileID: 11400000, guid: 1845cc166b71dff44af663fef2c62307, type: 2}
+  - {fileID: 11400000, guid: e072724e860d2be46be0ccef3c3a3c9e, type: 2}
+  - {fileID: 11400000, guid: 25c1bdb84a8d39d4292094d5044e9540, type: 2}
   - {fileID: 11400000, guid: 8b060f204d3175b4b85e6f15b0c68a51, type: 2}
-  - {fileID: 11400000, guid: a1831a4cdc1dd8446b34116f0ea1ddc8, type: 2}
+  - {fileID: 11400000, guid: 07ed966cf8f004044a32529c8302bc6b, type: 2}
   passiveAbilities:
   - {fileID: 4283910244092387297, guid: 3476b22e500d6f5418a27cdc6e9d148e, type: 3}
   PA_hard: []

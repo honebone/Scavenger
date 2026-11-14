@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5787248966901049456}
   - component: {fileID: 6391350165293048886}
   m_Layer: 0
-  m_Name: StEU_Sniper_Bullet
+  m_Name: PA_StEU_Sniper_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,7 +102,7 @@ MonoBehaviour:
     DMGPerTurn: 0
   actionStatus:
     actionName: 
-    conditionInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u305F\u3068\u304D\n"
+    conditionInfo: "\u81EA\u8EAB\u3092\u9664\u304F\u30D7\u30EC\u30A4\u30E4\u30FC\u304C[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u6575\u306B\u30A2\u30D3\u30EA\u30C6\u30A3\u3067\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u305F\u3068\u304D\n"
     targetInfo: "\u653B\u6483\u3057\u305F\u5BFE\u8C61(\u8907\u6570\u4F53\u3044\u308B\u306A\u3089\u30E9\u30F3\u30C0\u30E0\u306B1\u4F53)"
     AModInfo: 
     actionInfo: "\u30FB\u3053\u308C\u306E\u30B9\u30BF\u30C3\u30AF\u30921\u6D88\u8CBB"
