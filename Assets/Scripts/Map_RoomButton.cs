@@ -21,9 +21,11 @@ public class Map_RoomButton : MonoBehaviour
     [SerializeField] Image currentRoomImage;
     [SerializeField]
     Text currentPosText;
-
+    [SerializeField] Animator animator;
     [SerializeField]
     Sprite blindIcon;
+
+    [SerializeField] Color unselectableColor;
 
     ExpeditionManager expeditionManager;
     InfoText InfoText;
@@ -56,7 +58,13 @@ public class Map_RoomButton : MonoBehaviour
             if (room.up >= 1) { up.enabled = true; }
             if (room.straight >= 1) { straight.enabled = true; }
             if (room.down >= 1) { down.enabled = true; }
-        }        
+        }
+    }
+
+    public void OnEnable()
+    {
+        animator.SetBool("Highlight", selectable);
+        roomEventIcon.color = selectable ? Color.white : unselectableColor;
     }
 
     public void SetState_Selectable()

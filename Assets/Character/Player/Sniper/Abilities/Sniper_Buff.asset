@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u6A19\u7684\u88DC\u8DB3"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: e2e869151c6639749bf29e7ffc417c3c, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -23,8 +23,8 @@ MonoBehaviour:
   excludeRandomPool: 0
   priority: 1
   selectWeight: 1
-  availableFront: 1
-  availableMid: 1
+  availableFront: 0
+  availableMid: 0
   availableBack: 1
   hasSelfCondition: 0
   conditionInfo: 
@@ -168,7 +168,7 @@ MonoBehaviour:
     - applyStE: {fileID: 1489497368108049143, guid: 38af075ef10d73c4eb80b1616604cc3d, type: 3}
       guaranteed: 1
       applyChance: 0
-      stack: 2
+      stack: 5
       value: 20
       dontApplyBonus: 0
       refATK: 0
@@ -224,6 +224,6 @@ MonoBehaviour:
     exInherits: []
     actionOwner: {fileID: 0}
     source: {fileID: 0}
-    targetCount: 0
+    targetCount: 1
     actionTargets: []
     actionTargetsInt: 

@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5377358, g: 0.37121075, b: 0.21052864, a: 0}
+  m_Color: {r: 1, g: 1, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -250,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room:
+    eventData: {fileID: 0}
     empty: 0
     eventName: 
     eventInfo: 
@@ -267,8 +268,9 @@ MonoBehaviour:
   frame: {fileID: 2980740322935996902}
   currentRoomImage: {fileID: 5825666772350195922}
   currentPosText: {fileID: 4308300420620106561}
-  emptyIcon: {fileID: 21300000, guid: 3d3b4ef2310b9f24bb51817e1200c56e, type: 3}
+  animator: {fileID: 6980758693080210068}
   blindIcon: {fileID: 21300000, guid: 1ba3020a0b7598742918de7e40d04fdd, type: 3}
+  unselectableColor: {r: 1, g: 1, b: 1, a: 0.7490196}
   scrollSpeed: -0.05
 --- !u!114 &2980740322935996903
 MonoBehaviour:
@@ -386,6 +388,7 @@ GameObject:
   - component: {fileID: 1104321992164619226}
   - component: {fileID: 1557877919999067614}
   - component: {fileID: 5586331155281922463}
+  - component: {fileID: 6980758693080210068}
   m_Layer: 5
   m_Name: Room Image
   m_TagString: Untagged
@@ -451,6 +454,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &6980758693080210068
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4053870038136995158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc9a69370a4d46a4e994cf5d10dc8a12, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4817588337795961287
 GameObject:
   m_ObjectHideFlags: 0

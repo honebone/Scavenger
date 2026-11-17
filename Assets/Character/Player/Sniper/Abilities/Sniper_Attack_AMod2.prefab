@@ -52,7 +52,7 @@ MonoBehaviour:
     consumeFocus: 0
     decreaseHP: 0
     echo: []
-    ATKMod: 0
+    ATKMod: 80
     INTMod: 0
     trueATKDMG: 0
     trueINTDMG: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     INTDMG_divide_int: 0
     ACCMod: 0
     CRITCMod: 15
-    CRITDMod: 30
+    CRITDMod: 0
     drain: 0
     ignoreShield: 0
     sureHit: 0

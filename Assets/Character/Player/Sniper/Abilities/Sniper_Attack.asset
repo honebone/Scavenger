@@ -15,7 +15,7 @@ MonoBehaviour:
   abilityName: "\u72D9\u6483"
   lockedDefault: 0
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 20cbc84c8e7cbb543b3ee044e03f41b3, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -130,8 +130,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 80
-    ATKMod_max: 120
+    ATKMod_min: 50
+    ATKMod_max: 90
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0

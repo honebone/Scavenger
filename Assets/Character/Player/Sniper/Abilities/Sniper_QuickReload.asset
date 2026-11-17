@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sniper_QuickReload
   m_EditorClassIdentifier: 
   abilityName: "\u30AF\u30A4\u30C3\u30AF\u30EA\u30ED\u30FC\u30C9"
-  lockedDefault: 0
+  lockedDefault: 1
   upgradeInfo: 
-  upgradeAbility: {fileID: 0}
+  upgradeAbility: {fileID: 11400000, guid: 6febbededb66b1a4f9c78e4347436fe9, type: 2}
   noSimpleInfo: 0
   simpleInfo: 
   abilityManager: {fileID: 0}
@@ -57,7 +57,7 @@ MonoBehaviour:
     sameRow: 0
     sameChara: 0
     excludeSelf: 0
-  freeAction: 1
+  freeAction: 0
   cooldownOnBattleStart: 0
   cooldownOnUse: 0
   hasRemain: 1

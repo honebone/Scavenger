@@ -159,8 +159,8 @@ MonoBehaviour:
     decreaseHP_INT: {x: 0, y: 0}
     echoDoT: []
     attackInfo: 
-    ATKMod_min: 40
-    ATKMod_max: 60
+    ATKMod_min: 30
+    ATKMod_max: 50
     INTMod_min: 0
     INTMod_max: 0
     ATKMod_divide: 0

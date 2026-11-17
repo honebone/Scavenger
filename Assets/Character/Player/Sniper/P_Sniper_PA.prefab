@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8290419345353046796}
-  - component: {fileID: 5493293053392065715}
+  - component: {fileID: -1669550007540705485}
   - component: {fileID: 5902850309112541502}
   m_Layer: 0
   m_Name: P_Sniper_PA
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5493293053392065715
+--- !u!114 &-1669550007540705485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,15 +42,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4283910244092387297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4685b269c6d6a484bbef687fa2969ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: cde854efe8677834581ddc02449dbb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: P_Sniper
   noSimpleInfo: 0
-  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<color=#FFFFFF><link=S_\u5F3E\u4E38><u>\u5F3E\u4E38</u></link></color>\u3092\u5F97\u308B"
+  simpleInfo: "\u6226\u95D8\u958B\u59CB\u6642\u3001<color=#FFFFFF><link=S_\u5F3E\u4E38><u>\u5F3E\u4E38</u></link></color>\u3092\u5F97\u308B\n\n<color=#FFFFFF><link=S_\u5F3E\u4E38><u>\u5F3E\u4E38</u></link></color>\u3092\u5F97\u308B\u305F\u3073\u3001<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u30C0\u30E1\u30FC\u30B8\u304C\u5897\u52A0"
   PAInfo_start: 
   skipGetInfo: 0
-  PAInfo_end: 
+  PAInfo_end: "<color=#FFFFFF><link=S_\u5F3E\u4E38><u>\u5F3E\u4E38</u></link></color>\u30921\u30B9\u30BF\u30C3\u30AF\u5F97\u308B\u305F\u3073\u3001<color=#FF8B00><sprite
+    name=CRIT><link=T_CRIT><u>CRIT</u></link></color>\u30C0\u30E1\u30FC\u30B8+3\uFF05"
   statMod:
     LVL: 0
     maxHP_mul: 0
@@ -82,42 +84,10 @@ MonoBehaviour:
   PATags: 
   rune_initialCharge: 0
   personalityStatus:
-    personalityName: 
+    personalityName: "\u30B7\u30E3\u30FC\u30D7\u30B7\u30E5\u30FC\u30BF\u30FC"
     personalityType: 1
-  max_inBattle: 0
-  max_inRound: 0
-  countReq: 1
-  hasSelfCond: 0
-  selfCond:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  targetSelf: 1
+  bullet: {fileID: 5164891664867224302, guid: 6db3408ebf75fe841906e591f69537c4, type: 3}
+  CRITDPerBullet: 3
   actionStatus:
     actionName: 
     conditionInfo: "\u6226\u95D8\u958B\u59CB\u6642"
@@ -280,95 +250,6 @@ MonoBehaviour:
     targetCount: 0
     actionTargets: []
     actionTargetsInt: 
-  condition:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  targetCount: 0
-  activeCond_req: 0
-  activeCond:
-    searchAsPos: 0
-    onlyEmpty: 0
-    player: 0
-    enemy: 0
-    onlyPlayable: 0
-    onlyNonplayable: 0
-    front: 0
-    mid: 0
-    back: 0
-    excludeObstacle: 0
-    characterInclude: []
-    characterTags: 
-    characterTagsExclude: 
-    StEConditions: []
-    StE: []
-    StEExclude: []
-    PE: []
-    PEExclude: []
-    canEcho: 0
-    echoTargets: []
-    HPPercent: 0
-    HP_lessThan: 0
-    HP_excludeEqual: 0
-    neighbor: []
-    sameColmn: 0
-    sameRow: 0
-    sameChara: 0
-    excludeSelf: 0
-  coin: {x: 0, y: 0}
-  modifyStatus: 0
-  statusMod:
-    LVL: 0
-    maxHP_mul: 0
-    maxHP_int: 0
-    maxSAN_mul: 0
-    PROT: 0
-    ATK_mul: 0
-    ATK_int: 0
-    INT_mul: 0
-    INT_int: 0
-    exDMG_mul: 0
-    CRITC: 0
-    CRITD: 0
-    EVD: 0
-    ACC: 0
-    ACT: 0
-    turnPerRound: 0
-    GHeal: 0
-    RHeal: 0
-    StEResists: []
-    StEApplyBonus: []
-    debuffChance: 0
-    debuffStacks: 0
-    buffStacks: 0
-    moveRes: 0
-    debuffRes: 0
-    minion: 0
 --- !u!212 &5902850309112541502
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class PositionEffect : MonoBehaviour
         public bool regen;
 
         [Header("ˆÈ‰º‚Í‘ã“ü‚³‚ê‚é")]
+        public Character applyer;
         public int stack;
         public int value;
 
