@@ -17769,6 +17769,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d7a2eb57ba27202448c3b8a7b9f14c3b, type: 2}
   - {fileID: 11400000, guid: 581e32ece0c2d90499b8920f9697ca03, type: 2}
   - {fileID: 11400000, guid: a3c286822ca983d4085612992c11a466, type: 2}
+  - {fileID: 11400000, guid: c7b0ae9fe52787b4583f6f442643df0c, type: 2}
   eqDataBase_excludeRandomPool:
   - {fileID: 11400000, guid: e50d41730f2fb0944af188bdc69c139a, type: 2}
   personalityDataBase_randPool:
@@ -25401,7 +25402,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1605753869}
   m_HandleRect: {fileID: 1605753868}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
