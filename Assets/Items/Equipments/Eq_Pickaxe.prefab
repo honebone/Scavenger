@@ -49,7 +49,7 @@ MonoBehaviour:
   noSimpleInfo: 0
   simpleInfo: "\u30AD\u30E3\u30E9\u304C\u6B7B\u4EA1\u3059\u308B\u305F\u3073\u3001<color=#C30000><sprite
     name=ATK><link=T_ATK><u>ATK</u></link></color>\u304C\u5897\u52A0"
-  PAInfo_start: "[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u30AD\u30E3\u30E91\u4F53\u304C\u6B7B\u4EA1\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1(\u6700\u592710)\n\n\u30AB\u30A6\u30F3\u30C81\u306B\u3064\u304D"
+  PAInfo_start: "[\u969C\u5BB3\u7269]\u3067\u306A\u3044\u30AD\u30E3\u30E91\u4F53\u304C\u6B7B\u4EA1\u3059\u308B\u305F\u3073\u3001\u30AB\u30A6\u30F3\u30C8+1(\u6700\u592710)"
   skipGetInfo: 0
   PAInfo_end: 
   statMod:
@@ -116,6 +116,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   targetSelf: 0
   actionStatus:
     actionName: 
@@ -159,6 +160,7 @@ MonoBehaviour:
       sameColmn: 0
       sameRow: 0
       sameChara: 0
+      excludeSelf: 0
     neigborPos: []
     ignoreMark: 0
     ignoreHide: 0
@@ -297,6 +299,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   targetCount: 0
   activeCond_req: 0
   activeCond:
@@ -327,6 +330,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
   coin: {x: 0, y: 0}
   modifyStatus: 1
   statusMod:
@@ -384,6 +388,7 @@ MonoBehaviour:
     sameColmn: 0
     sameRow: 0
     sameChara: 0
+    excludeSelf: 0
 --- !u!212 &3238141386940741765
 SpriteRenderer:
   m_ObjectHideFlags: 0

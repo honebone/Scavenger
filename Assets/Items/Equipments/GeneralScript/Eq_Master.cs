@@ -119,7 +119,11 @@ public class Eq_Master : PA_Equipment
     public override string GetPAInfo_Base()
     {
         string s = "";
-        if (modifyStatus) s = statusMod.GetInfo();
+        if (modifyStatus)
+        {
+            if (max_inBattle != 1) s += "カウント1につき、\n";
+            s += statusMod.GetInfo();
+        }
         else s = actionStatus.GetInfo();
 
         return s;
