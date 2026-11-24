@@ -58,7 +58,8 @@ public class P_Vampire : PA_Personality
         if (tep.myTurn&&count>0)
         {
             Action.ActionStatus action = actionStatus;
-            action.trueHeal = count;
+            action.shieldAdd_max = count;
+            action.shieldAdd_min = count;
             Enqueue_Self(action);
 
             count = 0;
@@ -72,6 +73,6 @@ public class P_Vampire : PA_Personality
 
     public override string GetCurrentStateInfo()
     {
-        return BattleManager.inst.checkIfMyTurn(character) ? $"このターン終了時に{count}回復" : "";
+        return BattleManager.inst.checkIfMyTurn(character) ? $"このターン終了時に{"shield".ToSpr()}{count}" : "";
     }
 }
