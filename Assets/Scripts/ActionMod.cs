@@ -114,7 +114,7 @@ public class ActionMod : MonoBehaviour
                 if (unevadable) { s += $"{NL()}・対象の{"EVD".ToSpr_withLink()}を無視"; }
                 if (exHeal_mul != 0) { s += ValueToStr($"・{"HP".ToSpr_withName("回復")}量", exHeal_mul, "％"); }
                 if (healValue != 0) { s += ValueToStr($"・{"HP".ToSpr_withName("回復")}量", healValue, ""); }
-                if (healPercent != 0) { s += ValueToStr($"・割合{"HP".ToSpr_withName("回復")}量", healPercent, "％"); }
+                if (healPercent != 0) { s += ValueToStr($"・追加で{"HP".ToSpr_withName()}を", healPercent, "％回復"); }
                 if (healRegain != 0) { s += ValueToStr($"・減少した{"HP".ToSpr_withName()}の", healRegain, $"％を{"HP".ToSpr_withName("回復")}"); }
                 if (SANHeal != 0) { s += ValueToStr($"・{"SAN".ToSpr_withLink()}回復量", SANHeal, ""); }
                 if (SANDamage != 0) { s += ValueToStr($"・{"SAN".ToSpr_withLink()}減少", SANDamage, ""); }
