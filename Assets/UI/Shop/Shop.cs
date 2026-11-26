@@ -46,7 +46,7 @@ public class Shop : MonoBehaviour
             int salePrice = price.Mul(gp.saleMul);
             buttons[i].SetItem(eq, price, sale, salePrice);
 
-            Compendium.inst.UnllickEq(eq.data);
+            Compendium.inst.UnlockEq(eq.data);
         }
 
         Refresh();

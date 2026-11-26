@@ -760,10 +760,12 @@ public class ExpeditionManager : MonoBehaviour
     public void SetPersonality(Character target, GameObject personality)
     {
         relManager.Enqueue_AddPer(target, personality);
+        Compendium.inst.UnlockPer(personality);
     }
     public void SetPersonality(Character target, List<GameObject> pers,bool immediate = false)
     {
-       if(immediate) pers.ForEach(p=> target.AddPA_Personality(p,true));
+        pers.ForEach(p => Compendium.inst.UnlockPer(p));
+       if (immediate) pers.ForEach(p=> target.AddPA_Personality(p,true));
        else pers.ForEach(p=> relManager.Enqueue_AddPer(target,p));
     }
 

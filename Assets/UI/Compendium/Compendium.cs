@@ -10,15 +10,19 @@ public class Compendium : MonoBehaviour
     public static Compendium inst;
 
     public CanvasGroup canvas;
-    public Transform eqButtonsP;
-    public GameObject eqButton;
-    public ScrollRect scroll;
-    public TextMeshProUGUI unlocksText;
 
-    List<ItemData> eqs = new List<ItemData>();
-    List<int> eqUnlockStates = new List<int>();
-    List<CPD_EqButton> eqButtons = new List<CPD_EqButton>();
+    [SerializeField] List<CPDElement> elements;
+    [SerializeField] CPD_Eq eq;
+    [SerializeField] CPD_Per per;
+    [SerializeField] TextMeshProUGUI totalUnlocksText;
+    [SerializeField] TextMeshProUGUI unlocksText;
+
     bool active;
+
+    enum Mode { Eq, PA, RaE}
+    Mode mode = Mode.Eq;
+
+    CPDElement current => elements[(int)mode];
 
     private void Awake()
     {
@@ -27,17 +31,17 @@ public class Compendium : MonoBehaviour
 
     void Start()
     {
-        var list = new List<ItemData>(Definer.inst.GetAllEquipments());
-        eqs = list.OrderBy(x => x.rarity).ToList();
-        eqs.ForEach(x =>
-        {
-            var b = Instantiate(eqButton, eqButtonsP);
-            int state = PlayerPrefs.GetFloat($"unlock_{x.name}", 0).ToInt();
-            eqUnlockStates.Add(state);
-            eqButtons.Add(b.GetComponent<CPD_EqButton>().Init(x, scroll, state != 0));
-        });
+        elements.ForEach(x => x.Init());
 
-        unlocksText.text = $"{eqUnlockStates.Count(x => x != 0)}/{eqUnlockStates.Count()}";
+        RefleshText();
+    }
+
+    public void ToggleTab(int index)
+    {
+        mode = (Mode)index;
+        elements.ForEach(e => e.Close());
+        current.Open();
+        RefleshText();
     }
 
     public void ToggleUI()
@@ -52,6 +56,8 @@ public class Compendium : MonoBehaviour
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
         active = true;
+
+        RefleshText();
     }
     public void Close()
     {
@@ -61,37 +67,23 @@ public class Compendium : MonoBehaviour
         active = false;
     }
 
-    public void UnllickEq(ItemData unlock)
+    public void UnlockEq(ItemData unlock)
     {
-        if (unlock.itemType != ItemData.ItemType.equipment)
-        {
-            InfoText.inst.AddWarningText("装備品でないアイテムの図鑑設定をしようとしています");
-            return;
-        }
-        int index = eqs.IndexOf(unlock);
-        if (index == -1)
-        {
-            InfoText.inst.AddErrorText("図鑑に存在しないアイテム");
-            return;
-        }
-
-        if (eqUnlockStates[index] == 0)
-        {
-            GameManager.instance.SetSaveData($"unlock_{unlock.name}", 1);
-            eqUnlockStates[index] = 1;
-            eqButtons[index].Unlock();
-
-            GameManager.instance.SendScoreborad(2, eqUnlockStates.Count(x => x != 0));
-        }
-
-        unlocksText.text = $"{eqUnlockStates.Count(x => x != 0)}/{eqUnlockStates.Count()}";
+        eq.UnlockEq(unlock);
+        RefleshText();
     }
 
-   
-
-    // Update is called once per frame
-    void Update()
+    public void UnlockPer(GameObject unlock)
     {
-        
+        per.UnlockPer(unlock);
+        RefleshText();
+    }
+
+    private void RefleshText()
+    {
+        Vector2Int unlocks = new Vector2Int();
+        elements.ForEach(e => unlocks += e.GetUnlocks());
+        totalUnlocksText.text = $"合計 {unlocks.x}/{unlocks.y}";
+        unlocksText.text = current.GetUnlocksStr();
     }
 }

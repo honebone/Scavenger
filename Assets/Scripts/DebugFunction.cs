@@ -123,7 +123,7 @@ public class DebugFunction : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Alpha7))
             {
-                charactersManager.GetExistingCharacters_All()[0].AddPA_Personality(personality, true);
+                expeditionManager.SetPersonality(charactersManager.GetExistingCharacters_All()[0], new List<GameObject> { personality }, true);
             }
                 if (Input.GetKeyDown(KeyCode.Space)) { debugPanel.SetActive(!debugPanel.activeSelf); }
             }

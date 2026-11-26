@@ -61,7 +61,7 @@ public class SupplyManager : MonoBehaviour
 
         supplies.ForEach(x =>
         {
-            if (x.data&&x.data.itemType == ItemData.ItemType.equipment) Compendium.inst.UnllickEq(x.data);
+            if (x.data&&x.data.itemType == ItemData.ItemType.equipment) Compendium.inst.UnlockEq(x.data);
         });
 
         if (!supplyPanel.activeSelf)

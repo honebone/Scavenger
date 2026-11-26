@@ -88,7 +88,7 @@ public class LootPanel : MonoBehaviour
         SetButtons();
         loots.ForEach(x =>
         {
-            if (x.data && x.data.itemType == ItemData.ItemType.equipment) Compendium.inst.UnllickEq(x.data);
+            if (x.data && x.data.itemType == ItemData.ItemType.equipment) Compendium.inst.UnlockEq(x.data);
         });
         if (!lootPanel.activeSelf)
         {
