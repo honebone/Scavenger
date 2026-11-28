@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9173390189076372008}
-  - component: {fileID: -6668877206585889441}
+  - component: {fileID: -8266104789272353935}
   m_Layer: 0
-  m_Name: Vampire_BleedBurst_Amod
+  m_Name: Vampire_BleedBurst_HealAmod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6668877206585889441
+--- !u!114 &-8266104789272353935
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 884225238630638477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064aca2ac0b98794284cbf3c1af8d6ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 228a03160096e1f4caa54bf76cb7aeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
     conditionInfo: 
-    hideValues: 1
+    hideValues: 0
     exInfo: 
     exTurn: 0
     consumeFocus: 0
@@ -136,8 +136,4 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-  ATKDMG: 0
-  totalDMG: 0
-  DoT:
-  - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-  ratio: 2
+  healMul: 50

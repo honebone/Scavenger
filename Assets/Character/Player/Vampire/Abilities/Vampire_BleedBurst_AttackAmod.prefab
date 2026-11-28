@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9173390189076372008}
-  - component: {fileID: -6668877206585889441}
+  - component: {fileID: 6209724114332421779}
   m_Layer: 0
-  m_Name: Vampire_BleedBurst_Amod2
+  m_Name: Vampire_BleedBurst_AttackAmod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-6668877206585889441
+--- !u!114 &6209724114332421779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 884225238630638477}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064aca2ac0b98794284cbf3c1af8d6ac, type: 3}
+  m_Script: {fileID: 11500000, guid: d5b1e4b2e0e3c2347a02f90a1fa6aa40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   actionModStatus:
-    conditionInfo: 
-    hideValues: 1
+    conditionInfo: "\u5BFE\u8C61\u304C<color=#C900FF><sprite name=debuff><link=S_\u51FA\u8840><u>\u51FA\u8840</u></link></color>\u72B6\u614B\u306A\u3089"
+    hideValues: 0
     exInfo: 
     exTurn: 0
     consumeFocus: 0
@@ -80,7 +80,25 @@ MonoBehaviour:
     shieldAdd_percent: 0
     shieldRemove: 0
     shieldRemove_all: 0
-    applySteParams: []
+    applySteParams:
+    - applyStE: {fileID: 1489497368108049143, guid: 44c4bf77214f25a429901659c6da2063, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 2
+      value: 30
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
+    - applyStE: {fileID: 1489497368108049143, guid: 83457cbfae104c6468a7e06ef7423bde, type: 3}
+      guaranteed: 0
+      applyChance: 100
+      stack: 2
+      value: 15
+      dontApplyBonus: 0
+      refATK: 0
+      refTargetMaxHP: 0
+      DMGPerTurn: 0
     applyStEBonus: []
     debuffChanceMod: 0
     removeStE_buff: 0
@@ -136,8 +154,4 @@ MonoBehaviour:
       ACT: 0
       GHeal_TH: 0
       GHeal: 0
-  ATKDMG: 0
-  totalDMG: 0
-  DoT:
-  - {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}
-  ratio: 2.5
+  checkStE: {fileID: 8492015112257644605, guid: fa3a54b4f05ab334a95263731802bb37, type: 3}

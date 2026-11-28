@@ -50,7 +50,7 @@ public class P_Vampire : PA_Personality
     //int count;
     public override void OnDecreasedHP(int value)
     {
-        if (BattleManager.inst.checkIfMyTurn(character))
+        if (value > 0&&BattleManager.inst.checkIfMyTurn(character))
         {
             Action.ActionStatus action = actionStatus;
             action.shieldAdd_max = value;

@@ -181,6 +181,7 @@ MonoBehaviour:
   - {fileID: 5164891664867224302, guid: 8ee881112a556814e91a642362f90ddc, type: 3}
   - {fileID: 5164891664867224302, guid: 6db3408ebf75fe841906e591f69537c4, type: 3}
   - {fileID: 5164891664867224302, guid: bb58ec3815c11594fbf903de9f9a7bf7, type: 3}
+  - {fileID: 5164891664867224302, guid: 2c7540518547d4b4c98e8402d52c6b23, type: 3}
   colorRef:
     debug: {r: 0, g: 0.4056604, b: 0.04835723, a: 1}
     player: {r: 0.98039216, g: 0.92941177, b: 0.5411765, a: 1}
