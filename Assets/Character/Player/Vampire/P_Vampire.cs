@@ -44,35 +44,41 @@ public class P_Vampire : PA_Personality
     //    return $"カウント：{count}/{character.CharaStatus().maxHP.Mul(HPPercentTH)}\n増加した{"EVD".ToSpr_withLink()}：{EVDPerActivate * activeCount}/{EVDPerActivate * maxActivate}";
     //}
 
-    [SerializeField] int healPercent;
+    //[SerializeField] int healPercent;
     [SerializeField] Action.ActionStatus actionStatus;
 
-    int count;
+    //int count;
     public override void OnDecreasedHP(int value)
     {
-        if (BattleManager.inst.checkIfMyTurn(character))count += value.Mul(healPercent);
-    }
-
-    public override void OnTurnEnd(TurnEndParams tep)
-    {
-        if (tep.myTurn&&count>0)
+        if (BattleManager.inst.checkIfMyTurn(character))
         {
             Action.ActionStatus action = actionStatus;
-            action.shieldAdd_max = count;
-            action.shieldAdd_min = count;
+            action.shieldAdd_max = value;
+            action.shieldAdd_min = value;
             Enqueue_Self(action);
-
-            count = 0;
         }
     }
 
-    public override void OnBattleEnd()
-    {
-        count = 0;
-    }
+    //public override void OnTurnEnd(TurnEndParams tep)
+    //{
+    //    if (tep.myTurn&&count>0)
+    //    {
+    //        Action.ActionStatus action = actionStatus;
+    //        action.shieldAdd_max = count;
+    //        action.shieldAdd_min = count;
+    //        Enqueue_Self(action);
 
-    public override string GetCurrentStateInfo()
-    {
-        return BattleManager.inst.checkIfMyTurn(character) ? $"このターン終了時に{"shield".ToSpr()}{count}" : "";
-    }
+    //        count = 0;
+    //    }
+    //}
+
+    //public override void OnBattleEnd()
+    //{
+    //    count = 0;
+    //}
+
+    //public override string GetCurrentStateInfo()
+    //{
+    //    return BattleManager.inst.checkIfMyTurn(character) ? $"このターン終了時に{"shield".ToSpr()}{count}" : "";
+    //}
 }

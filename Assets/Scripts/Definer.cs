@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Definer : MonoBehaviour
 {
@@ -416,6 +417,16 @@ public class Definer : MonoBehaviour
         {
             if (data.manager != null && data.manager.GetComponent<PassiveAbility>()) return data.manager.GetComponent<PassiveAbility>().GetPAName();
             else return $"error:{data.itemName}";
+        }
+
+        public static bool operator ==(Item a, Item b)
+        {
+            return a.data == b.data;
+        }
+
+        public static bool operator !=(Item a, Item b)
+        {
+            return a.data != b.data;
         }
     }
 

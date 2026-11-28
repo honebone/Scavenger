@@ -185,7 +185,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = inventory.Count - 1; i >= 0; i--)
         {
-            if (inventory[i].data == remove.data)
+            if (inventory[i] == remove)
             {
                
                if(note) infoText.AddLogText(string.Format("Åõ{0}x{1}Çé∏Ç¡ÇΩ", remove.data.itemName.ColorStr(remove.data.rarity.ToColor()), amount.ToString()));
@@ -202,9 +202,6 @@ public class Inventory : MonoBehaviour
                     inventory.RemoveAt(i);
                     inventory.Add(replace);
                 }
-
-                //SortInventory();
-                //SetButtons();
                 return;
             }
         }

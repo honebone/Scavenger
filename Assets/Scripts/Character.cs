@@ -2189,6 +2189,17 @@ public class Character : MonoBehaviour
     }
     public void OnTurnStart(bool myTurn, int turnCount)
     {
+        //if (myTurn)
+        //{
+        //    foreach (GameObject DoT in Definer.DoTDataBase)
+        //    {
+        //        int DMGNextTurn = GetDoTDMG(DoT, false);
+        //        if (DMGNextTurn > 0)
+        //        {
+        //            DecreaseHP(DMGNextTurn);
+        //        }
+        //    }
+        //}
         foreach (PassiveAbility passiveAbility in GetPassiveAbilities()) { passiveAbility.OnTurnStart(myTurn, turnCount); }
         RemovePA_Execute();
     }

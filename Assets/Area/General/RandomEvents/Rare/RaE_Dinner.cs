@@ -21,7 +21,7 @@ public class RaE_Dinner : RE_RandomEvents
         int epics=0;
         players.ForEach(p =>
         {
-            epics += p.CharaStatus().equipments.Select(e => e.data.rarity == ItemData.Rarity.epic || e.data.rarity == ItemData.Rarity.legendary).Count();
+            epics += p.CharaStatus().equipments.Where(e => e.data.rarity == ItemData.Rarity.epic || e.data.rarity == ItemData.Rarity.legendary).Count();
         });
 
         options[0].optionInfo += GenPerOptionInfo(PA, "ƒLƒƒƒ‰1‘Ì‚ª");
